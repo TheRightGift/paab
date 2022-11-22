@@ -18,12 +18,26 @@ class EmailAuthService {
             'othername' => 'nullable',
             'username' => 'nullable',
             'password' => 'nullable|confirmed', 
-            'phon' => 'nullable',
+            'phone' => 'nullable',
             'email' => 'nullable',
             'profilePicUrl' => 'nullable',
             'gender' => 'nullable',
             'plan' => 'nullable',
             'DOB' => 'nullable|date'  
+		]);
+        return $validator;
+    }
+
+    protected function regDataToValidate(Request $request)
+	{
+		$validator = Validator::make($request->all(), [
+			'firstname' => 'required',
+            'lastname' => 'required',
+            // 'othername' => 'nullable',
+            // 'username' => 'nullable',
+            'phone' => 'required|unique:users',
+            'email' => 'email|required|unique:users',
+            'password' => 'required' 
 		]);
         return $validator;
     }
@@ -44,27 +58,24 @@ class EmailAuthService {
     }
 
     public function register(Request $request){
-        $validatedData = $request->validate([
-            'firstname' => 'required|max:55',
-            'lastname' => 'required|max:55',
-            'email' => 'email|required|unique:users',
-            'phone' => 'required|unique:users',
-            'password' => 'required'
-        ]);
+        $regData = $this->regDataToValidate($request);
 
-
-        $findUser = User::where('email', $request->email)->first();
-
-        if(!$findUser){
-            $validatedData['password'] = bcrypt($request->password);
-
-            $user = User::create($validatedData);
-
-            $accessToken = $user->createToken('accessToken')->accessToken;
-
-            return [ 'user' => $user, 'access_token' => $accessToken];
+        if ($regData->fails()){
+            return response()->json(['errors' => $regData->errors()->all()]);
         } else {
-            return ['message' => 'An account with this detail exists.'];
+            $findUser = User::where('email', $request->email)->get();
+            // return $findUser;
+            if(count($findUser) < 1){
+                $input = $regData->validated();
+                $input['password'] = bcrypt($request->password);
+                $user = User::create($input);
+
+                $accessToken = $user->createToken('accessToken')->accessToken;
+
+                return [ 'user' => $user, 'access_token' => $accessToken];
+            } else {
+                return ['message' => 'An account with this detail exists.'];
+            }
         }
     }
 
@@ -78,8 +89,9 @@ class EmailAuthService {
             if ($updateUser == true){
                 return ['status' => 200, 'user' => $updateUser];
             }
+        } else {
+            return ['status' => 404, 'error'=>'Not Found'];
         }
-        else return ['status' => 404, 'error'=>'Not Found'];
     }
 
     public function verifyUserEmail($request){

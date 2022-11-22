@@ -25,6 +25,7 @@ return new class extends Migration
             $table->text('profilePicUrl')->nullable();
             $table->enum('gender', ['M', 'F'])->nullable();
             $table->enum('plan', ['F', 'P'])->default('F');
+            $table->enum('role', ['Client', 'Admin', 'SuperAdmin'])->default('Client');
             $table->date('DOB')->nullable();
             $table->string('password');
             $table->text('accessToken')->nullable()->default(null);
