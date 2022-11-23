@@ -35,5 +35,10 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('run_client_ops', function(User $user) {
             return $user->role == "Client";
         });
+
+        // Admin or Super Admin
+        Gate::define('run_admin_or_superAdmin_ops', function(User $user) {
+            return $user->role == "SuperAdmin" || $user->role == "Admin";
+        });
     }
 }
