@@ -40,12 +40,12 @@ return [
     'twitter' => [
         'client_id' => env('TWITTER_CLIENT_ID'),
         'client_secret' => env('TWITTER_CLIENT_SECRET'),
-        'redirect' => env('APP_URL').'/api/login/twitter/twCallback'
+        'redirect' => env('APP_URL').'/api/login/twitter/callback'
     ],
 
     'linkedin' => [
         'client_id' => env('LINKEDIN_CLIENT_ID'),
         'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
-        'redirect' => env('APP_URL').'/api/login/twitter/liCallback'
+        'redirect' => env('APP_URL').'/api/login/linkedin/callback'
     ]
 ];

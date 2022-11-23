@@ -26,6 +26,8 @@ class User extends Authenticatable
         'phone',
         'email',
         'plan',
+        'provider_id',
+        'provider',
         'role',
         'emailVerification',
         'accessToken'

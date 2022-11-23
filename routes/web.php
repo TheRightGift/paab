@@ -17,5 +17,6 @@ Route::get('/', function () {
     return view('index');
 });
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
-
+// Socialite
+Route::get('/login/{provider}', [App\Http\Controllers\SocialController::class, 'redirect']);
 

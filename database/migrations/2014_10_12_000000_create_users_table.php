@@ -20,9 +20,11 @@ return new class extends Migration
             $table->string('othername')->nullable();
             $table->string('username')->nullable();
             $table->string('phone')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->nullable()->unique();
+            $table->string('provider')->nullable();
+            $table->string('provider_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->text('profilePicUrl')->nullable();
+            $table->text('avatar')->nullable();
             $table->enum('gender', ['M', 'F'])->nullable();
             $table->enum('plan', ['F', 'P'])->default('F');
             $table->enum('role', ['Client', 'Admin', 'SuperAdmin'])->default('Client');
