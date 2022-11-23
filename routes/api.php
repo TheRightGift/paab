@@ -23,14 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
 Route::post('/register', [App\Http\Controllers\AuthController::class, 'register']);
 // Facebook
-Route::get('/login/facebook', [App\Http\Controllers\SocialController::class, 'fbRedirect']);
-Route::get('/login/facebook/callback', [App\Http\Controllers\SocialController::class, 'fbCallback']);
+Route::get('/login/{provider}/callback', [App\Http\Controllers\SocialController::class, 'callback']);
 // Tw
-Route::get('/login/twitter', [App\Http\Controllers\SocialController::class, 'twRedirect']);
-Route::get('/login/twitter/callback', [App\Http\Controllers\SocialController::class, 'twCallback']);
-// Tw
-Route::get('/login/twitter', [App\Http\Controllers\SocialController::class, 'twRedirect']);
-Route::get('/login/twitter/callback', [App\Http\Controllers\SocialController::class, 'twCallback']);
+// Route::get('/login/twitter', [App\Http\Controllers\SocialController::class, 'twRedirect']);
+// Route::get('/login/twitter/callback', [App\Http\Controllers\SocialController::class, 'twCallback']);
+// // Tw
+// Route::get('/login/twitter', [App\Http\Controllers\SocialController::class, 'twRedirect']);
+// Route::get('/login/twitter/callback', [App\Http\Controllers\SocialController::class, 'twCallback']);
 
 
 Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout']);

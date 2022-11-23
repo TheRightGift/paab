@@ -11,66 +11,78 @@ use App\Models\User;
 
 class SocialController extends Controller{
 
-    public function fbRedirect()
+    // public function fbRedirect()
+    // {
+    //     return Socialite::driver('facebook')->stateless()->redirect();
+    // }
+
+    // public function fbCallback(){
+    //     $userSocial = Socialite::driver('facebook')->stateless()->user(); 
+    //     $this->socialAuth($userSocial);      
+    // }
+
+    // public function twRedirect()
+    // {
+    //     return Socialite::driver('twitter')->stateless()->redirect();
+    // }
+
+    // public function twCallback()
+    // {
+    //     $userSocial = Socialite::driver('twitter')->stateless()->user(); 
+    //     $this->socialAuth($userSocial);
+    // }
+
+    // public function liRedirect()
+    // {
+    //     return Socialite::driver('linkedin')->stateless()->redirect();
+    // }
+
+    // public function liCallback()
+    // {
+    //     $userSocial = Socialite::driver('linkedin')->stateless()->user(); 
+
+    //     $this->socialAuth($userSocial);
+    // }
+
+    public function redirect($provider)
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver($provider)->stateless()->redirect();
     }
 
-    public function fbCallback(){
-        $userSocial = Socialite::driver('facebook')->stateless()->user(); 
-        $this->socialAuth($userSocial);      
+    public function callback($provider)
+    {
+        $userSocial = Socialite::driver($provider)->stateless()->user();
+        $this->socialAuth($userSocial, $provider);
     }
 
-    public function twRedirect()
+    private function socialAuth($userSocial, $provider)
     {
-        return Socialite::driver('twitter')->redirect();
-    }
-
-    public function twCallback()
-    {
-        $userSocial = Socialite::driver('twitter')->stateless()->user(); 
-        $this->socialAuth($userSocial);
-    }
-
-    public function liRedirect()
-    {
-        return Socialite::driver('linkedin')->redirect();
-    }
-
-    public function liCallback()
-    {
-        $userSocial = Socialite::driver('linkedin')->stateless()->user(); 
-
-        $this->socialAuth($userSocial);
-    }
-
-    private function socialAuth($userSocial)
-    {
-        $findUser = User::where('fb_id', $userSocial->id)->first();
-       
+        // dd($provider, $userSocial);
+        $findUser = User::where([['provider', $provider], ['provider_id', $userSocial->id]], ['email', $userSocial->email])->first();
+        
         if($findUser){
-
             $userToken = $findUser->createToken('accessToken')->accessToken;
             $findUser->accessToken = $userToken;
-            $findUser->fb_token = $userSocial->token;
+            // $findUser->fb_token = $userSocial->token;
             //If user has no nickname
-            if($findUser->nickname === null || $findUser->nickname === ''){
+            if($findUser->username === null || $findUser->username === ''){
                 //genrate one and update
                 $nName = substr($findUser->firstname, 0, 1).$findUser->lastname;
 
                 // is this nickname exist?
-                $nicknameExists = User::where('nickname', $nName)->first();
+                $nicknameExists = User::where('username', $nName)->first();
                 if($nicknameExists){
                     $nName = $nName.$findUser->id;
                 }
 
-                $findUser->nickname = $nName;
+                $findUser->username = $nName;
             }                
             
             $findUser->save();
             auth()->login($findUser, true);
-
+            dd($findUser);
             return redirect('/');
+            // return response()->json(['token' => $userToken]);
         } else {
             $pass = bcrypt(7007007);
             $name = $userSocial->name;
@@ -86,6 +98,8 @@ class SocialController extends Controller{
                 $lName = $name[2];
                 $oName = $name[1];
             }     
+
+            // $this->generateUsername($userSocial);
                
             
             $user = User::create([
@@ -93,10 +107,11 @@ class SocialController extends Controller{
                 'firstname'     => $fName,
                 'lastname'     => $lName,
                 'othername'     => $oName,
-                'nickname' => $userSocial->nickname,
+                'username' => $userSocial->nickname,
                 'email'    => $userSocial->email,
-                'fb_token' => $userSocial->token,
-                'profilePicUrl' => $userSocial->getAvatar(),
+                'provider_id' => $userSocial->id,
+                'provider' => $provider,
+                'avatar' => $userSocial->getAvatar(),
                 'password' => $pass,
             ]);
 
@@ -105,25 +120,42 @@ class SocialController extends Controller{
                 $user->accessToken = $userToken;
 
                 //If user has no nickname
-                if($user->nickname === null || $user->nickname === ''){
-                    //genrate one and update
-                    $nName = substr($user->firstname, 0, 1).$user->lastname;
+                // if($user->nickname === null || $user->nickname === ''){
+                //     //genrate one and update
+                //     $nName = substr($user->firstname, 0, 1).$user->lastname;
 
-                    // is this nickname exist?
-                    $nicknameExists = User::where('nickname', $nName)->first();
-                    if($nicknameExists){
-                        $nName = $nName.$user->id;
-                    }
+                //     // is this nickname exist?
+                //     $nicknameExists = User::where('nickname', $nName)->first();
+                //     if($nicknameExists){
+                //         $nName = $nName.$user->id;
+                //     }
 
-                    $user->nickname = $nName;
-                }   
+                //     $user->nickname = $nName;
+                // }   
 
                 $user->save();
-                auth()->login($user, true);
+                dd($user);
+                // auth()->login($user, true);
 
                 return redirect('/');
+                // return response()->json(['token' => $userToken]);
                    
             }
         }
+    }
+
+    public function generateUsername($userSocDetails){
+        if($userSocDetails->nickname === null){
+            //genrate one and update
+            $nName = substr($userSocDetails->firstname, 0, 1).$findUser->lastname;
+
+            // is this nickname exist?
+            $nicknameExists = User::where('nickname', $nName)->first();
+            if($nicknameExists){
+                $nName = $nName.$findUser->id;
+            }
+
+            $findUser->nickname = $nName;
+        }   
     }
 }
