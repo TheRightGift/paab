@@ -20,7 +20,7 @@ class EmailAuthService {
             'password' => 'nullable|confirmed', 
             'phone' => 'nullable',
             'email' => 'nullable',
-            'profilePicUrl' => 'nullable',
+            'avatar' => 'nullable',
             'gender' => 'nullable',
             'plan' => 'nullable',
             'DOB' => 'nullable|date'  
@@ -51,7 +51,6 @@ class EmailAuthService {
         if (!auth()->attempt($loginData)) {
             return ['status' => 501, 'message' => 'Invalid Credentials'];
         }
-        
         $accessToken = auth()->user()->createToken('accessToken')->accessToken;
 
         return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];

@@ -13,3 +13,10 @@ import './bootstrap';
  */
 
 import './components/Home';
+import './components/ProviderCallback';
+// User OR Client
+import './components/user/Dashboard';
+
+// Admin
+import './components/admin/Dashboard';
+
