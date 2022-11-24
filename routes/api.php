@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controller\ProfessionController;
+use App\Http\Controller\TemplateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::group(['middleware'=>'auth:api'], function(){
+    // Professions
+    Route::resource('/profession', ProfessionController::class)->middleware('can:run_admin_or_superAdmin_ops');
+
+    // Templates
+    Route::resource('/template', TemplateController::class)->middleware('can:run_admin_or_superAdmin_ops');
 });
 
 
