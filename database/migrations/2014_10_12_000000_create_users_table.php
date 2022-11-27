@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('othername')->nullable();
+            $table->bigInteger('profession_id')->unsigned(); 
             $table->string('username')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable()->unique();
@@ -34,6 +35,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('profession_id')->references('id')->on('professions')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
