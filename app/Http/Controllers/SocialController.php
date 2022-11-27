@@ -53,6 +53,7 @@ class SocialController extends Controller{
     {
         $userSocial = Socialite::driver($provider)->stateless()->user();
         $this->socialAuth($userSocial, $provider);
+        return redirect('/dashboard');
     }
 
     private function socialAuth($userSocial, $provider)
@@ -61,7 +62,7 @@ class SocialController extends Controller{
         $findUser = User::where([['provider', $provider], ['provider_id', $userSocial->id]], ['email', $userSocial->email])->first();
         
         if($findUser){
-            $userToken = $findUser->createToken('accessToken')->accessToken;
+            $userToken = $findUser->createToken('PaaB')->accessToken;
             $findUser->accessToken = $userToken;
             // $findUser->fb_token = $userSocial->token;
             //If user has no nickname
@@ -79,10 +80,15 @@ class SocialController extends Controller{
             }                
             
             $findUser->save();
-            auth()->login($findUser, true);
-            dd($findUser);
-            return redirect('/');
-            // return response()->json(['token' => $userToken]);
+            // auth()->login($findUser, true);
+            // dd($findUser);
+            // return redirect('/dashboard');
+            // return response()->json([
+            //     'user' => $findUser,
+            //     'token' => $userToken,
+            //     'status' => 200,
+            //     'success' => true,
+            // ]);
         } else {
             $pass = bcrypt(7007007);
             $name = $userSocial->name;
@@ -134,7 +140,7 @@ class SocialController extends Controller{
                 // }   
 
                 $user->save();
-                dd($user);
+                // dd($user);
                 // auth()->login($user, true);
 
                 return redirect('/');

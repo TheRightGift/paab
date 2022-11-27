@@ -13,3 +13,12 @@ import './bootstrap';
  */
 
 import './components/Home';
+// User OR Client
+import './components/user/Dashboard';
+
+import './components/TemplateBlue';
+import './components/TemplateRed';
+
+// Admin
+import './components/admin/Dashboard';
+

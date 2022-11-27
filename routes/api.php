@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controller\ProfessionController;
 use App\Http\Controller\TemplateController;
+use App\Http\Controller\TestTenantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,10 @@ Route::group(['middleware'=>'auth:api'], function(){
 
     // Templates
     Route::resource('/template', TemplateController::class)->middleware('can:run_admin_or_superAdmin_ops');
+
+    Route::post('tenant', [App\Http\Controllers\TestTenantController::class, 'create']);
+    Route::post('template-update', [App\Http\Controllers\TestTenantController::class, 'update']);
+    Route::get('tenancies', [App\Http\Controllers\TestTenantController::class, 'tenancies']);
 });
 
 

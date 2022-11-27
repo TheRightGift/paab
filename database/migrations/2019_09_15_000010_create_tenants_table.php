@@ -20,11 +20,12 @@ class CreateTenantsTable extends Migration
 
             // your custom columns may go here
             $table->bigInteger('user_id')->unsigned(); 
-            
+            $table->unsignedBigInteger('template_id');
             $table->timestamps();
             $table->json('data')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('template_id')->references('id')->on('templates')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

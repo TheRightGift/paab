@@ -16,13 +16,17 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        // dd(Auth::user());
         if (Auth::user()) {
             if (auth()->user()->can('run_client_ops')){
                 // redirect to client dash view
-            } elseif(auth()->user()->can('run_admin_ops')) {
+                return view('client.dashboard');
+            } else if(auth()->user()->can('run_admin_ops')) {
                 // redirect to admin dash view
-            } elseif(auth()->user()->can('run_superAdmin_ops')) {
+                return view('admin.dashboard');
+            } else if(auth()->user()->can('run_superAdmin_ops')) {
                 // redirect to super admin
+                return view('super.dashboard');
             } else {
                 return new Response('Unauthorized access', 401);
             }
