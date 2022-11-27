@@ -30,7 +30,8 @@ class User extends Authenticatable
         'provider',
         'role',
         'emailVerification',
-        'accessToken'
+        'accessToken',
+        'profession_id'
     ];
 
     /**
@@ -51,4 +52,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function tenants()
+    {
+        return $this->hasMany(Tenant::class);
+    }
+
+    public function profession()
+    {
+        return $this->belongsTo('App\Models\User', 'profession_id', 'id');
+    }
 }
