@@ -140,7 +140,7 @@ class SocialController extends Controller{
                 // }   
 
                 $user->save();
-                dd($user);
+                // dd($user);
                 // auth()->login($user, true);
 
                 return redirect('/');

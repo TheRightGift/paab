@@ -17,13 +17,14 @@ function Home() {
             email: email,
             password: password,
         }
-        axios.post('/api/login', data).then(res => {
-            console.log(res);
+        axios.post('/login', data).then(res => {
             if (res.data.status == 200) {
-                location.href = '/dashboard' 
+                // console.log(res);
+                localStorage.setItem("token", res.data.access_token);
+                window.location.replace('/dashboard') 
             }
             else {
-                alert('Invalid Credentials')
+                alert('Invalid Credentials');
             }
         }).catch(err => {
             console.log(err);

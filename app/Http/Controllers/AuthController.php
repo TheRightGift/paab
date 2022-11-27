@@ -24,9 +24,9 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Auth::logout();
-        Session::flush();
-        Session::regenerate();
-        return redirect('/');
+        auth()->user()->tokens()->delete();
+        // $request->user()->currentAccessToken()->delete();
+        auth()->logout();
+        return response()->json(['status' => 401]);
     }
 }

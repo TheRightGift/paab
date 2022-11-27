@@ -16,7 +16,8 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     {
         return [
             'id',
-            'user_id'
+            'user_id',
+            'template_id'
         ];
     }
 
@@ -29,6 +30,12 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     {
         // return $this->belongsTo('App\Models\User', 'user_id', 'id')->select('firstname', 'lastname', 'fb_token', 'id', 'nickname', 'profilePicUrl');
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+
+    public function template()
+    {
+        // return $this->belongsTo('App\Models\User', 'user_id', 'id')->select('firstname', 'lastname', 'fb_token', 'id', 'nickname', 'profilePicUrl');
+        return $this->belongsTo('App\Models\Template', 'template_id', 'id');
     }
 
 }

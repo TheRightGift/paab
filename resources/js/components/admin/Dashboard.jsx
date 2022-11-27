@@ -9,7 +9,7 @@ function Dashboard() {
                     <div className="card">
                         <div className="card-header">Admin Dashboard Component</div>
 
-                        <div className="card-body">Hooray you are the an SuperAdmin!</div>
+                        <div className="card-body">Hooray you are the an Admin!</div>
                     </div>
                 </div>
             </div>

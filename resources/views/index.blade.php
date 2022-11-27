@@ -9,6 +9,15 @@
         @vite('resources/js/app.js')
     </head>
     <body>
-        <div id="home"></div>
+        <div id="home">
+            <form action="/login" method="POST">
+            @csrf
+                <input type="text" name="email" />
+                <input type="text" name="password" />
+                <input type="submit" value="submit"/>
+            </form>
+
+        </div>
     </body>
+    
 </html>
