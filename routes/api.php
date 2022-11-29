@@ -36,10 +36,10 @@ Route::group(['middleware'=>'auth:api'], function(){
 
 
 // Email/Username
-Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
-Route::post('/register', [App\Http\Controllers\AuthController::class, 'register']);
+// Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
+// Route::post('/register', [App\Http\Controllers\AuthController::class, 'register']);
 // Facebook
-Route::get('/login/{provider}/callback', [App\Http\Controllers\SocialController::class, 'callback']);
+// Route::get('/login/{provider}/callback', [App\Http\Controllers\SocialController::class, 'callback']);
 // Tw
 // Route::get('/login/twitter', [App\Http\Controllers\SocialController::class, 'twRedirect']);
 // Route::get('/login/twitter/callback', [App\Http\Controllers\SocialController::class, 'twCallback']);
@@ -48,4 +48,4 @@ Route::get('/login/{provider}/callback', [App\Http\Controllers\SocialController:
 // Route::get('/login/twitter/callback', [App\Http\Controllers\SocialController::class, 'twCallback']);
 
 
-Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
+// Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout']);

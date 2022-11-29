@@ -22,6 +22,13 @@ class AuthController extends Controller
         return response($user);
     }
 
+    public function verifyEmailForRegistration(Request $request, EmailAuthService $emailAuthService){
+        $verifierRes = $emailAuthService->verifyEmailForRegistration($request);
+        return response($verifierRes);
+    }
+
+    // verifyUserEmail
+
     public function logout()
     {
         auth()->user()->tokens()->delete();

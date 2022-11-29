@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PaaB - People as a Brand</title>
+    <title>PaaB: People as a Brand - Login</title>
     <link rel="shortcut icon" href="{{ asset('/media/img/logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
@@ -18,8 +18,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-    <div id="app">       
-        <home-component></home-component>
+
+    <div id="app">
+        <login-component/>
     </div>
     
     <script src="{{ asset('js/app.js') }}"></script>
