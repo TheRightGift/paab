@@ -22,11 +22,18 @@ class AuthController extends Controller
         return response($user);
     }
 
+    public function verifyEmailForRegistration(Request $request, EmailAuthService $emailAuthService){
+        $verifierRes = $emailAuthService->verifyEmailForRegistration($request);
+        return response($verifierRes);
+    }
+
+    // verifyUserEmail
+
     public function logout()
     {
-        Auth::logout();
-        Session::flush();
-        Session::regenerate();
-        return redirect('/');
+        auth()->user()->tokens()->delete();
+        // $request->user()->currentAccessToken()->delete();
+        auth()->logout();
+        return response()->json(['status' => 401]);
     }
 }

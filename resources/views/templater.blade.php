@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ auth()->user()->firstname.' ' .auth()->user()->lastname ?? '' }} | Dashboard</title>
-        @vite('resources/js/app.js')
+        <title>Paab</title>
+
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <div id="providerCallback"></div>
+        <!-- nickname="'{{ $userNickname ?? '' }}'" -->
+        <div id="{{ $templateTitle ?? '' }}"></div>
     </body>
 </html>

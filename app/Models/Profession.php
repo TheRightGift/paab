@@ -18,4 +18,9 @@ class Profession extends Model
     {
         return $this->hasMany(Template::class, 'profession_id');
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }
