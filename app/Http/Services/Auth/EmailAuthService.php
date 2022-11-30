@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Notifications\MailOTP;
 use Carbon\Carbon;
 
 class EmailAuthService {
@@ -113,7 +115,8 @@ class EmailAuthService {
                 $otp = $this->genOTP();
                 return ['status' => 200, 'otp' => $otp];
                 // TODO: mail OTP to $input['email']
-                // Create verifier Mode, Migration and save otp against user_id
+                
+                // Create verifier Mode, Migration and save otp against email
             } else {//!verified
                 return ['status' => 404, 'error' => 'User with this email not found.'];
             }
@@ -130,6 +133,8 @@ class EmailAuthService {
 
             if($userVerified == 404){//verified that email doesnt exist
                 $otp = $this->genOTP();
+                $this->maileOTP($input['email'], $otp);
+
                 return ['status' => 200, 'otp' => $otp];
                 // TODO: mail OTP to $input['email']
                 // Create verifier Mode, Migration and save otp against user_id
@@ -191,6 +196,14 @@ class EmailAuthService {
 
     private function genOTP(){
         return sprintf("%06d", mt_rand(1, 999999));
+    }
+
+    private function maileOTP($email, $otp) {
+        //  Get the $email and $otp generated
+        (new User)->forceFill([
+            'otp' => $otp,
+            'email' => $email,
+        ])->notify(new MailOTP($otp));
     }
 
 }
