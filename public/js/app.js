@@ -20954,7 +20954,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      verifiedEmail: 1
+      verifiedEmail: 1,
+      verificationLoading: false,
+      email: '',
+      otp: '',
+      userInputedOTP: ''
     };
   },
   mounted: function mounted() {},
@@ -20962,20 +20966,75 @@ __webpack_require__.r(__webpack_exports__);
     updateVerifiedEmail: function updateVerifiedEmail(num) {
       this.verifiedEmail = num;
     },
-    submitEmail: function submitEmail() {
-      var _this = this;
-      var data = {
-        email: this.email
-      };
-      axios.post("/verifyEmailForRegistration", data).then(function (res) {
-        if (res.status === 200) {
-          if (res.data.status == 200) {
-            _this.updateVerifiedEmail(2);
-          }
+    processOtpFields: function processOtpFields(e) {
+      var _char = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var index = arguments.length > 2 ? arguments[2] : undefined;
+      if (_char !== null && _char !== '') {
+        this.userInputedOTP = [this.userInputedOTP.slice(0, index), _char, this.userInputedOTP.slice(index)].join('');
+        if (index !== 5) {
+          e.target.nextElementSibling.focus();
         }
-      })["catch"](function (err) {
-        console.log(err.response);
-      });
+      } else if (_char === '') {
+        this.userInputedOTP = this.userInputedOTP.slice(0, index) + this.userInputedOTP.slice(index + 1);
+      }
+    },
+    submitEmailForVerificationOTP: function submitEmailForVerificationOTP() {
+      var _this = this;
+      if (this.email === '') {
+        M.toast({
+          html: 'Please input your emial.',
+          classes: "errorNotifier"
+        });
+      } else {
+        this.verificationLoading = true;
+        var data = {
+          email: this.email
+        };
+        axios.post("/verifyEmailForRegistration", data).then(function (res) {
+          if (res.status === 200) {
+            if (res.data.status == 200) {
+              _this.otp = res.data.otp;
+              _this.updateVerifiedEmail(2);
+            } else if (res.data.status == 404) {
+              M.toast({
+                html: res.data.error,
+                classes: "errorNotifier"
+              });
+              _this.verificationLoading = false;
+            }
+          }
+        })["catch"](function (err) {
+          console.log(err.response);
+        });
+      }
+    },
+    confirmOTP: function confirmOTP() {
+      if (this.userInputedOTP.length !== 6) {
+        M.toast({
+          html: 'OTP should be six characters.',
+          classes: "errorNotifier"
+        });
+      } else {
+        if (this.otp === this.userInputedOTP) {
+          // move to next state view
+          this.updateVerifiedEmail(3);
+        } else {
+          M.toast({
+            html: 'Invalid OTP.',
+            classes: "errorNotifier"
+          });
+
+          // reload page after 4secs
+          setTimeout(function () {
+            location.reload();
+          }, 4000);
+        }
+      }
+    }
+  },
+  computed: {
+    isDisabled: function isDisabled() {
+      return this.userInputedOTP.length !== 6;
     }
   }
 });
@@ -21717,8 +21776,17 @@ var _hoisted_6 = {
 var _hoisted_7 = {
   "class": "input-field col s12"
 };
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row loginSocialMedDiv\"><div class=\"col s7 m7 l7 offset-s5 offset-m5 offset-l5 loginSocialMedInnerDiv\"><p class=\"loginSocialMedTxt\">or login with</p><div class=\"socialMedIconsDiv\"><a href=\"#\"><i class=\"fa-brands fa-square-instagram socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-facebook socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-twitter socialMedIcons\"></i></a></div></div></div>", 1);
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_8 = {
+  "class": "input-field col s12"
+};
+var _hoisted_9 = {
+  key: 1,
+  "class": "btn getStartBtn"
+};
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"preloader-wrapper small active\"><div class=\"spinner-layer spinner-white-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div>", 1);
+var _hoisted_11 = [_hoisted_10];
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row loginSocialMedDiv\"><div class=\"col s12 loginSocialMedInnerDiv\"><div><p class=\"loginSocialMedTxt\">or login with</p><div class=\"socialMedIconsDiv\"><a href=\"#\"><i class=\"fa-brands fa-square-instagram socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-facebook socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-twitter socialMedIcons\"></i></a></div></div></div></div>", 1);
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "row"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col s12 m12 l12 loginSignUpDiv center-align"
@@ -21728,81 +21796,118 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   href: "/auth/login",
   "class": "loginSignUpLink"
 }, " Sign in ")])], -1 /* HOISTED */);
-var _hoisted_10 = {
+var _hoisted_14 = {
   key: 1,
   "class": "row authContainDiv"
 };
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col s12 m12 l6 otpContainer\"><div class=\"wlcNoteDiv\"><p class=\"wlcNoteLogo\">PaaB</p><p class=\"wlcNoteTitle\">Start your journey <br>with us...</p><p class=\"wlcNoteTxt\"> It is a long established fact that a reader will be distracted by the readable content. </p><p class=\"wlcNoteFooterTxt\">© Photo, Inc. 2019. We love our users!</p></div></div>", 1);
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col s12 m12 l6 otpContainer\"><div class=\"wlcNoteDiv\"><p class=\"wlcNoteLogo\">PaaB</p><p class=\"wlcNoteTitle\">Start your journey <br>with us...</p><p class=\"wlcNoteTxt\"> It is a long established fact that a reader will be distracted by the readable content. </p><p class=\"wlcNoteFooterTxt\">© Photo, Inc. 2019. We love our users!</p></div></div>", 1);
+var _hoisted_16 = {
   "class": "col s12 m12 l6 otpContainer"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+var _hoisted_17 = {
   "class": "authRightDiv"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+};
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "authTitle"
-}, "INSERT OTP"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+}, "INSERT OTP", -1 /* HOISTED */);
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "otpEmailAuthTxt"
-}, " It is a long established fact that a reader will be diIt is a long "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+}, " It is a long established fact that a reader will be diIt is a long ", -1 /* HOISTED */);
+var _hoisted_20 = {
   "class": "row rm_mg"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+var _hoisted_21 = {
   "class": "col s12",
   id: "otpEmailDiv"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+};
+var _hoisted_22 = {
   method: "get",
   "class": "row digit-group",
   "data-group-name": "digits",
   "data-autosubmit": "false",
   autocomplete: "off"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  "class": "input-field col s1 otpDigits",
-  id: "digit-1",
-  "data-next": "digit-2"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  "class": "input-field col s1 otpDigits",
-  id: "digit-2",
-  "data-next": "digit-3",
-  "data-previous": "digit-1"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  "class": "input-field col s1 otpDigits",
-  id: "digit-3",
-  "data-next": "digit-4",
-  "data-previous": "digit-2"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  "class": "input-field col s1 otpDigits",
-  id: "digit-4",
-  "data-previous": "digit-3"
-})])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "btn col s12",
-  type: "button",
-  id: "otpEmailBtn",
-  disabled: ""
-}, " VERIFY ")])])], -1 /* HOISTED */);
-var _hoisted_13 = [_hoisted_11, _hoisted_12];
-var _hoisted_14 = {
+};
+var _hoisted_23 = ["disabled"];
+var _hoisted_24 = {
   key: 2,
   "class": "row authContainDiv"
 };
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col s12 m12 l6 regContainer\"><div class=\"wlcNoteDiv\"><p class=\"wlcNoteLogo\">PaaB</p><p class=\"wlcNoteTitle\">Start your journey <br>with us...</p><p class=\"wlcNoteTxt\"> It is a long established fact that a reader will be distracted by the readable content. </p><p class=\"wlcNoteFooterTxt\">© Photo, Inc. 2019. We love our users!</p></div></div><div class=\"col s12 m12 l6 regContainer\"><div class=\"authRightDiv\"><p class=\"authTitle\">SIGN UP</p><p class=\"authTxt\"> It is a long established fact that a reader will be diIt is a long </p><form><div class=\"row rm_mg\"><div class=\"row rm_mg\"><div class=\"input-field col s2 rm_mg sm_mg\"><input placeholder=\"Title\" type=\"text\" class=\"validate\" id=\"signupTitle\"></div><div class=\"input-field col s4 offset-s1 rm_mg sm_mg\"><input placeholder=\"Last Name\" id=\"signupLname\" type=\"text\" class=\"validate\"></div><div class=\"input-field col s4 offset-s1 rm_mg sm_mg\"><input placeholder=\"First Name\" id=\"signupFName\" type=\"text\" class=\"validate\"></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg sm_mg\"><input placeholder=\"Email\" id=\"signupEmail\" type=\"email\" class=\"validate\"></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg sm_mg\"><input placeholder=\"Phone Number\" id=\"signupPhone\" type=\"Number\" class=\"validate\"></div></div><div class=\"row rm_mg\"><div class=\"input-field col s6 rm_mg sm_mg\"><input placeholder=\"Country\" id=\"signupCountry\" type=\"text\" class=\"validate\"></div><div class=\"input-field col s6 rm_mg sm_mg\"><select class=\"browser-default\" id=\"signupGender\"><option value=\"\" disabled selected>Gender</option><option value=\"M\">Male</option><option value=\"F\">Female</option></select></div></div><div class=\"row rm_mg\"><div class=\"input-field col s6 rm_mg sm_mg\"><input placeholder=\"State\" id=\"signupState\" type=\"text\" class=\"validate\"></div><div class=\"input-field col s6 rm_mg sm_mg\"><input placeholder=\"City\" id=\"signupCity\" type=\"text\" class=\"validate\"></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg sm_mg\"><input placeholder=\"Password\" id=\"signupPass\" type=\"password\" class=\"validate\"></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg sm_mg\"><input placeholder=\"Confirm Password\" id=\"signCpass\" type=\"password\" class=\"validate\"></div></div><button class=\"btn col s12 rm_mg sm_mg\" type=\"button\" id=\"signupBtn\"> Sign Up </button></div></form></div></div>", 2);
-var _hoisted_17 = [_hoisted_15];
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col s12 m12 l6 regContainer\"><div class=\"wlcNoteDiv\"><p class=\"wlcNoteLogo\">PaaB</p><p class=\"wlcNoteTitle\">Start your journey <br>with us...</p><p class=\"wlcNoteTxt\"> It is a long established fact that a reader will be distracted by the readable content. </p><p class=\"wlcNoteFooterTxt\">© Photo, Inc. 2019. We love our users!</p></div></div><div class=\"col s12 m12 l6 regContainer\"><div class=\"authRightDiv\"><p class=\"authTitle\">SIGN UP</p><p class=\"authTxt\"> It is a long established fact that a reader will be diIt is a long </p><form><div class=\"row rm_mg\"><div class=\"row rm_mg\"><div class=\"input-field col s2 rm_mg sm_mg\"><input placeholder=\"Title\" type=\"text\" class=\"validate\" id=\"signupTitle\"></div><div class=\"input-field col s4 offset-s1 rm_mg sm_mg\"><input placeholder=\"Last Name\" id=\"signupLname\" type=\"text\" class=\"validate\"></div><div class=\"input-field col s4 offset-s1 rm_mg sm_mg\"><input placeholder=\"First Name\" id=\"signupFName\" type=\"text\" class=\"validate\"></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg sm_mg\"><input placeholder=\"Email\" id=\"signupEmail\" type=\"email\" class=\"validate\"></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg sm_mg\"><input placeholder=\"Phone Number\" id=\"signupPhone\" type=\"Number\" class=\"validate\"></div></div><div class=\"row rm_mg\"><div class=\"input-field col s6 rm_mg sm_mg\"><input placeholder=\"Country\" id=\"signupCountry\" type=\"text\" class=\"validate\"></div><div class=\"input-field col s6 rm_mg sm_mg\"><select class=\"browser-default\" id=\"signupGender\"><option value=\"\" disabled selected>Gender</option><option value=\"M\">Male</option><option value=\"F\">Female</option></select></div></div><div class=\"row rm_mg\"><div class=\"input-field col s6 rm_mg sm_mg\"><input placeholder=\"State\" id=\"signupState\" type=\"text\" class=\"validate\"></div><div class=\"input-field col s6 rm_mg sm_mg\"><input placeholder=\"City\" id=\"signupCity\" type=\"text\" class=\"validate\"></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg sm_mg\"><input placeholder=\"Password\" id=\"signupPass\" type=\"password\" class=\"validate\"></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg sm_mg\"><input placeholder=\"Confirm Password\" id=\"signCpass\" type=\"password\" class=\"validate\"></div></div><button class=\"btn col s12 rm_mg sm_mg\" type=\"button\" id=\"signupBtn\"> Sign Up </button></div></form></div></div>", 2);
+var _hoisted_27 = [_hoisted_25];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$data.verifiedEmail == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     placeholder: "Email",
     id: "user",
     type: "email",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.email = $event;
+      return $data.email = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn col s12",
-    type: "button",
-    id: "getStartBtn",
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [!$data.verificationLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+    key: 0,
+    "class": "btn getStartBtn",
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return $options.submitEmail();
+      return $options.submitEmailForVerificationOTP();
     })
-  }, " VERIFY "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login Social Media Handle "), _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login Signup Link "), _hoisted_9])])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.verifiedEmail == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, _hoisted_13)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.verifiedEmail == 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  }, " VERIFY ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_9, _hoisted_11))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login Social Media Handle "), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login Signup Link "), _hoisted_13])])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.verifiedEmail == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    onKeyup: _cache[2] || (_cache[2] = function ($event) {
+      return $options.processOtpFields($event, $event.target.value, 0);
+    }),
+    "class": "input-field col s1 otpDigits",
+    maxlength: "1",
+    "data-next": "digit-2"
+  }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    onKeyup: _cache[3] || (_cache[3] = function ($event) {
+      return $options.processOtpFields($event, $event.target.value, 1);
+    }),
+    "class": "input-field col s1 otpDigits",
+    maxlength: "1",
+    "data-next": "digit-3",
+    "data-previous": "digit-1"
+  }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    onKeyup: _cache[4] || (_cache[4] = function ($event) {
+      return $options.processOtpFields($event, $event.target.value, 2);
+    }),
+    "class": "input-field col s1 otpDigits",
+    maxlength: "1",
+    "data-next": "digit-4",
+    "data-previous": "digit-2"
+  }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    onKeyup: _cache[5] || (_cache[5] = function ($event) {
+      return $options.processOtpFields($event, $event.target.value, 3);
+    }),
+    "class": "input-field col s1 otpDigits",
+    maxlength: "1",
+    "data-next": "digit-5",
+    "data-previous": "digit-3"
+  }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    onKeyup: _cache[6] || (_cache[6] = function ($event) {
+      return $options.processOtpFields($event, $event.target.value, 4);
+    }),
+    "class": "input-field col s1 otpDigits",
+    maxlength: "1",
+    "data-next": "digit-6",
+    "data-previous": "digit-4"
+  }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    onKeyup: _cache[7] || (_cache[7] = function ($event) {
+      return $options.processOtpFields($event, $event.target.value, 5);
+    }),
+    "class": "input-field col s1 otpDigits",
+    maxlength: "1",
+    "data-previous": "digit-3"
+  }, null, 32 /* HYDRATE_EVENTS */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn col s12",
+    id: "otpEmailBtn",
+    onClick: _cache[8] || (_cache[8] = function ($event) {
+      return $options.confirmOTP();
+    }),
+    disabled: $options.isDisabled
+  }, " VERIFY ", 8 /* PROPS */, _hoisted_23)])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.verifiedEmail == 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, _hoisted_27)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),

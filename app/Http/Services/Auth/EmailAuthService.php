@@ -133,11 +133,10 @@ class EmailAuthService {
 
             if($userVerified == 404){//verified that email doesnt exist
                 $otp = $this->genOTP();
+                // mail OTP to $input['email']
                 $this->maileOTP($input['email'], $otp);
 
                 return ['status' => 200, 'otp' => $otp];
-                // TODO: mail OTP to $input['email']
-                // Create verifier Mode, Migration and save otp against user_id
             } else {//!verified
                 return ['status' => 404, 'error' => 'Account with this email exists.'];
             }
