@@ -25,5 +25,10 @@
         "vite": "^3.0.0",
         "vue": "^3.2.37",
         "vue-loader": "^17.0.1"
+    },
+    "dependencies": {
+        "base64-js": "^1.5.1",
+        "crypto-js": "^4.1.1",
+        "js-base64": "^3.7.3"
     }
 }

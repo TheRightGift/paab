@@ -42,6 +42,15 @@ body {
 .centre {
     text-align: center;
 }
+/* Misc */
+.error {
+    background-color: #FFFFFF;
+    color: #ff1744;
+}
+.success {
+    background-color: #FFFFFF;
+    color: #81c784;
+}
 .errorNotifier {
     background-color: red;
     color: var(--white);
