@@ -138,7 +138,7 @@ class EmailAuthService {
             if($userVerified == 404){//verified that email doesnt exist
                 $otp = $this->genOTP();
                 $crypted = Crypt::encryptString($otp);
-                $this->maileOTP($input['email'], $otp);
+                // $this->maileOTP($input['email'], $otp);
                 
                 return ['status' => 200, 'otp' => $crypted];
             } else {//!verified
