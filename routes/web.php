@@ -36,5 +36,5 @@ Route::get('/login/{provider}', [App\Http\Controllers\SocialController::class, '
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
 Route::post('/register', [App\Http\Controllers\AuthController::class, 'register']);
 Route::post('/verifyEmailForRegistration', [App\Http\Controllers\AuthController::class, 'verifyEmailForRegistration']);
-Route::post('/emailVerification', [App\Http\Controllers\AuthController::class, 'emailVerification']);
+// Route::post('/emailVerification', [App\Http\Controllers\AuthController::class, 'emailVerification']);
 Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout']);

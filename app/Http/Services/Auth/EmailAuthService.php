@@ -63,7 +63,7 @@ class EmailAuthService {
         ]);        
 
         if (!auth()->attempt($loginData)) {
-            return ['status' => 501, 'message' => 'Invalid Credentials'];
+            return ['status' => 501, 'error' => 'Invalid Credentials'];
         }
         $accessToken = auth()->user()->createToken('accessToken')->accessToken;
 

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>{{ auth()->user()->firstname.' ' .auth()->user()->lastname ?? '' }} | Dashboard</title>
-        @vite('resources/js/app.js')
+        <!-- @vite('resources/js/app.js') -->
     </head>
     <body>
         <div id="clientDashboard"></div>

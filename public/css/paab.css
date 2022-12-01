@@ -689,10 +689,13 @@ p.wlcNoteFooterTxt {
 #user {
     border: 1px solid #7746FF;
     border-radius: 100px;
+    /* text-align: center; */
+}
+#regEmailVerifier input#user::placeholder {
     text-align: center;
 }
-input#user::placeholder {
-    text-align: center;
+#loginForm input#user {
+    padding-left: 1vw;
 }
 #password {
     border: 1px solid #7746FF;
@@ -727,6 +730,7 @@ input#user::placeholder {
 .loginSignUpInnerDiv {
     display: flex;
     margin-top: 3vh;
+    justify-content: center;
 }
 
 .loginSignUpTxt {

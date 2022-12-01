@@ -20,21 +20,19 @@
                         It is a long established fact that a reader will be diIt is a long
                     </p>
         
-                    <form>
+                    <form id="loginForm">
                         <div class="row rm_mg">
                             <div class="input-field col s12">
-                                <input placeholder="User" id="user" type="text" class="validate">
-                                <!-- <label for="email">Email</label> -->
+                                <input placeholder="Email" v-model="loginUser.email" id="user" type="text" class="validate">
                             </div>
         
                             <div class="input-field col s12">
-                                <input placeholder="Password" id="password" type="password" class="validate">
-                                <!-- <label for="email">Email</label> -->
+                                <input placeholder="Password" v-model="loginUser.password" id="password" type="password" class="validate">
                             </div>
         
                             <!-- Login Social Media Handle -->
                             <div class="row loginSocialMedDiv">
-                                <div class="col s7 m7 l7 offset-s5 offset-m5 offset-l5 loginSocialMedInnerDiv">
+                                <div class="col l12 m12 s12 loginSocialMedInnerDiv">
                                     <p class="loginSocialMedTxt">or login with</p>
         
                                     <div class="socialMedIconsDiv">
@@ -50,17 +48,32 @@
                                     </div>
                                 </div>
                             </div>
-        
-                            <button type="button" class="btn" id="loginBtn">
-                                sign in
-                            </button>
+
+                            <div class="input-field col s12">
+                                <a type="button" v-if="!loginLoading" class="btn" id="loginBtn" @click.prevent="userLogin()">
+                                    sign in
+                                </a>
+                                <a class="btn" id="loginBtn" v-else>
+                                    <div class="preloader-wrapper small active">
+                                        <div class="spinner-layer spinner-white-only">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div><div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div><div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
         
                             <!-- Login Signup Link -->
                             <div class="row">
-                                <div class="col s7 m7 l6 offset-s5 offset-m5 offset-l4 loginSignUpDiv">
+                                <div class="col l12 m12 s12 loginSignUpDiv">
                                     <div class="loginSignUpInnerDiv">
                                         <p class="loginSignUpTxt">
-                                            Don’t have an account yet?
+                                            Don't have an account yet?
                                         </p>
                                         <p>
                                             <a href="/auth/getstarted" class="loginSignUpLink">
@@ -84,11 +97,50 @@
     export default {
        data() {
             return {
+                loginLoading: false,
+                loginUser: {
+                    email: '',
+                    password: ''
+                }
             };
         },
         mounted() {             
         },
         methods: {
+            userLogin(){
+                if(this.loginUser.email === '' || this.loginUser.password === ''){
+                    M.toast({
+                        html: 'Invalid Email/Password.',
+                        classes: "errorNotifier",
+                    });
+                } else {
+                    this.loginLoading = true;
+                    let data = {
+                        email: this.loginUser.email,
+                        password: this.loginUser.password
+                    }
+                    axios
+                    .post("/login", data)
+                    .then((res) => {
+                        if(res.status === 200){
+                            if(res.data.status == 200){
+                                //redirect to dashboard route
+                                window.location.href = '/dashboard';
+                            } else if(res.data.status == 501){
+                                M.toast({
+                                    html: res.data.error,
+                                    classes: "errorNotifier",
+                                });
+                            }
+                            this.loginLoading = false;
+                        }
+                        
+                    })
+                    .catch((err) => {
+                        console.log(err.response);
+                    });
+                }
+            }
         }
     }
 </script>
