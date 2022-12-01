@@ -32,7 +32,7 @@
                                     placeholder="Email"
                                     id="user"
                                     type="email"
-                                    v-model="email"
+                                    v-model="userReg.email"
                                     required
                                 />
                             </div>
@@ -118,7 +118,7 @@
                         distracted by the readable content.
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        © Photo, Inc. {{ getYear() }}. We love our users!
+                        &copy; PaaB. {{getYear()}}. We support your brand!
                     </p>
                 </div>
             </div>
@@ -164,7 +164,7 @@
                         distracted by the readable content.
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        © Photo, Inc. 2019. We love our users!
+                        &copy; PaaB. {{getYear()}}. We support your brand!
                     </p>
                 </div>
             </div>
@@ -177,150 +177,130 @@
                         is a long
                     </p>
 
-                    <form>
-                        <div class="row rm_mg">
-                            <div class="row rm_mg">
-                                <div class="input-field col s2 rm_mg sm_mg">
-                                    <input
-                                        placeholder="Title"
-                                        type="text"
-                                        class="validate"
-                                        id="signupTitle"
-                                    />
-                                </div>
-
-                                <div
-                                    class="
-                                        input-field
-                                        col
-                                        s4
-                                        offset-s1
-                                        rm_mg
-                                        sm_mg
-                                    "
-                                >
-                                    <input
-                                        placeholder="Last Name"
-                                        id="signupLname"
-                                        type="text"
-                                        class="validate"
-                                    />
-                                </div>
-
-                                <div
-                                    class="
-                                        input-field
-                                        col
-                                        s4
-                                        offset-s1
-                                        rm_mg
-                                        sm_mg
-                                    "
-                                >
-                                    <input
-                                        placeholder="First Name"
-                                        id="signupFName"
-                                        type="text"
-                                        class="validate"
-                                    />
-                                </div>
+                    <form id="reistrationForm">
+                        <div class="row">
+                            <div class="input-field col l2 s12 noPaddingLeft">
+                                <input placeholder="Title" type="text" v-model="userReg.title" id="signupTitle"/>
                             </div>
 
-                            <div class="row rm_mg">
-                                <div class="input-field col s12 rm_mg sm_mg">
-                                    <input
-                                        placeholder="Email"
-                                        id="signupEmail"
-                                        type="email"
-                                        class="validate"
-                                    />
-                                </div>
+                            <div class="input-field col l5 s12">
+                                <input placeholder="Last Name" id="signupLname" type="text" v-model="userReg.lastname"/>
                             </div>
 
-                            <div class="row rm_mg">
-                                <div class="input-field col s12 rm_mg sm_mg">
-                                    <input
-                                        placeholder="Phone Number"
-                                        id="signupPhone"
-                                        type="Number"
-                                        class="validate"
-                                    />
-                                </div>
+                            <div class="input-field col l5 s12">
+                                <input placeholder="First Name" id="signupFName" type="text" v-model="userReg.firstname"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col l12 m12 s12 noPaddingLeft">
+                                <input
+                                    placeholder="Email"
+                                    id="signupEmail"
+                                    type="email"
+                                    v-model="userReg.email"
+                                    readonly
+                                />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col l12 m12 s12 noPaddingLeft">
+                                <input
+                                    placeholder="Phone Number"
+                                    id="signupPhone"
+                                    type="Number"
+                                    class="validate"
+                                    v-model="userReg.phone"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col l6 s12 noPaddingLeft">
+                                <input
+                                    placeholder="Country"
+                                    id="signupCountry"
+                                    type="text"
+                                    class="validate"
+                                    v-model="userReg.country"
+                                />
                             </div>
 
-                            <div class="row rm_mg">
-                                <div class="input-field col s6 rm_mg sm_mg">
-                                    <input
-                                        placeholder="Country"
-                                        id="signupCountry"
-                                        type="text"
-                                        class="validate"
-                                    />
-                                </div>
+                            <div class="input-field col l6 s12 noPaddingRight">
+                                <select class="browser-default" id="signupGender" v-model="userReg.gender">
+                                    <option value="" disabled selected>
+                                        Gender
+                                    </option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </div>
+                        </div>
 
-                                <div class="input-field col s6 rm_mg sm_mg">
-                                    <select
-                                        class="browser-default"
-                                        id="signupGender"
-                                    >
-                                        <option value="" disabled selected>
-                                            Gender
-                                        </option>
-                                        <option value="M">Male</option>
-                                        <option value="F">Female</option>
-                                    </select>
-                                </div>
+                        <div class="row">
+                            <div class="input-field col l6 s12 noPaddingLeft">
+                                <input
+                                    placeholder="State"
+                                    id="signupState"
+                                    type="text"
+                                    class="validate"
+                                    v-model="userReg.state"
+                                />
                             </div>
 
-                            <div class="row rm_mg">
-                                <div class="input-field col s6 rm_mg sm_mg">
-                                    <input
-                                        placeholder="State"
-                                        id="signupState"
-                                        type="text"
-                                        class="validate"
-                                    />
-                                </div>
-
-                                <div class="input-field col s6 rm_mg sm_mg">
-                                    <input
-                                        placeholder="City"
-                                        id="signupCity"
-                                        type="text"
-                                        class="validate"
-                                    />
-                                </div>
+                            <div class="input-field col l6 s12">
+                                <input
+                                    placeholder="City"
+                                    id="signupCity"
+                                    type="text"
+                                    class="validate"
+                                    v-model="userReg.city"
+                                />
                             </div>
+                        </div>
 
-                            <div class="row rm_mg">
-                                <div class="input-field col s12 rm_mg sm_mg">
-                                    <input
-                                        placeholder="Password"
-                                        id="signupPass"
-                                        type="password"
-                                        class="validate"
-                                    />
-                                </div>
+                        <div class="row">
+                            <div class="input-field col l12 m12 s12 noPaddingLeft">
+                                <input
+                                    placeholder="Password"
+                                    id="signupPass"
+                                    type="password"
+                                    class="validate"
+                                    v-model="userReg.password"
+                                />
                             </div>
+                        </div>
 
-                            <div class="row rm_mg">
-                                <div class="input-field col s12 rm_mg sm_mg">
-                                    <input
-                                        placeholder="Confirm Password"
-                                        id="signCpass"
-                                        type="password"
-                                        class="validate"
-                                    />
-                                </div>
+                        <div class="row">
+                            <div class="input-field col l12 m12 s12 noPaddingLeft">
+                                <input
+                                    placeholder="Confirm Password"
+                                    id="signCpass"
+                                    type="password"
+                                    class="validate"
+                                    v-model="userReg.cPassword"
+                                />
                             </div>
+                        </div>
 
-                            <button
-                                class="btn col s12 rm_mg sm_mg"
-                                type="button"
-                                id="signupBtn"
-                            >
+                        <div class="row">
+                            <button class="btn col l12 m12 s12" v-if="!registrationLoading" type="button" id="signupBtn" @click="submitRegistrationForm()">
                                 Sign Up
                             </button>
+                            <a class="btn getStartBtn" v-else>
+                                <div class="preloader-wrapper small active">
+                                    <div class="spinner-layer spinner-white-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </form>
                 </div>
@@ -335,13 +315,29 @@
     export default {
         data() {
             return {
-                verifiedEmail: 1,
+                verifiedEmail: 3,
                 verificationLoading: false,
-                email: '',
+                registrationLoading: false,
                 otp: '',
                 userInputedOTP: '',
                 key: key.substring(7),
+                userReg: {
+                    email: "goziechukwu@gmail.com",
+                    title: "",
+                    lastname: "",
+                    firstname: "",
+                    phone: "",
+                    country: "",
+                    gender: "",
+                    state: "",
+                    city: "",
+                    password: "",
+                    cPassword: "",
+                },
             };
+        },
+        mounted() {
+
         },
         methods: {
             decryptOTP(otp){
@@ -369,7 +365,7 @@
                 }              
             },
             submitEmailForVerificationOTP(){
-                if(this.email === ''){
+                if(this.userReg.email === ''){
                     M.toast({
                         html: 'Please input your emial.',
                         classes: "errorNotifier",
@@ -377,7 +373,7 @@
                 } else {
                     this.verificationLoading = true;
                     let data = {
-                        email: this.email
+                        email: this.userReg.email
                     }
                     axios
                     .post("/verifyEmailForRegistration", data)
@@ -391,9 +387,8 @@
                                     html: res.data.error,
                                     classes: "errorNotifier",
                                 });
-
-                                this.verificationLoading = false;
                             }
+                            this.verificationLoading = false;
                         }
                         
                     })
@@ -423,6 +418,46 @@
                             location.reload()
                         }, 4000);
                     }
+                }
+            },
+            submitRegistrationForm(){
+                if(!this.userReg.email || !this.userReg.firstname || !this.userReg.lastname || !this.userReg.phone || !this.userReg.country || !this.userReg.gender || !this.userReg.state || !this.userReg.city || !this.userReg.password || this.userReg.password !== this.userReg.cPassword){
+                    M.toast({
+                        html: 'Please fill every field in the registration form.',
+                        classes: "errorNotifier",
+                    });
+                } else {
+                    this.registrationLoading = true;
+                    let data = {
+                        email: this.userReg.email,
+                        firstname: this.userReg.firstname,
+                        lastname: this.userReg.lastname,
+                        phone: this.userReg.phone,
+                        // country: this.userReg.country,
+                        gender: this.userReg.gender,
+                        // state: this.userReg.state,
+                        // city: this.userReg.city,
+                        password: this.userReg.password,
+                    }
+                    axios
+                    .post("/register", data)
+                    .then((res) => {
+                        if(res.status === 200){
+                            if(res.data.status == 200){                                
+                                window.location.href = '/auth/login';
+                            } else if(res.data.status == 501){
+                                M.toast({
+                                    html: res.data.error,
+                                    classes: "errorNotifier",
+                                });                                
+                            }
+                            this.registrationLoading = false;
+                        }
+                        
+                    })
+                    .catch((err) => {
+                        console.log(`Error: ${err.response}`);
+                    });
                 }
             }
         },

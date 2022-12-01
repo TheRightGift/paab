@@ -74,10 +74,10 @@ class EmailAuthService {
         $regData = $this->regDataToValidate($request);
 
         if ($regData->fails()){
-            return response()->json(['errors' => $regData->errors()->all()]);
+            return ['status' => 501, 'error' => $regData->errors()->all()];
         } else {
             $findUser = User::where('email', $request->email)->get();
-            // return $findUser;
+            
             if(count($findUser) < 1){
                 $input = $regData->validated();
                 $input['password'] = bcrypt($request->password);
@@ -85,9 +85,9 @@ class EmailAuthService {
 
                 $accessToken = $user->createToken('accessToken')->accessToken;
 
-                return [ 'user' => $user, 'access_token' => $accessToken];
+                return ['status' => 200, 'user' => $user, 'access_token' => $accessToken];
             } else {
-                return ['message' => 'An account with this detail exists.'];
+                return ['status' => 501, 'error' => 'An account with this detail exists.'];
             }
         }
     }
@@ -138,7 +138,7 @@ class EmailAuthService {
             if($userVerified == 404){//verified that email doesnt exist
                 $otp = $this->genOTP();
                 $crypted = Crypt::encryptString($otp);
-                // $this->maileOTP($input['email'], $otp);
+                $this->maileOTP($input['email'], $otp);
                 
                 return ['status' => 200, 'otp' => $crypted];
             } else {//!verified

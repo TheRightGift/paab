@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->text('avatar')->nullable();
             $table->enum('gender', ['M', 'F'])->nullable();
             $table->enum('plan', ['F', 'P'])->default('F');

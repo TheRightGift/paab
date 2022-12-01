@@ -55,6 +55,12 @@ body {
     background-color: red;
     color: var(--white);
 }
+.noPaddingLeft {
+    padding-left: 0 !important;
+}
+.noPaddingRight {
+    padding-right: 0 !important;
+}
 
 /* HOME */
 .navbar {
@@ -539,6 +545,14 @@ body {
 .rm_mg {
     margin: 0;
 }
+
+#reistrationForm .row {
+    margin-bottom: 0;
+}
+#reistrationForm .input-field {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+}
 .footerInnerDiv {
     width: 70%;
     margin: 15vh auto 0 auto;
@@ -662,6 +676,7 @@ p.wlcNoteFooterTxt {
     letter-spacing: -0.015em;
     color: #7746FF;
     margin-bottom: 0;
+    margin-top: 0;
 }
 .authTxt {
     font-family: 'Poppins', sans-serif;
