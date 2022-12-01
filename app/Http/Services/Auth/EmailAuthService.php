@@ -2,12 +2,16 @@
 namespace App\Http\Services\Auth;
 
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use App\Models\Tenant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Crypt;
+
 use App\Notifications\MailOTP;
+
+use App\Models\User;
+use App\Models\Tenant;
+
 use Carbon\Carbon;
 
 class EmailAuthService {
@@ -133,11 +137,10 @@ class EmailAuthService {
 
             if($userVerified == 404){//verified that email doesnt exist
                 $otp = $this->genOTP();
+                $crypted = Crypt::encryptString($otp);
                 $this->maileOTP($input['email'], $otp);
-
-                return ['status' => 200, 'otp' => $otp];
-                // TODO: mail OTP to $input['email']
-                // Create verifier Mode, Migration and save otp against user_id
+                
+                return ['status' => 200, 'otp' => $crypted];
             } else {//!verified
                 return ['status' => 404, 'error' => 'Account with this email exists.'];
             }

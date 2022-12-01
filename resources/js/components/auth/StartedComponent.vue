@@ -179,6 +179,7 @@
                             type="button"
                             id="otpEmailBtn"
                             :disabled="(otpValue.length < 6)"
+                            @click.prevent="verifyOTP"
                         >
                             VERIFY
                         </button>
@@ -366,15 +367,26 @@
 <script>
     import { ref, reactive } from "vue";
     import otp from "../OtpComponent.vue";
-
+    import cryptoJs from 'crypto-js'
+    import {Base64} from 'js-base64'
     export default {
         setup() {
             const otpValue = ref("");
+            let key = process.env.MIX_APP_KEY;
+            key = key.substring(7); //Removes the base64:
             const state = reactive({
                 email: "",
                 submitting: false,
                 verifiedEmail: 1,
+                cryptedOTP: "",
             });
+            const decryptOTP = (otp) => {
+                let e = JSON.parse(Base64.decode(otp));
+                let decrypted = cryptoJs.AES.decrypt(e.value, cryptoJs.enc.Base64.parse(key), {
+                    iv : cryptoJs.enc.Base64.parse(e.iv)
+                });
+                return decrypted.toString(cryptoJs.enc.Utf8);
+            };
             const updateVerifiedEmail = (num) => {
                 state.verifiedEmail = num;
             };
@@ -391,6 +403,7 @@
                     .then((res) => {
                         if (res.status === 200) {
                             if (res.data.status == 200) {
+                                state.cryptedOTP = res.data.otp;
                                 updateSubmitting(false);
                                 updateVerifiedEmail(2);
                             }
@@ -403,6 +416,17 @@
             const getYear = () => {
                 return new Date().getFullYear();
             };
+            const verifyOTP = () => {
+                // Gets the cryptedOTp and run the decrypt function on it and compare then proceed if ok
+                if (otpValue.value != "" && otpValue.value.length == 6) {
+                    if (otpValue.value === decryptOTP(state.cryptedOTP)) {
+                        updateVerifiedEmail(3);
+                    }
+                    else {
+                        M.toast({html: 'Inavlid OTP!', classes: 'error'})
+                    }
+                }
+            };
             return {
                 state,
                 updateVerifiedEmail,
@@ -410,6 +434,9 @@
                 submitEmail,
                 updateSubmitting,
                 otpValue,
+                key,
+                decryptOTP,
+                verifyOTP,
             };
         },
 
