@@ -48,7 +48,7 @@ class MailOTP extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Hey Chief!, please find your OTP below to authenticate YOU!.')
+                    ->line('Good day, please find your OTP below to verify your email.')
                     ->line($this->otp)
                     ->line('Thank you for using our application!');
     }

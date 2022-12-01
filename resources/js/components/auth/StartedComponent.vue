@@ -37,73 +37,42 @@
                                 />
                             </div>
 
-                            <button
-                                class="btn col s12"
-                                type="submit"
-                                id="getStartBtn"
-                                :disabled="state.submitting"
-                            >
-                                <span v-if="!state.submitting">VERIFY</span>
-                                <div
-                                    v-else
-                                    class="preloader-wrapper small active"
-                                >
-                                    <div class="spinner-layer">
-                                        <div class="circle-clipper left">
-                                            <div class="circle"></div>
-                                        </div>
-                                        <div class="gap-patch">
-                                            <div class="circle"></div>
-                                        </div>
-                                        <div class="circle-clipper right">
-                                            <div class="circle"></div>
+                            <div class="input-field col s12">
+                                <a class="btn getStartBtn" v-if="!verificationLoading" @click="submitEmailForVerificationOTP()">
+                                    VERIFY
+                                </a>
+                                <a class="btn getStartBtn" v-else>
+                                    <div class="preloader-wrapper small active">
+                                        <div class="spinner-layer spinner-white-only">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div><div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div><div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </button>
-
+                                </a>
+                            </div>
+        
                             <!-- Login Social Media Handle -->
                             <div class="row loginSocialMedDiv">
-                                <div
-                                    class="
-                                        col
-                                        s7
-                                        m7
-                                        l7
-                                        offset-s5 offset-m5 offset-l5
-                                        loginSocialMedInnerDiv
-                                    "
-                                >
-                                    <p class="loginSocialMedTxt">
-                                        or login with
-                                    </p>
-
-                                    <div class="socialMedIconsDiv">
-                                        <a href="#">
-                                            <i
-                                                class="
-                                                    fa-brands
-                                                    fa-square-instagram
-                                                    socialMedIcons
-                                                "
-                                            ></i>
-                                        </a>
-                                        <a href="#">
-                                            <i
-                                                class="
-                                                    fa-brands fa-facebook
-                                                    socialMedIcons
-                                                "
-                                            ></i>
-                                        </a>
-                                        <a href="#">
-                                            <i
-                                                class="
-                                                    fa-brands fa-twitter
-                                                    socialMedIcons
-                                                "
-                                            ></i>
-                                        </a>
+                                <div class="col s12 loginSocialMedInnerDiv">
+                                    <div>
+                                        <p class="loginSocialMedTxt">or login with</p>
+            
+                                        <div class="socialMedIconsDiv">
+                                            <a href="#">
+                                                <i class="fa-brands fa-square-instagram socialMedIcons"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="fa-brands fa-facebook socialMedIcons"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="fa-brands fa-twitter socialMedIcons"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -164,23 +133,18 @@
 
                     <div class="row rm_mg">
                         <div class="col s12" id="otpEmailDiv">
-                            <form
-                                method="get"
-                                class="row digit-group"
-                                data-group-name="digits"
-                                data-autosubmit="false"
-                                autocomplete="off"
-                            >
-                                <otp :digitCount="6" @update:otp="otpValue = $event"/>
+                            <form method="get" class="row digit-group" data-group-name="digits" data-autosubmit="false"
+                                autocomplete="off">
+                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 0)" class="input-field col s1 otpDigits" maxlength="1" data-next="digit-2" />
+                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 1)" class="input-field col s1 otpDigits" maxlength="1" data-next="digit-3" data-previous="digit-1" />
+                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 2)" class="input-field col s1 otpDigits" maxlength="1" data-next="digit-4" data-previous="digit-2" />
+                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 3)" class="input-field col s1 otpDigits" maxlength="1" data-next="digit-5" data-previous="digit-3" />
+                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 4)" class="input-field col s1 otpDigits" maxlength="1" data-next="digit-6" data-previous="digit-4" />
+                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 5)" class="input-field col s1 otpDigits" maxlength="1" data-previous="digit-3" />
                             </form>
                         </div>
-                        <button
-                            class="btn col s12"
-                            type="button"
-                            id="otpEmailBtn"
-                            :disabled="(otpValue.length < 6)"
-                            @click.prevent="verifyOTP"
-                        >
+        
+                        <button class="btn col s12" id="otpEmailBtn" @click="confirmOTP()" :disabled='isDisabled'>
                             VERIFY
                         </button>
                     </div>
@@ -437,13 +401,96 @@
                 key,
                 decryptOTP,
                 verifyOTP,
+                verifiedEmail: 1,
+                verificationLoading: false,
+                email: '',
+                otp: '',
+                userInputedOTP: ''
             };
         },
 
         components: {
             otp,
         },
-    };
+        methods: {
+            updateVerifiedEmail(num){
+                this.verifiedEmail = num;
+            },
+            processOtpFields(e, char = null, index){
+                if(char !== null && char !== ''){
+                    this.userInputedOTP = [this.userInputedOTP.slice(0, index), char, this.userInputedOTP.slice(index)].join('')
+                    
+                    if(index !== 5){
+                        e.target.nextElementSibling.focus();
+                    }            
+                } else if(char === ''){
+                    this.userInputedOTP = this.userInputedOTP.slice(0, index) + this.userInputedOTP.slice(index + 1);
+                }              
+            },
+            submitEmailForVerificationOTP(){
+                if(this.email === ''){
+                    M.toast({
+                        html: 'Please input your emial.',
+                        classes: "errorNotifier",
+                    });
+                } else {
+                    this.verificationLoading = true;
+                    let data = {
+                        email: this.email
+                    }
+                    axios
+                    .post("/verifyEmailForRegistration", data)
+                    .then((res) => {
+                        if(res.status === 200){
+                            if(res.data.status == 200){
+                                this.otp = res.data.otp;
+                                this.updateVerifiedEmail(2);
+                            } else if(res.data.status == 404){
+                                M.toast({
+                                    html: res.data.error,
+                                    classes: "errorNotifier",
+                                });
+
+                                this.verificationLoading = false;
+                            }
+                        }
+                        
+                    })
+                    .catch((err) => {
+                        console.log(err.response);
+                    });
+                }
+            },
+            confirmOTP(){
+                if(this.userInputedOTP.length !== 6){
+                    M.toast({
+                        html: 'OTP should be six characters.',
+                        classes: "errorNotifier",
+                    });
+                } else {
+                    if(this.otp === this.userInputedOTP){
+                        // move to next state view
+                        this.updateVerifiedEmail(3);
+                    } else {
+                        M.toast({
+                            html: 'Invalid OTP.',
+                            classes: "errorNotifier",
+                        });
+
+                        // reload page after 4secs
+                        setTimeout(() => {
+                            location.reload()
+                        }, 4000);
+                    }
+                }
+            }
+        },
+        computed: {
+            isDisabled: function(){
+                return this.userInputedOTP.length !== 6;
+            }
+        }
+    }
 </script>
 <style scoped>
     .spinner-layer {
