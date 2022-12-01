@@ -16,7 +16,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // dd(Auth::user());
         if (Auth::user()) {
             if (auth()->user()->can('run_client_ops')){
                 // redirect to client dash view
