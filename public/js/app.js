@@ -20890,10 +20890,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    return {};
+    return {
+      loginLoading: false,
+      loginUser: {
+        email: '',
+        password: ''
+      }
+    };
   },
   mounted: function mounted() {},
-  methods: {}
+  methods: {
+    userLogin: function userLogin() {
+      var _this = this;
+      if (this.loginUser.email === '' || this.loginUser.password === '') {
+        M.toast({
+          html: 'Invalid Email/Password.',
+          classes: "errorNotifier"
+        });
+      } else {
+        this.loginLoading = true;
+        var data = {
+          email: this.loginUser.email,
+          password: this.loginUser.password
+        };
+        axios.post("/login", data).then(function (res) {
+          if (res.status === 200) {
+            if (res.data.status == 200) {
+              //redirect to dashboard route
+              window.location.href = '/dashboard';
+            } else if (res.data.status == 501) {
+              M.toast({
+                html: res.data.error,
+                classes: "errorNotifier"
+              });
+            }
+            _this.loginLoading = false;
+          }
+        })["catch"](function (err) {
+          console.log(err.response);
+        });
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -20964,20 +21002,20 @@ var title = "/api/title";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      verifiedEmail: 3,
       titles: [],
       countries: [],
       states: [],
       cities: [],
       matchedStates: [],
       matchedCities: [],
+      verifiedEmail: 1,
       verificationLoading: false,
       registrationLoading: false,
       otp: "",
       userInputedOTP: "",
       key: key.substring(7),
       userReg: {
-        email: "goziechukwu@gmail.com",
+        email: "",
         title: "",
         lastname: "",
         firstname: "",
@@ -21742,10 +21780,72 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row authContainDiv\"><div class=\"col s12 m12 l6 loginContainer\"><div class=\"wlcNoteDiv\"><p class=\"wlcNoteLogo\">PaaB</p><p class=\"wlcNoteTitle\">WELCOME BACK CHIEF!</p><p class=\"wlcNoteTxt\"> It is a long established fact that a reader will be distracted by the readable content. </p><p class=\"wlcNoteFooterTxt\">© Photo, Inc. 2019. We love our users!</p></div></div><div class=\"col s12 m12 l6 loginContainer\"><div class=\"authRightDiv\"><p class=\"authTitle\">LOGIN</p><p class=\"authTxt\"> It is a long established fact that a reader will be diIt is a long </p><form><div class=\"row rm_mg\"><div class=\"input-field col s12\"><input placeholder=\"User\" id=\"user\" type=\"text\" class=\"validate\"><!-- &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt; --></div><div class=\"input-field col s12\"><input placeholder=\"Password\" id=\"password\" type=\"password\" class=\"validate\"><!-- &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt; --></div><!-- Login Social Media Handle --><div class=\"row loginSocialMedDiv\"><div class=\"col s7 m7 l7 offset-s5 offset-m5 offset-l5 loginSocialMedInnerDiv\"><p class=\"loginSocialMedTxt\">or login with</p><div class=\"socialMedIconsDiv\"><a href=\"#\"><i class=\"fa-brands fa-square-instagram socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-facebook socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-twitter socialMedIcons\"></i></a></div></div></div><button type=\"button\" class=\"btn\" id=\"loginBtn\"> sign in </button><!-- Login Signup Link --><div class=\"row\"><div class=\"col s7 m7 l6 offset-s5 offset-m5 offset-l4 loginSignUpDiv\"><div class=\"loginSignUpInnerDiv\"><p class=\"loginSignUpTxt\"> Don’t have an account yet? </p><p><a href=\"/auth/getstarted\" class=\"loginSignUpLink\"> Sign Up </a></p></div></div></div></div></form></div></div></div>", 1);
-var _hoisted_2 = [_hoisted_1];
+var _hoisted_1 = {
+  "class": "row authContainDiv"
+};
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col s12 m12 l6 loginContainer\"><div class=\"wlcNoteDiv\"><p class=\"wlcNoteLogo\">PaaB</p><p class=\"wlcNoteTitle\">WELCOME BACK CHIEF!</p><p class=\"wlcNoteTxt\"> It is a long established fact that a reader will be distracted by the readable content. </p><p class=\"wlcNoteFooterTxt\">© Photo, Inc. 2019. We love our users!</p></div></div>", 1);
+var _hoisted_3 = {
+  "class": "col s12 m12 l6 loginContainer"
+};
+var _hoisted_4 = {
+  "class": "authRightDiv"
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "authTitle"
+}, "LOGIN", -1 /* HOISTED */);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "authTxt"
+}, " It is a long established fact that a reader will be diIt is a long ", -1 /* HOISTED */);
+var _hoisted_7 = {
+  id: "loginForm"
+};
+var _hoisted_8 = {
+  "class": "row rm_mg"
+};
+var _hoisted_9 = {
+  "class": "input-field col s12"
+};
+var _hoisted_10 = {
+  "class": "input-field col s12"
+};
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row loginSocialMedDiv\"><div class=\"col l12 m12 s12 loginSocialMedInnerDiv\"><p class=\"loginSocialMedTxt\">or login with</p><div class=\"socialMedIconsDiv\"><a href=\"#\"><i class=\"fa-brands fa-square-instagram socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-facebook socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-twitter socialMedIcons\"></i></a></div></div></div>", 1);
+var _hoisted_12 = {
+  "class": "input-field col s12"
+};
+var _hoisted_13 = {
+  key: 1,
+  "class": "btn",
+  id: "loginBtn"
+};
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"preloader-wrapper small active\"><div class=\"spinner-layer spinner-white-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div>", 1);
+var _hoisted_15 = [_hoisted_14];
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row\"><div class=\"col l12 m12 s12 loginSignUpDiv\"><div class=\"loginSignUpInnerDiv\"><p class=\"loginSignUpTxt\"> Don&#39;t have an account yet? </p><p><a href=\"/auth/getstarted\" class=\"loginSignUpLink\"> Sign Up </a></p></div></div></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, _hoisted_2);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: "Email",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.loginUser.email = $event;
+    }),
+    id: "user",
+    type: "text",
+    "class": "validate"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.loginUser.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: "Password",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.loginUser.password = $event;
+    }),
+    id: "password",
+    type: "password",
+    "class": "validate"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.loginUser.password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login Social Media Handle "), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [!$data.loginLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+    key: 0,
+    type: "button",
+    "class": "btn",
+    id: "loginBtn",
+    onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $options.userLogin();
+    }, ["prevent"]))
+  }, " sign in ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_13, _hoisted_15))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login Signup Link "), _hoisted_16])])])])])]);
 }
 
 /***/ }),
@@ -21897,22 +21997,25 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "authTxt"
 }, " It is a long established fact that a reader will be diIt is a long ", -1 /* HOISTED */);
 var _hoisted_11 = {
-  "class": "row rm_mg"
+  id: "regEmailVerifier"
 };
 var _hoisted_12 = {
-  "class": "input-field col s12"
+  "class": "row rm_mg"
 };
 var _hoisted_13 = {
   "class": "input-field col s12"
 };
 var _hoisted_14 = {
+  "class": "input-field col s12"
+};
+var _hoisted_15 = {
   key: 1,
   "class": "btn getStartBtn"
 };
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"preloader-wrapper small active\"><div class=\"spinner-layer spinner-white-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div>", 1);
-var _hoisted_16 = [_hoisted_15];
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row loginSocialMedDiv\"><div class=\"col s12 loginSocialMedInnerDiv\"><div><p class=\"loginSocialMedTxt\"> or login with </p><div class=\"socialMedIconsDiv\"><a href=\"#\"><i class=\"fa-brands fa-square-instagram socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-facebook socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-twitter socialMedIcons\"></i></a></div></div></div></div>", 1);
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"preloader-wrapper small active\"><div class=\"spinner-layer spinner-white-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div>", 1);
+var _hoisted_17 = [_hoisted_16];
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row loginSocialMedDiv\"><div class=\"col s12 loginSocialMedInnerDiv\"><div><p class=\"loginSocialMedTxt\"> or login with </p><div class=\"socialMedIconsDiv\"><a href=\"#\"><i class=\"fa-brands fa-square-instagram socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-facebook socialMedIcons\"></i></a><a href=\"#\"><i class=\"fa-brands fa-twitter socialMedIcons\"></i></a></div></div></div></div>", 1);
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "row"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col s12 m12 l12 loginSignUpDiv center-align"
@@ -21922,207 +22025,208 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   href: "/auth/login",
   "class": "loginSignUpLink"
 }, " Sign in ")])], -1 /* HOISTED */);
-var _hoisted_19 = {
+var _hoisted_20 = {
   key: 1,
   "class": "row authContainDiv"
 };
-var _hoisted_20 = {
+var _hoisted_21 = {
   "class": "col s12 m12 l6 otpContainer"
 };
-var _hoisted_21 = {
+var _hoisted_22 = {
   "class": "wlcNoteDiv"
 };
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "wlcNoteLogo"
 }, "PaaB", -1 /* HOISTED */);
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "wlcNoteTitle"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Start your journey "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("with us... ")], -1 /* HOISTED */);
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "wlcNoteTxt"
 }, " It is a long established fact that a reader will be distracted by the readable content. ", -1 /* HOISTED */);
-var _hoisted_25 = {
+var _hoisted_26 = {
   "class": "wlcNoteFooterTxt"
 };
-var _hoisted_26 = {
+var _hoisted_27 = {
   "class": "col s12 m12 l6 otpContainer"
 };
-var _hoisted_27 = {
+var _hoisted_28 = {
   "class": "authRightDiv"
 };
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "authTitle"
 }, "INSERT OTP", -1 /* HOISTED */);
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "otpEmailAuthTxt"
 }, " It is a long established fact that a reader will be diIt is a long ", -1 /* HOISTED */);
-var _hoisted_30 = {
+var _hoisted_31 = {
   "class": "row rm_mg"
 };
-var _hoisted_31 = {
+var _hoisted_32 = {
   "class": "col s12",
   id: "otpEmailDiv"
 };
-var _hoisted_32 = {
+var _hoisted_33 = {
   method: "get",
   "class": "row digit-group",
   "data-group-name": "digits",
   "data-autosubmit": "false",
   autocomplete: "off"
 };
-var _hoisted_33 = ["disabled"];
-var _hoisted_34 = {
+var _hoisted_34 = ["disabled"];
+var _hoisted_35 = {
   key: 2,
   "class": "row authContainDiv"
 };
-var _hoisted_35 = {
+var _hoisted_36 = {
   "class": "col s12 m12 l6 regContainer"
 };
-var _hoisted_36 = {
+var _hoisted_37 = {
   "class": "wlcNoteDiv"
 };
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "wlcNoteLogo"
 }, "PaaB", -1 /* HOISTED */);
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "wlcNoteTitle"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Start your journey "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("with us... ")], -1 /* HOISTED */);
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "wlcNoteTxt"
 }, " It is a long established fact that a reader will be distracted by the readable content. ", -1 /* HOISTED */);
-var _hoisted_40 = {
+var _hoisted_41 = {
   "class": "wlcNoteFooterTxt"
 };
-var _hoisted_41 = {
+var _hoisted_42 = {
   "class": "col s12 m12 l6 regContainer"
 };
-var _hoisted_42 = {
+var _hoisted_43 = {
   "class": "authRightDiv"
 };
-var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "authTitle"
 }, "SIGN UP", -1 /* HOISTED */);
-var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "authTxt"
 }, " It is a long established fact that a reader will be diIt is a long ", -1 /* HOISTED */);
-var _hoisted_45 = {
+var _hoisted_46 = {
   id: "reistrationForm"
 };
-var _hoisted_46 = {
+var _hoisted_47 = {
   "class": "row"
 };
-var _hoisted_47 = {
+var _hoisted_48 = {
   "class": "input-field col l2 s12 noPaddingLeft"
 };
-var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "",
   disabled: "",
   selected: ""
 }, " Title ", -1 /* HOISTED */);
-var _hoisted_49 = ["value"];
-var _hoisted_50 = {
-  "class": "input-field col l5 s12"
-};
+var _hoisted_50 = ["value"];
 var _hoisted_51 = {
   "class": "input-field col l5 s12"
 };
 var _hoisted_52 = {
-  "class": "row"
+  "class": "input-field col l5 s12"
 };
 var _hoisted_53 = {
-  "class": "input-field col l12 m12 s12 noPaddingLeft"
+  "class": "row"
 };
 var _hoisted_54 = {
-  "class": "row"
-};
-var _hoisted_55 = {
   "class": "input-field col l12 m12 s12 noPaddingLeft"
 };
-var _hoisted_56 = {
+var _hoisted_55 = {
   "class": "row"
 };
+var _hoisted_56 = {
+  "class": "input-field col l12 m12 s12 noPaddingLeft"
+};
 var _hoisted_57 = {
+  "class": "row"
+};
+var _hoisted_58 = {
   "class": "input-field col l6 s12 noPaddingLeft"
 };
-var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "",
   disabled: "",
   selected: ""
 }, " Country ", -1 /* HOISTED */);
-var _hoisted_59 = ["value"];
-var _hoisted_60 = {
+var _hoisted_60 = ["value"];
+var _hoisted_61 = {
   "class": "input-field col l6 s12 noPaddingRight"
 };
-var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "",
   disabled: "",
   selected: ""
 }, " Gender ", -1 /* HOISTED */);
-var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "M"
 }, "Male", -1 /* HOISTED */);
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "F"
 }, "Female", -1 /* HOISTED */);
-var _hoisted_64 = [_hoisted_61, _hoisted_62, _hoisted_63];
-var _hoisted_65 = {
+var _hoisted_65 = [_hoisted_62, _hoisted_63, _hoisted_64];
+var _hoisted_66 = {
   "class": "row"
 };
-var _hoisted_66 = {
+var _hoisted_67 = {
   "class": "input-field col l6 s12 noPaddingLeft"
 };
-var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_68 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "",
   disabled: "",
   selected: ""
 }, " State ", -1 /* HOISTED */);
-var _hoisted_68 = ["value"];
-var _hoisted_69 = {
+var _hoisted_69 = ["value"];
+var _hoisted_70 = {
   "class": "input-field col l6 s12 noPaddingRight"
 };
-var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "",
   disabled: "",
   selected: ""
 }, " City ", -1 /* HOISTED */);
-var _hoisted_71 = ["value"];
-var _hoisted_72 = {
-  "class": "row"
-};
+var _hoisted_72 = ["value"];
 var _hoisted_73 = {
-  "class": "input-field col l12 m12 s12 noPaddingLeft"
+  "class": "row"
 };
 var _hoisted_74 = {
-  "class": "row"
-};
-var _hoisted_75 = {
   "class": "input-field col l12 m12 s12 noPaddingLeft"
 };
-var _hoisted_76 = {
+var _hoisted_75 = {
   "class": "row"
 };
+var _hoisted_76 = {
+  "class": "input-field col l12 m12 s12 noPaddingLeft"
+};
 var _hoisted_77 = {
+  "class": "row"
+};
+var _hoisted_78 = {
   key: 1,
   "class": "btn getStartBtn"
 };
-var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"preloader-wrapper small active\"><div class=\"spinner-layer spinner-white-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div>", 1);
-var _hoisted_79 = [_hoisted_78];
+var _hoisted_79 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"preloader-wrapper small active\"><div class=\"spinner-layer spinner-white-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div>", 1);
+var _hoisted_80 = [_hoisted_79];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$data.verifiedEmail == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, " © PaaB. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getYear()) + ". We support your brand! ", 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$data.verifiedEmail == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, " © PaaB. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getYear()) + ". We support your brand! ", 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     placeholder: "Email",
     id: "user",
+    "class": "center-align",
     type: "email",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $data.userReg.email = $event;
     }),
     required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [!$data.verificationLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [!$data.verificationLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
     key: 0,
     "class": "btn getStartBtn",
     onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.submitEmailForVerificationOTP();
     }, ["prevent"]))
-  }, " VERIFY ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_14, _hoisted_16))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login Social Media Handle "), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login Signup Link "), _hoisted_18])])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.verifiedEmail == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, _hoisted_23, _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_25, " © PaaB. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getYear()) + ". We support your brand! ", 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, " VERIFY ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_15, _hoisted_17))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login Social Media Handle "), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login Signup Link "), _hoisted_19])])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.verifiedEmail == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, _hoisted_24, _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_26, " © PaaB. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getYear()) + ". We support your brand! ", 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     onKeyup: _cache[2] || (_cache[2] = function ($event) {
       return $options.processOtpFields($event, $event.target.value, 0);
@@ -22182,32 +22286,32 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.confirmOTP();
     }),
     disabled: $options.isDisabled
-  }, " VERIFY ", 8 /* PROPS */, _hoisted_33)])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.verifiedEmail == 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [_hoisted_37, _hoisted_38, _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_40, " © PaaB. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getYear()) + ". We support your brand! ", 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [_hoisted_43, _hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, " VERIFY ", 8 /* PROPS */, _hoisted_34)])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.verifiedEmail == 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [_hoisted_38, _hoisted_39, _hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_41, " © PaaB. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getYear()) + ". We support your brand! ", 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [_hoisted_44, _hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "class": "browser-default",
     id: "signupTitle",
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $data.userReg.title = $event;
     })
-  }, [_hoisted_48, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.titles, function (title) {
+  }, [_hoisted_49, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.titles, function (title) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: title.id,
       value: title.id
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(title.name), 9 /* TEXT, PROPS */, _hoisted_49);
-  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userReg.title]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(title.name), 9 /* TEXT, PROPS */, _hoisted_50);
+  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userReg.title]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     placeholder: "Last Name",
     id: "signupLname",
     type: "text",
     "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
       return $data.userReg.lastname = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.lastname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.lastname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     placeholder: "First Name",
     id: "signupFName",
     type: "text",
     "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
       return $data.userReg.firstname = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.firstname]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.firstname]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     placeholder: "Email",
     id: "signupEmail",
     type: "email",
@@ -22215,7 +22319,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.userReg.email = $event;
     }),
     readonly: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.email]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.email]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     placeholder: "Phone Number",
     id: "signupPhone",
     type: "Number",
@@ -22223,7 +22327,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
       return $data.userReg.phone = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.phone]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.phone]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "class": "browser-default",
     id: "signupCountry",
     "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
@@ -22232,18 +22336,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: _cache[15] || (_cache[15] = function () {
       return $options.sortStates && $options.sortStates.apply($options, arguments);
     })
-  }, [_hoisted_58, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.countries, function (country) {
+  }, [_hoisted_59, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.countries, function (country) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: country.id,
       value: country.id
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(country.name), 9 /* TEXT, PROPS */, _hoisted_59);
-  }), 128 /* KEYED_FRAGMENT */))], 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userReg.country]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(country.name), 9 /* TEXT, PROPS */, _hoisted_60);
+  }), 128 /* KEYED_FRAGMENT */))], 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userReg.country]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "class": "browser-default",
     id: "signupGender",
     "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
       return $data.userReg.gender = $event;
     })
-  }, _hoisted_64, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userReg.gender]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_66, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, _hoisted_65, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userReg.gender]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_66, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_67, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "class": "browser-default",
     id: "signupState",
     "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
@@ -22252,23 +22356,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: _cache[18] || (_cache[18] = function () {
       return $options.sortCities && $options.sortCities.apply($options, arguments);
     })
-  }, [_hoisted_67, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.matchedStates, function (state) {
+  }, [_hoisted_68, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.matchedStates, function (state) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: state.id,
       value: state.id
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(state.name), 9 /* TEXT, PROPS */, _hoisted_68);
-  }), 128 /* KEYED_FRAGMENT */))], 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userReg.state]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_69, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(state.name), 9 /* TEXT, PROPS */, _hoisted_69);
+  }), 128 /* KEYED_FRAGMENT */))], 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userReg.state]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_70, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "class": "browser-default",
     id: "signupCity",
     "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
       return $data.userReg.city = $event;
     })
-  }, [_hoisted_70, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.matchedCities, function (city) {
+  }, [_hoisted_71, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.matchedCities, function (city) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: city.id,
       value: city.id
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(city.name), 9 /* TEXT, PROPS */, _hoisted_71);
-  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userReg.city]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_72, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(city.name), 9 /* TEXT, PROPS */, _hoisted_72);
+  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.userReg.city]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_74, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     placeholder: "Password",
     id: "signupPass",
     type: "password",
@@ -22276,7 +22380,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
       return $data.userReg.password = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.password]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_74, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_75, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.password]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_75, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     placeholder: "Confirm Password",
     id: "signCpass",
     type: "password",
@@ -22284,7 +22388,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[21] || (_cache[21] = function ($event) {
       return $data.userReg.cPassword = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.cPassword]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [!$data.registrationLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userReg.cPassword]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_77, [!$data.registrationLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
     "class": "btn col l12 m12 s12",
     type: "button",
@@ -22292,7 +22396,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[22] || (_cache[22] = function ($event) {
       return $options.submitRegistrationForm();
     })
-  }, " Sign Up ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_77, _hoisted_79))])])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  }, " Sign Up ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_78, _hoisted_80))])])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),

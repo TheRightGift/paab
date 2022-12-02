@@ -25,12 +25,13 @@
                         is a long
                     </p>
 
-                    <form>
+                    <form id="regEmailVerifier">
                         <div class="row rm_mg">
                             <div class="input-field col s12">
                                 <input
                                     placeholder="Email"
                                     id="user"
+                                    class="center-align"
                                     type="email"
                                     v-model="userReg.email"
                                     required
@@ -541,20 +542,20 @@
     export default {
         data() {
             return {
-                verifiedEmail: 3,
                 titles: [],
                 countries: [],
                 states: [],
                 cities: [],
                 matchedStates: [],
                 matchedCities: [],
+                verifiedEmail: 1,
                 verificationLoading: false,
                 registrationLoading: false,
                 otp: "",
                 userInputedOTP: "",
                 key: key.substring(7),
                 userReg: {
-                    email: "goziechukwu@gmail.com",
+                    email: "",
                     title: "",
                     lastname: "",
                     firstname: "",
