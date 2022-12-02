@@ -51,7 +51,10 @@ class EmailAuthService {
             // 'username' => 'nullable',
             'phone' => 'required|unique:users',
             'email' => 'email|required|unique:users',
-            'password' => 'required' 
+            'password' => 'required',
+            'title_id' => 'required',
+            'city_id' => 'required',
+            'gender' => 'required'
 		]);
         return $validator;
     }

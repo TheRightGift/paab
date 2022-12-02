@@ -12,7 +12,7 @@
                         distracted by the readable content.
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; PaaB. {{getYear()}}. We support your brand!
+                        &copy; PaaB. {{ getYear() }}. We support your brand!
                     </p>
                 </div>
             </div>
@@ -38,39 +38,69 @@
                             </div>
 
                             <div class="input-field col s12">
-                                <a class="btn getStartBtn" v-if="!verificationLoading" @click.prevent="submitEmailForVerificationOTP()">
+                                <a
+                                    class="btn getStartBtn"
+                                    v-if="!verificationLoading"
+                                    @click.prevent="
+                                        submitEmailForVerificationOTP()
+                                    "
+                                >
                                     VERIFY
                                 </a>
                                 <a class="btn getStartBtn" v-else>
                                     <div class="preloader-wrapper small active">
-                                        <div class="spinner-layer spinner-white-only">
+                                        <div
+                                            class="
+                                                spinner-layer spinner-white-only
+                                            "
+                                        >
                                             <div class="circle-clipper left">
                                                 <div class="circle"></div>
-                                            </div><div class="gap-patch">
+                                            </div>
+                                            <div class="gap-patch">
                                                 <div class="circle"></div>
-                                            </div><div class="circle-clipper right">
+                                            </div>
+                                            <div class="circle-clipper right">
                                                 <div class="circle"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-        
+
                             <!-- Login Social Media Handle -->
                             <div class="row loginSocialMedDiv">
                                 <div class="col s12 loginSocialMedInnerDiv">
                                     <div>
-                                        <p class="loginSocialMedTxt">or login with</p>
-            
+                                        <p class="loginSocialMedTxt">
+                                            or login with
+                                        </p>
+
                                         <div class="socialMedIconsDiv">
                                             <a href="#">
-                                                <i class="fa-brands fa-square-instagram socialMedIcons"></i>
+                                                <i
+                                                    class="
+                                                        fa-brands
+                                                        fa-square-instagram
+                                                        socialMedIcons
+                                                    "
+                                                ></i>
                                             </a>
                                             <a href="#">
-                                                <i class="fa-brands fa-facebook socialMedIcons"></i>
+                                                <i
+                                                    class="
+                                                        fa-brands fa-facebook
+                                                        socialMedIcons
+                                                    "
+                                                ></i>
                                             </a>
                                             <a href="#">
-                                                <i class="fa-brands fa-twitter socialMedIcons"></i>
+                                                <i
+                                                    class="
+                                                        fa-brands fa-twitter
+                                                        socialMedIcons
+                                                    "
+                                                ></i>
                                             </a>
                                         </div>
                                     </div>
@@ -118,7 +148,7 @@
                         distracted by the readable content.
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; PaaB. {{getYear()}}. We support your brand!
+                        &copy; PaaB. {{ getYear() }}. We support your brand!
                     </p>
                 </div>
             </div>
@@ -133,18 +163,105 @@
 
                     <div class="row rm_mg">
                         <div class="col s12" id="otpEmailDiv">
-                            <form method="get" class="row digit-group" data-group-name="digits" data-autosubmit="false"
-                                autocomplete="off">
-                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 0)" class="input-field col s1 otpDigits" maxlength="1" data-next="digit-2" autofocus />
-                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 1)" class="input-field col s1 otpDigits" maxlength="1" data-next="digit-3" data-previous="digit-1" />
-                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 2)" class="input-field col s1 otpDigits" maxlength="1" data-next="digit-4" data-previous="digit-2" />
-                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 3)" class="input-field col s1 otpDigits" maxlength="1" data-next="digit-5" data-previous="digit-3" />
-                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 4)" class="input-field col s1 otpDigits" maxlength="1" data-next="digit-6" data-previous="digit-4" />
-                                <input type="text" v-on:keyup="processOtpFields($event, $event.target.value, 5)" class="input-field col s1 otpDigits" maxlength="1" data-previous="digit-3" />
+                            <form
+                                method="get"
+                                class="row digit-group"
+                                data-group-name="digits"
+                                data-autosubmit="false"
+                                autocomplete="off"
+                            >
+                                <input
+                                    type="text"
+                                    v-on:keyup="
+                                        processOtpFields(
+                                            $event,
+                                            $event.target.value,
+                                            0
+                                        )
+                                    "
+                                    class="input-field col s1 otpDigits"
+                                    maxlength="1"
+                                    data-next="digit-2"
+                                    autofocus
+                                />
+                                <input
+                                    type="text"
+                                    v-on:keyup="
+                                        processOtpFields(
+                                            $event,
+                                            $event.target.value,
+                                            1
+                                        )
+                                    "
+                                    class="input-field col s1 otpDigits"
+                                    maxlength="1"
+                                    data-next="digit-3"
+                                    data-previous="digit-1"
+                                />
+                                <input
+                                    type="text"
+                                    v-on:keyup="
+                                        processOtpFields(
+                                            $event,
+                                            $event.target.value,
+                                            2
+                                        )
+                                    "
+                                    class="input-field col s1 otpDigits"
+                                    maxlength="1"
+                                    data-next="digit-4"
+                                    data-previous="digit-2"
+                                />
+                                <input
+                                    type="text"
+                                    v-on:keyup="
+                                        processOtpFields(
+                                            $event,
+                                            $event.target.value,
+                                            3
+                                        )
+                                    "
+                                    class="input-field col s1 otpDigits"
+                                    maxlength="1"
+                                    data-next="digit-5"
+                                    data-previous="digit-3"
+                                />
+                                <input
+                                    type="text"
+                                    v-on:keyup="
+                                        processOtpFields(
+                                            $event,
+                                            $event.target.value,
+                                            4
+                                        )
+                                    "
+                                    class="input-field col s1 otpDigits"
+                                    maxlength="1"
+                                    data-next="digit-6"
+                                    data-previous="digit-4"
+                                />
+                                <input
+                                    type="text"
+                                    v-on:keyup="
+                                        processOtpFields(
+                                            $event,
+                                            $event.target.value,
+                                            5
+                                        )
+                                    "
+                                    class="input-field col s1 otpDigits"
+                                    maxlength="1"
+                                    data-previous="digit-3"
+                                />
                             </form>
                         </div>
-        
-                        <button class="btn col s12" id="otpEmailBtn" @click="confirmOTP()" :disabled='isDisabled'>
+
+                        <button
+                            class="btn col s12"
+                            id="otpEmailBtn"
+                            @click="confirmOTP()"
+                            :disabled="isDisabled"
+                        >
                             VERIFY
                         </button>
                     </div>
@@ -164,7 +281,7 @@
                         distracted by the readable content.
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; PaaB. {{getYear()}}. We support your brand!
+                        &copy; PaaB. {{ getYear() }}. We support your brand!
                     </p>
                 </div>
             </div>
@@ -180,20 +297,54 @@
                     <form id="reistrationForm">
                         <div class="row">
                             <div class="input-field col l2 s12 noPaddingLeft">
-                                <input placeholder="Title" type="text" v-model="userReg.title" id="signupTitle"/>
+                                <select
+                                    class="browser-default"
+                                    id="signupTitle"
+                                    v-model="userReg.title"
+                                >
+                                    <option value="" disabled selected>
+                                        Title
+                                    </option>
+                                    <option
+                                        v-for="title in titles"
+                                        :key="title.id"
+                                        :value="title.id"
+                                    >
+                                        {{ title.name }}
+                                    </option>
+                                </select>
                             </div>
 
                             <div class="input-field col l5 s12">
-                                <input placeholder="Last Name" id="signupLname" type="text" v-model="userReg.lastname"/>
+                                <input
+                                    placeholder="Last Name"
+                                    id="signupLname"
+                                    type="text"
+                                    v-model="userReg.lastname"
+                                />
                             </div>
 
                             <div class="input-field col l5 s12">
-                                <input placeholder="First Name" id="signupFName" type="text" v-model="userReg.firstname"/>
+                                <input
+                                    placeholder="First Name"
+                                    id="signupFName"
+                                    type="text"
+                                    v-model="userReg.firstname"
+                                />
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="input-field col l12 m12 s12 noPaddingLeft">
+                            <div
+                                class="
+                                    input-field
+                                    col
+                                    l12
+                                    m12
+                                    s12
+                                    noPaddingLeft
+                                "
+                            >
                                 <input
                                     placeholder="Email"
                                     id="signupEmail"
@@ -205,7 +356,16 @@
                         </div>
 
                         <div class="row">
-                            <div class="input-field col l12 m12 s12 noPaddingLeft">
+                            <div
+                                class="
+                                    input-field
+                                    col
+                                    l12
+                                    m12
+                                    s12
+                                    noPaddingLeft
+                                "
+                            >
                                 <input
                                     placeholder="Phone Number"
                                     id="signupPhone"
@@ -218,17 +378,31 @@
 
                         <div class="row">
                             <div class="input-field col l6 s12 noPaddingLeft">
-                                <input
-                                    placeholder="Country"
+                                <select
+                                    class="browser-default"
                                     id="signupCountry"
-                                    type="text"
-                                    class="validate"
                                     v-model="userReg.country"
-                                />
+                                    @change="sortStates"
+                                >
+                                    <option value="" disabled selected>
+                                        Country
+                                    </option>
+                                    <option
+                                        v-for="country in countries"
+                                        :key="country.id"
+                                        :value="country.id"
+                                    >
+                                        {{ country.name }}
+                                    </option>
+                                </select>
                             </div>
 
                             <div class="input-field col l6 s12 noPaddingRight">
-                                <select class="browser-default" id="signupGender" v-model="userReg.gender">
+                                <select
+                                    class="browser-default"
+                                    id="signupGender"
+                                    v-model="userReg.gender"
+                                >
                                     <option value="" disabled selected>
                                         Gender
                                     </option>
@@ -240,28 +414,56 @@
 
                         <div class="row">
                             <div class="input-field col l6 s12 noPaddingLeft">
-                                <input
-                                    placeholder="State"
+                                <select
+                                    class="browser-default"
                                     id="signupState"
-                                    type="text"
-                                    class="validate"
                                     v-model="userReg.state"
-                                />
+                                    @change="sortCities"
+                                >
+                                    <option value="" disabled selected>
+                                        State
+                                    </option>
+                                    <option
+                                        v-for="state in matchedStates"
+                                        :key="state.id"
+                                        :value="state.id"
+                                    >
+                                        {{ state.name }}
+                                    </option>
+                                </select>
                             </div>
 
-                            <div class="input-field col l6 s12">
-                                <input
-                                    placeholder="City"
+                            <div class="input-field col l6 s12 noPaddingRight">
+                                <select
+                                    class="browser-default"
                                     id="signupCity"
-                                    type="text"
-                                    class="validate"
                                     v-model="userReg.city"
-                                />
+                                >
+                                    <option value="" disabled selected>
+                                        City
+                                    </option>
+                                    <option
+                                        v-for="city in matchedCities"
+                                        :key="city.id"
+                                        :value="city.id"
+                                    >
+                                        {{ city.name }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="input-field col l12 m12 s12 noPaddingLeft">
+                            <div
+                                class="
+                                    input-field
+                                    col
+                                    l12
+                                    m12
+                                    s12
+                                    noPaddingLeft
+                                "
+                            >
                                 <input
                                     placeholder="Password"
                                     id="signupPass"
@@ -273,7 +475,16 @@
                         </div>
 
                         <div class="row">
-                            <div class="input-field col l12 m12 s12 noPaddingLeft">
+                            <div
+                                class="
+                                    input-field
+                                    col
+                                    l12
+                                    m12
+                                    s12
+                                    noPaddingLeft
+                                "
+                            >
                                 <input
                                     placeholder="Confirm Password"
                                     id="signCpass"
@@ -285,17 +496,27 @@
                         </div>
 
                         <div class="row">
-                            <button class="btn col l12 m12 s12" v-if="!registrationLoading" type="button" id="signupBtn" @click="submitRegistrationForm()">
+                            <button
+                                class="btn col l12 m12 s12"
+                                v-if="!registrationLoading"
+                                type="button"
+                                id="signupBtn"
+                                @click="submitRegistrationForm()"
+                            >
                                 Sign Up
                             </button>
                             <a class="btn getStartBtn" v-else>
                                 <div class="preloader-wrapper small active">
-                                    <div class="spinner-layer spinner-white-only">
+                                    <div
+                                        class="spinner-layer spinner-white-only"
+                                    >
                                         <div class="circle-clipper left">
                                             <div class="circle"></div>
-                                        </div><div class="gap-patch">
+                                        </div>
+                                        <div class="gap-patch">
                                             <div class="circle"></div>
-                                        </div><div class="circle-clipper right">
+                                        </div>
+                                        <div class="circle-clipper right">
                                             <div class="circle"></div>
                                         </div>
                                     </div>
@@ -309,17 +530,28 @@
     </div>
 </template>
 <script>
-    import cryptoJs from 'crypto-js'
-    import {Base64} from 'js-base64'
+    import cryptoJs from "crypto-js";
+    import { Base64 } from "js-base64";
     const key = process.env.MIX_APP_KEY;
+    let country = "/api/countries";
+    let state = "/api/states";
+    let city = "/api/cities";
+    let title = "/api/title"
+
     export default {
         data() {
             return {
                 verifiedEmail: 3,
+                titles: [],
+                countries: [],
+                states: [],
+                cities: [],
+                matchedStates: [],
+                matchedCities: [],
                 verificationLoading: false,
                 registrationLoading: false,
-                otp: '',
-                userInputedOTP: '',
+                otp: "",
+                userInputedOTP: "",
                 key: key.substring(7),
                 userReg: {
                     email: "goziechukwu@gmail.com",
@@ -337,93 +569,113 @@
             };
         },
         mounted() {
-
+            this.getLocations();
         },
         methods: {
-            decryptOTP(otp){
+            decryptOTP(otp) {
                 let cipher = JSON.parse(Base64.decode(otp));
-                let decrypted = cryptoJs.AES.decrypt(cipher.value, cryptoJs.enc.Base64.parse(this.key), {
-                    iv : cryptoJs.enc.Base64.parse(cipher.iv)
-                });
+                let decrypted = cryptoJs.AES.decrypt(
+                    cipher.value,
+                    cryptoJs.enc.Base64.parse(this.key),
+                    {
+                        iv: cryptoJs.enc.Base64.parse(cipher.iv),
+                    }
+                );
                 return decrypted.toString(cryptoJs.enc.Utf8);
             },
-            updateVerifiedEmail(num){
+            updateVerifiedEmail(num) {
                 this.verifiedEmail = num;
             },
             getYear() {
                 return new Date().getFullYear();
             },
-            processOtpFields(e, char = null, index){
-                if(char !== null && char !== ''){
-                    this.userInputedOTP = [this.userInputedOTP.slice(0, index), char, this.userInputedOTP.slice(index)].join('')
-                    
-                    if(index !== 5){
+            processOtpFields(e, char = null, index) {
+                if (char !== null && char !== "") {
+                    this.userInputedOTP = [
+                        this.userInputedOTP.slice(0, index),
+                        char,
+                        this.userInputedOTP.slice(index),
+                    ].join("");
+
+                    if (index !== 5) {
                         e.target.nextElementSibling.focus();
-                    }            
-                } else if(char === ''){
-                    this.userInputedOTP = this.userInputedOTP.slice(0, index) + this.userInputedOTP.slice(index + 1);
-                }              
+                    }
+                } else if (char === "") {
+                    this.userInputedOTP =
+                        this.userInputedOTP.slice(0, index) +
+                        this.userInputedOTP.slice(index + 1);
+                }
             },
-            submitEmailForVerificationOTP(){
-                if(this.userReg.email === ''){
+            submitEmailForVerificationOTP() {
+                if (this.userReg.email === "") {
                     M.toast({
-                        html: 'Please input your emial.',
+                        html: "Please input your emial.",
                         classes: "errorNotifier",
                     });
                 } else {
                     this.verificationLoading = true;
                     let data = {
-                        email: this.userReg.email
-                    }
+                        email: this.userReg.email,
+                    };
                     axios
-                    .post("/verifyEmailForRegistration", data)
-                    .then((res) => {
-                        if(res.status === 200){
-                            if(res.data.status == 200){
-                                this.otp = res.data.otp;
-                                this.updateVerifiedEmail(2);
-                            } else if(res.data.status == 404){
-                                M.toast({
-                                    html: res.data.error,
-                                    classes: "errorNotifier",
-                                });
+                        .post("/verifyEmailForRegistration", data)
+                        .then((res) => {
+                            if (res.status === 200) {
+                                if (res.data.status == 200) {
+                                    this.otp = res.data.otp;
+                                    this.updateVerifiedEmail(2);
+                                } else if (res.data.status == 404) {
+                                    M.toast({
+                                        html: res.data.error,
+                                        classes: "errorNotifier",
+                                    });
+                                }
+                                this.verificationLoading = false;
                             }
-                            this.verificationLoading = false;
-                        }
-                        
-                    })
-                    .catch((err) => {
-                        console.log(err.response);
-                    });
+                        })
+                        .catch((err) => {
+                            console.log(err.response);
+                        });
                 }
             },
-            confirmOTP(){
-                if(this.userInputedOTP.length !== 6){
+            confirmOTP() {
+                if (this.userInputedOTP.length !== 6) {
                     M.toast({
-                        html: 'OTP should be six characters.',
+                        html: "OTP should be six characters.",
                         classes: "errorNotifier",
                     });
                 } else {
-                    if(this.decryptOTP(this.otp) === this.userInputedOTP){
+                    if (this.decryptOTP(this.otp) === this.userInputedOTP) {
                         // move to next state view
                         this.updateVerifiedEmail(3);
                     } else {
                         M.toast({
-                            html: 'Invalid OTP.',
+                            html: "Invalid OTP.",
                             classes: "errorNotifier",
                         });
 
                         // reload page after 4secs
                         setTimeout(() => {
-                            location.reload()
+                            location.reload();
                         }, 4000);
                     }
                 }
             },
-            submitRegistrationForm(){
-                if(!this.userReg.email || !this.userReg.firstname || !this.userReg.lastname || !this.userReg.phone || !this.userReg.country || !this.userReg.gender || !this.userReg.state || !this.userReg.city || !this.userReg.password || this.userReg.password !== this.userReg.cPassword){
+            submitRegistrationForm() {
+                if (
+                    !this.userReg.email ||
+                    !this.userReg.firstname ||
+                    !this.userReg.lastname ||
+                    !this.userReg.phone ||
+                    !this.userReg.country ||
+                    !this.userReg.gender ||
+                    !this.userReg.state ||
+                    !this.userReg.city ||
+                    !this.userReg.password ||
+                    this.userReg.password !== this.userReg.cPassword
+                ) {
                     M.toast({
-                        html: 'Please fill every field in the registration form.',
+                        html: "Please fill every field in the registration form.",
                         classes: "errorNotifier",
                     });
                 } else {
@@ -433,38 +685,69 @@
                         firstname: this.userReg.firstname,
                         lastname: this.userReg.lastname,
                         phone: this.userReg.phone,
-                        // country: this.userReg.country,
                         gender: this.userReg.gender,
-                        // state: this.userReg.state,
-                        // city: this.userReg.city,
+                        city_id: this.userReg.city,
+                        title_id: this.userReg.title,
                         password: this.userReg.password,
-                    }
+                    };
                     axios
-                    .post("/register", data)
-                    .then((res) => {
-                        if(res.status === 200){
-                            if(res.data.status == 200){                                
-                                window.location.href = '/auth/login';
-                            } else if(res.data.status == 501){
-                                M.toast({
-                                    html: res.data.error,
-                                    classes: "errorNotifier",
-                                });                                
+                        .post("/register", data)
+                        .then((res) => {
+                            if (res.status === 200) {
+                                if (res.data.status == 200) {
+                                    window.location.href = "/auth/login";
+                                } else if (res.data.status == 501) {
+                                    M.toast({
+                                        html: res.data.error,
+                                        classes: "errorNotifier",
+                                    });
+                                }
+                                this.registrationLoading = false;
                             }
-                            this.registrationLoading = false;
-                        }
-                        
-                    })
-                    .catch((err) => {
-                        console.log(`Error: ${err.response}`);
-                    });
+                        })
+                        .catch((err) => {
+                            console.log(`Error: ${err.response}`);
+                        });
                 }
-            }
+            },
+            getLocations() {
+                const requestTitles = axios.get(title);
+                const requestCountries = axios.get(country);
+                const requestStates = axios.get(state);
+                const requestCities = axios.get(city);
+                axios
+                    .all([requestTitles, requestCountries, requestStates, requestCities])
+                    .then(
+                        axios.spread((...responses) => {
+                            const titleRes = responses[0];
+                            const countryRes = responses[1];
+                            const stateRes = responses[2];
+                            const cityRes = responses[3];
+                            this.states = stateRes.data.states;
+                            this.cities = cityRes.data.cities;
+                            this.countries = countryRes.data.countries;
+                            this.titles = titleRes.data.titles;
+                        })
+                    )
+                    .catch((errors) => {
+                        console.log(errors)
+                    });
+            },
+            sortStates() {
+                this.matchedStates = this.states.filter(
+                    (el) => el.country_id == this.userReg.country
+                );
+            },
+            sortCities() {
+                this.matchedCities = this.cities.filter(
+                    (el) => el.state_id == this.userReg.state
+                );
+            },
         },
         computed: {
-            isDisabled: function(){
+            isDisabled: function () {
                 return this.userInputedOTP.length !== 6;
-            }
-        }
-    }
+            },
+        },
+    };
 </script>

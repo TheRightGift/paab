@@ -2,9 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controller\ProfessionController;
-use App\Http\Controller\TemplateController;
-use App\Http\Controller\TestTenantController;
+use App\Http\Controllers\ProfessionController;
+use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\TestTenantController;
+use App\Http\Controllers\TitleController;
+use App\Http\Controllers\CountryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +35,10 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::post('template-update', [App\Http\Controllers\TestTenantController::class, 'update']);
     Route::get('tenancies', [App\Http\Controllers\TestTenantController::class, 'tenancies']);
 });
-
+Route::apiResource('title', TitleController::class);
+Route::get('countries', [CountryController::class, 'index']);
+Route::get('states', [CountryController::class, 'states']);
+Route::get('cities', [CountryController::class, 'cities']);
 
 // Email/Username
 // Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);

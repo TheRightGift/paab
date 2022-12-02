@@ -31,7 +31,8 @@ class User extends Authenticatable
         'role',
         'emailVerification',
         'accessToken',
-        'profession_id'
+        'title_id',
+        'city_id'
     ];
 
     /**
