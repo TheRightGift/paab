@@ -27,7 +27,15 @@ class AuthController extends Controller
         return response($verifierRes);
     }
 
-    // verifyUserEmail
+    public function sendOtpForUserResetPassword(Request $request, EmailAuthService $emailAuthService){
+        $sendOtpres = $emailAuthService->sendOtpForUserResetPassword($request);
+        return response($sendOtpres);
+    }
+
+    public function resetPassword(Request $request, EmailAuthService $emailAuthService){
+        $passResetRes = $emailAuthService->resetPassword($request);
+        return response($passResetRes);
+    }
 
     public function logout()
     {

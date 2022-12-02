@@ -33,16 +33,24 @@ Route::get('/auth/login', function () {
         return view('auth.login');
     }    
 });
-// Route::get('/auth/otp', function () {
-//     return view('auth.otp');
-// });
+Route::get('/auth/resetpassword', function () {
+    if (Auth::user()) {
+        return redirect('/dashboard');
+    } else {
+        
+    }    
+});
 
-
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 // Socialite
 Route::get('/login/{provider}', [App\Http\Controllers\SocialController::class, 'redirect']);
+
+// Auth
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
 Route::post('/register', [App\Http\Controllers\AuthController::class, 'register']);
 Route::post('/verifyEmailForRegistration', [App\Http\Controllers\AuthController::class, 'verifyEmailForRegistration']);
-// Route::post('/emailVerification', [App\Http\Controllers\AuthController::class, 'emailVerification']);
+Route::post('/sendOtpForUserResetPassword', [App\Http\Controllers\AuthController::class, 'sendOtpForUserResetPassword']);
+Route::post('/resetPassword', [App\Http\Controllers\AuthController::class, 'resetPassword']);
 Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
+
+// Dashboard
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

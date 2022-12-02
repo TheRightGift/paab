@@ -34,10 +34,19 @@ class EmailAuthService {
         return $validator;
     }
 
-    protected function dataToValidateForEmailVerification(Request $request)
+    protected function emailDataValidation(Request $request)
 	{
 		$validator = Validator::make($request->all(), [
             'email' => 'email|required',
+		]);
+        return $validator;
+    }
+
+    protected function passwordResetDataValidation(Request $request)
+	{
+		$validator = Validator::make($request->all(), [
+            'email' => 'email|required',
+            'password' => 'required|confirmed',
 		]);
         return $validator;
     }
@@ -108,7 +117,7 @@ class EmailAuthService {
     }
 
     public function verifyUserEmail($request){
-        $data = $this->dataToValidateForEmailVerification($request);
+        $data = $this->emailDataValidation($request);
         if ($data->fails()){
             return response()->json(['errors' => $data->errors()->all()]);
         } else {
@@ -148,14 +157,14 @@ class EmailAuthService {
     }
 
     public function resetPassword($request){
-        $data = $this->dataToValidate($request);
+        $data = $this->passwordResetDataValidation($request);
         if ($data->fails()){
-            return response()->json(['errors' => $data->errors()->all()]);
+            return ['status' => 501, 'error' => $regData->errors()->all()];
         } else {
             $input = $data->validated();
-            $userVerified = $this->confirmEmail($input['email']);
+            $verifyUserEmail = $this->confirmEmail($input['email']);
 
-            if($userVerified == 200){//verified
+            if($verifyUserEmail == 200){//verified
                 $encryptedPass = bcrypt($request->password);
                 $updateUser = $userDetails->update(['password' => $encryptedPass]);
                 if ($updateUser == true){
@@ -163,6 +172,25 @@ class EmailAuthService {
                 }
             } else {//!verified
                 return ['status' => 404, 'error' => 'User with this email not found.'];
+            }
+        }  
+    }
+
+    public function sendOtpForUserResetPassword($request){
+        $data = $this->emailDataValidation($request);
+        if ($data->fails()){
+            return ['status' => 501, 'error' => $regData->errors()->all()];
+        } else {
+            $input = $data->validated();
+            $verifyUserEmail = $this->confirmEmail($input['email']);
+
+            if($verifyUserEmail == 200){//verified
+                $otp = $this->genOTP();
+                $this->maileOTP($input['email'], $otp);
+                
+                return ['status' => 200, 'message' => 'OTP sent to '.$input['email']];
+            } else {//!verified
+                return ['status' => 404, 'error' => 'This email does not exist.'];
             }
         }  
     }
