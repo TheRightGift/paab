@@ -28,8 +28,12 @@
         
                             <div class="input-field col s12">
                                 <input placeholder="Password" v-model="loginUser.password" id="password" type="password" class="validate">
+                            
+                                <small class="right resetPass">
+                                    <a href="/auth/resetpassword" class="grey-text">Reset Password?</a>
+                                </small>
                             </div>
-        
+                            
                             <!-- Login Social Media Handle -->
                             <div class="row loginSocialMedDiv">
                                 <div class="col l12 m12 s12 loginSocialMedInnerDiv">
