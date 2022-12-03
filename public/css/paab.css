@@ -713,9 +713,10 @@ p.wlcNoteFooterTxt {
     margin-left: 1vw;
     margin-top: 2vh;
 }
-/* .authRightDiv {
-    margin-top: 15vh;
-} */
+.resetPass {
+    font-size: 14px;
+    font-weight: 500;
+}
 /* Login Auth Section-2 */
 .loginSocialMedTxt {
     font-family: 'Montserrat', sans-serif;

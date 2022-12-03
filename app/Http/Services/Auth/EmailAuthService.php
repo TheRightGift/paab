@@ -140,7 +140,7 @@ class EmailAuthService {
     }
 
     public function verifyEmailForRegistration($request){
-        $data = $this->dataToValidateForEmailVerification($request);
+        $data = $this->emailDataValidation($request);
         if ($data->fails()){
             return response()->json(['errors' => $data->errors()->all()]);
         } else {
