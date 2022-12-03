@@ -18,122 +18,7 @@
             </div>
 
             <div class="col s12 m12 l6 welcomeContainer">
-                <div>
-                    <p class="authTitle">GET STARTED</p>
-                    <p class="authTxt">
-                        It is a long established fact that a reader will be diIt
-                        is a long
-                    </p>
-
-                    <form id="regEmailVerifier">
-                        <div class="row rm_mg">
-                            <div class="input-field col s12">
-                                <input
-                                    placeholder="Email"
-                                    id="user"
-                                    class="center-align"
-                                    type="email"
-                                    v-model="userReg.email"
-                                    required
-                                />
-                            </div>
-
-                            <div class="input-field col s12">
-                                <a
-                                    class="btn getStartBtn"
-                                    v-if="!verificationLoading"
-                                    @click.prevent="
-                                        submitEmailForVerificationOTP()
-                                    "
-                                >
-                                    VERIFY
-                                </a>
-                                <a class="btn getStartBtn" v-else>
-                                    <div class="preloader-wrapper small active">
-                                        <div
-                                            class="
-                                                spinner-layer spinner-white-only
-                                            "
-                                        >
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <!-- Login Social Media Handle -->
-                            <div class="row loginSocialMedDiv">
-                                <div class="col s12 loginSocialMedInnerDiv">
-                                    <div>
-                                        <p class="loginSocialMedTxt">
-                                            or login with
-                                        </p>
-
-                                        <div class="socialMedIconsDiv">
-                                            <a href="#">
-                                                <i
-                                                    class="
-                                                        fa-brands
-                                                        fa-square-instagram
-                                                        socialMedIcons
-                                                    "
-                                                ></i>
-                                            </a>
-                                            <a href="#">
-                                                <i
-                                                    class="
-                                                        fa-brands fa-facebook
-                                                        socialMedIcons
-                                                    "
-                                                ></i>
-                                            </a>
-                                            <a href="#">
-                                                <i
-                                                    class="
-                                                        fa-brands fa-twitter
-                                                        socialMedIcons
-                                                    "
-                                                ></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Login Signup Link -->
-                            <div class="row">
-                                <div
-                                    class="
-                                        col
-                                        s12
-                                        m12
-                                        l12
-                                        loginSignUpDiv
-                                        center-align
-                                    "
-                                >
-                                    <span class="loginSignUpTxt">
-                                        Don't have an account yet?
-                                    </span>
-                                    <a
-                                        href="/auth/login"
-                                        class="loginSignUpLink"
-                                    >
-                                        Sign in
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                <VerifyEmailComponent @otp="setOTP" :type="'register'"/>
             </div>
         </div>
 
@@ -155,118 +40,7 @@
             </div>
 
             <div class="col s12 m12 l6 otpContainer">
-                <div class="authRightDiv">
-                    <p class="authTitle">INSERT OTP</p>
-                    <p class="otpEmailAuthTxt">
-                        It is a long established fact that a reader will be diIt
-                        is a long
-                    </p>
-
-                    <div class="row rm_mg">
-                        <div class="col s12" id="otpEmailDiv">
-                            <form
-                                method="get"
-                                class="row digit-group"
-                                data-group-name="digits"
-                                data-autosubmit="false"
-                                autocomplete="off"
-                            >
-                                <input
-                                    type="text"
-                                    v-on:keyup="
-                                        processOtpFields(
-                                            $event,
-                                            $event.target.value,
-                                            0
-                                        )
-                                    "
-                                    class="input-field col s1 otpDigits"
-                                    maxlength="1"
-                                    data-next="digit-2"
-                                    autofocus
-                                />
-                                <input
-                                    type="text"
-                                    v-on:keyup="
-                                        processOtpFields(
-                                            $event,
-                                            $event.target.value,
-                                            1
-                                        )
-                                    "
-                                    class="input-field col s1 otpDigits"
-                                    maxlength="1"
-                                    data-next="digit-3"
-                                    data-previous="digit-1"
-                                />
-                                <input
-                                    type="text"
-                                    v-on:keyup="
-                                        processOtpFields(
-                                            $event,
-                                            $event.target.value,
-                                            2
-                                        )
-                                    "
-                                    class="input-field col s1 otpDigits"
-                                    maxlength="1"
-                                    data-next="digit-4"
-                                    data-previous="digit-2"
-                                />
-                                <input
-                                    type="text"
-                                    v-on:keyup="
-                                        processOtpFields(
-                                            $event,
-                                            $event.target.value,
-                                            3
-                                        )
-                                    "
-                                    class="input-field col s1 otpDigits"
-                                    maxlength="1"
-                                    data-next="digit-5"
-                                    data-previous="digit-3"
-                                />
-                                <input
-                                    type="text"
-                                    v-on:keyup="
-                                        processOtpFields(
-                                            $event,
-                                            $event.target.value,
-                                            4
-                                        )
-                                    "
-                                    class="input-field col s1 otpDigits"
-                                    maxlength="1"
-                                    data-next="digit-6"
-                                    data-previous="digit-4"
-                                />
-                                <input
-                                    type="text"
-                                    v-on:keyup="
-                                        processOtpFields(
-                                            $event,
-                                            $event.target.value,
-                                            5
-                                        )
-                                    "
-                                    class="input-field col s1 otpDigits"
-                                    maxlength="1"
-                                    data-previous="digit-3"
-                                />
-                            </form>
-                        </div>
-
-                        <button
-                            class="btn col s12"
-                            id="otpEmailBtn"
-                            @click="confirmOTP()"
-                            :disabled="isDisabled"
-                        >
-                            VERIFY
-                        </button>
-                    </div>
-                </div>
+                <OtpComponent @res="otpVerifier" :otp="otp"/>
             </div>
         </div>
 
@@ -531,13 +305,19 @@
     </div>
 </template>
 <script>
-    import cryptoJs from "crypto-js";
-    import { Base64 } from "js-base64";
-    const key = process.env.MIX_APP_KEY;
+    import VerifyEmailComponent from "../partials/VerifyEmailComponent";
+    import OtpComponent from "../partials/OtpComponent";
+    // import cryptoJs from "crypto-js";
+    // import { Base64 } from "js-base64";
+    // const key = process.env.MIX_APP_KEY;
     let country = "/api/countries";
     let title = "/api/title"
 
     export default {
+        components: {
+            VerifyEmailComponent,
+            OtpComponent
+        },
         data() {
             return {
                 titles: [],
@@ -545,11 +325,8 @@
                 states: [],
                 cities: [],
                 verifiedEmail: 1,
-                verificationLoading: false,
                 registrationLoading: false,
                 otp: "",
-                userInputedOTP: "",
-                key: key.substring(7),
                 userReg: {
                     email: "",
                     title: "",
@@ -569,93 +346,19 @@
             this.getLocations();
         },
         methods: {
-            decryptOTP(otp) {
-                let cipher = JSON.parse(Base64.decode(otp));
-                let decrypted = cryptoJs.AES.decrypt(
-                    cipher.value,
-                    cryptoJs.enc.Base64.parse(this.key),
-                    {
-                        iv: cryptoJs.enc.Base64.parse(cipher.iv),
-                    }
-                );
-                return decrypted.toString(cryptoJs.enc.Utf8);
-            },
             updateVerifiedEmail(num) {
                 this.verifiedEmail = num;
             },
             getYear() {
                 return new Date().getFullYear();
             },
-            processOtpFields(e, char = null, index) {
-                if (char !== null && char !== "") {
-                    this.userInputedOTP = [
-                        this.userInputedOTP.slice(0, index),
-                        char,
-                        this.userInputedOTP.slice(index),
-                    ].join("");
-
-                    if (index !== 5) {
-                        e.target.nextElementSibling.focus();
-                    }
-                } else if (char === "") {
-                    this.userInputedOTP =
-                        this.userInputedOTP.slice(0, index) +
-                        this.userInputedOTP.slice(index + 1);
-                }
+            setOTP(value){
+                this.otp = value;
+                this.updateVerifiedEmail(2);
             },
-            submitEmailForVerificationOTP() {
-                if (this.userReg.email === "") {
-                    M.toast({
-                        html: "Please input your emial.",
-                        classes: "errorNotifier",
-                    });
-                } else {
-                    this.verificationLoading = true;
-                    let data = {
-                        email: this.userReg.email,
-                    };
-                    axios
-                        .post("/verifyEmailForRegistration", data)
-                        .then((res) => {
-                            if (res.status === 200) {
-                                if (res.data.status == 200) {
-                                    this.otp = res.data.otp;
-                                    this.updateVerifiedEmail(2);
-                                } else if (res.data.status == 404) {
-                                    M.toast({
-                                        html: res.data.error,
-                                        classes: "errorNotifier",
-                                    });
-                                }
-                                this.verificationLoading = false;
-                            }
-                        })
-                        .catch((err) => {
-                            console.log(err.response);
-                        });
-                }
-            },
-            confirmOTP() {
-                if (this.userInputedOTP.length !== 6) {
-                    M.toast({
-                        html: "OTP should be six characters.",
-                        classes: "errorNotifier",
-                    });
-                } else {
-                    if (this.decryptOTP(this.otp) === this.userInputedOTP) {
-                        // move to next state view
-                        this.updateVerifiedEmail(3);
-                    } else {
-                        M.toast({
-                            html: "Invalid OTP.",
-                            classes: "errorNotifier",
-                        });
-
-                        // reload page after 4secs
-                        setTimeout(() => {
-                            location.reload();
-                        }, 4000);
-                    }
+            otpVerifier(value){
+                if(value === 200){
+                    this.updateVerifiedEmail(3);
                 }
             },
             submitRegistrationForm() {
@@ -757,10 +460,6 @@
                 })
             },
         },
-        computed: {
-            isDisabled: function () {
-                return this.userInputedOTP.length !== 6;
-            },
-        },
+        computed: {},
     };
 </script>

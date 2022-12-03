@@ -19,8 +19,8 @@ import HomeComponent from './components/HomeComponent.vue';
 import StartedComponent from './components/auth/StartedComponent.vue';
 import TemplateComponent from './components/TemplateComponent.vue';
 import LoginComponent from './components/auth/LoginComponent.vue';
-import OtpComponent from './components/auth/OtpComponent.vue';
-import SignupComponent from './components/auth/SignupComponent.vue';
+// import OtpComponent from './components/auth/OtpComponent.vue';
+import ResetPasswordComponent from './components/auth/ResetPasswordComponent.vue';
 
 // Client
 import ClientComponent from './components/client/Dashboard.vue';
@@ -28,8 +28,8 @@ import ClientComponent from './components/client/Dashboard.vue';
 
 app.component('home-component', HomeComponent);
 app.component('login-component', LoginComponent);
-app.component('otp-component', OtpComponent);
-app.component('signup-component', SignupComponent);
+// app.component('otp-component', OtpComponent);
+app.component('resetpassword-component', ResetPasswordComponent);
 app.component('started-component', StartedComponent);
 app.component('template-component', TemplateComponent);
 

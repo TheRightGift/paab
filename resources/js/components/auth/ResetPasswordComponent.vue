@@ -1,0 +1,228 @@
+<template>
+    <div>
+        <div class="row authContainDiv" v-if="verifiedEmail == 1">
+            <div class="col s12 m12 l6 welcomeContainer">
+                <div class="wlcNoteDiv">
+                    <p class="wlcNoteLogo">PaaB</p>
+                    <p class="wlcNoteTitle">
+                        Start your journey <br />with us...
+                    </p>
+                    <p class="wlcNoteTxt">
+                        It is a long established fact that a reader will be
+                        distracted by the readable content.
+                    </p>
+                    <p class="wlcNoteFooterTxt">
+                        &copy; PaaB. {{ getYear() }}. We support your brand!
+                    </p>
+                </div>
+            </div>
+
+            <div class="col s12 m12 l6 welcomeContainer">
+                <VerifyEmailComponent @otp="setOTP" :type="'reset'"/>
+            </div>
+        </div>
+
+        <div class="row authContainDiv" v-if="verifiedEmail == 2">
+            <div class="col s12 m12 l6 otpContainer">
+                <div class="wlcNoteDiv">
+                    <p class="wlcNoteLogo">PaaB</p>
+                    <p class="wlcNoteTitle">
+                        Start your journey <br />with us...
+                    </p>
+                    <p class="wlcNoteTxt">
+                        It is a long established fact that a reader will be
+                        distracted by the readable content.
+                    </p>
+                    <p class="wlcNoteFooterTxt">
+                        &copy; PaaB. {{ getYear() }}. We support your brand!
+                    </p>
+                </div>
+            </div>
+
+            <div class="col s12 m12 l6 otpContainer">
+                <OtpComponent @res="otpVerifier" :otp="otp"/>
+            </div>
+        </div>
+
+        <div class="row authContainDiv" v-if="verifiedEmail == 3">
+            <div class="col s12 m12 l6 regContainer">
+                <div class="wlcNoteDiv">
+                    <p class="wlcNoteLogo">PaaB</p>
+                    <p class="wlcNoteTitle">
+                        Start your journey <br />with us...
+                    </p>
+                    <p class="wlcNoteTxt">
+                        It is a long established fact that a reader will be
+                        distracted by the readable content.
+                    </p>
+                    <p class="wlcNoteFooterTxt">
+                        &copy; PaaB. {{ getYear() }}. We support your brand!
+                    </p>
+                </div>
+            </div>
+
+            <div class="col s12 m12 l6 regContainer">
+                <div class="authRightDiv">
+                    <p class="authTitle">RESET PASSWORD</p>
+                    <p class="authTxt">
+                        It is a long established fact that a reader will be diIt
+                        is a long
+                    </p>
+
+                    <form id="reistrationForm">
+                        <div class="row">
+                            <div
+                                class="
+                                    input-field
+                                    col
+                                    l12
+                                    m12
+                                    s12
+                                    noPaddingLeft
+                                "
+                            >
+                                <input
+                                    placeholder="Password"
+                                    id="signupPass"
+                                    type="password"
+                                    class="validate"
+                                    v-model="user.password"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div
+                                class="
+                                    input-field
+                                    col
+                                    l12
+                                    m12
+                                    s12
+                                    noPaddingLeft
+                                "
+                            >
+                                <input
+                                    placeholder="Confirm Password"
+                                    id="signCpass"
+                                    type="password"
+                                    class="validate"
+                                    v-model="user.cPassword"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <button
+                                class="btn col l12 m12 s12"
+                                v-if="!resetLoading"
+                                type="button"
+                                id="signupBtn"
+                                @click="submitResetPasswordForm()"
+                            >
+                                Reset
+                            </button>
+                            <a class="btn getStartBtn" v-else>
+                                <div class="preloader-wrapper small active">
+                                    <div
+                                        class="spinner-layer spinner-white-only"
+                                    >
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    import VerifyEmailComponent from "../partials/VerifyEmailComponent";
+    import OtpComponent from "../partials/OtpComponent";
+
+    export default {
+        components: {
+            VerifyEmailComponent,
+            OtpComponent
+        },
+        data() {
+            return {
+                
+                verifiedEmail: 3,
+                resetLoading: false,
+                otp: "",
+                user: {
+                    email: "",
+                    password: "",
+                    cPassword: "",
+                },
+            };
+        },
+        mounted() {},
+        methods: {
+            updateVerifiedEmail(num) {
+                this.verifiedEmail = num;
+            },
+            getYear() {
+                return new Date().getFullYear();
+            },
+            setOTP(value){
+                if(value === 200){
+                    this.updateVerifiedEmail(2);
+                }                
+            },
+            otpVerifier(value){
+                if(value === 200){
+                    this.updateVerifiedEmail(3);
+                }
+            },
+            submitResetPasswordForm() {
+                if (
+                    !this.user.email ||
+                    !this.user.password ||
+                    this.user.password !== this.user.cPassword
+                ) {
+                    M.toast({
+                        html: "Please enter matching passwords.",
+                        classes: "errorNotifier",
+                    });
+                } else {
+                    this.resetLoading = true;
+                    let data = {
+                        email: this.user.email,
+                        password: this.user.password,
+                    };
+                    axios
+                        .post("/resetPassword", data)
+                        .then((res) => {
+                            if (res.status === 200) {
+                                if (res.data.status == 200) {
+                                    window.location.href = "/auth/login";
+                                } else if (res.data.status == 501) {
+                                    M.toast({
+                                        html: res.data.error,
+                                        classes: "errorNotifier",
+                                    });
+                                }
+                                this.registrationLoading = false;
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(`Error: ${err.response}`);
+                        });
+                }
+            },
+        },
+        computed: {},
+    };
+</script>

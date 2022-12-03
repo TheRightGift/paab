@@ -37,7 +37,7 @@ Route::get('/auth/resetpassword', function () {
     if (Auth::user()) {
         return redirect('/dashboard');
     } else {
-        
+        return view('auth.resetpassword');
     }    
 });
 
