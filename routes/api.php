@@ -37,8 +37,8 @@ Route::group(['middleware'=>'auth:api'], function(){
 });
 Route::apiResource('title', TitleController::class);
 Route::get('countries', [CountryController::class, 'index']);
-Route::get('states', [CountryController::class, 'states']);
-Route::get('cities', [CountryController::class, 'cities']);
+Route::get('states/{country_id}', [CountryController::class, 'states']);
+Route::get('cities/{state_id}', [CountryController::class, 'cities']);
 
 // Email/Username
 // Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);

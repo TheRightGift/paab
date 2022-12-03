@@ -18,8 +18,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body>
-        <div id="clientDashboard"></div>
-
+        <div id="app">
+            <client-component></client-component>
+        </div>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/materialize.min.js') }}"></script>

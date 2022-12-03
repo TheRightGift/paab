@@ -22,6 +22,9 @@ import LoginComponent from './components/auth/LoginComponent.vue';
 import OtpComponent from './components/auth/OtpComponent.vue';
 import SignupComponent from './components/auth/SignupComponent.vue';
 
+// Client
+import ClientComponent from './components/client/Dashboard.vue';
+
 
 app.component('home-component', HomeComponent);
 app.component('login-component', LoginComponent);
@@ -29,6 +32,9 @@ app.component('otp-component', OtpComponent);
 app.component('signup-component', SignupComponent);
 app.component('started-component', StartedComponent);
 app.component('template-component', TemplateComponent);
+
+app.component('client-component', ClientComponent);
+
 
 /**
  * The following block of code may be used to automatically register your
