@@ -10,4 +10,6 @@ class Title extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    
 }

@@ -21,12 +21,12 @@ class CountryController extends Controller
         return response(['countries' => $countries,  'message' => 'Retrieved Success', 'status' => 200], 200);
     }
 
-    public function states() {
-        $states = State::get();
+    public function states($country) {
+        $states = State::where('country_id', $country)->get();
         return response(['states' => $states,  'message' => 'Retrieved Success', 'status' => 200], 200);
     }
-    public function cities() {
-        $cities = City::get();
+    public function cities($state) {
+        $cities = City::where('state_id', $state)->get();
         return response(['cities' => $cities,  'message' => 'Retrieved Success', 'status' => 200], 200);
     }
 

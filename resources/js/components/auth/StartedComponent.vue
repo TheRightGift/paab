@@ -199,7 +199,7 @@
                                         State
                                     </option>
                                     <option
-                                        v-for="state in matchedStates"
+                                        v-for="state in states"
                                         :key="state.id"
                                         :value="state.id"
                                     >
@@ -218,7 +218,7 @@
                                         City
                                     </option>
                                     <option
-                                        v-for="city in matchedCities"
+                                        v-for="city in cities"
                                         :key="city.id"
                                         :value="city.id"
                                     >
@@ -311,8 +311,6 @@
     // import { Base64 } from "js-base64";
     // const key = process.env.MIX_APP_KEY;
     let country = "/api/countries";
-    let state = "/api/states";
-    let city = "/api/cities";
     let title = "/api/title"
 
     export default {
@@ -326,8 +324,6 @@
                 countries: [],
                 states: [],
                 cities: [],
-                matchedStates: [],
-                matchedCities: [],
                 verifiedEmail: 1,
                 registrationLoading: false,
                 otp: "",
@@ -417,18 +413,14 @@
             getLocations() {
                 const requestTitles = axios.get(title);
                 const requestCountries = axios.get(country);
-                const requestStates = axios.get(state);
-                const requestCities = axios.get(city);
+                // const requestStates = axios.get(state);
+                // const requestCities = axios.get(city);
                 axios
-                    .all([requestTitles, requestCountries, requestStates, requestCities])
+                    .all([requestTitles, requestCountries])
                     .then(
                         axios.spread((...responses) => {
                             const titleRes = responses[0];
                             const countryRes = responses[1];
-                            const stateRes = responses[2];
-                            const cityRes = responses[3];
-                            this.states = stateRes.data.states;
-                            this.cities = cityRes.data.cities;
                             this.countries = countryRes.data.countries;
                             this.titles = titleRes.data.titles;
                         })
@@ -438,14 +430,34 @@
                     });
             },
             sortStates() {
-                this.matchedStates = this.states.filter(
-                    (el) => el.country_id == this.userReg.country
-                );
+                axios.get(`/api/states/${this.userReg.country}`).then(res => {
+                    if (res.data.status == 200) {
+                        this.states = res.data.states;
+                    }
+                    else {
+                        M.toast({
+                            html: 'Error getting states',
+                            classes: "errorNotifier",
+                        });
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
             },
             sortCities() {
-                this.matchedCities = this.cities.filter(
-                    (el) => el.state_id == this.userReg.state
-                );
+                axios.get(`/api/cities/${this.userReg.state}`).then(res => {
+                    if (res.data.status == 200) {
+                        this.cities = res.data.cities;
+                    }
+                    else {
+                        M.toast({
+                            html: 'Error getting cities',
+                            classes: "errorNotifier",
+                        });
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
             },
         },
         computed: {},
