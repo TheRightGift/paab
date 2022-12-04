@@ -54,3 +54,6 @@ Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
 
 // Dashboard
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/websites', function () {
+    return view('client.websites');
+});

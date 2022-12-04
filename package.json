@@ -29,6 +29,6 @@
     "dependencies": {
         "base64-js": "^1.5.1",
         "crypto-js": "^4.1.1",
-        "js-base64": "^3.7.3"
+        "moment": "^2.29.4"
     }
 }

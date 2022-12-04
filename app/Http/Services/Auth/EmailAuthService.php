@@ -13,6 +13,8 @@ use App\Models\User;
 use App\Models\Tenant;
 
 use Carbon\Carbon;
+use Cookie;
+
 
 class EmailAuthService {
 
@@ -79,6 +81,7 @@ class EmailAuthService {
         }
         $accessToken = auth()->user()->createToken('accessToken')->accessToken;
 
+        $cookie = $this->getCookieDetails($accessToken);
         return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];
     }
 
@@ -238,6 +241,21 @@ class EmailAuthService {
             'otp' => $otp,
             'email' => $email,
         ])->notify(new MailOTP($otp));
+    }
+
+    private function getCookieDetails($token)
+    {
+        return [
+            'name' => '_token',
+            'value' => $token,
+            'minutes' => 1440,
+            'path' => null,
+            'domain' => null,
+            // 'secure' => true, // for production
+            'secure' => null, // for localhost
+            'httponly' => true,
+            'samesite' => true,
+        ];
     }
 
 }
