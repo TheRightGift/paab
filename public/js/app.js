@@ -21082,7 +21082,9 @@ var title = "/api/title";
       return new Date().getFullYear();
     },
     setOTP: function setOTP(value) {
-      this.otp = value;
+      // console.log(value)
+      this.otp = value.otp;
+      this.userReg.email = value.email;
       this.updateVerifiedEmail(2);
     },
     otpVerifier: function otpVerifier(value) {
@@ -21135,27 +21137,17 @@ var title = "/api/title";
       axios.all([requestTitles, requestCountries]).then(axios.spread(function () {
         var titleRes = arguments.length <= 0 ? undefined : arguments[0];
         var countryRes = arguments.length <= 1 ? undefined : arguments[1];
-<<<<<<< HEAD
-        _this3.countries = countryRes.data.countries;
-        _this3.titles = titleRes.data.titles;
-=======
-        var stateRes = arguments.length <= 2 ? undefined : arguments[2];
-        var cityRes = arguments.length <= 3 ? undefined : arguments[3];
-        _this2.states = stateRes.data.states;
-        _this2.cities = cityRes.data.cities;
         _this2.countries = countryRes.data.countries;
         _this2.titles = titleRes.data.titles;
->>>>>>> eb8b8dfbd1ffb1700a9dcdfefafe339f199c2169
       }))["catch"](function (errors) {
         console.log(errors);
       });
     },
     sortStates: function sortStates() {
-<<<<<<< HEAD
-      var _this4 = this;
+      var _this3 = this;
       axios.get("/api/states/".concat(this.userReg.country)).then(function (res) {
         if (res.data.status == 200) {
-          _this4.states = res.data.states;
+          _this3.states = res.data.states;
         } else {
           M.toast({
             html: 'Error getting states',
@@ -21167,10 +21159,10 @@ var title = "/api/title";
       });
     },
     sortCities: function sortCities() {
-      var _this5 = this;
+      var _this4 = this;
       axios.get("/api/cities/".concat(this.userReg.state)).then(function (res) {
         if (res.data.status == 200) {
-          _this5.cities = res.data.cities;
+          _this4.cities = res.data.cities;
         } else {
           M.toast({
             html: 'Error getting cities',
@@ -21179,17 +21171,6 @@ var title = "/api/title";
         }
       })["catch"](function (err) {
         console.log(err);
-=======
-      var _this3 = this;
-      this.matchedStates = this.states.filter(function (el) {
-        return el.country_id == _this3.userReg.country;
-      });
-    },
-    sortCities: function sortCities() {
-      var _this4 = this;
-      this.matchedCities = this.cities.filter(function (el) {
-        return el.state_id == _this4.userReg.state;
->>>>>>> eb8b8dfbd1ffb1700a9dcdfefafe339f199c2169
       });
     }
   },
@@ -21418,7 +21399,11 @@ __webpack_require__.r(__webpack_exports__);
                 _this.$emit('res', 200);
               } else if (_this.type === 'register') {
                 // Pass OTP to parent ;
-                _this.$emit('otp', res.data.otp);
+                var resData = {
+                  otp: res.data.otp,
+                  email: _this.email
+                };
+                _this.$emit('resData', resData);
               }
             } else if (res.data.status == 404) {
               M.toast({
@@ -22412,9 +22397,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_VerifyEmailComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("VerifyEmailComponent");
   var _component_OtpComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("OtpComponent");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$data.verifiedEmail == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, " © PaaB. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getYear()) + ". We support your brand! ", 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VerifyEmailComponent, {
-    onOtp: $options.setOTP,
+    onResData: $options.setOTP,
     type: 'register'
-  }, null, 8 /* PROPS */, ["onOtp"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.verifiedEmail == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, _hoisted_13, _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_15, " © PaaB. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getYear()) + ". We support your brand! ", 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_OtpComponent, {
+  }, null, 8 /* PROPS */, ["onResData"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.verifiedEmail == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, _hoisted_13, _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_15, " © PaaB. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getYear()) + ". We support your brand! ", 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_OtpComponent, {
     onRes: $options.otpVerifier,
     otp: $data.otp
   }, null, 8 /* PROPS */, ["onRes", "otp"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.verifiedEmail == 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, _hoisted_21, _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_23, " © PaaB. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getYear()) + ". We support your brand! ", 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
@@ -22487,11 +22472,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: _cache[9] || (_cache[9] = function () {
       return $options.sortCities && $options.sortCities.apply($options, arguments);
     })
-<<<<<<< HEAD
-  }, [_hoisted_68, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.states, function (state) {
-=======
-  }, [_hoisted_50, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.matchedStates, function (state) {
->>>>>>> eb8b8dfbd1ffb1700a9dcdfefafe339f199c2169
+  }, [_hoisted_50, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.states, function (state) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: state.id,
       value: state.id
@@ -22502,11 +22483,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
       return $data.userReg.city = $event;
     })
-<<<<<<< HEAD
-  }, [_hoisted_71, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.cities, function (city) {
-=======
-  }, [_hoisted_53, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.matchedCities, function (city) {
->>>>>>> eb8b8dfbd1ffb1700a9dcdfefafe339f199c2169
+  }, [_hoisted_53, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.cities, function (city) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: city.id,
       value: city.id
@@ -22895,13 +22872,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_auth_StartedComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/auth/StartedComponent.vue */ "./resources/js/components/auth/StartedComponent.vue");
 /* harmony import */ var _components_TemplateComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/TemplateComponent.vue */ "./resources/js/components/TemplateComponent.vue");
 /* harmony import */ var _components_auth_LoginComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/auth/LoginComponent.vue */ "./resources/js/components/auth/LoginComponent.vue");
-<<<<<<< HEAD
-/* harmony import */ var _components_auth_OtpComponent_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/auth/OtpComponent.vue */ "./resources/js/components/auth/OtpComponent.vue");
-/* harmony import */ var _components_auth_SignupComponent_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/auth/SignupComponent.vue */ "./resources/js/components/auth/SignupComponent.vue");
-/* harmony import */ var _components_client_Dashboard_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/client/Dashboard.vue */ "./resources/js/components/client/Dashboard.vue");
-=======
 /* harmony import */ var _components_auth_ResetPasswordComponent_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/auth/ResetPasswordComponent.vue */ "./resources/js/components/auth/ResetPasswordComponent.vue");
->>>>>>> eb8b8dfbd1ffb1700a9dcdfefafe339f199c2169
+/* harmony import */ var _components_client_Dashboard_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/client/Dashboard.vue */ "./resources/js/components/client/Dashboard.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -22933,7 +22905,7 @@ app.component('login-component', _components_auth_LoginComponent_vue__WEBPACK_IM
 app.component('resetpassword-component', _components_auth_ResetPasswordComponent_vue__WEBPACK_IMPORTED_MODULE_6__["default"]);
 app.component('started-component', _components_auth_StartedComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
 app.component('template-component', _components_TemplateComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
-app.component('client-component', _components_client_Dashboard_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
+app.component('client-component', _components_client_Dashboard_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
 
 /**
  * The following block of code may be used to automatically register your
@@ -54588,13 +54560,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Dashboard_vue_vue_type_template_id_2165077b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=template&id=2165077b */ "./resources/js/components/client/Dashboard.vue?vue&type=template&id=2165077b");
 /* harmony import */ var _Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=script&lang=js */ "./resources/js/components/client/Dashboard.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_amaizupeter_Dev_PHP_tests_paab_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_nupaab_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_amaizupeter_Dev_PHP_tests_paab_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Dashboard_vue_vue_type_template_id_2165077b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/client/Dashboard.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_nupaab_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Dashboard_vue_vue_type_template_id_2165077b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/client/Dashboard.vue"]])
 /* hot reload */
 if (false) {}
 

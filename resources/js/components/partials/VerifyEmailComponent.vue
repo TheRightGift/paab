@@ -160,7 +160,11 @@
                                     this.$emit('res', 200);
                                 } else if(this.type === 'register'){
                                     // Pass OTP to parent ;
-                                    this.$emit('otp', res.data.otp);
+                                    let resData = {
+                                        otp: res.data.otp,
+                                        email: this.email
+                                    }
+                                    this.$emit('resData', resData);
                                 }
                             } else if (res.data.status == 404) {
                                 M.toast({

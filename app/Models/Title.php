@@ -9,7 +9,10 @@ class Title extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'profession_id'];
 
-    
+    public function profession()
+    {
+        return $this->belongsTo('App\Models\Profession', 'profession_id', 'id');
+    }
 }

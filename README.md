@@ -8,9 +8,11 @@ Note to self: As a result of <code>FK</code> - foreign key the <code>cities tabl
 ## Tasks from MVP
 
 ### Back End
-- [ ] Sync Profession and Template Model for Central DB and Tenant DB.
+- [x] Sync Profession and Template Model for Central DB and Tenant DB.
 - [ ] Dev Client Dashboard endpoints.
 - [ ] ...
 
 ### Front End
+- [ ] dev mobile view for all Auth
+- [ ] dev client dashboard components
 - [ ] ...

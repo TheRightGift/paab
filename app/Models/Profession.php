@@ -26,6 +26,6 @@ class Profession extends Model
 
     public function title()
     {
-        return $this->hasOne(Title::class);
+        return $this->hasMany(Title::class);
     }
 }
