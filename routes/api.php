@@ -19,22 +19,29 @@ use App\Http\Controllers\CountryController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:passport')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-
-Route::group(['middleware'=>'auth:api'], function(){
+Route::group(['middleware' => 'auth.api'], function() {
+    Route::get('logout', 'AuthController@logout');
+    Route::get('/user', function(Request $request) {
+        return $request->user();
+    });
+    Route::get('tenancies', [App\Http\Controllers\TestTenantController::class, 'tenancies']);
     // Professions
-    Route::resource('/profession', ProfessionController::class)->middleware('can:run_admin_or_superAdmin_ops');
-
+    Route::resource('/profession', ProfessionController::class);
+    // ->middleware('can:run_admin_or_superAdmin_ops');
+    
     // Templates
-    Route::resource('/template', TemplateController::class)->middleware('can:run_admin_or_superAdmin_ops');
-
+    Route::resource('/template', TemplateController::class);
+    // ->middleware('can:run_admin_or_superAdmin_ops');
+    
     Route::post('tenant', [App\Http\Controllers\TestTenantController::class, 'create']);
     Route::post('template-update', [App\Http\Controllers\TestTenantController::class, 'update']);
-    Route::get('tenancies', [App\Http\Controllers\TestTenantController::class, 'tenancies']);
 });
+// Route::group(['middleware'=>'auth:api'], function(){
+// });
 Route::apiResource('title', TitleController::class);
 Route::get('countries', [CountryController::class, 'index']);
 Route::get('states/{country_id}', [CountryController::class, 'states']);

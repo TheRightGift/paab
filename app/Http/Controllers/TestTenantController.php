@@ -12,17 +12,17 @@ class TestTenantController extends Controller
         // The ID might be the combination of firstnameLastname of user or a custom name
         $inputs = Validator::make($request->all(), [
             'name' => ['required'],
-            'template_id' => ['required'],
-            'user_id',
+            'template_id' => ['nullable'],
+            'user_id' => ['required'],
+            'description' => ['required'],
         ]); 
-        
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
-        $tenant = Tenant::create(['id' => $request->name, 'template_id' => $request->template_id, 'user_id' => auth()->user()->id]);
+        $tenant = Tenant::create($inputs->validated());
         if ($tenant) {
-            $tenant->domains()->create(['domain' => $request->name .'.localhost']); //Determine how to handle domain
-            return response()->json(['message' => 'Your Website is created successfuly', 'status' => 200], 200);
+            $domain = $tenant->domains()->create(['domain' => $request->name .'.localhost:'.$_SERVER['SERVER_PORT']]); //Determine how to handle domain
+            return response()->json(['message' => 'Your Website is created successfuly', 'tenant' => $tenant, 'domain' => $domain, 'status' => 200], 200);
         }
         else {
             return response()->json(['message' => 'Problem creating your website, Please Try again', 'status' => 502], 502);
@@ -53,17 +53,18 @@ class TestTenantController extends Controller
     // Renders / of template
     public function template() {
         // Get the template_id and get its details
-        $template = Tenant::find(tenant('id'))->template;
-        $templateTitle = $template['title'];
+        return view('templater');
+        // $template = Tenant::find(tenant('id'))->template;
+        dd($template);
+        // $templateTitle = $template['name'];
 
-        return view('templater', compact('templateTitle'));
     }
 
     public function tenancies() {
         // Get the authenticaed user
         // When coming from mobile request for user->id
         $user = auth()->user()->id;
-        $tenancies = Tenant::where('user_id', $user)->get();
+        $tenancies = Tenant::where('user_id', $user)->with('domains')->get();
 
         return response()->json(['message' => 'Tenants fetched', 'tenants' => $tenancies, 'status' => 200], 200);
     }

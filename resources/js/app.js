@@ -24,6 +24,7 @@ import ResetPasswordComponent from './components/auth/ResetPasswordComponent.vue
 
 // Client
 import ClientComponent from './components/client/Dashboard.vue';
+import ClientWebsitesComponent from './components/client/WebsitesComponent.vue';
 
 
 app.component('home-component', HomeComponent);
@@ -34,6 +35,7 @@ app.component('started-component', StartedComponent);
 app.component('template-component', TemplateComponent);
 
 app.component('client-component', ClientComponent);
+app.component('client-websites-component', ClientWebsitesComponent);
 
 
 /**

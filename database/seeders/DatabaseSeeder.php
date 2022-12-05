@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         DB::unprepared(file_get_contents($city));
         $this->command->info('Country States Cities table seeded!');
         // \App\Models\User::factory(10)->create();
-
+        
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

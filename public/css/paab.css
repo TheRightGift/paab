@@ -51,6 +51,9 @@ body {
     background-color: #FFFFFF;
     color: #81c784;
 }
+.hoverable {
+    cursor: pointer;
+}
 .errorNotifier {
     background-color: red;
     color: var(--white);
@@ -1248,7 +1251,1024 @@ a.active {
     margin-left: 0.7vw;
 }
 
+/* Dashboard Section */
+.dashLeftBar {
+    background: #7746FF;
+    border-radius: 3px;
+    height: 100vh;
+    padding-top: 4vh;
+    position: fixed;
+    width: 16.7%;
+}
 
+.dashRightDiv {
+    margin: 1.3vh auto 0 auto;
+    width: 98.5%;
+}
+
+#dashLeftColBar {
+    padding: 0;
+}
+
+#dashRowDiv {
+    margin: 0;
+}
+
+.proImgDiv {
+    background: #D9D9D9;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+#proImg {
+    font-size: 4rem;
+    margin-left: 0.5vw;
+    margin-top: 0.2vh;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.dashLeftBarInnerDiv {
+    /* width: 12%; */
+    margin: 5vh auto 0 auto;
+}
+
+.dashLeftBarIcons {
+    font-size: 2rem;
+    color: #D9D9D9;
+    margin-left: 7.5vw;
+}
+
+.dashLeftBarTitle {
+    margin: 0 0 4vh 0;
+    color: #D9D9D9;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+#dashActive {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 2rem;
+    margin-left: 7.5vw;
+}
+
+#dashRightImgDiv {
+    background-image: url('../media/img/rocket.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 292px;
+    border-radius: 10px;
+}
+
+#dashRightImgInnerDiv {
+    width: 100%;
+    height: 292px;
+    border-radius: 10px;
+    background-color: rgba(30, 30, 30, 0.5);
+}
+
+.dashRightImgTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3.125rem;
+    /* line-height: 61px; */
+    color: #6938F2;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0;
+}
+
+.dashRightImgTxt {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    /* line-height: 24px; */
+    color: #FFFFFF;
+    margin: 0;
+    width: 87%;
+}
+
+.dashRightImgTxtDiv {
+    position: absolute;
+    top: 13vh;
+    left: 22vw;
+}
+
+.dashWlcNoteDiv {
+    background: #1E1E1E;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 12.25rem;
+}
+
+.dashWlcNoteTitle {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.5rem;
+    color: #7746FF;
+    margin: 2vh 0 0 0;
+}
+
+.dashWlcNoteTitle1 {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+}
+
+.dashWlcNoteTxt {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    width: 63%;
+    margin: 0;
+}
+
+.dashWlcNoteInnerDiv {
+    position: relative;
+    top: 4vh;
+    left: 2vw;
+}
+
+.dashTimeDiv {
+    background: #7746FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 12.25rem;
+    margin-top: 2vh;
+    width: 97%;
+}
+
+.dashTimeDate {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: #FFFFFF;
+    margin: 1vh 0 0 0;
+}
+
+.dashTime {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3.75rem;
+    line-height: 90px;
+    color: #FFFFFF;
+    margin: 0;
+    position: relative;
+    bottom: 2vh;
+}
+
+.dashTimePeriod {
+    font-size: 1.5rem;
+}
+
+.dashTimeInnerDiv {
+    position: relative;
+    top: 4vh;
+    left: 2vw;
+}
+
+.shapeDegDiv {
+    display: flex;
+    position: relative;
+    top: 7vh;
+    left: 1.5vw;
+}
+
+.shapeDeg {
+    width: 38.86px;
+    height: 119.94px;
+    background: rgba(0, 0, 0, 0.29);
+    border-radius: 100px;
+    transform: rotate(-28.69deg);
+    margin-right: 1vw;
+}
+
+.shapeDeg1 {
+    width: 40.25px;
+    height: 124.23px;
+    background: rgba(0, 0, 0, 0.29);
+    border-radius: 100px;
+    transform: rotate(-28.69deg);
+    margin-right: 1vw;
+    position: relative;
+    bottom: 1vh;
+    right: 0.3vw;
+}
+
+.shapeDeg2 {
+    width: 40.25px;
+    height: 124.23px;
+    background: rgba(0, 0, 0, 0.29);
+    border-radius: 100px;
+    transform: rotate(-28.69deg);
+    margin-right: 1vw;
+    position: relative;
+    bottom: 2vh;
+    right: 0.6vw;
+}
+
+.cardHeader {
+    background: #7746FF;
+    box-shadow: 0px 4px 4px rgba(119, 70, 255, 0.3);
+    border-radius: 10px 10px 0px 0px;
+}
+
+.cardContent {
+    background: #1E1E1E;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.cardTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #FFFFFF;
+    padding: 5px 0 5px 30px;
+    margin: 0;
+
+}
+
+#dashWlcNoteRowDiv,
+#myWebDiv,
+#myMailDiv {
+    margin-bottom: 0;
+}
+
+.cardImgDiv {
+    width: 60px;
+    height: 60px;
+    background: #D9D9D9;
+    border-radius: 50%;
+}
+
+#cardImg {
+    font-size: 3rem;
+    margin-left: 0.5vw;
+    margin-top: 0.5vh;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.cardImgMainDiv {
+    display: flex;
+    position: relative;
+    margin: 1rem 0 0 2rem;
+}
+
+.cardProName {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: #7746FF;
+    margin-left: 1vw;
+}
+
+#cardViewLink {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 24px;
+    text-decoration: underline;
+    color: #F4F4F4;
+    position: relative;
+    top: 4vh;
+    /* border-bottom: #D9D9D9; */
+}
+
+.cardLine {
+    /* border-color: #6938F2; */
+    border: 0.1px solid rgba(119, 70, 255, 0.3);
+}
+
+#dashAddIconBtn {
+    color: #7746FF;
+    position: relative;
+    left: 0.7vw;
+    cursor: pointer;
+}
+
+.dashTimeAgo {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: #FFFFFF;
+    margin-left: 2vw;
+}
+
+.mailCardTxt {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 0.8);
+    width: 98%;
+    margin-top: 0;
+    margin-bottom: 3.5vh;
+    position: relative;
+    bottom: 2vh;
+}
+
+#myWebRmMgRow {
+    margin-bottom: 0;
+}
+
+#dashSidenavIconBtn {
+    font-size: 3rem;
+    color: #7746FF;
+}
+
+/* User Template Section */
+#userTempDiv {
+    margin-right: 7vw;
+}
+
+.userTempTitle {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.125rem;
+    /* text-align: center; */
+    color: #7746FF;
+    margin: 0;
+}
+
+.userTempMainDiv {
+    display: flex;
+    width: 60%;
+    margin: 7vh auto;
+}
+
+.tempImgDiv {
+    width: 60px;
+    height: 60px;
+    background: #D9D9D9;
+    border-radius: 50%;
+    margin: auto;
+}
+
+#tempProIcon {
+    font-size: 3rem;
+    margin-left: 0.5vw;
+    margin-top: 0.5vh;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* Client Templates Section */
+/* .clientTempPageImgSmDv {
+    margin-bottom: 0.2vh;
+    padding-bottom: 5vh;
+} */
+
+
+/* Client Website Section */
+.webBlackDiv {
+    width: 95%;
+    height: 196px;
+    background: #1E1E1E;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 5vh auto 0 auto; 
+}
+.webBlackTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: #7746FF;
+    margin: 6vh 0 0 0;
+}
+.webBlackTxt {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0;
+    width: 60%;
+}
+.webBlackDiv1 {
+    width: 93%;
+    margin: 0 auto;
+}   
+#webAddCircleIcon {
+    cursor: pointer;
+    color: #7746FF;
+    font-size: 2rem;
+    position: absolute;
+    right: 7vw;
+    top: 15vh;
+}
+.webWhiteDiv {
+    height: 196px;
+    border-radius: 10px;
+}
+/* #webWhiteProDiv {
+    margin-right: 0vw;
+} */
+.webWhiteProDiv {
+    width: 60px;
+    height: 60px;
+    background: #D9D9D9;
+    border-radius: 50%;
+}
+.webWhiteDiv1 {
+    padding-top: 10vh;
+}
+.webWhiteProName {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.125rem;
+    color: #7746FF;
+    margin: 1vh 0 0 0;
+}
+.webWhiteTitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.25rem;
+    color: #7746FF;
+    margin: 0;
+}
+.webWhiteTxt {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1rem;
+    color: rgb(30, 30, 30);
+}
+#webWhiteIcon {
+    font-size: 2rem;
+    color: #7746FF;
+}
+.webHr {
+    margin: 0;
+}
+#webRightDiv {
+    padding: 0;
+}
+#webWhiteDiv2 {
+    border-bottom: 1px solid rgba(119, 70, 255, 0.3);
+    margin: 0;
+}
+#webWhiteProMgLftDiv {
+    margin-left: 2vw;
+}
+
+/* Client Mail Section */
+.mailLink {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #7746FF;
+}
+.mailP {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 0.8);
+}.mailTime {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: #FFFFFF;
+}
+#mailInnerDiv {
+    /* margin-top: 3vh; */
+    padding-top: 5vh;
+}
+.mailBlueDiv {
+    width: 95%;
+    height: 196px;
+    background: #7746FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 5vh auto 6vh auto;
+}
+.mailTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: #1E1E1E;
+    margin: 6vh 0 0 0;
+}
+#mailRightDiv {
+    padding-bottom: 13vh;
+}
+.mailBlackDiv {
+    width: 95%;
+    height: 196px;
+    background: #1E1E1E;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 2vh auto 0 auto;
+}
+
+#mailScrollDiv {
+    cursor: pointer;
+}
+
+/* Client Settings Section */
+.settingsFormDiv {
+    width: 40vw;
+    height: 86vh;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#settingsForm {
+    width: 80%;
+    margin: 0 auto;
+}
+.mySetTitle {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: #7746FF;
+    margin: 0 1vw 0 0;
+    position: relative;
+    bottom: 3vh;
+}
+.setMainDiv {
+    display:flex; 
+    width: 70%;
+    margin: 10vh auto 0 auto;
+}
+.setProDiv {
+    background: #D9D9D9;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block
+}
+#setProImg {
+    font-size: 3.5rem;
+    margin-left: 0.8vw;
+    margin-top: 0.9vh;
+    color: rgba(0, 0, 0, 0.5);
+}
+#setProImgContainDiv {
+    display: flex;
+}
+.setProEditIconDiv {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: #7746FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline-block;
+    position: relative;
+    top: 1.2vh;
+    right: 1.2vw;
+}
+#setProEditIcon {
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    margin: 0.3vh 0 0 0.1vw;
+}
+#setProMainDiv {
+    width: 20%;
+    margin: 0 auto 6vh auto;
+}
+#setFormBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: capitalize;
+    margin-top: 2vh;
+}
+/* Client Support Section */
+.supportBlueDiv {
+    width: 95%;
+    height: 196px;
+    background: #1E1E1E;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 5vh auto 6vh auto;
+}
+.supportTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: #7746FF;
+    margin: 6vh 0 0 0;
+}
+.webBlackDiv1 {
+    width: 95%;
+    margin: 0 auto;
+}
+.supportTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.875rem;
+    line-height: 50px;
+    color: #7746FF;
+}
+.supportTxt {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #1E1E1E;
+}
+div .row .supportDiv {
+    width: 95%;
+    margin: 0 auto;
+}
+.supportTitle1 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 22px;
+    color: #7746FF;
+    margin-top: 0;
+}
+.supportTxt1 {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: #1E1E1E;
+}
+.supportDiv > *{
+    margin-bottom: 5vh;
+}
+.supportGetInTouchDiv {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 94%;
+    margin: 1vh auto 4vh auto;
+}
+.supportGetInTouchTitle {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: #7746FF;
+    margin: 0;
+}   
+.supportGetInTouchTxt {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+#supportGetInTouchBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    margin-top: 2vh;
+}
+div .row .supportGetInTouchRowDiv {
+    width: 98%;
+    margin: 0 auto;
+    padding: 2.3vh 0;
+}
+#supportGetInTouchBtnColDiv {
+    padding-right: 0;
+}
+
+/* Client modal Section */
+/* .modalContainDiv {
+    width: 90%;
+    margin: 6vh auto;
+} */
+.clientModalDiv {
+    background: #1E1E1E;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-top: 1.5vh;
+    margin-bottom: 3vh;
+    padding-top: 7vh;
+    padding-bottom: 3vh;
+}
+.clientSendmailContainDiv {
+    width: 80%;
+    margin: auto;
+}
+.clientSendmailBackTxt {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.875rem;
+    color: #000000;
+}
+#clientSendmailArrowBackIcon {
+    font-size: 1.5rem;
+    font-weight: 900;
+    position: relative;
+    top: 0.3rem;
+    margin-right: 0.2vw;
+}
+.clientSendemailTitle {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: #7746FF;
+}
+.clientSendemailTxt, .clientSendemailTxt1 {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.97rem;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3.5vh;
+}
+.clientSendemailTxt2 {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.97rem;
+    line-height: 21px;
+    color: #7746FF;
+    margin-top: 5vh;
+}
+.clientSendmailTimeSent {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: #FFFFFF;
+}
+#clientSendmailRowDiv {
+    width: 95%;
+    margin: auto;
+}
+.clientSendmailArrowBackLink {
+    color: #000000;
+}
+
+/* Client Setup Website Modal */
+.setWebContainModalDiv {
+    background: #1E1E1E;
+    border-radius: 10px;
+    padding-top: 7vh;
+    width: 80%;
+    margin: 13vh auto 0 auto;
+    padding-bottom: 2vh;
+}
+.setWebInnerModalDiv {
+    width: 85%;
+    margin: auto;
+}
+.setWebTitleDiv, .setWebUrlDiv, .setWebDateDiv, .setWebDescriptionDiv {
+    display: flex;
+}
+.setWebTitle, .setWebUrlTitle, .setWebDateTitle, .setWebDescriptionTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+    margin-right: 2vw;
+}
+.setWebTitleData, .setWebUrlData, .setWebDateData, .setWebDescriptionData {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 22px;
+    letter-spacing: -0.015em;
+    color: #7746FF;
+}
+#setWebBtn {
+    background: #D9D9D9;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #000000;
+    margin-bottom: 2vh;
+}
+#setWebBtn1 {
+    background: #7746FF;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+}   
+#setWebBtnDiv {
+    margin-top: 12vh;
+}
+.setWebPlan {
+    background: #FEC526;
+    box-shadow: 0px 4px 4px rgba(254, 197, 38, 0.27);
+    border-radius: 100px 0px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+    padding: 0px 10px;
+    margin-left: 1vw;
+}
+
+/* Client Support Modal */
+.clientModalSupportDiv {
+    background: #7746FF;
+    box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding-top: 2vh;
+    padding-bottom: 12vh;
+    width: 60%;
+    position: absolute;
+    bottom: 7vh;
+    left: 29vw;
+}
+.clientModalSupportInnerDiv {
+    width: 95%;
+    margin: 0 auto;
+}
+#clientCusSupportCancelBtn {
+    color: #ffffff;
+    margin: 4vh 0 0 2vw;
+    cursor: pointer;
+}
+
+/* Reset Password */
+#resetEmail {
+    border: 1px solid #7746FF;
+    border-radius: 100px;
+    padding-left: 2vw;
+    width: 96.9%;
+}
+
+/* Create new password Section */
+#createPass {
+    border: 1px solid #7746FF;
+    border-radius: 100px;
+    padding-left: 2vw;
+    width: 96.9%;
+    margin-bottom: 0;
+}
+#confirmCreatePass {
+    border: 1px solid #7746FF;
+    border-radius: 100px;
+    padding-left: 2vw;
+    width: 96.9%;
+    margin-top: 0;
+}
+.createPasswordLoginLinkDiv {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 18px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 4vh;
+}
+.createPasswordLoginLink {
+    text-decoration: underline;
+    margin-left: 0.5vw;
+    color: #7746FF;
+}
+#confirmCreatePassColDiv {
+    margin-top: 0;
+}
+
+/* Login Reset password link */
+#loginResetPassLink {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+}
+.loginPassInputRowColDiv {
+    margin-bottom: 0;
+}
+#authAlertContainDiv {
+    position: absolute;
+    top: 15vh;
+    left: 25vw;
+}
+.clientSendMailBackLinkDiv {
+    margin-top: 6vh;
+}
+
+/* Create Portfolio Modal */
+.clientCreatePortModalDiv {
+    background: #FFFFFF;
+    border-radius: 10px;
+    position: absolute;
+    top: 8vh;
+    left: 24vw;
+    width: 70%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.clientCreatePortTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 1.25rem;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+#clientCreatePortInput, #clientCreatePortInput1 {
+    background: rgba(119, 70, 255, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    margin-top: 2vh;
+    padding: 0 2vw;
+    height: 7vh;
+}
+#clientCreatePortInput::placeholder,
+#clientCreatePortInput1::placeholder {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.8);
+
+}
+#clientCreatePortInputRowDiv {
+    margin-left: 4vw;
+    width: 80%;
+}
+#clientCreatePortBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+    margin: 0 0 11vh 28vw;
+    width: 12vw;
+}
+.webProfessionDiv {
+    display: flex;
+    width: 80%;
+    margin: 7vh auto;
+}
+#clientCreatePortCancelIconBtn {
+    margin: 2vw 0 0 5vh;
+    color: #7746FF;
+    cursor: pointer;
+}
+#clientCreatePortCancelDiv {
+    margin: 0;
+}
 
 
 
@@ -1932,7 +2952,7 @@ a.active {
 
 
 /* Media Query for Templates Page */
-/* On Medium Device */
+/* On Medium Device*/
 @media screen and (max-width: 992px) {
     .tempContainInnerDiv {
         width: 95%;

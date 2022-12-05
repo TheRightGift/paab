@@ -17,7 +17,8 @@ class Tenant extends BaseTenant implements TenantWithDatabase
         return [
             'id',
             'user_id',
-            'template_id'
+            'template_id',
+            'description',
         ];
     }
 

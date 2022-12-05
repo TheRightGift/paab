@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('professions', function (Blueprint $table) {
+        Schema::create('bios', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
+            $table->string('about');
+            $table->text('history');
             $table->timestamps();
-            $table->softDeletes();
-            
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professions');
+        Schema::dropIfExists('bios');
     }
 };
