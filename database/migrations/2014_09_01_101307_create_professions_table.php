@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('professions', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->bigInteger('title_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
             
-            $table->foreign('title_id')->references('id')->on('titles')->onUpdate('cascade')->onDelete('cascade');
+            
         });
     }
 

@@ -18,7 +18,7 @@
             </div>
 
             <div class="col s12 m12 l6 welcomeContainer">
-                <VerifyEmailComponent @otp="setOTP" :type="'register'"/>
+                <VerifyEmailComponent @resData="setOTP" :type="'register'"/>
             </div>
         </div>
 
@@ -353,7 +353,9 @@
                 return new Date().getFullYear();
             },
             setOTP(value){
-                this.otp = value;
+                // console.log(value)
+                this.otp = value.otp;
+                this.userReg.email = value.email;
                 this.updateVerifiedEmail(2);
             },
             otpVerifier(value){

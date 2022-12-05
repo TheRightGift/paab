@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('titles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->bigInteger('profession_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('profession_id')->references('id')->on('professions')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
