@@ -30,10 +30,12 @@ Route::group(['middleware' => 'auth.api'], function() {
     });
     Route::get('tenancies', [App\Http\Controllers\TestTenantController::class, 'tenancies']);
     // Professions
-    Route::resource('/profession', ProfessionController::class)->middleware('can:run_admin_or_superAdmin_ops');
+    Route::resource('/profession', ProfessionController::class);
+    // ->middleware('can:run_admin_or_superAdmin_ops');
     
     // Templates
-    Route::resource('/template', TemplateController::class)->middleware('can:run_admin_or_superAdmin_ops');
+    Route::resource('/template', TemplateController::class);
+    // ->middleware('can:run_admin_or_superAdmin_ops');
     
     Route::post('tenant', [App\Http\Controllers\TestTenantController::class, 'create']);
     Route::post('template-update', [App\Http\Controllers\TestTenantController::class, 'update']);

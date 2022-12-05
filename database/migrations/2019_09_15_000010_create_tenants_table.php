@@ -21,6 +21,7 @@ class CreateTenantsTable extends Migration
             // your custom columns may go here
             $table->bigInteger('user_id')->unsigned(); 
             $table->unsignedBigInteger('template_id');
+            $table->text('description');
             $table->timestamps();
             $table->json('data')->nullable();
 
