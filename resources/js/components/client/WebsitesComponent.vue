@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="dashLeftBarInnerDiv">
-                        <a href="/client/dashboard" class="dashLeftBarListDiv">
+                        <a href="/dashboard" class="dashLeftBarListDiv">
                             <i class="material-icons dashLeftBarIcons"
                                 >dashboard</i
                             >
@@ -154,7 +154,7 @@
             </div>
 
             <!-- Web black div -->
-            <div class="col s12 m10 l10" id="webRightDiv">
+            <div class="col s12 m10 l10" id="webRightDiv" v-if="(view == 0)">
                 <div class="webBlackDiv">
                     <div class="webBlackDiv1">
                         <div class="row webBlackDiv1">
@@ -201,22 +201,27 @@
                                                 >person</i
                                             >
                                         </div>
-                                        <p class="webWhiteProName">escoba</p>
+                                        <p class="webWhiteProName">
+                                            {{ website.name }}
+                                        </p>
                                     </div>
                                 </div>
 
                                 <div class="col s5 s5 l6 offset-s1">
                                     <p class="webWhiteTitle">Description</p>
                                     <p class="webWhiteTxt">
-                                        Lorem Ipsum is simply dummy text of the
-                                        printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard
-                                        dummy text
+                                        {{ website.description }}
                                     </p>
                                 </div>
 
                                 <div class="col s1 m2 l3 offset-s1 offset-m1">
-                                    <a href="#">
+                                    <a
+                                        :href="
+                                            'http://' +
+                                            website.domains[0].domain
+                                        "
+                                        target="_blank"
+                                    >
                                         <i
                                             class="material-icons right"
                                             id="webWhiteIcon"
@@ -232,6 +237,50 @@
                                 here when you create one
                             </p>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side Div -->
+            <div class="col s12 m10 l10" id="setupWebRightDiv" v-else>
+                <div class="setWebContainModalDiv">
+                    <div class="setWebInnerModalDiv">
+                
+                        <div class="setWebTitleDiv">
+                            <p class="setWebTitle">Title:</p>
+                            <p class="setWebTitleData">{{tenant.name}}</p>
+                        </div>
+                
+                        <div class="setWebUrlDiv">
+                            <p class="setWebUrlTitle">url:</p>
+                            <p>
+                                <a href="#" class="setWebUrlData">{{domain.domain}}</a>
+                                <span class="setWebPlan">Premium</span>
+                            </p>
+                        </div>
+                
+                        <div class="setWebDateDiv">
+                            <p class="setWebDateTitle">Start Date:</p>
+                            <p class="setWebDateData">{{new Date()}}</p>
+                        </div>
+                
+                        <div class="setWebDescriptionDiv">
+                            <p class="setWebDescriptionTitle">Description:</p>
+                            <p class="setWebDescriptionData">
+                                {{tenant.description}}
+                            </p>
+                        </div>
+                
+                        <div class="row" id="setWebBtnDiv">
+                            <button class="col s12 btn" type="button" id="setWebBtn">
+                                EDIT WEBSITE
+                            </button>
+                
+                            <button class="col s12 btn" type="button" id="setWebBtn1">
+                                VIEW WEBSITE
+                            </button>
+                        </div>
+                
                     </div>
                 </div>
             </div>
@@ -276,14 +325,20 @@
             <div class="clientCreateInnerPortModalDiv">
                 <div class="webProfessionDiv">
                     <div class="row">
-                        <div class="col s6 m4 l2" v-for="profession in professions" :key="profession.id">
+                        <div
+                            class="col s6 m4 l2"
+                            v-for="profession in professions"
+                            :key="profession.id"
+                        >
                             <div id="userTempDiv" class="hoverable">
                                 <div class="tempImgDiv" id="tempImgDiv">
                                     <i class="material-icons" id="tempProIcon"
                                         >person</i
                                     >
                                 </div>
-                                <p class="userTempTitle">{{profession.name}}</p>
+                                <p class="userTempTitle">
+                                    {{ profession.name }}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -296,7 +351,24 @@
                 id="clientCreatePortBtn"
                 @click.prevent="createWebsite()"
             >
-                GET STARTED
+                <span v-if="!loading">GET STARTED</span>
+                <div class="preloader-wrapper small active" v-else>
+                                        <div
+                                            class="
+                                                spinner-layer spinner-white-only
+                                            "
+                                        >
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
             </button>
         </div>
     </div>
@@ -313,15 +385,19 @@
         data() {
             return {
                 bg_img: "/media/img/istockphoto-1390124896-170667a.jpg",
+                domain: {},
                 isHidden: false,
+                loading:false,
                 professions: [],
                 pro_img: "/media/img/yuna.jpg",
+                tenant: {},
                 user: {},
                 websites: [],
                 web: {
                     name: "",
                     description: "",
                 },
+                view: 0,
             };
         },
         mounted() {
@@ -331,6 +407,25 @@
             this.isHidden = !this.isHidden;
         },
         methods: {
+            createWebsite() {
+                this.loading = true;
+                this.web.user_id = this.user.id;
+                axios
+                    .post("/api/tenant", this.web)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            this.tenant = res.data.tenant;
+                            this.domain = res.data.domain;
+                            this.loading = false;
+                            this.isHidden = !this.isHidden;
+                            this.setDefaults(1)
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+                // window.location.href = "/client/setupwebsite";
+            },
             getProfessions() {
                 axios
                     .get("/api/profession")
@@ -368,14 +463,8 @@
             modalCancelBtn() {
                 this.isHidden = true;
             },
-            createWebsite() {
-                this.web.user_id = this.user.id;
-                axios.post('/api/tenant', this.web).then(res => {
-                    console.log(res);
-                }).catch(err => {
-                    console.log(err);
-                })
-                // window.location.href = "/client/setupwebsite";
+            setDefaults (num) {
+                this.view = num;
             },
             webAddCircleIcon() {
                 this.isHidden = false;

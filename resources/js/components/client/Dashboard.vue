@@ -236,7 +236,7 @@
                                                         >
                                                     </div>
                                                     <p class="cardProName">
-                                                        {{eskoba}}
+                                                        {{website.name}}
                                                     </p>
                                                 </div>
                                             </div>
@@ -416,7 +416,7 @@
             getWebsites() {
                 axios.get("/api/tenancies").then(res => {
                     if (res.data.status == 200) {
-                        this.websites = res.data;
+                        this.websites = res.data.tenants;
                     }
                 }).catch(err => {
                     console.log(err);

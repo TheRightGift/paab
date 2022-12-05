@@ -14,53 +14,54 @@ class TitleSeeder extends Seeder
      */
     public function run()
     {
-        $title = [
-            [
-                'name' => 'Mr',
-            ],
-            [
-                'name' => 'Mrs',
-            ],
-            [
-                'name' => 'Dr',
-            ],
-            [
-                'name' => 'Engr',
-            ],
-            [
-                'name' => 'Chief',
-            ],
-            [
-                'name' => 'Barr',
-            ]
-            ];
-            collect($title)->each(function ($title) {\App\Models\Title::create($title);});
-            $professions = [
+        $professions = [
                 [
                     'name' => 'Doctor',
-                    'title_id' => 3,
                 ],
                 [
                     'name' => 'Tutor',
-                    'title_id' => 2,
                 ],
                 [
                     'name' => 'Photographer',
-                    'title_id' => 1,
                 ],
                 [
                     'name' => 'Trainer',
-                    'title_id' => 4,
                 ],
                 [
                     'name' => 'Lawyer',
-                    'title_id' => 6,
                 ],
                 [
                     'name' => 'Physician',
-                    'title_id' => 3,
                 ]
-                ];
-                collect($professions)->each(function ($professions) {\App\Models\Profession::create($professions);});
+            ];
+            collect($professions)->each(function ($professions) {\App\Models\Profession::create($professions);});
+            $title = [
+                [
+                    'profession_id' => 4,
+                    'name' => 'Mr',
+                ],
+                [
+                    'name' => 'Mrs',
+                    'profession_id' => 2
+                ],
+                [
+                    'name' => 'Dr',
+                    'profession_id' => 1
+                ],
+                [
+                    'name' => 'Engr',
+                    'profession_id' => 4
+                ],
+                [
+                    'name' => 'Chief',
+                    'profession_id' => 3
+                ],
+                [
+                    'name' => 'Barr',
+                    'profession_id' => 5
+                ]
+            ];
+            collect($title)->each(function ($title) {\App\Models\Title::create($title);});
+            
     }
 }
