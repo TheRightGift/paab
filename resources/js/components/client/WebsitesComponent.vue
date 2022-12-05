@@ -259,7 +259,7 @@
                         type="text"
                         placeholder="Website title"
                         id="clientCreatePortInput"
-                        v-model="web.title"
+                        v-model="web.name"
                     />
                 </div>
 
@@ -277,7 +277,7 @@
                 <div class="webProfessionDiv">
                     <div class="row">
                         <div class="col s6 m4 l2" v-for="profession in professions" :key="profession.id">
-                            <div id="userTempDiv">
+                            <div id="userTempDiv" class="hoverable">
                                 <div class="tempImgDiv" id="tempImgDiv">
                                     <i class="material-icons" id="tempProIcon"
                                         >person</i
@@ -294,7 +294,7 @@
                 type="button"
                 class="btn"
                 id="clientCreatePortBtn"
-                @click.prevent="modalSubmitBtn()"
+                @click.prevent="createWebsite()"
             >
                 GET STARTED
             </button>
@@ -319,7 +319,7 @@
                 user: {},
                 websites: [],
                 web: {
-                    title: "",
+                    name: "",
                     description: "",
                 },
             };
@@ -335,7 +335,7 @@
                 axios
                     .get("/api/profession")
                     .then((res) => {
-                        if (res.data.status == 200) {
+                        if (res.status == 200) {
                             this.professions = res.data.professionals;
                         }
                     })
@@ -358,7 +358,7 @@
                     .get("/api/tenancies")
                     .then((res) => {
                         if (res.data.status == 200) {
-                            this.websites = res.data;
+                            this.websites = res.data.tenants;
                         }
                     })
                     .catch((err) => {
@@ -368,8 +368,14 @@
             modalCancelBtn() {
                 this.isHidden = true;
             },
-            modalSubmitBtn() {
-                window.location.href = "/client/setupwebsite";
+            createWebsite() {
+                this.web.user_id = this.user.id;
+                axios.post('/api/tenant', this.web).then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
+                // window.location.href = "/client/setupwebsite";
             },
             webAddCircleIcon() {
                 this.isHidden = false;

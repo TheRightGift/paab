@@ -21315,7 +21315,7 @@ __webpack_require__.r(__webpack_exports__);
       user: {},
       websites: [],
       web: {
-        title: "",
+        name: "",
         description: ""
       }
     };
@@ -21330,7 +21330,7 @@ __webpack_require__.r(__webpack_exports__);
     getProfessions: function getProfessions() {
       var _this = this;
       axios.get("/api/profession").then(function (res) {
-        if (res.data.status == 200) {
+        if (res.status == 200) {
           _this.professions = res.data.professionals;
         }
       })["catch"](function (err) {
@@ -21349,7 +21349,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
       axios.get("/api/tenancies").then(function (res) {
         if (res.data.status == 200) {
-          _this3.websites = res.data;
+          _this3.websites = res.data.tenants;
         }
       })["catch"](function (err) {
         console.log(err);
@@ -21358,8 +21358,14 @@ __webpack_require__.r(__webpack_exports__);
     modalCancelBtn: function modalCancelBtn() {
       this.isHidden = true;
     },
-    modalSubmitBtn: function modalSubmitBtn() {
-      window.location.href = "/client/setupwebsite";
+    createWebsite: function createWebsite() {
+      this.web.user_id = this.user.id;
+      axios.post('/api/tenant', this.web).then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.log(err);
+      });
+      // window.location.href = "/client/setupwebsite";
     },
     webAddCircleIcon: function webAddCircleIcon() {
       this.isHidden = false;
@@ -23014,7 +23020,8 @@ var _hoisted_47 = {
   "class": "row"
 };
 var _hoisted_48 = {
-  id: "userTempDiv"
+  id: "userTempDiv",
+  "class": "hoverable"
 };
 var _hoisted_49 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -23057,9 +23064,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Website title",
     id: "clientCreatePortInput",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return $data.web.title = $event;
+      return $data.web.name = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.web.title]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.web.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     placeholder: "Description",
     id: "clientCreatePortInput1",
@@ -23076,7 +23083,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "btn",
     id: "clientCreatePortBtn",
     onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $options.modalSubmitBtn();
+      return $options.createWebsite();
     }, ["prevent"]))
   }, " GET STARTED ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }

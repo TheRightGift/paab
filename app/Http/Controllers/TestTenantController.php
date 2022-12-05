@@ -12,14 +12,15 @@ class TestTenantController extends Controller
         // The ID might be the combination of firstnameLastname of user or a custom name
         $inputs = Validator::make($request->all(), [
             'name' => ['required'],
-            'template_id' => ['required'],
-            'user_id',
+            'template_id' => ['nullable'],
+            'user_id' => ['required'],
+            'description' => ['required'],
         ]); 
         
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
-        $tenant = Tenant::create(['id' => $request->name, 'template_id' => $request->template_id, 'user_id' => auth()->user()->id]);
+        $tenant = Tenant::create($inputs->validated());
         if ($tenant) {
             $tenant->domains()->create(['domain' => $request->name .'.localhost']); //Determine how to handle domain
             return response()->json(['message' => 'Your Website is created successfuly', 'status' => 200], 200);
