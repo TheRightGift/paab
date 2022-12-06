@@ -192,6 +192,10 @@ class EmailAuthService {
 
             if($verifyUserEmail == 200){//verified
                 $otp = $this->genOTP();
+
+                // TODO: Store  the OTP in a verifier TB
+                
+
                 $this->maileOTP($input['email'], $otp);
                 
                 return ['status' => 200, 'message' => 'OTP sent to '.$input['email']];
