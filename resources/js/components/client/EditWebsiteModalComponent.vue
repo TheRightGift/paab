@@ -282,7 +282,7 @@
             <div class="bioModalDiv" v-if="!reviewModalDiv">
                 <form id="reviewForm">
                     <div class="row rm_mg">
-                        <p class="col s12 reviewTitle">Clinet</p>
+                        <p class="col s12 reviewTitle">Client</p>
                     
                         <div class="input-field col s2 rm_mg">
                             <input type="text" placeholder="Title" id="bioCvInput2">
@@ -299,7 +299,7 @@
                     </div>
 
                     <div class="row rm_mg">
-                        <p class="col s12 reviewTitle">Clinet</p>
+                        <p class="col s12 reviewTitle">Client</p>
                     
                         <div class="input-field col s2 rm_mg">
                             <input type="text" placeholder="Title" id="bioCvInput2">
@@ -359,7 +359,7 @@ export default {
         },
 
         modalExitBtn() {
-            this.isHidden = true;
+            this.$emit('exitModal')
         }, 
 
         logoBtn() {
