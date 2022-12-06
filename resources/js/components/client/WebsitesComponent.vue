@@ -460,7 +460,15 @@
                         }
                     })
                     .catch((err) => {
-                        console.log(err);
+                        if(err.response.status == 500) {
+                            M.toast({
+                                html: err.response.data.message,
+                                classes: "errorNotifier",
+                            });
+                            // alert(err.response.message)
+                            this.loading = false;
+                        }
+                        console.log(err.response);
                     });
             },
             getProfessions() {
