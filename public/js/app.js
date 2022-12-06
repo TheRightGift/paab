@@ -21634,7 +21634,15 @@ __webpack_require__.r(__webpack_exports__);
           _this.setDefaults(1);
         }
       })["catch"](function (err) {
-        console.log(err);
+        if (err.response.status == 500) {
+          M.toast({
+            html: err.response.data.message,
+            classes: "errorNotifier"
+          });
+          // alert(err.response.message)
+          _this.loading = false;
+        }
+        console.log(err.response);
       });
     },
     getProfessions: function getProfessions() {
