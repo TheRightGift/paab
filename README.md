@@ -7,7 +7,7 @@
 #### IMPORTANT NOTE
 Please note that to get a migration of cities, countries, and states.
 Please run the following
-<code>php artisan db:seed</code> followed by <code>php artisan migrate --seed --class=TitleSeeder</code>
+<code>php artisan db:seed</code> <br/><code>php artisan migrate --seed --class=TitleSeeder</code>
 Note to self: As a result of <code>FK</code> - foreign key the <code>cities table</code> is the parent key with a reference at <code>users table</code><br/>
 - [x] Sync Profession and Template Model for Central DB and Tenant DB.
 - [ ] Dev Client Dashboard endpoints.
