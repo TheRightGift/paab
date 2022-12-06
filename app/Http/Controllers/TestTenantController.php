@@ -21,7 +21,7 @@ class TestTenantController extends Controller
         }
         $tenant = Tenant::create($inputs->validated());
         if ($tenant) {
-            $domain = $tenant->domains()->create(['domain' => $request->name .'.localhost:'.$_SERVER['SERVER_PORT']]); //Determine how to handle domain
+            $domain = $tenant->domains()->create(['domain' => $request->name .'.localhost']); //Determine how to handle domain
             return response()->json(['message' => 'Your Website is created successfuly', 'tenant' => $tenant, 'domain' => $domain, 'status' => 200], 200);
         }
         else {

@@ -2,7 +2,7 @@
 <h2><strong>IMPORTANT NOTE</strong></h2>
 Please note that to get a migration of cities, countries, and states.
 Please run the following
-<code>php artisan db:seed</code> followed by <code>php artisan migrate</code>
+<code>php artisan db:seed</code> followed by <code>php artisan migrate --seed --class=TitleSeeder</code>
 Note to self: As a result of <code>FK</code> - foreign key the <code>cities table</code> is the parent key with a reference at <code>users table</code><br/>
 
 ## Tasks from MVP
@@ -15,4 +15,5 @@ Note to self: As a result of <code>FK</code> - foreign key the <code>cities tabl
 ### Front End
 - [ ] dev mobile view for all Auth
 - [ ] dev client dashboard components
+- [ ] dev make nav a component
 - [ ] ...

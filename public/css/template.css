@@ -1,0 +1,524 @@
+
+#physiPortPageLogo {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 24px;
+    color: #000000;
+    margin-top: 3vh;
+}
+#physiTempContactBtn {
+    border-radius: 6px;
+    width: 130px;
+    height: 40px;
+    margin-top: 12px;
+    text-align: center;
+    line-height: 42px;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    background: #6750A4;
+    color: #FFFFFF;
+    border: none;
+}
+#physiTempContactBtn:hover {
+    background: #FFFFFF;
+    color: #6750A4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.physiRightImgDiv {
+    background: #6750A4;
+    box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    transform: rotate(-3.7deg);
+    width: 427.62px;
+    height: 479.96px;
+    position: absolute;
+    top: 20vh;
+    right: 12vw;
+}
+#physiRightImg {
+    position: absolute;
+    left: 33px;
+    top: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
+    transform: rotate(1.5deg);
+}
+.physiContainerDiv {
+    width: 84.5%;
+    margin: auto;
+    padding-top: 36vh;
+}
+#physiTempNavLinks {
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    border-left: none;
+    padding: 0;
+    margin-right: 4.5vw;
+    color: rgb(34, 34, 34);
+    padding-bottom: 3vh;
+}
+#physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.5);
+}
+#physiTempNavLinks.active {
+    border-bottom: 4px solid rgba(0, 0, 0, 0.91);
+    padding: 0 0 3vh 0;
+}
+.physiTempNameTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    color: #000000;
+    margin: 0 0 0 0.2vw;
+}
+.physiTempName {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    color: #6750A4;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+.physiTempTxt {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    color: rgba(0, 0, 0, 0.8);
+}
+#physiTempBtn {
+    background: transparent;
+    border: 1px solid #6750A4;
+    box-shadow: none;
+    color: #6750A4;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 100px;
+    margin-top: 3vh;
+}
+.servicesMainTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 20px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #000000;
+    margin: 25vh 0 0 0;
+}
+.servicesWhatIdo {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.25rem;
+    line-height: 44px;
+    color: #6750A4;
+    text-align: center;
+    margin: 0 0 10vh 0;
+}
+.servicesIconsDiv {
+    /* position: absolute; */
+    width: 50px;
+    height: 50px;
+    /* left: 243px;
+    top: 940px; */
+    border-radius: 50%;
+    margin: 0 auto;
+    background: #6750A4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.servicesTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.563rem;
+    line-height: 20px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #000000;
+}
+.servicesTxt {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 20px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: rgba(0, 0, 0, 0.7);
+}
+.servicesIcons {
+    color: #FFFFFF;
+    margin: 1.3vh 0 0 0.7vw;
+    font-size: 2.3rem;
+}
+.servicesIcons1 {
+    color: #FFFFFF;
+    margin: 1.3vh 0 0 0.7vw;
+    font-size: 2rem;
+}
+.servicesIcons2 {
+    color: #FFFFFF;
+    margin: 1.3vh 0 0 0.7vw;
+    font-size: 2rem;
+}
+.physiExpContainerDiv, .feedsContainDiv {
+    width: 84.5%;
+    margin: auto;
+}
+.expMainTitle, .feedsMainTitle { 
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 20px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #000000;
+    margin: 9vh 0 0 0;
+}
+.expMainTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 2.25rem;
+    line-height: 44px;
+    color: #6750A4;
+    text-align: center;
+    margin: 0 0 10vh 0;
+}
+.expLeftBarDiv {
+    background: #6750A4;
+    border-radius: 10px;
+    padding: 9vh 1.5vw 2vh 1.5vw;
+}
+.expLeftBarTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.25rem;
+    line-height: 20px;
+    text-align: center;
+    align-items: center;
+    letter-spacing: 0.1px;
+    color: #FFFFFF;
+    margin: 0 0 1vh 0;
+}
+.expLeftBarTxt1 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 0.875rem;
+    line-height: 20px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #FFFFFF;
+    margin: 0 0 1.5vh 0;
+}
+.expLeftBarInnerDiv {
+    border-bottom: 1px solid rgba(217, 217, 217, 0.65);
+    margin-bottom: 8vh;
+}
+#expRightDivImg {
+    width: 100%;
+    height: 73.5vh;
+    border-radius: 10px;
+}
+#feedsTwitterIcon {
+    color: #6750A4;
+    font-size: 1.3rem;
+}
+.feedsMainTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 2.25rem;
+    line-height: 44px;
+    color: #6750A4;
+    text-align: center;
+    margin: 0 0 1vh 0;
+}
+.feedsTwitterTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 22px;
+    color: #938F99;
+    margin-left: 0.7vw;
+}
+.feedsCard {
+    background: #6750A4;
+    border: 1px solid #938F99;
+    border-radius: 12px;
+    padding: 2vh 0vw;
+}
+.feedsProDiv {
+    background: #D0BCFF;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    text-align: center;
+    margin-left: 1vw;
+}
+.feedsProImg {
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 40px;
+}
+.feedsCardHeader {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #E6E1E5;
+}
+.feedsCardSubhead {
+    margin: 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #E6E1E5;
+}
+#feedsCardImg {
+    width: 100%;
+}
+#feedsCardRowDiv {
+    margin-bottom: 0;
+}
+#feedsCardIcon {
+    color: #CAC4D0;
+    position: relative;
+    right: 1vw;
+}
+.feedsCardTxt1 {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #CAC4D0;
+    width: 70%;
+    margin-left: 1vw;
+    margin-top: 5vh;
+}
+.feedsCardTxt {
+    margin: 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #E6E1E5;
+    margin-left: 1vw;
+}
+.feedsCardTitle {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #E6E1E5;
+    margin-left: 1vw;
+}
+#feedsCardBtn {
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid rgb(126, 125, 125);
+    border-radius: 100px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    position: relative;
+    left: 22vw;
+    text-transform: capitalize;
+    margin-top: 3vh;
+}
+#feedsFacebookIcon {
+    color: #6750A4;
+    font-size: 2.2rem;
+}
+.facebookFeedsIcon {
+    margin: 5vh 0;
+}
+
+/* Testimonials Secion */
+#testiMapImg {
+    background-image: url('../media/img/map.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 80vh;
+    margin-top: 12vh;
+}
+.testiMapDiv {
+    background: #6750A4;
+    box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
+    padding: 1vh 2vw;
+}
+.testiMapProName {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #FFFFFF;
+}
+.testiMapTxt {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: rgba(255, 255, 255, 0.7);
+}
+#testiProImg {
+    border-radius: 50%;
+    position: relative;
+    left: 10vw;
+    top: 2.5vh;
+}
+#testiSecondImgRowOneDiv {
+    position: relative;
+    bottom: 9vh;
+}
+#testiSecondImgRowTwoDiv {
+    position: relative;
+    bottom: 4vh;
+}
+#testiSecondImgRowThreeDiv {
+    position: relative;
+    top: 7vh;
+}
+.contactContainDiv {
+    width: 70%;
+    margin: auto;
+}
+#testiLname, #testiFname, #testiEmail, #testiPhone {
+    border: 1px solid #6750A4;
+    border-radius: 10px;
+    padding: 0 1.5vw;
+    width: 90%;
+}
+#testiLname::placeholder, #testiFname::placeholder,
+#testiEmail::placeholder, #testiPhone::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    color: rgba(0, 0, 0, 0.6);
+}
+#testiTextarea1 {
+    border: 1px solid #6750A4;
+    border-radius: 10px;
+    width: 99.5%;
+    height: 22vh;
+    padding: 3vh 1.5vw;
+}
+#testiTextarea1::placeholder{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    color: rgba(0, 0, 0, 0.6);
+}
+#testiContactFormTitleDiv {
+    margin-bottom: 5vh;
+}
+#testiContactBtn {
+    background: #6750A4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 97.4%;
+    margin-left: 0.7vw;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 20px;
+    height: 5vh;
+}
+#testiContactBtnIcon {
+    color: #938F99;
+    position: relative;
+    top: 0.5vh;
+}
+#tempPublishBtn {
+    /* width: 15vw;
+    height: 5vh; */
+    background-color: #7746FF;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 20px;
+    padding: 1vh 4vw;
+    border-radius: 6px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    text-transform: uppercase;
+    margin-bottom: 3vh;
+}
+#tempExitBtn {
+    /* width: 15vw;
+    height: 5vh; */
+    background-color: rgb(25, 25, 25);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 20px;
+    padding: 1vh 2.77vw;
+    border-radius: 6px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    text-transform: uppercase;
+}
+#tempPubExtDiv {
+    position: fixed;
+    right: 0;
+    bottom: 40vh;
+}

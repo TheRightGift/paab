@@ -52,10 +52,35 @@ Route::post('/sendOtpForUserResetPassword', [App\Http\Controllers\AuthController
 Route::post('/resetPassword', [App\Http\Controllers\AuthController::class, 'resetPassword']);
 Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
 
-// Dashboard
-// Route::group(['middleware' => 'auth'], function() {
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/websites', function () {
-        return view('client.websites');
-    }); //->middleware('can:run_client_ops')
-// });
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/websites', function () {
+    return view('client.websites');
+}); //->middleware('can:run_client_ops')
+
+Route::get('/client/mail', function () {
+    return view('client.mail');
+});
+Route::get('/client/settings', function () {
+    return view('client.settings');
+});
+Route::get('/client/support', function () {
+    return view('client.support');
+});
+Route::get('/auth/resetpassword', function () {
+    return view('auth.resetpassword');
+});
+Route::get('/auth/createpassword', function () {
+    return view('auth.createpassword');
+});
+Route::get('/client/singlemail', function () {
+    return view('client.singlemail');
+});
+Route::get('/client/setupwebsite', function () {
+    return view('client.setupwebsite');
+});
+Route::get('/templates/physiciansportfolio', function () {
+    return view('templates.physiciansportfolio');
+});
+Route::get('/client/template', function () {
+    return view('client.template');
+});
