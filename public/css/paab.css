@@ -2272,7 +2272,302 @@ div .row .supportGetInTouchRowDiv {
 
 
 
+/* Setup Website Modal */
+.editWebNav {
+    background-color: #7746FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 9vh;
+}
+.editInnerWebNav {
+    width: 80%;
+    margin: auto;
+}
+#editWebUl {
+    display: flex;
+    position: relative;
+    top: 2.5vh;
+}
+.editWebModalDiv {
+    position: absolute;
+    left: 25vw;
+    top: 3vh;
+    width: 67%;
+}
+.editWebLink {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+.editWebLi {
+    margin-right: 4.3vw;
+}
+.editWebModalExitBtn {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 0.5vh 1.2vw;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: #7746FF;
+}
+.editWebModal {
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#editWebGenModelInput {
+    border: 1px solid #7746FF;
+    border-radius: 100px;
+    padding-left: 2vw;
+    width: 97%;
+}
+.editInnerWebModal {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 2vh;
+}
+.editWebGenTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: #000000;
+    margin: 1.5vh 0 0 0;
+}
+#editWebGenBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    margin: 3vh 0 12vh 0;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+.logImgDiv {
+    background: #D9D9D9;
+    border-radius: 10px;
+    width: 6.5vw;
+    height: 12vh;
+}
+.logoContainDiv {
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.logoImgTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: #1E1E1E;
+}
+.logoRowDiv {
+    width: 83.5%;
+    margin: 0 auto;
+    /* background-color: red; */
+    padding: 1vh 0;
+}
+.logoModalUpLink {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.938rem;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: #7746FF;
+}
+#logoModalUpIcon {
+    color: #7746FF;
+    font-size: 1.8rem;
+    position: relative;
+    top: 1vh;
+    margin-right: 0.5vw;
+    margin-left: 10vw;
+}
+.logoUpDiv {
+    margin-top: 7vh;
+}
+.logoHr {
+    border: 1px solid rgba(119, 70, 255, 0.3);
+}
+#logModalBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    margin: 7vh 0 3vh 0;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+input::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+}
+#bioAboutInput {
+    border: 1px solid #7746FF;
+    border-radius: 100px;
+    padding-left: 2vw;
+    height: 4.5vh;
+}
+.bioModalDiv {
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#bioForm {
+    width: 82%;
+    margin: auto;
+    padding-top: 4vh;
+}
+.bioTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: #000000;
+    margin: 0 0 0 1vw;
+}
+#bioIcon {
+    color: #7746FF;
+    font-size: 1.8rem;
+    position: relative;
+    top: 1vh;
+}
+.bioUpTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.938rem;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: #7746FF;
+    margin-left: 0.6vw;
+}
+#bioUpIconColDiv{
+    margin-top: 1vh;
+    position: relative;
+    left: 3vw;
+}
+#bioCvInput, #bioCvInput1, #bioCvInput2 {
+    border: 1px solid #7746FF;
+    border-radius: 100px;
+    padding-left: 2vw;
+    height: 4.5vh;
+    width: 95%;
+}
+#bioCvInput3 {
+    border: 1px solid #7746FF;
+    border-radius: 100px;
+    padding-left: 2vw;
+    height: 4.5vh;
+    width: 95%;
+    margin-left: 1.3vw;
+}
+#bioUpIconColDiv1 {
+    position: absolute;
+    top: 32vh;
+    right: 8.3vw;
+}
+#bioUpIconColDiv2 {
+    position: relative;
+    top: 1vh;
+    left: 3vw;
+}
+#bioAddBtn {
+    color: #7746FF;
+}
+.bioSelectOpt {
+    border: 1px solid #7746FF;
+    border-radius: 100px;
+    height: 4.5vh;
+}
+.bioSelectOpt1 {
+    border: 1px solid #7746FF;
+    border-radius: 100px;
+    height: 4.5vh;
+    margin-top: 2.3vh;
+}
+#bioModalBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    margin: 1vh 0 4vh 0;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+#contactModalSubBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    margin: 3vh 0 3vh 0;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+#socialsModalSubBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    margin: 8vh 0 6vh 0;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+#reviewForm {
+    width: 82%;
+    margin: auto;
+    padding-top: 4vh;
+}
+.reviewTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: #000000;
+    margin: 1.5vh 0 0 1vw;
+}
+#reviewModalBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    margin: 5vh 0 2vh 0;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+#reviewUpIconColDiv2 {
+    position: relative;
+    bottom: 0.4vh;
+    left: 3vw;
+}
+#reviewUpIconColDiv2 {
+    position: relative;
+    bottom: 0.6vh;
+    left: 3vw;
+}
+#reviewUpIconColDiv2 {
+    position: relative;
+    bottom: 1vh;
+    left: 3vw;
+}
 
+/* Logout Modal */
+#authAlertContainDiv3 {
+    position: fixed;
+    top: 20vh;
+    left: 31vw;
+}
 
 
 

@@ -26,10 +26,12 @@
                             >
                         </div>
                     </li>
-    
+
                     <li>
                         <a href="/client/dashboard" class="dashLeftBarListDiv">
-                            <i class="material-icons dashLeftBarIcons">dashboard</i>
+                            <i class="material-icons dashLeftBarIcons"
+                                >dashboard</i
+                            >
                             <p class="dashLeftBarTitle">Dashboard</p>
                         </a>
                     </li>
@@ -65,7 +67,9 @@
                     </li>
                     <li>
                         <a href="/client/settings" class="dashLeftBarListDiv">
-                            <i class="material-icons dashLeftBarIcons">settings</i>
+                            <i class="material-icons dashLeftBarIcons"
+                                >settings</i
+                            >
                             <p class="dashLeftBarTitle">Settings</p>
                         </a>
                     </li>
@@ -79,18 +83,20 @@
                     </li>
                     <li>
                         <a href="#" class="dashLeftBarListDiv">
-                            <i class="material-icons dashLeftBarIcons">autorenew</i>
+                            <i class="material-icons dashLeftBarIcons"
+                                >autorenew</i
+                            >
                             <p class="dashLeftBarTitle">Logout</p>
                         </a>
                     </li>
                 </ul>
-    
+
                 <!-- Sidenav Trigger -->
                 <a href="#" data-target="slide-out" class="sidenav-trigger">
                     <i class="material-icons" id="dashSidenavIconBtn">menu</i>
                 </a>
             </nav>
-    
+
             <!-- Sidebar for large and medium devices -->
             <div class="row" id="dashRowDiv">
                 <div class="col s12 m2 l2" id="dashLeftColBar">
@@ -98,7 +104,7 @@
                         <div class="proImgDiv">
                             <i class="material-icons" id="proImg">person</i>
                         </div>
-    
+
                         <div class="dashLeftBarInnerDiv">
                             <a href="/dashboard" class="dashLeftBarListDiv">
                                 <i class="material-icons dashLeftBarIcons"
@@ -106,7 +112,7 @@
                                 >
                                 <p class="dashLeftBarTitle">Dashboard</p>
                             </a>
-    
+
                             <a href="#" class="dashLeftBarListDiv">
                                 <i
                                     class="material-icons dashLeftBarIcons"
@@ -115,35 +121,44 @@
                                 >
                                 <p class="dashLeftBarTitle">Websites</p>
                             </a>
-    
-                            <a href="/client/template" class="dashLeftBarListDiv">
+
+                            <a
+                                href="/client/template"
+                                class="dashLeftBarListDiv"
+                            >
                                 <i class="material-icons dashLeftBarIcons"
                                     >chrome_reader_mode</i
                                 >
                                 <p class="dashLeftBarTitle">Templates</p>
                             </a>
-    
+
                             <a href="/client/mail" class="dashLeftBarListDiv">
                                 <i class="material-icons dashLeftBarIcons"
                                     >mail_outline</i
                                 >
                                 <p class="dashLeftBarTitle">Mails</p>
                             </a>
-    
-                            <a href="/client/settings" class="dashLeftBarListDiv">
+
+                            <a
+                                href="/client/settings"
+                                class="dashLeftBarListDiv"
+                            >
                                 <i class="material-icons dashLeftBarIcons"
                                     >settings</i
                                 >
                                 <p class="dashLeftBarTitle">Settings</p>
                             </a>
-    
-                            <a href="/client/support" class="dashLeftBarListDiv">
+
+                            <a
+                                href="/client/support"
+                                class="dashLeftBarListDiv"
+                            >
                                 <i class="material-icons dashLeftBarIcons"
                                     >question_answer</i
                                 >
                                 <p class="dashLeftBarTitle">Help/Support</p>
                             </a>
-    
+
                             <a href="#" class="dashLeftBarListDiv">
                                 <i class="material-icons dashLeftBarIcons"
                                     >autorenew</i
@@ -153,19 +168,22 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <!-- Web black div -->
                 <div class="col s12 m10 l10" id="webRightDiv" v-if="view == 0">
                     <div class="webBlackDiv">
                         <div class="webBlackDiv1">
                             <div class="row webBlackDiv1">
                                 <div class="col s12">
-                                    <p class="webBlackTitle">Create Portfolio</p>
+                                    <p class="webBlackTitle">
+                                        Create Portfolio
+                                    </p>
                                 </div>
                                 <div class="col s11">
                                     <p class="webBlackTxt">
-                                        Lets start and automate your process so you
-                                        can reclaim time and focus on your goals.
+                                        Lets start and automate your process so
+                                        you can reclaim time and focus on your
+                                        goals.
                                     </p>
                                 </div>
                                 <div class="col s1">
@@ -179,7 +197,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- web empty div -->
                     <div class="webWhiteDiv">
                         <div class="webWhiteDiv1">
@@ -207,15 +225,17 @@
                                             </p>
                                         </div>
                                     </div>
-    
+
                                     <div class="col s5 s5 l6 offset-s1">
                                         <p class="webWhiteTitle">Description</p>
                                         <p class="webWhiteTxt">
                                             {{ website.description }}
                                         </p>
                                     </div>
-    
-                                    <div class="col s1 m2 l3 offset-s1 offset-m1">
+
+                                    <div
+                                        class="col s1 m2 l3 offset-s1 offset-m1"
+                                    >
                                         <a href="#!" @click="setView(website)">
                                             <i
                                                 class="material-icons right"
@@ -228,14 +248,14 @@
                             </div>
                             <div v-else>
                                 <p class="centered">
-                                    No website created yet!. All websites appears
-                                    here when you create one
+                                    No website created yet!. All websites
+                                    appears here when you create one
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-    
+
                 <!-- Right Side Div -->
                 <div class="col s12 m10 l10" id="setupWebRightDiv" v-else>
                     <div class="setWebContainModalDiv">
@@ -244,7 +264,7 @@
                                 <p class="setWebTitle">Title:</p>
                                 <p class="setWebTitleData">{{ tenant.name }}</p>
                             </div>
-    
+
                             <div class="setWebUrlDiv">
                                 <p class="setWebUrlTitle">url:</p>
                                 <p>
@@ -254,30 +274,36 @@
                                     <span class="setWebPlan">Premium</span>
                                 </p>
                             </div>
-    
+
                             <div class="setWebDateDiv">
                                 <p class="setWebDateTitle">Start Date:</p>
                                 <p class="setWebDateData">
-                                    {{ new Date(tenant.created_at) || new Date() }}
+                                    {{
+                                        new Date(tenant.created_at) ||
+                                        new Date()
+                                    }}
                                 </p>
                             </div>
-    
+
                             <div class="setWebDescriptionDiv">
-                                <p class="setWebDescriptionTitle">Description:</p>
+                                <p class="setWebDescriptionTitle">
+                                    Description:
+                                </p>
                                 <p class="setWebDescriptionData">
                                     {{ tenant.description }}
                                 </p>
                             </div>
-    
+
                             <div class="row" id="setWebBtnDiv">
                                 <button
                                     class="col s12 btn"
                                     type="button"
                                     id="setWebBtn"
+                                    @click="setEditWebModal"
                                 >
                                     EDIT WEBSITE
                                 </button>
-    
+
                                 <button
                                     class="col s12 btn"
                                     type="button"
@@ -289,11 +315,12 @@
                             </div>
                         </div>
                     </div>
+                    <edit-website-modal-component @exitModal="setEditWebModal" v-if="onEditWebModal"/>
                 </div>
             </div>
         </div>
 
-        <template-starter v-else @viewTemplate="viewTemplate" :user="user"/>
+        <template-starter v-else @viewTemplate="viewTemplate" :user="user" />
 
         <!-- Modal Creation of websites -->
         <div class="clientCreatePortModalDiv" v-if="!isHidden">
@@ -382,10 +409,12 @@
 <script>
     // import FooterComponent from "./partials/FooterComponent.vue";
     // import HeaderComponent from "./partials/HeaderComponent.vue";
-    import TemplateStarter from '../templates/TemplateStarter.vue'
+    import TemplateStarter from "../templates/TemplateStarter.vue";
+    import EditWebsiteModalComponent from "./EditWebsiteModalComponent.vue";
     export default {
         components: {
-            TemplateStarter
+            TemplateStarter,
+            EditWebsiteModalComponent,
             // FooterComponent,
             // HeaderComponent
         },
@@ -395,6 +424,7 @@
                 domain: {},
                 isHidden: false,
                 loading: false,
+                onEditWebModal: false,
                 professions: [],
                 pro_img: "/media/img/yuna.jpg",
                 tenant: {},
@@ -473,6 +503,9 @@
             setDefaults(num) {
                 this.view = num;
             },
+            setEditWebModal () {
+                this.onEditWebModal = !this.onEditWebModal;
+            },
             setView(website) {
                 this.domain = website.domains[0];
                 this.tenant.name = website.name;
@@ -480,13 +513,12 @@
                 this.tenant.created_at = website.created_at;
                 this.setDefaults(1);
             },
-            viewTemplate () {
+            viewTemplate() {
                 this.viewingTemplate = !this.viewingTemplate;
             },
             webAddCircleIcon() {
                 this.isHidden = false;
             },
-            
         },
     };
 </script>
