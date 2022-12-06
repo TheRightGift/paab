@@ -98,14 +98,14 @@
                     </div>
 
                     <div class="dashLeftBarInnerDiv">
-                        <a href="/client/dashboard" class="dashLeftBarListDiv">
+                        <a href="/dashboard" class="dashLeftBarListDiv">
                             <i class="material-icons" id="dashActive"
                                 >dashboard</i
                             >
                             <p class="dashLeftBarTitle">Dashboard</p>
                         </a>
 
-                        <a href="/client/websites" class="dashLeftBarListDiv">
+                        <a href="/websites" class="dashLeftBarListDiv">
                             <i class="material-icons dashLeftBarIcons">web</i>
                             <p class="dashLeftBarTitle">Websites</p>
                         </a>

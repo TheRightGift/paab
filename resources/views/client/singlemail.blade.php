@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>PaaB: People as a Brand - Websites</title>
+        <title>PaaB: People as a Brand - Single Mail</title>
         <link rel="shortcut icon" href="{{ asset('/media/img/logo.png') }}" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
@@ -12,13 +12,12 @@
 
         <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/paab.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/template.css') }}">
         <link rel="stylesheet" href="{{ asset('fonts/material-icons.css') }}">
     </head>
     <body>
 
         <div id="app">
-            <client-websites-component />
+            <client-singlemail-component />
         </div>
 
 

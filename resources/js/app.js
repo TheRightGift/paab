@@ -25,6 +25,11 @@ import ResetPasswordComponent from './components/auth/ResetPasswordComponent.vue
 // Client
 import ClientComponent from './components/client/Dashboard.vue';
 import ClientWebsitesComponent from './components/client/WebsitesComponent.vue';
+import ClientMailComponent from './components/client/MailComponent.vue';
+import ClientSettings from './components/client/SettingsComponent.vue';
+import ClientSupport from './components/client/SupportComponent.vue';
+import ClientSingleMail from './components/client/SinglemailComponent.vue';
+import ClientTemplateComponent from './components/client/ClientTemplateComponent.vue';
 
 
 app.component('home-component', HomeComponent);
@@ -37,6 +42,11 @@ app.component('template-component', TemplateComponent);
 app.component('client-component', ClientComponent);
 app.component('client-websites-component', ClientWebsitesComponent);
 
+app.component('client-template-component', ClientTemplateComponent);
+app.component('client-mail-component', ClientMailComponent);
+app.component('client-settings-component', ClientSettings);
+app.component('client-support-component', ClientSupport);
+app.component('client-singlemail-component', ClientSingleMail);
 
 /**
  * The following block of code may be used to automatically register your
