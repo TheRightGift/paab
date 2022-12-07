@@ -167,7 +167,7 @@
             };
         },
         mounted() {
-            this.loginFromSocial()
+            // this.loginFromSocial()
         },
         methods: {
             userLogin() {
