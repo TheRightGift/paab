@@ -64,7 +64,26 @@ body {
 .noPaddingRight {
     padding-right: 0 !important;
 }
-
+.primary {
+    background-color: var(--primary);
+    color: var(--white);
+}
+.primary:hover, .primary:active {
+    background-color: var(--white);
+    color: var(--primary);
+}
+.primaryBorder {
+    background-color: var(--white);
+    color: var(--primary);
+    border: thin solid var(--primary);
+}
+.gutter1 {
+    margin-right: 1vw;
+}
+.noVertMargin {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 /* HOME */
 .navbar {
     position: fixed;
@@ -777,19 +796,13 @@ p.wlcNoteFooterTxt {
 /* Sign up page section */
 #signupTitle, #signupLname, #signupFName, #signupEmail,
 #signupPhone, #signupCountry, #signupGender, #signupState,
-#signupCity, #signupPass, #signCpass, #signupProfession
+#signupCity, #signupPass, #signCpass, #signupProfession, #signupZipcode
 {
     border: 1px solid #7746FF;
     border-radius: 100px;
     padding-left: 9px;
     letter-spacing: -0.015em;
 }
-/* #signupTitle::placeholder, #signupLname::placeholder,
-#signupFName::placeholder, #signupEmail::placeholder
-#signupPhone::placeholder
-{
-    color: rgba(0, 0, 0, 0.5);
-} */
 #signupBtn {
     background: #7746FF;
     border-radius: 6px; 
@@ -939,10 +952,7 @@ p.wlcNoteFooterTxt {
     width: 15%;
     margin: auto;
 }
-#errAltImg {
-    width: 7.5vw;
-    margin: 4vh 0 0 0;
-}
+
 #errArlCancelIcon, #errArlCancelIcon1, 
 #errArlCancelIcon2, #errArlCancelIcon3 {
     margin-top: 2vh;
@@ -955,45 +965,7 @@ p.wlcNoteFooterTxt {
     font-family: 'Montserrat', sans-serif;
     height: 6vh;
 }
-.authAlertBox {
-    background: rgba(119, 70, 255, 0.795);
-    border: 1px solid #FFFFFF;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    width: 838px;
-    height: 419px;
-    /* margin: 20vh auto 0 auto;
-    position: relative;
-    left: 2.5vw; */
-}
-.authAlertBox1 {
-    background: rgba(119, 70, 255, 0.795);
-    border: 1px solid #FFFFFF;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    width: 805px;
-    /* width: 883px; */
-    height: 419px;
-    /* margin: 0vh auto 0 auto;
-    position: absolute  ;
-    top: 20vh;
-    left: 23vw; */
-    margin-left: 2vw;
-}
-.authAlertBox2 {
-    background: rgba(119, 70, 255, 0.795);
-    border: 1px solid #FFFFFF;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    width: 772px;
-    height: 419px;
-    /* margin: 20vh auto 0 auto;
-    position: absolute;
-    top: -0.1vh;
-    left: 30vw; */
-    margin-left: 2vw;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
-}
+
 .brandUsedAltBoxTxt {
     font-family: 'Poppins';
     font-style: normal;
@@ -1004,7 +976,9 @@ p.wlcNoteFooterTxt {
     text-align: center;
     margin-top: 4vh;
 }   
-.logoutTxt, .insertOtpTxt {
+
+
+.insertOtpTxt {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -1015,21 +989,7 @@ p.wlcNoteFooterTxt {
     margin-bottom: 3vh;
     margin-top: 5vh;
 }
-.logoutYesBtn {
-    background: #1E1E1E;
-    border-radius: 6px;
-    width: 5.5vw;
-}
-.logoutNoBtn {
-    background: #FFFFFF;
-    border-radius: 6px;
-    width: 5.5vw;
-    color: black;
-}
-#authLogoutBtnDiv {
-    width: 27%;
-    margin: auto;
-}
+
 
 /* Insert OTP Section */
 .row .col.s1.otpDigits {
@@ -1503,6 +1463,7 @@ a.active {
     border-radius: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    padding: 3vh 1vw;
 }
 
 .cardTitle {
@@ -2576,12 +2537,79 @@ input::placeholder {
 }
 
 /* Logout Modal */
-#authAlertContainDiv3 {
-    position: fixed;
-    top: 20vh;
-    left: 31vw;
+#logoutModal {
+    /* background-color: var(--primary); */
+    border-radius: 20px;
+    width: 50vw;
 }
-
+.logoutModalImageRow {
+    display: flex;
+    justify-content: center;
+}
+.logoutModalImage {
+    width: 15vw;
+}
+#authAlertContainDiv3 {
+    /* position: fixed;
+    top: 20vh;
+    left: 31vw; */
+}
+#errAltImg {
+    /* width: 7.5vw;
+    margin: 4vh 0 0 0; */
+}
+.authAlertBox {
+    /* background: rgba(119, 70, 255, 0.795);
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    width: 838px;
+    height: 419px; */
+}
+.authAlertBox1 {
+    /* background: rgba(119, 70, 255, 0.795);
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    width: 805px;
+    margin-left: 2vw; */
+}
+.authAlertBox2 {
+    /* background: rgba(119, 70, 255, 0.795);
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    width: 772px;
+    height: 419px;
+    margin-left: 2vw;
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25); */
+}
+.logoutTxt {
+    /* font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 3vh;
+    margin-top: 5vh; */
+}
+.logoutYesBtn {
+    /* background: #1E1E1E;
+    border-radius: 6px;
+    width: 5.5vw; */
+}
+.logoutNoBtn {
+    /* background: #FFFFFF;
+    border-radius: 6px;
+    width: 5.5vw;
+    color: black; */
+}
+#authLogoutBtnDiv {
+    /* width: 27%;
+    margin: auto; */
+}
 
 
 /* Media Query for Login Page */
