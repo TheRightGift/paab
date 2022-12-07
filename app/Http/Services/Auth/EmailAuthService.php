@@ -214,13 +214,8 @@ class EmailAuthService {
         $verifier->otp = $otp;
         $verifier->expiry = Carbon::now()->addMinutes(60);
         $verifier->save();
-
-        if ($verifier->wasChanged()) {
-            return ['status' => 200, 'message' => 'OTP Verified'];
-        }
-        else {
-            return ['status' => 500, 'error' => 'Server Error'];
-        }
+        
+        return ['status' => 200, 'message' => 'OTP Verified'];
     }
 
     private function confirmEmail($email){
