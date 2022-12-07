@@ -135,8 +135,8 @@
                                 class="
                                     input-field
                                     col
-                                    l12
-                                    m12
+                                    l6
+                                    m6
                                     s12
                                     noPaddingLeft
                                 "
@@ -144,10 +144,28 @@
                                 <input
                                     placeholder="Phone Number"
                                     id="signupPhone"
-                                    type="Number"
+                                    type="tel"
                                     class="validate"
                                     v-model="userReg.phone"
                                 />
+                            </div>
+                            <div class="input-field col l6 s12 noPaddingRight">
+                                <select
+                                    class="browser-default"
+                                    id="signupProfession"
+                                    v-model="userReg.profession"
+                                >
+                                    <option value="" disabled selected>
+                                        Profession
+                                    </option>
+                                    <option
+                                        v-for="profession in professions"
+                                        :key="profession.id"
+                                        :value="profession.id"
+                                    >
+                                        {{ profession.name }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
 
@@ -311,7 +329,8 @@
     // import { Base64 } from "js-base64";
     // const key = process.env.MIX_APP_KEY;
     let country = "/api/countries";
-    let title = "/api/title"
+    let title = "/api/title";
+    let profession = "/api/profession";
 
     export default {
         components: {
@@ -320,13 +339,13 @@
         },
         data() {
             return {
-                titles: [],
-                countries: [],
-                states: [],
                 cities: [],
-                verifiedEmail: 1,
-                registrationLoading: false,
+                countries: [],
                 otp: "",
+                professions: [],
+                registrationLoading: false,
+                states: [],
+                titles: [],
                 userReg: {
                     email: "",
                     title: "",
@@ -339,29 +358,78 @@
                     city: "",
                     password: "",
                     cPassword: "",
+                    profession: "",
                 },
+                verifiedEmail: 1,
             };
         },
         mounted() {
             this.getLocations();
         },
         methods: {
-            updateVerifiedEmail(num) {
-                this.verifiedEmail = num;
+            getLocations() {
+                const requestTitles = axios.get(title);
+                const requestCountries = axios.get(country);
+                const requestProfessions = axios.get(profession);
+                // const requestCities = axios.get(city);
+                axios
+                    .all([requestTitles, requestCountries, requestProfessions])
+                    .then(
+                        axios.spread((...responses) => {
+                            const titleRes = responses[0];
+                            const countryRes = responses[1];
+                            const professionRes = responses[2];
+                            this.countries = countryRes.data.countries;
+                            this.titles = titleRes.data.titles;
+                            this.professions = professionRes.data.professionals;
+                        })
+                    )
+                    .catch((errors) => {
+                        console.log(errors)
+                    });
             },
             getYear() {
                 return new Date().getFullYear();
-            },
-            setOTP(value){
-                // console.log(value)
-                this.otp = value.otp;
-                this.userReg.email = value.email;
-                this.updateVerifiedEmail(2);
             },
             otpVerifier(value){
                 if(value === 200){
                     this.updateVerifiedEmail(3);
                 }
+            },
+            setOTP(value){
+                this.otp = value.otp;
+                this.userReg.email = value.email;
+                this.updateVerifiedEmail(2);
+            },
+            sortCities() {
+                axios.get(`/api/cities/${this.userReg.state}`).then(res => {
+                    if (res.data.status == 200) {
+                        this.cities = res.data.cities;
+                    }
+                    else {
+                        M.toast({
+                            html: 'Error getting cities',
+                            classes: "errorNotifier",
+                        });
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+            },
+            sortStates() {
+                axios.get(`/api/states/${this.userReg.country}`).then(res => {
+                    if (res.data.status == 200) {
+                        this.states = res.data.states;
+                    }
+                    else {
+                        M.toast({
+                            html: 'Error getting states',
+                            classes: "errorNotifier",
+                        });
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
             },
             submitRegistrationForm() {
                 if (
@@ -412,54 +480,8 @@
                         });
                 }
             },
-            getLocations() {
-                const requestTitles = axios.get(title);
-                const requestCountries = axios.get(country);
-                // const requestStates = axios.get(state);
-                // const requestCities = axios.get(city);
-                axios
-                    .all([requestTitles, requestCountries])
-                    .then(
-                        axios.spread((...responses) => {
-                            const titleRes = responses[0];
-                            const countryRes = responses[1];
-                            this.countries = countryRes.data.countries;
-                            this.titles = titleRes.data.titles;
-                        })
-                    )
-                    .catch((errors) => {
-                        console.log(errors)
-                    });
-            },
-            sortStates() {
-                axios.get(`/api/states/${this.userReg.country}`).then(res => {
-                    if (res.data.status == 200) {
-                        this.states = res.data.states;
-                    }
-                    else {
-                        M.toast({
-                            html: 'Error getting states',
-                            classes: "errorNotifier",
-                        });
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
-            },
-            sortCities() {
-                axios.get(`/api/cities/${this.userReg.state}`).then(res => {
-                    if (res.data.status == 200) {
-                        this.cities = res.data.cities;
-                    }
-                    else {
-                        M.toast({
-                            html: 'Error getting cities',
-                            classes: "errorNotifier",
-                        });
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
+            updateVerifiedEmail(num) {
+                this.verifiedEmail = num;
             },
         },
         computed: {},

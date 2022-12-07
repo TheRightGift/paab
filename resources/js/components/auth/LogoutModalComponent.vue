@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Logout Modal -->
-        <div id="authAlertContainDiv3" v-if="!logoutModal">
+        <div id="authAlertContainDiv3">
             <div class="authAlertBox">
                 <div class="authAlertBox1">
                     <div class="authAlertBox2">
@@ -10,7 +10,7 @@
                             <i
                                 class="material-icons"
                                 id="errArlCancelIcon3"
-                                @click="cancelLogoutBtn()"
+                                @click="open"
                                 >cancel</i
                             >
                         </div>
@@ -35,7 +35,7 @@
                                     <button
                                         type="button"
                                         class="btn logoutYesBtn"
-                                        @click="confirmLogoutBtn()"
+                                        @click="logout"
                                     >
                                         Yes
                                     </button>
@@ -43,7 +43,7 @@
                                         type="button"
                                         class="btn logoutNoBtn"
                                         id="errArlCancelBtn"
-                                        @click="cancelLogoutBtn()"
+                                        @click="open"
                                     >
                                         No
                                     </button>
@@ -57,18 +57,40 @@
     </div>
 </template>
 <script>
-export default {
-    methods: {
-        cancelLogoutBtn() {
-            this.logoutModal = true;
+    export default {
+        methods: {
+            delete_cookie(name, path, domain) {
+                if (this.get_cookie(name)) {
+                    document.cookie =
+                        name +
+                        "=" +
+                        (path ? ";path=" + path : "") +
+                        // (domain ? ";domain=" + domain : "") +
+                        ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+                }
+            },
+            get_cookie(name) {
+                return document.cookie.split(";").some((c) => {
+                    return c.trim().startsWith(name + "=");
+                });
+            },
+            logout() {
+                axios
+                    .post("/auth/logout")
+                    .then((res) => {
+                        if (res.data.status == 401) {
+                            this.delete_cookie('_token', '/', )
+                            location.replace('/');
+                        }
+                        console.log(res);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            },
+           open() {
+            this.$emit('switchMe');
+           }
         },
-        confirmLogoutBtn() {
-            window.location.href = "/";
-        },
-        logoutBtn() {
-            this.logoutModal = false;
-        },
-
-    },
-}
+    };
 </script>
