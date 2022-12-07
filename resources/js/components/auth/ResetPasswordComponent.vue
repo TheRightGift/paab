@@ -177,7 +177,6 @@
                 return new Date().getFullYear();
             },
             setOTP(value){
-                console.log(value)
                 if(value === 200){
                     this.updateVerifiedEmail(2);
                 }                
@@ -185,6 +184,8 @@
             otpVerifier(value){
                 if(value === 200){
                     this.updateVerifiedEmail(3);
+                } else {
+                    // use toast to notify
                 }
             },
             submitResetPasswordForm() {

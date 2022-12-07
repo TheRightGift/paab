@@ -194,7 +194,7 @@ class EmailAuthService {
                 $otp = $this->genOTP();
 
                 // TODO: Store  the OTP in a verifier TB
-                
+                // sore the otp and userId in the verifier TB
 
                 $this->maileOTP($input['email'], $otp);
                 

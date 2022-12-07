@@ -136,20 +136,29 @@
                         classes: "errorNotifier",
                     });
                 } else {
-                    if (this.decryptOTP(this.otp) === this.userInputedOTP) {
-                        // Pass 200 to parent
-                        this.$emit('res', 200);
-                    } else {
-                        M.toast({
-                            html: "Invalid OTP.",
-                            classes: "errorNotifier",
-                        });
+                    if(type === 'register'){
+                        if (this.decryptOTP(this.otp) === this.userInputedOTP) {
+                            // Pass 200 to parent
+                            this.$emit('res', 200);
+                        } else {
+                            M.toast({
+                                html: "Invalid OTP.",
+                                classes: "errorNotifier",
+                            });
 
-                        // reload page after 4secs
-                        setTimeout(() => {
-                            location.reload();
-                        }, 4000);
+                            // reload page after 4secs
+                            setTimeout(() => {
+                                location.reload();
+                            }, 4000);
+                        }
+                    } else if(type === 'reset'){
+                        // TODO: send otp to backend to verifie OTP and userID
+                        // if ok:
+                            //this.$emit('res', 200);
+                        // else
+                            // this.$emit('res', 404);
                     }
+                    
                 }
             },
             decryptOTP(otp) {
