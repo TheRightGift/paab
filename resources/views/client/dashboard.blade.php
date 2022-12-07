@@ -25,5 +25,8 @@
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/materialize.min.js') }}"></script>
         <script src="{{ asset('js/paab.js') }}"></script>
+        <script>
+            M.AutoInit();
+        </script>
     </body>
 </html>
