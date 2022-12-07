@@ -240,22 +240,22 @@
             </div>
 
             <!-- Templates Section -->
-            <div class="templatesDiv">
-                <div class="templatesInnerDiv">
-                    <p class="templatesTitle">
-                        TEMPLATES FIT JUST FOR YOU
-                    </p>
-                    <p class="templatesTxt">
-                        It is a long established fact that a reader will be distracted by the 
-                        readable content of a page when looking at its layout. The point of using 
-                        Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
-                        as opposed to using 'Content here, content here.
-                    </p>
+            <div class="templatesRow">
+                <div class="templatesRowInnerDiv row">
+                    <div class="col l12 center-align">
+                        <p class="templatesRowTitle">
+                            TEMPLATES FIT JUST FOR YOU
+                        </p>
+                        <p class="templatesRowTxt">
+                            It is a long established fact that a reader will be distracted by the 
+                            readable content of a page when looking at its layout. The point of using 
+                            Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
+                            as opposed to using 'Content here, content here.
+                        </p>
+                    </div>
 
-                    <div class="tempImgDiv">
-                        <img :src="'./media/img/tempImg.png'" alt="tempImg.png" class="tempImg">
-                        <img :src="'./media/img/tempImg1.png'" alt="tempImg.png" class="tempImg">
-                        <img :src="'./media/img/tempImg.png'" alt="tempImg.png" class="tempImg">
+                    <div class="col l12 tempRowImgDiv">
+                        <img :src="'./media/img/template.png'" alt="tempImg.png" class="tempImg">
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@
             </div>
 
             <div class="col s12 m12 l6 welcomeContainer">
-                <VerifyEmailComponent @otp="setOTP" :type="'reset'"/>
+                <VerifyEmailComponent @res="setOTP" :type="'reset'"/>
             </div>
         </div>
 
@@ -158,7 +158,7 @@
         data() {
             return {
                 
-                verifiedEmail: 3,
+                verifiedEmail: 1,
                 resetLoading: false,
                 otp: "",
                 user: {
@@ -177,6 +177,7 @@
                 return new Date().getFullYear();
             },
             setOTP(value){
+                console.log(value)
                 if(value === 200){
                     this.updateVerifiedEmail(2);
                 }                
