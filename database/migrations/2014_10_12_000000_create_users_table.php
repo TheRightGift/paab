@@ -21,6 +21,7 @@ return new class extends Migration
             $table->bigInteger('title_id')->unsigned()->nullable();
             $table->unsignedMediumInteger('city_id')->nullable();
             $table->string('username')->nullable();
+            $table->string('zipcode')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable()->unique();
             $table->string('provider')->nullable();
