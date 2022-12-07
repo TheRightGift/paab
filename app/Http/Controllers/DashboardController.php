@@ -19,7 +19,7 @@ class DashboardController extends Controller
         if (Auth::user()) {
             if (auth()->user()->can('run_client_ops')){
                 // redirect to client dash view
-                return view('client.dashboard');
+                return redirect('/client/dashboard');
             } else if(auth()->user()->can('run_admin_ops')) {
                 // redirect to admin dash view
                 return view('admin.dashboard');

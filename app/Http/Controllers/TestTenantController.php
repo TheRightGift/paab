@@ -22,7 +22,7 @@ class TestTenantController extends Controller
         }
         try {
             //code...
-            $tenant = Tenant::find( $request->name, 'id')->first();
+            $tenant = Tenant::find($request->name);
             if (empty($tenant)) {
                 $tenant = Tenant::create([
                     'name' => $inputs->validated()['name'],

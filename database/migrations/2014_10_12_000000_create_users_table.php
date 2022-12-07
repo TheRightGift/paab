@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('othername')->nullable();
-            $table->bigInteger('title_id')->unsigned();
-            $table->unsignedMediumInteger('city_id');
+            $table->bigInteger('title_id')->unsigned()->nullable();
+            $table->unsignedMediumInteger('city_id')->nullable();
             $table->string('username')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable()->unique();

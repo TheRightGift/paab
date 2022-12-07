@@ -60,7 +60,7 @@
                             </p>
 
                             <div class="socialMedIconsDiv">
-                                <a href="#">
+                                <a href="/auth/login/linkedin">
                                     <i
                                         class="
                                             fa-brands
@@ -69,7 +69,7 @@
                                         "
                                     ></i>
                                 </a>
-                                <a href="#">
+                                <a href="/auth/login/facebook">
                                     <i
                                         class="
                                             fa-brands fa-facebook
@@ -77,7 +77,7 @@
                                         "
                                     ></i>
                                 </a>
-                                <a href="#">
+                                <a href="/auth/login/twitter">
                                     <i
                                         class="
                                             fa-brands fa-twitter

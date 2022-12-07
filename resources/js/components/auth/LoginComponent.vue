@@ -69,7 +69,7 @@
                                     </p>
 
                                     <div class="socialMedIconsDiv">
-                                        <a href="#">
+                                        <a href="/auth/login/linkedin">
                                             <i
                                                 class="
                                                     fa-brands
@@ -78,7 +78,7 @@
                                                 "
                                             ></i>
                                         </a>
-                                        <a href="#">
+                                        <a href="/auth/login/facebook">
                                             <i
                                                 class="
                                                     fa-brands fa-facebook
@@ -86,7 +86,7 @@
                                                 "
                                             ></i>
                                         </a>
-                                        <a href="#">
+                                        <a href="/auth/login/twitter">
                                             <i
                                                 class="
                                                     fa-brands fa-twitter
@@ -166,7 +166,9 @@
                 },
             };
         },
-        mounted() {},
+        mounted() {
+            this.loginFromSocial()
+        },
         methods: {
             userLogin() {
                 if (this.loginUser.email === "" || this.loginUser.password === "") {
@@ -181,7 +183,7 @@
                         password: this.loginUser.password,
                     };
                     axios
-                        .post("/login", data)
+                        .post("/auth/login", data)
                         .then((res) => {
                             if (res.status === 200) {
                                 if (res.data.status == 200) {

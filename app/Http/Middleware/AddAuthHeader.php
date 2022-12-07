@@ -14,15 +14,15 @@ class AddAuthHeader
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
         if (!$request->bearerToken()) {
             if ($request->hasCookie('_token')) {
                 $token = $request->cookie('_token');
-                $request->headers->set('Authorization', `Bearer $token`);
+                $request->headers->add(['Authorization' => 'Bearer ' . $token]);
+                // dd($test, $token);
             }
         }
-        // dd($request->bearerToken());
         return $next($request);
     }
 }

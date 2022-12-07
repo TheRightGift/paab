@@ -2,172 +2,11 @@
     <div>
         <!-- Sidenav for small devices -->
         <div v-if="!viewingTemplate">
-            <nav class="hide-on-med-and-up white">
-                <!-- Sidenav Contents -->
-                <ul id="slide-out" class="sidenav">
-                    <li>
-                        <div class="user-view">
-                            <div class="background">
-                                <img :src="bg_img" />
-                            </div>
-                            <a href="#user"
-                                ><img class="circle" :src="pro_img"
-                            /></a>
-                            <a href="#name"
-                                ><span class="white-text name"
-                                    >Dr. {{ user.firstname }}
-                                    {{ user.lastname }}</span
-                                ></a
-                            >
-                            <a href="#email"
-                                ><span class="white-text email">{{
-                                    user.email
-                                }}</span></a
-                            >
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="/client/dashboard" class="dashLeftBarListDiv">
-                            <i class="material-icons dashLeftBarIcons"
-                                >dashboard</i
-                            >
-                            <p class="dashLeftBarTitle">Dashboard</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dashLeftBarListDiv">
-                            <i
-                                class="
-                                    material-icons
-                                    dashLeftBarIcons
-                                    purple-text
-                                    text-darken-4
-                                "
-                                >web</i
-                            >
-                            <p class="dashLeftBarTitle">Websites</p>
-                        </a>
-                    </li>
-                    <!-- <li><div class="divider"></div></li> -->
-                    <!-- <li><a class="subheader">Subheader</a></li> -->
-                    <li>
-                        <a href="/client/template" class="dashLeftBarListDiv">
-                            <i class="material-icons">chrome_reader_mode</i>
-                            <p class="dashLeftBarTitle">Templates</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/client/mail" class="dashLeftBarListDiv">
-                            <i class="material-icons dashLeftBarIcons"
-                                >mail_outline</i
-                            >
-                            <p class="dashLeftBarTitle">Mails</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/client/settings" class="dashLeftBarListDiv">
-                            <i class="material-icons dashLeftBarIcons"
-                                >settings</i
-                            >
-                            <p class="dashLeftBarTitle">Settings</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/client/support" class="dashLeftBarListDiv">
-                            <i class="material-icons dashLeftBarIcons"
-                                >question_answer</i
-                            >
-                            <p class="dashLeftBarTitle">Help/Support</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dashLeftBarListDiv">
-                            <i class="material-icons dashLeftBarIcons"
-                                >autorenew</i
-                            >
-                            <p class="dashLeftBarTitle">Logout</p>
-                        </a>
-                    </li>
-                </ul>
-
-                <!-- Sidenav Trigger -->
-                <a href="#" data-target="slide-out" class="sidenav-trigger">
-                    <i class="material-icons" id="dashSidenavIconBtn">menu</i>
-                </a>
-            </nav>
+            <mobile-nav-component />
 
             <!-- Sidebar for large and medium devices -->
             <div class="row" id="dashRowDiv">
-                <div class="col s12 m2 l2" id="dashLeftColBar">
-                    <div class="dashLeftBar hide-on-small-only">
-                        <div class="proImgDiv">
-                            <i class="material-icons" id="proImg">person</i>
-                        </div>
-
-                        <div class="dashLeftBarInnerDiv">
-                            <a href="/dashboard" class="dashLeftBarListDiv">
-                                <i class="material-icons dashLeftBarIcons"
-                                    >dashboard</i
-                                >
-                                <p class="dashLeftBarTitle">Dashboard</p>
-                            </a>
-
-                            <a href="#" class="dashLeftBarListDiv">
-                                <i
-                                    class="material-icons dashLeftBarIcons"
-                                    id="dashActive"
-                                    >web</i
-                                >
-                                <p class="dashLeftBarTitle">Websites</p>
-                            </a>
-
-                            <a
-                                href="/client/template"
-                                class="dashLeftBarListDiv"
-                            >
-                                <i class="material-icons dashLeftBarIcons"
-                                    >chrome_reader_mode</i
-                                >
-                                <p class="dashLeftBarTitle">Templates</p>
-                            </a>
-
-                            <a href="/client/mail" class="dashLeftBarListDiv">
-                                <i class="material-icons dashLeftBarIcons"
-                                    >mail_outline</i
-                                >
-                                <p class="dashLeftBarTitle">Mails</p>
-                            </a>
-
-                            <a
-                                href="/client/settings"
-                                class="dashLeftBarListDiv"
-                            >
-                                <i class="material-icons dashLeftBarIcons"
-                                    >settings</i
-                                >
-                                <p class="dashLeftBarTitle">Settings</p>
-                            </a>
-
-                            <a
-                                href="/client/support"
-                                class="dashLeftBarListDiv"
-                            >
-                                <i class="material-icons dashLeftBarIcons"
-                                    >question_answer</i
-                                >
-                                <p class="dashLeftBarTitle">Help/Support</p>
-                            </a>
-
-                            <a href="#" class="dashLeftBarListDiv">
-                                <i class="material-icons dashLeftBarIcons"
-                                    >autorenew</i
-                                >
-                                <p class="dashLeftBarTitle">Logout</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <side-nav-component />
 
                 <!-- Web black div -->
                 <div class="col s12 m10 l10" id="webRightDiv" v-if="view == 0">
@@ -200,7 +39,8 @@
 
                     <!-- web empty div -->
                     <div class="webWhiteDiv">
-                        <div class="webWhiteDiv1">
+                        <web-create-component @createWebsite="createWebsite($event)" :professions="professions" @close="close($event)" v-if="!isHidden" :loading="loading"/>
+                        <div class="webWhiteDiv1" v-else>
                             <div v-if="websites.length > 0">
                                 <div
                                     class="row"
@@ -252,6 +92,7 @@
                                     appears here when you create one
                                 </p>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -323,98 +164,25 @@
         <template-starter v-else @viewTemplate="viewTemplate" :user="user" />
 
         <!-- Modal Creation of websites -->
-        <div class="clientCreatePortModalDiv" v-if="!isHidden">
-            <p class="clientCreatePortCancelDiv">
-                <i
-                    class="material-icons"
-                    id="clientCreatePortCancelIconBtn"
-                    @click="modalCancelBtn()"
-                    >cancel</i
-                >
-            </p>
-
-            <p class="clientCreatePortTitle">
-                Giving your website a good title make it easier for customer to
-                find your page.
-            </p>
-
-            <div class="row" id="clientCreatePortInputRowDiv">
-                <div class="col s12">
-                    <input
-                        type="text"
-                        placeholder="Website title"
-                        id="clientCreatePortInput"
-                        v-model="web.name"
-                    />
-                </div>
-
-                <div class="col s12">
-                    <input
-                        type="text"
-                        placeholder="Description"
-                        id="clientCreatePortInput1"
-                        v-model="web.description"
-                    />
-                </div>
-            </div>
-
-            <div class="clientCreateInnerPortModalDiv">
-                <div class="webProfessionDiv">
-                    <div class="row">
-                        <div
-                            class="col s6 m4 l2"
-                            v-for="profession in professions"
-                            :key="profession.id"
-                        >
-                            <div id="userTempDiv" class="hoverable">
-                                <div class="tempImgDiv" id="tempImgDiv">
-                                    <i class="material-icons" id="tempProIcon"
-                                        >person</i
-                                    >
-                                </div>
-                                <p class="userTempTitle">
-                                    {{ profession.name }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button
-                type="button"
-                class="btn"
-                id="clientCreatePortBtn"
-                @click.prevent="createWebsite()"
-            >
-                <span v-if="!loading">GET STARTED</span>
-                <div class="preloader-wrapper small active" v-else>
-                    <div class="spinner-layer spinner-white-only">
-                        <div class="circle-clipper left">
-                            <div class="circle"></div>
-                        </div>
-                        <div class="gap-patch">
-                            <div class="circle"></div>
-                        </div>
-                        <div class="circle-clipper right">
-                            <div class="circle"></div>
-                        </div>
-                    </div>
-                </div>
-            </button>
-        </div>
+        
     </div>
 </template>
 
 <script>
+import MobileNavComponent from '../partials/MobileNavComponent.vue';
+import SideNavComponent from '../partials/SideNavComponent.vue';
     // import FooterComponent from "./partials/FooterComponent.vue";
     // import HeaderComponent from "./partials/HeaderComponent.vue";
     import TemplateStarter from "../templates/TemplateStarter.vue";
     import EditWebsiteModalComponent from "./EditWebsiteModalComponent.vue";
+import WebCreateComponent from './WebCreateComponent.vue';
     export default {
         components: {
             TemplateStarter,
             EditWebsiteModalComponent,
+                MobileNavComponent,
+                SideNavComponent,
+                WebCreateComponent,
             // FooterComponent,
             // HeaderComponent
         },
@@ -432,10 +200,6 @@
                 view: 0,
                 viewingTemplate: 0,
                 websites: [],
-                web: {
-                    name: "",
-                    description: "",
-                },
             };
         },
         mounted() {
@@ -445,11 +209,11 @@
             this.isHidden = !this.isHidden;
         },
         methods: {
-            createWebsite() {
+            createWebsite(evt) {
                 this.loading = true;
-                this.web.user_id = this.user.id;
+                evt.user_id = this.user.id;
                 axios
-                    .post("/api/tenant", this.web)
+                    .post("/api/tenant", evt)
                     .then((res) => {
                         if (res.data.status == 200) {
                             this.tenant = res.data.tenant;
@@ -465,11 +229,12 @@
                                 html: err.response.data.message,
                                 classes: "errorNotifier",
                             });
-                            // alert(err.response.message)
                             this.loading = false;
                         }
-                        console.log(err.response);
                     });
+            },
+            close (evt) {
+                this.isHidden = evt;
             },
             getProfessions() {
                 axios
@@ -505,9 +270,7 @@
                         console.log(err);
                     });
             },
-            modalCancelBtn() {
-                this.isHidden = true;
-            },
+            
             setDefaults(num) {
                 this.view = num;
             },

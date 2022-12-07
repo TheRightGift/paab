@@ -19,7 +19,7 @@
     </head>
     <body>
         <div id="app">
-            <client-component ></client-component>
+            <client-component _token="{{ session('token') }}"></client-component>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
