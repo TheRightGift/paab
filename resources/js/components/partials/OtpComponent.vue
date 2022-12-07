@@ -129,6 +129,29 @@
         },
         mounted() {},
         methods: {
+            confirmOTP() {
+                if (this.userInputedOTP.length !== 6) {
+                    M.toast({
+                        html: "OTP should be six characters.",
+                        classes: "errorNotifier",
+                    });
+                } else {
+                    if (this.decryptOTP(this.otp) === this.userInputedOTP) {
+                        // Pass 200 to parent
+                        this.$emit('res', 200);
+                    } else {
+                        M.toast({
+                            html: "Invalid OTP.",
+                            classes: "errorNotifier",
+                        });
+
+                        // reload page after 4secs
+                        setTimeout(() => {
+                            location.reload();
+                        }, 4000);
+                    }
+                }
+            },
             decryptOTP(otp) {
                 let cipher = JSON.parse(Base64.decode(otp));
                 let decrypted = cryptoJs.AES.decrypt(
@@ -155,30 +178,6 @@
                     this.userInputedOTP =
                         this.userInputedOTP.slice(0, index) +
                         this.userInputedOTP.slice(index + 1);
-                }
-            },
-            
-            confirmOTP() {
-                if (this.userInputedOTP.length !== 6) {
-                    M.toast({
-                        html: "OTP should be six characters.",
-                        classes: "errorNotifier",
-                    });
-                } else {
-                    if (this.decryptOTP(this.otp) === this.userInputedOTP) {
-                        // Pass 200 to parent
-                        this.$emit('res', 200);
-                    } else {
-                        M.toast({
-                            html: "Invalid OTP.",
-                            classes: "errorNotifier",
-                        });
-
-                        // reload page after 4secs
-                        setTimeout(() => {
-                            location.reload();
-                        }, 4000);
-                    }
                 }
             },
         },
