@@ -59,7 +59,7 @@ class EmailAuthService {
 			'firstname' => 'required',
             'lastname' => 'required',
             // 'othername' => 'nullable',
-            // 'username' => 'nullable',
+            'zipcode' => 'required',
             'phone' => 'required|unique:users',
             'email' => 'email|required|unique:users',
             'password' => 'required',

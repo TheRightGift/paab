@@ -114,9 +114,9 @@
                                 class="
                                     input-field
                                     col
-                                    l12
-                                    m12
-                                    s12
+                                    l6
+                                    m6
+                                    s6
                                     noPaddingLeft
                                 "
                             >
@@ -126,6 +126,22 @@
                                     type="email"
                                     v-model="userReg.email"
                                     readonly
+                                />
+                            </div>
+                            <div
+                                class="
+                                    input-field
+                                    col
+                                    l6
+                                    m6
+                                    s6
+                                "
+                            >
+                                <input
+                                    placeholder="Zipcode"
+                                    id="signupZipcode"
+                                    type="text"
+                                    v-model="userReg.zipcode"
                                 />
                             </div>
                         </div>
@@ -359,6 +375,7 @@
                     password: "",
                     cPassword: "",
                     profession: "",
+                    zipcode: ""
                 },
                 verifiedEmail: 1,
             };
@@ -441,6 +458,7 @@
                     !this.userReg.gender ||
                     !this.userReg.state ||
                     !this.userReg.city ||
+                    !this.userReg.zipcode ||
                     !this.userReg.password ||
                     this.userReg.password !== this.userReg.cPassword
                 ) {
@@ -458,6 +476,7 @@
                         gender: this.userReg.gender,
                         city_id: this.userReg.city,
                         title_id: this.userReg.title,
+                        zipcode: this.userReg.zipcode,
                         password: this.userReg.password,
                     };
                     axios

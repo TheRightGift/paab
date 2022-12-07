@@ -110,16 +110,11 @@
                                         </div>
                                     </div>
                                     <div class="row" v-else>
-                                        <p class="centered">No Website created yet</p>
+                                        <p class="white-text center-align noVertMargin">No Website created yet</p>
                                     </div>
                                     <div class="row" id="myWebRmMgRow">
-                                        <div class="col s2 offset-s10">
-                                            <i
-                                                class="material-icons hoverable"
-                                                id="dashAddIconBtn"
-                                                @click="navigateToWebsitePage"
-                                                >add_circle</i
-                                            >
+                                        <div class="col s12 center-align">
+                                            <a @click="navigateToWebsitePage" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create website</a>
                                         </div>
                                     </div>
                                 </div>
@@ -185,8 +180,8 @@
     import SidenavComponent from '../partials/SideNavComponent.vue';
     export default {
         components: {
-                SidenavComponent,
-                MobileNavComponent,
+            SidenavComponent,
+            MobileNavComponent,
         },
         data() {
             return {

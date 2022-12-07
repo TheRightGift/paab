@@ -1,11 +1,11 @@
 <template>
     <div>
         <!-- Logout Modal -->
-        <div id="authAlertContainDiv3">
+        <!--div id="authAlertContainDiv3">
             <div class="authAlertBox">
                 <div class="authAlertBox1">
                     <div class="authAlertBox2">
-                        <!-- Model cancel button -->
+                    
                         <div>
                             <i
                                 class="material-icons"
@@ -53,11 +53,36 @@
                     </div>
                 </div>
             </div>
+        </div-->
+
+        <div id="logoutModal" class="modal">
+            <div class="modal-content">
+                <div class="row logoutModalImageRow">
+                    <img
+                        src="/media/img/alertQUESTIONg.png"
+                        alt="alertQUESTIONg.png"
+                        id="errAltImg"
+                    />
+                </div>
+                <div class="row">
+                    <p>You are about to logout from your space</p>
+                </div>
+
+                <div class="row">
+                    <button @click="logout" class="modal-close black waves-effect waves-green btn-flat">Yes</button>
+                    <button @click="open" class="modal-close white waves-effect waves-green btn-flat">No</button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 <script>
     export default {
+        
+        mounted() {
+            M.AutoInit();
+            $('.modal').openModal();
+        },
         methods: {
             delete_cookie(name, path, domain) {
                 if (this.get_cookie(name)) {
