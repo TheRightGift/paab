@@ -40,7 +40,7 @@
             </div>
 
             <div class="col s12 m12 l6 otpContainer">
-                <OtpComponent @res="otpVerifier" :otp="otp"/>
+                <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'"/>
             </div>
         </div>
 
