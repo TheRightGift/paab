@@ -157,7 +157,7 @@
                             if (res.data.status == 200) {
                                 if(this.type === 'reset'){
                                     // Pass response to parent ;
-                                    this.$emit('res', 200);
+                                    this.$emit('res', {email: this.email, status: 200});
                                 } else if(this.type === 'register'){
                                     // Pass OTP to parent ;
                                     let resData = {

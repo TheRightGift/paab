@@ -11,6 +11,7 @@ use App\Notifications\MailOTP;
 
 use App\Models\User;
 use App\Models\Tenant;
+use App\Models\Verifier;
 
 use Carbon\Carbon;
 use Cookie;
@@ -48,7 +49,7 @@ class EmailAuthService {
 	{
 		$validator = Validator::make($request->all(), [
             'email' => 'email|required',
-            'password' => 'required|confirmed',
+            'password' => 'required',
 		]);
         return $validator;
     }
@@ -81,7 +82,6 @@ class EmailAuthService {
         }
         $accessToken = auth()->user()->createToken('accessToken')->accessToken;
 
-        $cookie = $this->getCookieDetails($accessToken);
         return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];
     }
 
@@ -165,14 +165,14 @@ class EmailAuthService {
     public function resetPassword($request){
         $data = $this->passwordResetDataValidation($request);
         if ($data->fails()){
-            return ['status' => 501, 'error' => $regData->errors()->all()];
+            return ['status' => 501, 'error' => $data->errors()->all()];
         } else {
             $input = $data->validated();
             $verifyUserEmail = $this->confirmEmail($input['email']);
 
-            if($verifyUserEmail == 200){//verified
+            if($verifyUserEmail['status'] == 200){//verified
                 $encryptedPass = bcrypt($request->password);
-                $updateUser = $userDetails->update(['password' => $encryptedPass]);
+                $updateUser = $verifyUserEmail['user']->update(['password' => $encryptedPass]);
                 if ($updateUser == true){
                     return ['status' => 200, 'msg' => 'Password successfully reset.'];
                 }
@@ -189,15 +189,19 @@ class EmailAuthService {
         } else {
             $input = $data->validated();
             $verifyUserEmail = $this->confirmEmail($input['email']);
-
-            if($verifyUserEmail == 200){//verified
+            if($verifyUserEmail['status'] == 200){//verified
                 $otp = $this->genOTP();
-
                 // TODO: Store  the OTP in a verifier TB
-                // sore the otp and userId in the verifier TB
-
+                $verifier = new Verifier();
+                $existingUserVerifier = $verifier->where('user_id', $verifyUserEmail['user']->id)->first();
                 $this->maileOTP($input['email'], $otp);
-                
+                if ($existingUserVerifier == null) {
+                    return $this->createVerifier($verifier, $verifyUserEmail['user']->id, $otp);
+                }
+                else {
+                    return $this->createVerifier($existingUserVerifier, $existingUserVerifier->id, $otp);
+                }
+
                 return ['status' => 200, 'message' => 'OTP sent to '.$input['email']];
             } else {//!verified
                 return ['status' => 404, 'error' => 'This email does not exist.'];
@@ -205,14 +209,44 @@ class EmailAuthService {
         }  
     }
 
+    private function createVerifier ($verifier, $user_id, $otp) {
+        $verifier->user_id = $user_id;
+        $verifier->otp = $otp;
+        $verifier->expiry = Carbon::now()->addMinutes(60);
+        $verifier->save();
+
+        if ($verifier->wasChanged()) {
+            return ['status' => 200, 'message' => 'OTP Verified'];
+        }
+        else {
+            return ['status' => 500, 'error' => 'Server Error'];
+        }
+    }
+
     private function confirmEmail($email){
         $user = new User();
         $userEmail = $user->where('email', $email)->first();
 
         if (!empty($userEmail)) {
-            return 200;
+            return ['user' => $userEmail, 'status' => 200];
         } else {
             return 404;
+        }
+    }
+
+    public function verifyOtPs (Request $request) {
+        $veriferData = $request->validate([
+            'email' => 'email|required',
+            'otp' => 'required'
+        ]);
+        $userIdToVerify = User::where('email', $request->email)->first();
+        $verifier = new Verifier();
+        $checker = $verifier->where([['otp', $request->otp], ['user_id', $userIdToVerify->id]])->first();
+        if (!empty($checker)) {
+            return ['message' => 'OTP Verified', 'status' => 200];
+        }
+        else {
+            return ['message' => 'OTP mismatch', 'status' => 404];
         }
     }
 
@@ -246,20 +280,4 @@ class EmailAuthService {
             'email' => $email,
         ])->notify(new MailOTP($otp));
     }
-
-    private function getCookieDetails($token)
-    {
-        return [
-            'name' => '_token',
-            'value' => $token,
-            'minutes' => 1440,
-            'path' => null,
-            'domain' => null,
-            // 'secure' => true, // for production
-            'secure' => null, // for localhost
-            'httponly' => true,
-            'samesite' => true,
-        ];
-    }
-
 }

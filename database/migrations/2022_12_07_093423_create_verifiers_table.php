@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('verifiers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->tinyInteger('otp');
+            $table->integer('otp');
             $table->date('expiry')->nullable();
             $table->timestamps();
         });

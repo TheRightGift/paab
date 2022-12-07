@@ -37,6 +37,11 @@ class AuthController extends Controller
         return response($passResetRes);
     }
 
+    public function verifyOTP(Request $request, EmailAuthService $emailAuthService) {
+        $verifier = $emailAuthService->verifyOtps($request);
+        return response()->json($verifier);
+    }
+
     public function logout()
     {
         auth()->user()->tokens()->delete();
