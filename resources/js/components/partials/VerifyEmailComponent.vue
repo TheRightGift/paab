@@ -145,9 +145,9 @@
 
                     if(this.type === 'reset'){
                         // sendOtpForUserResetPassword
-                        url = "/sendOtpForUserResetPassword";
+                        url = "/auth/sendOtpForUserResetPassword";
                     } else if(this.type === 'register'){
-                        url = "/verifyEmailForRegistration";
+                        url = "/auth/verifyEmailForRegistration";
                     }
 
                     axios

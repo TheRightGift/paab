@@ -61,6 +61,7 @@ Route::prefix('auth')->group(function () {
         }    
     });
 });
+// 'auth', 
 Route::prefix('client')->middleware(['auth', 'can:run_client_ops'])->group(function () {
     Route::get('/websites', function () {
         return view('client.websites');

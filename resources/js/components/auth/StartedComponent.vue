@@ -461,7 +461,7 @@
                         password: this.userReg.password,
                     };
                     axios
-                        .post("/register", data)
+                        .post("/auth/register", data)
                         .then((res) => {
                             if (res.status === 200) {
                                 if (res.data.status == 200) {
