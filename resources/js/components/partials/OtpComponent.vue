@@ -125,7 +125,9 @@
             };
         },
         props: {
-            otp: String
+            otp: String,
+            type: String,
+            email: String,
         },
         mounted() {},
         methods: {
@@ -136,7 +138,7 @@
                         classes: "errorNotifier",
                     });
                 } else {
-                    if(type === 'register'){
+                    if(this.type === 'register'){
                         if (this.decryptOTP(this.otp) === this.userInputedOTP) {
                             // Pass 200 to parent
                             this.$emit('res', 200);
@@ -151,12 +153,24 @@
                                 location.reload();
                             }, 4000);
                         }
-                    } else if(type === 'reset'){
+                    } else if(this.type === 'reset'){
                         // TODO: send otp to backend to verifie OTP and userID
                         // if ok:
                             //this.$emit('res', 200);
                         // else
                             // this.$emit('res', 404);
+                            let data = {email: this.email, otp: this.userInputedOTP}
+                            axios.post('/api/verifyOTP', data).then(res => {
+                                // console.log(res);
+                                if (res.data.status == 200) {
+                                    this.$emit('res', 200);
+                                }
+                                else if (res.data.status == 404) {
+                                    this.$emit('res', 404);
+                                }
+                            }).catch(err => {
+                                console.log(err);
+                            })
                     }
                     
                 }

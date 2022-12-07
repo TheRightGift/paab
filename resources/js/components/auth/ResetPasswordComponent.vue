@@ -40,7 +40,7 @@
             </div>
 
             <div class="col s12 m12 l6 otpContainer">
-                <OtpComponent @res="otpVerifier" :otp="otp"/>
+                <OtpComponent @res="otpVerifier" :otp="otp" :type="reset" :email="user.email"/>
             </div>
         </div>
 
@@ -157,7 +157,7 @@
         },
         data() {
             return {
-                
+                reset: "reset",
                 verifiedEmail: 1,
                 resetLoading: false,
                 otp: "",
@@ -177,7 +177,8 @@
                 return new Date().getFullYear();
             },
             setOTP(value){
-                if(value === 200){
+                if(value.status === 200){
+                    this.user.email = value.email;
                     this.updateVerifiedEmail(2);
                 }                
             },
@@ -186,6 +187,10 @@
                     this.updateVerifiedEmail(3);
                 } else {
                     // use toast to notify
+                    M.toast({
+                        html: "Invalid OTP.",
+                        classes: "errorNotifier",
+                    });
                 }
             },
             submitResetPasswordForm() {
@@ -205,7 +210,7 @@
                         password: this.user.password,
                     };
                     axios
-                        .post("/resetPassword", data)
+                        .post("/auth/resetPassword", data)
                         .then((res) => {
                             if (res.status === 200) {
                                 if (res.data.status == 200) {

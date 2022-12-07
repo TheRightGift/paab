@@ -7,6 +7,7 @@ use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\TestTenantController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,6 @@ use App\Http\Controllers\CountryController;
 // });
 
 Route::group(['middleware' => 'auth.api'], function() {
-    Route::get('logout', 'AuthController@logout');
     Route::get('/user', function(Request $request) {
         return $request->user();
     });
@@ -46,7 +46,7 @@ Route::apiResource('title', TitleController::class);
 Route::get('countries', [CountryController::class, 'index']);
 Route::get('states/{country_id}', [CountryController::class, 'states']);
 Route::get('cities/{state_id}', [CountryController::class, 'cities']);
-
+Route::post('verifyOTP', [AuthController::class, 'verifyOTP']);
 // Email/Username
 // Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
 // Route::post('/register', [App\Http\Controllers\AuthController::class, 'register']);
