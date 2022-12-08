@@ -175,9 +175,66 @@
                 </div>
 
                 <!-- Right Side Div -->
-                <!--div class="col s12 m10 l10" v-else>
-                    
-                </div-->
+                <div class="col s12 m10 l10" id="setupWebRightDiv" v-else>
+                    <div class="setWebContainModalDiv">
+                        <div class="setWebInnerModalDiv">
+                            <div class="setWebTitleDiv">
+                                <p class="setWebTitle">Title:</p>
+                                <p class="setWebTitleData">{{ tenant.name }}</p>
+                            </div>
+
+                            <div class="setWebUrlDiv">
+                                <p class="setWebUrlTitle">url:</p>
+                                <p>
+                                    <a href="#" class="setWebUrlData">{{
+                                        tenant.domain
+                                    }}</a>
+                                    <span class="setWebPlan">Premium</span>
+                                </p>
+                            </div>
+
+                            <div class="setWebDateDiv">
+                                <p class="setWebDateTitle">Start Date:</p>
+                                <p class="setWebDateData">
+                                    {{
+                                        new Date(tenant.created_at) ||
+                                        new Date()
+                                    }}
+                                </p>
+                            </div>
+
+                            <div class="setWebDescriptionDiv">
+                                <p class="setWebDescriptionTitle">
+                                    Description:
+                                </p>
+                                <p class="setWebDescriptionData">
+                                    {{ tenant.description }}
+                                </p>
+                            </div>
+
+                            <div class="row" id="setWebBtnDiv">
+                                <button
+                                    class="col s12 btn"
+                                    type="button"
+                                    id="setWebBtn"
+                                    @click="setEditWebModal"
+                                >
+                                    EDIT WEBSITE
+                                </button>
+
+                                <button
+                                    class="col s12 btn"
+                                    type="button"
+                                    id="setWebBtn1"
+                                    @click="viewTemplate"
+                                >
+                                    VIEW WEBSITE
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <edit-website-modal-component @exitModal="setEditWebModal" v-if="onEditWebModal"/>
+                </div>
             </div>
         </div>
 
@@ -236,11 +293,16 @@
                     .post("/api/tenant", evt)
                     .then((res) => {
                         if (res.data.status == 200) {
-                            this.tenant = res.data.tenant;
-                            this.domain = res.data.domain;
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            let created = res.data.tenant;
+                            created.domains = res.data.domain.domain;
+                            this.websites.unshift(res.data.tenant);
                             this.loading = false;
                             this.isHidden = !this.isHidden;
-                            this.setDefaults(1);
+                            // this.setDefaults(1);
                         }
                     })
                     .catch((err) => {
@@ -298,7 +360,7 @@
                 this.onEditWebModal = !this.onEditWebModal;
             },
             setView(website) {
-                this.domain = website.domains[0];
+                this.tenant.domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
                 this.tenant.name = website.name;
                 this.tenant.description = website.description;
                 this.tenant.created_at = website.created_at;

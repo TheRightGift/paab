@@ -66,7 +66,7 @@ class SocialController extends Controller{
             ]);
 
             if($user){
-                Auth::login($findUser);
+                Auth::login($user);
                 $userToken = auth()->user()->createToken('accessToken')->accessToken;
                 return redirect('/client/dashboard')->with('token', $userToken);
                 // return response()->json(['token' => $userToken]);
