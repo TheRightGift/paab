@@ -2,12 +2,8 @@
     <div>
         <div class="clientCreatePortModalDiv">
             <p class="clientCreatePortCancelDiv">
-                <i
-                    class="material-icons"
-                    id="clientCreatePortCancelIconBtn"
-                    @click="modalCancelBtn()"
-                    >cancel</i
-                >
+                <a @click="modalCancelBtn()" id="clientCreatePortCancelIconBtn" class="waves-effect waves-light btn-flat"><i class="material-icons left">arrow_back</i>Go Back</a>
+                
             </p>
 
             <p class="clientCreatePortTitle">

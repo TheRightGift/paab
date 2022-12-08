@@ -35,13 +35,15 @@
                     </div>
                 </div>
         </div>
-        <div class="copyWrite">
-            &copy; PaaB. 2022. We support your brand!
-        </div>
+        <InnerFooterComponent/>
     </footer>
 </template>
 <script>
+    import InnerFooterComponent from './InnerFooterComponent.vue';
     export default {
+        components: {
+            InnerFooterComponent
+        },
         data() {
             return {};
         },

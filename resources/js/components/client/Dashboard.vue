@@ -170,6 +170,7 @@
                         </div>
                     </div>
                 </div>
+                <InnerFooterComponent/>
             </div>
         </div>
     </div>
@@ -178,10 +179,12 @@
 <script>
     import MobileNavComponent from '../partials/MobileNavComponent.vue';
     import SidenavComponent from '../partials/SideNavComponent.vue';
+    import InnerFooterComponent from '../partials/InnerFooterComponent.vue';
     export default {
         components: {
             SidenavComponent,
             MobileNavComponent,
+            InnerFooterComponent
         },
         data() {
             return {

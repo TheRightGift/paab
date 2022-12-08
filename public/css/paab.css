@@ -84,6 +84,9 @@ body {
     margin-top: 0;
     margin-bottom: 0;
 }
+.marginRight1 {
+    margin-right: 1vw;
+}
 /* HOME */
 .navbar {
     position: fixed;
@@ -1629,7 +1632,8 @@ a.active {
     font-weight: 600;
     font-size: 1.875rem;
     color: #7746FF;
-    margin: 6vh 0 0 0;
+    margin: 0 0 3vh 0;
+    /* margin: 0; */
 }
 .webBlackTxt {
     font-family: 'Poppins', sans-serif;
@@ -1638,19 +1642,37 @@ a.active {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.8);
     margin-top: 0;
-    width: 60%;
+    /* width: 60%; */
 }
 .webBlackDiv1 {
     width: 93%;
     margin: 0 auto;
 }   
 #webAddCircleIcon {
-    cursor: pointer;
-    color: #7746FF;
-    font-size: 2rem;
-    position: absolute;
+    
+    /* color: #7746FF; */
+    /* font-size: 2rem; */
+    /* position: absolute;
     right: 7vw;
-    top: 15vh;
+    top: 15vh; */
+}
+#webRightDiv {
+    padding: 5vh 2vw;
+}
+#webAddContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3.25vh 0;    
+}
+#webAddContainer.primary:hover {
+    border: thin solid var(--primary);
+    cursor: pointer;
+    padding: 3.12vh 0; 
+}
+.material-icons.webAddIcon {
+    font-size: 3.5rem;
 }
 .webWhiteDiv {
     height: 196px;
@@ -1659,6 +1681,10 @@ a.active {
 /* #webWhiteProDiv {
     margin-right: 0vw;
 } */
+.websitesViewRow {
+    padding: 2vh 0;
+    border-bottom: thin solid var(--secondary);
+}
 .webWhiteProDiv {
     width: 60px;
     height: 60px;
@@ -1666,7 +1692,13 @@ a.active {
     border-radius: 50%;
 }
 .webWhiteDiv1 {
-    padding-top: 10vh;
+    padding-top: 5vh;
+}
+.websiteTitle {
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: center;
 }
 .webWhiteProName {
     font-family: 'Poppins', sans-serif;
@@ -1698,8 +1730,9 @@ a.active {
 .webHr {
     margin: 0;
 }
-#webRightDiv {
-    padding: 0;
+
+.row .col.websiteBanner {
+    padding: 3.5vh 5.5vw;
 }
 #webWhiteDiv2 {
     border-bottom: 1px solid rgba(119, 70, 255, 0.3);
@@ -2179,12 +2212,9 @@ div .row .supportGetInTouchRowDiv {
 .clientCreatePortModalDiv {
     background: #FFFFFF;
     border-radius: 10px;
-    /* position: absolute;
-    top: 8vh;
-    left: 24vw; */
-    width: 95%;
-    margin: 5vh auto 0 auto;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* width: 95%; */
+    /* margin: 5vh auto 0 auto; */
+    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
 }
 .clientCreatePortTitle {
     font-family: 'Montserrat', sans-serif;

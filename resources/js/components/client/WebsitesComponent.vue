@@ -9,155 +9,175 @@
                 <side-nav-component />
 
                 <!-- Web black div -->
-                <div class="col s12 m10 l10" id="webRightDiv" v-if="view == 0">
-                    <div class="webBlackDiv">
-                        <div class="webBlackDiv1">
-                            <div class="row webBlackDiv1">
-                                <div class="col s12">
-                                    <p class="webBlackTitle">
-                                        Create Portfolio
-                                    </p>
-                                </div>
-                                <div class="col s11">
-                                    <p class="webBlackTxt">
-                                        Lets start and automate your process so
-                                        you can reclaim time and focus on your
-                                        goals.
-                                    </p>
-                                </div>
-                                <div class="col s1">
-                                    <i
-                                        class="material-icons right"
-                                        id="webAddCircleIcon"
-                                        @click="webAddCircleIcon()"
-                                        >add_circle</i
-                                    >
+                <div class="col s12 m10 l10">
+                    <div v-if="view == 0" id="webRightDiv">
+                        <!--div class="webBlackDiv">
+                            <div class="webBlackDiv1">
+                                <div class="row webBlackDiv1">
+                                    
                                 </div>
                             </div>
+                        </div-->
+                        <div class="col s9 black websiteBanner">
+                            <p class="webBlackTitle">
+                                Create Portfolio
+                            </p>
+                            <p class="webBlackTxt">
+                                Lets start and automate your process so
+                                you can reclaim time and focus on your
+                                goals.
+                            </p>
                         </div>
-                    </div>
+                        <div class="col s3 primary" id="webAddContainer" @click="webAddCircleIcon()" v-if="isHidden">
+                            <i class="material-icons webAddIcon">add</i>
+                            <p>Create Website</p>
+                        </div>
+                        <div class="col s3 primaryBorder" id="webAddContainer" v-else>
+                            <i class="material-icons webAddIcon">linear_scale</i>
+                            <p>Creating Website...</p>
+                        </div>
+                    
 
-                    <!-- web empty div -->
-                    <div class="webWhiteDiv">
-                        <web-create-component @createWebsite="createWebsite($event)" :professions="professions" @close="close($event)" v-if="!isHidden" :loading="loading"/>
-                        <div class="webWhiteDiv1" v-else>
-                            <div v-if="websites.length > 0">
-                                <div
-                                    class="row"
-                                    id="webWhiteDiv2"
-                                    v-for="website in websites"
-                                    :key="website.id"
-                                >
+                        <!-- web empty div -->
+                        <div class="col s12 webWhiteDiv">
+                            <web-create-component @createWebsite="createWebsite($event)" :professions="professions" @close="close($event)" v-if="!isHidden" :loading="loading"/>
+                            <div class="webWhiteDiv1" v-else>
+                                <div class="row">
+                                    <div class="col l2 webWhiteTitle">
+                                        Title
+                                    </div>
+                                    <div class="col l2 webWhiteTitle websiteTitle">
+                                        Template
+                                    </div>
+                                    <div class="col l6 webWhiteTitle">
+                                        Description
+                                    </div>
+                                    <div class="col l2 webWhiteTitle  right-align">
+                                        Actions
+                                    </div>
+                                </div>
+                                <div v-if="websites.length > 0">
                                     <div
-                                        class="col s3 m2 l2"
-                                        id="webWhiteProMgLftDiv"
+                                        class="row websitesViewRow"
+                                        v-for="website in websites"
+                                        :key="website.id"
                                     >
-                                        <div id="">
-                                            <div class="webWhiteProDiv" id="">
-                                                <i
-                                                    class="material-icons"
-                                                    id="tempProIcon"
-                                                    >person</i
-                                                >
-                                            </div>
+                                        <div class="col l2">
                                             <p class="webWhiteProName">
                                                 {{ website.name }}
                                             </p>
                                         </div>
-                                    </div>
+                                        <div class="col l2">
+                                            <div class="websiteTitle">
+                                                <div class="webWhiteProDiv" id="">
+                                                    <img src="/media/img/templateThumnbnail/template1.jpg" class="responsive-img"/>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <div class="col s5 s5 l6 offset-s1">
-                                        <p class="webWhiteTitle">Description</p>
-                                        <p class="webWhiteTxt">
-                                            {{ website.description }}
-                                        </p>
-                                    </div>
+                                        <div class="col l6">                                            
+                                            <p class="webWhiteTxt">
+                                                {{ website.description }}
+                                            </p>
+                                        </div>
 
-                                    <div
-                                        class="col s1 m2 l3 offset-s1 offset-m1"
-                                    >
-                                        <a href="#!" @click="setView(website)">
-                                            <i
-                                                class="material-icons right"
-                                                id="webWhiteIcon"
-                                                >open_in_new</i
-                                            >
-                                        </a>
+                                        <div
+                                            class="col l2 right-align"
+                                        >
+                                            <a href="#!" @click="setView(website)" class="marginRight1" title="Visit my website">
+                                                <i
+                                                    class="material-icons"
+                                                    id="webWhiteIcon"
+                                                    >open_in_new</i
+                                                >
+                                            </a>
+                                            <a href="#!" @click="configureWebsite(website)" title="Configure my webiste details">
+                                                <i
+                                                    class="material-icons"
+                                                    id="webWhiteIcon"
+                                                    >settings</i
+                                                >
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div v-else>
-                                <p class="centered">
-                                    No website created yet!. All websites
-                                    appears here when you create one
-                                </p>
-                            </div>
+                                <div v-else>
+                                    <p class="centered">
+                                        No website created yet!. All websites
+                                        appears here when you create one
+                                    </p>
+                                </div>
 
+                            </div>
                         </div>
+                    </div>
+
+                    <div v-else id="setupWebRightDiv">
+                        <div class="setWebContainModalDiv">
+                            <div class="setWebInnerModalDiv">
+                                <div class="setWebTitleDiv">
+                                    <p class="setWebTitle">Title:</p>
+                                    <p class="setWebTitleData">{{ tenant.name }}</p>
+                                </div>
+
+                                <div class="setWebUrlDiv">
+                                    <p class="setWebUrlTitle">url:</p>
+                                    <p>
+                                        <a href="#" class="setWebUrlData">{{
+                                            domain.domain
+                                        }}</a>
+                                        <span class="setWebPlan">Premium</span>
+                                    </p>
+                                </div>
+
+                                <div class="setWebDateDiv">
+                                    <p class="setWebDateTitle">Start Date:</p>
+                                    <p class="setWebDateData">
+                                        {{
+                                            new Date(tenant.created_at) ||
+                                            new Date()
+                                        }}
+                                    </p>
+                                </div>
+
+                                <div class="setWebDescriptionDiv">
+                                    <p class="setWebDescriptionTitle">
+                                        Description:
+                                    </p>
+                                    <p class="setWebDescriptionData">
+                                        {{ tenant.description }}
+                                    </p>
+                                </div>
+
+                                <div class="row" id="setWebBtnDiv">
+                                    <button
+                                        class="col s12 btn"
+                                        type="button"
+                                        id="setWebBtn"
+                                        @click="setEditWebModal"
+                                    >
+                                        EDIT WEBSITE
+                                    </button>
+
+                                    <button
+                                        class="col s12 btn"
+                                        type="button"
+                                        id="setWebBtn1"
+                                        @click="viewTemplate"
+                                    >
+                                        VIEW WEBSITE
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <edit-website-modal-component @exitModal="setEditWebModal" v-if="onEditWebModal"/>
                     </div>
                 </div>
 
                 <!-- Right Side Div -->
-                <div class="col s12 m10 l10" id="setupWebRightDiv" v-else>
-                    <div class="setWebContainModalDiv">
-                        <div class="setWebInnerModalDiv">
-                            <div class="setWebTitleDiv">
-                                <p class="setWebTitle">Title:</p>
-                                <p class="setWebTitleData">{{ tenant.name }}</p>
-                            </div>
-
-                            <div class="setWebUrlDiv">
-                                <p class="setWebUrlTitle">url:</p>
-                                <p>
-                                    <a href="#" class="setWebUrlData">{{
-                                        domain.domain
-                                    }}</a>
-                                    <span class="setWebPlan">Premium</span>
-                                </p>
-                            </div>
-
-                            <div class="setWebDateDiv">
-                                <p class="setWebDateTitle">Start Date:</p>
-                                <p class="setWebDateData">
-                                    {{
-                                        new Date(tenant.created_at) ||
-                                        new Date()
-                                    }}
-                                </p>
-                            </div>
-
-                            <div class="setWebDescriptionDiv">
-                                <p class="setWebDescriptionTitle">
-                                    Description:
-                                </p>
-                                <p class="setWebDescriptionData">
-                                    {{ tenant.description }}
-                                </p>
-                            </div>
-
-                            <div class="row" id="setWebBtnDiv">
-                                <button
-                                    class="col s12 btn"
-                                    type="button"
-                                    id="setWebBtn"
-                                    @click="setEditWebModal"
-                                >
-                                    EDIT WEBSITE
-                                </button>
-
-                                <button
-                                    class="col s12 btn"
-                                    type="button"
-                                    id="setWebBtn1"
-                                    @click="viewTemplate"
-                                >
-                                    VIEW WEBSITE
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <edit-website-modal-component @exitModal="setEditWebModal" v-if="onEditWebModal"/>
-                </div>
+                <!--div class="col s12 m10 l10" v-else>
+                    
+                </div-->
             </div>
         </div>
 
@@ -169,13 +189,13 @@
 </template>
 
 <script>
-import MobileNavComponent from '../partials/MobileNavComponent.vue';
-import SideNavComponent from '../partials/SideNavComponent.vue';
+    import MobileNavComponent from '../partials/MobileNavComponent.vue';
+    import SideNavComponent from '../partials/SideNavComponent.vue';
     // import FooterComponent from "./partials/FooterComponent.vue";
     // import HeaderComponent from "./partials/HeaderComponent.vue";
     import TemplateStarter from "../templates/TemplateStarter.vue";
     import EditWebsiteModalComponent from "./EditWebsiteModalComponent.vue";
-import WebCreateComponent from './WebCreateComponent.vue';
+    import WebCreateComponent from './WebCreateComponent.vue';
     export default {
         components: {
             TemplateStarter,
@@ -283,6 +303,9 @@ import WebCreateComponent from './WebCreateComponent.vue';
                 this.tenant.description = website.description;
                 this.tenant.created_at = website.created_at;
                 this.setDefaults(1);
+            },
+            configureWebsite(website){
+                console.log(website)
             },
             viewTemplate() {
                 this.viewingTemplate = !this.viewingTemplate;
