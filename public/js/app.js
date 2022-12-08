@@ -21722,6 +21722,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _templates_TemplateStarter_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../templates/TemplateStarter.vue */ "./resources/js/components/templates/TemplateStarter.vue");
 /* harmony import */ var _EditWebsiteModalComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditWebsiteModalComponent.vue */ "./resources/js/components/client/EditWebsiteModalComponent.vue");
 /* harmony import */ var _WebCreateComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WebCreateComponent.vue */ "./resources/js/components/client/WebCreateComponent.vue");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 
 // import FooterComponent from "./partials/FooterComponent.vue";
@@ -21768,11 +21769,16 @@ __webpack_require__.r(__webpack_exports__);
       evt.user_id = this.user.id;
       axios.post("/api/tenant", evt).then(function (res) {
         if (res.data.status == 200) {
-          _this.tenant = res.data.tenant;
-          _this.domain = res.data.domain;
+          M.toast({
+            html: res.data.message,
+            classes: "successNotifier"
+          });
+          var created = res.data.tenant;
+          created.domains = res.data.domain.domain;
+          _this.websites.unshift(res.data.tenant);
           _this.loading = false;
           _this.isHidden = !_this.isHidden;
-          _this.setDefaults(1);
+          // this.setDefaults(1);
         }
       })["catch"](function (err) {
         if (err.response.status == 500) {
@@ -21822,7 +21828,7 @@ __webpack_require__.r(__webpack_exports__);
       this.onEditWebModal = !this.onEditWebModal;
     },
     setView: function setView(website) {
-      this.domain = website.domains[0];
+      this.tenant.domain = _typeof(website.domains) === "object" ? website.domains[0].domain : website.domains;
       this.tenant.name = website.name;
       this.tenant.description = website.description;
       this.tenant.created_at = website.created_at;
@@ -24213,7 +24219,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, _hoisted_23, 8 /* PROPS */, _hoisted_21)])]);
   }), 128 /* KEYED_FRAGMENT */))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, _hoisted_26))]))])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Side Div "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.tenant.name), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.domain.domain), 1 /* TEXT */), _hoisted_36])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [_hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(new Date($data.tenant.created_at) || new Date()), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [_hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.tenant.description), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Side Div "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.tenant.name), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.tenant.domain), 1 /* TEXT */), _hoisted_36])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [_hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(new Date($data.tenant.created_at) || new Date()), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [_hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.tenant.description), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "col s12 btn",
     type: "button",
     id: "setWebBtn",

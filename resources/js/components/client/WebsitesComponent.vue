@@ -110,7 +110,7 @@
                                 <p class="setWebUrlTitle">url:</p>
                                 <p>
                                     <a href="#" class="setWebUrlData">{{
-                                        domain.domain
+                                        tenant.domain
                                     }}</a>
                                     <span class="setWebPlan">Premium</span>
                                 </p>
@@ -216,11 +216,16 @@ import WebCreateComponent from './WebCreateComponent.vue';
                     .post("/api/tenant", evt)
                     .then((res) => {
                         if (res.data.status == 200) {
-                            this.tenant = res.data.tenant;
-                            this.domain = res.data.domain;
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            let created = res.data.tenant;
+                            created.domains = res.data.domain.domain;
+                            this.websites.unshift(res.data.tenant);
                             this.loading = false;
                             this.isHidden = !this.isHidden;
-                            this.setDefaults(1);
+                            // this.setDefaults(1);
                         }
                     })
                     .catch((err) => {
@@ -278,7 +283,7 @@ import WebCreateComponent from './WebCreateComponent.vue';
                 this.onEditWebModal = !this.onEditWebModal;
             },
             setView(website) {
-                this.domain = website.domains[0];
+                this.tenant.domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
                 this.tenant.name = website.name;
                 this.tenant.description = website.description;
                 this.tenant.created_at = website.created_at;
