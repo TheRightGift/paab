@@ -58,6 +58,10 @@ body {
     background-color: red;
     color: var(--white);
 }
+.successNotifier {
+    background-color: green;
+    color: var(--white);
+}
 .noPaddingLeft {
     padding-left: 0 !important;
 }
