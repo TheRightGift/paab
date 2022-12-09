@@ -21951,8 +21951,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     this.getWebsites();
     this.getProfessions();
     this.isHidden = !this.isHidden;
-    M.AutoInit();
-    $('.modal').openModal();
   },
   methods: {
     createWebsite: function createWebsite(evt) {

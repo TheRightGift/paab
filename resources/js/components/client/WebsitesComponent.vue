@@ -248,8 +248,6 @@
             this.getWebsites();
             this.getProfessions();
             this.isHidden = !this.isHidden;
-            M.AutoInit();
-            $('.modal').openModal();
         },
         methods: {
             createWebsite(evt) {
