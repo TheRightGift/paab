@@ -29,6 +29,7 @@ class TemplateController extends Controller
         $inputs = Validator::make($request->all(), [
             'title' => ['required'],
             'profession_id' => 'required',
+            'imageUrl' => 'required'
         ]); 
         
         if ($inputs->fails()) {
@@ -63,7 +64,7 @@ class TemplateController extends Controller
     public function update(Request $request, $templateId)
     {
         $template = Template::findOrFail($templateId);
-        $template->update($request->only('title', 'profession_id'));
+        $template->update($request->only('title', 'profession_id', 'imageUrl'));
         return response(['template' => $template, 'message' => 'Updated Success'], 204);
     }
 

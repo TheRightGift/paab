@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('templates', function (Blueprint $table) {
             $table->id();
             $table->text('title');
+            $table->text('imageUrl');
             $table->bigInteger('profession_id')->unsigned(); 
             $table->timestamps();
             $table->softDeletes();
