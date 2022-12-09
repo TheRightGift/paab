@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::get('/user', function(Request $request) {
         return $request->user();
     });
+    Route::get('/userTitle/{id}', [TitleController::class, 'getUserProfession']);
     Route::get('tenancies', [App\Http\Controllers\TestTenantController::class, 'tenancies']);
     // Professions
     // ->middleware('can:run_admin_or_superAdmin_ops');
@@ -37,7 +38,7 @@ Route::group(['middleware' => 'auth.api'], function() {
     // ->middleware('can:run_admin_or_superAdmin_ops');
     
     Route::post('tenant', [App\Http\Controllers\TestTenantController::class, 'create']);
-    Route::post('template-update', [App\Http\Controllers\TestTenantController::class, 'update']);
+    Route::put('template-update/{id}', [App\Http\Controllers\TestTenantController::class, 'update']);
 });
 Route::group(['middleware'=>'auth:api'], function(){
 });

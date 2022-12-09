@@ -25,7 +25,7 @@ class TestTenantController extends Controller
                 $tenant = Tenant::create([
                     'name' => $inputs->validated()['name'],
                     'description' => $inputs->validated()['description'],
-                    // 'template_id' => $inputs->validated()['template_id'],
+                    'template_id' => $inputs->validated()['template_id'],
                     'id' => $inputs->validated()['name'],
                     'user_id' => $inputs->validated()['user_id'],
                 ]);
@@ -47,23 +47,28 @@ class TestTenantController extends Controller
 
     public function update(Request $request) {
         $inputs = Validator::make($request->all(), [
-            'template_id' => ['required'],
+            'template_id' => ['nullable'],
             'tenant_id' => ['required'],
+            'domain' => ['nullable'],
+            'domain_id' => ['nullable'],
         ]); 
         
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
+        
         $tenant = Tenant::find($inputs->validated()['tenant_id']);
         if ($tenant !== null) {
-            $tenant->template_id = $inputs->validated()['template_id'];
-            $tenant->save();
-            if ($tenant->wasChanged()  == true) {
-                return response()->json(['message' => 'You have successfully changed your Template', 'status' => 200], 200);
+            if ($request->has('template_id')) {
+                $tenant->template_id = $inputs->validated()['template_id'];
+                $tenant->save();
             }
-            else {
-                return response()->json(['message' => 'Some error has occured!', 'status' => 501], 501);
+            if ($request->has('domain')) {
+                $domain = $tenant->domains->find($inputs->validated()['domain_id']);
+                $domain->domain = $inputs->validated()['domain'].'.localhost';
+                $domain->save();
             }
+            return response()->json(['message' => 'You have successfully changed your Template', 'status' => 200], 200);
         }
         else {
             return response()->json(['message' => 'Website not found!', 'status' => 404], 404);
@@ -84,7 +89,7 @@ class TestTenantController extends Controller
         // Get the authenticaed user
         // When coming from mobile request for user->id
         $user = auth()->user()->id;
-        $tenancies = Tenant::where('user_id', $user)->with('domains')->get();
+        $tenancies = Tenant::where('user_id', $user)->with('domains', 'template')->get();
 
         return response()->json(['message' => 'Tenants fetched', 'tenants' => $tenancies, 'status' => 200], 200);
     }

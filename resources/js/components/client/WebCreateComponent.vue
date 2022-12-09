@@ -31,28 +31,7 @@
                 </div>
             </div>
 
-            <div class="clientCreateInnerPortModalDiv">
-                <div class="webProfessionDiv">
-                    <div class="row">
-                        <div
-                            class="col s6 m4 l2"
-                            v-for="profession in professions"
-                            :key="profession.id"
-                        >
-                            <div id="userTempDiv" class="hoverable">
-                                <div class="tempImgDiv" id="tempImgDiv">
-                                    <i class="material-icons" id="tempProIcon"
-                                        >person</i
-                                    >
-                                </div>
-                                <p class="userTempTitle">
-                                    {{ profession.name }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <template-selector-component :selectedTemplate="web.template_id" @tempSel="processTemp($event)"/>
 
             <button
                 type="button"
@@ -79,7 +58,9 @@
     </div>
 </template>
 <script>
+import TemplateSelectorComponent from '../partials/TemplateSelectorComponent.vue';
 export default {
+    components: { TemplateSelectorComponent },
     props: {
         loading: false,
         isHidden: false,
@@ -90,6 +71,7 @@ export default {
             web: {
                 name: "",
                 description: "",
+                template_id: ""
             },
         }
     },
@@ -99,6 +81,9 @@ export default {
         },
         modalCancelBtn() {
             this.$emit('close', true);
+        },
+        processTemp(evt) {
+            this.web.template_id = evt.id;
         },
     },
 }

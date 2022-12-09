@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Title;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -77,5 +78,13 @@ class TitleController extends Controller
         $title = Title::where('id', $titleId)->first();
         $title->delete();
         return response(['message' => 'Archived successfuly'], 204);
+    }
+
+    public function getUserProfession($id) {
+        $user = User::find($id);
+        if ($user !== null) {
+            $data = $user->title;
+            return response()->json(['message' => 'Success', 'data' => $data]);
+        }
     }
 }
