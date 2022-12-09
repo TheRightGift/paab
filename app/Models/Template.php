@@ -11,7 +11,7 @@ class Template extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'title', 'profession_id'
+        'title', 'profession_id', 'imageUrl'
     ];
 
     public function profession()
