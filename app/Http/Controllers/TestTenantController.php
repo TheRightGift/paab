@@ -10,7 +10,6 @@ use Validator;
 class TestTenantController extends Controller
 {
     public function create(Request $request) {
-        // The ID might be the combination of firstnameLastname of user or a custom name
         $inputs = Validator::make($request->all(), [
             'name' => 'required',
             'template_id' => ['nullable'],
@@ -21,7 +20,6 @@ class TestTenantController extends Controller
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
         try {
-            //code...
             $tenant = Tenant::find($request->name);
             if (empty($tenant)) {
                 $tenant = Tenant::create([
@@ -56,25 +54,29 @@ class TestTenantController extends Controller
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
-        $tenant = Tenant::find($inputs->validated()['tenant_id'])->first();
-        $tenant->template_id = $inputs->validated()['template_id'];
-        $tenant->save();
-
-        if ($tenant->wasChanged()  == true) {
-            return response()->json(['message' => 'You have successfully changed your Template', 'status' => 200], 200);
+        $tenant = Tenant::find($inputs->validated()['tenant_id']);
+        if ($tenant !== null) {
+            $tenant->template_id = $inputs->validated()['template_id'];
+            $tenant->save();
+            if ($tenant->wasChanged()  == true) {
+                return response()->json(['message' => 'You have successfully changed your Template', 'status' => 200], 200);
+            }
+            else {
+                return response()->json(['message' => 'Some error has occured!', 'status' => 501], 501);
+            }
         }
         else {
-            return response()->json(['message' => 'Some error has occured!', 'status' => 501], 501);
+            return response()->json(['message' => 'Website not found!', 'status' => 404], 404);
         }
     }
 
     // Renders / of template
     public function template() {
         // Get the template_id and get its details
-        return view('templater');
         // $template = Tenant::find(tenant('id'))->template;
-        dd($template);
         // $templateTitle = $template['name'];
+        dd(tenant('id'), 'when we have a template please comment off the 2 lines above and delete me.Thanks');
+        return view('templater');
 
     }
 
@@ -85,5 +87,18 @@ class TestTenantController extends Controller
         $tenancies = Tenant::where('user_id', $user)->with('domains')->get();
 
         return response()->json(['message' => 'Tenants fetched', 'tenants' => $tenancies, 'status' => 200], 200);
+    }
+
+    public function delete ($id) {
+        $tenant = Tenant::find($id);
+        if ($tenant !== null) {
+            $tenant->delete();
+            if ($tenant == true) {
+                return response()->json(['message' => 'Deleted', 'status' => 200], 404);
+            }
+        }
+        else {
+            return response()->json(['message' => 'Not found', 'status' => 404], 404);
+        }
     }
 }

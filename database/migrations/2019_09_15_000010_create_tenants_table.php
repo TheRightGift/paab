@@ -24,6 +24,7 @@ class CreateTenantsTable extends Migration
             $table->text('description');
             $table->timestamps();
             $table->json('data')->nullable();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('template_id')->references('id')->on('templates')->onUpdate('cascade')->onDelete('cascade');
