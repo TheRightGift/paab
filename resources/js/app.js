@@ -32,6 +32,10 @@ import ClientSingleMail from './components/client/SinglemailComponent.vue';
 import ClientTemplateComponent from './components/client/ClientTemplateComponent.vue';
 
 
+// Admin
+import DashboardAdmin from './components/admin/Dashboard';
+
+
 app.component('home-component', HomeComponent);
 app.component('login-component', LoginComponent);
 // app.component('otp-component', OtpComponent);
@@ -47,6 +51,8 @@ app.component('client-mail-component', ClientMailComponent);
 app.component('client-settings-component', ClientSettings);
 app.component('client-support-component', ClientSupport);
 app.component('client-singlemail-component', ClientSingleMail);
+
+app.component('admin-component', DashboardAdmin);
 
 /**
  * The following block of code may be used to automatically register your

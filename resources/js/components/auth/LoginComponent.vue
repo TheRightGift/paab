@@ -30,8 +30,9 @@
                                     placeholder="Email"
                                     v-model="loginUser.email"
                                     id="user"
-                                    type="text"
+                                    type="email"
                                     class="validate"
+                                    required
                                 />
                             </div>
 

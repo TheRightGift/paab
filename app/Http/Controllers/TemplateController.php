@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Template;
+use App\Models\Profession;
 use Illuminate\Http\Request;
+use Validator;
 
 class TemplateController extends Controller
 {
@@ -31,13 +33,21 @@ class TemplateController extends Controller
             'profession_id' => 'required',
             'imageUrl' => 'required'
         ]); 
+
+        
         
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);
         } else {
             $input = $request->all();
+            $profession = Profession::find($input['profession_id']);
+            if($request->hasFile('imageUrl')){
+                $image = $request->file('imageUrl');
+                $name = $image->getClientOriginalName();
+                $image->move(public_path('/media/img/templateThumbnail/'.$profession->name), $name);
+                $input['imageUrl'] = '/media/img/templateThumbnail/'.$profession->name.'/'.$name;
+            } 
             $template = Template::create($input);
-            // $template = Template::where('id', $post->id)->get();
             return response(['template' => $template, 'message' => 'Created Success'], 201);
         }    
     }
@@ -50,7 +60,7 @@ class TemplateController extends Controller
      */
     public function show($templateId)
     {
-        $template = Template::where('id', $templateId)->first();
+        $template = Template::where('profession_id', $templateId)->get();
         return response(['templates' => $template, 'message' => 'Retrieved Success'], 200);
     }
 
