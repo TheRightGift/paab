@@ -6,10 +6,12 @@
 
         <title>Paab</title>
 
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
     </head>
     <body>
         <!-- nickname="'{{ $userNickname ?? '' }}'" -->
-        <div id="{{ $templateTitle ?? '' }}"></div>
+        <div id="app">
+            <div id="{{ tenant('id') ?? '' }}"></div>
+        </div>
     </body>
 </html>

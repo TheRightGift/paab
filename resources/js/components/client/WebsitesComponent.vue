@@ -11,13 +11,6 @@
                 <!-- Web black div -->
                 <div class="col s12 m10 l10">
                     <div v-if="view == 0" id="webRightDiv">
-                        <!--div class="webBlackDiv">
-                            <div class="webBlackDiv1">
-                                <div class="row webBlackDiv1">
-                                    
-                                </div>
-                            </div>
-                        </div-->
                         <div class="col s9 black websiteBanner">
                             <p class="webBlackTitle">
                                 Create Portfolio
@@ -105,7 +98,7 @@
                         </div>
                     </div>
 
-                    <div v-else id="setupWebRightDiv">
+                    <!-- <div v-else id="setupWebRightDiv">
                         <div class="setWebContainModalDiv">
                             <div class="setWebInnerModalDiv">
                                 <div class="setWebTitleDiv">
@@ -163,41 +156,25 @@
                                 </div>
                             </div>
                         </div>
-                        <edit-website-modal-component @exitModal="setEditWebModal" v-if="onEditWebModal"/>
-                    </div>
+                        <edit-website-modal-component @exitModal="setEditWebModal"/>
+                    </div> -->
                 </div>
-
-                <!-- Right Side Div -->
-                <!--div class="col s12 m10 l10" id="setupWebRightDiv" v-else>
-                    
-                </div-->
             </div>
         </div>
-
-        <template-starter v-else @viewTemplate="viewTemplate" :user="user" />
-
-        <!-- Modal Creation of websites -->
-        
     </div>
 </template>
 
 <script>
     import MobileNavComponent from '../partials/MobileNavComponent.vue';
     import SideNavComponent from '../partials/SideNavComponent.vue';
-    // import FooterComponent from "./partials/FooterComponent.vue";
-    // import HeaderComponent from "./partials/HeaderComponent.vue";
-    import TemplateStarter from "../templates/TemplateStarter.vue";
     import EditWebsiteModalComponent from "./EditWebsiteModalComponent.vue";
     import WebCreateComponent from './WebCreateComponent.vue';
     export default {
         components: {
-            TemplateStarter,
             EditWebsiteModalComponent,
-                MobileNavComponent,
-                SideNavComponent,
-                WebCreateComponent,
-            // FooterComponent,
-            // HeaderComponent
+            MobileNavComponent,
+            SideNavComponent,
+            WebCreateComponent,
         },
         data() {
             return {
@@ -225,6 +202,7 @@
             createWebsite(evt) {
                 this.loading = true;
                 evt.user_id = this.user.id;
+                evt.name = evt.name.replace(/ +/g, "");
                 axios
                     .post("/api/tenant", evt)
                     .then((res) => {
@@ -293,9 +271,6 @@
             setDefaults(num) {
                 this.view = num;
             },
-            setEditWebModal () {
-                this.onEditWebModal = !this.onEditWebModal;
-            },
             gotoDomain(website) {
                 this.tenant.domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
                 window.open(`http://${this.tenant.domain}:8000`,'_blank');
@@ -304,10 +279,9 @@
                 // this.tenant.created_at = website.created_at;
                 // this.setDefaults(1);
             },
-            updateWebsite(webiste){
-                // this.tenant.domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
-                // window.open(`http://${this.tenant.domain}:8000/setting`,'_blank');
-                console.log(website)
+            updateWebsite(website){
+                this.tenant.domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
+                window.open(`http://${this.tenant.domain}:8000/setting`,'_blank');
             },
             configureWebsite(website){
                 console.log(website)

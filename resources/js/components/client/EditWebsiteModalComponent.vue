@@ -108,7 +108,8 @@
                         <i class="material-icons" id="logoModalUpIcon">cloud_upload</i>
                         <a href="#" class="logoModalUpLink">Upload</a>
                     </div>
-
+                </div>
+                <div class="flexed">
                     <button type="button" class="col s12 btn" id="logModalBtn">save</button>
                 </div>
             </div>
@@ -117,30 +118,34 @@
             <div class="bioModalDiv" v-if="!bioModalDiv">
                 <form id="bioForm">
                     <div class="row">
-                        <p class="bioTitle">About</p>
-                        <div class="input-field col s9">
-                            <input type="text" placeholder="About" id="bioAboutInput">
+                        <div class="row">
+                            <p class="bioTitle">About</p>
+                            <div class="input-field col s9">
+                                <input type="text" placeholder="About" id="bioAboutInput">
+                            </div>
+    
+                            <div class="col s3" id="bioUpIconColDiv">
+                                <i class="material-icons" id="bioIcon">cloud_upload</i>
+                                <a href="#" class="bioUpTxt">Upload Image</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="bioTitle">Curriculum Vitae</p>
+                            <div class="input-field col s12">
+                                <input type="text" id="bioCvInput">
+                            </div>
+                            
+                            <div class="" id="bioUpIconColDiv1">
+                                <i class="material-icons" id="bioIcon">cloud_upload</i>
+                                <a href="#" class="bioUpTxt">Upload Image</a>
+                            </div>
+                            
+                            <p class="bioTitle">History</p>
+                            <div class="input-field col s12">
+                                <input type="text" placeholder="History" id="bioCvInput1">
+                            </div>
                         </div>
 
-                        <div class="col s3" id="bioUpIconColDiv">
-                            <i class="material-icons" id="bioIcon">cloud_upload</i>
-                            <a href="#" class="bioUpTxt">Upload Image</a>
-                        </div>
-
-                        <p class="col s12 bioTitle">Curriculum Vitae</p>
-                        <div class="input-field col s12">
-                            <input type="text" id="bioCvInput">
-                        </div>
-                        
-                        <div class="" id="bioUpIconColDiv1">
-                            <i class="material-icons" id="bioIcon">cloud_upload</i>
-                            <a href="#" class="bioUpTxt">Upload Image</a>
-                        </div>
-
-                        <p class="col s12 bioTitle">History</p>
-                        <div class="input-field col s12">
-                            <input type="text" placeholder="History" id="bioCvInput1">
-                        </div>
 
                         <div class="row rm_mg">
                             <div class="row">
