@@ -33,7 +33,7 @@
 
                         <!-- web empty div -->
                         <div class="col s12 webWhiteDiv">
-                            <web-create-component @createWebsite="createWebsite($event)" :professions="professions" @close="close($event)" v-if="!isHidden" :loading="loading" :userProfession="userProfession"/>
+                            <web-create-component @createWebsite="createWebsite($event)" @close="close($event)" v-if="!isHidden && loadingUserProfessionId" :loading="loading" :userProfessionId="userProfessionId"/>
                             <div v-else>
                                 <div class="webWhiteDiv1" v-if="view == 0">
                                     <div class="row">
@@ -105,7 +105,7 @@
                                                 <div class="row">
                                                     <p class="bioTitle">Templates</p>
                                                     <small>You can change to your desired template from here</small>
-                                                    <template-selector-component :selectedTemplate="selectedTemplate" @tempSel="processTemp($event)" :profession_id="userProfession"/>
+                                                    <template-selector-component :selectedTemplate="selectedTemplate" @tempSel="processTemp($event)" :professionId="userProfessionId"/>
 
                                                     <p class="bioTitle">Website</p>
                                                     <div class="input-field col s12">
@@ -199,7 +199,8 @@
                 selectedTemplate: "",
                 tenant: {},
                 user: {},
-                userProfession: "",
+                loadingUserProfessionId: false,
+                userProfessionId: null,
                 view: 0,
                 siteToDelete: "",
                 viewingTemplate: 0,
@@ -285,7 +286,8 @@
             getUserDets() {
                 axios.get(`/api/userTitle/${this.user.id}`).then(res => {
                     this.user.title = res.data.data;
-                    this.userProfession = this.user.title.profession_id;
+                    this.userProfessionId = this.user.title.profession.id;
+                    this.loadingUserProfessionId = true;
                 }).catch(err => {
                     console.log(err)
                 });

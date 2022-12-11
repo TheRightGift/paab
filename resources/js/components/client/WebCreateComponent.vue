@@ -11,8 +11,8 @@
                 find your page.
             </p>
 
-            <div class="row" id="clientCreatePortInputRowDiv">
-                <div class="col s12">
+            <div class="row clientCreateWebsiteView" id="clientCreatePortInputRowDiv">
+                <div class="col l6">
                     <input
                         type="text"
                         placeholder="Website title"
@@ -21,7 +21,7 @@
                     />
                 </div>
 
-                <div class="col s12">
+                <div class="col l6">
                     <input
                         type="text"
                         placeholder="Description"
@@ -31,7 +31,9 @@
                 </div>
             </div>
 
-            <template-selector-component :selectedTemplate="web.template_id" @tempSel="processTemp($event)" :profession_id="userProfession"/>
+            <div class="row clientCreateWebsiteView gutterTopBottom">
+                <TemplatePreviewComponent :selectedTemplate="web.template_id" @tempSel="processTemp($event)" :professionId="userProfessionId" :type="'create'"/>
+            </div>
 
             <button
                 type="button"
@@ -39,7 +41,7 @@
                 id="clientCreatePortBtn"
                 @click.prevent="createWebsite"
             >
-                <span v-if="!loading">GET STARTED</span>
+                <span v-if="!loading">CREATE</span>
                 <div class="preloader-wrapper small active" v-else>
                     <div class="spinner-layer spinner-white-only">
                         <div class="circle-clipper left">
@@ -58,24 +60,28 @@
     </div>
 </template>
 <script>
-import TemplateSelectorComponent from '../partials/TemplateSelectorComponent.vue';
+// import TemplateSelectorComponent from '../partials/TemplateSelectorComponent.vue';
+import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
 export default {
-    components: { TemplateSelectorComponent },
+    components: { TemplatePreviewComponent },
     props: {
         loading: false,
         isHidden: false,
-        professions: Array,
+        userProfessionId: Number,
         user: Object,
     },
     data() {
         return {
-            userProfession: "",
+            // userProfessionId: 0,
             web: {
                 name: "",
                 description: "",
                 template_id: 0
             },
         }
+    },
+    mounted() {
+        // console.log(`This is: ${this.userProfessionId}`);
     },
     methods: {
         createWebsite() {
@@ -86,10 +92,6 @@ export default {
         },
         processTemp(evt) {
             this.web.template_id = evt.id;
-        },
-        processUserPro() {
-            console.log(this.user)
-            return this.profession = this.user.title.profession_id
         }
     },
     watch: {

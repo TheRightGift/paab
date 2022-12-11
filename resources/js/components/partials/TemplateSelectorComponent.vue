@@ -10,7 +10,7 @@
                             :key="template.id"
                         >
                             <div id="userTempDiv" class="hoverable" :class="{highlighted: selectedTemplate == template.id}" @click="selectTemplate(template)">
-                                <img class="materialboxed rounded" data-caption="A picture of a way with a group of trees in a park" width="100" :src="template.imageUrl">
+                                <img class="materialboxed rounded" data-caption="A picture of a way with a group of trees in a park" width="100" :src="'/media/img/templateThumbnail/'+template.profession.name+'/'+template.imageUrl">
     
                                 <p class="userTempTitle">
                                     {{ template.title }}
@@ -35,13 +35,14 @@ export default {
         }
     },
     props: {
-        profession_id: Number,
+        professionId: Number,
         selectedTemplate: Number,
     },  
     methods: {
         getTemplates() {
-                axios.get(`/api/template/${this.profession_id}`).then(res => {
+                axios.get(`/api/template/${this.professionId}`).then(res => {
                     if (res.status == 200) {
+                        // console.log(res.data.templates)
                         this.templates = res.data.templates;
                     }
                 }).catch(err => {

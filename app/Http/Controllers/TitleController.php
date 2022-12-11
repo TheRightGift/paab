@@ -83,7 +83,8 @@ class TitleController extends Controller
     public function getUserProfession($id) {
         $user = User::find($id);
         if ($user !== null) {
-            $data = $user->title;
+            $data['title'] = $user->title;
+            $data['profession'] = $user->title->profession;
             return response()->json(['message' => 'Success', 'data' => $data]);
         }
     }

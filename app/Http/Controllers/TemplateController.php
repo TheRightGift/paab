@@ -16,7 +16,7 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        $templates = Template::orderBy('title')->get();
+        $templates = Template::orderBy('title')->with('profession')->get();
         return response(['templates' => $templates, 'message' => 'Retrieved Success'], 200);
     }
 
@@ -58,9 +58,9 @@ class TemplateController extends Controller
      * @param  \App\Models\Template  $template
      * @return \Illuminate\Http\Response
      */
-    public function show($templateId)
+    public function show($id)
     {
-        $template = Template::where('profession_id', $templateId)->get();
+        $template = Template::where('profession_id', $id)->with('profession')->get();
         return response(['templates' => $template, 'message' => 'Retrieved Success'], 200);
     }
 
