@@ -33,7 +33,7 @@
 
                         <!-- web empty div -->
                         <div class="col s12 webWhiteDiv">
-                            <web-create-component @createWebsite="createWebsite($event)" :professions="professions" @close="close($event)" v-if="!isHidden" :loading="loading"/>
+                            <web-create-component @createWebsite="createWebsite($event)" :professions="professions" @close="close($event)" v-if="!isHidden" :loading="loading" :userProfession="userProfession"/>
                             <div v-else>
                                 <div class="webWhiteDiv1" v-if="view == 0">
                                     <div class="row">
@@ -105,7 +105,7 @@
                                                 <div class="row">
                                                     <p class="bioTitle">Templates</p>
                                                     <small>You can change to your desired template from here</small>
-                                                    <template-selector-component :selectedTemplate="selectedTemplate" @tempSel="processTemp($event)" :profession_id="user.title.profession_id"/>
+                                                    <template-selector-component :selectedTemplate="selectedTemplate" @tempSel="processTemp($event)" :profession_id="userProfession"/>
 
                                                     <p class="bioTitle">Website</p>
                                                     <div class="input-field col s12">
@@ -122,89 +122,49 @@
                                                             <small>You can delete your website</small>
                                                         </div>
                                                         <div>
-                                                            <a class="waves-effect waves-light btn danger modal-trigger" href="#deleteModal">Delete</a>
+                                                            <a class="waves-effect waves-light btn danger modal-trigger" href="#!" @click="toggleDeleteModal">Delete</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 
                                             </div>
-                                            <div id="deleteModal" class="modal">
-                                                <div class="modal-content">
-                                                    <h4>Modal Header</h4>
-                                                    <p>A bunch of text</p>
+                                        </form>
+                                    </div>
+
+                                    <div id="setupWebRightDiv" v-if="deleteModal">
+                                        <div class="setWebContainModalDiv">
+                                            <div class="setWebInnerModalDiv" id="bioForm">
+                                                Please type the word in bold<p class="bioTitle setWebTitleData">{{tenant.id}}</p>
+                                                    <div class="input-field col s12">
+                                                        <input type="text" id="bioCvInput" placeholder="Enter the name above" v-model="siteToDelete">
                                                     </div>
-                                                    <div class="modal-footer">
-                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+
+                                                <div class="row" id="setWebBtnDiv">
+                                                    <button
+                                                        class="col s12 btn"
+                                                        type="button"
+                                                        id="setWebBtn"
+                                                        @click="deleteWebsite"
+                                                    >
+                                                        DELETE
+                                                    </button>
+
+                                                    <button
+                                                        class="col s12 btn"
+                                                        type="button"
+                                                        id="setWebBtn1"
+                                                        @click="toggleDeleteModal"
+                                                    >
+                                                        CANCEL
+                                                    </button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
-                    <!-- <div v-else id="setupWebRightDiv">
-                        <div class="setWebContainModalDiv">
-                            <div class="setWebInnerModalDiv">
-                                <div class="setWebTitleDiv">
-                                    <p class="setWebTitle">Title:</p>
-                                    <p class="setWebTitleData">{{ tenant.name }}</p>
-                                </div>
-
-                                <div class="setWebUrlDiv">
-                                    <p class="setWebUrlTitle">url:</p>
-                                    <p>
-                                        <a href="#" class="setWebUrlData">{{
-                                            tenant.domain
-                                        }}</a>
-                                        <span class="setWebPlan">Premium</span>
-                                    </p>
-                                </div>
-
-                                <div class="setWebDateDiv">
-                                    <p class="setWebDateTitle">Start Date:</p>
-                                    <p class="setWebDateData">
-                                        {{
-                                            new Date(tenant.created_at) ||
-                                            new Date()
-                                        }}
-                                    </p>
-                                </div>
-
-                                <div class="setWebDescriptionDiv">
-                                    <p class="setWebDescriptionTitle">
-                                        Description:
-                                    </p>
-                                    <p class="setWebDescriptionData">
-                                        {{ tenant.description }}
-                                    </p>
-                                </div>
-
-                                <div class="row" id="setWebBtnDiv">
-                                    <button
-                                        class="col s12 btn"
-                                        type="button"
-                                        id="setWebBtn"
-                                        @click="setEditWebModal"
-                                    >
-                                        EDIT WEBSITE
-                                    </button>
-
-                                    <button
-                                        class="col s12 btn"
-                                        type="button"
-                                        id="setWebBtn1"
-                                        @click="viewTemplate"
-                                    >
-                                        VIEW WEBSITE
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <edit-website-modal-component @exitModal="setEditWebModal"/>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -230,6 +190,7 @@
             return {
                 bg_img: "/media/img/istockphoto-1390124896-170667a.jpg",
                 domain: "",
+                deleteModal: false,
                 isHidden: false,
                 loading: false,
                 onEditWebModal: false,
@@ -238,7 +199,9 @@
                 selectedTemplate: "",
                 tenant: {},
                 user: {},
+                userProfession: "",
                 view: 0,
+                siteToDelete: "",
                 viewingTemplate: 0,
                 websites: [],
             };
@@ -322,6 +285,7 @@
             getUserDets() {
                 axios.get(`/api/userTitle/${this.user.id}`).then(res => {
                     this.user.title = res.data.data;
+                    this.userProfession = this.user.title.profession_id;
                 }).catch(err => {
                     console.log(err)
                 });
@@ -353,6 +317,9 @@
                 this.domain = this.tenant.domain.split('.')[0];
                 this.tenant.domain_id = website.domains[0].id
                 this.tenant.id = website.id;
+            },
+            toggleDeleteModal(){
+                this.deleteModal = !this.deleteModal;
             },
             viewTemplate() {
                 this.viewingTemplate = !this.viewingTemplate;

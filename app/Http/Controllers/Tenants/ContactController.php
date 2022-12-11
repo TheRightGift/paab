@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use App\Models\Contact;
+use App\Models\Tenants\Contact;
 use Illuminate\Http\Request;
-
+use Validator;
 class ContactController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contact = Contact::get();
+        return response()->json(['message' => 'Success', 'contact' => $contact]);
     }
 
     /**
@@ -25,18 +26,24 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $inputs = Validator::make($request->all(), [
+            'phone' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+        ]); 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Contact $contact)
-    {
-        //
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 501);
+        } else {
+            $input = $request->validated();
+            $contact = Contact::create($input);
+            if ($contact == true) {
+                return response()->json(['message' => 'Success', 'contact' => $contact], 200);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'contact' => $contact], 501);
+            }
+        }
     }
 
     /**
@@ -48,7 +55,26 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $inputs = Validator::make($request->all(), [
+            'phone' => 'nullable',
+            'email' => 'nullable',
+            'address' => 'nullable',
+        ]); 
+
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 501);
+        } else {
+            $input = $request->validated();
+            $contacts = new Contact();
+            $contacts->find($contact);
+            $contacts->update($input);
+            if ($contacts == true) {
+                return response()->json(['message' => 'Success', 'contact' => $contacts], 200);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'contact' => $contacts], 501);
+            }
+        }
     }
 
     /**
@@ -59,6 +85,7 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        return response()->json([], 204);
     }
 }

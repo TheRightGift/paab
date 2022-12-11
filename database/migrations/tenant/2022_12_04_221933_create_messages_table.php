@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('email');
             $table->string('phone');
-            $table->string('subject');
+            $table->text('message');
             $table->integer('seen');
             $table->timestamps();
         });
