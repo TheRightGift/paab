@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <template-selector-component :selectedTemplate="web.template_id" @tempSel="processTemp($event)"/>
+            <template-selector-component :selectedTemplate="web.template_id" @tempSel="processTemp($event)" :profession_id="userProfession"/>
 
             <button
                 type="button"
@@ -65,13 +65,15 @@ export default {
         loading: false,
         isHidden: false,
         professions: Array,
+        user: Object,
     },
     data() {
         return {
+            userProfession: "",
             web: {
                 name: "",
                 description: "",
-                template_id: ""
+                template_id: 0
             },
         }
     },
@@ -85,6 +87,15 @@ export default {
         processTemp(evt) {
             this.web.template_id = evt.id;
         },
+        processUserPro() {
+            console.log(this.user)
+            return this.profession = this.user.title.profession_id
+        }
+    },
+    watch: {
+        user: function(oldVal, newVal) {
+            console.log(newVal, oldVal);
+        }
     },
 }
 </script>

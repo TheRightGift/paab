@@ -21873,14 +21873,16 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     loading: false,
     isHidden: false,
-    professions: Array
+    professions: Array,
+    user: Object
   },
   data: function data() {
     return {
+      userProfession: "",
       web: {
         name: "",
         description: "",
-        template_id: ""
+        template_id: 0
       }
     };
   },
@@ -21893,6 +21895,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     processTemp: function processTemp(evt) {
       this.web.template_id = evt.id;
+    },
+    processUserPro: function processUserPro() {
+      console.log(this.user);
+      return this.profession = this.user.title.profession_id;
+    }
+  },
+  watch: {
+    user: function user(oldVal, newVal) {
+      console.log(newVal, oldVal);
     }
   }
 });
@@ -21933,6 +21944,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     return {
       bg_img: "/media/img/istockphoto-1390124896-170667a.jpg",
       domain: "",
+      deleteModal: false,
       isHidden: false,
       loading: false,
       onEditWebModal: false,
@@ -21941,7 +21953,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       selectedTemplate: "",
       tenant: {},
       user: {},
+      userProfession: "",
       view: 0,
+      siteToDelete: "",
       viewingTemplate: 0,
       websites: []
     };
@@ -22018,6 +22032,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       var _this5 = this;
       axios.get("/api/userTitle/".concat(this.user.id)).then(function (res) {
         _this5.user.title = res.data.data;
+        _this5.userProfession = _this5.user.title.profession_id;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -22048,6 +22063,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       this.domain = this.tenant.domain.split('.')[0];
       this.tenant.domain_id = website.domains[0].id;
       this.tenant.id = website.id;
+    },
+    toggleDeleteModal: function toggleDeleteModal() {
+      this.deleteModal = !this.deleteModal;
     },
     viewTemplate: function viewTemplate() {
       this.viewingTemplate = !this.viewingTemplate;
@@ -24520,8 +24538,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     selectedTemplate: $data.web.template_id,
     onTempSel: _cache[3] || (_cache[3] = function ($event) {
       return $options.processTemp($event);
-    })
-  }, null, 8 /* PROPS */, ["selectedTemplate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    }),
+    profession_id: $data.userProfession
+  }, null, 8 /* PROPS */, ["selectedTemplate", "profession_id"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn",
     id: "clientCreatePortBtn",
@@ -24702,28 +24721,33 @@ var _hoisted_47 = /*#__PURE__*/_withScopeId(function () {
     "class": "bioTitle"
   }, "Danger Zone", -1 /* HOISTED */);
 });
-var _hoisted_48 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "flexed f-danger"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Delete Website"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, "You can delete your website")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    "class": "waves-effect waves-light btn danger modal-trigger",
-    href: "#deleteModal"
-  }, "Delete")])], -1 /* HOISTED */);
-});
+var _hoisted_48 = {
+  "class": "flexed f-danger"
+};
 var _hoisted_49 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    id: "deleteModal",
-    "class": "modal"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "modal-content"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Modal Header"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "A bunch of text")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "modal-footer"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: "#!",
-    "class": "modal-close waves-effect waves-green btn-flat"
-  }, "Agree")])], -1 /* HOISTED */);
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Delete Website"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, "You can delete your website")], -1 /* HOISTED */);
 });
-
+var _hoisted_50 = {
+  key: 0,
+  id: "setupWebRightDiv"
+};
+var _hoisted_51 = {
+  "class": "setWebContainModalDiv"
+};
+var _hoisted_52 = {
+  "class": "setWebInnerModalDiv",
+  id: "bioForm"
+};
+var _hoisted_53 = {
+  "class": "bioTitle setWebTitleData"
+};
+var _hoisted_54 = {
+  "class": "input-field col s12"
+};
+var _hoisted_55 = {
+  "class": "row",
+  id: "setWebBtnDiv"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_mobile_nav_component = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("mobile-nav-component");
   var _component_side_nav_component = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("side-nav-component");
@@ -24745,8 +24769,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: _cache[2] || (_cache[2] = function ($event) {
       return $options.close($event);
     }),
-    loading: $data.loading
-  }, null, 8 /* PROPS */, ["professions", "loading"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [$data.view == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [_hoisted_16, $data.websites.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.websites, function (website) {
+    loading: $data.loading,
+    userProfession: $data.userProfession
+  }, null, 8 /* PROPS */, ["professions", "loading", "userProfession"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [$data.view == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [_hoisted_16, $data.websites.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.websites, function (website) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": "row websitesViewRow",
       key: website.id
@@ -24782,7 +24807,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onTempSel: _cache[4] || (_cache[4] = function ($event) {
       return $options.processTemp($event);
     }),
-    profession_id: $data.user.title.profession_id
+    profession_id: $data.userProfession
   }, null, 8 /* PROPS */, ["selectedTemplate", "profession_id"]), _hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     id: "bioCvInput",
@@ -24797,7 +24822,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.updateDomainTemplate && $options.updateDomainTemplate.apply($options, arguments);
     }, ["prevent"]))
-  }, _hoisted_46)]), _hoisted_47, _hoisted_48])]), _hoisted_49])])]))]))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-else id=\"setupWebRightDiv\">\n                        <div class=\"setWebContainModalDiv\">\n                            <div class=\"setWebInnerModalDiv\">\n                                <div class=\"setWebTitleDiv\">\n                                    <p class=\"setWebTitle\">Title:</p>\n                                    <p class=\"setWebTitleData\">{{ tenant.name }}</p>\n                                </div>\n\n                                <div class=\"setWebUrlDiv\">\n                                    <p class=\"setWebUrlTitle\">url:</p>\n                                    <p>\n                                        <a href=\"#\" class=\"setWebUrlData\">{{\n                                            tenant.domain\n                                        }}</a>\n                                        <span class=\"setWebPlan\">Premium</span>\n                                    </p>\n                                </div>\n\n                                <div class=\"setWebDateDiv\">\n                                    <p class=\"setWebDateTitle\">Start Date:</p>\n                                    <p class=\"setWebDateData\">\n                                        {{\n                                            new Date(tenant.created_at) ||\n                                            new Date()\n                                        }}\n                                    </p>\n                                </div>\n\n                                <div class=\"setWebDescriptionDiv\">\n                                    <p class=\"setWebDescriptionTitle\">\n                                        Description:\n                                    </p>\n                                    <p class=\"setWebDescriptionData\">\n                                        {{ tenant.description }}\n                                    </p>\n                                </div>\n\n                                <div class=\"row\" id=\"setWebBtnDiv\">\n                                    <button\n                                        class=\"col s12 btn\"\n                                        type=\"button\"\n                                        id=\"setWebBtn\"\n                                        @click=\"setEditWebModal\"\n                                    >\n                                        EDIT WEBSITE\n                                    </button>\n\n                                    <button\n                                        class=\"col s12 btn\"\n                                        type=\"button\"\n                                        id=\"setWebBtn1\"\n                                        @click=\"viewTemplate\"\n                                    >\n                                        VIEW WEBSITE\n                                    </button>\n                                </div>\n                            </div>\n                        </div>\n                        <edit-website-modal-component @exitModal=\"setEditWebModal\"/>\n                    </div> ")])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  }, _hoisted_46)]), _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [_hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    "class": "waves-effect waves-light btn danger modal-trigger",
+    href: "#!",
+    onClick: _cache[7] || (_cache[7] = function () {
+      return $options.toggleDeleteModal && $options.toggleDeleteModal.apply($options, arguments);
+    })
+  }, "Delete")])])])])])]), $data.deleteModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please type the word in bold"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.tenant.id), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    id: "bioCvInput",
+    placeholder: "Enter the name above",
+    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+      return $data.siteToDelete = $event;
+    })
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.siteToDelete]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "col s12 btn",
+    type: "button",
+    id: "setWebBtn",
+    onClick: _cache[9] || (_cache[9] = function () {
+      return _ctx.deleteWebsite && _ctx.deleteWebsite.apply(_ctx, arguments);
+    })
+  }, " DELETE "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "col s12 btn",
+    type: "button",
+    id: "setWebBtn1",
+    onClick: _cache[10] || (_cache[10] = function () {
+      return $options.toggleDeleteModal && $options.toggleDeleteModal.apply($options, arguments);
+    })
+  }, " CANCEL ")])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]))]))])])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),

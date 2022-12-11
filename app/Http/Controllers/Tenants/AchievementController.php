@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use App\Models\Achievement;
+use App\Models\Tenants\Achievement;
 use Illuminate\Http\Request;
+use Validator;
 
 class AchievementController extends Controller
 {
@@ -14,7 +15,8 @@ class AchievementController extends Controller
      */
     public function index()
     {
-        //
+        $achievement = Achievement::get();
+        return response()->json(['message' => 'Success', 'achievement' => $achievement]);
     }
 
     /**
@@ -25,18 +27,23 @@ class AchievementController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $inputs = Validator::make($request->all(), [
+            'title' => 'required',
+            'percentage' => 'required',
+        ]); 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Achievement  $achievement
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Achievement $achievement)
-    {
-        //
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 501);
+        } else {
+            $input = $request->validated();
+            $achievement = Achievement::create($input);
+            if ($achievement == true) {
+                return response()->json(['message' => 'Success', 'achievement' => $achievement], 200);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'achievement' => $achievement], 501);
+            }
+        }
     }
 
     /**
@@ -46,9 +53,27 @@ class AchievementController extends Controller
      * @param  \App\Models\Achievement  $achievement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Achievement $achievement)
+    public function update(Request $request, $achievement)
     {
-        //
+        $inputs = Validator::make($request->all(), [
+            'title' => 'required',
+            'percentage' => 'required',
+        ]);  
+
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 501);
+        } else {
+            $input = $request->validated();
+            $achievements = new Achievement();
+            $achievements->find($achievement);
+            $achievements->update($input);
+            if ($achievements == true) {
+                return response()->json(['message' => 'Success', 'achievement' => $achievements], 200);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'achievement' => $achievements], 501);
+            }
+        }
     }
 
     /**
@@ -59,6 +84,7 @@ class AchievementController extends Controller
      */
     public function destroy(Achievement $achievement)
     {
-        //
+        $achievement->delete();
+        return response()->json([], 204);
     }
 }
