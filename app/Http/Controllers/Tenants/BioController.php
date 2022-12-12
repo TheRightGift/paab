@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tenants;
 
+use App\Http\Controllers\Controller;
 use App\Models\Tenants\Bio;
 use App\Models\Tenants\Achievement;
 use App\Models\Tenants\Service;
@@ -18,8 +19,8 @@ class BioController extends Controller
     public function index()
     {
         $bio = Bio::get();
-        $achievements = Achievement::get();
-        $services = Service::get();
+        // $achievements = Achievement::get();
+        // $services = Service::get();
         #TODO: Merge into one array and return
         return response()->json(['message' => 'Fetched Success', 'bio' => $bio]);
     }
@@ -38,12 +39,12 @@ class BioController extends Controller
             'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:5000',
             'photo' => 'nullable|image|mimes:jpg,png|max:1000',
             // Achievement
-            'title' => 'required',
-            'percentage' => 'required',
+            // 'title' => 'required',
+            // 'percentage' => 'required',
             // Services
-            'serv_title' => 'required',
-            'description' => 'required',
-            'icon_filename' => 'nullable|image|mimes:jpg,png|max:100',
+            // 'serv_title' => 'required',
+            // 'description' => 'required',
+            // 'icon_filename' => 'nullable|image|mimes:jpg,png|max:100',
         ]); 
 
         if ($inputs->fails()) {
@@ -51,24 +52,23 @@ class BioController extends Controller
         } else {
             $input = $inputs->validated();
             if($request->hasFile('photo')){
-                $image = $request->file('photo');
-                $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/img/'), $name);
-                $input['photo'] = '/media/img/'.$name;
+                $photo = $request->file('photo');
+                $stored = \Storage::disk('public')->put("img", $photo);
+                // $url = tenant_asset($stored);
+                // dd($url, $stored);
+                $input['photo'] = $stored;
             } 
             // \Image::make($request->file('image'))->resize(500, 590)->save(public_path('/books/images/').$input['image']);
             if($request->hasFile('CV')){
-                $image = $request->file('CV');
-                $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/docs/' . $name));
-                // $image->move(public_path('/media/docs/'), $name);
-                $input['CV'] = '/media/docs/'.$name;
+                $cv = $request->file('CV');
+                $name = $cv->getClientOriginalName();
+                $stored = \Storage::disk('public')->put("docs", $cv);
+                $input['CV'] = $stored;
             } 
             $bio = Bio::create($input);
             // $achivementData =$input
-            $this->cr8_achievement($input);
-            $this->cr8_service($request);
+            // $this->cr8_achievement($input);
+            // $this->cr8_service($request);
 
             return response(['bio' => $bio, 'message' => 'Created Success'], 201);
         }    
@@ -81,7 +81,7 @@ class BioController extends Controller
      * @param  \App\Models\Bio  $bio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bio $bio)
+    public function update(Request $request, $bio)
     {
         $inputs = Validator::make($request->all(), [
             'about' => 'nullable',
@@ -89,39 +89,39 @@ class BioController extends Controller
             'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:5000',
             'photo' => 'nullable|image|mimes:jpg,png|max:1000',
             // Achievement
-            'title' => 'nullable',
-            'percentage' => 'nullable',
-            'achieve_id' => 'nullable',
+            // 'title' => 'nullable',
+            // 'percentage' => 'nullable',
+            // 'achieve_id' => 'nullable',
             // Services
-            'serv_title' => 'nullable',
-            'serv_id' => 'nullable',
-            'description' => 'nullable',
-            'icon_filename' => 'nullable|image|mimes:jpg,png|max:100',
+            // 'serv_title' => 'nullable',
+            // 'serv_id' => 'nullable',
+            // 'description' => 'nullable',
+            // 'icon_filename' => 'nullable|image|mimes:jpg,png|max:100',
         ]); 
 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);
         } else {
             $input = $inputs->validated();
-            if($request->hasFile('photo')){
-                $image = $request->file('photo');
-                $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/img/'), $name);
-                $input['photo'] = '/media/img/'.$name;
-            } 
-            // \Image::make($request->file('image'))->resize(500, 590)->save(public_path('/books/images/').$input['image']);
-            if($request->hasFile('CV')){
-                $image = $request->file('CV');
-                $name = $image->getClientOriginalName();                
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/docs/'), $name);
-                $input['CV'] = '/media/docs/'.$name;
-            } 
-            $bio = Bio::update($input);
-            $this->upd_achievement($input);
-            $this->upd_service($input);
-            return response(['bio' => $bio, 'message' => 'Update Success'], 201);
+            $bios = new Bio();
+            $bio2Update = $bios->find($bio);
+            if ($bio2Update != null) {
+                if($request->hasFile('photo')){
+                    $photo = $request->file('photo');
+                    $stored = \Storage::disk('public')->put("img", $photo);
+                    $input['photo'] = $stored;
+                } 
+                if($request->hasFile('CV')){
+                    $cv = $request->file('CV');
+                    $name = $cv->getClientOriginalName();
+                    $stored = \Storage::disk('public')->put("docs", $cv);
+                    $input['CV'] = $stored;
+                } 
+                $bio2Update->update($input);
+                // $this->upd_achievement($input);
+                // $this->upd_service($input);
+                return response(['bio' => $bio2Update, 'message' => 'Update Success'], 201);
+            }
         }    
     }
 
@@ -131,9 +131,10 @@ class BioController extends Controller
      * @param  \App\Models\Bio  $bio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bio $bio)
+    public function destroy($bio)
     {
-        $bio->delete();
+        $bio2Delete = Bio::find($bio);
+        $bio2Delete->delete();
         return response()->json([], 204);
     }
 

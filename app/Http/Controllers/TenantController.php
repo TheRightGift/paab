@@ -7,7 +7,7 @@ use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
 use App\Models\Tenant;
 use App\Models\Template;
 use Validator;
-class TestTenantController extends Controller
+class TenantController extends Controller
 {
     public function create(Request $request) {
         $inputs = Validator::make($request->all(), [
@@ -79,7 +79,7 @@ class TestTenantController extends Controller
     public function template() {
         // Get the template_id and get its details
         // $template = Tenant::find(tenant('id'))->template;
-        // $templateTitle = $template['name'];
+        // $templateTitle = $template['title'];
         dd(tenant('id'), 'when we have a template please comment off the 2 lines above and delete me.Thanks');
         return view('templater');
 

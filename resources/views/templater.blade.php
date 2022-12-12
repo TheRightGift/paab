@@ -5,12 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Paab</title>
-
-        <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
     </head>
     <body>
-        <!-- nickname="'{{ $userNickname ?? '' }}'" -->
         <div id="app">
+            <!-- <img src="{{tenant_asset('img/2XqfXZIdKMyx1W0i7MOo5CVQB2ZC9ZTLqFoS0W0K.png')}}" /> -->
             <div id="{{ tenant('id') ?? '' }}"></div>
         </div>
     </body>

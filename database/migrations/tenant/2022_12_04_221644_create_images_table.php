@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('model_name');
+            $table->string('mobile_icon');
+            $table->string('fav_icon');
+            $table->string('logo');
             $table->timestamps();
         });
     }

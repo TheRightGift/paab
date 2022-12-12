@@ -16,9 +16,6 @@ class TitleSeeder extends Seeder
     {
         $professions = [
             [
-                'name' => 'Doctor',
-            ],
-            [
                 'name' => 'Tutor',
             ],
             [
@@ -37,7 +34,7 @@ class TitleSeeder extends Seeder
         collect($professions)->each(function ($professions) {\App\Models\Profession::create($professions);});
         $title = [
             [
-                'profession_id' => 4,
+                'profession_id' => 3,
                 'name' => 'Mr',
             ],
             [
@@ -46,11 +43,11 @@ class TitleSeeder extends Seeder
             ],
             [
                 'name' => 'Dr',
-                'profession_id' => 1
+                'profession_id' => 5
             ],
             [
                 'name' => 'Engr',
-                'profession_id' => 4
+                'profession_id' => 3
             ],
             [
                 'name' => 'Chief',
@@ -58,7 +55,7 @@ class TitleSeeder extends Seeder
             ],
             [
                 'name' => 'Barr',
-                'profession_id' => 5
+                'profession_id' => 4
             ]
         ];
         collect($title)->each(function ($title) {\App\Models\Title::create($title);});
