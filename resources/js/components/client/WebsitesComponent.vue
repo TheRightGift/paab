@@ -61,13 +61,13 @@
                                                     {{ website.name }}
                                                 </p>
                                             </div>
-                                            <!-- <div class="col l2">
+                                            <div class="col l2">
                                                 <div class="websiteTitle">
-                                                    <div class="webWhiteProDiv" id="" v-if="wesbite.template">
-                                                        <img :src="website.template.imageUrl" class="responsive-img" />
+                                                    <div class="webWhiteProDiv">
+                                                        <img :src="'/media/img/templateThumbnail/'+website.template.profession.name+'/'+website.template.imageUrl" class="responsive-img" />
                                                     </div>
                                                 </div>
-                                            </div> -->
+                                            </div>
     
                                             <div class="col l6">                                            
                                                 <p class="webWhiteTxt">
@@ -105,7 +105,8 @@
                                                 <div class="row">
                                                     <p class="bioTitle">Templates</p>
                                                     <small>You can change to your desired template from here</small>
-                                                    <template-selector-component :selectedTemplate="selectedTemplate" @tempSel="processTemp($event)" :professionId="userProfessionId"/>
+                                                    <!--template-selector-component :selectedTemplate="selectedTemplate" @tempSel="processTemp($event)" :professionId="userProfessionId"/-->
+                                                    <TemplatePreviewComponent :selectedTemplate="selectedTemplate" @tempSel="processTemp($event)" :professionId="userProfessionId" :type="'create'"/>
 
                                                     <p class="bioTitle">Website</p>
                                                     <div class="input-field col s12">
@@ -176,7 +177,8 @@
     import SideNavComponent from '../partials/SideNavComponent.vue';
     import EditWebsiteModalComponent from "./EditWebsiteModalComponent.vue";
     import WebCreateComponent from './WebCreateComponent.vue';
-    import TemplateSelectorComponent from '../partials/TemplateSelectorComponent.vue';
+    // import TemplateSelectorComponent from '../partials/TemplateSelectorComponent.vue';
+    import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
 
     export default {
         components: {
@@ -184,7 +186,7 @@
             MobileNavComponent,
             SideNavComponent,
             WebCreateComponent,
-            TemplateSelectorComponent
+            TemplatePreviewComponent
         },
         data() {
             return {
@@ -221,7 +223,6 @@
                 axios
                     .post("/api/tenant", evt)
                     .then((res) => {
-                        console.log(res.data)
                         if (res.data.status == 200) {
                             M.toast({
                                 html: res.data.message,
@@ -230,9 +231,10 @@
                             let created = res.data.tenant;
                             created.domains = res.data.domain.domain;
                             this.websites.unshift(res.data.tenant);
+                            console.log()
                             this.loading = false;
-                            this.isHidden = !this.isHidden;
-                            // this.setDefaults(1);
+                            // this.isHidden = !this.isHidden;          
+                            location.reload();                  
                         }
                     })
                     .catch((err) => {
@@ -276,6 +278,7 @@
                     .get("/api/tenancies")
                     .then((res) => {
                         if (res.data.status == 200) {
+                            console.log(res.data)
                             this.websites = res.data.tenants;
                         }
                     })

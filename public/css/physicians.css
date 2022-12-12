@@ -1,0 +1,27 @@
+/* Template1 starts here */
+
+#Template1 .banner {
+    background-color: black;
+    color: white
+}
+
+#Template1 .intro {
+    color: red
+}
+
+
+/* Template1 ends here */
+
+/* Template2 starts here */
+
+#Template2 .banner {
+    background-color: rgb(70, 24, 24);
+    color: white
+}
+
+#Template2 .intro {
+    color: rgb(18, 13, 109)
+}
+
+
+/* Template2 ends here */

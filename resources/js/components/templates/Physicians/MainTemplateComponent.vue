@@ -1,6 +1,9 @@
 <template>
-    <HeaderComponent :id="1"/>
-    <IntroComponent :id="1"/>
+    <div :id="template">
+        <HeaderComponent/>
+        <IntroComponent/>
+        <p>Num: {{template}}</p>
+    </div>
 </template>
 <script>
     import HeaderComponent from './HeaderComponent.vue';
@@ -14,9 +17,13 @@
             return {};
         },
         props: {
-            id: Number,
+            template: String,
+            id: ''
         },
-        mounted() {},
+        mounted() {
+            // if(this.templateId)
+            console.log(this.template)
+        },
         methods: {
             
         },

@@ -35,6 +35,9 @@ import ClientTemplateComponent from './components/client/ClientTemplateComponent
 // Admin
 import DashboardAdmin from './components/admin/Dashboard';
 
+// Webiste
+import PhysicianWebsiteComponent from './components/templates/Physicians/MainTemplateComponent';
+
 
 app.component('home-component', HomeComponent);
 app.component('login-component', LoginComponent);
@@ -53,6 +56,8 @@ app.component('client-support-component', ClientSupport);
 app.component('client-singlemail-component', ClientSingleMail);
 
 app.component('admin-component', DashboardAdmin);
+
+app.component('physician-website-component', PhysicianWebsiteComponent);
 
 /**
  * The following block of code may be used to automatically register your

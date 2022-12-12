@@ -1,10 +1,6 @@
 <template>
-    <div class="row" v-if="id == 1">
+    <div class="row banner">
         <p>Header for Template ID 1</p>
-    </div>
-
-    <div class="row" v-if="id == 2">
-        <p>Header for Template ID 2</p>
     </div>
 </template>
 <script>
