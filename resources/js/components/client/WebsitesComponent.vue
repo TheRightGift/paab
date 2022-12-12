@@ -61,13 +61,13 @@
                                                     {{ website.name }}
                                                 </p>
                                             </div>
-                                            <!-- <div class="col l2">
+                                            <div class="col l2">
                                                 <div class="websiteTitle">
-                                                    <div class="webWhiteProDiv" id="" v-if="wesbite.template">
-                                                        <img :src="website.template.imageUrl" class="responsive-img" />
+                                                    <div class="webWhiteProDiv">
+                                                        <img :src="'/media/img/templateThumbnail/'+website.template.profession.name+'/'+website.template.imageUrl" class="responsive-img" />
                                                     </div>
                                                 </div>
-                                            </div> -->
+                                            </div>
     
                                             <div class="col l6">                                            
                                                 <p class="webWhiteTxt">
@@ -221,7 +221,6 @@
                 axios
                     .post("/api/tenant", evt)
                     .then((res) => {
-                        console.log(res.data)
                         if (res.data.status == 200) {
                             M.toast({
                                 html: res.data.message,
@@ -276,6 +275,7 @@
                     .get("/api/tenancies")
                     .then((res) => {
                         if (res.data.status == 200) {
+                            console.log(res.data)
                             this.websites = res.data.tenants;
                         }
                     })

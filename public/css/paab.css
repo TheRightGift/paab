@@ -1699,8 +1699,11 @@ a.active {
 .webWhiteProDiv {
     width: 60px;
     height: 60px;
-    background: #D9D9D9;
-    border-radius: 50%;
+    background: var(--black);
+    /* border-radius: 50%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .webWhiteDiv1 {
     padding-top: 5vh;

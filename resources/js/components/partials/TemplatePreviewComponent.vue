@@ -43,13 +43,11 @@
                     url = `/api/template`;
                 } else {
                     // TODO: Get template associated with the professionId
-                    console.log(professionId);
                     url = `/api/template/${this.professionId}`;
                 }
 
                 axios.get(url).then(res => {
                     if (res.status == 200) {
-                        console.log(res.data.templates)
                         this.templates = res.data.templates;
                     }
                 }).catch(err => {
