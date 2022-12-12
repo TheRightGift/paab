@@ -31,6 +31,7 @@ class TestTenantController extends Controller
                 ]);
                 if ($tenant) {
                     $domain = $tenant->domains()->create(['domain' => $request->name .'.localhost']); //Determine how to handle domain
+                    // TODO: add tenant.profession to $tenant before return
                     return response()->json(['message' => 'Your Website is created successfuly', 'tenant' => $tenant, 'domain' => $domain, 'status' => 200], 200);
                 }
                 else {
@@ -78,10 +79,21 @@ class TestTenantController extends Controller
     // Renders / of template
     public function template() {
         // Get the template_id and get its details
-        // $template = Tenant::find(tenant('id'))->template;
+        
         // $templateTitle = $template['name'];
-        dd(tenant('id'), 'when we have a template please comment off the 2 lines above and delete me.Thanks');
-        return view('templater');
+        // dd($template, 'when we have a template please comment off the 2 lines above and delete me.Thanks');
+        // return view('templater');
+        
+        // get loggedIn User profession
+        $profession = Tenant::find(tenant('id'))->template->profession->name;
+        $professionId = Tenant::find(tenant('id'))->template->profession_id;
+        $template = Tenant::find(tenant('id'))->template->title;
+        
+        if($profession === 'Physician'){
+            return view('websites.physician', compact('template'));
+        } else {
+            dd($profession);
+        }
 
     }
 
