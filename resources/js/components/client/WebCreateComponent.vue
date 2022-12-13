@@ -60,7 +60,6 @@
     </div>
 </template>
 <script>
-// import TemplateSelectorComponent from '../partials/TemplateSelectorComponent.vue';
 import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
 export default {
     components: { TemplatePreviewComponent },
@@ -68,7 +67,6 @@ export default {
         loading: false,
         isHidden: false,
         userProfessionId: Number,
-        user: Object,
     },
     data() {
         return {
@@ -93,11 +91,6 @@ export default {
         processTemp(evt) {
             this.web.template_id = evt.id;
             console.log(evt.id)
-        }
-    },
-    watch: {
-        user: function(oldVal, newVal) {
-            // console.log(newVal, oldVal);
         }
     },
 }
