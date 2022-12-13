@@ -7,7 +7,7 @@ use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
 use App\Models\Tenant;
 use App\Models\Template;
 use Validator;
-class TestTenantController extends Controller
+class TenantController extends Controller
 {
     public function create(Request $request) {
         $inputs = Validator::make($request->all(), [

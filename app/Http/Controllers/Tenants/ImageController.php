@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tenants;
 
+use App\Http\Controllers\Controller;
 use App\Models\Tenants\Image;
 use Illuminate\Http\Request;
 use Validator;
@@ -28,7 +29,7 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'fav_icon' => 'required|image|mimes:jpg,png|max:100',
+            'favicon' => 'required|image|mimes:jpg,png|max:100',
             'mobile_icon' => 'required|image|mimes:jpg,png|max:100',
             'logo' => 'required|image|mimes:jpg,png|max:100',
         ]);
@@ -36,27 +37,21 @@ class ImageController extends Controller
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);
         } else {
-            $input = $request->validated();
-            if($request->hasFile('fav_icon')){
-                $image = $request->file('fav_icon');
-                $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/img/'), $name);
-                $input['fav_icon'] = '/media/img/'.$name;
+            $input = $inputs->validated();
+            if($request->hasFile('favicon')){
+                $image = $request->file('favicon');
+                $stored = \Storage::disk('public')->put("img", $image);
+                $input['favicon'] = $stored;
             } 
             if($request->hasFile('mobile_icon')){
                 $image = $request->file('mobile_icon');
-                $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/img/'), $name);
-                $input['mobile_icon'] = '/media/img/'.$name;
+                $stored = \Storage::disk('public')->put("img", $image);
+                $input['mobile_icon'] = $stored;
             } 
             if($request->hasFile('logo')){
                 $image = $request->file('logo');
-                $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/img/'), $name);
-                $input['logo'] = '/media/img/'.$name;
+                $stored = \Storage::disk('public')->put("img", $image);
+                $input['logo'] = $stored;
             } 
             $image = Image::create($input);
             if ($image == true) {
@@ -78,7 +73,7 @@ class ImageController extends Controller
     public function update(Request $request, $image)
     {
         $inputs = Validator::make($request->all(), [
-            'fav_icon' => 'nullable|image|mimes:jpg,png|max:100',
+            'favicon' => 'nullable|image|mimes:jpg,png|max:100',
             'mobile_icon' => 'nullable|image|mimes:jpg,png|max:100',
             'logo' => 'nullable|image|mimes:jpg,png|max:100',
         ]);
@@ -86,36 +81,31 @@ class ImageController extends Controller
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);
         } else {
-            $input = $request->validated();
-            if($request->hasFile('fav_icon')){
-                $image = $request->file('fav_icon');
-                $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/img/'), $name);
-                $input['fav_icon'] = '/media/img/'.$name;
+            $input = $inputs->validated();
+            if($request->hasFile('favicon')){
+                $image = $request->file('favicon');
+                $stored = \Storage::disk('public')->put("img", $image);
+                $input['favicon'] = $stored;
             } 
             if($request->hasFile('mobile_icon')){
                 $image = $request->file('mobile_icon');
-                $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/img/'), $name);
-                $input['mobile_icon'] = '/media/img/'.$name;
+                $stored = \Storage::disk('public')->put("img", $image);
+                $input['mobile_icon'] = $stored;
             } 
             if($request->hasFile('logo')){
                 $image = $request->file('logo');
-                $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/img/'), $name);
-                $input['logo'] = '/media/img/'.$name;
+                $stored = \Storage::disk('public')->put("img", $image);
+                $input['logo'] = $stored;
             } 
             $images = new Image();
-            $images->find($image);
-            $images->update($input);
-            if ($images == true) {
-                return response()->json(['message' => 'Success', 'image' => $image], 200);
+            dd($input);
+            $image2Update = $images->find($image);
+            $image2Update->update($input);
+            if ($image2Update == true) {
+                return response()->json(['message' => 'Success', 'image' => $image2Update], 200);
             }
             else {
-                return response()->json(['message' => 'Failed', 'image' => $image], 501);
+                return response()->json(['message' => 'Failed', 'image' => $image2Update], 501);
             }
         }
     }
@@ -126,9 +116,10 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy($image)
     {
-        $image->delete();
+        $image2Delete = Image::find($image);
+        $image2Delete->delete();
         return response()->json([], 204);
     }
 }

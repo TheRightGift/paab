@@ -1,7 +1,78 @@
 <template>
-    <div class="row banner">
-        <p>Header for Template ID 1</p>
-    </div>
+    <nav class="navbar hide-on-med-and-down">
+        <div class="nav-wrapper navbarWrap">
+            <a href="#" class="brand-logo" id="physiPortPageLogo"
+                >Dr. Peter Akerele</a
+            >
+            <ul
+                id="nav-mobile"
+                class="section table-of-contents right hide-on-med-and-down"
+            >
+                <li>
+                    <a href="#services" id="physiTempNavLinks">Services</a>
+                </li>
+                <li>
+                    <a href="#experience" id="physiTempNavLinks"
+                        >Experience</a
+                    >
+                </li>
+                <li>
+                    <a href="#testimonials" id="physiTempNavLinks"
+                        >Testimonials</a
+                    >
+                </li>
+                <li><a href="#feeds" id="physiTempNavLinks">Feeds</a></li>
+                <li>
+                    <a href="#contact" id="physiTempContactBtn"
+                        >Contact Me</a
+                    >
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <nav class="hide-on-large-only white" id="sideNav">
+        <a href="#" data-target="slide-out" class="sidenav-trigger"
+            ><i
+                class="material-icons black-text sideNavIcon"
+                id="sideNavIcon"
+                >menu</i
+            ></a
+        >
+
+        <a href="#" class="" id="physiPortPageLogo">Dr. Akerele Adebayo</a>
+
+        <ul id="slide-out" class="sidenav">
+            <!-- <li> -->
+            <div class="user-view">
+                <div class="background" id="sideNavImgDiv">
+                    <img
+                        src="/media/img/istockphoto-1390124896-170667a.jpg"
+                        id="sidNavImg"
+                    />
+                </div>
+            </div>
+            <!-- </li> -->
+
+            <li class="sideNavLinkMgTp">
+                <a href="#services" id="physiTempNavLinks">Services</a>
+            </li>
+            <li>
+                <a href="#experience" id="physiTempNavLinks">Experience</a>
+            </li>
+            <li>
+                <a href="#testimonials" id="physiTempNavLinks"
+                    >Testimonials</a
+                >
+            </li>
+            <li><a href="#" id="physiTempNavLinks">Feeds</a></li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li>
+                <a href="#contact" id="physiTempContactBtn">Contact Me</a>
+            </li>
+        </ul>
+    </nav>
 </template>
 <script>
     export default {
@@ -12,9 +83,7 @@
             id: String,
         },
         mounted() {},
-        methods: {
-            
-        },
+        methods: {},
         computed: {},
     };
 </script>

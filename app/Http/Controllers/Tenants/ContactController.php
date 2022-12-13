@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Tenants;
 
+use App\Http\Controllers\Controller;
 use App\Models\Tenants\Contact;
 use Illuminate\Http\Request;
 use Validator;
+
 class ContactController extends Controller
 {
     /**
@@ -35,7 +37,7 @@ class ContactController extends Controller
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);
         } else {
-            $input = $request->validated();
+            $input = $inputs->validated();
             $contact = Contact::create($input);
             if ($contact == true) {
                 return response()->json(['message' => 'Success', 'contact' => $contact], 200);
@@ -53,7 +55,7 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, $contact)
     {
         $inputs = Validator::make($request->all(), [
             'phone' => 'nullable',
@@ -64,15 +66,15 @@ class ContactController extends Controller
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);
         } else {
-            $input = $request->validated();
+            $input = $inputs->validated();
             $contacts = new Contact();
-            $contacts->find($contact);
-            $contacts->update($input);
-            if ($contacts == true) {
-                return response()->json(['message' => 'Success', 'contact' => $contacts], 200);
+            $contact2Update = $contacts->find($contact);
+            $contact2Update->update($input);
+            if ($contact2Update == true) {
+                return response()->json(['message' => 'Success', 'contact' => $contact2Update], 200);
             }
             else {
-                return response()->json(['message' => 'Failed', 'contact' => $contacts], 501);
+                return response()->json(['message' => 'Failed', 'contact' => $contact2Update], 501);
             }
         }
     }
@@ -83,9 +85,10 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy($contact)
     {
-        $contact->delete();
+        $contact2Delete = Contact::find($contact);
+        $contact2Delete->delete();
         return response()->json([], 204);
     }
 }

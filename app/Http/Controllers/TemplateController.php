@@ -45,7 +45,7 @@ class TemplateController extends Controller
                 $image = $request->file('imageUrl');
                 $name = $image->getClientOriginalName();
                 $image->move(public_path('/media/img/templateThumbnail/'.$profession->name), $name);
-                $input['imageUrl'] = '/media/img/templateThumbnail/'.$profession->name.'/'.$name;
+                $input['imageUrl'] = $name;
             } 
             $template = Template::create($input);
             return response(['template' => $template, 'message' => 'Created Success'], 201);
