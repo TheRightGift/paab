@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar hide-on-med-and-down">
+    <nav  v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar', 'hide-on-med-and-down'">
         <div class="nav-wrapper navbarWrap">
             <a href="#" class="brand-logo" id="physiPortPageLogo"
                 >Dr. Peter Akerele</a
@@ -77,13 +77,21 @@
 <script>
     export default {
         data() {
-            return {};
+            return {
+                scrollPosition: null
+            };
         },
         props: {
             id: String,
         },
-        mounted() {},
-        methods: {},
+        mounted() {
+             window.addEventListener('scroll', this.updateScroll);
+        },
+        methods: {
+            updateScroll() {
+                this.scrollPosition = window.scrollY
+            }
+        },
         computed: {},
     };
 </script>
