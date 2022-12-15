@@ -1,7 +1,7 @@
 <template>
     <div :id="template">
-        <HeaderComponent />
-        <ServicesComponent />
+        <HeaderComponent :user="user" />
+        <ServicesComponent :user="user" :services="services" :bio="bio"/>
         <ExperienceComponent />
         <SocialMediaComponent />
         <TestimonialsComponent />
@@ -15,6 +15,9 @@
     import ServicesComponent from "./ServicesComponent.vue";
     import SocialMediaComponent from "./SocialMediaComponent.vue";
     import TestimonialsComponent from "./TestimonialsComponent.vue";
+    let bio = '/api/bio';
+    let service = '/api/service';
+
     export default {
         components: {
             HeaderComponent,
@@ -25,17 +28,39 @@
             ContactComponent,
         },
         data() {
-            return {};
+            return {
+                services: [],
+                bio: {},
+            };
         },
         props: {
             template: String,
             id: "",
+            user: String,
         },
         mounted() {
             // if(this.templateId)
-            console.log(this.template);
+            this.getLocations();
         },
-        methods: {},
+        methods: {
+            getLocations() {
+                const requestBio = axios.get(bio);
+                const requestService = axios.get(service);
+                axios
+                    .all([requestBio, requestService])
+                    .then(
+                        axios.spread((...responses) => {
+                            const bioRes = responses[0];
+                            const servicesRes = responses[1];
+                            this.services = servicesRes.data.services;
+                            this.bio = bioRes.data.bio;
+                        })
+                    )
+                    .catch((errors) => {
+                        console.log(errors)
+                    });
+            },
+        },
         computed: {},
     };
 </script>

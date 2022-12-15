@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use App\Models\Messages;
+use App\Http\Controllers\Controller;
+use App\Models\Tenants\Messages;
 use Illuminate\Http\Request;
 
 class MessagesController extends Controller
@@ -33,21 +34,20 @@ class MessagesController extends Controller
             'message' => 'required'
         ]);
      
-            Messages::create($request->all()); 
-       
-        \Mail::send('contact.contactus',
+        Messages::create($request->all()); 
+        \Mail::send('websites.contactus',
            array(
                'lastname' => $request->get('lastname'),
                'firstname' => $request->get('firstname'),
                'email' => $request->get('email'),
                'phone' => $request->get('phone'),
-               'message' => $request->get('message')
+               'messages' => $request->get('message')
            ), function($message) use ($request) {
                 $message->from($request->get('email'));
-                $message->to('amaizupeter@yahoo.com', 'Admin')->subject('Appointment');
+                $message->to(tenant()->user->email, tenant('id'))->subject('Appointment');
             });
      
-        return response()->json(['Thanks for contacting us!, We\'ll get back to you soon']); 
+        return response()->json(['message' => 'Thanks for contacting!, We\'ll get back to you soon'], 201); 
     }
 
     /**

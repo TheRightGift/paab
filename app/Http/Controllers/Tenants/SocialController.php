@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tenants;
 
+use App\Http\Controllers\Controller;
 use App\Models\Tenants\Social;
 use Illuminate\Http\Request;
 use Validator;
@@ -28,18 +29,18 @@ class SocialController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'twitter' => 'nullable',
-            'linkedin' => 'nullable',
-            'facebook' => 'nullable',
+            'twitter' => 'nullable|url',
+            'instagram' => 'nullable|url',
+            'facebook' => 'nullable|url',
         ]);
 
         if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 501);
+            return response($inputs->errors()->all(), 400);
         } else {
-            $input = $request->validated();
+            $input = $inputs->validated();
             $social = Social::create($input);
             if ($social == true) {
-                return response()->json(['message' => 'Success', 'social' => $social], 200);
+                return response()->json(['message' => 'Success', 'social' => $social], 201);
             }
             else {
                 return response()->json(['message' => 'Failed', 'social' => $social], 501);
@@ -58,7 +59,7 @@ class SocialController extends Controller
     {
         $inputs = Validator::make($request->all(), [
             'twitter' => 'nullable',
-            'linkedin' => 'nullable',
+            'instagram' => 'nullable',
             'facebook' => 'nullable',
         ]); 
 
@@ -67,13 +68,13 @@ class SocialController extends Controller
         } else {
             $input = $request->validated();
             $socials = new Social();
-            $socials->find($social);
-            $socials->update($input);
-            if ($socials == true) {
-                return response()->json(['message' => 'Success', 'social' => $social], 200);
+            $social2Update = $socials->find($social);
+            $social2Update->update($input);
+            if ($social2Update == true) {
+                return response()->json(['message' => 'Success', 'social' => $social2Update], 200);
             }
             else {
-                return response()->json(['message' => 'Failed', 'social' => $social], 501);
+                return response()->json(['message' => 'Failed', 'social' => $social2Update], 501);
             }
         }
     }
@@ -86,7 +87,8 @@ class SocialController extends Controller
      */
     public function destroy($social)
     {
-        $social->delete();
+        $social2Delete = Social::find($social);
+        $social2Delete->delete();
         return response()->json([], 204);
     }
 }

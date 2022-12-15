@@ -5,8 +5,8 @@ namespace App\Models\Tenants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class General extends Model
 {
     use HasFactory;
-    protected $fillable = ['favicon', 'logo', 'mobile_icon'];
+    protected $fillable = ['favicon', 'title'];
 }

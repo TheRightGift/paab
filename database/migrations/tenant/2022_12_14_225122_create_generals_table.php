@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('generals', function (Blueprint $table) {
             $table->id();
-            $table->string('mobile_icon');
-            $table->string('fav_icon');
-            $table->string('logo');
+            $table->string('favicon');
+            $table->string('title');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('generals');
     }
 };

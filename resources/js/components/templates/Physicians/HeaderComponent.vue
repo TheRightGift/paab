@@ -2,7 +2,7 @@
     <nav  v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar', 'hide-on-med-and-down'">
         <div class="nav-wrapper navbarWrap">
             <a href="#" class="brand-logo" id="physiPortPageLogo"
-                >Dr. Peter Akerele</a
+                >{{user}}</a
             >
             <ul
                 id="nav-mobile"
@@ -39,7 +39,7 @@
             ></a
         >
 
-        <a href="#" class="" id="physiPortPageLogo">Dr. Akerele Adebayo</a>
+        <a href="#" class="" id="physiPortPageLogo">{{user}}</a>
 
         <ul id="slide-out" class="sidenav">
             <!-- <li> -->
@@ -82,7 +82,7 @@
             };
         },
         props: {
-            id: String,
+            user: String,
         },
         mounted() {
              window.addEventListener('scroll', this.updateScroll);
