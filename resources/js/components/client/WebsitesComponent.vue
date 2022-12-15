@@ -167,21 +167,33 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
+                <!--EditWebsiteModalComponent v-else-if="view == 1" :domain="tenant.domain" :user="user"/-->
+>>>>>>> 78339fd0b96fd338dcef9dd2bd776edd2985bb13
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import MobileNavComponent from '../partials/MobileNavComponent.vue';
+    // import MobileNavComponent from '../partials/MobileNavComponent.vue';
     import SideNavComponent from '../partials/SideNavComponent.vue';
+<<<<<<< HEAD
+=======
+    // import EditWebsiteModalComponent from "./EditWebsiteModalComponent.vue";
+>>>>>>> 78339fd0b96fd338dcef9dd2bd776edd2985bb13
     import WebCreateComponent from './WebCreateComponent.vue';
-    // import TemplateSelectorComponent from '../partials/TemplateSelectorComponent.vue';
     import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
 
     export default {
         components: {
+<<<<<<< HEAD
             MobileNavComponent,
+=======
+            // EditWebsiteModalComponent,
+            // MobileNavComponent,
+>>>>>>> 78339fd0b96fd338dcef9dd2bd776edd2985bb13
             SideNavComponent,
             WebCreateComponent,
             TemplatePreviewComponent
