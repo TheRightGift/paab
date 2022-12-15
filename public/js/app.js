@@ -21772,7 +21772,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      // userProfessionId: 0,
+      webCreateViewState: 0,
       web: {
         name: "",
         description: "",
@@ -21785,14 +21785,30 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createWebsite: function createWebsite() {
-      this.$emit('createWebsite', this.web);
+      if (this.web.name === "" || this.web.description === "" || this.web.template_id === 0) {
+        M.toast({
+          html: "Please fill the website creation form properly",
+          classes: "errorNotifier"
+        });
+      } else {
+        this.$emit('createWebsite', this.web);
+      }
     },
     modalCancelBtn: function modalCancelBtn() {
       this.$emit('close', true);
     },
     processTemp: function processTemp(evt) {
       this.web.template_id = evt.id;
-      console.log(evt.id);
+    },
+    nextWebsiteCreateView: function nextWebsiteCreateView() {
+      if (this.webCreateViewState < 2) {
+        this.webCreateViewState++;
+      }
+    },
+    prevWebsiteCreateView: function prevWebsiteCreateView() {
+      if (this.webCreateViewState > 0) {
+        this.webCreateViewState--;
+      }
     }
   }
 });
@@ -21811,21 +21827,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _partials_SideNavComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../partials/SideNavComponent.vue */ "./resources/js/components/partials/SideNavComponent.vue");
-/* harmony import */ var _WebCreateComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WebCreateComponent.vue */ "./resources/js/components/client/WebCreateComponent.vue");
-/* harmony import */ var _partials_TemplatePreviewComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../partials/TemplatePreviewComponent.vue */ "./resources/js/components/partials/TemplatePreviewComponent.vue");
+/* harmony import */ var _partials_InnerFooterComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../partials/InnerFooterComponent.vue */ "./resources/js/components/partials/InnerFooterComponent.vue");
+/* harmony import */ var _WebCreateComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WebCreateComponent.vue */ "./resources/js/components/client/WebCreateComponent.vue");
+/* harmony import */ var _partials_TemplatePreviewComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../partials/TemplatePreviewComponent.vue */ "./resources/js/components/partials/TemplatePreviewComponent.vue");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 // import MobileNavComponent from '../partials/MobileNavComponent.vue';
 
-// import EditWebsiteModalComponent from "./EditWebsiteModalComponent.vue";
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    // EditWebsiteModalComponent,
-    // MobileNavComponent,
     SideNavComponent: _partials_SideNavComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    WebCreateComponent: _WebCreateComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    TemplatePreviewComponent: _partials_TemplatePreviewComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    WebCreateComponent: _WebCreateComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    TemplatePreviewComponent: _partials_TemplatePreviewComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    InnerFooterComponent: _partials_InnerFooterComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -24321,31 +24337,56 @@ var _hoisted_2 = {
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "material-icons left"
 }, "arrow_back", -1 /* HOISTED */);
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "clientCreatePortTitle"
-}, " Giving your website a good title make it easier for customer to find your page. ", -1 /* HOISTED */);
-var _hoisted_5 = {
-  "class": "row clientCreateWebsiteView",
-  id: "clientCreatePortInputRowDiv"
+var _hoisted_4 = {
+  key: 0,
+  "class": "row createWebRow"
 };
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col l6 createWebSectionTitle center-align"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Input your domain name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("If your names and title are Dr. Mark Cable and you want your domain name to be "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "www.drmarkcable.com"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(", please enter "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "drmarcable")])])], -1 /* HOISTED */);
 var _hoisted_6 = {
-  "class": "col l6"
+  "class": "col l6 createWebsiteDomainName"
 };
-var _hoisted_7 = {
-  "class": "col l6"
-};
+var _hoisted_7 = ["src"];
 var _hoisted_8 = {
-  "class": "row clientCreateWebsiteView gutterTopBottom"
+  key: 1,
+  "class": "row createWebRow"
 };
 var _hoisted_9 = {
+  "class": "col l6 createWebsiteDomainName"
+};
+var _hoisted_10 = ["src"];
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col l6 createWebSectionTitle center-align"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Describe your domain (optional)"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "center-align"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, "Providing a good description helps us setup SEO for your site.")])], -1 /* HOISTED */);
+var _hoisted_12 = {
+  key: 2,
+  "class": "row clientCreateWebsiteView gutterTopBottom"
+};
+var _hoisted_13 = {
+  "class": "row websiteCreateBtnRow gutterTop-10"
+};
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "material-icons left"
+}, "navigate_before", -1 /* HOISTED */);
+var _hoisted_15 = {
   key: 0
 };
-var _hoisted_10 = {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "material-icons right"
+}, "send", -1 /* HOISTED */);
+var _hoisted_17 = {
   key: 1,
   "class": "preloader-wrapper small active"
 };
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"spinner-layer spinner-white-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div>", 1);
-var _hoisted_12 = [_hoisted_11];
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"spinner-layer spinner-white-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div>", 1);
+var _hoisted_19 = [_hoisted_18];
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "material-icons right"
+}, "navigate_next", -1 /* HOISTED */);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_TemplatePreviewComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TemplatePreviewComponent");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
@@ -24354,35 +24395,48 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     id: "clientCreatePortCancelIconBtn",
     "class": "waves-effect waves-light btn-flat"
-  }, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Go Back")])]), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Go Back")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("p class=\"clientCreatePortTitle\">\r\n                Giving your website a good title make it easier for customer to\r\n                find your page.\r\n            </p"), $data.webCreateViewState === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: '/media/img/domainName.png'
+  }, null, 8 /* PROPS */, _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
-    placeholder: "Website title",
+    placeholder: "Domain name",
     id: "clientCreatePortInput",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.web.name = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.web.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.web.name]])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.webCreateViewState === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: '/media/img/description.png'
+  }, null, 8 /* PROPS */, _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     placeholder: "Description",
     id: "clientCreatePortInput1",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.web.description = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.web.description]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TemplatePreviewComponent, {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.web.description]])]), _hoisted_11])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("div class=\"row clientCreateWebsiteView\" id=\"clientCreatePortInputRowDiv\">\r\n                <div class=\"col l6\">\r\n                    <input\r\n                        type=\"text\"\r\n                        placeholder=\"Website title\"\r\n                        id=\"clientCreatePortInput\"\r\n                        v-model=\"web.name\"\r\n                    />\r\n                </div>\r\n\r\n                <div class=\"col l6\">\r\n                    <input\r\n                        type=\"text\"\r\n                        placeholder=\"Description\"\r\n                        id=\"clientCreatePortInput1\"\r\n                        v-model=\"web.description\"\r\n                    />\r\n                </div>\r\n            </div"), $data.webCreateViewState === 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TemplatePreviewComponent, {
     selectedTemplate: $data.web.template_id,
     onTempSel: _cache[3] || (_cache[3] = function ($event) {
       return $options.processTemp($event);
     }),
     professionId: $props.userProfessionId,
     type: 'create'
-  }, null, 8 /* PROPS */, ["selectedTemplate", "professionId"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 8 /* PROPS */, ["selectedTemplate", "professionId"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn-small primaryBorder",
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return $options.prevWebsiteCreateView();
+    })
+  }, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Prev")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
-    "class": "btn",
-    id: "clientCreatePortBtn",
-    onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    "class": "btn-small create",
+    onClick: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.createWebsite && $options.createWebsite.apply($options, arguments);
     }, ["prevent"]))
-  }, [!$props.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_9, "CREATE")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, _hoisted_12))])])]);
+  }, [!$props.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("CREATE")])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, _hoisted_19))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn-small primaryBorder",
+    onClick: _cache[6] || (_cache[6] = function ($event) {
+      return $options.nextWebsiteCreateView();
+    })
+  }, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Next")])])])]);
 }
 
 /***/ }),
@@ -24459,50 +24513,52 @@ var _hoisted_15 = {
   key: 0,
   "class": "webWhiteDiv1"
 };
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row\" data-v-efc3d3e8><div class=\"col l2 webWhiteTitle\" data-v-efc3d3e8> Title </div><div class=\"col l2 webWhiteTitle websiteTitle\" data-v-efc3d3e8> Template </div><div class=\"col l6 webWhiteTitle\" data-v-efc3d3e8> Description </div><div class=\"col l2 webWhiteTitle right-align\" data-v-efc3d3e8> Actions </div></div>", 1);
-var _hoisted_17 = {
+var _hoisted_16 = {
   key: 0,
   "class": "row center-align"
 };
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"preloader-wrapper small active\" data-v-efc3d3e8><div class=\"website spinner-layer spinner-blue-only\" data-v-efc3d3e8><div class=\"circle-clipper left\" data-v-efc3d3e8><div class=\"circle\" data-v-efc3d3e8></div></div><div class=\"gap-patch\" data-v-efc3d3e8><div class=\"circle\" data-v-efc3d3e8></div></div><div class=\"circle-clipper right\" data-v-efc3d3e8><div class=\"circle\" data-v-efc3d3e8></div></div></div></div>", 1);
-var _hoisted_19 = [_hoisted_18];
-var _hoisted_20 = {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"preloader-wrapper small active\" data-v-efc3d3e8><div class=\"website spinner-layer spinner-blue-only\" data-v-efc3d3e8><div class=\"circle-clipper left\" data-v-efc3d3e8><div class=\"circle\" data-v-efc3d3e8></div></div><div class=\"gap-patch\" data-v-efc3d3e8><div class=\"circle\" data-v-efc3d3e8></div></div><div class=\"circle-clipper right\" data-v-efc3d3e8><div class=\"circle\" data-v-efc3d3e8></div></div></div></div>", 1);
+var _hoisted_18 = [_hoisted_17];
+var _hoisted_19 = {
   key: 1
 };
-var _hoisted_21 = {
+var _hoisted_20 = {
   key: 0
 };
+var _hoisted_21 = {
+  "class": "col l2"
+};
 var _hoisted_22 = {
-  "class": "col l2"
-};
-var _hoisted_23 = {
-  "class": "webWhiteProName"
-};
-var _hoisted_24 = {
-  "class": "col l2"
-};
-var _hoisted_25 = {
   "class": "websiteTitle"
 };
-var _hoisted_26 = {
+var _hoisted_23 = {
   "class": "webWhiteProDiv"
 };
-var _hoisted_27 = ["src"];
+var _hoisted_24 = ["src"];
+var _hoisted_25 = {
+  "class": "websiteTemplateName center-align"
+};
+var _hoisted_26 = {
+  "class": "col l10 websiteTemplateDesc"
+};
+var _hoisted_27 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Description", -1 /* HOISTED */);
+});
 var _hoisted_28 = {
-  "class": "col l6"
+  "class": "col l9"
 };
 var _hoisted_29 = {
   "class": "webWhiteTxt"
 };
 var _hoisted_30 = {
-  "class": "col l2 right-align"
+  "class": "col l3 right-align"
 };
 var _hoisted_31 = ["onClick"];
 var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "material-icons",
     id: "webWhiteIcon"
-  }, "open_in_new", -1 /* HOISTED */);
+  }, "visibility", -1 /* HOISTED */);
 });
 var _hoisted_33 = [_hoisted_32];
 var _hoisted_34 = ["onClick"];
@@ -24625,14 +24681,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     loading: $data.loading,
     userProfessionId: $data.userProfessionId
-  }, null, 8 /* PROPS */, ["loading", "userProfessionId"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [$data.view == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [_hoisted_16, $data.websiteLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, _hoisted_19)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [$data.websites.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.websites, function (website) {
+  }, null, 8 /* PROPS */, ["loading", "userProfessionId"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [$data.view == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("div class=\"row\">\r\n                                        <div class=\"col l2 webWhiteTitle\">\r\n                                            Title\r\n                                        </div>\r\n                                        <div class=\"col l2 webWhiteTitle websiteTitle\">\r\n                                            Template\r\n                                        </div>\r\n                                        <div class=\"col l6 webWhiteTitle\">\r\n                                            Description\r\n                                        </div>\r\n                                        <div class=\"col l2 webWhiteTitle  right-align\">\r\n                                            Actions\r\n                                        </div>\r\n                                    </div"), $data.websiteLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, _hoisted_18)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, [$data.websites.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.websites, function (website) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": "row websitesViewRow",
       key: website.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(website.name), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       src: '/media/img/templateThumbnail/' + website.template.profession.name + '/' + website.template.imageUrl,
       "class": "responsive-img"
-    }, null, 8 /* PROPS */, _hoisted_27)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(website.description), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    }, null, 8 /* PROPS */, _hoisted_24)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(website.name), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(website.description), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       href: "#!",
       onClick: function onClick($event) {
         return $options.gotoDomain(website);
@@ -24652,7 +24708,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return $options.updateWebsite(website);
       },
       title: "Edit your website"
-    }, _hoisted_39, 8 /* PROPS */, _hoisted_37)])]);
+    }, _hoisted_39, 8 /* PROPS */, _hoisted_37)])])]);
   }), 128 /* KEYED_FRAGMENT */))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_40, _hoisted_42))]))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $options.setDefaults(0);

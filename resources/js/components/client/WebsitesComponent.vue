@@ -36,7 +36,7 @@
                             <web-create-component @createWebsite="createWebsite($event)" @close="close($event)" v-if="!isHidden && loadingUserProfessionId" :loading="loading" :userProfessionId="userProfessionId"/>
                             <div v-else>
                                 <div class="webWhiteDiv1" v-if="view == 0">
-                                    <div class="row">
+                                    <!--div class="row">
                                         <div class="col l2 webWhiteTitle">
                                             Title
                                         </div>
@@ -49,7 +49,7 @@
                                         <div class="col l2 webWhiteTitle  right-align">
                                             Actions
                                         </div>
-                                    </div>
+                                    </div-->
                                     <div class="row center-align" v-if="websiteLoading">
                                         <div class="preloader-wrapper small active">
                                             <div class="website spinner-layer spinner-blue-only">
@@ -71,34 +71,35 @@
                                                 :key="website.id"
                                             >
                                                 <div class="col l2">
-                                                    <p class="webWhiteProName">
-                                                        {{ website.name }}
-                                                    </p>
-                                                </div>
-                                                <div class="col l2">
                                                     <div class="websiteTitle">
                                                         <div class="webWhiteProDiv">
                                                             <img :src="'/media/img/templateThumbnail/'+website.template.profession.name+'/'+website.template.imageUrl" class="responsive-img" />
                                                         </div>
                                                     </div>
-                                                </div>
-        
-                                                <div class="col l6">                                            
-                                                    <p class="webWhiteTxt">
-                                                        {{ website.description }}
+                                                    <p class="websiteTemplateName center-align">
+                                                        {{ website.name }}
                                                     </p>
-                                                </div>
-        
-                                                <div class="col l2 right-align">
-                                                    <a href="#!" @click="gotoDomain(website)" class="marginRight1" title="Visit my website">
-                                                        <i class="material-icons" id="webWhiteIcon">open_in_new</i>
-                                                    </a>
-                                                    <a href="#!" @click="configureWebsite(website)" class="marginRight1" title="Configure my webiste details">
-                                                        <i class="material-icons" id="webWhiteIcon">settings</i>
-                                                    </a>
-                                                    <a href="#!" @click="updateWebsite(website)" title="Edit your website">
-                                                        <i class="material-icons" id="webWhiteIcon">edit</i>
-                                                    </a>
+                                                </div>        
+                                                <div class="col l10 websiteTemplateDesc"> 
+                                                    <h5>Description</h5>  
+                                                    <div class="col l9">  
+                                                                                               
+                                                        <p class="webWhiteTxt">
+                                                            {{ website.description }}
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="col l3 right-align">
+                                                        <a href="#!" @click="gotoDomain(website)" class="marginRight1" title="Visit my website">
+                                                            <i class="material-icons" id="webWhiteIcon">visibility</i>
+                                                        </a>
+                                                        <a href="#!" @click="configureWebsite(website)" class="marginRight1" title="Configure my webiste details">
+                                                            <i class="material-icons" id="webWhiteIcon">settings</i>
+                                                        </a>
+                                                        <a href="#!" @click="updateWebsite(website)" title="Edit your website">
+                                                            <i class="material-icons" id="webWhiteIcon">edit</i>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -180,27 +181,29 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 <!--EditWebsiteModalComponent v-else-if="view == 1" :domain="tenant.domain" :user="user"/-->
             </div>
+            
         </div>
+        
     </div>
 </template>
 
 <script>
     // import MobileNavComponent from '../partials/MobileNavComponent.vue';
     import SideNavComponent from '../partials/SideNavComponent.vue';
-    // import EditWebsiteModalComponent from "./EditWebsiteModalComponent.vue";
+    import InnerFooterComponent from '../partials/InnerFooterComponent.vue';
     import WebCreateComponent from './WebCreateComponent.vue';
     import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
 
     export default {
         components: {
-            // EditWebsiteModalComponent,
-            // MobileNavComponent,
             SideNavComponent,
             WebCreateComponent,
-            TemplatePreviewComponent
+            TemplatePreviewComponent,
+            InnerFooterComponent
         },
         data() {
             return {
