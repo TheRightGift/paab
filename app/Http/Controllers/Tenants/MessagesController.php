@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Tenants;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tenants\Messages;
+use App\Models\Tenants\Contact;
 use Illuminate\Http\Request;
 
 class MessagesController extends Controller
@@ -34,7 +35,9 @@ class MessagesController extends Controller
             'message' => 'required'
         ]);
      
-        Messages::create($request->all()); 
+        Messages::create($request->all());
+        $email = Contact::first();
+        $email2Use = empty($email) ? tenant()->user->email : $email;
         \Mail::send('websites.contactus',
            array(
                'lastname' => $request->get('lastname'),

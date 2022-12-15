@@ -2289,7 +2289,122 @@ div .row .supportGetInTouchRowDiv {
     margin: 0;
 }
 
-
+/* Client Website Settings */
+.clientSelectedTemp {
+    filter: drop-shadow(0px 6px 9px rgba(16, 208, 12, 0.8));
+}
+.configWebTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 1vw;
+}
+.configWebBackBtn {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #000000;
+    margin-left: 5.8vw;
+}
+.configWebBackBtnDiv{
+    margin-top: 4vh;
+}
+.configWebInputLabel {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 21px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 1.9vw;
+    margin-bottom: 0;
+}
+#configWebInputDiv {
+    width: 80%;
+    margin: 7vh auto 0 auto;
+}
+#configWebBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    margin-top: 2.5vh;
+    height: 5vh;
+    width: 7vw;
+}
+#configWebInput {
+    background: rgba(119, 70, 255, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    margin-top: 2vh;
+    padding: 0 2vw;
+    height: 6vh;
+}
+.configWebLoadTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    color: #000000;
+}
+.configDelDiv {
+    display: flex;
+    margin: 9vh 0 0 0;
+}
+.configDeTxt {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 21px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+}
+#configDelBtn {
+    background: #D44141;
+    border-radius: 6px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: -0.015em;
+}
+.configDelBtnDiv {
+    margin-left: auto;
+}
+.configWebTempMainDiv {
+    width: 85%;
+    margin: 9vh auto 0 auto;
+}
+#configWebTempPageRowDiv {
+    padding-top: 2vh;
+}
+.configWebRightDiv {
+    padding: 5vh 2vw;
+}
+#configWebBlackTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: #7746FF;
+    margin: 6vh 0 1vh 0;
+    /* margin: 0; */
+}
+.configWebBlackTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: #7746FF;
+    margin: 6vh 0 0 0;
+}
 
 /* Setup Website Modal */
 .editWebNav {
@@ -2310,14 +2425,10 @@ div .row .supportGetInTouchRowDiv {
     width: 100%;
     overflow-y: auto;
 }
-.editInnerWebNav {
-    width: 80%;
-    margin: auto;
-}
 #editWebUl {
     display: flex;
-    position: relative;
-    top: 2.5vh;
+    justify-content: center;
+    align-items: center;
 }
 .editWebModalDiv {
     position: absolute;
@@ -2334,7 +2445,7 @@ div .row .supportGetInTouchRowDiv {
     color: #FFFFFF;
     display: flex;
 }
-.editWebLi {
+.editWebLi:not(:last-child){
     margin-right: 4.3vw;
 }
 .editWebModalExitBtn {
@@ -2805,11 +2916,8 @@ textarea::placeholder {
     position: relative;
     right: 0.5vw;
 }
-#genTitleCheck {
+#genTitleCheck3, #genTitleCheck, #genTitleCheck1, #genTitleCheck2 {
     color: #7746FF;
-    position: absolute;
-    top: 25.3vh;
-    left: 3vw;
 }
 #bioInput, #bioInput1 {
     border: 1px solid #7746FF;

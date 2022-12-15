@@ -34,7 +34,7 @@ Route::middleware([
     Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
 });
 // ['middleware'=>'auth:api']
-Route::middleware(['auth:api',InitializeTenancyByDomain::class,
+Route::middleware(['api',InitializeTenancyByDomain::class,
 PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::post('/bio', [App\Http\Controllers\Tenants\BioController::class, 'store']);
     Route::put('/bio/{id}', [App\Http\Controllers\Tenants\BioController::class, 'update']);

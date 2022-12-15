@@ -66,7 +66,7 @@ class GeneralController extends Controller
     public function update(Request $request, $general)
     {
         $inputs = Validator::make($request->all(), [
-            'favicon' => 'nullable|image|mimes:jpg,png|max:100',
+            'favicon' => 'nullable|image|mimes:png|max:100',
             'title' => 'nullable',
         ]);
 
