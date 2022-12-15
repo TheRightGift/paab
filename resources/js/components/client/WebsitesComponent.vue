@@ -167,24 +167,23 @@
                         </div>
                     </div>
                 </div>
-                <EditWebsiteModalComponent v-else-if="view == 1" :domain="tenant.domain" :user="user"/>
+                <!--EditWebsiteModalComponent v-else-if="view == 1" :domain="tenant.domain" :user="user"/-->
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import MobileNavComponent from '../partials/MobileNavComponent.vue';
+    // import MobileNavComponent from '../partials/MobileNavComponent.vue';
     import SideNavComponent from '../partials/SideNavComponent.vue';
-    import EditWebsiteModalComponent from "./EditWebsiteModalComponent.vue";
+    // import EditWebsiteModalComponent from "./EditWebsiteModalComponent.vue";
     import WebCreateComponent from './WebCreateComponent.vue';
-    // import TemplateSelectorComponent from '../partials/TemplateSelectorComponent.vue';
     import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
 
     export default {
         components: {
-            EditWebsiteModalComponent,
-            MobileNavComponent,
+            // EditWebsiteModalComponent,
+            // MobileNavComponent,
             SideNavComponent,
             WebCreateComponent,
             TemplatePreviewComponent

@@ -19,7 +19,7 @@
 </head>
 <body>
     <div id="app">       
-        <settings></settings>
+        <website-settings></website-settings>
     </div>
     
     <script src="{{ global_asset('js/app.js') }}"></script>
