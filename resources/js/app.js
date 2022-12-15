@@ -37,7 +37,11 @@ import DashboardAdmin from './components/admin/Dashboard';
 
 // Webiste
 import PhysicianWebsiteComponent from './components/templates/Physicians/MainTemplateComponent';
+<<<<<<< HEAD
 import SettingsComponent from './components/templates/Physicians/SettingsComponent';
+=======
+import SettingsComponent from './components/templates/Physicians/Settings/SettingsComponent';
+>>>>>>> 78339fd0b96fd338dcef9dd2bd776edd2985bb13
 
 app.component('home-component', HomeComponent);
 app.component('login-component', LoginComponent);
@@ -58,7 +62,7 @@ app.component('client-singlemail-component', ClientSingleMail);
 app.component('admin-component', DashboardAdmin);
 
 app.component('physician-website-component', PhysicianWebsiteComponent);
-app.component('settings', SettingsComponent);
+app.component('website-settings', SettingsComponent);
 
 /**
  * The following block of code may be used to automatically register your
