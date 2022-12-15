@@ -18,7 +18,7 @@ class BioController extends Controller
      */
     public function index()
     {
-        $bio = Bio::get();
+        $bio = Bio::first();
         // $achievements = Achievement::get();
         // $services = Service::get();
         #TODO: Merge into one array and return
@@ -34,12 +34,12 @@ class BioController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'about' => 'required',
-            'history' => 'nullable',
-            'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:5000',
-            'photo' => 'nullable|image|mimes:jpg,png|max:1000',
+            'about' => 'required|size:614',
+            'lastname' => 'nullable',
+            'firstname' => 'nullable',
+            'CV' => 'required|file|mimes:doc,pdf,docx,zip|max:2000',
+            'photo' => 'nullable|image|mimes:jpg,png|max:500',
             // Achievement
-            // 'title' => 'required',
             // 'percentage' => 'required',
             // Services
             // 'serv_title' => 'required',
@@ -48,21 +48,21 @@ class BioController extends Controller
         ]); 
 
         if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 501);
+            return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
             if($request->hasFile('photo')){
                 $photo = $request->file('photo');
-                $stored = \Storage::disk('public')->put("img", $photo);
-                // $url = tenant_asset($stored);
-                // dd($url, $stored);
+                $ext = $request->file('photo')->getClientOriginalExtension();
+                $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
+                
                 $input['photo'] = $stored;
             } 
-            // \Image::make($request->file('image'))->resize(500, 590)->save(public_path('/books/images/').$input['image']);
             if($request->hasFile('CV')){
                 $cv = $request->file('CV');
-                $name = $cv->getClientOriginalName();
-                $stored = \Storage::disk('public')->put("docs", $cv);
+                $ext = $request->file('CV')->getClientOriginalExtension();
+                $stored = \Storage::disk('public')->putFileAs('doc', $cv, strtolower(tenant('id')).'CV'.'.'.$ext);
+
                 $input['CV'] = $stored;
             } 
             $bio = Bio::create($input);

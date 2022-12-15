@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('bios', function (Blueprint $table) {
             $table->id();
-            $table->string('about');
+            $table->text('about');
             $table->string('CV')->nullable();
             $table->string('photo')->nullable();
-            $table->text('history')->nullable();
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
             $table->timestamps();
         });
     }

@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
+
 use App\Models\Tenant;
 use App\Models\Template;
+use App\Models\User;
+
 use Validator;
 class TenantController extends Controller
 {
@@ -31,7 +34,6 @@ class TenantController extends Controller
                 ]);
                 if ($tenant) {
                     $domain = $tenant->domains()->create(['domain' => $request->name .'.localhost']); //Determine how to handle domain
-                    // TODO: add tenant.profession to $tenant before return
                     return response()->json(['message' => 'Your Website is created successfuly', 'tenant' => $tenant, 'domain' => $domain, 'status' => 200], 200);
                 }
                 else {
@@ -79,22 +81,30 @@ class TenantController extends Controller
     // Renders / of template
     public function template() {
         // Get the template_id and get its details
-        
-        // $templateTitle = $template['name'];
-        // dd($template, 'when we have a template please comment off the 2 lines above and delete me.Thanks');
-        // return view('templater');
-        
-        // get loggedIn User profession
-        $profession = Tenant::find(tenant('id'))->template->profession->name;
-        $professionId = Tenant::find(tenant('id'))->template->profession_id;
-        $template = Tenant::find(tenant('id'))->template->title;
+        $tenancies = new Tenant();
+        $tenant = $tenancies->find(tenant('id'));
+        $profession = $tenant->template->profession->name;
+        $professionId =$tenant->template->profession_id;
+        $template =$tenant->template->title;
+        $user = $tenant->user->title->name.'. '.$tenant->user->firstname.' '.$tenant->user->lastname;
         
         if($profession === 'Physician'){
-            return view('websites.physician', compact('template'));
+            return view('websites.physician', compact('template', 'user'));
         } else {
             dd($profession);
         }
+    }
 
+    public function setting(Request $request) {
+        return view('websites.setting');
+            // tenancy()->central(function ($tenant) {
+            //     dd(User::all(), $tenant);
+            //     $auth = User::find($tenant->user_id);
+            //     if ($auth !== null) {
+    
+            //     }
+
+            // });
     }
 
     public function tenancies() {
@@ -117,5 +127,16 @@ class TenantController extends Controller
         else {
             return response()->json(['message' => 'Not found', 'status' => 404], 404);
         }
+    }
+
+    public function login(Request $request) {
+        tenancy()->central(function ($tenant) {
+            $auth = User::find($tenant->user_id);
+            if ($auth !== null) {
+                
+            }
+            // dd(User::all(), $tenant);
+
+        });
     }
 }

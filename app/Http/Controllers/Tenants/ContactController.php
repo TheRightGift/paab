@@ -35,12 +35,12 @@ class ContactController extends Controller
         ]); 
 
         if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 501);
+            return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
             $contact = Contact::create($input);
             if ($contact == true) {
-                return response()->json(['message' => 'Success', 'contact' => $contact], 200);
+                return response()->json(['message' => 'Success', 'contact' => $contact], 201);
             }
             else {
                 return response()->json(['message' => 'Failed', 'contact' => $contact], 501);

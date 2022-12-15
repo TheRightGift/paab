@@ -51,7 +51,7 @@ body {
     background-color: #FFFFFF;
     color: #81c784;
 }
-.hoverable {
+.hoverable, .cursor {
     cursor: pointer;
 }
 .errorNotifier {
@@ -2294,8 +2294,21 @@ div .row .supportGetInTouchRowDiv {
 /* Setup Website Modal */
 .editWebNav {
     background-color: #7746FF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    height: 9vh;
+    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+    /* height: 9vh; */
+    margin-bottom: 2vh;
+}
+.editWebNav::-webkit-scrollbar {
+    width: 1px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ad89f0;
+}
+.editWebNav {
+    width: 100%;
+    overflow-y: auto;
 }
 .editInnerWebNav {
     width: 80%;
@@ -2313,12 +2326,13 @@ div .row .supportGetInTouchRowDiv {
     width: 67%;
 }
 .editWebLink {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
-    font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 30px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 20px;
     color: #FFFFFF;
+    display: flex;
 }
 .editWebLi {
     margin-right: 4.3vw;
@@ -2335,17 +2349,18 @@ div .row .supportGetInTouchRowDiv {
     line-height: 30px;
     color: #7746FF;
 }
-.editWebModal {
-    background-color: #FFFFFF;
+.editGenModal {
+    background-color: #F4F4F4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-bottom: 12vh;
 }
-#editWebGenModelInput {
+/* #editWebGenModelInput {
     border: 1px solid #7746FF;
     border-radius: 100px;
     padding-left: 2vw;
     width: 97%;
-}
-.editInnerWebModal {
+} */
+.editInnerGenModal {
     width: 90%;
     margin: 0 auto;
     padding-top: 2vh;
@@ -2437,6 +2452,15 @@ input::placeholder {
     letter-spacing: -0.015em;
     color: rgba(0, 0, 0, 0.5);
 }
+textarea::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+}
 #bioAboutInput {
     border: 1px solid #7746FF;
     border-radius: 100px;
@@ -2444,8 +2468,24 @@ input::placeholder {
     height: 4.5vh;
 }
 .bioModalDiv {
-    background-color: #FFFFFF;
+    background-color: #F4F4F4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-bottom: 7vh;
+}
+.servicesModalDiv {
+    background-color: #F4F4F4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-bottom: 12vh;
+}
+.achieveModalDiv {
+    background-color: #F4F4F4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-bottom: 7vh;
+}
+.socialModalDiv {
+    background-color: #F4F4F4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-bottom: 7vh;
 }
 #bioForm {
     width: 82%;
@@ -2583,6 +2623,293 @@ input::placeholder {
     position: relative;
     bottom: 1vh;
     left: 3vw;
+}
+
+#tempPreviewContainDiv {
+    margin-top: 12vh;
+}
+.clientTempPageImgSmDv {
+    margin-bottom: 8vh;
+}
+.tempPageImgDiv {
+    /* background: rgb(245, 243, 243); */
+    width: 26.5vw;
+}
+#tempPageGridImg {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.tempPageImgLink {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.063rem;
+    line-height: 21px;
+    letter-spacing: -0.015em;
+    text-decoration-line: underline;
+    color: #7746FF;
+}
+.clientTempContainInnerDiv {
+    width: 85%;
+    margin: 17vh auto 0 auto;
+}
+#clientTempPageRowDiv {
+    padding-top: 2vh;
+}
+
+#sFName {
+    height: 40px;
+    background: #FFFFFF;
+    padding-left: 7px;
+    width: 109%;
+    /* margin-right: 7vw; */
+}
+
+#sLName {
+    height: 40px;
+    background: #FFFFFF;
+    padding-left: 7px;
+    width: 109%;
+    margin-left: 1.1vw;
+}
+
+#sEmail {
+    height: 40px;
+    background: #FFFFFF;
+    padding-left: 7px;
+    width: 109%;
+}
+
+#sTextarea1 {
+    width: 111%;
+    height: 13vh;
+    background: #FFFFFF;
+    padding-left: 7px;
+}
+
+#modalSupportBtnForm {
+    width: 111%;
+    background: #1E1E1E;
+    border-radius: 6px;
+}
+
+.editBtnLinkNum {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 20px;
+    color: #7746FF;
+    background-color: #FFFFFF;
+    padding: 0.1vh 0.4vw;
+    border-radius: 50%;
+    margin-right: 0.2vw;
+}
+
+.genTitleDiv {
+    display: flex;
+}
+.genTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-right: 4vw;
+    width: 22vw;
+    border-bottom: 4px solid #7746FF;
+    padding: 0 0 1vh 1.5vw;
+}
+.genTitle1 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 1.5rem;
+    line-height: 29px;
+    color: #7746FF;
+    margin-top: 7vh;
+}
+.genTxt {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight:600;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: rgba(0, 0, 0, 0.5);
+    width: 30vw;
+}
+#genInput {
+    border: 1px solid #7746FF;
+    border-radius: 10px;
+    padding-left: 1vw;
+    width: 463px;
+    height: 40px;
+}
+#genInput1 {
+    border: 1px solid #7746FF;
+    border-radius: 10px;
+    padding-left: 1vw;
+    width: 463px;
+    height: 40px;
+}
+#genModalBtn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    background: #7746FF;
+    border-radius: 6px;
+    width: 8vw;
+}
+.genBottomBtnDiv {
+    margin-top: 10vh;
+}
+.goBackBtn {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #000000;
+    margin-left: 2vw;
+}
+
+#genNextBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+    width: 8vw;
+}
+#editWebWlcTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.9rem;
+    line-height: 37px;
+    color: #7746FF;
+}
+#genUploadFavIcon {
+    position: relative;
+    top: 0.5vh;
+    right: 2vw;
+    color: #7746FF;
+}
+#genUploadFavIconDiv {
+    position: relative;
+    right: 0.5vw;
+}
+#genTitleCheck {
+    color: #7746FF;
+    position: absolute;
+    top: 25.3vh;
+    left: 3vw;
+}
+#bioInput, #bioInput1 {
+    border: 1px solid #7746FF;
+    border-radius: 10px;
+    padding-left: 1vw;
+    width: 463px;
+    height: 40px;
+}
+#bioSelectInput {
+    border: 1px solid #7746FF;
+    border-radius: 10px;
+    padding-left: 1vw;
+    width: 483px;
+    height: 40px;
+    background-color: #f4f4f4;
+}
+#bioDescribeInput {
+    border: 1px solid #7746FF;
+    border-radius: 10px;
+    padding-left: 1vw;
+    width: 483px;
+    height: 190px;
+    background-color: #f4f4f4;
+}
+.achieveTitle {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+}
+.achieveProgressBar {
+    width: 480px;
+    height: 12px;
+    background: #D9D9D9;
+    border-radius: 10px;
+    margin-bottom: 2vh;
+}
+.achieveInnerProgressBar {
+    width: 26px;
+    height: 12px;
+    background: #7746FF;
+    border-radius: 10px;
+}
+#socialInput, #socialInput1, #socialInput2 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+
+    border: 1px solid #7746FF;
+    border-radius: 10px;
+    padding-left: 1vw;
+    width: 463px;
+    height: 40px;
+}
+
+#contactInput,
+#contactInput1,
+#contactInput2 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+
+    border: 1px solid #7746FF;
+    border-radius: 10px;
+    padding-left: 1vw;
+    width: 463px;
+    height: 40px;
+}
+.editSocialMedIcons {
+    color: #7746FF;
+    font-size: 25px;
+    position: relative;
+    right: 2vw;
+    top: 0.5vh;
+}
+.achieveprogBarDiv {
+    display: flex;
+}
+.achieveProgBarYear {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #7746FF;
+    position: relative;
+    left: 0.5vw;
+    bottom: 0.4vh;
 }
 
 /* Logout Modal */

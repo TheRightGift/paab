@@ -9,7 +9,7 @@
                 <side-nav-component />
 
                 <!-- Web black div -->
-                <div class="col s12 m10 l10">
+                <div class="col s12 m10 l10" v-if="view == 0">
                     <div id="webRightDiv">
                         <div class="col s9 black websiteBanner">
                             <p class="webBlackTitle">
@@ -167,6 +167,7 @@
                         </div>
                     </div>
                 </div>
+                <EditWebsiteModalComponent v-else-if="view == 1" :domain="tenant.domain" :user="user"/>
             </div>
         </div>
     </div>
@@ -309,7 +310,9 @@
             },
             updateWebsite(website){
                 this.tenant.domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
-                window.open(`http://${this.tenant.domain}:8000/setting`,'_blank');
+                // window.open(`http://${this.tenant.domain}:8000/setting`,'_blank');
+                this.setDefaults(1);
+                parent.location.hash = this.tenant.domain;
             },
             processTemp(evt) {
                 this.selectedTemplate = evt.id;
