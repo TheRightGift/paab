@@ -81,40 +81,52 @@
                             </div>
                             <div class="cardContent">
                                 <div class="cardContentProfile">
-                                    <div  v-if="(websites.length > 0)">
-                                        <div class="row" id="myWebRmMgRow"  v-for="website in websites" :key="website.id">
-                                            <div class="col s10 m10 l10">
-                                                <div class="cardImgMainDiv">
-                                                    <div class="cardImgDiv">
-                                                        <i
-                                                            class="material-icons"
-                                                            id="cardImg"
-                                                            >person</i
-                                                        >
-                                                    </div>
-                                                    <p class="cardProName">
-                                                        {{website.name}}
-                                                    </p>
+                                    <div v-if="websiteLoading" class="center-align">
+                                        <div class="preloader-wrapper small active">
+                                            <div
+                                                class="
+                                                    spinner-layer spinner-white-only
+                                                "
+                                            >
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
                                                 </div>
-                                            </div>
-    
-                                            <div class="col s2 m2 l2">
-                                                <a href="#" id="cardViewLink"
-                                                    >View</a
-                                                >
-                                            </div>
-    
-                                            <div class="col s12">
-                                                <hr class="cardLine" />
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" v-else>
-                                        <p class="white-text center-align noVertMargin">No Website created yet</p>
-                                    </div>
-                                    <div class="row" id="myWebRmMgRow">
-                                        <div class="col s12 center-align">
-                                            <a @click="navigateToWebsitePage" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create website</a>
+                                    <div v-else>
+                                        <div  v-if="(websites.length > 0)">
+                                            <div class="row noMarginBottom"  v-for="website in websites" :key="website.id">
+                                                <div class="col s2">
+                                                    <div class="webWhiteProDiv">
+                                                        <img :src="'/media/img/templateThumbnail/'+website.template.profession.name+'/'+website.template.imageUrl" class="responsive-img" />
+                                                    </div>
+                                                </div>
+                                                <div class="col s8">
+                                                    <p class="domainname">
+                                                        {{website.name}}
+                                                    </p>
+                                                </div>  
+                                                <div class="col s2">
+                                                    <p>
+                                                        <a href="#" @click="gotoDomain(website)">View</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" v-else>
+                                            <p class="white-text center-align noVertMargin">No Website created yet</p>
+                                        </div>
+                                        <div class="row noMarginBottom marginTop-5">
+                                            <div class="col s12 center-align">
+                                                <a @click="navigateToWebsitePage" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create website</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +139,10 @@
                                     <p class="cardTitle">MY MAIL</p>
                                 </div>
                                 <div class="cardContent">
-                                    <div class="row" id="myMailDiv">
+                                    <div class="row" v-if="mail.length < 1">
+                                        <p class="white-text center-align noVertMargin">No Mail.</p>
+                                    </div>
+                                    <div class="row" id="myMailDiv" v-else>
                                         <div class="col s10 m10 l10">
                                             <div class="cardImgMainDiv">
                                                 <div class="cardImgDiv">
@@ -164,6 +179,9 @@
                                                 ever since the 1500s,....
                                             </p>
                                         </div>
+                                    </div>
+                                    <div class="row noMarginBottom marginTop-5 center-align">
+                                        <a @click="navigateToMail" class="waves-effect primary waves-light btn-small"><i class="material-icons right">email</i>Mail Admin</a>
                                     </div>
                                 </div>
                             </div>
@@ -212,6 +230,8 @@
                 currentMidNoon:"",
                 user: {},
                 websites: [],
+                websiteLoading: false,
+                mail: []
             };
         },
         mounted() {
@@ -270,10 +290,12 @@
                 });
             },
             getWebsites() {
+                this.websiteLoading = true;
                 axios.get("/api/tenancies").then(res => {
                     if (res.data.status == 200) {
                         this.websites = res.data.tenants;
                     }
+                    this.websiteLoading = false;
                 }).catch(err => {
                     console.log(err);
                 });
@@ -295,6 +317,13 @@
             },
             navigateToWebsitePage(){
                 window.location.replace('/client/websites');
+            },
+            gotoDomain(website) {
+                let domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
+                window.open(`http://${domain}:8000`,'_blank');
+            },
+            navigateToMail(){
+
             }
         },
         props: ['_token'],

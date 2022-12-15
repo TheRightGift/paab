@@ -68,6 +68,12 @@ body {
 .noPaddingRight {
     padding-right: 0 !important;
 }
+.noMarginBottom {
+    margin-bottom: 0;
+}
+.marginTop-5 {
+    margin-top: 5vh;
+}
 .primary {
     background-color: var(--primary);
     color: var(--white);
@@ -1207,11 +1213,12 @@ a.active {
     align-items: center;
 }
 
-
 .spinner-layer {
     border-color: var(--white) !important;
 }
-
+.website.spinner-layer {
+    border-color: var(--primary) !important;
+}
 
 /* OTP Email Section */
 #otpEmailBtn {
@@ -1517,14 +1524,25 @@ a.active {
     margin: 1rem 0 0 2rem;
 }
 
-.cardProName {
+.cardProName, .domainname {
+    color: #7746FF;
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 1.25rem;
+    
+}
+
+.cardProName {
+    /* font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;*/
+    font-size: 1.25rem; 
     line-height: 30px;
-    color: #7746FF;
+    /* color: #7746FF; */
     margin-left: 1vw;
+}
+.cardProName {
+    font-size: 1rem;
 }
 
 #cardViewLink {
