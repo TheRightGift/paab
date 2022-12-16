@@ -1,9 +1,9 @@
 <template>
     <div :id="template">
-        <div v-if="loading">
+        <div v-show="loading">
             <div class="loader"></div>
         </div>
-        <div v-else>
+        <div v-show="!loading">
             <HeaderComponent :user="user"/>
             <ServicesComponent :user="user" :services="services" :bio="bio"/>
             <ExperienceComponent  :experience="achievement"/>

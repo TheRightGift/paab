@@ -38,10 +38,13 @@
         },
         watch: {
             experience (newVal, oldVal) {
+                console.log(newVal, oldVal)
                 this.feats = JSON.parse(newVal.feats);
             }
         },
-        mounted() {},
+        mounted() {
+            console.log('here')
+        },
         methods: {
             
         },
