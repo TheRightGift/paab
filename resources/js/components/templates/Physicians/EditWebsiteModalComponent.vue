@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Edit Website Modal Div -->
-        <div class="editWebModalDiv">
+        <div class="container">
             <p id="editWebWlcTxt">Setup your website</p>
 
             <!-- Modal Header -->
@@ -56,7 +56,7 @@
                     <div class="genTitleDiv">
                         <i class="material-icons" id="genTitleCheck" v-if="general.title !== '' ">check</i>
                         <p class="genTitle">Title</p>
-
+                        <i class="material-icons" id="genTitleCheck" v-if="general.favicon != null">check</i>
                         <p class="genTitle">Favicon</p>
                     </div>
 
@@ -93,6 +93,7 @@
             <div class="editGenModal" v-if="!genModal1">
                 <div class="editInnerGenModal">
                     <div class="genTitleDiv">
+                        <i class="material-icons" id="genTitleCheck" v-if="general.title !== '' ">check</i>
                         <p class="genTitle">Title</p>
                         
                         <i class="material-icons" id="genTitleCheck" v-if="general.favicon != null">check</i>
@@ -136,12 +137,16 @@
             <div class="bioModalDiv" v-if="!bioModal">
                 <div class="editInnerGenModal">
                     <div class="genTitleDiv">
-                        <p class="genTitle">Title</p>
-                
-                        <p class="genTitle">About</p>
+                        <i class="material-icons" id="genTitleCheck" v-if="bio.firstname != ''">check</i>
+                        <p class="genTitle">Full Name</p>
+            
+                        <i class="material-icons" id="genTitleCheck1" v-if="bio.about != ''">check</i>
+                        <p class="genTitle">Description</p>
 
+                        <i class="material-icons" id="genTitleCheck2" v-if="bio.photo != null">check</i>
                         <p class="genTitle">Upload Photo</p>
 
+                        <i class="material-icons" id="genTitleCheck3" v-if="bio.CV != null">check</i>
                         <p class="genTitle">Upload Curriculum</p>
                     </div>
                 
@@ -184,12 +189,16 @@
             <div class="bioModalDiv" v-if="!bioModal1">
                 <div class="editInnerGenModal">
                     <div class="genTitleDiv">
-                        <p class="genTitle">Title</p>
+                        <i class="material-icons" id="genTitleCheck" v-if="bio.firstname != ''">check</i>
+                        <p class="genTitle">Full Name</p>
             
+                        <i class="material-icons" id="genTitleCheck1" v-if="bio.about != ''">check</i>
                         <p class="genTitle">Description</p>
-            
+
+                        <i class="material-icons" id="genTitleCheck2" v-if="bio.photo != null">check</i>
                         <p class="genTitle">Upload Photo</p>
-            
+
+                        <i class="material-icons" id="genTitleCheck3" v-if="bio.CV != null">check</i>
                         <p class="genTitle">Upload Curriculum</p>
                     </div>
             
@@ -201,7 +210,7 @@
                         </p>
                             
                         <div class="input-field">
-                            <textarea v-model="bio.about" id="bioDescribeInput" class="materialize-textarea" placeholder="Me"></textarea>
+                            <textarea v-model="bio.about" id="bioDescribeInput" class="materialize-textarea" placeholder="Me" maxlength="614"></textarea>
                         </div>
         
                         <!-- <div>
@@ -226,12 +235,16 @@
             <div class="bioModalDiv" v-if="!bioModal2">
                 <div class="editInnerGenModal">
                     <div class="genTitleDiv">
-                        <p class="genTitle">Title</p>
+                        <i class="material-icons" id="genTitleCheck" v-if="bio.firstname != ''">check</i>
+                        <p class="genTitle">Full Name</p>
             
+                        <i class="material-icons" id="genTitleCheck1" v-if="bio.about != ''">check</i>
                         <p class="genTitle">Description</p>
-            
+
+                        <i class="material-icons" id="genTitleCheck2" v-if="bio.photo != null">check</i>
                         <p class="genTitle">Upload Photo</p>
-            
+
+                        <i class="material-icons" id="genTitleCheck3" v-if="bio.CV != null">check</i>
                         <p class="genTitle">Upload Curriculum</p>
                     </div>
             
@@ -273,12 +286,16 @@
             <div class="bioModalDiv" v-if="!bioModal3">
                 <div class="editInnerGenModal">
                     <div class="genTitleDiv">
-                        <p class="genTitle">Title</p>
+                        <i class="material-icons" id="genTitleCheck" v-if="bio.firstname != ''">check</i>
+                        <p class="genTitle">Full Name</p>
             
+                        <i class="material-icons" id="genTitleCheck1" v-if="bio.about != ''">check</i>
                         <p class="genTitle">Description</p>
-            
+
+                        <i class="material-icons" id="genTitleCheck2" v-if="bio.photo != null">check</i>
                         <p class="genTitle">Upload Photo</p>
-            
+
+                        <i class="material-icons" id="genTitleCheck3" v-if="bio.CV != null">check</i>
                         <p class="genTitle">Upload Curriculum</p>
                     </div>
             
@@ -546,13 +563,7 @@
     </div>
 </template>
 <script>
-import MobileNavComponent from '../partials/MobileNavComponent.vue';
-import SideNavComponent from '../partials/SideNavComponent.vue';
 export default {
-    components: {
-        MobileNavComponent,
-        SideNavComponent,
-    },
     data() {
         return {
             bioModal: true,
@@ -580,7 +591,6 @@ export default {
                 lastname: this.user.lastname,
                 CV: null,
             },
-            fullUrl: `http://${this.domain}:8000`,
             titles: [],
             services: [
                 {
@@ -595,13 +605,13 @@ export default {
                 instagram: "https://",
             },
             contact: {
-                email: "",
+                email: this.user.email,
                 phone: "",
                 address: "",
             }
         }
     },
-    props: ['domain', 'user'],
+    props: ['user'],
     mounted() {
     },
     methods: {
@@ -610,7 +620,7 @@ export default {
                 formData.append("favicon", this.general.favicon);
                 formData.append("title", this.general.title);
                 axios
-                    .post(`http://${this.domain}:8000/api/general`, formData)
+                    .post(`/api/general`, formData)
                     .then((res) => {
                         if (res.data.status == 200) {
                             M.toast({
@@ -646,7 +656,7 @@ export default {
                 formData.append("lastname", this.bio.lastname);
 
                 axios
-                    .post(`${this.fullUrl}/api/bio`, formData)
+                    .post(`/api/bio`, formData)
                     .then((res) => {
                         console.log(res);
                         if (res.status == 201) {
@@ -683,7 +693,7 @@ export default {
             let formData = new FormData();
             formData.append('data', JSON.stringify(this.services));
             axios
-                .post(`${this.fullUrl}/api/service`, formData)
+                .post(`/api/service`, formData)
                 .then((res) => {
                     console.log(res);
                     if (res.status == 201) {
@@ -707,7 +717,7 @@ export default {
         },
         saveSocial() {
             axios
-                .post(`${this.fullUrl}/api/social`, this.social)
+                .post(`/api/social`, this.social)
                 .then((res) => {
                     if (res.status == 201) {
                         M.toast({
@@ -730,7 +740,7 @@ export default {
         },
         saveContact() {
             axios
-                .post(`${this.fullUrl}/api/contact`, this.contact)
+                .post(`/api/contact`, this.contact)
                 .then((res) => {
                     if (res.status == 201) {
                         M.toast({

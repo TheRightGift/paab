@@ -96,7 +96,8 @@ class TenantController extends Controller
     }
 
     public function setting(Request $request) {
-        return view('websites.setting');
+        $user = tenant()->user;
+        return view('websites.setting', compact('user'));
             // tenancy()->central(function ($tenant) {
             //     dd(User::all(), $tenant);
             //     $auth = User::find($tenant->user_id);

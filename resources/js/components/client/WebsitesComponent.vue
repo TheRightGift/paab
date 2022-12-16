@@ -183,22 +183,20 @@
                     </div>
                     
                 </div>
-                <!--EditWebsiteModalComponent v-else-if="view == 1" :domain="tenant.domain" :user="user"/-->
             </div>
             
         </div>
         
     </div>
 </template>
-
 <script>
-    // import MobileNavComponent from '../partials/MobileNavComponent.vue';
+    import MobileNavComponent from '../partials/MobileNavComponent.vue';
     import SideNavComponent from '../partials/SideNavComponent.vue';
+    import TemplatePreviewComponent from '../partials/TemplatePreviewComponent.vue';
     import InnerFooterComponent from '../partials/InnerFooterComponent.vue';
     import WebCreateComponent from './WebCreateComponent.vue';
-    import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
 
-    export default {
+    export default{
         components: {
             SideNavComponent,
             WebCreateComponent,
@@ -325,9 +323,7 @@
             },
             updateWebsite(website){
                 this.tenant.domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
-                // window.open(`http://${this.tenant.domain}:8000/setting`,'_blank');
-                this.setDefaults(1);
-                parent.location.hash = this.tenant.domain;
+                window.open(`http://${this.tenant.domain}:8000/setting`,'_blank');
             },
             processTemp(evt) {
                 this.selectedTemplate = evt.id;

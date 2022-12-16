@@ -1,0 +1,613 @@
+<template>
+    <div>
+        <div class="editWebModalDiv">
+            <p id="editWebWlcTxt">Setup your website</p>
+            <div class="editWebNav">
+                <div class="editInnerWebNav">
+                    <ul id="editWebUl">
+                        <li class="editWebLi">
+                            <a href="#" class="editWebLink" @click="genLink()">
+                                <span
+                                    class="editBtnLinkNum"
+                                    :class="[isActive ? 'black' : '']"
+                                    id="genLink"
+                                    >1</span
+                                >
+                                General
+                            </a>
+                        </li>
+                        <li class="editWebLi">
+                            <a href="#" class="editWebLink" @click="bioLink()">
+                                <span class="editBtnLinkNum" id="bioLink"
+                                    >2</span
+                                >
+                                Bio
+                            </a>
+                        </li>
+                        <li class="editWebLi">
+                            <a
+                                href="#"
+                                class="editWebLink"
+                                @click="servicesLink()"
+                            >
+                                <span class="editBtnLinkNum" id="servicesLink"
+                                    >3</span
+                                >
+                                Services
+                            </a>
+                        </li>
+                        <li class="editWebLi">
+                            <a
+                                href="#"
+                                class="editWebLink"
+                                @click="achieveLink()"
+                            >
+                                <span class="editBtnLinkNum" id="achieveLink"
+                                    >4</span
+                                >
+                                Achievement
+                            </a>
+                        </li>
+                        <li class="editWebLi">
+                            <a
+                                href="#"
+                                class="editWebLink"
+                                @click="socialLink()"
+                            >
+                                <span class="editBtnLinkNum" id="socialLink"
+                                    >5</span
+                                >
+                                Socials
+                            </a>
+                        </li>
+                        <li class="editWebLi">
+                            <a
+                                href="#"
+                                class="editWebLink"
+                                @click="contactLink()"
+                            >
+                                <span class="editBtnLinkNum" id="contactLink"
+                                    >6</span
+                                >
+                                Contacts
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <GeneralComponent
+                :genModal="genModal"
+                :genModal1="genModal1"
+                :saved="general"
+                @genNextBtn="genNextBtn"
+                @generalSave="generalSave($event)"
+                @generalUpdate="generalUpdate($event)"
+                @genGoBackBtn="genGoBackBtn"
+            />
+            <BioComponent
+                :bioModal="bioModal"
+                :bioModal1="bioModal1"
+                :bioModal2="bioModal2"
+                :bioModal3="bioModal3"
+                :user="user"
+                :saved="bio"
+                @bioGoBackBtn="bioGoBackBtn"
+                @bioNextBtn="bioNextBtn"
+                @bioGoBackBtn1="bioGoBackBtn1"
+                @bioNextBtn1="bioNextBtn1"
+                @bioGoBackBtn2="bioGoBackBtn2"
+                @bioNextBtn2="bioNextBtn2"
+                @bioGoBackBtn3="bioGoBackBtn3"
+                @servicesLink="servicesLink"
+                @bioSave="bioSave($event)"
+            />
+            <ServicesComponent
+                :servicesModal="servicesModal"
+                :saved="services"
+                @serviceSave="serviceSave($event)"
+                @achieveLink="achieveLink"
+                @servicesGoBackBtn="servicesGoBackBtn"
+            />
+            <Achievement
+                :achieveModal="achieveModal"
+                :saved="achievement"
+                @saveAchievement="saveAchievement($event)"
+                @socialLink="socialLink"
+                @achieveGoBackBtn="achieveGoBackBtn"
+            />
+            <SocialComponent
+                :socialsModal="socialsModal"
+                :saved="social"
+                @saveSocial="saveSocial($event)"
+                @contactLink="contactLink"
+                @socialGoBackBtn="socialGoBackBtn"
+            />
+            <ContactComponent
+                :user="user"
+                :saved="contact"
+                :contactModal="contactModal"
+                @saveContact="saveContact($event)"
+                @contactGoBackBtn="contactGoBackBtn"
+            />
+        </div>
+    </div>
+</template>
+<script>
+    import GeneralComponent from "./GeneralComponent.vue";
+    import BioComponent from "./BioComponent.vue";
+    import ServicesComponent from "./ServicesComponent.vue";
+    import Achievement from "./Achievement.vue";
+    import SocialComponent from "./SocialComponent.vue";
+    import ContactComponent from "./ContactComponent.vue";
+
+    export default {
+        components: {
+            GeneralComponent,
+            BioComponent,
+            ServicesComponent,
+            Achievement,
+            SocialComponent,
+            ContactComponent,
+        },
+        data() {
+            return {
+                bioModal: false,
+                genModal: false,
+                servicesModal: false,
+                achieveModal: false,
+                socialsModal: false,
+                contactModal: false,
+
+                isActive: true,
+
+                genModal1: false,
+                bioModal1: false,
+                bioModal2: false,
+                bioModal3: false,
+
+                titles: [],
+            };
+        },
+        props: {
+            user: Object,
+            social: Object,
+            bio: Object,
+            services: Array,
+            contact: Object,
+            general: Object,
+            achievement: Object,
+        },
+        mounted() {
+            this.genModal = true;
+        },
+        methods: {
+            generalSave(e) {
+                let formData = new FormData();
+                formData.append("favicon", e.favicon);
+                formData.append("title", e.title);
+                axios
+                    .post(`/api/general`, formData)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            this.genNextBtn1();
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            generalUpdate(e) {
+                let formData = new FormData();
+                e.favicon ? formData.append("favicon", e.favicon) : null;
+                e.favicon ? formData.append("oldFav", e.oldFav) : null;
+                formData.append("title", e.title);
+                formData.append("_method", e._method);
+                axios
+                    .post(`/api/general/${e.id}`, formData)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            bioSave(e) {
+                if (e.about.length > 614 || e.about.length < 614) {
+                    M.toast({
+                        html: "Your about must be 614 in character",
+                        classes: "errorNotifier",
+                    });
+                } else if (e.about.length == 614) {
+                    let formData = new FormData();
+                    formData.append("CV", e.CV);
+                    formData.append("photo", e.photo);
+                    formData.append("about", e.about);
+                    formData.append("firstname", e.firstname);
+                    formData.append("lastname", e.lastname);
+
+                    axios
+                        .post(`/api/bio`, formData)
+                        .then((res) => {
+                            console.log(res);
+                            if (res.status == 201) {
+                                M.toast({
+                                    html: res.data.message,
+                                    classes: "successNotifier",
+                                });
+                                this.bioNextBtn3();
+                            }
+                        })
+                        .catch((err) => {
+                            if (err.response.status == 400) {
+                                err.response.data.forEach((el) => {
+                                    M.toast({
+                                        html: el,
+                                        classes: "errorNotifier",
+                                    });
+                                });
+                            }
+                        });
+                }
+            },
+            serviceSave(e) {
+                let formData = new FormData();
+                formData.append("data", JSON.stringify(e));
+                axios
+                    .post(`/api/service`, formData)
+                    .then((res) => {
+                        if (res.status == 201) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            this.achieveLink();
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            saveSocial(e) {
+                axios
+                    .post(`/api/social`, e)
+                    .then((res) => {
+                        if (res.status == 201) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            this.contactLink();
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            saveContact(e) {
+                axios
+                    .post(`/api/contact`, e)
+                    .then((res) => {
+                        if (res.status == 201) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            // this.contactNextBtn()
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            saveAchievement(e) {
+                let formData = new FormData();
+                formData.append("banner", e.banner);
+                formData.append("feats", JSON.stringify(e.feats));
+                axios
+                    .post(`/api/achievement`, formData)
+                    .then((res) => {
+                        if (res.status == 201) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            this.socialLink();
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            servicesLink() {
+                this.bioModal = false;
+                this.bioModal1 = false;
+                this.bioModal2 = false;
+                this.bioModal3 = false;
+                this.genModal = false;
+                this.genModal1 = false;
+                this.achieveModal = false;
+                this.socialsModal = false;
+                this.contactModal = false;
+                this.servicesModal = true;
+
+                this.isActive = false;
+
+                $("#servicesLink").css("background-color", "black");
+                $("#genLink").css("background-color", "white");
+                $("#bioLink").css("background-color", "white");
+                $("#socialLink").css("background-color", "white");
+                $("#contactLink").css("background-color", "white");
+            },
+            genLink() {
+                this.genModal = true;
+                this.bioModal = false;
+                this.servicesModal = false;
+                this.achieveModal = false;
+                this.socialsModal = false;
+                this.contactModal = false;
+
+                this.isActive = true;
+
+                $("#genLink").css("background-color", "black");
+                $("#servicesLink").css("background-color", "white");
+                $("#bioLink").css("background-color", "white");
+                $("#achieveLink").css("background-color", "white");
+                $("#socialLink").css("background-color", "white");
+                $("#contactLink").css("background-color", "white");
+            },
+            bioLink() {
+                this.bioModal = true;
+                this.genModal = false;
+                this.genModal1 = false;
+                this.servicesModal = false;
+                this.achieveModal = false;
+                this.socialsModal = false;
+                this.contactModal = false;
+
+                this.isActive = false;
+
+                $("#bioLink").css("background-color", "black");
+                $("#genLink").css("background-color", "white");
+                $("#servicesLink").css("background-color", "white");
+                $("#achieveLink").css("background-color", "white");
+                $("#socialLink").css("background-color", "white");
+                $("#contactLink").css("background-color", "white");
+            },
+            achieveLink() {
+                this.bioModal = false;
+                this.bioModal1 = false;
+                this.bioModal2 = false;
+                this.bioModal3 = false;
+                this.genModal = false;
+                this.genModal1 = false;
+                this.servicesModal = false;
+                this.socialsModal = false;
+                this.contactModal = false;
+                this.achieveModal = true;
+
+                this.isActive = false;
+
+                $("#bioLink").css("background-color", "white");
+                $("#genLink").css("background-color", "white");
+                $("#servicesLink").css("background-color", "white");
+                $("#achieveLink").css("background-color", "black");
+                $("#socialLink").css("background-color", "white");
+                $("#contactLink").css("background-color", "white");
+                setTimeout(() => {
+                    var elems = document.querySelectorAll("input[type=range]");
+                    M.Range.init(elems);
+                }, 100);
+            },
+            socialLink() {
+                this.achieveModal = false;
+                this.bioModal = false;
+                this.bioModal1 = false;
+                this.bioModal2 = false;
+                this.bioModal3 = false;
+                this.genModal = false;
+                this.genModal1 = false;
+                this.servicesModal = false;
+                this.contactModal = false;
+                this.socialsModal = true;
+
+                this.isActive = false;
+
+                $("#bioLink").css("background-color", "white");
+                $("#genLink").css("background-color", "white");
+                $("#servicesLink").css("background-color", "white");
+                $("#achieveLink").css("background-color", "white");
+                $("#socialLink").css("background-color", "black");
+                $("#contactLink").css("background-color", "white");
+            },
+            contactLink() {
+                this.achieveModal = false;
+                this.socialsModal = false;
+                this.bioModal = false;
+                this.bioModal1 = false;
+                this.bioModal2 = false;
+                this.bioModal3 = false;
+                this.genModal = false;
+                this.genModal1 = false;
+                this.servicesModal = false;
+                this.contactModal = true;
+
+                this.isActive = false;
+
+                $("#bioLink").css("background-color", "white");
+                $("#genLink").css("background-color", "white");
+                $("#servicesLink").css("background-color", "white");
+                $("#achieveLink").css("background-color", "white");
+                $("#socialLink").css("background-color", "white");
+                $("#contactLink").css("background-color", "black");
+            },
+
+            genNextBtn() {
+                this.genModal = false;
+                this.genModal1 = true;
+                $("#bioLink").css("background-color", "white");
+            },
+
+            genGoBackBtn() {
+                this.genModal = true;
+                this.genModal1 = false;
+                $("#bioLink").css("background-color", "white");
+            },
+
+            genNextBtn1() {
+                this.genModal1 = false;
+                this.bioModal = true;
+                this.isActive = false;
+                $("#bioLink").css("background-color", "black");
+            },
+
+            bioGoBackBtn() {
+                this.bioModal = false;
+                this.genModal1 = true;
+                $("#genLink").css("background-color", "black");
+                $("#bioLink").css("background-color", "white");
+            },
+
+            bioGoBackBtn() {
+                this.bioModal = false;
+                this.genModal1 = true;
+                $("#genLink").css("background-color", "black");
+                $("#bioLink").css("background-color", "white");
+            },
+
+            bioNextBtn() {
+                this.bioModal = false;
+                this.bioModal1 = true;
+            },
+
+            bioGoBackBtn1() {
+                this.bioModal1 = false;
+                this.bioModal = true;
+            },
+
+            bioGoBackBtn2() {
+                this.bioModal1 = true;
+                this.bioModal2 = false;
+            },
+
+            bioNextBtn1() {
+                this.bioModal1 = false;
+                this.bioModal2 = true;
+            },
+
+            bioGoBackBtn3() {
+                this.bioModal2 = true;
+                this.bioModal3 = false;
+            },
+
+            bioNextBtn2() {
+                this.bioModal3 = true;
+                this.bioModal2 = false;
+            },
+
+            bioNextBtn3() {
+                this.bioModal3 = false;
+                this.servicesModal = true;
+            },
+
+            servicesGoBackBtn() {
+                this.servicesModal = false;
+                this.bioModal3 = true;
+
+                $("#bioLink").css("background-color", "black");
+                $("#servicesLink").css("background-color", "white");
+            },
+
+            achieveGoBackBtn() {
+                this.servicesModal = true;
+                this.achieveModal = false;
+
+                $("#achieveLink").css("background-color", "white");
+                $("#servicesLink").css("background-color", "black");
+            },
+
+            servicesNextBtn() {
+                this.servicesModal = false;
+                this.achieveModal = true;
+                setTimeout(() => {
+                    var elems = document.querySelectorAll("input[type=range]");
+                    M.Range.init(elems);
+                }, 100);
+            },
+
+            achieveNextBtn() {
+                this.achieveModal = false;
+                this.socialsModal = true;
+            },
+
+            socialGoBackBtn() {
+                this.achieveModal = true;
+                this.socialsModal = false;
+                $("#socialLink").css("background-color", "white");
+                $("#achieveLink").css("background-color", "black");
+            },
+
+            socialNextBtn() {
+                this.socialsModal = false;
+                this.contactModal = true;
+            },
+
+            contactGoBackBtn() {
+                this.contactModal = false;
+                this.socialsModal = true;
+                $("#socialLink").css("background-color", "black");
+                $("#contactLink").css("background-color", "white");
+            },
+        },
+    };
+</script>

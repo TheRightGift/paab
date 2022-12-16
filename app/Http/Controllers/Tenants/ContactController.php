@@ -16,7 +16,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contact = Contact::get();
+        $contact = Contact::latest()->first();
         return response()->json(['message' => 'Success', 'contact' => $contact]);
     }
 

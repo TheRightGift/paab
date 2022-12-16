@@ -34,7 +34,7 @@ Route::middleware([
     Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
 });
 // ['middleware'=>'auth:api']
-Route::middleware(['auth:api',InitializeTenancyByDomain::class,
+Route::middleware(['api',InitializeTenancyByDomain::class,
 PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::post('/bio', [App\Http\Controllers\Tenants\BioController::class, 'store']);
     Route::put('/bio/{id}', [App\Http\Controllers\Tenants\BioController::class, 'update']);
@@ -64,6 +64,8 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::put('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'update']);
     Route::delete('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'destroy']);
     
+    Route::post('/imagedel', [App\Http\Controllers\Tenants\GeneralController::class, 'deleteImage']);
+
     Route::post('/schedule', [App\Http\Controllers\Tenants\MessagesController::class, 'store'])->withoutMiddleware(['auth:api']);
     Route::get('/achievement', [App\Http\Controllers\Tenants\AchievementController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/bio', [App\Http\Controllers\Tenants\BioController::class, 'index'])->withoutMiddleware(['auth:api']);

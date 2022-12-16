@@ -2,7 +2,7 @@
     <div :id="template">
         <HeaderComponent :user="user" />
         <ServicesComponent :user="user" :services="services" :bio="bio"/>
-        <ExperienceComponent />
+        <ExperienceComponent  :experience="achievement"/>
         <SocialMediaComponent />
         <TestimonialsComponent />
         <ContactComponent />
@@ -17,6 +17,7 @@
     import TestimonialsComponent from "./TestimonialsComponent.vue";
     let bio = '/api/bio';
     let service = '/api/service';
+    let achievement = '/api/achievement';
 
     export default {
         components: {
@@ -31,6 +32,7 @@
             return {
                 services: [],
                 bio: {},
+                achievement: {},
             };
         },
         props: {
@@ -46,14 +48,17 @@
             getLocations() {
                 const requestBio = axios.get(bio);
                 const requestService = axios.get(service);
+                const requestAchievement = axios.get(achievement);
                 axios
-                    .all([requestBio, requestService])
+                    .all([requestBio, requestService, requestAchievement])
                     .then(
                         axios.spread((...responses) => {
                             const bioRes = responses[0];
                             const servicesRes = responses[1];
+                            const achievementRes = responses[2];
                             this.services = servicesRes.data.services;
                             this.bio = bioRes.data.bio;
+                            this.achievement = achievementRes.data.achievement;
                         })
                     )
                     .catch((errors) => {

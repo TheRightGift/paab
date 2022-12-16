@@ -8,38 +8,17 @@
 
             <div class="col s12 m3 l2">
                 <div class="expLeftBarDiv">
-                    <div class="expLeftBarInnerDiv">
+                    <div class="expLeftBarInnerDiv" v-for="(feat, index) in feats" :key="index">
                         <div class="expLeftBarTxtDiv">
-                            <p class="expLeftBarTxt">99.9%</p>
-                            <p class="expLeftBarTxt1">Positive feedbacks</p>
-                        </div>
-                    </div>
-
-                    <div class="expLeftBarInnerDiv">
-                        <div class="expLeftBarTxtDiv">
-                            <p class="expLeftBarTxt">2,000+</p>
-                            <p class="expLeftBarTxt1">Patients Recovered</p>
-                        </div>
-                    </div>
-
-                    <div class="expLeftBarInnerDiv">
-                        <div class="expLeftBarTxtDiv">
-                            <p class="expLeftBarTxt">10yrs+</p>
-                            <p class="expLeftBarTxt1">Experience</p>
-                        </div>
-                    </div>
-
-                    <div class="expLeftBarInnerDiv">
-                        <div class="expLeftBarTxtDiv">
-                            <p class="expLeftBarTxt">15</p>
-                            <p class="expLeftBarTxt1">Certifications</p>
+                            <p class="expLeftBarTxt">{{feat}}</p>
+                            <p class="expLeftBarTxt1">{{index}}</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="col s12 m9 l10">
-                <img src="/media/img/physicianTemplate.png" 
+                <img :src="'tenancy/assets/'+experience.banner" 
                     alt="physicianTemplate.png" class="responsive-img" 
                     id="expRightDivImg"
                 >
@@ -50,10 +29,17 @@
 <script>
     export default {
         data() {
-            return {};
+            return {
+                feats: {},
+            };
         },
         props: {
-            id: String,
+            experience: Object,
+        },
+        watch: {
+            experience (newVal, oldVal) {
+                this.feats = JSON.parse(newVal.feats);
+            }
         },
         mounted() {},
         methods: {
