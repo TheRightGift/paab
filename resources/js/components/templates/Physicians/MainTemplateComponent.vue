@@ -1,11 +1,16 @@
 <template>
     <div :id="template">
-        <HeaderComponent :user="user" />
-        <ServicesComponent :user="user" :services="services" :bio="bio"/>
-        <ExperienceComponent  :experience="achievement"/>
-        <SocialMediaComponent />
-        <TestimonialsComponent />
-        <ContactComponent />
+        <div v-if="loading">
+            <div class="loader"></div>
+        </div>
+        <div v-else>
+            <HeaderComponent :user="user"/>
+            <ServicesComponent :user="user" :services="services" :bio="bio"/>
+            <ExperienceComponent  :experience="achievement"/>
+            <SocialMediaComponent />
+            <TestimonialsComponent />
+            <ContactComponent />
+        </div>
     </div>
 </template>
 <script>
@@ -33,6 +38,7 @@
                 services: [],
                 bio: {},
                 achievement: {},
+                loading: false,
             };
         },
         props: {
@@ -46,6 +52,7 @@
         },
         methods: {
             getLocations() {
+                this.loading = true;
                 const requestBio = axios.get(bio);
                 const requestService = axios.get(service);
                 const requestAchievement = axios.get(achievement);
@@ -59,6 +66,9 @@
                             this.services = servicesRes.data.services;
                             this.bio = bioRes.data.bio;
                             this.achievement = achievementRes.data.achievement;
+                           
+                            this.loading = false;
+                            
                         })
                     )
                     .catch((errors) => {

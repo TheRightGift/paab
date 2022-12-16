@@ -22606,7 +22606,8 @@ var achievement = '/api/achievement';
     return {
       services: [],
       bio: {},
-      achievement: {}
+      achievement: {},
+      loading: false
     };
   },
   props: {
@@ -22621,6 +22622,7 @@ var achievement = '/api/achievement';
   methods: {
     getLocations: function getLocations() {
       var _this = this;
+      this.loading = true;
       var requestBio = axios.get(bio);
       var requestService = axios.get(service);
       var requestAchievement = axios.get(achievement);
@@ -22631,6 +22633,7 @@ var achievement = '/api/achievement';
         _this.services = servicesRes.data.services;
         _this.bio = bioRes.data.bio;
         _this.achievement = achievementRes.data.achievement;
+        _this.loading = false;
       }))["catch"](function (errors) {
         console.log(errors);
       });
@@ -26418,6 +26421,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = ["id"];
+var _hoisted_2 = {
+  key: 0
+};
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "loader"
+}, null, -1 /* HOISTED */);
+var _hoisted_4 = [_hoisted_3];
+var _hoisted_5 = {
+  key: 1
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_HeaderComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("HeaderComponent");
   var _component_ServicesComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ServicesComponent");
@@ -26427,7 +26440,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ContactComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ContactComponent");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     id: $props.template
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_HeaderComponent, {
+  }, [$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, _hoisted_4)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_HeaderComponent, {
     user: $props.user
   }, null, 8 /* PROPS */, ["user"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ServicesComponent, {
     user: $props.user,
@@ -26435,7 +26448,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     bio: $data.bio
   }, null, 8 /* PROPS */, ["user", "services", "bio"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ExperienceComponent, {
     experience: $data.achievement
-  }, null, 8 /* PROPS */, ["experience"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SocialMediaComponent), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TestimonialsComponent), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContactComponent)], 8 /* PROPS */, _hoisted_1);
+  }, null, 8 /* PROPS */, ["experience"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SocialMediaComponent), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TestimonialsComponent), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContactComponent)]))], 8 /* PROPS */, _hoisted_1);
 }
 
 /***/ }),
