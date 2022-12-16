@@ -68,6 +68,12 @@ body {
 .noPaddingRight {
     padding-right: 0 !important;
 }
+.noMarginBottom {
+    margin-bottom: 0;
+}
+.marginTop-5 {
+    margin-top: 5vh;
+}
 .primary {
     background-color: var(--primary);
     color: var(--white);
@@ -76,13 +82,20 @@ body {
     background-color: var(--white);
     color: var(--primary);
 }
-.primaryBorder {
+.primaryBorder, .primaryBorder:visited, .primaryBorder:active, .primaryBorder.btn-small {
     background-color: var(--white);
     color: var(--primary);
     border: thin solid var(--primary);
 }
+.primaryBorder:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
 .gutter1 {
     margin-right: 1vw;
+}
+.gutterTop-10 {
+    margin-top: 10vh;
 }
 .noVertMargin {
     margin-top: 0;
@@ -1207,11 +1220,12 @@ a.active {
     align-items: center;
 }
 
-
 .spinner-layer {
     border-color: var(--white) !important;
 }
-
+.website.spinner-layer {
+    border-color: var(--primary) !important;
+}
 
 /* OTP Email Section */
 #otpEmailBtn {
@@ -1257,6 +1271,7 @@ a.active {
 }
 
 #dashRowDiv {
+    height: 100vh;
     margin: 0;
 }
 
@@ -1517,14 +1532,25 @@ a.active {
     margin: 1rem 0 0 2rem;
 }
 
-.cardProName {
+.cardProName, .domainname {
+    color: #7746FF;
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 1.25rem;
+    
+}
+
+.cardProName {
+    /* font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;*/
+    font-size: 1.25rem; 
     line-height: 30px;
-    color: #7746FF;
+    /* color: #7746FF; */
     margin-left: 1vw;
+}
+.cardProName {
+    font-size: 1rem;
 }
 
 #cardViewLink {
@@ -1693,8 +1719,30 @@ a.active {
     margin-right: 0vw;
 } */
 .websitesViewRow {
-    padding: 2vh 0;
+    padding: 4vh 0 2vh;
     border-bottom: thin solid var(--secondary);
+}
+.websiteTemplateName {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--primary);
+}
+p.websiteTemplateName {
+    margin-top: 1vh;
+}
+.websiteTemplateDesc h5 {
+    margin-top: 0;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--primary);
+}
+.websiteTemplateDesc p {
+    margin-top: 0;
+}
+.websiteTemplateDesc .col.l9 {
+    padding-left: 0;
 }
 .webWhiteProDiv {
     width: 60px;
@@ -1738,7 +1786,7 @@ a.active {
     color: rgb(30, 30, 30);
 }
 #webWhiteIcon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #7746FF;
 }
 .webHr {
@@ -2223,6 +2271,31 @@ div .row .supportGetInTouchRowDiv {
 }
 
 /* Create Portfolio Modal */
+.createWebsiteDomainName img{
+    width: 100%;
+}
+.col .row.createWebRow {
+    display: flex;
+    width: 85%;
+    margin: 0 auto;
+}
+.createWebRow p {
+    margin-top: 0;
+}
+.websiteCreateBtnRow {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 7vh;
+}
+.websiteCreateBtnRow .create {
+    margin: 0 1.5vw;
+    background-color: var(--primary);
+}
+.createWebSectionTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .clientCreatePortModalDiv {
     background: #FFFFFF;
     border-radius: 10px;
@@ -2251,11 +2324,11 @@ div .row .supportGetInTouchRowDiv {
 #clientCreatePortInput::placeholder,
 #clientCreatePortInput1::placeholder {
     font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
+    /* font-style: normal; */
+    /* font-weight: 500; */
+    font-size: 0.8rem;
     line-height: 24px;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(26, 25, 25, 0.8);
 
 }
 .col .row.clientCreateWebsiteView {
@@ -2281,7 +2354,7 @@ div .row .supportGetInTouchRowDiv {
     margin: 7vh auto;
 }
 #clientCreatePortCancelIconBtn {
-    margin: 2vw 0 0 5vh;
+    /* margin: 2vw 0 0 5vh; */
     color: #7746FF;
     cursor: pointer;
 }

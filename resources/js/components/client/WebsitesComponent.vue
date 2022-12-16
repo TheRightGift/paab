@@ -36,7 +36,7 @@
                             <web-create-component @createWebsite="createWebsite($event)" @close="close($event)" v-if="!isHidden && loadingUserProfessionId" :loading="loading" :userProfessionId="userProfessionId"/>
                             <div v-else>
                                 <div class="webWhiteDiv1" v-if="view == 0">
-                                    <div class="row">
+                                    <!--div class="row">
                                         <div class="col l2 webWhiteTitle">
                                             Title
                                         </div>
@@ -49,52 +49,67 @@
                                         <div class="col l2 webWhiteTitle  right-align">
                                             Actions
                                         </div>
-                                    </div>
-                                    <div v-if="websites.length > 0">
-                                        <div
-                                            class="row websitesViewRow"
-                                            v-for="website in websites"
-                                            :key="website.id"
-                                        >
-                                            <div class="col l2">
-                                                <p class="webWhiteProName">
-                                                    {{ website.name }}
-                                                </p>
-                                            </div>
-                                            <div class="col l2">
-                                                <div class="websiteTitle">
-                                                    <div class="webWhiteProDiv">
-                                                        <img :src="'/media/img/templateThumbnail/'+website.template.profession.name+'/'+website.template.imageUrl" class="responsive-img" />
-                                                    </div>
+                                    </div-->
+                                    <div class="row center-align" v-if="websiteLoading">
+                                        <div class="preloader-wrapper small active">
+                                            <div class="website spinner-layer spinner-blue-only">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div><div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div><div class="circle-clipper right">
+                                                    <div class="circle"></div>
                                                 </div>
-                                            </div>
-    
-                                            <div class="col l6">                                            
-                                                <p class="webWhiteTxt">
-                                                    {{ website.description }}
-                                                </p>
-                                            </div>
-    
-                                            <div class="col l2 right-align">
-                                                <a href="#!" @click="gotoDomain(website)" class="marginRight1" title="Visit my website">
-                                                    <i class="material-icons" id="webWhiteIcon">open_in_new</i>
-                                                </a>
-                                                <a href="#!" @click="configureWebsite(website)" class="marginRight1" title="Configure my webiste details">
-                                                    <i class="material-icons" id="webWhiteIcon">settings</i>
-                                                </a>
-                                                <a href="#!" @click="updateWebsite(website)" title="Edit your website">
-                                                    <i class="material-icons" id="webWhiteIcon">edit</i>
-                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div v-else>
-                                        <p class="centered">
-                                            No website created yet!. All websites
-                                            appears here when you create one
-                                        </p>
+                                        <div v-if="websites.length > 0">
+                                            <div
+                                                class="row websitesViewRow"
+                                                v-for="website in websites"
+                                                :key="website.id"
+                                            >
+                                                <div class="col l2">
+                                                    <div class="websiteTitle">
+                                                        <div class="webWhiteProDiv">
+                                                            <img :src="'/media/img/templateThumbnail/'+website.template.profession.name+'/'+website.template.imageUrl" class="responsive-img" />
+                                                        </div>
+                                                    </div>
+                                                    <p class="websiteTemplateName center-align">
+                                                        {{ website.name }}
+                                                    </p>
+                                                </div>        
+                                                <div class="col l10 websiteTemplateDesc"> 
+                                                    <h5>Description</h5>  
+                                                    <div class="col l9">  
+                                                                                               
+                                                        <p class="webWhiteTxt">
+                                                            {{ website.description }}
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="col l3 right-align">
+                                                        <a href="#!" @click="gotoDomain(website)" class="marginRight1" title="Visit my website">
+                                                            <i class="material-icons" id="webWhiteIcon">visibility</i>
+                                                        </a>
+                                                        <a href="#!" @click="configureWebsite(website)" class="marginRight1" title="Configure my webiste details">
+                                                            <i class="material-icons" id="webWhiteIcon">settings</i>
+                                                        </a>
+                                                        <a href="#!" @click="updateWebsite(website)" title="Edit your website">
+                                                            <i class="material-icons" id="webWhiteIcon">edit</i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div v-else>
+                                            <p class="centered">
+                                                No website created yet!. All websites
+                                                appears here when you create one
+                                            </p>
+                                        </div>
                                     </div>
-    
                                 </div>
                                 <div class="webWhiteDiv1" v-else>
                                     <div class="row">
@@ -166,23 +181,27 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
+            
         </div>
+        
     </div>
 </template>
 <script>
     import MobileNavComponent from '../partials/MobileNavComponent.vue';
     import SideNavComponent from '../partials/SideNavComponent.vue';
     import TemplatePreviewComponent from '../partials/TemplatePreviewComponent.vue';
+    import InnerFooterComponent from '../partials/InnerFooterComponent.vue';
     import WebCreateComponent from './WebCreateComponent.vue';
 
     export default{
         components: {
-            MobileNavComponent,
             SideNavComponent,
             WebCreateComponent,
-            TemplatePreviewComponent
+            TemplatePreviewComponent,
+            InnerFooterComponent
         },
         data() {
             return {
@@ -203,6 +222,7 @@
                 siteToDelete: "",
                 viewingTemplate: 0,
                 websites: [],
+                websiteLoading: false
             };
         },
         mounted() {
@@ -270,17 +290,19 @@
                     });
             },
             getWebsites() {
-                axios
-                    .get("/api/tenancies")
-                    .then((res) => {
-                        if (res.data.status == 200) {
-                            console.log(res.data)
-                            this.websites = res.data.tenants;
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
+                this.websiteLoading = true;
+                axios.get("/api/tenancies")
+                .then((res) => {
+                    if (res.data.status == 200) {
+                        console.log(res.data)
+                        this.websites = res.data.tenants;
+                    }
+
+                    this.websiteLoading = false;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
             },
             getUserDets() {
                 axios.get(`/api/userTitle/${this.user.id}`).then(res => {
@@ -298,10 +320,6 @@
             gotoDomain(website) {
                 this.tenant.domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
                 window.open(`http://${this.tenant.domain}:8000`,'_blank');
-                // this.tenant.name = website.name;
-                // this.tenant.description = website.description;
-                // this.tenant.created_at = website.created_at;
-                // this.setDefaults(1);
             },
             updateWebsite(website){
                 this.tenant.domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
