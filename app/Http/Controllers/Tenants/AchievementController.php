@@ -16,7 +16,7 @@ class AchievementController extends Controller
      */
     public function index()
     {
-        $achievement = Achievement::get();
+        $achievement = Achievement::latest()->take(1)->first();
         return response()->json(['message' => 'Success', 'achievement' => $achievement]);
     }
 
@@ -29,17 +29,25 @@ class AchievementController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'title' => 'required',
-            'percentage' => 'required',
+            'banner' => 'required|image|mimes:png|max:500',
+            'feats' => 'required',
         ]); 
 
         if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 501);
+            return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
+            if($request->hasFile('banner')){
+                $banner = $request->file('banner');
+                $ext = $request->file('banner')->getClientOriginalExtension();
+                $stored = \Storage::disk('public')->putFileAs('img', $banner, 'banner'.'.'.$ext);
+                
+                $input['banner'] = $stored;
+            } 
+            // $input['feats'] = json_decode($input['feats']);
             $achievement = Achievement::create($input);
             if ($achievement == true) {
-                return response()->json(['message' => 'Success', 'achievement' => $achievement], 200);
+                return response()->json(['message' => 'Success', 'achievement' => $achievement], 201);
             }
             else {
                 return response()->json(['message' => 'Failed', 'achievement' => $achievement], 501);
@@ -57,14 +65,21 @@ class AchievementController extends Controller
     public function update(Request $request, $achievement)
     {
         $inputs = Validator::make($request->all(), [
-            'title' => 'nullable',
-            'percentage' => 'nullable',
-        ]);  
+            'banner' => 'required|image|mimes:png|max:500',
+            'feats' => 'required',
+        ]); 
 
         if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 501);
+            return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
+            if($request->hasFile('banner')){
+                $banner = $request->file('banner');
+                $ext = $request->file('banner')->getClientOriginalExtension();
+                $stored = \Storage::disk('public')->putFileAs('img', $banner, 'banner'.'.'.$ext);
+                
+                $input['banner'] = $stored;
+            } 
             $achievements = new Achievement();
             $achievement2Update = $achievements->find($achievement);
             $achievement2Update->update($input);

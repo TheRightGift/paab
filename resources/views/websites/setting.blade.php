@@ -18,14 +18,20 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-    <div id="app">       
-        <settings user="{{ $user }}"></settings>
+    <div id="app">   
+        <website-settings user="{{ $user }}"></website-settings>
     </div>
     
     <script src="{{ global_asset('js/app.js') }}"></script>
     <script src="{{ global_asset('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ global_asset('js/materialize.min.js') }}"></script>
     <script src="{{ global_asset('js/paab.js') }}"></script>
-    
+    <script>
+        window.onload = function() {
+            var elems  = document.querySelectorAll("input[type=range]");
+            M.Range.init(elems);
+            console.log(elems)
+};
+    </script>
 </body>
 </html>

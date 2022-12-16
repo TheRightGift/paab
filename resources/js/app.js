@@ -37,11 +37,7 @@ import DashboardAdmin from './components/admin/Dashboard';
 
 // Webiste
 import PhysicianWebsiteComponent from './components/templates/Physicians/MainTemplateComponent';
-<<<<<<< HEAD
-import SettingsComponent from './components/templates/Physicians/SettingsComponent';
-=======
 import SettingsComponent from './components/templates/Physicians/Settings/SettingsComponent';
->>>>>>> 78339fd0b96fd338dcef9dd2bd776edd2985bb13
 
 app.component('home-component', HomeComponent);
 app.component('login-component', LoginComponent);

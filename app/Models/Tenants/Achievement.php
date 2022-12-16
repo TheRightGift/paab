@@ -8,5 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Achievement extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'percentage'];
+    protected $fillable = ['banner', 'feats'];
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'feats' => 'array'
+    ];
 }

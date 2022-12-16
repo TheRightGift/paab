@@ -16,7 +16,7 @@ class SocialController extends Controller
      */
     public function index()
     {
-        $social = Social::get();
+        $social = Social::latest()->first();
         return response()->json(['message' => 'Success', 'social' => $social]);
     }
 
