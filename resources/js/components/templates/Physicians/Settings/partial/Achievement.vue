@@ -175,13 +175,15 @@
         },
         watch: {
             saved(newVal, oldVal){
-                let feats = JSON.parse(newVal.feats);
-                this.achievement.feats.certificate = feats.certificate;
-                this.achievement.feats.experience = feats.experience;
-                this.achievement.feats.volunteer = feats.volunteer;
-                this.achievement.feats.ward = feats.ward;
-                this.achievement.banner = newVal.banner;
-                this.achievement.id = newVal.id;
+                if (newVal != null) {
+                    let feats = JSON.parse(newVal.feats);
+                    this.achievement.feats.certificate = feats.certificate;
+                    this.achievement.feats.experience = feats.experience;
+                    this.achievement.feats.volunteer = feats.volunteer;
+                    this.achievement.feats.ward = feats.ward;
+                    this.achievement.banner = newVal.banner;
+                    this.achievement.id = newVal.id;
+                }
             }
         },
     };

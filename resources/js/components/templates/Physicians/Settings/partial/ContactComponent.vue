@@ -96,10 +96,12 @@
         },
         watch: {
             saved(newVal, oldVal){
-                this.contact.email = newVal.email;
-                this.contact.phone = newVal.phone;
-                this.contact.address = newVal.address;
-                this.contact.id = newVal.id;
+                if (newVal != null) {
+                    this.contact.email = newVal.email;
+                    this.contact.phone = newVal.phone;
+                    this.contact.address = newVal.address;
+                    this.contact.id = newVal.id;
+                }
             }
         },
     };

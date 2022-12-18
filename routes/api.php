@@ -26,6 +26,7 @@ use App\Http\Controllers\Tenants\BioController;
 // Route::middleware('auth:passport')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::post('/tenant/auth/login', [App\Http\Controllers\AuthController::class, 'login']);
 
 Route::group(['middleware' => 'auth.api'], function() {
     Route::get('/user', function(Request $request) {

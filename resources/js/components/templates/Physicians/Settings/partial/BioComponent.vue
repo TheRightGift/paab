@@ -300,10 +300,12 @@
                         typesetting industry.
                     </p>
 
+
                     <div
                         class="file-field input-field"
                         id="genUploadFavIconDiv"
-                    >
+                        >
+                        <!-- v-if="bio.CV == null" -->
                         <input
                             type="file"
                             @change="CVUpload"
@@ -320,6 +322,11 @@
                             >
                         </div>
                     </div>
+                    <!-- <div v-else class="flex no-space-between">
+                        <p>{{}}</p>
+                        <img width="100" height="100" class="responsive-img" :src="typeof(general.favicon) == 'string' ? 'tenancy/assets/'+general.favicon : uploaded" >
+                        <a class="waves-effect waves-light btn-small btn red" @click="deleteImg">Change</a>
+                    </div> -->
 
                     <div>
                         <button
@@ -415,13 +422,14 @@ export default {
     },
     watch: {
         saved(newVal, oldVal){
-            this.bio.photo = newVal.photo;
-            this.bio.about = newVal.about;
-            this.bio.id = newVal.id;
-            this.bio.firstname = newVal.firstname;
-            this.bio.lastname = newVal.lastname;
-            this.bio.CV = newVal.CV;
-
+            if (newVal != null) {
+                this.bio.photo = newVal.photo;
+                this.bio.about = newVal.about;
+                this.bio.id = newVal.id;
+                this.bio.firstname = newVal.firstname;
+                this.bio.lastname = newVal.lastname;
+                this.bio.CV = newVal.CV;
+            }
         }
     },
 }

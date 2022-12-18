@@ -143,7 +143,9 @@ export default {
     },
     watch: {
         saved(newVal, oldVal){
-            this.services = newVal;
+            if (newVal != null) {
+                this.services = newVal;
+            }
         }
     },
 }

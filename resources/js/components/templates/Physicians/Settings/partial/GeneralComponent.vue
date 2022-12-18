@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div v-else class="flex no-space-between">
-                        <img width="100" height="100" class="responsive-img" :src="typeof(general.favicon) == 'string' ? 'tenancy/assets/'+general.favicon : uploaded" >
+                        <!-- <img width="100" height="100" class="responsive-img" :src="typeof(general.favicon) == 'string' ? 'tenancy/assets/'+general.favicon : uploaded" > -->
                         <a class="waves-effect waves-light btn-small btn red" @click="deleteImg">Change</a>
                     </div>
 
@@ -196,11 +196,13 @@
             },
         },
         watch: {
-            saved(newVal, oldVal){
-                this.general.title = newVal.title;
-                this.general.favicon = newVal.favicon;
-                this.general.id = newVal.id;
-            }
+            // saved(newVal, oldVal){
+            //     if (newVal != null) {
+            //         this.general.title = newVal.title;
+            //         this.general.favicon = newVal.favicon;
+            //         this.general.id = newVal.id;
+            //     }
+            // }
         },
         computed: {
             eval() {

@@ -20,6 +20,10 @@ Route::get('/templates', function () {
     return view('template');
 });
 
+// Route::get('/tenant/auth/login', function() {
+//     return view('auth.tenantlogin');
+// });
+    
 
 // Socialite
 Route::get('/login/{provider}/callback', [App\Http\Controllers\SocialController::class, 'callback']);

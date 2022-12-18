@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{$user}}</title>
-    <link rel="shortcut icon" href="{{ tenant_asset('img/favicon.png') }}" type="image/x-icon">
+    <title>PaaB: People as a Brand - Login</title>
+    <link rel="shortcut icon" href="{{ global_asset('/media/img/logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -13,40 +13,19 @@
 
     <link rel="stylesheet" href="{{ global_asset('css/materialize.min.css') }}">
     <link rel="stylesheet" href="{{ global_asset('css/paab.css') }}">
-    <link rel="stylesheet" href="{{ global_asset('css/physicians.css') }}">
     <link rel="stylesheet" href="{{ global_asset('fonts/material-icons.css') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-    <div id="app">       
-        <physician-website-component template="{{$template}}" user="{{$user}}"></physician-website-component>
+
+    <div id="app">
+        <tenant-login />
     </div>
     
     <script src="{{ global_asset('js/app.js') }}"></script>
     <script src="{{ global_asset('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ global_asset('js/materialize.min.js') }}"></script>
     <script src="{{ global_asset('js/paab.js') }}"></script>
-    <script>
-        $(window).scroll((e) => {
-            e.preventDefault();
-
-            let scrollPos = $(window).scrollTop();
-
-            if (scrollPos >= 5) {
-                $(".navbar").css("background-color", "white");
-                $(".pageLogo").css("color", "#7746FF");
-                $(".navbar").css(
-                    "box-shadow", "0px 6px 6px rgba(0, 0, 0, 0.25)"
-                );
-            } else {
-                $(".navbar").css("background-color", "transparent");
-                $(".navbar").css("box-shadow", "none");
-                $(".pageLogo").css("color", "#FFF");
-            }
-        });
-    </script>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          
 </body>
 </html>

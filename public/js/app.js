@@ -22524,10 +22524,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     experience: function experience(newVal, oldVal) {
-      this.feats = JSON.parse(newVal.feats);
+      if (newVal != null) this.feats = JSON.parse(newVal.feats);
     }
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    console.log('here');
+  },
   methods: {},
   computed: {}
 });
@@ -22593,6 +22595,7 @@ __webpack_require__.r(__webpack_exports__);
 var bio = '/api/bio';
 var service = '/api/service';
 var achievement = '/api/achievement';
+var social = '/api/social';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     HeaderComponent: _HeaderComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -22606,7 +22609,9 @@ var achievement = '/api/achievement';
     return {
       services: [],
       bio: {},
-      achievement: {}
+      achievement: {},
+      socials: {},
+      loading: false
     };
   },
   props: {
@@ -22621,16 +22626,21 @@ var achievement = '/api/achievement';
   methods: {
     getLocations: function getLocations() {
       var _this = this;
+      this.loading = true;
       var requestBio = axios.get(bio);
       var requestService = axios.get(service);
       var requestAchievement = axios.get(achievement);
-      axios.all([requestBio, requestService, requestAchievement]).then(axios.spread(function () {
+      var requestSocials = axios.get(social);
+      axios.all([requestBio, requestService, requestAchievement, requestSocials]).then(axios.spread(function () {
         var bioRes = arguments.length <= 0 ? undefined : arguments[0];
         var servicesRes = arguments.length <= 1 ? undefined : arguments[1];
         var achievementRes = arguments.length <= 2 ? undefined : arguments[2];
+        var socialRes = arguments.length <= 3 ? undefined : arguments[3];
         _this.services = servicesRes.data.services;
         _this.bio = bioRes.data.bio;
         _this.achievement = achievementRes.data.achievement;
+        _this.socials = socialRes.data.social;
+        _this.loading = false;
       }))["catch"](function (errors) {
         console.log(errors);
       });
@@ -22676,6 +22686,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partial_SideNavComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./partial/SideNavComponent.vue */ "./resources/js/components/templates/Physicians/Settings/partial/SideNavComponent.vue");
 /* harmony import */ var _partial_GeneralComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partial/GeneralComponent.vue */ "./resources/js/components/templates/Physicians/Settings/partial/GeneralComponent.vue");
 /* harmony import */ var _partial_TabFormComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./partial/TabFormComponent.vue */ "./resources/js/components/templates/Physicians/Settings/partial/TabFormComponent.vue");
+/* harmony import */ var _TenantLoginComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TenantLoginComponent.vue */ "./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue");
+
 
 
 
@@ -22689,7 +22701,8 @@ var general = "/api/general";
   components: {
     EditWebsiteModalComponent: _partial_GeneralComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     TabForm: _partial_TabFormComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    SideNavComponent: _partial_SideNavComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    SideNavComponent: _partial_SideNavComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    TenantLoginComponent: _TenantLoginComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   props: {
     user: String
@@ -22703,10 +22716,12 @@ var general = "/api/general";
       general: {},
       social: {},
       contact: {},
-      loading: false
+      loading: false,
+      loggedIn: false
     };
   },
   mounted: function mounted() {
+    this.checkAuth();
     this.getLocations();
   },
   methods: {
@@ -22736,9 +22751,100 @@ var general = "/api/general";
       }))["catch"](function (errors) {
         console.log(errors);
       });
+    },
+    checkAuth: function checkAuth() {
+      var _this2 = this;
+      var _token = ('; ' + document.cookie).split("; _token=").pop().split(';')[0];
+      console.log(_token);
+      if (_token == "") {
+        this.loggedIn = false;
+      } else {
+        axios.post('/api/verifyToken', {
+          accessToken: _token
+        }).then(function (res) {
+          if (res.data.status == 401) {
+            _this2.loggedIn = false;
+          } else if (res.data.status == 200) {
+            _this2.loggedIn = true;
+          }
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      }
+    },
+    login: function login(e) {
+      var _this3 = this;
+      if (e.email == "" || e.password == "") {
+        M.toast({
+          html: 'Invalid Credentials',
+          classes: "errorNotifier"
+        });
+      } else {
+        axios.post('http://localhost:8000/api/tenant/auth/login', e).then(function (res) {
+          // console.log(res)
+          // Send accessToken to the tenant.user to update
+          _this3.setCookie("_token", res.data.access_token, 1);
+          _this3.saveAccessToken(res.data.access_token, res.data.user.id);
+          // Store as cookie variable for accesstoken
+          // Get accessToken from cookie and verify every operation
+          // Verify the
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      }
+    },
+    saveAccessToken: function saveAccessToken(accessToken, user_id) {
+      var _this4 = this;
+      var data = {
+        'accessToken': accessToken,
+        'user_id': user_id
+      };
+      axios.post('/api/savelogin', data).then(function (res) {
+        if (res.data.status == 201) {
+          _this4.loggedIn = true;
+        }
+      })["catch"](function (err) {
+        consol.log(err);
+      });
+    },
+    setCookie: function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+      var expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
   },
   setup: function setup() {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      loginLoading: false,
+      loginUser: {
+        email: "",
+        password: ""
+      }
+    };
+  },
+  methods: {
+    userLogin: function userLogin() {
+      this.$emit("loginUser", this.loginUser);
+    }
+  }
 });
 
 /***/ }),
@@ -22789,13 +22895,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     saved: function saved(newVal, oldVal) {
-      var feats = JSON.parse(newVal.feats);
-      this.achievement.feats.certificate = feats.certificate;
-      this.achievement.feats.experience = feats.experience;
-      this.achievement.feats.volunteer = feats.volunteer;
-      this.achievement.feats.ward = feats.ward;
-      this.achievement.banner = newVal.banner;
-      this.achievement.id = newVal.id;
+      if (newVal != null) {
+        var feats = JSON.parse(newVal.feats);
+        this.achievement.feats.certificate = feats.certificate;
+        this.achievement.feats.experience = feats.experience;
+        this.achievement.feats.volunteer = feats.volunteer;
+        this.achievement.feats.ward = feats.ward;
+        this.achievement.banner = newVal.banner;
+        this.achievement.id = newVal.id;
+      }
     }
   }
 });
@@ -22865,12 +22973,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     saved: function saved(newVal, oldVal) {
-      this.bio.photo = newVal.photo;
-      this.bio.about = newVal.about;
-      this.bio.id = newVal.id;
-      this.bio.firstname = newVal.firstname;
-      this.bio.lastname = newVal.lastname;
-      this.bio.CV = newVal.CV;
+      if (newVal != null) {
+        this.bio.photo = newVal.photo;
+        this.bio.about = newVal.about;
+        this.bio.id = newVal.id;
+        this.bio.firstname = newVal.firstname;
+        this.bio.lastname = newVal.lastname;
+        this.bio.CV = newVal.CV;
+      }
     }
   }
 });
@@ -22913,10 +23023,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     saved: function saved(newVal, oldVal) {
-      this.contact.email = newVal.email;
-      this.contact.phone = newVal.phone;
-      this.contact.address = newVal.address;
-      this.contact.id = newVal.id;
+      if (newVal != null) {
+        this.contact.email = newVal.email;
+        this.contact.phone = newVal.phone;
+        this.contact.address = newVal.address;
+        this.contact.id = newVal.id;
+      }
     }
   }
 });
@@ -22984,11 +23096,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   watch: {
-    saved: function saved(newVal, oldVal) {
-      this.general.title = newVal.title;
-      this.general.favicon = newVal.favicon;
-      this.general.id = newVal.id;
-    }
+    // saved(newVal, oldVal){
+    //     if (newVal != null) {
+    //         this.general.title = newVal.title;
+    //         this.general.favicon = newVal.favicon;
+    //         this.general.id = newVal.id;
+    //     }
+    // }
   },
   computed: {
     eval: function _eval() {
@@ -23047,7 +23161,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     saved: function saved(newVal, oldVal) {
-      this.services = newVal;
+      if (newVal != null) {
+        this.services = newVal;
+      }
     }
   }
 });
@@ -23124,9 +23240,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     saved: function saved(newVal, oldVal) {
-      this.social.facebook = newVal.facebook;
-      this.social.instagram = newVal.instagram;
-      this.social.twitter = newVal.twitter;
+      if (newVal != null) {
+        this.social.facebook = newVal.facebook;
+        this.social.instagram = newVal.instagram;
+        this.social.twitter = newVal.twitter;
+      }
     }
   }
 });
@@ -23559,6 +23677,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     $("#socialLink").css("background-color", "black");
     $("#contactLink").css("background-color", "white");
   }), _methods)
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/templates/Physicians/SocialMediaComponent.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/templates/Physicians/SocialMediaComponent.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      facebook: "BinanceAfricaChannel",
+      twitter: "TwitterDev"
+    };
+  },
+  props: {
+    socials: Object
+  },
+  watch: {
+    socials: function socials(newVal, oldVal) {
+      if (newVal != null) console.log(newVal);
+    }
+  }
 });
 
 /***/ }),
@@ -26311,47 +26459,54 @@ var _hoisted_1 = {
   "class": "section scrollspy physiExpContainerDiv",
   id: "experience"
 };
-var _hoisted_2 = {
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row\"><div class=\"col s12\"><p class=\"expMainTitle\">Experience</p><p class=\"expMainTxt\">MY ACHIEVEMENT</p></div><div class=\"col s12 m3 l2\"><div class=\"expLeftBarDiv\"><div class=\"expLeftBarInnerDiv\"><div class=\"expLeftBarTxtDiv\"><p class=\"expLeftBarTxt\">99.9%</p><p class=\"expLeftBarTxt1\">Positive feedbacks</p></div></div><div class=\"expLeftBarInnerDiv\"><div class=\"expLeftBarTxtDiv\"><p class=\"expLeftBarTxt\">2,000+</p><p class=\"expLeftBarTxt1\">Patients Recovered</p></div></div><div class=\"expLeftBarInnerDiv\"><div class=\"expLeftBarTxtDiv\"><p class=\"expLeftBarTxt\">10yrs+</p><p class=\"expLeftBarTxt1\">Experience</p></div></div><div class=\"expLeftBarInnerDiv\"><div class=\"expLeftBarTxtDiv\"><p class=\"expLeftBarTxt\">15</p><p class=\"expLeftBarTxt1\">Certifications</p></div></div></div></div><div class=\"col s12 m9 l10\"><img src=\"/media/img/physicianTemplate.png\" alt=\"physicianTemplate.png\" class=\"responsive-img\" id=\"expRightDivImg\"></div></div>", 1);
+var _hoisted_3 = [_hoisted_2];
+var _hoisted_4 = {
+  "class": "section scrollspy physiExpContainerDiv",
+  id: "experience"
+};
+var _hoisted_5 = {
   "class": "row"
 };
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col s12"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "expMainTitle"
 }, "Experience"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "expMainTxt"
 }, "MY ACHIEVEMENT")], -1 /* HOISTED */);
-var _hoisted_4 = {
+var _hoisted_7 = {
   "class": "col s12 m3 l2"
 };
-var _hoisted_5 = {
+var _hoisted_8 = {
   "class": "expLeftBarDiv"
 };
-var _hoisted_6 = {
+var _hoisted_9 = {
   "class": "expLeftBarTxtDiv"
 };
-var _hoisted_7 = {
+var _hoisted_10 = {
   "class": "expLeftBarTxt"
 };
-var _hoisted_8 = {
+var _hoisted_11 = {
   "class": "expLeftBarTxt1"
 };
-var _hoisted_9 = {
+var _hoisted_12 = {
+  key: 0,
   "class": "col s12 m9 l10"
 };
-var _hoisted_10 = ["src"];
+var _hoisted_13 = ["src"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.feats, function (feat, index) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, _hoisted_3, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.experience == null]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.feats, function (feat, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": "expLeftBarInnerDiv",
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(feat), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(index), 1 /* TEXT */)])]);
-  }), 128 /* KEYED_FRAGMENT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(feat) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(index == 'volunteer' || index == 'experience' ? 'Yrs' : null), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(index), 1 /* TEXT */)])]);
+  }), 128 /* KEYED_FRAGMENT */))])]), $props.experience != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: 'tenancy/assets/' + $props.experience.banner,
     alt: "physicianTemplate.png",
     "class": "responsive-img",
     id: "expRightDivImg"
-  }, null, 8 /* PROPS */, _hoisted_10)])])]);
+  }, null, 8 /* PROPS */, _hoisted_13)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.experience != null]])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -26418,6 +26573,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = ["id"];
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "loader"
+}, null, -1 /* HOISTED */);
+var _hoisted_3 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_HeaderComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("HeaderComponent");
   var _component_ServicesComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ServicesComponent");
@@ -26427,7 +26586,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ContactComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ContactComponent");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     id: $props.template
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_HeaderComponent, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, _hoisted_3, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.loading]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_HeaderComponent, {
     user: $props.user
   }, null, 8 /* PROPS */, ["user"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ServicesComponent, {
     user: $props.user,
@@ -26435,7 +26594,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     bio: $data.bio
   }, null, 8 /* PROPS */, ["user", "services", "bio"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ExperienceComponent, {
     experience: $data.achievement
-  }, null, 8 /* PROPS */, ["experience"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SocialMediaComponent), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TestimonialsComponent), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContactComponent)], 8 /* PROPS */, _hoisted_1);
+  }, null, 8 /* PROPS */, ["experience"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SocialMediaComponent, {
+    socials: $data.socials
+  }, null, 8 /* PROPS */, ["socials"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TestimonialsComponent), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContactComponent)], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.loading]])], 8 /* PROPS */, _hoisted_1);
 }
 
 /***/ }),
@@ -26508,7 +26669,7 @@ var _hoisted_20 = {
   "class": "servicesTxt"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [Object.keys($props.bio).length == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, _hoisted_5)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_10, "Dr. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.bio.firstname) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.bio.lastname), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.bio.about), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [$props.bio == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, _hoisted_5)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_10, "Dr. " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.bio.firstname) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.bio.lastname), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.bio.about), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "btn",
     id: "physiTempBtn",
     href: '/tenancy/assets/' + $props.bio.CV,
@@ -26546,7 +26707,8 @@ __webpack_require__.r(__webpack_exports__);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_SideNavComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SideNavComponent");
   var _component_TabForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TabForm");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SideNavComponent), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TabForm, {
+  var _component_TenantLoginComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TenantLoginComponent");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SideNavComponent), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TabForm, {
     user: $data.userDets,
     bio: $data.bio,
     services: $data.services,
@@ -26554,7 +26716,93 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     contact: $data.contact,
     social: $data.social,
     general: $data.general
-  }, null, 8 /* PROPS */, ["user", "bio", "services", "achievement", "contact", "social", "general"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <edit-website-modal-component :user=\"userDets\"/> ")], 64 /* STABLE_FRAGMENT */);
+  }, null, 8 /* PROPS */, ["user", "bio", "services", "achievement", "contact", "social", "general"])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.loggedIn]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TenantLoginComponent, {
+    onLoginUser: _cache[0] || (_cache[0] = function ($event) {
+      return $options.login($event);
+    })
+  })], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.loggedIn]])], 64 /* STABLE_FRAGMENT */);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=template&id=5180a1f6":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=template&id=5180a1f6 ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "row authContainDiv"
+};
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col s12 m12 l6 loginContainer\"><div class=\"wlcNoteDiv\"><p class=\"wlcNoteLogo\">PaaB</p><p class=\"wlcNoteTitle\">WELCOME BACK CHIEF!</p><p class=\"wlcNoteTxt\"> It is a long established fact that a reader will be distracted by the readable content. </p><p class=\"wlcNoteFooterTxt\"> © Photo, Inc. 2019. We love our users! </p></div></div>", 1);
+var _hoisted_3 = {
+  "class": "col s12 m12 l6 loginContainer"
+};
+var _hoisted_4 = {
+  "class": "authRightDiv"
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "authTitle"
+}, "LOGIN", -1 /* HOISTED */);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "authTxt"
+}, " It is a long established fact that a reader will be diIt is a long ", -1 /* HOISTED */);
+var _hoisted_7 = {
+  id: "loginForm"
+};
+var _hoisted_8 = {
+  "class": "row rm_mg"
+};
+var _hoisted_9 = {
+  "class": "input-field col s12"
+};
+var _hoisted_10 = {
+  "class": "input-field col s12"
+};
+var _hoisted_11 = {
+  "class": "input-field col s12"
+};
+var _hoisted_12 = {
+  key: 1,
+  "class": "btn",
+  id: "loginBtn"
+};
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"preloader-wrapper small active\"><div class=\"spinner-layer spinner-white-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div>", 1);
+var _hoisted_14 = [_hoisted_13];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: "Email",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.loginUser.email = $event;
+    }),
+    id: "user",
+    type: "email",
+    "class": "validate",
+    required: ""
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.loginUser.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: "Password",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.loginUser.password = $event;
+    }),
+    id: "password",
+    type: "password",
+    "class": "validate"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.loginUser.password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Login Social Media Handle "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"row loginSocialMedDiv\">\n                                <div\n                                    class=\"\n                                        col\n                                        l12\n                                        m12\n                                        s12\n                                        loginSocialMedInnerDiv\n                                    \"\n                                >\n                                    <p class=\"loginSocialMedTxt\">\n                                        or login with\n                                    </p>\n\n                                    <div class=\"socialMedIconsDiv\">\n                                        <a href=\"/auth/login/linkedin\">\n                                            <i\n                                                class=\"\n                                                    fa-brands\n                                                    fa-square-instagram\n                                                    socialMedIcons\n                                                \"\n                                            ></i>\n                                        </a>\n                                        <a href=\"/auth/login/facebook\">\n                                            <i\n                                                class=\"\n                                                    fa-brands fa-facebook\n                                                    socialMedIcons\n                                                \"\n                                            ></i>\n                                        </a>\n                                        <a href=\"/auth/login/twitter\">\n                                            <i\n                                                class=\"\n                                                    fa-brands fa-twitter\n                                                    socialMedIcons\n                                                \"\n                                            ></i>\n                                        </a>\n                                    </div>\n                                </div>\n                            </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [!$data.loginLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+    key: 0,
+    type: "button",
+    "class": "btn",
+    id: "loginBtn",
+    onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $options.userLogin();
+    }, ["prevent"]))
+  }, " sign in ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_12, _hoisted_14))])])])])])])]);
 }
 
 /***/ }),
@@ -27042,13 +27290,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[9] || (_cache[9] = function ($event) {
       return $options.bioNextBtn2();
     })
-  }, " NEXT STEP ")])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Bio Modal 3 "), $props.bioModal3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [$data.bio.firstname != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_51, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_52, $data.bio.about != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_53, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_54, $data.bio.photo != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_55, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_56, $data.bio.CV != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_57, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_58]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_59, _hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, " NEXT STEP ")])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Bio Modal 3 "), $props.bioModal3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [$data.bio.firstname != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_51, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_52, $data.bio.about != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_53, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_54, $data.bio.photo != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_55, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_56, $data.bio.CV != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_57, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_58]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_59, _hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" v-if=\"bio.CV == null\" "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "file",
     onChange: _cache[10] || (_cache[10] = function () {
       return $options.CVUpload && $options.CVUpload.apply($options, arguments);
     }),
     accept: "application/msword, application/vnd.ms-powerpoint,application/pdf,"
-  }, null, 32 /* HYDRATE_EVENTS */), _hoisted_62]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [Object.entries($props.saved).length == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }, null, 32 /* HYDRATE_EVENTS */), _hoisted_62]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-else class=\"flex no-space-between\">\n                        <p>{{}}</p>\n                        <img width=\"100\" height=\"100\" class=\"responsive-img\" :src=\"typeof(general.favicon) == 'string' ? 'tenancy/assets/'+general.favicon : uploaded\" >\n                        <a class=\"waves-effect waves-light btn-small btn red\" @click=\"deleteImg\">Change</a>\n                    </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [Object.entries($props.saved).length == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
     type: "button",
     "class": "btn",
@@ -27278,8 +27526,7 @@ var _hoisted_23 = {
   key: 1,
   "class": "flex no-space-between"
 };
-var _hoisted_24 = ["src"];
-var _hoisted_25 = {
+var _hoisted_24 = {
   "class": "genBottomBtnDiv"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -27303,12 +27550,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.favUpload && $options.favUpload.apply($options, arguments);
     }),
     accept: "image/*"
-  }, null, 32 /* HYDRATE_EVENTS */), _hoisted_22])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    width: "100",
-    height: "100",
-    "class": "responsive-img",
-    src: typeof $data.general.favicon == 'string' ? 'tenancy/assets/' + $data.general.favicon : $data.uploaded
-  }, null, 8 /* PROPS */, _hoisted_24), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, null, 32 /* HYDRATE_EVENTS */), _hoisted_22])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <img width=\"100\" height=\"100\" class=\"responsive-img\" :src=\"typeof(general.favicon) == 'string' ? 'tenancy/assets/'+general.favicon : uploaded\" > "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "waves-effect waves-light btn-small btn red",
     onClick: _cache[3] || (_cache[3] = function () {
       return $options.deleteImg && $options.deleteImg.apply($options, arguments);
@@ -27329,7 +27571,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.generalUpdate && $options.generalUpdate.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" :disabled=\"eval\" "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update ")]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" :disabled=\"eval\" "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update ")]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "goBackBtn",
     onClick: _cache[6] || (_cache[6] = function ($event) {
@@ -27821,10 +28063,79 @@ var _hoisted_1 = {
   "class": "section scrollspy feedsContainDiv",
   id: "feeds"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row\"><div class=\"col s12\"><p class=\"feedsMainTitle\">Feeds</p><p class=\"feedsMainTxt\">UPDATES ON MY SOCIALS</p></div><div class=\"col s12\"><p><i class=\"fa-brands fa-twitter\" id=\"feedsTwitterIcon\"></i><span class=\"feedsTwitterTxt\">Twitter Feeds</span></p></div><div class=\"col s12 l4\"><div class=\"feedsCard\"><div class=\"row\" id=\"feedsCardRowDiv\"><div class=\"col s2\"><div class=\"feedsProDiv\"><span class=\"feedsProImg\">A</span></div></div><div class=\"col s9\"><p class=\"feedsCardHeader\">Header</p><p class=\"feedsCardSubhead\">Subhead</p></div><div class=\"col s1\"><!-- &lt;i class=&quot;fa-solid fa-house-blank&quot;&gt;&lt;/i&gt; --><i class=\"fa-solid fa-house\" id=\"feedsCardIcon\"></i></div></div><div class=\"\"><img src=\"/media/img/feedsCardImg.png\" alt=\"feedsCardImg.png\" class=\"responsive-img\" id=\"feedsCardImg\"></div><div><p class=\"feedsCardTitle\">Title</p><p class=\"feedsCardTxt\">Subhead</p><p class=\"feedsCardTxt1\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p></div><button class=\"btn\" id=\"feedsCardBtn\">View</button></div></div><div class=\"col s12 l4\"><div class=\"feedsCard\"><div class=\"row\" id=\"feedsCardRowDiv\"><div class=\"col s2\"><div class=\"feedsProDiv\"><span class=\"feedsProImg\">A</span></div></div><div class=\"col s9\"><p class=\"feedsCardHeader\">Header</p><p class=\"feedsCardSubhead\">Subhead</p></div><div class=\"col s1\"><!-- &lt;i class=&quot;fa-solid fa-house-blank&quot;&gt;&lt;/i&gt; --><i class=\"fa-solid fa-house\" id=\"feedsCardIcon\"></i></div></div><div class=\"\"><img src=\"/media/img/feedsCardImg.png\" alt=\"feedsCardImg.png\" class=\"responsive-img\" id=\"feedsCardImg\"></div><div><p class=\"feedsCardTitle\">Title</p><p class=\"feedsCardTxt\">Subhead</p><p class=\"feedsCardTxt1\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p></div><button class=\"btn\" id=\"feedsCardBtn\">View</button></div></div><div class=\"col s12 l4\"><div class=\"feedsCard\"><div class=\"row\" id=\"feedsCardRowDiv\"><div class=\"col s2\"><div class=\"feedsProDiv\"><span class=\"feedsProImg\">A</span></div></div><div class=\"col s9\"><p class=\"feedsCardHeader\">Header</p><p class=\"feedsCardSubhead\">Subhead</p></div><div class=\"col s1\"><!-- &lt;i class=&quot;fa-solid fa-house-blank&quot;&gt;&lt;/i&gt; --><i class=\"fa-solid fa-house\" id=\"feedsCardIcon\"></i></div></div><div class=\"\"><img src=\"/media/img/feedsCardImg.png\" alt=\"feedsCardImg.png\" class=\"responsive-img\" id=\"feedsCardImg\"></div><div><p class=\"feedsCardTitle\">Title</p><p class=\"feedsCardTxt\">Subhead</p><p class=\"feedsCardTxt1\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p></div><button class=\"btn\" id=\"feedsCardBtn\">View</button></div></div><div class=\"col s12\"><p class=\"facebookFeedsIcon\"><i class=\"fa-brands fa-facebook-square\" id=\"feedsFacebookIcon\"></i><span class=\"feedsTwitterTxt\">Facebook Feeds</span></p></div><div class=\"col s12 l4\"><div class=\"feedsCard\"><div class=\"row\" id=\"feedsCardRowDiv\"><div class=\"col s2\"><div class=\"feedsProDiv\"><span class=\"feedsProImg\">A</span></div></div><div class=\"col s9\"><p class=\"feedsCardHeader\">Header</p><p class=\"feedsCardSubhead\">Subhead</p></div><div class=\"col s1\"><!-- &lt;i class=&quot;fa-solid fa-house-blank&quot;&gt;&lt;/i&gt; --><i class=\"fa-solid fa-house\" id=\"feedsCardIcon\"></i></div></div><div class=\"\"><img src=\"/media/img/feedsCardImg.png\" alt=\"feedsCardImg.png\" class=\"responsive-img\" id=\"feedsCardImg\"></div><div><p class=\"feedsCardTitle\">Title</p><p class=\"feedsCardTxt\">Subhead</p><p class=\"feedsCardTxt1\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p></div><button class=\"btn\" id=\"feedsCardBtn\">View</button></div></div><div class=\"col s12 l4\"><div class=\"feedsCard\"><div class=\"row\" id=\"feedsCardRowDiv\"><div class=\"col s2\"><div class=\"feedsProDiv\"><span class=\"feedsProImg\">A</span></div></div><div class=\"col s9\"><p class=\"feedsCardHeader\">Header</p><p class=\"feedsCardSubhead\">Subhead</p></div><div class=\"col s1\"><!-- &lt;i class=&quot;fa-solid fa-house-blank&quot;&gt;&lt;/i&gt; --><i class=\"fa-solid fa-house\" id=\"feedsCardIcon\"></i></div></div><div class=\"\"><img src=\"/media/img/feedsCardImg.png\" alt=\"feedsCardImg.png\" class=\"responsive-img\" id=\"feedsCardImg\"></div><div><p class=\"feedsCardTitle\">Title</p><p class=\"feedsCardTxt\">Subhead</p><p class=\"feedsCardTxt1\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p></div><button class=\"btn\" id=\"feedsCardBtn\">View</button></div></div><div class=\"col s12 l4\"><div class=\"feedsCard\"><div class=\"row\" id=\"feedsCardRowDiv\"><div class=\"col s2\"><div class=\"feedsProDiv\"><span class=\"feedsProImg\">A</span></div></div><div class=\"col s9\"><p class=\"feedsCardHeader\">Header</p><p class=\"feedsCardSubhead\">Subhead</p></div><div class=\"col s1\"><!-- &lt;i class=&quot;fa-solid fa-house-blank&quot;&gt;&lt;/i&gt; --><i class=\"fa-solid fa-house\" id=\"feedsCardIcon\"></i></div></div><div class=\"\"><img src=\"/media/img/feedsCardImg.png\" alt=\"feedsCardImg.png\" class=\"responsive-img\" id=\"feedsCardImg\"></div><div><p class=\"feedsCardTitle\">Title</p><p class=\"feedsCardTxt\">Subhead</p><p class=\"feedsCardTxt1\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p></div><button class=\"btn\" id=\"feedsCardBtn\">View</button></div></div></div>", 1);
-var _hoisted_3 = [_hoisted_2];
-function render(_ctx, _cache) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+var _hoisted_2 = {
+  "class": "row"
+};
+var _hoisted_3 = {
+  "class": "col s12 l6"
+};
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col s12"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "facebookFeedsIcon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-brands fa-facebook-square",
+  id: "feedsFacebookIcon"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "feedsTwitterTxt"
+}, "Facebook Feeds")])], -1 /* HOISTED */);
+var _hoisted_5 = ["src"];
+var _hoisted_6 = {
+  "class": "col s12 l6"
+};
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col s12"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "facebookFeedsIcon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-brands fa-twitter-square",
+  id: "feedsFacebookIcon"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "feedsTwitterTxt"
+}, "Twitter Feeds")])], -1 /* HOISTED */);
+var _hoisted_8 = ["href"];
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "row"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col s12"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "facebookFeedsIcon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-brands fa-linkedin",
+  id: "feedsFacebookIcon"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "feedsTwitterTxt"
+}, "Linkedin Feeds")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col s12 l6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+  src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7009384519854166016",
+  height: "500",
+  width: "500",
+  frameborder: "0",
+  allowfullscreen: "",
+  title: "Embedded post"
+})])], -1 /* HOISTED */);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+    src: 'https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F' + $data.facebook + '&tabs=timeline%2C%20events&width=600&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId',
+    width: "600",
+    height: "500",
+    style: {
+      "border": "none",
+      "overflow": "hidden"
+    },
+    scrolling: "no",
+    frameborder: "0",
+    allowfullscreen: "true",
+    allow: "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+  }, null, 8 /* PROPS */, _hoisted_5)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    "class": "twitter-timeline",
+    "data-width": "600",
+    "data-height": "500",
+    "data-theme": "light",
+    href: 'https://twitter.com/' + $data.twitter + '?ref_src=twsrc%5Etfw'
+  }, "Tweets by TwitterDev", 8 /* PROPS */, _hoisted_8)])]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col s12 l4\">\n            <div class=\"feedsCard\">\n                <div class=\"row\" id=\"feedsCardRowDiv\">\n                    <div class=\"col s2\">\n                        <div class=\"feedsProDiv\">\n                            <span class=\"feedsProImg\">A</span>\n                        </div>\n                    </div>\n        \n                    <div class=\"col s9\">\n                        <p class=\"feedsCardHeader\">Header</p>\n                        <p class=\"feedsCardSubhead\">Subhead</p>\n                    </div>\n        \n                    <div class=\"col s1\">\n                        <i class=\"fa-solid fa-house-blank\"></i>\n                        <i class=\"fa-solid fa-house\" id=\"feedsCardIcon\"></i>\n        \n                    </div>\n                </div>\n        \n                <div class=\"\">\n                    <img src=\"/media/img/feedsCardImg.png\" alt=\"feedsCardImg.png\" class=\"responsive-img\" id=\"feedsCardImg\">\n                </div>\n        \n                <div>\n                    <p class=\"feedsCardTitle\">Title</p>\n                    <p class=\"feedsCardTxt\">Subhead</p>\n                    <p class=\"feedsCardTxt1\">\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,\n                        sed do eiusmod tempor\n                    </p>\n                </div>\n        \n                <button class=\"btn\" id=\"feedsCardBtn\">View</button>\n            </div>\n        </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col s12 l4\">\n            <div class=\"feedsCard\">\n                <div class=\"row\" id=\"feedsCardRowDiv\">\n                    <div class=\"col s2\">\n                        <div class=\"feedsProDiv\">\n                            <span class=\"feedsProImg\">A</span>\n                        </div>\n                    </div>\n        \n                    <div class=\"col s9\">\n                        <p class=\"feedsCardHeader\">Header</p>\n                        <p class=\"feedsCardSubhead\">Subhead</p>\n                    </div>\n        \n                    <div class=\"col s1\">\n                        <i class=\"fa-solid fa-house-blank\"></i>\n                        <i class=\"fa-solid fa-house\" id=\"feedsCardIcon\"></i>\n        \n                    </div>\n                </div>\n        \n                <div class=\"\">\n                    <img src=\"/media/img/feedsCardImg.png\" alt=\"feedsCardImg.png\" class=\"responsive-img\" id=\"feedsCardImg\">\n                </div>\n        \n                <div>\n                    <p class=\"feedsCardTitle\">Title</p>\n                    <p class=\"feedsCardTxt\">Subhead</p>\n                    <p class=\"feedsCardTxt1\">\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,\n                        sed do eiusmod tempor\n                    </p>\n                </div>\n        \n                <button class=\"btn\" id=\"feedsCardBtn\">View</button>\n            </div>\n        </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col s12 l4\">\n            <div class=\"feedsCard\">\n                <div class=\"row\" id=\"feedsCardRowDiv\">\n                    <div class=\"col s2\">\n                        <div class=\"feedsProDiv\">\n                            <span class=\"feedsProImg\">A</span>\n                        </div>\n                    </div>\n        \n                    <div class=\"col s9\">\n                        <p class=\"feedsCardHeader\">Header</p>\n                        <p class=\"feedsCardSubhead\">Subhead</p>\n                    </div>\n        \n                    <div class=\"col s1\">\n                        <i class=\"fa-solid fa-house-blank\"></i>\n                        <i class=\"fa-solid fa-house\" id=\"feedsCardIcon\"></i>\n        \n                    </div>\n                </div>\n        \n                <div class=\"\">\n                    <img src=\"/media/img/feedsCardImg.png\" alt=\"feedsCardImg.png\" class=\"responsive-img\" id=\"feedsCardImg\">\n                </div>\n        \n                <div>\n                    <p class=\"feedsCardTitle\">Title</p>\n                    <p class=\"feedsCardTxt\">Subhead</p>\n                    <p class=\"feedsCardTxt1\">\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,\n                        sed do eiusmod tempor\n                    </p>\n                </div>\n        \n                <button class=\"btn\" id=\"feedsCardBtn\">View</button>\n            </div>\n        </div> ")]);
 }
 
 /***/ }),
@@ -60885,6 +61196,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _TenantLoginComponent_vue_vue_type_template_id_5180a1f6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TenantLoginComponent.vue?vue&type=template&id=5180a1f6 */ "./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=template&id=5180a1f6");
+/* harmony import */ var _TenantLoginComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TenantLoginComponent.vue?vue&type=script&lang=js */ "./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=script&lang=js");
+/* harmony import */ var _home_amaizupeter_Dev_PHP_tests_paab_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,_home_amaizupeter_Dev_PHP_tests_paab_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_TenantLoginComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_TenantLoginComponent_vue_vue_type_template_id_5180a1f6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/components/templates/Physicians/Settings/partial/Achievement.vue":
 /*!***************************************************************************************!*\
   !*** ./resources/js/components/templates/Physicians/Settings/partial/Achievement.vue ***!
@@ -61124,12 +61463,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _SocialMediaComponent_vue_vue_type_template_id_2c0e1b0a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SocialMediaComponent.vue?vue&type=template&id=2c0e1b0a */ "./resources/js/components/templates/Physicians/SocialMediaComponent.vue?vue&type=template&id=2c0e1b0a");
-/* harmony import */ var _home_amaizupeter_Dev_PHP_tests_paab_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _SocialMediaComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocialMediaComponent.vue?vue&type=script&lang=js */ "./resources/js/components/templates/Physicians/SocialMediaComponent.vue?vue&type=script&lang=js");
+/* harmony import */ var _home_amaizupeter_Dev_PHP_tests_paab_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
-const script = {}
+
+
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_amaizupeter_Dev_PHP_tests_paab_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_SocialMediaComponent_vue_vue_type_template_id_2c0e1b0a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/templates/Physicians/SocialMediaComponent.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_amaizupeter_Dev_PHP_tests_paab_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_SocialMediaComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_SocialMediaComponent_vue_vue_type_template_id_2c0e1b0a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/templates/Physicians/SocialMediaComponent.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -61628,6 +61969,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TenantLoginComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TenantLoginComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TenantLoginComponent.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/templates/Physicians/Settings/partial/Achievement.vue?vue&type=script&lang=js":
 /*!***************************************************************************************************************!*\
   !*** ./resources/js/components/templates/Physicians/Settings/partial/Achievement.vue?vue&type=script&lang=js ***!
@@ -61752,6 +62109,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TabFormComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TabFormComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TabFormComponent.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/templates/Physicians/Settings/partial/TabFormComponent.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/templates/Physicians/SocialMediaComponent.vue?vue&type=script&lang=js":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/templates/Physicians/SocialMediaComponent.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SocialMediaComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SocialMediaComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./SocialMediaComponent.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/templates/Physicians/SocialMediaComponent.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -62216,6 +62589,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SettingsComponent_vue_vue_type_template_id_664ca8fa__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SettingsComponent_vue_vue_type_template_id_664ca8fa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./SettingsComponent.vue?vue&type=template&id=664ca8fa */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/templates/Physicians/Settings/SettingsComponent.vue?vue&type=template&id=664ca8fa");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=template&id=5180a1f6":
+/*!**********************************************************************************************************************!*\
+  !*** ./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=template&id=5180a1f6 ***!
+  \**********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TenantLoginComponent_vue_vue_type_template_id_5180a1f6__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TenantLoginComponent_vue_vue_type_template_id_5180a1f6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TenantLoginComponent.vue?vue&type=template&id=5180a1f6 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/templates/Physicians/Settings/TenantLoginComponent.vue?vue&type=template&id=5180a1f6");
 
 
 /***/ }),
