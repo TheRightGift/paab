@@ -17,6 +17,12 @@ class AuthController extends Controller
         return response($user);
     }
 
+    public function tenantlogin(Request $request, EmailAuthService $emailAuthService)
+    {
+        $user = $emailAuthService->tenantlogin($request);
+        return response($user);
+    }
+
     public function register(Request $request, EmailAuthService $emailAuthService){
         $user = $emailAuthService->register($request);
         return response($user);

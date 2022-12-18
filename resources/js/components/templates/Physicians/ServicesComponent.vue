@@ -1,6 +1,6 @@
 <template>
     <div class="section scrollspy physiContainerDiv" id="services">
-        <div v-if="Object.keys( bio ).length == 0">
+        <div v-if="bio == null">
             <div class="row">
                 <div class="col s12 m6 l5">
                     <p class="physiTempNameTitle">My name is</p>

@@ -26,52 +26,52 @@ class SocialController extends Controller{
     {
         $findUser = User::where([['provider', $provider], ['provider_id', $userSocial->id]], ['email', $userSocial->email])->first();
         
-        if($findUser){
-            $userToken = $findUser->createToken('accessToken')->accessToken;
-            Auth::login($findUser);
-            // $cookie = $this->getCookieDetails($userToken);
-            // Cookie::queue($cookie['name'], $cookie['value'], ); //$cookie['minutes'], $cookie['path'], $cookie['domain'], $cookie['secure'], $cookie['httponly'], $cookie['samesite']
-            return redirect('/client/dashboard')->with('token', $userToken);
-        } else {
-            $pass = bcrypt(7007007);
-            $name = $userSocial->name;
-            $name = explode(" ",$name);
-            $nameLen = count($name);
+        print_r($userSocial);
+        // if($findUser){
+        //     $userToken = $findUser->createToken('accessToken')->accessToken;
+        //     Auth::login($findUser);
+        //     // $cookie = $this->getCookieDetails($userToken);
+        //     // Cookie::queue($cookie['name'], $cookie['value'], ); //$cookie['minutes'], $cookie['path'], $cookie['domain'], $cookie['secure'], $cookie['httponly'], $cookie['samesite']
+        //     return redirect('/client/dashboard')->with('token', $userToken);
+        // } else {
+        //     $pass = bcrypt(7007007);
+        //     $name = $userSocial->name;
+        //     $name = explode(" ",$name);
+        //     $nameLen = count($name);
             
-            if($nameLen == 2){
-                $fName = $name[0];
-                $lName = $name[1];
-                $oName = "";
-            } else {
-                $fName = $name[0];
-                $lName = $name[2];
-                $oName = $name[1];
-            }     
+        //     if($nameLen == 2){
+        //         $fName = $name[0];
+        //         $lName = $name[1];
+        //         $oName = "";
+        //     } else {
+        //         $fName = $name[0];
+        //         $lName = $name[2];
+        //         $oName = $name[1];
+        //     }     
 
-            // $this->generateUsername($userSocial);
+        //     // $this->generateUsername($userSocial);
                
-            
-            $user = User::create([
-                'fb_id' => $userSocial->id,
-                'firstname'     => $fName,
-                'lastname'     => $lName,
-                'othername'     => $oName,
-                'username' => $userSocial->nickname,
-                'email'    => $userSocial->email,
-                'provider_id' => $userSocial->id,
-                'provider' => $provider,
-                'avatar' => $userSocial->getAvatar(),
-                'password' => $pass,
-                'access_token' => $userSocial->token,
-            ]);
+        //     $user = User::create([
+        //         'fb_id' => $userSocial->id,
+        //         'firstname'     => $fName,
+        //         'lastname'     => $lName,
+        //         'othername'     => $oName,
+        //         'username' => $userSocial->nickname,
+        //         'email'    => $userSocial->email,
+        //         'provider_id' => $userSocial->id,
+        //         'provider' => $provider,
+        //         'avatar' => $userSocial->getAvatar(),
+        //         'password' => $pass,
+        //         'access_token' => $userSocial->token,
+        //     ]);
 
-            if($user){
-                Auth::login($user);
-                $userToken = auth()->user()->createToken('accessToken')->accessToken;
-                return redirect('/client/dashboard')->with('token', $userToken);
-                // return response()->json(['token' => $userToken]);
-            }
-        }
+        //     if($user){
+        //         Auth::login($user);
+        //         // $userToken = auth()->user()->createToken('accessToken')->accessToken;
+        //         // return redirect('/client/dashboard')->with('token', $userToken);
+        //         // return response()->json(['token' => $userToken]);
+        //     }
+        // }
     }
 
     private function getCookieDetails($token)

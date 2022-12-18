@@ -21,21 +21,25 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 */
 
 Route::middleware([
-    // 'auth',
     'web',
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::get('/', [App\Http\Controllers\TenantController::class, 'template']);
 
-    // Achieve Auth
-    Route::post('/login', [App\Http\Controllers\TenantController::class, 'login']);
-
+    Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
+});
+Route::middleware([
+    'web',
+    InitializeTenancyByDomain::class,
+    PreventAccessFromCentralDomains::class,
+])->group(function () {
     Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
 });
 // ['middleware'=>'auth:api']
-Route::middleware(['api',InitializeTenancyByDomain::class,
+Route::middleware(['auth:api',InitializeTenancyByDomain::class,
 PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
+    
     Route::post('/bio', [App\Http\Controllers\Tenants\BioController::class, 'store']);
     Route::put('/bio/{id}', [App\Http\Controllers\Tenants\BioController::class, 'update']);
     Route::delete('/bio/{id}', [App\Http\Controllers\Tenants\BioController::class, 'destroy']);
@@ -65,7 +69,10 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::delete('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'destroy']);
     
     Route::post('/imagedel', [App\Http\Controllers\Tenants\GeneralController::class, 'deleteImage']);
-
+    
+    Route::post('/verifyToken', [App\Http\Controllers\TenantController::class, 'verifyToken'])->withoutMiddleware(['auth:api']);
+    Route::post('/savelogin', [App\Http\Controllers\TenantController::class, 'saveAccessToken'])->withoutMiddleware(['auth:api']);
+    
     Route::post('/schedule', [App\Http\Controllers\Tenants\MessagesController::class, 'store'])->withoutMiddleware(['auth:api']);
     Route::get('/achievement', [App\Http\Controllers\Tenants\AchievementController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/bio', [App\Http\Controllers\Tenants\BioController::class, 'index'])->withoutMiddleware(['auth:api']);
@@ -74,4 +81,5 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::get('/service', [App\Http\Controllers\Tenants\ServiceController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/general', [App\Http\Controllers\Tenants\GeneralController::class, 'index'])->withoutMiddleware(['auth:api']);
+
 });

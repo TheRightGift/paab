@@ -55,6 +55,14 @@ class Kernel extends HttpKernel
             'auth:api',
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         ],
+        'auth.tenant' => [
+            \App\Http\Middleware\TenantAuth::class,
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            'throttle:api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            'auth:api',
+        ],
     ];
 
     /**

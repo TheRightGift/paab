@@ -33,7 +33,8 @@ class User extends Authenticatable
         'emailVerification',
         'accessToken',
         'title_id',
-        'city_id'
+        'city_id',
+        'access_token',
     ];
 
     /**

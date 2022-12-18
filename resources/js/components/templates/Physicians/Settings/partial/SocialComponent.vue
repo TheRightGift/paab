@@ -104,9 +104,11 @@
         },
         watch: {
             saved(newVal, oldVal){
-                this.social.facebook = newVal.facebook;
-                this.social.instagram = newVal.instagram;
-                this.social.twitter = newVal.twitter;
+                if (newVal != null) {
+                    this.social.facebook = newVal.facebook;
+                    this.social.instagram = newVal.instagram;
+                    this.social.twitter = newVal.twitter;
+                }
             }
         },
     };

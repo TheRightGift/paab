@@ -16,6 +16,7 @@ Note to self: As a result of <code>FK</code> - foreign key the <code>cities tabl
 - [x] Sync Profession and Template Model for Central DB and Tenant DB.
 - [ ] Dev Client Dashboard endpoints.
 - [ ] Rem: Setup Mailgun account for PaaB (production)
+- [ ] Authenticate tenant on redirect to tenant settings
 - [ ] Template: Upload template thumbnail (resitrict image dimensions to 512px(W) by 345px(H))
 - [ ] Template: Get thumbnail by professionId
 - [ ] Template: Get single template

@@ -34,6 +34,7 @@ return new class extends Migration
             $table->date('DOB')->nullable();
             $table->string('password');
             $table->text('accessToken')->nullable()->default(null);
+            $table->text('access_token')->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

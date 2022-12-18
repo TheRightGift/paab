@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
 
 use App\Models\Tenant;
 use App\Models\Template;
-use App\Models\User;
-
+use App\Models\Tenants\TenantUser as TenantUser;
 use Validator;
+use Carbon\Carbon;
+
 class TenantController extends Controller
 {
     public function create(Request $request) {
@@ -98,14 +100,6 @@ class TenantController extends Controller
     public function setting(Request $request) {
         $user = tenant()->user;
         return view('websites.setting', compact('user'));
-            // tenancy()->central(function ($tenant) {
-            //     dd(User::all(), $tenant);
-            //     $auth = User::find($tenant->user_id);
-            //     if ($auth !== null) {
-    
-            //     }
-
-            // });
     }
 
     public function tenancies() {
@@ -130,14 +124,50 @@ class TenantController extends Controller
         }
     }
 
-    public function login(Request $request) {
-        tenancy()->central(function ($tenant) {
-            $auth = User::find($tenant->user_id);
-            if ($auth !== null) {
-                
+    public function verifyToken(Request $request) {
+        $users = new TenantUser();
+        $access = $users->first();
+        if ($access != null) {
+            if($request->accessToken == $users->first()->accessToken) {
+                return response()->json(['message' => 'Token In use', 'status' => 200], 200);
             }
-            // dd(User::all(), $tenant);
+            else {
+                return response()->json(['message' => 'Token Expired', 'status' => 401], 200);
+            }
+        }
+        else {
+            return response()->json(['message' => 'Token Expired', 'status' => 401], 200);
+        }
+    }
 
-        });
+    public function saveAccessToken(Request $request) {
+        $inputs = Validator::make($request->all(), [
+            'user_id' => ['required'],
+            'accessToken' => 'required',
+        ]); 
+        if ($inputs->fails()) {
+            return response()->json(['errors' => $inputs->errors()->all()], 501);
+        }
+        else {
+            $input = $inputs->validated();
+            $tenantUser = new TenantUser();
+            $tenant = $tenantUser->where('user_id', $input['user_id'])->first();
+            if ($tenant != null) {
+                $tenantUser->user_id = $input['user_id'];
+                $tenantUser->accessToken = $input['accessToken'];
+                $tenantUser->save();
+                if ($tenantUser == true) {
+                    return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
+                }
+            }
+            else {
+                $tenantUser->user_id = $input['user_id'];
+                $tenantUser->accessToken = $input['accessToken'];
+                $tenantUser->save();
+                if ($tenantUser == true) {
+                    return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
+                }
+            }
+        }
     }
 }
