@@ -28,25 +28,5 @@
     <script src="{{ global_asset('js/materialize.min.js') }}"></script>
     <script src="{{ global_asset('js/paab.js') }}"></script>    
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-    <script>
-
-        let fbIframe = document.getElementById("fb");
-        console.log(fbIframe);
-        
-
-        let checkDisplay = setInterval(() => {
-            console.log(fbIframe.style.display, fbIframe.innerHTML.length, fbIframe.style.display !== "" && fbIframe.innerHTML.length !== 0);
-            if(fbIframe.style.display !== "" && fbIframe.innerHTML.length !== 0){
-                let fbHeader = document.getElementsByClassName('_2lqh');
-                console.log(fbHeader.innerHTML);
-                fbHeader.style.display = 'none';
-
-                clearInterval(checkDisplay);
-            }
-        }, 1000);
-
-    </script>
-          
 </body>
 </html>
