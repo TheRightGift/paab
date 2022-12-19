@@ -26,27 +26,27 @@
     <script src="{{ global_asset('js/app.js') }}"></script>
     <script src="{{ global_asset('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ global_asset('js/materialize.min.js') }}"></script>
-    <script src="{{ global_asset('js/paab.js') }}"></script>
-    <script>
-        $(window).scroll((e) => {
-            e.preventDefault();
-
-            let scrollPos = $(window).scrollTop();
-
-            if (scrollPos >= 5) {
-                $(".navbar").css("background-color", "white");
-                $(".pageLogo").css("color", "#7746FF");
-                $(".navbar").css(
-                    "box-shadow", "0px 6px 6px rgba(0, 0, 0, 0.25)"
-                );
-            } else {
-                $(".navbar").css("background-color", "transparent");
-                $(".navbar").css("box-shadow", "none");
-                $(".pageLogo").css("color", "#FFF");
-            }
-        });
-    </script>
+    <script src="{{ global_asset('js/paab.js') }}"></script>    
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <script>
+
+        let fbIframe = document.getElementById("fb");
+        console.log(fbIframe);
+        
+
+        let checkDisplay = setInterval(() => {
+            console.log(fbIframe.style.display, fbIframe.innerHTML.length, fbIframe.style.display !== "" && fbIframe.innerHTML.length !== 0);
+            if(fbIframe.style.display !== "" && fbIframe.innerHTML.length !== 0){
+                let fbHeader = document.getElementsByClassName('_2lqh');
+                console.log(fbHeader.innerHTML);
+                fbHeader.style.display = 'none';
+
+                clearInterval(checkDisplay);
+            }
+        }, 1000);
+
+    </script>
           
 </body>
 </html>
