@@ -236,12 +236,14 @@
                     });
             },
             bioSave(e) {
+                console.log(e)
                 if (e.about.length > 614) {
                     M.toast({
                         html: "Your about must not be greater than 614 in character",
                         classes: "errorNotifier",
                     });
-                } else if (e.about.length == 614) {
+                } else {
+                    console.log('here')
                     let formData = new FormData();
                     formData.append("CV", e.CV);
                     formData.append("photo", e.photo);
@@ -401,7 +403,7 @@
             saveAchievement(e) {
                 let formData = new FormData();
                 let request = `/api/achievement`;
-                e.oldBanner ? formData.append("banner", e.banner) : null;
+                formData.append("banner", e.banner);
                 formData.append("feats", JSON.stringify(e.feats));
                 if (e.update == 1) {
                     formData.append('_method', 'PUT')

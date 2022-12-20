@@ -435,6 +435,7 @@ export default {
             this.$emit('servicesLink');
         },
         bioSave() {
+            console.log('heree')
             this.$emit('bioSave', this.bio);
         },
         bioUpdate() {

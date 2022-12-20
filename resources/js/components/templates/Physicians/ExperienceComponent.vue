@@ -57,8 +57,8 @@
                 <div class="expLeftBarDiv">
                     <div class="expLeftBarInnerDiv" v-for="(feat, index) in feats" :key="index">
                         <div class="expLeftBarTxtDiv">
-                            <p class="expLeftBarTxt">{{feat}} {{index == 'volunteer' || index == 'experience' ? 'Yrs' : null}}</p>
-                            <p class="expLeftBarTxt1">{{index}}</p>
+                            <p class="expLeftBarTxt">{{feat}} {{index == 'experience' ? 'Yrs' : null}} </p>
+                            <p class="expLeftBarTxt1">{{index}} {{ index == 'volunteer' ? 'services' : null }} {{ index == 'ward' ? 'rounds' : null}}</p>
                         </div>
                     </div>
                 </div>

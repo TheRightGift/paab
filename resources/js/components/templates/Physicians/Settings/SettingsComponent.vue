@@ -142,6 +142,7 @@
                 let data = {'accessToken': accessToken, 'user_id': user_id};
                 axios.post('/api/savelogin', data).then(res => {
                     if (res.data.status == 201) {
+                        location.reload();
                         this.loggedIn = true;
                     }
                 }).catch(err => {
