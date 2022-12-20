@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="editGenModal" v-if="genModal">
+        <div class="editGenModal" v-show="genModal">
             <div class="editInnerGenModal">
                 <div class="genTitleDiv">
                     <i
@@ -57,7 +57,7 @@
         </div>
 
         <!-- General Modal 1-->
-        <div class="editGenModal" v-if="genModal1">
+        <div class="editGenModal" v-show="genModal1">
             <div class="editInnerGenModal">
                 <div class="genTitleDiv">
                     <i
@@ -202,6 +202,7 @@
         },
         watch: {
             saved(newVal, oldVal){
+                console.log(newVal);
                 if (newVal != null) {
                     this.general.title = newVal.title;
                     this.general.favicon = newVal.favicon;

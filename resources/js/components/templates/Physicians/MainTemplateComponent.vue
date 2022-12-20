@@ -7,7 +7,7 @@
             <HeaderComponent :user="user"/>
             <ServicesComponent :user="user" :services="services" :bio="bio"/>
             <ExperienceComponent  :experience="achievement"/>
-            <!-- <SocialMediaComponent :socials="socials"/> -->
+            <SocialMediaComponent :socials="socials"/>
             <TestimonialsComponent :reviews="reviews"/>
             <ContactComponent />
         </div>
