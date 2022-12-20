@@ -2,18 +2,26 @@
     <div class="row">
         <div v-if="templates.length > 0">
             <div class="col s12 l3 m6" v-for="template in templates" :key="template.id">
-                <!--div id="userTempDiv" class="hoverable" :class="{highlighted: selectedTemplate == template.id}" @click="selectTemplate(template)"-->
+            <!--v-bind:class="selectedTemplate == template.id ? 'selected' : '', 'card hoverable'"-->
                 <div class="card hoverable">
                     <div class="card-image">
                         <img  :src="'/media/img/templateThumbnail/'+template.profession.name+'/'+template.imageUrl"/>
+                        <i class="material-icons green-text selectedTemplate" v-if="selectedTemplate == template.id">check_box</i>
                     </div>
                     <div class="card-content">
-                        <!--p class="userTempTitle">{{ template.title }}</p-->
-                        <a :href="'/previewTemplates/'+template.id" target="_blank">Preview</a> 
-                        <a @click="selectTemplate(template)" class="right" v-if="type == 'create'">Select</a>
+                        <a :href="'/previewTemplates/'+template.id" target="_blank">Preview</a>   
+
+                        <span v-if="selectedTemplate == template.id">
+                            <a class="right" v-if="type == 'create'">Select</a>
+                        </span>   
+                        <span v-else>
+                            <a @click="selectTemplate(template)" class="right" v-if="type == 'create'">Select</a>
+                        </span>       
+                        
                     </div>
                 </div>
-            </div>
+                
+            </div>            
         </div>
         <div v-else>
             <p class="centered">No template found for your profession</p>
@@ -55,6 +63,7 @@
                 });
             },
             selectTemplate(temp) {
+                console.log(temp.id)
                 this.$emit('tempSel', temp)
             }
         },
