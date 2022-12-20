@@ -14,6 +14,7 @@
                         <div
                             class="file-field input-field"
                             id="genUploadFavIconDiv"
+                            v-if="achievement.banner == null"
                         >
                             <input
                                 type="file"
@@ -23,7 +24,7 @@
                             <div class="file-path-wrapper">
                                 <input
                                     class="file-path validate"
-                                    placeholder="Upload banner"
+                                    placeholder="Banner must not be greater than 500KB(1249x743)"
                                     type="text"
                                     id="genInput1"
                                 />
@@ -31,6 +32,28 @@
                                     >file_upload</i
                                 >
                             </div>
+                        </div>
+
+                        <div v-else class="flex no-space-between">
+                            <img
+                                width="100"
+                                height="100"
+                                class="responsive-img"
+                                :src="
+                                    typeof achievement.banner == 'string'
+                                        ? 'tenancy/assets/' + achievement.banner
+                                        : uploaded
+                                "
+                            />
+                            <a
+                                class="
+                                    waves-effect waves-light
+                                    btn-small btn
+                                    red
+                                "
+                                @click="deleteImg"
+                                >Change</a
+                            >
                         </div>
 
                         <div>
@@ -99,19 +122,28 @@
                                     />
                                 </div>
                                 <p class="years">
-                                    {{
-                                        achievement.feats.certificate
-                                    }}
+                                    {{ achievement.feats.certificate }}
                                     Certificates
                                 </p>
                             </div>
                         </div>
 
                         <div>
-                            <button type="submit" class="btn" id="genModalBtn" v-if="Object.entries(saved).length == 0">
-                                Upload
+                            <button
+                                type="submit"
+                                class="btn"
+                                id="genModalBtn"
+                                v-if="saved == null"
+                            >
+                                Save
                             </button>
-                            <button type="submit" class="btn" id="genModalBtn" v-else>
+                            <button
+                                type="submit"
+                                class="btn"
+                                id="genModalBtn"
+                                v-else
+                                @click="achievement.update = 1"
+                            >
                                 Update
                             </button>
                         </div>
@@ -155,10 +187,16 @@
                         volunteer: 0,
                     },
                     banner: null,
+                    update: 0,
                 },
+                uploaded: null,
             };
         },
         methods: {
+            deleteImg() {
+                this.achievement.oldBanner = this.achievement.banner;
+                this.achievement.banner = null;
+            },
             achieveGoBackBtn() {
                 this.$emit("achieveGoBackBtn");
             },
@@ -168,13 +206,14 @@
             addBannerchiever(e) {
                 if (!e.target.files.length) return;
                 this.achievement.banner = e.target.files[0];
+                this.uploaded = URL.createObjectURL(e.target.files[0]);
             },
             saveAchievement() {
                 this.$emit("saveAchievement", this.achievement);
             },
         },
         watch: {
-            saved(newVal, oldVal){
+            saved(newVal, oldVal) {
                 if (newVal != null) {
                     let feats = JSON.parse(newVal.feats);
                     this.achievement.feats.certificate = feats.certificate;
@@ -184,7 +223,7 @@
                     this.achievement.banner = newVal.banner;
                     this.achievement.id = newVal.id;
                 }
-            }
+            },
         },
     };
 </script>

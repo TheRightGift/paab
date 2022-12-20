@@ -30,7 +30,7 @@ class GeneralController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'favicon' => 'nullable|image|mimes:png|max:10',
+            'favicon' => 'nullable|image|mimes:png|max:100',
             'title' => 'required',
         ]);
 

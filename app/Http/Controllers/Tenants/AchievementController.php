@@ -29,7 +29,7 @@ class AchievementController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'banner' => 'required|image|mimes:png|max:500',
+            'banner' => 'required|image|mimes:png|max:500|dimensions:min_width=1294,min_height=743',
             'feats' => 'required',
         ]); 
 
@@ -44,7 +44,6 @@ class AchievementController extends Controller
                 
                 $input['banner'] = $stored;
             } 
-            // $input['feats'] = json_decode($input['feats']);
             $achievement = Achievement::create($input);
             if ($achievement == true) {
                 return response()->json(['message' => 'Success', 'achievement' => $achievement], 201);
@@ -65,7 +64,7 @@ class AchievementController extends Controller
     public function update(Request $request, $achievement)
     {
         $inputs = Validator::make($request->all(), [
-            'banner' => 'required|image|mimes:png|max:500',
+            'banner' => 'nullable|image|mimes:png|max:500|dimensions:min_width=1294,min_height=743',
             'feats' => 'required',
         ]); 
 
@@ -84,7 +83,7 @@ class AchievementController extends Controller
             $achievement2Update = $achievements->find($achievement);
             $achievement2Update->update($input);
             if ($achievement2Update == true) {
-                return response()->json(['message' => 'Success', 'achievement' => $achievement2Update], 200);
+                return response()->json(['message' => 'Success', 'achievement' => $achievement2Update, 'status' => 200], 200);
             }
             else {
                 return response()->json(['message' => 'Failed', 'achievement' => $achievement2Update], 501);

@@ -34,11 +34,11 @@ class BioController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'about' => 'required|size:614',
+            'about' => 'required|max:614|min:600',
             'lastname' => 'nullable',
             'firstname' => 'nullable',
             'CV' => 'required|file|mimes:doc,pdf,docx,zip|max:2000',
-            'photo' => 'nullable|image|mimes:jpg,png|max:500',
+            'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=454,min_height=528',
             // Achievement
             // 'percentage' => 'required',
             // Services
@@ -84,10 +84,11 @@ class BioController extends Controller
     public function update(Request $request, $bio)
     {
         $inputs = Validator::make($request->all(), [
-            'about' => 'nullable',
-            'history' => 'nullable',
-            'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:5000',
-            'photo' => 'nullable|image|mimes:jpg,png|max:1000',
+            'about' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
+            'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=500,min_height=500',
             // Achievement
             // 'title' => 'nullable',
             // 'percentage' => 'nullable',
@@ -100,7 +101,7 @@ class BioController extends Controller
         ]); 
 
         if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 501);
+            return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
             $bios = new Bio();
@@ -108,19 +109,27 @@ class BioController extends Controller
             if ($bio2Update != null) {
                 if($request->hasFile('photo')){
                     $photo = $request->file('photo');
-                    $stored = \Storage::disk('public')->put("img", $photo);
+                    $ext = $request->file('photo')->getClientOriginalExtension();
+                    $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
+                    
                     $input['photo'] = $stored;
                 } 
                 if($request->hasFile('CV')){
                     $cv = $request->file('CV');
-                    $name = $cv->getClientOriginalName();
-                    $stored = \Storage::disk('public')->put("docs", $cv);
+                    $ext = $request->file('CV')->getClientOriginalExtension();
+                    $stored = \Storage::disk('public')->putFileAs('doc', $cv, strtolower(tenant('id')).'CV'.'.'.$ext);
+    
                     $input['CV'] = $stored;
                 } 
                 $bio2Update->update($input);
+                if ($bio2Update == true) {
+                    return response(['bio' => $bio2Update, 'message' => 'Update Success', 'status' => 200], 200);
+                }
+                else {
+                    return response()->json(['message' => 'Failed', 'bio' => $bio2Update], 501);
+                }
                 // $this->upd_achievement($input);
                 // $this->upd_service($input);
-                return response(['bio' => $bio2Update, 'message' => 'Update Success'], 201);
             }
         }    
     }

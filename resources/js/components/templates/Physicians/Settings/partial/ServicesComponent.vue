@@ -59,7 +59,7 @@
                                     <div>
                                         <label>&nbsp;</label>
                                         <i
-                                            @click="remove(index)"
+                                            @click="remove(index), pushToTrash(service)"
                                             v-show="index != 0"
                                             class="material-icons cursor"
                                             id="bioAddBtn"
@@ -72,10 +72,21 @@
                         </div>
 
                         <div>
-                            <button type="submit" class="btn" id="genModalBtn" v-if="saved.length == 0">
+                            <button
+                                type="submit"
+                                class="btn"
+                                id="genModalBtn"
+                                v-if="saved.length == 0"
+                            >
                                 save
                             </button>
-                            <button type="submit" class="btn" id="genModalBtn" v-else>
+                            <button
+                                type="submit"
+                                class="btn"
+                                id="genModalBtn"
+                                v-else
+                                @click="update = 1"
+                            >
                                 update
                             </button>
                         </div>
@@ -104,49 +115,60 @@
     </div>
 </template>
 <script>
-export default {
-    props: {
-        servicesModal: Boolean,
-        saved: Array,
-    },
-    data() {
-        return {
-            services: [
+    export default {
+        props: {
+            servicesModal: Boolean,
+            saved: Array,
+        },
+        data() {
+            return {
+                services: [
                     {
                         title: "",
                         description: "",
                         icon: "fa-tooth",
                     },
                 ],
-        }
-    },
-    methods: {
-        addMore() {
-            this.services.push({
-                title: "",
-                description: "",
-                icon: "fa-tooth",
-            });
+                update: 0,
+                removed: [],
+            };
         },
-        remove(index) {
-            this.services.splice(index, 1);
+        methods: {
+            addMore() {
+                this.services.push({
+                    title: "",
+                    description: "",
+                    icon: "fa-tooth",
+                });
+            },
+            remove(index) {
+                this.services.splice(index, 1);
+            },
+            pushToTrash(e) {
+                this.removed.push(e);
+            },
+            servicesGoBackBtn() {
+                this.$emit("servicesGoBackBtn");
+            },
+            achieveLink() {
+                this.$emit("achieveLink");
+            },
+            serviceSave() {
+                this.$emit("serviceSave", {
+                    services: this.services,
+                    update: this.update,
+                    id: this.id,
+                    removed: this.removed,
+                });
+            },
         },
-        servicesGoBackBtn(){
-            this.$emit('servicesGoBackBtn');
+        watch: {
+            saved(newVal, oldVal) {
+                if (newVal.length > 0) {
+                    this.services = newVal;
+                    this.id = newVal[0].id;
+                }
+            },
         },
-        achieveLink() {
-            this.$emit('achieveLink');
-        },
-        serviceSave(){
-            this.$emit('serviceSave', this.services)
-        }
-    },
-    watch: {
-        saved(newVal, oldVal){
-            if (newVal != null) {
-                this.services = newVal;
-            }
-        }
-    },
-}
+    };
 </script>

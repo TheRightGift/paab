@@ -100,6 +100,7 @@
                 @bioGoBackBtn3="bioGoBackBtn3"
                 @servicesLink="servicesLink"
                 @bioSave="bioSave($event)"
+                @bioUpdate="bioUpdate($event)"
             />
             <ServicesComponent
                 :servicesModal="servicesModal"
@@ -235,9 +236,9 @@
                     });
             },
             bioSave(e) {
-                if (e.about.length > 614 || e.about.length < 614) {
+                if (e.about.length > 614) {
                     M.toast({
-                        html: "Your about must be 614 in character",
+                        html: "Your about must not be greater than 614 in character",
                         classes: "errorNotifier",
                     });
                 } else if (e.about.length == 614) {
@@ -272,18 +273,55 @@
                         });
                 }
             },
-            serviceSave(e) {
+            bioUpdate(e) {
                 let formData = new FormData();
-                formData.append("data", JSON.stringify(e));
+                e.photo ? formData.append("photo", e.photo) : null;
+                e.photo ? formData.append("oldPhoto", e.oldPhoto) : null;
+                e.CV ? formData.append("CV", e.CV) : null;
+                e.CV ? formData.append("oldCV", e.oldCV) : null;
+                formData.append("firstname", e.firstname);
+                formData.append("lastname", e.lastname);
+                formData.append("about", e.about);
+                formData.append("_method", e._method);
                 axios
-                    .post(`/api/service`, formData)
+                    .post(`/api/bio/${e.id}`, formData)
                     .then((res) => {
-                        if (res.status == 201) {
+                        if (res.data.status == 200) {
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
-                            this.achieveLink();
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            serviceSave(e) {
+                let request = `/api/service`;
+                let formData = new FormData();
+                if (e.update == 1) {
+                    request = `/api/service/${e.id}`;
+                    e.removed.length > 0 ? formData.append('removed', JSON.stringify(e.removed)) : null;
+                }
+                formData.append("data", JSON.stringify(e.services));
+                e.update == 1 ? formData.append('_method', 'PUT') : null;
+                axios
+                    .post(request, formData)
+                    .then((res) => {
+                        if (res.status == 201 || res.data.status == 200) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            e.update == 0 ? this.achieveLink() : null;
                         }
                     })
                     .catch((err) => {
@@ -298,10 +336,18 @@
                     });
             },
             saveSocial(e) {
+                let request = `/api/social`;
+                let data = {
+                    _method: 'PUT'
+                };
+                if (e.update == 1) {
+                    request = `/api/social/${e.id}`;
+                    e = {...e, ...data};
+                }
                 axios
-                    .post(`/api/social`, e)
+                    .post(request, e)
                     .then((res) => {
-                        if (res.status == 201) {
+                        if (res.status == 201 || res.data.status == 200) {
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
@@ -321,14 +367,23 @@
                     });
             },
             saveContact(e) {
+                let request = `/api/contact`;
+                let data = {
+                    _method: 'PUT'
+                };
+                if (e.update == 1) {
+                    request = `/api/contact/${e.id}`;
+                    e = {...e, ...data};
+                }
                 axios
-                    .post(`/api/contact`, e)
+                    .post(request, e)
                     .then((res) => {
-                        if (res.status == 201) {
+                        if (res.status == 201 || res.data.status == 200) {
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
+                            location.reload();
                             // this.contactNextBtn()
                         }
                     })
@@ -345,17 +400,22 @@
             },
             saveAchievement(e) {
                 let formData = new FormData();
-                formData.append("banner", e.banner);
+                let request = `/api/achievement`;
+                e.oldBanner ? formData.append("banner", e.banner) : null;
                 formData.append("feats", JSON.stringify(e.feats));
+                if (e.update == 1) {
+                    formData.append('_method', 'PUT')
+                    request = `/api/achievement/${e.id}`
+                }
                 axios
-                    .post(`/api/achievement`, formData)
+                    .post(request, formData)
                     .then((res) => {
-                        if (res.status == 201) {
+                        if (res.status == 201 || res.data.status == 200) {
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
-                            this.socialLink();
+                            e.update == 0 ? this.socialLink() : null;
                         }
                     })
                     .catch((err) => {

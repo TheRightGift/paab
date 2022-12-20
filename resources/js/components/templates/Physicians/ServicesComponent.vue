@@ -130,3 +130,9 @@ export default {
     }
 }
 </script>
+<style>
+    #physiRightImg {
+        width: 428px;
+        height: 497px;
+    }
+</style>

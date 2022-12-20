@@ -93,22 +93,28 @@
                         <input
                             type="file"
                             @change="favUpload"
-                            accept="image/*"
+                            accept=".png"
+                            
                         />
                         <div class="file-path-wrapper">
                             <input
                                 class="file-path validate"
                                 type="text"
                                 id="genInput1"
+                                placeholder="File type must be in .png and not exceed 100kb"
                             />
                             <i class="material-icons" id="genUploadFavIcon"
                                 >file_upload</i
                             >
                         </div>
                     </div>
-                    <div v-else class="flex no-space-between">
-                        <!-- <img width="100" height="100" class="responsive-img" :src="typeof(general.favicon) == 'string' ? 'tenancy/assets/'+general.favicon : uploaded" > -->
-                        <a class="waves-effect waves-light btn-small btn red" @click="deleteImg">Change</a>
+                    <div v-else class="flex no-space-between mb-2">
+                        <img width="100" height="100" class="responsive-img" :src="typeof(general.favicon) == 'string' ? 'tenancy/assets/'+general.favicon : uploaded" >
+                        <a
+                            class="waves-effect waves-light btn-small btn red"
+                            @click="deleteImg"
+                            >Change</a
+                        >
                     </div>
 
                     <div>
@@ -117,7 +123,7 @@
                             class="btn"
                             id="genModalBtn"
                             @click.prevent="generalSave"
-                            v-if="Object.entries(saved).length == 0"
+                            v-if="saved == null"
                         >
                             Save
                         </button>
@@ -127,7 +133,7 @@
                             id="genModalBtn"
                             @click.prevent="generalUpdate"
                             v-else
-                            >
+                        >
                             <!-- :disabled="eval" -->
                             Update
                         </button>
@@ -167,7 +173,7 @@
             favUpload(e) {
                 if (!e.target.files.length) return;
                 this.general.favicon = e.target.files[0];
-                this.uploaded = URL.createObjectURL(e.target.files[0])
+                this.uploaded = URL.createObjectURL(e.target.files[0]);
             },
             genGoBackBtn() {
                 this.$emit("genGoBackBtn");
@@ -180,34 +186,35 @@
             },
             generalUpdate() {
                 let data = {
-                    '_method': 'PUT'
+                    _method: "PUT",
                 };
                 if (this.general.oldFav) {
-                    data = {...data, ...this.general};
-                }
-                else {
+                    data = { ...data, ...this.general };
+                } else {
                     let detail = {
-                        'title': this.general.title,
-                        'id': this.general.id
-                    }
-                    data = {...data, ...detail}
+                        title: this.general.title,
+                        id: this.general.id,
+                    };
+                    data = { ...data, ...detail };
                 }
                 this.$emit("generalUpdate", data);
             },
         },
         watch: {
-            // saved(newVal, oldVal){
-            //     if (newVal != null) {
-            //         this.general.title = newVal.title;
-            //         this.general.favicon = newVal.favicon;
-            //         this.general.id = newVal.id;
-            //     }
-            // }
+            saved(newVal, oldVal){
+                if (newVal != null) {
+                    this.general.title = newVal.title;
+                    this.general.favicon = newVal.favicon;
+                    this.general.id = newVal.id;
+                }
+            }
         },
         computed: {
             eval() {
-                return this.general.title === this.saved.title || !this.general.oldFav;
-            }
+                return (
+                    this.general.title === this.saved.title || !this.general.oldFav
+                );
+            },
         },
     };
 </script>
@@ -256,5 +263,8 @@
     }
     .no-space-between {
         justify-content: unset !important;
+    }
+    .mb-2 {
+        margin-bottom: 2.5rem;
     }
 </style>

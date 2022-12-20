@@ -39,10 +39,10 @@
                         </div>
 
                         <div>
-                            <button type="submit" class="btn" id="genModalBtn" v-if="Object.entries(saved).length == 0">
+                            <button type="submit" class="btn" id="genModalBtn" v-if="saved == null">
                                 save
                             </button>
-                            <button type="submit" class="btn" id="genModalBtn" v-else>
+                            <button type="submit" class="btn" id="genModalBtn" v-else @click="contact.update = 1">
                                 update
                             </button>
                         </div>
@@ -83,6 +83,7 @@
                     email: this.user.email,
                     phone: "",
                     address: "",
+                    update: 0,
                 },
             };
         },

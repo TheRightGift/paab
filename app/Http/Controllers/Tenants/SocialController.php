@@ -29,9 +29,9 @@ class SocialController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'twitter' => 'nullable|url',
-            'instagram' => 'nullable|url',
-            'facebook' => 'nullable|url',
+            'twitter' => 'nullable|string',
+            'linkedin' => 'nullable|string',
+            'facebook' => 'nullable|string',
         ]);
 
         if ($inputs->fails()) {
@@ -58,20 +58,20 @@ class SocialController extends Controller
     public function update(Request $request, $social)
     {
         $inputs = Validator::make($request->all(), [
-            'twitter' => 'nullable',
-            'instagram' => 'nullable',
-            'facebook' => 'nullable',
+            'twitter' => 'required',
+            'linkedin' => 'required',
+            'facebook' => 'required',
         ]); 
 
         if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 501);
+            return response($inputs->errors()->all(), 400);
         } else {
-            $input = $request->validated();
+            $input = $inputs->validated();
             $socials = new Social();
             $social2Update = $socials->find($social);
             $social2Update->update($input);
             if ($social2Update == true) {
-                return response()->json(['message' => 'Success', 'social' => $social2Update], 200);
+                return response()->json(['message' => 'Success', 'social' => $social2Update, 'status' => 200], 200);
             }
             else {
                 return response()->json(['message' => 'Failed', 'social' => $social2Update], 501);

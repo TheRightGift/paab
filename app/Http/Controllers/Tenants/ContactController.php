@@ -58,9 +58,9 @@ class ContactController extends Controller
     public function update(Request $request, $contact)
     {
         $inputs = Validator::make($request->all(), [
-            'phone' => 'nullable',
-            'email' => 'nullable',
-            'address' => 'nullable',
+            'phone' => 'required',
+            'email' => 'required',
+            'address' => 'required',
         ]); 
 
         if ($inputs->fails()) {
@@ -71,7 +71,7 @@ class ContactController extends Controller
             $contact2Update = $contacts->find($contact);
             $contact2Update->update($input);
             if ($contact2Update == true) {
-                return response()->json(['message' => 'Success', 'contact' => $contact2Update], 200);
+                return response()->json(['message' => 'Success', 'contact' => $contact2Update, 'status' => 200], 200);
             }
             else {
                 return response()->json(['message' => 'Failed', 'contact' => $contact2Update], 501);
