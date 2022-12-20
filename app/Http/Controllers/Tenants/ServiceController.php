@@ -69,31 +69,56 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $service)
     {
+        $data = json_decode($request->input('data'));
+        $removed = json_decode($request->input('removed'));
         $inputs = Validator::make($request->all(), [
-            'title' => 'nullable',
-            'description' => 'nullable',
-            'icon_filename' => 'nullable|image|mimes:jpg,png|max:100',
+            // 'data' => 'required',
+            'data.*.title' => 'required',
+            'data.*.description' => 'required',
+            'data.*.icon' => 'required|image|mimes:jpg,png|max:10',
         ]); 
-
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);
         } else {
             $input = $inputs->validated();
-            if($request->hasFile('icon_filename')){
-                $image = $request->file('icon_filename');
-                $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/img/'), $name);
-                $input['icon_filename'] = '/media/img/'.$name;
-            } 
+            // if($request->hasFile('icon_filename')){
+            //     $image = $request->file('icon_filename');
+            //     $name = $image->getClientOriginalName();
+            //     $image->file(storage_path('/media/img/' . $name));
+            //     // $image->move(public_path('/media/img/'), $name);
+            //     $input['icon_filename'] = '/media/img/'.$name;
+            // } 
             #TODO: Run a check to make sure if this is an array
-            $services = new Service();
-            $services->find($service);
-            if ($services != null) {
-               $services->update($request);
-               return response()->json(['message' => 'Updated', 'services' => $services]);
-            }else {
-                return 404;
+            if ($request->has('removed')) {
+                foreach ($removed as $row) {
+                    $services = new Service();
+                    $service2Update = $services->find($row->id);
+                    
+                    $service2Update->delete();
+                }
+            }
+            foreach ($data as $row) {
+                $services = new Service();
+                if (!empty($row->id)) {
+                    $service2Update = $services->find($row->id);
+                    $service2Update->title = $row->title;
+                    $service2Update->description = $row->description;
+                    $service2Update->icon = $row->icon;
+                    $service2Update->save();
+                }
+                else {
+                    $services->title = $row->title;
+                    $services->description = $row->description;
+                    $services->icon = $row->icon;
+                    $services->save();
+                }
+                
+            }
+            if ($service2Update == true) {
+                return response()->json(['message' => 'Updated', 'services' => $service2Update, 'status' => 200], 200);
+            }
+            else {
+                    return response()->json(['message' => 'Error Updating', 'services' => $service2Update, 'status' => 501], 501);
             }
         }
     }

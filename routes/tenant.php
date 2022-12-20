@@ -67,6 +67,10 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::post('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'store']);
     Route::put('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'update']);
     Route::delete('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'destroy']);
+
+    Route::post('/review', [App\Http\Controllers\Tenants\ReviewsController::class, 'store'])->withoutMiddleware(['auth:api']);
+    Route::put('/review/{id}', [App\Http\Controllers\Tenants\ReviewsController::class, 'update']);
+    Route::delete('/review/{id}', [App\Http\Controllers\Tenants\ReviewsController::class, 'destroy']);
     
     Route::post('/imagedel', [App\Http\Controllers\Tenants\GeneralController::class, 'deleteImage']);
     
@@ -74,6 +78,7 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::post('/savelogin', [App\Http\Controllers\TenantController::class, 'saveAccessToken'])->withoutMiddleware(['auth:api']);
     
     Route::post('/schedule', [App\Http\Controllers\Tenants\MessagesController::class, 'store'])->withoutMiddleware(['auth:api']);
+    Route::get('/review', [App\Http\Controllers\Tenants\ReviewsController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/achievement', [App\Http\Controllers\Tenants\AchievementController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/bio', [App\Http\Controllers\Tenants\BioController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'index'])->withoutMiddleware(['auth:api']);

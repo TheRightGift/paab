@@ -128,7 +128,7 @@
 
                     <p class="genTxt">
                         Readers only looks at vital info about you, so make it
-                        catchy. Not more than (614) characters.
+                        catchy. Not more than (614) and not less than (600) characters.
                     </p>
 
                     <div class="input-field">
@@ -213,24 +213,29 @@
                     <div
                         class="file-field input-field"
                         id="genUploadFavIconDiv"
+                        v-if="bio.photo == null" 
                     >
                         <input
                             type="file"
                             @change="photoUpload"
-                            accept="image/*"
+                            accept=".jpg, .png"
                         />
                         <div class="file-path-wrapper">
                             <input
                                 class="file-path validate"
                                 type="text"
                                 id="genInput1"
+                                placeholder="Image must be .jpg/.png and not greater than 1MB(500x500)"
                             />
                             <i class="material-icons" id="genUploadFavIcon"
                                 >file_upload</i
                             >
                         </div>
                     </div>
-
+                    <div v-else class="flex no-space-between">
+                        <img width="100" height="100" class="responsive-img" :src="typeof(bio.photo) == 'string' ? 'tenancy/assets/'+bio.photo : uploaded" >
+                        <a class="waves-effect waves-light btn-small btn red" @click="deleteImg">Change</a>
+                    </div>
                     <!-- <div>
                                 <button type="button" class="btn" id="genModalBtn">
                                     Upload
@@ -304,8 +309,8 @@
                     <div
                         class="file-field input-field"
                         id="genUploadFavIconDiv"
+                        v-if="bio.CV == null"
                         >
-                        <!-- v-if="bio.CV == null" -->
                         <input
                             type="file"
                             @change="CVUpload"
@@ -316,17 +321,18 @@
                                 class="file-path validate"
                                 type="text"
                                 id="genInput1"
+                                placeholder="File must not be more than 2MB"
                             />
                             <i class="material-icons" id="genUploadFavIcon"
                                 >file_upload</i
                             >
                         </div>
                     </div>
-                    <!-- <div v-else class="flex no-space-between">
-                        <p>{{}}</p>
-                        <img width="100" height="100" class="responsive-img" :src="typeof(general.favicon) == 'string' ? 'tenancy/assets/'+general.favicon : uploaded" >
-                        <a class="waves-effect waves-light btn-small btn red" @click="deleteImg">Change</a>
-                    </div> -->
+                    <div v-else class="flex no-space-between">
+                        <p>{{ uploadedfile != null ? uploadedfile : bio.CV  }}</p>
+                        <a class="waves-effect waves-light btn-small btn red" @click="deleteCV">Change</a>
+                    </div>
+                    
 
                     <div>
                         <button
@@ -334,7 +340,7 @@
                             class="btn"
                             id="genModalBtn"
                             @click.prevent="bioSave"
-                            v-if="Object.entries(saved).length == 0"
+                            v-if="saved == null"
                         >
                             Save
                         </button>
@@ -381,16 +387,28 @@ export default {
                 lastname: this.user.lastname,
                 CV: null,
             },
+            uploaded: null,
+            uploadedfile: null,
         }
     },
     methods: {
+        deleteImg() {
+            this.bio.oldPhoto = this.bio.photo;
+            this.bio.photo = null;
+        },
+        deleteCV() {
+            this.bio.oldCV= this.bio.CV;
+            this.bio.CV = null;
+        },
         photoUpload(e) {
             if (!e.target.files.length) return;
             this.bio.photo = e.target.files[0];
+            this.uploaded = URL.createObjectURL(e.target.files[0]);
         },
         CVUpload(e) {
             if (!e.target.files.length) return;
             this.bio.CV = e.target.files[0];
+            this.uploadedfile = e.target.files[0].name;
         },
         bioGoBackBtn(){
             this.$emit('bioGoBackBtn');
@@ -418,7 +436,45 @@ export default {
         },
         bioSave() {
             this.$emit('bioSave', this.bio);
-        }
+        },
+        bioUpdate() {
+            let data = {
+                _method: "PUT",
+            };
+            if (this.bio.oldPhoto && this.bio.oldCV) {
+                data = { ...data, ...this.bio };
+            }
+            if (this.bio.oldPhoto) {
+                let toSend = {
+                    firstname: this.bio.firstname,
+                    lastname: this.bio.lastname,
+                    about: this.bio.about,
+                    photo: this.bio.photo,
+                    id: this.bio.id,
+                }
+                data = { ...data, ...toSend };
+            }
+            if (this.bio.oldCV) {
+                let toSend = {
+                    firstname: this.bio.firstname,
+                    lastname: this.bio.lastname,
+                    about: this.bio.about,
+                    CV: this.bio.CV,
+                    id: this.bio.id,
+                }
+                data = { ...data, ...toSend };
+            }
+             else {
+                let detail = {
+                    firstname: this.bio.firstname,
+                    lastname: this.bio.lastname,
+                    about: this.bio.about,
+                    id: this.bio.id,
+                }
+                data = { ...data, ...detail };
+            }
+            this.$emit("bioUpdate", data);
+        },
     },
     watch: {
         saved(newVal, oldVal){

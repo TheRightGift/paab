@@ -151,16 +151,16 @@ class TenantController extends Controller
         else {
             $input = $inputs->validated();
             $tenantUser = new TenantUser();
-            $tenant = $tenantUser->where('user_id', $input['user_id'])->first();
+            $tenant = $tenantUser->where('user_id', $input['user_id'])->latest()->first();
             if ($tenant != null) {
-                $tenantUser->user_id = $input['user_id'];
-                $tenantUser->accessToken = $input['accessToken'];
-                $tenantUser->save();
-                if ($tenantUser == true) {
+                $tenant->user_id = $input['user_id'];
+                $tenant->accessToken = $input['accessToken'];
+                $tenant->save();
+                if ($tenant == true) {
                     return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                 }
             }
-            else {
+            elseif ($tenant == null) {
                 $tenantUser->user_id = $input['user_id'];
                 $tenantUser->accessToken = $input['accessToken'];
                 $tenantUser->save();

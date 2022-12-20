@@ -1,18 +1,24 @@
 <template>
     <div v-show="loggedIn">
-        <SideNavComponent />
-        <TabForm
-            :user="userDets"
-            :bio="bio"
-            :services="services"
-            :achievement="achievement"
-            :contact="contact"
-            :social="social"
-            :general="general"
-        />
+        <div class="loader" v-if="initialCheck"></div>
+        <div v-show="!initialCheck">
+            <SideNavComponent />
+            <TabForm
+                :user="userDets"
+                :bio="bio"
+                :services="services"
+                :achievement="achievement"
+                :contact="contact"
+                :social="social"
+                :general="general"
+            />
+        </div>
     </div>
-    <div v-show="!loggedIn">
-        <TenantLoginComponent @loginUser="login($event)"/>
+    <div v-if="!loggedIn">
+        <div v-if="!initialCheck">
+            <TenantLoginComponent @loginUser="login($event)"/>
+        </div>
+        <div class="loader" v-else></div>
     </div>
 </template>
 <script>
@@ -44,11 +50,11 @@
                 contact: {},
                 loading: false,
                 loggedIn: false,
+                initialCheck: false,
             };
         },
-        mounted() {
+        created() {
             this.checkAuth();
-            this.getLocations();
         },
         methods: {
             getLocations() {
@@ -60,8 +66,8 @@
                 const requestSocial = axios.get(social);
                 const requestGeneral = axios.get(general);
                 axios
-                    .all([
-                        requestBio,
+                .all([
+                    requestBio,
                         requestService,
                         requestAchievement,
                         requestContact,
@@ -90,21 +96,26 @@
                     });
             },
             checkAuth() {
+                this.initialCheck = true;
                 const _token = ('; '+document.cookie).split(`; _token=`).pop().split(';')[0];
-                console.log(_token)
                 if (_token == "") {
+                    this.initialCheck = false;
                     this.loggedIn = false;
                 }
                 else {
                     axios.post('/api/verifyToken', {accessToken: _token}).then(res => {
                         if (res.data.status == 401) {
                             this.loggedIn = false;
+                            this.initialCheck = false;
                         }
                         else if (res.data.status == 200) {
+                            this.getLocations();
+                            this.initialCheck = false;
                             this.loggedIn = true;
                         }
                     }).catch(err => {
                         console.log(err);
+                        this.initialCheck = false;
                     })
                 }
             },
@@ -116,17 +127,12 @@
                     });
                 }else {
                     axios.post('http://localhost:8000/api/tenant/auth/login', e).then(res => {
-                        // console.log(res)
-                        // Send accessToken to the tenant.user to update
                         this.setCookie(
                             "_token",
                             res.data.access_token,
                             1
                         );
                         this.saveAccessToken(res.data.access_token, res.data.user.id);
-                        // Store as cookie variable for accesstoken
-                        // Get accessToken from cookie and verify every operation
-                        // Verify the
                     }).catch(err => {
                         console.log(err);
                     })

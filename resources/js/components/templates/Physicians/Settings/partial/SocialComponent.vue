@@ -13,13 +13,14 @@
                     <form @submit.prevent="saveSocial">
                         <div class="input-field">
                             <input
-                                type="url"
+                                type="text"
                                 id="socialInput"
-                                v-model="social.instagram"
+                                v-model="social.linkedin"
+                                placeholder="Enter your linkedin company profile name eg. DrFaucci"
                             />
                             <i
                                 class="
-                                    fa-brands fa-square-instagram
+                                    fa-brands fa-linkedin
                                     editSocialMedIcons
                                 "
                             ></i>
@@ -27,9 +28,10 @@
 
                         <div class="input-field">
                             <input
-                                type="url"
+                                type="text"
                                 id="socialInput1"
                                 v-model="social.twitter"
+                                placeholder="Enter your twitter username eg @Drpeters"
                             />
                             <i
                                 class="fa-brands fa-twitter editSocialMedIcons"
@@ -38,9 +40,10 @@
 
                         <div class="input-field">
                             <input
-                                type="url"
+                                type="text"
                                 id="socialInput2"
                                 v-model="social.facebook"
+                                placeholder="Enter your page name eg: XiaomiGlobal"
                             />
                             <i
                                 class="fa-brands fa-facebook editSocialMedIcons"
@@ -48,10 +51,10 @@
                         </div>
 
                         <div>
-                            <button type="submit" class="btn" id="genModalBtn" v-if="Object.entries(saved).length == 0">
+                            <button type="submit" class="btn" id="genModalBtn" v-if="saved == null">
                                 save
                             </button>
-                            <button type="submit" class="btn" id="genModalBtn" v-else>
+                            <button type="submit" class="btn" id="genModalBtn" v-else @click="social.update = 1">
                                 update
                             </button>
                         </div>
@@ -85,9 +88,10 @@
         data() {
             return {
                 social: {
-                    facebook: "https://",
-                    twitter: "https://",
-                    instagram: "https://",
+                    facebook: "",
+                    twitter: "",
+                    linkedin: "",
+                    update: 0,
                 },
             }
         },
@@ -106,8 +110,9 @@
             saved(newVal, oldVal){
                 if (newVal != null) {
                     this.social.facebook = newVal.facebook;
-                    this.social.instagram = newVal.instagram;
+                    this.social.linkedin = newVal.linkedin;
                     this.social.twitter = newVal.twitter;
+                    this.social.id = newVal.id;
                 }
             }
         },

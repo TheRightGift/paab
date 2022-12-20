@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tenants;
 
+use App\Http\Controllers\Controller;
 use App\Models\Tenants\Reviews;
 use Illuminate\Http\Request;
 use Validator;
@@ -15,7 +16,7 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        $reviews = Reviews::get();
+        $reviews = Reviews::orderBy('created_at', 'DESC')->paginate(10);
         return response()->json(['message' => 'Success', 'reviews' => $reviews]);
     }
 
@@ -28,25 +29,26 @@ class ReviewsController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'client' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
             'comment' => 'required',
-            'imagename' => 'nullable|image|mimes:jpg,png|max:100',
+            'imageURL' => 'nullable|image|mimes:jpg,png|max:100',
         ]);
 
         if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 501);
+            return response($inputs->errors()->all(), 400);
         } else {
-            $input = $request->validated();
-            if($request->hasFile('imagename')){
-                $image = $request->file('imagename');
-                $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/img/'), $name);
-                $input['imagename'] = '/media/img/'.$name;
+            $input = $inputs->validated();
+            if($request->hasFile('imageURL')){
+                $imageURL = $request->file('imageURL');
+                $ext = $request->file('imageURL')->getClientOriginalExtension();
+                $stored = \Storage::disk('public')->putFileAs('img/reviews', $imageURL, $input['firstname'].$input['lastname'].'.'.$ext);
+                
+                $input['imageURL'] = $stored;
             } 
             $review = Reviews::create($input);
             if ($review == true) {
-                return response()->json(['message' => 'Success', 'review' => $review], 200);
+                return response()->json(['message' => 'Success', 'review' => $review], 201);
             }
             else {
                 return response()->json(['message' => 'Failed', 'review' => $review], 501);
@@ -73,12 +75,12 @@ class ReviewsController extends Controller
             return response($inputs->errors()->all(), 501);
         } else {
             $input = $request->validated();
-            if($request->hasFile('imagename')){
-                $image = $request->file('imagename');
+            if($request->hasFile('imageURL')){
+                $image = $request->file('imageURL');
                 $name = $image->getClientOriginalName();
                 $image->file(storage_path('/media/img/' . $name));
                 // $image->move(public_path('/media/img/'), $name);
-                $input['imagename'] = '/media/img/'.$name;
+                $input['imageURL'] = '/media/img/'.$name;
             } 
             $reviews = new Reviews();
             $reviews->find($review);

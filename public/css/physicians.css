@@ -411,11 +411,12 @@
     letter-spacing: 0.1px;
     color: rgba(255, 255, 255, 0.7);
 }
-#Template1 #testiProImg {
+#Template1 .testiProImg {
     border-radius: 50%;
     position: relative;
     left: 10vw;
     top: 2.5vh;
+    height: 57px;
 }
 #Template1 #testiSecondImgRowOneDiv {
     position: relative;
@@ -941,11 +942,12 @@
     letter-spacing: 0.1px;
     color: rgba(255, 255, 255, 0.7);
 }
-#Template2 #testiProImg {
+#Template2 .testiProImg {
     border-radius: 50%;
     position: relative;
     left: 10vw;
     top: 2.5vh;
+    height: 57px;
 }
 #Template2 #testiSecondImgRowOneDiv {
     position: relative;
@@ -1054,6 +1056,404 @@
     right: 0;
     bottom: 40vh;
 }
+.tempReviewOptDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    padding: 5px 15px;
+    height: 44px;
+    box-shadow: #938F99;
+}
+.tempOneReviewIcon {
+    color: #6750A4;
+    /* margin: 2vh 0 0 0.7vw; */
+    cursor: pointer;
+}
+.tempOneReviewIcon1 {
+    color: #6750A4;
+    /* margin: 8vh 0 0 0.7vw; */
+    cursor: pointer;
+}
+.tempOneAddTestiIcon {
+    font-size: 4rem;
+    font-weight: 900;
+    margin: 1vh 0 0 1.5vw;
+}
+#tempOneAddTestiLname, #tempOneAddTestiFname {
+    border: 1px solid #6750A4;
+    border-radius: 10px;
+    padding: 0 1vw;
+}
+#tempOneAddTestiReview {
+    border: 1px solid #6750A4;
+    border-radius: 10px;
+    padding: 1vh 1vw;
+    width: 39vw;
+    height: 15vh;
+}
+#tempOneTestiSubBtn {
+    /* position: relative;
+    left: 1.6vw; */
+    background: #6750A4;
+    border-radius: 10px;
+    text-transform: capitalize;
+    font-family: 'Montserrat', sans-serif;
+}
+.tempOneModal2Div {
+    /* width: 27vw; */
+    border-radius: 8px;
+    padding: 1.1vh 1vw;
+}
+.tempOneModal2Txt {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+}
+#tempOneModal2Btn {
+    background: #6750A4;
+    border-radius: 10px;
+    text-transform: lowercase;
+}
+.tempOneModal2BtnDiv {
+    display: flex;
+    justify-content: center;
+}
+.tempOneRevDiv {
+    width: 90%;
+    margin: 0 auto;
+    padding: 7vh 0 0 0;
+}
+.tempOneRevTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #000000;
+    margin: auto;
+}
+.tempOneRevInnerDiv {
+    display: flex;
+    margin-top: 13vh;
+}
+.tempOneRevTime {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    color: rgba(0, 0, 0, 0.7);
+    margin-top: 5vh;
+}
+.tempOneRevLoadMore {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #000000;
+}
+.tempOneRevLoadMoreDiv {
+    margin-top: 14vh;
+    margin-bottom: 10vh;
+}
 
 
 /******************************************** Template1 ends here ********************************************/
+.modal-trigger {
+    text-decoration: none;
+    color: #000000;
+}
+
+.modal-trigger:hover {
+    color: #7746FF;
+    text-decoration: underline;
+}
+input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+}
+input[type="file"]::before {
+    content: url("/media/img/pen.png");
+    display: inline-block;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+}
+input[type="file"]:hover::before {
+    border-color: black;
+}
+input[type="file"]:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.min-height-40 {
+    min-height: 40vh !important;
+}
+
+/* MEDIA QUERY STARTS HERE */
+/* Media Query on Medium Device */
+@media screen and (max-width: 992px) and (min-width: 640px) {
+    .physiContainerDiv {
+        width: 84.5%;
+        margin: auto;
+        padding-top: 15vh;
+    }
+    .physiRightImgDiv {
+        background: #6750A4;
+        box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        transform: rotate(-3.7deg);
+        width: 350px;
+        height: 370px;
+        position: absolute;
+        right: 8vw;
+    }
+    #tempPublishBtn {
+        /* width: 15vw;
+        height: 5vh; */
+        background-color: #7746FF;
+        color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 20px;
+        padding: 1vh 4.8vw;
+        border-radius: 6px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        text-transform: uppercase;
+        margin-bottom: 3vh;
+    }
+    .temp_mg_bm {
+        margin-bottom: 6vh;
+    }
+    #physiTempContactBtn {
+        border-radius: 6px;
+        width: 160px;
+        height: 40px;
+        margin-top: 12px;
+        text-align: center;
+        line-height: 42px;
+        font-weight: 600;
+        font-size: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        background: #FFFFFF;
+        color: #6750A4;
+        border: none;
+        margin-left: 2vw;
+    }
+    #physiTempNavLinks {
+        font-weight: 600;
+        font-size: 1.1rem;
+        font-family: 'Montserrat', sans-serif;
+        border-left: none;
+        padding: 0;
+        margin-right: 0vw;
+        margin-left: 2vw;
+        color: #FFFFFF;
+        padding-bottom: 3vh;
+    }
+    .sideNavIcon {
+        color: #6750A4;
+    }
+    #feedsCardBtn {
+        background: transparent;
+        box-shadow: none;
+        border: 1px solid rgb(126, 125, 125);
+        border-radius: 100px;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875rem;
+        line-height: 20px;
+        letter-spacing: 0.1px;
+        position: relative;
+        left: 32vw;
+        text-transform: capitalize;
+        margin-top: 3vh;
+    }
+        
+}
+
+/* Media Query on small device */
+@media screen and (max-width: 640px) {
+    .physiRightImgDiv {
+        background: #6750A4;
+        box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        transform: rotate(-3.7deg);
+        width: 350px;
+        height: 370px;
+        position: absolute;
+        top: 86vh;
+        right: 10vw;
+    }
+    #physiRightImg {
+        position: absolute;
+        left: 33px;
+        top: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
+        transform: rotate(1.5deg);
+        width: 95%;
+    }
+    .physiContainerDiv {
+        width: 84.5%;
+        margin: auto;
+        padding-top: 9vh;
+    }
+    .servicesMainTitle {
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 20px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.1px;
+        color: #000000;
+        margin: 77vh 0 0 0;
+    }
+    .physiTempName {
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2.5rem;
+        line-height: 35px;
+        letter-spacing: 0.1px;
+        color: #6750A4;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+    }
+    .physiExpContainerDiv,
+    .feedsContainDiv {
+        width: 99%;
+        margin: auto;
+    }
+    .expLeftBarDiv {
+        background: #6750A4;
+        border-radius: 10px;
+        padding: 9vh 1.5vw 2vh 1.5vw;
+        margin-bottom: 4vh;
+    }
+    .feedsCard {
+        background: #6750A4;
+        border: 1px solid #938F99;
+        border-radius: 12px;
+        padding: 2vh 0vw;
+        margin-bottom: 4vh;
+    }
+    .facebookFeedsIcon {
+        margin: 1vh 0 5vh 0;
+    }
+    .feedsMainTxt {
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        font-weight: lighter;
+        font-size: 1.6rem;
+        line-height: 44px;
+        color: #6750A4;
+        text-align: center;
+        margin: 0 0 1vh 0;
+    }
+    .contactContainDiv {
+        width: 99%;
+        margin: auto;
+    }
+    #tempPublishBtn {
+        /* width: 15vw;
+        height: 5vh; */
+        background-color: #7746FF;
+        color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 20px;
+        padding: 1vh 7.4vw;
+        border-radius: 6px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        text-transform: uppercase;
+        margin-bottom: 3vh;
+    }
+    #feedsCardBtn {
+        background: transparent;
+        box-shadow: none;
+        border: 1px solid rgb(126, 125, 125);
+        border-radius: 100px;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875rem;
+        line-height: 20px;
+        letter-spacing: 0.1px;
+        position: relative;
+        left: 75vw;
+        text-transform: capitalize;
+        margin-top: 3vh;
+    }
+    #feedsCardIcon {
+        color: #CAC4D0;
+        position: relative;
+        right: 5vw;
+    }
+    .testiMapDiv:first-child {
+        background: #6750A4;
+        box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
+        padding: 1vh 2vw;
+        margin-bottom: 9vh;
+    }
+    .temp_mg_bm {
+        margin-bottom: 6vh;
+    }
+    #physiTempContactBtn {
+        border-radius: 6px;
+        width: 160px;
+        height: 40px;
+        margin-top: 12px;
+        text-align: center;
+        line-height: 42px;
+        font-weight: 600;
+        font-size: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        background: #FFFFFF;
+        color: #6750A4;
+        border: none;
+        margin-left: 2vw;
+    }
+    #physiTempNavLinks {
+        font-weight: 600;
+        font-size: 1.1rem;
+        font-family: 'Montserrat', sans-serif;
+        border-left: none;
+        padding: 0;
+        margin-right: 0vw;
+        margin-left: 2vw;
+        color: #FFFFFF;
+        padding-bottom: 3vh;
+    }
+    .sideNavIcon {
+        color: #6750A4;
+    }
+}
