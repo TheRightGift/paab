@@ -116,6 +116,9 @@ body {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+#feeds {
+    background-color: var(--primary);
+}
 /* HOME */
 .navbar {
     position: fixed;
