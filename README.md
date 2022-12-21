@@ -18,22 +18,22 @@ Note to self: As a result of <code>FK</code> - foreign key the <code>cities tabl
 - [x] Sync Profession and Template Model for Central DB and Tenant DB.
 - [ ] Dev Client Dashboard endpoints.
 - [ ] Rem: Setup Mailgun account for PaaB (production)
-- [ ] Authenticate tenant on redirect to tenant settings
+- [x] Authenticate tenant on redirect to tenant settings
 - [ ] Template: Upload template thumbnail (resitrict image dimensions to 512px(W) by 345px(H))
-- [ ] Template: Get thumbnail by professionId
-- [ ] Template: Get single template
-- [ ] Tenancy: Attach Template to tenancy
-- [ ] Tenancy: Insert and update data for webiste
-- [ ] Tenancy: CHange Template for website
+- [x] Template: Get thumbnail by professionId
+- [x] Template: Get single template
+- [x] Tenancy: Attach Template to tenancy
+- [x] Tenancy: Insert and update data for webiste
+- [x] Tenancy: CHange Template for website
 - [ ] ...
 
 ### Front End
 - [ ] dev mobile view for all Auth
 - [ ] dev client dashboard components
-- [ ] dev make nav a component
-- [ ] Template: Display all templates
-- [ ] Template: Display templates by professionId
-- [ ] Template: Preview single template
-- [ ] Website: User attach Template to website
-- [ ] Website: Edit default data for website
+- [x] dev make nav a component
+- [x] Template: Display all templates
+- [x] Template: Display templates by professionId
+- [x] Template: Preview single template
+- [x] Website: User attach Template to website
+- [x] Website: Edit default data for website
 - [ ] ...
