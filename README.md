@@ -6,6 +6,8 @@ Please run the following
 <p>
     <code>php artisan db:seed</code> <br/> 
     <code>php artisan migrate --seed --seeder=TitleSeeder</code>
+    <code>php artisan passport:install</code>
+    <code>php artisan serve</code>
 </p>
 Note to self: As a result of <code>FK</code> - foreign key the <code>cities table</code> is the parent key with a reference at <code>users table</code><br/>
 
