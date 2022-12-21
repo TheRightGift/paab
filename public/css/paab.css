@@ -1718,10 +1718,13 @@ a.active {
 #webAddContainer.primary:hover {
     border: thin solid var(--primary);
     cursor: pointer;
-    padding: 3.12vh 0;
+    padding: 3.1vh 0;
 }
 .material-icons.webAddIcon {
     font-size: 3.5rem;
+}
+.material-icons.webAddIcon2 {
+    font-size: 3.35rem;
 }
 .webWhiteDiv {
     height: 196px;

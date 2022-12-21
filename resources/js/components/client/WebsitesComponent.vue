@@ -26,7 +26,7 @@
                             <p>Create Website</p>
                         </div>
                         <div class="col s3 primaryBorder" id="webAddContainer" v-else>
-                            <i class="material-icons webAddIcon">linear_scale</i>
+                            <i class="material-icons webAddIcon2">linear_scale</i>
                             <p>Creating Website...</p>
                         </div>
                     
