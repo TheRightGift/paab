@@ -22130,7 +22130,8 @@ var key = "base64:BK1oUabotVs/3l4EjQGDFHwD+7blqtZOzaZsRGQRK7g=";
   data: function data() {
     return {
       userInputedOTP: "",
-      key: key.substring(7)
+      key: key.substring(7),
+      disabled: 0
     };
   },
   props: {
@@ -22148,6 +22149,7 @@ var key = "base64:BK1oUabotVs/3l4EjQGDFHwD+7blqtZOzaZsRGQRK7g=";
           classes: "errorNotifier"
         });
       } else {
+        this.disabled = 1;
         if (this.type === 'register') {
           if (this.decryptOTP(this.otp) === this.userInputedOTP) {
             // Pass 200 to parent
@@ -26341,6 +26343,12 @@ var _hoisted_6 = {
   autocomplete: "off"
 };
 var _hoisted_7 = ["disabled"];
+var _hoisted_8 = ["disabled"];
+var _hoisted_9 = ["disabled"];
+var _hoisted_10 = ["disabled"];
+var _hoisted_11 = ["disabled"];
+var _hoisted_12 = ["disabled"];
+var _hoisted_13 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
@@ -26350,8 +26358,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "input-field col s1 otpDigits",
     maxlength: "1",
     "data-next": "digit-2",
-    autofocus: ""
-  }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    autofocus: "",
+    disabled: $data.disabled == 1
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     onKeyup: _cache[1] || (_cache[1] = function ($event) {
       return $options.processOtpFields($event, $event.target.value, 1);
@@ -26359,8 +26368,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "input-field col s1 otpDigits",
     maxlength: "1",
     "data-next": "digit-3",
-    "data-previous": "digit-1"
-  }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "data-previous": "digit-1",
+    disabled: $data.disabled == 1
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_8), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     onKeyup: _cache[2] || (_cache[2] = function ($event) {
       return $options.processOtpFields($event, $event.target.value, 2);
@@ -26368,8 +26378,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "input-field col s1 otpDigits",
     maxlength: "1",
     "data-next": "digit-4",
-    "data-previous": "digit-2"
-  }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "data-previous": "digit-2",
+    disabled: $data.disabled == 1
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_9), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     onKeyup: _cache[3] || (_cache[3] = function ($event) {
       return $options.processOtpFields($event, $event.target.value, 3);
@@ -26377,8 +26388,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "input-field col s1 otpDigits",
     maxlength: "1",
     "data-next": "digit-5",
-    "data-previous": "digit-3"
-  }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "data-previous": "digit-3",
+    disabled: $data.disabled == 1
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     onKeyup: _cache[4] || (_cache[4] = function ($event) {
       return $options.processOtpFields($event, $event.target.value, 4);
@@ -26386,23 +26398,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "input-field col s1 otpDigits",
     maxlength: "1",
     "data-next": "digit-6",
-    "data-previous": "digit-4"
-  }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "data-previous": "digit-4",
+    disabled: $data.disabled == 1
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_11), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     onKeyup: _cache[5] || (_cache[5] = function ($event) {
       return $options.processOtpFields($event, $event.target.value, 5);
     }),
     "class": "input-field col s1 otpDigits",
     maxlength: "1",
-    "data-previous": "digit-3"
-  }, null, 32 /* HYDRATE_EVENTS */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "data-previous": "digit-3",
+    disabled: $data.disabled == 1
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_12)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn col s12",
     id: "otpEmailBtn",
     onClick: _cache[6] || (_cache[6] = function ($event) {
       return $options.confirmOTP();
     }),
     disabled: $options.isDisabled
-  }, " VERIFY ", 8 /* PROPS */, _hoisted_7)])]);
+  }, " VERIFY ", 8 /* PROPS */, _hoisted_13)])]);
 }
 
 /***/ }),
