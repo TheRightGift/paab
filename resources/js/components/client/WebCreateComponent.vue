@@ -47,28 +47,6 @@
                     </p>
                 </div>
             </div>
-            
-
-            <!--div class="row clientCreateWebsiteView" id="clientCreatePortInputRowDiv">
-                <div class="col l6">
-                    <input
-                        type="text"
-                        placeholder="Website title"
-                        id="clientCreatePortInput"
-                        v-model="web.name"
-                    />
-                </div>
-
-                <div class="col l6">
-                    <input
-                        type="text"
-                        placeholder="Description"
-                        id="clientCreatePortInput1"
-                        v-model="web.description"
-                    />
-                </div>
-            </div-->
-
             <div class="row clientCreateWebsiteView gutterTopBottom"  v-if="webCreateViewState === 2">
                 <TemplatePreviewComponent :selectedTemplate="web.template_id" @tempSel="processTemp($event)" :professionId="userProfessionId" :type="'create'"/>
             </div>
@@ -119,7 +97,6 @@ export default {
                 name: "",
                 description: "",
                 template_id: 0,
-                
             },
         }
     },

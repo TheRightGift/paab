@@ -202,7 +202,6 @@
         },
         watch: {
             saved(newVal, oldVal){
-                console.log(newVal);
                 if (newVal != null) {
                     this.general.title = newVal.title;
                     this.general.favicon = newVal.favicon;
