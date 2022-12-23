@@ -2,7 +2,7 @@
     <div v-show="loggedIn">
         <div class="loader" v-if="initialCheck"></div>
         <div v-show="!initialCheck">
-            <SideNavComponent />
+            <SideNavComponent @openPromotionals="openPromotionals"/>
             <TabForm
                 :user="userDets"
                 :bio="bio"
@@ -11,7 +11,9 @@
                 :contact="contact"
                 :social="social"
                 :general="general"
+                v-show="!promoView"
             />
+            <PromotionalsComponent @close="promoView = false" v-show="promoView"/>
         </div>
     </div>
     <div v-if="!loggedIn">
@@ -26,6 +28,7 @@
     import EditWebsiteModalComponent from "./partial/GeneralComponent.vue";
     import TabForm from "./partial/TabFormComponent.vue";
     import TenantLoginComponent from "./TenantLoginComponent.vue";
+import PromotionalsComponent from "./partial/PromotionalsComponent.vue";
 
     let bio = "/api/bio";
     let service = "/api/service";
@@ -35,7 +38,7 @@
     let general = "/api/general";
 
     export default {
-        components: { EditWebsiteModalComponent, TabForm, SideNavComponent, TenantLoginComponent },
+        components: { EditWebsiteModalComponent, TabForm, SideNavComponent, TenantLoginComponent, PromotionalsComponent },
         props: {
             user: String,
         },
@@ -51,6 +54,7 @@
                 loading: false,
                 loggedIn: false,
                 initialCheck: false,
+                promoView: false,
             };
         },
         created() {
@@ -155,6 +159,9 @@
                 let expires = "expires=" + d.toUTCString();
                 document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
             },
+            openPromotionals() {
+                this.promoView = true;
+            }
         },
         setup() {},
     };

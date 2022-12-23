@@ -3,20 +3,43 @@
         <div class="editGenModal" v-show="genModal">
             <div class="editInnerGenModal">
                 <div class="genTitleDiv">
-                    <i
-                        class="material-icons"
-                        id="genTitleCheck"
-                        v-if="general.title !== ''"
-                        >check</i
-                    >
-                    <p class="genTitle">Title</p>
-                    <i
-                        class="material-icons"
-                        id="genTitleCheck"
-                        v-if="general.favicon != null"
-                        >check</i
-                    >
-                    <p class="genTitle">Favicon</p>
+                    <p class="genTitle cursor" @click="genGoBackBtn()">
+                        <i
+                            class="material-icons"
+                            id="genTitleCheck"
+                            v-if="general.title !== ''"
+                            >check</i
+                        >
+                        <i
+                            class="material-icons genTitleClear"
+                            v-if="
+                                (general.title == '' &&
+                                    general.favicon !== null) ||
+                                general.title == ''
+                            "
+                            >clear</i
+                        >
+                        Title
+                    </p>
+
+                    <p class="genTitle cursor activeTab" @click="genNextBtn">
+                        <i
+                            class="material-icons"
+                            id="genTitleCheck"
+                            v-if="general.favicon !== null"
+                            >check</i
+                        >
+                        <i
+                            class="material-icons genTitleClear"
+                            v-if="
+                                (general.title != '' &&
+                                    general.favicon == null) ||
+                                general.favicon == null
+                            "
+                            >clear</i
+                        >
+                        Favicon
+                    </p>
                 </div>
 
                 <div>
@@ -36,12 +59,6 @@
                         />
                     </div>
 
-                    <!-- <div>
-                        <button type="button" class="btn" id="genModalBtn">
-                            save
-                        </button>
-                    </div> -->
-
                     <div class="genBottomBtnDiv">
                         <button
                             type="button"
@@ -60,21 +77,43 @@
         <div class="editGenModal" v-show="genModal1">
             <div class="editInnerGenModal">
                 <div class="genTitleDiv">
-                    <i
-                        class="material-icons"
-                        id="genTitleCheck"
-                        v-if="general.title !== ''"
-                        >check</i
-                    >
-                    <p class="genTitle">Title</p>
+                    <p class="genTitle cursor" @click="genGoBackBtn()">
+                        <i
+                            class="material-icons"
+                            id="genTitleCheck"
+                            v-if="general.title !== ''"
+                            >check</i
+                        >
+                        <i
+                            class="material-icons genTitleClear"
+                            v-if="
+                                (general.title == '' &&
+                                    general.favicon !== null) ||
+                                general.title == ''
+                            "
+                            >clear</i
+                        >
+                        Title
+                    </p>
 
-                    <i
-                        class="material-icons"
-                        id="genTitleCheck"
-                        v-if="general.favicon != null"
-                        >check</i
-                    >
-                    <p class="genTitle">Favicon</p>
+                    <p class="genTitle cursor activeTab" @click="genNextBtn">
+                        <i
+                            class="material-icons"
+                            id="genTitleCheck"
+                            v-if="general.favicon !== null"
+                            >check</i
+                        >
+                        <i
+                            class="material-icons genTitleClear"
+                            v-if="
+                                (general.title != '' &&
+                                    general.favicon == null) ||
+                                general.favicon == null
+                            "
+                            >clear</i
+                        >
+                        Favicon
+                    </p>
                 </div>
 
                 <div>
@@ -90,12 +129,7 @@
                         id="genUploadFavIconDiv"
                         v-if="general.favicon == null"
                     >
-                        <input
-                            type="file"
-                            @change="favUpload"
-                            accept=".png"
-                            
-                        />
+                        <input type="file" @change="favUpload" accept=".png" />
                         <div class="file-path-wrapper">
                             <input
                                 class="file-path validate"
@@ -109,7 +143,16 @@
                         </div>
                     </div>
                     <div v-else class="flex no-space-between mb-2">
-                        <img width="100" height="100" class="responsive-img" :src="typeof(general.favicon) == 'string' ? 'tenancy/assets/'+general.favicon : uploaded" >
+                        <img
+                            width="100"
+                            height="100"
+                            class="responsive-img"
+                            :src="
+                                typeof general.favicon == 'string'
+                                    ? 'tenancy/assets/' + general.favicon
+                                    : uploaded
+                            "
+                        />
                         <a
                             class="waves-effect waves-light btn-small btn red"
                             @click="deleteImg"
@@ -124,6 +167,9 @@
                             id="genModalBtn"
                             @click.prevent="generalSave"
                             v-if="saved == null"
+                            :disabled="
+                                general.favicon == null || general.title == ''
+                            "
                         >
                             Save
                         </button>
@@ -133,8 +179,10 @@
                             id="genModalBtn"
                             @click.prevent="generalUpdate"
                             v-else
+                            :disabled="
+                                general.favicon == null || general.title == ''
+                            "
                         >
-                            <!-- :disabled="eval" -->
                             Update
                         </button>
                     </div>
@@ -144,9 +192,14 @@
                             >GO BACK</a
                         >
 
-                        <!-- <button type="button" class="btn right" id="genNextBtn" @click="genNextBtn1()">
+                        <button
+                            type="button"
+                            class="btn right"
+                            id="genNextBtn"
+                            @click="genNextBtn1()"
+                        >
                             NEXT STEP
-                        </button> -->
+                        </button>
                     </div>
                 </div>
             </div>
@@ -162,6 +215,19 @@
                     title: "",
                 },
                 uploaded: null,
+                tabs: [
+                    {
+                        title: "Title",
+                        checked: false,
+                        active: true,
+                    },
+                    {
+                        title: "Favicon",
+                        checked: false,
+                        active: false,
+                    },
+                ],
+                generalErrors: false,
             };
         },
         props: ["genModal", "genModal1", "saved"],
@@ -180,6 +246,12 @@
             },
             genNextBtn() {
                 this.$emit("genNextBtn");
+            },
+            genNextBtn1() {
+                if (this.general.title == "" || this.general.favicon == null) {
+                    this.generalErrors = true;
+                } else this.generalErrors = false;
+                this.$emit("genNextBtn1", this.generalErrors);
             },
             generalSave() {
                 this.$emit("generalSave", this.general);
@@ -201,13 +273,13 @@
             },
         },
         watch: {
-            saved(newVal, oldVal){
+            saved(newVal, oldVal) {
                 if (newVal != null) {
                     this.general.title = newVal.title;
                     this.general.favicon = newVal.favicon;
                     this.general.id = newVal.id;
                 }
-            }
+            },
         },
         computed: {
             eval() {
@@ -266,5 +338,8 @@
     }
     .mb-2 {
         margin-bottom: 2.5rem;
+    }
+    .genTitle:hover {
+        box-shadow: 1px 2px #7746ff;
     }
 </style>

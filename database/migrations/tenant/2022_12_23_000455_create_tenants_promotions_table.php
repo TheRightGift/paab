@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('achievements', function (Blueprint $table) {
+        Schema::create('tenants_promotions', function (Blueprint $table) {
             $table->id();
+            $table->string('promo')->nullable();
             $table->string('banner')->nullable();
-            $table->json('feats');
+            $table->date('expiry')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('achievements');
+        Schema::dropIfExists('tenants_promotions');
     }
 };

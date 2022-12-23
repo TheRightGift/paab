@@ -1,9 +1,11 @@
 <template>
     <div class="row">
-        <div v-if="templates.length > 0">
+        <div v-if="templates.length > 0" class="height">
             <div
                 class="col s12 m6 l4 clientTempPageImgSmDv"
-                :class="selectedTemplate == template.id ? 'clientSelectedTemp' : ''"
+                :class="
+                    selectedTemplate == template.id ? 'clientSelectedTemp' : ''
+                "
                 v-for="template in templates"
                 :key="template.id"
             >
@@ -31,19 +33,19 @@
                         >
 
                         <span v-if="selectedTemplate == template.id">
-                            <a class="right tempPageImgLink" v-if="type == 'create'">Selected</a>
+                            <a class="right tempPageImgLink">Selected</a>
                         </span>
                         <span v-else>
-                            <a
-                                @click="selectTemplate(template)"
-                                class="right"
-                                v-if="type == 'create'"
+                            <a @click="selectTemplate(template)" class="right"
                                 >Select</a
                             >
                         </span>
                     </div>
                 </div>
             </div>
+            <!-- <div>
+                <p class="configWebLoadTxt center">Loading...</p>
+            </div> -->
         </div>
         <div v-else>
             <p class="centered">No template found for your profession</p>
@@ -100,11 +102,16 @@
     .card .card-image {
         border-bottom: thin solid rgba(63, 63, 63, 0.4);
     }
-    .card-image img{
+    .card-image img {
         height: 162px;
         /* width: 245px; */
     }
     .card .card-content {
         padding: 12px 24px;
+    }
+    .height {
+        min-height: 50vh;
+        height: 60vh;
+        overflow: auto;
     }
 </style>

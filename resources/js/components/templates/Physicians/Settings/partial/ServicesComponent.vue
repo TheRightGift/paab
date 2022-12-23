@@ -131,6 +131,7 @@
                 ],
                 update: 0,
                 removed: [],
+                servicesError: false,
             };
         },
         methods: {
@@ -151,7 +152,10 @@
                 this.$emit("servicesGoBackBtn");
             },
             achieveLink() {
-                this.$emit("achieveLink");
+                if (this.services[0].title === '' || this.services[0].description === '') {
+                    this.servicesError = true;
+                } else this.servicesError = false;
+                this.$emit("achieveLink", this.servicesError);
             },
             serviceSave() {
                 this.$emit("serviceSave", {
