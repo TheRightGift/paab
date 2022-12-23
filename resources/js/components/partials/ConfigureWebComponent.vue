@@ -20,7 +20,9 @@
             </div>
 
             <div class="configWebBackBtnDiv">
-                <a href="/client/websites" class="configWebBackBtn">GO BACK</a>
+                <a href="#!" @click="goBack" class="configWebBackBtn"
+                    >GO BACK</a
+                >
             </div>
 
             <div class="row" id="configWebInputDiv">
@@ -32,6 +34,7 @@
                             type="text"
                             placeholder="Domain name"
                             id="configWebInput"
+                            v-model="domainName"
                         />
                     </div>
 
@@ -39,6 +42,8 @@
                         type="button"
                         class="col s1 offset-s1 btn"
                         id="configWebBtn"
+                        @click.prevent="updateDomainTemplate"
+                        :disabled="domainName == domain"
                     >
                         save
                     </button>
@@ -47,50 +52,78 @@
 
             <!-- Client's Templates Section -->
             <div class="row" id="configWebInputDiv">
-                <div id="configWebTempPageRowDiv">
-                    <p class="configWebTitle">Change template</p>
-                    <TemplatePreviewComponent :selectedTemplate="web.template_id" @tempSel="processTemp($event)" :professionId="userProfessionId" :type="'create'"/>
-                    <p class="configWebLoadTxt center">Loading...</p>
-
-                    <div class="configDelDiv">
-                        <p class="configDeTxt">
-                            Do you want to delete website?
-                        </p>
-
-                        <div class="configDelBtnDiv">
-                            <button type="button" class="btn" id="configDelBtn">
-                                Delete Website
-                            </button>
-                        </div>
-                    </div>
+                <p class="configWebTitle">Change template</p>
+                <TemplatePreviewComponent
+                    :selectedTemplate="web.template_id || selectedTemplate"
+                    @tempSel="processTemp($event)"
+                    :professionId="userProfessionId"
+                    :type="'create'"
+                />
+                <div>
+                    <button
+                        type="button"
+                        class="col s1 offset-s1 btn right"
+                        id="configWebBtn"
+                        @click.prevent="updateDomainTemplate"
+                        :disabled="selectedTemplate == web.template_id"
+                    >
+                        <span v-if="!loading">change</span>
+                        <ButtonLoaderComponent v-else/>
+                    </button>
                 </div>
-
-                <InnerFooterComponent />
             </div>
+            <div class="row configDelDiv" id="configWebInputDiv">
+                <p class="configDeTxt">Do you want to delete website?</p>
+
+                <div class="configDelBtnDiv">
+                    <button type="button" class="btn" id="configDelBtn">
+                        Delete Website
+                    </button>
+                    <!-- @click="
+                                toggleDeleteModal
+                            " -->
+                </div>
+            </div>
+
+            <InnerFooterComponent />
         </div>
     </div>
 </template>
 <script>
-import InnerFooterComponent from '../partials/InnerFooterComponent.vue';
-import TemplatePreviewComponent from '../partials/TemplatePreviewComponent.vue';
-export default {
-    components: {InnerFooterComponent, TemplatePreviewComponent},
-    data() {
-        return {
-            web: {
-                name: "",
-                description: "",
-                template_id: 0,
-            },
-        }
-    },
-    props: {
-        userProfessionId: Number,
-    },
-    methods: {
-        processTemp(evt) {
-            this.web.template_id = evt.id;
+    import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
+    import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
+import ButtonLoaderComponent from "./ButtonLoaderComponent.vue";
+    export default {
+        components: { InnerFooterComponent, TemplatePreviewComponent, ButtonLoaderComponent },
+        data() {
+            return {
+                web: {
+                    name: "",
+                    description: "",
+                    template_id: this.selectedTemplate,
+                },
+                domainName: this.domain,
+            };
         },
-    },
-}
+        props: {
+            userProfessionId: Number,
+            selectedTemplate: Number,
+            domain: String,
+            loading: Boolean,
+        },
+        methods: {
+            goBack() {
+                this.$emit("goBack");
+            },
+            processTemp(evt) {
+                this.web.template_id = evt.id;
+            },
+            updateDomainTemplate() {
+                this.$emit("updateDomainTemplate", {
+                    domain: this.domainName,
+                    template: this.web.template_id,
+                });
+            },
+        },
+    };
 </script>

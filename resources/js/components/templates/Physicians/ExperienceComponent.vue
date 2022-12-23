@@ -10,22 +10,22 @@
                 <div class="expLeftBarDiv">
                     <div class="expLeftBarInnerDiv">
                         <div class="expLeftBarTxtDiv">
-                            <p class="expLeftBarTxt">99.9%</p>
-                            <p class="expLeftBarTxt1">Positive feedbacks</p>
-                        </div>
-                    </div>
-
-                    <div class="expLeftBarInnerDiv">
-                        <div class="expLeftBarTxtDiv">
-                            <p class="expLeftBarTxt">2,000+</p>
-                            <p class="expLeftBarTxt1">Patients Recovered</p>
-                        </div>
-                    </div>
-
-                    <div class="expLeftBarInnerDiv">
-                        <div class="expLeftBarTxtDiv">
-                            <p class="expLeftBarTxt">10yrs+</p>
+                            <p class="expLeftBarTxt">99 Yrs</p>
                             <p class="expLeftBarTxt1">Experience</p>
+                        </div>
+                    </div>
+
+                    <div class="expLeftBarInnerDiv">
+                        <div class="expLeftBarTxtDiv">
+                            <p class="expLeftBarTxt">2,000</p>
+                            <p class="expLeftBarTxt1">Ward rounds</p>
+                        </div>
+                    </div>
+
+                    <div class="expLeftBarInnerDiv">
+                        <div class="expLeftBarTxtDiv">
+                            <p class="expLeftBarTxt">100</p>
+                            <p class="expLeftBarTxt1">Volunteer services</p>
                         </div>
                     </div>
 

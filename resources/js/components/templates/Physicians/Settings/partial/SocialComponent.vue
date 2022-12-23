@@ -93,11 +93,15 @@
                     linkedin: "",
                     update: 0,
                 },
+                socialError: false,
             }
         },
         methods: {
             contactLink(){
-                this.$emit('contactLink');
+                if (this.social.facebook == "" || this.social.twitter == "") {
+                    this.socialError = true;
+                } else this.socialError = false;
+                this.$emit('contactLink', this.socialError);
             },
             socialGoBackBtn(){
                 this.$emit('socialGoBackBtn');

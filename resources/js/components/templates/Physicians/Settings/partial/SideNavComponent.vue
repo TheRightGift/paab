@@ -27,6 +27,14 @@
                     >
                 </a>
             </div>
+            <div class="editWebSidenavDomainNameDiv">
+                <a href="#!" class="editWebSidenavDomainNameLink" @click="openPromotionals">
+                    Add Promotionals
+                    <i class="material-icons editWebSidenavTempIcon"
+                        >close</i
+                    >
+                </a>
+            </div>
 
             <div>
                 <img
@@ -55,6 +63,9 @@
             openNew() {
                 window.open(`http://${this.host}`, "_blank");
             },
+            openPromotionals() {
+                this.$emit('openPromotionals');
+            }
         },
     };
 </script>

@@ -2912,6 +2912,21 @@ textarea::placeholder {
     border-radius: 6px;
 }
 
+.genTitleClear {
+    color: rgb(241, 139, 139);
+}
+
+.icon-button__badge {
+    width: 10px;
+    height: 10px;
+    background: red;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  
 .editBtnLinkNum {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
@@ -2937,8 +2952,11 @@ textarea::placeholder {
     color: rgba(0, 0, 0, 0.5);
     margin-right: 4vw;
     width: 22vw;
-    border-bottom: 4px solid #7746ff;
+    border-bottom: 2px solid #7746ff;
     padding: 0 0 1vh 1.5vw;
+}
+.activeTab {
+    border-bottom: 4px solid #7746ff;
 }
 .genTitle1 {
     font-family: "Montserrat", sans-serif;
