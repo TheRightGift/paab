@@ -94,7 +94,7 @@
                             <div class="input-field col s12">
                                 <a
                                     type="button"
-                                    v-if="!loginLoading"
+                                    v-if="!loading"
                                     class="btn"
                                     id="loginBtn"
                                     @click.prevent="userLogin()"
@@ -138,6 +138,9 @@
                     password: "",
                 },
             };
+        },
+        props: {
+            loading: Boolean,
         },
         methods: {
             userLogin() {

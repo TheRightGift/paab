@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Tenants\Service;
 use Illuminate\Http\Request;
 use Validator;
+use App\Trait\ServiceNotifier;
 
 class ServiceController extends Controller
 {
+    use ServiceNotifier;
     /**
      * Display a listing of the resource.
      *
@@ -115,6 +117,7 @@ class ServiceController extends Controller
                 
             }
             if ($service2Update == true) {
+                $this->settingschangeNotify();
                 return response()->json(['message' => 'Updated', 'services' => $service2Update, 'status' => 200], 200);
             }
             else {

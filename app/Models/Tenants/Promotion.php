@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Tenants;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TenantsPromotion extends Model
+class Promotion extends Model
 {
     use HasFactory;
-    protected $fillable = ['promo', 'image', 'expiry'];
+    protected $fillable = ['promo', 'banner', 'expiry'];
 }

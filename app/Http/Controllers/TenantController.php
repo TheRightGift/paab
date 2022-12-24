@@ -9,6 +9,9 @@ use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
 use App\Models\Tenant;
 use App\Models\Template;
 use App\Models\Tenants\TenantUser as TenantUser;
+use App\Models\User;
+use App\Notifications\Tenants\LoginNotifier;
+use Stevebauman\Location\Facades\Location;
 use Validator;
 use Carbon\Carbon;
 
@@ -149,6 +152,7 @@ class TenantController extends Controller
         $inputs = Validator::make($request->all(), [
             'user_id' => ['required'],
             'accessToken' => 'required',
+            'email' => 'required'
         ]); 
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
@@ -157,10 +161,15 @@ class TenantController extends Controller
             $input = $inputs->validated();
             $tenantUser = new TenantUser();
             $tenant = $tenantUser->where('user_id', $input['user_id'])->latest()->first();
+            $locator = $this->locator();
+            $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
             if ($tenant != null) {
                 $tenant->user_id = $input['user_id'];
                 $tenant->accessToken = $input['accessToken'];
                 $tenant->save();
+                (new User)->forceFill([
+                    'email' => $input['email'],
+                ])->notify(new LoginNotifier($this->locator(), $hostname));
                 if ($tenant == true) {
                     return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                 }
@@ -169,10 +178,24 @@ class TenantController extends Controller
                 $tenantUser->user_id = $input['user_id'];
                 $tenantUser->accessToken = $input['accessToken'];
                 $tenantUser->save();
+                
+                (new User)->forceFill([
+                    'email' => $input['email'],
+                ])->notify(new LoginNotifier($this->locator(), $hostname));
                 if ($tenantUser == true) {
                     return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                 }
             }
+        }
+    }
+
+    private function locator() {
+        if ($position = Location::get()) {
+            // Successfully retrieved position.
+            return $position;
+        } else {
+            // Failed retrieving position.
+            return null;
         }
     }
 }

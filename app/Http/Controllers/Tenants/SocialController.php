@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Tenants\Social;
 use Illuminate\Http\Request;
 use Validator;
+use App\Trait\ServiceNotifier;
 
 class SocialController extends Controller
 {
+    use ServiceNotifier;
     /**
      * Display a listing of the resource.
      *
@@ -71,6 +73,7 @@ class SocialController extends Controller
             $social2Update = $socials->find($social);
             $social2Update->update($input);
             if ($social2Update == true) {
+                $this->settingschangeNotify();
                 return response()->json(['message' => 'Success', 'social' => $social2Update, 'status' => 200], 200);
             }
             else {

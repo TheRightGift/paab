@@ -68,6 +68,12 @@
                 <img :src="'tenancy/assets/'+experience.banner" 
                     alt="physicianTemplate.png" class="responsive-img" 
                     id="expRightDivImg"
+                    v-if="promo == ''"
+                >
+                <img :src="'tenancy/assets/'+promo.banner" 
+                    alt="physicianTemplate.png" class="responsive-img" 
+                    id="expRightDivImg"
+                    v-else-if="promo != ''"
                 >
             </div>
         </div>
@@ -78,6 +84,7 @@
         data() {
             return {
                 feats: {},
+                promo: "",
             };
         },
         props: {
@@ -89,10 +96,18 @@
             }
         },
         mounted() {
-            console.log('here')
+            this.getActivePromo();
         },
         methods: {
-            
+            getActivePromo() {
+                axios.get('/api/activePromo').then(res => {
+                    if (res.data != "") {
+                        this.promo = res.data.promo;
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
         },
         computed: {},
     };
