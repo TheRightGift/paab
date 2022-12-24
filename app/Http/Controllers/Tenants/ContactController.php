@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Tenants\Contact;
 use Illuminate\Http\Request;
 use Validator;
+use App\Trait\ServiceNotifier;
 
 class ContactController extends Controller
 {
+    use ServiceNotifier;
     /**
      * Display a listing of the resource.
      *
@@ -71,6 +73,7 @@ class ContactController extends Controller
             $contact2Update = $contacts->find($contact);
             $contact2Update->update($input);
             if ($contact2Update == true) {
+                $this->settingschangeNotify();
                 return response()->json(['message' => 'Success', 'contact' => $contact2Update, 'status' => 200], 200);
             }
             else {

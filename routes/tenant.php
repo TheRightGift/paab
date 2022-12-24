@@ -48,6 +48,10 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::put('/achievement/{id}', [App\Http\Controllers\Tenants\AchievementController::class, 'update']);
     Route::delete('/achievement/{id}', [App\Http\Controllers\Tenants\AchievementController::class, 'destroy']);
 
+    Route::post('/promotion', [App\Http\Controllers\Tenants\PromotionController::class, 'store']);
+    Route::put('/promotion/{id}', [App\Http\Controllers\Tenants\PromotionController::class, 'update']);
+    Route::delete('/promotion/{id}', [App\Http\Controllers\Tenants\PromotionController::class, 'destroy']);
+
     Route::post('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'store']);
     Route::put('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'update']);
     Route::delete('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'destroy']);
@@ -80,11 +84,12 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::post('/schedule', [App\Http\Controllers\Tenants\MessagesController::class, 'store'])->withoutMiddleware(['auth:api']);
     Route::get('/review', [App\Http\Controllers\Tenants\ReviewsController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/achievement', [App\Http\Controllers\Tenants\AchievementController::class, 'index'])->withoutMiddleware(['auth:api']);
+    Route::get('/promotion', [App\Http\Controllers\Tenants\PromotionController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/bio', [App\Http\Controllers\Tenants\BioController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/social', [App\Http\Controllers\Tenants\SocialController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/service', [App\Http\Controllers\Tenants\ServiceController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/general', [App\Http\Controllers\Tenants\GeneralController::class, 'index'])->withoutMiddleware(['auth:api']);
-
+    Route::get('/activePromo', [App\Http\Controllers\Tenants\PromotionController::class, 'getLatestInTime'])->withoutMiddleware(['auth:api']);
 });
