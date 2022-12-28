@@ -114,7 +114,7 @@ class TenantController extends Controller
         // Get the authenticaed user
         // When coming from mobile request for user->id
         $user = auth()->user()->id;
-        $tenancies = Tenant::where('user_id', $user)->with('domains', 'template', 'template.profession')->get();
+        $tenancies = Tenant::where('user_id', $user)->with('domains', 'template', 'template.profession')->latest()->paginate(10);
 
         return response()->json(['message' => 'Tenants fetched', 'tenants' => $tenancies, 'status' => 200], 200);
     }

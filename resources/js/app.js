@@ -35,6 +35,10 @@ import ClientTemplateComponent from './components/client/ClientTemplateComponent
 // Admin
 import DashboardAdmin from './components/admin/Dashboard';
 
+// SAdmin
+import DashboardSAdmin from './components/super/Dashboard';
+
+
 // Webiste
 import PhysicianWebsiteComponent from './components/templates/Physicians/MainTemplateComponent';
 import SettingsComponent from './components/templates/Physicians/Settings/SettingsComponent';
@@ -56,6 +60,7 @@ app.component('client-support-component', ClientSupport);
 app.component('client-singlemail-component', ClientSingleMail);
 
 app.component('admin-component', DashboardAdmin);
+app.component('sadmin-component', DashboardSAdmin);
 
 app.component('physician-website-component', PhysicianWebsiteComponent);
 app.component('website-settings', SettingsComponent);
