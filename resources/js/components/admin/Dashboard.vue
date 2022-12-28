@@ -1,25 +1,26 @@
 <template>
     <div>
-        <mobile-nav-component />
-        <!-- Sidebar for large and medium devices -->
+        <!-- Sidenav for small devices -->
+        <AdminMobileNavComponent />
+        
         <div class="row" id="dashRowDiv">
-            <sidenav-component />
+            <!-- Sidebar for large and medium devices -->
+            <AdminSideNavComponent />
 
             <div class="col s12 m10 l10">
                 <div class="dashRightDiv">
-                    <div id="dashRightImgDiv">
-                        <!-- <div id="dashRightImgInnerDiv">
+                    <div id="adminDashRightImgDiv">
+                        <div id="dashRightImgInnerDiv">
                             <div class="dashRightImgTxtDiv">
-                                <p class="dashRightImgTitle">
-                                    Skyrocket your portfolio
+                                <p class="dashRightImgTitle white-text">
+                                    Manage your client’s portfolio
                                 </p>
                                 <p class="dashRightImgTxt">
                                     Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's
+                                    printing and typesetting industry. 
                                 </p>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
 
                     <div class="row" id="dashWlcNoteRowDiv">
@@ -413,14 +414,14 @@
 </template>
 
 <script>
-    import MobileNavComponent from "../partials/MobileNavComponent.vue";
-    import SidenavComponent from "../partials/SideNavComponent.vue";
     import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
+    import AdminSideNavComponent from "../partials/AdminSideNavComponent.vue";
+    import AdminMobileNavComponent from "../partials/AdminMobileNavComponent.vue";
     export default {
         components: {
-            SidenavComponent,
-            MobileNavComponent,
             InnerFooterComponent,
+            AdminSideNavComponent,
+            AdminMobileNavComponent,
         },
         data() {
             return {
