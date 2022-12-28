@@ -117,3 +117,24 @@ Route::get('/templates/physiciansportfolio', function () {
 });
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
+Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(function () {
+    Route::get('/client', function () {
+        return view('admin.client');
+    }); //->middleware('can:run_client_ops')
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
+    Route::get('/messages', function () {
+        return view('admin.messages');
+    });
+    Route::get('/settings', function () {
+        return view('admin.settings');
+    });
+    Route::get('/template', function () {
+        return view('admin.template');
+    });
+    Route::get('/singlemsg', function () {
+        return view('admin.singlemsg');
+    });
+});

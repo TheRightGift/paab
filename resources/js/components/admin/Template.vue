@@ -1,21 +1,21 @@
 <template>
     <div>
-        <mobile-nav-component />
+        <!-- Sidenav for small devices -->
+        <AdminMobileNavComponent />
 
-
-        <!-- Sidebar for large and medium devices -->
         <div class="row" id="dashRowDiv">
-            <side-nav-component @user="getUser"/>
-        
+            <!-- Sidebar for large and medium devices -->
+            <AdminSideNavComponent />
+
             <!-- Center Bar Person Div -->
             <div class="col s12 m10 l10">
-                <!-- <div class="userTempMainDiv">
+                <div class="userTempMainDiv">
                     <div class="row">
         
                         <div class="col s6 m4 l2">
                             <div id="userTempDiv">
                                 <div class="tempImgDiv" id="tempImgDiv">
-                                    <i class="material-icons tempProIcon">person</i>
+                                    <i class="material-icons" id="tempProIcon">person</i>
                                 </div>
                                 <p class="userTempTitle">Physician</p>
                             </div>
@@ -24,7 +24,7 @@
                         <div class="col s6 m4 l2">
                             <div id="userTempDiv">
                                 <div class="tempImgDiv" id="tempImgDiv">
-                                    <i class="material-icons tempProIcon">person</i>
+                                    <i class="material-icons" id="tempProIcon">person</i>
                                 </div>
                                 <p class="userTempTitle">Doctors</p>
                             </div>
@@ -33,7 +33,7 @@
                         <div class="col s6 m4 l2">
                             <div id="userTempDiv">
                                 <div class="tempImgDiv" id="tempImgDiv">
-                                    <i class="material-icons tempProIcon">person</i>
+                                    <i class="material-icons" id="tempProIcon">person</i>
                                 </div>
                                 <p class="userTempTitle">Tutors</p>
                             </div>
@@ -42,7 +42,7 @@
                         <div class="col s6 m4 l2">
                             <div id="userTempDiv">
                                 <div class="tempImgDiv" id="tempImgDiv">
-                                    <i class="material-icons tempProIcon">person</i>
+                                    <i class="material-icons" id="tempProIcon">person</i>
                                 </div>
                                 <p class="userTempTitle">Photographer</p>
                             </div>
@@ -51,7 +51,7 @@
                         <div class="col s6 m4 l2">
                             <div id="userTempDiv">
                                 <div class="tempImgDiv" id="tempImgDiv">
-                                    <i class="material-icons tempProIcon">person</i>
+                                    <i class="material-icons" id="tempProIcon">person</i>
                                 </div>
                                 <p class="userTempTitle">Trainner</p>
                             </div>
@@ -60,18 +60,16 @@
                         <div class="col s6 m4 l2">
                             <div id="userTempDiv">
                                 <div class="tempImgDiv" id="tempImgDiv">
-                                    <i class="material-icons tempProIcon">person</i>
+                                    <i class="material-icons" id="tempProIcon">person</i>
                                 </div>
                                 <p class="userTempTitle">Lawyers</p>
                             </div>
                         </div>
-        
                     </div>
-        
-                </div> -->
+                </div>
 
                 <!-- Client's Templates Section -->
-                <div class="clientTempContainInnerDiv">
+                <div class="adminTempContainInnerDiv">
                     <div id="clientTempPageRowDiv">
 
                         <!-- First Row -->
@@ -117,7 +115,7 @@
 
                         <div class="col s12 m6 l4 clientTempPageImgSmDv">
                             <div class="">
-                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png">
+                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png" id="">
                             </div>
 
                             <p class="tempPageImgTitle">
@@ -139,7 +137,7 @@
                         <!-- Second Row -->
                         <div class="col s12 m6 l4 clientTempPageImgSmDv">
                             <div class="">
-                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png">
+                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png" id="">
                             </div>
 
                             <p class="tempPageImgTitle">
@@ -159,7 +157,7 @@
 
                         <div class="col s12 m6 l4 clientTempPageImgSmDv">
                             <div class="">
-                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png">
+                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png" id="">
                             </div>
 
                             <p class="tempPageImgTitle">
@@ -179,7 +177,7 @@
 
                         <div class="col s12 m6 l4 clientTempPageImgSmDv">
                             <div class="">
-                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png">
+                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png" id="">
                             </div>
 
                             <p class="tempPageImgTitle">
@@ -205,12 +203,16 @@
 </template>
 
 <script>
-import MobileNavComponent from '../partials/MobileNavComponent.vue';
-import SideNavComponent from '../partials/SideNavComponent.vue';
+import AdminSideNavComponent from "../partials/AdminSideNavComponent.vue";
+import AdminMobileNavComponent from "../partials/AdminMobileNavComponent.vue";
+// import FooterComponent from "./partials/FooterComponent.vue";
+// import HeaderComponent from "./partials/HeaderComponent.vue";
 export default {
     components: {
-        MobileNavComponent,
-        SideNavComponent
+        AdminSideNavComponent,
+        AdminMobileNavComponent,
+        // FooterComponent,
+        // HeaderComponent
     },
     data() {
         return {
