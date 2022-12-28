@@ -190,6 +190,7 @@
                     update: 0,
                 },
                 uploaded: null,
+                achievementError: false,
             };
         },
         methods: {
@@ -201,7 +202,13 @@
                 this.$emit("achieveGoBackBtn");
             },
             socialLink() {
-                this.$emit("socialLink");
+                if (
+                    this.achievement.feats.experience == 0 ||
+                    this.achievement.banner == null
+                ) {
+                    this.achievementError = true;
+                } else this.achievementError = false;
+                this.$emit("socialLink", this.achievementError);
             },
             addBannerchiever(e) {
                 if (!e.target.files.length) return;

@@ -2,7 +2,7 @@
     <div v-show="loggedIn">
         <div class="loader" v-if="initialCheck"></div>
         <div v-show="!initialCheck">
-            <SideNavComponent />
+            <SideNavComponent @openPromotionals="openPromotionals" />
             <TabForm
                 :user="userDets"
                 :bio="bio"
@@ -11,12 +11,17 @@
                 :contact="contact"
                 :social="social"
                 :general="general"
+                v-show="!promoView"
+            />
+            <PromotionalsComponent
+                @close="promoView = false"
+                v-show="promoView"
             />
         </div>
     </div>
     <div v-if="!loggedIn">
         <div v-if="!initialCheck">
-            <TenantLoginComponent @loginUser="login($event)"/>
+            <TenantLoginComponent @loginUser="login($event)" :loading="loading"/>
         </div>
         <div class="loader" v-else></div>
     </div>
@@ -26,6 +31,7 @@
     import EditWebsiteModalComponent from "./partial/GeneralComponent.vue";
     import TabForm from "./partial/TabFormComponent.vue";
     import TenantLoginComponent from "./TenantLoginComponent.vue";
+    import PromotionalsComponent from "./partial/PromotionalsComponent.vue";
 
     let bio = "/api/bio";
     let service = "/api/service";
@@ -35,7 +41,13 @@
     let general = "/api/general";
 
     export default {
-        components: { EditWebsiteModalComponent, TabForm, SideNavComponent, TenantLoginComponent },
+        components: {
+            EditWebsiteModalComponent,
+            TabForm,
+            SideNavComponent,
+            TenantLoginComponent,
+            PromotionalsComponent,
+        },
         props: {
             user: String,
         },
@@ -51,6 +63,7 @@
                 loading: false,
                 loggedIn: false,
                 initialCheck: false,
+                promoView: false,
             };
         },
         created() {
@@ -66,8 +79,8 @@
                 const requestSocial = axios.get(social);
                 const requestGeneral = axios.get(general);
                 axios
-                .all([
-                    requestBio,
+                    .all([
+                        requestBio,
                         requestService,
                         requestAchievement,
                         requestContact,
@@ -97,63 +110,84 @@
             },
             checkAuth() {
                 this.initialCheck = true;
-                const _token = ('; '+document.cookie).split(`; _token=`).pop().split(';')[0];
+                const _token = ("; " + document.cookie)
+                    .split(`; _token=`)
+                    .pop()
+                    .split(";")[0];
                 if (_token == "") {
                     this.initialCheck = false;
                     this.loggedIn = false;
-                }
-                else {
-                    axios.post('/api/verifyToken', {accessToken: _token}).then(res => {
-                        if (res.data.status == 401) {
-                            this.loggedIn = false;
+                } else {
+                    axios
+                        .post("/api/verifyToken", { accessToken: _token })
+                        .then((res) => {
+                            if (res.data.status == 401) {
+                                this.loggedIn = false;
+                                this.initialCheck = false;
+                            } else if (res.data.status == 200) {
+                                this.getLocations();
+                                this.initialCheck = false;
+                                this.loggedIn = true;
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(err);
                             this.initialCheck = false;
-                        }
-                        else if (res.data.status == 200) {
-                            this.getLocations();
-                            this.initialCheck = false;
-                            this.loggedIn = true;
-                        }
-                    }).catch(err => {
-                        console.log(err);
-                        this.initialCheck = false;
-                    })
+                        });
                 }
             },
             login(e) {
+                this.loading = true;
                 if (e.email == "" || e.password == "") {
                     M.toast({
-                        html: 'Invalid Credentials',
+                        html: "Invalid Credentials",
                         classes: "errorNotifier",
                     });
-                }else {
-                    axios.post('http://localhost:8000/api/tenant/auth/login', e).then(res => {
-                        this.setCookie(
-                            "_token",
-                            res.data.access_token,
-                            1
-                        );
-                        this.saveAccessToken(res.data.access_token, res.data.user.id);
-                    }).catch(err => {
-                        console.log(err);
-                    })
+                } else {
+                    axios
+                        .post("http://localhost:8000/api/tenant/auth/login", e)
+                        .then((res) => {
+                            this.setCookie("_token", res.data.access_token, 1);
+                            this.saveAccessToken(
+                                res.data.access_token,
+                                res.data.user.id,
+                                e.email
+                            );
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            this.loading = false;
+                        });
                 }
             },
-            saveAccessToken(accessToken, user_id) {
-                let data = {'accessToken': accessToken, 'user_id': user_id};
-                axios.post('/api/savelogin', data).then(res => {
-                    if (res.data.status == 201) {
-                        location.reload();
-                        this.loggedIn = true;
-                    }
-                }).catch(err => {
-                    consol.log(err);
-                })
+            saveAccessToken(accessToken, user_id, email) {
+                let data = {
+                    accessToken: accessToken,
+                    user_id: user_id,
+                    email: email,
+                };
+                axios
+                    .post("/api/savelogin", data)
+                    .then((res) => {
+                        if (res.data.status == 201) {
+                            this.loading = false;
+                            location.reload();
+                            this.loggedIn = true;
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        this.loading = false;
+                    });
             },
             setCookie(cname, cvalue, exdays) {
                 const d = new Date();
                 d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
                 let expires = "expires=" + d.toUTCString();
                 document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            },
+            openPromotionals() {
+                this.promoView = true;
             },
         },
         setup() {},

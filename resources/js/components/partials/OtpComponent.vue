@@ -27,7 +27,8 @@
                         class="input-field col s1 otpDigits"
                         maxlength="1"
                         data-next="digit-2"
-                        autofocus
+                        autofocus 
+                        :disabled="disabled == 1"
                     />
                     <input
                         type="text"
@@ -41,7 +42,8 @@
                         class="input-field col s1 otpDigits"
                         maxlength="1"
                         data-next="digit-3"
-                        data-previous="digit-1"
+                        data-previous="digit-1" 
+                        :disabled="disabled == 1"
                     />
                     <input
                         type="text"
@@ -55,7 +57,8 @@
                         class="input-field col s1 otpDigits"
                         maxlength="1"
                         data-next="digit-4"
-                        data-previous="digit-2"
+                        data-previous="digit-2" 
+                        :disabled="disabled == 1"
                     />
                     <input
                         type="text"
@@ -69,7 +72,8 @@
                         class="input-field col s1 otpDigits"
                         maxlength="1"
                         data-next="digit-5"
-                        data-previous="digit-3"
+                        data-previous="digit-3" 
+                        :disabled="disabled == 1"
                     />
                     <input
                         type="text"
@@ -83,7 +87,8 @@
                         class="input-field col s1 otpDigits"
                         maxlength="1"
                         data-next="digit-6"
-                        data-previous="digit-4"
+                        data-previous="digit-4" 
+                        :disabled="disabled == 1"
                     />
                     <input
                         type="text"
@@ -96,7 +101,8 @@
                         "
                         class="input-field col s1 otpDigits"
                         maxlength="1"
-                        data-previous="digit-3"
+                        data-previous="digit-3" 
+                        :disabled="disabled == 1"
                     />
                 </form>
             </div>
@@ -122,6 +128,7 @@
             return {
                 userInputedOTP: "",
                 key: key.substring(7),
+                disabled: 0
             };
         },
         props: {
@@ -138,6 +145,7 @@
                         classes: "errorNotifier",
                     });
                 } else {
+                    this.disabled = 1;
                     if(this.type === 'register'){
                         if (this.decryptOTP(this.otp) === this.userInputedOTP) {
                             // Pass 200 to parent

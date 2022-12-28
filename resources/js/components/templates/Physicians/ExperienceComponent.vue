@@ -10,22 +10,22 @@
                 <div class="expLeftBarDiv">
                     <div class="expLeftBarInnerDiv">
                         <div class="expLeftBarTxtDiv">
-                            <p class="expLeftBarTxt">99.9%</p>
-                            <p class="expLeftBarTxt1">Positive feedbacks</p>
-                        </div>
-                    </div>
-
-                    <div class="expLeftBarInnerDiv">
-                        <div class="expLeftBarTxtDiv">
-                            <p class="expLeftBarTxt">2,000+</p>
-                            <p class="expLeftBarTxt1">Patients Recovered</p>
-                        </div>
-                    </div>
-
-                    <div class="expLeftBarInnerDiv">
-                        <div class="expLeftBarTxtDiv">
-                            <p class="expLeftBarTxt">10yrs+</p>
+                            <p class="expLeftBarTxt">99 Yrs</p>
                             <p class="expLeftBarTxt1">Experience</p>
+                        </div>
+                    </div>
+
+                    <div class="expLeftBarInnerDiv">
+                        <div class="expLeftBarTxtDiv">
+                            <p class="expLeftBarTxt">2,000</p>
+                            <p class="expLeftBarTxt1">Ward rounds</p>
+                        </div>
+                    </div>
+
+                    <div class="expLeftBarInnerDiv">
+                        <div class="expLeftBarTxtDiv">
+                            <p class="expLeftBarTxt">100</p>
+                            <p class="expLeftBarTxt1">Volunteer services</p>
                         </div>
                     </div>
 
@@ -68,6 +68,12 @@
                 <img :src="'tenancy/assets/'+experience.banner" 
                     alt="physicianTemplate.png" class="responsive-img" 
                     id="expRightDivImg"
+                    v-if="promo == ''"
+                >
+                <img :src="'tenancy/assets/'+promo.banner" 
+                    alt="physicianTemplate.png" class="responsive-img" 
+                    id="expRightDivImg"
+                    v-else-if="promo != ''"
                 >
             </div>
         </div>
@@ -78,6 +84,7 @@
         data() {
             return {
                 feats: {},
+                promo: "",
             };
         },
         props: {
@@ -89,10 +96,18 @@
             }
         },
         mounted() {
-            console.log('here')
+            this.getActivePromo();
         },
         methods: {
-            
+            getActivePromo() {
+                axios.get('/api/activePromo').then(res => {
+                    if (res.data != "") {
+                        this.promo = res.data.promo;
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
         },
         computed: {},
     };

@@ -8,9 +8,11 @@ use App\Models\Tenants\Achievement;
 use App\Models\Tenants\Service;
 use Illuminate\Http\Request;
 use Validator;
+use App\Trait\ServiceNotifier;
 
 class BioController extends Controller
 {
+    use ServiceNotifier;
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +21,6 @@ class BioController extends Controller
     public function index()
     {
         $bio = Bio::first();
-        // $achievements = Achievement::get();
-        // $services = Service::get();
-        #TODO: Merge into one array and return
         return response()->json(['message' => 'Fetched Success', 'bio' => $bio]);
     }
 
@@ -39,12 +38,6 @@ class BioController extends Controller
             'firstname' => 'nullable',
             'CV' => 'required|file|mimes:doc,pdf,docx,zip|max:2000',
             'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=454,min_height=528',
-            // Achievement
-            // 'percentage' => 'required',
-            // Services
-            // 'serv_title' => 'required',
-            // 'description' => 'required',
-            // 'icon_filename' => 'nullable|image|mimes:jpg,png|max:100',
         ]); 
 
         if ($inputs->fails()) {
@@ -89,15 +82,6 @@ class BioController extends Controller
             'lastname' => 'required',
             'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
             'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=500,min_height=500',
-            // Achievement
-            // 'title' => 'nullable',
-            // 'percentage' => 'nullable',
-            // 'achieve_id' => 'nullable',
-            // Services
-            // 'serv_title' => 'nullable',
-            // 'serv_id' => 'nullable',
-            // 'description' => 'nullable',
-            // 'icon_filename' => 'nullable|image|mimes:jpg,png|max:100',
         ]); 
 
         if ($inputs->fails()) {
@@ -123,6 +107,7 @@ class BioController extends Controller
                 } 
                 $bio2Update->update($input);
                 if ($bio2Update == true) {
+                    $this->settingschangeNotify();
                     return response(['bio' => $bio2Update, 'message' => 'Update Success', 'status' => 200], 200);
                 }
                 else {

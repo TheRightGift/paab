@@ -9,6 +9,9 @@ use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
 use App\Models\Tenant;
 use App\Models\Template;
 use App\Models\Tenants\TenantUser as TenantUser;
+use App\Models\User;
+use App\Notifications\Tenants\LoginNotifier;
+use Stevebauman\Location\Facades\Location;
 use Validator;
 use Carbon\Carbon;
 
@@ -45,15 +48,14 @@ class TenantController extends Controller
             else {
                 return response()->json(['status' => 500, 'message' => 'The name has already been taken!'], 500);
             }
-        } catch (\Throwable $th) {
-            echo $th;
+        } catch (DomainsOccupiedByOtherTenantException $th) {
+            return response()->json(["Domain already in use."]);
         }
     }
 
-    public function update(Request $request) {
+    public function update(Request $request, $tenantID) {
         $inputs = Validator::make($request->all(), [
-            'template_id' => ['nullable'],
-            'tenant_id' => ['required'],
+            'template' => ['nullable'],
             'domain' => ['nullable'],
             'domain_id' => ['nullable'],
         ]); 
@@ -62,18 +64,24 @@ class TenantController extends Controller
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
         
-        $tenant = Tenant::find($inputs->validated()['tenant_id']);
+        $tenant = Tenant::find($tenantID);
         if ($tenant !== null) {
-            if ($request->has('template_id')) {
-                $tenant->template_id = $inputs->validated()['template_id'];
+            if ($request->has('template')) {
+                $tenant->template_id = $inputs->validated()['template'];
                 $tenant->save();
             }
             if ($request->has('domain')) {
-                $domain = $tenant->domains->find($inputs->validated()['domain_id']);
-                $domain->domain = $inputs->validated()['domain'].'.localhost';
-                $domain->save();
+                try {
+                    $domain = $tenant->domains->find($inputs->validated()['domain_id']);
+                    $domain->domain = $inputs->validated()['domain'].'.localhost';
+                    $domain->save();
+                } catch (DomainsOccupiedByOtherTenantException $e) {
+                    return response()->json(["Domain already in use."]);
+                }
             }
-            return response()->json(['message' => 'You have successfully changed your Template', 'status' => 200], 200);
+            if ($domain == true || $tenant == true) {
+                return response()->json(['message' => 'Success', 'domain' => $domain, 'status' => 200], 200);
+            }
         }
         else {
             return response()->json(['message' => 'Website not found!', 'status' => 404], 404);
@@ -144,6 +152,7 @@ class TenantController extends Controller
         $inputs = Validator::make($request->all(), [
             'user_id' => ['required'],
             'accessToken' => 'required',
+            'email' => 'required'
         ]); 
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
@@ -152,10 +161,15 @@ class TenantController extends Controller
             $input = $inputs->validated();
             $tenantUser = new TenantUser();
             $tenant = $tenantUser->where('user_id', $input['user_id'])->latest()->first();
+            $locator = $this->locator();
+            $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
             if ($tenant != null) {
                 $tenant->user_id = $input['user_id'];
                 $tenant->accessToken = $input['accessToken'];
                 $tenant->save();
+                (new User)->forceFill([
+                    'email' => $input['email'],
+                ])->notify(new LoginNotifier($this->locator(), $hostname));
                 if ($tenant == true) {
                     return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                 }
@@ -164,10 +178,24 @@ class TenantController extends Controller
                 $tenantUser->user_id = $input['user_id'];
                 $tenantUser->accessToken = $input['accessToken'];
                 $tenantUser->save();
+                
+                (new User)->forceFill([
+                    'email' => $input['email'],
+                ])->notify(new LoginNotifier($this->locator(), $hostname));
                 if ($tenantUser == true) {
                     return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                 }
             }
+        }
+    }
+
+    private function locator() {
+        if ($position = Location::get()) {
+            // Successfully retrieved position.
+            return $position;
+        } else {
+            // Failed retrieving position.
+            return null;
         }
     }
 }

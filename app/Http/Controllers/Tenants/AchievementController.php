@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Tenants\Achievement;
 use Illuminate\Http\Request;
 use Validator;
+use App\Trait\ServiceNotifier;
+
 
 class AchievementController extends Controller
 {
+    use ServiceNotifier;
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +32,7 @@ class AchievementController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'banner' => 'required|image|mimes:png|max:500|dimensions:min_width=1294,min_height=743',
+            'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1294,min_height=743',
             'feats' => 'required',
         ]); 
 
@@ -64,7 +67,7 @@ class AchievementController extends Controller
     public function update(Request $request, $achievement)
     {
         $inputs = Validator::make($request->all(), [
-            'banner' => 'nullable|image|mimes:png|max:500|dimensions:min_width=1294,min_height=743',
+            'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1294,min_height=743',
             'feats' => 'required',
         ]); 
 
@@ -83,6 +86,7 @@ class AchievementController extends Controller
             $achievement2Update = $achievements->find($achievement);
             $achievement2Update->update($input);
             if ($achievement2Update == true) {
+                $this->settingschangeNotify();
                 return response()->json(['message' => 'Success', 'achievement' => $achievement2Update, 'status' => 200], 200);
             }
             else {

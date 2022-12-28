@@ -14,6 +14,7 @@
                                     >1</span
                                 >
                                 General
+                                <span class="icon-button__badge" v-if="generalErrors"></span>
                             </a>
                         </li>
                         <li class="editWebLi">
@@ -22,6 +23,7 @@
                                     >2</span
                                 >
                                 Bio
+                                <span class="icon-button__badge" v-if="bioeErrors"></span>
                             </a>
                         </li>
                         <li class="editWebLi">
@@ -34,6 +36,7 @@
                                     >3</span
                                 >
                                 Services
+                                <span class="icon-button__badge" v-if="serviceErrors"></span>
                             </a>
                         </li>
                         <li class="editWebLi">
@@ -46,6 +49,7 @@
                                     >4</span
                                 >
                                 Achievement
+                                <span class="icon-button__badge" v-if="achievementErrors"></span>
                             </a>
                         </li>
                         <li class="editWebLi">
@@ -58,6 +62,7 @@
                                     >5</span
                                 >
                                 Socials
+                                <span class="icon-button__badge" v-if="socialErrors"></span>
                             </a>
                         </li>
                         <li class="editWebLi">
@@ -70,6 +75,7 @@
                                     >6</span
                                 >
                                 Contacts
+                                <span class="icon-button__badge" v-if="contactErrors"></span>
                             </a>
                         </li>
                     </ul>
@@ -83,6 +89,7 @@
                 @generalSave="generalSave($event)"
                 @generalUpdate="generalUpdate($event)"
                 @genGoBackBtn="genGoBackBtn"
+                @genNextBtn1="genNextBtn1"
             />
             <BioComponent
                 :bioModal="bioModal"
@@ -167,6 +174,14 @@
                 bioModal3: false,
 
                 titles: [],
+
+                // ErorrNotify
+                generalErrors: false,
+                bioeErrors: false,
+                serviceErrors: false,
+                contactErrors: false,
+                socialErrors: false,
+                achievementErrors: false,
             };
         },
         props: {
@@ -236,14 +251,14 @@
                     });
             },
             bioSave(e) {
-                console.log(e)
+                console.log(e);
                 if (e.about.length > 614) {
                     M.toast({
                         html: "Your about must not be greater than 614 in character",
                         classes: "errorNotifier",
                     });
                 } else {
-                    console.log('here')
+                    console.log("here");
                     let formData = new FormData();
                     formData.append("CV", e.CV);
                     formData.append("photo", e.photo);
@@ -311,10 +326,12 @@
                 let formData = new FormData();
                 if (e.update == 1) {
                     request = `/api/service/${e.id}`;
-                    e.removed.length > 0 ? formData.append('removed', JSON.stringify(e.removed)) : null;
+                    e.removed.length > 0
+                        ? formData.append("removed", JSON.stringify(e.removed))
+                        : null;
                 }
                 formData.append("data", JSON.stringify(e.services));
-                e.update == 1 ? formData.append('_method', 'PUT') : null;
+                e.update == 1 ? formData.append("_method", "PUT") : null;
                 axios
                     .post(request, formData)
                     .then((res) => {
@@ -340,11 +357,11 @@
             saveSocial(e) {
                 let request = `/api/social`;
                 let data = {
-                    _method: 'PUT'
+                    _method: "PUT",
                 };
                 if (e.update == 1) {
                     request = `/api/social/${e.id}`;
-                    e = {...e, ...data};
+                    e = { ...e, ...data };
                 }
                 axios
                     .post(request, e)
@@ -371,11 +388,11 @@
             saveContact(e) {
                 let request = `/api/contact`;
                 let data = {
-                    _method: 'PUT'
+                    _method: "PUT",
                 };
                 if (e.update == 1) {
                     request = `/api/contact/${e.id}`;
-                    e = {...e, ...data};
+                    e = { ...e, ...data };
                 }
                 axios
                     .post(request, e)
@@ -406,8 +423,8 @@
                 formData.append("banner", e.banner);
                 formData.append("feats", JSON.stringify(e.feats));
                 if (e.update == 1) {
-                    formData.append('_method', 'PUT')
-                    request = `/api/achievement/${e.id}`
+                    formData.append("_method", "PUT");
+                    request = `/api/achievement/${e.id}`;
                 }
                 axios
                     .post(request, formData)
@@ -431,7 +448,7 @@
                         }
                     });
             },
-            servicesLink() {
+            servicesLink(e) {
                 this.bioModal = false;
                 this.bioModal1 = false;
                 this.bioModal2 = false;
@@ -444,6 +461,7 @@
                 this.servicesModal = true;
 
                 this.isActive = false;
+                e != undefined ? this.bioeErrors = e : null;
 
                 $("#servicesLink").css("background-color", "black");
                 $("#genLink").css("background-color", "white");
@@ -486,7 +504,7 @@
                 $("#socialLink").css("background-color", "white");
                 $("#contactLink").css("background-color", "white");
             },
-            achieveLink() {
+            achieveLink(e) {
                 this.bioModal = false;
                 this.bioModal1 = false;
                 this.bioModal2 = false;
@@ -499,6 +517,8 @@
                 this.achieveModal = true;
 
                 this.isActive = false;
+                e != undefined ? this.serviceErrors = e : null;
+
 
                 $("#bioLink").css("background-color", "white");
                 $("#genLink").css("background-color", "white");
@@ -511,7 +531,7 @@
                     M.Range.init(elems);
                 }, 100);
             },
-            socialLink() {
+            socialLink(e) {
                 this.achieveModal = false;
                 this.bioModal = false;
                 this.bioModal1 = false;
@@ -524,7 +544,7 @@
                 this.socialsModal = true;
 
                 this.isActive = false;
-
+                e != undefined ? this.achievementErrors = e : null;
                 $("#bioLink").css("background-color", "white");
                 $("#genLink").css("background-color", "white");
                 $("#servicesLink").css("background-color", "white");
@@ -532,7 +552,7 @@
                 $("#socialLink").css("background-color", "black");
                 $("#contactLink").css("background-color", "white");
             },
-            contactLink() {
+            contactLink(e) {
                 this.achieveModal = false;
                 this.socialsModal = false;
                 this.bioModal = false;
@@ -545,7 +565,7 @@
                 this.contactModal = true;
 
                 this.isActive = false;
-
+                e != undefined ? this.socialErrors = e : null;
                 $("#bioLink").css("background-color", "white");
                 $("#genLink").css("background-color", "white");
                 $("#servicesLink").css("background-color", "white");
@@ -566,9 +586,10 @@
                 $("#bioLink").css("background-color", "white");
             },
 
-            genNextBtn1() {
-                this.genModal1 = false;
+            genNextBtn1(e) {
+                this.generalErrors = e;
                 this.bioModal = true;
+                this.genModal1 = false;
                 this.isActive = false;
                 $("#bioLink").css("background-color", "black");
             },
@@ -589,12 +610,16 @@
 
             bioNextBtn() {
                 this.bioModal = false;
+                this.bioModal3 = false;
                 this.bioModal1 = true;
+                this.bioModal2 = false;
             },
 
             bioGoBackBtn1() {
-                this.bioModal1 = false;
                 this.bioModal = true;
+                this.bioModal3 = false;
+                this.bioModal1 = false;
+                this.bioModal2 = false;
             },
 
             bioGoBackBtn2() {
@@ -603,6 +628,8 @@
             },
 
             bioNextBtn1() {
+                this.bioModal = false;
+                this.bioModal3 = false;
                 this.bioModal1 = false;
                 this.bioModal2 = true;
             },
@@ -613,7 +640,9 @@
             },
 
             bioNextBtn2() {
+                this.bioModal = false;
                 this.bioModal3 = true;
+                this.bioModal1 = false;
                 this.bioModal2 = false;
             },
 

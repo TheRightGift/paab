@@ -53,35 +53,7 @@
                                         class="row center-align"
                                         v-if="websiteLoading"
                                     >
-                                        <div
-                                            class="
-                                                preloader-wrapper
-                                                small
-                                                active
-                                            "
-                                        >
-                                            <div
-                                                class="
-                                                    website
-                                                    spinner-layer
-                                                    spinner-blue-only
-                                                "
-                                            >
-                                                <div
-                                                    class="circle-clipper left"
-                                                >
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="gap-patch">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div
-                                                    class="circle-clipper right"
-                                                >
-                                                    <div class="circle"></div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <ButtonLoader />
                                     </div>
                                     <div v-else>
                                         <div v-if="websites.length > 0">
@@ -217,7 +189,15 @@
                         </div>
                     </div>
                 </div>
-                <ConfigureWebComponent v-else-if="view == 1" :userProfessionId="userProfessionId"/>
+                <ConfigureWebComponent
+                    v-else-if="view == 1"
+                    :loading="loading"
+                    @updateDomainTemplate="updateDomainTemplate"
+                    :domain="domain"
+                    @goBack="setDefaults(0)"
+                    :userProfessionId="userProfessionId"
+                    :selectedTemplate="selectedTemplate"
+                />
             </div>
         </div>
     </div>
@@ -229,7 +209,7 @@
     import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
     import WebCreateComponent from "./WebCreateComponent.vue";
     import ConfigureWebComponent from "../partials/ConfigureWebComponent.vue";
-
+    import ButtonLoader from "../partials/ButtonLoaderComponent.vue";
     export default {
     components: {
             MobileNavComponent,
@@ -238,6 +218,7 @@
             TemplatePreviewComponent,
             InnerFooterComponent,
             ConfigureWebComponent,
+            ButtonLoader,
         },
         data() {
             return {
@@ -395,27 +376,33 @@
             webAddCircleIcon() {
                 this.isHidden = false;
             },
-            updateDomainTemplate() {
+            updateDomainTemplate(evt) {
                 this.loading = true;
-                let data = { tenant_id: this.tenant.id };
-                if (this.domain !== this.tenant.domain.split(".")[0]) {
-                    data.domain = this.domain;
-                    data.domain_id = this.tenant.domain_id;
-                }
-                if (this.tenant.template_id != this.selectedTemplate) {
-                    data.template_id = this.selectedTemplate;
-                }
+                let data = { domain_id: this.tenant.domain_id };
                 axios
-                    .put(`/api/template-update/${this.tenant.id}`, data)
+                    .put(`/api/template-update/${this.tenant.id}`, {
+                        ...evt,
+                        ...data,
+                    })
                     .then((res) => {
                         if (res.data.status == 200) {
+                            console.log(res);
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
+                            this.loading = false;
                         }
                     })
                     .catch((err) => {
+                        this.loading = false;
+                        if (err.response.status == 500) {
+                            M.toast({
+                                html: err.response.data.message,
+                                classes: "errorNotifier",
+                                displayLength: 6000,
+                            });
+                        }
                         console.log(err);
                     });
             },
