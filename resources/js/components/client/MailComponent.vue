@@ -5,7 +5,7 @@
         
         <!-- Sidebar for large and medium devices -->
         <div class="row" id="dashRowDiv">
-            <side-nav-component />
+            <side-nav-component @user="getUser"/>
         
             <!-- Mail blue div -->
             <div class="col s12 m10 l10" id="mailRightDiv">
@@ -141,13 +141,9 @@
 
 <script>
 import SideNavComponent from '../partials/SideNavComponent.vue';
-// import FooterComponent from "./partials/FooterComponent.vue";
-// import HeaderComponent from "./partials/HeaderComponent.vue";
 export default {
     components: {
-        SideNavComponent
-        // FooterComponent,
-        // HeaderComponent
+        SideNavComponent,
     },
     data() {
         return {

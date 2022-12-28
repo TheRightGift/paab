@@ -93,6 +93,25 @@ Route::prefix('client')->middleware(['auth', 'can:run_client_ops'])->group(funct
         return view('client.template');
     });
 });
+
+// Admin Routes
+Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(function () {
+    Route::get('/client', function () {
+        return view('admin.client');
+    });
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
+    Route::get('/mail', function () {
+        return view('admin.mail');
+    });
+    Route::get('/settings', function () {
+        return view('admin.settings');
+    });
+    Route::get('/template', function () {
+        return view('admin.template');
+    });
+});
 Route::get('/templates/physiciansportfolio', function () {
     return view('templates.physiciansportfolio');
 });
