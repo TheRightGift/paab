@@ -2609,6 +2609,11 @@
   "resolved" "https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-0.9.3.tgz"
   "version" "0.9.3"
 
+"esbuild-windows-64@0.15.16":
+  "integrity" "sha512-HjW1hHRLSncnM3MBCP7iquatHVJq9l0S2xxsHHj4yzf4nm9TU4Z7k4NkeMlD/dHQ4jPlQQhwcMvwbJiOefSuZw=="
+  "resolved" "https://registry.npmjs.org/esbuild-windows-64/-/esbuild-windows-64-0.15.16.tgz"
+  "version" "0.15.16"
+
 "esbuild@^0.15.9":
   "integrity" "sha512-o6iS9zxdHrrojjlj6pNGC2NAg86ECZqIETswTM5KmJitq+R1YmahhWtMumeQp9lHqJaROGnsBi2RLawGnfo5ZQ=="
   "resolved" "https://registry.npmjs.org/esbuild/-/esbuild-0.15.16.tgz"

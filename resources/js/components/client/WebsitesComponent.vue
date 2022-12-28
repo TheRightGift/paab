@@ -231,7 +231,8 @@
     import ConfigureWebComponent from "../partials/ConfigureWebComponent.vue";
 
     export default {
-        components: {
+    components: {
+            MobileNavComponent,
             SideNavComponent,
             WebCreateComponent,
             TemplatePreviewComponent,

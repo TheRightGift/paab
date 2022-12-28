@@ -4,31 +4,43 @@
     --black: #000000;
     --white: #ffffff;
 }
+
 ::-webkit-scrollbar {
     width: 5px;
-} /* this targets the default scrollbar (compulsory) */
+}
+
+/* this targets the default scrollbar (compulsory) */
 ::-webkit-scrollbar-track {
     /* box-shadow: inset 0 0 7px rgba(0,0,0,0.8);*/
     background-color: var(--primary);
     /*border-radius: 8px;*/
-} /* the new scrollbar will have a flat appearance with the set background color */
+}
+
+/* the new scrollbar will have a flat appearance with the set background color */
 ::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 100px var(--primary);
     background-color: var(--primary);
     /*border-radius: 8px;*/
-} /* this will style the thumb, ignoring the track */
+}
+
+/* this will style the thumb, ignoring the track */
 
 ::-webkit-scrollbar-button {
     height: 0;
     /* background-color: rgba(0,151,0,1);*/
-} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+}
+
+/* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
 
 ::-webkit-scrollbar-corner {
     background-color: var(--black);
-} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+}
+
+/* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
 ::-webkit-scrollbar-track-piece {
     background-color: var(--white);
 }
+
 ::-webkit-scrollbar-button:horizontal {
     width: 5px;
     /* Select the down or left scroll button when it's being hovered by the mouse */
@@ -39,54 +51,68 @@ body {
     width: 100%;
     height: 100vh;
 }
+
 .centre {
     text-align: center;
 }
+
 /* Misc */
 .error {
     background-color: #ffffff;
     color: #ff1744;
 }
+
 .success {
     background-color: #ffffff;
     color: #81c784;
 }
+
 .hoverable,
 .cursor {
     cursor: pointer;
 }
+
 .errorNotifier {
     background-color: red;
     color: var(--white);
 }
+
 .successNotifier {
     background-color: green;
     color: var(--white);
 }
+
 .noPaddingLeft {
     padding-left: 0 !important;
 }
+
 .noPaddingRight {
     padding-right: 0 !important;
 }
+
 .noMarginBottom {
     margin-bottom: 0;
 }
+
 .marginTop-5 {
     margin-top: 5vh;
 }
+
 .verticalMargin-2 {
     margin: 0 2vw;
 }
+
 .primary {
     background-color: var(--primary);
     color: var(--white);
 }
+
 .primary:hover,
 .primary:active {
     background-color: var(--white);
     color: var(--primary);
 }
+
 .primaryBorder,
 .primaryBorder:visited,
 .primaryBorder:active,
@@ -95,23 +121,29 @@ body {
     color: var(--primary);
     border: thin solid var(--primary);
 }
+
 .primaryBorder:hover {
     background-color: var(--primary);
     color: var(--white);
 }
+
 .gutter1 {
     margin-right: 1vw;
 }
+
 .gutterTop-10 {
     margin-top: 10vh;
 }
+
 .noVertMargin {
     margin-top: 0;
     margin-bottom: 0;
 }
+
 .marginRight1 {
     margin-right: 1vw;
 }
+
 .multiLine {
     display: -webkit-box;
     max-width: 100%;
@@ -119,9 +151,11 @@ body {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
 #feeds {
     background-color: var(--primary);
 }
+
 /* HOME */
 .navbar {
     position: fixed;
@@ -130,11 +164,13 @@ body {
     box-shadow: none;
     height: 12vh;
 }
+
 .navbarWrap {
     width: 83%;
     margin: 0 auto;
     background-color: transparent;
 }
+
 .altNav {
     background-color: var(--white);
     box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
@@ -144,38 +180,49 @@ body {
     /* box-shadow: none; */
     height: 10vh;
 }
+
 .altBrandLogo {
     font-weight: 700;
     font-size: 2.5rem;
     color: var(--primary);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-top: 2vh;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
+
 .brandLogo {
     font-weight: 700;
     font-size: 2.5rem;
     color: var(--white);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-top: 2vh;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
+
 #nav-mobile.section {
     padding-top: 0;
     padding-bottom: 0;
 }
+
 #navLinks {
     font-weight: 600;
     font-size: 1.1rem;
-    color: #7746ff;
-    font-family: "Montserrat", sans-serif;
+    color: #7746FF;
+    font-family: 'Montserrat', sans-serif;
+
+    border-left: none;
+    padding: 0;
+    margin-right: 2vw;
+    padding-bottom: 3vh;
 }
+
 #navLinks:hover {
     background-color: white;
     border-bottom: 4px solid rgba(125, 81, 245, 0.5);
 }
+
 #loginLink {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 6px;
     width: 130px;
     height: 40px;
@@ -184,60 +231,70 @@ body {
     line-height: 33px;
     font-weight: 600;
     font-size: 1rem;
-    color: #7746ff;
-    font-family: "Montserrat", sans-serif;
+    color: #7746FF;
+    font-family: 'Montserrat', sans-serif;
 }
+
 #loginLink:hover {
-    background: #7746ff;
-    color: #ffffff;
+    background: #7746FF;
+    color: #FFFFFF;
 }
+
 #banner {
-    background-image: url("../media/img/bannerCircle.png");
+    background-image: url('../media/img/bannerCircle.png');
     height: 100vh;
     background-repeat: no-repeat;
 }
+
 #banner.row {
     margin-bottom: 0;
 }
+
 .bannerContainer {
     width: 85%;
     margin: 0 auto;
     /* background-color: #000000; */
     height: 100vh;
 }
+
 .circleTxtDiv {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .circleDivTitle {
     width: 410px;
     font-size: 2.75rem;
     font-weight: 700;
     color: white;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
+
 .circleDivtxt {
     width: 400px;
     font-weight: 400;
     font-size: 1rem;
     color: white;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
+
 .circleDivBtn {
     width: 198px;
     height: 40px;
-    background: #1e1e1e;
+    background: #1E1E1E;
     border-radius: 6px;
     font-weight: 400;
     font-size: 0.9rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
+
 .btn.circleDivBtn:hover,
 .btn.circleDivBtn:active {
-    background: #1e1e1e;
+    background: #1E1E1E;
 }
+
 .portraitImgDiv {
     height: 100vh;
     display: flex;
@@ -245,6 +302,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .portraitImgInnerDiv {
     width: 178px;
     height: 386px;
@@ -252,29 +310,37 @@ body {
     box-shadow: 0px 10px 6px rgba(0, 0, 0, 0.25);
     border-radius: 100px;
 }
+
 .portraitImg {
     border-radius: 100px;
 }
+
 .innerPortraitImgDiv {
     display: flex;
     flex-direction: row;
+
 }
+
 .portraitImgCircleDiv {
     width: 109px;
     height: 109px;
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 50%;
 }
+
 #portrait3 {
     margin: 7px 0 0 6px;
 }
+
 .portraitImgCircleDiv {
     margin: 90px 0 0 35px;
 }
+
 #portrait2 {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
     margin-bottom: 1vh;
 }
+
 .portraitImgRightDiv {
     width: 177px;
     height: 562px;
@@ -282,18 +348,21 @@ body {
     box-shadow: 0px 10px 6px rgba(0, 0, 0, 0.25);
     border-radius: 100px;
 }
+
 #portrait {
     margin: 7px 0 0 6px;
 }
+
 .portraitImgCircleRightDiv {
     width: 73px;
     height: 73px;
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 50%;
     position: relative;
     top: 70px;
     left: 55px;
 }
+
 #portrait1 {
     margin: 135px 0 0 6px;
 }
@@ -301,14 +370,16 @@ body {
 .portraitImgContainDiv {
     margin-right: 1vw;
 }
+
 .portfolioDiv {
-    background: #7746ff;
+    background: #7746FF;
     box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
     /* margin-top: 17.5vh; */
     z-index: 100;
     padding-top: 11vh;
     padding-bottom: 15vh;
 }
+
 .portfolioTitle {
     width: 29%;
     margin: auto;
@@ -316,48 +387,55 @@ body {
     font-size: 2rem;
     align-items: center;
     text-align: center;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.010em;
     line-height: 48px;
-    color: #ffffff;
-    font-family: "Montserrat", sans-serif;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
 }
+
 .portfolioInnerDiv {
     display: flex;
 }
+
 .ellipseLarge {
     width: 92.27px;
     height: 94px;
-    background: #6938f2;
+    background: #6938F2;
     border-radius: 50%;
     position: absolute;
     right: 300px;
     bottom: -180px;
 }
+
 .ellipseSmall {
     width: 46.13px;
     height: 47px;
-    background: #6938f2;
+    background: #6938F2;
     border-radius: 50%;
     position: absolute;
     right: 273px;
     bottom: -193px;
 }
+
 .portfolioTxt {
     width: 59%;
     margin: 23px auto 0 auto;
     font-weight: 400;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     line-height: 24px;
     align-items: center;
     text-align: center;
     justify-content: center;
     letter-spacing: -0.015em;
-    color: #ffffff;
+    color: #FFFFFF;
+
 }
+
 .moreThanLandInnerDiv {
     margin-top: 13vh;
 }
+
 .moreThanLandTitle {
     font-style: normal;
     font-weight: 700;
@@ -366,13 +444,14 @@ body {
     align-items: center;
     text-align: center;
     letter-spacing: -0.015em;
-    color: #7746ff;
-    font-family: "Montserrat", sans-serif;
+    color: #7746FF;
+    font-family: 'Montserrat', sans-serif;
 }
+
 .moreThanLandTxt {
     width: 44%;
     margin: 0 auto;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 1rem;
     line-height: 24px;
@@ -380,28 +459,32 @@ body {
     text-align: center;
     letter-spacing: -0.015em;
 }
+
 .liveChatInnerDiv {
     width: 70%;
     margin-top: 15vh;
 }
+
 .liveChatImgInnerDiv {
     width: 256px;
     height: 256px;
     background-color: rgba(231, 156, 161, 0.5);
     border-radius: 50%;
 }
+
 .liveChatTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 2rem;
     line-height: 39px;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: #7746FF;
     margin-bottom: 13px;
 }
+
 .liveChatTxt {
-    font-family: "Poppins" sans-serif;
+    font-family: 'Poppins' sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
@@ -409,37 +492,43 @@ body {
     letter-spacing: -0.015em;
     margin: 0;
 }
+
 #chatImage {
     position: relative;
     bottom: 40px;
 }
+
 .cvInnerDiv {
     width: 70%;
     margin-top: 15vh;
 }
+
 .cvImgInnerDiv {
     width: 256px;
     height: 256px;
     background: rgba(119, 70, 255, 0.5);
     border-radius: 50%;
 }
+
 #cvImage {
     position: relative;
     bottom: 40px;
     right: 20px;
 }
+
 .cvTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 2rem;
     line-height: 39px;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: #7746FF;
     margin-bottom: 13px;
 }
+
 .cvTxt {
-    font-family: "Poppins" sans-serif;
+    font-family: 'Poppins' sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
@@ -447,10 +536,12 @@ body {
     letter-spacing: -0.015em;
     margin: 0;
 }
+
 .socialMediaInnerDiv {
     width: 70%;
     margin-top: 15vh;
 }
+
 .socialMediaImgInnerDiv {
     display: flex;
     width: 256px;
@@ -458,18 +549,20 @@ body {
     background: rgba(211, 240, 251, 0.5);
     border-radius: 50%;
 }
+
 .socialMediaTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 2rem;
     line-height: 39px;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: #7746FF;
     margin-bottom: 13px;
 }
+
 .socialMediaTxt {
-    font-family: "Poppins" sans-serif;
+    font-family: 'Poppins' sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
@@ -477,6 +570,7 @@ body {
     letter-spacing: -0.015em;
     margin: 0;
 }
+
 #socialMediaImage {
     position: relative;
     bottom: 30px;
@@ -484,32 +578,37 @@ body {
     max-width: 120vw;
     height: 36vh;
 }
+
 #facebookImg {
     position: absolute;
     margin: 89px 0 0 38px;
 }
+
 #twiterImg {
     position: absolute;
     margin: 27px 0 0 202px;
 }
+
 .clientRevInnerDiv {
     width: 70%;
     margin-top: 15vh;
 }
+
 .clientRevTitle,
 .templatesRowTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 2rem;
     line-height: 39px;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: #7746FF;
     margin-bottom: 13px;
 }
+
 .clientRevTxt,
 .templatesRowTxt {
-    font-family: "Poppins" sans-serif;
+    font-family: 'Poppins' sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
@@ -517,35 +616,42 @@ body {
     letter-spacing: -0.015em;
     margin: 0;
 }
+
 .clientRevImgInnerDiv {
     width: 256px;
     height: 256px;
     background: rgba(254, 197, 38, 0.5);
     border-radius: 50%;
 }
+
 #clientRevImage {
     position: relative;
     bottom: 40px;
-    right: 45px;
+    right: 25px;
 }
+
 .templatesRow {
     margin-top: 10vh;
 }
+
 .templatesRowTxt {
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
 }
+
 .tempRowImgDiv {
     display: flex;
     justify-content: center;
     margin: 10vh 0;
 }
+
 .templatesInnerDiv {
     width: 39%;
     margin: 15vh auto 0 auto;
 }
+
 .templatesTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 2rem;
@@ -553,11 +659,12 @@ body {
     align-items: center;
     text-align: center;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: #7746FF;
     margin-bottom: 0;
 }
+
 .templatesTxt {
-    font-family: "Poppins" sans-serif;
+    font-family: 'Poppins' sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
@@ -565,57 +672,72 @@ body {
     align-items: center;
     text-align: center;
     letter-spacing: -0.015em;
-    color: #1e1e1e;
+    color: #1E1E1E;
+
 }
+
 .tempImgDiv {
     width: 99%;
     margin: 10vh auto 0 6vw;
 }
+
 .cusSupportDiv {
-    background: #7746ff;
+    background: #7746FF;
     box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
     border-radius: 0px 100px 0px 0px;
     /* margin-top: 20vh; */
     padding-top: 20vh;
     padding-bottom: 20vh;
 }
+
 .cusSupportTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 1.6rem;
     line-height: 36px;
     letter-spacing: -0.015em;
-    color: #ffffff;
+    color: #FFFFFF;
 }
+
 .cusSupportInnerDiv {
     width: 85%;
     margin: 0 auto;
 }
+
 #fName,
 #lName,
 #email {
     height: 40px;
-    background: #ffffff;
+    background: #FFFFFF;
     padding-left: 7px;
     width: 99%;
 }
+
 #textarea1 {
     height: 20vh;
-    background: #ffffff;
+    background: #FFFFFF;
     padding-left: 7px;
 }
+
 #btnForm {
-    background: #1e1e1e;
+    background: #1E1E1E;
     border-radius: 6px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
+
 ::placeholder {
     color: rgb(48, 48, 48);
 }
+
 #careImg {
     height: 70vh;
 }
+
+#sCareImg {
+    height: 50vh;
+}
+
 .rm_mg {
     margin: 0;
 }
@@ -623,18 +745,21 @@ body {
 #reistrationForm .row {
     margin-bottom: 0;
 }
+
 #reistrationForm .input-field {
     margin-top: 0;
     margin-bottom: 0.8rem;
 }
+
 .footerInnerDiv {
     width: 70%;
     margin: 15vh auto 0 auto;
 }
+
 .contactTitle,
 .locTitle,
 .socialTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 1.25rem;
@@ -642,37 +767,42 @@ body {
     letter-spacing: -0.015em;
     color: #000000;
 }
+
 .contactTxt {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: lighter;
     font-size: 1.25rem;
     line-height: 24px;
     letter-spacing: -0.015em;
     text-decoration-line: underline;
-    color: #7746ff;
+    color: #7746FF;
 }
+
 .locTxt {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1.25rem;
     line-height: 24px;
     letter-spacing: -0.015em;
     text-decoration-line: underline;
-    color: #7746ff;
+    color: #7746FF;
     text-decoration: none;
 }
+
 .socialMedIcons {
-    color: #7746ff;
+    color: #7746FF;
     font-size: 25px;
     margin-right: 15px;
 }
+
 .footerContainDiv {
     margin-left: 10vw;
 }
+
 .copyWrite {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
@@ -689,6 +819,7 @@ body {
     width: 80%;
     margin: auto;
 }
+
 .welcomeContainer,
 .loginContainer,
 .regContainer,
@@ -698,42 +829,48 @@ body {
     flex-direction: column;
     justify-content: center;
 }
+
 .wlcNoteDiv {
     width: 434px;
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 50px;
     padding: 5vh 2vw;
 }
+
 .wlcNoteLogo {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 24px;
     letter-spacing: -0.015em;
-    color: #ffffff;
+    color: #FFFFFF;
 }
+
 p.wlcNoteLogo {
     margin-top: 0;
 }
+
 .wlcNoteTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 2.5rem;
     letter-spacing: -0.015em;
-    color: #ffffff;
+    color: #FFFFFF;
 }
+
 .wlcNoteTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
     line-height: 24px;
     color: rgba(255, 255, 255, 0.82);
 }
+
 .wlcNoteFooterTxt {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 0.9375rem;
@@ -743,48 +880,56 @@ p.wlcNoteLogo {
     color: rgba(255, 255, 255, 0.5);
     margin-top: 38vh;
 }
+
 p.wlcNoteFooterTxt {
     margin-bottom: 0;
 }
+
 .authTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 2.5rem;
     line-height: 35px;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: #7746FF;
     margin-bottom: 0;
     margin-top: 0;
 }
+
 .authTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
     line-height: 24px;
-    color: #1e1e1e;
+    color: #1E1E1E;
 }
+
 #user {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 100px;
     /* text-align: center; */
 }
+
 #regEmailVerifier input#user::placeholder {
     text-align: center;
 }
+
 #loginForm input#user {
     padding-left: 1vw;
 }
+
 #password {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 100px;
     padding-left: 1vw;
 }
+
 #loginBtn {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-transform: capitalize;
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
     /* margin-left: 1vw; */
     width: 98%;
@@ -792,13 +937,15 @@ p.wlcNoteFooterTxt {
     margin-left: 1vw;
     margin-top: 2vh;
 }
+
 .resetPass {
     font-size: 14px;
     font-weight: 500;
 }
+
 /* Login Auth Section-2 */
 .loginSocialMedTxt {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
@@ -815,7 +962,7 @@ p.wlcNoteFooterTxt {
 
 .loginSignUpTxt {
     margin-right: 0.5vw;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
@@ -829,8 +976,14 @@ p.wlcNoteFooterTxt {
     font-size: 15px;
     letter-spacing: -0.015em;
     text-decoration-line: underline;
-    color: #7746ff;
+    color: #7746FF;
 }
+
+
+
+
+
+
 
 /* Sign up page section */
 #signupTitle,
@@ -846,20 +999,25 @@ p.wlcNoteFooterTxt {
 #signCpass,
 #signupProfession,
 #signupZipcode {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 100px;
     padding-left: 9px;
     letter-spacing: -0.015em;
+
+    /* height: 4vh; */
 }
+
 #signupBtn {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-transform: capitalize;
 }
+
 .sm_mg {
     margin: 7px 0;
 }
+
 
 /* OTP Page Section */
 .otpSocialMedHandLink {
@@ -868,11 +1026,13 @@ p.wlcNoteFooterTxt {
     background-color: black;
     text-align: center;
 }
+
 .otpInnerDiv {
     padding-bottom: 6vh;
 }
+
 .otpSocialMedTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.9375rem;
@@ -880,14 +1040,16 @@ p.wlcNoteFooterTxt {
     align-items: center;
     text-align: center;
     letter-spacing: -0.015em;
-    color: #ffffff;
+    color: #FFFFFF;
 }
+
 .otpSocialMedIcon {
-    color: #7746ff;
+    color: #7746FF;
     line-height: 40px;
 }
+
 .proEmailMsg {
-    font-family: "Montserrat";
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -901,11 +1063,12 @@ p.wlcNoteFooterTxt {
     margin-bottom: 13px;
 }
 
+
 /* Proname Page Section */
 #proBtn {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-transform: capitalize;
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 10px;
     /* margin-left: 1vw; */
     width: 98%;
@@ -915,7 +1078,7 @@ p.wlcNoteFooterTxt {
 
 /* Proname Taken Page Section */
 .pronameTakenTxt {
-    font-family: "Montserrat";
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
@@ -928,6 +1091,7 @@ p.wlcNoteFooterTxt {
     margin-left: 0.5vw;
     margin-bottom: 2vh;
 }
+
 .domainSugDiv {
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -937,8 +1101,9 @@ p.wlcNoteFooterTxt {
     height: 6vh;
     display: flex;
 }
+
 .domainNameSug {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -949,11 +1114,12 @@ p.wlcNoteFooterTxt {
     letter-spacing: -0.015em;
     color: #000000;
 }
+
 .domainNameSugBtn {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
     color: white;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     height: 4.8vh;
     width: 7vw;
     text-align: center;
@@ -962,29 +1128,33 @@ p.wlcNoteFooterTxt {
     margin-right: 1vw;
     margin-top: 0.4vh;
 }
+
 .errorInnerDiv {
     position: absolute;
     top: 57vh;
     right: 25vw;
 }
+
 #errorAlertImg {
     position: absolute;
     top: 24vh;
     right: 25vw;
 }
+
 .errorTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 2.5rem;
     line-height: 24px;
     text-align: center;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: #7746FF;
     margin: 5vh 0 2vh 0;
 }
+
 .errorTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1rem;
@@ -994,6 +1164,7 @@ p.wlcNoteFooterTxt {
     color: rgba(0, 0, 0, 0.91);
     margin: 0;
 }
+
 .modalImgDiv {
     width: 15%;
     margin: auto;
@@ -1007,45 +1178,49 @@ p.wlcNoteFooterTxt {
     margin-left: 2vw;
     cursor: pointer;
 }
+
 #errAltBtn {
-    background: #1e1e1e;
+    background: #1E1E1E;
     border-radius: 6px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     height: 6vh;
 }
 
 .brandUsedAltBoxTxt {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
-    color: #ffffff;
+    color: #FFFFFF;
     text-align: center;
     margin-top: 4vh;
 }
 
+
 .insertOtpTxt {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
-    color: #ffffff;
+    color: #FFFFFF;
     text-align: center;
     margin-bottom: 3vh;
     margin-top: 5vh;
 }
 
+
 /* Insert OTP Section */
 .row .col.s1.otpDigits {
-    background-color: #d9d9d9;
+    background-color: #D9D9D9;
     height: 7vh;
     width: 3.5vw;
     text-align: center;
     margin-right: 1vw;
     border-radius: 10px;
 }
+
 
 /* Templates Section */
 /* #tempNavUl {
@@ -1054,73 +1229,86 @@ p.wlcNoteFooterTxt {
 .marginLeft-25 {
     margin-left: 25vw;
 }
+
 .tempLoginLink {
     position: relative;
     bottom: 0.5vh;
 }
-#navLinks {
-    border-left: none;
+
+/* #navLinks {
+    border-left: none; 
     padding: 0;
     margin-right: 2vw;
     padding-bottom: 3vh;
-}
+} */
 a.active {
-    border-bottom: 4px solid #7746ff;
+    border-bottom: 4px solid #7746FF;
     padding: 0;
 }
+
 .tempContainInnerDiv {
     width: 85%;
     margin: 17vh auto 0 auto;
 }
+
 .tempImgDiv1 {
     width: 64%;
     margin-left: auto;
 }
+
 #tempLogo {
-    color: #7746ff;
+    color: #7746FF;
 }
+
 .tempPageTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 2.75rem;
     line-height: 54px;
-    color: #7746ff;
+    color: #7746FF;
 }
+
 .tempPageTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 1rem;
     line-height: 24px;
-    color: #1e1e1e;
+    color: #1E1E1E;
     width: 70%;
 }
+
 .tempPageBtn {
     width: 198px;
     height: 40px;
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
+
 .tempPageBtn:hover {
-    color: #7746ff;
-    background: #ffffff;
+    color: #7746FF;
+    background: #FFFFFF;
 }
+
 .tempPageLeftDiv {
     margin-top: 15vh;
 }
+
 .tempPageImgTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.0625rem;
     line-height: 21px;
     letter-spacing: -0.015em;
     color: #000000;
+    margin: 0;
 }
+
 .tempPageImgTxt {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.9375rem;
@@ -1128,20 +1316,24 @@ a.active {
     letter-spacing: -0.015em;
     color: #6b6a6a;
     width: 80%;
+    margin: 0.7vh 0 0.9vh 0;
 }
+
 #tempPageImgBtn {
-    border: 2px solid #7746ff;
+    border: 2px solid #7746FF;
     border-radius: 6px;
     width: 198px;
     height: 40px;
-    background-color: #ffffff;
-    color: #7746ff;
-    font-family: "Montserrat", sans-serif;
+    background-color: #FFFFFF;
+    color: #7746FF;
+    font-family: 'Montserrat', sans-serif;
 }
+
 #tempPageImgBtn:hover {
-    background-color: #7746ff;
-    color: #ffffff;
+    background-color: #7746FF;
+    color: #FFFFFF;
 }
+
 /* .tempPageImgDiv {
     background: rgb(245, 243, 243);
 }
@@ -1158,24 +1350,29 @@ a.active {
     left: 1.3vw;
     z-index: -1;
 }
+
 #tempPageImg2 {
     position: relative;
     right: 1.3vw;
     z-index: -1;
 }
+
 #tempPageImg1 {
     position: relative;
     top: 1.5vh;
 }
+
 .tempPageRowInnerDiv {
     margin-bottom: 9vh;
 }
+
+
 
 /* Page Arrow Up Icon */
 .fixedArrowUpIconBtn {
     position: fixed;
     right: 1vw;
-    background-color: #d9d9d9;
+    background-color: #D9D9D9;
     width: 47px;
     height: 47px;
     border-radius: 50px;
@@ -1185,7 +1382,7 @@ a.active {
 }
 
 #fixedArrowUpIcon {
-    color: #7746ff;
+    color: #7746FF;
     font-size: 2rem;
 }
 
@@ -1200,10 +1397,11 @@ a.active {
     width: 0.5vw;
     height: 1vh;
     border-radius: 50px;
-    background-color: #7746ff;
+    background-color: #7746FF;
     margin-left: 0.75vw;
     margin-bottom: 0.5vh;
 }
+
 
 /* Get Started Section */
 .getStartLoginSignUpInnerDiv {
@@ -1211,7 +1409,7 @@ a.active {
 }
 
 .getStartBtn {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-transform: capitalize;
     background: var(--primary);
     border-radius: 10px;
@@ -1219,15 +1417,18 @@ a.active {
     height: 6vh;
     /* margin-left: 1vw; */
 }
+
 .btn.getStartBtn:hover,
 .btn.getStartBtn:active {
     background-color: var(--black);
-    color: var(--primary);
+    color: var(--primary)
 }
+
 .btn.getStartBtn:visited {
     background-color: var(--primary);
-    color: var(--white);
+    color: var(--white)
 }
+
 .loginSocialMedInnerDiv {
     display: flex;
     flex-direction: column;
@@ -1238,37 +1439,39 @@ a.active {
 .spinner-layer {
     border-color: var(--white) !important;
 }
-.website.spinner-layer {
-    border-color: var(--primary) !important;
-}
+
+
+
 
 /* OTP Email Section */
 #otpEmailBtn {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-transform: capitalize;
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 10px;
     width: 37%;
     height: 6vh;
     margin-left: 0.6vw;
     margin-top: 3vh;
 }
+
 .otpEmailAuthTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
     line-height: 24px;
-    color: #1e1e1e;
+    color: #1E1E1E;
     margin-bottom: 3vh;
 }
+
 #otpEmailDiv {
     margin-left: 0.7vw;
 }
 
 /* Dashboard Section */
 .dashLeftBar {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 3px;
     height: 100vh;
     padding-top: 4vh;
@@ -1286,12 +1489,11 @@ a.active {
 }
 
 #dashRowDiv {
-    height: 100vh;
     margin: 0;
 }
 
 .proImgDiv {
-    background: #d9d9d9;
+    background: #D9D9D9;
     width: 74px;
     height: 74px;
     border-radius: 50%;
@@ -1312,14 +1514,14 @@ a.active {
 
 .dashLeftBarIcons {
     font-size: 2rem;
-    color: #d9d9d9;
+    color: #D9D9D9;
     margin-left: 7.5vw;
 }
 
 .dashLeftBarTitle {
     margin: 0 0 4vh 0;
-    color: #d9d9d9;
-    font-family: "Poppins", sans-serif;
+    color: #D9D9D9;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
 }
 
@@ -1330,7 +1532,17 @@ a.active {
 }
 
 #dashRightImgDiv {
-    background-image: url("../media/img/rocket.png");
+    background-image: url('../media/img/rocket.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 292px;
+    border-radius: 10px;
+}
+
+#adminDashRightImgDiv {
+    background-image: url('../media/img/dashboardadminimg.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1347,23 +1559,23 @@ a.active {
 }
 
 .dashRightImgTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 3.125rem;
     /* line-height: 61px; */
-    color: #6938f2;
+    color: #6938F2;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0;
 }
 
 .dashRightImgTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
     /* line-height: 24px; */
-    color: #ffffff;
+    color: #FFFFFF;
     margin: 0;
     width: 87%;
 }
@@ -1375,31 +1587,31 @@ a.active {
 }
 
 .dashWlcNoteDiv {
-    background: #1e1e1e;
+    background: #1E1E1E;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     height: 12.25rem;
 }
 
 .dashWlcNoteTitle {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 2.5rem;
-    color: #7746ff;
+    color: #7746FF;
     margin: 2vh 0 0 0;
 }
 
 .dashWlcNoteTitle1 {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1.1rem;
-    color: #ffffff;
+    color: #FFFFFF;
 }
 
 .dashWlcNoteTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
@@ -1415,7 +1627,7 @@ a.active {
 }
 
 .dashTimeDiv {
-    background: #7746ff;
+    background: #7746FF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     height: 12.25rem;
@@ -1424,22 +1636,22 @@ a.active {
 }
 
 .dashTimeDate {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 30px;
-    color: #ffffff;
+    color: #FFFFFF;
     margin: 1vh 0 0 0;
 }
 
 .dashTime {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 3.75rem;
     line-height: 90px;
-    color: #ffffff;
+    color: #FFFFFF;
     margin: 0;
     position: relative;
     bottom: 2vh;
@@ -1496,13 +1708,13 @@ a.active {
 }
 
 .cardHeader {
-    background: #7746ff;
+    background: #7746FF;
     box-shadow: 0px 4px 4px rgba(119, 70, 255, 0.3);
     border-radius: 10px 10px 0px 0px;
 }
 
 .cardContent {
-    background: #1e1e1e;
+    background: #1E1E1E;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     border-top-left-radius: 0;
@@ -1511,13 +1723,14 @@ a.active {
 }
 
 .cardTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.25rem;
-    color: #ffffff;
+    color: #FFFFFF;
     padding: 5px 0 5px 30px;
     margin: 0;
+
 }
 
 #dashWlcNoteRowDiv,
@@ -1529,7 +1742,7 @@ a.active {
 .cardImgDiv {
     width: 60px;
     height: 60px;
-    background: #d9d9d9;
+    background: #D9D9D9;
     border-radius: 50%;
 }
 
@@ -1546,35 +1759,24 @@ a.active {
     margin: 1rem 0 0 2rem;
 }
 
-.cardProName,
-.domainname {
-    color: #7746ff;
-    font-family: "Poppins", sans-serif;
+.cardProName {
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
-}
-
-.cardProName {
-    /* font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 500;*/
     font-size: 1.25rem;
     line-height: 30px;
-    /* color: #7746FF; */
+    color: #7746FF;
     margin-left: 1vw;
-}
-.cardProName {
-    font-size: 1rem;
 }
 
 #cardViewLink {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
     line-height: 24px;
     text-decoration: underline;
-    color: #f4f4f4;
+    color: #F4F4F4;
     position: relative;
     top: 4vh;
     /* border-bottom: #D9D9D9; */
@@ -1586,24 +1788,24 @@ a.active {
 }
 
 #dashAddIconBtn {
-    color: #7746ff;
+    color: #7746FF;
     position: relative;
     left: 0.7vw;
     cursor: pointer;
 }
 
 .dashTimeAgo {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.875rem;
     line-height: 21px;
-    color: #ffffff;
+    color: #FFFFFF;
     margin-left: 2vw;
 }
 
 .mailCardTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.875rem;
@@ -1622,7 +1824,7 @@ a.active {
 
 #dashSidenavIconBtn {
     font-size: 3rem;
-    color: #7746ff;
+    color: #7746FF;
 }
 
 /* User Template Section */
@@ -1631,25 +1833,25 @@ a.active {
 }
 
 .userTempTitle {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 1.125rem;
     /* text-align: center; */
-    color: #7746ff;
+    color: #7746FF;
     margin: 0;
 }
 
 .userTempMainDiv {
     display: flex;
-    width: 60%;
-    margin: 7vh auto;
+    width: 70%;
+    margin: 10vh auto 0 auto;
 }
 
 .tempImgDiv {
     width: 60px;
     height: 60px;
-    background: #d9d9d9;
+    background: #D9D9D9;
     border-radius: 50%;
     margin: auto;
 }
@@ -1661,32 +1863,46 @@ a.active {
     color: rgba(0, 0, 0, 0.5);
 }
 
-/* Client Templates Section */
-/* .clientTempPageImgSmDv {
-    margin-bottom: 0.2vh;
-    padding-bottom: 5vh;
-} */
+i.material-icons.tempProIcon {
+    font-size: 3rem;
+    margin-left: 0.5vw;
+    margin-top: 0.5vh;
+    color: rgba(0, 0, 0, 0.5);
+}
 
 /* Client Website Section */
 .webBlackDiv {
-    width: 95%;
-    height: 196px;
-    background: #1e1e1e;
+    width: 93%;
+    /* height: 196px; */
+    background: #1E1E1E;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin: 5vh auto 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    height: 24.6vh;
+    /* align-items: center; */
+    justify-content: center;
 }
+
+#webAddCircleIcon {
+    color: #7746FF;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
 .webBlackTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 1.875rem;
-    color: #7746ff;
-    margin: 0 0 3vh 0;
-    /* margin: 0; */
+    color: #7746FF;
+    margin: 0vh 0 0 0;
 }
+
 .webBlackTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
@@ -1694,20 +1910,17 @@ a.active {
     margin-top: 0;
     /* width: 60%; */
 }
+
 .webBlackDiv1 {
-    width: 93%;
+    width: 97%;
     margin: 0 auto;
+    padding-left: 1vw;
 }
-#webAddCircleIcon {
-    /* color: #7746FF; */
-    /* font-size: 2rem; */
-    /* position: absolute;
-    right: 7vw;
-    top: 15vh; */
-}
+
 #webRightDiv {
-    padding: 5vh 2vw;
+    padding-top: 5vh;
 }
+
 #webAddContainer {
     display: flex;
     flex-direction: column;
@@ -1715,95 +1928,79 @@ a.active {
     justify-content: center;
     padding: 3.25vh 0;
 }
+
 #webAddContainer.primary:hover {
     border: thin solid var(--primary);
     cursor: pointer;
-    padding: 3.1vh 0;
+    padding: 3.12vh 0;
 }
+
 .material-icons.webAddIcon {
     font-size: 3.5rem;
 }
-.material-icons.webAddIcon2 {
-    font-size: 3.35rem;
-}
+
 .webWhiteDiv {
     height: 196px;
     border-radius: 10px;
 }
+
 /* #webWhiteProDiv {
     margin-right: 0vw;
 } */
 .websitesViewRow {
-    padding: 4vh 0 2vh;
+    padding: 2vh 0;
     border-bottom: thin solid var(--secondary);
 }
-.websiteTemplateName {
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    color: var(--primary);
-}
-p.websiteTemplateName {
-    margin-top: 1vh;
-}
-.websiteTemplateDesc h5 {
-    margin-top: 0;
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    color: var(--primary);
-}
-.websiteTemplateDesc p {
-    margin-top: 0;
-}
-.websiteTemplateDesc .col.l9 {
-    padding-left: 0;
-}
+
 .webWhiteProDiv {
     width: 60px;
     height: 60px;
-    background: var(--black);
-    /* border-radius: 50%; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    background: #D9D9D9;
+    border-radius: 50%;
 }
+
 .webWhiteDiv1 {
     padding-top: 5vh;
 }
+
 .websiteTitle {
     display: flex;
     /* flex-direction: column; */
     /* align-items: center; */
     justify-content: center;
 }
+
 .webWhiteProName {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 1.125rem;
-    color: #7746ff;
+    color: #7746FF;
     margin: 1vh 0 0 0;
 }
+
 .webWhiteTitle {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 900;
     font-style: normal;
     font-size: 1.25rem;
-    color: #7746ff;
+    color: #7746FF;
     margin: 0;
 }
+
 .webWhiteTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 1rem;
     color: rgb(30, 30, 30);
 }
+
 #webWhiteIcon {
-    font-size: 1.5rem;
-    color: #7746ff;
+    font-size: 2rem;
+    color: #7746FF;
 }
+
 .webHr {
     margin: 0;
 }
@@ -1811,66 +2008,75 @@ p.websiteTemplateName {
 .row .col.websiteBanner {
     padding: 3.5vh 5.5vw;
 }
+
 #webWhiteDiv2 {
     border-bottom: 1px solid rgba(119, 70, 255, 0.3);
     margin: 0;
 }
+
 #webWhiteProMgLftDiv {
     margin-left: 2vw;
 }
 
 /* Client Mail Section */
 .mailLink {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 30px;
-    color: #7746ff;
+    color: #7746FF;
 }
+
 .mailP {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
     line-height: 21px;
     color: rgba(255, 255, 255, 0.8);
 }
+
 .mailTime {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
     line-height: 21px;
-    color: #ffffff;
+    color: #FFFFFF;
 }
+
 #mailInnerDiv {
     /* margin-top: 3vh; */
     padding-top: 5vh;
 }
+
 .mailBlueDiv {
     width: 95%;
     height: 196px;
-    background: #7746ff;
+    background: #7746FF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin: 5vh auto 6vh auto;
 }
+
 .mailTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 1.875rem;
-    color: #1e1e1e;
+    color: #1E1E1E;
     margin: 6vh 0 0 0;
 }
+
 #mailRightDiv {
     padding-bottom: 13vh;
 }
+
 .mailBlackDiv {
     width: 95%;
     height: 196px;
-    background: #1e1e1e;
+    background: #1E1E1E;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin: 2vh auto 0 auto;
@@ -1882,150 +2088,211 @@ p.websiteTemplateName {
 
 /* Client Settings Section */
 .settingsFormDiv {
-    width: 40vw;
-    /* height: 86vh; */
-    background: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-#settingsForm {
-    width: 80%;
-    margin: 0 auto;
-}
-.mySetTitle {
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 30px;
-    color: #7746ff;
-    margin: 0 1vw 0 0;
+    /* width: 95%; */
     position: relative;
     bottom: 3vh;
 }
-.setMainDiv {
-    display: flex;
-    width: 70%;
-    margin: 10vh auto 0 auto;
+
+#settingsForm {
+    width: 98%;
 }
+
+.mySetTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: #7746FF;
+    margin: 0 0vw 0 0;
+}
+
+.mySetName {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 27px;
+    letter-spacing: -0.015em;
+    color: #000000;
+}
+
+.setMainDiv {
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 .setProDiv {
-    background: #d9d9d9;
-    width: 74px;
-    height: 74px;
+    background: #D9D9D9;
+    width: 85px;
+    height: 85px;
     border-radius: 50%;
     margin: auto;
-    display: inline-block;
+    display: inline-block
 }
+
+.setProTitleDiv {
+    margin-top: 4vh;
+}
+
 #setProImg {
     font-size: 3.5rem;
     margin-left: 0.8vw;
     margin-top: 0.9vh;
     color: rgba(0, 0, 0, 0.5);
 }
+
 #setProImgContainDiv {
     display: flex;
 }
+
 .setProEditIconDiv {
-    height: 23px;
-    width: 23px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #7746FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: inline-block;
     position: relative;
-    top: 1.2vh;
-    right: 1.2vw;
+    top: 2.7vh;
+    right: 1.8vw;
+    text-align: center;
 }
+
 #setProEditIcon {
-    color: #ffffff;
+    color: #FFFFFF;
     font-size: 1.3rem;
     margin: 0.3vh 0 0 0.1vw;
 }
+
 #setProMainDiv {
-    width: 20%;
-    margin: 0 auto 6vh auto;
+    /* width: 50%; */
+    display: flex;
+    margin-left: 1.5vw;
+    margin-bottom: 3vh;
 }
+
+#reviwProMainDiv {
+    margin-left: 18vw;
+}
+
 #setFormBtn {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-transform: capitalize;
     margin-top: 2vh;
+    /* margin-bottom: 4vh; */
+    
+    margin-bottom: 0vh;
 }
+
+#settingTitle,
+#settingLname,
+#settingFName,
+#settingEmail,
+#settingPhone,
+#settingCountry,
+#settingGender,
+#settingState,
+#settingCity,
+#settingPass,
+#settingCpass
+{
+    border: 1px solid #7746FF;
+    border-radius: 100px;
+    padding-left: 9px;
+    letter-spacing: -0.015em;
+    height: 4vh;
+}
+
 /* Client Support Section */
 .supportBlueDiv {
     width: 95%;
     height: 196px;
-    background: #1e1e1e;
+    background: #1E1E1E;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin: 5vh auto 6vh auto;
 }
+
 .supportTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 1.875rem;
-    color: #7746ff;
+    color: #7746FF;
     margin: 6vh 0 0 0;
 }
-.webBlackDiv1 {
-    width: 95%;
-    margin: 0 auto;
-}
+
 .supportTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 1.875rem;
     line-height: 50px;
-    color: #7746ff;
+    color: #7746FF;
 }
+
 .supportTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
-    color: #1e1e1e;
+    color: #1E1E1E;
 }
+
 div .row .supportDiv {
     width: 95%;
     margin: 0 auto;
 }
+
 .supportTitle1 {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 1.125rem;
     line-height: 22px;
-    color: #7746ff;
+    color: #7746FF;
     margin-top: 0;
 }
+
 .supportTxt1 {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 0.875rem;
     line-height: 21px;
-    color: #1e1e1e;
+    color: #1E1E1E;
 }
-.supportDiv > * {
+
+.supportDiv>* {
     margin-bottom: 5vh;
 }
+
 .supportGetInTouchDiv {
-    background: #ffffff;
+    background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 94%;
     margin: 1vh auto 4vh auto;
 }
+
 .supportGetInTouchTitle {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 30px;
-    color: #7746ff;
+    color: #7746FF;
     margin: 0;
 }
+
 .supportGetInTouchTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1rem;
@@ -2033,16 +2300,19 @@ div .row .supportDiv {
     color: rgba(0, 0, 0, 0.8);
     margin: 0;
 }
+
 #supportGetInTouchBtn {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
     margin-top: 2vh;
 }
+
 div .row .supportGetInTouchRowDiv {
     width: 98%;
     margin: 0 auto;
     padding: 2.3vh 0;
 }
+
 #supportGetInTouchBtnColDiv {
     padding-right: 0;
 }
@@ -2053,7 +2323,7 @@ div .row .supportGetInTouchRowDiv {
     margin: 6vh auto;
 } */
 .clientModalDiv {
-    background: #1e1e1e;
+    background: #1E1E1E;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin-top: 1.5vh;
@@ -2061,18 +2331,21 @@ div .row .supportGetInTouchRowDiv {
     padding-top: 7vh;
     padding-bottom: 3vh;
 }
+
 .clientSendmailContainDiv {
     width: 80%;
     margin: auto;
 }
+
 .clientSendmailBackTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 1.875rem;
     color: #000000;
 }
+
 #clientSendmailArrowBackIcon {
     font-size: 1.5rem;
     font-weight: 900;
@@ -2080,17 +2353,19 @@ div .row .supportGetInTouchRowDiv {
     top: 0.3rem;
     margin-right: 0.2vw;
 }
+
 .clientSendemailTitle {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 30px;
-    color: #7746ff;
+    color: #7746FF;
 }
+
 .clientSendemailTxt,
 .clientSendemailTxt1 {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 0.97rem;
@@ -2098,79 +2373,88 @@ div .row .supportGetInTouchRowDiv {
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 3.5vh;
 }
+
 .clientSendemailTxt2 {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 0.97rem;
     line-height: 21px;
-    color: #7746ff;
+    color: #7746FF;
     margin-top: 5vh;
 }
+
 .clientSendmailTimeSent {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 0.875rem;
     line-height: 21px;
-    color: #ffffff;
+    color: #FFFFFF;
 }
+
 #clientSendmailRowDiv {
     width: 95%;
     margin: auto;
 }
+
 .clientSendmailArrowBackLink {
     color: #000000;
 }
 
 /* Client Setup Website Modal */
 .setWebContainModalDiv {
-    background: #1e1e1e;
+    background: #1E1E1E;
     border-radius: 10px;
     padding-top: 7vh;
     width: 80%;
     margin: 13vh auto 0 auto;
     padding-bottom: 2vh;
 }
+
 .setWebInnerModalDiv {
     width: 85%;
     margin: auto;
 }
+
 .setWebTitleDiv,
 .setWebUrlDiv,
 .setWebDateDiv,
 .setWebDescriptionDiv {
     display: flex;
 }
+
 .setWebTitle,
 .setWebUrlTitle,
 .setWebDateTitle,
 .setWebDescriptionTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1.25rem;
     line-height: 24px;
     letter-spacing: -0.015em;
-    color: #ffffff;
+    color: #FFFFFF;
     margin-right: 2vw;
 }
+
 .setWebTitleData,
 .setWebUrlData,
 .setWebDateData,
 .setWebDescriptionData {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1.125rem;
     line-height: 22px;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: #7746FF;
 }
+
 #setWebBtn {
-    background: #d9d9d9;
+    background: #D9D9D9;
     border-radius: 6px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.938rem;
@@ -2179,48 +2463,53 @@ div .row .supportGetInTouchRowDiv {
     color: #000000;
     margin-bottom: 2vh;
 }
+
 #setWebBtn1 {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.938rem;
     line-height: 18px;
     letter-spacing: -0.015em;
-    color: #ffffff;
+    color: #FFFFFF;
 }
+
 #setWebBtnDiv {
     margin-top: 12vh;
 }
+
 .setWebPlan {
-    background: #fec526;
+    background: #FEC526;
     box-shadow: 0px 4px 4px rgba(254, 197, 38, 0.27);
     border-radius: 100px 0px;
     align-items: center;
     text-align: center;
     letter-spacing: -0.015em;
-    color: #ffffff;
+    color: #FFFFFF;
     padding: 0px 10px;
     margin-left: 1vw;
 }
 
 /* Client Support Modal */
 .clientModalSupportDiv {
-    background: #7746ff;
+    background: #7746FF;
     box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding-top: 2vh;
     padding-bottom: 12vh;
     width: 60%;
-    position: absolute;
-    bottom: 7vh;
+    position: fixed;
+    bottom: 13vh;
     left: 29vw;
 }
+
 .clientModalSupportInnerDiv {
     width: 95%;
     margin: 0 auto;
 }
+
 #clientCusSupportCancelBtn {
     color: #ffffff;
     margin: 4vh 0 0 2vw;
@@ -2229,7 +2518,7 @@ div .row .supportGetInTouchRowDiv {
 
 /* Reset Password */
 #resetEmail {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 100px;
     padding-left: 2vw;
     width: 96.9%;
@@ -2237,21 +2526,23 @@ div .row .supportGetInTouchRowDiv {
 
 /* Create new password Section */
 #createPass {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 100px;
     padding-left: 2vw;
     width: 96.9%;
     margin-bottom: 0;
 }
+
 #confirmCreatePass {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 100px;
     padding-left: 2vw;
     width: 96.9%;
     margin-top: 0;
 }
+
 .createPasswordLoginLinkDiv {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.938rem;
@@ -2262,18 +2553,20 @@ div .row .supportGetInTouchRowDiv {
     color: rgba(0, 0, 0, 0.5);
     margin-top: 4vh;
 }
+
 .createPasswordLoginLink {
     text-decoration: underline;
     margin-left: 0.5vw;
-    color: #7746ff;
+    color: #7746FF;
 }
+
 #confirmCreatePassColDiv {
     margin-top: 0;
 }
 
 /* Login Reset password link */
 #loginResetPassLink {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.938rem;
@@ -2281,62 +2574,32 @@ div .row .supportGetInTouchRowDiv {
     letter-spacing: -0.015em;
     color: rgba(0, 0, 0, 0.5);
 }
+
 .loginPassInputRowColDiv {
     margin-bottom: 0;
 }
+
 #authAlertContainDiv {
     position: absolute;
     top: 15vh;
     left: 25vw;
 }
+
 .clientSendMailBackLinkDiv {
     margin-top: 6vh;
 }
 
 /* Create Portfolio Modal */
-.createWebsiteDomainName img {
-    width: 100%;
-}
-.col .row.createWebRow {
-    display: flex;
-    width: 85%;
-    margin: 0 auto;
-}
-.createWebRow p {
-    margin-top: 0;
-}
-.websiteCreateBtnRow {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 7vh;
-}
-.websiteCreateBtnRow .create {
-    margin: 0 1.5vw;
-    background-color: var(--primary);
-}
-.material-icons.selectedTemplate {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 3rem;
-}
-.createWebSectionTitle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.card.selected {
-    box-shadow: 0 2px 2px 0 rgba(1, 80, 21, 0.14), 0 3px 1px -2px rgb(1 80 21 / 12%), 0 1px 5px 0 rgb(1 80 21 / 20%);;
-}
 .clientCreatePortModalDiv {
-    background: #ffffff;
+    background: #FFFFFF;
     border-radius: 10px;
     /* width: 95%; */
     /* margin: 5vh auto 0 auto; */
     /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
 }
+
 .clientCreatePortTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: lighter;
     font-size: 1.25rem;
@@ -2344,6 +2607,7 @@ div .row .supportGetInTouchRowDiv {
     color: rgba(0, 0, 0, 0.8);
     text-align: center;
 }
+
 #clientCreatePortInput,
 #clientCreatePortInput1 {
     background: rgba(119, 70, 255, 0.3);
@@ -2352,224 +2616,139 @@ div .row .supportGetInTouchRowDiv {
     margin-top: 2vh;
     width: 90%;
     padding: 0 2vw;
-    height: 7vh;
+    height: 6vh;
 }
+
+div .col .s12 input.clientCreatePortInput1 {
+    background: rgba(119, 70, 255, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    margin-top: 2vh;
+    width: 90%;
+    padding: 0 2vw;
+    height: 6vh;
+}
+
+div .col .s10 input.clientCreatePortInput1 {
+    background: rgba(119, 70, 255, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    margin-top: 2vh;
+    /* width: 90%; */
+    padding: 0 2vw;
+    height: 6vh;
+}
+
 #clientCreatePortInput::placeholder,
 #clientCreatePortInput1::placeholder {
     font-family: "Poppins", sans-serif;
-    /* font-style: normal; */
-    /* font-weight: 500; */
     font-size: 0.8rem;
     line-height: 24px;
     color: rgba(26, 25, 25, 0.8);
+
 }
+
 .col .row.clientCreateWebsiteView {
     margin: 5vh auto;
     width: 80%;
 }
-#clientCreatePortBtn {
-    background: #7746ff;
+
+.clientCreatePortBtnDiv {
+    margin: 0 auto;
+    width: 12vw;
+}
+
+.clientCreatePortBtn {
+    background: #7746FF;
     border-radius: 6px;
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 0.938rem;
     line-height: 18px;
     letter-spacing: -0.015em;
-    color: #ffffff;
-    margin: 0 0 11vh 28vw;
+    color: #FFFFFF;
     width: 12vw;
+    margin-top: 3vh;
 }
+
 .webProfessionDiv {
     display: flex;
     width: 80%;
     margin: 7vh auto;
 }
+
 #clientCreatePortCancelIconBtn {
     /* margin: 2vw 0 0 5vh; */
-    color: #7746ff;
+    color: #7746FF;
     cursor: pointer;
 }
+
 #clientCreatePortCancelDiv {
     margin: 0;
 }
 
-/* Client Website Settings */
-.clientSelectedTemp {
-    filter: drop-shadow(0px 6px 9px rgba(16, 208, 12, 0.8));
-}
-.configWebTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 17px;
-    color: rgba(0, 0, 0, 0.5);
-    margin-left: 1vw;
-}
-.configWebBackBtn {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 0.938rem;
-    line-height: 18px;
-    letter-spacing: -0.015em;
-    color: #000000;
-    margin-left: 5.8vw;
-}
-.configWebBackBtnDiv {
-    margin-top: 4vh;
-}
-.configWebInputLabel {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 17px;
-    line-height: 21px;
-    letter-spacing: -0.015em;
-    color: rgba(0, 0, 0, 0.5);
-    margin-left: 1.9vw;
-    margin-bottom: 0;
-}
-#configWebInputDiv {
-    width: 80%;
-    margin: 7vh auto 0 auto;
-}
-#configWebBtn {
-    background: #7746ff;
-    border-radius: 6px;
-    margin-top: 2.5vh;
-    height: 5vh;
-    width: 7vw;
-}
-#configWebInput {
-    background: rgba(119, 70, 255, 0.3);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 100px;
-    margin-top: 2vh;
-    padding: 0 2vw;
-    height: 6vh;
-}
-.configWebLoadTxt {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    letter-spacing: -0.015em;
-    color: #000000;
-}
-.configDelDiv {
-    display: flex;
-    margin: 9vh 0 0 0;
-}
-.configDeTxt {
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 17px;
-    line-height: 21px;
-    letter-spacing: -0.015em;
-    color: rgba(0, 0, 0, 0.5);
-}
-#configDelBtn {
-    background: #d44141;
-    border-radius: 6px;
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 15px;
-    letter-spacing: -0.015em;
-}
-.configDelBtnDiv {
-    margin-left: auto;
-}
-.configWebTempMainDiv {
-    width: 85%;
-    margin: 9vh auto 0 auto;
-}
-#configWebTempPageRowDiv {
-    padding-top: 2vh;
-}
-.configWebRightDiv {
-    padding: 5vh 2vw;
-}
-#configWebBlackTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1.875rem;
-    color: #7746ff;
-    margin: 6vh 0 1vh 0;
-    /* margin: 0; */
-}
-.configWebBlackTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1.875rem;
-    color: #7746ff;
-    margin: 6vh 0 0 0;
-}
+
 
 /* Setup Website Modal */
 .editWebNav {
-    background-color: #7746ff;
+    background-color: #7746FF;
     /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
-    /* height: 9vh; */
+    height: 9vh;
     margin-bottom: 2vh;
 }
-.editWebNav::-webkit-scrollbar {
-    width: 1px !important;
+
+.editInnerWebNav {
+    width: 80%;
+    margin: auto;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-    background: #ad89f0;
-}
-.editWebNav {
-    width: 100%;
-    overflow-y: auto;
-}
 #editWebUl {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    top: 2.5vh;
 }
+
 .editWebModalDiv {
     position: absolute;
     left: 25vw;
     top: 3vh;
     width: 67%;
+    padding-bottom: 3vh;
 }
+
 .editWebLink {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1.1rem;
     line-height: 20px;
-    color: #ffffff;
+    color: #FFFFFF;
     display: flex;
 }
-.editWebLi:not(:last-child) {
+
+.editWebLi {
     margin-right: 4.3vw;
 }
+
 .editWebModalExitBtn {
-    background: #ffffff;
+    background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 0.5vh 1.2vw;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 30px;
-    color: #7746ff;
+    color: #7746FF;
 }
+
 .editGenModal {
-    background-color: #f4f4f4;
+    background-color: #F4F4F4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding-bottom: 12vh;
 }
+
 /* #editWebGenModelInput {
     border: 1px solid #7746FF;
     border-radius: 100px;
@@ -2581,8 +2760,9 @@ div .row .supportGetInTouchRowDiv {
     margin: 0 auto;
     padding-top: 2vh;
 }
+
 .editWebGenTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1.25rem;
@@ -2591,76 +2771,88 @@ div .row .supportGetInTouchRowDiv {
     color: #000000;
     margin: 1.5vh 0 0 0;
 }
+
 #editWebGenBtn {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
     margin: 3vh 0 12vh 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
 }
+
 .logImgDiv {
-    background: #d9d9d9;
+    background: #D9D9D9;
     border-radius: 10px;
     width: 6.5vw;
     height: 12vh;
 }
+
 .logoContainDiv {
     padding: 0 100px 0 100px;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
 .flexed {
     display: flex;
 }
+
 .logoImgTxt {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.938rem;
     line-height: 24px;
     letter-spacing: -0.015em;
-    color: #1e1e1e;
+    color: #1E1E1E;
 }
+
 .logoRowDiv {
     width: 83.5%;
     margin: 0 auto;
     /* background-color: red; */
     padding: 1vh 0;
 }
+
 .logoModalUpLink {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 0.938rem;
     line-height: 24px;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: #7746FF;
 }
+
 #logoModalUpIcon {
-    color: #7746ff;
+    color: #7746FF;
     font-size: 1.8rem;
     position: relative;
     top: 1vh;
     margin-right: 0.5vw;
     margin-left: 10vw;
 }
+
 .logoUpDiv {
     margin-top: 7vh;
 }
+
 .logoHr {
     border: 1px solid rgba(119, 70, 255, 0.3);
 }
+
 #logModalBtn {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
     margin: 7vh 0 3vh 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
 }
+
 input::placeholder {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -2668,8 +2860,9 @@ input::placeholder {
     letter-spacing: -0.015em;
     color: rgba(0, 0, 0, 0.5);
 }
+
 textarea::placeholder {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -2677,39 +2870,46 @@ textarea::placeholder {
     letter-spacing: -0.015em;
     color: rgba(0, 0, 0, 0.5);
 }
+
 #bioAboutInput {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 100px;
     padding-left: 2vw;
     height: 4.5vh;
 }
+
 .bioModalDiv {
-    background-color: #f4f4f4;
+    background-color: #F4F4F4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding-bottom: 7vh;
 }
+
 .servicesModalDiv {
-    background-color: #f4f4f4;
+    background-color: #F4F4F4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding-bottom: 12vh;
 }
+
 .achieveModalDiv {
-    background-color: #f4f4f4;
+    background-color: #F4F4F4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding-bottom: 7vh;
 }
+
 .socialModalDiv {
-    background-color: #f4f4f4;
+    background-color: #F4F4F4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding-bottom: 7vh;
 }
+
 #bioForm {
     width: 82%;
     margin: auto;
     padding-top: 4vh;
 }
+
 .bioTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1.25rem;
@@ -2718,99 +2918,114 @@ textarea::placeholder {
     color: #000000;
     margin: 0 0 0 0;
 }
+
 #bioIcon {
-    color: #7746ff;
+    color: #7746FF;
     font-size: 1.8rem;
     position: relative;
     top: 1vh;
 }
+
 .bioUpTxt {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 0.938rem;
     line-height: 24px;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: #7746FF;
     margin-left: 0.6vw;
 }
+
 #bioUpIconColDiv {
     margin-top: 1vh;
     position: relative;
     left: 3vw;
 }
+
 #bioCvInput,
 #bioCvInput1,
 #bioCvInput2 {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 100px;
     padding-left: 2vw;
     height: 4.5vh;
     width: 95%;
 }
+
 #bioCvInput3 {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 100px;
     padding-left: 2vw;
     height: 4.5vh;
     width: 95%;
     margin-left: 1.3vw;
 }
+
 #bioUpIconColDiv1 {
     position: absolute;
     top: 32vh;
     right: 8.3vw;
 }
+
 #bioUpIconColDiv2 {
     position: relative;
     top: 1vh;
     left: 3vw;
 }
+
 #bioAddBtn {
-    color: #7746ff;
+    color: #7746FF;
 }
+
 .bioSelectOpt {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 100px;
     height: 4.5vh;
 }
+
 .bioSelectOpt1 {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 100px;
     height: 4.5vh;
     margin-top: 2.3vh;
 }
+
 #bioModalBtn {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
     margin: 1vh 0 4vh 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
 }
+
 #contactModalSubBtn {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
     margin: 3vh 0 3vh 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
 }
+
 #socialsModalSubBtn {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
     margin: 8vh 0 6vh 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
 }
+
 #reviewForm {
     width: 82%;
     margin: auto;
     padding-top: 4vh;
 }
+
 .reviewTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1.25rem;
@@ -2819,66 +3034,125 @@ textarea::placeholder {
     color: #000000;
     margin: 1.5vh 0 0 1vw;
 }
+
 #reviewModalBtn {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
     margin: 5vh 0 2vh 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
 }
+
 #reviewUpIconColDiv2 {
     position: relative;
     bottom: 0.4vh;
     left: 3vw;
 }
+
 #reviewUpIconColDiv2 {
     position: relative;
     bottom: 0.6vh;
     left: 3vw;
 }
+
 #reviewUpIconColDiv2 {
     position: relative;
     bottom: 1vh;
     left: 3vw;
 }
 
+/* Logout Modal */
+#logoutModal {
+    /* background-color: var(--primary); */
+    border-radius: 20px;
+    width: 50vw;
+}
+
+.logoutModalImageRow {
+    display: flex;
+    justify-content: center;
+}
+
+.logoutModalImage {
+    width: 15vw;
+}
+
+.sidenav {
+    background-color: #7746FF;
+}
+
+
+/* New styling changes */
 #tempPreviewContainDiv {
     margin-top: 12vh;
 }
+
+.clientConfigTempDiv {
+    width: 94%;
+    margin: auto;
+}
+
 .clientTempPageImgSmDv {
     margin-bottom: 8vh;
 }
+
 .tempPageImgDiv {
-    /* background: rgb(245, 243, 243); */
     width: 26.5vw;
 }
+
+.tempPageImgDiv {
+    /* background: rgb(245, 243, 243); */
+    width: 23vw;
+}
+
 #tempPageGridImg {
     width: 100%;
     height: 100%;
     object-fit: fill;
 }
+
+.tempPageGridImg {
+    width: 95%;
+    height: 100%;
+    object-fit: fill;
+}
+
 .tempPageImgLink {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 1.063rem;
     line-height: 21px;
     letter-spacing: -0.015em;
     text-decoration-line: underline;
-    color: #7746ff;
+    color: #7746FF;
 }
+
+.tempPageImgLink1 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.063rem;
+    line-height: 21px;
+    letter-spacing: -0.015em;
+    text-decoration-line: underline;
+    color: #7746FF;
+    margin-right: 2.7vw;
+}
+
 .clientTempContainInnerDiv {
     width: 85%;
     margin: 17vh auto 0 auto;
 }
+
 #clientTempPageRowDiv {
     padding-top: 2vh;
 }
 
 #sFName {
     height: 40px;
-    background: #ffffff;
+    background: #FFFFFF;
     padding-left: 7px;
     width: 109%;
     /* margin-right: 7vw; */
@@ -2886,7 +3160,7 @@ textarea::placeholder {
 
 #sLName {
     height: 40px;
-    background: #ffffff;
+    background: #FFFFFF;
     padding-left: 7px;
     width: 109%;
     margin-left: 1.1vw;
@@ -2894,7 +3168,7 @@ textarea::placeholder {
 
 #sEmail {
     height: 40px;
-    background: #ffffff;
+    background: #FFFFFF;
     padding-left: 7px;
     width: 109%;
 }
@@ -2902,24 +3176,24 @@ textarea::placeholder {
 #sTextarea1 {
     width: 111%;
     height: 13vh;
-    background: #ffffff;
+    background: #FFFFFF;
     padding-left: 7px;
 }
 
 #modalSupportBtnForm {
     width: 111%;
-    background: #1e1e1e;
+    background: #1E1E1E;
     border-radius: 6px;
 }
 
 .editBtnLinkNum {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.1rem;
     line-height: 20px;
-    color: #7746ff;
-    background-color: #ffffff;
+    color: #7746FF;
+    background-color: #FFFFFF;
     padding: 0.1vh 0.4vw;
     border-radius: 50%;
     margin-right: 0.2vw;
@@ -2928,29 +3202,32 @@ textarea::placeholder {
 .genTitleDiv {
     display: flex;
 }
+
 .genTitle {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 1.1rem;
     line-height: 20px;
     color: rgba(0, 0, 0, 0.5);
-    margin-right: 4vw;
-    width: 22vw;
-    border-bottom: 4px solid #7746ff;
+    margin-right: 3vw;
+    width: 24vw;
+    border-bottom: 4px solid #7746FF;
     padding: 0 0 1vh 1.5vw;
 }
+
 .genTitle1 {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: lighter;
     font-size: 1.5rem;
     line-height: 29px;
-    color: #7746ff;
+    color: #7746FF;
     margin-top: 7vh;
 }
+
 .genTxt {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 0.875rem;
@@ -2958,32 +3235,37 @@ textarea::placeholder {
     color: rgba(0, 0, 0, 0.5);
     width: 30vw;
 }
+
 #genInput {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 10px;
     padding-left: 1vw;
     width: 463px;
     height: 40px;
 }
+
 #genInput1 {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 10px;
     padding-left: 1vw;
     width: 463px;
     height: 40px;
 }
+
 #genModalBtn {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
     width: 8vw;
 }
+
 .genBottomBtnDiv {
     margin-top: 10vh;
 }
+
 .goBackBtn {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.938rem;
@@ -2994,67 +3276,89 @@ textarea::placeholder {
 }
 
 #genNextBtn {
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 6px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.938rem;
     line-height: 18px;
     letter-spacing: -0.015em;
-    color: #ffffff;
+    color: #FFFFFF;
     width: 8vw;
 }
+
 #editWebWlcTxt {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.9rem;
     line-height: 37px;
-    color: #7746ff;
+    color: #7746FF;
 }
+
 #genUploadFavIcon {
     position: relative;
     top: 0.5vh;
     right: 2vw;
-    color: #7746ff;
+    color: #7746FF;
 }
+
 #genUploadFavIconDiv {
     position: relative;
     right: 0.5vw;
 }
-#genTitleCheck3,
-#genTitleCheck,
-#genTitleCheck1,
-#genTitleCheck2 {
-    color: #7746ff;
+
+#genTitleCheck {
+    color: #7746FF;
+    position: absolute;
+    top: 26.5vh;
+    left: 3vw;
 }
+
+#genTitleCheck1 {
+    color: #7746FF;
+    position: absolute;
+    top: 26.5vh;
+    left: 18vw;
+}
+
+#genTitleCheck2 {
+    color: #7746FF;
+    position: absolute;
+    top: 26.5vh;
+    left: 33vw;
+}
+
 #bioInput,
 #bioInput1 {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 10px;
     padding-left: 1vw;
     width: 463px;
     height: 40px;
 }
+
 #bioSelectInput {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 10px;
     padding-left: 1vw;
     width: 483px;
     height: 40px;
     background-color: #f4f4f4;
 }
+
 #bioDescribeInput {
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 10px;
     padding-left: 1vw;
     width: 483px;
     height: 190px;
     background-color: #f4f4f4;
 }
+
 .achieveTitle {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -3063,29 +3367,26 @@ textarea::placeholder {
     margin-bottom: 1vh;
     margin-top: 1vh;
 }
-.sliderContainer {
-    width: 480px;
-}
-.expLeftBarTxt1 {
-    text-transform: capitalize;
-}
-/* .achieveProgressBar {
+
+.achieveProgressBar {
     width: 480px;
     height: 12px;
     background: #D9D9D9;
     border-radius: 10px;
     margin-bottom: 2vh;
-} */
+}
+
 .achieveInnerProgressBar {
     width: 26px;
     height: 12px;
-    background: #7746ff;
+    background: #7746FF;
     border-radius: 10px;
 }
+
 #socialInput,
 #socialInput1,
 #socialInput2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
@@ -3093,28 +3394,17 @@ textarea::placeholder {
     letter-spacing: -0.015em;
     color: rgba(0, 0, 0, 0.5);
 
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 10px;
     padding-left: 1vw;
     width: 463px;
     height: 40px;
-}
-
-.loader {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url("//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif")
-        50% 50% no-repeat rgb(249, 249, 249);
 }
 
 #contactInput,
 #contactInput1,
 #contactInput2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
@@ -3122,147 +3412,470 @@ textarea::placeholder {
     letter-spacing: -0.015em;
     color: rgba(0, 0, 0, 0.5);
 
-    border: 1px solid #7746ff;
+    border: 1px solid #7746FF;
     border-radius: 10px;
     padding-left: 1vw;
     width: 463px;
     height: 40px;
 }
+
 .editSocialMedIcons {
-    color: #7746ff;
+    color: #7746FF;
     font-size: 25px;
     position: relative;
     right: 2vw;
     top: 0.5vh;
 }
+
 .achieveprogBarDiv {
     display: flex;
 }
+
 .achieveProgBarYear {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
     line-height: 17px;
-    color: #7746ff;
+    color: #7746FF;
     position: relative;
     left: 0.5vw;
     bottom: 0.4vh;
 }
 
+/* Client Website Settings */
+.clientSelectedTemp {
+    filter: drop-shadow(0px 6px 9px rgba(16, 208, 12, 0.8));
+}
+
+.configWebTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 1vw;
+}
+
+.configWebBackBtn {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #000000;
+    margin-left: 5.8vw;
+}
+
+.configWebBackBtnDiv {
+    margin-top: 4vh;
+}
+
+.configWebInputLabel {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 21px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 1.9vw;
+    margin-bottom: 0;
+}
+
+#configWebInputDiv {
+    width: 80%;
+    margin: 7vh auto 0 auto;
+}
+
+#configWebBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    margin-top: 2.5vh;
+    height: 5vh;
+    width: 7vw;
+}
+
+#configWebInput {
+    background: rgba(119, 70, 255, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    margin-top: 2vh;
+    padding: 0 2vw;
+    height: 6vh;
+}
+
+.configWebLoadTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.015em;
+    color: #000000;
+}
+
+.configDelDiv {
+    display: flex;
+    margin: 9vh 0 0 0;
+}
+
+.configDeTxt {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 21px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#configDelBtn {
+    background: #D44141;
+    border-radius: 6px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: -0.015em;
+}
+
+.configDelBtnDiv {
+    margin-left: auto;
+}
+
+.configWebTempMainDiv {
+    width: 85%;
+    margin: 9vh auto 0 auto;
+}
+
+#configWebTempPageRowDiv {
+    padding-top: 2vh;
+}
+
+.configWebRightDiv {
+    padding: 5vh 2vw;
+}
+
+#configWebBlackTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: #7746FF;
+    margin: 6vh 0 1vh 0;
+    /* margin: 0; */
+}
+
+.configWebBlackTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: #7746FF;
+    margin: 6vh 0 0 0;
+}
+
 .editWebSidenavDiv {
     width: 23.5vw;
-    /* height: 40vh;  */
-    background: #7746ff;
+    height: 100vh;
+    background: #7746FF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    position: absolute;
-    top: 14.8vh;
+    position: fixed;
 }
+
 .editWebSidenavProImgDiv {
-    background: #d9d9d9;
+    background: #D9D9D9;
     width: 69px;
     height: 69px;
     border-radius: 100px;
-    margin: 7vh auto 0 auto;
+    margin: 23vh auto 0 auto;
 }
+
 .editWebSidenavDomainNameDiv {
     text-align: center;
     margin-top: 1vh;
 }
+
 .editWebSidenavDomainNameLink {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: #ffffff;
+    color: #FFFFFF;
 }
+
 .editWebSidenavTempIcon {
     font-size: 16px;
     height: 1vh;
-    color: #ffffff;
+    color: #FFFFFF;
     position: relative;
     top: 0.5vh;
     left: 0.3vw;
 }
+
 .editWebSidenavImg {
     width: 16vw;
     margin: 9vh 0 0 4vw;
 }
 
-/* Logout Modal */
-#logoutModal {
-    /* background-color: var(--primary); */
-    border-radius: 20px;
-    width: 50vw;
-}
-.logoutModalImageRow {
+.col .row.createWebRow {
     display: flex;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.createWebRow p {
+    margin-top: 0;
+}
+
+.createWebSectionTitle {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
-.logoutModalImage {
-    width: 15vw;
+
+/* Create Portfolio Modal */
+.createWebsiteDomainName img {
+    width: 100%;
 }
-#authAlertContainDiv3 {
-    /* position: fixed;
-    top: 20vh;
-    left: 31vw; */
+
+.websiteCreateBtnRow {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 7vh;
 }
-#errAltImg {
-    /* width: 7.5vw;
-    margin: 4vh 0 0 0; */
+
+.websiteCreateBtnRow .create {
+    margin: 0 1.5vw;
+    background-color: var(--primary);
 }
-.authAlertBox {
-    /* background: rgba(119, 70, 255, 0.795);
-    border: 1px solid #FFFFFF;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    width: 838px;
-    height: 419px; */
+
+
+.settingBannerDiv {
+    width: 100%;
+    height: 185px;
+    background: linear-gradient(91.98deg, #7746FF 1.92%, #1E1E1E 111.8%);
+    border-radius: 10px 10px 0px 0px;
 }
-.authAlertBox1 {
-    /* background: rgba(119, 70, 255, 0.795);
-    border: 1px solid #FFFFFF;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    width: 805px;
-    margin-left: 2vw; */
+
+.adminTempContainInnerDiv {
+    width: 85%;
+    margin: 10vh auto 0 auto;
 }
-.authAlertBox2 {
-    /* background: rgba(119, 70, 255, 0.795);
-    border: 1px solid #FFFFFF;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    width: 772px;
-    height: 419px;
-    margin-left: 2vw;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25); */
+
+.adminClientTempDiv {
+    width: 93%;
+    margin: 10vh auto 0 auto;
 }
-.logoutTxt {
-    /* font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
+
+div.row .clientCreatePortInputRowDiv {
+    width: 80%;
+    margin: 0 auto;
+}
+
+div.row .configureWebDiv {
+    width: 80%;
+    margin: 0 0 0 3vw;
+}
+
+label.col.s12.configWebInputLabel {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 21px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 3vh;
+    margin-left: 1vw;
+}
+
+a.configWebGoBackBtn {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #000000;
+    margin-left: 3.3vw;
+    position: relative;
+    top: 2.5vh;
+}
+
+p.col.s12.configWebTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 21px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 5vh;
+    /* margin-left: 3vw; */
+}
+
+.adminClientConfigPreload {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #000000;
+}
+
+div.col.s12.adminClientConfigDelBtnDiv {
+    display: flex;
+    width: 93%;
+    margin-top: 9vh;
+}
+
+.adminClientConfigDelTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 21px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 4vw;
+}
+
+.adminClientConfigDelBtn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+    background: #D44141;
+    border-radius: 6px;
+    margin-left: auto;
+}
+
+.adminAddClientTable {
+    width: 93%;
+    margin: 5vh auto;
+}
+
+table.adminAddClientTable tbody tr.adminAddClientTr {
+    border: 1px solid #7746FF;
+    border-radius: 10px;
+    margin-bottom: 2vh;
+    padding-bottom: 2vh;
+}
+
+.adminAddClientImgDiv {
+    width: 25px;
+    height: 25px;
+    background: #D9D9D9;
+    border-radius: 10px;
+}
+
+.adminAddClientViewBtn {
+    background: #7746FF;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    width: 7vw;
+    height: 4.5vh;
+}
+
+.adminAddClientDelBtn {
+    background: #D44141;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    width: 7vw;
+    height: 4.5vh;
+    margin-left: 1vw;
+}
+
+.addminAddClientTxts {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.adminClientPaginationControlDiv {
+    width: 93%;
+    margin: 0 auto;
+}
+
+.adminClientPaginationNum {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    color: #FFFFFF;
-    text-align: center;
-    margin-bottom: 3vh;
-    margin-top: 5vh; */
+    color: rgba(0, 0, 0, 0.5);
 }
-.logoutYesBtn {
-    /* background: #1E1E1E;
-    border-radius: 6px;
-    width: 5.5vw; */
+
+.adminClientPaginationLeftIcon {
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 1.5vw;
+    margin-right: 1vw;
+    cursor: pointer;
 }
-.logoutNoBtn {
-    /* background: #FFFFFF;
-    border-radius: 6px;
-    width: 5.5vw;
-    color: black; */
+
+.adminClientPaginationRightIcon {
+    color: #000000;
+    cursor: pointer;
 }
-#authLogoutBtnDiv {
-    /* width: 27%;
-    margin: auto; */
+
+.adminClientPaginationInnerControlDiv {
+    display: flex;
+}
+
+.adminClientSearchInputMainDiv {
+    display: flex;
+    width: 93%;
+    margin: 7vh auto;
+}
+
+.adminClientSearchInputControlDiv {
+    display: flex;
+    margin: 1.5vh 1vw 0 auto;
+}
+
+#adminClientSearchInput {
+    box-sizing: border-box;
+    width: 266px;
+    height: 41px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 0 0.7vw;
+}
+
+#adminClientSearchInput::placeholder {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 24px;
+    color: rgba(26, 25, 25, 0.8);
+}
+
+.adminClientSearchInputTxts {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.adminClientSearchInputIcons {
+    position: relative;
+    top: 1vh;
+}
+
+.adminClientSearchInputIconsDiv {
+    margin-left: 1vw;
+}
+
+.settingsIllustImg {
+    width: 17vw;
+    position: relative;
+    top: 1.6vh;
+    right: 3vw;
 }
 
 /* Media Query on Medium Device */
@@ -3270,7 +3883,7 @@ textarea::placeholder {
     .circlDiv2 {
         width: 40vw;
         height: 107.9vh;
-        background-color: #7746ff;
+        background-color: #7746FF;
         border-radius: 0;
         /* border-top-left-radius: 0;
         border-bottom-left-radius: 0; */
@@ -3285,20 +3898,24 @@ textarea::placeholder {
     #sideNav {
         z-index: 100;
     }
+
     #sideNavImgDiv {
         height: 25vh;
     }
+
     #sideNavLinkMgTp {
         /* margin-top: 27vh; */
         margin-top: 2vh;
     }
+
     #navLinks {
         font-weight: 600;
         font-size: 1.3125rem;
-        color: #ffffff;
+        color: #FFFFFF;
         letter-spacing: 0.5px;
         margin-left: 3vw;
     }
+
     #loginLink {
         /* border: 1px solid #7746FF; */
         border-radius: 6px;
@@ -3309,10 +3926,11 @@ textarea::placeholder {
         line-height: 33px;
         font-weight: 600;
         font-size: 1.25rem;
-        color: #7746ff;
-        background-color: #ffffff;
+        color: #7746FF;
+        background-color: #FFFFFF;
         margin-left: 20px;
     }
+
     .circlDiv1 {
         width: 0vw;
         height: 0vh;
@@ -3340,26 +3958,30 @@ textarea::placeholder {
         top: 0;
         z-index: -1;
     }
+
     .circleTxtDiv {
         position: absolute;
         top: 0vh;
         left: 3vw;
     }
+
     .circleDivTitle {
         width: 410px;
-        font-size: 2.6rem;
+        font-size: 2.60rem;
         font-weight: 700;
-        color: #7746ff;
-        font-family: "Montserrat", sans-serif;
+        color: #7746FF;
+        font-family: 'Montserrat', sans-serif;
     }
+
     .portfolioDiv {
-        background: #7746ff;
+        background: #7746FF;
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         margin-top: 5vh;
         z-index: 100;
         padding-top: 11vh;
         padding-bottom: 11vh;
     }
+
     .portfolioTitle {
         width: 45%;
         margin: auto;
@@ -3367,28 +3989,30 @@ textarea::placeholder {
         font-size: 2rem;
         align-items: center;
         text-align: center;
-        letter-spacing: -0.01em;
+        letter-spacing: -0.010em;
         line-height: 48px;
-        color: #ffffff;
-        font-family: "Montserrat", sans-serif;
+        color: #FFFFFF;
+        font-family: 'Montserrat', sans-serif;
     }
+
     .portfolioTxt {
         width: 90%;
         margin: 23px auto 0 auto;
         font-weight: 400;
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-size: 1rem;
         line-height: 24px;
         align-items: center;
         text-align: center;
         justify-content: center;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: #FFFFFF;
     }
+
     .moreThanLandTxt {
         width: 60%;
         margin: 0 auto;
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-weight: 500;
         font-size: 1rem;
         line-height: 24px;
@@ -3396,6 +4020,7 @@ textarea::placeholder {
         text-align: center;
         letter-spacing: -0.015em;
     }
+
     .liveChatImgInnerDiv {
         width: 200px;
         height: 200px;
@@ -3403,19 +4028,21 @@ textarea::placeholder {
         border-radius: 50%;
         margin-left: 0vw;
     }
+
     .liveChatTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: #7746FF;
         margin-bottom: 10px;
         text-align: left;
     }
+
     .liveChatTxt {
-        font-family: "Poppins" sans-serif;
+        font-family: 'Poppins' sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 1rem;
@@ -3425,23 +4052,26 @@ textarea::placeholder {
         text-align: left;
         width: 80%;
     }
+
     .cvInnerDiv {
         width: 70%;
         margin-top: 23vh;
     }
+
     .cvTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: #7746FF;
         margin-bottom: 13px;
         text-align: right;
     }
+
     .cvTxt {
-        font-family: "Poppins" sans-serif;
+        font-family: 'Poppins' sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 1rem;
@@ -3450,6 +4080,7 @@ textarea::placeholder {
         margin: 0;
         text-align: right;
     }
+
     .cvImgInnerDiv {
         width: 256px;
         height: 256px;
@@ -3457,9 +4088,11 @@ textarea::placeholder {
         border-radius: 50%;
         margin: 9vh 0 0 20vw;
     }
+
     .socialMediaWriteUpDiv {
         width: 85%;
     }
+
     .socialMediaImgInnerDiv {
         display: flex;
         width: 200px;
@@ -3468,19 +4101,21 @@ textarea::placeholder {
         border-radius: 50%;
         margin: 12vh 0 0 0vw;
     }
+
     .socialMediaTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: #7746FF;
         margin-bottom: 13px;
         text-align: left;
     }
+
     .socialMediaTxt {
-        font-family: "Poppins" sans-serif;
+        font-family: 'Poppins' sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 1rem;
@@ -3489,24 +4124,27 @@ textarea::placeholder {
         margin: 0;
         text-align: left;
     }
+
     .clientRevWriteUpDiv {
         position: relative;
         left: 5vw;
         bottom: 12vh;
     }
+
     .clientRevTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: #7746FF;
         margin: 130px 0 0 9px;
         text-align: right;
     }
+
     .clientRevTxt {
-        font-family: "Poppins" sans-serif;
+        font-family: 'Poppins' sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 1rem;
@@ -3515,6 +4153,7 @@ textarea::placeholder {
         margin: 0;
         text-align: right;
     }
+
     .clientRevImgInnerDiv {
         width: 200px;
         height: 200px;
@@ -3522,40 +4161,48 @@ textarea::placeholder {
         border-radius: 50%;
         margin: 5vh 0 0 50vw;
     }
+
     .templatesInnerDiv {
         width: 70%;
         margin: 15vh auto 0 auto;
     }
+
     .tempImgDiv {
         width: 50%;
         height: 53px;
         margin: 10vh auto 0 auto;
     }
+
     #careImg {
         height: 80vh;
     }
+
     .footerInnerDiv {
         width: 100%;
         margin: 15vh auto 0 auto;
     }
+
     .cusSupportTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 2rem;
         line-height: 36px;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: #FFFFFF;
         text-align: center;
     }
+
     #facebookImg {
         width: 8vw;
         margin: 64px 0 0 33px;
     }
+
     #twiterImg {
         width: 8vw;
         margin: 20px 0 0 155px;
     }
+
     .footerGridDivs {
         margin-right: 10vw;
     }
@@ -3565,60 +4212,70 @@ textarea::placeholder {
         width: 95%;
         margin: 17vh auto 0 auto;
     }
+
     .tempPageLeftDiv {
         margin-top: -10vh;
     }
+
     .tempImgDiv1 {
         width: 100%;
         margin-left: 0;
         margin-top: -12vh;
     }
+
     .sideNavLinkMgTp {
         margin-top: 2vh;
     }
+
     .tempPageImgDiv {
         /* background: rgb(245, 243, 243); */
         width: 43.5vw;
     }
+
     .cusSupportDiv {
-        background: #7746ff;
+        background: #7746FF;
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         border-radius: 0px 0px 0px 0px;
         /* margin-top: 20vh; */
         padding-top: 10vh;
         padding-bottom: 11vh;
     }
+
     #sideNavIcon {
         font-size: 3.5rem;
-        color: #7746ff;
+        color: #7746FF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50%;
         width: 6vw;
         height: 6.5vh;
         line-height: 52px;
     }
+
     .sideNavBrandLogo {
         font-size: 2.7rem;
         font-weight: 500;
-        color: #7746ff;
+        color: #7746FF;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         margin-left: 35vw;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
     }
+
     #banner {
         background-image: none;
         height: 100vh;
         background-repeat: no-repeat;
     }
+
     .circleDivtxt {
         width: 400px;
         font-weight: 600;
         font-size: 1.1rem;
         color: #000000;
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         text-align: left;
         margin-bottom: 4vh;
     }
+
     .portraitImgDiv {
         height: 100vh;
         display: flex;
@@ -3627,21 +4284,25 @@ textarea::placeholder {
         align-items: center;
         margin-left: 45vw;
     }
+
     .tempRowImgDiv {
         width: 100%;
         /* display: flex; */
         /* justify-content: center; */
         margin: 10vh auto;
     }
+
     .liveChatInnerDiv {
         width: 80%;
         margin-top: 15vh;
     }
+
     #chatImage {
         width: 30vw;
         position: relative;
         bottom: 5vh;
     }
+
     .cvImgInnerDivSm {
         width: 200px;
         height: 200px;
@@ -3650,19 +4311,23 @@ textarea::placeholder {
         margin-top: 0vh;
         margin-left: 50vw;
     }
+
     #cvImage {
         width: 28vw;
         position: relative;
         bottom: 5vh;
     }
+
     .cvWriteUpDiv {
         position: relative;
         left: 5vw;
     }
+
     .socialMediaInnerDiv {
         width: 80%;
         margin-top: 2vh;
     }
+
     #socialMediaImage {
         position: relative;
         bottom: 20px;
@@ -3670,57 +4335,63 @@ textarea::placeholder {
         width: 80vw;
         height: 29vh;
     }
+
     #clientRevImage {
         width: 28vw;
         position: relative;
         bottom: 3vh;
     }
+
     .ellipseLarge {
         width: 70px;
         height: 70px;
-        background: #6938f2;
+        background: #6938F2;
         border-radius: 50%;
         position: absolute;
         right: 300px;
         bottom: -180px;
     }
+
     .ellipseSmall {
         width: 35px;
         height: 35px;
-        background: #6938f2;
+        background: #6938F2;
         border-radius: 50%;
         position: absolute;
         right: 279px;
         bottom: -183px;
     }
+
     .authTxt {
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 1rem;
         line-height: 24px;
-        color: #1e1e1e;
+        color: #1E1E1E;
         text-align: center;
     }
+
     .authTitle {
         margin-bottom: 3vh;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         text-align: center;
     }
+
     .otpEmailAuthTxt {
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 1rem;
         line-height: 24px;
-        color: #1e1e1e;
+        color: #1E1E1E;
         margin-bottom: 3vh;
         text-align: center;
     }
 
     /* Insert OTP Section */
     .row .col.s1.otpDigits {
-        background-color: #d9d9d9;
+        background-color: #D9D9D9;
         height: 7vh;
         width: 10.5vw;
         text-align: center;
@@ -3729,9 +4400,9 @@ textarea::placeholder {
     }
 
     #otpEmailBtn {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         text-transform: capitalize;
-        background: #7746ff;
+        background: #7746FF;
         border-radius: 10px;
         width: 90%;
         height: 6vh;
@@ -3742,11 +4413,10 @@ textarea::placeholder {
     #otpEmailDiv {
         margin-left: 4.5vw;
     }
+
     /* Client Settings Section */
     .settingsFormDiv {
         width: 100%;
-        background: #ffffff;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
     .setMainDiv {
@@ -3763,30 +4433,33 @@ textarea::placeholder {
     }
 
     #setProEditIcon {
-        color: #ffffff;
+        color: #FFFFFF;
         font-size: 1.3rem;
         margin: 0.3vh 0 0 0.1vw;
     }
 
     .setProEditIconDiv {
-        width: 23px;
-        height: 23px;
+        width: 26px;
+        height: 26px;
         border-radius: 50%;
-        background: #7746ff;
+        background: #7746FF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         display: inline-block;
         position: relative;
         top: 0vh;
         right: 3vw;
+        text-align: center;
     }
+
     #setFormBtn {
-        background: #7746ff;
+        background: #7746FF;
         border-radius: 6px;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         text-transform: capitalize;
         margin-top: 2vh;
         margin-bottom: 4vh;
     }
+
     .shapeDeg {
         width: 38.86px;
         height: 80px;
@@ -3795,6 +4468,7 @@ textarea::placeholder {
         transform: rotate(-28.69deg);
         margin-right: 1vw;
     }
+
     .shapeDeg1 {
         width: 40.25px;
         height: 85px;
@@ -3818,37 +4492,41 @@ textarea::placeholder {
         bottom: 2vh;
         right: 0.6vw;
     }
+
     .shapeDegDiv {
         display: flex;
         position: relative;
         top: 3vh;
         left: 0vw;
     }
-    #clientCreatePortBtn {
-        background: #7746ff;
+
+    .clientCreatePortBtn {
+        background: #7746FF;
         border-radius: 6px;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 0.938rem;
         line-height: 18px;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: #FFFFFF;
         margin: 0 0 11vh 18vw;
         width: 37vw;
     }
+
     .userTempTitle {
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 1.125rem;
         text-align: center;
-        color: #7746ff;
+        color: #7746FF;
         margin: 0;
     }
+
     /* Client Support Modal */
     .clientModalSupportDiv {
-        background: #7746ff;
+        background: #7746FF;
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
         padding-top: 2vh;
@@ -3858,9 +4536,10 @@ textarea::placeholder {
         bottom: 25vh;
         left: 29vw;
     }
+
     #sFName {
         height: 40px;
-        background: #ffffff;
+        background: #FFFFFF;
         padding-left: 7px;
         width: 109%;
         /* margin-right: 7vw; */
@@ -3868,7 +4547,7 @@ textarea::placeholder {
 
     #sLName {
         height: 40px;
-        background: #ffffff;
+        background: #FFFFFF;
         padding-left: 7px;
         width: 109%;
         margin-left: 2.5vw;
@@ -3876,7 +4555,7 @@ textarea::placeholder {
 
     #sEmail {
         height: 40px;
-        background: #ffffff;
+        background: #FFFFFF;
         padding-left: 7px;
         width: 109%;
     }
@@ -3884,23 +4563,25 @@ textarea::placeholder {
     #sTextarea1 {
         width: 110%;
         height: 13vh;
-        background: #ffffff;
+        background: #FFFFFF;
         padding-left: 7px;
     }
 
     #modalSupportBtnForm {
         width: 110%;
-        background: #1e1e1e;
+        background: #1E1E1E;
         border-radius: 6px;
     }
+
 }
+
 
 /* Media Query on small device */
 @media screen and (max-width: 640px) {
     .circlDiv2 {
         width: 100vw;
         height: 95vh;
-        background-color: #7746ff;
+        background-color: #7746FF;
         /* background-color: transparent; */
         border-radius: 0%;
         /* border-top-left-radius: 0;
@@ -3912,6 +4593,7 @@ textarea::placeholder {
         left: 0.2vw;
         z-index: -1;
     }
+
     .circlDiv1 {
         width: 0;
         height: 0;
@@ -3925,6 +4607,7 @@ textarea::placeholder {
         left: 0;
         z-index: 0;
     }
+
     .circlDiv {
         width: 0;
         height: 0;
@@ -3938,43 +4621,50 @@ textarea::placeholder {
         top: 4.1vh;
         z-index: 0;
     }
+
     .portraitImgDiv {
         /* display: flex; */
         margin: 0vh 0 0 0;
     }
+
     .circleTxtDiv {
         position: absolute;
         top: 20vh;
         left: 5vw;
         /* text-align: center; */
     }
+
     #sideNavIcon {
         font-size: 3.5rem;
-        color: #7746ff;
+        color: #7746FF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50%;
         width: 13vw;
         height: 6.5vh;
     }
+
     .sideNavBrandLogo {
         font-size: 2.7rem;
         font-weight: 500;
-        color: #7746ff;
+        color: #7746FF;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         margin-left: 14vw;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
     }
+
     #navLinks {
         font-weight: 600;
         font-size: 1.3125rem;
-        color: #ffffff;
+        color: #FFFFFF;
         letter-spacing: 0.5px;
         margin-left: 3vw;
     }
+
     #sideNavLinkMgTp {
         /* margin-top: 27vh; */
         margin-top: 2vh;
     }
+
     #loginLink {
         /* border: 1px solid #7746FF; */
         border-radius: 6px;
@@ -3985,16 +4675,19 @@ textarea::placeholder {
         line-height: 33px;
         font-weight: 600;
         font-size: 1.25rem;
-        color: #7746ff;
-        background-color: #ffffff;
+        color: #7746FF;
+        background-color: #FFFFFF;
         margin-left: 20px;
     }
+
     #sideNavImgDiv {
         height: 25vh;
     }
+
     .portraitImgContainDiv {
         margin-right: 2vw;
     }
+
     .portfolioTitle {
         width: 90%;
         margin: auto;
@@ -4002,28 +4695,31 @@ textarea::placeholder {
         font-size: 2rem;
         align-items: center;
         text-align: center;
-        letter-spacing: -0.01em;
+        letter-spacing: -0.010em;
         line-height: 48px;
-        color: #ffffff;
-        font-family: "Montserrat", sans-serif;
+        color: #FFFFFF;
+        font-family: 'Montserrat', sans-serif;
     }
+
     .portfolioTxt {
         width: 95%;
         margin: 23px auto 0 auto;
         font-weight: 400;
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-size: 1rem;
         line-height: 24px;
         align-items: center;
         text-align: center;
         justify-content: center;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: #FFFFFF;
+
     }
+
     .moreThanLandTxt {
         width: 95%;
         margin: 0 auto;
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-weight: 700;
         font-size: 1rem;
         line-height: 24px;
@@ -4031,10 +4727,12 @@ textarea::placeholder {
         text-align: center;
         letter-spacing: -0.015em;
     }
+
     .liveChatInnerDiv {
         width: 95%;
         margin-top: 15vh;
     }
+
     .liveChatImgInnerDiv {
         width: 130px;
         height: 130px;
@@ -4042,25 +4740,28 @@ textarea::placeholder {
         border-radius: 50%;
         margin-left: 0vw;
     }
+
     #chatImage {
         width: 38vw;
         position: relative;
         bottom: 3vh;
     }
+
     .liveChatTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: #7746FF;
         margin-top: 6vh;
         margin-bottom: 19px;
         text-align: left;
     }
+
     .liveChatTxt {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 1rem;
@@ -4070,23 +4771,26 @@ textarea::placeholder {
         text-align: left;
         color: #464646;
     }
+
     .cvInnerDiv {
         width: 95%;
         margin-top: 15vh;
     }
+
     .cvTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: #7746FF;
         margin-bottom: 13px;
         text-align: right;
     }
+
     .cvTxt {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 1rem;
@@ -4095,6 +4799,7 @@ textarea::placeholder {
         margin: 0;
         text-align: right;
     }
+
     .cvImgInnerDivSm {
         width: 130px;
         height: 130px;
@@ -4103,15 +4808,18 @@ textarea::placeholder {
         margin-top: 0vh;
         margin-left: 57vw;
     }
+
     #cvImage {
         width: 38vw;
         position: relative;
         bottom: 3vh;
     }
+
     .socialMediaInnerDiv {
         width: 95%;
         margin-top: 16vh;
     }
+
     .socialMediaImgInnerDiv {
         display: flex;
         width: 130px;
@@ -4120,6 +4828,7 @@ textarea::placeholder {
         border-radius: 50%;
         margin-left: 0vw;
     }
+
     #socialMediaImage {
         position: relative;
         bottom: 20px;
@@ -4127,30 +4836,34 @@ textarea::placeholder {
         max-width: 55vw;
         height: 20vh;
     }
+
     #facebookImg {
         width: 12vw;
         position: absolute;
         margin: 36px 0 0 25px;
     }
+
     #twiterImg {
         width: 12vw;
         position: absolute;
         margin: 12px 0 0 110px;
     }
+
     .socialMediaTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: #7746FF;
         margin-top: 3vh;
         margin-bottom: 13px;
         text-align: left;
     }
+
     .socialMediaTxt {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 1rem;
@@ -4159,24 +4872,27 @@ textarea::placeholder {
         margin: 0;
         text-align: left;
     }
+
     .clientRevInnerDiv {
         width: 95%;
         margin-top: 15vh;
     }
+
     .clientRevTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: #7746FF;
         margin-top: 5vh;
         margin-bottom: 13px;
         text-align: right;
     }
+
     .clientRevTxt {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 1rem;
@@ -4185,6 +4901,7 @@ textarea::placeholder {
         margin: 0;
         text-align: right;
     }
+
     .clientRevImgInnerDiv {
         width: 130px;
         height: 130px;
@@ -4193,27 +4910,33 @@ textarea::placeholder {
         margin-top: 3vh;
         margin-left: 55vw;
     }
+
     #clientRevImage {
         width: 40vw;
         position: relative;
         bottom: 3vh;
     }
+
     .templatesInnerDiv {
         width: 90%;
         margin: 15vh auto 0 auto;
     }
+
     .tempImgDiv {
         width: 50%;
         height: 53px;
         margin: 10vh auto 0 auto;
     }
+
     .tempImg {
         width: 80vw;
     }
+
     #careImg {
         height: 50vh;
         width: 93vw;
     }
+
     .cusSupportInnerDiv {
         width: 99%;
         margin: 0 auto;
@@ -4224,8 +4947,8 @@ textarea::placeholder {
         margin: 12vh auto 3vh auto;
         font-size: 2.75rem;
         font-weight: 700;
-        color: #7746ff;
-        font-family: "Montserrat", sans-serif;
+        color: #7746FF;
+        font-family: 'Montserrat', sans-serif;
         text-align: center;
     }
 
@@ -4234,19 +4957,21 @@ textarea::placeholder {
         font-weight: 600;
         font-size: 1rem;
         color: #000000;
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         text-align: center;
     }
+
     .circleDivBtn {
         width: 198px;
         height: 40px;
-        background: #1e1e1e;
+        background: #1E1E1E;
         border-radius: 6px;
         font-weight: 400;
         font-size: 0.9rem;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         /* margin: 4vw 0 0 14vh; */
     }
+
     .circleBtnDiv {
         width: 50%;
         margin: 4vh auto 0 auto;
@@ -4259,28 +4984,31 @@ textarea::placeholder {
     .wlcNoteDiv {
         width: 400px;
         height: 600px;
-        background: #7746ff;
+        background: #7746FF;
         border-radius: 50px;
         padding-top: 1vh;
         margin-top: 6vh;
         /* position: absolute;
         right: 3.3vw; */
     }
+
     .authRightDiv {
         padding-bottom: 7vh;
     }
+
     .wlcNoteLogo {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 2.5rem;
         line-height: 24px;
         margin: 6vh 0 0 2vw;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: #FFFFFF;
     }
+
     .wlcNoteFooterTxt {
-        font-family: "Montserrat";
+        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 400;
         font-size: 1rem;
@@ -4296,31 +5024,35 @@ textarea::placeholder {
         width: 100%;
         margin: 0;
     }
+
     .wlcNoteDiv {
         width: 400px;
         height: 600px;
-        background: #7746ff;
+        background: #7746FF;
         border-radius: 50px;
         padding-top: 1vh;
         margin-top: 6vh;
         /* position: absolute;
         right: 3.3vw; */
     }
+
     .authRightDiv {
         padding-bottom: 7vh;
     }
+
     .wlcNoteLogo {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 2.5rem;
         line-height: 24px;
         margin: 6vh 0 0 2vw;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: #FFFFFF;
     }
+
     .wlcNoteFooterTxt {
-        font-family: "Montserrat";
+        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 400;
         font-size: 1rem;
@@ -4336,18 +5068,19 @@ textarea::placeholder {
         width: 90%;
         margin: 13vh auto 0 auto;
     }
+
     .authTitle {
         margin-bottom: 3vh;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         text-align: center;
     }
 
     /* Error Small Device */
     .domainNameSugBtn {
-        background: #7746ff;
+        background: #7746FF;
         border-radius: 6px;
         color: white;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         height: 4.8vh;
         width: 19vw;
         text-align: center;
@@ -4356,6 +5089,7 @@ textarea::placeholder {
         margin-right: 3vw;
         margin-top: 0.4vh;
     }
+
     .errorDiv {
         position: relative;
         bottom: 10vh;
@@ -4365,28 +5099,33 @@ textarea::placeholder {
     .tempPageLeftDiv {
         margin-top: -10vh;
     }
+
     .tempPageTxt {
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 1rem;
         line-height: 24px;
-        color: #1e1e1e;
+        color: #1E1E1E;
         width: 99%;
         text-align: center;
     }
+
     .tempImgDiv1 {
         width: 100%;
         margin-left: 0;
         margin-top: 9vh;
     }
+
     .tempContainInnerDiv {
         width: 95%;
         margin: 17vh auto 0 auto;
     }
+
     .tempPageImgSmDv {
         margin-bottom: 9vh;
     }
+
     .portraitImgDiv {
         height: 90vh;
         display: flex;
@@ -4394,34 +5133,39 @@ textarea::placeholder {
         justify-content: center;
         align-items: center;
     }
+
     .ellipseDiv {
         display: flex;
         width: 20%;
         margin: 0 0 5vh auto;
     }
+
     .ellipseLargeSm {
         width: 50px;
         height: 50px;
-        background: #6938f2;
+        background: #6938F2;
         border-radius: 50%;
     }
+
     .ellipseSmallSm {
         width: 25px;
         height: 25px;
-        background: #6938f2;
+        background: #6938F2;
         border-radius: 50%;
         position: relative;
         top: 3vh;
         right: 2vw;
     }
+
     .portfolioDiv {
-        background: #7746ff;
+        background: #7746FF;
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         /* margin-top: 17.5vh; */
         z-index: 100;
         padding-top: 4vh;
         padding-bottom: 15vh;
     }
+
     .moreThanLandTitle {
         font-style: normal;
         font-weight: 700;
@@ -4430,131 +5174,149 @@ textarea::placeholder {
         align-items: center;
         text-align: center;
         letter-spacing: -0.015em;
-        color: #7746ff;
-        font-family: "Montserrat", sans-serif;
+        color: #7746FF;
+        font-family: 'Montserrat', sans-serif;
     }
+
     .moreThanLandInnerDiv {
         margin-top: 10vh;
     }
+
     .clientRevTitle,
     .templatesRowTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 700;
         font-size: 1.7rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: #7746FF;
         margin-bottom: 13px;
     }
+
     .clientRevTxt,
     .templatesRowTxt {
-        font-family: "Montserrat" sans-serif;
+        font-family: 'Montserrat' sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 1rem;
         line-height: 24px;
         letter-spacing: -0.015em;
         margin: 0;
+
     }
+
     .templatesRowTxt {
-        font-family: "Montserrat" sans-serif;
+        font-family: 'Montserrat' sans-serif;
         width: 95%;
         margin: 0 auto;
     }
+
     .tempRowImgDiv {
         width: 100%;
         /* display: flex; */
         /* justify-content: center; */
         margin: 10vh auto;
     }
+
     .cusSupportDiv {
-        background: #7746ff;
+        background: #7746FF;
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         border-radius: 0px 0px 0px 0px;
         /* margin-top: 20vh; */
         padding-top: 2vh;
         padding-bottom: 7vh;
     }
+
     .cusSupportTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 1.4rem;
         line-height: 36px;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: #FFFFFF;
         text-align: center;
     }
 
     /* Template */
     .tempPageTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 2.4rem;
         line-height: 40px;
-        color: #7746ff;
+        color: #7746FF;
         text-align: center;
     }
+
     .tempBtnDiv {
         width: 47vw;
         margin: 4vh auto 0 auto;
     }
+
     .tempPageImgDiv {
         /* background: rgb(245, 243, 243); */
         width: 90vw;
     }
+
     .footerContainDiv {
         margin-left: 0vw;
     }
+
     /* Logout Modal */
     #logoutModal {
         /* background-color: var(--primary); */
         border-radius: 20px;
         width: 95vw;
     }
+
     .logoutModalImage {
         width: 40vw;
     }
+
     .authTxt {
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 1rem;
         line-height: 24px;
-        color: #1e1e1e;
+        color: #1E1E1E;
         text-align: center;
     }
+
     .otpEmailAuthTxt {
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 1rem;
         line-height: 24px;
-        color: #1e1e1e;
+        color: #1E1E1E;
         margin-bottom: 3vh;
         text-align: center;
     }
+
     /* Insert OTP Section */
     .row .col.s1.otpDigits {
-        background-color: #d9d9d9;
+        background-color: #D9D9D9;
         height: 7vh;
         width: 13vw;
         text-align: center;
         margin-right: 1vw;
         border-radius: 10px;
     }
+
     #otpEmailBtn {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         text-transform: capitalize;
-        background: #7746ff;
+        background: #7746FF;
         border-radius: 10px;
         width: 90%;
         height: 6vh;
         margin-left: 3vw;
         margin-top: 6vh;
     }
+
     #otpEmailDiv {
         margin-left: 3.5vw;
     }
@@ -4562,42 +5324,47 @@ textarea::placeholder {
     /* Client Settings Section */
     .settingsFormDiv {
         width: 100%;
-        background: #ffffff;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
+
     .setMainDiv {
         display: block;
         width: 99%;
         margin: 4vh auto 0 auto;
     }
+
     #setProImg {
         font-size: 4.5rem;
         margin-left: 1vw;
         margin-top: 0.9vh;
         color: rgba(0, 0, 0, 0.5);
     }
+
     #setProEditIcon {
-        color: #ffffff;
+        color: #FFFFFF;
         font-size: 1.3rem;
         margin: 0.3vh 0 0 0.1vw;
     }
+
     .setProEditIconDiv {
-        /* width: 23px;
-        height: 23px;
+        width: 26px;
+        height: 26px;
         border-radius: 50%;
-        background: #7746ff;
+        background: #7746FF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        display: inline-block; */
+        display: inline-block;
         position: relative;
-        top: -8vh;
-        right: -9.5vw;
+        top: 1vh;
+        right: 5vw;
+        text-align: center;
     }
+
     .shapeDegDiv {
         display: flex;
         position: relative;
         top: 5vh;
         left: -2vw;
     }
+
     .shapeDeg {
         width: 38.86px;
         height: 119.94px;
@@ -4630,11 +5397,13 @@ textarea::placeholder {
         bottom: 2vh;
         right: 0.6vw;
     }
+
     .cardDiv:last-child {
         margin-top: 2.6vh;
     }
+
     .dashTimeDiv {
-        background: #7746ff;
+        background: #7746FF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
         height: 12.25rem;
@@ -4643,36 +5412,39 @@ textarea::placeholder {
         margin-left: auto;
         margin-right: auto;
     }
+
     #clientCreatePortInputRowDiv {
         margin-left: 0vw;
         width: 100%;
     }
+
     #clientCreatePortBtn {
-        background: #7746ff;
+        background: #7746FF;
         border-radius: 6px;
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 0.938rem;
         line-height: 18px;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: #FFFFFF;
         margin: 0 0 11vh 18vw;
         width: 50vw;
     }
+
     .userTempTitle {
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 1.125rem;
         text-align: center;
-        color: #7746ff;
+        color: #7746FF;
         margin: 0;
     }
 
     /* Client Support Modal */
     .clientModalSupportDiv {
-        background: #7746ff;
+        background: #7746FF;
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
         padding-top: 2vh;
@@ -4682,35 +5454,40 @@ textarea::placeholder {
         bottom: 22vh;
         left: 1.5vw;
     }
+
     #sFName {
         height: 40px;
-        background: #ffffff;
+        background: #FFFFFF;
         padding-left: 7px;
         width: 109%;
         /* margin-right: 7vw; */
     }
+
     #sLName {
         height: 40px;
-        background: #ffffff;
+        background: #FFFFFF;
         padding-left: 7px;
         width: 109%;
         margin-left: 4vw;
     }
+
     #sEmail {
         height: 40px;
-        background: #ffffff;
+        background: #FFFFFF;
         padding-left: 7px;
         width: 109%;
     }
+
     #sTextarea1 {
         width: 111%;
         height: 13vh;
-        background: #ffffff;
+        background: #FFFFFF;
         padding-left: 7px;
     }
+
     #modalSupportBtnForm {
         width: 111%;
-        background: #1e1e1e;
+        background: #1E1E1E;
         border-radius: 6px;
     }
 }
