@@ -5,594 +5,443 @@
 
         <div class="row" id="dashRowDiv">
             <!-- Sidebar for large and medium devices -->
-            <AdminSideNavComponent />
+            <sidenav-component @user="getUser" />
 
-            <!-- Web black div -->
-            <div class="col s12 m10 l10" id="webRightDiv">
-
-                <!-- Create Website Name Section -->
-                <div class="createPortDiv" v-if="!hiddenCreateWebName">
-                    <div class="webBlackDiv">
-                        <div class="webBlackDiv1">
-                            <div class="row webBlackDiv1">
-                                <div class="col s11">
-                                    <p class="webBlackTitle">Setup your Website Name</p>
-                                </div>
-                                <div class="col s1">
-                                    <i class="material-icons right" id="webAddCircleIcon">help</i>
-                                </div>
-                                <div class="col s12">
-                                    <p class="webBlackTxt">
-                                        Lets start and automate your process so you can
-                                        reclaim time and focus on your goals.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="webWhiteDiv">
-                        <div class="webWhiteDiv1">
-                            <div class="row">
-                                <div class="row clientCreatePortInputRowDiv">
-                                    <form>
-                                        <div class="col s12">
-                                            <input type="text" placeholder="Domain" class="clientCreatePortInput1">
-                                        </div>
-                
-                                        <div class="clientCreatePortBtnDiv">
-                                            <button type="button" class="btn clientCreatePortBtn" @click="hiddenCreateWebNameBtn()">Next</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Create Website Description Section -->
-                <div class="createPortDiv" v-if="!hiddenCreateWebDescription">
-                    <div class="webBlackDiv">
-                        <div class="webBlackDiv1">
-                            <div class="row webBlackDiv1">
-                                <div class="col s11">
-                                    <p class="webBlackTitle">Setup your Website description</p>
-                                </div>
-                                <div class="col s1">
-                                    <i class="material-icons right" id="webAddCircleIcon">help</i>
-                                </div>
-                                <div class="col s12">
-                                    <p class="webBlackTxt">
-                                        Lets start and automate your process so you can
-                                        reclaim time and focus on your goals.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="webWhiteDiv">
-                        <div class="webWhiteDiv1">
-                            <div class="row">
-                                <div class="row clientCreatePortInputRowDiv">
-                                    <form>
-                                        <div class="col s12">
-                                            <input type="text" placeholder="Description" class="clientCreatePortInput1">
-                                        </div>
-
-                                        <div class="clientCreatePortBtnDiv">
-                                            <button type="button" class="btn clientCreatePortBtn" @click="hiddenCreateWebDescriptionBtn()">Next</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Choose a template Section -->
-                <div class="createPortDiv" v-if="!chooseTempDiv">
-                    <div class="webBlackDiv">
-                        <div class="webBlackDiv1">
-                            <div class="row webBlackDiv1">
-                                <div class="col s11">
-                                    <p class="webBlackTitle">Choose a template</p>
-                                </div>
-                                <div class="col s1">
-                                    <i class="material-icons right" id="webAddCircleIcon">help</i>
-                                </div>
-                                <div class="col s12">
-                                    <p class="webBlackTxt">
-                                        Lets start and automate your process so you can
-                                        reclaim time and focus on your goals.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="webWhiteDiv">
-                        <div class="webWhiteDiv1">
-                            <div class="row">
-                                <div class="row clientCreatePortInputRowDiv">
-                                    <!-- <form> -->
-                                    <div class="userTempMainDiv">
-                                        <div class="row">
-                
-                                            <div class="col s6 m4 l2">
-                                                <div id="userTempDiv">
-                                                    <div class="tempImgDiv" id="tempImgDiv">
-                                                        <i class="material-icons" id="tempProIcon">person</i>
-                                                    </div>
-                                                    <p class="userTempTitle">PhysicianX</p>
-                                                </div>
-                                            </div>
-                
-                                            <div class="col s6 m4 l2">
-                                                <div id="userTempDiv">
-                                                    <div class="tempImgDiv" id="tempImgDiv">
-                                                        <i class="material-icons" id="tempProIcon">person</i>
-                                                    </div>
-                                                    <p class="userTempTitle">MedicPlus</p>
-                                                </div>
-                                            </div>
-                
-                                            <div class="col s6 m4 l2">
-                                                <div id="userTempDiv">
-                                                    <div class="tempImgDiv" id="tempImgDiv">
-                                                        <i class="material-icons" id="tempProIcon">person</i>
-                                                    </div>
-                                                    <p class="userTempTitle">DocTab</p>
-                                                </div>
-                                            </div>
-                
-                                            <div class="col s6 m4 l2">
-                                                <div id="userTempDiv">
-                                                    <div class="tempImgDiv" id="tempImgDiv">
-                                                        <i class="material-icons" id="tempProIcon">person</i>
-                                                    </div>
-                                                    <p class="userTempTitle">PhisiLux</p>
-                                                </div>
-                                            </div>
-                
-                                            <div class="col s6 m4 l2">
-                                                <div id="userTempDiv">
-                                                    <div class="tempImgDiv" id="tempImgDiv">
-                                                        <i class="material-icons" id="tempProIcon">person</i>
-                                                    </div>
-                                                    <p class="userTempTitle">Trainner</p>
-                                                </div>
-                                            </div>
-                
-                                            <div class="col s6 m4 l2">
-                                                <div id="userTempDiv">
-                                                    <div class="tempImgDiv" id="tempImgDiv">
-                                                        <i class="material-icons" id="tempProIcon">person</i>
-                                                    </div>
-                                                    <p class="userTempTitle">Lawyers</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                
-                                    <div class="clientCreatePortBtnDiv">
-                                        <button type="button" class="btn clientCreatePortBtn" @click="chooseTempBtn()">Get Started</button>
-                                    </div>
-                                    <!-- </form> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Create portfolio Div -->
-                <div class="createPortDiv" v-if="!createPortDiv">
-                    <div class="webBlackDiv">
-                        <div class="webBlackDiv1">
-                
-                            <div class="row webBlackDiv1">
-                                <div class="col s12">
-                                    <p class="webBlackTitle">Create Portfolio</p>
-                                </div>
-                                <div class="col s11">
-                                    <p class="webBlackTxt">
-                                        Lets start and automate your process so you can
-                                        reclaim time and focus on your goals.
-                                    </p>
-                                </div>
-                                <div class="col s1">
-                                    <i class="material-icons right" id="webAddCircleIcon" @click="webAddCircleIcon()">add_circle</i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <!-- web empty div -->
-                    <div class="webWhiteDiv">
-                        <div class="webWhiteDiv1">
-                            <div class="row" id="webWhiteDiv2">
-                                <div class="col s3 m2 l2" id="webWhiteProMgLftDiv">
-                                    <div id="">
-                                        <div class="webWhiteProDiv" id="">
-                                            <i class="material-icons" id="tempProIcon">person</i>
-                                        </div>
-                                        <p class="webWhiteProName">escoba</p>
-                                    </div>
-                                </div>
-                
-                                <div class="col s5 s5 l6 offset-s1">
-                                    <p class="webWhiteTitle">Description</p>
-                                    <p class="webWhiteTxt">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum has been the industry's standard dummy text
-                                    </p>
-                                </div>
-                
-                                <div class="col l3 right-align">
-                                    <a href="#!" class="marginRight1" title="Visit my website">
-                                        <i class="material-icons" id="webWhiteIcon">visibility</i>
-                                    </a>
-                
-                                    <a href="#!" class="marginRight1" title="Configure my webiste details">
-                                        <i class="material-icons" id="webWhiteIcon" @click="createPortSettings()">settings</i>
-                                    </a>
-                                    <a href="#!" title="Edit your website">
-                                        <i class="material-icons" id="webWhiteIcon">edit</i>
-                                    </a>
-                                </div>
-                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Configure Website Section -->
-                <div class="createPortDiv" v-if="!configureWebDiv">
-                    <div class="webBlackDiv">
-                        <div class="webBlackDiv1">
-                            <div class="row webBlackDiv1">
-                                <div class="col s12">
-                                    <p class="webBlackTitle">Configure your website</p>
-                                </div>
-                                <div class="col s12">
-                                    <p class="webBlackTxt">
-                                        Lets start and automate your process so you can
-                                        reclaim time and focus on your goals.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="#" class="configWebGoBackBtn">GO BACK</a>
-                
-                    <div class="webWhiteDiv">
-                        <div class="webWhiteDiv1">
-                            <div class="row configureWebDiv">
-                                <form>
-                                    <div>
-                                        <label class="col s12 configWebInputLabel">Edit your domain name</label>
-                                        <div class="col s10">
-                                            <input type="text" placeholder="Domain Name" class="clientCreatePortInput1">
-                                        </div>
-                                        
-                                        <div class="col s1 offset-s1 clientCreatePortBtnDiv">
-                                            <button type="button" class="btn clientCreatePortBtn">CHECK AVAILABILITY</button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label class="col s12 configWebInputLabel">Assign website</label>
-                                        <div class="col s10">
-                                            <input type="text" placeholder="Username or Email" class="clientCreatePortInput1">
-                                        </div>
-                                        
-                                        <div class="col s1 offset-s1 clientCreatePortBtnDiv">
-                                            <button type="button" class="btn clientCreatePortBtn">GIVE ACCESS</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="clientConfigTempDiv">
-                        <p class="col s12 configWebTxt">Change Template</p>
-                        <!-- First Row -->
-                        <div class="col s12 m6 l4 clientTempPageImgSmDv">
-                    
-                            <div class="tempPageImgDiv clientSelectedTemp">
-                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png" class="responsive-img tempPageGridImg">
-                            </div>
-                    
-                            <p class="tempPageImgTitle">
-                                Planet Earth
-                            </p>
-                    
-                            <p class="tempPageImgTxt">
-                                The Planet Earth template is a captivating design with minimalist appeal.
-                            </p>
-                    
-                            <a href="#" class="tempPageImgLink">Preview</a>
-                            <a href="#" class="tempPageImgLink1 right">Selected</a>
-                        </div>  
-                    
-                        <div class="col s12 m6 l4 clientTempPageImgSmDv">
-                            <div class="tempPageImgDiv">
-                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png" class="tempPageGridImg">
-                            </div>
-                    
-                            <p class="tempPageImgTitle">
-                                Planet Earth
-                            </p>
-                    
-                            <p class="tempPageImgTxt">
-                                The Planet Earth template is a captivating design with minimalist appeal.
-                            </p>
-                    
-                            <a href="#" class="tempPageImgLink">Preview</a>
-                            <a href="#" class="tempPageImgLink1 right">Select</a>
-                        </div>
-                    
-                        <div class="col s12 m6 l4 clientTempPageImgSmDv">
-                            <div class="tempPageImgDiv">
-                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png" class="tempPageGridImg">
-                            </div>
-                    
-                            <p class="tempPageImgTitle">
-                                Planet Earth
-                            </p>
-                    
-                            <p class="tempPageImgTxt">
-                                The Planet Earth template is a captivating design with minimalist appeal.
-                            </p>
-                    
-                            <a href="#" class="tempPageImgLink">Preview</a>
-                            <a href="#" class="tempPageImgLink1 right">Select</a>
-                        </div>
-                    
-                    
-                        <!-- Second Row -->
-                        <div class="col s12 m6 l4 clientTempPageImgSmDv">
-                            <div class="tempPageImgDiv">
-                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png" class="tempPageGridImg">
-                            </div>
-                    
-                            <p class="tempPageImgTitle">
-                                Planet Earth
-                            </p>
-                    
-                            <p class="tempPageImgTxt">
-                                The Planet Earth template is a captivating design with minimalist appeal.
-                            </p>
-                    
-                            <a href="#" class="tempPageImgLink">Preview</a>
-                            <a href="#" class="tempPageImgLink1 right">Select</a>
-                        </div>
-                    
-                        <div class="col s12 m6 l4 clientTempPageImgSmDv">
-                            <div class="tempPageImgDiv">
-                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png" class="tempPageGridImg">
-                            </div>
-                    
-                            <p class="tempPageImgTitle">
-                                Planet Earth
-                            </p>
-                    
-                            <p class="tempPageImgTxt">
-                                The Planet Earth template is a captivating design with minimalist appeal.
-                            </p>
-                    
-                            <a href="#" class="tempPageImgLink">Preview</a>
-                            <a href="#" class="tempPageImgLink1 right">Select</a>
-                        </div>
-                    
-                        <div class="col s12 m6 l4 clientTempPageImgSmDv">
-                            <div class="tempPageImgDiv">
-                                <img src="/media/img/aboutmyself.png" alt="tempPageImg.png" class="tempPageGridImg">
-                            </div>
-                    
-                            <p class="tempPageImgTitle">
-                                Planet Earth
-                            </p>
-                    
-                            <p class="tempPageImgTxt">
-                                The Planet Earth template is a captivating design with minimalist appeal.
-                            </p>
-                    
-                            <a href="#" class="tempPageImgLink">Preview</a>
-                            <a href="#" class="tempPageImgLink1 right">Select</a>
-                        </div>
-                        <!-- End of Row -->
-                    </div>
-
-                    <div class="col s12">
-                        <p class="adminClientConfigPreload">Loading...</p>
-                    </div>
-
-                    <div class="col s12 adminClientConfigDelBtnDiv">
-                        <p class="adminClientConfigDelTxt">Do you want to delete website?</p>
-
-                        <button type="button" class="btn adminClientConfigDelBtn">Delete Website</button>
-                    </div>
-                </div>
-
+            <configure-web-component
+                :loading="loading"
+                @updateDomainTemplate="updateDomainTemplate"
+                :domain="domainName"
+                @goBack="setDefaults"
+                :selectedTemplate="selectedTemplate"
+                v-if="configureWeb"
+                :user="user"
+                :professionID="professionID"
+                @giveAccess="giveAccess"
+                :granting="granting"
+            />
+            <!-- :userProfessionId="userProfessionId" -->
+            <div class="col s12 m10 l10" id="webRightDiv" v-else>
                 <!-- Admin Clients Section -->
-                <div class="createPortDiv" v-if="!addClientDiv">
-                    <div class="webBlackDiv">
-                        <div class="webBlackDiv1">
-                            <div class="row webBlackDiv1">
-                                <div class="col s12">
-                                    <p class="webBlackTitle">Add Clients</p>
-                                </div>
-                                <div class="col s11">
-                                    <p class="webBlackTxt">
-                                        Lets start and automate your process so you can
-                                        reclaim time and focus on your goals.
-                                    </p>
-                                </div>
-                                <div class="col s1">
-                                    <i class="material-icons right" id="webAddCircleIcon" @click="addClientBtn()">add_circle</i>
-                                </div>
+                <div class="webBlackDiv" v-if="heading">
+                    <div class="">
+                        <div class="row">
+                            <div class="col s9 black websiteBanner">
+                                <p class="webBlackTitle">
+                                    Your Clients - Websites
+                                </p>
+                                <p class="webBlackTxt">
+                                    Lets start and automate your process so you
+                                    can reclaim time and focus on your goals.
+                                </p>
+                            </div>
+                            <div
+                                class="col s3 primary"
+                                id="webAddContainer"
+                                @click="webAddCircleIcon()"
+                                v-if="isHidden"
+                            >
+                                <i class="material-icons webAddIcon">add</i>
+                                <p>Create Website</p>
+                            </div>
+                            <div
+                                class="col s3 primaryBorder"
+                                id="webAddContainer"
+                                v-else
+                            >
+                                <i class="material-icons webAddIcon"
+                                    >linear_scale</i
+                                >
+                                <p>Creating Website...</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <div v-if="clientsView">
                     <div class="adminClientSearchInputMainDiv">
                         <div>
                             <form>
                                 <div class="input-field">
-                                    <input placeholder="&#128269; Search" id="adminClientSearchInput" type="text" class="validate">
+                                    <input
+                                        placeholder="&#128269; Search"
+                                        id="adminClientSearchInput"
+                                        type="text"
+                                        class="validate"
+                                    />
                                 </div>
                             </form>
                         </div>
 
                         <div class="adminClientSearchInputControlDiv">
                             <div>
-                                <span class="adminClientSearchInputTxts">Filter</span>
-                                <i class="material-icons adminClientSearchInputIcons">filter_list</i>
+                                <span class="adminClientSearchInputTxts"
+                                    >Filter</span
+                                >
+                                <i
+                                    class="
+                                        material-icons
+                                        adminClientSearchInputIcons
+                                    "
+                                    >filter_list</i
+                                >
                             </div>
 
                             <div class="adminClientSearchInputIconsDiv">
-                                <span class="adminClientSearchInputTxts">Sort</span>
-                                <i class="material-icons adminClientSearchInputIcons">sort</i>
+                                <span class="adminClientSearchInputTxts"
+                                    >Sort</span
+                                >
+                                <i
+                                    class="
+                                        material-icons
+                                        adminClientSearchInputIcons
+                                    "
+                                    >sort</i
+                                >
                             </div>
                         </div>
                     </div>
-                    
-                
-                    <table class="responsive-table adminAddClientTable">
-                        <!-- <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Item Name</th>
-                                <th>Item Price</th>
-                            </tr>
-                        </thead> -->
-                    
+                    <div class="row center-align" v-if="loading">
+                        <ButtonLoaderComponent />
+                    </div>
+                    <table class="responsive-table adminAddClientTable" v-else>
                         <tbody>
-                            <tr class="adminAddClientTr">
-                                <td><div class="adminAddClientImgDiv"></div></td>
-                                <td class="addminAddClientTxts">Dr</td>
-                                <td class="addminAddClientTxts">Akerele</td>
-                                <td class="addminAddClientTxts">Adebayo</td>
-                                <td class="addminAddClientTxts">adebayo@gmail.com</td>
-                                <td class="addminAddClientTxts">drade.paab.com</td>
-                                <td class="right">
-                                    <button type="button" class="btn adminAddClientViewBtn">view</button>
-                                    <button type="button" class="btn adminAddClientDelBtn">delete</button>
-                                </td>
-                            </tr>
-                            <tr class="adminAddClientTr">
+                            <tr
+                                class="adminAddClientTr"
+                                v-for="clientWebo in clientsWebsites"
+                                :key="clientWebo.id"
+                            >
                                 <td>
                                     <div class="adminAddClientImgDiv"></div>
                                 </td>
-                                <td class="addminAddClientTxts">Dr</td>
-                                <td class="addminAddClientTxts">Akerele</td>
-                                <td class="addminAddClientTxts">Adebayo</td>
-                                <td class="addminAddClientTxts">adebayo@gmail.com</td>
-                                <td class="addminAddClientTxts">drade.paab.com</td>
+                                <td class="addminAddClientTxts">
+                                    {{ profession(clientWebo) }}
+                                </td>
+                                <td class="addminAddClientTxts">
+                                    Not Assigned
+                                </td>
+                                <td class="addminAddClientTxts">
+                                    {{ domain(clientWebo) }}
+                                </td>
                                 <td class="right">
-                                    <button type="button" class="btn adminAddClientViewBtn">view</button>
-                                    <button type="button" class="btn adminAddClientDelBtn">delete</button>
+                                    <a
+                                        href="#!"
+                                        @click="configureWebsite(clientWebo)"
+                                        class="marginRight1"
+                                        title="Configure my webiste details"
+                                    >
+                                        <i
+                                            class="material-icons"
+                                            id="webWhiteIcon"
+                                            >settings</i
+                                        >
+                                    </a>
+                                    <a
+                                        href="#!"
+                                        @click="updateWebsite(clientWebo)"
+                                        title="Edit your website"
+                                        class="marginRight1"
+                                    >
+                                        <i
+                                            class="material-icons"
+                                            id="webWhiteIcon"
+                                            >edit</i
+                                        >
+                                    </a>
                                 </td>
                             </tr>
-                            <tr class="adminAddClientTr">
-                                <td>
-                                    <div class="adminAddClientImgDiv"></div>
-                                </td>
-                                <td class="addminAddClientTxts">Dr</td>
-                                <td class="addminAddClientTxts">Akerele</td>
-                                <td class="addminAddClientTxts">Adebayo</td>
-                                <td class="addminAddClientTxts">adebayo@gmail.com</td>
-                                <td class="addminAddClientTxts">drade.paab.com</td>
-                                <td class="right">
-                                    <button type="button" class="btn adminAddClientViewBtn">view</button>
-                                    <button type="button" class="btn adminAddClientDelBtn">delete</button>
-                                </td>
-                            </tr>
-                            <tr class="adminAddClientTr">
-                                <td>
-                                    <div class="adminAddClientImgDiv"></div>
-                                </td>
-                                <td class="addminAddClientTxts">Dr</td>
-                                <td class="addminAddClientTxts">Akerele</td>
-                                <td class="addminAddClientTxts">Adebayo</td>
-                                <td class="addminAddClientTxts">adebayo@gmail.com</td>
-                                <td class="addminAddClientTxts">drade.paab.com</td>
-                                <td class="right">
-                                    <button type="button" class="btn adminAddClientViewBtn">view</button>
-                                    <button type="button" class="btn adminAddClientDelBtn">delete</button>
-                                </td>
+                            <tr
+                                v-if="clientsWebsites.length == 0"
+                                class="centered"
+                            >
+                                You have not created any website for a client
+                                sir!
                             </tr>
                         </tbody>
                     </table>
 
-                    <div class="adminClientPaginationControlDiv">
+                    <div
+                        class="adminClientPaginationControlDiv"
+                        v-if="clientsWebsites.length != 0"
+                    >
                         <div class="adminClientPaginationInnerControlDiv right">
-                            <span class="adminClientPaginationNum">1-5 of 20</span>
+                            <span class="adminClientPaginationNum"
+                                >{{ data.from }}-{{ data.to }} of
+                                {{ total }}</span
+                            >
 
                             <div class="adminClientPaginationIconDiv">
-                                <i class="material-icons adminClientPaginationLeftIcon">navigate_before</i>
-                                <i class="material-icons adminClientPaginationRightIcon">navigate_next</i>
+                                <i
+                                    class="
+                                        material-icons
+                                        adminClientPaginationLeftIcon
+                                    "
+                                    v-if="data.prev_page_url != null"
+                                    @click="getClientsWebsites(page--)"
+                                    >navigate_before</i
+                                >
+                                <i
+                                    v-else
+                                    class="
+                                        material-icons
+                                        adminClientPaginationLeftIcon
+                                        disabled
+                                    "
+                                    >navigate_before</i
+                                >
+                                <i
+                                    class="
+                                        material-icons
+                                        adminClientPaginationRightIcon
+                                    "
+                                    v-if="total != data.to"
+                                    @click="getClientsWebsites(page++)"
+                                    >navigate_next</i
+                                >
+                                <i
+                                    v-else
+                                    class="
+                                        material-icons
+                                        adminClientPaginationRightIcon
+                                        disabled
+                                    "
+                                    >navigate_next</i
+                                >
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <div v-else-if="createClientView">
+                    <web-create-component
+                        @close="closeWebCreation"
+                        :user="user"
+                        @createWebsite="createWebsite($event)"
+                        :loading="creating"
+                    />
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import AdminSideNavComponent from "../partials/AdminSideNavComponent.vue";
-import AdminMobileNavComponent from "../partials/AdminMobileNavComponent.vue";
-// import FooterComponent from "./partials/FooterComponent.vue";
-// import HeaderComponent from "./partials/HeaderComponent.vue";
-export default {
-    components: {
-        AdminSideNavComponent,
-        AdminMobileNavComponent,
-        // FooterComponent,
-        // HeaderComponent,
-    },
-    data() {
-        return {
-            bg_img: '/media/img/istockphoto-1390124896-170667a.jpg',
-            pro_img: '/media/img/yuna.jpg',
-
-            addClientDiv: false,
-            hiddenCreateWebName: true,
-            hiddenCreateWebDescription: true,
-            chooseTempDiv: true,
-            createPortDiv: true,
-            configureWebDiv: true,
-        };
-    },
-    mounted() { },
-    methods: {
-        addClientBtn() {
-            this.addClientDiv = true;
-            this.hiddenCreateWebName = false;
+    import SidenavComponent from "../partials/SideNavComponent.vue";
+    import AdminMobileNavComponent from "../partials/AdminMobileNavComponent.vue";
+    import WebCreateComponent from "../partials/WebCreateComponent.vue";
+    import ButtonLoaderComponent from "../partials/ButtonLoaderComponent.vue";
+    import ConfigureWebComponent from "../partials/ConfigureWebComponent.vue";
+    export default {
+        components: {
+            SidenavComponent,
+            AdminMobileNavComponent,
+            WebCreateComponent,
+            ButtonLoaderComponent,
+            ConfigureWebComponent,
         },
-        hiddenCreateWebNameBtn() {
-            this.hiddenCreateWebName = true;
-            this.hiddenCreateWebDescription = false;
+        data() {
+            return {
+                bg_img: "/media/img/istockphoto-1390124896-170667a.jpg",
+                pro_img: "/media/img/yuna.jpg",
+                creating: false,
+                user: {},
+                addClientDiv: false,
+                clientsWebsites: [],
+                clientsView: false,
+                configureWebDiv: false,
+                configureWeb: false,
+                createClientView: false,
+                fetching: false,
+                heading: false,
+                isHidden: false,
+                granting: false,
+                page: 1,
+                total: 0,
+                data: {
+                    to: 0,
+                    from: 0,
+                    prev_page_url: null,
+                },
+                selectedTemplate: 0,
+                tenant: { template_id: 0, domain: "", domain_id: 0, id: 0 },
+                domainName: "",
+                professionID: 0,
+            };
         },
-        hiddenCreateWebDescriptionBtn() {
-            this.hiddenCreateWebDescription = true;
-            this.chooseTempDiv = false;
+        computed: {},
+        mounted() {
+            this.isHidden = !this.isHidden;
+            this.heading = !this.heading;
+            this.clientsView = !this.clientsView;
+            this.getClientsWebsites();
         },
-        chooseTempBtn() {
-            this.chooseTempDiv = true;
-            this.createPortDiv = false;
+        methods: {
+            configureWebsite(website) {
+                this.heading = !this.heading;
+                this.configureWeb = true;
+                this.clientsView = false;
+                this.selectedTemplate = website.template_id;
+                this.tenant.template_id = website.template_id;
+                this.tenant.domain =
+                    typeof website.domains === "object"
+                        ? website.domains[0].domain
+                        : website.domains;
+                this.domainName = this.tenant.domain.split(".")[0];
+                this.tenant.domain_id = website.domains[0].id;
+                this.tenant.id = website.id;
+                this.professionID = website.template.profession.id
+            },
+            createWebsite(evt) {
+                this.creating = true;
+                evt.user_id = this.user.id;
+                evt.name = evt.name.replace(/ +/g, "");
+                axios
+                    .post("/api/tenant", evt)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            location.reload();
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        if (err.response.status == 500) {
+                            M.toast({
+                                html: err.response.data.message,
+                                classes: "errorNotifier",
+                            });
+                            this.creating = false;
+                        }
+                    });
+            },
+            domain(evt) {
+                return evt.domains == undefined ? null : evt.domains[0].domain;
+            },
+            profession(evt) {
+                return evt.template == undefined
+                    ? null
+                    : evt.template.profession.name;
+            },
+            getUser(e) {
+                this.user = e;
+            },
+            getClientsWebsites() {
+                this.page == 1 ? (this.fetching = true) : (this.loading = true);
+                axios
+                    .get(`/api/tenancies/?page=${this.page}`)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            this.clientsWebsites = res.data.tenants.data;
+                            this.data.to = res.data.tenants.to;
+                            this.data.from = res.data.tenants.from;
+                            this.data.prev_page_url =
+                                res.data.tenants.prev_page_url;
+                            this.fetching = false;
+                            this.loading = false;
+                            this.total = res.data.tenants.total;
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            },
+            deleteWebsite(e) {
+                console.log(e);
+            },
+            webAddCircleIcon() {
+                this.isHidden = false;
+                this.clientsView = false;
+                this.createClientView = true;
+            },
+            closeWebCreation() {
+                this.isHidden = true;
+                this.clientsView = true;
+                this.createClientView = false;
+            },
+            setDefaults() {
+                this.heading = !this.heading;
+                this.configureWeb = !this.configureWeb;
+                this.clientsView = !this.clientsView;
+            },
+            updateDomainTemplate(evt) {
+                this.loading = true;
+                let data = { domain_id: this.tenant.domain_id };
+                axios
+                    .put(`/api/template-update/${this.tenant.id}`, {
+                        ...evt,
+                        ...data,
+                    })
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            console.log(res);
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            this.loading = false;
+                            this.tenant.template_id = res.data.domain.tenant.template_id;
+                            location.reload();
+                        }
+                    })
+                    .catch((err) => {
+                        this.loading = false;
+                        if (err.response.status == 500) {
+                            M.toast({
+                                html: err.response.data.message,
+                                classes: "errorNotifier",
+                                displayLength: 6000,
+                            });
+                        }
+                        console.log(err);
+                    });
+            },
+            updateWebsite(website) {
+                this.tenant.domain =
+                    typeof website.domains === "object"
+                        ? website.domains[0].domain
+                        : website.domains;
+                window.open(`http://${this.tenant.domain}:8000/setting`, "_blank");
+            },
+            giveAccess(evt) {
+                this.granting = true;
+                let data = {
+                    email: evt,
+                    tenant_id: this.tenant.id,
+                    user_id: this.user.id
+                }
+                axios.post('/api/access', data).then(res => {
+                    console.log(res);
+                    if (res.status == 201) {
+                        this.granting = false;
+                        M.toast({
+                            html: res.data.message,
+                            classes: "successNotifier",
+                        });
+                    }
+                }).catch(err => {
+                    console.log(err);
+                    M.toast({
+                        html: err.response.data.message,
+                        classes: "errorNotifier",
+                        displayLength: 6000,
+                    });
+                    this.granting = false;
+                })
+            }
         },
-        createPortSettings() {
-            this.createPortDiv = true;
-            this.configureWebDiv = false;
-        }
-    }
-}
+    };
 </script>
+<style>
+    .clientCreatePortCancelDiv {
+        margin: 10px;
+    }
+</style>
+<style scoped>
+    #webWhiteIcon {
+        font-size: 1.25rem;
+    }
+    .disabled {
+        color: rgba(0, 0, 0, 0.5);
+    }
+</style>

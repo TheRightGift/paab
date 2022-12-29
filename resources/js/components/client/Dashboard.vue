@@ -227,6 +227,7 @@
             this.getDate();
             this.getWebsites();
             setInterval(this.getCurrentTimeInterval, 1000);
+            
         },
         methods: {
             getDate() {
@@ -271,6 +272,7 @@
             },
             getUser(e) {
                 this.user = e;
+                this.checkMailExist();
             },
             getWebsites() {
                 this.websiteLoading = true;
@@ -305,8 +307,12 @@
                 let domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
                 window.open(`http://${domain}:8000`,'_blank');
             },
-            navigateToMail(){
-
+            checkMailExist() {
+                axios.post('/api/checkMailExist', {email: this.user.email}).then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err)
+                })
             }
         },
         props: ['_token'],

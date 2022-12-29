@@ -45,6 +45,7 @@
                                 v-if="!isHidden && loadingUserProfessionId"
                                 :loading="loading"
                                 :userProfessionId="userProfessionId"
+                                :user="user"
                             />
                             <div v-else>
                                 <div class="webWhiteDiv1" v-if="view == 0">
@@ -221,6 +222,7 @@
                     @goBack="setDefaults(0)"
                     :userProfessionId="userProfessionId"
                     :selectedTemplate="selectedTemplate"
+                    :user="user"
                 />
             </div>
         </div>
@@ -231,11 +233,11 @@
     import SideNavComponent from "../partials/SideNavComponent.vue";
     import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
     import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
-    import WebCreateComponent from "./WebCreateComponent.vue";
+    import WebCreateComponent from "../partials/WebCreateComponent.vue";
     import ConfigureWebComponent from "../partials/ConfigureWebComponent.vue";
     import ButtonLoader from "../partials/ButtonLoaderComponent.vue";
     export default {
-    components: {
+        components: {
             MobileNavComponent,
             SideNavComponent,
             WebCreateComponent,
@@ -451,8 +453,9 @@
     }
 </style>
 <style>
-    button[disabled=disabled], .btn:disabled,
-.btn.disabled {
+    button[disabled="disabled"],
+    .btn:disabled,
+    .btn.disabled {
         border: 1px solid #d492f3;
         background-color: #c7bbeb !important;
         color: #fff;

@@ -171,13 +171,13 @@
 
 <script>
     import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
-    import AdminSideNavComponent from "../partials/AdminSideNavComponent.vue";
+    import SidenavComponent from "../partials/SideNavComponent.vue";
     import AdminMobileNavComponent from "../partials/AdminMobileNavComponent.vue";
     export default {
         components: {
             InnerFooterComponent,
-            AdminSideNavComponent,
             AdminMobileNavComponent,
+            SidenavComponent
         },
         data() {
             return {
@@ -344,7 +344,7 @@
                 this.loading = true;
                 axios.get("/api/tenancies").then(res => {
                     if (res.data.status == 200) {
-                        this.clientsWeb = res.data.tenants.slice(0, 2);
+                        this.clientsWeb = res.data.tenants.data.slice(0, 2);
                     }
                     this.loading = false;
                 }).catch(err => {
