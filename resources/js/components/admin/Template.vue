@@ -5,7 +5,7 @@
 
         <div class="row" id="dashRowDiv">
             <!-- Sidebar for large and medium devices -->
-            <AdminSideNavComponent />
+            <side-nav-component @user="getUser" />
 
             <!-- Center Bar Person Div -->
             <div class="col s12 m10 l10">
@@ -203,16 +203,12 @@
 </template>
 
 <script>
-import AdminSideNavComponent from "../partials/AdminSideNavComponent.vue";
 import AdminMobileNavComponent from "../partials/AdminMobileNavComponent.vue";
-// import FooterComponent from "./partials/FooterComponent.vue";
-// import HeaderComponent from "./partials/HeaderComponent.vue";
+import SideNavComponent from '../partials/SideNavComponent.vue';
 export default {
     components: {
-        AdminSideNavComponent,
         AdminMobileNavComponent,
-        // FooterComponent,
-        // HeaderComponent
+        SideNavComponent,
     },
     data() {
         return {

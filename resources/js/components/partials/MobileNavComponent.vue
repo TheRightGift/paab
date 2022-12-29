@@ -76,7 +76,6 @@
                 </li>
             </ul>
 
-            <!--logout-modal-component v-if="shown" @switchMe="switchModal"/-->
             <div id="logoutModal" class="modal">
                 <div class="modal-content">
                     <div class="row logoutModalImageRow">
@@ -103,9 +102,8 @@
     </div>
 </template>
 <script>
-import LogoutModalComponent from "../auth/LogoutModalComponent.vue";
 export default {
-    components: { LogoutModalComponent },
+    components: {  },
     name: 'MobileNav',
 
     methods: {

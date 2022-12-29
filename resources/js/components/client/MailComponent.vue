@@ -3,8 +3,7 @@
         <mobile-nav-component />
         
         <div class="row" id="dashRowDiv">
-            <!-- Sidebar for large and medium devices -->
-            <side-nav-component />
+            <side-nav-component @user="getUser"/>
         
             <!-- Mail blue div -->
             <div class="col s12 m10 l10" id="mailRightDiv">
@@ -141,8 +140,6 @@
 <script>
 import MobileNavComponent from "../partials/MobileNavComponent.vue";
 import SideNavComponent from '../partials/SideNavComponent.vue';
-// import FooterComponent from "./partials/FooterComponent.vue";
-// import HeaderComponent from "./partials/HeaderComponent.vue";
 export default {
     components: {
         MobileNavComponent,

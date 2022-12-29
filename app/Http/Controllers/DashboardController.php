@@ -22,7 +22,7 @@ class DashboardController extends Controller
                 return redirect('/client/dashboard');
             } else if(auth()->user()->can('run_admin_ops')) {
                 // redirect to admin dash view
-                return view('admin.dashboard');
+                return redirect('/admin/dashboard');
             } else if(auth()->user()->can('run_superAdmin_ops')) {
                 // redirect to super admin
                 return view('super.dashboard');
@@ -35,4 +35,5 @@ class DashboardController extends Controller
         
     }
 
+    
 }
