@@ -20944,6 +20944,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         id: 0
       },
       domainName: "",
+      claimantMail: "",
       professionID: 0
     };
   },
@@ -20953,6 +20954,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     this.heading = !this.heading;
     this.clientsView = !this.clientsView;
     this.getClientsWebsites();
+    this.getAccess();
   },
   methods: {
     configureWebsite: function configureWebsite(website) {
@@ -20963,6 +20965,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       this.tenant.template_id = website.template_id;
       this.tenant.domain = _typeof(website.domains) === "object" ? website.domains[0].domain : website.domains;
       this.domainName = this.tenant.domain.split(".")[0];
+      this.claimantMail = website.order.email;
       this.tenant.domain_id = website.domains[0].id;
       this.tenant.id = website.id;
       this.professionID = website.template.profession.id;
@@ -21034,6 +21037,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       this.heading = !this.heading;
       this.configureWeb = !this.configureWeb;
       this.clientsView = !this.clientsView;
+      this.claimantMail = "";
     },
     updateDomainTemplate: function updateDomainTemplate(evt) {
       var _this3 = this;
@@ -21093,6 +21097,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           displayLength: 6000
         });
         _this4.granting = false;
+      });
+    },
+    getAccess: function getAccess() {
+      axios.get('/api/access').then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.log(err);
       });
     }
   }
@@ -22328,7 +22339,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      email: "",
+      email: this.claimantMail,
       web: {
         name: "",
         description: "",
@@ -22344,7 +22355,8 @@ __webpack_require__.r(__webpack_exports__);
     domain: String,
     loading: Boolean,
     user: Object,
-    professionID: Number
+    professionID: Number,
+    claimantMail: String
   },
   methods: {
     goBack: function goBack() {
@@ -25426,11 +25438,9 @@ var _hoisted_18 = /*#__PURE__*/_withScopeId(function () {
 var _hoisted_19 = {
   "class": "addminAddClientTxts"
 };
-var _hoisted_20 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
-    "class": "addminAddClientTxts"
-  }, " Not Assigned ", -1 /* HOISTED */);
-});
+var _hoisted_20 = {
+  "class": "addminAddClientTxts"
+};
 var _hoisted_21 = {
   "class": "addminAddClientTxts"
 };
@@ -25499,8 +25509,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     user: $data.user,
     professionID: $data.professionID,
     onGiveAccess: $options.giveAccess,
-    granting: $data.granting
-  }, null, 8 /* PROPS */, ["loading", "onUpdateDomainTemplate", "domain", "onGoBack", "selectedTemplate", "user", "professionID", "onGiveAccess", "granting"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    granting: $data.granting,
+    claimantMail: $data.claimantMail
+  }, null, 8 /* PROPS */, ["loading", "onUpdateDomainTemplate", "domain", "onGoBack", "selectedTemplate", "user", "professionID", "onGiveAccess", "granting", "claimantMail"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" :userProfessionId=\"userProfessionId\" "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Admin Clients Section "), $data.heading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, $data.isHidden ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 0,
@@ -25513,7 +25524,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       "class": "adminAddClientTr",
       key: clientWebo.id
-    }, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.profession(clientWebo)), 1 /* TEXT */), _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.domain(clientWebo)), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    }, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.profession(clientWebo)), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(clientWebo.order == null ? 'Not Assigned' : clientWebo.order.email), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.domain(clientWebo)), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       href: "#!",
       onClick: function onClick($event) {
         return $options.configureWebsite(clientWebo);

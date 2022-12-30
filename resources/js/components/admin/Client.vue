@@ -18,6 +18,7 @@
                 :professionID="professionID"
                 @giveAccess="giveAccess"
                 :granting="granting"
+                :claimantMail="claimantMail"
             />
             <!-- :userProfessionId="userProfessionId" -->
             <div class="col s12 m10 l10" id="webRightDiv" v-else>
@@ -117,7 +118,7 @@
                                     {{ profession(clientWebo) }}
                                 </td>
                                 <td class="addminAddClientTxts">
-                                    Not Assigned
+                                    {{clientWebo.order == null ? 'Not Assigned' : clientWebo.order.email}}
                                 </td>
                                 <td class="addminAddClientTxts">
                                     {{ domain(clientWebo) }}
@@ -263,6 +264,7 @@
                 selectedTemplate: 0,
                 tenant: { template_id: 0, domain: "", domain_id: 0, id: 0 },
                 domainName: "",
+                claimantMail: "",
                 professionID: 0,
             };
         },
@@ -272,6 +274,7 @@
             this.heading = !this.heading;
             this.clientsView = !this.clientsView;
             this.getClientsWebsites();
+            this.getAccess();
         },
         methods: {
             configureWebsite(website) {
@@ -285,6 +288,7 @@
                         ? website.domains[0].domain
                         : website.domains;
                 this.domainName = this.tenant.domain.split(".")[0];
+                this.claimantMail = website.order.email;
                 this.tenant.domain_id = website.domains[0].id;
                 this.tenant.id = website.id;
                 this.professionID = website.template.profession.id
@@ -363,6 +367,7 @@
                 this.heading = !this.heading;
                 this.configureWeb = !this.configureWeb;
                 this.clientsView = !this.clientsView;
+                this.claimantMail = "";
             },
             updateDomainTemplate(evt) {
                 this.loading = true;
@@ -427,6 +432,13 @@
                         displayLength: 6000,
                     });
                     this.granting = false;
+                })
+            },
+            getAccess() {
+                axios.get('/api/access').then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err)
                 })
             }
         },
