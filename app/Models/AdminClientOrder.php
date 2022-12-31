@@ -11,6 +11,10 @@ class AdminClientOrder extends Model
     protected $fillable = ['tenant_id', 'user_id', 'email', 'claimed'];
     public function tenant()
     {
-        return $this->hasMany(AdminClientOrder::class);
+        return $this->belongsTo(Tenant::class, 'tenant_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'tenant_id');
     }
 }

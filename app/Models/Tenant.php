@@ -40,7 +40,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     }
     public function order()
     {
-        return $this->belongsTo(AdminClientOrder::class);
+        return $this->hasOne(AdminClientOrder::class);
     }
 
 }
