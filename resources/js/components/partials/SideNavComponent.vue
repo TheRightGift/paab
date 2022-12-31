@@ -131,6 +131,13 @@
                         url: "/support",
                         role: "Client",
                     },
+                    {
+                        id: 7,
+                        title: "Admins",
+                        icon: "question_answer",
+                        url: "/admins",
+                        role: "SuperAdmin",
+                    },
                 ],
                 prefix: "/client",
                 shown: false,

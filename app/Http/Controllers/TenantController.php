@@ -118,7 +118,9 @@ class TenantController extends Controller
         // When coming from mobile request for user->id
         $user = auth()->user()->id;
         $tenancies = Tenant::where('user_id', $user)->with('domains', 'template', 'template.profession', 'order')->latest()->paginate(10);
-
+        // Sort by alphabetical order for domain only and email
+        
+        // Filter by assigned order
         return response()->json(['message' => 'Tenants fetched', 'tenants' => $tenancies, 'status' => 200], 200);
     }
 

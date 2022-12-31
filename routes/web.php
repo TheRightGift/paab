@@ -138,3 +138,8 @@ Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(functio
         return view('admin.singlemsg');
     });
 });
+Route::prefix('supre')->middleware(['auth', 'can:run_superAdmin_ops'])->group(function () {
+    Route::get('/admins', function() {
+        return view('super.admins');
+    });
+});
