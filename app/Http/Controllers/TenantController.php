@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Cookie;
 use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
 
 use App\Models\Tenant;
+use App\Models\Tenants\General;
 use App\Models\Template;
 use App\Models\Tenants\TenantUser as TenantUser;
 use App\Models\AdminClientOrder;
@@ -98,8 +99,9 @@ class TenantController extends Controller
         $tenant = $tenancies->find(tenant('id'));
         $profession = $tenant->template->profession->name;
         $professionId =$tenant->template->profession_id;
-        $template =$tenant->template->title;
-        $user = $tenant->user->title->name.'. '.$tenant->user->firstname.' '.$tenant->user->lastname;
+        $template = $tenant->template->title;
+        // dd($tenant);
+        $user = General::first()->title;
         
         if($profession === 'Physician'){
             return view('websites.physician', compact('template', 'user'));

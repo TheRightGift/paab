@@ -34,6 +34,7 @@ class GeneralController extends Controller
         $inputs = Validator::make($request->all(), [
             'favicon' => 'nullable|image|mimes:png|max:100',
             'title' => 'required',
+            'title_id' => 'required'
         ]);
 
         if ($inputs->fails()) {
