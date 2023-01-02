@@ -1625,16 +1625,28 @@ a.active {
     color: #7746ff;
 }
 
+.userTempMainDiv {
+    display: flex;
+    overflow: auto;
+    justify-content: space-around;
+}
+
 /* User Template Section */
 #userTempDiv {
-    margin-right: 7vw;
+    /* margin-right: 7vw; */
+    cursor: pointer;
+    padding: 5px;
+    border: thin solid var(--primary);
+}
+.selectedUserTempDiv {
+    background-color: #694eb4;    
 }
 
 .userTempTitle {
     font-family: "Poppins", sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 1.125rem;
+    font-size: 0.75rem;
     text-align: center;
     color: #7746ff;
     margin: 0;
@@ -1649,24 +1661,18 @@ a.active {
     margin-top: 1em;
 }
 
-.selectedUserTempDiv {
-    background-color: #694eb4;
-    padding: 1px 5px 0px 5px;
-}
+
 
 .selectedUserTempDiv .userTempTitle {
     color: white;
 }
 
-.userTempMainDiv {
-    display: flex;
-    overflow: auto;
-}
+
 
 .tempImgDiv {
     width: 60px;
     height: 60px;
-    background: #d9d9d9;
+    background: #fff;
     border-radius: 50%;
     margin: auto;
     display: flex;
@@ -2336,7 +2342,7 @@ div .row .supportGetInTouchRowDiv {
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 3rem;
+    /* font-size: 3rem; */
 }
 .createWebSectionTitle {
     display: flex;
@@ -2434,7 +2440,7 @@ div .col .s9 input.clientCreatePortInput1 {
 
 /* Client Website Settings */
 .clientSelectedTemp {
-    filter: drop-shadow(0px 6px 9px rgba(16, 208, 12, 0.8));
+    filter: drop-shadow(0px 3px 4px rgba(16, 208, 12, 0.8));
 }
 .configWebTitle {
     font-family: "Montserrat", sans-serif;
@@ -2907,16 +2913,7 @@ textarea::placeholder {
     height: 100%;
     object-fit: fill;
 }
-.tempPageImgLink {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1.063rem;
-    line-height: 21px;
-    letter-spacing: -0.015em;
-    text-decoration-line: underline;
-    color: #7746ff;
-}
+
 .clientTempContainInnerDiv {
     width: 85%;
     margin: 17vh auto 0 auto;

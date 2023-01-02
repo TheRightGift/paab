@@ -46,7 +46,7 @@
             </div>
 
             <div class="row websiteCreateBtnRow gutterTop-10">
-                <button class="btn-small primaryBorder" @click="prevWebsiteCreateView()"><i class="material-icons left">navigate_before</i>Prev</button>
+                <button class="btn-small primaryBorder" @click="prevWebsiteCreateView()" :disabled="disablePrev"><i class="material-icons left">navigate_before</i>Prev</button>
                 <button
                     type="button"
                     class="btn-small create"
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                 </button>
-                <button class="btn-small primaryBorder" @click="nextWebsiteCreateView()"><i class="material-icons right">navigate_next</i>Next</button>
+                <button class="btn-small primaryBorder" @click="nextWebsiteCreateView()" :disabled="disableNxt"><i class="material-icons right">navigate_next</i>Next</button>
             </div>
         </div>
     </div>
@@ -102,6 +102,16 @@ export default {
     computed: {
         disableCr8() {
             if (this.web.name == '' || this.web.description == '' || this.web.template_id == 0) {
+                return true;
+            }
+        },
+        disablePrev(){
+            if(this.webCreateViewState == 0){
+                return true;
+            }
+        },
+        disableNxt(){
+            if(this.webCreateViewState == 2){
                 return true;
             }
         }
