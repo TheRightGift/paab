@@ -1,16 +1,17 @@
 <template>
     <div>
-        <mobile-nav-component />
-        
+        <!-- Sidenav for small devices -->
+        <AdminMobileNavComponent />
+
         <div class="row" id="dashRowDiv">
             <!-- Sidebar for large and medium devices -->
-            <side-nav-component />
-        
+            <side-nav-component @user="getUser" />
+
             <!-- Mail blue div -->
             <div class="col s12 m10 l10" id="singleMailRightDiv">
                 <div class="clientSendmailContainDiv">
                     <div class="clientSendMailBackLinkDiv">
-                        <a href="/client/mail" class="clientSendmailArrowBackLink">
+                        <a href="/admin/messages" class="clientSendmailArrowBackLink">
                             <i class="material-icons" id="clientSendmailArrowBackIcon">arrow_back</i>
                             <span class="clientSendmailBackTxt">Back</span>
                         </a>
@@ -22,57 +23,72 @@
                                     <i class="material-icons" id="cardImg">person</i>
                                 </div>
                             </div>
-                
+
                             <div class="col l10">
                                 <a href="#" class="clientSendemailTitle">info@paab.com</a>
                                 <p class="clientSendemailTxt">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum has been the
                                     industry's standard
-                                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                                    dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                                    scrambled it to
                                     make
                                     a type specimen
-                                    book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                                    book. It has survived not only five centuries, but also the leap into electronic
+                                    typesetting,
                                     remaining
                                     essentially
                                     unchanged.
                                 </p>
                                 <p class="clientSendemailTxt1">
-                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                    There are many variations of passages of Lorem Ipsum available, but the majority
+                                    have suffered
                                     alteration in some form,
-                                    by injected humour, or randomised words which don't look even slightly believable. If you are going
+                                    by injected humour, or randomised words which don't look even slightly believable.
+                                    If you are going
                                     to
                                     use a passage of
-                                    Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All
+                                    Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the
+                                    middle of text. All
                                     the
                                     Lorem Ipsum
-                                    generators on the Internet tend to repeat predefined chunks as necessary, making this the first true
+                                    generators on the Internet tend to repeat predefined chunks as necessary, making
+                                    this the first true
                                     generator on the
-                                    Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence
+                                    Internet. It uses a dictionary of over 200 Latin words, combined with a handful of
+                                    model sentence
                                     structures, to
-                                    generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from
+                                    generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore
+                                    always free from
                                     repetition,
                                     injected humour, or non-characteristic words etc.
                                 </p>
                                 <p class="clientSendemailTxt2">
-                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                    There are many variations of passages of Lorem Ipsum available, but the majority
+                                    have suffered
                                     alteration in some form,
-                                    by injected humour, or randomised words which don't look even slightly believable. If you are going
+                                    by injected humour, or randomised words which don't look even slightly believable.
+                                    If you are going
                                     to
                                     use a passage of
-                                    Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All
+                                    Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the
+                                    middle of text. All
                                     the
                                     Lorem Ipsum
-                                    generators on the Internet tend to repeat predefined chunks as necessary, making this the first true
+                                    generators on the Internet tend to repeat predefined chunks as necessary, making
+                                    this the first true
                                     generator on the
-                                    Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence
+                                    Internet. It uses a dictionary of over 200 Latin words, combined with a handful of
+                                    model sentence
                                     structures, to
-                                    generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from
+                                    generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore
+                                    always free from
                                     repetition,
                                     injected humour, or non-characteristic words etc.
-                
+
                                 </p>
                             </div>
-                
+
                             <div class="col l1">
                                 <span class="clientSendmailTimeSent">
                                     now
@@ -81,23 +97,19 @@
                         </div>
                     </div>
                 </div>
-        
+
             </div>
         </div>
     </div>
 </template>
 
 <script>
-// import FooterComponent from "./partials/FooterComponent.vue";
-// import HeaderComponent from "./partials/HeaderComponent.vue";
-import MobileNavComponent from "../partials/MobileNavComponent.vue";
+import AdminMobileNavComponent from "../partials/AdminMobileNavComponent.vue";
 import SideNavComponent from '../partials/SideNavComponent.vue';
 export default {
     components: {
-        // FooterComponent,
-        // HeaderComponent,
-        MobileNavComponent,
-        SideNavComponent
+        AdminMobileNavComponent,
+        SideNavComponent,
     },
     data() {
         return {

@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('password');
             $table->text('accessToken')->nullable()->default(null);
             $table->text('access_token')->nullable()->default(null);
+            $table->integer('visits')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

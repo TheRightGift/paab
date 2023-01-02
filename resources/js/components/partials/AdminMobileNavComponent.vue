@@ -37,35 +37,29 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/client/websites" class="dashLeftBarListDiv">
+                    <a href="/admin/client" class="dashLeftBarListDiv">
                         <i class="material-icons dashLeftBarIcons">web</i>
-                        <p class="dashLeftBarTitle">Websites</p>
+                        <p class="dashLeftBarTitle">Client</p>
                     </a>
                 </li>
                 <!-- <li><div class="divider"></div></li> -->
                 <!-- <li><a class="subheader">Subheader</a></li> -->
                 <li>
-                    <a href="/client/template" class="dashLeftBarListDiv">
+                    <a href="/admin/template" class="dashLeftBarListDiv">
                         <i class="material-icons">chrome_reader_mode</i>
                         <p class="dashLeftBarTitle">Templates</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/client/mail" class="dashLeftBarListDiv">
+                    <a href="/admin/messages" class="dashLeftBarListDiv">
                         <i class="material-icons dashLeftBarIcons">mail_outline</i>
-                        <p class="dashLeftBarTitle">Mails</p>
+                        <p class="dashLeftBarTitle">Messages</p>
                     </a>
                 </li>
                 <li>
                     <a href="/client/settings" class="dashLeftBarListDiv">
                         <i class="material-icons dashLeftBarIcons">settings</i>
                         <p class="dashLeftBarTitle">Settings</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/client/support" class="dashLeftBarListDiv">
-                        <i class="material-icons dashLeftBarIcons">question_answer</i>
-                        <p class="dashLeftBarTitle">Help/Support</p>
                     </a>
                 </li>
                 <li>

@@ -10,7 +10,9 @@ use App\Models\Tenant;
 use App\Models\Tenants\General;
 use App\Models\Template;
 use App\Models\Tenants\TenantUser as TenantUser;
+use App\Models\AdminClientOrder;
 use App\Models\User;
+use DB;
 use App\Notifications\Tenants\LoginNotifier;
 use Stevebauman\Location\Facades\Location;
 use Validator;
@@ -29,8 +31,9 @@ class TenantController extends Controller
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
         try {
-            $tenant = Tenant::find($request->name);
-            if (empty($tenant)) {
+            $tenants = Tenant::find($request->name);
+            $domains = DB::table('domains')->where('domain', $request->name .'.localhost')->first();
+            if (empty($tenants) && empty($domains)) {
                 $tenant = Tenant::create([
                     'name' => $inputs->validated()['name'],
                     'description' => $inputs->validated()['description'],
@@ -98,7 +101,8 @@ class TenantController extends Controller
         $professionId =$tenant->template->profession_id;
         $template = $tenant->template->title;
         // dd($tenant);
-        $user = General::first()->title;
+        $generalTB = General::first();
+        $user = !empty($generalTB) ? $generalTB->title : null;
         
         if($profession === 'Physician'){
             return view('websites.physician', compact('template', 'user'));
@@ -116,8 +120,10 @@ class TenantController extends Controller
         // Get the authenticaed user
         // When coming from mobile request for user->id
         $user = auth()->user()->id;
-        $tenancies = Tenant::where('user_id', $user)->with('domains', 'template', 'template.profession')->get();
-
+        $tenancies = Tenant::where('user_id', $user)->with('domains', 'template', 'template.profession', 'order')->latest()->paginate(10);
+        // Sort by alphabetical order for domain only and email
+        
+        // Filter by assigned order
         return response()->json(['message' => 'Tenants fetched', 'tenants' => $tenancies, 'status' => 200], 200);
     }
 
@@ -199,5 +205,56 @@ class TenantController extends Controller
             // Failed retrieving position.
             return null;
         }
+    }
+
+    public function claim() {
+        // Claims the website
+    }
+
+    public function checkEmail(Request $request) {
+        // Check if user->visits != null
+        $orders = AdminClientOrder::where([['email', $request->email], ['claimed', null]])->first();
+        $authUser = auth()->user();
+        if ($authUser->visits != null) {
+            if (!empty($orders)) {
+                $tenant = Tenant::find($orders->tenant_id);
+                $tenant->user_id = $authUser->id;
+                $orders->claimed = 1;
+                $tenant->save();
+                $orders->save();
+                return response()->json(['account' => $tenant, 'status' => 200], 200);
+            }
+            elseif(empty($orders)) {
+                // Inefficient when the APP grows larger
+                $tenants = Tenant::all();
+                foreach($tenants as $tenant) {
+                    \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
+                    DB::connection('mysql')->reconnect();
+                    DB::setDatabaseName($tenant->tenancy_db_name);
+                    $user = DB::table('contacts')->where('email', $request->email)->first();
+                    if($user) {
+                        $tenant = Tenant::find($orders->tenant_id);
+                        $tenant->user_id = $authUser->id;
+                        $tenant->save();
+                        return response()->json(['account' => $tenant, 'status' => 200], 200);
+                    } else {
+                        return response()->json(['status' => 404, 'message' => 'No Account']);
+                    }
+                }
+            }
+            
+            // Check in Orders where claimed is null if email exists
+                // If exists then update tenantTB with userID
+                // Update AdminClientOrderTB with claimed = 1
+            // Else Check all the tenant DB
+            //  Check ContactTB->email to see if any is there
+            // If true get the tenantID and update userID
+            // Else do nothing.
+        }
+        else {
+            return response()->json(['message' => 'Your website might have been claimed']);
+        }
+        // else ignore
     }
 }

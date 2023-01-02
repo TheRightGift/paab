@@ -19,7 +19,7 @@
     </head>
     <body>
         <div id="app">
-            <sadmin-component></sadmin-component>
+            <admins-component _token="{{ session('token') }}"></admins-component>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>

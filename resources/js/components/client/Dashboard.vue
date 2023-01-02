@@ -3,23 +3,11 @@
         <mobile-nav-component />
         <!-- Sidebar for large and medium devices -->
         <div class="row" id="dashRowDiv">
-            <sidenav-component />
+            <sidenav-component @user="getUser"/>
 
             <div class="col s12 m10 l10">
                 <div class="dashRightDiv">
                     <div id="dashRightImgDiv">
-                        <!-- <div id="dashRightImgInnerDiv">
-                            <div class="dashRightImgTxtDiv">
-                                <p class="dashRightImgTitle">
-                                    Skyrocket your portfolio
-                                </p>
-                                <p class="dashRightImgTxt">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's
-                                </p>
-                            </div>
-                        </div> -->
                     </div>
 
                     <div class="row" id="dashWlcNoteRowDiv">
@@ -236,10 +224,10 @@
         },
         mounted() {
             this.setToken();
-            this.getUser();
             this.getDate();
             this.getWebsites();
             setInterval(this.getCurrentTimeInterval, 1000);
+            
         },
         methods: {
             getDate() {
@@ -282,18 +270,15 @@
                     date.getMinutes()
                 ).padStart(2, "0")}`;
             },
-            getUser() {
-                axios.get("/api/user").then(res => {
-                    this.user = res.data;
-                }).catch(err => {
-                    console.log(err);
-                });
+            getUser(e) {
+                this.user = e;
+                this.checkMailExist();
             },
             getWebsites() {
                 this.websiteLoading = true;
                 axios.get("/api/tenancies").then(res => {
                     if (res.data.status == 200) {
-                        this.websites = res.data.tenants;
+                        this.websites = res.data.tenants.data.slice(0, 2);
                     }
                     this.websiteLoading = false;
                 }).catch(err => {
@@ -322,8 +307,12 @@
                 let domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
                 window.open(`http://${domain}:8000`,'_blank');
             },
-            navigateToMail(){
-
+            checkMailExist() {
+                axios.post('/api/checkMailExist', {email: this.user.email}).then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err)
+                })
             }
         },
         props: ['_token'],
