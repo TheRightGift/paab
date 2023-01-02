@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('generals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('title_id');
+            $table->unsignedBigInteger('title_id')->nullable();
             $table->string('favicon');
             $table->string('title');
             $table->timestamps();
