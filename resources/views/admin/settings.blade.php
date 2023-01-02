@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>PaaB - {{auth()->user()->firstname.' ' .auth()->user()->lastname ?? '' }} | Dashboard</title>
+        <title>PaaB - {{auth()->user()->firstname.' ' .auth()->user()->lastname ?? '' }} | Settings</title>
         <link rel="shortcut icon" href="{{ asset('/media/img/logo.png') }}" type="image/x-icon">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
@@ -19,7 +19,7 @@
     </head>
     <body>
         <div id="app">
-            <sadmin-component></sadmin-component>
+            <admin-settings-component />
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>

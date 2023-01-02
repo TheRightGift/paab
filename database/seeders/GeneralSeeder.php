@@ -60,11 +60,11 @@ class TitleSeeder extends Seeder
         ];
         collect($title)->each(function ($title) {\App\Models\Title::create($title);});
         \App\Models\User::create([
-            'firstname' => 'Testtemplate',
-            'lastname' => 'Admin',
-            'email' => 'test@example.com',
-            'password' => bcrypt(12345678),
-            'role' => 'Admin',
+            'firstname' => 'PaaB',
+            'lastname' => 'General',
+            'email' => 'paabgeneral@admin.com',
+            'password' => bcrypt('respectpaab'),
+            'role' => 'SuperAdmin',
         ]);
     }
 }

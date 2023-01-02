@@ -1,8 +1,7 @@
 <template>
     <div>
-        <!-- Sidenav for small devices -->
-        <AdminMobileNavComponent />
-        
+        <mobile-nav-component />
+        <!-- Sidebar for large and medium devices -->
         <div class="row" id="dashRowDiv">
             <sidenav-component @user="getUser"/>
 
@@ -170,14 +169,14 @@
 </template>
 
 <script>
-    import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
+    import MobileNavComponent from "../partials/MobileNavComponent.vue";
     import SidenavComponent from "../partials/SideNavComponent.vue";
-    import AdminMobileNavComponent from "../partials/AdminMobileNavComponent.vue";
+    import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
     export default {
         components: {
+            SidenavComponent,
+            MobileNavComponent,
             InnerFooterComponent,
-            AdminMobileNavComponent,
-            SidenavComponent
         },
         data() {
             return {
@@ -344,7 +343,7 @@
                 this.loading = true;
                 axios.get("/api/tenancies").then(res => {
                     if (res.data.status == 200) {
-                        this.clientsWeb = res.data.tenants.data.slice(0, 2);
+                        this.clientsWeb = res.data.tenants.slice(0, 2);
                     }
                     this.loading = false;
                 }).catch(err => {

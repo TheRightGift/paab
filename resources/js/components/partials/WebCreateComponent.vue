@@ -3,13 +3,7 @@
         <div class="clientCreatePortModalDiv">
             <p class="clientCreatePortCancelDiv">
                 <a @click="modalCancelBtn()" id="clientCreatePortCancelIconBtn" class="waves-effect waves-light btn-flat"><i class="material-icons left">arrow_back</i>Go Back</a>
-                
             </p>
-
-            <!--p class="clientCreatePortTitle">
-                Giving your website a good title make it easier for customer to
-                find your page.
-            </p-->
             <div class="row createWebRow" v-if="webCreateViewState === 0">
                 <div class="col l6 createWebSectionTitle center-align">
                     <h5>Input your domain name</h5>
@@ -48,7 +42,7 @@
                 </div>
             </div>
             <div class="row clientCreateWebsiteView gutterTopBottom"  v-if="webCreateViewState === 2">
-                <TemplatePreviewComponent :selectedTemplate="web.template_id" @tempSel="processTemp($event)" :professionId="userProfessionId" :type="'create'"/>
+                <TemplatePreviewComponent :selectedTemplate="web.template_id" @tempSel="processTemp($event)" :professionId="userProfessionId" :role="user.role"  :type="'create'"/>
             </div>
 
             <div class="row websiteCreateBtnRow gutterTop-10">
@@ -57,6 +51,7 @@
                     type="button"
                     class="btn-small create"
                     @click.prevent="createWebsite"
+                    :disabled="disableCr8"
                 >
                     <span v-if="!loading"><i class="material-icons right">send</i>CREATE</span>
                     <div class="preloader-wrapper small active" v-else>
@@ -89,6 +84,7 @@ export default {
         loading: false,
         isHidden: false,
         userProfessionId: Number,
+        user: Object,
     },
     data() {
         return {
@@ -102,6 +98,13 @@ export default {
     },
     mounted() {
         // console.log(`This is: ${this.userProfessionId}`);
+    },
+    computed: {
+        disableCr8() {
+            if (this.web.name == '' || this.web.description == '' || this.web.template_id == 0) {
+                return true;
+            }
+        }
     },
     methods: {
         createWebsite() {

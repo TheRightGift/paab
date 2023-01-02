@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('generals', function (Blueprint $table) {
+        Schema::create('admin_client_orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('title_id');
-            $table->string('favicon');
-            $table->string('title');
+            $table->unsignedBigInteger('user_id');
+            $table->string('tenant_id');
+            $table->integer('claimed')->nullable();
+            $table->string('email');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('generals');
+        Schema::dropIfExists('client_orders');
     }
 };

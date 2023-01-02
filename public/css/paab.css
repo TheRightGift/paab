@@ -1635,15 +1635,32 @@ a.active {
     font-style: normal;
     font-weight: 600;
     font-size: 1.125rem;
-    /* text-align: center; */
+    text-align: center;
     color: #7746ff;
     margin: 0;
 }
 
+.clientCreatePortBtn {
+    width: 10em;
+    background-color: #7746ff;
+}
+
+.clientCreatePortBtnDiv {
+    margin-top: 1em;
+}
+
+.selectedUserTempDiv {
+    background-color: #694eb4;
+    padding: 1px 5px 0px 5px;
+}
+
+.selectedUserTempDiv .userTempTitle {
+    color: white;
+}
+
 .userTempMainDiv {
     display: flex;
-    width: 60%;
-    margin: 7vh auto;
+    overflow: auto;
 }
 
 .tempImgDiv {
@@ -1652,12 +1669,13 @@ a.active {
     background: #d9d9d9;
     border-radius: 50%;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #tempProIcon {
     font-size: 3rem;
-    margin-left: 0.5vw;
-    margin-top: 0.5vh;
     color: rgba(0, 0, 0, 0.5);
 }
 
@@ -2326,7 +2344,8 @@ div .row .supportGetInTouchRowDiv {
     justify-content: center;
 }
 .card.selected {
-    box-shadow: 0 2px 2px 0 rgba(1, 80, 21, 0.14), 0 3px 1px -2px rgb(1 80 21 / 12%), 0 1px 5px 0 rgb(1 80 21 / 20%);;
+    box-shadow: 0 2px 2px 0 rgba(1, 80, 21, 0.14),
+        0 3px 1px -2px rgb(1 80 21 / 12%), 0 1px 5px 0 rgb(1 80 21 / 20%);
 }
 .clientCreatePortModalDiv {
     background: #ffffff;
@@ -2343,6 +2362,25 @@ div .row .supportGetInTouchRowDiv {
     line-height: 24px;
     color: rgba(0, 0, 0, 0.8);
     text-align: center;
+}
+div .col .s12 input.clientCreatePortInput1 {
+    background: rgba(119, 70, 255, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    margin-top: 2vh;
+    width: 90%;
+    padding: 0 2vw;
+    height: 6vh;
+}
+
+div .col .s9 input.clientCreatePortInput1 {
+    background: rgba(119, 70, 255, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    margin-top: 2vh;
+    /* width: 90%; */
+    padding: 0 2vw;
+    height: 6vh;
 }
 #clientCreatePortInput,
 #clientCreatePortInput1 {
@@ -2610,6 +2648,17 @@ div .row .supportGetInTouchRowDiv {
     background-color: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+div .col .s12 input.clientCreatePortInput1 {
+    background: rgba(119, 70, 255, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    margin-top: 2vh;
+    width: 90%;
+    padding: 0 2vw;
+    height: 6vh;
+}
+
 .flexed {
     display: flex;
 }
@@ -2925,8 +2974,8 @@ textarea::placeholder {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-  }
-  
+}
+
 .editBtnLinkNum {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
@@ -3221,66 +3270,110 @@ textarea::placeholder {
 .logoutModalImage {
     width: 15vw;
 }
-#authAlertContainDiv3 {
-    /* position: fixed;
-    top: 20vh;
-    left: 31vw; */
+
+table.adminAddClientTable tbody tr.adminAddClientTr {
+    border: 1px solid #7746ff;
+    border-radius: 10px;
+    margin-bottom: 2vh;
+    padding-bottom: 2vh;
 }
-#errAltImg {
-    /* width: 7.5vw;
-    margin: 4vh 0 0 0; */
+
+.adminAddClientImgDiv {
+    width: 25px;
+    height: 25px;
+    background: #d9d9d9;
+    border-radius: 10px;
 }
-.authAlertBox {
-    /* background: rgba(119, 70, 255, 0.795);
-    border: 1px solid #FFFFFF;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    width: 838px;
-    height: 419px; */
+
+.adminAddClientViewBtn {
+    background: #7746ff;
+    border-radius: 6px;
+    font-family: "Montserrat", sans-serif;
+    width: 7vw;
+    height: 4.5vh;
 }
-.authAlertBox1 {
-    /* background: rgba(119, 70, 255, 0.795);
-    border: 1px solid #FFFFFF;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    width: 805px;
-    margin-left: 2vw; */
+
+.adminAddClientDelBtn {
+    background: #d44141;
+    border-radius: 6px;
+    font-family: "Montserrat", sans-serif;
+    width: 7vw;
+    height: 4.5vh;
+    margin-left: 1vw;
 }
-.authAlertBox2 {
-    /* background: rgba(119, 70, 255, 0.795);
-    border: 1px solid #FFFFFF;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    width: 772px;
-    height: 419px;
-    margin-left: 2vw;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.25); */
+
+.addminAddClientTxts {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.5);
 }
-.logoutTxt {
-    /* font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
+
+.adminClientPaginationNum {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    color: #FFFFFF;
-    text-align: center;
-    margin-bottom: 3vh;
-    margin-top: 5vh; */
+    color: rgba(0, 0, 0, 0.5);
 }
-.logoutYesBtn {
-    /* background: #1E1E1E;
-    border-radius: 6px;
-    width: 5.5vw; */
+
+.adminClientPaginationLeftIcon {
+    margin-left: 1.5vw;
+    margin-right: 1vw;
+    cursor: pointer;
 }
-.logoutNoBtn {
-    /* background: #FFFFFF;
-    border-radius: 6px;
-    width: 5.5vw;
-    color: black; */
+
+.adminClientPaginationRightIcon {
+    color: #000000;
+    cursor: pointer;
 }
-#authLogoutBtnDiv {
-    /* width: 27%;
-    margin: auto; */
+
+.adminClientPaginationInnerControlDiv {
+    display: flex;
+}
+
+.adminClientSearchInputMainDiv {
+    display: flex;
+}
+
+.adminClientSearchInputControlDiv {
+    display: flex;
+    margin: 1.5vh 1vw 0 auto;
+}
+
+#adminClientSearchInput {
+    box-sizing: border-box;
+    width: 266px;
+    height: 41px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 0 0.7vw;
+}
+
+#adminClientSearchInput::placeholder {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 24px;
+    color: rgba(26, 25, 25, 0.8);
+}
+
+.adminClientSearchInputTxts {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.adminClientSearchInputIcons {
+    position: relative;
+    top: 1vh;
+}
+
+.adminClientSearchInputIconsDiv {
+    margin-left: 1vw;
 }
 
 /* Media Query on Medium Device */
