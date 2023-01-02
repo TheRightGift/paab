@@ -4,11 +4,23 @@
         <AdminMobileNavComponent />
         
         <div class="row" id="dashRowDiv">
-            <sidenav-component @user="getUser"/>
+            <!-- Sidebar for large and medium devices -->
+            <AdminSideNavComponent />
 
             <div class="col s12 m10 l10">
                 <div class="dashRightDiv">
-                    <div id="dashRightImgDiv">
+                    <div id="adminDashRightImgDiv">
+                        <div id="dashRightImgInnerDiv">
+                            <div class="dashRightImgTxtDiv">
+                                <p class="dashRightImgTitle white-text">
+                                    Manage your client’s portfolio
+                                </p>
+                                <p class="dashRightImgTxt">
+                                    Lorem Ipsum is simply dummy text of the
+                                    printing and typesetting industry. 
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row" id="dashWlcNoteRowDiv">
@@ -18,7 +30,7 @@
                                     <p class="dashWlcNoteTitle">
                                         Welcome!
                                         <span class="dashWlcNoteTitle1"
-                                            >{{ user.firstname }}
+                                            >Dr. {{ user.firstname }}
                                             {{ user.lastname }}</span
                                         >
                                     </p>
@@ -63,17 +75,17 @@
                         </div>
                     </div>
 
-                    <div class="row" id="myWebDiv">
+                    <!-- <div class="row" id="myWebDiv">
                         <div class="col s12 m6 l6">
                             <div class="cardDiv">
                                 <div class="cardHeader">
-                                    <p class="cardTitle">MY CLIENTS</p>
+                                    <p class="cardTitle">MY WEBSITES</p>
                                 </div>
                             </div>
                             <div class="cardContent">
                                 <div class="cardContentProfile">
-                                    <div  v-if="(clientsWeb.length > 0)">
-                                        <div class="row" id="myWebRmMgRow"  v-for="clientWeb in clientsWeb" :key="clientWeb.id">
+                                    <div  v-if="(websites.length > 0)">
+                                        <div class="row" id="myWebRmMgRow"  v-for="website in websites" :key="website.id">
                                             <div class="col s10 m10 l10">
                                                 <div class="cardImgMainDiv">
                                                     <div class="cardImgDiv">
@@ -84,7 +96,7 @@
                                                         >
                                                     </div>
                                                     <p class="cardProName">
-                                                        {{clientWeb.name}}
+                                                        {{website.name}}
                                                     </p>
                                                 </div>
                                             </div>
@@ -101,11 +113,11 @@
                                         </div>
                                     </div>
                                     <div class="row" v-else>
-                                        <p class="white-text center-align noVertMargin">You have not created any website yet for a client! Work Hard bro!</p>
+                                        <p class="white-text center-align noVertMargin">No Website created yet</p>
                                     </div>
                                     <div class="row" id="myWebRmMgRow">
                                         <div class="col s12 center-align">
-                                            <a @click="navigateToClientsWebPages" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create website</a>
+                                            <a @click="navigateToWebsitePage" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create website</a>
                                         </div>
                                     </div>
                                 </div>
@@ -159,9 +171,241 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Template Stuff -->
-                    
+                    <div class="col s12 webWhiteDiv">
+                        <div class="webWhiteDiv1" v-if="view == 0">
+                            <a
+                                class="waves-effect waves-teal btn"
+                                @click="setView(1)"
+                                >Create Now
+                            </a>
+                            <div class="row">
+                                <div class="col l2 webWhiteTitle">Title</div>
+                                <div class="col l2 webWhiteTitle websiteTitle">
+                                    Profession
+                                </div>
+                                <div class="col l6 webWhiteTitle">
+                                    Thumbnail
+                                </div>
+                                <div class="col l2 webWhiteTitle right-align">
+                                    Actions
+                                </div>
+                            </div>
+                            <div v-if="templates.length > 0">
+                                <div
+                                    class="row websitesViewRow"
+                                    v-for="template in templates"
+                                    :key="template.id"
+                                >
+                                    <div class="col l2">
+                                        <p class="webWhiteProName">
+                                            {{ template.title }}
+                                        </p>
+                                    </div>
+                                    <div class="col l2">
+                                        <div class="websiteTitle">
+                                            <p class="webWhiteTxt">
+                                                {{ template.profession_id }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col l6">
+                                        <img
+                                            class="materialboxed"
+                                            width="100"
+                                            :src="template.imageUrl"
+                                        />
+                                    </div>
+
+                                    <div class="col l2 right-align">
+                                        <a
+                                            href="#!"
+                                            class="marginRight1"
+                                            title="Delete"
+                                        >
+                                            <i
+                                                class="material-icons"
+                                                @click="deleteTemplate(template)"
+                                                id="webWhiteIcon"
+                                                >delete</i
+                                            >
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-else>
+                                <p class="centered">
+                                    No template created yet!. All template
+                                    appears here when you create one
+                                </p>
+                                <div class="centered">
+                                    <a
+                                        class="waves-effect waves-teal btn-flat"
+                                        @click="setView(1)"
+                                        >Create Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Form For Creation -->
+                        <div class="row webWhiteDiv1" v-else-if="view == 1">
+                            
+                            <form
+                            id="bioForm"
+                            @submit.prevent="createTemplate"
+                            enctype="multipart/form-data"
+                            >
+                            <a class="waves-effect waves-teal btn-flat" @click="setView(0)">
+                                <i class="material-icons left">arrow_back</i>Back
+                            </a>
+                            <div class="row">
+                                    <p class="bioTitle">Add Template</p>
+                                    <div class="row">
+                                        <div
+                                            class="
+                                                input-field
+                                                col
+                                                l6
+                                                m6
+                                                s12
+                                                noPaddingLeft
+                                            "
+                                        >
+                                            <input
+                                                placeholder="Title"
+                                                id="signupPass"
+                                                type="text"
+                                                class="validate"
+                                                v-model="template.title"
+                                                required
+                                            />
+                                        </div>
+
+                                        <div
+                                            class="
+                                                input-field
+                                                col
+                                                l6
+                                                s12
+                                                noPaddingRight
+                                            "
+                                        >
+                                            <select
+                                                class="browser-default"
+                                                id="signupGender"
+                                                v-model="template.profession_id"
+                                                required
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Profession
+                                                </option>
+                                                <option
+                                                    v-for="profession in professions"
+                                                    :key="profession.id"
+                                                    :value="profession.id"
+                                                >
+                                                    {{ profession.name }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="center col l8">
+                                            <div class="card-content centered">
+                                                <div
+                                                    class="
+                                                        file-field
+                                                        input-field
+                                                    "
+                                                >
+                                                    <div class="btn btn_file">
+                                                        <span>File</span>
+                                                        <input
+                                                            type="file"
+                                                            @change="
+                                                                previewImage
+                                                            "
+                                                            accept="image/*"
+                                                            required
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="
+                                                            file-path-wrapper
+                                                        "
+                                                    >
+                                                        <input
+                                                            class="
+                                                                file-path
+                                                                validate
+                                                            "
+                                                            type="text"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flexed">
+                                        <button
+                                            type="submit"
+                                            class="col s12 btn"
+                                            id="logModalBtn"
+                                        >
+                                            <span v-if="!loading">save</span>
+                                            <div
+                                                class="
+                                                    preloader-wrapper
+                                                    small
+                                                    active
+                                                "
+                                                v-else
+                                            >
+                                                <div
+                                                    class="
+                                                        spinner-layer
+                                                        spinner-white-only
+                                                    "
+                                                >
+                                                    <div
+                                                        class="
+                                                            circle-clipper
+                                                            left
+                                                        "
+                                                    >
+                                                        <div
+                                                            class="circle"
+                                                        ></div>
+                                                    </div>
+                                                    <div class="gap-patch">
+                                                        <div
+                                                            class="circle"
+                                                        ></div>
+                                                    </div>
+                                                    <div
+                                                        class="
+                                                            circle-clipper
+                                                            right
+                                                        "
+                                                    >
+                                                        <div
+                                                            class="circle"
+                                                        ></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <!-- <InnerFooterComponent /> -->
             </div>
@@ -171,19 +415,18 @@
 
 <script>
     import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
-    import SidenavComponent from "../partials/SideNavComponent.vue";
+    import AdminSideNavComponent from "../partials/AdminSideNavComponent.vue";
     import AdminMobileNavComponent from "../partials/AdminMobileNavComponent.vue";
     export default {
         components: {
             InnerFooterComponent,
+            AdminSideNavComponent,
             AdminMobileNavComponent,
-            SidenavComponent
         },
         data() {
             return {
                 bg_img: "/media/img/istockphoto-1390124896-170667a.jpg",
                 pro_img: "/media/img/yuna.jpg",
-                clientsWeb: [],
                 currentMonth: "",
                 currentDay: "",
                 currentDate: "",
@@ -217,10 +460,10 @@
             };
         },
         mounted() {
+            this.getUser();
             this.getDate();
             this.getProfessions();
             this.getTemplates();
-            this.getClientsWebsites();
             setInterval(this.getCurrentTimeInterval, 1000);
         },
         methods: {
@@ -325,8 +568,15 @@
                         console.log(err);
                     });
             },
-            getUser(e) {
-                this.user = e;
+            getUser() {
+                axios
+                    .get("/api/user")
+                    .then((res) => {
+                        this.user = res.data;
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             },
             getTemplates() {
                 axios
@@ -340,19 +590,8 @@
                         console.log(err);
                     });
             },
-            getClientsWebsites() {
-                this.loading = true;
-                axios.get("/api/tenancies").then(res => {
-                    if (res.data.status == 200) {
-                        this.clientsWeb = res.data.tenants.data.slice(0, 2);
-                    }
-                    this.loading = false;
-                }).catch(err => {
-                    console.log(err);
-                });
-            },
-            navigateToClientsWebPages() {
-                window.location.replace("/admin/client");
+            navigateToWebsitePage() {
+                window.location.replace("/admin/websites");
             },
             previewImage(event) {
                 if (event.target.files.length !== 0) {
@@ -362,7 +601,6 @@
                     );
                 }
             },
-            
             setView(num) {
                 this.view = num;
             },

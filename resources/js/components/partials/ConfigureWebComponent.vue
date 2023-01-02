@@ -50,54 +50,6 @@
                 </form>
             </div>
 
-            <div class="row" id="configWebInputDiv" v-if="user.role == 'Admin'">
-                <label class="col s12 configWebInputLabel"
-                    >Assign website</label
-                >
-                <div class="col s9">
-                    <input
-                        type="email"
-                        required
-                        placeholder="Client Email"
-                        class="clientCreatePortInput1"
-                        v-model="email"
-                    />
-                </div>
-
-                <div class="col s1 offset-s1 clientCreatePortBtnDiv">
-                    <button
-                        type="button"
-                        class="btn clientCreatePortBtn"
-                        @click.prevent="giveAccess"
-                        :disabled="email == ''"
-                        v-if="!granting"
-                    >
-                        GIVE ACCESS
-                    </button>
-                    <button
-                        type="button"
-                        class="btn clientCreatePortBtn"
-                        v-if="granting"
-                    >
-                    <div class="preloader-wrapper small active">
-                        <div
-                            class="spinner-layer spinner-white-only"
-                        >
-                            <div class="circle-clipper left">
-                                <div class="circle"></div>
-                            </div>
-                            <div class="gap-patch">
-                                <div class="circle"></div>
-                            </div>
-                            <div class="circle-clipper right">
-                                <div class="circle"></div>
-                            </div>
-                        </div>
-                    </div>
-                    </button>
-                </div>
-            </div>
-
             <!-- Client's Templates Section -->
             <div class="row" id="configWebInputDiv">
                 <p class="configWebTitle">Change template</p>
@@ -106,8 +58,6 @@
                     @tempSel="processTemp($event)"
                     :professionId="userProfessionId"
                     :type="'create'"
-                    :role="user.role"
-                    :clientProfessionID="professionID"
                 />
                 <div>
                     <button
@@ -118,7 +68,7 @@
                         :disabled="selectedTemplate == web.template_id"
                     >
                         <span v-if="!loading">change</span>
-                        <ButtonLoaderComponent v-else />
+                        <ButtonLoaderComponent v-else/>
                     </button>
                 </div>
             </div>
@@ -142,16 +92,11 @@
 <script>
     import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
     import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
-    import ButtonLoaderComponent from "./ButtonLoaderComponent.vue";
+import ButtonLoaderComponent from "./ButtonLoaderComponent.vue";
     export default {
-        components: {
-            InnerFooterComponent,
-            TemplatePreviewComponent,
-            ButtonLoaderComponent,
-        },
+        components: { InnerFooterComponent, TemplatePreviewComponent, ButtonLoaderComponent },
         data() {
             return {
-                email: "",
                 web: {
                     name: "",
                     description: "",
@@ -161,13 +106,10 @@
             };
         },
         props: {
-            granting: Boolean,
             userProfessionId: Number,
             selectedTemplate: Number,
             domain: String,
             loading: Boolean,
-            user: Object,
-            professionID: Number,
         },
         methods: {
             goBack() {
@@ -182,17 +124,6 @@
                     template: this.web.template_id,
                 });
             },
-            giveAccess() {
-               this.$emit('giveAccess', this.email);
-            }
         },
     };
 </script>
-<style>
-.btn:hover{
-    background-color: #7746FF;
-}
-.btn:visited {
-    background-color: #9977f7;
-}
-</style>

@@ -1,26 +1,5 @@
 <template>
     <div class="row">
-        <div class="row clientCreatePortInputRowDiv" v-if="determineRole">
-            <div class="userTempMainDiv">
-                <div
-                    v-for="(profession, index) in professions"
-                    :key="profession.id"
-                >
-                    <div
-                        :class="{ selectedUserTempDiv: index == selectedIndex }"
-                        id="userTempDiv"
-                        @click="getTemplates(profession.id, index)"
-                    >
-                        <div class="tempImgDiv" id="tempImgDiv">
-                            <i class="material-icons" id="tempProIcon"
-                                >person</i
-                            >
-                        </div>
-                        <p class="userTempTitle">{{ profession.name }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div v-if="templates.length > 0" class="height">
             <div
                 class="col s12 m6 l4 clientTempPageImgSmDv"
@@ -68,11 +47,8 @@
                 <p class="configWebLoadTxt center">Loading...</p>
             </div> -->
         </div>
-        <div v-else-if="loading" class="centered">
-            <i class="fas fa-spinner fa-spin fa-2x"></i>
-        </div>
         <div v-else>
-            <p class="centered">No template found for profession</p>
+            <p class="centered">No template found for your profession</p>
         </div>
     </div>
 </template>
@@ -80,52 +56,27 @@
     export default {
         data() {
             return {
-                loading: false,
                 templates: [],
-                professions: [],
-                selectedIndex: 0,
             };
-        },
-        computed: {
-            determineRole() {
-                if (this.role === "Admin") {
-                    return true;
-                } else {
-                    return false;
-                }
-            },
         },
         props: {
             professionId: Number,
             selectedTemplate: Number,
             type: String,
-            role: String,
-            clientProfessionID: Number,
         },
         mounted() {
-            this.clientProfessionID == undefined ? this.getTemplates(this.professionId) : this.getTemplates(this.clientProfessionID);
-            this.role === "Admin" ? this.getProfessions() : null;
+            this.getTemplates(this.professionId);
         },
         methods: {
-            getProfessions() {
-                axios
-                    .get("/api/profession")
-                    .then((res) => {
-                        this.professions = res.data.professionals;
-                        this.selectedIndex = this.clientProfessionID != undefined ? this.professions.findIndex(el => el.id == this.clientProfessionID) : 0;
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-            },
-            getTemplates(professionId, index = 0) {
-                this.selectedIndex = index;
-                this.loading = true;
+            getTemplates(professionId) {
                 let url = "";
                 if (professionId == 0) {
+                    //get all
+                    // TODO: Get all template with pagination
                     url = `/api/template`;
                 } else {
-                    url = `/api/template/${professionId}`;
+                    // TODO: Get template associated with the professionId
+                    url = `/api/template/${this.professionId}`;
                 }
 
                 axios
@@ -133,18 +84,18 @@
                     .then((res) => {
                         if (res.status == 200) {
                             this.templates = res.data.templates;
-                                this.loading = false;
                         }
                     })
                     .catch((err) => {
                         console.log(err);
-                        this.loading = false;
                     });
             },
             selectTemplate(temp) {
+                console.log(temp.id);
                 this.$emit("tempSel", temp);
             },
         },
+        computed: {},
     };
 </script>
 <style scoped>
@@ -152,7 +103,7 @@
         border-bottom: thin solid rgba(63, 63, 63, 0.4);
     }
     .card-image img {
-        height: 162px !important;
+        height: 162px;
         /* width: 245px; */
     }
     .card .card-content {

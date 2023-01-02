@@ -6,7 +6,8 @@
 
             <!-- Sidebar for large and medium devices -->
             <div class="row" id="dashRowDiv">
-                <SideNavComponent @user="getUser" />
+                <side-nav-component />
+
                 <!-- Web black div -->
                 <div class="col s12 m10 l10" v-if="view == 0">
                     <div id="webRightDiv">
@@ -45,7 +46,6 @@
                                 v-if="!isHidden && loadingUserProfessionId"
                                 :loading="loading"
                                 :userProfessionId="userProfessionId"
-                                :user="user"
                             />
                             <div v-else>
                                 <div class="webWhiteDiv1" v-if="view == 0">
@@ -175,31 +175,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="centre">
-                                                <button
-                                                    :disabled="loading"
-                                                    v-show="
-                                                        websites.length != total
-                                                    "
-                                                    class="
-                                                        waves-effect waves-light
-                                                        btn
-                                                        loadmore
-                                                    "
-                                                    @click.prevent="getWebsites"
-                                                >
-                                                    <i
-                                                        v-show="loading"
-                                                        class="
-                                                            fas
-                                                            fa-stroopwafel
-                                                            fa-spin
-                                                            right
-                                                        "
-                                                    ></i
-                                                    >load more
-                                                </button>
-                                            </div>
                                         </div>
                                         <div v-else>
                                             <p class="centered">
@@ -222,7 +197,6 @@
                     @goBack="setDefaults(0)"
                     :userProfessionId="userProfessionId"
                     :selectedTemplate="selectedTemplate"
-                    :user="user"
                 />
             </div>
         </div>
@@ -233,11 +207,11 @@
     import SideNavComponent from "../partials/SideNavComponent.vue";
     import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
     import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
-    import WebCreateComponent from "../partials/WebCreateComponent.vue";
+    import WebCreateComponent from "./WebCreateComponent.vue";
     import ConfigureWebComponent from "../partials/ConfigureWebComponent.vue";
     import ButtonLoader from "../partials/ButtonLoaderComponent.vue";
     export default {
-        components: {
+    components: {
             MobileNavComponent,
             SideNavComponent,
             WebCreateComponent,
@@ -245,7 +219,6 @@
             InnerFooterComponent,
             ConfigureWebComponent,
             ButtonLoader,
-            MobileNavComponent,
         },
         data() {
             return {
@@ -255,12 +228,10 @@
                 isHidden: false,
                 loading: false,
                 onEditWebModal: false,
-                page: 1,
                 professions: [],
                 pro_img: "/media/img/yuna.jpg",
                 selectedTemplate: "",
                 tenant: {},
-                total: 0,
                 user: {},
                 loadingUserProfessionId: false,
                 userProfessionId: null,
@@ -272,6 +243,7 @@
             };
         },
         mounted() {
+            this.getUser();
             this.getWebsites();
             this.getProfessions();
             this.isHidden = !this.isHidden;
@@ -323,26 +295,28 @@
                         console.log(err);
                     });
             },
-            getUser(e) {
-                this.user = e;
-                this.getUserDets();
+            getUser() {
+                axios
+                    .get("/api/user")
+                    .then((res) => {
+                        this.user = res.data;
+                        this.getUserDets();
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             },
             getWebsites() {
-                this.page == 1
-                    ? (this.websiteLoading = true)
-                    : (this.loading = true);
+                this.websiteLoading = true;
                 axios
-                    .get(`/api/tenancies/?page=${this.page++}`)
+                    .get("/api/tenancies")
                     .then((res) => {
                         if (res.data.status == 200) {
-                            this.websites = [
-                                ...this.websites,
-                                ...res.data.tenants.data,
-                            ];
-                            this.websiteLoading = false;
-                            this.loading = false;
-                            this.total = res.data.tenants.total;
+                            console.log(res.data);
+                            this.websites = res.data.tenants;
                         }
+
+                        this.websiteLoading = false;
                     })
                     .catch((err) => {
                         console.log(err);
@@ -360,6 +334,7 @@
                         console.log(err);
                     });
             },
+
             setDefaults(num) {
                 this.view = num;
             },
@@ -446,18 +421,5 @@
         justify-content: space-between;
         border: 1px solid rgb(224, 124, 124);
         padding: 20px;
-    }
-    .loadmore {
-        text-align: center;
-        background-color: #7746ff;
-    }
-</style>
-<style>
-    button[disabled="disabled"],
-    .btn:disabled,
-    .btn.disabled {
-        border: 1px solid #d492f3;
-        background-color: #c7bbeb !important;
-        color: #fff;
     }
 </style>
