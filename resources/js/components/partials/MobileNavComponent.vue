@@ -76,6 +76,24 @@
                 </li>
             </ul>
 
+            <div id="logoutModal" class="modal">
+                <div class="modal-content">
+                    <div class="row logoutModalImageRow">
+                        <img src="/media/img/warning.png" alt="Illustrating a warning that you will be logged out"
+                            id="errAltImg" class="logoutModalImage" />
+                    </div>
+                    <div class="row center-align">
+                        <p>You sure you want to logout from your space?</p>
+                    </div>
+
+                    <div class="row center-align">
+                        <button @click="logout" class="primary waves-effect waves-green btn-flat">Yes</button>
+                        <span class="gutter1"></span>
+                        <button class="modal-close primaryBorder waves-effect waves-green btn-flat">No</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Sidenav Trigger -->
             <a href="#" data-target="slide-out" class="sidenav-trigger">
                 <i class="material-icons" id="dashSidenavIconBtn">menu</i>

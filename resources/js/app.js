@@ -42,7 +42,6 @@ import SingleMsgAdmin from "./components/admin/SingleMsg";
 
 // SAdmin
 import DashboardSAdmin from './components/super/Dashboard';
-import AdminComponent from './components/super/AdminsComponent';
 
 
 // Webiste
@@ -66,7 +65,6 @@ app.component('client-support-component', ClientSupport);
 app.component('client-singlemail-component', ClientSingleMail);
 
 app.component('admin-component', DashboardAdmin);
-app.component('admins-component', AdminComponent);
 app.component('sadmin-component', DashboardSAdmin);
 app.component("admin-client-component", ClientAdmin);
 app.component("admin-template-component", TemplateAdmin);

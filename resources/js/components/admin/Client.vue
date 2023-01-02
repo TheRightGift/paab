@@ -18,7 +18,6 @@
                 :professionID="professionID"
                 @giveAccess="giveAccess"
                 :granting="granting"
-                :claimantMail="claimantMail"
             />
             <!-- :userProfessionId="userProfessionId" -->
             <div class="col s12 m10 l10" id="webRightDiv" v-else>
@@ -64,11 +63,10 @@
                             <form>
                                 <div class="input-field">
                                     <input
-                                        placeholder="&#128269; Search by domain"
+                                        placeholder="&#128269; Search"
                                         id="adminClientSearchInput"
                                         type="text"
                                         class="validate"
-                                        v-model="search"
                                     />
                                 </div>
                             </form>
@@ -109,7 +107,7 @@
                         <tbody>
                             <tr
                                 class="adminAddClientTr"
-                                v-for="clientWebo in filteredClientWebsites()"
+                                v-for="clientWebo in clientsWebsites"
                                 :key="clientWebo.id"
                             >
                                 <td>
@@ -119,11 +117,7 @@
                                     {{ profession(clientWebo) }}
                                 </td>
                                 <td class="addminAddClientTxts">
-                                    {{
-                                        clientWebo.order == null
-                                            ? "Not Assigned"
-                                            : clientWebo.order.email
-                                    }}
+                                    Not Assigned
                                 </td>
                                 <td class="addminAddClientTxts">
                                     {{ domain(clientWebo) }}
@@ -155,14 +149,6 @@
                                     </a>
                                 </td>
                             </tr>
-                            <div
-                                class="centered"
-                                v-if="
-                                    search && !filteredClientWebsites().length
-                                "
-                            >
-                                <p class="error">No results found!</p>
-                            </div>
                             <tr
                                 v-if="clientsWebsites.length == 0"
                                 class="centered"
@@ -259,7 +245,6 @@
                 user: {},
                 addClientDiv: false,
                 clientsWebsites: [],
-                masterDataSource: [],
                 clientsView: false,
                 configureWebDiv: false,
                 configureWeb: false,
@@ -275,11 +260,9 @@
                     from: 0,
                     prev_page_url: null,
                 },
-                search: "",
                 selectedTemplate: 0,
                 tenant: { template_id: 0, domain: "", domain_id: 0, id: 0 },
                 domainName: "",
-                claimantMail: "",
                 professionID: 0,
             };
         },
@@ -289,7 +272,6 @@
             this.heading = !this.heading;
             this.clientsView = !this.clientsView;
             this.getClientsWebsites();
-            this.getAccess();
         },
         methods: {
             configureWebsite(website) {
@@ -303,10 +285,9 @@
                         ? website.domains[0].domain
                         : website.domains;
                 this.domainName = this.tenant.domain.split(".")[0];
-                this.claimantMail = website.order.email;
                 this.tenant.domain_id = website.domains[0].id;
                 this.tenant.id = website.id;
-                this.professionID = website.template.profession.id;
+                this.professionID = website.template.profession.id
             },
             createWebsite(evt) {
                 this.creating = true;
@@ -352,7 +333,6 @@
                     .then((res) => {
                         if (res.data.status == 200) {
                             this.clientsWebsites = res.data.tenants.data;
-                            this.masterDataSource = res.data.tenants.data;
                             this.data.to = res.data.tenants.to;
                             this.data.from = res.data.tenants.from;
                             this.data.prev_page_url =
@@ -379,18 +359,10 @@
                 this.clientsView = true;
                 this.createClientView = false;
             },
-            filteredClientWebsites() {
-                return this.masterDataSource.filter((item) =>
-                    item.domains[0].domain
-                        .toUpperCase()
-                        .includes(this.search.toUpperCase())
-                );
-            },
             setDefaults() {
                 this.heading = !this.heading;
                 this.configureWeb = !this.configureWeb;
                 this.clientsView = !this.clientsView;
-                this.claimantMail = "";
             },
             updateDomainTemplate(evt) {
                 this.loading = true;
@@ -408,8 +380,7 @@
                                 classes: "successNotifier",
                             });
                             this.loading = false;
-                            this.tenant.template_id =
-                                res.data.domain.tenant.template_id;
+                            this.tenant.template_id = res.data.domain.tenant.template_id;
                             location.reload();
                         }
                     })
@@ -437,40 +408,27 @@
                 let data = {
                     email: evt,
                     tenant_id: this.tenant.id,
-                    user_id: this.user.id,
-                };
-                axios
-                    .post("/api/access", data)
-                    .then((res) => {
-                        console.log(res);
-                        if (res.status == 201) {
-                            this.granting = false;
-                            M.toast({
-                                html: res.data.message,
-                                classes: "successNotifier",
-                            });
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        M.toast({
-                            html: err.response.data.message,
-                            classes: "errorNotifier",
-                            displayLength: 6000,
-                        });
+                    user_id: this.user.id
+                }
+                axios.post('/api/access', data).then(res => {
+                    console.log(res);
+                    if (res.status == 201) {
                         this.granting = false;
+                        M.toast({
+                            html: res.data.message,
+                            classes: "successNotifier",
+                        });
+                    }
+                }).catch(err => {
+                    console.log(err);
+                    M.toast({
+                        html: err.response.data.message,
+                        classes: "errorNotifier",
+                        displayLength: 6000,
                     });
-            },
-            getAccess() {
-                axios
-                    .get("/api/access")
-                    .then((res) => {
-                        console.log(res);
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-            },
+                    this.granting = false;
+                })
+            }
         },
     };
 </script>
