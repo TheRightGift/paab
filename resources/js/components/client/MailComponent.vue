@@ -2,8 +2,9 @@
     <div>
         <mobile-nav-component />
         
+        
+        <!-- Sidebar for large and medium devices -->
         <div class="row" id="dashRowDiv">
-            <!-- Sidebar for large and medium devices -->
             <side-nav-component />
         
             <!-- Mail blue div -->
@@ -31,7 +32,7 @@
                         <div class="row" id="mailInnerDiv">
                             <div class="col s2 m2 l1">
                                 <div class="webWhiteProDiv" id="">
-                                    <i class="material-icons tempProIcon">person</i>
+                                    <i class="material-icons" id="tempProIcon">person</i>
                                 </div>
                             </div>
                             <div class="col s8 m9 l10">
@@ -58,7 +59,7 @@
                         <div class="row" id="mailInnerDiv">
                             <div class="col s2 m2 l1">
                                 <div class="webWhiteProDiv" id="">
-                                    <i class="material-icons tempProIcon">person</i>
+                                    <i class="material-icons" id="tempProIcon">person</i>
                                 </div>
                             </div>
                             <div class="col s8 m9 l10">
@@ -85,7 +86,7 @@
                         <div class="row" id="mailInnerDiv">
                             <div class="col s2 m2 l1">
                                 <div class="webWhiteProDiv" id="">
-                                    <i class="material-icons tempProIcon">person</i>
+                                    <i class="material-icons" id="tempProIcon">person</i>
                                 </div>
                             </div>
                             <div class="col s8 m9 l10">
@@ -112,7 +113,7 @@
                         <div class="row" id="mailInnerDiv">
                             <div class="col s2 m2 l1">
                                 <div class="webWhiteProDiv" id="">
-                                    <i class="material-icons tempProIcon">person</i>
+                                    <i class="material-icons" id="tempProIcon">person</i>
                                 </div>
                             </div>
                             <div class="col s8 m9 l10">
@@ -139,14 +140,12 @@
 </template>
 
 <script>
-import MobileNavComponent from "../partials/MobileNavComponent.vue";
 import SideNavComponent from '../partials/SideNavComponent.vue';
 // import FooterComponent from "./partials/FooterComponent.vue";
 // import HeaderComponent from "./partials/HeaderComponent.vue";
 export default {
     components: {
-        MobileNavComponent,
-        SideNavComponent,
+        SideNavComponent
         // FooterComponent,
         // HeaderComponent
     },

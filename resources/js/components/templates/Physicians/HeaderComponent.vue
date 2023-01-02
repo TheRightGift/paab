@@ -1,5 +1,5 @@
 <template>
-    <nav  v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class='hide-on-med-and-down'>
+    <nav  v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar', 'hide-on-med-and-down'">
         <div class="nav-wrapper navbarWrap">
             <a href="#" class="brand-logo" id="physiPortPageLogo"
                 >{{user}}</a
@@ -42,7 +42,7 @@
         <a href="#" class="" id="physiPortPageLogo">{{user}}</a>
 
         <ul id="slide-out" class="sidenav">
-            <!-- <li>
+            <!-- <li> -->
             <div class="user-view">
                 <div class="background" id="sideNavImgDiv">
                     <img
@@ -51,7 +51,7 @@
                     />
                 </div>
             </div>
-            </li> -->
+            <!-- </li> -->
 
             <li class="sideNavLinkMgTp">
                 <a href="#services" id="physiTempNavLinks">Services</a>

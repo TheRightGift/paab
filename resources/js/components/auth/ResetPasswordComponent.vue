@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="row authContainDiv" v-if="verifiedEmail == 1">
-            <div class="col s12 m12 l6 welcomeContainer hide-on-med-and-down">
+            <div class="col s12 m12 l6 welcomeContainer">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">PaaB</a>
+                    <p class="wlcNoteLogo">PaaB</p>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
@@ -23,9 +23,9 @@
         </div>
 
         <div class="row authContainDiv" v-if="verifiedEmail == 2">
-            <div class="col s12 m12 l6 otpContainer hide-on-med-and-down">
+            <div class="col s12 m12 l6 otpContainer">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">PaaB</a>
+                    <p class="wlcNoteLogo">PaaB</p>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
@@ -45,9 +45,9 @@
         </div>
 
         <div class="row authContainDiv" v-if="verifiedEmail == 3">
-            <div class="col s12 m12 l6 regContainer hide-on-med-and-down">
+            <div class="col s12 m12 l6 regContainer">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">PaaB</a>
+                    <p class="wlcNoteLogo">PaaB</p>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>

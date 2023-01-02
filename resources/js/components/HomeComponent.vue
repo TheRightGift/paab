@@ -1,7 +1,7 @@
 <template>
     <div id="home">
         <!-- Navbar & SideNav Section -->
-        <HeaderComponent :type="'main'"></HeaderComponent>
+        <HeaderComponent :type="'main'"></HeaderComponent>  
 
 
         <!--div class="row circleGenDiv">
@@ -15,7 +15,7 @@
                                     It is a long established fact that a reader will be 
                                     distracted by the readable content of a page.
                                 </p>
-
+                                
                                 <a href="/templates" class="btn circleDivBtn">
                                     preview templates
                                 </a>
@@ -55,79 +55,7 @@
             </div>
         </div-->
 
-        <!-- Small Device SHOCASE Section -->
-        <div class="hide-on-med-and-up">
-            <p class="circleDivTitle">SHOWCASE YOUR PROFESSION WITH PaaB</p>
-            <p class="circleDivtxt">
-                It is a long established fact that a reader will be
-                distracted by the readable content of a page.
-            </p>
-        
-            <div class="circleBtnDiv">
-                <a href="/templates" class="btn circleDivBtn">
-                    preview templates
-                </a>
-            </div>
-            
-            <div class="portraitImgDiv">
-                <div class="innerPortraitImgDiv">
-                    <div class="portraitImgContainDiv">
-                        <img :src="'./media/img/portrait2.png'" alt="portrait2.png" class="portraitImg" id="portrait2">
-            
-                        <div class="portraitImgInnerDiv">
-                            <img :src="'./media/img/portrait3.png'" alt="portrait3.png" class="portraitImg" id="portrait3">
-            
-                            <div class="portraitImgCircleDiv"></div>
-                        </div>
-                    </div>
-            
-                    <div class="portraitImgContainDiv1">
-                        <div class="portraitImgRightDiv">
-                            <div class="portraitImgRightInnerDiv">
-                                <img :src="'./media/img/portrait.png'" alt="portrait.png" class="portraitImg" id="portrait">
-                            </div>
-            
-                            <div class="portraitImgCircleRightDiv"></div>
-            
-                            <div class="portraitImgRightInnerDiv1">
-                                <img :src="'./media/img/portrait1.png'" alt="portrait1.png" class="portraitImg" id="portrait1">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section scrollspy portfolioDiv" id="product">
-
-                <div class="ellipseDiv">
-                    <div class="ellipseLargeSm hide-on-med-and-up"></div>
-                    <div class="ellipseSmallSm hide-on-med-and-up"></div>
-                </div>
-
-                <div class="portfolioInnerDiv">
-                    <p class="portfolioTitle">
-                        MAKE YOUR PORTFOLIO WORK FOR YOU
-                    </p>
-                    
-                </div>
-            
-                <p class="portfolioTxt">
-                    It is a long established fact that a reader will be distracted by the readable
-                    content of a page when looking at its layout. The point of using Lorem Ipsum is
-                    that it has a more-or-less normal distribution of letters, as opposed to using
-                    'Content here, content here', making it look like readable English. Many desktop
-                    publishing packages and web page editors now use 
-                </p>
-            </div>
-            
-        </div>
-
-
-
-
-
-        <!-- Large Device SHOCASE Section -->
-        <div class="row hide-on-small-only" id="banner">
+        <div class="row" id="banner">
             <div class="bannerContainer">
                 <div class="col l6 circleTxtDiv">
                     <div class="">
@@ -141,7 +69,6 @@
                             preview templates
                         </a>
                     </div>
-                    
                 </div>
                 <div class="col l6 portraitImgDiv">
                     <div class="innerPortraitImgDiv">
@@ -181,18 +108,14 @@
             </div>
         </button>
 
-        <div class="section scrollspy portfolioDiv hide-on-small-only" id="product">
-
+        <div class="section scrollspy portfolioDiv" id="product">
             <div class="portfolioInnerDiv">
                 <p class="portfolioTitle">
                     MAKE YOUR PORTFOLIO WORK FOR YOU
                 </p>
 
-                <!-- <div class="ellipseMedDiv"> -->
-                    <div class="ellipseLarge hide-on-med-and-down"></div>
-                    <div class="ellipseSmall hide-on-med-and-down"></div>
-                <!-- </div> -->
-                
+                <div class="ellipseLarge hide-on-med-and-down"></div>
+                <div class="ellipseSmall hide-on-med-and-down"></div>
             </div>
             
             <p class="portfolioTxt">
@@ -248,13 +171,6 @@
             <!-- CV Section -->
             <div class="cvMainDiv">
                 <div class="row cvInnerDiv">
-
-                    <div class="col l3 offset-l3 cvImgDiv hide-on-large-only">
-                        <div class="cvImgInnerDivSm">
-                            <img :src="'./media/img/cv.png'" alt="cvFile.png" id="cvImage">
-                        </div>
-                    </div>
-
                     <div class="col l6 cvWriteUpDiv">
                         <p class="cvTitle">
                             CURRICULUM VITAE
@@ -267,7 +183,7 @@
                         </p>
                     </div>
 
-                    <div class="col l3 offset-l3 cvImgDiv hide-on-med-and-down">
+                    <div class="col l3 offset-l3 cvImgDiv">
                         <div class="cvImgInnerDiv">
                             <img :src="'./media/img/cv.png'" alt="cvFile.png" id="cvImage">
                         </div>
@@ -303,13 +219,6 @@
             <!-- Client Review Section -->
             <div class="clientRevMainDiv">
                 <div class="row clientRevInnerDiv">
-
-                    <div class="col l3 offset-l3 clientRevImgDiv hide-on-large-only">
-                        <div class="clientRevImgInnerDiv">
-                            <img :src="'./media/img/clientRevImg.png'" alt="clientRevImg.png" id="clientRevImage">
-                        </div>
-                    </div>
-
                     <div class="col l6 clientRevWriteUpDiv">
                         <p class="clientRevTitle">
                             CLIENT REVIEW
@@ -322,12 +231,11 @@
                         </p>
                     </div>
 
-                    <div class="col l3 offset-l3 clientRevImgDiv hide-on-med-and-down">
+                    <div class="col l3 offset-l3 clientRevImgDiv">
                         <div class="clientRevImgInnerDiv">
                             <img :src="'./media/img/clientRevImg.png'" alt="clientRevImg.png" id="clientRevImage">
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -347,7 +255,7 @@
                     </div>
 
                     <div class="col l12 tempRowImgDiv">
-                        <img :src="'./media/img/template.png'" alt="tempImg.png" class="responsive-img tempImg">
+                        <img :src="'./media/img/template.png'" alt="tempImg.png" class="tempImg">
                     </div>
                 </div>
             </div>
@@ -357,40 +265,39 @@
         <!-- Customer Support Section -->
         <div class="section scrollspy cusSupportDiv" id="support">
             <div class="row cusSupportInnerDiv">
-                <div class="col s12 m12 l7 cusSupportImgDiv hide-on-med-and-down">
+                <div class="col s12 m12 l7 cusSupportImgDiv">
                     <img :src="'./media/img/CARE.png'" alt="CARE.png" id="careImg">
                 </div>
-        
+                
                 <div class="col s12 m12 l5 cusSupportFormDiv">
                     <p class="cusSupportTitle">WE’RE ALWAYS HAPPY TO HELP</p>
-        
+
                     <form class="col s12">
                         <div class="row rm_mg">
-                            <div class="input-field col s6 rm_mg">
+                            <div class="input-field col s6">
                                 <input placeholder="First name" id="fName" type="text" class="validate">
                                 <!-- <label for="first_name">First Name</label> -->
                             </div>
-                            <div class="input-field col s6 rm_mg">
+                            <div class="input-field col s6">
                                 <input placeholder="Last name " id="lName" type="text" class="validate">
                                 <!-- <label for="last_name">Last Name</label> -->
                             </div>
                         </div>
-        
+                        
                         <div class="row rm_mg">
-                            <div class="input-field col s12 rm_mg">
-                                <input placeholder="Email address" id="email" type="email" class="validate">
-                                <!-- <label for="email">Email</label> -->
+                            <div class="input-field col s12">
+                            <input placeholder="Email address" id="email" type="email" class="validate">
+                            <!-- <label for="email">Email</label> -->
                             </div>
                         </div>
-        
+
                         <div class="row rm_mg">
-                            <div class="input-field col s12 rm_mg">
-                                <textarea placeholder="Share your thoughts..." id="textarea1"
-                                    class="materialize-textarea"></textarea>
+                            <div class="input-field col s12">
+                                <textarea placeholder="Share your thoughts..." id="textarea1" class="materialize-textarea"></textarea>
                                 <!-- <label for="textarea1">Textarea</label> -->
                             </div>
                         </div>
-        
+
                         <button type="button" class="btn col s12 m12 l12 rm_mg" id="btnForm">
                             Send
                         </button>
