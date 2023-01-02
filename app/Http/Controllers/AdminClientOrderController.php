@@ -16,7 +16,7 @@ class AdminClientOrderController extends Controller
     public function index()
     {
         $user = auth()->user()->id;
-        $orders = AdminClientOrder::where('user_id', $user)->with('tenant')->latest()->get();
+        $orders = AdminClientOrder::where('user_id', $user)->with('tenants')->latest()->get();
         return response()->json(['message' => 'OK', 'status' => 200, 'orders' => $orders]);
     }
 

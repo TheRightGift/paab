@@ -117,10 +117,8 @@ class TenantController extends Controller
         // Get the authenticaed user
         // When coming from mobile request for user->id
         $user = auth()->user()->id;
-        $tenancies = Tenant::where('user_id', $user)->with('domains', 'template', 'template.profession', 'order')->latest()->paginate(10);
-        // Sort by alphabetical order for domain only and email
-        
-        // Filter by assigned order
+        $tenancies = Tenant::where('user_id', $user)->with('domains', 'template', 'template.profession')->latest()->paginate(10);
+
         return response()->json(['message' => 'Tenants fetched', 'tenants' => $tenancies, 'status' => 200], 200);
     }
 
@@ -213,34 +211,32 @@ class TenantController extends Controller
         $orders = AdminClientOrder::where([['email', $request->email], ['claimed', null]])->first();
         $authUser = auth()->user();
         if ($authUser->visits != null) {
-            if (!empty($orders)) {
-                $tenant = Tenant::find($orders->tenant_id);
-                $tenant->user_id = $authUser->id;
-                $orders->claimed = 1;
-                $tenant->save();
-                $orders->save();
-                return response()->json(['account' => $tenant, 'status' => 200], 200);
-            }
-            elseif(empty($orders)) {
+            if(empty($orders)) {
                 // Inefficient when the APP grows larger
                 $tenants = Tenant::all();
                 foreach($tenants as $tenant) {
                     \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 
+                    // DB::reconnect();
+                    // $connection = DB::connection($tenant->tenancy_db_name);
                     DB::connection('mysql')->reconnect();
                     DB::setDatabaseName($tenant->tenancy_db_name);
                     $user = DB::table('contacts')->where('email', $request->email)->first();
                     if($user) {
-                        $tenant = Tenant::find($orders->tenant_id);
-                        $tenant->user_id = $authUser->id;
-                        $tenant->save();
-                        return response()->json(['account' => $tenant, 'status' => 200], 200);
+                        return response()->json([$user, $tenant]);
                     } else {
-                        return response()->json(['status' => 404, 'message' => 'No Account']);
+                        return response('No User');
                     }
                 }
             }
-            
+            // if (!empty($orders)) {
+            //     $tenant = Tenant::find($orders->tenant_id);
+            //     $tenant->user_id = $authUser->id;
+            //     $orders->claimed = 1;
+            //     $tenant->save();
+            //     $orders->save();
+            // }
+            // else
             // Check in Orders where claimed is null if email exists
                 // If exists then update tenantTB with userID
                 // Update AdminClientOrderTB with claimed = 1

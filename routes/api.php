@@ -37,7 +37,6 @@ Route::group(['middleware' => 'auth.api'], function() {
     
     // Templates
     Route::resource('/template', TemplateController::class);
-    Route::post('/admin', [App\Http\Controllers\DashboardController::class, 'admin']);
     Route::post('/access', [App\Http\Controllers\AdminClientOrderController::class, 'store']);
     Route::get('/access', [App\Http\Controllers\AdminClientOrderController::class, 'index']);
     Route::post('checkMailExist', [App\Http\Controllers\TenantController::class, 'checkEmail']);

@@ -151,7 +151,7 @@
         },
         data() {
             return {
-                email: this.claimantMail,
+                email: "",
                 web: {
                     name: "",
                     description: "",
@@ -168,7 +168,6 @@
             loading: Boolean,
             user: Object,
             professionID: Number,
-            claimantMail: String,
         },
         methods: {
             goBack() {
