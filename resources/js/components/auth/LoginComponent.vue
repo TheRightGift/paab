@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="row authContainDiv">
-            <div class="col s12 m12 l6 loginContainer hide-on-med-and-down">
+            <div class="col s12 m12 l6 loginContainer">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">PaaB</a>
+                    <p class="wlcNoteLogo">PaaB</p>
                     <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
                     <p class="wlcNoteTxt">
                         It is a long established fact that a reader will be

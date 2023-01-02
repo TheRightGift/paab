@@ -15,8 +15,8 @@
                     >
                 </div>
 
-                <form id="reviewForm" @submit.prevent="subReview">
-                    <div id="reviwProMainDiv">
+                <form id="settingsForm" @submit.prevent="subReview">
+                    <div id="setProMainDiv">
                         <div class="setProDiv">
                             <i class="material-icons" id="setProImg">person</i>
                         </div>

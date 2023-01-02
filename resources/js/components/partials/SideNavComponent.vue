@@ -13,24 +13,19 @@
                         v-for="link in links"
                         :key="link.id"
                     >
-                        <span
-                            v-show="
-                                link.role === user.role || link.role == null
-                            "
+                        <i
+                            class="material-icons dashLeftBarIcons"
+                            :class="{ dashActive: link.id === currentId }"
+                            >{{ link.icon }}</i
                         >
-                            <i
-                                class="material-icons dashLeftBarIcons"
-                                :class="{ dashActive: link.id === currentId }"
-                                >{{ link.icon }}</i
-                            >
-                            <p class="dashLeftBarTitle">{{ link.title }}</p>
-                        </span>
+                        <p class="dashLeftBarTitle">{{ link.title }}</p>
                     </a>
                     <a
                         href="#logoutModal"
                         class="dashLeftBarListDiv modal-trigger"
                     >
-                        <i class="material-icons dashLeftBarIcons"
+                        <i
+                            class="material-icons dashLeftBarIcons"
                             >exit_to_app</i
                         >
                         <p class="dashLeftBarTitle">Logout</p>
@@ -38,6 +33,7 @@
                 </div>
             </div>
         </div>
+        <!--logout-modal-component v-if="shown" @switchMe="switchModal"/-->
         <div id="logoutModal" class="modal">
             <div class="modal-content">
                 <div class="row logoutModalImageRow">
@@ -53,30 +49,18 @@
                 </div>
 
                 <div class="row center-align">
-                    <button
-                        @click="logout"
-                        class="primary waves-effect waves-green btn-flat"
-                    >
-                        Yes
-                    </button>
+                    <button @click="logout" class="primary waves-effect waves-green btn-flat">Yes</button>
                     <span class="gutter1"></span>
-                    <button
-                        class="
-                            modal-close
-                            primaryBorder
-                            waves-effect waves-green
-                            btn-flat
-                        "
-                    >
-                        No
-                    </button>
+                    <button class="modal-close primaryBorder waves-effect waves-green btn-flat">No</button>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+    import LogoutModalComponent from "../auth/LogoutModalComponent.vue";
     export default {
+        components: { LogoutModalComponent },
         name: "Sidenav",
         data() {
             return {
@@ -87,61 +71,40 @@
                         title: "Dashboard",
                         icon: "dashboard",
                         url: "/dashboard",
-                        role: null,
                     },
                     {
                         id: 2,
                         title: "Websites",
                         icon: "web",
                         url: "/websites",
-                        role: "Client",
-                    },
-                    {
-                        id: 2,
-                        title: "Clients",
-                        icon: "web",
-                        url: "/client",
-                        role: "Admin",
                     },
                     {
                         id: 3,
                         title: "Templates",
                         icon: "chrome_reader_mode",
                         url: "/template",
-                        role: null,
                     },
                     {
                         id: 4,
                         title: "Mails",
                         icon: "mail_outline",
                         url: "/mail",
-                        role: null,
                     },
                     {
                         id: 5,
                         title: "Settings",
                         icon: "settings",
                         url: "/settings",
-                        role: null,
                     },
                     {
                         id: 6,
                         title: "Help/Support",
                         icon: "question_answer",
                         url: "/support",
-                        role: "Client",
-                    },
-                    {
-                        id: 7,
-                        title: "Admins",
-                        icon: "question_answer",
-                        url: "/admins",
-                        role: "SuperAdmin",
                     },
                 ],
                 prefix: "/client",
-                shown: false,
-                user: {},
+                shown: false
             };
         },
         methods: {
@@ -150,8 +113,11 @@
                 let linkId = this.links.find((el) => el.url === `/${location}`);
                 this.currentId = linkId != undefined ? linkId.id : 1;
             },
-            deleteCookie(name, path, domain) {
-                if (this.getCookie(name)) {
+            switchModal() {
+                this.shown = !this.shown;
+            },
+            delete_cookie(name, path, domain) {
+                if (this.get_cookie(name)) {
                     document.cookie =
                         name +
                         "=" +
@@ -160,36 +126,18 @@
                         ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
                 }
             },
-            getCookie(name) {
+            get_cookie(name) {
                 return document.cookie.split(";").some((c) => {
                     return c.trim().startsWith(name + "=");
                 });
-            },
-            getUser() {
-                axios
-                    .get("/api/user")
-                    .then((res) => {
-                        this.user = res.data;
-                        this.$emit('user', res.data);
-                        if ((res.data.role == "Admin")) {
-                            this.prefix = "/admin";
-                        } else if ((res.data.role == "Client")) {
-                            this.prefix = "/client";
-                        } else if (res.data.role == "SuperAdmin") {
-                            this.prefix = "/supre";
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
             },
             logout() {
                 axios
                     .post("/auth/logout")
                     .then((res) => {
                         if (res.data.status == 401) {
-                            this.deleteCookie("_token", "/");
-                            location.replace("/");
+                            this.delete_cookie('_token', '/', )
+                            location.replace('/');
                         }
                         console.log(res);
                     })
@@ -199,7 +147,6 @@
             },
         },
         mounted() {
-            this.getUser();
             this.getLocation();
         },
     };

@@ -5,7 +5,7 @@
             <!-- Sidenav Contents -->
             <ul id="slide-out" class="sidenav">
                 <li>
-                    <!-- <div class="user-view">
+                    <div class="user-view">
                         <div class="background">
                             <img :src="bg_img" />
                         </div>
@@ -22,17 +22,20 @@
                                 >adebayoakelere@gmail.com</span
                             ></a
                         >
-                    </div> -->
+                    </div>
                 </li>
 
                 <li>
                     <a href="/dashboard" class="dashLeftBarListDiv">
-                        <i class="
+                        <i
+                            class="
                                 material-icons
                                 dashLeftBarIcons
                                 purple-text
                                 text-darken-4
-                            ">dashboard</i>
+                            "
+                            >dashboard</i
+                        >
                         <p class="dashLeftBarTitle">Dashboard</p>
                     </a>
                 </li>
@@ -52,7 +55,9 @@
                 </li>
                 <li>
                     <a href="/client/mail" class="dashLeftBarListDiv">
-                        <i class="material-icons dashLeftBarIcons">mail_outline</i>
+                        <i class="material-icons dashLeftBarIcons"
+                            >mail_outline</i
+                        >
                         <p class="dashLeftBarTitle">Mails</p>
                     </a>
                 </li>
@@ -64,13 +69,15 @@
                 </li>
                 <li>
                     <a href="/client/support" class="dashLeftBarListDiv">
-                        <i class="material-icons dashLeftBarIcons">question_answer</i>
+                        <i class="material-icons dashLeftBarIcons"
+                            >question_answer</i
+                        >
                         <p class="dashLeftBarTitle">Help/Support</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#logoutModal" class="dashLeftBarListDiv modal-trigger">
-                        <i class="material-icons dashLeftBarIcons">exit_to_app</i>
+                    <a href="/client/support" class="dashLeftBarListDiv">
+                        <i class="material-icons dashLeftBarIcons">autorenew</i>
                         <p class="dashLeftBarTitle">Logout</p>
                     </a>
                 </li>
@@ -85,25 +92,6 @@
 </template>
 <script>
 export default {
-    components: {  },
-    name: 'MobileNav',
-
-    methods: {
-        logout() {
-            axios
-                .post("/auth/logout")
-                .then((res) => {
-                    if (res.data.status == 401) {
-                        this.delete_cookie('_token', '/',)
-                        location.replace('/');
-                    }
-                    console.log(res);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        },
-    }
+    name: 'MobileNav'
 }
-
 </script>
