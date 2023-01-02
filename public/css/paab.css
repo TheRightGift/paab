@@ -1829,34 +1829,23 @@ a.active {
 
 /* User Template Section */
 #userTempDiv {
-    margin-right: 4vw;
-    text-align: center;
-    cursor: pointer;
+    margin-right: 7vw;
 }
 
 .userTempTitle {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 1.125rem;
     /* text-align: center; */
     color: #7746FF;
     margin: 0;
 }
 
-.selectedUserTempDiv {
-    background-color: #694eb4;
-    padding: 1px 5px 0px 5px;
-}
-
-.selectedUserTempDiv .userTempTitle {
-    color: white;
-}
-
 .userTempMainDiv {
     display: flex;
-    width: 100%;
-    overflow: auto;
+    width: 70%;
+    margin: 10vh auto 0 auto;
 }
 
 .tempImgDiv {
@@ -1865,13 +1854,12 @@ a.active {
     background: #D9D9D9;
     border-radius: 50%;
     margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #tempProIcon {
     font-size: 3rem;
+    margin-left: 0.5vw;
+    margin-top: 0.5vh;
     color: rgba(0, 0, 0, 0.5);
 }
 
@@ -1886,9 +1874,9 @@ i.material-icons.tempProIcon {
 .webBlackDiv {
     width: 93%;
     /* height: 196px; */
-    /* background: #1E1E1E;
+    background: #1E1E1E;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px; */
+    border-radius: 10px;
     margin: 5vh auto 0 auto;
 
     display: flex;
@@ -2641,7 +2629,7 @@ div .col .s12 input.clientCreatePortInput1 {
     height: 6vh;
 }
 
-div .col .s9 input.clientCreatePortInput1 {
+div .col .s10 input.clientCreatePortInput1 {
     background: rgba(119, 70, 255, 0.3);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 100px;
@@ -3838,6 +3826,7 @@ table.adminAddClientTable tbody tr.adminAddClientTr {
 }
 
 .adminClientPaginationLeftIcon {
+    color: rgba(0, 0, 0, 0.5);
     margin-left: 1.5vw;
     margin-right: 1vw;
     cursor: pointer;

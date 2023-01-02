@@ -5,8 +5,8 @@
 
         <!-- Sidebar for large and medium devices -->
         <div class="row" id="dashRowDiv">
-            <side-nav-component @user="getUser"/>
-        
+            <side-nav-component />
+
             <!-- Right Side Div -->
             <div class="col s12 m10 l10" id="supportRightDiv">
                 <div class="supportBlueDiv">
@@ -164,10 +164,14 @@
 <script>
 import MobileNavComponent from '../partials/MobileNavComponent.vue';
 import SideNavComponent from '../partials/SideNavComponent.vue';
+// import FooterComponent from "./partials/FooterComponent.vue";
+// import HeaderComponent from "./partials/HeaderComponent.vue";
 export default {
     components: {
         MobileNavComponent,
         SideNavComponent
+        // FooterComponent,
+        // HeaderComponent
     },
     data() {
         return {

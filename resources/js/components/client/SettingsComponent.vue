@@ -5,7 +5,7 @@
         
         <!-- Sidebar for large and medium devices -->
         <div class="row" id="dashRowDiv">
-            <side-nav-component @user="getUser"/>
+            <side-nav-component />
         
             <!-- Mail blue div -->
             <div class="col s12 m10 l10" id="setRightDiv">
@@ -124,23 +124,22 @@
 <script>
 import MobileNavComponent from '../partials/MobileNavComponent.vue';
 import SideNavComponent from '../partials/SideNavComponent.vue';
+// import FooterComponent from "./partials/FooterComponent.vue";
+// import HeaderComponent from "./partials/HeaderComponent.vue";
 export default {
     components: {
         MobileNavComponent,
         SideNavComponent
+        // FooterComponent,
+        // HeaderComponent
     },
     data() {
         return {
             bg_img: '/media/img/istockphoto-1390124896-170667a.jpg',
             pro_img: '/media/img/yuna.jpg',
-            user: {},
         };
     },
     mounted() { },
-    methods: {
-        getUser(e) {
-            this.user = e;
-        }
-    }
+    methods: {}
 }
 </script>

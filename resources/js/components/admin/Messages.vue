@@ -5,7 +5,7 @@
 
         <div class="row" id="dashRowDiv">
             <!-- Sidebar for large and medium devices -->
-            <sidenav-component />
+            <AdminSideNavComponent />
 
             <!-- Mail blue div -->
             <div class="col s12 m10 l10" id="mailRightDiv">
@@ -148,12 +148,16 @@
 </template>
 
 <script>
-import SidenavComponent from "../partials/SideNavComponent.vue";
+import AdminSideNavComponent from "../partials/AdminSideNavComponent.vue";
 import AdminMobileNavComponent from "../partials/AdminMobileNavComponent.vue";
+// import FooterComponent from "./partials/FooterComponent.vue";
+// import HeaderComponent from "./partials/HeaderComponent.vue";
 export default {
     components: {
-        SidenavComponent,
+        AdminSideNavComponent,
         AdminMobileNavComponent,
+        // FooterComponent,
+        // HeaderComponent
     },
     data() {
         return {
