@@ -211,8 +211,7 @@
     import ConfigureWebComponent from "../partials/ConfigureWebComponent.vue";
     import ButtonLoader from "../partials/ButtonLoaderComponent.vue";
     export default {
-    components: {
-            MobileNavComponent,
+        components: {
             SideNavComponent,
             WebCreateComponent,
             TemplatePreviewComponent,

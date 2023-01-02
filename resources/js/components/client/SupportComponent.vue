@@ -1,12 +1,12 @@
 <template>
     <div>
         <mobile-nav-component />
-
-
+        
+        
         <!-- Sidebar for large and medium devices -->
         <div class="row" id="dashRowDiv">
             <side-nav-component />
-
+        
             <!-- Right Side Div -->
             <div class="col s12 m10 l10" id="supportRightDiv">
                 <div class="supportBlueDiv">
@@ -29,9 +29,9 @@
                     <div class="col s12 m6 l6 supportColDiv">
                         <p class="supportTitle1">Is it a free platform</p>
                         <p class="supportTxt1">
-                            There are many variations of passages of Lorem Ipsum available,
-                            but the majority have suffered alteration in some form, by injected humour,
-                            or randomised words which don't look even slightly believable.
+                            There are many variations of passages of Lorem Ipsum available, 
+                            but the majority have suffered alteration in some form, by injected humour, 
+                            or randomised words which don't look even slightly believable. 
                             If you are going
                         </p>
                     </div>
@@ -98,7 +98,7 @@
                         <div class="col l9">
                             <p class="supportGetInTouchTitle">Still have any questions?</p>
                             <p class="supportGetInTouchTxt">
-                                Can’t find the answers you are looking for?
+                                Can’t find the answers you are looking for? 
                                 please chat with our friendly team
                             </p>
                         </div>
@@ -110,44 +110,44 @@
                         </div>
                     </div>
                 </div>
-
+        
                 <!-- Customer Support Modal -->
                 <div class="clientModalSupportDiv" v-if="!isHidden">
                     <i class="material-icons" id="clientCusSupportCancelBtn" @click="hideSupportModal()">cancel</i>
                     <div class="row clientModalSupportInnerDiv">
-                        <div class="col s12 m12 l5 cusSupportImgDiv hide-on-med-and-down">
-                            <img src="/media/img/CARE.png" alt="CARE.png" id="sCareImg">
+                        <div class="col s12 m12 l5 cusSupportImgDiv">
+                            <img src="/media/img/CARE.png" alt="CARE.png" id="careImg">
                         </div>
-
-                        <div class="col s12 m12 l6 offset-l1 cusSupportFormDiv">
+                
+                        <div class="col s12 m12 l7 cusSupportFormDiv">
                             <p class="cusSupportTitle">WE’RE ALWAYS HAPPY TO HELP</p>
-
+                
                             <form class="col s12">
                                 <div class="row rm_mg">
                                     <div class="input-field col s6 rm_mg">
-                                        <input placeholder="First name" id="sFName" type="text" class="validate">
+                                        <input placeholder="First name" id="fName" type="text" class="validate">
                                         <!-- <label for="first_name">First Name</label> -->
                                     </div>
                                     <div class="input-field col s6 rm_mg">
-                                        <input placeholder="Last name " id="sLName" type="text" class="validate">
+                                        <input placeholder="Last name " id="lName" type="text" class="validate">
                                         <!-- <label for="last_name">Last Name</label> -->
                                     </div>
                                 </div>
-
+                
                                 <div class="row rm_mg">
                                     <div class="input-field col s12 rm_mg">
-                                        <input placeholder="Email address" id="sEmail" type="email" class="validate">
+                                        <input placeholder="Email address" id="email" type="email" class="validate">
                                         <!-- <label for="email">Email</label> -->
                                     </div>
                                 </div>
-
+                
                                 <div class="row rm_mg">
                                     <div class="input-field col s12 rm_mg">
-                                        <textarea placeholder="Share your thoughts..." id="sTextarea1"
+                                        <textarea placeholder="Share your thoughts..." id="textarea1"
                                             class="materialize-textarea"></textarea>
                                     </div>
                                 </div>
-
+                
                                 <button type="button" class="btn col s12 m12 l12 rm_mg" id="modalSupportBtnForm">
                                     Send
                                 </button>
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-
+        
             </div>
         </div>
     </div>

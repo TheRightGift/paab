@@ -136,7 +136,7 @@
                     .post("/auth/logout")
                     .then((res) => {
                         if (res.data.status == 401) {
-                            this.delete_cookie('_token', '/',)
+                            this.delete_cookie('_token', '/', )
                             location.replace('/');
                         }
                         console.log(res);

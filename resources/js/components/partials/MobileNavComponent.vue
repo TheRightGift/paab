@@ -5,7 +5,7 @@
             <!-- Sidenav Contents -->
             <ul id="slide-out" class="sidenav">
                 <li>
-                    <!-- <div class="user-view">
+                    <div class="user-view">
                         <div class="background">
                             <img :src="bg_img" />
                         </div>
@@ -22,17 +22,20 @@
                                 >adebayoakelere@gmail.com</span
                             ></a
                         >
-                    </div> -->
+                    </div>
                 </li>
 
                 <li>
                     <a href="/dashboard" class="dashLeftBarListDiv">
-                        <i class="
+                        <i
+                            class="
                                 material-icons
                                 dashLeftBarIcons
                                 purple-text
                                 text-darken-4
-                            ">dashboard</i>
+                            "
+                            >dashboard</i
+                        >
                         <p class="dashLeftBarTitle">Dashboard</p>
                     </a>
                 </li>
@@ -52,7 +55,9 @@
                 </li>
                 <li>
                     <a href="/client/mail" class="dashLeftBarListDiv">
-                        <i class="material-icons dashLeftBarIcons">mail_outline</i>
+                        <i class="material-icons dashLeftBarIcons"
+                            >mail_outline</i
+                        >
                         <p class="dashLeftBarTitle">Mails</p>
                     </a>
                 </li>
@@ -64,36 +69,19 @@
                 </li>
                 <li>
                     <a href="/client/support" class="dashLeftBarListDiv">
-                        <i class="material-icons dashLeftBarIcons">question_answer</i>
+                        <i class="material-icons dashLeftBarIcons"
+                            >question_answer</i
+                        >
                         <p class="dashLeftBarTitle">Help/Support</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#logoutModal" class="dashLeftBarListDiv modal-trigger">
-                        <i class="material-icons dashLeftBarIcons">exit_to_app</i>
+                    <a href="/client/support" class="dashLeftBarListDiv">
+                        <i class="material-icons dashLeftBarIcons">autorenew</i>
                         <p class="dashLeftBarTitle">Logout</p>
                     </a>
                 </li>
             </ul>
-
-            <!--logout-modal-component v-if="shown" @switchMe="switchModal"/-->
-            <div id="logoutModal" class="modal">
-                <div class="modal-content">
-                    <div class="row logoutModalImageRow">
-                        <img src="/media/img/warning.png" alt="Illustrating a warning that you will be logged out"
-                            id="errAltImg" class="logoutModalImage" />
-                    </div>
-                    <div class="row center-align">
-                        <p>You sure you want to logout from your space?</p>
-                    </div>
-
-                    <div class="row center-align">
-                        <button @click="logout" class="primary waves-effect waves-green btn-flat">Yes</button>
-                        <span class="gutter1"></span>
-                        <button class="modal-close primaryBorder waves-effect waves-green btn-flat">No</button>
-                    </div>
-                </div>
-            </div>
 
             <!-- Sidenav Trigger -->
             <a href="#" data-target="slide-out" class="sidenav-trigger">
@@ -103,27 +91,7 @@
     </div>
 </template>
 <script>
-import LogoutModalComponent from "../auth/LogoutModalComponent.vue";
 export default {
-    components: { LogoutModalComponent },
-    name: 'MobileNav',
-
-    methods: {
-        logout() {
-            axios
-                .post("/auth/logout")
-                .then((res) => {
-                    if (res.data.status == 401) {
-                        this.delete_cookie('_token', '/',)
-                        location.replace('/');
-                    }
-                    console.log(res);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        },
-    }
+    name: 'MobileNav'
 }
-
 </script>
