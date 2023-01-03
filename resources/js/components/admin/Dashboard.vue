@@ -218,43 +218,11 @@
         },
         mounted() {
             this.getDate();
-            this.getProfessions();
-            this.getTemplates();
             this.getClientsWebsites();
             setInterval(this.getCurrentTimeInterval, 1000);
         },
         methods: {
-            createTemplate() {
-                this.loading = !this.loading;
-                let formData = new FormData();
-                formData.append("imageUrl", this.template.imageUrl);
-                formData.append("title", this.template.title);
-                formData.append("profession_id", this.template.profession_id);
-                axios
-                    .post("/api/template", formData)
-                    .then((res) => {
-                        if (res.status == 201) {
-                            this.loading = !this.loading;
-                            M.toast({
-                                html: res.data.message,
-                                classes: "successNotifier",
-                            });
-                            this.templates.unshift(res.data.template);
-                            this.template.title = "";
-                            (this.template.imageUrl = ""),
-                                (this.template.profession_id = "");
-                            this.setView(0);
-                        } else {
-                            M.toast({
-                                html: "File too large",
-                                classes: "errorNotifier",
-                            });
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-            },
+            
             deleteTemplate(template) {
                 this.loading = !this.loading;
                 axios
@@ -313,32 +281,8 @@
                     date.getMinutes()
                 ).padStart(2, "0")}`;
             },
-            getProfessions() {
-                axios
-                    .get("/api/profession")
-                    .then((res) => {
-                        if (res.status == 200) {
-                            this.professions = res.data.professionals;
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-            },
             getUser(e) {
                 this.user = e;
-            },
-            getTemplates() {
-                axios
-                    .get("/api/template")
-                    .then((res) => {
-                        if (res.status == 200) {
-                            this.templates = res.data.templates;
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
             },
             getClientsWebsites() {
                 this.loading = true;
@@ -354,15 +298,6 @@
             navigateToClientsWebPages() {
                 window.location.replace("/admin/client");
             },
-            previewImage(event) {
-                if (event.target.files.length !== 0) {
-                    this.template.imageUrl = event.target.files[0];
-                    this.template.imagePreview = URL.createObjectURL(
-                        this.template.imageUrl
-                    );
-                }
-            },
-            
             setView(num) {
                 this.view = num;
             },

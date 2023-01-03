@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->text('title');
             $table->text('imageUrl');
-            $table->bigInteger('profession_id')->unsigned(); 
+            $table->bigInteger('profession_id')->unsigned();
+            $table->string('styleFile')->unsigned();
+            $table->enum('approved', ['F', 'T'])->default('F');
             $table->timestamps();
             $table->softDeletes();
 
