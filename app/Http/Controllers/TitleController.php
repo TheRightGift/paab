@@ -61,7 +61,6 @@ class TitleController extends Controller
      */
     public function update(Request $request, $titleId)
     {
-        dd($titleId);
         $title = Title::findOrFail($titleId);
         $title->update($request->only('name'));
         return response(['title' => $title, 'message' => 'Updated Success'], 204);
