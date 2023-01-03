@@ -64,7 +64,7 @@ class TemplateController extends Controller
      */
     public function show($id)
     {
-        $template = Template::where('profession_id', $id)->with('profession')->get();
+        $template = Template::where([['profession_id', $id], ['approved', 'T']])->with('profession')->get();
         return response(['templates' => $template, 'message' => 'Retrieved Success'], 200);
     }
 
