@@ -85,15 +85,11 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <InnerFooterComponent /> -->
         </div>
     </div>
 </template>
 <script>
-    // import InnerFooterComponent from '../../partials/InnerFooterComponent.vue';
     export default {
-        // components: { InnerFooterComponent },
         data() {
             return {
                 page: 1,

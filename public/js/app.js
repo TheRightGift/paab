@@ -21848,8 +21848,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      bg_img: '/media/img/istockphoto-1390124896-170667a.jpg',
-      pro_img: '/media/img/yuna.jpg'
+      bg_img: "/media/img/istockphoto-1390124896-170667a.jpg",
+      pro_img: "/media/img/yuna.jpg",
+      templates: []
     };
   },
   mounted: function mounted() {},
@@ -23328,31 +23329,36 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  props: {
+    preview: toString
+  },
   methods: {
     sendMail: function sendMail() {
       var _this = this;
-      this.saving = true;
-      axios.post('/api/schedule', this.appointment).then(function (res) {
-        if (res.status == 201) {
-          console.log(res);
-          setTimeout(function () {
-            _this.$router.go();
-          }, 3000);
-          M.toast({
-            html: res.data.message,
-            classes: "successNotifier"
-          });
+      if (this.preview == '0') {
+        this.saving = true;
+        axios.post('/api/schedule', this.appointment).then(function (res) {
+          if (res.status == 201) {
+            console.log(res);
+            setTimeout(function () {
+              _this.$router.go();
+            }, 3000);
+            M.toast({
+              html: res.data.message,
+              classes: "successNotifier"
+            });
+            _this.saving = false;
+            _this.appointment.message = "";
+            _this.appointment.phone = "";
+            _this.appointment.email = "";
+            _this.appointment.firstname = "";
+            _this.appointment.lastname = "";
+          }
+        })["catch"](function (error) {
+          // console.log(error);
           _this.saving = false;
-          _this.appointment.message = "";
-          _this.appointment.phone = "";
-          _this.appointment.email = "";
-          _this.appointment.firstname = "";
-          _this.appointment.lastname = "";
-        }
-      })["catch"](function (error) {
-        // console.log(error);
-        _this.saving = false;
-      });
+        });
+      }
     }
   }
 });
@@ -23488,11 +23494,19 @@ var review = '/api/review';
   props: {
     template: String,
     id: "",
-    user: String
+    user: String,
+    preview: String
   },
   mounted: function mounted() {
     // if(this.templateId)
-    this.getLocations();
+    if (this.preview == '0') {
+      this.getLocations();
+    } else if (this.preview == '1') {
+      this.services = null;
+      this.bio = null;
+      this.achievement = null;
+      this.socials = null;
+    }
   },
   methods: {
     getLocations: function getLocations() {
@@ -23547,6 +23561,9 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  props: {
+    preview: String
+  },
   methods: {
     getImage: function getImage(e) {
       if (!e.target.files.length) return;
@@ -23554,33 +23571,35 @@ __webpack_require__.r(__webpack_exports__);
     },
     subReview: function subReview() {
       var _this = this;
-      var formData = new FormData();
-      this.review.imageUrl !== null ? formData.append("imageURL", this.review.imageUrl) : null;
-      formData.append("firstname", this.review.firstname);
-      formData.append("lastname", this.review.lastname);
-      formData.append("comment", this.review.comment);
-      axios.post("/api/review", formData).then(function (res) {
-        if (res.status == 201) {
-          M.toast({
-            html: res.data.message,
-            classes: "successNotifier"
-          });
-          _this.review.imageUrl = null;
-          _this.review.firstname = "";
-          _this.review.lastname = "";
-          _this.review.comment = "";
-          location.reload();
-        }
-      })["catch"](function (err) {
-        if (err.response.status == 400) {
-          err.response.data.forEach(function (el) {
+      if (this.preview == '0') {
+        var formData = new FormData();
+        this.review.imageUrl !== null ? formData.append("imageURL", this.review.imageUrl) : null;
+        formData.append("firstname", this.review.firstname);
+        formData.append("lastname", this.review.lastname);
+        formData.append("comment", this.review.comment);
+        axios.post("/api/review", formData).then(function (res) {
+          if (res.status == 201) {
             M.toast({
-              html: el,
-              classes: "errorNotifier"
+              html: res.data.message,
+              classes: "successNotifier"
             });
-          });
-        }
-      });
+            _this.review.imageUrl = null;
+            _this.review.firstname = "";
+            _this.review.lastname = "";
+            _this.review.comment = "";
+            location.reload();
+          }
+        })["catch"](function (err) {
+          if (err.response.status == 400) {
+            err.response.data.forEach(function (el) {
+              M.toast({
+                html: el,
+                classes: "errorNotifier"
+              });
+            });
+          }
+        });
+      }
     }
   }
 });
@@ -23604,9 +23623,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-// import InnerFooterComponent from '../../partials/InnerFooterComponent.vue';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  // components: { InnerFooterComponent },
   data: function data() {
     return {
       page: 1,
@@ -25071,7 +25088,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   props: {
-    reviews: Object
+    reviews: Object,
+    preview: String
   },
   computed: {
     reviewLen: function reviewLen() {
@@ -26064,12 +26082,7 @@ var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
     "class": "tempPageImgTxt"
   }, " Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, quisquam!. ", -1 /* HOISTED */);
 });
-var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: "#!",
-    "class": "tempPageImgLink"
-  }, "View", -1 /* HOISTED */);
-});
+var _hoisted_17 = ["href"];
 var _hoisted_18 = ["onClick"];
 var _hoisted_19 = {
   key: 1,
@@ -26221,7 +26234,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       alt: template.name,
       id: "",
       "class": "image"
-    }, null, 8 /* PROPS */, _hoisted_14)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(template.title), 1 /* TEXT */), _hoisted_16, _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    }, null, 8 /* PROPS */, _hoisted_14)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(template.title), 1 /* TEXT */), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+      href: '/preview/' + template.id,
+      target: "_blank",
+      "class": "tempPageImgLink"
+    }, "View", 8 /* PROPS */, _hoisted_17), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       href: "#!",
       "class": "tempPageImgLink right",
       onClick: function onClick($event) {
@@ -26910,13 +26927,48 @@ var _hoisted_1 = {
   "class": "row",
   id: "dashRowDiv"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col s12 m10 l10\"><!-- &lt;div class=&quot;userTempMainDiv&quot;&gt;\n                    &lt;div class=&quot;row&quot;&gt;\n        \n                        &lt;div class=&quot;col s6 m4 l2&quot;&gt;\n                            &lt;div id=&quot;userTempDiv&quot;&gt;\n                                &lt;div class=&quot;tempImgDiv&quot; id=&quot;tempImgDiv&quot;&gt;\n                                    &lt;i class=&quot;material-icons tempProIcon&quot;&gt;person&lt;/i&gt;\n                                &lt;/div&gt;\n                                &lt;p class=&quot;userTempTitle&quot;&gt;Physician&lt;/p&gt;\n                            &lt;/div&gt;\n                        &lt;/div&gt;\n        \n                        &lt;div class=&quot;col s6 m4 l2&quot;&gt;\n                            &lt;div id=&quot;userTempDiv&quot;&gt;\n                                &lt;div class=&quot;tempImgDiv&quot; id=&quot;tempImgDiv&quot;&gt;\n                                    &lt;i class=&quot;material-icons tempProIcon&quot;&gt;person&lt;/i&gt;\n                                &lt;/div&gt;\n                                &lt;p class=&quot;userTempTitle&quot;&gt;Doctors&lt;/p&gt;\n                            &lt;/div&gt;\n                        &lt;/div&gt;\n        \n                        &lt;div class=&quot;col s6 m4 l2&quot;&gt;\n                            &lt;div id=&quot;userTempDiv&quot;&gt;\n                                &lt;div class=&quot;tempImgDiv&quot; id=&quot;tempImgDiv&quot;&gt;\n                                    &lt;i class=&quot;material-icons tempProIcon&quot;&gt;person&lt;/i&gt;\n                                &lt;/div&gt;\n                                &lt;p class=&quot;userTempTitle&quot;&gt;Tutors&lt;/p&gt;\n                            &lt;/div&gt;\n                        &lt;/div&gt;\n        \n                        &lt;div class=&quot;col s6 m4 l2&quot;&gt;\n                            &lt;div id=&quot;userTempDiv&quot;&gt;\n                                &lt;div class=&quot;tempImgDiv&quot; id=&quot;tempImgDiv&quot;&gt;\n                                    &lt;i class=&quot;material-icons tempProIcon&quot;&gt;person&lt;/i&gt;\n                                &lt;/div&gt;\n                                &lt;p class=&quot;userTempTitle&quot;&gt;Photographer&lt;/p&gt;\n                            &lt;/div&gt;\n                        &lt;/div&gt;\n        \n                        &lt;div class=&quot;col s6 m4 l2&quot;&gt;\n                            &lt;div id=&quot;userTempDiv&quot;&gt;\n                                &lt;div class=&quot;tempImgDiv&quot; id=&quot;tempImgDiv&quot;&gt;\n                                    &lt;i class=&quot;material-icons tempProIcon&quot;&gt;person&lt;/i&gt;\n                                &lt;/div&gt;\n                                &lt;p class=&quot;userTempTitle&quot;&gt;Trainner&lt;/p&gt;\n                            &lt;/div&gt;\n                        &lt;/div&gt;\n        \n                        &lt;div class=&quot;col s6 m4 l2&quot;&gt;\n                            &lt;div id=&quot;userTempDiv&quot;&gt;\n                                &lt;div class=&quot;tempImgDiv&quot; id=&quot;tempImgDiv&quot;&gt;\n                                    &lt;i class=&quot;material-icons tempProIcon&quot;&gt;person&lt;/i&gt;\n                                &lt;/div&gt;\n                                &lt;p class=&quot;userTempTitle&quot;&gt;Lawyers&lt;/p&gt;\n                            &lt;/div&gt;\n                        &lt;/div&gt;\n        \n                    &lt;/div&gt;\n        \n                &lt;/div&gt; --><!-- Client&#39;s Templates Section --><div class=\"clientTempContainInnerDiv\"><div id=\"clientTempPageRowDiv\"><!-- First Row --><div class=\"col s12 m6 l4 clientTempPageImgSmDv\"><div class=\"\"><img src=\"/media/img/aboutmyself.png\" alt=\"tempPageImg.png\" id=\"\"></div><p class=\"tempPageImgTitle\"> Planet Earth </p><p class=\"tempPageImgTxt\"> The Planet Earth template is a captivating design with minimalist appeal. </p><a href=\"/templates/templatestarter\" class=\"tempPageImgLink\">View</a><!-- &lt;button type=&quot;button&quot; class=&quot;btn&quot; id=&quot;tempPageImgBtn&quot;&gt;\n                                                USE TEMPLATE\n                                            &lt;/button&gt; --></div><div class=\"col s12 m6 l4 clientTempPageImgSmDv\"><div class=\"\"><img src=\"/media/img/aboutmyself.png\" alt=\"tempPageImg.png\" id=\"\"></div><p class=\"tempPageImgTitle\"> Planet Earth </p><p class=\"tempPageImgTxt\"> The Planet Earth template is a captivating design with minimalist appeal. </p><a href=\"#\" class=\"tempPageImgLink\">View</a><!-- &lt;button type=&quot;button&quot; class=&quot;btn&quot; id=&quot;tempPageImgBtn&quot;&gt;\n                                                USE TEMPLATE\n                                            &lt;/button&gt; --></div><div class=\"col s12 m6 l4 clientTempPageImgSmDv\"><div class=\"\"><img src=\"/media/img/aboutmyself.png\" alt=\"tempPageImg.png\"></div><p class=\"tempPageImgTitle\"> Planet Earth </p><p class=\"tempPageImgTxt\"> The Planet Earth template is a captivating design with minimalist appeal. </p><a href=\"#\" class=\"tempPageImgLink\">View</a><!-- &lt;button type=&quot;button&quot; class=&quot;btn&quot; id=&quot;tempPageImgBtn&quot;&gt;\n                                                USE TEMPLATE\n                                            &lt;/button&gt; --></div><!-- Second Row --><div class=\"col s12 m6 l4 clientTempPageImgSmDv\"><div class=\"\"><img src=\"/media/img/aboutmyself.png\" alt=\"tempPageImg.png\"></div><p class=\"tempPageImgTitle\"> Planet Earth </p><p class=\"tempPageImgTxt\"> The Planet Earth template is a captivating design with minimalist appeal. </p><a href=\"#\" class=\"tempPageImgLink\">View</a><!-- &lt;button type=&quot;button&quot; class=&quot;btn&quot; id=&quot;tempPageImgBtn&quot;&gt;\n                                                USE TEMPLATE\n                                            &lt;/button&gt; --></div><div class=\"col s12 m6 l4 clientTempPageImgSmDv\"><div class=\"\"><img src=\"/media/img/aboutmyself.png\" alt=\"tempPageImg.png\"></div><p class=\"tempPageImgTitle\"> Planet Earth </p><p class=\"tempPageImgTxt\"> The Planet Earth template is a captivating design with minimalist appeal. </p><a href=\"#\" class=\"tempPageImgLink\">View</a><!-- &lt;button type=&quot;button&quot; class=&quot;btn&quot; id=&quot;tempPageImgBtn&quot;&gt;\n                                                USE TEMPLATE\n                                            &lt;/button&gt; --></div><div class=\"col s12 m6 l4 clientTempPageImgSmDv\"><div class=\"\"><img src=\"/media/img/aboutmyself.png\" alt=\"tempPageImg.png\"></div><p class=\"tempPageImgTitle\"> Planet Earth </p><p class=\"tempPageImgTxt\"> The Planet Earth template is a captivating design with minimalist appeal. </p><a href=\"#\" class=\"tempPageImgLink\">View</a><!-- &lt;button type=&quot;button&quot; class=&quot;btn&quot; id=&quot;tempPageImgBtn&quot;&gt;\n                                                USE TEMPLATE\n                                            &lt;/button&gt; --></div><!-- End of Row --></div></div></div>", 1);
+var _hoisted_2 = {
+  "class": "col s12 m10 l10"
+};
+var _hoisted_3 = {
+  "class": "clientTempContainInnerDiv"
+};
+var _hoisted_4 = {
+  id: "clientTempPageRowDiv"
+};
+var _hoisted_5 = {
+  key: 0,
+  "class": "height"
+};
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": ""
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/media/img/aboutmyself.png",
+  alt: "tempPageImg.png",
+  id: ""
+})], -1 /* HOISTED */);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "tempPageImgTitle"
+}, "Planet Earth", -1 /* HOISTED */);
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "tempPageImgTxt"
+}, " The Planet Earth template is a captivating design with minimalist appeal. ", -1 /* HOISTED */);
+var _hoisted_9 = ["href"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_mobile_nav_component = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("mobile-nav-component");
   var _component_side_nav_component = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("side-nav-component");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_mobile_nav_component), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Sidebar for large and medium devices "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_side_nav_component, {
     onUser: _ctx.getUser
-  }, null, 8 /* PROPS */, ["onUser"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Center Bar Person Div "), _hoisted_2])]);
+  }, null, 8 /* PROPS */, ["onUser"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Center Bar Person Div "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Client's Templates Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" First Row "), $data.templates.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.templates, function (template) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      "class": "col s12 m6 l4 clientTempPageImgSmDv",
+      key: template.id
+    }, [_hoisted_6, _hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+      href: '/preview/' + template.id,
+      target: "_blank",
+      "class": "tempPageImgLink"
+    }, "View", 8 /* PROPS */, _hoisted_9)]);
+  }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
 }
 
 /***/ }),
@@ -28124,7 +28176,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       src: '/media/img/templateThumbnail/' + template.profession.name + '/' + template.imageUrl
     }, null, 8 /* PROPS */, _hoisted_11), $props.selectedTemplate == template.id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_12, "check_box")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-      href: '/previewTemplates/' + template.id,
+      href: '/preview/' + template.id,
       target: "_blank"
     }, "Preview", 8 /* PROPS */, _hoisted_14), $props.selectedTemplate == template.id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_15, _hoisted_17)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       onClick: function onClick($event) {
@@ -28849,7 +28901,7 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVN
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.scrollPosition >= 5 ? 'altNav' : 'navbar', "hide-on-med-and-down"])
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user), 1 /* TEXT */), _hoisted_3])], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user), 1 /* TEXT */), _hoisted_7])], 64 /* STABLE_FRAGMENT */);
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user == '' ? 'Dr John Doe' : $props.user), 1 /* TEXT */), _hoisted_3])], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.user), 1 /* TEXT */), _hoisted_7])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -28892,8 +28944,11 @@ function render(_ctx, _cache) {
   }, null, 8 /* PROPS */, ["experience"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SocialMediaComponent, {
     socials: _ctx.socials
   }, null, 8 /* PROPS */, ["socials"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TestimonialsComponent, {
-    reviews: _ctx.reviews
-  }, null, 8 /* PROPS */, ["reviews"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContactComponent)], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !_ctx.loading]])], 8 /* PROPS */, _hoisted_1);
+    reviews: _ctx.reviews,
+    preview: _ctx.preview
+  }, null, 8 /* PROPS */, ["reviews", "preview"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ContactComponent, {
+    preview: _ctx.preview
+  }, null, 8 /* PROPS */, ["preview"])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !_ctx.loading]])], 8 /* PROPS */, _hoisted_1);
 }
 
 /***/ }),
@@ -29078,7 +29133,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.getReviews && $options.getReviews.apply($options, arguments);
     }, ["prevent"]))
-  }, "Load more")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.total == $data.reviews.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_13, " You are all caught up!!! ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, _hoisted_16)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <InnerFooterComponent /> ")])]);
+  }, "Load more")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.total == $data.reviews.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_13, " You are all caught up!!! ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, _hoisted_16)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]);
 }
 
 /***/ }),
@@ -31257,7 +31312,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.goToReviews && $options.goToReviews.apply($options, arguments);
     })
-  }, " view more ")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ReviewFormComponent)], 64 /* STABLE_FRAGMENT */);
+  }, " view more ")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ReviewFormComponent, {
+    preview: $props.preview
+  }, null, 8 /* PROPS */, ["preview"])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

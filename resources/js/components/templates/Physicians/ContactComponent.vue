@@ -98,32 +98,35 @@ export default {
             }
         }
     },
+    props: {preview: toString},
     methods: {
         sendMail(){
-            this.saving = true
-            axios.post('/api/schedule', this.appointment)
-            .then(res => {
-                if (res.status == 201) {
-                    console.log(res)
-                    setTimeout(() => {
-                        this.$router.go()
-                    }, 3000)
-                    M.toast({
-                        html: res.data.message,
-                        classes: "successNotifier",
-                    });
-                    this.saving = false;
-                    this.appointment.message = "";
-                    this.appointment.phone = "";
-                    this.appointment.email = "";
-                    this.appointment.firstname = "";
-                    this.appointment.lastname = "";
-                }
-            })
-            .catch(error => {
-                // console.log(error);
-                this.saving = false
-            })
+            if (this.preview == '0') {
+                this.saving = true
+                axios.post('/api/schedule', this.appointment)
+                .then(res => {
+                    if (res.status == 201) {
+                        console.log(res)
+                        setTimeout(() => {
+                            this.$router.go()
+                        }, 3000)
+                        M.toast({
+                            html: res.data.message,
+                            classes: "successNotifier",
+                        });
+                        this.saving = false;
+                        this.appointment.message = "";
+                        this.appointment.phone = "";
+                        this.appointment.email = "";
+                        this.appointment.firstname = "";
+                        this.appointment.lastname = "";
+                    }
+                })
+                .catch(error => {
+                    // console.log(error);
+                    this.saving = false
+                })
+            }
         }
     },
 }

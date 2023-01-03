@@ -74,7 +74,7 @@
                                         adipisicing elit. Odio, quisquam!.
                                     </p>
 
-                                    <a href="#!" class="tempPageImgLink"
+                                    <a :href="'/preview/'+template.id" target="_blank" class="tempPageImgLink"
                                         >View</a
                                     >
                                     <a href="#!" class="tempPageImgLink right" @click="editMe(template)"

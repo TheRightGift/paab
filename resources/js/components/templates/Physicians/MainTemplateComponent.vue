@@ -8,8 +8,8 @@
             <ServicesComponent :user="user" :services="services" :bio="bio"/>
             <ExperienceComponent  :experience="achievement"/>
             <SocialMediaComponent :socials="socials"/>
-            <TestimonialsComponent :reviews="reviews"/>
-            <ContactComponent />
+            <TestimonialsComponent :reviews="reviews" :preview="preview"/>
+            <ContactComponent :preview="preview"/>
         </div>
     </div>
 </template>
@@ -49,10 +49,19 @@
             template: String,
             id: "",
             user: String,
+            preview: String,
         },
         mounted() {
             // if(this.templateId)
-            this.getLocations();
+            if (this.preview == '0') {
+                this.getLocations();
+            }
+            else if (this.preview == '1'){
+                this.services = null;
+                this.bio = null;
+                this.achievement = null;
+                this.socials = null;
+            }
         },
         methods: {
             getLocations() {

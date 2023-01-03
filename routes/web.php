@@ -20,22 +20,7 @@ Route::get('/templates', function () {
     return view('template');
 });
 
-Route::get('/previewTemplates/{templateId}', function () {
-    // TODO: Logic for previewing templates
-    // get template details based on the id
-        // identify profession $profession
-        
-        // if($profession === 'Physician'){
-            // return view('website.physician');
-        // } else if($profession === 'Legal'){
-            // return view('website.legal');
-        // }
-});
-
-// Route::get('/tenant/auth/login', function() {
-//     return view('auth.tenantlogin');
-// });
-    
+Route::get('/preview/{templateId}', [App\Http\Controllers\TemplateController::class, 'renderTemplate']);
 
 // Socialite
 Route::get('/login/{provider}/callback', [App\Http\Controllers\SocialController::class, 'callback']);
@@ -124,9 +109,6 @@ Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(functio
         return view('admin.template');
     });
 });
-Route::get('/templates/physiciansportfolio', function () {
-    return view('templates.physiciansportfolio');
-});
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
@@ -150,6 +132,7 @@ Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(functio
         return view('admin.singlemsg');
     });
 });
+
 Route::prefix('supre')->middleware(['auth', 'can:run_superAdmin_ops'])->group(function () {
     Route::get('/dashboard', function () {
         return view('super.dashboard');

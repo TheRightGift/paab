@@ -12,9 +12,9 @@
                         @click="getTemplates(profession.id, index)"
                     >
                         <div class="tempImgDiv" id="tempImgDiv">
-                            <span id="tempProIcon"
-                                >{{profession.name.slice(0, 1)}}</span
-                            >
+                            <span id="tempProIcon">{{
+                                profession.name.slice(0, 1)
+                            }}</span>
                         </div>
                         <p class="userTempTitle">{{ profession.name }}</p>
                     </div>
@@ -47,9 +47,7 @@
                         >
                     </div>
                     <div class="card-content">
-                        <a
-                            :href="'/previewTemplates/' + template.id"
-                            target="_blank"
+                        <a :href="'/preview/' + template.id" target="_blank"
                             >Preview</a
                         >
 
@@ -103,7 +101,9 @@
             clientProfessionID: Number,
         },
         mounted() {
-            this.clientProfessionID == undefined ? this.getTemplates(this.professionId) : this.getTemplates(this.clientProfessionID);
+            this.clientProfessionID == undefined
+                ? this.getTemplates(this.professionId)
+                : this.getTemplates(this.clientProfessionID);
             this.role === "Admin" ? this.getProfessions() : null;
         },
         methods: {
@@ -112,7 +112,12 @@
                     .get("/api/profession")
                     .then((res) => {
                         this.professions = res.data.professionals;
-                        this.selectedIndex = this.clientProfessionID != undefined ? this.professions.findIndex(el => el.id == this.clientProfessionID) : 0;
+                        this.selectedIndex =
+                            this.clientProfessionID != undefined
+                                ? this.professions.findIndex(
+                                      (el) => el.id == this.clientProfessionID
+                                  )
+                                : 0;
                     })
                     .catch((err) => {
                         console.log(err);
@@ -133,7 +138,7 @@
                     .then((res) => {
                         if (res.status == 200) {
                             this.templates = res.data.templates;
-                                this.loading = false;
+                            this.loading = false;
                         }
                     })
                     .catch((err) => {

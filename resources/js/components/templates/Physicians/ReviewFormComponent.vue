@@ -94,43 +94,49 @@
                 },
             };
         },
+        props: {preview: String},
         methods: {
             getImage(e) {
                 if (!e.target.files.length) return;
                 this.review.imageUrl = e.target.files[0];
             },
             subReview() {
-                let formData = new FormData();
-                this.review.imageUrl !== null ? formData.append("imageURL", this.review.imageUrl) : null ;
-                formData.append("firstname", this.review.firstname);
-                formData.append("lastname", this.review.lastname);
-                formData.append("comment", this.review.comment);
+                if (this.preview == '0') {
 
-                axios
-                    .post("/api/review", formData)
-                    .then((res) => {
-                        if (res.status == 201) {
-                            M.toast({
-                                html: res.data.message,
-                                classes: "successNotifier",
-                            });
-                            this.review.imageUrl = null;
-                            this.review.firstname = "";
-                            this.review.lastname = "";
-                            this.review.comment = "";
-                            location.reload();
-                        }
-                    })
-                    .catch((err) => {
-                        if (err.response.status == 400) {
-                            err.response.data.forEach((el) => {
+                    let formData = new FormData();
+                    this.review.imageUrl !== null
+                        ? formData.append("imageURL", this.review.imageUrl)
+                        : null;
+                    formData.append("firstname", this.review.firstname);
+                    formData.append("lastname", this.review.lastname);
+                    formData.append("comment", this.review.comment);
+    
+                    axios
+                        .post("/api/review", formData)
+                        .then((res) => {
+                            if (res.status == 201) {
                                 M.toast({
-                                    html: el,
-                                    classes: "errorNotifier",
+                                    html: res.data.message,
+                                    classes: "successNotifier",
                                 });
-                            });
-                        }
-                    });
+                                this.review.imageUrl = null;
+                                this.review.firstname = "";
+                                this.review.lastname = "";
+                                this.review.comment = "";
+                                location.reload();
+                            }
+                        })
+                        .catch((err) => {
+                            if (err.response.status == 400) {
+                                err.response.data.forEach((el) => {
+                                    M.toast({
+                                        html: el,
+                                        classes: "errorNotifier",
+                                    });
+                                });
+                            }
+                        });
+                }
             },
         },
     };
