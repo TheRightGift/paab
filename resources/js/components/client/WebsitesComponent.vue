@@ -31,7 +31,7 @@
                             id="webAddContainer"
                             v-else
                         >
-                            <i class="material-icons webAddIcon"
+                            <i class="material-icons webAddIcon2"
                                 >linear_scale</i
                             >
                             <p>Creating Website...</p>

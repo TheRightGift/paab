@@ -20,6 +20,10 @@ Route::get('/templates', function () {
     return view('template');
 });
 
+Route::get('/previewTemplates/{templateId}', function () {
+    // TODO: Logic fornpreviewing templates
+});
+
 // Route::get('/tenant/auth/login', function() {
 //     return view('auth.tenantlogin');
 // });

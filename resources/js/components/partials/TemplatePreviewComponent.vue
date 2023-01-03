@@ -21,9 +21,9 @@
                 </div>
             </div>
         </div>
-        <div v-if="templates.length > 0" class="height">
+        <div v-if="templates.length > 0" class="gutterTop-10">
             <div
-                class="col s12 m6 l4 clientTempPageImgSmDv"
+                class="col s12 m6 l3"
                 :class="
                     selectedTemplate == template.id ? 'clientSelectedTemp' : ''
                 "
@@ -54,7 +54,7 @@
                         >
 
                         <span v-if="selectedTemplate == template.id">
-                            <a class="right tempPageImgLink">Selected</a>
+                            <a class="right green-text">Selected</a>
                         </span>
                         <span v-else>
                             <a @click="selectTemplate(template)" class="right"
