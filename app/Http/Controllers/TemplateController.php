@@ -145,4 +145,16 @@ class TemplateController extends Controller
         $template->update($request->only('approve'));
         return response(['template' => $template, 'message' => 'Updated Success'], 204);
     }
+
+    public function renderTemplate($templateID) {
+        $template = Template::find($templateID);
+        $profession = $template->profession->name;
+        $template = $template->title;
+        $preview = true;
+        if($profession === 'Physician'){
+            return view('websites.physician', compact('preview', 'template'));
+        } else if($profession === 'Legal'){
+            return view('websites.legal', compact('preview', 'template'));
+        }
+    }
 }

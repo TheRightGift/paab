@@ -101,7 +101,7 @@
             </div>
         </div>
     </div>
-    <ReviewFormComponent />
+    <ReviewFormComponent :preview="preview"/>
 </template>
 <script>
     import ReviewFormComponent from "./ReviewFormComponent.vue";
@@ -115,6 +115,7 @@
         },
         props: {
             reviews: Object,
+            preview: String,
         },
         computed: {
             reviewLen() {

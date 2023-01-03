@@ -2,7 +2,7 @@
     <nav  v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class='hide-on-med-and-down'>
         <div class="nav-wrapper navbarWrap">
             <a href="#" class="brand-logo" id="physiPortPageLogo"
-                >{{user}}</a
+                >{{user == '' ? 'Dr John Doe' : user}}</a
             >
             <ul
                 id="nav-mobile"
