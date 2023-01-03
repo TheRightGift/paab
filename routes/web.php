@@ -21,7 +21,15 @@ Route::get('/templates', function () {
 });
 
 Route::get('/previewTemplates/{templateId}', function () {
-    // TODO: Logic fornpreviewing templates
+    // TODO: Logic for previewing templates
+    // get template details based on the id
+        // identify profession $profession
+        
+        // if($profession === 'Physician'){
+            // return view('website.physician');
+        // } else if($profession === 'Legal'){
+            // return view('website.legal');
+        // }
 });
 
 // Route::get('/tenant/auth/login', function() {
