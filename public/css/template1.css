@@ -1,0 +1,1461 @@
+:root {
+    --ndiigbo: #e75348;
+    --primary: #03a9f4;
+    --lightPrimary: #b9e0f1;
+    --secondary: #29b6f6;
+    --terciary: #9a9fbf;
+    --chat: #7554bd; /**/
+}
+::-webkit-scrollbar {
+    width: 5px;
+} /* this targets the default scrollbar (compulsory) */
+::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 7px rgba(0,0,0,0.8);*/
+    background-color: var(--primary);
+    /*border-radius: 8px;*/
+} /* the new scrollbar will have a flat appearance with the set background color */
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 100px var(--primary);
+    background-color: var(--primary);
+    /*border-radius: 8px;*/
+} /* this will style the thumb, ignoring the track */
+
+::-webkit-scrollbar-button {
+    height: 0;
+    /* background-color: rgba(0,151,0,1);*/
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+::-webkit-scrollbar-corner {
+    background-color: black;
+} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(255, 255, 255, 1);
+}
+::-webkit-scrollbar-button:horizontal {
+    width: 5px;
+    /* Select the down or left scroll button when it's being hovered by the mouse */
+}
+
+html,
+body {
+    width: 100%;
+    height: 100vh;
+}
+body {
+    background-color: #ebf0f5;
+}
+.primaryBtn {
+    border: thin solid var(--primary);
+    color: var(--primary);
+}
+.centre {
+    text-align: center;
+}
+.bigText {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.blur {
+    filter: blur(8px);
+}
+.spinner-green, .spinner-green-only {
+    border-color: var(--terciary);
+}
+.centeredBox {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.coverPage {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+.coverPageInstruction {
+    background-color: aliceblue;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+.fbBtnColor,
+.fbBtnColor:hover,
+.fbBtnColor:visited {
+    background-color: #4267b2;
+}
+.ndiigboColor {
+    background-color: #e75348;
+}
+.ndiigboColortxt {
+    color: #e75348;
+}
+.upperAndBottomPadding {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.collection .collection-item.unattended {
+    background-color: #ebf0f5;
+}
+.modal-content h5 {
+    margin-top: 0px;
+}
+.gutterTop {
+    margin-top: 5vh;
+}
+
+.noHorizontalPadding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+/*HOME*/
+.--terciary {
+    color: #9a9fbf;
+}
+.--terciary:hover {
+    color: rgb(83, 175, 250);
+}
+#banner {
+    color: white;
+}
+.ndiigboBckGrd {
+    background-color: var(--ndiigbo);
+}
+.chatBckGrd {
+    background-color: var(--chat);
+}
+.primaryBckGrd {
+    background-color: rgb(83, 81, 81);
+}
+.hidden {
+    display: none;
+}
+.navbar-fixed nav {
+    background-color: var(--primary);
+}
+#postOption {
+    position: fixed;
+}
+/*DASH*/
+.sidenav-overlay {
+    z-index: 996;
+}
+
+/*Large Screen */
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 85%;
+    }
+    .h5 {
+        color: #515365;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+    .coverPageInstruction {
+        width: 25%;
+        position: relative;
+        top: 3%;
+        left: 1%;
+    }
+    /*NAVBAR*/
+    .navbar-fixed nav {
+        padding: 0 10px 0 10px;
+    }
+
+    .navbar-fixed nav .right {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+    .navbar-fixed .nav-wrapper form {
+        margin: auto;
+        width: 50%;
+    }
+    .navbar-fixed .nav-wrapper .input-field {
+        padding-top: 7px;
+    }
+    .navbar-fixed .nav-wrapper form #search {
+        height: 50px;
+    }
+    .navbar-fixed nav .right img {
+        margin: 17px;
+        height: 30px;
+        width: 30px;
+        border: 2px solid white;
+        cursor: pointer;
+    }
+    .navbar-fixed nav .right .imgProfil a.dropdown-trigger {
+        height: 64px;
+    }
+    #app {
+        min-height: 100vh;
+    }
+
+    .sectionShadow {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    }
+    /*HOME*/
+    .myContainer {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    .homeTitle h1 {
+        font-size: 30px;
+        margin: 0px;
+    }
+    .homeSubTitle h2 {
+        font-size: 48px;
+        margin: 0px;
+    }
+    .myContainer .container .col#banner,
+    .myContainer .container .col#homeHowItWorks {
+        margin-top: 60px;
+    }
+    .homeFbBtn {
+        margin-top: 61px;
+        margin-bottom: 61px;
+    }
+    footer {
+        background-color: white;
+        padding: 8px 15px;
+    }
+    footer a {
+        padding-top: 3px;
+    }
+
+    /*DASH*/
+    .friendSidebar h6 {
+        font-weight: 500;
+        font-size: 0.88rem;
+    }
+    .friendSidebar h6,
+    .checked {
+        color: var(--primary);
+    }
+    #timeline h2,
+    .friendSidebar h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        margin-top: 10px;
+    }
+    .valign-wrapper.row {
+        margin-bottom: 0;
+    }
+    .pointer {
+        cursor: pointer;
+    }
+    .card-content.goToPost .postPostedByProfile img {
+        height: 4.5vh;
+    }
+    .card-content.goToPost:hover {
+        background-color: var(--lightPrimary);
+    }
+    #status.card-panel {
+        padding: 5px 24px;
+    }
+    #status p {
+        border: thin solid rgb(114, 113, 113);
+        border-radius: 20px;
+        padding: 0.5rem 0.8rem;
+        cursor: pointer;
+    }
+    #status img {
+        width: 70%;
+        margin: 0px 15%;
+    }
+    #statusModal.modal, #commentModal.modal {
+        width: 43%;
+    }
+    #editor-container {
+        margin-bottom: 20px;
+    }
+    .addCommentFormRow .ql-toolbar {
+        /* min-height: 140px; */
+        display: none;
+    }
+    .row.addCommentRow {
+        margin-top: 0;
+    }
+    .row.addCommentFormRow, .row.addCommentRow {
+        margin-bottom: 0;
+    }
+    .input-field .prefix {
+        width: 2rem;
+    }
+    .row.card-title .col.l2 {
+        width: 12%;
+    }
+    .row .timeLineContent {
+        margin-bottom: 0;
+    }
+    .timeLineContent .card-content .row:last-child {
+        margin-bottom: 0;
+    }
+    .timeLineContent .card-title .postDetail {
+        font-size: 0.8rem;
+        padding-left: 0px;
+    }
+   
+    .timeLineContent .card-title .postDetail div {
+        line-height: 1.5;
+    }
+    .card .card-action.postInteractions {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .card .card-action.postInteractions i.left {
+        margin-right: 5px;
+    }
+    .card
+        .card-action.postInteractions
+        a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+        margin-right: 0;
+        padding-right: 0;
+    }
+    /* .timeLineContent .card .card-action, .timeLineContent .card .card-summary {
+        padding: 0.5vh 1.5vw;
+    }
+    .timeLineContent .card .card-summary {
+        border-top: 1px solid rgba(160,160,160,0.2);
+    }
+    .timeLineContent .card .card-summary a {
+        margin-right: 1.5vw;
+    } */
+    .timeLineContent .card-title .postDetail .postAuthorName {
+        font-weight: 700;
+    }
+    .timeLineContent .card-title .postDetail .postAuthorName a {
+        color: rgb(31, 31, 31);
+    }
+    .timeLineContent .card-title .postDetail .postAuthorName a:hover {
+        text-decoration: underline;
+    }
+    .timeLineContent .card-content .timelineContent img {
+        width: 100%;
+    }
+    .timeLineContent .card .card-content .card-title i {
+        line-height: 1;
+    }
+    .clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+        color: var(--terciary);
+    }
+    .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+        color: var(--primary);
+    }
+    .card
+        .card-action
+        a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):active {
+        background-color: #fff;
+    }
+    .card
+        .card-action
+        a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):visited {
+        background-color: #fff;
+    }
+    .more.collection {
+        box-shadow: 2px 2px 2px #a1a0a0;
+        width: 28%;
+        position: absolute;
+        /* top: 45px; */
+        right: 20px;
+        background-color: #fff;
+        z-index: 100;
+    }
+    .more.collection a.collection-item{
+        color: #515365;
+    }
+    .more.collection a.collection-item:hover{
+        background-color: #fff;
+        color: var(--ndiigbo);
+        font-weight: 300;
+    }
+    .more.collection .collection-item {
+        border-bottom: unset;
+    }
+    .more a i, .more.collection a.collection-item {
+        font-size: 0.9rem;
+        padding: 5px;
+    }
+     /* .row .col.l5.more {
+        margin-left: 1.5rem;
+    } */
+    .more a {
+        color: var(--terciary);
+    }
+    .more a:hover {
+        color: var(--primary);
+    }
+    #groupSideBar, #friendsSideBar {
+        position: fixed;
+        width: 20%;
+        overflow-y: auto;
+    }
+    .twoThirdDash {
+        margin-left: 23.7%;
+    }
+    #friendsSideBar {
+        margin-left: 42.5%;
+    }
+    .illustrativeImgGroup {
+        padding: 5px;
+    }
+    .friendSidebar h2 {
+        color: var(--primary);
+    }
+    .friendSidebar .collection .collection-item.avatar {
+        min-height: 0;
+    }
+    .friendSidebar .collection.with-header .collection-item,
+    .friendSidebar .collection .collection-item.avatar .title {
+        font-size: 13px;
+    }
+    .friendSidebar .collection .collection-item.avatar .title {
+        font-weight: 500;
+    }
+    .friendSidebar
+        .collection
+        .collection-item
+        .secondary-content
+        .material-icons {
+        position: absolute;
+        top: -5px;
+        right: 0px;
+    }
+    .friendSidebar .collection .collection-item.avatar {
+        padding-left: 55px;
+    }
+    .friendSidebar .collection .collection-item.avatar p {
+        font-size: 14px;
+        color: gray;
+        padding-top: 4px;
+        line-height: 1em;
+    }
+    .friendSidebar
+        .collection
+        .collection-item.avatar:not(.circle-clipper)
+        > .circle {
+        top: 7px;
+        width: 30px;
+        height: 30px;
+    }
+    .friendSidebar {
+        height: 92vh;
+        /* overflow-y: hidden; */
+        /* position: fixed;
+        right: 0px; */
+    }
+    .friendSidebar .collection.with-header .collection-header {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .friendSidebar .collection-header h2 {
+        margin: 0;
+    }
+    .friendSidebar .row {
+        height: 100%;
+        margin-bottom: 0;
+    }
+    .friendSidebar .row:hover {
+        overflow-y: auto;
+    }
+    .lastOnline {
+        font-size: x-small;
+        color: gray;
+    }
+    .noFriend .title,
+    .noGPS .title {
+        color: #90a4ae;
+    }
+    nav ul li,
+    nav ul a.dropdown-trigger {
+        height: 64px;
+        line-height: 64px;
+    }
+    nav ul li a span.badge {
+        position: relative;
+        min-width: 0px;
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        top: -80px;
+        font-size: 0.6em;
+        right: -5px;
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+    }
+
+    .online {
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: rgb(16, 241, 16);
+        border: 2px solid white;
+    }
+    .online {
+        position: absolute;
+        top: 35px;
+        left: 40px;
+    }
+
+    .dropdown-content {
+        min-width: 220px; /* Changed this to accomodate content width */
+        max-height: auto;
+        margin-left: -1px; /* Add this to keep dropdown in line with edge of navbar */
+        overflow: hidden; /* Changed this from overflow-y:auto; to overflow:hidden; */
+        will-change: width, height;
+    }
+    .dropdown-content.big {
+        min-width: 300px;
+        min-height: 100px;
+    }
+    .dropdown-content li.header {
+        min-height: 0px;
+        height: 30px;
+        line-height: 1rem;
+    }
+    .dropdown-content li.header a,
+    .dropdown-content li.header a:hover {
+        border-bottom: thin solid rgb(228, 226, 226);
+    }
+    .dropdown-content li > a {
+        color: black;
+        font-size: 14px;
+    }
+    .dropdown-content li > a:hover {
+        color: var(--primary);
+        background-color: white;
+    }
+    .dropdown-content li.header > a {
+        line-height: 1.4rem;
+        padding: 5px 15px;
+        color: rgb(133, 132, 132);
+        font-size: 0.75em;
+    }
+
+    .dropdown-content li.header > a:hover {
+        background-color: white;
+        cursor: text;
+    }
+
+    .navbar-fixed nav .right img.notifier {
+        margin: 0px;
+    }
+    .collection .collection-item.avatar.lessPadding {
+        padding-left: 50px;
+        padding-right: 10px;
+        min-height: 0px;
+    }
+
+    .collection .collection-item.avatar.lessPadding .title {
+        font-size: 13px;
+        line-height: 15px;
+    }
+    nav ul.big a.inNotifier {
+        display: inline;
+        color: #26a69a;
+        padding: 0px;
+    }
+    nav ul.big a.inNotifier:hover {
+        color: var(--ndiigbo);
+    }
+    .dropdown-content.big li {
+        cursor: default;
+    }
+    .dropdown-content.big li a.right {
+        cursor: pointer;
+    }
+    .dropdown-content.big li a.right:hover {
+        background-color: rgba(255, 255, 255, 0);
+    }
+    .dropdown-content.big li:hover {
+        background-color: white;
+    }
+    ul.big li .title {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .dropdown-content li > a.allNotifier {
+        padding: 0px;
+        text-align: center;
+        color: white;
+    }
+    ul.big li .title.noNotifier {
+        padding-top: 10px;
+    }
+    #userNotificationDropDown li:last-child,
+    #userNotificationDropDown li:last-child a:hover {
+        background-color: var(--ndiigbo);
+        height: 10px;
+    }
+    .chatNotifierMsg {
+        color: #888;
+        display: block;
+    }
+    .friendNotifierMsg {
+        display: inline;
+        float: right;
+    }
+    .friendNotifierMsg .accept {
+        color: blue;
+        display: inline;
+        padding: 0px;
+        font-size: small;
+        background-color: rgba(255, 255, 255, 0);
+    }
+    .friendNotifierMsg .decline {
+        color: red;
+        display: inline;
+        padding: 0px;
+        font-size: small;
+        background-color: rgba(255, 255, 255, 0);
+    }
+    #userChatDropDown li:last-child,
+    #userChatDropDown li:last-child a:hover {
+        background-color: var(--chat);
+        height: 10px;
+    }
+
+    #userFriendDropDown li:last-child,
+    #userFriendDropDown li:last-child a:hover {
+        background-color: rgb(83, 81, 81);
+        height: 10px;
+    }
+    #userFriendDropDown li .title {
+        padding-top: 8px;
+    }
+    nav .inNotifier i.material-icons {
+        display: inline;
+    }
+    .profileList {
+        height: 22px;
+        line-height: 22px;
+    }
+
+    /*FRIENDS*/
+    #userBanner {
+        position: relative;
+        top: 50px;
+    }
+    #userBanner img {
+        display: block;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+    }
+
+    #userTopHeader {
+        /* position: absolute;
+        left: 42.5%;
+        transform: translate(-50%, 0);
+        text-align: center;
+        max-width: 250px;
+        z-index: 4;
+        bottom: 120px; */
+        display: flex;
+        position: relative;
+        top: -17vh;
+    }
+    #userTopHeader .userThumb {
+        border-radius: 100%;
+        border: 6px solid white;
+        margin: 0 auto;
+        background-color: white;
+    }
+    .userThumb {
+        display: inline-block;
+        position: relative;
+    }
+    .userThumb img {
+        border-radius: 100%;
+        overflow: hidden;
+        max-width: unset;
+        display: block;
+        width: 140px;
+        height: 140px;
+    }
+
+    .profileRow {
+        position: relative;
+        top: -17vh;
+    }
+    .tabs .tab a.profileUsername {
+        color: #000;
+        font-weight: 500;
+    }
+    .tabs .tab a.profileUsername:hover {
+        color: rgba(238, 110, 115, 0.7);
+    }
+
+    .friendsHeading,
+    .row .col.friendsHeading,
+    .photosHeading,
+    .row .col.photosHeading {
+        position: relative;
+        top: 30px;
+        background-color: white;
+        padding: 15px 20px 15px;
+        border: thin solid #ebecec;
+        border-radius: 5px;
+    }
+    .friendsHeading h6 {
+        font-size: 1rem;
+        font-weight: 500;
+        height: 52px;
+        line-height: 52px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .photosHeading h6 {
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .friendsHeading .input-field {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .row .col.friendsTab {
+        margin-top: 5vh;
+        padding: 0;
+    }
+    #allFriends,
+    #peopleNear {
+        position: relative;
+        margin-top: 30px;
+    }
+    #peopleNearUser {
+        margin-top: 2px;
+    }
+    #allFriends .l3 .userFriend,
+    #peopleNear .l3 .userFriend {
+        background-color: #f7f6f9;
+        padding-bottom: 20px;
+    }
+    .friendsTab .tabs .tab a {
+        color: rgba(3, 169, 244, 0.5);
+    }
+    .friendsTab .tabs .tab a:hover,
+    .friendsTab .tabs .tab a.active {
+        color: var(--primary);
+    }
+
+    .friendsTab .tabs .tab a:focus,
+    .tabs .tab a:focus.active {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .friendsTab .tabs .indicator {
+        background-color: var(--primary);
+        /* opacity: 0.2; */
+    }
+    .noFriends {
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        width: 100%;
+    }
+    #allFriends .friendBannerImg,
+    #peopleNear .friendBannerImg {
+        width: 100%;
+        height: 100px;
+        background-color: green;
+        background-image: url("../img/userBannerImg.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    #allFriends .friendThumbImg,
+    #peopleNear .friendThumbImg {
+        width: 70px;
+        height: 70px;
+        border-radius: 35px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        top: -35px;
+    }
+
+    #allFriends .friendThumbImg img,
+    #peopleNear .friendThumbImg img {
+        width: 70px;
+        height: 70px;
+        border-radius: 35px;
+        border: 3px solid white;
+    }
+    #allFriends .friendContent,
+    #peopleNear .friendContent {
+        position: relative;
+        top: -20px;
+    }
+    .friendName,
+    .friendDetailCount {
+        text-transform: uppercase;
+    }
+    .friendLocation {
+        text-transform: capitalize;
+        font-size: small;
+        line-height: 1;
+        color: #999999;
+    }
+    .friendDetails a {
+        display: inline-block;
+        margin-right: 25px;
+        color: #999999;
+    }
+    .friendDetailCount {
+        display: block;
+        text-transform: lowercase;
+    }
+
+    .friendChat a {
+        color: white;
+        margin-top: 30px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 25px;
+        background-color: var(--chat);
+        padding-top: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .friendsDecision {
+        margin-top: 30px;
+    }
+
+    /*Pofile Photos*/
+    .inputfile {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .inputfile + label {
+        /* text-align: center;
+        line-height: 20vh; */
+        font-size: 0.688rem;
+        height: 25vh;
+        width: 100%;
+        font-weight: 700;
+        color: #000;
+        border: thin dashed rgb(39, 38, 38);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .previewPhoto {
+        display: flex;
+        justify-content: center;
+        height: 25vh;
+        /* background-color: black; */
+        padding: 0.3vh;
+        /* padding-bottom: 0.3vh; */
+        border-radius: 8px;
+    }
+    .previewPhoto img {
+        width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .previewPhotoContainer,
+    .userPhotoContainer {
+        margin-bottom: 2vh;
+    }
+
+    .previewPhoto i {
+        position: relative;
+        top: 1vh;
+        right: 2vw;
+        cursor: pointer;
+        height: fit-content;
+        /* background-color: #000; */
+    }
+
+    .gallery {
+        background-color: #fff;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        position: relative;
+        top: 30px;
+    }
+
+    /* .previewPhoto img{
+        height: 25vh;
+    } */
+
+    .inputfile:focus + label,
+    .inputfile + label:hover {
+        color: rgb(111, 108, 108);
+    }
+    .inputfile + label {
+        cursor: pointer; /* "hand" cursor */
+    }
+
+    /*CHAT*/
+    .clickToChat {
+        cursor: pointer;
+    }
+    .chat {
+        height: 55%;
+        position: fixed;
+        bottom: 5px;
+        width: 21%;
+        background-color: white;
+        right: 16.667%;
+        box-shadow: -1px -1px 5px;
+    }
+    .chat .row {
+        margin-bottom: 0px;
+    }
+    .chat .chatHeader {
+        border-bottom: thin solid #e0d5f8;
+        height: 13%;
+        padding: 5px 15px;
+        /* line-height: 2;    */
+    }
+    .chat .chatHeader .left {
+        line-height: 3.5;
+    }
+    .chat .chatHeader img {
+        width: 25px;
+    }
+    .chat .chatHeader .material-icons {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    .chatHeader,
+    .chatHeader a {
+        color: #7c5ac2;
+    }
+    .chatHeader a {
+        line-height: 3;
+        font-weight: bold;
+    }
+    .chatHeader .chatFriendDet {
+        position: absolute;
+        margin-left: 0.4rem;
+        line-height: 2.5;
+    }
+    .chat .chatBody {
+        height: 67%;
+        overflow-y: auto;
+        width: 100%;
+    }
+    .chat .chatBody .col {
+        margin-bottom: 0.5rem;
+    }
+    .chat .chatBody .col .right {
+        padding: 0.5rem;
+        background-color: rgb(252, 237, 218);
+        font-size: 0.78rem;
+        max-width: 80%;
+    }
+    .chat .chatBody .col .left {
+        padding: 0.5rem;
+        background-color: rgb(218, 247, 252);
+        font-size: 0.78rem;
+        max-width: 80%;
+    }
+    .chatFooter {
+        height: 20%;
+        overflow-y: auto;
+        border-top: solid thin rgb(223, 221, 221);
+    }
+    .chatFooter .input-field {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .chatFooter .input-field textarea.materialize-textarea {
+        margin: 0px;
+        padding-bottom: 0.5rem;
+        border-bottom: none;
+        font-size: 14px;
+    }
+}
+/*tablet Screen (landscape)*/
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
+    /* For landscape layouts only */
+    #userTopHeader {
+        max-width: 200px;
+        bottom: 370px;
+    }
+    #userTopHeader .userThumb {
+        width: 100px;
+        height: 100px;
+    }
+    .userThumb img {
+        width: 100px;
+        height: 100px;
+    }
+}
+/*tablet Screen (portrait)*/
+@media only screen and (min-device-width: 993px) and (max-device-width: 1024px) and (orientation: portrait) {
+    /* For landscape layouts only */
+    #userTopHeader {
+        max-width: 200px;
+        bottom: 970px;
+    }
+    #userTopHeader .userThumb {
+        width: 100px;
+        height: 100px;
+    }
+    .userThumb img {
+        width: 100px;
+        height: 100px;
+    }
+    .btn-small {
+        height: 30px;
+        line-height: 30px;
+        font-size: 11px;
+    }
+}
+/*Large tablet Screen (landscape)
+@media only screen and (min-width: 1300px) and (max-device-width: 1400px) and (orientation:landscape) {
+    #userTopHeader {
+        max-width: 200px;
+        bottom: 520px;
+    }
+}*/
+/*Large tablet Screen (landscape)
+@media only screen and (min-width: 1200px) and (max-device-width: 1300px) and (orientation:landscape) {
+    #userTopHeader {
+        max-width: 200px;
+        bottom: 330px;
+    }
+}*/
+/*Mobile Screen*/
+@media only screen and (max-width: 992px) {
+    .marginLeft-5 {
+        margin-left: 2.5vh;
+    }
+    /* Nav */
+    .sidenav li.header.mainHeader {
+        padding-top: 3vh;
+        padding-bottom: 3vh;
+    }
+    .sidenav li.header>a {
+        display: flex;
+        align-items: center;
+    }
+    .sidenav li.header>a img {
+        width: 10vw;
+    }
+    .divider.headerDivider {
+        margin-top: 0;
+    }
+    .mobileUserName {
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+    /*HOME*/
+    .myContainer {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding-bottom: 10px;
+    }
+    .homeTitle h1 {
+        font-size: 15px;
+        margin: 0px;
+    }
+
+    .homeSubTitle h2 {
+        font-size: 25px;
+        margin: 0px;
+    }
+
+    .myContainer .container .col#banner,
+    .myContainer .container .col#homeHowItWorks {
+        margin-top: 40px;
+    }
+    .homeFbBtn {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    #banner .row .s4 div {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+    #banner .row .s4 h3 {
+        font-size: 1.8rem;
+    }
+    footer {
+        background-color: white;
+        padding: 8px 15px;
+    }
+    footer a {
+        padding-top: 3px;
+    }
+
+    #switchLangContainer {
+        margin-top: 10px;
+    }
+
+    /*DASH*/
+    .modal {
+        width: 95%;
+    }
+    .modal .modal-content {
+        padding: 12px;
+    }
+    .ql-toolbar.ql-snow {
+        padding: 1px !important;
+    }
+    .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+        width: 26px !important;
+        /* padding: 3px 4px !important; */
+    }
+    .modal-content h5 {
+        font-size: 1.3rem;
+        margin-bottom: 4vh;
+    }
+    #editor-container {
+        min-height: 7vh;
+    }
+    .ql-editor {
+        min-height: 10vh;
+        margin-top: 1.5vh;
+        margin-bottom: 1.5vh;
+        border: thin solid rgb(222, 221, 221);
+        border-radius: 5px;
+    }
+    .primaryBtn i.right {
+        margin-left: 10px;
+    }
+    nav .sidenav-trigger {
+        margin: 0px;
+    }
+
+    nav ul li a span.badge {
+        position: relative;
+        min-width: 0px;
+        width: 15px;
+        height: 15px;
+        line-height: 15px;
+        top: -50px;
+        font-size: 0.6em;
+        right: -12px;
+        border-radius: 8px;
+        text-align: center;
+        color: white;
+    }
+    nav ul li,
+    nav ul a.dropdown-trigger {
+        height: 56px;
+        line-height: 56px;
+    }
+
+    .mobileNav .nav-content,
+    .mobileNav .nav-content .tabs,
+    nav.mobileNav i.material-icons,
+    .mobileNav .nav-content .tabs .tab {
+        height: 38px;
+    }
+    .mobileNav .nav-content {
+        box-shadow: 1px 1px #ebf0f5;
+    }
+    .mobileNav .nav-content .tabs .tab a {
+        color: rgb(184, 195, 211);
+    }
+    .mobileNav .nav-content .tabs .tab a.active {
+        color: rgb(118, 124, 138);
+    }
+    .mobileNav .nav-content .tabs .indicator {
+        background-color: rgb(118, 124, 138);
+    }
+    nav.mobileNav .nav-content i.material-icons {
+        line-height: 38px;
+    }
+    #mobileUserFriend,
+    #mobileNotification,
+    #mobileChat,
+    #mobileFriends {
+        position: relative;
+        top: 50px;
+        /* width: 80%; */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #mobileUserFriend .collection.with-header .collection-header {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    #mobileUserFriend .collection-header h2 {
+        margin: 0px;
+        color: var(--primary);
+        font-size: 1.3rem;
+    }
+    #mobileUserFriend h2,
+    #mobileNotification h2,
+    #mobileChat h2,
+    #mobileFriends h2 {
+        margin: 5px 0px 15px;
+        font-size: 1.5rem;
+    }
+    #mobileUserFriend .collection .collection-item.avatar {
+        min-height: 0;
+    }
+    #mobileUserFriend .collection .collection-item {
+        padding-bottom: 15px;
+    }
+    #mobileUserFriend .collection .collection-item.avatar {
+        padding-left: 65px;
+    }
+    #mobileUserFriend .collection .collection-item.avatar p {
+        font-size: 14px;
+        color: gray;
+        padding-top: 4px;
+        line-height: 1.3em;
+    }
+    .online {
+        position: absolute;
+        top: 45px;
+        left: 42px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: rgb(16, 241, 16);
+        border: 2px solid white;
+    }
+    .lastOnline {
+        font-size: x-small;
+        color: gray;
+    }
+
+    #mobileNotification h2 a,
+    #mobileChat h2 a,
+    #mobileFriends h2 a {
+        font-size: small;
+        color: gray;
+    }
+
+    .collection .collection-item.avatar.lessPadding .title {
+        font-size: 13px;
+        line-height: 15px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .collection .collection-item.avatar.lessPadding {
+        padding-left: 70px;
+        padding-right: 10px;
+        min-height: 0px;
+    }
+    /* Timeline */
+    #mobileHome {
+        position: relative;
+        top: 50px;
+        /* width: 90%; */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .flxHack {
+        display: flex;
+    }
+    #mobileHome .card-panel {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+    }
+    #mobileHome .card-panel p {
+        font-size: 0.95rem;
+        border: thin solid rgb(183, 182, 182);
+        padding: 0.3vh 3vw;
+        border-radius: 20px;
+    }
+    .timeLineContent.row {
+        margin-bottom: 0px;
+    }
+    .timeLineContent.row .card {
+        margin-bottom: 0px;
+    }
+    .timeLineContent .card .card-content .card-title {
+        line-height: 1.25;
+    }
+    .timeLineContent .card .card-content .card-title .postAuthorName {
+        font-size: 0.85rem;
+        font-weight: 400;
+    }
+    .timeLineContent .card .card-content .card-title .postDate {
+        font-size: 0.65rem;
+    }
+    .timeLineContent .card .card-content.goToPost {
+        padding-top: 12px;
+        padding-bottom: 0;
+    }.timeLineContent img {
+        width: 100%;
+    }
+    .noMarginRight {
+        margin-right: 0 !important;
+    }
+    .noPaddingLeft {
+        padding-left: 0 !important;
+    }
+    .card .card-action.postInteractions {
+        padding: 8px 12px;
+    }
+    .postInteractions i.left {
+        margin-right: 5px;
+    }
+
+    /*FRIENDS*/    
+    #userBanner img {
+        display: block;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+    }
+    #userTopHeader {
+        background-color: white;
+        position: relative;
+        text-align: center;
+        padding: 30px 0px;
+    }
+    #userTopHeader .userThumb img {
+        border-radius: 50px;
+        margin: 0 auto;
+        overflow: hidden;
+        width: 100px;
+        height: auto;
+    }
+    #userTopHeader h5 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #7b8c94;
+    }
+
+    #allFriendsTop {
+        background-color: white;
+        padding: 10px;
+    }
+    #allFriends .col.s12,
+    #peopleNear .col.s12 {
+        margin-top: 15px;
+    }
+    #allFriends .userFriend,
+    #peopleNear .userFriend {
+        background-color: white;
+        padding-bottom: 15px;
+    }
+    #peopleNear {
+        position: relative;
+        margin-top: 30px;
+    }
+    #allFriends .l3 .userFriend,
+    #peopleNear .l3 .userFriend {
+        background-color: white;
+        padding-bottom: 20px;
+    }
+
+    #allFriends .friendBannerImg,
+    #peopleNear .friendBannerImg {
+        width: 100%;
+        height: 100px;
+        background-color: green;
+        background-image: url("../img/userBannerImg.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    #allFriends .friendThumbImg,
+    #peopleNear .friendThumbImg {
+        width: 70px;
+        height: 70px;
+        border-radius: 35px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        top: -35px;
+    }
+
+    #allFriends .friendThumbImg img,
+    #peopleNear .friendThumbImg img {
+        width: 70px;
+        height: 70px;
+        border-radius: 35px;
+        border: 3px solid white;
+    }
+    #allFriends .friendContent,
+    #peopleNear .friendContent {
+        position: relative;
+        top: -20px;
+    }
+    .friendName,
+    .friendDetailCount {
+        text-transform: uppercase;
+    }
+    .friendLocation {
+        text-transform: capitalize;
+        font-size: small;
+        line-height: 1;
+        color: #999999;
+    }
+    .friendDetails a {
+        display: inline-block;
+        margin-right: 25px;
+        color: #999999;
+    }
+    .friendDetailCount {
+        display: block;
+        text-transform: lowercase;
+    }
+
+    .friendChat a {
+        color: white;
+        margin-top: 30px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 25px;
+        background-color: var(--chat);
+        padding-top: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .friendsDecision {
+        margin-top: 30px;
+    }
+}
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+    backdrop-filter: blur(10px);
+    background: url(//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/100px-Phi_fenomeni.gif) 50% 50% no-repeat rgb(249, 249, 249);
+    filter: opacity(0.5);
+}
