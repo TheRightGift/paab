@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ global_asset('css/materialize.min.css') }}">
     <link rel="stylesheet" href="{{ global_asset('css/paab.css') }}">
     <link rel="stylesheet" href="{{ global_asset('css/physicians.css') }}">
+    <link rel="stylesheet" href="{{ global_asset('css/'.$templateCSS) }}">
     <link rel="stylesheet" href="{{ global_asset('fonts/material-icons.css') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

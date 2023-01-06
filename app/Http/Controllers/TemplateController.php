@@ -149,12 +149,14 @@ class TemplateController extends Controller
     public function renderTemplate($templateID) {
         $template = Template::find($templateID);
         $profession = $template->profession->name;
+        $templateCSS = $template->styleFile;
         $template = $template->title;
+
         $preview = true;
         if($profession === 'Physician'){
-            return view('websites.physician', compact('preview', 'template'));
+            return view('websites.physician', compact('preview', 'template', 'templateCSS'));
         } else if($profession === 'Legal'){
-            return view('websites.legal', compact('preview', 'template'));
+            return view('websites.legal', compact('preview', 'template', 'templateCSS'));
         }
     }
 }
