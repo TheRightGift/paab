@@ -100,12 +100,13 @@ class TenantController extends Controller
         $profession = $tenant->template->profession->name;
         $professionId =$tenant->template->profession_id;
         $template = $tenant->template->title;
+        $templateCSS = $tenant->template->styleFile;
         // dd($tenant);
         $generalTB = General::first();
         $user = !empty($generalTB) ? $generalTB->title : null;
         
         if($profession === 'Physician'){
-            return view('websites.physician', compact('template', 'user'));
+            return view('websites.physician', compact('template', 'user', 'templateCSS'));
         } else {
             dd($profession);
         }
