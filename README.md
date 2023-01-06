@@ -5,7 +5,7 @@ Please note that to get a migration of cities, countries, and states.
 Please run the following 
 <p>
     <code>php artisan db:seed</code> <br/> 
-    <code>php artisan migrate --seed --seeder=TitleSeeder</code> <br/> 
+    <code>php artisan migrate --seed --seeder=GeneralSeeder</code> <br/> 
     <code>php artisan passport:install</code> <br/> 
     <code>php artisan serve</code> <br/> 
 </p>
