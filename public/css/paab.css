@@ -75,8 +75,14 @@ body {
 .marginTop-5 {
     margin-top: 5vh;
 }
+.marginTop-2 {
+    margin-top: 2vh;
+}
 .verticalMargin-2 {
     margin: 0 2vw;
+}
+.vHMargin-5, .row.vHMargin-5 {
+    margin: 3vh 5vw;
 }
 .primary {
     background-color: var(--primary);
@@ -2369,6 +2375,16 @@ textarea::placeholder {
     width: 463px;
     height: 40px;
 }
+.genInput input[type=text]:not(.browser-default) {
+    border: 1px solid #7746ff;
+    border-radius: 10px;
+    text-align: center;
+    height: 40px;
+}
+.row .col.genInput {
+    padding-left: 0;
+    
+}
 #genInput1 {
     border: 1px solid #7746ff;
     border-radius: 10px;
@@ -2379,10 +2395,11 @@ textarea::placeholder {
 #genModalBtn {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-    background: #7746ff;
+    background: rgb(119, 70, 255, 0.5);
     border-radius: 6px;
-    width: 8vw;
+    width: 6vw;
 }
+
 .genBottomBtnDiv {
     margin-top: 10vh;
 }
