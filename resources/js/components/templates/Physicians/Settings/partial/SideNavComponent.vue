@@ -1,18 +1,18 @@
 <template>
-    <div>
+    <div class="navbar-fixed">
         <nav class="editWebNavbar">
             <div class="nav-wrapper container">
                 <a href="/" class="brand-logo editWebNavbarLogo">Paab</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
-                        <a href="#!" class="editWebSidenavDomainNameLink">
-                            Dashboard
-                            <i class="material-icons editWebSidenavTempIcon">dashboard</i>
+                        <a href="#!" class="editWebSidenavDomainNameLink" @click="openPromotionals">
+                            Add Promotionals
+                            <i class="material-icons editWebSidenavTempIcon">add</i>
                         </a>
                     </li>
                     <li>
-                        <a href="#!" class="editWebSidenavDomainNameLink" @click="openNew">
-                            <span>{{ host }}</span>
+                        <a :href="host" class="editWebSidenavDomainNameLink" @click="openNew">
+                            <span>Preview website</span>
                         
                             <i class="material-icons editWebSidenavTempIcon">open_in_new</i>
                         </a>
@@ -21,50 +21,6 @@
                 </ul>
             </div>
         </nav>
-        <!-- <div class="editWebSidenavDiv">
-            <div class="editWebSidenavProImgDiv"></div>
-
-            <div class="editWebSidenavDomainNameDiv">
-                <a href="#" class="editWebSidenavDomainNameLink">{{ host }}</a>
-
-                <a href="#!" @click="openNew">
-                    <i class="material-icons editWebSidenavTempIcon"
-                        >open_in_new</i
-                    >
-                </a>
-            </div>
-
-            <div class="editWebSidenavDomainNameDiv">
-                <span class="editWebSidenavDomainNameLink">{{ date }}</span>
-
-                <i class="material-icons editWebSidenavTempIcon">date_range</i>
-            </div>
-
-            <div class="editWebSidenavDomainNameDiv">
-                <a href="#!" class="editWebSidenavDomainNameLink">
-                    My Settings
-                    <i class="material-icons editWebSidenavTempIcon"
-                        >dashboard</i
-                    >
-                </a>
-            </div>
-            <div class="editWebSidenavDomainNameDiv">
-                <a href="#!" class="editWebSidenavDomainNameLink" @click="openPromotionals">
-                    Add Promotionals
-                    <i class="material-icons editWebSidenavTempIcon"
-                        >close</i
-                    >
-                </a>
-            </div>
-
-            <div>
-                <img
-                    src="/media/img/settings.png"
-                    alt="fillForm.png"
-                    class="editWebSidenavImg"
-                />
-            </div>
-        </div> -->
     </div>
 </template>
 <script>
