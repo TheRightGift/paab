@@ -1722,7 +1722,13 @@ a.active {
     width: 93%;
     margin: 0 auto;
 }
-
+#webAddCircleIcon {
+    /* color: #7746FF; */
+    /* font-size: 2rem; */
+    /* position: absolute;
+    right: 7vw;
+    top: 15vh; */
+}
 #webRightDiv {
     padding: 5vh 2vw;
 }
@@ -2573,7 +2579,12 @@ div .col .s9 input.clientCreatePortInput1 {
     justify-content: center;
     align-items: center;
 }
-
+.editWebModalDiv {
+    position: absolute;
+    left: 25vw;
+    top: 3vh;
+    width: 67%;
+}
 .editWebLink {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
@@ -3058,7 +3069,14 @@ textarea::placeholder {
     color: #ffffff;
     width: 8vw;
 }
-
+#editWebWlcTxt {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.9rem;
+    line-height: 37px;
+    color: #7746ff;
+}
 #genUploadFavIcon {
     position: relative;
     top: 0.5vh;
@@ -3204,10 +3222,36 @@ textarea::placeholder {
     position: absolute;
     top: 14.8vh;
 }
-
+.editWebSidenavProImgDiv {
+    background: #d9d9d9;
+    width: 69px;
+    height: 69px;
+    border-radius: 100px;
+    margin: 7vh auto 0 auto;
+}
 .editWebSidenavDomainNameDiv {
     text-align: center;
     margin-top: 1vh;
+}
+.editWebSidenavDomainNameLink {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+}
+.editWebSidenavTempIcon {
+    font-size: 16px;
+    height: 1vh;
+    color: #ffffff;
+    position: relative;
+    top: 0.5vh;
+    left: 0.3vw;
+}
+.editWebSidenavImg {
+    width: 16vw;
+    margin: 9vh 0 0 4vw;
 }
 
 /* Logout Modal */
@@ -3328,9 +3372,6 @@ table.adminAddClientTable tbody tr.adminAddClientTr {
 .adminClientSearchInputIconsDiv {
     margin-left: 1vw;
 }
-
-
-
 
 /* Media Query on Medium Device */
 @media screen and (max-width: 992px) and (min-width: 640px) {
@@ -4780,5 +4821,4 @@ table.adminAddClientTable tbody tr.adminAddClientTr {
         background: #1e1e1e;
         border-radius: 6px;
     }
-
 }

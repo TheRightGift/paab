@@ -42,34 +42,35 @@
                     </p>
                 </div>
 
-                <div class="row">
-                    <div class="col s6">
-                        <p class="genTitle1">Put in your title details</p>
-                    
-                        <p class="genTxt">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry.
-                        </p>
-                    
-                        <div class="input-field">
-                            <input type="text" placeholder="JohnDoe" id="genInput" v-model="general.title" />
-                        </div>
-                    
-                        
-                    </div>
-                    
-                    <div class="col s6">
-                        <img src="/media/img/editWebsiteSettings/title.png" alt="title.png" class="editWebIllustrativeImg">
-                    </div>
-                </div>
+                <div>
+                    <p class="genTitle1">Put in your title details</p>
 
-                <div class="genBottomBtnDiv">
-                    <button type="button" class="btn right" id="genNextBtn" @click="genNextBtn()">
-                        NEXT STEP
-                    </button>
+                    <p class="genTxt">
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry.
+                    </p>
+
+                    <div class="input-field">
+                        <input
+                            type="text"
+                            placeholder="JohnDoe"
+                            id="genInput"
+                            v-model="general.title"
+                        />
+                    </div>
+
+                    <div class="genBottomBtnDiv">
+                        <button
+                            type="button"
+                            class="btn right"
+                            id="genNextBtn"
+                            @click="genNextBtn()"
+                        >
+                            NEXT STEP
+                        </button>
+                    </div>
                 </div>
             </div>
-
         </div>
 
         <!-- General Modal 1-->
@@ -115,56 +116,91 @@
                     </p>
                 </div>
 
-                <div class="row">
-                    <div class="col s7">
-                        <p class="genTitle1">Upload a favicon</p>
-                    
-                        <p class="genTxt">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry.
-                        </p>
-                    
-                        <div class="file-field input-field" id="genUploadFavIconDiv" v-if="general.favicon == null">
-                            <input type="file" @change="favUpload" accept=".png" />
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" id="genInput1"
-                                    placeholder="File type must be in .png and not exceed 100kb" />
-                                <i class="material-icons" id="genUploadFavIcon">file_upload</i>
-                            </div>
+                <div>
+                    <p class="genTitle1">Upload a favicon</p>
+
+                    <p class="genTxt">
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry.
+                    </p>
+
+                    <div
+                        class="file-field input-field"
+                        id="genUploadFavIconDiv"
+                        v-if="general.favicon == null"
+                    >
+                        <input type="file" @change="favUpload" accept=".png" />
+                        <div class="file-path-wrapper">
+                            <input
+                                class="file-path validate"
+                                type="text"
+                                id="genInput1"
+                                placeholder="File type must be in .png and not exceed 100kb"
+                            />
+                            <i class="material-icons" id="genUploadFavIcon"
+                                >file_upload</i
+                            >
                         </div>
-                        <div v-else class="flex no-space-between mb-2">
-                            <img width="100" height="100" class="responsive-img" :src="
+                    </div>
+                    <div v-else class="flex no-space-between mb-2">
+                        <img
+                            width="100"
+                            height="100"
+                            class="responsive-img"
+                            :src="
                                 typeof general.favicon == 'string'
                                     ? 'tenancy/assets/' + general.favicon
                                     : uploaded
-                            " />
-                            <a class="waves-effect waves-light btn-small btn red" @click="deleteImg">Change</a>
-                        </div>
-                    
-                        <div>
-                            <button type="button" class="btn" id="genModalBtn" @click.prevent="generalSave" v-if="saved == null" :disabled="
-                                general.favicon == null || general.title == ''
-                            ">
-                                Save
-                            </button>
-                            <button type="button" class="btn" id="genModalBtn" @click.prevent="generalUpdate" v-else :disabled="
-                                general.favicon == null || general.title == ''
-                            ">
-                                Update
-                            </button>
-                        </div>
+                            "
+                        />
+                        <a
+                            class="waves-effect waves-light btn-small btn red"
+                            @click="deleteImg"
+                            >Change</a
+                        >
                     </div>
-                    
-                    <div class="col s5">
-                        <img src="/media/img/editWebsiteSettings/favicon.png" alt="favicon.png" class="editWebIllustrativeImg" width="420" height="160">
+
+                    <div>
+                        <button
+                            type="button"
+                            class="btn"
+                            id="genModalBtn"
+                            @click.prevent="generalSave"
+                            v-if="saved == null"
+                            :disabled="
+                                general.favicon == null || general.title == ''
+                            "
+                        >
+                            Save
+                        </button>
+                        <button
+                            type="button"
+                            class="btn"
+                            id="genModalBtn"
+                            @click.prevent="generalUpdate"
+                            v-else
+                            :disabled="
+                                general.favicon == null || general.title == ''
+                            "
+                        >
+                            Update
+                        </button>
                     </div>
-                </div>
-                <div class="genBottomBtnDiv">
-                    <a href="#" class="goBackBtn" @click="genGoBackBtn()">GO BACK</a>
-                
-                    <button type="button" class="btn right" id="genNextBtn" @click="genNextBtn1()">
-                        NEXT STEP
-                    </button>
+
+                    <div class="genBottomBtnDiv">
+                        <a href="#" class="goBackBtn" @click="genGoBackBtn()"
+                            >GO BACK</a
+                        >
+
+                        <button
+                            type="button"
+                            class="btn right"
+                            id="genNextBtn"
+                            @click="genNextBtn1()"
+                        >
+                            NEXT STEP
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

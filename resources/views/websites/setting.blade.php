@@ -13,13 +13,14 @@
 
     <link rel="stylesheet" href="{{ global_asset('css/materialize.min.css') }}">
     <link rel="stylesheet" href="{{ global_asset('css/paab.css') }}">
+    <link rel="stylesheet" href="{{ global_asset('css/websiteSettings.css') }}">
     <link rel="stylesheet" href="{{ global_asset('fonts/material-icons.css') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     <div id="app">   
-        <website-settings user="{{ $user }}"></website-settings>
+        <physician-website-settings user="{{ $user }}"></physician-website-settings>
     </div>
     
     <script src="{{ global_asset('js/app.js') }}"></script>
