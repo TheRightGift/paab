@@ -402,14 +402,6 @@
                             </button>
                         </div>
                     </div>
-                    
-                    <div class="genBottomBtnDiv">
-                        <a href="#" class="goBackBtn" @click="bioGoBackBtn2()">GO BACK</a>
-                    
-                        <button type="button" class="btn right" id="genNextBtn" @click="bioNextBtn2()">
-                            NEXT STEP
-                        </button>
-                    </div>
                 </div>
             </div>
 
