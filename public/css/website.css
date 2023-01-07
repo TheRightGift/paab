@@ -1,0 +1,227 @@
+/* Client Website Section */
+.webBlackDiv {
+    width: 95%;
+    height: 196px;
+    background: #1e1e1e;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 5vh auto 0 auto;
+}
+.webBlackTitle {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: #7746ff;
+    margin: 0 0 3vh 0;
+    /* margin: 0; */
+}
+.webBlackTxt {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0;
+    /* width: 60%; */
+}
+.webBlackDiv1 {
+    width: 93%;
+    margin: 0 auto;
+}
+
+#webRightDiv {
+    padding: 5vh 2vw;
+}
+#webAddContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3.25vh 0;
+}
+#webAddContainer.primary:hover {
+    border: thin solid var(--primary);
+    cursor: pointer;
+    padding: 3.1vh 0;
+}
+.material-icons.webAddIcon {
+    font-size: 3.5rem;
+}
+.material-icons.webAddIcon2 {
+    font-size: 3.35rem;
+}
+.webWhiteDiv {
+    height: 196px;
+    border-radius: 10px;
+}
+/* #webWhiteProDiv {
+    margin-right: 0vw;
+} */
+.websitesViewRow {
+    padding: 4vh 0 2vh;
+    border-bottom: thin solid var(--secondary);
+}
+.websiteTemplateName {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--primary);
+}
+p.websiteTemplateName {
+    margin-top: 1vh;
+}
+.websiteTemplateDesc h5 {
+    margin-top: 0;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--primary);
+}
+.websiteTemplateDesc p {
+    margin-top: 0;
+}
+.websiteTemplateDesc .col.l9 {
+    padding-left: 0;
+}
+.webWhiteProDiv {
+    width: 60px;
+    height: 60px;
+    background: var(--black);
+    /* border-radius: 50%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.webWhiteDiv1 {
+    padding-top: 5vh;
+}
+.websiteTitle {
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: center;
+}
+.webWhiteProName {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.125rem;
+    color: #7746ff;
+    margin: 1vh 0 0 0;
+}
+.webWhiteTitle {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.25rem;
+    color: #7746ff;
+    margin: 0;
+}
+.webWhiteTxt {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1rem;
+    color: rgb(30, 30, 30);
+}
+#webWhiteIcon {
+    font-size: 1.5rem;
+    color: #7746ff;
+}
+.webHr {
+    margin: 0;
+}
+
+.row .col.websiteBanner {
+    padding: 3.5vh 5.5vw;
+}
+#webWhiteDiv2 {
+    border-bottom: 1px solid rgba(119, 70, 255, 0.3);
+    margin: 0;
+}
+#webWhiteProMgLftDiv {
+    margin-left: 2vw;
+}
+
+/* Client Setup Website Modal */
+.setWebContainModalDiv {
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding-top: 7vh;
+    width: 80%;
+    margin: 13vh auto 0 auto;
+    padding-bottom: 2vh;
+}
+.setWebInnerModalDiv {
+    width: 85%;
+    margin: auto;
+}
+.setWebTitleDiv,
+.setWebUrlDiv,
+.setWebDateDiv,
+.setWebDescriptionDiv {
+    display: flex;
+}
+.setWebTitle,
+.setWebUrlTitle,
+.setWebDateTitle,
+.setWebDescriptionTitle {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    margin-right: 2vw;
+}
+.setWebTitleData,
+.setWebUrlData,
+.setWebDateData,
+.setWebDescriptionData {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 22px;
+    letter-spacing: -0.015em;
+    color: #7746ff;
+}
+#setWebBtn {
+    background: #d9d9d9;
+    border-radius: 6px;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #000000;
+    margin-bottom: 2vh;
+}
+#setWebBtn1 {
+    background: #7746ff;
+    border-radius: 6px;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+}
+#setWebBtnDiv {
+    margin-top: 12vh;
+}
+.setWebPlan {
+    background: #fec526;
+    box-shadow: 0px 4px 4px rgba(254, 197, 38, 0.27);
+    border-radius: 100px 0px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    padding: 0px 10px;
+    margin-left: 1vw;
+}

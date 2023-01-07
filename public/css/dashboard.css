@@ -1,0 +1,311 @@
+/* Dashboard Section */
+
+
+.dashRightDiv {
+    margin: 1.3vh auto 0 auto;
+    width: 98.5%;
+}
+
+
+
+#dashRightImgDiv {
+    background-image: url("../media/img/rocket.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 292px;
+    border-radius: 10px;
+}
+
+#dashRightImgInnerDiv {
+    width: 100%;
+    height: 292px;
+    border-radius: 10px;
+    background-color: rgba(30, 30, 30, 0.5);
+}
+
+.dashRightImgTitle {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3.125rem;
+    /* line-height: 61px; */
+    color: #6938f2;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0;
+}
+
+.dashRightImgTxt {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    /* line-height: 24px; */
+    color: #ffffff;
+    margin: 0;
+    width: 87%;
+}
+
+.dashRightImgTxtDiv {
+    position: absolute;
+    top: 13vh;
+    left: 22vw;
+}
+
+.dashWlcNoteDiv {
+    background: #1e1e1e;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 12.25rem;
+}
+
+.dashWlcNoteTitle {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.5rem;
+    color: #7746ff;
+    margin: 2vh 0 0 0;
+}
+
+.dashWlcNoteTitle1 {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.dashWlcNoteTxt {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    width: 63%;
+    margin: 0;
+}
+
+.dashWlcNoteInnerDiv {
+    position: relative;
+    top: 4vh;
+    left: 2vw;
+}
+
+.dashTimeDiv {
+    background: #7746ff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 12.25rem;
+    margin-top: 2vh;
+    width: 97%;
+}
+
+.dashTimeDate {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: #ffffff;
+    margin: 1vh 0 0 0;
+}
+
+.dashTime {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3.75rem;
+    line-height: 90px;
+    color: #ffffff;
+    margin: 0;
+    position: relative;
+    bottom: 2vh;
+}
+
+.dashTimePeriod {
+    font-size: 1.5rem;
+}
+
+.dashTimeInnerDiv {
+    position: relative;
+    top: 4vh;
+    left: 2vw;
+}
+
+.shapeDegDiv {
+    display: flex;
+    position: relative;
+    top: 7vh;
+    left: 1.5vw;
+}
+
+.shapeDeg {
+    width: 38.86px;
+    height: 119.94px;
+    background: rgba(0, 0, 0, 0.29);
+    border-radius: 100px;
+    transform: rotate(-28.69deg);
+    margin-right: 1vw;
+}
+
+.shapeDeg1 {
+    width: 40.25px;
+    height: 124.23px;
+    background: rgba(0, 0, 0, 0.29);
+    border-radius: 100px;
+    transform: rotate(-28.69deg);
+    margin-right: 1vw;
+    position: relative;
+    bottom: 1vh;
+    right: 0.3vw;
+}
+
+.shapeDeg2 {
+    width: 40.25px;
+    height: 124.23px;
+    background: rgba(0, 0, 0, 0.29);
+    border-radius: 100px;
+    transform: rotate(-28.69deg);
+    margin-right: 1vw;
+    position: relative;
+    bottom: 2vh;
+    right: 0.6vw;
+}
+
+.cardHeader {
+    background: #7746ff;
+    box-shadow: 0px 4px 4px rgba(119, 70, 255, 0.3);
+    border-radius: 10px 10px 0px 0px;
+}
+
+.cardContent {
+    background: #1e1e1e;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 3vh 1vw;
+}
+
+.cardTitle {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #ffffff;
+    padding: 5px 0 5px 30px;
+    margin: 0;
+}
+
+#dashWlcNoteRowDiv,
+#myWebDiv,
+#myMailDiv {
+    margin-bottom: 0;
+}
+
+.cardImgDiv {
+    width: 60px;
+    height: 60px;
+    background: #d9d9d9;
+    border-radius: 50%;
+}
+
+#cardImg {
+    font-size: 3rem;
+    margin-left: 0.5vw;
+    margin-top: 0.5vh;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.cardImgMainDiv {
+    display: flex;
+    position: relative;
+    margin: 1rem 0 0 2rem;
+}
+
+.cardProName,
+.domainname {
+    color: #7746ff;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.cardProName {
+    /* font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;*/
+    font-size: 1.25rem;
+    line-height: 30px;
+    /* color: #7746FF; */
+    margin-left: 1vw;
+}
+.cardProName {
+    font-size: 1rem;
+}
+
+#cardViewLink {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 24px;
+    text-decoration: underline;
+    color: #f4f4f4;
+    position: relative;
+    top: 4vh;
+    /* border-bottom: #D9D9D9; */
+}
+
+.cardLine {
+    /* border-color: #6938F2; */
+    border: 0.1px solid rgba(119, 70, 255, 0.3);
+}
+
+#dashAddIconBtn {
+    color: #7746ff;
+    position: relative;
+    left: 0.7vw;
+    cursor: pointer;
+}
+
+.dashTimeAgo {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: #ffffff;
+    margin-left: 2vw;
+}
+
+.mailCardTxt {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 0.8);
+    width: 98%;
+    margin-top: 0;
+    margin-bottom: 3.5vh;
+    position: relative;
+    bottom: 2vh;
+}
+
+#myWebRmMgRow {
+    margin-bottom: 0;
+}
+
+#dashSidenavIconBtn {
+    font-size: 3rem;
+    color: #7746ff;
+}
+
+.userTempMainDiv {
+    display: flex;
+    overflow: auto;
+    justify-content: space-around;
+}

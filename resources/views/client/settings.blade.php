@@ -12,6 +12,8 @@
 
         <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/paab.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/settings.css') }}">
+
         <link rel="stylesheet" href="{{ asset('fonts/material-icons.css') }}">
     </head>
     <body>

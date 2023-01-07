@@ -1,0 +1,175 @@
+
+/* Client Support Section */
+.supportBlueDiv {
+    width: 95%;
+    height: 196px;
+    background: #1e1e1e;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 5vh auto 6vh auto;
+}
+.supportTitle {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: #7746ff;
+    margin: 6vh 0 0 0;
+}
+.webBlackDiv1 {
+    width: 95%;
+    margin: 0 auto;
+}
+.supportTitle {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.875rem;
+    line-height: 50px;
+    color: #7746ff;
+}
+.supportTxt {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #1e1e1e;
+}
+div .row .supportDiv {
+    width: 95%;
+    margin: 0 auto;
+}
+.supportTitle1 {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 22px;
+    color: #7746ff;
+    margin-top: 0;
+}
+.supportTxt1 {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: #1e1e1e;
+}
+.supportDiv > * {
+    margin-bottom: 5vh;
+}
+.supportGetInTouchDiv {
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 94%;
+    margin: 1vh auto 4vh auto;
+}
+.supportGetInTouchTitle {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: #7746ff;
+    margin: 0;
+}
+.supportGetInTouchTxt {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+#supportGetInTouchBtn {
+    background: #7746ff;
+    border-radius: 6px;
+    margin-top: 2vh;
+}
+div .row .supportGetInTouchRowDiv {
+    width: 98%;
+    margin: 0 auto;
+    padding: 2.3vh 0;
+}
+#supportGetInTouchBtnColDiv {
+    padding-right: 0;
+}
+
+/* Client modal Section */
+/* .modalContainDiv {
+    width: 90%;
+    margin: 6vh auto;
+} */
+.clientModalDiv {
+    background: #1e1e1e;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-top: 1.5vh;
+    margin-bottom: 3vh;
+    padding-top: 7vh;
+    padding-bottom: 3vh;
+}
+.clientSendmailContainDiv {
+    width: 80%;
+    margin: auto;
+}
+.clientSendmailBackTxt {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.875rem;
+    color: #000000;
+}
+#clientSendmailArrowBackIcon {
+    font-size: 1.5rem;
+    font-weight: 900;
+    position: relative;
+    top: 0.3rem;
+    margin-right: 0.2vw;
+}
+.clientSendemailTitle {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: #7746ff;
+}
+.clientSendemailTxt,
+.clientSendemailTxt1 {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.97rem;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3.5vh;
+}
+.clientSendemailTxt2 {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.97rem;
+    line-height: 21px;
+    color: #7746ff;
+    margin-top: 5vh;
+}
+.clientSendmailTimeSent {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: #ffffff;
+}
+#clientSendmailRowDiv {
+    width: 95%;
+    margin: auto;
+}
+.clientSendmailArrowBackLink {
+    color: #000000;
+}
