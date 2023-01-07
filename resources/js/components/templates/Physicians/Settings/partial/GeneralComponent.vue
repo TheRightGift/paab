@@ -3,7 +3,7 @@
         <div class="editGenModal" v-show="genModal">
             <div class="editInnerGenModal">
                 <div class="genTitleDiv">
-                    <p class="genTitle cursor" @click="genGoBackBtn()">
+                    <p class="genTitle cursor activeTab" @click="genGoBackBtn()">
                         <i
                             class="material-icons"
                             id="genTitleCheck"
@@ -22,7 +22,7 @@
                         Title
                     </p>
 
-                    <p class="genTitle cursor activeTab" @click="genNextBtn">
+                    <p class="genTitle cursor" @click="genNextBtn">
                         <i
                             class="material-icons"
                             id="genTitleCheck"
@@ -43,23 +43,23 @@
                 </div>
 
                 <div class="row">
+                    <div class="col l12">
+                        <p class="genTitle1">Put in your title.</p>
+                    </div>  
                     <div class="col s6">
-                        <p class="genTitle1">Put in your title details</p>
-                    
                         <p class="genTxt">
                             Lorem Ipsum is simply dummy text of the printing and
                             typesetting industry.
                         </p>
                     
-                        <div class="input-field">
-                            <input type="text" placeholder="JohnDoe" id="genInput" v-model="general.title" />
-                        </div>
-                    
-                        
+                        <div class="input-field col l12 genInput">
+                            <input type="text" placeholder="Welcome to Dr. Chigozie Chukwu website." class="" v-model="general.title" />
+                        </div>                        
                     </div>
                     
                     <div class="col s6">
-                        <img src="/media/img/editWebsiteSettings/title.png" alt="title.png" class="editWebIllustrativeImg">
+                        <p><b>Title</b> or popularly <b>webpage title</b> is a short description of a webpage and appears at the top of a browser window as depicted in the image below. You can see title for my site and title for linkedin website.</p>
+                        <img src="/media/img/editWebsiteSettings/title-pointer.png" alt="website title description" class="responsive-img">
                     </div>
                 </div>
 
@@ -116,47 +116,57 @@
                 </div>
 
                 <div class="row">
-                    <div class="col s7">
+                    <div class="col l12">
                         <p class="genTitle1">Upload a favicon</p>
-                    
+                    </div>
+                    <div class="col l6">
                         <p class="genTxt">
                             Lorem Ipsum is simply dummy text of the printing and
                             typesetting industry.
                         </p>
-                    
-                        <div class="file-field input-field" id="genUploadFavIconDiv" v-if="general.favicon == null">
-                            <input type="file" @change="favUpload" accept=".png" />
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" id="genInput1"
-                                    placeholder="File type must be in .png and not exceed 100kb" />
-                                <i class="material-icons" id="genUploadFavIcon">file_upload</i>
+                        <div class="row vHMargin-5">
+                            <div class="col l6">
+                                <div class="file-field input-field" id="genUploadFavIconDiv" v-if="general.favicon == null">
+                                    <input type="file" @change="favUpload" accept=".png" />
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" id="genInput1"
+                                            placeholder="File type must be in .png and not exceed 100kb" />
+                                        <i class="material-icons" id="genUploadFavIcon">file_upload</i>
+                                    </div>
+                                </div>
+                                <div v-else class="flex no-space-between">
+                                    <img width="100" height="100" class="responsive-img" :src="
+                                        typeof general.favicon == 'string'
+                                            ? 'tenancy/assets/' + general.favicon
+                                            : uploaded
+                                    " />                                
+                                </div>
+                            </div>
+                            <div class="col l6 faviconUploadBtnCol">
+                                <button type="button" class="btn-flat redBorderBtn matchngBtn" @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
                             </div>
                         </div>
-                        <div v-else class="flex no-space-between mb-2">
-                            <img width="100" height="100" class="responsive-img" :src="
-                                typeof general.favicon == 'string'
-                                    ? 'tenancy/assets/' + general.favicon
-                                    : uploaded
-                            " />
-                            <a class="waves-effect waves-light btn-small btn red" @click="deleteImg">Change</a>
-                        </div>
-                    
-                        <div>
-                            <button type="button" class="btn" id="genModalBtn" @click.prevent="generalSave" v-if="saved == null" :disabled="
-                                general.favicon == null || general.title == ''
-                            ">
-                                Save
-                            </button>
-                            <button type="button" class="btn" id="genModalBtn" @click.prevent="generalUpdate" v-else :disabled="
-                                general.favicon == null || general.title == ''
-                            ">
-                                Update
-                            </button>
+                        <div class="row"> 
+                            <div class="col l12">
+                                <button type="button" class="btn-flat faviconUpdateBtn" @click.prevent="generalSave" v-if="saved == null" :disabled="
+                                    general.favicon == null || general.title == ''
+                                ">
+                                    Save
+                                </button>
+                                <button type="button" class="btn-flat faviconUpdateBtn" @click.prevent="generalUpdate" v-else :disabled="
+                                    general.favicon == null || general.title == ''
+                                ">
+                                    Update
+                                </button>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="col s5">
-                        <img src="/media/img/editWebsiteSettings/favicon.png" alt="favicon.png" class="editWebIllustrativeImg" width="420" height="160">
+                    <div class="col l6">
+                        <p>
+                            <b>Favicon</b> an icon associated with a particular website, typically displayed in the address bar of a browser accessing the site or next to the site name in a user's list of bookmarks. Please ensure the file is max 50px height and 50px width.
+                        </p>
+                        <img src="/media/img/editWebsiteSettings/favicon-pointer.png" alt="website favicon illustration." class="responsive-img"/>
                     </div>
                 </div>
                 <div class="genBottomBtnDiv">

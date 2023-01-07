@@ -29269,7 +29269,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     achievement: $data.achievement,
     contact: $data.contact,
     social: $data.social,
-    general: $data.general
+    general: $data.general,
+    "class": "fullPage"
   }, null, 8 /* PROPS */, ["user", "bio", "services", "achievement", "contact", "social", "general"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.promoView]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PromotionalsComponent, {
     onClose: _cache[0] || (_cache[0] = function ($event) {
       return $data.promoView = false;
@@ -30230,24 +30231,26 @@ var _hoisted_7 = {
 var _hoisted_8 = {
   "class": "row"
 };
-var _hoisted_9 = {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col l12"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "genTitle1"
+}, "Put in your title.")], -1 /* HOISTED */);
+var _hoisted_10 = {
   "class": "col s6"
 };
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "genTitle1"
-}, "Put in your title details", -1 /* HOISTED */);
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "genTxt"
 }, " Lorem Ipsum is simply dummy text of the printing and typesetting industry. ", -1 /* HOISTED */);
 var _hoisted_12 = {
-  "class": "input-field"
+  "class": "input-field col l12 genInput"
 };
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col s6"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/media/img/editWebsiteSettings/title.png",
-  alt: "title.png",
-  "class": "editWebIllustrativeImg"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" or popularly "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "webpage title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" is a short description of a webpage and appears at the top of a browser window as depicted in the image below. You can see title for my site and title for linkedin website.")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/media/img/editWebsiteSettings/title-pointer.png",
+  alt: "website title description",
+  "class": "responsive-img"
 })], -1 /* HOISTED */);
 var _hoisted_14 = {
   "class": "genBottomBtnDiv"
@@ -30282,21 +30285,29 @@ var _hoisted_21 = {
 var _hoisted_22 = {
   "class": "row"
 };
-var _hoisted_23 = {
-  "class": "col s7"
-};
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col l12"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "genTitle1"
-}, "Upload a favicon", -1 /* HOISTED */);
+}, "Upload a favicon")], -1 /* HOISTED */);
+var _hoisted_24 = {
+  "class": "col l6"
+};
 var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "genTxt"
 }, " Lorem Ipsum is simply dummy text of the printing and typesetting industry. ", -1 /* HOISTED */);
 var _hoisted_26 = {
+  "class": "row vHMargin-5"
+};
+var _hoisted_27 = {
+  "class": "col l6"
+};
+var _hoisted_28 = {
   key: 0,
   "class": "file-field input-field",
   id: "genUploadFavIconDiv"
 };
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "file-path-wrapper"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   "class": "file-path validate",
@@ -30307,40 +30318,51 @@ var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "material-icons",
   id: "genUploadFavIcon"
 }, "file_upload")], -1 /* HOISTED */);
-var _hoisted_28 = {
+var _hoisted_30 = {
   key: 1,
-  "class": "flex no-space-between mb-2"
+  "class": "flex no-space-between"
 };
-var _hoisted_29 = ["src"];
-var _hoisted_30 = ["disabled"];
-var _hoisted_31 = ["disabled"];
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "col s5"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/media/img/editWebsiteSettings/favicon.png",
-  alt: "favicon.png",
-  "class": "editWebIllustrativeImg",
-  width: "420",
-  height: "160"
+var _hoisted_31 = ["src"];
+var _hoisted_32 = {
+  "class": "col l6 faviconUploadBtnCol"
+};
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "material-icons"
+}, "swap_horiz", -1 /* HOISTED */);
+var _hoisted_34 = [_hoisted_33];
+var _hoisted_35 = {
+  "class": "row"
+};
+var _hoisted_36 = {
+  "class": "col l12"
+};
+var _hoisted_37 = ["disabled"];
+var _hoisted_38 = ["disabled"];
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col l6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Favicon"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" an icon associated with a particular website, typically displayed in the address bar of a browser accessing the site or next to the site name in a user's list of bookmarks. Please ensure the file is max 50px height and 50px width. ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/media/img/editWebsiteSettings/favicon-pointer.png",
+  alt: "website favicon illustration.",
+  "class": "responsive-img"
 })], -1 /* HOISTED */);
-var _hoisted_33 = {
+var _hoisted_40 = {
   "class": "genBottomBtnDiv"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "genTitle cursor",
+    "class": "genTitle cursor activeTab",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.genGoBackBtn();
     })
   }, [$data.general.title !== '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_4, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.general.title == '' && $data.general.favicon !== null || $data.general.title == '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_5, "clear")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Title ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "genTitle cursor activeTab",
+    "class": "genTitle cursor",
     onClick: _cache[1] || (_cache[1] = function () {
       return $options.genNextBtn && $options.genNextBtn.apply($options, arguments);
     })
-  }, [$data.general.favicon !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_6, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.general.title != '' && $data.general.favicon == null || $data.general.favicon == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_7, "clear")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Favicon ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, [$data.general.favicon !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_6, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.general.title != '' && $data.general.favicon == null || $data.general.favicon == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_7, "clear")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Favicon ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
-    placeholder: "JohnDoe",
-    id: "genInput",
+    placeholder: "Welcome to Dr. Chigozie Chukwu website.",
+    "class": "",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.general.title = $event;
     })
@@ -30361,41 +30383,40 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[5] || (_cache[5] = function () {
       return $options.genNextBtn && $options.genNextBtn.apply($options, arguments);
     })
-  }, [$data.general.favicon !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_20, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.general.title != '' && $data.general.favicon == null || $data.general.favicon == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_21, "clear")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Favicon ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, _hoisted_25, $data.general.favicon == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, [$data.general.favicon !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_20, "check")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.general.title != '' && $data.general.favicon == null || $data.general.favicon == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_21, "clear")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Favicon ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [$data.general.favicon == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "file",
     onChange: _cache[6] || (_cache[6] = function () {
       return $options.favUpload && $options.favUpload.apply($options, arguments);
     }),
     accept: ".png"
-  }, null, 32 /* HYDRATE_EVENTS */), _hoisted_27])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, null, 32 /* HYDRATE_EVENTS */), _hoisted_29])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     width: "100",
     height: "100",
     "class": "responsive-img",
     src: typeof $data.general.favicon == 'string' ? 'tenancy/assets/' + $data.general.favicon : $data.uploaded
-  }, null, 8 /* PROPS */, _hoisted_29), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    "class": "waves-effect waves-light btn-small btn red",
+  }, null, 8 /* PROPS */, _hoisted_31)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": "btn-flat redBorderBtn matchngBtn",
     onClick: _cache[7] || (_cache[7] = function () {
       return $options.deleteImg && $options.deleteImg.apply($options, arguments);
     })
-  }, "Change")])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [$props.saved == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }, _hoisted_34)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [$props.saved == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
     type: "button",
-    "class": "btn",
-    id: "genModalBtn",
+    "class": "btn-flat faviconUpdateBtn",
     onClick: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.generalSave && $options.generalSave.apply($options, arguments);
     }, ["prevent"])),
     disabled: $data.general.favicon == null || $data.general.title == ''
-  }, " Save ", 8 /* PROPS */, _hoisted_30)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }, " Save ", 8 /* PROPS */, _hoisted_37)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 1,
     type: "button",
-    "class": "btn",
-    id: "genModalBtn",
+    "class": "btn-flat faviconUpdateBtn",
     onClick: _cache[9] || (_cache[9] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.generalUpdate && $options.generalUpdate.apply($options, arguments);
     }, ["prevent"])),
     disabled: $data.general.favicon == null || $data.general.title == ''
-  }, " Update ", 8 /* PROPS */, _hoisted_31))])]), _hoisted_32]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, " Update ", 8 /* PROPS */, _hoisted_38))])])]), _hoisted_39]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "goBackBtn",
     onClick: _cache[10] || (_cache[10] = function ($event) {
@@ -30796,41 +30817,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "editWebNavbar"
+  "class": "navbar-fixed"
 };
 var _hoisted_2 = {
+  "class": "editWebNavbar"
+};
+var _hoisted_3 = {
   "class": "nav-wrapper container"
 };
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "/",
   "class": "brand-logo editWebNavbarLogo"
 }, "Paab", -1 /* HOISTED */);
-var _hoisted_4 = {
+var _hoisted_5 = {
   id: "nav-mobile",
   "class": "right hide-on-med-and-down"
 };
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#!",
-  "class": "editWebSidenavDomainNameLink"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "material-icons editWebSidenavTempIcon"
-}, "dashboard")])], -1 /* HOISTED */);
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "material-icons editWebSidenavTempIcon"
+}, "add", -1 /* HOISTED */);
+var _hoisted_7 = ["href"];
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Preview website", -1 /* HOISTED */);
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "material-icons editWebSidenavTempIcon"
 }, "open_in_new", -1 /* HOISTED */);
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_10 = [_hoisted_8, _hoisted_9];
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "#",
   "class": "editWebSidenavProImgDiv"
 })], -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#!",
     "class": "editWebSidenavDomainNameLink",
     onClick: _cache[0] || (_cache[0] = function () {
+      return $options.openPromotionals && $options.openPromotionals.apply($options, arguments);
+    })
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Promotionals "), _hoisted_6])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: $data.host,
+    "class": "editWebSidenavDomainNameLink",
+    onClick: _cache[1] || (_cache[1] = function () {
       return $options.openNew && $options.openNew.apply($options, arguments);
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.host), 1 /* TEXT */), _hoisted_6])]), _hoisted_7])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"editWebSidenavDiv\">\n            <div class=\"editWebSidenavProImgDiv\"></div>\n\n            <div class=\"editWebSidenavDomainNameDiv\">\n                <a href=\"#\" class=\"editWebSidenavDomainNameLink\">{{ host }}</a>\n\n                <a href=\"#!\" @click=\"openNew\">\n                    <i class=\"material-icons editWebSidenavTempIcon\"\n                        >open_in_new</i\n                    >\n                </a>\n            </div>\n\n            <div class=\"editWebSidenavDomainNameDiv\">\n                <span class=\"editWebSidenavDomainNameLink\">{{ date }}</span>\n\n                <i class=\"material-icons editWebSidenavTempIcon\">date_range</i>\n            </div>\n\n            <div class=\"editWebSidenavDomainNameDiv\">\n                <a href=\"#!\" class=\"editWebSidenavDomainNameLink\">\n                    My Settings\n                    <i class=\"material-icons editWebSidenavTempIcon\"\n                        >dashboard</i\n                    >\n                </a>\n            </div>\n            <div class=\"editWebSidenavDomainNameDiv\">\n                <a href=\"#!\" class=\"editWebSidenavDomainNameLink\" @click=\"openPromotionals\">\n                    Add Promotionals\n                    <i class=\"material-icons editWebSidenavTempIcon\"\n                        >close</i\n                    >\n                </a>\n            </div>\n\n            <div>\n                <img\n                    src=\"/media/img/settings.png\"\n                    alt=\"fillForm.png\"\n                    class=\"editWebSidenavImg\"\n                />\n            </div>\n        </div> ")]);
+  }, _hoisted_10, 8 /* PROPS */, _hoisted_7)]), _hoisted_11])])])]);
 }
 
 /***/ }),

@@ -11,7 +11,7 @@
                 :contact="contact"
                 :social="social"
                 :general="general"
-                v-show="!promoView"
+                v-show="!promoView" class="fullPage"
             />
             <PromotionalsComponent
                 @close="promoView = false"
