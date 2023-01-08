@@ -8,8 +8,7 @@
                         Start your journey <br />with us...
                     </p>
                     <p class="wlcNoteTxt">
-                        It is a long established fact that a reader will be
-                        distracted by the readable content.
+                        Life does not give you a reset button but with PAAB, we do *winks*
                     </p>
                     <p class="wlcNoteFooterTxt">
                         &copy; PaaB. {{ getYear() }}. We support your brand!
@@ -30,8 +29,8 @@
                         Start your journey <br />with us...
                     </p>
                     <p class="wlcNoteTxt">
-                        It is a long established fact that a reader will be
-                        distracted by the readable content.
+                        “ Good things come to those who wait”.
+                        <span class="right">Nathan Sykes</span>
                     </p>
                     <p class="wlcNoteFooterTxt">
                         &copy; PaaB. {{ getYear() }}. We support your brand!
@@ -52,8 +51,7 @@
                         Start your journey <br />with us...
                     </p>
                     <p class="wlcNoteTxt">
-                        It is a long established fact that a reader will be
-                        distracted by the readable content.
+                        The first step to stand out is by creating something unique and extraordinary
                     </p>
                     <p class="wlcNoteFooterTxt">
                         &copy; PaaB. {{ getYear() }}. We support your brand!

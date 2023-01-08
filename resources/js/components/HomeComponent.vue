@@ -59,9 +59,9 @@
         <div class="hide-on-med-and-up">
             <p class="circleDivTitle">SHOWCASE YOUR PROFESSION WITH PaaB</p>
             <p class="circleDivtxt">
-                It is a long established fact that a reader will be
-                distracted by the readable content of a page.
-            </p>
+                Our professional wish is that you STAND OUT in your career, 
+                from medical practitioners, lawyers, engineers etc.
+            </p>distracted by the readable content of a page.
         
             <div class="circleBtnDiv">
                 <a href="/templates" class="btn circleDivBtn">
@@ -111,13 +111,23 @@
                     
                 </div>
             
-                <p class="portfolioTxt">
-                    It is a long established fact that a reader will be distracted by the readable
-                    content of a page when looking at its layout. The point of using Lorem Ipsum is
-                    that it has a more-or-less normal distribution of letters, as opposed to using
-                    'Content here, content here', making it look like readable English. Many desktop
-                    publishing packages and web page editors now use 
-                </p>
+                <div>
+                    <p class="portfolioTxt">
+                        Select from our variety of ground breaking templates , designer fonts and eye catching colors that speaks to your
+                        style
+                        and professional taste.
+                    </p>
+                    
+                    <P class="portfolioTxt">
+                        Explore with our add ons- whether it is linking your social media platforms , scheduling an
+                        appointment and displaying client reviews.
+                    </P>
+                    
+                    <P class="portfolioTxt">
+                        Let your words travel faster by linking all your social media accounts to
+                        retain and grow your audience.
+                    </P>
+                </div>
             </div>
             
         </div>

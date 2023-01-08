@@ -275,3 +275,25 @@ p.wlcNoteFooterTxt {
 #otpEmailDiv {
     margin-left: 0.7vw;
 }
+
+.helpModalCloseBtn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+.helpModalTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 37px;
+    color: #7746FF;
+}
+.helpModalTxts {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+}
