@@ -20,7 +20,7 @@
     </head>
     <body>
         <div id="app">
-            <admin-component _token="{{ session('token') }}"></admin-component>
+            <admin-dashboard-component _token="{{ session('token') }}"></admin-dashboard-component>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>

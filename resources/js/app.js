@@ -56,7 +56,7 @@ app.component('resetpassword-component', ResetPasswordComponent);
 app.component('started-component', StartedComponent);
 app.component('template-component', TemplateComponent);
 
-app.component('client-component', ClientComponent);
+app.component('client-dashboard-component', ClientComponent);
 app.component('client-websites-component', ClientWebsitesComponent);
 
 app.component('client-template-component', ClientTemplateComponent);
@@ -65,7 +65,7 @@ app.component('client-settings-component', ClientSettings);
 app.component('client-support-component', ClientSupport);
 app.component('client-singlemail-component', ClientSingleMail);
 
-app.component('admin-component', DashboardAdmin);
+app.component('admin-dashboard-component', DashboardAdmin);
 app.component('admins-component', AdminComponent);
 app.component('sadmin-component', DashboardSAdmin);
 app.component("admin-client-component", ClientAdmin);
