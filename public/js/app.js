@@ -25210,7 +25210,7 @@ var _hoisted_24 = {
 var _hoisted_25 = {
   "class": "bannerContainer"
 };
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col l6 circleTxtDiv\"><div class=\"\"><p class=\"circleDivTitle\">SHOWCASE YOUR PROFESSION WITH PaaB</p><p class=\"circleDivtxt\"> It is a long established fact that a reader will be distracted by the readable content of a page. </p><a href=\"/templates\" class=\"btn circleDivBtn\"> preview templates </a></div></div>", 1);
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col l6 circleTxtDiv\"><div class=\"\"><p class=\"circleDivTitle\"><small>SHOWCASE YOUR PROFESSION WITH </small>White Coat Domain </p><p class=\"circleDivtxt\"> Our professional wish is that you STAND OUT in your career, from medical practitioners, lawyers, engineers etc. </p><a href=\"/templates\" class=\"btn circleDivBtn\"> preview templates </a></div></div>", 1);
 var _hoisted_27 = {
   "class": "col l6 portraitImgDiv"
 };
@@ -25257,152 +25257,167 @@ var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "fa-solid fa-arrow-up",
   id: "fixedArrowUpIcon"
 })])], -1 /* HOISTED */);
-var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"section scrollspy portfolioDiv hide-on-small-only\" id=\"product\"><div class=\"portfolioInnerDiv\"><p class=\"portfolioTitle\"> MAKE YOUR PORTFOLIO WORK FOR YOU </p><!-- &lt;div class=&quot;ellipseMedDiv&quot;&gt; --><div class=\"ellipseLarge hide-on-med-and-down\"></div><div class=\"ellipseSmall hide-on-med-and-down\"></div><!-- &lt;/div&gt; --></div><p class=\"portfolioTxt\"> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). </p></div>", 1);
-var _hoisted_43 = {
+var _hoisted_42 = {
+  "class": "section scrollspy portfolioDiv hide-on-small-only",
+  id: "product"
+};
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "portfolioInnerDiv"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "portfolioTitle"
+}, "MAKE YOUR PORTFOLIO WORK FOR YOU"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"ellipseMedDiv\"> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "ellipseLarge hide-on-med-and-down"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "ellipseSmall hide-on-med-and-down"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </div> ")], -1 /* HOISTED */);
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "portfolioTxt"
+}, " Select from our variety of ground breaking templates , designer fonts and eye catching colors that speaks to your style and professional taste. ", -1 /* HOISTED */);
+var _hoisted_45 = {
   "class": "section scrollspy",
   id: "features"
 };
-var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "moreThanLandDiv"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "moreThanLandInnerDiv"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "moreThanLandTitle"
-}, "MORE THAN JUST A LANDING PAGE"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+}, " MORE THAN JUST A LANDING PAGE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "moreThanLandTxt"
 }, " It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here. ")])], -1 /* HOISTED */);
-var _hoisted_45 = {
+var _hoisted_47 = {
   "class": "liveChatMainDiv"
 };
-var _hoisted_46 = {
+var _hoisted_48 = {
   "class": "row liveChatInnerDiv"
 };
-var _hoisted_47 = {
+var _hoisted_49 = {
   "class": "col l6 liveChatImgDiv"
 };
-var _hoisted_48 = {
+var _hoisted_50 = {
   "class": "liveChatImgInnerDiv"
 };
-var _hoisted_49 = ["src"];
-var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_51 = ["src"];
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col l6 liveChatWriteUpDiv"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "liveChatTitle"
-}, " LIVE CHAT "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+}, "LIVE CHAT"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "liveChatTxt"
 }, " It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here. ")], -1 /* HOISTED */);
-var _hoisted_51 = {
+var _hoisted_53 = {
   "class": "cvMainDiv"
 };
-var _hoisted_52 = {
+var _hoisted_54 = {
   "class": "row cvInnerDiv"
 };
-var _hoisted_53 = {
+var _hoisted_55 = {
   "class": "col l3 offset-l3 cvImgDiv hide-on-large-only"
 };
-var _hoisted_54 = {
+var _hoisted_56 = {
   "class": "cvImgInnerDivSm"
 };
-var _hoisted_55 = ["src"];
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_57 = ["src"];
+var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col l6 cvWriteUpDiv"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "cvTitle"
-}, " CURRICULUM VITAE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+}, "CURRICULUM VITAE"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "cvTxt"
 }, " It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here. ")], -1 /* HOISTED */);
-var _hoisted_57 = {
+var _hoisted_59 = {
   "class": "col l3 offset-l3 cvImgDiv hide-on-med-and-down"
 };
-var _hoisted_58 = {
+var _hoisted_60 = {
   "class": "cvImgInnerDiv"
 };
-var _hoisted_59 = ["src"];
-var _hoisted_60 = {
+var _hoisted_61 = ["src"];
+var _hoisted_62 = {
   "class": "socialMediaMainDiv"
 };
-var _hoisted_61 = {
+var _hoisted_63 = {
   "class": "row socialMediaInnerDiv"
 };
-var _hoisted_62 = {
+var _hoisted_64 = {
   "class": "col l6 socialMediaImgDiv"
 };
-var _hoisted_63 = {
+var _hoisted_65 = {
   "class": "socialMediaImgInnerDiv"
 };
-var _hoisted_64 = ["src"];
-var _hoisted_65 = ["src"];
 var _hoisted_66 = ["src"];
-var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_67 = ["src"];
+var _hoisted_68 = ["src"];
+var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col l6 socialMediaWriteUpDiv"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "socialMediaTitle"
-}, " SOCIAL MEDIA POST "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+}, "SOCIAL MEDIA POST"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "socialMediaTxt"
 }, " It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here. ")], -1 /* HOISTED */);
-var _hoisted_68 = {
+var _hoisted_70 = {
   "class": "clientRevMainDiv"
 };
-var _hoisted_69 = {
+var _hoisted_71 = {
   "class": "row clientRevInnerDiv"
 };
-var _hoisted_70 = {
+var _hoisted_72 = {
   "class": "col l3 offset-l3 clientRevImgDiv hide-on-large-only"
 };
-var _hoisted_71 = {
+var _hoisted_73 = {
   "class": "clientRevImgInnerDiv"
 };
-var _hoisted_72 = ["src"];
-var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_74 = ["src"];
+var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col l6 clientRevWriteUpDiv"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "clientRevTitle"
-}, " CLIENT REVIEW "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+}, "CLIENT REVIEW"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "clientRevTxt"
 }, " It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here. ")], -1 /* HOISTED */);
-var _hoisted_74 = {
+var _hoisted_76 = {
   "class": "col l3 offset-l3 clientRevImgDiv hide-on-med-and-down"
 };
-var _hoisted_75 = {
+var _hoisted_77 = {
   "class": "clientRevImgInnerDiv"
 };
-var _hoisted_76 = ["src"];
-var _hoisted_77 = {
+var _hoisted_78 = ["src"];
+var _hoisted_79 = {
   "class": "templatesRow"
 };
-var _hoisted_78 = {
+var _hoisted_80 = {
   "class": "templatesRowInnerDiv row"
 };
-var _hoisted_79 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col l12 center-align"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "templatesRowTitle"
 }, " TEMPLATES FIT JUST FOR YOU "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "templatesRowTxt"
 }, " It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here. ")], -1 /* HOISTED */);
-var _hoisted_80 = {
+var _hoisted_82 = {
   "class": "col l12 tempRowImgDiv"
 };
-var _hoisted_81 = ["src"];
-var _hoisted_82 = {
+var _hoisted_83 = ["src"];
+var _hoisted_84 = {
   "class": "section scrollspy cusSupportDiv",
   id: "support"
 };
-var _hoisted_83 = {
+var _hoisted_85 = {
   "class": "row cusSupportInnerDiv"
 };
-var _hoisted_84 = {
+var _hoisted_86 = {
   "class": "col s12 m12 l7 cusSupportImgDiv hide-on-med-and-down"
 };
-var _hoisted_85 = ["src"];
-var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col s12 m12 l5 cusSupportFormDiv\"><p class=\"cusSupportTitle\">WE’RE ALWAYS HAPPY TO HELP</p><form class=\"col s12\"><div class=\"row rm_mg\"><div class=\"input-field col s6 rm_mg\"><input placeholder=\"First name\" id=\"fName\" type=\"text\" class=\"validate\"><!-- &lt;label for=&quot;first_name&quot;&gt;First Name&lt;/label&gt; --></div><div class=\"input-field col s6 rm_mg\"><input placeholder=\"Last name \" id=\"lName\" type=\"text\" class=\"validate\"><!-- &lt;label for=&quot;last_name&quot;&gt;Last Name&lt;/label&gt; --></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg\"><input placeholder=\"Email address\" id=\"email\" type=\"email\" class=\"validate\"><!-- &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt; --></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg\"><textarea placeholder=\"Share your thoughts...\" id=\"textarea1\" class=\"materialize-textarea\"></textarea><!-- &lt;label for=&quot;textarea1&quot;&gt;Textarea&lt;/label&gt; --></div></div><button type=\"button\" class=\"btn col s12 m12 l12 rm_mg\" id=\"btnForm\"> Send </button></form></div>", 1);
+var _hoisted_87 = ["src"];
+var _hoisted_88 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col s12 m12 l5 cusSupportFormDiv\"><p class=\"cusSupportTitle\">WE’RE ALWAYS HAPPY TO HELP</p><form class=\"col s12\"><div class=\"row rm_mg\"><div class=\"input-field col s6 rm_mg\"><input placeholder=\"First name\" id=\"fName\" type=\"text\" class=\"validate\"><!-- &lt;label for=&quot;first_name&quot;&gt;First Name&lt;/label&gt; --></div><div class=\"input-field col s6 rm_mg\"><input placeholder=\"Last name \" id=\"lName\" type=\"text\" class=\"validate\"><!-- &lt;label for=&quot;last_name&quot;&gt;Last Name&lt;/label&gt; --></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg\"><input placeholder=\"Email address\" id=\"email\" type=\"email\" class=\"validate\"><!-- &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt; --></div></div><div class=\"row rm_mg\"><div class=\"input-field col s12 rm_mg\"><textarea placeholder=\"Share your thoughts...\" id=\"textarea1\" class=\"materialize-textarea\"></textarea><!-- &lt;label for=&quot;textarea1&quot;&gt;Textarea&lt;/label&gt; --></div></div><button type=\"button\" class=\"btn col s12 m12 l12 rm_mg\" id=\"btnForm\"> Send </button></form></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_HeaderComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("HeaderComponent");
   var _component_P = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("P");
   var _component_FooterComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("FooterComponent");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navbar & SideNav Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_HeaderComponent, {
     type: 'main'
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("div class=\"row circleGenDiv\">\n            <div class=\"col s12 m4 l7\">\n                <div class=\"circlDiv\">\n                    <div class=\"circlDiv1\">\n                        <div class=\"circlDiv2\">\n                            <div class=\"circleTxtDiv\">\n                                <p class=\"circleDivTitle\">SHOWCASE YOUR PROFESSION WITH PaaB</p>\n                                <p class=\"circleDivtxt\">\n                                    It is a long established fact that a reader will be \n                                    distracted by the readable content of a page.\n                                </p>\n\n                                <a href=\"/templates\" class=\"btn circleDivBtn\">\n                                    preview templates\n                                </a>\n                            </div>\n                        </div>\n                    </div>\n                </div>                \n            </div>\n\n            <div class=\"col s12 m8 l5\">\n                <div class=\"portraitImgDiv\">\n                    <div class=\"portraitImgContainDiv\">\n                        <img :src=\"'./media/img/portrait2.png'\" alt=\"portrait2.png\" class=\"portraitImg\" id=\"portrait2\">\n\n                        <div class=\"portraitImgInnerDiv\">\n                            <img :src=\"'./media/img/portrait3.png'\" alt=\"portrait3.png\" class=\"portraitImg\" id=\"portrait3\">\n\n                            <div class=\"portraitImgCircleDiv\"></div>\n                        </div>\n                    </div>\n\n                    <div class=\"portraitImgContainDiv1\">\n                        <div class=\"portraitImgRightDiv\">\n                            <div class=\"portraitImgRightInnerDiv\">\n                                <img :src=\"'./media/img/portrait.png'\" alt=\"portrait.png\" class=\"portraitImg\" id=\"portrait\">\n                            </div>\n\n                            <div class=\"portraitImgCircleRightDiv\"></div>\n\n                            <div class=\"portraitImgRightInnerDiv1\">\n                                <img :src=\"'./media/img/portrait1.png'\" alt=\"portrait1.png\" class=\"portraitImg\" id=\"portrait1\">\n                            </div>\n                        </div>\n                    </div>\n\n                </div>\n            </div>\n        </div"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Small Device SHOCASE Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("distracted by the readable content of a page. "), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("div class=\"row circleGenDiv\">\n            <div class=\"col s12 m4 l7\">\n                <div class=\"circlDiv\">\n                    <div class=\"circlDiv1\">\n                        <div class=\"circlDiv2\">\n                            <div class=\"circleTxtDiv\">\n                                <p class=\"circleDivTitle\">SHOWCASE YOUR PROFESSION WITH PaaB</p>\n                                <p class=\"circleDivtxt\">\n                                    It is a long established fact that a reader will be \n                                    distracted by the readable content of a page.\n                                </p>\n\n                                <a href=\"/templates\" class=\"btn circleDivBtn\">\n                                    preview templates\n                                </a>\n                            </div>\n                        </div>\n                    </div>\n                </div>                \n            </div>\n\n            <div class=\"col s12 m8 l5\">\n                <div class=\"portraitImgDiv\">\n                    <div class=\"portraitImgContainDiv\">\n                        <img :src=\"'./media/img/portrait2.png'\" alt=\"portrait2.png\" class=\"portraitImg\" id=\"portrait2\">\n\n                        <div class=\"portraitImgInnerDiv\">\n                            <img :src=\"'./media/img/portrait3.png'\" alt=\"portrait3.png\" class=\"portraitImg\" id=\"portrait3\">\n\n                            <div class=\"portraitImgCircleDiv\"></div>\n                        </div>\n                    </div>\n\n                    <div class=\"portraitImgContainDiv1\">\n                        <div class=\"portraitImgRightDiv\">\n                            <div class=\"portraitImgRightInnerDiv\">\n                                <img :src=\"'./media/img/portrait.png'\" alt=\"portrait.png\" class=\"portraitImg\" id=\"portrait\">\n                            </div>\n\n                            <div class=\"portraitImgCircleRightDiv\"></div>\n\n                            <div class=\"portraitImgRightInnerDiv1\">\n                                <img :src=\"'./media/img/portrait1.png'\" alt=\"portrait1.png\" class=\"portraitImg\" id=\"portrait1\">\n                            </div>\n                        </div>\n                    </div>\n\n                </div>\n            </div>\n        </div"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Small Device SHOCASE Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" distracted by the readable content of a page. "), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/portrait2.png',
     alt: "portrait2.png",
     "class": "portraitImg",
@@ -25456,47 +25471,61 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     alt: "portrait1.png",
     "class": "portraitImg",
     id: "portrait1"
-  }, null, 8 /* PROPS */, _hoisted_40)])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Arrow Up "), _hoisted_41, _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" features Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [_hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Live Chat Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, null, 8 /* PROPS */, _hoisted_40)])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Arrow Up "), _hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [_hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_P, {
+    "class": "portfolioTxt"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Explore with our add ons- whether it is linking your social media platforms , scheduling an appointment and displaying client reviews. ")];
+    }),
+    _: 1 /* STABLE */
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_P, {
+    "class": "portfolioTxt"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Let your words travel faster by linking all your social media accounts to retain and grow your audience. ")];
+    }),
+    _: 1 /* STABLE */
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" features Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [_hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Live Chat Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/chatimage.png',
     alt: "chatimage.png",
     id: "chatImage"
-  }, null, 8 /* PROPS */, _hoisted_49)])]), _hoisted_50])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" CV Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, null, 8 /* PROPS */, _hoisted_51)])]), _hoisted_52])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" CV Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/cv.png',
     alt: "cvFile.png",
     id: "cvImage"
-  }, null, 8 /* PROPS */, _hoisted_55)])]), _hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, null, 8 /* PROPS */, _hoisted_57)])]), _hoisted_58, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/cv.png',
     alt: "cvFile.png",
     id: "cvImage"
-  }, null, 8 /* PROPS */, _hoisted_59)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Social Media section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_62, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, null, 8 /* PROPS */, _hoisted_61)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Social Media section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_62, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/socialMedia.png',
     alt: "csocialMediaPhone.png",
     id: "socialMediaImage"
-  }, null, 8 /* PROPS */, _hoisted_64), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, null, 8 /* PROPS */, _hoisted_66), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/facebookImg.png',
     alt: "facebookImg.png",
     id: "facebookImg"
-  }, null, 8 /* PROPS */, _hoisted_65), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, null, 8 /* PROPS */, _hoisted_67), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/twiterImg.png',
     alt: "twiterImg.png",
     id: "twiterImg"
-  }, null, 8 /* PROPS */, _hoisted_66)])]), _hoisted_67])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Client Review Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_68, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_69, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_70, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, null, 8 /* PROPS */, _hoisted_68)])]), _hoisted_69])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Client Review Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_70, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_72, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/clientRevImg.png',
     alt: "clientRevImg.png",
     id: "clientRevImage"
-  }, null, 8 /* PROPS */, _hoisted_72)])]), _hoisted_73, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_74, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_75, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, null, 8 /* PROPS */, _hoisted_74)])]), _hoisted_75, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_77, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/clientRevImg.png',
     alt: "clientRevImg.png",
     id: "clientRevImage"
-  }, null, 8 /* PROPS */, _hoisted_76)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Templates Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_77, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_78, [_hoisted_79, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_80, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, null, 8 /* PROPS */, _hoisted_78)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Templates Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_79, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_80, [_hoisted_81, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_82, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/template.png',
     alt: "tempImg.png",
     "class": "responsive-img tempImg"
-  }, null, 8 /* PROPS */, _hoisted_81)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Customer Support Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_82, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_83, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_84, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }, null, 8 /* PROPS */, _hoisted_83)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Customer Support Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_84, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_85, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_86, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/CARE.png',
     alt: "CARE.png",
     id: "careImg"
-  }, null, 8 /* PROPS */, _hoisted_85)]), _hoisted_86])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Footer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FooterComponent)]);
+  }, null, 8 /* PROPS */, _hoisted_87)]), _hoisted_88])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Footer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FooterComponent)]);
 }
 
 /***/ }),
