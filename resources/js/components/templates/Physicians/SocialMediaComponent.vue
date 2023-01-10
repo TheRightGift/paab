@@ -55,7 +55,7 @@ export default {
     },
     watch: {
         socials(newVal, oldVal) {
-            if (newVal != null) console.log(newVal)
+            // if (newVal != null) console.log(newVal)
         }
     }
 }

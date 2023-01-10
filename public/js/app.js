@@ -23533,7 +23533,7 @@ var review = '/api/review';
         _this.reviews = reviewRes.data.reviews;
         _this.loading = false;
       }))["catch"](function (errors) {
-        console.log(errors);
+        // console.log(errors)
       });
     }
   },
@@ -25058,7 +25058,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     socials: function socials(newVal, oldVal) {
-      if (newVal != null) console.log(newVal);
+      // if (newVal != null) console.log(newVal)
     }
   }
 });
@@ -31596,14 +31596,14 @@ app.component('login-component', _components_auth_LoginComponent_vue__WEBPACK_IM
 app.component('resetpassword-component', _components_auth_ResetPasswordComponent_vue__WEBPACK_IMPORTED_MODULE_6__["default"]);
 app.component('started-component', _components_auth_StartedComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
 app.component('template-component', _components_TemplateComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
-app.component('client-component', _components_client_Dashboard_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
+app.component('client-dashboard-component', _components_client_Dashboard_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
 app.component('client-websites-component', _components_client_WebsitesComponent_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
 app.component('client-template-component', _components_client_ClientTemplateComponent_vue__WEBPACK_IMPORTED_MODULE_13__["default"]);
 app.component('client-mail-component', _components_client_MailComponent_vue__WEBPACK_IMPORTED_MODULE_9__["default"]);
 app.component('client-settings-component', _components_client_SettingsComponent_vue__WEBPACK_IMPORTED_MODULE_10__["default"]);
 app.component('client-support-component', _components_client_SupportComponent_vue__WEBPACK_IMPORTED_MODULE_11__["default"]);
 app.component('client-singlemail-component', _components_client_SinglemailComponent_vue__WEBPACK_IMPORTED_MODULE_12__["default"]);
-app.component('admin-component', _components_admin_Dashboard__WEBPACK_IMPORTED_MODULE_14__["default"]);
+app.component('admin-dashboard-component', _components_admin_Dashboard__WEBPACK_IMPORTED_MODULE_14__["default"]);
 app.component('admins-component', _components_super_AdminsComponent__WEBPACK_IMPORTED_MODULE_21__["default"]);
 app.component('sadmin-component', _components_super_Dashboard__WEBPACK_IMPORTED_MODULE_20__["default"]);
 app.component("admin-client-component", _components_admin_Client__WEBPACK_IMPORTED_MODULE_15__["default"]);
