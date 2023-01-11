@@ -43,7 +43,7 @@
                         class="col s1 offset-s1 btn"
                         id="configWebBtn"
                         @click.prevent="updateDomainTemplate"
-                        :disabled="domainName == domain"
+                        :disabled="domainName == domain || domainName == ''"
                     >
                         save
                     </button>

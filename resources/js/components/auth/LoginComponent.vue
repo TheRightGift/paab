@@ -3,7 +3,7 @@
         <div class="row authContainDiv">
             <div class="col s12 m12 l6 loginContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">PaaB</a>
+                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
                     <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
                     <p class="wlcNoteTxt">
                         The World is still listening , it is time to tell your brand story with our professional , 

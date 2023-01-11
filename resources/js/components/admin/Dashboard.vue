@@ -8,7 +8,19 @@
 
             <div class="col s12 m10 l10">
                 <div class="dashRightDiv">
-                    <div id="dashRightImgDiv">
+                    <div id="adminDashRightImgDiv">
+                        <div class="dashRightImgInnerDiv">
+                            <div class="dashRightImgTxtDiv">
+                                <p class="dashRightImgTitle">
+                                    Manage your client’s portfolio
+                                </p>
+                                <p class="dashRightImgTxt">
+                                    Say hello to the next level platform that gives you infinite 
+                                    freedom to create, design and manage your personal brand
+                                    exactly the way you want.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row" id="dashWlcNoteRowDiv">
@@ -119,42 +131,7 @@
                                 </div>
                                 <div class="cardContent">
                                     <div class="row" id="myMailDiv">
-                                        <div class="col s10 m10 l10">
-                                            <div class="cardImgMainDiv">
-                                                <div class="cardImgDiv">
-                                                    <i
-                                                        class="material-icons"
-                                                        id="cardImg"
-                                                        >person</i
-                                                    >
-                                                </div>
-                                                <a href="#" class="cardProName"
-                                                    >info@paab.com</a
-                                                >
-                                            </div>
-                                        </div>
-
-                                        <div class="col s2 m2 l2">
-                                            <p class="dashTimeAgo">2m</p>
-                                        </div>
-
-                                        <div class="col s10 offset-s2">
-                                            <p class="mailCardTxt">
-                                                Lorem Ipsum is simply dummy text
-                                                of the printing and typesetting
-                                                industry. Lorem Ipsum has been
-                                                the industry's standard dummy
-                                                text ever since the 1500s, when
-                                                an unknown printer took a galley
-                                                of type and scrambled it to make
-                                                a type specimen book, Lorem
-                                                Ipsum is simply dummy text of
-                                                the printing and typesetting
-                                                Lorem Ipsum has been the
-                                                industry's standard dummy text
-                                                ever since the 1500s,....
-                                            </p>
-                                        </div>
+                                        <p class="white-text center-align noVertMargin">No Mail.</p>
                                     </div>
                                 </div>
                             </div>

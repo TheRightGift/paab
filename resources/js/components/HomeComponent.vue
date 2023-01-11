@@ -3,7 +3,6 @@
         <!-- Navbar & SideNav Section -->
         <HeaderComponent :type="'main'"></HeaderComponent>
 
-
         <!--div class="row circleGenDiv">
             <div class="col s12 m4 l7">
                 <div class="circlDiv">
@@ -59,38 +58,59 @@
         <div class="hide-on-med-and-up">
             <p class="circleDivTitle">SHOWCASE YOUR PROFESSION WITH PaaB</p>
             <p class="circleDivtxt">
-                Our professional wish is that you STAND OUT in your career, 
-                from medical practitioners, lawyers, engineers etc.
-            </p>distracted by the readable content of a page.
-        
+                Our professional wish is that you STAND OUT in your career, from
+                medical practitioners, lawyers, engineers etc.
+            </p>
+            distracted by the readable content of a page.
+
             <div class="circleBtnDiv">
                 <a href="/templates" class="btn circleDivBtn">
                     preview templates
                 </a>
             </div>
-            
+
             <div class="portraitImgDiv">
                 <div class="innerPortraitImgDiv">
                     <div class="portraitImgContainDiv">
-                        <img :src="'./media/img/portrait2.png'" alt="portrait2.png" class="portraitImg" id="portrait2">
-            
+                        <img
+                            :src="'./media/img/portrait2.png'"
+                            alt="portrait2.png"
+                            class="portraitImg"
+                            id="portrait2"
+                        />
+
                         <div class="portraitImgInnerDiv">
-                            <img :src="'./media/img/portrait3.png'" alt="portrait3.png" class="portraitImg" id="portrait3">
-            
+                            <img
+                                :src="'./media/img/portrait3.png'"
+                                alt="portrait3.png"
+                                class="portraitImg"
+                                id="portrait3"
+                            />
+
                             <div class="portraitImgCircleDiv"></div>
                         </div>
                     </div>
-            
+
                     <div class="portraitImgContainDiv1">
                         <div class="portraitImgRightDiv">
                             <div class="portraitImgRightInnerDiv">
-                                <img :src="'./media/img/portrait.png'" alt="portrait.png" class="portraitImg" id="portrait">
+                                <img
+                                    :src="'./media/img/portrait.png'"
+                                    alt="portrait.png"
+                                    class="portraitImg"
+                                    id="portrait"
+                                />
                             </div>
-            
+
                             <div class="portraitImgCircleRightDiv"></div>
-            
+
                             <div class="portraitImgRightInnerDiv1">
-                                <img :src="'./media/img/portrait1.png'" alt="portrait1.png" class="portraitImg" id="portrait1">
+                                <img
+                                    :src="'./media/img/portrait1.png'"
+                                    alt="portrait1.png"
+                                    class="portraitImg"
+                                    id="portrait1"
+                                />
                             </div>
                         </div>
                     </div>
@@ -98,7 +118,6 @@
             </div>
 
             <div class="section scrollspy portfolioDiv" id="product">
-
                 <div class="ellipseDiv">
                     <div class="ellipseLargeSm hide-on-med-and-up"></div>
                     <div class="ellipseSmallSm hide-on-med-and-up"></div>
@@ -108,58 +127,65 @@
                     <p class="portfolioTitle">
                         MAKE YOUR PORTFOLIO WORK FOR YOU
                     </p>
-                    
                 </div>
-            
+
                 <div>
                     <p class="portfolioTxt">
-                        Select from our variety of ground breaking templates , designer fonts and eye catching colors that speaks to your
-                        style
-                        and professional taste.
+                        Select from our variety of ground breaking templates ,
+                        designer fonts and eye catching colors that speaks to
+                        your style and professional taste.
                     </p>
-                    
+
                     <P class="portfolioTxt">
-                        Explore with our add ons- whether it is linking your social media platforms , scheduling an
-                        appointment and displaying client reviews.
+                        Explore with our add ons- whether it is linking your
+                        social media platforms , scheduling an appointment and
+                        displaying client reviews.
                     </P>
-                    
+
                     <P class="portfolioTxt">
-                        Let your words travel faster by linking all your social media accounts to
-                        retain and grow your audience.
+                        Let your words travel faster by linking all your social
+                        media accounts to retain and grow your audience.
                     </P>
                 </div>
             </div>
-            
         </div>
-
-
-
-
 
         <!-- Large Device SHOCASE Section -->
         <div class="row hide-on-small-only" id="banner">
             <div class="bannerContainer">
                 <div class="col l6 circleTxtDiv">
                     <div class="">
-                        <p class="circleDivTitle">SHOWCASE YOUR PROFESSION WITH PaaB</p>
-                        <p class="circleDivtxt">
-                            It is a long established fact that a reader will be 
-                            distracted by the readable content of a page.
+                        <p class="circleDivTitle">
+                            <small>SHOWCASE YOUR PROFESSION WITH </small>White Coat Domain
                         </p>
-                        
+                        <p class="circleDivtxt">
+                            Our professional wish is that you STAND OUT in your
+                            career, from medical practitioners, lawyers,
+                            engineers etc.
+                        </p>
+
                         <a href="/templates" class="btn circleDivBtn">
                             preview templates
                         </a>
                     </div>
-                    
                 </div>
                 <div class="col l6 portraitImgDiv">
                     <div class="innerPortraitImgDiv">
                         <div class="portraitImgContainDiv">
-                            <img :src="'./media/img/portrait2.png'" alt="portrait2.png" class="portraitImg" id="portrait2">
+                            <img
+                                :src="'./media/img/portrait2.png'"
+                                alt="portrait2.png"
+                                class="portraitImg"
+                                id="portrait2"
+                            />
 
                             <div class="portraitImgInnerDiv">
-                                <img :src="'./media/img/portrait3.png'" alt="portrait3.png" class="portraitImg" id="portrait3">
+                                <img
+                                    :src="'./media/img/portrait3.png'"
+                                    alt="portrait3.png"
+                                    class="portraitImg"
+                                    id="portrait3"
+                                />
 
                                 <div class="portraitImgCircleDiv"></div>
                             </div>
@@ -168,13 +194,23 @@
                         <div class="portraitImgContainDiv1">
                             <div class="portraitImgRightDiv">
                                 <div class="portraitImgRightInnerDiv">
-                                    <img :src="'./media/img/portrait.png'" alt="portrait.png" class="portraitImg" id="portrait">
+                                    <img
+                                        :src="'./media/img/portrait.png'"
+                                        alt="portrait.png"
+                                        class="portraitImg"
+                                        id="portrait"
+                                    />
                                 </div>
 
                                 <div class="portraitImgCircleRightDiv"></div>
 
                                 <div class="portraitImgRightInnerDiv1">
-                                    <img :src="'./media/img/portrait1.png'" alt="portrait1.png" class="portraitImg" id="portrait1">
+                                    <img
+                                        :src="'./media/img/portrait1.png'"
+                                        alt="portrait1.png"
+                                        class="portraitImg"
+                                        id="portrait1"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -184,50 +220,62 @@
         </div>
 
         <!-- Page Arrow Up -->
-        <button class="fixedArrowUpIconBtn hide-on-med-and-down" id="fixedArrowUpIconBtn" onclick="topFunction()">
+        <button
+            class="fixedArrowUpIconBtn hide-on-med-and-down"
+            id="fixedArrowUpIconBtn"
+            onclick="topFunction()"
+        >
             <div class="fixedArrowUpIconInnerDiv">
                 <div class="fixedArrowUpCircleDiv"></div>
                 <i class="fa-solid fa-arrow-up" id="fixedArrowUpIcon"></i>
             </div>
         </button>
 
-        <div class="section scrollspy portfolioDiv hide-on-small-only" id="product">
-
+        <div
+            class="section scrollspy portfolioDiv hide-on-small-only"
+            id="product"
+        >
             <div class="portfolioInnerDiv">
-                <p class="portfolioTitle">
-                    MAKE YOUR PORTFOLIO WORK FOR YOU
-                </p>
+                <p class="portfolioTitle">MAKE YOUR PORTFOLIO WORK FOR YOU</p>
 
                 <!-- <div class="ellipseMedDiv"> -->
-                    <div class="ellipseLarge hide-on-med-and-down"></div>
-                    <div class="ellipseSmall hide-on-med-and-down"></div>
+                <div class="ellipseLarge hide-on-med-and-down"></div>
+                <div class="ellipseSmall hide-on-med-and-down"></div>
                 <!-- </div> -->
-                
             </div>
-            
-            <p class="portfolioTxt">
-                It is a long established fact that a reader will be distracted by the readable 
-                content of a page when looking at its layout. The point of using Lorem Ipsum is 
-                that it has a more-or-less normal distribution of letters, as opposed to using 
-                'Content here, content here', making it look like readable English. Many desktop 
-                publishing packages and web page editors now use Lorem Ipsum as their 
-                default model text, and a search for 'lorem ipsum' will uncover many web 
-                sites still in their infancy. Various versions have evolved over the years, 
-                sometimes by accident, sometimes on purpose (injected humour and the like).
-            </p>
+
+            <div>
+                <p class="portfolioTxt">
+                    Select from our variety of ground breaking templates , designer fonts and eye catching colors that speaks to your
+                    style
+                    and professional taste.
+                </p>
+                
+                <P class="portfolioTxt">
+                    Explore with our add ons- whether it is linking your social media platforms , scheduling an
+                    appointment and displaying client reviews.
+                </P>
+                
+                <P class="portfolioTxt">
+                    Let your words travel faster by linking all your social media accounts to
+                    retain and grow your audience.
+                </P>
+            </div>
         </div>
 
         <!-- features Section -->
         <div class="section scrollspy" id="features">
-            <div class=" moreThanLandDiv">
+            <div class="moreThanLandDiv">
                 <div class="moreThanLandInnerDiv">
-                    <p class="moreThanLandTitle">MORE THAN JUST A LANDING PAGE</p>
+                    <p class="moreThanLandTitle">
+                        MORE THAN JUST A LANDING PAGE
+                    </p>
 
                     <p class="moreThanLandTxt"> 
-                        It is a long established fact that a reader will be distracted by the readable 
-                        content of a page when looking at its layout. The point of using Lorem Ipsum is 
-                        that it has a more-or-less normal distribution of letters, as opposed to using 
-                        'Content here, content here.
+                        White Coat Domain is offering you the opportunity to show your targeted audience who you are and what you can offer. We want to be a
+                        part of your success story by bringing your ideas to life with seamless efforts.
+                        <br><br>
+                        Discover thousands of customized , mobile responsive templates to convert visitors to potential clients.
                     </p>
                 </div>
             </div>
@@ -237,19 +285,20 @@
                 <div class="row liveChatInnerDiv">
                     <div class="col l6 liveChatImgDiv">
                         <div class="liveChatImgInnerDiv">
-                            <img :src="'./media/img/chatimage.png'" alt="chatimage.png" id="chatImage">
+                            <img
+                                :src="'./media/img/chatimage.png'"
+                                alt="chatimage.png"
+                                id="chatImage"
+                            />
                         </div>
                     </div>
 
                     <div class="col l6 liveChatWriteUpDiv">
-                        <p class="liveChatTitle">
-                            LIVE CHAT
-                        </p>
+                        <p class="liveChatTitle">LIVE CHAT</p>
                         <p class="liveChatTxt">
-                            It is a long established fact that a reader will be distracted by the 
-                            readable content of a page when looking at its layout. The point of using 
-                            Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
-                            as opposed to using 'Content here, content here.
+                            Creating that unique digital portfolio requires the right platform and an expert support team right behind you. As you
+                            progress in finding your digital identity, we are here every step of the way. Our 24/7 helpdesk is here to guide you as
+                            you make those important steps.
                         </p>
                     </div>
                 </div>
@@ -258,28 +307,30 @@
             <!-- CV Section -->
             <div class="cvMainDiv">
                 <div class="row cvInnerDiv">
-
                     <div class="col l3 offset-l3 cvImgDiv hide-on-large-only">
                         <div class="cvImgInnerDivSm">
-                            <img :src="'./media/img/cv.png'" alt="cvFile.png" id="cvImage">
+                            <img
+                                :src="'./media/img/cv.png'"
+                                alt="cvFile.png"
+                                id="cvImage"
+                            />
                         </div>
                     </div>
 
                     <div class="col l6 cvWriteUpDiv">
-                        <p class="cvTitle">
-                            CURRICULUM VITAE
-                        </p>
+                        <p class="cvTitle">CURRICULUM VITAE</p>
                         <p class="cvTxt">
-                            It is a long established fact that a reader will be distracted by the 
-                            readable content of a page when looking at its layout. The point of using 
-                            Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
-                            as opposed to using 'Content here, content here.
+                            Get noticed quickly by potential clients and customers.
                         </p>
                     </div>
 
                     <div class="col l3 offset-l3 cvImgDiv hide-on-med-and-down">
                         <div class="cvImgInnerDiv">
-                            <img :src="'./media/img/cv.png'" alt="cvFile.png" id="cvImage">
+                            <img
+                                :src="'./media/img/cv.png'"
+                                alt="cvFile.png"
+                                id="cvImage"
+                            />
                         </div>
                     </div>
                 </div>
@@ -290,21 +341,29 @@
                 <div class="row socialMediaInnerDiv">
                     <div class="col l6 socialMediaImgDiv">
                         <div class="socialMediaImgInnerDiv">
-                            <img :src="'./media/img/socialMedia.png'" alt="csocialMediaPhone.png" id="socialMediaImage">
-                            <img :src="'./media/img/facebookImg.png'" alt="facebookImg.png" id="facebookImg">
-                            <img :src="'./media/img/twiterImg.png'" alt="twiterImg.png" id="twiterImg">
+                            <img
+                                :src="'./media/img/socialMedia.png'"
+                                alt="csocialMediaPhone.png"
+                                id="socialMediaImage"
+                            />
+                            <img
+                                :src="'./media/img/facebookImg.png'"
+                                alt="facebookImg.png"
+                                id="facebookImg"
+                            />
+                            <img
+                                :src="'./media/img/twiterImg.png'"
+                                alt="twiterImg.png"
+                                id="twiterImg"
+                            />
                         </div>
                     </div>
 
                     <div class="col l6 socialMediaWriteUpDiv">
-                        <p class="socialMediaTitle">
-                            SOCIAL MEDIA POST
-                        </p>
+                        <p class="socialMediaTitle">SOCIAL MEDIA POST</p>
                         <p class="socialMediaTxt">
-                            It is a long established fact that a reader will be distracted by the 
-                            readable content of a page when looking at its layout. The point of using 
-                            Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
-                            as opposed to using 'Content here, content here.
+                            An amazing opportunity for people to see the social part that makes you 
+                            awesome by linking your social media platforms.
                         </p>
                     </div>
                 </div>
@@ -313,31 +372,49 @@
             <!-- Client Review Section -->
             <div class="clientRevMainDiv">
                 <div class="row clientRevInnerDiv">
-
-                    <div class="col l3 offset-l3 clientRevImgDiv hide-on-large-only">
+                    <div
+                        class="
+                            col
+                            l3
+                            offset-l3
+                            clientRevImgDiv
+                            hide-on-large-only
+                        "
+                    >
                         <div class="clientRevImgInnerDiv">
-                            <img :src="'./media/img/clientRevImg.png'" alt="clientRevImg.png" id="clientRevImage">
+                            <img
+                                :src="'./media/img/clientRevImg.png'"
+                                alt="clientRevImg.png"
+                                id="clientRevImage"
+                            />
                         </div>
                     </div>
 
                     <div class="col l6 clientRevWriteUpDiv">
-                        <p class="clientRevTitle">
-                            CLIENT REVIEW
-                        </p>
+                        <p class="clientRevTitle">CLIENT REVIEW</p>
                         <p class="clientRevTxt">
-                            It is a long established fact that a reader will be distracted by the 
-                            readable content of a page when looking at its layout. The point of using 
-                            Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
-                            as opposed to using 'Content here, content here.
+                            Appraisals , Reviews and Constructive Criticism on display, 
+                            to encourage word of mouth marketing and potential clients.
                         </p>
                     </div>
 
-                    <div class="col l3 offset-l3 clientRevImgDiv hide-on-med-and-down">
+                    <div
+                        class="
+                            col
+                            l3
+                            offset-l3
+                            clientRevImgDiv
+                            hide-on-med-and-down
+                        "
+                    >
                         <div class="clientRevImgInnerDiv">
-                            <img :src="'./media/img/clientRevImg.png'" alt="clientRevImg.png" id="clientRevImage">
+                            <img
+                                :src="'./media/img/clientRevImg.png'"
+                                alt="clientRevImg.png"
+                                id="clientRevImage"
+                            />
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -349,59 +426,85 @@
                             TEMPLATES FIT JUST FOR YOU
                         </p>
                         <p class="templatesRowTxt">
-                            It is a long established fact that a reader will be distracted by the 
-                            readable content of a page when looking at its layout. The point of using 
-                            Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
-                            as opposed to using 'Content here, content here.
+                            We are giving you the freedom to select from our multiple customized 
+                            templates designed to meet your personal and professional taste. 
+                            Our templates are seamless with drag and drop settings.
                         </p>
                     </div>
 
                     <div class="col l12 tempRowImgDiv">
-                        <img :src="'./media/img/template.png'" alt="tempImg.png" class="responsive-img tempImg">
+                        <img
+                            :src="'./media/img/template.png'"
+                            alt="tempImg.png"
+                            class="responsive-img tempImg"
+                        />
                     </div>
                 </div>
             </div>
         </div>
-        
 
         <!-- Customer Support Section -->
         <div class="section scrollspy cusSupportDiv" id="support">
             <div class="row cusSupportInnerDiv">
-                <div class="col s12 m12 l7 cusSupportImgDiv hide-on-med-and-down">
-                    <img :src="'./media/img/CARE.png'" alt="CARE.png" id="careImg">
+                <div
+                    class="col s12 m12 l7 cusSupportImgDiv hide-on-med-and-down"
+                >
+                    <img
+                        :src="'./media/img/CARE.png'"
+                        alt="CARE.png"
+                        id="careImg"
+                    />
                 </div>
-        
+
                 <div class="col s12 m12 l5 cusSupportFormDiv">
                     <p class="cusSupportTitle">WE’RE ALWAYS HAPPY TO HELP</p>
-        
+
                     <form class="col s12">
                         <div class="row rm_mg">
                             <div class="input-field col s6 rm_mg">
-                                <input placeholder="First name" id="fName" type="text" class="validate">
-                                <!-- <label for="first_name">First Name</label> -->
+                                <input
+                                    placeholder="First name"
+                                    id="fName"
+                                    type="text"
+                                    class="validate"
+                                />
                             </div>
                             <div class="input-field col s6 rm_mg">
-                                <input placeholder="Last name " id="lName" type="text" class="validate">
-                                <!-- <label for="last_name">Last Name</label> -->
+                                <input
+                                    placeholder="Last name "
+                                    id="lName"
+                                    type="text"
+                                    class="validate"
+                                />
                             </div>
                         </div>
-        
+
                         <div class="row rm_mg">
                             <div class="input-field col s12 rm_mg">
-                                <input placeholder="Email address" id="email" type="email" class="validate">
-                                <!-- <label for="email">Email</label> -->
+                                <input
+                                    placeholder="Email address"
+                                    id="email"
+                                    type="email"
+                                    class="validate"
+                                />
                             </div>
                         </div>
-        
+
                         <div class="row rm_mg">
                             <div class="input-field col s12 rm_mg">
-                                <textarea placeholder="Share your thoughts..." id="textarea1"
-                                    class="materialize-textarea"></textarea>
-                                <!-- <label for="textarea1">Textarea</label> -->
+                                <textarea
+                                    placeholder="Share your thoughts..."
+                                    id="textarea1"
+                                    class="materialize-textarea"
+                                ></textarea>
                             </div>
                         </div>
-        
-                        <button type="button" class="btn col s12 m12 l12 rm_mg" id="btnForm">
+
+                        <button
+                            type="button"
+                            class="btn col s12 m12 l12 rm_mg"
+                            id="btnForm"
+                        >
                             Send
                         </button>
                     </form>
@@ -409,8 +512,7 @@
             </div>
         </div>
 
-        <!-- Footer -->
-        <FooterComponent/>
+        <FooterComponent />
     </div>
 </template>
 
@@ -420,12 +522,12 @@
     export default {
         components: {
             FooterComponent,
-            HeaderComponent
+            HeaderComponent,
         },
         data() {
             return {};
         },
         mounted() {},
-        methods: {}
-    }
+        methods: {},
+    };
 </script>

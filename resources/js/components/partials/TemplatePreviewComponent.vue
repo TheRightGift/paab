@@ -50,14 +50,15 @@
                         <a :href="'/preview/' + template.id" target="_blank"
                             >Preview</a
                         >
-
-                        <span v-if="selectedTemplate == template.id">
-                            <a class="right green-text">Selected</a>
-                        </span>
-                        <span v-else>
-                            <a @click="selectTemplate(template)" class="right"
-                                >Select</a
-                            >
+                        <span v-show="type !== 'preview'">
+                            <span v-if="selectedTemplate == template.id">
+                                <a class="right green-text">Selected</a>
+                            </span>
+                            <span v-else>
+                                <a @click="selectTemplate(template)" class="right"
+                                    >Select</a
+                                >
+                            </span>
                         </span>
                     </div>
                 </div>

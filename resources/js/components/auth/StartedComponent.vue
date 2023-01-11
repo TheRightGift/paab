@@ -21,7 +21,7 @@
         <div class="row authContainDiv" v-if="verifiedEmail == 1">
             <div class="col s12 m12 l6 welcomeContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">PaaB</a>
+                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
@@ -29,7 +29,7 @@
                         Let us ensure that your email address is active and accurate , that is the only way we can reach you effectively.
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; PaaB. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
                     </p>
                 </div>
             </div>
@@ -42,7 +42,7 @@
         <div class="row authContainDiv" v-if="verifiedEmail == 2">
             <div class="col s12 m12 l6 otpContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">PaaB</a>
+                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
@@ -51,7 +51,7 @@
                         <span class="getStartedOtpSpan right">Nathan Sykes</span>
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; PaaB. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
                     </p>
                 </div>
             </div>
@@ -64,17 +64,17 @@
         <div class="row authContainDiv" v-if="verifiedEmail == 3">
             <div class="col s12 m12 l6 regContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">PaaB</a>
+                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
                     <p class="wlcNoteTxt">
-                        PAAB is the easiest and quickest way to build your brand presence. 
+                        White Coat Domain is the easiest and quickest way to build your brand presence. 
                         At your fingertips, take your professional career to
                         the next level by building an outstanding online portfolio to showcase your career and promote yourself.
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; PaaB. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
                     </p>
                 </div>
             </div>

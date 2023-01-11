@@ -30,8 +30,7 @@
                                 Your Clients - Websites
                             </p>
                             <p class="webBlackTxt">
-                                Lets start and automate your process so you
-                                can reclaim time and focus on your goals.
+                                Now is the time to create something exceptional with no limits.
                             </p>
                         </div>
                         <div

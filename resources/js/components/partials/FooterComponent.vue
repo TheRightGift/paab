@@ -4,7 +4,7 @@
                 <div class="row footerInnerDiv">
                     <div class="col l4 footerGridDivs">
                         <p class="contactTitle">Contact</p>
-                        <a href="#" class="contactTxt">info@paab.com</a>
+                        <a href="#" class="contactTxt">info@whitecoatdomain.com</a>
                     </div>
 
                     <div class="col l4 footerGridDivs">

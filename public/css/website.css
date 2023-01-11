@@ -12,7 +12,7 @@
     font-style: normal;
     font-weight: 600;
     font-size: 1.875rem;
-    color: #7746ff;
+    color: var(--primary);
     margin: 0 0 3vh 0;
     /* margin: 0; */
 }
@@ -107,7 +107,7 @@ p.websiteTemplateName {
     font-style: normal;
     font-weight: 900;
     font-size: 1.125rem;
-    color: #7746ff;
+    color: var(--primary);
     margin: 1vh 0 0 0;
 }
 .webWhiteTitle {
@@ -115,7 +115,7 @@ p.websiteTemplateName {
     font-weight: 900;
     font-style: normal;
     font-size: 1.25rem;
-    color: #7746ff;
+    color: var(--primary);
     margin: 0;
 }
 .webWhiteTxt {
@@ -127,7 +127,7 @@ p.websiteTemplateName {
 }
 #webWhiteIcon {
     font-size: 1.5rem;
-    color: #7746ff;
+    color: var(--primary);
 }
 .webHr {
     margin: 0;
@@ -186,7 +186,7 @@ p.websiteTemplateName {
     font-size: 1.125rem;
     line-height: 22px;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: var(--primary);
 }
 #setWebBtn {
     background: #d9d9d9;
@@ -201,7 +201,7 @@ p.websiteTemplateName {
     margin-bottom: 2vh;
 }
 #setWebBtn1 {
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 6px;
     font-family: "Montserrat", sans-serif;
     font-style: normal;

@@ -28,17 +28,18 @@ class TitleController extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = Validator::make($request->all(), [
-            'name' => ['required'],
-        ]); 
+        return response()->json(['Unauthorized Access'], 401);
+        // $inputs = Validator::make($request->all(), [
+        //     'name' => ['required'],
+        // ]); 
         
-        if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 501);
-        } else {
-            $input = $request->all();
-            $title = Title::create($input);
-            return response(['title' => $title, 'message' => 'Created Success'], 201);
-        }    
+        // if ($inputs->fails()) {
+        //     return response($inputs->errors()->all(), 501);
+        // } else {
+        //     $input = $request->all();
+        //     $title = Title::create($input);
+        //     return response(['title' => $title, 'message' => 'Created Success'], 201);
+        // }    
     }
 
     /**
@@ -61,9 +62,10 @@ class TitleController extends Controller
      */
     public function update(Request $request, $titleId)
     {
-        $title = Title::findOrFail($titleId);
-        $title->update($request->only('name'));
-        return response(['title' => $title, 'message' => 'Updated Success'], 204);
+        return response()->json(['Unauthorized Access'], 401);
+        // $title = Title::findOrFail($titleId);
+        // $title->update($request->only('name'));
+        // return response(['title' => $title, 'message' => 'Updated Success'], 204);
     }
 
     /**
@@ -74,9 +76,10 @@ class TitleController extends Controller
      */
     public function destroy($titleId)
     {
-        $title = Title::where('id', $titleId)->first();
-        $title->delete();
-        return response(['message' => 'Archived successfuly'], 204);
+        return response()->json(['Unauthorized Access'], 401);
+        // $title = Title::where('id', $titleId)->first();
+        // $title->delete();
+        // return response(['message' => 'Archived successfuly'], 204);
     }
 
     public function getUserProfession($id) {
