@@ -271,13 +271,11 @@
                         MORE THAN JUST A LANDING PAGE
                     </p>
 
-                    <p class="moreThanLandTxt">
-                        It is a long established fact that a reader will be
-                        distracted by the readable content of a page when
-                        looking at its layout. The point of using Lorem Ipsum is
-                        that it has a more-or-less normal distribution of
-                        letters, as opposed to using 'Content here, content
-                        here.
+                    <p class="moreThanLandTxt"> 
+                        White Coat Domain is offering you the opportunity to show your targeted audience who you are and what you can offer. We want to be a
+                        part of your success story by bringing your ideas to life with seamless efforts.
+                        <br><br>
+                        Discover thousands of customized , mobile responsive templates to convert visitors to potential clients.
                     </p>
                 </div>
             </div>
@@ -298,12 +296,9 @@
                     <div class="col l6 liveChatWriteUpDiv">
                         <p class="liveChatTitle">LIVE CHAT</p>
                         <p class="liveChatTxt">
-                            It is a long established fact that a reader will be
-                            distracted by the readable content of a page when
-                            looking at its layout. The point of using Lorem
-                            Ipsum is that it has a more-or-less normal
-                            distribution of letters, as opposed to using
-                            'Content here, content here.
+                            Creating that unique digital portfolio requires the right platform and an expert support team right behind you. As you
+                            progress in finding your digital identity, we are here every step of the way. Our 24/7 helpdesk is here to guide you as
+                            you make those important steps.
                         </p>
                     </div>
                 </div>
@@ -325,12 +320,7 @@
                     <div class="col l6 cvWriteUpDiv">
                         <p class="cvTitle">CURRICULUM VITAE</p>
                         <p class="cvTxt">
-                            It is a long established fact that a reader will be
-                            distracted by the readable content of a page when
-                            looking at its layout. The point of using Lorem
-                            Ipsum is that it has a more-or-less normal
-                            distribution of letters, as opposed to using
-                            'Content here, content here.
+                            Get noticed quickly by potential clients and customers.
                         </p>
                     </div>
 
@@ -372,12 +362,8 @@
                     <div class="col l6 socialMediaWriteUpDiv">
                         <p class="socialMediaTitle">SOCIAL MEDIA POST</p>
                         <p class="socialMediaTxt">
-                            It is a long established fact that a reader will be
-                            distracted by the readable content of a page when
-                            looking at its layout. The point of using Lorem
-                            Ipsum is that it has a more-or-less normal
-                            distribution of letters, as opposed to using
-                            'Content here, content here.
+                            An amazing opportunity for people to see the social part that makes you 
+                            awesome by linking your social media platforms.
                         </p>
                     </div>
                 </div>
@@ -407,12 +393,8 @@
                     <div class="col l6 clientRevWriteUpDiv">
                         <p class="clientRevTitle">CLIENT REVIEW</p>
                         <p class="clientRevTxt">
-                            It is a long established fact that a reader will be
-                            distracted by the readable content of a page when
-                            looking at its layout. The point of using Lorem
-                            Ipsum is that it has a more-or-less normal
-                            distribution of letters, as opposed to using
-                            'Content here, content here.
+                            Appraisals , Reviews and Constructive Criticism on display, 
+                            to encourage word of mouth marketing and potential clients.
                         </p>
                     </div>
 
@@ -444,12 +426,9 @@
                             TEMPLATES FIT JUST FOR YOU
                         </p>
                         <p class="templatesRowTxt">
-                            It is a long established fact that a reader will be
-                            distracted by the readable content of a page when
-                            looking at its layout. The point of using Lorem
-                            Ipsum is that it has a more-or-less normal
-                            distribution of letters, as opposed to using
-                            'Content here, content here.
+                            We are giving you the freedom to select from our multiple customized 
+                            templates designed to meet your personal and professional taste. 
+                            Our templates are seamless with drag and drop settings.
                         </p>
                     </div>
 
@@ -489,7 +468,6 @@
                                     type="text"
                                     class="validate"
                                 />
-                                <!-- <label for="first_name">First Name</label> -->
                             </div>
                             <div class="input-field col s6 rm_mg">
                                 <input
@@ -498,7 +476,6 @@
                                     type="text"
                                     class="validate"
                                 />
-                                <!-- <label for="last_name">Last Name</label> -->
                             </div>
                         </div>
 
@@ -510,7 +487,6 @@
                                     type="email"
                                     class="validate"
                                 />
-                                <!-- <label for="email">Email</label> -->
                             </div>
                         </div>
 
@@ -521,7 +497,6 @@
                                     id="textarea1"
                                     class="materialize-textarea"
                                 ></textarea>
-                                <!-- <label for="textarea1">Textarea</label> -->
                             </div>
                         </div>
 
@@ -537,7 +512,6 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <FooterComponent />
     </div>
 </template>

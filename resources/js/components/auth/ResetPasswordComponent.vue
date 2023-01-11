@@ -3,15 +3,15 @@
         <div class="row authContainDiv" v-if="verifiedEmail == 1">
             <div class="col s12 m12 l6 welcomeContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">PaaB</a>
+                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
                     <p class="wlcNoteTxt">
-                        Life does not give you a reset button but with PAAB, we do *winks*
+                        Life does not give you a reset button but with White Coat Domain, we do *winks*
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; PaaB. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
                     </p>
                 </div>
             </div>
@@ -24,7 +24,7 @@
         <div class="row authContainDiv" v-if="verifiedEmail == 2">
             <div class="col s12 m12 l6 otpContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">PaaB</a>
+                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
@@ -33,7 +33,7 @@
                         <span class="right">Nathan Sykes</span>
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; PaaB. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
                     </p>
                 </div>
             </div>
@@ -46,7 +46,7 @@
         <div class="row authContainDiv" v-if="verifiedEmail == 3">
             <div class="col s12 m12 l6 regContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">PaaB</a>
+                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
@@ -54,7 +54,7 @@
                         The first step to stand out is by creating something unique and extraordinary
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; PaaB. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
                     </p>
                 </div>
             </div>

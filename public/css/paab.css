@@ -1,8 +1,10 @@
 :root {
-    --primary: #7746ff;
-    --secondary: #7746ff;
+    --primary: #46166B;
+    --secondary: #46166B;
     --black: #000000;
     --white: #ffffff;
+
+    --component: rgba(0, 0, 0, 0.5);
 }
 ::-webkit-scrollbar {
     width: 5px;
@@ -167,22 +169,42 @@ body {
     margin-top: 2vh;
     font-family: "Montserrat", sans-serif;
 }
+/* #navLinks {
+    border-left: none;
+    padding: 0;
+    margin-right: 2vw;
+    padding-bottom: 3vh;
+}  */
 #nav-mobile.section {
     padding-top: 0;
     padding-bottom: 0;
 }
-#navLinks {
+a.navLinks {
     font-weight: 600;
     font-size: 1.1rem;
-    color: #7746ff;
+    color: var(--primary);
     font-family: "Montserrat", sans-serif;
 }
-#navLinks:hover {
+
+a.navLinks:hover {
     background-color: white;
     border-bottom: 4px solid rgba(125, 81, 245, 0.5);
+
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
 }
-#loginLink {
-    border: 1px solid #7746ff;
+
+a.navLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    border-bottom: 4px solid var(--primary);
+}
+
+/* Changed "loginLink" from id -> class */
+a.loginLink {
+    border: 1px solid var(--primary);
     border-radius: 6px;
     width: 130px;
     height: 40px;
@@ -191,17 +213,19 @@ body {
     line-height: 33px;
     font-weight: 600;
     font-size: 1rem;
-    color: #7746ff;
+    color: var(--primary);
     font-family: "Montserrat", sans-serif;
 }
-#loginLink:hover {
-    background: #7746ff;
-    color: #ffffff;
+
+a.loginLink:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-left: var(--primary);
 }
 
 /* Customer Support Div */
 .cusSupportDiv {
-    background: #7746ff;
+    background: var(--primary);
     box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
     border-radius: 0px 100px 0px 0px;
     /* margin-top: 20vh; */
@@ -260,7 +284,7 @@ body {
 /* Home FOOTER */
 
 .footerInnerDiv {
-    width: 70%;
+    width: 80%;
     margin: 15vh auto 0 auto;
 }
 .contactTitle,
@@ -282,7 +306,7 @@ body {
     line-height: 24px;
     letter-spacing: -0.015em;
     text-decoration-line: underline;
-    color: #7746ff;
+    color: var(--primary);
 }
 .locTxt {
     font-family: "Montserrat", sans-serif;
@@ -292,11 +316,11 @@ body {
     line-height: 24px;
     letter-spacing: -0.015em;
     text-decoration-line: underline;
-    color: #7746ff;
+    color: var(--primary);
     text-decoration: none;
 }
 .socialMedIcons {
-    color: #7746ff;
+    color: var(--primary);
     font-size: 25px;
     margin-right: 15px;
 }
@@ -327,7 +351,7 @@ body {
 #proBtn {
     font-family: "Montserrat", sans-serif;
     text-transform: capitalize;
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 10px;
     /* margin-left: 1vw; */
     width: 98%;
@@ -372,7 +396,7 @@ body {
     color: #000000;
 }
 .domainNameSugBtn {
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 6px;
     color: white;
     font-family: "Montserrat", sans-serif;
@@ -402,7 +426,7 @@ body {
     line-height: 24px;
     text-align: center;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: var(--primary);
     margin: 5vh 0 2vh 0;
 }
 .errorTxt {
@@ -485,7 +509,7 @@ body {
 }
 
 #fixedArrowUpIcon {
-    color: #7746ff;
+    color: var(--primary);
     font-size: 2rem;
 }
 
@@ -500,14 +524,14 @@ body {
     width: 0.5vw;
     height: 1vh;
     border-radius: 50px;
-    background-color: #7746ff;
+    background-color: var(--primary);
     margin-left: 0.75vw;
     margin-bottom: 0.5vh;
 }
 
 /* SIDENAV */
 .dashLeftBar {
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 3px;
     height: 100vh;
     padding-top: 4vh;
@@ -581,13 +605,13 @@ body {
     font-weight: 600;
     font-size: 0.75rem;
     text-align: center;
-    color: #7746ff;
+    color: var(--primary);
     margin: 0;
 }
 
 .clientCreatePortBtn {
     width: 10em;
-    background-color: #7746ff;
+    background-color: var(--primary);
 }
 
 .clientCreatePortBtnDiv {
@@ -630,7 +654,7 @@ body {
 
 /* Client Support Modal */
 .clientModalSupportDiv {
-    background: #7746ff;
+    background: var(--primary);
     box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding-top: 2vh;
@@ -747,7 +771,7 @@ div .col .s9 input.clientCreatePortInput1 {
     width: 80%;
 }
 #clientCreatePortBtn {
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 6px;
     font-family: "Montserrat", sans-serif;
     font-style: normal;
@@ -766,7 +790,7 @@ div .col .s9 input.clientCreatePortInput1 {
 }
 #clientCreatePortCancelIconBtn {
     /* margin: 2vw 0 0 5vh; */
-    color: #7746ff;
+    color: var(--primary);
     cursor: pointer;
 }
 #clientCreatePortCancelDiv {
@@ -814,7 +838,7 @@ div .col .s9 input.clientCreatePortInput1 {
     margin: 7vh auto 0 auto;
 }
 #configWebBtn {
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 6px;
     margin-top: 2.5vh;
     height: 5vh;
@@ -877,7 +901,7 @@ div .col .s9 input.clientCreatePortInput1 {
     font-style: normal;
     font-weight: 600;
     font-size: 1.875rem;
-    color: #7746ff;
+    color: var(--primary);
     margin: 6vh 0 1vh 0;
     /* margin: 0; */
 }
@@ -886,7 +910,7 @@ div .col .s9 input.clientCreatePortInput1 {
     font-style: normal;
     font-weight: 600;
     font-size: 1.875rem;
-    color: #7746ff;
+    color: var(--primary);
     margin: 6vh 0 0 0;
 }
 
@@ -907,7 +931,7 @@ div .col .s9 input.clientCreatePortInput1 {
     margin: 1.5vh 0 0 1vw;
 }
 #reviewModalBtn {
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 6px;
     margin: 5vh 0 2vh 0;
     font-family: "Montserrat", sans-serif;
@@ -945,6 +969,112 @@ div .col .s9 input.clientCreatePortInput1 {
 }
 
 
+/* Changed "cvImage" from id -> class */
+.cvImage {
+    position: relative;
+    bottom: 40px;
+    right: 20px;
+}
+
+/* Changed "socialMediaImage" from id -> class */
+.socialMediaImage {
+    position: relative;
+    bottom: 30px;
+    left: 3px;
+    max-width: 120vw;
+    height: 36vh;
+}
+
+/* Changed "facebookImg" from id -> class */
+.facebookImg {
+    position: absolute;
+    margin: 89px 0 0 38px;
+}
+
+/* Changed "twiterImg" from id -> class */
+.twiterImg {
+    position: absolute;
+    margin: 27px 0 0 202px;
+}
+
+/* Changed "clientRevImage" from id -> class */
+.clientRevImage {
+    position: relative;
+    bottom: 40px;
+    right: 45px;
+}
+
+/* Changed "careImg" from id -> class */
+.careImg {
+    height: 70vh;
+}
+
+/* Added getStartedOtpSpan in the otp section in getStarted component */
+.getStartedOtpSpan {
+    margin-right: 4.5vw;
+}
+
+/* Admin Dashboard page Img styling */
+#adminDashRightImgDiv {
+    background-image: url("../media/img/adminDashboardImg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 292px;
+    border-radius: 10px;
+}
+
+/* Help Icon */
+.helpIcon {
+    cursor: pointer;
+    color: var(--primary);
+}
+
+/* Help Title */
+.helpModalTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 37px;
+    color: var(--primary);
+}
+
+/* Help Texts */
+.helpModalTxts {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--black);
+}
+
+/* Help Close Button */
+.helpModalCloseBtn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--black);
+}
+
+.webBlackDiv1 {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.webWhiteProDiv {
+    width: 60px;
+    height: 60px;
+    background: var(--black);
+    /* border-radius: 50%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.sidenav {
+    background-color: var(--primary);
+}
 
 
 
@@ -954,7 +1084,7 @@ div .col .s9 input.clientCreatePortInput1 {
     .circlDiv2 {
         width: 40vw;
         height: 107.9vh;
-        background-color: #7746ff;
+        background-color: var(--primary);
         border-radius: 0;
         /* border-top-left-radius: 0;
         border-bottom-left-radius: 0; */
@@ -966,14 +1096,14 @@ div .col .s9 input.clientCreatePortInput1 {
         z-index: 0;
     }
 
-    #sideNav {
+    .sideNav {
         z-index: 100;
     }
-    #sideNavImgDiv {
+    /* #sideNavImgDiv {
         height: 25vh;
-    }
-    #sideNavLinkMgTp {
-        /* margin-top: 27vh; */
+    } */
+    /* #sideNavLinkMgTp {
+        margin-top: 27vh;
         margin-top: 2vh;
     }
     #navLinks {
@@ -984,7 +1114,7 @@ div .col .s9 input.clientCreatePortInput1 {
         margin-left: 3vw;
     }
     #loginLink {
-        /* border: 1px solid #7746FF; */
+        border: 1px solid var(--primary);
         border-radius: 6px;
         width: 130px;
         height: 40px;
@@ -993,10 +1123,10 @@ div .col .s9 input.clientCreatePortInput1 {
         line-height: 33px;
         font-weight: 600;
         font-size: 1.25rem;
-        color: #7746ff;
-        background-color: #ffffff;
+        color: var(--primary);
+        background-color: var(--white);
         margin-left: 20px;
-    }
+    } */
     .circlDiv1 {
         width: 0vw;
         height: 0vh;
@@ -1033,11 +1163,11 @@ div .col .s9 input.clientCreatePortInput1 {
         width: 410px;
         font-size: 2.6rem;
         font-weight: 700;
-        color: #7746ff;
+        color: var(--primary);
         font-family: "Montserrat", sans-serif;
     }
     .portfolioDiv {
-        background: #7746ff;
+        background: var(--primary);
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         margin-top: 5vh;
         z-index: 100;
@@ -1053,7 +1183,7 @@ div .col .s9 input.clientCreatePortInput1 {
         text-align: center;
         letter-spacing: -0.01em;
         line-height: 48px;
-        color: #ffffff;
+        color: var(--white);
         font-family: "Montserrat", sans-serif;
     }
     .portfolioTxt {
@@ -1067,7 +1197,7 @@ div .col .s9 input.clientCreatePortInput1 {
         text-align: center;
         justify-content: center;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: var(--white);
     }
     .moreThanLandTxt {
         width: 60%;
@@ -1094,7 +1224,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: var(--primary);
         margin-bottom: 10px;
         text-align: left;
     }
@@ -1120,7 +1250,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: var(--primary);
         margin-bottom: 13px;
         text-align: right;
     }
@@ -1159,7 +1289,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: var(--primary);
         margin-bottom: 13px;
         text-align: left;
     }
@@ -1185,7 +1315,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: var(--primary);
         margin: 130px 0 0 9px;
         text-align: right;
     }
@@ -1215,9 +1345,6 @@ div .col .s9 input.clientCreatePortInput1 {
         height: 53px;
         margin: 10vh auto 0 auto;
     }
-    #careImg {
-        height: 80vh;
-    }
     .footerInnerDiv {
         width: 100%;
         margin: 15vh auto 0 auto;
@@ -1229,16 +1356,8 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 2rem;
         line-height: 36px;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: var(--white);
         text-align: center;
-    }
-    #facebookImg {
-        width: 8vw;
-        margin: 64px 0 0 33px;
-    }
-    #twiterImg {
-        width: 8vw;
-        margin: 20px 0 0 155px;
     }
     .footerGridDivs {
         margin-right: 10vw;
@@ -1265,7 +1384,7 @@ div .col .s9 input.clientCreatePortInput1 {
         width: 43.5vw;
     }
     .cusSupportDiv {
-        background: #7746ff;
+        background: var(--primary);
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         border-radius: 0px 0px 0px 0px;
         /* margin-top: 20vh; */
@@ -1274,7 +1393,7 @@ div .col .s9 input.clientCreatePortInput1 {
     }
     #sideNavIcon {
         font-size: 3.5rem;
-        color: #7746ff;
+        color: var(--primary);
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50%;
         width: 6vw;
@@ -1284,7 +1403,7 @@ div .col .s9 input.clientCreatePortInput1 {
     .sideNavBrandLogo {
         font-size: 2.7rem;
         font-weight: 500;
-        color: #7746ff;
+        color: var(--primary);
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         margin-left: 35vw;
         font-family: "Montserrat", sans-serif;
@@ -1298,7 +1417,7 @@ div .col .s9 input.clientCreatePortInput1 {
         width: 400px;
         font-weight: 600;
         font-size: 1.1rem;
-        color: #000000;
+        color: var(--black);
         font-family: "Poppins", sans-serif;
         text-align: left;
         margin-bottom: 4vh;
@@ -1321,11 +1440,6 @@ div .col .s9 input.clientCreatePortInput1 {
         width: 80%;
         margin-top: 15vh;
     }
-    #chatImage {
-        width: 30vw;
-        position: relative;
-        bottom: 5vh;
-    }
     .cvImgInnerDivSm {
         width: 200px;
         height: 200px;
@@ -1334,35 +1448,18 @@ div .col .s9 input.clientCreatePortInput1 {
         margin-top: 0vh;
         margin-left: 50vw;
     }
-    #cvImage {
-        width: 28vw;
-        position: relative;
-        bottom: 5vh;
-    }
     .cvWriteUpDiv {
         position: relative;
-        left: 5vw;
+        left: 34vw;
     }
     .socialMediaInnerDiv {
         width: 80%;
         margin-top: 2vh;
     }
-    #socialMediaImage {
-        position: relative;
-        bottom: 20px;
-        left: 3px;
-        width: 80vw;
-        height: 29vh;
-    }
-    #clientRevImage {
-        width: 28vw;
-        position: relative;
-        bottom: 3vh;
-    }
     .ellipseLarge {
         width: 70px;
         height: 70px;
-        background: #6938f2;
+        background: var(--component);
         border-radius: 50%;
         position: absolute;
         right: 300px;
@@ -1371,7 +1468,7 @@ div .col .s9 input.clientCreatePortInput1 {
     .ellipseSmall {
         width: 35px;
         height: 35px;
-        background: #6938f2;
+        background: var(--component);
         border-radius: 50%;
         position: absolute;
         right: 279px;
@@ -1415,7 +1512,7 @@ div .col .s9 input.clientCreatePortInput1 {
     #otpEmailBtn {
         font-family: "Montserrat", sans-serif;
         text-transform: capitalize;
-        background: #7746ff;
+        background: var(--primary);
         border-radius: 10px;
         width: 90%;
         height: 6vh;
@@ -1429,7 +1526,7 @@ div .col .s9 input.clientCreatePortInput1 {
     /* Client Settings Section */
     .settingsFormDiv {
         width: 100%;
-        background: #ffffff;
+        background: var(--white);
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
@@ -1447,7 +1544,7 @@ div .col .s9 input.clientCreatePortInput1 {
     }
 
     #setProEditIcon {
-        color: #ffffff;
+        color: var(--white);
         font-size: 1.3rem;
         margin: 0.3vh 0 0 0.1vw;
     }
@@ -1456,7 +1553,7 @@ div .col .s9 input.clientCreatePortInput1 {
         width: 23px;
         height: 23px;
         border-radius: 50%;
-        background: #7746ff;
+        background: var(--primary);
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         display: inline-block;
         position: relative;
@@ -1464,7 +1561,7 @@ div .col .s9 input.clientCreatePortInput1 {
         right: 3vw;
     }
     #setFormBtn {
-        background: #7746ff;
+        background: var(--primary);
         border-radius: 6px;
         font-family: "Montserrat", sans-serif;
         text-transform: capitalize;
@@ -1509,7 +1606,7 @@ div .col .s9 input.clientCreatePortInput1 {
         left: 0vw;
     }
     #clientCreatePortBtn {
-        background: #7746ff;
+        background: var(--primary);
         border-radius: 6px;
         font-family: "Montserrat", sans-serif;
         font-style: normal;
@@ -1517,7 +1614,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 0.938rem;
         line-height: 18px;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: var(--white);
         margin: 0 0 11vh 18vw;
         width: 37vw;
     }
@@ -1527,12 +1624,12 @@ div .col .s9 input.clientCreatePortInput1 {
         font-weight: 600;
         font-size: 1.125rem;
         text-align: center;
-        color: #7746ff;
+        color: var(--primary);
         margin: 0;
     }
     /* Client Support Modal */
     .clientModalSupportDiv {
-        background: #7746ff;
+        background: var(--primary);
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
         padding-top: 2vh;
@@ -1544,7 +1641,7 @@ div .col .s9 input.clientCreatePortInput1 {
     }
     #sFName {
         height: 40px;
-        background: #ffffff;
+        background: var(--white);
         padding-left: 7px;
         width: 109%;
         /* margin-right: 7vw; */
@@ -1552,7 +1649,7 @@ div .col .s9 input.clientCreatePortInput1 {
 
     #sLName {
         height: 40px;
-        background: #ffffff;
+        background: var(--white);
         padding-left: 7px;
         width: 109%;
         margin-left: 2.5vw;
@@ -1560,7 +1657,7 @@ div .col .s9 input.clientCreatePortInput1 {
 
     #sEmail {
         height: 40px;
-        background: #ffffff;
+        background: var(--white);
         padding-left: 7px;
         width: 109%;
     }
@@ -1568,7 +1665,7 @@ div .col .s9 input.clientCreatePortInput1 {
     #sTextarea1 {
         width: 110%;
         height: 13vh;
-        background: #ffffff;
+        background: var(--white);
         padding-left: 7px;
     }
 
@@ -1577,6 +1674,83 @@ div .col .s9 input.clientCreatePortInput1 {
         background: #1e1e1e;
         border-radius: 6px;
     }
+
+    /* ******************************************************************************************* */
+    /* New changes Starts here */
+    .sideNavLinkMgTp {
+        /* margin-top: 27vh; */
+        margin-top: 2vh;
+    }
+
+    a.navLinks {
+        font-weight: 600;
+        font-size: 1.3125rem;
+        color: var(--white);
+        letter-spacing: 0.5px;
+        margin-left: 3vw;
+    }
+
+    a.loginLink {
+        /* border: 1px solid #7746FF; */
+        border-radius: 6px;
+        width: 130px;
+        height: 40px;
+        margin-top: 12px;
+        text-align: center;
+        line-height: 33px;
+        font-weight: 600;
+        font-size: 1.25rem;
+        color: var(--primary);
+        background-color: var(--white);
+        margin-left: 20px;
+    }
+    
+    /* Changed "chatImage" from id -> class */
+    .chatImage {
+        width: 30vw;
+        position: relative;
+        bottom: 5vh;
+    }
+
+    /* Changed "cvImage" from id -> class */
+    .cvImage {
+        width: 28vw;
+        position: relative;
+        bottom: 5vh;
+    }
+
+    /* Changed "socialMediaImage" from id -> class */
+    .socialMediaImage {
+        position: relative;
+        bottom: 20px;
+        left: 3px;
+        width: 80vw;
+        height: 29vh;
+    }
+
+    /* Changed "facebookImg" from id -> class */
+    .facebookImg {
+        width: 8vw;
+        margin: 64px 0 0 33px;
+    }
+
+    /* Changed "twiterImg" from id -> class */
+    .twiterImg {
+        width: 8vw;
+        margin: 20px 0 0 155px;
+    }
+
+    /* Changed "clientRevImage" from id -> class */
+    .clientRevImage {
+        width: 28vw;
+        position: relative;
+        bottom: 3vh;
+    }
+
+    /* Changed homepage "PREVIEW TEMPLATE" button color */
+    a.btn.circleDivBtn {
+        background-color: var(--primary);
+    }
 }
 
 /* Media Query on small device */
@@ -1584,7 +1758,7 @@ div .col .s9 input.clientCreatePortInput1 {
     .circlDiv2 {
         width: 100vw;
         height: 95vh;
-        background-color: #7746ff;
+        background-color: var(--primary);
         /* background-color: transparent; */
         border-radius: 0%;
         /* border-top-left-radius: 0;
@@ -1634,7 +1808,7 @@ div .col .s9 input.clientCreatePortInput1 {
     }
     #sideNavIcon {
         font-size: 3.5rem;
-        color: #7746ff;
+        color: var(--primary);
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50%;
         width: 13vw;
@@ -1643,24 +1817,24 @@ div .col .s9 input.clientCreatePortInput1 {
     .sideNavBrandLogo {
         font-size: 2.7rem;
         font-weight: 500;
-        color: #7746ff;
+        color: var(--primary);
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         margin-left: 14vw;
         font-family: "Montserrat", sans-serif;
     }
-    #navLinks {
+    /* #navLinks {
         font-weight: 600;
         font-size: 1.3125rem;
-        color: #ffffff;
+        color: var(--white);
         letter-spacing: 0.5px;
         margin-left: 3vw;
     }
     #sideNavLinkMgTp {
-        /* margin-top: 27vh; */
+        margin-top: 27vh;
         margin-top: 2vh;
     }
     #loginLink {
-        /* border: 1px solid #7746FF; */
+        border: 1px solid var(--primary);
         border-radius: 6px;
         width: 130px;
         height: 40px;
@@ -1669,13 +1843,13 @@ div .col .s9 input.clientCreatePortInput1 {
         line-height: 33px;
         font-weight: 600;
         font-size: 1.25rem;
-        color: #7746ff;
-        background-color: #ffffff;
+        color: var(--primary);
+        background-color: var(--white);
         margin-left: 20px;
-    }
-    #sideNavImgDiv {
+    } */
+    /* #sideNavImgDiv {
         height: 25vh;
-    }
+    } */
     .portraitImgContainDiv {
         margin-right: 2vw;
     }
@@ -1688,7 +1862,7 @@ div .col .s9 input.clientCreatePortInput1 {
         text-align: center;
         letter-spacing: -0.01em;
         line-height: 48px;
-        color: #ffffff;
+        color: var(--white);
         font-family: "Montserrat", sans-serif;
     }
     .portfolioTxt {
@@ -1702,7 +1876,7 @@ div .col .s9 input.clientCreatePortInput1 {
         text-align: center;
         justify-content: center;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: var(--white);
     }
     .moreThanLandTxt {
         width: 95%;
@@ -1738,7 +1912,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: var(--primary);
         margin-top: 6vh;
         margin-bottom: 19px;
         text-align: left;
@@ -1765,7 +1939,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: var(--primary);
         margin-bottom: 13px;
         text-align: right;
     }
@@ -1787,11 +1961,6 @@ div .col .s9 input.clientCreatePortInput1 {
         margin-top: 0vh;
         margin-left: 57vw;
     }
-    #cvImage {
-        width: 38vw;
-        position: relative;
-        bottom: 3vh;
-    }
     .socialMediaInnerDiv {
         width: 95%;
         margin-top: 16vh;
@@ -1804,23 +1973,6 @@ div .col .s9 input.clientCreatePortInput1 {
         border-radius: 50%;
         margin-left: 0vw;
     }
-    #socialMediaImage {
-        position: relative;
-        bottom: 20px;
-        left: 3px;
-        max-width: 55vw;
-        height: 20vh;
-    }
-    #facebookImg {
-        width: 12vw;
-        position: absolute;
-        margin: 36px 0 0 25px;
-    }
-    #twiterImg {
-        width: 12vw;
-        position: absolute;
-        margin: 12px 0 0 110px;
-    }
     .socialMediaTitle {
         font-family: "Montserrat", sans-serif;
         font-style: normal;
@@ -1828,7 +1980,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: var(--primary);
         margin-top: 3vh;
         margin-bottom: 13px;
         text-align: left;
@@ -1854,7 +2006,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 2rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: var(--primary);
         margin-top: 5vh;
         margin-bottom: 13px;
         text-align: right;
@@ -1908,7 +2060,7 @@ div .col .s9 input.clientCreatePortInput1 {
         margin: 12vh auto 3vh auto;
         font-size: 2.75rem;
         font-weight: 700;
-        color: #7746ff;
+        color: var(--primary);
         font-family: "Montserrat", sans-serif;
         text-align: center;
     }
@@ -1917,7 +2069,7 @@ div .col .s9 input.clientCreatePortInput1 {
         width: 400px;
         font-weight: 600;
         font-size: 1rem;
-        color: #000000;
+        color: var(--black);
         font-family: "Poppins", sans-serif;
         text-align: center;
     }
@@ -1943,7 +2095,7 @@ div .col .s9 input.clientCreatePortInput1 {
     .wlcNoteDiv {
         width: 400px;
         height: 600px;
-        background: #7746ff;
+        background: var(--primary);
         border-radius: 50px;
         padding-top: 1vh;
         margin-top: 6vh;
@@ -1961,7 +2113,7 @@ div .col .s9 input.clientCreatePortInput1 {
         line-height: 24px;
         margin: 6vh 0 0 2vw;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: var(--white);
     }
     .wlcNoteFooterTxt {
         font-family: "Montserrat";
@@ -1983,7 +2135,7 @@ div .col .s9 input.clientCreatePortInput1 {
     .wlcNoteDiv {
         width: 400px;
         height: 600px;
-        background: #7746ff;
+        background: var(--primary);
         border-radius: 50px;
         padding-top: 1vh;
         margin-top: 6vh;
@@ -2001,7 +2153,7 @@ div .col .s9 input.clientCreatePortInput1 {
         line-height: 24px;
         margin: 6vh 0 0 2vw;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: var(--white);
     }
     .wlcNoteFooterTxt {
         font-family: "Montserrat";
@@ -2028,9 +2180,9 @@ div .col .s9 input.clientCreatePortInput1 {
 
     /* Error Small Device */
     .domainNameSugBtn {
-        background: #7746ff;
+        background: var(--primary);
         border-radius: 6px;
-        color: white;
+        color: var(--white);
         font-family: "Montserrat", sans-serif;
         height: 4.8vh;
         width: 19vw;
@@ -2051,7 +2203,6 @@ div .col .s9 input.clientCreatePortInput1 {
     }
     .tempPageTxt {
         font-family: "Poppins", sans-serif;
-        font-style: normal;
         font-weight: 600;
         font-size: 1rem;
         line-height: 24px;
@@ -2086,20 +2237,20 @@ div .col .s9 input.clientCreatePortInput1 {
     .ellipseLargeSm {
         width: 50px;
         height: 50px;
-        background: #6938f2;
+        background: var(--component);
         border-radius: 50%;
     }
     .ellipseSmallSm {
         width: 25px;
         height: 25px;
-        background: #6938f2;
+        background: var(--component);
         border-radius: 50%;
         position: relative;
         top: 3vh;
         right: 2vw;
     }
     .portfolioDiv {
-        background: #7746ff;
+        background: var(--primary);
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         /* margin-top: 17.5vh; */
         z-index: 100;
@@ -2107,14 +2258,13 @@ div .col .s9 input.clientCreatePortInput1 {
         padding-bottom: 15vh;
     }
     .moreThanLandTitle {
-        font-style: normal;
         font-weight: 700;
         font-size: 1.5rem;
         line-height: 39px;
         align-items: center;
         text-align: center;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: var(--primary);
         font-family: "Montserrat", sans-serif;
     }
     .moreThanLandInnerDiv {
@@ -2128,7 +2278,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 1.7rem;
         line-height: 39px;
         letter-spacing: -0.015em;
-        color: #7746ff;
+        color: var(--primary);
         margin-bottom: 13px;
     }
     .clientRevTxt,
@@ -2153,7 +2303,7 @@ div .col .s9 input.clientCreatePortInput1 {
         margin: 10vh auto;
     }
     .cusSupportDiv {
-        background: #7746ff;
+        background: var(--primary);
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         border-radius: 0px 0px 0px 0px;
         /* margin-top: 20vh; */
@@ -2167,7 +2317,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 1.4rem;
         line-height: 36px;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: var(--white);
         text-align: center;
     }
 
@@ -2178,7 +2328,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-weight: 500;
         font-size: 2.4rem;
         line-height: 40px;
-        color: #7746ff;
+        color: var(--primary);
         text-align: center;
     }
     .tempBtnDiv {
@@ -2232,7 +2382,7 @@ div .col .s9 input.clientCreatePortInput1 {
     #otpEmailBtn {
         font-family: "Montserrat", sans-serif;
         text-transform: capitalize;
-        background: #7746ff;
+        background: var(--primary);
         border-radius: 10px;
         width: 90%;
         height: 6vh;
@@ -2246,7 +2396,7 @@ div .col .s9 input.clientCreatePortInput1 {
     /* Client Settings Section */
     .settingsFormDiv {
         width: 100%;
-        background: #ffffff;
+        background: var(--white);
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
     .setMainDiv {
@@ -2261,7 +2411,7 @@ div .col .s9 input.clientCreatePortInput1 {
         color: rgba(0, 0, 0, 0.5);
     }
     #setProEditIcon {
-        color: #ffffff;
+        color: var(--white);
         font-size: 1.3rem;
         margin: 0.3vh 0 0 0.1vw;
     }
@@ -2318,7 +2468,7 @@ div .col .s9 input.clientCreatePortInput1 {
         margin-top: 2.6vh;
     }
     .dashTimeDiv {
-        background: #7746ff;
+        background: var(--primary);
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
         height: 12.25rem;
@@ -2332,7 +2482,7 @@ div .col .s9 input.clientCreatePortInput1 {
         width: 100%;
     }
     #clientCreatePortBtn {
-        background: #7746ff;
+        background: var(--primary);
         border-radius: 6px;
         font-family: "Montserrat", sans-serif;
         font-style: normal;
@@ -2340,7 +2490,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-size: 0.938rem;
         line-height: 18px;
         letter-spacing: -0.015em;
-        color: #ffffff;
+        color: var(--white);
         margin: 0 0 11vh 18vw;
         width: 50vw;
     }
@@ -2350,13 +2500,13 @@ div .col .s9 input.clientCreatePortInput1 {
         font-weight: 600;
         font-size: 1.125rem;
         text-align: center;
-        color: #7746ff;
+        color: var(--primary);
         margin: 0;
     }
 
     /* Client Support Modal */
     .clientModalSupportDiv {
-        background: #7746ff;
+        background: var(--primary);
         box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
         padding-top: 2vh;
@@ -2368,28 +2518,28 @@ div .col .s9 input.clientCreatePortInput1 {
     }
     #sFName {
         height: 40px;
-        background: #ffffff;
+        background: var(--white);
         padding-left: 7px;
         width: 109%;
         /* margin-right: 7vw; */
     }
     #sLName {
         height: 40px;
-        background: #ffffff;
+        background: var(--white);
         padding-left: 7px;
         width: 109%;
         margin-left: 4vw;
     }
     #sEmail {
         height: 40px;
-        background: #ffffff;
+        background: var(--white);
         padding-left: 7px;
         width: 109%;
     }
     #sTextarea1 {
         width: 111%;
         height: 13vh;
-        background: #ffffff;
+        background: var(--white);
         padding-left: 7px;
     }
     #modalSupportBtnForm {
@@ -2398,4 +2548,182 @@ div .col .s9 input.clientCreatePortInput1 {
         border-radius: 6px;
     }
 
+    /* Centered template "GET STARTED" button properly */
+    .tempPageBtn {
+        width: 198px;
+        height: 40px;
+        background: var(--primary);
+        border-radius: 6px;
+        font-family: "Montserrat", sans-serif;
+        margin-left: 23vw;
+    }
+
+    /* Centered this text properly */
+    .circleDivtxt {
+        /* width: 400px; */
+        font-weight: 600;
+        font-size: 1rem;
+        color: var(--black);
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+
+    /* New changes Starts here */
+    /* Changed "chatImage" from id -> class */
+    .chatImage {
+        width: 38vw;
+        position: relative;
+        bottom: 3vh;
+    }
+
+    /* Changed "cvImage" from id -> class */
+    .cvImage {
+        width: 38vw;
+        position: relative;
+        bottom: 3vh;
+    }
+
+    /* Changed "socialMediaImage" from id -> class */
+    .socialMediaImage {
+        position: relative;
+        bottom: 20px;
+        left: 3px;
+        max-width: 55vw;
+        height: 20vh;
+    }
+
+    /* Changed "facebookImg" from id -> class */
+    .facebookImg {
+        width: 12vw;
+        position: absolute;
+        margin: 36px 0 0 25px;
+    }
+
+    /* Changed "twiterImg" from id -> class */
+    .twiterImg {
+        width: 12vw;
+        position: absolute;
+        margin: 12px 0 0 110px;
+    }
+
+    /* Changed "clientRevImage" from id -> class */
+    .clientRevImage {
+        width: 40vw;
+        position: relative;
+        bottom: 3vh;
+    }
+
+    /* Commented off this line of code, It's not needed again. */
+    /* .careImg {
+        height: 50vh;
+        width: 93vw;
+    } */
+
+    a.navLinks {
+        font-weight: 600;
+        font-size: 1.3125rem;
+        color: var(--white);
+        letter-spacing: 0.5px;
+        margin-left: 3vw;
+    }
+
+    .sideNavLinkMgTp {
+        /* margin-top: 27vh; */
+        margin-top: 2vh;
+    }
+
+    a.loginLink {
+        /* border: 1px solid #7746FF; */
+        border-radius: 6px;
+        width: 130px;
+        height: 40px;
+        margin-top: 12px;
+        text-align: center;
+        line-height: 33px;
+        font-weight: 600;
+        font-size: 1.25rem;
+        color: var(--primary);
+        background-color: var(--white);
+        margin-left: 20px;
+    }
+}
+
+
+/* Navs */
+
+/* Media Query for Medium Devices */
+@media screen and (max-width: 992px) and (min-width: 640px) {
+
+
+    /* Changed mobile sidenav list icon from id -> class and it's styling */
+    .material-icons.sideNavIcon {
+        font-size: 3.5rem;
+        color: var(--primary);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        width: 6vw;
+        height: 6.5vh;
+        line-height: 52px;
+    }
+
+    /* Id for mobile sidenav list icon not needed again, it's been changed to class */
+    /* #sideNavIcon {
+        font-size: 3.5rem;
+        color: #7746ff;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        width: 6vw;
+        height: 6.5vh;
+        line-height: 52px;
+    } */
+}
+
+
+
+/* Media Query for Small Devices */
+@media screen and (max-width: 640px) {
+    /* Centered Client sidenav profile image */
+    .mobileNavProImg {
+        margin: 0 auto 4vh auto;
+    }
+
+    /* Changed and centered the look of client sidenav */
+    /* Client sidenav page icons */
+    .material-icons.dashLeftBarIcons {
+        font-size: 2rem;
+        /* color: #D9D9D9; */
+        text-align: center;
+        margin-left: 0;
+    }
+
+    /* Client sidenav page title */
+    .dashLeftBarTitle {
+        margin-top: -3.5vh;
+        margin-bottom: 1vh;
+        color: #D9D9D9;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+    }
+
+    /* Changed mobile sidenav list icon from id -> class and it's styling */
+    .material-icons.sideNavIcon {
+        font-size: 3.5rem;
+        color: var(--primary);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        width: 13vw;
+        height: 6.5vh;
+    }
+
+    /* Id for mobile sidenav list icon not needed again, it's been changed to class */
+    /* #sideNavIcon {
+        font-size: 3.5rem;
+        color: #7746ff;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        width: 13vw;
+        height: 6.5vh;
+    } */
 }

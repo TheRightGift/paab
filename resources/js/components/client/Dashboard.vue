@@ -8,6 +8,18 @@
             <div class="col s12 m10 l10">
                 <div class="dashRightDiv">
                     <div id="dashRightImgDiv">
+                        <div class="dashRightImgInnerDiv">
+                            <div class="dashRightImgTxtDiv">
+                                <p class="dashRightImgTitle">
+                                    Skyrocket your portfolio
+                                </p>
+                                <p class="dashRightImgTxt">
+                                    We are ready to go on this journey with you as you take your 
+                                    personal brand and reputation in your hands.
+
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row" id="dashWlcNoteRowDiv">
@@ -190,7 +202,7 @@
         components: {
             SidenavComponent,
             MobileNavComponent,
-            InnerFooterComponent
+            InnerFooterComponent,
         },
         data() {
             return {

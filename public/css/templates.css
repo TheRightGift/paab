@@ -16,7 +16,7 @@
     padding-bottom: 3vh;
 }
 a.active {
-    border-bottom: 4px solid #7746ff;
+    border-bottom: 4px solid var(--primary);
     padding: 0;
 }
 .tempContainInnerDiv {
@@ -28,7 +28,7 @@ a.active {
     margin-left: auto;
 }
 #tempLogo {
-    color: #7746ff;
+    color: var(--primary);
 }
 .tempPageTitle {
     font-family: "Montserrat", sans-serif;
@@ -36,7 +36,7 @@ a.active {
     font-weight: 700;
     font-size: 2.75rem;
     line-height: 54px;
-    color: #7746ff;
+    color: var(--primary);
 }
 .tempPageTxt {
     font-family: "Poppins", sans-serif;
@@ -50,12 +50,12 @@ a.active {
 .tempPageBtn {
     width: 198px;
     height: 40px;
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 6px;
     font-family: "Montserrat", sans-serif;
 }
 .tempPageBtn:hover {
-    color: #7746ff;
+    color: var(--primary);
     background: #ffffff;
 }
 .tempPageLeftDiv {
@@ -81,16 +81,16 @@ a.active {
     width: 80%;
 }
 #tempPageImgBtn {
-    border: 2px solid #7746ff;
+    border: 2px solid var(--primary);
     border-radius: 6px;
     width: 198px;
     height: 40px;
     background-color: #ffffff;
-    color: #7746ff;
+    color: var(--primary);
     font-family: "Montserrat", sans-serif;
 }
 #tempPageImgBtn:hover {
-    background-color: #7746ff;
+    background-color: var(--primary);
     color: #ffffff;
 }
 /* .tempPageImgDiv {
@@ -124,4 +124,13 @@ a.active {
 #clientCreatePortInputRowDiv {
     margin-left: 0vw;
     width: 100%;
+}
+
+/* Changed templatePage "GET STARTED" button color */
+a.btn.tempPageBtn {
+    background: var(--primary);
+}
+a.btn.tempPageBtn:hover {
+    background: var(--black);
+    color: var(--white);
 }

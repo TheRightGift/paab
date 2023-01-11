@@ -13,7 +13,7 @@
     font-style: normal;
     font-weight: 600;
     font-size: 1.875rem;
-    color: #7746ff;
+    color: var(--primary);
     margin: 6vh 0 0 0;
 }
 .webBlackDiv1 {
@@ -26,7 +26,7 @@
     font-weight: 600;
     font-size: 1.875rem;
     line-height: 50px;
-    color: #7746ff;
+    color: var(--primary);
 }
 .supportTxt {
     font-family: "Poppins", sans-serif;
@@ -46,7 +46,7 @@ div .row .supportDiv {
     font-weight: 600;
     font-size: 1.125rem;
     line-height: 22px;
-    color: #7746ff;
+    color: var(--primary);
     margin-top: 0;
 }
 .supportTxt1 {
@@ -72,7 +72,7 @@ div .row .supportDiv {
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 30px;
-    color: #7746ff;
+    color: var(--primary);
     margin: 0;
 }
 .supportGetInTouchTxt {
@@ -85,7 +85,7 @@ div .row .supportDiv {
     margin: 0;
 }
 #supportGetInTouchBtn {
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 6px;
     margin-top: 2vh;
 }
@@ -137,7 +137,7 @@ div .row .supportGetInTouchRowDiv {
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 30px;
-    color: #7746ff;
+    color: var(--primary);
 }
 .clientSendemailTxt,
 .clientSendemailTxt1 {
@@ -155,7 +155,7 @@ div .row .supportGetInTouchRowDiv {
     font-weight: 700;
     font-size: 0.97rem;
     line-height: 21px;
-    color: #7746ff;
+    color: var(--primary);
     margin-top: 5vh;
 }
 .clientSendmailTimeSent {
@@ -172,4 +172,20 @@ div .row .supportGetInTouchRowDiv {
 }
 .clientSendmailArrowBackLink {
     color: #000000;
+}
+.webBlackTxt {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0;
+    /* width: 60%; */
+}
+
+#modalSupportBtnForm {
+    background-color: var(--black);
+}
+input:not([type]), input[type=text]:not(.browser-default), input[type=email]:not(.browser-default), textarea.materialize-textarea{
+    background-color: var(--white);
 }

@@ -14,7 +14,7 @@
 }
 .wlcNoteDiv {
     width: 434px;
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 50px;
     padding: 5vh 2vw;
 }
@@ -67,7 +67,7 @@ p.wlcNoteFooterTxt {
     font-size: 2.5rem;
     line-height: 35px;
     letter-spacing: -0.015em;
-    color: #7746ff;
+    color: var(--primary);
     margin-bottom: 0;
     margin-top: 0;
 }
@@ -80,7 +80,7 @@ p.wlcNoteFooterTxt {
     color: #1e1e1e;
 }
 #user {
-    border: 1px solid #7746ff;
+    border: 1px solid var(--primary);
     border-radius: 100px;
     /* text-align: center; */
 }
@@ -91,14 +91,14 @@ p.wlcNoteFooterTxt {
     padding-left: 1vw;
 }
 #password {
-    border: 1px solid #7746ff;
+    border: 1px solid var(--primary);
     border-radius: 100px;
     padding-left: 1vw;
 }
 #loginBtn {
     font-family: "Montserrat", sans-serif;
     text-transform: capitalize;
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 6px;
     /* margin-left: 1vw; */
     width: 98%;
@@ -144,7 +144,7 @@ p.wlcNoteFooterTxt {
     font-size: 15px;
     letter-spacing: -0.015em;
     text-decoration-line: underline;
-    color: #7746ff;
+    color: var(--primary);
 }
 
 /* Sign up page section */
@@ -161,13 +161,13 @@ p.wlcNoteFooterTxt {
 #signCpass,
 #signupProfession,
 #signupZipcode {
-    border: 1px solid #7746ff;
+    border: 1px solid var(--primary);
     border-radius: 100px;
     padding-left: 9px;
     letter-spacing: -0.015em;
 }
 #signupBtn {
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 6px;
     font-family: "Montserrat", sans-serif;
     text-transform: capitalize;
@@ -198,7 +198,7 @@ p.wlcNoteFooterTxt {
     color: #ffffff;
 }
 .otpSocialMedIcon {
-    color: #7746ff;
+    color: var(--primary);
     line-height: 40px;
 }
 .proEmailMsg {
@@ -256,7 +256,7 @@ p.wlcNoteFooterTxt {
 #otpEmailBtn {
     font-family: "Montserrat", sans-serif;
     text-transform: capitalize;
-    background: #7746ff;
+    background: var(--primary);
     border-radius: 10px;
     width: 37%;
     height: 6vh;
@@ -288,7 +288,7 @@ p.wlcNoteFooterTxt {
     font-weight: 500;
     font-size: 30px;
     line-height: 37px;
-    color: #7746FF;
+    color: var(--primary);
 }
 .helpModalTxts {
     font-family: 'Poppins', sans-serif;

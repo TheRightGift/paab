@@ -110,7 +110,7 @@
                         >
                             <i class="material-icons left">arrow_back</i>Back
                         </a>
-                        <div class="row">
+                        <div class="row style">
                             <p class="bioTitle">Add Template</p>
                             <div class="row">
                                 <div
@@ -263,7 +263,7 @@
                 templates: [],
                 template: {
                     title: "",
-                    profession_id: 0,
+                    profession_id: '',
                     imageUrl: null,
                     styleFile: null,
                 },
@@ -399,5 +399,11 @@
     .image {
         width: 328px;
         height: 262px;
+    }
+    .style {
+        margin: 0 5% 0 5%;
+    }
+    .btn {
+        background-color: var(--primary)
     }
 </style>
