@@ -32,10 +32,10 @@ class GeneralSeeder extends Seeder
         ];
         collect($title)->each(function ($title) {\App\Models\Title::create($title);});
         \App\Models\User::create([
-            'firstname' => 'PaaB',
-            'lastname' => 'General',
-            'email' => 'paabgeneral@admin.com',
-            'password' => bcrypt('respectpaab'),
+            'firstname' => 'George',
+            'lastname' => 'Ibekie',
+            'email' => 'ceo@whietcoatdomain.com',
+            'password' => bcrypt('two%WhiteCoatDomain'),
             'role' => 'SuperAdmin',
         ]);
     }
