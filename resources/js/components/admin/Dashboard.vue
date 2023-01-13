@@ -130,8 +130,13 @@
                                     <p class="cardTitle">MY MAIL</p>
                                 </div>
                                 <div class="cardContent">
-                                    <div class="row" id="myMailDiv">
+                                    <div class="row">
                                         <p class="white-text center-align noVertMargin">No Mail.</p>
+                                    </div>
+                                    <div class="row noMarginBottom">
+                                        <div class="col s12 center-align">
+                                            <a @click="navigateToMail" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create mail</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -274,6 +279,9 @@
             },
             navigateToClientsWebPages() {
                 window.location.replace("/admin/client");
+            },
+            navigateToMail() {
+                window.location.replace("/admin/mail");
             },
             setView(num) {
                 this.view = num;

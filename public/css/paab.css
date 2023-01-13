@@ -958,7 +958,7 @@ div .col .s9 input.clientCreatePortInput1 {
 #logoutModal {
     /* background-color: var(--primary); */
     border-radius: 20px;
-    width: 50vw;
+    width: 30vw;
 }
 .logoutModalImageRow {
     display: flex;
