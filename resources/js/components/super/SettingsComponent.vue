@@ -1,12 +1,12 @@
 <template>
     <div>
+        <!-- Sidenav for small devices -->
         <mobile-nav-component />
-        
-        
-        <!-- Sidebar for large and medium devices -->
+
         <div class="row" id="dashRowDiv">
+            <!-- Sidebar for large and medium devices -->
             <side-nav-component @user="getUser" />
-        
+
             <!-- Mail blue div -->
             <div class="col s12 m10 l10" id="setRightDiv">
 
@@ -17,6 +17,9 @@
                             class="responsive-img settingsIllustImg right">
                     </div>
 
+
+
+                    <!-- <div class=""> -->
                     <div class="col s12 settingsFormDiv">
                         <form id="settingsForm">
 
@@ -25,7 +28,7 @@
                                     <div class="setProDiv">
                                         <i class="material-icons" id="setProImg">person</i>
                                     </div>
-                                    
+
                                     <div class="setProEditIconDiv">
                                         <i class="material-icons" id="setProEditIcon">edit</i>
                                     </div>
@@ -33,10 +36,10 @@
 
                                 <div class="setProTitleDiv">
                                     <p class="mySetTitle">Settings</p>
-                                    <span class="mySetName">jubrilake@gmail.com</span>
+                                    <span class="mySetName">chigozie@paab.com</span>
                                 </div>
                             </div>
-                            
+
 
                             <div class="row rm_mg">
                                 <div class="row rm_mg">
@@ -55,13 +58,15 @@
 
                                 <div class="row rm_mg">
                                     <div class="input-field col s12 rm_mg sm_mg">
-                                        <input placeholder="Email" id="settingEmail" type="email" class="validate">
+                                        <input placeholder="Email" id="settingEmail" type="email"
+                                            value="chigozie@paab.com" class="validate">
                                     </div>
                                 </div>
 
                                 <div class="row rm_mg">
                                     <div class="input-field col s12 rm_mg sm_mg">
-                                        <input placeholder="Phone Number" id="settingPhone" type="text" class="validate">
+                                        <input placeholder="Phone Number" id="settingPhone" type="text"
+                                            class="validate">
                                     </div>
                                 </div>
 
@@ -97,7 +102,8 @@
 
                                 <div class="row rm_mg">
                                     <div class="input-field col s12 rm_mg sm_mg">
-                                        <input placeholder="Confirm Password" id="settingCpass" type="password" class="validate">
+                                        <input placeholder="Confirm Password" id="settingCpass" type="password"
+                                            class="validate">
                                     </div>
                                 </div>
 
@@ -107,7 +113,12 @@
                             </div>
                         </form>
                     </div>
+
+                    <!-- </div> -->
                 </div>
+
+
+
             </div>
         </div>
     </div>
@@ -116,32 +127,18 @@
 <script>
 import MobileNavComponent from '../partials/MobileNavComponent.vue';
 import SideNavComponent from '../partials/SideNavComponent.vue';
-// import FooterComponent from "./partials/FooterComponent.vue";
-// import HeaderComponent from "./partials/HeaderComponent.vue";
 export default {
     components: {
         MobileNavComponent,
-        SideNavComponent
-        // FooterComponent,
-        // HeaderComponent
+        SideNavComponent,
     },
     data() {
         return {
             bg_img: '/media/img/istockphoto-1390124896-170667a.jpg',
             pro_img: '/media/img/yuna.jpg',
-            user: {},
         };
     },
     mounted() { },
-    methods: {
-        getUser(e) {
-            this.user = e;
-        }
-    }
+    methods: {}
 }
 </script>
-
-
-
-
-

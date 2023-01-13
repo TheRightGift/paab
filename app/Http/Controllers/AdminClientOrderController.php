@@ -31,7 +31,7 @@ class AdminClientOrderController extends Controller
         $inputs = Validator::make($request->all(), [
             'tenant_id' => ['required'],
             'user_id' => ['required'],
-            'email' => ['required'],
+            'email' => 'required|unique:admin_client_orders',
         ]); 
         
         if ($inputs->fails()) {

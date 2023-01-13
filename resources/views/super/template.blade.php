@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>{{env('APP_NAME')}} - {{auth()->user()->firstname.' ' .auth()->user()->lastname ?? '' }} | Settings</title>
+        <title>PaaB - {{auth()->user()->firstname.' ' .auth()->user()->lastname ?? '' }} | Template</title>
         <link rel="shortcut icon" href="{{ asset('/media/img/logo.png') }}" type="image/x-icon">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
@@ -13,14 +13,14 @@
 
         <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/paab.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/userSettings.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/templates.css') }}">
         <link rel="stylesheet" href="{{ asset('fonts/material-icons.css') }}">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body>
         <div id="app">
-            <admin-settings-component />
+            <sadmin-template-component />
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>

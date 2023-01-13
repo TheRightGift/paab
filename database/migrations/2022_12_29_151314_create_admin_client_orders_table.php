@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('tenant_id');
             $table->integer('claimed')->nullable();
-            $table->string('email');
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_orders');
+        Schema::dropIfExists('admin_client_orders');
     }
 };

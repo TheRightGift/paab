@@ -52,43 +52,7 @@
                 </div>
 
                 <!-- Login Social Media Handle -->
-                <div class="row loginSocialMedDiv" v-if="type === 'register'">
-                    <div class="col s12 loginSocialMedInnerDiv">
-                        <div>
-                            <p class="loginSocialMedTxt">
-                                or login with
-                            </p>
-
-                            <div class="socialMedIconsDiv">
-                                <a href="/auth/login/linkedin">
-                                    <i
-                                        class="
-                                            fa-brands
-                                            fa-square-instagram
-                                            socialMedIcons
-                                        "
-                                    ></i>
-                                </a>
-                                <a href="/auth/login/facebook">
-                                    <i
-                                        class="
-                                            fa-brands fa-facebook
-                                            socialMedIcons
-                                        "
-                                    ></i>
-                                </a>
-                                <a href="/auth/login/twitter">
-                                    <i
-                                        class="
-                                            fa-brands fa-twitter
-                                            socialMedIcons
-                                        "
-                                    ></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- <social-login-component v-if="register"/> -->
 
                 <!-- Login Signup Link -->
                 <div class="row">
@@ -118,7 +82,9 @@
     </div>
 </template>
 <script>
+import SocialLoginComponent from './SocialLoginComponent.vue';
     export default {
+    components: { SocialLoginComponent },
         data() {
             return {
                 verificationLoading: false,

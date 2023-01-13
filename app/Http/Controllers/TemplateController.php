@@ -19,7 +19,7 @@ class TemplateController extends Controller
         $templates = Template::where('approved', 'T')->orderBy('title')->with('profession')->get();
         return response(['templates' => $templates, 'message' => 'Retrieved Success'], 200);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -113,6 +113,16 @@ class TemplateController extends Controller
         }   
     }
 
+     /**
+     * Lets an admin to partial delete a template
+     */
+    public function delete($templateID) {
+        $template = Template::find($templateID);
+        $template->toDelete = 1;
+        $template->save();
+        return response(['template' => $template, 'message' => 'Updated Success'], 204);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -140,6 +150,17 @@ class TemplateController extends Controller
         return response(['message' => 'Resource Unarchived successfuly'], 204);
     }
 
+    /**
+     * Gets the whole templates for super admin to or view approve
+     */
+    public function getIndex() {
+        $templates = Template::orderBy('updated_at')->with('profession')->get();
+        return response(['templates' => $templates, 'message' => 'Retrieved Success'], 200);
+    }
+
+    /**
+     * Gets the template to approve
+     */
     public function approve(Request $request, $templateID) {
         $template = Template::find($templateID);
         $template->update($request->only('approve'));

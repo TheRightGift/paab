@@ -267,6 +267,7 @@
                 granting: false,
                 page: 1,
                 total: 0,
+                loading: false,
                 data: {
                     to: 0,
                     from: 0,
