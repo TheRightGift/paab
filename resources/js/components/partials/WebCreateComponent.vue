@@ -11,6 +11,16 @@
             </p>
             <div v-if="user.role === 'Admin' || user.role === 'SuperAdmin'">
                 <div class="row createWebRow" v-if="webCreateViewState === 0">
+                    <div class="col l6 createWebsiteDomainName">
+                        <img :src="'/media/img/email.png'" />
+                        <input
+                            type="email"
+                            placeholder="Client Email"
+                            id="clientCreatePortInput"
+                            v-model="web.email"
+                            required
+                        />
+                    </div>
                     <div class="col l6 createWebSectionTitle center-align">
                         <h5>Input your client work email address</h5>
                         <p>
@@ -20,16 +30,7 @@
                             >
                         </p>
                     </div>
-                    <div class="col l6 createWebsiteDomainName">
-                        <img :src="'/media/img/domainName.png'" />
-                        <input
-                            type="email"
-                            placeholder="Client Email"
-                            id="clientCreatePortInput"
-                            v-model="web.email"
-                            required
-                        />
-                    </div>
+                    
                 </div>
             </div>
 
