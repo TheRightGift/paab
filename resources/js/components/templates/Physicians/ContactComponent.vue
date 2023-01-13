@@ -98,7 +98,7 @@ export default {
             }
         }
     },
-    props: {preview: toString},
+    props: {preview: String},
     methods: {
         sendMail(){
             if (this.preview == '0') {

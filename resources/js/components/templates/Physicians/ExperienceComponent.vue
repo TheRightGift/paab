@@ -38,8 +38,14 @@
                 </div>
             </div>
 
-            <div class="col s12 m9 l10">
+            <div class="col s12 m9 l10" v-if="preview == '1'">
                 <img src="/media/img/physicianTemplate.png" 
+                    alt="physicianTemplate.png" class="responsive-img" 
+                    id="expRightDivImg"
+                >
+            </div>
+            <div class="col s12 m9 l10" v-else>
+                <img :src="location+'media/img/physicianTemplate.png'" 
                     alt="physicianTemplate.png" class="responsive-img" 
                     id="expRightDivImg"
                 >
@@ -65,12 +71,12 @@
             </div>
 
             <div class="col s12 m9 l10" v-if="experience != null">
-                <img :src="'tenancy/assets/'+experience.banner" 
+                <img :src="location+'tenancy/assets/'+experience.banner" 
                     alt="physicianTemplate.png" class="responsive-img" 
                     id="expRightDivImg"
                     v-if="promo == ''"
                 >
-                <img :src="'tenancy/assets/'+promo.banner" 
+                <img :src="location+'tenancy/assets/'+promo.banner" 
                     alt="physicianTemplate.png" class="responsive-img" 
                     id="expRightDivImg"
                     v-else-if="promo != ''"
@@ -89,6 +95,8 @@
         },
         props: {
             experience: Object,
+            location: String,
+            preview: String,
         },
         watch: {
             experience (newVal, oldVal) {

@@ -14,7 +14,7 @@
                         >Create Now
                     </a>
 
-                    <div class="row clientCreatePortInputRowDiv">
+                    <!-- <div class="row clientCreatePortInputRowDiv">
                         <div class="userTempMainDiv">
                             <div
                                 v-for="(profession, index) in professions"
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Client's Templates Section -->
                     <div class="adminTempContainInnerDiv">

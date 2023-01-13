@@ -24,7 +24,10 @@
                 </div>
                 
                 <div class="col s12 m4 l6 offset-l3">
-                    <div class="physiRightImgDiv">
+                    <div class="physiRightImgDiv" v-if="preview == '0'">
+                        <img :src="location+'media/img/doc.png'" alt="doc.png" class="responsive-img" id="physiRightImg">
+                    </div>
+                    <div class="physiRightImgDiv" v-else>
                         <img src="/media/img/doc.png" alt="doc.png" class="responsive-img" id="physiRightImg">
                     </div>
                 </div>
@@ -88,14 +91,14 @@
                     <p class="physiTempTxt">
                         {{bio.about}}
                     </p>
-                    <a class="btn" id="physiTempBtn" :href="'/tenancy/assets/'+bio.CV" target="_blank">
+                    <a class="btn" id="physiTempBtn" :href="location+'/tenancy/assets/'+bio.CV" target="_blank">
                         Download My curriculum vitae
                     </a>
                 </div>
                 
                 <div class="col s12 m4 l6 offset-l3">
                     <div class="physiRightImgDiv">
-                        <img :src="'/tenancy/assets/'+bio.photo" alt="doc.png" class="responsive-img" id="physiRightImg">
+                        <img :src="location+'/tenancy/assets/'+bio.photo" alt="doc.png" class="responsive-img" id="physiRightImg">
                     </div>
                 </div>
             </div>
@@ -127,6 +130,8 @@ export default {
         user: String,
         bio: Object,
         services: Array,
+        location: String,
+        preview: String,
     }
 }
 </script>
