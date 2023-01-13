@@ -139,8 +139,15 @@
                                     <p class="cardTitle">MY MAIL</p>
                                 </div>
                                 <div class="cardContent">
-                                    <div class="row" v-if="mail.length < 1">
-                                        <p class="white-text center-align noVertMargin">No Mail.</p>
+                                    <div v-if="mail.length < 1">
+                                        <div class="row">
+                                            <p class="white-text center-align noVertMargin">No Mail.</p>
+                                        </div>
+                                        <div class="row noMarginBottom">
+                                            <div class="col s12 center-align">
+                                                <a @click="navigateToMail" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create mail</a>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row" id="myMailDiv" v-else>
                                         <div class="col s10 m10 l10">
@@ -314,6 +321,9 @@
             },
             navigateToWebsitePage(){
                 window.location.replace('/client/websites');
+            },
+            navigateToMail(){
+                window.location.replace('/client/mail');
             },
             gotoDomain(website) {
                 let domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
