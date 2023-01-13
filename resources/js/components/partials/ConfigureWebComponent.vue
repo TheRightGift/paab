@@ -69,7 +69,7 @@
                         type="button"
                         class="btn clientCreatePortBtn"
                         @click.prevent="giveAccess"
-                        :disabled="email == ''"
+                        :disabled="email == '' || email == claimantMail"
                         v-if="!granting"
                     >
                         GIVE ACCESS

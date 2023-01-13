@@ -5,8 +5,8 @@
         </div>
         <div v-show="!loading">
             <HeaderComponent :user="user"/>
-            <ServicesComponent :user="user" :services="services" :bio="bio"/>
-            <ExperienceComponent  :experience="achievement"/>
+            <ServicesComponent :user="user" :services="services" :bio="bio" :location="location" :preview="preview"/>
+            <ExperienceComponent  :experience="achievement" :location="location" :preview="preview"/>
             <SocialMediaComponent :socials="socials"/>
             <TestimonialsComponent :reviews="reviews" :preview="preview"/>
             <ContactComponent :preview="preview"/>
@@ -43,6 +43,7 @@
                 socials: {},
                 reviews: [],
                 loading: false,
+                location: "",
             };
         },
         props: {
@@ -62,6 +63,7 @@
                 this.achievement = null;
                 this.socials = null;
             }
+            this.location = window.location.href // For absolute pathing
         },
         methods: {
             getLocations() {

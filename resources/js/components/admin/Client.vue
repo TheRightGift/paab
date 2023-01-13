@@ -278,6 +278,7 @@
                 tenant: { template_id: 0, domain: "", domain_id: 0, id: 0 },
                 domainName: "",
                 claimantMail: "",
+                claimantMailID: "",
                 professionID: 0,
             };
         },
@@ -302,6 +303,7 @@
                         : website.domains;
                 this.domainName = this.tenant.domain.split(".")[0];
                 this.claimantMail = website.order == null ? '' : website.order.email;
+                this.claimantMailID = website.order == null ? '' : website.order.id,
                 this.tenant.domain_id = website.domains[0].id;
                 this.tenant.id = website.id;
                 this.professionID = website.template.profession.id;
@@ -389,6 +391,7 @@
                 this.configureWeb = !this.configureWeb;
                 this.clientsView = !this.clientsView;
                 this.claimantMail = "";
+                this.claimantMailID = "";
             },
             updateDomainTemplate(evt) {
                 this.loading = true;
@@ -438,10 +441,9 @@
                     user_id: this.user.id,
                 };
                 axios
-                    .post("/api/access", data)
+                    .put(`/api/access/${this.claimantMailID}`, data)
                     .then((res) => {
-                        console.log(res);
-                        if (res.status == 201) {
+                        if (res.data.status == 200) {
                             this.granting = false;
                             M.toast({
                                 html: res.data.message,
@@ -451,12 +453,21 @@
                     })
                     .catch((err) => {
                         console.log(err);
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                    displayLength: 6000,
+                                });
+                            });
+                            this.granting = false;
+                        }
                         M.toast({
                             html: err.response.data.message,
                             classes: "errorNotifier",
                             displayLength: 6000,
                         });
-                        this.granting = false;
                     });
             },
             getAccess() {

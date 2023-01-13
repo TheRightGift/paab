@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::put('/template/{id}', [TemplateController::class, 'update']);
     Route::patch('/template/{id}', [TemplateController::class, 'approve']);
     Route::post('/admin', [App\Http\Controllers\DashboardController::class, 'admin']);
-    Route::post('/access', [App\Http\Controllers\AdminClientOrderController::class, 'store']);
+    Route::put('/access/{id}', [App\Http\Controllers\AdminClientOrderController::class, 'update']);
     Route::get('/access', [App\Http\Controllers\AdminClientOrderController::class, 'index']);
     Route::post('checkMailExist', [App\Http\Controllers\TenantController::class, 'checkEmail']);
     Route::post('tenant', [App\Http\Controllers\TenantController::class, 'create']);

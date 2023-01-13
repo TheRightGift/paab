@@ -33,9 +33,9 @@ class AdminClientOrderController extends Controller
             'user_id' => ['required'],
             'email' => 'required|unique:admin_client_orders',
         ]); 
-        
+        return response()->json('Unauthorized Request');
         if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 501);
+            return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
             $order = AdminClientOrder::create($input);
@@ -63,9 +63,9 @@ class AdminClientOrderController extends Controller
      */
     public function update(Request $request, $clientOrder)
     {
-        $order = AdminClientOrder::findOrFail($titleId);
+        $order = AdminClientOrder::findOrFail($clientOrder);
         $order->update($request->only('email'));
-        return response(['order' => $order, 'message' => 'Updated Success'], 204);
+        return response(['order' => $order, 'message' => 'Updated Success', 'status' => 200], 200);
     }
 
     /**
