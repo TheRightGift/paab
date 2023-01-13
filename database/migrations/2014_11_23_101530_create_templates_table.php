@@ -20,6 +20,7 @@ return new class extends Migration
             $table->bigInteger('profession_id')->unsigned();
             $table->string('styleFile');
             $table->enum('approved', ['F', 'T'])->default('F');
+            $table->integer('toDelete')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

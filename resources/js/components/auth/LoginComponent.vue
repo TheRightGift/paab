@@ -10,7 +10,7 @@
                         powerful and easy to use portfolio builder for your career.
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        © Photo, Inc. {{getYear()}}. We love our users!
+                        © White Coat Domain, Inc. {{getYear()}}. We love our users!
                     </p>
                 </div>
             </div>
@@ -81,49 +81,7 @@
                             </div>
 
                             <!-- Login Social Media Handle -->
-                            <div class="row loginSocialMedDiv">
-                                <div
-                                    class="
-                                        col
-                                        l12
-                                        m12
-                                        s12
-                                        loginSocialMedInnerDiv
-                                    "
-                                >
-                                    <p class="loginSocialMedTxt">
-                                        or login with
-                                    </p>
-
-                                    <div class="socialMedIconsDiv">
-                                        <a href="/auth/login/linkedin">
-                                            <i
-                                                class="
-                                                    fa-brands
-                                                    fa-square-instagram
-                                                    socialMedIcons
-                                                "
-                                            ></i>
-                                        </a>
-                                        <a href="/auth/login/facebook">
-                                            <i
-                                                class="
-                                                    fa-brands fa-facebook
-                                                    socialMedIcons
-                                                "
-                                            ></i>
-                                        </a>
-                                        <a href="/auth/login/twitter">
-                                            <i
-                                                class="
-                                                    fa-brands fa-twitter
-                                                    socialMedIcons
-                                                "
-                                            ></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- <social-login-component /> -->
 
                             <div class="input-field col s12">
                                 <a
@@ -183,7 +141,9 @@
 </template>
 
 <script>
+import SocialLoginComponent from '../partials/SocialLoginComponent.vue';
     export default {
+    components: { SocialLoginComponent },
         data() {
             return {
                 loginLoading: false,

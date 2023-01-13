@@ -1,0 +1,197 @@
+
+.setMainDiv {
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.settingBannerDiv {
+    width: 100%;
+    height: 185px;
+    background: linear-gradient(91.98deg, var(--primary) 1.92%, #1E1E1E 111.8%);
+    border-radius: 10px 10px 0px 0px;
+}
+.settingsIllustImg {
+    width: 17vw;
+    min-height: 21.6vh;
+    position: relative;
+    top: 1.6vh;
+    right: 3vw;
+}
+.settingsFormDiv {
+    /* width: 95%; */
+    position: relative;
+    bottom: 3vh;
+}
+#settingsForm {
+    width: 98%;
+}
+#setProMainDiv {
+    /* width: 50%; */
+    display: flex;
+    margin-left: 1.5vw;
+    margin-bottom: 3vh;
+}
+.setProDiv {
+    background: #D9D9D9;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block
+}
+#setProImg {
+    font-size: 3.5rem;
+    margin-left: 0.8vw;
+    margin-top: 0.9vh;
+    color: rgba(0, 0, 0, 0.5);
+}
+.setProEditIconDiv {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline-block;
+    position: relative;
+    top: 2.7vh;
+    right: 1.8vw;
+    text-align: center;
+}
+#setProEditIcon {
+    color: var(--white);
+    font-size: 1.3rem;
+    margin: 0.3vh 0 0 0.1vw;
+}
+.setProTitleDiv {
+    margin-top: 4vh;
+}
+.mySetTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 30px;
+    color: var(--primary);
+    margin: 0 0vw 0 0;
+}
+.mySetName {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 27px;
+    letter-spacing: -0.015em;
+    color: var(--black);
+}
+#settingTitle,
+#settingLname,
+#settingFName,
+#settingEmail,
+#settingPhone,
+#settingCountry,
+#settingGender,
+#settingState,
+#settingCity,
+#settingPass,
+#settingCpass {
+    border: 1px solid var(--primary);
+    border-radius: 100px;
+    padding-left: 9px;
+    letter-spacing: -0.015em;
+    height: 5vh;
+}
+#setFormBtn {
+    background: var(--primary);
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: capitalize;
+    margin-top: 2vh;
+    /* margin-bottom: 4vh; */
+
+    margin-bottom: 0vh;
+}
+
+
+/* Media Query on Medium Device */
+@media screen and (max-width: 992px) and (min-width: 640px) {
+    .settingsIllustImg {
+        width: 26vw;
+        min-height: 20.5vh;
+        position: relative;
+        top: 1.6vh;
+        right: 3vw;
+    }
+    .settingsFormDiv {
+        width: 100%;
+    }
+    #setProImg {
+        font-size: 4.5rem;
+        margin-left: 1vw;
+        margin-top: 0.9vh;
+        color: rgba(0, 0, 0, 0.5);
+    }
+    .setProEditIconDiv {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--primary);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        display: inline-block;
+        position: relative;
+        top: 0vh;
+        right: 3vw;
+        text-align: center;
+    }
+    #setProEditIcon {
+        color: var(--white);
+        font-size: 1.3rem;
+        margin: 0.3vh 0 0 0.1vw;
+    }
+    #setFormBtn {
+        background: var(--primary);
+        border-radius: 6px;
+        font-family: 'Montserrat', sans-serif;
+        text-transform: capitalize;
+        margin-top: 2vh;
+        margin-bottom: 4vh;
+    }
+}
+
+/* Media Query on small device */
+@media screen and (max-width: 640px) {
+    .settingsIllustImg {
+        width: 45vw;
+        min-height: 20.5vh;
+        position: relative;
+        top: 1.6vh;
+        right: 3vw;
+    }
+    .settingsFormDiv {
+        width: 100%;
+    }
+    #setProImg {
+        font-size: 4.5rem;
+        margin-left: 1vw;
+        margin-top: 0.9vh;
+        color: rgba(0, 0, 0, 0.5);
+    }
+    .setProEditIconDiv {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--primary);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        display: inline-block;
+        position: relative;
+        top: 1vh;
+        right: 5vw;
+        text-align: center;
+    }
+    #setProEditIcon {
+        color: var(--white);
+        font-size: 1.3rem;
+        margin: 0.3vh 0 0 0.1vw;
+    }
+}

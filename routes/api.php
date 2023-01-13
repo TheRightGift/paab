@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth.api'], function() {
 });
 Route::group(['middleware'=>'auth:api'], function(){
 });
+Route::get('template', [TemplateController::class, 'index']);
 Route::resource('/profession', ProfessionController::class);
 Route::apiResource('title', TitleController::class);
 Route::get('countries', [CountryController::class, 'index']);

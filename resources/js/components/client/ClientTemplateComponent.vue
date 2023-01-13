@@ -8,41 +8,24 @@
 
             <!-- Center Bar Person Div -->
             <div class="col s12 m10 l10">
-                <!-- Client's Templates Section -->
-                <div class="clientTempContainInnerDiv">
-                    <div id="clientTempPageRowDiv">
-                        <!-- First Row -->
-                        <div v-if="templates.length > 0" class="height">
-                            <div
-                                class="col s12 m6 l4 clientTempPageImgSmDv"
-                                v-for="template in templates"
-                                :key="template.id"
-                            >
-                                <div class="">
-                                    <img
-                                        src="/media/img/aboutmyself.png"
-                                        alt="tempPageImg.png"
-                                        id=""
-                                    />
-                                </div>
-    
-                                <p class="tempPageImgTitle">Planet Earth</p>
-    
-                                <p class="tempPageImgTxt">
-                                    The Planet Earth template is a captivating
-                                    design with minimalist appeal.
+                <div class="mailBlueDiv">
+                    <div class="webBlackDiv1">
+        
+                        <div class="row webBlackDiv1">
+                            <div class="col s12">
+                                <p class="mailTitle">All Templates</p>
+                            </div>
+                            <div class="col s12">
+                                <p class="webBlackTxt">
+                                    Glance through all the templates prepare to meet your professional needs.
                                 </p>
-    
-                                <a
-                                    :href="'/preview/' + template.id"
-                                    target="_blank"
-                                    class="tempPageImgLink"
-                                    >View</a
-                                >
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Client's Templates Section -->
+                <TemplatePreviewComponent :professionId="0" :selectedTemplate="0"  :type="'preview'"/>
+
             </div>
         </div>
     </div>
@@ -51,10 +34,13 @@
 <script>
     import MobileNavComponent from "../partials/MobileNavComponent.vue";
     import SideNavComponent from "../partials/SideNavComponent.vue";
+    import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
+
     export default {
         components: {
             MobileNavComponent,
             SideNavComponent,
+            TemplatePreviewComponent
         },
         data() {
             return {

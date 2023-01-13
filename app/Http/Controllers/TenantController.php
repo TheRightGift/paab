@@ -26,6 +26,7 @@ class TenantController extends Controller
             'template_id' => ['nullable'],
             'user_id' => ['required'],
             'description' => ['required'],
+            'email' => 'nullable|unique:admin_client_orders',
         ]); 
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
@@ -43,6 +44,13 @@ class TenantController extends Controller
                 ]);
                 if ($tenant) {
                     $domain = $tenant->domains()->create(['domain' => $request->name .'.localhost']); //Determine how to handle domain
+                    if ($request->has('email')) {
+                        $order = AdminClientOrder::create([
+                            'tenant_id' => $tenant->id,
+                            'user_id' => $inputs->validated()['user_id'],
+                            'email' => $inputs->validated()['email'],
+                        ]);
+                    }
                     return response()->json(['message' => 'Your Website is created successfuly', 'tenant' => $tenant, 'domain' => $domain, 'status' => 200], 200);
                 }
                 else {
@@ -101,7 +109,6 @@ class TenantController extends Controller
         $professionId =$tenant->template->profession_id;
         $template = $tenant->template->title;
         $templateCSS = $tenant->template->styleFile;
-        // dd($tenant);
         $generalTB = General::first();
         $user = !empty($generalTB) ? $generalTB->title : null;
         

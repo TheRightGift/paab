@@ -101,7 +101,14 @@
                         title: "Clients",
                         icon: "web",
                         url: "/client",
-                        role: "Admin",
+                        role: "Admin" || "SuperAdmin",
+                    },
+                    {
+                        id: 2,
+                        title: "Clients",
+                        icon: "web",
+                        url: "/client",
+                        role: "SuperAdmin",
                     },
                     {
                         id: 3,

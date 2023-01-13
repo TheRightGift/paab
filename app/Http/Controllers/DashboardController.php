@@ -55,5 +55,11 @@ class DashboardController extends Controller
             return response(['admin' => $admin, 'message' => 'Created Success'], 201);
         } 
     }
+
+    public function deleteAdmin($adminUserID) {
+        $user = User::where('id', $adminUserID)->first();
+        $user->delete();
+        return response(['message' => 'Admin moved to trash'], 204);
+    }
     
 }
