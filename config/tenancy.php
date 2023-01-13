@@ -20,7 +20,7 @@ return [
         '127.0.0.1',
         'localhost',
         'nupaab.io',
-        config('APP_URL')
+        'whitecoatdomain.com'
     ],
 
     /**
