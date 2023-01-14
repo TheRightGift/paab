@@ -129,7 +129,14 @@
                         title: "Settings",
                         icon: "settings",
                         url: "/settings",
-                        role: null,
+                        role: 'Client',
+                    },
+                    {
+                        id: 5,
+                        title: "Settings",
+                        icon: "settings",
+                        url: "/settings",
+                        role: 'Admin',
                     },
                     {
                         id: 6,

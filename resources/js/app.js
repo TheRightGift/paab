@@ -26,7 +26,7 @@ import ResetPasswordComponent from './components/auth/ResetPasswordComponent.vue
 import ClientComponent from './components/client/Dashboard.vue';
 import ClientWebsitesComponent from './components/client/WebsitesComponent.vue';
 import ClientMailComponent from './components/client/MailComponent.vue';
-import ClientSettings from './components/client/SettingsComponent.vue';
+import ClientSettings from './components/client/Settings.vue';
 import ClientSupport from './components/client/SupportComponent.vue';
 import ClientSingleMail from './components/client/SinglemailComponent.vue';
 import ClientTemplateComponent from './components/client/ClientTemplateComponent.vue';
