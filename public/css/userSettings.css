@@ -41,12 +41,16 @@
     height: 85px;
     border-radius: 50%;
     margin: auto;
-    display: inline-block
+    text-align: center;
+    /* display: inline-block */
+}
+.flexed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #setProImg {
     font-size: 3.5rem;
-    margin-left: 0.8vw;
-    margin-top: 0.9vh;
     color: rgba(0, 0, 0, 0.5);
 }
 .setProEditIconDiv {

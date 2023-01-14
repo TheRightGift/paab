@@ -34,7 +34,8 @@ Route::group(['middleware' => 'auth.api'], function() {
     });
     Route::get('/userTitle/{id}', [TitleController::class, 'getUserProfession']);
     Route::get('tenancies', [App\Http\Controllers\TenantController::class, 'tenancies']);
-    
+    Route::get('/userLocationDets/{id}', [App\Http\Controllers\CountryController::class, 'getRelation']);
+    Route::put('/updateUser/{id}', [App\Http\Controllers\SettingController::class, 'updateUser']);
     // Templates
     Route::resource('/template', TemplateController::class);
     Route::put('/template/{id}', [TemplateController::class, 'update']);

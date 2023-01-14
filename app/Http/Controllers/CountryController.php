@@ -29,7 +29,15 @@ class CountryController extends Controller
         $cities = City::where('state_id', $state)->get();
         return response(['cities' => $cities,  'message' => 'Retrieved Success', 'status' => 200], 200);
     }
-
+    // Get the states and cities for settings 
+    public function getRelation($cityID) {
+        $city = City::find($cityID);
+        $cities = City::where('state_id', $city->state_id)->get();
+        $country = Country::find($city->country_id)['id'];
+        $state = State::find($city->state_id)['id'];
+        $states = State::where('country_id', $city->country_id)->get();
+        return response()->json(['message' => 'Success', 'cities' => $cities, 'state_id' => $state, 'country_id' => $country]);
+    }
     /**
      * Show the form for creating a new resource.
      *
