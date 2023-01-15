@@ -16,7 +16,7 @@ Note to self: As a result of <code>FK</code> - foreign key the <code>cities tabl
 ### Back End
 
 - [x] Sync Profession and Template Model for Central DB and Tenant DB.
-- [ ] Dev Client Dashboard endpoints.
+- [x] Dev Client Dashboard endpoints.
 - [x] Rem: Setup AWS SES for mailables
 - [ ] Cropper for images upload
 - [x] Authenticate tenant on redirect to tenant settings
@@ -30,7 +30,7 @@ Note to self: As a result of <code>FK</code> - foreign key the <code>cities tabl
 
 ### Front End
 - [ ] dev mobile view for all Auth
-- [ ] dev client dashboard components
+- [x] dev client dashboard components
 - [x] dev make nav a component
 - [x] Template: Display all templates
 - [x] Template: Display templates by professionId
