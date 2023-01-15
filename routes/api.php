@@ -38,8 +38,9 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::put('/updateUser/{id}', [App\Http\Controllers\SettingController::class, 'updateUser']);
     // Templates
     Route::resource('/template', TemplateController::class);
-    Route::put('/template/{id}', [TemplateController::class, 'update']);
-    Route::patch('/template/{id}', [TemplateController::class, 'approve']);
+    Route::get('/templates', [TemplateController::class, 'getIndex']);
+    Route::put('/deleteTemplate/{id}', [TemplateController::class, 'delete']);
+    Route::patch('/approveTemplate/{id}', [TemplateController::class, 'approve']);
     Route::post('/admin', [App\Http\Controllers\DashboardController::class, 'admin']);
     Route::put('/access/{id}', [App\Http\Controllers\AdminClientOrderController::class, 'update']);
     Route::get('/access', [App\Http\Controllers\AdminClientOrderController::class, 'index']);

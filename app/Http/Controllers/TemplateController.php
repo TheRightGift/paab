@@ -16,7 +16,7 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        $templates = Template::where('approved', 'T')->orderBy('title')->with('profession')->get();
+        $templates = Template::where([['approved', 'T'], ['toDelete', null]])->orderBy('title')->with('profession')->get();
         return response(['templates' => $templates, 'message' => 'Retrieved Success'], 200);
     }
     
@@ -41,7 +41,8 @@ class TemplateController extends Controller
             $profession = Profession::find($input['profession_id']);
             if($request->hasFile('imageUrl')){
                 $image = $request->file('imageUrl');
-                $name = $image->getClientOriginalName();
+                $ext = $request->file('imageUrl')->getClientOriginalExtension();
+                $name = strtolower($input['title']).'.'.$ext;
                 $image->move(public_path('/media/img/templateThumbnail/'.$profession->name), $name);
                 $input['imageUrl'] = $name;
             } 
@@ -86,11 +87,12 @@ class TemplateController extends Controller
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
         } else {
-            $input = $request->all();
+            $input = $inputs->validated();
             $profession = Profession::find($input['profession_id']);
             if($request->hasFile('imageUrl')){
                 $image = $request->file('imageUrl');
-                $name = $image->getClientOriginalName();
+                $ext = $request->file('imageUrl')->getClientOriginalExtension();
+                $name = strtolower($input['title']).'.'.$ext;
                 $image->move(public_path('/media/img/templateThumbnail/'.$profession->name), $name);
                 $input['imageUrl'] = $name;
             } 
@@ -100,7 +102,6 @@ class TemplateController extends Controller
                 $stored = $file->move(public_path('css'), strtolower($input['title']).'.'.$ext);
                 $input['styleFile'] = strtolower($input['title']).'.'.$ext;
             } 
-            $input = $inputs->validated();
             $templates = new Template();
             $template2Update = $templates->find($templateId);
             $template2Update->update($input);
@@ -120,7 +121,7 @@ class TemplateController extends Controller
         $template = Template::find($templateID);
         $template->toDelete = 1;
         $template->save();
-        return response(['template' => $template, 'message' => 'Updated Success'], 204);
+        return response(['template' => $template, 'message' => 'Moved to Archive', 'status' => 200], 200);
     }
 
     /**
@@ -132,6 +133,8 @@ class TemplateController extends Controller
     public function destroy($templateId)
     {
         $template = Template::where('id', $templateId)->first();
+        $template->toDelete = null;
+        $template->save();
         $template->delete();
         return response(['message' => 'Archived successfuly'], 204);
     }
@@ -163,8 +166,11 @@ class TemplateController extends Controller
      */
     public function approve(Request $request, $templateID) {
         $template = Template::find($templateID);
-        $template->update($request->only('approve'));
-        return response(['template' => $template, 'message' => 'Updated Success'], 204);
+        $template->approved = $request->approved;
+        $template->save();
+        if (!empty($template)) {
+            return response(['template' => $template, 'message' => 'Updated Success', 'status' => 200], 200);
+        }
     }
 
     public function renderTemplate($templateID) {
