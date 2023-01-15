@@ -7,11 +7,11 @@
 
             <div class="col s12 m10 l10">
                 <div class="dashRightDiv">
-                    <div id="adminDashRightImgDiv">
+                    <div id="superAdminDashRightImgDiv">
                         <div class="dashRightImgInnerDiv">
                             <div class="dashRightImgTxtDiv">
                                 <p class="dashRightImgTitle">
-                                    Manage your client’s portfolio
+                                    Lead your team and manage your clients
                                 </p>
                                 <p class="dashRightImgTxt">
                                     Say hello to the next level platform that gives you infinite

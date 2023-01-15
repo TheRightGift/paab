@@ -134,3 +134,279 @@ a.btn.tempPageBtn:hover {
     background: var(--black);
     color: var(--white);
 }
+
+/* Extras for admin supre */
+.noTempTxt {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--black);
+}
+.noTempCreateTempLink {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    text-decoration-line: underline;
+    color: var(--primary);
+}
+.tempSetBlackDiv {
+    width: 95%;
+    height: 196px;
+    background: var(--black);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 2vh auto 0 auto;
+}
+.tempSetBlackInnerDiv {
+    width: 95%;
+    margin: 0 auto;
+}
+.tempSetBlackInnerDiv {
+    padding-top: 3vh;
+}
+.tempSetTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 37px;
+    color: var(--white);
+    margin: 0;
+}
+.tempSetTxt {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 1vh;
+}
+i.material-icons.tempSetIcon {
+    color: #D9D9D9;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+i.material-icons.tempSetIcon1 {
+    color: #D9D9D9;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.carousel.carousel-slider {
+    /* width: 10vw; */
+    height: 24vh;
+    border: none;
+    border-radius: 0;
+    margin-top: 3vh;
+}
+.carousel-item {
+    margin-top: 20vh;
+}
+.tempSetProTitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: #1E1E1E;
+    margin: 0;
+}
+.tempSetProDiv {
+    width: 103px;
+    height: 36px;
+    background: #7746FF;
+    border-radius: 100px;
+}
+.tempSetProDiv1 {
+    width: 103px;
+    height: 36px;
+    background: #FEC526;
+    border-radius: 100px;
+}
+.tempSetProDiv2 {
+    width: 103px;
+    height: 36px;
+    background: #3F3D56;
+    border-radius: 100px;
+}
+.tempSetProDiv3 {
+    width: 103px;
+    height: 36px;
+    background: #D44141;
+    border-radius: 100px;
+}
+.tempSetProDiv4 {
+    width: 103px;
+    height: 36px;
+    background: #10D00C;
+    border-radius: 100px;
+}
+.tempSetProSymbols {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 35px;
+    color: var(--white);
+}
+.tempSetCarouselInnerDiv {
+    display: flex;
+    overflow: auto;
+    justify-content: space-around;
+}
+.tempSetProMainDiv {
+    cursor: pointer;
+}
+.carousel .indicators .indicator-item {
+    background: rgb(206, 206, 206);
+    width: 1rem;
+    height: 1rem;
+}
+.carousel .indicators .indicator-item.active {
+    background-color: rgb(155, 155, 155);
+}
+a.btn.right.tempSetDelBtn {
+    height: 3.8vh;
+    text-transform: capitalize;
+    line-height: 23px;
+    background: #D44141;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 6px;
+}
+.tempSetMainTxt {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    color: #6b6a6a;
+    width: 80%;
+}
+.tempSetMainTitle {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.0625rem;
+    line-height: 21px;
+    letter-spacing: -0.015em;
+    color: #000000;
+}
+.tempSetMainViewLink {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 21px;
+    text-decoration: underline;
+    color: var(--primary);
+}
+.tempSetMainRowDiv {
+    margin-bottom: 8vh;
+}
+.tempSetLoading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--black);
+    text-align: center;
+}
+.tempSetSearchInputMainDiv {
+    display: flex;
+    width: 96%;
+    margin: 5vh auto;
+}
+#tempSetSearchInput {
+    box-sizing: border-box;
+    width: 266px;
+    height: 41px;
+    border: 1px solid var(--black);
+    border-radius: 10px;
+    padding: 0 0.7vw;
+}
+.tempSetSearchInputControlDiv {
+    display: flex;
+    margin: 1.5vh 1vw 0 auto;
+}
+.tempSetSearchInputTxts {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--black);
+}
+.tempSetSearchInputIcons {
+    position: relative;
+    top: 1vh;
+}
+.tempSetSearchInputIconsDiv {
+    margin-left: 1vw;
+}
+.tempSetContainDiv {
+    width: 96%;
+    margin: auto;
+}
+.addTitleBack {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--black);
+    margin: 10vh 0 5vh 2.5vw;
+}
+.addTitleInputDiv {
+    width: 80%;
+    margin: 13vh auto 0 auto;
+}
+#addTitleInput {
+    background: rgba(70, 22, 107, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    /* margin-top: 2vh; */
+    padding: 0 2vw;
+    height: 7vh;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+}
+#uploadThumbnailInput, #uploadTempStyle {
+    width: 93%;
+    background: rgba(70, 22, 107, 0.3);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    /* margin-top: 2vh; */
+    padding: 0 2vw;
+    height: 7vh;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+}
+#addTitleInput::placeholder, 
+#uploadThumbnailInput::placeholder,
+#uploadTempStyle::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--black);
+}
+#addTitleBtn,
+#uploadThumbnailBtn,
+#uploadTempstyleBtn {
+    background: var(--primary);
+    border-radius: 6px;
+    margin-top: 3.5vh;
+    height: 5vh;
+    /* width: 7vw; */
+    font-family: 'Montserrat', sans-serif;
+}
+.btn.uploadTempThumpnailInputBtn,
+.btn.uploadTempStyleInputBtn {
+    position: absolute;
+    top: 1.2vh;
+    right: 2vw;
+    background: #1E1E1E;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    max-height: 4.5vh;
+    width: 10vw;
+    line-height: 4.5vh;
+    text-transform: none;
+}
+
