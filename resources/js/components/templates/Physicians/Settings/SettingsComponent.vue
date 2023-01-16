@@ -1,6 +1,6 @@
 <template>
     <div v-show="loggedIn">
-        <div class="loader" v-if="initialCheck"></div>
+        <div class="loader" v-if="initialCheck || loading"></div>
         <div v-show="!initialCheck">
             <SideNavComponent @openPromotionals="openPromotionals" />
             <TabForm
@@ -11,6 +11,7 @@
                 :contact="contact"
                 :social="social"
                 :general="general"
+                :loading="loading"
                 v-show="!promoView" class="fullPage"
             />
             <PromotionalsComponent
@@ -171,6 +172,10 @@
                     .then((res) => {
                         if (res.data.status == 201) {
                             this.loading = false;
+                            if (localStorage.getItem('візіт') != null){
+                                localStorage.getItem('візіт') + 1;
+                            }
+                            localStorage.setItem('візіт', 1);
                             location.reload();
                             this.loggedIn = true;
                         }

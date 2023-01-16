@@ -149,13 +149,30 @@
                                     " />                                
                                 </div>
                             </div>
-                            <div class="col l6 faviconUploadBtnCol" v-else>
+                            <div class="col l6 faviconUploadBtnCol" >
                                 <button type="button" class="btn-flat redBorderBtn matchngBtn" @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
                             </div>
                         </div>
                         <div class="row"> 
                             <div class="col l12">
-                                <button type="button" class="btn-flat faviconUpdateBtn" @click.prevent="generalSave" v-if="saved == null" :disabled="
+                                <button  v-if="loading" class="btn getStartBtn">
+                                    <div class="preloader-wrapper small active">
+                                        <div
+                                            class="spinner-layer spinner-white-only"
+                                        >
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                                <button type="button" class="btn-flat faviconUpdateBtn" @click.prevent="generalSave" v-else-if="saved == null" :disabled="
                                     general.favicon == null || general.title == ''
                                 ">
                                     Save
@@ -211,7 +228,7 @@
                 generalErrors: false,
             };
         },
-        props: ["genModal", "genModal1", "saved"],
+        props: ["genModal", "genModal1", "saved", "loading"],
         methods: {
             deleteImg() {
                 this.general.oldFav = this.general.favicon;

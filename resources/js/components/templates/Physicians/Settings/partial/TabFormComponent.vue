@@ -6,10 +6,14 @@
                     <p class="editWebWlcTxt">Setup your website</p>
                 </div>
                 <div class="editWebiIllustrateDiv">
-                    <img src="/media/img/settings.png" alt="settings.png" class="editWebSidenavImg" />
+                    <img
+                        src="/media/img/settings.png"
+                        alt="settings.png"
+                        class="editWebSidenavImg"
+                    />
                 </div>
             </div>
-            
+
             <div class="editWebNav">
                 <div class="editInnerWebNav">
                     <ul id="editWebUl">
@@ -22,7 +26,10 @@
                                     >1</span
                                 >
                                 General
-                                <span class="icon-button__badge" v-if="generalErrors"></span>
+                                <span
+                                    class="icon-button__badge"
+                                    v-if="generalErrors"
+                                ></span>
                             </a>
                         </li>
                         <li class="editWebLi">
@@ -31,7 +38,10 @@
                                     >2</span
                                 >
                                 Bio
-                                <span class="icon-button__badge" v-if="bioeErrors"></span>
+                                <span
+                                    class="icon-button__badge"
+                                    v-if="bioeErrors"
+                                ></span>
                             </a>
                         </li>
                         <li class="editWebLi">
@@ -44,7 +54,10 @@
                                     >3</span
                                 >
                                 Services
-                                <span class="icon-button__badge" v-if="serviceErrors"></span>
+                                <span
+                                    class="icon-button__badge"
+                                    v-if="serviceErrors"
+                                ></span>
                             </a>
                         </li>
                         <li class="editWebLi">
@@ -57,7 +70,10 @@
                                     >4</span
                                 >
                                 Achievement
-                                <span class="icon-button__badge" v-if="achievementErrors"></span>
+                                <span
+                                    class="icon-button__badge"
+                                    v-if="achievementErrors"
+                                ></span>
                             </a>
                         </li>
                         <li class="editWebLi">
@@ -70,7 +86,10 @@
                                     >5</span
                                 >
                                 Socials
-                                <span class="icon-button__badge" v-if="socialErrors"></span>
+                                <span
+                                    class="icon-button__badge"
+                                    v-if="socialErrors"
+                                ></span>
                             </a>
                         </li>
                         <li class="editWebLi">
@@ -83,7 +102,10 @@
                                     >6</span
                                 >
                                 Contacts
-                                <span class="icon-button__badge" v-if="contactErrors"></span>
+                                <span
+                                    class="icon-button__badge"
+                                    v-if="contactErrors"
+                                ></span>
                             </a>
                         </li>
                     </ul>
@@ -93,6 +115,7 @@
                 :genModal="genModal"
                 :genModal1="genModal1"
                 :saved="general"
+                :loading="loading"
                 @genNextBtn="genNextBtn"
                 @generalSave="generalSave($event)"
                 @generalUpdate="generalUpdate($event)"
@@ -106,6 +129,7 @@
                 :bioModal3="bioModal3"
                 :user="user"
                 :saved="bio"
+                :loading="loading"
                 @bioGoBackBtn="bioGoBackBtn"
                 @bioNextBtn="bioNextBtn"
                 @bioGoBackBtn1="bioGoBackBtn1"
@@ -120,6 +144,7 @@
             <ServicesComponent
                 :servicesModal="servicesModal"
                 :saved="services"
+                :loading="loading"
                 @serviceSave="serviceSave($event)"
                 @achieveLink="achieveLink"
                 @servicesGoBackBtn="servicesGoBackBtn"
@@ -127,6 +152,7 @@
             <Achievement
                 :achieveModal="achieveModal"
                 :saved="achievement"
+                :loading="loading"
                 @saveAchievement="saveAchievement($event)"
                 @socialLink="socialLink"
                 @achieveGoBackBtn="achieveGoBackBtn"
@@ -134,6 +160,7 @@
             <SocialComponent
                 :socialsModal="socialsModal"
                 :saved="social"
+                :loading="loading"
                 @saveSocial="saveSocial($event)"
                 @contactLink="contactLink"
                 @socialGoBackBtn="socialGoBackBtn"
@@ -141,6 +168,7 @@
             <ContactComponent
                 :user="user"
                 :saved="contact"
+                :loading="loading"
                 :contactModal="contactModal"
                 @saveContact="saveContact($event)"
                 @contactGoBackBtn="contactGoBackBtn"
@@ -190,6 +218,7 @@
                 contactErrors: false,
                 socialErrors: false,
                 achievementErrors: false,
+                loading: false,
             };
         },
         props: {
@@ -203,9 +232,44 @@
         },
         mounted() {
             this.genModal = true;
+            if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+                if (localStorage.getItem('refreshed') == null) {
+                    localStorage.setItem('refreshed', 1);
+                }
+                else {
+                    let refreshed = parseInt(localStorage.getItem('refreshed')) + 1;
+                    localStorage.setItem('refreshed', refreshed);
+                }
+            }
+            setTimeout(() => {
+                this.checkIfFieldIsEmpty();
+            }, 5000);
         },
         methods: {
+            checkIfFieldIsEmpty() {
+                if (localStorage.getItem("візіт") > 1 || localStorage.getItem("refreshed") > 2) {
+                    if (this.social == null) {
+                        this.socialErrors = true;
+                    }
+                    if (this.bio == null) {
+                        this.bioeErrors = true;
+                    }
+                    if (this.services.length === 0) {
+                        this.serviceErrors = true;
+                    }
+                    if (this.contact == null) {
+                        this.contactErrors = true;
+                    }
+                    if (this.general == null) {
+                        this.generalErrors = true;
+                    }
+                    if (this.achievement == null) {
+                        this.achievementErrors = true;
+                    }
+                }
+            },
             generalSave(e) {
+                this.loading = !this.loading;
                 let formData = new FormData();
                 formData.append("favicon", e.favicon);
                 formData.append("title", e.title);
@@ -213,6 +277,7 @@
                     .post(`/api/general`, formData)
                     .then((res) => {
                         if (res.data.status == 200) {
+                            this.loading = !this.loading;
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
@@ -221,7 +286,9 @@
                         }
                     })
                     .catch((err) => {
+                        this.loading = !this.loading;
                         if (err.response.status == 400) {
+                            this.loading = !this.loading;
                             err.response.data.forEach((el) => {
                                 M.toast({
                                     html: el,
@@ -232,6 +299,7 @@
                     });
             },
             generalUpdate(e) {
+                this.loading = !this.loading;
                 let formData = new FormData();
                 e.favicon ? formData.append("favicon", e.favicon) : null;
                 e.favicon ? formData.append("oldFav", e.oldFav) : null;
@@ -241,6 +309,7 @@
                     .post(`/api/general/${e.id}`, formData)
                     .then((res) => {
                         if (res.data.status == 200) {
+                            this.loading = !this.loading;
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
@@ -248,6 +317,7 @@
                         }
                     })
                     .catch((err) => {
+                        this.loading = !this.loading;
                         if (err.response.status == 400) {
                             err.response.data.forEach((el) => {
                                 M.toast({
@@ -259,14 +329,14 @@
                     });
             },
             bioSave(e) {
-                console.log(e);
+                this.loading = !this.loading;
                 if (e.about.length > 614) {
                     M.toast({
                         html: "Your about must not be greater than 614 in character",
                         classes: "errorNotifier",
                     });
+                    this.loading = !this.loading;
                 } else {
-                    console.log("here");
                     let formData = new FormData();
                     formData.append("CV", e.CV);
                     formData.append("photo", e.photo);
@@ -279,14 +349,16 @@
                         .then((res) => {
                             console.log(res);
                             if (res.status == 201) {
+                                this.loading = !this.loading;
                                 M.toast({
                                     html: res.data.message,
                                     classes: "successNotifier",
                                 });
-                                this.bioNextBtn3();
+                                this.servicesLink();
                             }
                         })
                         .catch((err) => {
+                            this.loading = !this.loading;
                             if (err.response.status == 400) {
                                 err.response.data.forEach((el) => {
                                     M.toast({
@@ -299,6 +371,7 @@
                 }
             },
             bioUpdate(e) {
+                this.loading = !this.loading;
                 let formData = new FormData();
                 e.photo ? formData.append("photo", e.photo) : null;
                 e.photo ? formData.append("oldPhoto", e.oldPhoto) : null;
@@ -316,9 +389,11 @@
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
+                            this.loading = !this.loading;
                         }
                     })
                     .catch((err) => {
+                        this.loading = !this.loading;
                         if (err.response.status == 400) {
                             err.response.data.forEach((el) => {
                                 M.toast({
@@ -330,6 +405,7 @@
                     });
             },
             serviceSave(e) {
+                this.loading = !this.loading;
                 let request = `/api/service`;
                 let formData = new FormData();
                 if (e.update == 1) {
@@ -348,10 +424,12 @@
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
+                            this.loading = !this.loading;
                             e.update == 0 ? this.achieveLink() : null;
                         }
                     })
                     .catch((err) => {
+                        this.loading = !this.loading;
                         if (err.response.status == 400) {
                             err.response.data.forEach((el) => {
                                 M.toast({
@@ -363,6 +441,7 @@
                     });
             },
             saveSocial(e) {
+                this.loading = !this.loading;
                 let request = `/api/social`;
                 let data = {
                     _method: "PUT",
@@ -375,6 +454,7 @@
                     .post(request, e)
                     .then((res) => {
                         if (res.status == 201 || res.data.status == 200) {
+                            this.loading = !this.loading;
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
@@ -383,6 +463,7 @@
                         }
                     })
                     .catch((err) => {
+                        this.loading = !this.loading;
                         if (err.response.status == 400) {
                             err.response.data.forEach((el) => {
                                 M.toast({
@@ -394,6 +475,7 @@
                     });
             },
             saveContact(e) {
+                this.loading = !this.loading;
                 let request = `/api/contact`;
                 let data = {
                     _method: "PUT",
@@ -406,6 +488,7 @@
                     .post(request, e)
                     .then((res) => {
                         if (res.status == 201 || res.data.status == 200) {
+                            this.loading = !this.loading;
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
@@ -415,6 +498,7 @@
                         }
                     })
                     .catch((err) => {
+                        this.loading = !this.loading;
                         if (err.response.status == 400) {
                             err.response.data.forEach((el) => {
                                 M.toast({
@@ -426,18 +510,22 @@
                     });
             },
             saveAchievement(e) {
+                this.loading = !this.loading;
                 let formData = new FormData();
                 let request = `/api/achievement`;
-                formData.append("banner", e.banner);
-                formData.append("feats", JSON.stringify(e.feats));
                 if (e.update == 1) {
                     formData.append("_method", "PUT");
                     request = `/api/achievement/${e.id}`;
                 }
+                e.update != 1 || e.oldBanner
+                    ? formData.append("banner", e.banner)
+                    : null;
+                formData.append("feats", JSON.stringify(e.feats));
                 axios
                     .post(request, formData)
                     .then((res) => {
                         if (res.status == 201 || res.data.status == 200) {
+                            this.loading = !this.loading;
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
@@ -447,6 +535,7 @@
                     })
                     .catch((err) => {
                         if (err.response.status == 400) {
+                            this.loading = !this.loading;
                             err.response.data.forEach((el) => {
                                 M.toast({
                                     html: el,
@@ -469,7 +558,7 @@
                 this.servicesModal = true;
 
                 this.isActive = false;
-                e != undefined ? this.bioeErrors = e : null;
+                e != undefined ? (this.bioeErrors = e) : null;
 
                 $("#servicesLink").css("background-color", "black");
                 $("#genLink").css("background-color", "white");
@@ -525,8 +614,7 @@
                 this.achieveModal = true;
 
                 this.isActive = false;
-                e != undefined ? this.serviceErrors = e : null;
-
+                e != undefined ? (this.serviceErrors = e) : null;
 
                 $("#bioLink").css("background-color", "white");
                 $("#genLink").css("background-color", "white");
@@ -552,7 +640,7 @@
                 this.socialsModal = true;
 
                 this.isActive = false;
-                e != undefined ? this.achievementErrors = e : null;
+                e != undefined ? (this.achievementErrors = e) : null;
                 $("#bioLink").css("background-color", "white");
                 $("#genLink").css("background-color", "white");
                 $("#servicesLink").css("background-color", "white");
@@ -573,7 +661,7 @@
                 this.contactModal = true;
 
                 this.isActive = false;
-                e != undefined ? this.socialErrors = e : null;
+                e != undefined ? (this.socialErrors = e) : null;
                 $("#bioLink").css("background-color", "white");
                 $("#genLink").css("background-color", "white");
                 $("#servicesLink").css("background-color", "white");

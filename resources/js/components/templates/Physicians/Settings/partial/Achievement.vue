@@ -106,6 +106,32 @@
                                     </p>
                                 </div>
                             </div>
+                    
+                            <div>
+                                <button  v-if="loading" class="btn getStartBtn">
+                                    <div class="preloader-wrapper small active">
+                                        <div
+                                            class="spinner-layer spinner-white-only"
+                                        >
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                                <button type="submit" class="btn" id="genModalBtn" v-else-if="saved == null">
+                                    Save
+                                </button>
+                                <button type="submit" class="btn" id="genModalBtn" v-else @click="achievement.update = 1">
+                                    Update
+                                </button>
+                            </div>
                             <div class="col l6">
                                 <img src="/media/img/editWebsiteSettings/achieveImg4.png" alt="achieveImg4.png" class="1">
                             </div>
@@ -138,6 +164,7 @@
         props: {
             achieveModal: Boolean,
             saved: Object,
+            loading: Boolean,
         },
         data() {
             return {

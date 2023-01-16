@@ -5,7 +5,7 @@
         </div>
         <div v-show="!loading">
             <HeaderComponent :user="user"/>
-            <ServicesComponent :user="user" :services="services" :bio="bio" :location="location" :preview="preview"/>
+            <ServicesComponent :title="title" :user="user" :services="services" :bio="bio" :location="location" :preview="preview"/>
             <ExperienceComponent  :experience="achievement" :location="location" :preview="preview"/>
             <SocialMediaComponent :socials="socials"/>
             <TestimonialsComponent :reviews="reviews" :preview="preview"/>
@@ -51,6 +51,7 @@
             id: "",
             user: String,
             preview: String,
+            title: String,
         },
         mounted() {
             // if(this.templateId)

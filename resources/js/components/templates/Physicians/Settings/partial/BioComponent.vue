@@ -377,6 +377,20 @@
                                 >
                             </div>
                         </div>
+                        <!-- <div v-else class="flex">
+                            <img
+                                width="100"
+                                height="100"
+                                class="responsive-img"
+                                :src="
+                                    typeof bio.photo == 'string'
+                                        ? 'tenancy/assets/' + bio.photo
+                                        : uploaded
+                                "
+                            />
+                            <div class="faviconUploadBtnCol">
+                                <button type="button" class="btn-flat redBorderBtn matchngBtn"  @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
+                            </div> -->
 
                         <div class="col l6">
                             <img src="/media/img/editWebsiteSettings/fullname.png" alt="fullname.png">
@@ -502,15 +516,30 @@
                                     uploadedfile != null ? uploadedfile : bio.CV
                                     }}
                                 </p>
-                                <a class="
-                                    waves-effect waves-light
-                                    btn-small btn
-                                    red
-                                " @click="deleteCV">Change</a>
+                                <div class="faviconUploadBtnCol">
+                                    <button type="button" class="btn-flat redBorderBtn matchngBtn"  @click="deleteCV"><i class="material-icons">swap_horiz</i></button>                                
+                                </div>
                             </div>
                         
                             <div>
-                                <button type="button" class="btn" id="genModalBtn" @click.prevent="bioSave" v-if="saved == null">
+                                <button  v-if="loading" class="btn getStartBtn">
+                                    <div class="preloader-wrapper small active">
+                                        <div
+                                            class="spinner-layer spinner-white-only"
+                                        >
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                                <button type="button" class="btn" id="genModalBtn" @click.prevent="bioSave" v-else-if="saved == null">
                                     Save
                                 </button>
                                 <button type="button" class="btn" id="genModalBtn" @click.prevent="bioUpdate" v-else>
@@ -552,7 +581,7 @@
 </style>
 <script>
     export default {
-        props: ["user", "bioModal", "bioModal1", "bioModal2", "bioModal3", "saved"],
+        props: ["user", "bioModal", "bioModal1", "bioModal2", "bioModal3", "saved", 'loading'],
         data() {
             return {
                 bio: {

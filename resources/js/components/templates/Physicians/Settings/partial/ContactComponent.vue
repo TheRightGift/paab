@@ -39,7 +39,24 @@
                         </div>
 
                         <div>
-                            <button type="submit" class="btn" id="genModalBtn" v-if="saved == null">
+                            <button  v-if="loading" class="btn getStartBtn">
+                                <div class="preloader-wrapper small active">
+                                    <div
+                                        class="spinner-layer spinner-white-only"
+                                    >
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <button type="submit" class="btn" id="genModalBtn" v-else-if="saved == null">
                                 save
                             </button>
                             <button type="submit" class="btn" id="genModalBtn" v-else @click="contact.update = 1">
@@ -55,15 +72,6 @@
                             @click="contactGoBackBtn()"
                             >GO BACK</a
                         >
-
-                        <button
-                            type="button"
-                            class="btn right"
-                            id="genNextBtn"
-                            @click="contactNextBtn()"
-                        >
-                            NEXT STEP
-                        </button>
                     </div>
                 </div>
             </div>
@@ -76,6 +84,7 @@
             contactModal: Boolean,
             user: Object,
             saved: Object,
+            loading: Boolean
         },
         data() {
             return {
