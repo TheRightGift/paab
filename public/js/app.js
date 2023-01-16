@@ -25444,8 +25444,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var refreshed = parseInt(localStorage.getItem('refreshed')) + 1;
         localStorage.setItem('refreshed', refreshed);
       }
-    } else {
-      console.info("This page is not reloaded");
     }
     setTimeout(function () {
       _this.checkIfFieldIsEmpty();

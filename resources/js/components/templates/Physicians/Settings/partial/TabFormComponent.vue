@@ -240,8 +240,6 @@
                     let refreshed = parseInt(localStorage.getItem('refreshed')) + 1;
                     localStorage.setItem('refreshed', refreshed);
                 }
-            } else {
-                console.info("This page is not reloaded");
             }
             setTimeout(() => {
                 this.checkIfFieldIsEmpty();
