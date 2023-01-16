@@ -292,41 +292,6 @@
                         </p>
                     </div>
 
-                    <!--div class="row">
-                        <div class="col s7">
-                            <p class="genTitle1">Upload a clear picture of you</p>
-                        
-                            <p class="genTxt">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry.
-                            </p>
-                        
-                            <div class="file-field input-field" id="genUploadFavIconDiv" v-if="bio.photo == null">
-                                <input type="file" @change="photoUpload" accept=".jpg, .png" />
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" id="genInput1"
-                                        placeholder="Image must be .jpg/.png and not greater than 1MB(500x500)" />
-                                    <i class="material-icons" id="genUploadFavIcon">file_upload</i>
-                                </div>
-                            </div>
-                            <div v-else class="flex no-space-between">
-                                <img width="100" height="100" class="responsive-img" :src="
-                                    typeof bio.photo == 'string'
-                                        ? 'tenancy/assets/' + bio.photo
-                                        : uploaded
-                                " />
-                                <a class="
-                                    waves-effect waves-light
-                                    btn-small btn
-                                    red
-                                " @click="deleteImg">Change</a>
-                            </div>
-                        </div>
-
-                        <div class="col s5">
-                            <img src="/media/img/editWebsiteSettings/fullnameProImg.png" alt="fullnameProImg.png" class="editWebIllustrativeImg" width="420" height="300">
-                        </div>
-                    </div-->
                     <div>
                         <p class="genTitle1">Upload a clear picture of you</p>
 
@@ -357,7 +322,7 @@
                                 >
                             </div>
                         </div>
-                        <div v-else class="flex no-space-between">
+                        <div v-else class="flex">
                             <img
                                 width="100"
                                 height="100"
@@ -368,15 +333,9 @@
                                         : uploaded
                                 "
                             />
-                            <a
-                                class="
-                                    waves-effect waves-light
-                                    btn-small btn
-                                    red
-                                "
-                                @click="deleteImg"
-                                >Change</a
-                            >
+                            <div class="faviconUploadBtnCol">
+                                <button type="button" class="btn-flat redBorderBtn matchngBtn"  @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
+                            </div>
                         </div>
                         <!-- <div>
                                     <button type="button" class="btn" id="genModalBtn">
@@ -498,15 +457,30 @@
                                     uploadedfile != null ? uploadedfile : bio.CV
                                     }}
                                 </p>
-                                <a class="
-                                    waves-effect waves-light
-                                    btn-small btn
-                                    red
-                                " @click="deleteCV">Change</a>
+                                <div class="faviconUploadBtnCol">
+                                    <button type="button" class="btn-flat redBorderBtn matchngBtn"  @click="deleteCV"><i class="material-icons">swap_horiz</i></button>                                
+                                </div>
                             </div>
                         
                             <div>
-                                <button type="button" class="btn" id="genModalBtn" @click.prevent="bioSave" v-if="saved == null">
+                                <button  v-if="loading" class="btn getStartBtn">
+                                    <div class="preloader-wrapper small active">
+                                        <div
+                                            class="spinner-layer spinner-white-only"
+                                        >
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                                <button type="button" class="btn" id="genModalBtn" @click.prevent="bioSave" v-else-if="saved == null">
                                     Save
                                 </button>
                                 <button type="button" class="btn" id="genModalBtn" @click.prevent="bioUpdate" v-else>
@@ -548,7 +522,7 @@
 </style>
 <script>
     export default {
-        props: ["user", "bioModal", "bioModal1", "bioModal2", "bioModal3", "saved"],
+        props: ["user", "bioModal", "bioModal1", "bioModal2", "bioModal3", "saved", 'loading'],
         data() {
             return {
                 bio: {
