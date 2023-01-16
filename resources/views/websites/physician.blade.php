@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">       
-        <physician-website-component preview='{{$preview ?? 0}}' template="{{$template}}" user="{{$user ?? ''}}"></physician-website-component>
+        <physician-website-component preview='{{$preview ?? 0}}' title='{{$title ?? null}}' template="{{$template}}" user="{{$user ?? ''}}"></physician-website-component>
     </div>
     
     <script src="{{ global_asset('js/app.js') }}"></script>
