@@ -80,11 +80,11 @@
                             </p>
                         
                             <div class="input-field">
-                                <input type="text" v-model="bio.lastname" placeholder="Last Name" id="bioInput" />
+                                <input type="text" v-model="bio.lastname" placeholder="Last Name" class="bioInput" />
                             </div>
                         
                             <div class="input-field">
-                                <input type="text" v-model="bio.firstname" placeholder="First Name" id="bioInput1" />
+                                <input type="text" v-model="bio.firstname" placeholder="First Name" class="bioInput" />
                             </div>
                         
                             <!-- <div>
@@ -191,13 +191,10 @@
                             </p>
                         
                             <div class="input-field">
-                                <div class="w-custom">
-                                    <textarea v-model="bio.about" id="bioDescribeInput" class="materialize-textarea" placeholder="Me"
-                                        maxlength="614">
-                                                        </textarea>
-                                    <p class="right m-0 " :class="{redColor: aboutCount <= 599, successColor: aboutCount >= 614}">
-                                        {{aboutCount}}/614</p>
-                                </div>
+                                <textarea v-model="bio.about" class="materialize-textarea bioDescribeInput" placeholder="Highly skilled Pediatrician with 9 year of experience ..." maxlength="614"></textarea>
+                                <p class="right m-0 " :class="{redColor: aboutCount <= 599, successColor: aboutCount >= 614}">
+                                    {{aboutCount}}/614
+                                </p>
                             </div>
                         
                             <!-- <div>
@@ -292,37 +289,95 @@
                         </p>
                     </div>
 
-                    <div>
-                        <p class="genTitle1">Upload a clear picture of you</p>
+                    <!--div class="row">
+                        <div class="col s7">
+                            <p class="genTitle1">Upload a clear picture of you</p>
+                        
+                            <p class="genTxt">
+                                Lorem Ipsum is simply dummy text of the printing and
+                                typesetting industry.
+                            </p>
+                        
+                            <div class="file-field input-field" id="genUploadFavIconDiv" v-if="bio.photo == null">
+                                <input type="file" @change="photoUpload" accept=".jpg, .png" />
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" id="genInput1"
+                                        placeholder="Image must be .jpg/.png and not greater than 1MB(500x500)" />
+                                    <i class="material-icons" id="genUploadFavIcon">file_upload</i>
+                                </div>
+                            </div>
+                            <div v-else class="flex no-space-between">
+                                <img width="100" height="100" class="responsive-img" :src="
+                                    typeof bio.photo == 'string'
+                                        ? 'tenancy/assets/' + bio.photo
+                                        : uploaded
+                                " />
+                                <a class="
+                                    waves-effect waves-light
+                                    btn-small btn
+                                    red
+                                " @click="deleteImg">Change</a>
+                            </div>
+                        </div>
 
-                        <p class="genTxt">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry.
-                        </p>
+                        <div class="col s5">
+                            <img src="/media/img/editWebsiteSettings/fullnameProImg.png" alt="fullnameProImg.png" class="editWebIllustrativeImg" width="420" height="300">
+                        </div>
+                    </div-->
+                    <div class="row">
+                        <div class="col l12">
+                            <p class="genTitle1">Upload a clear picture of you</p>
+                        </div>
 
-                        <div
-                            class="file-field input-field"
-                            id="genUploadFavIconDiv"
-                            v-if="bio.photo == null"
-                        >
-                            <input
-                                type="file"
-                                @change="photoUpload"
-                                accept=".jpg, .png"
-                            />
-                            <div class="file-path-wrapper">
+                        <div class="col l6">
+                            <p class="genTxt">
+                                Image must be .jpg/.png and not greater than 1MB(500x500).
+                            </p>
+
+                            <div
+                                class="file-field input-field"
+                                id="genUploadFavIconDiv"
+                                v-if="bio.photo == null"
+                            >
                                 <input
-                                    class="file-path validate"
-                                    type="text"
-                                    id="genInput1"
-                                    placeholder="Image must be .jpg/.png and not greater than 1MB(500x500)"
+                                    type="file"
+                                    @change="photoUpload"
+                                    accept=".jpg, .png"
                                 />
-                                <i class="material-icons" id="genUploadFavIcon"
-                                    >file_upload</i
+                                <div class="file-path-wrapper">
+                                    <input
+                                        class="file-path validate genInput1"
+                                        type="text"
+                                        placeholder="Pick a Picture"
+                                    />
+                                    <!--i class="material-icons" id="genUploadFavIcon"
+                                        >file_upload</i
+                                    -->
+                                </div>
+                            </div>
+                            <div v-else class="flex no-space-between">
+                                <img
+                                    width="100"
+                                    height="100"
+                                    class="responsive-img"
+                                    :src="
+                                        typeof bio.photo == 'string'
+                                            ? 'tenancy/assets/' + bio.photo
+                                            : uploaded
+                                    "
+                                />
+                                <a
+                                    class="
+                                        waves-effect waves-light
+                                        btn-small btn
+                                        red
+                                    "
+                                    @click="deleteImg"
+                                    >Change</a
                                 >
                             </div>
                         </div>
-                        <div v-else class="flex">
+                        <!-- <div v-else class="flex">
                             <img
                                 width="100"
                                 height="100"
@@ -335,32 +390,36 @@
                             />
                             <div class="faviconUploadBtnCol">
                                 <button type="button" class="btn-flat redBorderBtn matchngBtn"  @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
-                            </div>
+                            </div> -->
+
+                        <div class="col l6">
+                            <img src="/media/img/editWebsiteSettings/fullname.png" alt="fullname.png">
                         </div>
+                    </div>
                         <!-- <div>
                                     <button type="button" class="btn" id="genModalBtn">
                                         Upload
                                     </button>
                                 </div> -->
 
-                        <div class="genBottomBtnDiv">
-                            <a
-                                href="#"
-                                class="goBackBtn"
-                                @click="bioGoBackBtn2()"
-                                >GO BACK</a
-                            >
+                    <div class="genBottomBtnDiv">
+                        <a
+                            href="#"
+                            class="goBackBtn"
+                            @click="bioGoBackBtn2()"
+                            >GO BACK</a
+                        >
 
-                            <button
-                                type="button"
-                                class="btn right"
-                                id="genNextBtn"
-                                @click="bioNextBtn2()"
-                            >
-                                NEXT STEP
-                            </button>
-                        </div>
+                        <button
+                            type="button"
+                            class="btn right"
+                            id="genNextBtn"
+                            @click="bioNextBtn2()"
+                        >
+                            NEXT STEP
+                        </button>
                     </div>
+                    
                 </div>
             </div>
 

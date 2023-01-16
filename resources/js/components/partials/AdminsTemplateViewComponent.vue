@@ -3,7 +3,7 @@
         <!-- Center Bar Person Div -->
         <div class="col s12 m10 l10">
                 <div class="webWhiteDiv1" v-if="view == 0">
-                    <div class="tempSetBlackDiv">
+                    <div class="templateRow tempSetBlackDiv">
                         <div class="tempSetBlackInnerDiv">
                             <div class="row tempSetBlackInnerDiv">
                                 <div class="col s12">
@@ -28,10 +28,10 @@
                     </div>
 
                     <!-- Profession Carousel lists -->
-                    <div class="carousel carousel-slider center white">
+                    <!--div class="carousel carousel-slider center white">
                         <div class="carousel-item" href="#one!">
                             <div class="row tempSetCarouselInnerDiv">
-                                <!-- Center Bar Person Div -->
+                                
 
                                 <div class="col s6 m4 l2">
                                     <div class="tempSetProMainDiv">
@@ -99,9 +99,9 @@
                             <p><b>Second Panel</b></p>
                             <p class="">This is your second panel</p>
                         </div>
-                    </div>
+                    </div-->
 
-                    <div class="tempSetSearchInputMainDiv">
+                    <div class="templateRow tempSetSearchInputMainDiv">
                         <div>
                             <form>
                                 <div class="input-field">
@@ -144,8 +144,8 @@
                     </div>
 
                     <!-- Client's Templates Section -->
-                    <div class="adminTempContainInnerDiv">
-                        <div id="clientTempPageRowDiv">
+                    <div class="row templateRow adminTempContainInnerDiv">
+                        <div class="clientTempPageRowDiv">
                             <!-- First Row -->
                             <div v-if="templates.length > 0" class="height">
                                 <div
@@ -167,6 +167,7 @@
                                                 "
                                                 class="image"
                                             />
+                                        
                                             <i
                                                 class="
                                                     material-icons
@@ -181,49 +182,46 @@
                                             >
                                         </div>
                                         <div class="card-content">
-                                            <div
-                                                v-if="template.approved == 'T'"
-                                            >
-                                                <a
-                                                    @click="editMe(template)"
-                                                    href="#!"
-                                                    >Edit</a
-                                                >
-                                                <span v-if="
-                                                        template.toDelete !=
-                                                        null || role === 'Admin'
-                                                    ">
-                                                    <a
-                                                        @click="
-                                                            assignID2Del(template)
-                                                        "
-                                                        
-                                                        href="#tempDelModal"
-                                                        class="
-                                                            btn
-                                                            right
-                                                            tempSetDelBtn
-                                                            modal-trigger
-                                                        "
-                                                    >
-                                                        Delete
+                                            <div>
+                                                {{template.title}}
+                                                <span class="right" v-if="template.approved == 'T'">
+                                                    <a @click="editMe(template)" href="#!">
+                                                        <i class="material-icons">edit</i>
                                                     </a>
-                                                    </span>
-                                            </div>
-                                            <div v-else>
-                                                <i
-                                                    class="
-                                                        fas
-                                                        fa-spinner fa-spin
-                                                    "
-                                                    v-if="loading"
-                                                ></i>
-                                                <a
-                                                    @click="approve(template)"
-                                                    href="#!"
-                                                    v-else-if="!loading || role === 'SuperAdmin' "
-                                                    >Approve</a
-                                                >
+                                                    <span v-if="
+                                                            template.toDelete !=
+                                                            null || role === 'Admin'
+                                                        ">
+                                                        <a
+                                                            @click="
+                                                                assignID2Del(template)
+                                                            "
+                                                            
+                                                            href="#tempDelModal"
+                                                            class="
+                                                                tempSetDelBtn
+                                                                modal-trigger
+                                                            "
+                                                        >
+                                                            <i class="material-icons">delete</i>
+                                                        </a>
+                                                        </span>
+                                                </span>
+                                                <span v-else>
+                                                    <i
+                                                        class="
+                                                            fas
+                                                            fa-spinner fa-spin
+                                                        "
+                                                        v-if="loading"
+                                                    ></i>
+                                                    <a
+                                                        @click="approve(template)"
+                                                        href="#!"
+                                                        v-else-if="!loading || role === 'SuperAdmin' "
+                                                        >Approve</a
+                                                    >
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -251,13 +249,10 @@
                     </div>
                 </div>
                 <div class="row webWhiteDiv1" v-else-if="view == 1">
-                    <p class="addTitleBack">
-                        <a href="#!" @click="back" class="black-text">Back</a>
-                    </p>
-
+                    
                     <!-- Add Title black rectangular div -->
                     <div v-for="(form, index) in currentForm" :key="index">
-                        <div class="tempSetBlackDiv">
+                        <div class="templateRow tempSetBlackDiv">
                             <div class="tempSetBlackInnerDiv">
                                 <div class="row tempSetBlackInnerDiv">
                                     <div class="col s12">
@@ -290,7 +285,13 @@
                             </div>
                         </div>
 
-                        <div class="addTitleInputDiv">
+                        <div class="row templateRow goBackRow">
+                            <p class="addTitleBack">
+                                <a href="#!" @click="back" class="black-text"><i class="material-icons left">arrow_back</i> Back</a>
+                            </p>
+                        </div>
+
+                        <div class="row templateRow addTitleInputDiv">
                             <form
                                 class="row"
                                 @submit.prevent="
@@ -298,7 +299,7 @@
                                 "
                                 enctype="multipart/form-data"
                             >
-                                <div class="col s12">
+                                <div class="row">
                                     <input
                                         type="text"
                                         placeholder="Title"
@@ -316,7 +317,7 @@
                                                     uploadTempThumpnailInputBtn
                                                 "
                                             >
-                                                <span>Select file</span>
+                                                <span>Pick Template preview image</span>
                                                 <input
                                                     type="file"
                                                     @change="previewImage"
@@ -341,7 +342,7 @@
                                                     uploadTempThumpnailInputBtn
                                                 "
                                             >
-                                                <span>Select file</span>
+                                                <span>Pick template stylesheet</span>
                                                 <input
                                                     type="file"
                                                     @change="uploadStylesheet"
@@ -357,80 +358,82 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <button
-                                            :disabled="currentIndex == 0"
-                                            type="button"
-                                            class="col s2 offset-s2 btn"
-                                            id="uploadThumbnailBtn"
-                                            @click="prev()"
+                                    
+                                </div>
+
+                                <div class="row">
+                                    <button
+                                        :disabled="currentIndex == 0"
+                                        type="button"
+                                        class="col s2 offset-s2 btn"
+                                        id="uploadThumbnailBtn"
+                                        @click="prev()"
+                                    >
+                                        Prev
+                                    </button>
+                                    <button
+                                        :disabled="currentIndex == 2"
+                                        type="button"
+                                        class="col s2 offset-s1 btn"
+                                        id="uploadThumbnailBtn"
+                                        @click="next()"
+                                    >
+                                        Next
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        class="col s2 btn offset-s1"
+                                        id="uploadThumbnailBtn"
+                                        :disabled="!filled"
+                                    >
+                                        <span v-if="!loading && update == 0"
+                                            >save</span
                                         >
-                                            Prev
-                                        </button>
-                                        <button
-                                            :disabled="currentIndex == 2"
-                                            type="button"
-                                            class="col s2 offset-s1 btn"
-                                            id="uploadThumbnailBtn"
-                                            @click="next()"
+                                        <span v-if="!loading && update == 1"
+                                            >Update</span
                                         >
-                                            Next
-                                        </button>
-                                        <button
-                                            type="submit"
-                                            class="col s2 btn offset-s1"
-                                            id="uploadThumbnailBtn"
-                                            :disabled="!filled"
+                                        <div
+                                            class="
+                                                preloader-wrapper
+                                                small
+                                                active
+                                            "
+                                            v-else-if="loading"
                                         >
-                                            <span v-if="!loading && update == 0"
-                                                >save</span
-                                            >
-                                            <span v-if="!loading && update == 1"
-                                                >Update</span
-                                            >
                                             <div
                                                 class="
-                                                    preloader-wrapper
-                                                    small
-                                                    active
+                                                    spinner-layer
+                                                    spinner-white-only
                                                 "
-                                                v-else-if="loading"
                                             >
                                                 <div
                                                     class="
-                                                        spinner-layer
-                                                        spinner-white-only
+                                                        circle-clipper
+                                                        left
                                                     "
                                                 >
                                                     <div
-                                                        class="
-                                                            circle-clipper
-                                                            left
-                                                        "
-                                                    >
-                                                        <div
-                                                            class="circle"
-                                                        ></div>
-                                                    </div>
-                                                    <div class="gap-patch">
-                                                        <div
-                                                            class="circle"
-                                                        ></div>
-                                                    </div>
+                                                        class="circle"
+                                                    ></div>
+                                                </div>
+                                                <div class="gap-patch">
                                                     <div
-                                                        class="
-                                                            circle-clipper
-                                                            right
-                                                        "
-                                                    >
-                                                        <div
-                                                            class="circle"
-                                                        ></div>
-                                                    </div>
+                                                        class="circle"
+                                                    ></div>
+                                                </div>
+                                                <div
+                                                    class="
+                                                        circle-clipper
+                                                        right
+                                                    "
+                                                >
+                                                    <div
+                                                        class="circle"
+                                                    ></div>
                                                 </div>
                                             </div>
-                                        </button>
-                                    </div>
+                                        </div>
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -613,7 +616,7 @@ export default {
                 styleFile: null,
             },
             update: 0,
-            view: 0,
+            view: 1,
         };
     },
     mounted() {

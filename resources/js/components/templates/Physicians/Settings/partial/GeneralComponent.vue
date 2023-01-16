@@ -44,7 +44,7 @@
 
                 <div class="row">
                     <div class="col l12">
-                        <p class="genTitle1">Put in your title.</p>
+                        <p class="genTitle1">Input your title.</p>
                     </div>  
                     <div class="col s6">
                         <p class="genTxt">
@@ -53,7 +53,7 @@
                         </p>
                     
                         <div class="input-field col l12 genInput">
-                            <input type="text" placeholder="Welcome to Dr. Chigozie Chukwu website." class="" v-model="general.title" />
+                            <input type="text" placeholder="Dr. Chigozie Chukwu" class="" v-model="general.title" />
                         </div>                        
                     </div>
                     
@@ -121,17 +121,24 @@
                     </div>
                     <div class="col l6">
                         <p class="genTxt">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry.
+                            File type must be in .png and not exceed 100kb.
                         </p>
-                        <div class="row vHMargin-5">
+                        <div class="row"  v-if="general.favicon == null">
+                            <div class="col l12 file-field input-field" id="genUploadFavIconDiv">
+                                <input type="file" @change="favUpload" accept=".png" />
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate genInput1" type="text" placeholder="Pick Favicon"/>
+                                    <!--i class="material-icons" id="genUploadFavIcon">file_upload</i-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row vHMargin-5" v-else>
                             <div class="col l6">
                                 <div class="file-field input-field" id="genUploadFavIconDiv" v-if="general.favicon == null">
                                     <input type="file" @change="favUpload" accept=".png" />
                                     <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" id="genInput1"
-                                            placeholder="File type must be in .png and not exceed 100kb" />
-                                        <i class="material-icons" id="genUploadFavIcon">file_upload</i>
+                                        <input class="file-path validate" type="text" id="genInput1" placeholder="Pick File" />
+                                        <!--i class="material-icons" id="genUploadFavIcon">file_upload</i-->
                                     </div>
                                 </div>
                                 <div v-else class="flex no-space-between">
@@ -142,7 +149,7 @@
                                     " />                                
                                 </div>
                             </div>
-                            <div class="col l6 faviconUploadBtnCol">
+                            <div class="col l6 faviconUploadBtnCol" v-else>
                                 <button type="button" class="btn-flat redBorderBtn matchngBtn" @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
                             </div>
                         </div>

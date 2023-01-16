@@ -44,14 +44,14 @@
                                 </div>
                             </div>
 
-                            <div class="row rm_mg">
+                            <div class="row settingsInptuRow">
                                 <form @submit.prevent="updateUserDetails()">
-                                    <div class="row rm_mg">
+                                    <div class="row">
                                         <div
                                             class="
                                                 input-field
                                                 col
-                                                s4
+                                                s2
                                                 rm_mg
                                                 sm_mg
                                             "
@@ -88,7 +88,7 @@
                                                 rm_mg
                                                 sm_mg
                                             "
-                                            :class="{'s6': user.role === 'Admin', 's4': user.role === 'Client'}"
+                                            :class="{'s6': user.role === 'Admin', 's5': user.role === 'Client'}"
                                         >
                                             <input
                                                 placeholder="Last Name"
@@ -108,7 +108,7 @@
                                                 rm_mg
                                                 sm_mg
                                             "
-                                            :class="{'s6': user.role === 'Admin', 's4': user.role === 'Client'}"
+                                            :class="{'s6': user.role === 'Admin', 's5': user.role === 'Client'}"
                                         >
                                             <input
                                                 placeholder="First Name"
@@ -121,12 +121,31 @@
                                         </div>
                                     </div>
 
-                                    <div class="row rm_mg">
+                                    <div class="row ">
                                         <div
                                             class="
                                                 input-field
                                                 col
-                                                s12
+                                                s6
+                                                rm_mg
+                                                sm_mg
+                                            "
+                                            :class="{'s6': user.role === 'Admin', 's4': user.role === 'Client'}"
+                                        >
+                                            <input
+                                                placeholder="Other Name"
+                                                id="settingOName"
+                                                type="text"
+                                                class="validate"
+                                                v-model="user.othername"
+                                                disabled
+                                            />
+                                        </div>
+                                        <div
+                                            class="
+                                                input-field
+                                                col
+                                                s6
                                                 rm_mg
                                                 sm_mg
                                             "
@@ -142,7 +161,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row rm_mg">
+                                    <div class="row ">
                                         <div
                                             class="
                                                 input-field
@@ -182,7 +201,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row rm_mg mb-10">
+                                    <div class="row">
                                         <div
                                             class="
                                                 input-field
@@ -225,29 +244,17 @@
                                                 rm_mg
                                                 sm_mg
                                             "
+                                            v-if="user.role === 'Client'"
                                         >
-                                            <select
-                                                class="browser-default"
-                                                id="settingGender"
-                                                v-model="user.gender"
-                                                required
-                                            >
-                                                <option
-                                                    value=""
-                                                    disabled
-                                                    selected
-                                                >
-                                                    Gender
-                                                </option>
+                                            <select class="browser-default" id="settingGender" v-model="user.gender">
+                                                <option value="_" selected>Gender</option>
                                                 <option value="M">Male</option>
-                                                <option value="F">
-                                                    Female
-                                                </option>
+                                                <option value="F">Female</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="row rm_mg" v-if="user.role === 'Client'">
+                                    <div class="row " v-if="user.role === 'Client'">
                                         <div
                                             class="
                                                 input-field
@@ -314,48 +321,51 @@
                                         </div>
                                     </div>
 
-                                    <button
-                                        class="btn col s12 rm_mg sm_mg"
-                                        type="submit"
-                                        id="setFormBtn"
-                                        v-if="!processing"
-                                    >
-                                        SAVE
-                                    </button>
-                                    <button
-                                        :disabled="processing"
-                                        v-else
-                                        class="btn col s12 rm_mg sm_mg"
-                                    >
-                                        <div
-                                            class="
-                                                preloader-wrapper
-                                                small
-                                                active
-                                            "
+                                    <div class="col l12 center-align">
+                                        <button
+                                            class="btn sm_mg"
+                                            type="submit"
+                                            id="setFormBtn"
+                                            v-if="!processing"
+                                        >
+                                            SAVE
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                        <button
+                                            :disabled="processing"
+                                            v-else
+                                            class="btn sm_mg"
                                         >
                                             <div
                                                 class="
-                                                    spinner-layer
-                                                    spinner-white-only
+                                                    preloader-wrapper
+                                                    small
+                                                    active
                                                 "
                                             >
                                                 <div
-                                                    class="circle-clipper left"
+                                                    class="
+                                                        spinner-layer
+                                                        spinner-white-only
+                                                    "
                                                 >
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="gap-patch">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div
-                                                    class="circle-clipper right"
-                                                >
-                                                    <div class="circle"></div>
+                                                    <div
+                                                        class="circle-clipper left"
+                                                    >
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="gap-patch">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div
+                                                        class="circle-clipper right"
+                                                    >
+                                                        <div class="circle"></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </button>
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </form>

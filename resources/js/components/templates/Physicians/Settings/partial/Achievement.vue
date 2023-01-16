@@ -3,52 +3,64 @@
         <div class="achieveModalDiv" v-if="achieveModal">
             <div class="editInnerGenModal">
                 <div class="row">
-                    <div class="col s7">
+                    <div class="col l12">
                         <p class="genTitle1">Add your achievement</p>
+                    </div>
+                </div>
+                <div class="row">   
                     
-                        <p class="genTxt">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry.
-                        </p>
-                    
-                        <form @submit.prevent="saveAchievement">
-                            <div class="file-field input-field" id="genUploadFavIconDiv" v-if="achievement.banner == null">
+                
+                    <form @submit.prevent="saveAchievement">
+                        <div class="row">
+                            <div class="col l6 file-field input-field" id="genUploadFavIconDiv" v-if="achievement.banner == null">
+                                <p class="genTxt">
+                                    Banner must not be greater than 500KB(1249x743).
+                                </p>
                                 <input type="file" accept="image/*" @change="addBannerchiever" />
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate" placeholder="Banner must not be greater than 500KB(1249x743)"
-                                        type="text" id="genInput1" />
+                                    <input class="file-path validate genInput1" placeholder="Pick banner image"
+                                        type="text" />
                                     <i class="material-icons" id="genUploadFavIcon">file_upload</i>
                                 </div>
                             </div>
                     
-                            <div v-else class="flex no-space-between">
-                                <div>
-                                    <img width="319" height="319" class="responsive-img" :src="
-                                        typeof achievement.banner == 'string'
-                                            ? 'tenancy/assets/' + achievement.banner
-                                            : uploaded
-                                    " />
-                                </div>
-                                <div class="faviconUploadBtnCol">
-                                    <button type="button" class="btn-flat redBorderBtn matchngBtn"  @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
-                                </div>
+                            <div v-else class="col l6 flex no-space-between">
+                                <img width="100" height="100" class="responsive-img" :src="
+                                    typeof achievement.banner == 'string'
+                                        ? 'tenancy/assets/' + achievement.banner
+                                        : uploaded
+                                " />
+                                <a class="
+                                    waves-effect waves-light
+                                    btn-small btn
+                                    red
+                                " @click="deleteImg">Change</a>
                             </div>
-                    
-                            <div>
-                                <p class="achieveTitle">Experience</p>
+                            <div class="col l6">
+                                <img src="/media/img/editWebsiteSettings/achieveImg.png" alt="achieveImg.png" class="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l6">
+                                <p class="achieveTitle">Experience (in Years)</p>
                     
                                 <div class="flex no-space-between">
                                     <div class="sliderContainer range-field">
                                         <input type="range" min="0" max="100" v-model="achievement.feats.experience" />
                                     </div>
                                     <p class="years">
-                                        {{ achievement.feats.experience }} Years
+                                        {{ achievement.feats.experience }}
                                     </p>
                                 </div>
                             </div>
-                    
-                            <div>
-                                <p class="achieveTitle">Ward Rounds</p>
+                            <div class="col l6">
+                                <img src="/media/img/editWebsiteSettings/achieveImg1.png" alt="achieveImg1.png" class="1">
+                            </div>  
+                        </div>
+                
+                        <div class="row">
+                            <div class="col l6">
+                                <p class="achieveTitle">Ward Rounds  (in Numbers)</p>
                     
                                 <div class="flex no-space-between">
                                     <div class="sliderContainer range-field">
@@ -59,29 +71,38 @@
                                     </p>
                                 </div>
                             </div>
-                    
-                            <div>
-                                <p class="achieveTitle">Volunteer/Outreach</p>
+                            <div class="col l6">
+                                <img src="/media/img/editWebsiteSettings/achieveImg2.png" alt="achieveImg2.png" class="1">
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col l6">
+                                <p class="achieveTitle">Volunteer/Outreach (in Years)</p>
                     
                                 <div class="flex no-space-between">
                                     <div class="sliderContainer range-field">
                                         <input type="range" min="0" max="100" v-model="achievement.feats.volunteer" />
                                     </div>
                                     <p class="years">
-                                        {{ achievement.feats.volunteer }} Years
+                                        {{ achievement.feats.volunteer }}
                                     </p>
                                 </div>
                             </div>
-                    
-                            <div>
-                                <p class="achieveTitle">Certificates</p>
+                            <div class="col l6">
+                                <img src="/media/img/editWebsiteSettings/achieveImg3.png" alt="achieveImg3.png" class="1">
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col l6">
+                                <p class="achieveTitle">Certificates  (in Numbers)</p>
                                 <div class="flex no-space-between">
                                     <div class="sliderContainer range-field">
                                         <input type="range" min="0" max="100" v-model="achievement.feats.certificate" />
                                     </div>
                                     <p class="years">
                                         {{ achievement.feats.certificate }}
-                                        Certificates
                                     </p>
                                 </div>
                             </div>
@@ -111,16 +132,20 @@
                                     Update
                                 </button>
                             </div>
-                        </form>
-                    </div>
-
-                    <div class="col s5">
-                        <img src="/media/img/editWebsiteSettings/achieveImg.png" alt="achieveImg.png" class="editWebIllustrativeImg">
-                        <img src="/media/img/editWebsiteSettings/achieveImg1.png" alt="achieveImg1.png" class="editWebIllustrativeImg1">
-                        <img src="/media/img/editWebsiteSettings/achieveImg2.png" alt="achieveImg2.png" class="editWebIllustrativeImg1">
-                        <img src="/media/img/editWebsiteSettings/achieveImg3.png" alt="achieveImg3.png" class="editWebIllustrativeImg1">
-                        <img src="/media/img/editWebsiteSettings/achieveImg4.png" alt="achieveImg4.png" class="editWebIllustrativeImg1">
-                    </div>
+                            <div class="col l6">
+                                <img src="/media/img/editWebsiteSettings/achieveImg4.png" alt="achieveImg4.png" class="1">
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <button type="submit" class="btn" id="genModalBtn" v-if="saved == null">
+                                Save
+                            </button>
+                            <button type="submit" class="btn" id="genModalBtn" v-else @click="achievement.update = 1">
+                                Update
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 
                 <div class="genBottomBtnDiv">

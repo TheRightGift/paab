@@ -26,6 +26,8 @@ Note to self: As a result of <code>FK</code> - foreign key the <code>cities tabl
 - [x] Tenancy: Attach Template to tenancy
 - [x] Tenancy: Insert and update data for webiste
 - [x] Tenancy: CHange Template for website
+- [ ] All Dashboards: Add a domain lookup and doamin name suggestion
+- [ ] Website: Add a domain lookup and doamin name suggestion
 - [ ] ...
 
 ### Front End

@@ -3,7 +3,7 @@
     --secondary: #46166B;
     --black: #000000;
     --white: #ffffff;
-
+    --gray: rgba(0, 0, 0, 0.5)
     --component: rgba(0, 0, 0, 0.5);
 }
 ::-webkit-scrollbar {
