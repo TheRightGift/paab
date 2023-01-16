@@ -151,8 +151,11 @@ a.btn.tempPageBtn:hover {
     text-decoration-line: underline;
     color: var(--primary);
 }
-.tempSetBlackDiv {
+.templateRow {
     width: 95%;
+}
+.tempSetBlackDiv {
+    
     height: 196px;
     background: var(--black);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -262,11 +265,11 @@ i.material-icons.tempSetIcon1 {
 .carousel .indicators .indicator-item.active {
     background-color: rgb(155, 155, 155);
 }
-a.btn.right.tempSetDelBtn {
+a.tempSetDelBtn {
     height: 3.8vh;
     text-transform: capitalize;
     line-height: 23px;
-    background: #D44141;
+    color: #D44141;
     font-family: 'Montserrat', sans-serif;
     border-radius: 6px;
 }
@@ -310,7 +313,7 @@ a.btn.right.tempSetDelBtn {
 }
 .tempSetSearchInputMainDiv {
     display: flex;
-    width: 96%;
+    padding: 0 2.5%;
     margin: 5vh auto;
 }
 #tempSetSearchInput {
@@ -343,23 +346,27 @@ a.btn.right.tempSetDelBtn {
     width: 96%;
     margin: auto;
 }
+.row.goBackRow{
+    margin: 0 auto;
+}
 .addTitleBack {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 15px;
     color: var(--black);
-    margin: 10vh 0 5vh 2.5vw;
+    margin: 3vh 0 10vh 2.5vw;
 }
-.addTitleInputDiv {
-    width: 80%;
-    margin: 13vh auto 0 auto;
+.col .row.addTitleInputDiv {
+    width: 60%;
+    margin: 3vh auto 0 auto;
 }
 #addTitleInput {
     background: rgba(70, 22, 107, 0.3);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 100px;
     /* margin-top: 2vh; */
-    padding: 0 2vw;
+    /* padding: 0 2vw; */
+    text-align: center;
     height: 7vh;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
@@ -382,9 +389,9 @@ a.btn.right.tempSetDelBtn {
 #uploadThumbnailInput::placeholder,
 #uploadTempStyle::placeholder {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    /* font-weight: 500; */
     font-size: 15px;
-    color: var(--black);
+    color: #61606b;
 }
 #addTitleBtn,
 #uploadThumbnailBtn,
@@ -405,8 +412,21 @@ a.btn.right.tempSetDelBtn {
     border-radius: 6px;
     font-family: 'Montserrat', sans-serif;
     max-height: 4.5vh;
-    width: 10vw;
+    width: 18vw;
     line-height: 4.5vh;
     text-transform: none;
 }
+.btn.uploadTempThumpnailInputBtn span,
+.btn.uploadTempStyleInputBtn span {
+    font-size: 0.8rem;
+}
+
+.col .row.adminTempContainInnerDiv {
+    margin: 0 auto 5vh;
+}
+.clientTempPageRowDiv {
+    padding: 0 2%;
+}
+
+
 

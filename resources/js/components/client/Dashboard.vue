@@ -143,11 +143,11 @@
                                         <div class="row">
                                             <p class="white-text center-align noVertMargin">No Mail.</p>
                                         </div>
-                                        <div class="row noMarginBottom">
+                                        <!--div class="row noMarginBottom">
                                             <div class="col s12 center-align">
                                                 <a @click="navigateToMail" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create mail</a>
                                             </div>
-                                        </div>
+                                        </div-->
                                     </div>
                                     <div class="row" id="myMailDiv" v-else>
                                         <div class="col s10 m10 l10">

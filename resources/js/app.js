@@ -25,7 +25,7 @@ import ResetPasswordComponent from './components/auth/ResetPasswordComponent.vue
 // Client
 import ClientComponent from './components/client/Dashboard.vue';
 import ClientWebsitesComponent from './components/client/WebsitesComponent.vue';
-import ClientMailComponent from './components/client/MailComponent.vue';
+// import ClientMailComponent from './components/client/MailComponent.vue';
 import ClientSettings from './components/client/Settings.vue';
 import ClientSupport from './components/client/SupportComponent.vue';
 import ClientSingleMail from './components/client/SinglemailComponent.vue';
@@ -36,7 +36,7 @@ import ClientTemplateComponent from './components/client/ClientTemplateComponent
 import DashboardAdmin from './components/admin/Dashboard';
 import ClientAdmin from "./components/admin/Client";
 import TemplateAdmin from "./components/admin/Template";
-import MessagesAdmin from "./components/admin/Messages";
+// import MessagesAdmin from "./components/admin/Messages";
 import SettingsAdmin from "./components/admin/Settings";
 import SingleMsgAdmin from "./components/admin/SingleMsg";
 
@@ -44,7 +44,7 @@ import SingleMsgAdmin from "./components/admin/SingleMsg";
 import DashboardSAdmin from './components/super/Dashboard';
 import AdminComponent from './components/super/AdminsComponent';
 import SadminTemplate from './components/super/Template';
-import SadminMail from "./components/super/MailComponent";
+// import SadminMail from "./components/super/MailComponent";
 import SadminSingleMail from "./components/super/SinglemailComponent";
 import SadminSettings from "./components/super/SettingsComponent";
 import SadminClient from "./components/super/ClientComponent";
@@ -53,6 +53,12 @@ import SadminClient from "./components/super/ClientComponent";
 // Webiste
 import PhysicianWebsiteComponent from './components/templates/Physicians/MainTemplateComponent';
 import SettingsComponent from './components/templates/Physicians/Settings/SettingsComponent';
+
+// Shared
+import mails from './components/shared/Messages';
+
+
+
 
 app.component('home-component', HomeComponent);
 app.component('login-component', LoginComponent);
@@ -65,7 +71,7 @@ app.component('client-dashboard-component', ClientComponent);
 app.component('client-websites-component', ClientWebsitesComponent);
 
 app.component('client-template-component', ClientTemplateComponent);
-app.component('client-mail-component', ClientMailComponent);
+// app.component('client-mail-component', ClientMailComponent);
 app.component('client-settings-component', ClientSettings);
 app.component('client-support-component', ClientSupport);
 app.component('client-singlemail-component', ClientSingleMail);
@@ -73,7 +79,7 @@ app.component('client-singlemail-component', ClientSingleMail);
 app.component('sadmin-component', DashboardSAdmin);
 app.component('admins-component', AdminComponent);
 app.component("sadmin-template-component", SadminTemplate);
-app.component("sadmin-mail-component", SadminMail);
+// app.component("sadmin-mail-component", SadminMail);
 app.component("sadmin-singlemail-component", SadminSingleMail);
 app.component("sadmin-settings-component", SadminSettings);
 app.component("sadmin-client-component", SadminClient);
@@ -81,12 +87,14 @@ app.component("sadmin-client-component", SadminClient);
 app.component('admin-dashboard-component', DashboardAdmin);
 app.component("admin-client-component", ClientAdmin);
 app.component("admin-template-component", TemplateAdmin);
-app.component("admin-messages-component", MessagesAdmin);
+// app.component("admin-messages-component", MessagesAdmin);
 app.component("admin-settings-component", SettingsAdmin);
 app.component("admin-singlemsg-component", SingleMsgAdmin);
 
 app.component('physician-website-component', PhysicianWebsiteComponent);
 app.component('physician-website-settings', SettingsComponent);
+
+app.component("mail-component", mails);
 
 
 /**

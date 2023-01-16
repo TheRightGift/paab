@@ -98,7 +98,7 @@
                 
                 <div class="col s12 m4 l6 offset-l3">
                     <div class="physiRightImgDiv">
-                        <img :src="location+'/tenancy/assets/'+bio.photo" alt="doc.png" class="responsive-img" id="physiRightImg">
+                        <img :src="location+'tenancy/assets/'+bio.photo" alt="doc.png" class="responsive-img" id="physiRightImg">
                     </div>
                 </div>
             </div>

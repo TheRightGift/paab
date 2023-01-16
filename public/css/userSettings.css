@@ -5,7 +5,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
+    padding-top: 4vh;
     margin: 0 auto;
 }
 .settingBannerDiv {
@@ -89,9 +90,16 @@
     letter-spacing: -0.015em;
     color: var(--black);
 }
+.settingsInptuRow {
+    margin-top: 10vh;
+}
+.settingsInputRow {
+    margin-bottom: 5vh;
+}
 #settingTitle,
 #settingLname,
 #settingFName,
+#settingOName,
 #settingEmail,
 #settingPhone,
 #settingCountry,
@@ -102,7 +110,8 @@
 #settingCpass {
     border: 1px solid var(--primary);
     border-radius: 100px;
-    padding-left: 9px;
+    /* padding-left: 9px; */
+    text-align: center;
     letter-spacing: -0.015em;
     height: 5vh;
 }
