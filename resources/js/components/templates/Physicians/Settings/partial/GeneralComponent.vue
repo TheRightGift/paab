@@ -149,7 +149,7 @@
                                     " />                                
                                 </div>
                             </div>
-                            <div class="col l6 faviconUploadBtnCol" v-else>
+                            <div class="col l6 faviconUploadBtnCol" >
                                 <button type="button" class="btn-flat redBorderBtn matchngBtn" @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
                             </div>
                         </div>
