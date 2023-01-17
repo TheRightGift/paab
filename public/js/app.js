@@ -23022,53 +23022,53 @@ __webpack_require__.r(__webpack_exports__);
         url: "/websites",
         role: "Client"
       }, {
-        id: 2,
+        id: 3,
+        title: "Staff",
+        icon: "group",
+        url: "/admins",
+        role: "SuperAdmin"
+      }, {
+        id: 4,
         title: "Clients",
         icon: "web",
         url: "/client",
         role: "Admin" || 0
       }, {
-        id: 2,
+        id: 5,
         title: "Clients",
         icon: "web",
         url: "/client",
         role: "SuperAdmin"
       }, {
-        id: 3,
+        id: 6,
         title: "Templates",
         icon: "chrome_reader_mode",
         url: "/template",
         role: null
       }, {
-        id: 4,
+        id: 7,
         title: "Mails",
         icon: "mail_outline",
         url: "/mail",
         role: null
       }, {
-        id: 5,
+        id: 8,
         title: "Settings",
         icon: "settings",
         url: "/settings",
         role: 'Client'
       }, {
-        id: 5,
+        id: 9,
         title: "Settings",
         icon: "settings",
         url: "/settings",
         role: 'Admin'
       }, {
-        id: 6,
+        id: 10,
         title: "Help/Support",
         icon: "question_answer",
         url: "/support",
         role: "Client"
-      }, {
-        id: 7,
-        title: "Admins",
-        icon: "question_answer",
-        url: "/admins",
-        role: "SuperAdmin"
       }],
       prefix: "/client",
       shown: false,
@@ -23486,10 +23486,15 @@ __webpack_require__.r(__webpack_exports__);
         email: "",
         role: "Admin"
       },
-      loading: false
+      admins: [],
+      addStaff: 1,
+      loading: false,
+      search: ""
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.getAdmins();
+  },
   methods: {
     createAdmin: function createAdmin() {
       var _this = this;
@@ -23501,7 +23506,14 @@ __webpack_require__.r(__webpack_exports__);
             html: res.data.message,
             classes: "successNotifier"
           });
-          console.log(res);
+          _this.admin.firstname = "";
+          _this.admin.lastname = "";
+          _this.admin.email = "";
+          _this.admin.othername = "";
+          _this.admin.password = "";
+          var elem = document.getElementById("addStaffModal"); //.getElementsByClassName('modal-close').click()
+          var instance = M.Modal.getInstance(elem);
+          instance.close();
         }
       })["catch"](function (err) {
         if (err.response.status == 400) {
@@ -23515,6 +23527,54 @@ __webpack_require__.r(__webpack_exports__);
         }
         console.log(err);
       });
+    },
+    deleteTemplate: function deleteTemplate() {
+      var _this2 = this;
+      this.loading = !this.loading;
+      axios["delete"]("/api/deleteAdmin/".concat(this.admin.id)).then(function (res) {
+        if (res.status == 204) {
+          M.toast({
+            html: 'Admin moved to archive',
+            classes: "successNotifier"
+          });
+          _this2.loading = !_this2.loading;
+        }
+        var elem = document.getElementById("deleteStaffModal"); //.getElementsByClassName('modal-close').click()
+        var instance = M.Modal.getInstance(elem);
+        instance.close();
+        _this2.admins.splice(_this2.admins.findIndex(function (admin) {
+          return admin.id === _this2.admin.id;
+        }), 1);
+      })["catch"](function (err) {
+        _this2.loading = !_this2.loading;
+        console.log(err);
+      });
+    },
+    filteredAdmins: function filteredAdmins() {
+      var _this3 = this;
+      return this.admins.filter(function (item) {
+        return item.firstname.toUpperCase().includes(_this3.search.toUpperCase());
+      });
+    },
+    getAdmins: function getAdmins() {
+      var _this4 = this;
+      this.loading = !this.loading;
+      axios.get('/api/admins').then(function (res) {
+        _this4.loading = !_this4.loading;
+        _this4.admins = res.data.admins;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    getId2Del: function getId2Del(admin) {
+      this.admin.id = admin.id;
+    },
+    getId2Edit: function getId2Edit(admin) {
+      this.admin.id = admin.id;
+      this.admin.firstname = admin.firstname;
+      this.admin.lastname = admin.lastname;
+      this.admin.othername = admin.othername;
+      this.admin.email = admin.email;
     }
   }
 });
@@ -29737,79 +29797,204 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "col s12 m10 l10"
 };
-var _hoisted_3 = {
-  "class": "dashRightDiv"
-};
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"staffBlackDiv\" data-v-35e7e82c><div class=\"staffBlackInnerDiv\" data-v-35e7e82c><div class=\"row staffBlackInnerDiv\" data-v-35e7e82c><div class=\"col s12\" data-v-35e7e82c><p class=\"staffTitle\" data-v-35e7e82c>Add Staff</p></div><div class=\"col s11\" data-v-35e7e82c><p class=\"staffTxt\" data-v-35e7e82c> Now is the time to create something exceptional with no limits. </p></div><div class=\"col s1\" data-v-35e7e82c><!-- Add Staff Modal Trigger --><a href=\"#addStaffModal\" class=\"marginRight1 modal-trigger\" data-v-35e7e82c><i class=\"material-icons staffIcon right\" data-v-35e7e82c>add_circle</i></a></div></div></div></div>", 1);
 var _hoisted_4 = {
-  "class": "row",
-  id: "dashWlcNoteRowDiv"
+  "class": "staffSearchInputMainDiv"
 };
-var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Admins", -1 /* HOISTED */);
-});
-var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", null, "Create admin from here", -1 /* HOISTED */);
-});
+var _hoisted_5 = {
+  "class": "input-field"
+};
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"staffSearchInputControlDiv\" data-v-35e7e82c><div data-v-35e7e82c><span class=\"staffSearchInputTxts\" data-v-35e7e82c>Filter</span><i class=\"material-icons staffSearchInputIcons\" data-v-35e7e82c>filter_list</i></div><div class=\"staffSearchInputIconsDiv\" data-v-35e7e82c><span class=\"staffSearchInputTxts\" data-v-35e7e82c>Sort</span><i class=\"material-icons staffSearchInputIcons\" data-v-35e7e82c>sort</i></div></div>", 1);
 var _hoisted_7 = {
-  "class": "col l6 createWebsiteDomainName"
+  key: 0
 };
 var _hoisted_8 = {
-  "class": "col l6 createWebsiteDomainName"
+  "class": "responsive-table"
 };
-var _hoisted_9 = {
-  "class": "col l6 createWebsiteDomainName"
-};
+var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "addStaffTableImgDiv"
+  })], -1 /* HOISTED */);
+});
 var _hoisted_10 = {
-  "class": "col l6 createWebsiteDomainName"
+  "class": "addStaffTableTxts"
 };
 var _hoisted_11 = {
-  "class": "col s8 flexed"
+  "class": "addStaffTableTxts"
 };
-var _hoisted_12 = ["disabled"];
+var _hoisted_12 = {
+  "class": "addStaffTableTxts"
+};
+var _hoisted_13 = {
+  "class": "addStaffTableTxts"
+};
+var _hoisted_14 = {
+  "class": "right"
+};
+var _hoisted_15 = ["onClick"];
+var _hoisted_16 = ["onClick"];
+var _hoisted_17 = {
+  key: 1,
+  "class": "row"
+};
+var _hoisted_18 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "center-align noStaffTxt"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" No staff found "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Add Staff Modal Trigger "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: "#addStaffModal",
+    "class": "noStaffCreateTempLink modal-trigger"
+  }, "Add staff")], -1 /* HOISTED */);
+});
+var _hoisted_19 = [_hoisted_18];
+var _hoisted_20 = {
+  key: 2,
+  "class": "centered"
+};
+var _hoisted_21 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "error"
+  }, "No results found!", -1 /* HOISTED */);
+});
+var _hoisted_22 = [_hoisted_21];
+var _hoisted_23 = {
+  id: "addStaffModal",
+  "class": "modal"
+};
+var _hoisted_24 = {
+  "class": "row"
+};
+var _hoisted_25 = {
+  "class": "input-field col s12 m6 l6"
+};
+var _hoisted_26 = {
+  "class": "input-field col s12 m6 l6"
+};
+var _hoisted_27 = {
+  "class": "input-field col s12 m6 l6"
+};
+var _hoisted_28 = {
+  "class": "input-field col s12 m6 l6"
+};
+var _hoisted_29 = {
+  "class": "row center-align"
+};
+var _hoisted_30 = ["disabled"];
+var _hoisted_31 = {
+  id: "deleteStaffModal",
+  "class": "modal"
+};
+var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "row logoutModalImageRow"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: "/media/img/warning.png",
+    alt: "Illustrating a warning that you will be logged out",
+    id: "errAltImg",
+    "class": "logoutModalImage"
+  })], -1 /* HOISTED */);
+});
+var _hoisted_33 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "row center-align"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "staffDeleteModalTitle"
+  }, " You are about to delete this client ")], -1 /* HOISTED */);
+});
+var _hoisted_34 = {
+  "class": "row center-align"
+};
+var _hoisted_35 = {
+  key: 0
+};
+var _hoisted_36 = {
+  key: 1,
+  "class": "fas-spinner fa-spin"
+};
+var _hoisted_37 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "gutter1"
+  }, null, -1 /* HOISTED */);
+});
+var _hoisted_38 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "modal-close cancelDeleteBtn btn-flat"
+  }, "No", -1 /* HOISTED */);
+});
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_mobile_nav_component = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("mobile-nav-component");
   var _component_sidenav_component = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("sidenav-component");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_mobile_nav_component), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Sidebar for large and medium devices "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_sidenav_component, {
-    onUser: _ctx.getUser
-  }, null, 8 /* PROPS */, ["onUser"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_mobile_nav_component), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Sidebar for large and medium devices "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_sidenav_component), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Staff black rectangular div "), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: "🔍 Search",
+    id: "staffSearchInput",
+    type: "text",
+    "class": "validate",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.search = $event;
+    })
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search]])])])]), _hoisted_6]), $data.admins.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" View all Staff Table "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.filteredAdmins(), function (admin) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: admin.id
+    }, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td class=\"addStaffTableTxts\">\n                                    Dr\n                                </td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(admin.firstname), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(admin.lastname), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(admin.othername), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(admin.email), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+      onClick: function onClick($event) {
+        return $options.getId2Edit(admin);
+      },
+      href: "#!",
+      "class": "modal-trigger marginRight1 btn addStaffEditBtn"
+    }, " Edit ", 8 /* PROPS */, _hoisted_15), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Delete Staff Modal Trigger "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+      onClick: function onClick($event) {
+        return $options.getId2Del(admin);
+      },
+      href: "#deleteStaffModal",
+      "class": "marginRight1 btn addStaffDeleteBtn modal-trigger"
+    }, " Delete ", 8 /* PROPS */, _hoisted_16)])]);
+  }), 128 /* KEYED_FRAGMENT */))])])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, _hoisted_19)), $data.search && !$options.filteredAdmins().length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, _hoisted_22)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <InnerFooterComponent /> ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Staff's Add and Delete Modals "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ------------------------------------------------------------------------------------- "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Add Staff Modal Structure "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.createAdmin && $options.createAdmin.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
-    placeholder: "Firstname",
-    id: "clientCreatePortInput",
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $data.admin.firstname = $event;
-    }),
-    required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.admin.firstname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    placeholder: "Lastname",
-    id: "clientCreatePortInput",
+    id: "staffLname",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.admin.lastname = $event;
     }),
-    required: ""
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.admin.lastname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    required: "",
+    placeholder: "Last Name",
+    "class": "validate"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.admin.lastname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
-    placeholder: "Othername",
-    id: "clientCreatePortInput",
+    id: "staffFname",
+    placeholder: "First Name",
+    "class": "validate",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.admin.firstname = $event;
+    }),
+    required: ""
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.admin.firstname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    id: "staffOtherName",
+    placeholder: "Other Name",
+    "class": "validate",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.admin.othername = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.admin.othername]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "email",
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.admin.othername]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    id: "staffEmail",
     placeholder: "Email",
-    id: "clientCreatePortInput",
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+    "class": "validate",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.admin.email = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.admin.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    disabled: $data.loading,
-    "class": "col s6 btn waves waves-effect",
-    type: "submit"
-  }, " Create ", 8 /* PROPS */, _hoisted_12)])], 32 /* HYDRATE_EVENTS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Template Stuff ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <InnerFooterComponent /> ")])])]);
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.admin.email]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "staffCreateBtn btn-flat",
+    disabled: $data.loading
+  }, " Create ", 8 /* PROPS */, _hoisted_30)])], 32 /* HYDRATE_EVENTS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Delete Staff Modal Structure "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_hoisted_32, _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "confirmDeleteBtn btn-flat",
+    onClick: _cache[6] || (_cache[6] = function () {
+      return $options.deleteTemplate && $options.deleteTemplate.apply($options, arguments);
+    })
+  }, [!$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_35, "Yes")) : $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("i", _hoisted_36)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_37, _hoisted_38])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ------------------------------------------------------------------------------------- ")]);
 }
 
 /***/ }),
