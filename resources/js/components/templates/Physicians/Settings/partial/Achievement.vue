@@ -25,16 +25,14 @@
                             </div>
                     
                             <div v-else class="col l6 flex no-space-between">
-                                <img width="100" height="100" class="responsive-img" :src="
+                                <img width="319" height="319" class="responsive-img" :src="
                                     typeof achievement.banner == 'string'
                                         ? 'tenancy/assets/' + achievement.banner
                                         : uploaded
                                 " />
-                                <a class="
-                                    waves-effect waves-light
-                                    btn-small btn
-                                    red
-                                " @click="deleteImg">Change</a>
+                                <div class="faviconUploadBtnCol">
+                                    <button type="button" class="btn-flat redBorderBtn matchngBtn" @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
+                                </div>
                             </div>
                             <div class="col l6">
                                 <img src="/media/img/editWebsiteSettings/achieveImg.png" alt="achieveImg.png" class="">
@@ -107,38 +105,31 @@
                                 </div>
                             </div>
                     
-                            <div>
-                                <button  v-if="loading" class="btn getStartBtn">
-                                    <div class="preloader-wrapper small active">
-                                        <div
-                                            class="spinner-layer spinner-white-only"
-                                        >
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
-                                <button type="submit" class="btn" id="genModalBtn" v-else-if="saved == null">
-                                    Save
-                                </button>
-                                <button type="submit" class="btn" id="genModalBtn" v-else @click="achievement.update = 1">
-                                    Update
-                                </button>
-                            </div>
+                            
                             <div class="col l6">
                                 <img src="/media/img/editWebsiteSettings/achieveImg4.png" alt="achieveImg4.png" class="1">
                             </div>
                         </div>
                 
                         <div class="row">
-                            <button type="submit" class="btn" id="genModalBtn" v-if="saved == null">
+                            <button  v-if="loading" class="btn">
+                                <div class="preloader-wrapper small active">
+                                    <div
+                                        class="spinner-layer spinner-white-only"
+                                    >
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <button type="submit" class="btn" id="genModalBtn" v-else-if="saved == null">
                                 Save
                             </button>
                             <button type="submit" class="btn" id="genModalBtn" v-else @click="achievement.update = 1">
