@@ -47,6 +47,9 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::post('checkMailExist', [App\Http\Controllers\TenantController::class, 'checkEmail']);
     Route::post('tenant', [App\Http\Controllers\TenantController::class, 'create']);
     Route::put('template-update/{id}', [App\Http\Controllers\TenantController::class, 'update']);
+    Route::get('/admins', [App\Http\Controllers\DashboardController::class, 'getAdmins']);
+    Route::delete('/deleteAdmin/{id}', [App\Http\Controllers\DashboardController::class, 'deleteAdmin']);
+    Route::put('/updateAdmin/{id}', [App\Http\Controllers\DashboardController::class, 'updateAdmin']);
 });
 Route::group(['middleware'=>'auth:api'], function(){
 });

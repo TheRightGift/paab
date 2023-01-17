@@ -1,0 +1,289 @@
+:root {
+    --primary: #46166B;
+    --secondary: #46166B;
+    --black: #000000;
+    --white: #ffffff;
+
+    --component: rgba(0, 0, 0, 0.5);
+}
+
+.staffBlackDiv {
+    width: 95%;
+    height: 196px;
+    background: var(--black);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 2vh auto 0 auto;
+}
+.staffBlackInnerDiv {
+    width: 95%;
+    margin: 0 auto;
+}
+.staffBlackInnerDiv {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 3vh;
+}
+.staffTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 37px;
+    color: var(--white);
+    margin: 0;
+}
+.staffTxt {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 1vh;
+}
+i.material-icons.staffIcon {
+    color: #D9D9D9;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+.staffSearchInputMainDiv {
+    display: flex;
+    width: 95%;
+    margin: 5vh auto;
+}
+.staffSearchInputControlDiv {
+    display: flex;
+    margin: 1.5vh 1vw 0 auto;
+}
+.staffSearchInputTxts {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--black);
+}
+.staffSearchInputIcons {
+    position: relative;
+    top: 1vh;
+}
+.staffSearchInputIconsDiv {
+    margin-left: 1vw;
+}
+.noStaffTxt {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--black);
+}
+.noStaffCreateTempLink {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    text-decoration-line: underline;
+    color: var(--primary);
+}
+#staffSearchInput {
+    box-sizing: border-box;
+    width: 266px;
+    height: 41px;
+    border: 1px solid var(--black);
+    border-radius: 10px;
+    padding: 0 0.7vw;
+}
+table {
+    width: 95%;
+    margin: 0 auto;
+}
+table tbody tr {
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    margin-bottom: 2vh;
+    display: flex;
+    justify-content: space-around;
+}
+.addStaffTableImgDiv {
+    width: 25px;
+    height: 25px;
+    background: #d9d9d9;
+    border-radius: 10px;
+}
+.addStaffTableTxts {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.5);
+}
+a.marginRight1.btn.addStaffEditBtn {
+    width: 113px;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 35px;
+}
+a.marginRight1.btn.addStaffDeleteBtn.modal-trigger {
+    width: 113px;
+    background: #D44141;
+    color: var(--white);
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 35px;
+}
+#addStaffModal {
+    width: 60%;
+    border-radius: 20px;
+    background: var(--primary);
+    padding: 12vh 4vw;
+}
+#deleteStaffModal {
+    width: 40%;
+    border-radius: 20px;
+    background: var(--primary);
+}
+.staffDeleteModalTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: var(--white);
+}
+.confirmDeleteBtn {
+    width: 6.5vw;
+    border-radius: 6px;
+    background-color: #1E1E1E;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.confirmDeleteBtn:hover,
+.confirmDeleteBtn:active {
+    background-color: var(--white);
+    color: var(--primary);
+}
+
+.cancelDeleteBtn,
+.cancelDeleteBtn:visited,
+.cancelDeleteBtn:active,
+.cancelDeleteBtn.btn-small {
+    width: 6.5vw;
+    border-radius: 6px;
+    background-color: var(--white);
+    color: var(--primary);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cancelDeleteBtn:hover {
+    background-color: #1E1E1E;
+    color: var(--white);
+}
+#staffLname, 
+#staffFname, 
+#staffOtherName, 
+#staffEmail {
+    width: 85%;
+    height: 5vh;
+    border: 1px solid #D9D9D9;
+    border-radius: 100px;
+    color: var(--white);
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 2vw;
+    margin-bottom: 3vh;
+}
+#staffLname::placeholder, 
+#staffFname::placeholder,
+#staffOtherName::placeholder, 
+#staffEmail::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--white);
+}
+.staffCreateBtn {
+    width: 98%;
+    border-radius: 6px;
+    background-color: #1E1E1E;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+}
+.staffCreateBtn:hover,
+.staffCreateBtn:active {
+    background-color: var(--white);
+    color: var(--primary);
+}
+
+
+/* Media Query on Medium Device */
+@media screen and (max-width: 992px) and (min-width: 640px) {
+    #addStaffModal {
+        width: 70%;
+        border-radius: 20px;
+        background: var(--primary);
+        padding: 7vh 4vw;
+    }
+
+    #deleteStaffModal {
+        width: 60%;
+        border-radius: 20px;
+        background: var(--primary);
+    }
+}
+
+/* Media Query on small device */
+@media screen and (max-width: 640px) {
+    #addStaffModal {
+        width: 99%;
+        border-radius: 20px;
+        background: var(--primary);
+        padding: 7vh 4vw;
+    }
+    #deleteStaffModal {
+        width: 99%;
+        border-radius: 20px;
+        background: var(--primary);
+    }
+    #staffLname,
+    #staffFname,
+    #staffOtherName,
+    #staffEmail {
+        width: 97%;
+        height: 5vh;
+        border: 1px solid #D9D9D9;
+        border-radius: 100px;
+        color: var(--white);
+        font-size: 15px;
+        font-family: 'Poppins', sans-serif;
+        padding: 0 2vw;
+        margin-bottom: 3vh;
+    }
+    #staffLname::placeholder,
+    #staffFname::placeholder,
+    #staffOtherName::placeholder,
+    #staffEmail::placeholder {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 15px;
+        color: var(--white);
+    }
+    .confirmDeleteBtn {
+        width: 15vw;
+        border-radius: 6px;
+        background-color: #1E1E1E;
+        color: var(--white);
+        font-family: 'Montserrat', sans-serif;
+    }
+    .cancelDeleteBtn,
+    .cancelDeleteBtn:visited,
+    .cancelDeleteBtn:active,
+    .cancelDeleteBtn.btn-small {
+        width: 15vw;
+        border-radius: 6px;
+        background-color: var(--white);
+        color: var(--primary);
+        font-family: 'Montserrat', sans-serif;
+    }
+}

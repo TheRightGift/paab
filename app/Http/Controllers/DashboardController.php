@@ -56,6 +56,36 @@ class DashboardController extends Controller
         } 
     }
 
+    public function getAdmins() {
+        $adminUsers = User::where('role', 'Admin')->latest()->orderBy('firstname')->get();
+        return response()->json(['message' =>'Admins Fetched Success!', 'admins' =>$adminUsers]);
+    }
+
+    public function updateAdmin(Request $request, $adminID) {
+        $inputs = Validator::make($request->all(), [
+            'firstname' => ['nullable'],
+            'email' => 'nullable|unique:users',
+            'lastname' => ['nullable'],
+            'othername' => ['nullable'],
+            'role' => ['required'],
+        ]); 
+        
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            $admin = new User();
+            $admin2Update = $admin->find($adminID);
+            $admin2Update->update($input);
+            if ($admin2Update == true) {
+                return response()->json(['message' => 'Success', 'admin' => $admin2Update, 'status' => 200], 200);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'admin' => $admin2Update], 501);
+            }
+        }
+    }
+
     public function deleteAdmin($adminUserID) {
         $user = User::where('id', $adminUserID)->first();
         $user->delete();
