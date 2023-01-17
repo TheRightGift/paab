@@ -283,6 +283,7 @@
                                 classes: "successNotifier",
                             });
                             this.genNextBtn1();
+                            this.generalErrors = false;
                         }
                     })
                     .catch((err) => {
@@ -354,6 +355,7 @@
                                     html: res.data.message,
                                     classes: "successNotifier",
                                 });
+                                this.bioeErrors = false;
                                 this.servicesLink();
                             }
                         })
@@ -424,6 +426,7 @@
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
+                            this.serviceErrors = false;
                             this.loading = !this.loading;
                             e.update == 0 ? this.achieveLink() : null;
                         }
@@ -459,6 +462,7 @@
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
+                            this.socialErrors = false;
                             this.contactLink();
                         }
                     })
@@ -530,6 +534,7 @@
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
+                            this.achievementErrors = false;
                             e.update == 0 ? this.socialLink() : null;
                         }
                     })

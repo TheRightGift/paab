@@ -357,8 +357,8 @@
                             </div>
                             <div v-else class="flex no-space-between">
                                 <img
-                                    width="100"
-                                    height="100"
+                                    width="250"
+                                    height="250"
                                     class="responsive-img"
                                     :src="
                                         typeof bio.photo == 'string'
@@ -366,15 +366,9 @@
                                             : uploaded
                                     "
                                 />
-                                <a
-                                    class="
-                                        waves-effect waves-light
-                                        btn-small btn
-                                        red
-                                    "
-                                    @click="deleteImg"
-                                    >Change</a
-                                >
+                                <div class="faviconUploadBtnCol">
+                                    <button type="button" class="btn-flat redBorderBtn matchngBtn" @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
+                                </div>
                             </div>
                         </div>
                         <!-- <div v-else class="flex">
@@ -522,7 +516,7 @@
                             </div>
                         
                             <div>
-                                <button  v-if="loading" class="btn getStartBtn">
+                                <button  v-if="loading" class="btn">
                                     <div class="preloader-wrapper small active">
                                         <div
                                             class="spinner-layer spinner-white-only"

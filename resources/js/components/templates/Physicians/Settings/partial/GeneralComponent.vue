@@ -155,7 +155,7 @@
                         </div>
                         <div class="row"> 
                             <div class="col l12">
-                                <button  v-if="loading" class="btn getStartBtn">
+                                <button  v-if="loading" class="btn">
                                     <div class="preloader-wrapper small active">
                                         <div
                                             class="spinner-layer spinner-white-only"

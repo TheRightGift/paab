@@ -8,6 +8,7 @@ use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
 
 use App\Models\Tenant;
 use App\Models\Tenants\Bio;
+use App\Models\Tenants\General;
 use App\Models\Template;
 use App\Models\Tenants\TenantUser as TenantUser;
 use App\Models\AdminClientOrder;
@@ -110,12 +111,14 @@ class TenantController extends Controller
         $template = $tenant->template->title;
         $templateCSS = $tenant->template->styleFile;
         $bioTB = Bio::first();
+        $pageTitles = General::first();
+        $pageTitle = !empty($pageTitles) ? $pageTitles->title : null;
         $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'Admin' ? null : $tenant->user->title->name;
        
         $user = !empty($bioTB) ? $title.' '.$bioTB->firstname.' '.$bioTB->lastname : null;
         
         if($profession === 'Physician'){
-            return view('websites.physician', compact('template', 'user', 'templateCSS', 'title'));
+            return view('websites.physician', compact('template', 'user', 'templateCSS', 'title', 'pageTitle'));
         } else {
             dd($profession);
         }
