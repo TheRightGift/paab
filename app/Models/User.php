@@ -37,7 +37,8 @@ class User extends Authenticatable
         'city_id',
         'access_token',
         'visits',
-        'gender'
+        'gender',
+        'avatar'
     ];
 
     /**

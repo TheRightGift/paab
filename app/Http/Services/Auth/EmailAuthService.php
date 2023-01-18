@@ -2,6 +2,7 @@
 namespace App\Http\Services\Auth;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
@@ -15,7 +16,6 @@ use App\Models\Verifier;
 
 use Carbon\Carbon;
 use Cookie;
-
 
 class EmailAuthService {
 
@@ -98,7 +98,7 @@ class EmailAuthService {
             
             if(count($findUser) < 1){
                 $input = $regData->validated();
-                $input['password'] = bcrypt($request->password);
+                $input['password'] = Hash::make($request->password);
                 $user = User::create($input);
 
                 $accessToken = $user->createToken('accessToken')->accessToken;
@@ -277,5 +277,50 @@ class EmailAuthService {
             'otp' => $otp,
             'email' => $email,
         ])->notify(new MailOTP($otp));
+    }
+
+    /**
+     * This function request for old password in order to change to new one
+     */
+    public function changePassword(Request $request)
+    {
+        $status = 401;
+        $response = ['error' => 'Unauthorised'];
+        $user = Auth::user();
+        if ($user) {
+            // dd($request->oldPass, $user->password);
+            $password = $user->password;
+            $old_pass = $request->oldPass;
+            if (Hash::check($old_pass, $password)) {
+                // The passwords match...
+                $data = $request->password;
+                
+                $newPass = $request->user()->fill([
+                    'password' => Hash::make($data)
+                ])->save();
+                return [
+                    'user' => $newPass,
+                    'message' => 'Password Changed Successfully'
+                ];
+            }
+            else {
+                return ['error' => $status];
+            }
+        }
+        else {
+            return response()->json($response);
+        }
+    }
+
+    public function check_password () {
+        $user = Auth::user();
+        if ($user) {
+            if (Hash::check($user->email, $user->password)) {
+                return ['status' => 401, 'message' => 'Update password'];
+            }
+            else {
+                return ['status' => 200, 'message' => 'Ok'];
+            }
+        }
     }
 }

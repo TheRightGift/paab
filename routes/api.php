@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::get('/admins', [App\Http\Controllers\DashboardController::class, 'getAdmins']);
     Route::delete('/deleteAdmin/{id}', [App\Http\Controllers\DashboardController::class, 'deleteAdmin']);
     Route::put('/updateAdmin/{id}', [App\Http\Controllers\DashboardController::class, 'updateAdmin']);
+    Route::patch('/changePassword', [App\Http\Controllers\AuthController::class, 'changePassword']);
+    Route::get('/check_password', [App\Http\Controllers\AuthController::class, 'check_password']);
 });
 Route::group(['middleware'=>'auth:api'], function(){
 });

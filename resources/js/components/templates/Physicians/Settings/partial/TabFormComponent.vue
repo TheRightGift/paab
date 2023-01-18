@@ -241,9 +241,8 @@
                     localStorage.setItem('refreshed', refreshed);
                 }
             }
-            setTimeout(() => {
-                this.checkIfFieldIsEmpty();
-            }, 5000);
+            let refreshed = parseInt(localStorage.getItem('refreshed')) + 1;
+            localStorage.setItem('refreshed', refreshed);
         },
         methods: {
             checkIfFieldIsEmpty() {
@@ -800,6 +799,11 @@
                 $("#socialLink").css("background-color", "black");
                 $("#contactLink").css("background-color", "white");
             },
+        },
+        watch: {
+            general(newVal, oldVal) {
+                this.checkIfFieldIsEmpty();
+            }
         },
     };
 </script>

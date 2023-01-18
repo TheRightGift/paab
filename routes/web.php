@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('index');
 })->name('index');
+
 Route::get('/templates', function () {
     return view('template');
 });
@@ -89,6 +90,9 @@ Route::prefix('client')->middleware(['auth', 'can:run_client_ops'])->group(funct
     Route::get('/template', function () {
         return view('client.template');
     });
+    Route::get('/password-change', function () {
+        return view('shared.changepassview');
+    });
 });
 
 // Admin Routes
@@ -107,6 +111,9 @@ Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(functio
     });
     Route::get('/template', function () {
         return view('admin.template');
+    });
+    Route::get('/password-change', function () {
+        return view('shared.changepassview');
     });
 });
 
@@ -154,5 +161,8 @@ Route::prefix('supre')->middleware(['auth', 'can:run_superAdmin_ops'])->group(fu
     });
     Route::get('/client', function() {
         return view('super.client');
+    });
+    Route::get('/password-change', function () {
+        return view('shared.changepassview');
     });
 });

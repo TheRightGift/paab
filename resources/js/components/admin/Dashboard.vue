@@ -204,25 +204,6 @@
             setInterval(this.getCurrentTimeInterval, 1000);
         },
         methods: {
-            
-            deleteTemplate(template) {
-                this.loading = !this.loading;
-                axios
-                    .delete(`/api/template/${template.id}`)
-                    .then((res) => {
-                        if (res.status == 204) {
-                            const findId = (rol) => rol.id === template.id;
-                            this.templates.splice(
-                                this.templates.findIndex(findId),
-                                1
-                            );
-                            this.loading = !this.loading;
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-            },
             getDate() {
                 const d = new Date();
                 this.currentMonth = this.months[d.getMonth()].substring(0, 3);

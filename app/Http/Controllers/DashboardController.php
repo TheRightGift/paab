@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
@@ -49,7 +50,7 @@ class DashboardController extends Controller
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
-            $input['password'] = bcrypt($input['email']);
+            $input['password'] = Hash::make($input['email']);
             $input['role'] = 'Admin';
             $admin = User::create($input);
             return response(['admin' => $admin, 'message' => 'Created Success'], 201);

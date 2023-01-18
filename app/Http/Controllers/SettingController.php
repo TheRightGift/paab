@@ -26,9 +26,10 @@ class SettingController extends Controller
             if($request->hasFile('avatar')){
                 $avatar = $request->file('avatar');
                 $ext = $request->file('avatar')->getClientOriginalExtension();
-                $stored = \Storage::disk('public')->putFileAs('media/avatars', $avatar, strtolower($validator->firstname.$validator->lastname).'.'.$ext);
+                $name = strtolower($input['firstname'].$input['lastname'].$userID).'.'.$ext;
+                $avatar->move(public_path('/media/img/avatars/'), $name);
                 
-                $input['avatar'] = $stored;
+                $input['avatar'] = $name;
             } 
             $user = auth()->user()->id;
             $user2Update = User::find($user)->update($input);

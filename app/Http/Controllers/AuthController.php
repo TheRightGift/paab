@@ -17,6 +17,16 @@ class AuthController extends Controller
         return response($user);
     }
 
+    public function changePassword (Request $request, EmailAuthService $emailAuthService) {
+        $service = $emailAuthService->changePassword($request);
+        return response($service);
+    }
+
+    public function check_password (EmailAuthService $emailAuthService) {
+        $service = $emailAuthService->check_password();
+        return response($service);
+    }
+
     public function tenantlogin(Request $request, EmailAuthService $emailAuthService)
     {
         $user = $emailAuthService->tenantlogin($request);
