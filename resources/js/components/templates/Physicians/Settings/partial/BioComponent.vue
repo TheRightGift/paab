@@ -355,18 +355,18 @@
                                     -->
                                 </div>
                             </div>
-                            <div v-else class="flex no-space-between">
-                                <img
-                                    width="250"
-                                    height="250"
-                                    class="responsive-img"
-                                    :src="
-                                        typeof bio.photo == 'string'
-                                            ? 'tenancy/assets/' + bio.photo
-                                            : uploaded
-                                    "
-                                />
-                                <div class="faviconUploadBtnCol">
+                            <div v-else class="">
+                                <div class="col l9 center-align">
+                                    <img
+                                        class="bioPics"
+                                        :src="
+                                            typeof bio.photo == 'string'
+                                                ? 'tenancy/assets/' + bio.photo
+                                                : uploaded
+                                        "
+                                    />
+                                </div>
+                                <div class="col l3 faviconUploadBtnCol">
                                     <button type="button" class="btn-flat redBorderBtn matchngBtn" @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
                                 </div>
                             </div>
