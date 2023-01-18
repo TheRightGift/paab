@@ -489,20 +489,21 @@
 
                     <div class="row">
                         <div class="col s7">
-                            <p class="genTitle1">Upload your curriculum Vitae</p>
+                            <p class="genTitle1">Your curriculum Vitae</p>
                         
                             <p class="genTxt">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry.
+                                Let your clients know more about you.
                             </p>
                         
                             <div class="file-field input-field" id="genUploadFavIconDiv" v-if="bio.CV == null">
-                                <input type="file" @change="CVUpload"
+                                <a class="waves-effect waves-light btn modal-trigger" href="#cvModal">Modal</a>
+
+                                <!-- <input type="file" @change="CVUpload"
                                     accept="application/msword, application/vnd.ms-powerpoint,application/pdf," />
                                 <div class="file-path-wrapper">
                                     <input class="file-path validate" type="text" id="genInput1" placeholder="File must not be more than 2MB" />
                                     <i class="material-icons" id="genUploadFavIcon">file_upload</i>
-                                </div>
+                                </div> -->
                             </div>
                             <div v-else class="flex no-space-between">
                                 <p>
@@ -557,6 +558,8 @@
                 </div>
             </div>
         </div>
+        <!-- Modal Structure -->
+        <CVModalComponent />
     </div>
 </template>
 <style>
@@ -574,7 +577,9 @@
     }
 </style>
 <script>
+import CVModalComponent from './CVModalComponent.vue';
     export default {
+    components: { CVModalComponent },
         props: ["user", "bioModal", "bioModal1", "bioModal2", "bioModal3", "saved", 'loading'],
         data() {
             return {

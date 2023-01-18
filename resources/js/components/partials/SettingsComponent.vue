@@ -23,16 +23,25 @@
                             <div class="row rm_mg" id="setProMainDiv">
                                 <div class="flexed">
                                     <div class="setProDiv">
-                                        <i class="material-icons" id="setProImg"
+                                        <i class="material-icons" id="setProImg" v-if="uploaded === null && user.avatar === null"
                                             >person</i
                                         >
+                                        <img width="100" height="100" class="circle" :src="uploaded ?? '/media/img/avatars/'+user.avatar" :alt="user.firstname +' avatar'" v-else>
                                     </div>
                                     <div class="setProEditIconDiv">
-                                        <i
+                                        <input
+                                            @change="uploadAvatar"
+                                            accept="image/*"
+                                            class="custom-file-input edit icon"
+                                            type="file"
+                                            id="setProEditIcon"
+                                        />
+
+                                        <!-- <i
                                             class="material-icons"
                                             id="setProEditIcon"
                                             >edit</i
-                                        >
+                                        > -->
                                     </div>
                                 </div>
 
@@ -45,6 +54,9 @@
                             </div>
 
                             <div class="row settingsInptuRow">
+                                <div>
+                                    
+                                </div>                                
                                 <form @submit.prevent="updateUserDetails()">
                                     <div class="row">
                                         <div
@@ -81,14 +93,11 @@
                                         </div>
 
                                         <div
-                                            class="
-                                                input-field
-                                                col
-                                               
-                                                rm_mg
-                                                sm_mg
-                                            "
-                                            :class="{'s6': user.role === 'Admin', 's5': user.role === 'Client'}"
+                                            class="input-field col rm_mg sm_mg"
+                                            :class="{
+                                                s6: user.role === 'Admin',
+                                                s5: user.role === 'Client',
+                                            }"
                                         >
                                             <input
                                                 placeholder="Last Name"
@@ -108,7 +117,10 @@
                                                 rm_mg
                                                 sm_mg
                                             "
-                                            :class="{'s6': user.role === 'Admin', 's5': user.role === 'Client'}"
+                                            :class="{
+                                                s6: user.role === 'Admin',
+                                                s5: user.role === 'Client',
+                                            }"
                                         >
                                             <input
                                                 placeholder="First Name"
@@ -121,7 +133,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row ">
+                                    <div class="row">
                                         <div
                                             class="
                                                 input-field
@@ -130,7 +142,10 @@
                                                 rm_mg
                                                 sm_mg
                                             "
-                                            :class="{'s6': user.role === 'Admin', 's4': user.role === 'Client'}"
+                                            :class="{
+                                                s6: user.role === 'Admin',
+                                                s4: user.role === 'Client',
+                                            }"
                                         >
                                             <input
                                                 placeholder="Other Name"
@@ -161,7 +176,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row ">
+                                    <div class="row">
                                         <div
                                             class="
                                                 input-field
@@ -246,15 +261,26 @@
                                             "
                                             v-if="user.role === 'Client'"
                                         >
-                                            <select class="browser-default" id="settingGender" v-model="user.gender">
-                                                <option value="_" selected>Gender</option>
+                                            <select
+                                                class="browser-default"
+                                                id="settingGender"
+                                                v-model="user.gender"
+                                            >
+                                                <option value="_" selected>
+                                                    Gender
+                                                </option>
                                                 <option value="M">Male</option>
-                                                <option value="F">Female</option>
+                                                <option value="F">
+                                                    Female
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="row " v-if="user.role === 'Client'">
+                                    <div
+                                        class="row"
+                                        v-if="user.role === 'Client'"
+                                    >
                                         <div
                                             class="
                                                 input-field
@@ -329,7 +355,9 @@
                                             v-if="!processing"
                                         >
                                             SAVE
-                                            <i class="material-icons right">send</i>
+                                            <i class="material-icons right"
+                                                >send</i
+                                            >
                                         </button>
                                         <button
                                             :disabled="processing"
@@ -350,17 +378,29 @@
                                                     "
                                                 >
                                                     <div
-                                                        class="circle-clipper left"
+                                                        class="
+                                                            circle-clipper
+                                                            left
+                                                        "
                                                     >
-                                                        <div class="circle"></div>
+                                                        <div
+                                                            class="circle"
+                                                        ></div>
                                                     </div>
                                                     <div class="gap-patch">
-                                                        <div class="circle"></div>
+                                                        <div
+                                                            class="circle"
+                                                        ></div>
                                                     </div>
                                                     <div
-                                                        class="circle-clipper right"
+                                                        class="
+                                                            circle-clipper
+                                                            right
+                                                        "
                                                     >
-                                                        <div class="circle"></div>
+                                                        <div
+                                                            class="circle"
+                                                        ></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -401,11 +441,17 @@
                 pro_img: "/media/img/yuna.jpg",
                 states: [],
                 titles: [],
+                uploaded: null,
                 user: {},
             };
         },
         mounted() {},
         methods: {
+            uploadAvatar(e) {
+                if (!e.target.files.length) return;
+                this.user.avatar = e.target.files[0];
+                this.uploaded = URL.createObjectURL(e.target.files[0]);
+            },
             getLocations() {
                 this.loading = true;
                 const requestTitles = axios.get(title);
@@ -473,8 +519,8 @@
             updateUserDetails() {
                 this.processing = true;
                 let formData = new FormData();
-                // this.user.avatar ? formData.append("avatar", this.user.avatar) : null;
-                // this.user.avatar ? formData.append("oldAvatar", this.user.oldAvatar) : null;
+                typeof(this.user.avatar) != 'string' && this.user.avatar != null ? formData.append("avatar", this.user.avatar) : null;
+                typeof(this.user.avatar) != 'string' ? formData.append("oldAvatar", this.user.oldAvatar) : null;
                 this.user.role == "Client"
                     ? formData.append("title_id", this.user.title_id)
                     : null;
@@ -482,7 +528,8 @@
                 formData.append("firstname", this.user.firstname);
                 formData.append("phone", this.user.phone);
                 this.user.role == "Client"
-                    ? formData.append("city_id", this.user.city_id) : null;
+                    ? formData.append("city_id", this.user.city_id)
+                    : null;
                 formData.append("gender", this.user.gender);
                 formData.append("zipcode", this.user.zipcode);
                 formData.append("_method", "PUT");
@@ -511,10 +558,6 @@
                         console.log(err);
                     });
             },
-            uploadAvatar(e) {
-                if (!e.target.files.length) return;
-                this.user.avatar = e.target.file[0];
-            },
         },
     };
 </script>
@@ -522,9 +565,38 @@
     .mb-10 {
         margin-bottom: 10px;
     }
+    .custom-file-input::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+    .custom-file-input::before {
+        content: "✎";
+        display: inline-block;
+        /* background: linear-gradient(top, #f9f9f9, #e3e3e3); */
+        border: none;
+        border-radius: 3px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        text-shadow: 1px 1px #fff;
+        font-weight: 700;
+        font-size: 10pt;
+    }
+    .custom-file-input:hover::before {
+        border-color: black;
+    }
+    .custom-file-input:active::before {
+        background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+    }
 </style>
 
-
+<style scoped>
+    input[type="file"] {
+        /* visibility: hidden; */
+        /* display: none; */
+    }
+</style>
 
 
 

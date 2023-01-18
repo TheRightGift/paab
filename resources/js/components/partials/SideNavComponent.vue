@@ -3,7 +3,8 @@
         <div class="col s12 m2 l2" id="dashLeftColBar">
             <div class="dashLeftBar hide-on-small-only">
                 <div class="proImgDiv">
-                    <i class="material-icons" id="proImg">person</i>
+                    <i class="material-icons" id="proImg" v-if="user.avatar == null">person</i>
+                    <img width="74" height="74" class="circle" :src="'/media/img/avatars/'+user.avatar" :alt="user.firstname +' avatar'" v-else>
                 </div>
 
                 <div class="dashLeftBarInnerDiv">
@@ -122,31 +123,38 @@
                         title: "Templates",
                         icon: "chrome_reader_mode",
                         url: "/template",
-                        role: null,
+                        role: "SuperAdmin",
                     },
                     {
                         id: 7,
+                        title: "Templates",
+                        icon: "chrome_reader_mode",
+                        url: "/template",
+                        role: "Admin",
+                    },
+                    {
+                        id: 8,
                         title: "Mails",
                         icon: "mail_outline",
                         url: "/mail",
                         role: null,
                     },
                     {
-                        id: 8,
+                        id: 9,
                         title: "Settings",
                         icon: "settings",
                         url: "/settings",
                         role: 'Client',
                     },
                     {
-                        id: 9,
+                        id: 10,
                         title: "Settings",
                         icon: "settings",
                         url: "/settings",
                         role: 'Admin',
                     },
                     {
-                        id: 10,
+                        id: 11,
                         title: "Help/Support",
                         icon: "question_answer",
                         url: "/support",
@@ -159,6 +167,17 @@
             };
         },
         methods: {
+            checkInitialPassUsing() {
+                axios.get('/api/check_password').then(res => {
+                    if (res.data.status == 401) {
+                        let url = '/admin/password-change';
+                        location.pathname != url ? location.replace(url) : null;
+                    }
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                });
+            },
             getLocation() {
                 let location = window.location.pathname.split("/")[2];
                 let linkId = this.links.find((el) => el.url === `/${location}`);
@@ -186,6 +205,7 @@
                         this.user = res.data;
                         this.$emit('user', res.data);
                         if ((res.data.role == "Admin")) {
+                            this.checkInitialPassUsing();
                             this.prefix = "/admin";
                         } else if ((res.data.role == "Client")) {
                             this.prefix = "/client";

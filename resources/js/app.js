@@ -29,11 +29,11 @@ import ClientWebsitesComponent from './components/client/WebsitesComponent.vue';
 import ClientSettings from './components/client/Settings.vue';
 import ClientSupport from './components/client/SupportComponent.vue';
 import ClientSingleMail from './components/client/SinglemailComponent.vue';
-import ClientTemplateComponent from './components/client/ClientTemplateComponent.vue';
 
 
 // Admin
 import DashboardAdmin from './components/admin/Dashboard';
+import TempPassChange from './components/shared/TempPasswordChange';
 import ClientAdmin from "./components/admin/Client";
 import TemplateAdmin from "./components/admin/Template";
 // import MessagesAdmin from "./components/admin/Messages";
@@ -70,7 +70,6 @@ app.component('template-component', TemplateComponent);
 app.component('client-dashboard-component', ClientComponent);
 app.component('client-websites-component', ClientWebsitesComponent);
 
-app.component('client-template-component', ClientTemplateComponent);
 // app.component('client-mail-component', ClientMailComponent);
 app.component('client-settings-component', ClientSettings);
 app.component('client-support-component', ClientSupport);
@@ -87,7 +86,7 @@ app.component("sadmin-client-component", SadminClient);
 app.component('admin-dashboard-component', DashboardAdmin);
 app.component("admin-client-component", ClientAdmin);
 app.component("admin-template-component", TemplateAdmin);
-// app.component("admin-messages-component", MessagesAdmin);
+app.component("temp-password-change-component", TempPassChange);
 app.component("admin-settings-component", SettingsAdmin);
 app.component("admin-singlemsg-component", SingleMsgAdmin);
 
