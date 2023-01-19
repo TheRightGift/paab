@@ -8,7 +8,7 @@
     margin-top: 3vh;
 }
 
-#Template1 #physiTempContactBtn {
+#Template1 .physiTempContactBtn {
     border-radius: 6px;
     width: 130px;
     height: 40px;
@@ -22,7 +22,7 @@
     color: #FFFFFF;
     border: none;
 }
-#Template1 #physiTempContactBtn:hover {
+#Template1 .physiTempContactBtn:hover {
     background: #FFFFFF;
     color: #6750A4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -51,7 +51,7 @@
     margin: auto;
     padding-top: 36vh;
 }
-#Template1 #physiTempNavLinks {
+#Template1 .physiTempNavLinks {
     font-weight: 600;
     font-size: 1.1rem;
     font-family: 'Montserrat', sans-serif;
@@ -61,11 +61,11 @@
     color: rgb(34, 34, 34);
     padding-bottom: 3vh;
 }
-#Template1 #physiTempNavLinks:hover {
+#Template1 .physiTempNavLinks:hover {
     background-color: white;
     border-bottom: 4px solid rgba(0, 0, 0, 0.5);
 }
-#Template1 #physiTempNavLinks.active {
+#Template1 .physiTempNavLinks.active {
     border-bottom: 4px solid rgba(0, 0, 0, 0.91);
     padding: 0 0 3vh 0;
 }

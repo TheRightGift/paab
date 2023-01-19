@@ -36,7 +36,7 @@
                     </p>
                 </div>
                 <div class="col s12">
-                    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6979858587372122112" height="500" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>                </div>
+                    <iframe :src="linkedin" height="500" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>                </div>
                 </div>
             </div>
         </div>
@@ -46,8 +46,9 @@
 export default {
     data() {
         return {
-            facebook: "gOZieApps",
-            twitter: "DevWithGozie"
+            facebook: "",
+            twitter: "",
+            linkedin: ""
         }
     },
     props: {
@@ -55,6 +56,10 @@ export default {
     },
     watch: {
         socials(newVal, oldVal) {
+            this.facebook = newVal.facebook;
+            this.linkedin = newVal.linkedin;
+            this.twitter = newVal.twitter;
+            console.log(newVal)
             // if (newVal != null) console.log(newVal)
         }
     }

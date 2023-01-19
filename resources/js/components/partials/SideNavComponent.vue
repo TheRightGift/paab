@@ -173,7 +173,6 @@
                         let url = '/admin/password-change';
                         location.pathname != url ? location.replace(url) : null;
                     }
-                    console.log(res);
                 }).catch(err => {
                     console.log(err);
                 });
@@ -225,7 +224,6 @@
                             this.deleteCookie("_token", "/");
                             location.replace("/");
                         }
-                        console.log(res);
                     })
                     .catch((err) => {
                         console.log(err);

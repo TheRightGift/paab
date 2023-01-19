@@ -616,7 +616,7 @@ export default {
                 styleFile: null,
             },
             update: 0,
-            view: 1,
+            view: 0,
         };
     },
     mounted() {
