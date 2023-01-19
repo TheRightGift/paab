@@ -1,525 +1,1000 @@
-#Template2 #physiPortPageLogo {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 24px;
-    color: #000000;
-    margin-top: 3vh;
+:root {
+    --primary: #7bf9bf;
+    --secondary: #7bf9bf;
+    --black: #000000;
+    --white: #ffffff;
+
+    --component: rgba(0, 0, 0, 0.5);
+}
+.rm_mg {
+    margin: 0;
+}
+.sm_mg {
+    margin: 7px 0;
 }
 
-#Template2 #physiTempContactBtn {
-    border-radius: 6px;
-    width: 130px;
-    height: 40px;
-    margin-top: 12px;
-    text-align: center;
-    line-height: 42px;
+a.active {
+    border-bottom: 4px solid var(--primary);
+    padding: 0px;
+}
+
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
     font-weight: 600;
-    font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    background: #6750A4;
-    color: #FFFFFF;
-    border: none;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
 }
-#Template2 #physiTempContactBtn:hover {
-    background: #FFFFFF;
-    color: #6750A4;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
 }
-#Template2 .physiRightImgDiv {
-    background: #6750A4;
-    box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    transform: rotate(-3.7deg);
-    width: 427.62px;
-    height: 479.96px;
-    position: absolute;
-    top: 20vh;
-    right: 12vw;
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid rgba(41, 241, 97, 0.5);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
 }
-#Template2 #physiRightImg {
-    position: absolute;
-    left: 33px;
-    top: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
-    transform: rotate(1.5deg);
-}
-#Template2 .physiContainerDiv {
-    width: 84.5%;
-    margin: auto;
-    padding-top: 36vh;
-}
-#Template2 #physiTempNavLinks {
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
     font-weight: 600;
     font-size: 1.1rem;
-    font-family: 'Montserrat', sans-serif;
-    border-left: none;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.surgeonImg {
+    width: 83%;
+    height: 85vh;
+    margin-top: 2vh;
+}
+.col.surgeonHeroImgDiv {
+    margin: 0; 
     padding: 0;
-    margin-right: 4.5vw;
-    color: rgb(34, 34, 34);
-    padding-bottom: 3vh;
 }
-#Template2 #physiTempNavLinks:hover {
-    background-color: white;
-    border-bottom: 4px solid rgba(0, 0, 0, 0.5);
+.surgeonHeroWriteUPsDiv {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-#Template2 #physiTempNavLinks.active {
-    border-bottom: 4px solid rgba(0, 0, 0, 0.91);
-    padding: 0 0 3vh 0;
+.surgeonHeroClientName {
+    font-size: 2.6rem;
+    font-family: "Montserrat", sans-serif;
+    margin-left: 6vw;
+    position: relative;
 }
-#Template2 .physiTempNameTitle {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
+.surgeonHeroClientTxts {
+    width: 50%;
+    font-family: "Poppins", sans-serif;
     font-weight: 500;
-    font-size: 1rem;
-    line-height: 20px;
-    letter-spacing: 0.1px;
-    color: #000000;
-    margin: 0 0 0 0.2vw;
+    margin: 3vh 0 5vh 6vw;
 }
-#Template2 .physiTempName {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 2.5rem;
-    line-height: 20px;
-    letter-spacing: 0.1px;
-    color: #6750A4;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+a.surgeonHeroCvDownloadBtn {
+    width: 19vw;
+    background-color: #1e1e1e;
+    color: var(--primary);
+    font-family: "Montserrat", sans-serif;
+    padding: 1vh 1.5vw;
+    margin-left: 6vw;
 }
-#Template2 .physiTempTxt {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 20px;
-    letter-spacing: 0.1px;
-    color: rgba(0, 0, 0, 0.8);
+span.primaryColorBoxDesign {
+    width: 12vw;
+    height: 4vh;
+    background-color: var(--primary);
+    position: absolute;
+    left: 11.5vw;
+    top: 7.7vh;
+    z-index: -1;
 }
-#Template2 #physiTempBtn {
-    background: transparent;
-    border: 1px solid #6750A4;
-    box-shadow: none;
-    color: #6750A4;
-    font-family: 'Montserrat', sans-serif;
-    border-radius: 100px;
-    margin-top: 3vh;
-}
-#Template2 .servicesMainTitle {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 20px;
-    align-items: center;
+.title {
+    font-size: 2rem;
+    font-family: "Montserrat", sans-serif;
     text-align: center;
-    letter-spacing: 0.1px;
-    color: #000000;
-    margin: 25vh 0 0 0;
+    position: relative;
+    margin: 18vh 0 9vh 0;
 }
-#Template2 .servicesWhatIdo {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 2.25rem;
-    line-height: 44px;
-    color: #6750A4;
-    text-align: center;
-    margin: 0 0 10vh 0;
+span.primaryColorBoxDesign1 {
+    width: 7.8vw;
+    height: 3.5vh;
+    background-color: var(--primary);
+    position: absolute;
+    left: 42.5vw;
+    top: 1.7vh;
+    z-index: -1;
 }
-#Template2 .servicesIconsDiv {
-    /* position: absolute; */
-    width: 50px;
-    height: 50px;
-    /* left: 243px;
-    top: 940px; */
-    border-radius: 50%;
+div.row.whatIdoTxtRowDiv {
+    width: 90%;
     margin: 0 auto;
-    background: #6750A4;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-#Template2 .servicesTitle {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.563rem;
-    line-height: 20px;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.1px;
-    color: #000000;
+.whatIdoServiceTitle {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.9rem;
 }
-#Template2 .servicesTxt {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 400;
+.whatIdoServiceTitleNum {
     font-size: 1rem;
-    line-height: 20px;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.1px;
-    color: rgba(0, 0, 0, 0.7);
 }
-#Template2 .servicesIcons {
-    color: #FFFFFF;
-    margin: 1.3vh 0 0 0.7vw;
-    font-size: 2.3rem;
+.whatIdoServiceTxt {
+    font-family: "Poppins", sans-serif;
 }
-#Template2 .servicesIcons1 {
-    color: #FFFFFF;
-    margin: 1.3vh 0 0 0.7vw;
+.title {
     font-size: 2rem;
-}
-#Template2 .servicesIcons2 {
-    color: #FFFFFF;
-    margin: 1.3vh 0 0 0.7vw;
-    font-size: 2rem;
-}
-#Template2 .physiExpContainerDiv, .feedsContainDiv {
-    width: 84.5%;
-    margin: auto;
-}
-#Template2 .expMainTitle, .feedsMainTitle { 
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 20px;
-    align-items: center;
+    font-family: "Montserrat", sans-serif;
     text-align: center;
-    letter-spacing: 0.1px;
-    color: #000000;
-    margin: 9vh 0 0 0;
+    position: relative;
+    margin: 18vh 0 9vh 0;
 }
-#Template2 .expMainTxt {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: lighter;
-    font-size: 2.25rem;
-    line-height: 44px;
-    color: #6750A4;
-    text-align: center;
-    margin: 0 0 10vh 0;
+span.primaryColorBoxDesign2 {
+    width: 13vw;
+    height: 3.5vh;
+    background-color: var(--primary);
+    position: absolute;
+    left: 45.5vw;
+    top: 1.7vh;
+    z-index: -1;
 }
-#Template2 .expLeftBarDiv {
-    background: #6750A4;
-    border-radius: 10px;
-    padding: 9vh 1.5vw 2vh 1.5vw;
+.experienceImgContainDiv {
+    background-color: var(--primary);
+    border-top-left-radius: 30%;
 }
-#Template2 .expLeftBarTxt {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2.25rem;
-    line-height: 20px;
-    text-align: center;
-    align-items: center;
-    letter-spacing: 0.1px;
-    color: #FFFFFF;
-    margin: 0 0 1vh 0;
+div.col.s12.rm_mg_pd {
+    margin: 0;
+    padding: 0;
 }
-#Template2 .expLeftBarTxt1 {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: lighter;
-    font-size: 0.875rem;
-    line-height: 20px;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.1px;
-    color: #FFFFFF;
-    margin: 0 0 1.5vh 0;
+div.row.rm_mg_pd {
+    margin: 0;
+    padding: 0;
 }
-#Template2 .expLeftBarInnerDiv {
-    border-bottom: 1px solid rgba(217, 217, 217, 0.65);
-    margin-bottom: 8vh;
-}
-#Template2 #expRightDivImg {
+img.surgeonBannerImg {
     width: 100%;
-    height: 73.5vh;
-    border-radius: 10px;
+    height: 80vh;
+    margin-left: auto;
+    margin-top: -10vh;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
-#Template2 #feedsTwitterIcon {
-    color: #6750A4;
-    font-size: 1.3rem;
+.surgeonBannerImgDiv {
+    width: 90%;
+    margin: 20vh auto 0 auto;
 }
-#Template2 .feedsMainTxt {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: lighter;
-    font-size: 2.25rem;
-    line-height: 44px;
-    color: #6750A4;
+.experienceAchieveDiv {
+    display: flex;
+    justify-content: center;
+    padding: 7vh 0 6vh 0;
+}
+.experienceAchieveTitle {
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
     text-align: center;
-    margin: 0 0 1vh 0;
 }
-#Template2 .feedsTwitterTxt {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.125rem;
-    line-height: 22px;
-    color: #938F99;
-    margin-left: 0.7vw;
+.experienceAchieveTxt {
+    font-size: 0.9rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
 }
-#Template2 .feedsCard {
-    background: #6750A4;
+.experienceAchieveInnerDiv {
+    border-right: 1px solid rgba(255, 255, 255, 0.8);
+    margin-right: 4vw;
+    padding-right: 0.5vw;
+}
+span.primaryColorBoxDesign3 {
+    width: 6.5vw;
+    height: 3.5vh;
+    background-color: var(--primary);
+    position: absolute;
+    left: 49.2vw;
+    top: 1.7vh;
+    z-index: -1;
+}
+.feedsCardContainDiv {
+    width: 90%;
+    margin: 0 auto;
+}
+.feedsCard {
+    background: var(--primary);
     border: 1px solid #938F99;
     border-radius: 12px;
     padding: 2vh 0vw;
+    margin-bottom: 5vh;
 }
-#Template2 .feedsProDiv {
-    background: #D0BCFF;
+.feedsCardRowDiv {
+    margin-bottom: 0;
+}
+.feedsProDiv {
+    background: var(--white);
     height: 40px;
     width: 40px;
     border-radius: 50%;
     text-align: center;
     margin-left: 1vw;
 }
-#Template2 .feedsProImg {
+.feedsProSymbol {
     font-size: 1.2rem;
     font-family: 'Montserrat', sans-serif;
     line-height: 40px;
 }
-#Template2 .feedsCardHeader {
+.feedsCardHeader {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1rem;
     line-height: 24px;
     letter-spacing: 0.1px;
-    color: #E6E1E5;
+    color: var(--black);
 }
-#Template2 .feedsCardSubhead {
+.feedsCardSubhead {
     margin: 0;
     font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 0.875rem;
     line-height: 20px;
     letter-spacing: 0.25px;
-    color: #E6E1E5;
+    color: var(--black);
 }
-#Template2 #feedsCardImg {
-    width: 100%;
-}
-#Template2 #feedsCardRowDiv {
-    margin-bottom: 0;
-}
-#Template2 #feedsCardIcon {
-    color: #CAC4D0;
+.feedsCardIcon {
+    color: #d29814;
     position: relative;
     right: 1vw;
 }
-#Template2 .feedsCardTxt1 {
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 20px;
-    letter-spacing: 0.25px;
-    color: #CAC4D0;
-    width: 70%;
-    margin-left: 1vw;
-    margin-top: 5vh;
+.feedsCardImg {
+    width: 100%;
 }
-#Template2 .feedsCardTxt {
-    margin: 0;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 20px;
-    letter-spacing: 0.25px;
-    color: #E6E1E5;
-    margin-left: 1vw;
-}
-#Template2 .feedsCardTitle {
-    margin: 0;
+.feedsCardTitle {
+    margin: 1vh 0 0 1vw;
     font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1rem;
     line-height: 24px;
     letter-spacing: 0.1px;
-    color: #E6E1E5;
-    margin-left: 1vw;
+    color: var(--black);
 }
-#Template2 #feedsCardBtn {
-    background: transparent;
-    box-shadow: none;
-    border: 1px solid rgb(126, 125, 125);
-    border-radius: 100px;
-
+.feedsCardTxt {
+    margin: 0 0 1vh 1vw; 
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 0.875rem;
     line-height: 20px;
+    letter-spacing: 0.25px;
+    color: var(--black);
+}
+.feedsCardTxt1 {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: var(--white);
+    width: 70%;
+}
+.feedsCardTxt1Div {
+    background-color: #204b39;
+    padding: 0.5vh 1vw;
+}
+.feedsCardBtn {
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid #204b39;
+    color: #204b39;
+    border-radius: 100px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 35px;
     letter-spacing: 0.1px;
     position: relative;
-    left: 22vw;
+    left: 24vw;
     text-transform: capitalize;
     margin-top: 3vh;
 }
-#Template2 #feedsFacebookIcon {
-    color: #6750A4;
-    font-size: 2.2rem;
+.primaryColorBoxDesign4 {
+    width: 12vw;
+    height: 3.5vh;
+    background-color: var(--primary);
+    position: absolute;
+    left: 46.5vw;
+    top: 1.7vh;
+    z-index: -1;
 }
-#Template2 .facebookFeedsIcon {
-    margin: 5vh 0;
+.testimonialsMainDiv {
+    width: 90%;
+    margin: 0 auto;
+}
+div.testimonialsProImgdiv {
+    width: 60%;
+    background-color: var(--primary);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 2vh 1vw 0.1vh 1vw;
+    margin-bottom: 4vh;
+    cursor: pointer;
+}
+div.testimonialsProImgdiv1 {
+    width: 60%;
+    margin-bottom: 4vh;
+    cursor: pointer;
+}
+.testiProImg {
+    border-radius: 50%;
+}
+.testimonialsProName {
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin: 0;
+}
+.testimonialsProTitle {
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin: 0;
+}
+.testimonialsProDiv {
+    margin-left: 3vw;
+}
+.testimonialsWriteupTitle {
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 0;
+}
+.material-icons.reviewIcon {
+    font-size: 2rem;
+    color: #d29814;
+}
+.tesimonialsWriteupTxt {
+    font-family: 'Poppins', sans-serif;
+}
+a.modal-trigger.loadMoreReviews {
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary);
+}
+a.modal-trigger.loadMoreReviews:hover {
+    color: var(--black);
 }
 
-/* Testimonials Secion */
-#Template2 #testiMapImg {
-    background-image: url('../media/img/map.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 80vh;
-    margin-top: 12vh;
+.primaryColorBoxDesign5 {
+    width: 10.5vw;
+    height: 3.5vh;
+    background-color: var(--primary);
+    position: absolute;
+    left: 47.5vw;
+    top: 1.7vh;
+    z-index: -1;
 }
-#Template2 .testiMapDiv {
-    background: #6750A4;
-    box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
-    padding: 1vh 2vw;
+.contactMainDiv {
+    width: 90%;
+    margin: 0 auto;
 }
-#Template2 .testiMapProName {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 20px;
-    text-align: center;
-    letter-spacing: 0.1px;
-    color: #FFFFFF;
-}
-#Template2 .testiMapTxt {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 20px;
-    text-align: center;
-    letter-spacing: 0.1px;
-    color: rgba(255, 255, 255, 0.7);
-}
-#Template2 .testiProImg {
+.contactIconDiv {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    position: relative;
-    left: 10vw;
-    top: 2.5vh;
-    height: 57px;
+    background-color: var(--primary);
 }
-#Template2 #testiSecondImgRowOneDiv {
+.material-icons.contactIcon {
+    font-size: 2.5rem;
     position: relative;
-    bottom: 9vh;
+    left: 0.5vw;
+    bottom: 1vh;
 }
-#Template2 #testiSecondImgRowTwoDiv {
-    position: relative;
-    bottom: 4vh;
+.contactMeTitle {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
 }
-#Template2 #testiSecondImgRowThreeDiv {
-    position: relative;
-    top: 7vh;
+.contactMeTxt {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
 }
-#Template2 .contactContainDiv {
-    width: 70%;
+.formContainDiv {
+    background-color: var(--primary);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    padding: 2vh 3.5vw;
+}
+.contactFormTitle {
+    font-size: 2rem;
+    font-weight: 600;
+}
+.contactFormDiv {
+    width: 85%;
+    margin: 0 auto;
+}
+input.contactFormInput {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    color: var(--black);
+}
+input.contactFormInput::placeholder {
+    padding: 0 0.5vw;
+    color: var(--black);
+}
+button.contactFormBtn.btn {
+    background-color: #1E1E1E;
+    color: var(--primary);
+    text-transform: capitalize;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 2vh;
+}
+
+/* Testimonials Load More Modal Styling */
+.testimonialReviewDiv {
+    width: 95%;
+    margin: 0 auto;
+    padding: 7vh 0 0 0;
+}
+.testimonialReviewInnerDiv {
+    display: flex;
+    margin-top: 3vh;
+}
+.material-icons.modal-close.reviewsModalClose {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1vh 0 0 1.5vw;
+}
+.reviewsTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: var(--black);
     margin: auto;
 }
-#Template2 #testiLname, #testiFname, #testiEmail, #testiPhone {
-    border: 1px solid #6750A4;
-    border-radius: 10px;
-    padding: 0 1.5vw;
-    width: 90%;
-}
-#Template2 #testiLname::placeholder, #Template2 #testiFname::placeholder,
-#Template2 #testiEmail::placeholder, #Template2 #testiPhone::placeholder {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 0.875rem;
-    line-height: 20px;
-    letter-spacing: 0.1px;
-    color: rgba(0, 0, 0, 0.6);
-}
-#Template2 #testiTextarea1 {
-    border: 1px solid #6750A4;
-    border-radius: 10px;
-    width: 99.5%;
-    height: 22vh;
-    padding: 3vh 1.5vw;
-}
-#Template2 #testiTextarea1::placeholder{
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 0.875rem;
-    line-height: 20px;
-    letter-spacing: 0.1px;
-    color: rgba(0, 0, 0, 0.6);
-}
-#Template2 #testiContactFormTitleDiv {
-    margin-bottom: 5vh;
-}
-#Template2 #testiContactBtn {
-    background: #6750A4;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    width: 97.4%;
-    margin-left: 0.7vw;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 500;
+.reviewsTime {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
     font-size: 1rem;
-    line-height: 20px;
-    height: 5vh;
-}
-#Template2 #testiContactBtnIcon {
-    color: #938F99;
+    letter-spacing: 0.1px;
+    color: rgba(0, 0, 0, 0.7);
     position: relative;
-    top: 0.5vh;
+    top: 5vh;
 }
-#Template2 #tempPublishBtn {
-    /* width: 15vw;
-    height: 5vh; */
-    background-color: #7746FF;
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
+.reviewsProImgDiv {
+    display: flex;
+    justify-content: center;
+}
+.reviewsProImg {
+    border-radius: 50%;
+    position: relative;
+    top: 2vh;
+}
+.reviewWriteupBoxDiv {
+    background-color: var(--primary);
+    box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
+    padding: 1vh 1vw;
+}
+.reviewProName {
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 1rem;
-    line-height: 20px;
-    padding: 1vh 4vw;
-    border-radius: 6px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    text-transform: uppercase;
-    margin-bottom: 3vh;
+    font-size: 0.875rem;
+    letter-spacing: 0.1px;
+    color: var(--black);
+    text-align: center;
 }
-#Template2 #tempExitBtn {
-    /* width: 15vw;
-    height: 5vh; */
-    background-color: rgb(25, 25, 25);
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
+.reviewTxt {
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 1rem;
-    line-height: 20px;
-    padding: 1vh 2.77vw;
-    border-radius: 6px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.1px;
+    color: var(--black);
+    text-align: center;
 }
-#Template2 #tempPubExtDiv {
-    position: fixed;
-    right: 0;
-    bottom: 40vh;
+a.reviewLoadMoreLink {
+    display: flex;
+    justify-content: center;
+    margin: 9vh 0 6vh 0;
+    color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+.material-icons.addreview {
+    font-size: 2.2rem;
+    color: var(--primary);
+}
+.addReviewFormContainDiv {
+    width: 80%;
+    margin: 0 auto;
+}
+.addReviewProMainDiv {
+    width: 20%;
+    margin: 0 auto 6vh auto;
+}
+.addReviewProDiv {
+    background: #D9D9D9;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block
+}
+.material-icons.addReviewProImg {
+    font-size: 3.5rem;
+    margin-left: 0.8vw;
+    margin-top: 0.9vh;
+    color: rgba(0, 0, 0, 0.5);
+}
+.reviewProEditIconDiv {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline-block;
+    position: relative;
+    top: 1.2vh;
+    right: 1.2vw;
+}
+.material-icons.setProEditIcon {
+    color: var(--black);
+    font-size: 1.3rem;
+    margin: 0.3vh 0 0 0.1vw;
+}
+input.validate.addReviewInput {
+    border: 1px solid var(--primary);
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    padding: 0 1vw;
+}
+input.validate.addReviewInput::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--black);
+}
+textarea.addReviewTextarea {
+    border: 1px solid var(--primary);
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    padding: 1vh 1vw;
+    width: 39vw;
+    height: 15vh;
+}
+textarea.addReviewTextarea::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--black);
+}
+.btn.col.s2.offset-s9.rm_mg.sm_mg.addReviewBtn {
+    background-color: var(--primary);
+    color: var(--black);
+    border-radius: 10px;
+    text-transform: capitalize;
+    font-family: 'Montserrat', sans-serif;
+}
+.btn.col.s2.offset-s9.rm_mg.sm_mg.addReviewBtn:hover {
+    background-color: var(--primary);
+    color: var(--black);
+}
+a.sidenav-trigger {
+    color: var(--primary);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    width: 12vw;
+    height: 6.5vh;
+}
+.material-icons.sidenavListIcon {
+    font-size: 3.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Media Query on Medium Device */
+@media screen and (max-width: 992px) and (min-width: 640px) {
+    .surgeonHeroClientName {
+        font-size: 2.2rem;
+        font-family: "Montserrat", sans-serif;
+        margin-left: 6vw;
+        position: relative;
+    }
+    span.primaryColorBoxDesign {
+        width: 12vw;
+        height: 3vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 19.5vw;
+        top: 5.7vh;
+        z-index: -1;
+    }
+    .surgeonHeroClientTxts {
+        width: 70%;
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        margin: 3vh 0 5vh 6vw;
+    }
+    a.surgeonHeroCvDownloadBtn {
+        width: 28vw;
+        background-color: #1e1e1e;
+        color: var(--primary);
+        font-family: "Montserrat", sans-serif;
+        padding: 1vh 1.5vw;
+        margin-left: 6vw;
+    }
+    .surgeonImg {
+        width: 90%;
+        height: 70vh;
+        margin-top: 2vh;
+    }
+    span.primaryColorBoxDesign1 {
+        width: 11.5vw;
+        height: 3vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 42.3vw;
+        top: 1.7vh;
+        z-index: -1;
+    }
+    span.primaryColorBoxDesign2 {
+        width: 21vw;
+        height: 3.5vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 44vw;
+        top: 1.7vh;
+        z-index: -1;
+    }
+    img.surgeonBannerImg {
+        width: 100%;
+        height: 60vh;
+        margin-left: auto;
+        margin-top: -10vh;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    }
+    span.primaryColorBoxDesign3 {
+        width: 11vw;
+        height: 3vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 49.2vw;
+        top: 1.7vh;
+        z-index: -1;
+    }
+    .feedsCardBtn {
+        background: transparent;
+        box-shadow: none;
+        border: 1px solid #204b39;
+        color: #204b39;
+        border-radius: 100px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 0.875rem;
+        line-height: 35px;
+        letter-spacing: 0.1px;
+        position: relative;
+        left: 35vw;
+        text-transform: capitalize;
+        margin-top: 3vh;
+    }
+    .primaryColorBoxDesign4 {
+        width: 19vw;
+        height: 3.5vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 44.9vw;
+        top: 1.7vh;
+        z-index: -1;
+    }
+    div.testimonialsProImgdiv {
+        width: 75%;
+        background-color: var(--primary);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        padding: 2vh 1vw 0.1vh 1vw;
+        margin-bottom: 4vh;
+        cursor: pointer;
+    }
+
+    div.testimonialsProImgdiv1 {
+        width: 75%;
+        margin-bottom: 4vh;
+        cursor: pointer;
+    }
+    .primaryColorBoxDesign5 {
+        width: 16vw;
+        height: 3vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 46.4vw;
+        top: 1.7vh;
+        z-index: -1;
+    }
+    input.contactFormInput {
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        color: var(--black);
+        font-size: 1.2rem;
+    }
+    input.contactFormInput::placeholder {
+        padding: 0 0.5vw;
+        color: var(--black);
+        font-size: 1.1rem;
+    }
+    .contactFormTitle {
+        font-size: 2.2rem;
+        font-weight: 600;
+    }
+    button.contactFormBtn.btn {
+        background-color: #1E1E1E;
+        color: var(--primary);
+        text-transform: capitalize;
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 2vh;
+        margin-right: 1.4vw;
+    }
+    a.sidenav-trigger {
+        color: var(--primary);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        width: 7vw;
+        height: 6.5vh;
+    }
+    .material-icons.sidenavListIcon {
+        font-size: 4rem;
+        display: flex;
+        justify-content: center;
+    }
+    textarea.addReviewTextarea {
+        border: 1px solid var(--primary);
+        font-family: 'Montserrat', sans-serif;
+        border-radius: 10px;
+        padding: 1vh 1vw;
+        width: 55vw;
+        height: 15vh;
+    }
+    .btn.col.s2.offset-s9.rm_mg.sm_mg.addReviewBtn {
+        background-color: var(--primary);
+        color: var(--black);
+        border-radius: 10px;
+        text-transform: capitalize;
+        font-family: 'Montserrat', sans-serif;
+        width: 11vw;
+    }
+}
+
+/* Media Query on small device */
+@media screen and (max-width: 640px) {
+    .surgeonHeroClientName {
+        font-size: 2.2rem;
+        font-family: "Montserrat", sans-serif;
+        margin-left: 6vw;
+        position: relative;
+    }
+    span.primaryColorBoxDesign {
+        width: 32vw;
+        height: 3vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 30vw;
+        top: 5.8vh;
+        z-index: -1;
+    }
+    .surgeonHeroClientTxts {
+        width: 90%;
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        margin: 3vh 0 5vh 6vw;
+        text-align: center;
+    }
+    a.surgeonHeroCvDownloadBtn {
+        width: 52vw;
+        background-color: #1e1e1e;
+        color: var(--primary);
+        font-family: "Montserrat", sans-serif;
+        padding: 1vh 1.5vw;
+        margin: 0 auto;
+    }
+    img.surgeonImg {
+        width: 90%;
+        height: 70vh;
+        margin-top: 2vh;
+        float: none !important;
+    }
+    span.primaryColorBoxDesign1 {
+        width: 22vw;
+        height: 3vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 39.5vw;
+        top: 1.7vh;
+        z-index: -1;
+    }
+    span.primaryColorBoxDesign2 {
+        width: 38vw;
+        height: 3.5vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 39vw;
+        top: 1.7vh;
+        z-index: -1;
+    }
+    img.surgeonBannerImg {
+        width: 100%;
+        height: 40vh;
+        margin-left: auto;
+        margin-top: -10vh;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    }
+    span.primaryColorBoxDesign3 {
+        width: 20vw;
+        height: 3vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 48vw;
+        top: 1.7vh;
+        z-index: -1;
+    }
+    .feedsCardBtn {
+        background: transparent;
+        box-shadow: none;
+        border: 1px solid #204b39;
+        color: #204b39;
+        border-radius: 100px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 0.875rem;
+        line-height: 35px;
+        letter-spacing: 0.1px;
+        position: relative;
+        left: 73vw;
+        text-transform: capitalize;
+        margin-top: 3vh;
+    }
+    .primaryColorBoxDesign4 {
+        width: 35vw;
+        height: 3.5vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 40.1vw;
+        top: 1.7vh;
+        z-index: -1;
+    }
+    div.testimonialsProImgdiv {
+        width: 75%;
+        background-color: var(--primary);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        padding: 2vh 1vw 0.1vh 1vw;
+        margin-bottom: 4vh;
+        cursor: pointer;
+    }
+    div.testimonialsProImgdiv1 {
+        width: 75%;
+        margin-bottom: 4vh;
+        cursor: pointer;
+    }
+    .primaryColorBoxDesign5 {
+        width: 30vw;
+        height: 3vh;
+        background-color: var(--primary);
+        position: absolute;
+        left: 43vw;
+        top: 1.7vh;
+        z-index: -1;
+    }
+    input.contactFormInput {
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        color: var(--black);
+        font-size: 1.2rem;
+    }
+    input.contactFormInput::placeholder {
+        padding: 0 0.5vw;
+        color: var(--black);
+        font-size: 1.1rem;
+    }
+    .contactFormTitle {
+        font-size: 2.2rem;
+        font-weight: 600;
+    }
+    .col.surgeonHeroImgDiv {
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .surgeonHeroWriteUPsDiv {
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .whatIdoServiceTitle {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.9rem;
+        text-align: center;
+    }
+    .whatIdoServiceTxt {
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+    }
+
+    .experienceAchieveTitle {
+        font-size: 1.8rem;
+        font-weight: 600;
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        text-align: center;
+    }
+
+    .experienceAchieveTxt {
+        font-size: 0.9rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        margin: 0;
+        text-align: center;
+    }
+    button.contactFormBtn.btn {
+        background-color: #1E1E1E;
+        color: var(--primary);
+        text-transform: capitalize;
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 2vh;
+        margin-right: 1.8vw;
+    }
+    textarea.addReviewTextarea {
+        border: 1px solid var(--primary);
+        font-family: 'Montserrat', sans-serif;
+        border-radius: 10px;
+        padding: 1vh 1vw;
+        width: 55vw;
+        height: 15vh;
+    }
+    .btn.col.s2.offset-s9.rm_mg.sm_mg.addReviewBtn {
+        background-color: var(--primary);
+        color: var(--black);
+        border-radius: 10px;
+        text-transform: capitalize;
+        font-family: 'Montserrat', sans-serif;
+        width: 16vw;
+    }
+    .reviewProEditIconDiv {
+        width: 23px;
+        height: 23px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        display: inline-block;
+        position: relative;
+        top: -3vh;
+        right: 0vw;
+        left: 10vw;
+    }
 }

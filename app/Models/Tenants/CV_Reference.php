@@ -9,5 +9,5 @@ class CV_Reference extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'position', 'location', 'phone',];
+    protected $fillable = ['name', 'position', 'location', 'phone', 'title'];
 }

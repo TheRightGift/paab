@@ -21,16 +21,6 @@ class CVMedicalSchoolController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -38,29 +28,27 @@ class CVMedicalSchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $inputs = Validator::make($request->all(), [
+            'institution' => 'required',
+            'yearStart' => 'required',
+            'monthStart' => 'required',
+            'yearEnd' => 'nullable',
+            'monthEnd' => 'nullable',
+            'type' => 'required',
+        ]); 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\CV_Medical_School  $cV_Medical_School
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CV_Medical_School $cV_Medical_School)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\CV_Medical_School  $cV_Medical_School
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CV_Medical_School $cV_Medical_School)
-    {
-        //
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            $medSchool = CV_Medical_School::create($input);
+            if ($medSchool == true) {
+                return response()->json(['message' => 'Success', 'school' => $medSchool], 201);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'school' => $medSchool], 501);
+            }
+        }
     }
 
     /**
@@ -70,9 +58,31 @@ class CVMedicalSchoolController extends Controller
      * @param  \App\Models\CV_Medical_School  $cV_Medical_School
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CV_Medical_School $cV_Medical_School)
+    public function update(Request $request, $cV_Medical_School)
     {
-        //
+        $inputs = Validator::make($request->all(), [
+            'institution' => 'required',
+            'yearStart' => 'required',
+            'monthStart' => 'required',
+            'yearEnd' => 'nullable',
+            'monthEnd' => 'nullable',
+            'type' => 'required',
+        ]); 
+
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            $schools = new CV_Medical_School();
+            $school2Update = $schools->find($cV_Medical_School);
+            $school2Update->update($input);
+            if ($school2Update == true) {
+                return response()->json(['message' => 'Success', 'school' => $school2Update, 'status' => 200], 200);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'school' => $school2Update], 501);
+            }
+        }
     }
 
     /**
@@ -81,7 +91,7 @@ class CVMedicalSchoolController extends Controller
      * @param  \App\Models\CV_Medical_School  $cV_Medical_School
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CV_Medical_School $cV_Medical_School)
+    public function destroy($cV_Medical_School)
     {
         //
     }

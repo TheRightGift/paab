@@ -1,35 +1,37 @@
 <template>
-    <nav  v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class='hide-on-med-and-down'>
-        <div class="nav-wrapper navbarWrap">
-            <a href="#" class="brand-logo" id="physiPortPageLogo"
-                >{{user == '' ? 'Dr John Doe' : user}}</a
-            >
-            <ul
-                id="nav-mobile"
-                class="section table-of-contents right hide-on-med-and-down"
-            >
-                <li>
-                    <a href="#services" id="physiTempNavLinks">Services</a>
-                </li>
-                <li>
-                    <a href="#experience" id="physiTempNavLinks"
-                        >Experience</a
-                    >
-                </li>
-                <li>
-                    <a href="#testimonials" id="physiTempNavLinks"
-                        >Testimonials</a
-                    >
-                </li>
-                <li><a href="#feeds" id="physiTempNavLinks">Feeds</a></li>
-                <li>
-                    <a href="#contact" id="physiTempContactBtn"
-                        >Contact Me</a
-                    >
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="navbar-fixed">
+        <nav  v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class='hide-on-med-and-down'>
+            <div class="nav-wrapper navbarWrap">
+                <a href="#" class="brand-logo" id="physiPortPageLogo"
+                    >{{user == '' ? 'Dr John Doe' : user}}</a
+                >
+                <ul
+                    id="nav-mobile"
+                    class="section table-of-contents right hide-on-med-and-down"
+                >
+                    <li>
+                        <a href="#services" class="physiTempNavLinks">Services</a>
+                    </li>
+                    <li>
+                        <a href="#experience" class="physiTempNavLinks"
+                            >Experience</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#testimonials" class="physiTempNavLinks"
+                            >Testimonials</a
+                        >
+                    </li>
+                    <li><a href="#feeds" class="physiTempNavLinks">Feeds</a></li>
+                    <li>
+                        <a href="#contact" class="physiTempContactBtn"
+                            >Contact Me</a
+                        >
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     <nav class="hide-on-large-only white" id="sideNav">
         <a href="#" data-target="slide-out" class="sidenav-trigger"
             ><i

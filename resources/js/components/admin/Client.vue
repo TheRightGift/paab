@@ -110,7 +110,9 @@
                                 :key="clientWebo.id"
                             >
                                 <td>
-                                    <div class="adminAddClientImgDiv"></div>
+                                    <div class="adminAddClientImgDiv">
+                                        <img src="/media/img/mailer.svg" class="circle responsive-img" />
+                                    </div>
                                 </td>
                                 <td class="addminAddClientTxts">
                                     {{ profession(clientWebo) }}
@@ -126,6 +128,14 @@
                                     {{ domain(clientWebo) }}
                                 </td>
                                 <td class="right">
+                                    <a
+                                        href="#!"
+                                        @click="sendMail(clientWebo)"
+                                        class="marginRight1"
+                                        title="Configure my webiste details"
+                                    >
+                                        <img src="/media/img/mailer.svg" alt="svg" :title="'send mail to '+clientWebo.order.email "/>
+                                    </a>
                                     <a
                                         href="#!"
                                         @click="configureWebsite(clientWebo)"
@@ -386,6 +396,13 @@
                         .includes(this.search.toUpperCase())
                 );
             },
+            sendMail(mail) {
+                axios.post('urltosendto', {email: mail, url: 'unkowond'}).then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
+            },
             setDefaults() {
                 this.heading = !this.heading;
                 this.configureWeb = !this.configureWeb;
@@ -474,7 +491,7 @@
                 axios
                     .get("/api/access")
                     .then((res) => {
-                        console.log(res);
+                        // console.log(res);
                     })
                     .catch((err) => {
                         console.log(err);

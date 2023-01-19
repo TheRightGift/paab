@@ -21,16 +21,6 @@ class CvController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -38,29 +28,24 @@ class CvController extends Controller
      */
     public function store(Request $request)
     {
-        
-    }
+        $inputs = Validator::make($request->all(), [
+            'summary' => 'required',
+            'skills' => 'required',
+            'license' => 'nullable',
+        ]); 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Cv  $cv
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Cv $cv)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cv  $cv
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cv $cv)
-    {
-        //
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            $cv = CV::create($input);
+            if ($cv == true) {
+                return response()->json(['message' => 'Success', 'cv' => $cv], 201);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'cv' => $cv], 501);
+            }
+        }
     }
 
     /**

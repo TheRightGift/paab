@@ -2,7 +2,7 @@
     <div class="navbar-fixed">
         <nav class="editWebNavbar">
             <div class="nav-wrapper container">
-                <a href="/" class="brand-logo editWebNavbarLogo">Paab</a>
+                <a href="/" class="brand-logo editWebNavbarLogo">White Coat Domain</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
                         <a href="#!" class="editWebSidenavDomainNameLink" @click="openPromotionals">

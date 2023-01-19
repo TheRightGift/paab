@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('monthStart');
             $table->integer('yearEnd')->nullable();
             $table->integer('monthEnd')->nullable();
-            $table->string('major')->nullable();
+            $table->string('major');
             $table->string('minor')->nullable();
             $table->timestamps();
         });

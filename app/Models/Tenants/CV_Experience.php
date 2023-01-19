@@ -19,4 +19,8 @@ class CV_Experience extends Model
             'monthEnd',
             'activities',
     ];
+
+    protected $casts = [
+        'activities' => 'array'
+    ];
 }

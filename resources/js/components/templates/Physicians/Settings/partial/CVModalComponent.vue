@@ -3,7 +3,7 @@
         <div id="cvModal" class="modal">
             <div class="modal-content">
                 <h4>Let us know more about you</h4>
-                <div v-if="view == 1">
+                <div v-show="view == 1">
                     <textarea
                         placeholder="Summary"
                         id=""
@@ -26,14 +26,40 @@
                             <option value="" disabled selected>
                                 Choose how you got your license
                             </option>
-                            <option value="Board">Board</option>
-                            <option value="Government">Government</option>
+                            <option value="board">Board</option>
+                            <option value="government">Government</option>
                         </select>
                     </div>
+                    <div>   
+                        <button
+                            @click.prevent="saveCV"
+                            class="waves-effect waves-green btn"
+                            v-if="!loading"
+                        >
+                            Save
+                        </button>
+                        <button  v-if="loading" class="btn">
+                            <div class="preloader-wrapper small active">
+                                <div
+                                    class="spinner-layer spinner-white-only"
+                                >
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
                 </div>
-                <div v-if="view == 2">
-                    <div>
-                        <h6>Tell us about your time in Med School</h6>
+                <div v-show="view == 2">
+                    <div v-if="edu == 0">
+                        <h6>Tell us about your time in Med School <small>Important so that patients can view your site</small></h6>
                         <div class="row">
                             <div class="input-field col s8">
                                 <input
@@ -71,7 +97,7 @@
                                     type="text"
                                     class="validate"
                                     placeholder="Start(Month)"
-                                    v-model="cvMedSchool.monthEnd"
+                                    v-model="cvMedSchool.monthStart"
                                 />
                             </div>
                             <div class="input-field col s3">
@@ -92,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div v-if="edu == 1">
                         <h6>Tell us about your time in Undergrad School</h6>
                         <div class="row">
                             <div class="input-field col s12">
@@ -106,30 +132,20 @@
                         </div>
                         <div class="row">
                             <div class="col s6">
-                                <label>Browser Select</label>
-                                <select
-                                    class="browser-default"
+                                <input
+                                    placeholder=" Major"
+                                    type="text"
+                                    class="validate"
                                     v-model="cvGradSchool.major"
-                                >
-                                    <option value="" disabled selected>
-                                        Is this a major
-                                    </option>
-                                    <option value="Y">Yes</option>
-                                    <option value="N">No</option>
-                                </select>
+                                />
                             </div>
                             <div class="col s6">
-                                <label>Browser Select</label>
-                                <select
-                                    class="browser-default"
+                                <input
+                                    placeholder=" Minor"
+                                    type="text"
+                                    class="validate"
                                     v-model="cvGradSchool.minor"
-                                >
-                                    <option value="" disabled selected>
-                                        Is this a minor
-                                    </option>
-                                    <option value="Y">Yes</option>
-                                    <option value="N">No</option>
-                                </select>
+                                />
                             </div>
                         </div>
                         <div class="row">
@@ -146,7 +162,7 @@
                                     type="text"
                                     class="validate"
                                     placeholder="Start(Month)"
-                                    v-model="cvGradSchool.monthEnd"
+                                    v-model="cvGradSchool.monthStart"
                                 />
                             </div>
                             <div class="input-field col s3">
@@ -167,7 +183,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div v-if="edu == 2">
                         <h6>
                             Any other school you attended, you want to add ?
                             <small>Optional</small>
@@ -215,7 +231,7 @@
                                     type="text"
                                     class="validate"
                                     placeholder="Start(Month)"
-                                    v-model="cvAdditionalSchool.monthEnd"
+                                    v-model="cvAdditionalSchool.monthStart"
                                 />
                             </div>
                             <div class="input-field col s3">
@@ -236,10 +252,36 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <button v-if="!loading" class="btn waves waves-effect" @click.prevent="saveEdu">Save</button>
+                        <button  v-if="loading" class="btn">
+                            <div class="preloader-wrapper small active">
+                                <div
+                                    class="spinner-layer spinner-white-only"
+                                >
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                        <a href="#!" class="btn-flat right" @click="edu != 2 ? edu ++ : null" title="skip to next">
+                            <i class="material-icons">chevron_right</i>
+                        </a>
+                        <a href="#!" class="btn-flat right" @click="edu != 0 ? edu -- : null">
+                            <i class="material-icons">chevron_left</i>
+                        </a>
+                    </div>
                 </div>
-                <div v-if="view == 3">
+                <div v-show="view == 3">
                     <div>
-                        <h6>Tell us about your Experiences</h6>
+                        <h6>Tell us about your Trainings</h6>
                         <div
                             v-for="(training, index) in cvTrainings"
                             :key="index"
@@ -260,12 +302,20 @@
                             </p>
 
                             <div class="row">
-                                <div class="input-field col s12">
+                                <div class="input-field col s8">
                                     <input
                                         placeholder="Institution"
                                         type="text"
                                         class="validate"
                                         v-model="training.institution"
+                                    />
+                                </div>
+                                <div class="input-field col s4">
+                                    <input
+                                        placeholder="Location"
+                                        type="text"
+                                        class="validate"
+                                        v-model="training.location"
                                     />
                                 </div>
                             </div>
@@ -311,7 +361,7 @@
                                         type="text"
                                         class="validate"
                                         placeholder="Start(Month)"
-                                        v-model="training.monthEnd"
+                                        v-model="training.monthStart"
                                     />
                                 </div>
                                 <div class="input-field col s3">
@@ -331,6 +381,32 @@
                                     />
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col s6">
+                                    <label>Browser Select</label>
+                                    <select
+                                        class="browser-default"
+                                        v-model="training.type"
+                                        required
+                                    >
+                                        <option value="" disabled selected>
+                                            Training type
+                                        </option>
+                                        <option value="Internship">Internship</option>
+                                        <option value="Fellowship">Fellowship</option>
+                                        <option value="Residency">Residency</option>
+                                    </select>
+                                </div>
+                                <div class="col s6">
+                                    <input
+                                        type="text"
+                                        class="validate"
+                                        placeholder="Position during your training"
+                                        v-model="training.title"
+                                    />
+                                </div>
+                                
+                            </div>
                         </div>
 
                         <small>Have more Trainings </small>
@@ -340,9 +416,35 @@
                         >
                             Add More
                         </button>
+                        <div>   
+                            <button
+                                @click.prevent="saveTraining"
+                                class="waves-effect waves-green btn"
+                                v-if="!loading"
+                            >
+                                Save
+                            </button>
+                            <button  v-if="loading" class="btn">
+                            <div class="preloader-wrapper small active">
+                                <div
+                                    class="spinner-layer spinner-white-only"
+                                >
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                        </div>
                     </div>
                 </div>
-                <div v-if="view == 4">
+                <div v-show="view == 4">
                     <div>
                         <h6>Tell us about your Experiences</h6>
                         <div
@@ -405,7 +507,7 @@
                                         type="text"
                                         class="validate"
                                         placeholder="Start(Month)"
-                                        v-model="experience.monthEnd"
+                                        v-model="experience.monthStart"
                                     />
                                 </div>
                                 <div class="input-field col s3">
@@ -425,14 +527,37 @@
                                     />
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
+                            <div class="row" v-for="(input, indexact) in experience.activities" :key="indexact">
+                                <div class="input-field col s10">
                                     <input
-                                        placeholder="Institution"
+                                        placeholder="Responsibilities"
                                         type="text"
                                         class="validate"
-                                        v-model="experience.activities"
+                                        v-model="input.activity"
                                     />
+                                </div>
+                                <div class="col s2">
+                                    <i
+                                        @click="
+                                            addMoreActitvity(index)
+                                        "
+                                        class="material-icons cursor right"
+                                        id="bioAddBtn"
+                                    >
+                                        add
+                                    </i>
+
+                                    <i
+                                        @click="
+                                            removeActivity(index, indexact), activityToTrash(input)
+                                        "
+                                        v-show="indexact != 0"
+                                        class="material-icons cursor right"
+                                        id="bioAddBtn"
+                                    >
+                                        cancel
+                                    </i>
+
                                 </div>
                             </div>
                         </div>
@@ -444,9 +569,35 @@
                         >
                             Add More
                         </button>
+                        <div>   
+                            <button
+                                @click.prevent="saveExperience"
+                                class="waves-effect waves-green btn"
+                                v-if="!loading"
+                            >
+                                Save
+                            </button>
+                            <button  v-if="loading" class="btn">
+                            <div class="preloader-wrapper small active">
+                                <div
+                                    class="spinner-layer spinner-white-only"
+                                >
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                        </div>
                     </div>
                 </div>
-                <div v-if="view == 5">
+                <div v-show="view == 5">
                     <div
                         v-for="(reference, index) in cvReferences"
                         :key="index"
@@ -466,7 +617,15 @@
                             </i>
                         </p>
                         <div class="row">
-                            <div class="input-field col s6">
+                            <div class="input-field col s2">
+                                <input
+                                    placeholder="Dr."
+                                    type="text"
+                                    class="validate"
+                                    v-model="reference.title"
+                                />
+                            </div>
+                            <div class="input-field col s5">
                                 <input
                                     placeholder="Name"
                                     type="text"
@@ -474,7 +633,7 @@
                                     v-model="reference.name"
                                 />
                             </div>
-                            <div class="input-field col s6">
+                            <div class="input-field col s5">
                                 <input
                                     placeholder="Position"
                                     type="text"
@@ -486,7 +645,7 @@
                         <div class="row">
                             <div class="input-field col s6">
                                 <input
-                                    placeholder="Location"
+                                    placeholder="Harvard University, England"
                                     type="text"
                                     class="validate"
                                     v-model="reference.location"
@@ -509,19 +668,55 @@
                     >
                         Add More
                     </button>
+                    <div>   
+                        <button
+                            @click.prevent="saveReference"
+                            class="waves-effect waves-green btn"
+                            v-if="!loading"
+                        >
+                            Save
+                        </button>
+                        <button  v-if="loading" class="btn">
+                            <div class="preloader-wrapper small active">
+                                <div
+                                    class="spinner-layer spinner-white-only"
+                                >
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
+                <!-- <small>
+                    {{
+                    view == 0 ? null : view == 1 ? "Education" : view == 3 ? "Experience" : view == 4 ? 'Trainings' : view == 0 ? null : 'Reference'
+                }}</small> -->
                 <button
-                    @click="saveAndNext"
+                    @click="previous"
                     class="waves-effect waves-green btn"
                 >
-                    Save n Continue
+                    Prev
+                </button>
+                <button
+                    @click="saveAndNext"
+                    v-if="view != 5"
+                    class="waves-effect waves-green btn"
+                >
+                    Next
                 </button>
                 <small>
-                    <i class="material-icons">chevron_right</i>
                     {{
-                    view == 1 ? "Education" : view == 2 ? "Experience" : view == 3 ? 'Trainings' : 'Reference'
+                    view == 1 ? "Education" : view == 2 ? "Trainings" : view == 3 ? 'Experience' : 'Reference'
                 }}</small>
             </div>
         </div>
@@ -543,9 +738,11 @@
         },
         data() {
             return {
+                activities: [],
+                activity: "",
                 cv: {
                     summary: "",
-                    skills: "",
+                    skills: [],
                     license: "",
                 },
                 cvMedSchool: {
@@ -583,6 +780,9 @@
                         monthEnd: "",
                         position: "",
                         location: "",
+                        activities: [
+                            {activity: ""}
+                        ]
                     },
                 ],
                 cvTrainings: [
@@ -592,10 +792,11 @@
                         yearEnd: "",
                         monthStart: "",
                         monthEnd: "",
-                        position: "",
+                        title: "",
                         location: "",
                         specialty: "",
                         sub_specialty: "",
+                        type: "",
                     },
                 ],
 
@@ -607,14 +808,21 @@
                         position: "",
                     },
                 ],
-
+                cvExperienceUpdate: 0,
+                cvExperienceActivityRemoved: [],
                 cvExperienceRemoved: [],
                 cvTrainingRemoved: [],
+                cvTrainingUpdate: 0,
                 cvReferencesRemoved: [],
+                edu: 0,
+                loading: false,
                 view: 1,
             };
         },
         methods: {
+            addMoreActitvity(e) {
+                this.cvExperiences[e].activities.push({activity: ""})
+            },
             addMore() {
                 this.cvExperiences.push({
                     institution: "",
@@ -624,7 +832,9 @@
                     monthEnd: "",
                     position: "",
                     location: "",
-                    activities: [],
+                    activities: [
+                        {activity: ""}
+                    ]
                 });
             },
             addMoreReferences() {
@@ -642,9 +852,13 @@
                     yearEnd: "",
                     monthStart: "",
                     monthEnd: "",
-                    position: "",
+                    title: "",
                     location: "",
+                    type: "",
                 });
+            },
+            removeActivity(e, index) {
+                this.cvExperiences[e].activities.splice(index, 1);
             },
             removeTraining(index) {
                 this.cvTrainings.splice(index, 1);
@@ -655,6 +869,9 @@
             remove(index) {
                 this.cvExperiences.splice(index, 1);
             },
+            previous(){
+                this.view != 1 ? this.view-- : null;
+            },
             pushToTrash(e) {
                 this.view == 3
                     ? this.cvTrainingRemoved.push(e)
@@ -662,8 +879,255 @@
                     ? this.cvReferencesRemoved.push(e)
                     : this.cvExperienceRemoved.push(e);
             },
+            activityToTrash(e) {
+                this.cvExperienceActivityRemoved.push(e)
+            },
             saveAndNext() {
-                this.view++;
+                this.view != 5 ? this.view++ : null;
+            },
+            saveCV() {
+                this.loading = !this.loading;
+                let formData = new FormData();
+                let request = `/api/cv`;
+                if (this.cv.update == 1) {
+                    formData.append("_method", "PUT");
+                    request = `/api/cv/${this.cv.id}`;
+                }
+                formData.append("skills", JSON.stringify(this.cv.skills));
+                formData.append("summary", this.cv.summary);
+                formData.append("license", this.cv.license);
+                axios
+                    .post(request, formData)
+                    .then((res) => {
+                        if (res.status == 201 || res.data.status == 200) {
+                            this.loading = !this.loading;
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status == 400) {
+                            this.loading = !this.loading;
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            saveEdu () {
+                if (this.edu == 0){
+                    this.saveMedSchool();
+                }
+                else if (this.edu == 1){
+                    this.saveUnderGradSchool();
+                }
+                else if (this.edu == 2){
+                    this.saveOtherSchool();
+                }
+            },
+            saveExperience() {
+                this.loading = !this.loading;
+                this.cvExperiences.forEach(el => JSON.stringify(el.activities));
+
+                let formData = new FormData();
+                let request = `/api/cvexperience`;
+                if (this.cvExperienceUpdate == 1) {
+                    formData.append("_method", "PUT");
+                    request = `/api/cvexperience/${this.cvExperiences[0].id}`;
+                }
+                formData.append("data", JSON.stringify(this.cvExperiences));
+                axios
+                    .post(request, formData)
+                    .then((res) => {
+                        if (res.status == 201 || res.data.status == 200) {
+                            this.loading = !this.loading;
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status == 400) {
+                            this.loading = !this.loading;
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            saveMedSchool() {
+                this.loading = !this.loading;
+                let request = `/api/cvmed_school`;
+                let data = {
+                    _method: "PUT",
+                };
+                if (this.cvMedSchool.update == 1) {
+                    request = `/api/cvmed_school/${this.cvMedSchool.id}`;
+                    this.cvMedSchool = { ...this.cvMedSchool, ...data };
+                }
+                axios
+                    .post(request, this.cvMedSchool)
+                    .then((res) => {
+                        if (res.status == 201 || res.data.status == 200) {
+                            this.loading = !this.loading;
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        this.loading = !this.loading;
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            saveOtherSchool() {
+                this.loading = !this.loading;
+                let request = `/api/cv_otherschool`;
+                let data = {
+                    _method: "PUT",
+                };
+                if (this.cvAdditionalSchool.update == 1) {
+                    request = `/api/cv_otherschool/${this.cvAdditionalSchool.id}`;
+                    this.cvAdditionalSchool = { ...this.cvAdditionalSchool, ...data };
+                }
+                axios
+                    .post(request, this.cvAdditionalSchool)
+                    .then((res) => {
+                        if (res.status == 201 || res.data.status == 200) {
+                            this.loading = !this.loading;
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        this.loading = !this.loading;
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            saveReference() {
+                this.loading = !this.loading;
+
+                let formData = new FormData();
+                let request = `/api/cvreferral`;
+                if (this.cvReferenceUpdate == 1) {
+                    formData.append("_method", "PUT");
+                    request = `/api/cvreferral/${this.cvReferences[0].id}`;
+                }
+                formData.append("data", JSON.stringify(this.cvReferences));
+                axios
+                    .post(request, formData)
+                    .then((res) => {
+                        if (res.status == 201 || res.data.status == 200) {
+                            this.loading = !this.loading;
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status == 400) {
+                            this.loading = !this.loading;
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            saveTraining() {
+                this.loading = !this.loading;
+
+                let formData = new FormData();
+                let request = `/api/cvtraining`;
+                if (this.cvTrainingUpdate == 1) {
+                    formData.append("_method", "PUT");
+                    request = `/api/cvtraining/${this.cvTrainings[0].id}`;
+                }
+                formData.append("data", JSON.stringify(this.cvTrainings));
+                axios
+                    .post(request, formData)
+                    .then((res) => {
+                        if (res.status == 201 || res.data.status == 200) {
+                            this.loading = !this.loading;
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status == 400) {
+                            this.loading = !this.loading;
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            saveUnderGradSchool() {
+                this.loading = !this.loading;
+                let request = `/api/cv_gradschool`;
+                let data = {
+                    _method: "PUT",
+                };
+                if (this.cvGradSchool.update == 1) {
+                    request = `/api/cv_gradschool/${this.cvGradSchool.id}`;
+                    this.cvGradSchool = { ...this.cvGradSchool, ...data };
+                }
+                axios
+                    .post(request, this.cvGradSchool)
+                    .then((res) => {
+                        if (res.status == 201 || res.data.status == 200) {
+                            this.loading = !this.loading;
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        this.loading = !this.loading;
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
             },
         },
         watch: {

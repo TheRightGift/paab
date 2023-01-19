@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('specialty')->nullable();
             $table->string('title')->nullable();
             $table->string('sub_specialty')->nullable();
-            $table->enum(['fellowship', 'residency', 'internship'], 'type')->nullable();
+            $table->enum('type', ['fellowship', 'residency', 'internship'])->nullable();
             $table->timestamps();
         });
     }
