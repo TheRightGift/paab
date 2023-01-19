@@ -46,7 +46,7 @@
 export default {
     data() {
         return {
-            facebook: "gOZieApps",
+            facebook: "goziechukwu",
             twitter: "DevWithGozie"
         }
     },
