@@ -198,6 +198,10 @@ input::placeholder, textarea::placeholder {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding-bottom: 7vh;
 }
+.socialModalDiv h5 {
+    font-size: 1.22rem;
+    font-weight: 500;
+}
 #bioForm {
     width: 82%;
     margin: auto;
@@ -561,6 +565,11 @@ input[type=text]:not(.browser-default).bioInput {
     background: #7746ff;
     border-radius: 10px;
 }
+.socailInstruction {
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
 #socialInput,
 #socialInput1,
 #socialInput2 {
@@ -578,7 +587,29 @@ input[type=text]:not(.browser-default).bioInput {
     width: 463px;
     height: 40px;
 }
-
+input[type=text]:not(.browser-default).socialInput {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 1px solid #7746ff;
+    border-radius: 10px;
+}
+a.addSocialsInstruction:hover {
+    color: var(--primary);
+}
+section.instructionSection {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+section.instructionSection h6 {
+    background-color: var(--gray);
+    padding: 1vh 1vw;
+}
 .loader {
     position: fixed;
     left: 0px;
@@ -610,9 +641,9 @@ input[type=text]:not(.browser-default).bioInput {
 .editSocialMedIcons {
     color: #7746ff;
     font-size: 25px;
-    position: relative;
-    right: 2vw;
-    top: 0.5vh;
+    position: absolute;
+    right: 1vw;
+    top: 1.5vh;
 }
 .achieveprogBarDiv {
     display: flex;

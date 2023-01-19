@@ -25771,7 +25771,8 @@ __webpack_require__.r(__webpack_exports__);
         linkedin: "",
         update: 0
       },
-      socialError: false
+      socialError: false,
+      instructionViewSTate: 'df'
     };
   },
   methods: {
@@ -25786,6 +25787,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     saveSocial: function saveSocial() {
       this.$emit('saveSocial', this.social);
+    },
+    changeSocialInstructionView: function changeSocialInstructionView(viewName) {
+      this.instructionViewSTate = viewName;
     }
   },
   watch: {
@@ -34362,90 +34366,197 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "editInnerGenModal"
 };
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_3 = {
+  "class": "row"
+};
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "genTitle1"
 }, "Link your social media platform", -1 /* HOISTED */);
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "genTxt"
-}, " Lorem Ipsum is simply dummy text of the printing and typesetting industry. ", -1 /* HOISTED */);
 var _hoisted_5 = {
-  "class": "input-field"
+  "class": "col l6"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-brands fa-linkedin editSocialMedIcons"
-}, null, -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "genTxt"
+};
 var _hoisted_7 = {
-  "class": "input-field"
+  key: 0
 };
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-brands fa-twitter editSocialMedIcons"
-}, null, -1 /* HOISTED */);
+var _hoisted_8 = {
+  "class": "row"
+};
 var _hoisted_9 = {
-  "class": "input-field"
+  "class": "input-field col l10 noVertMargin"
 };
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-brands fa-facebook editSocialMedIcons"
+  "class": "fa-brands fa-linkedin editSocialMedIcons"
 }, null, -1 /* HOISTED */);
 var _hoisted_11 = {
+  "class": "col l2"
+};
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "material-icons"
+}, "info", -1 /* HOISTED */);
+var _hoisted_13 = [_hoisted_12];
+var _hoisted_14 = {
+  "class": "input-field"
+};
+var _hoisted_15 = {
+  "class": "row"
+};
+var _hoisted_16 = {
+  "class": "input-field col l10 noVertMargin"
+};
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-brands fa-twitter editSocialMedIcons"
+}, null, -1 /* HOISTED */);
+var _hoisted_18 = {
+  "class": "col l2"
+};
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "material-icons"
+}, "info", -1 /* HOISTED */);
+var _hoisted_20 = [_hoisted_19];
+var _hoisted_21 = {
+  "class": "input-field"
+};
+var _hoisted_22 = {
+  "class": "row"
+};
+var _hoisted_23 = {
+  "class": "input-field col l10 noVertMargin"
+};
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-brands fa-facebook editSocialMedIcons"
+}, null, -1 /* HOISTED */);
+var _hoisted_25 = {
+  "class": "col l2"
+};
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "material-icons"
+}, "info", -1 /* HOISTED */);
+var _hoisted_27 = [_hoisted_26];
+var _hoisted_28 = {
   key: 0,
   "class": "btn"
 };
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"preloader-wrapper small active\"><div class=\"spinner-layer spinner-white-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div>", 1);
-var _hoisted_13 = [_hoisted_12];
-var _hoisted_14 = {
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"preloader-wrapper small active\"><div class=\"spinner-layer spinner-white-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div>", 1);
+var _hoisted_30 = [_hoisted_29];
+var _hoisted_31 = {
   key: 1,
   type: "submit",
   "class": "btn",
   id: "genModalBtn"
 };
-var _hoisted_15 = {
+var _hoisted_32 = {
+  "class": "col l6 socailInstruction"
+};
+var _hoisted_33 = {
+  key: 0,
+  "class": "col l12"
+};
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h5 class=\"center-align\"><i class=\"fa-brands fa-linkedin\"></i> How to get linked share id for this field? </h5><p><i class=\"gray-text\"> Watch the video or follow the steps below to get embed value for your top linkedin post. </i></p><section class=\"instructionSection\"><h6>Video Instruction</h6><div class=\"video-container\"><video width=\"100%\" controls><source src=\"/media/videos/get_linkedin_share_id.mp4\" type=\"video/mp4\"> Your browser does not support the video tag. </video></div></section><section class=\"instructionSection\"><h6>Step-by-step Instruction</h6><ol class=\"col l12\"><li> Log into your linkedin account from your PC. <small>You are advised to do this with your PC.</small></li><li> Click on the &quot;Me&quot; option with your profile picture on the top navigation. </li><li> Click on &quot;Posts &amp; Activity&quot; from the resulting dropdown. </li><li> Click on the &quot;Post&quot; pill to display your posts. </li><li> Scroll to the post you want to share on your website. </li><li> CLick on &quot;...&quot; at the top-right corner of the post. </li><li> CLick on &quot;Embed this post&quot;. </li><li> A code is displayed. You only need value of &quot;urn:li:share&quot;. This will always be a number </li></ol></section>", 4);
+var _hoisted_38 = [_hoisted_34];
+var _hoisted_39 = {
+  key: 1,
+  "class": "col l12"
+};
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h5 class=\"center-align\"><i class=\"fa-brands fa-twitter\"></i> How to get twitter handle for this field? </h5><p><i class=\"gray-text\"> Watch the video or follow the steps below to get your twitter handle. The video demonstrates how to get your twitter handle on your PC. For mobile please follow the instruction. </i></p><section class=\"instructionSection\"><h6>Video Instruction</h6><div class=\"video-container\"><video width=\"100%\" controls><source src=\"/media/videos/get_twitter_handle.mp4\" type=\"video/mp4\"> Your browser does not support the video tag. </video></div></section><section class=\"instructionSection\"><h6>Step-by-step Instruction</h6><ol class=\"col l12\"><li> Log into your twitter account from your PC or mobile. </li><li><b>PC: </b> On the bottom left-corner of your screen you will see your twittwr handle name.<br><b>Mobile: </b> CLick on your profile picture on the top-left corner of your mobile screen to view your handle name </li><li> Please prefix your handle name with the &quot;@&quot; sign. Just like is on twitter. </li></ol></section>", 4);
+var _hoisted_44 = [_hoisted_40];
+var _hoisted_45 = {
+  key: 2,
+  "class": "col l12"
+};
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h5 class=\"center-align\"><i class=\"fa-brands fa-facebook\"></i> How to get facebook id for this field? </h5><p class=\"red-text\"> Facebook does not allow embedding timeline from your facebook account that is not on professional mode. </p><p><i class=\"gray-text\"> Follow the video below to turn on professional mode on your facebook account and get your page name for embedding on your website (PC &amp; Mobile). </i></p><section class=\"instructionSection\"><h6>Video Instruction</h6><div class=\"video-container\"><video width=\"100%\" controls><source src=\"/media/videos/get_facebook_pro_page_name.mp4\" type=\"video/mp4\"> Your browser does not support the video tag. </video></div></section>", 4);
+var _hoisted_50 = [_hoisted_46];
+var _hoisted_51 = {
+  key: 3,
+  "class": "col l12"
+};
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, " Embedding my Social Media timeline in my website. ", -1 /* HOISTED */);
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, " Updating this section enables your clients or visitors to share of your socail media posts. Your website automatically updates this section with your latest posts. ", -1 /* HOISTED */);
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Please click on the info icon ("), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "material-icons inlineIcon"
+}, "info"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(") beside each social input field to view steps on how to properly enable this feature.")])], -1 /* HOISTED */);
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col l12"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/media/img/editWebsiteSettings/socials.png",
+  alt: "preview of socail media section of your webpage",
+  "class": "responsive-img"
+})], -1 /* HOISTED */);
+var _hoisted_56 = [_hoisted_52, _hoisted_53, _hoisted_54, _hoisted_55];
+var _hoisted_57 = {
+  "class": "row"
+};
+var _hoisted_58 = {
   "class": "genBottomBtnDiv"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$props.socialsModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$props.socialsModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please click on the information icon beside each social input field to get details on how to fill it. "), $data.instructionViewSTate !== 'df' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: "#!",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.changeSocialInstructionView('df');
+    })
+  }, "View default instruction")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    onSubmit: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.saveSocial && $options.saveSocial.apply($options, arguments);
-    }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }, ["prevent"])),
+    id: "socailsSettingForm"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
-    id: "socialInput",
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+    "class": "socialInput",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.social.linkedin = $event;
     }),
-    placeholder: "Enter your linkedin company profile name eg. DrFaucci"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.social.linkedin]]), _hoisted_6]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    placeholder: "Enter a linkedin share id eg. 6997829974141382656"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.social.linkedin]]), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    "class": "waves-effect waves-teal btn-flat addSocialsInstruction",
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return $options.changeSocialInstructionView('in');
+    })
+  }, _hoisted_13)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
-    id: "socialInput1",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+    "class": "socialInput",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.social.twitter = $event;
     }),
     placeholder: "Enter your twitter username eg @Drpeters"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.social.twitter]]), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.social.twitter]]), _hoisted_17]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    "class": "waves-effect waves-teal btn-flat addSocialsInstruction",
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return $options.changeSocialInstructionView('tw');
+    })
+  }, _hoisted_20)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
-    id: "socialInput2",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+    "class": "socialInput",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return $data.social.facebook = $event;
     }),
     placeholder: "Enter your page name eg: XiaomiGlobal"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.social.facebook]]), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [$props.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_11, _hoisted_13)) : $props.saved == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_14, " save ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.social.facebook]]), _hoisted_24]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    "class": "waves-effect waves-teal btn-flat addSocialsInstruction",
+    onClick: _cache[6] || (_cache[6] = function ($event) {
+      return $options.changeSocialInstructionView('fb');
+    })
+  }, _hoisted_27)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [$props.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_28, _hoisted_30)) : $props.saved == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_31, " save ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 2,
     type: "submit",
     "class": "btn",
     id: "genModalBtn",
-    onClick: _cache[3] || (_cache[3] = function ($event) {
+    onClick: _cache[7] || (_cache[7] = function ($event) {
       return $data.social.update = 1;
     })
-  }, " update "))])], 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, " update "))])], 32 /* HYDRATE_EVENTS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [$data.instructionViewSTate == 'in' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_33, _hoisted_38)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.instructionViewSTate == 'tw' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_39, _hoisted_44)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.instructionViewSTate == 'fb' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_45, _hoisted_50)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.instructionViewSTate == 'df' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_51, _hoisted_56)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "goBackBtn",
-    onClick: _cache[5] || (_cache[5] = function ($event) {
+    onClick: _cache[9] || (_cache[9] = function ($event) {
       return $options.socialGoBackBtn();
     })
   }, "GO BACK"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn right",
     id: "genNextBtn",
-    onClick: _cache[6] || (_cache[6] = function ($event) {
+    onClick: _cache[10] || (_cache[10] = function ($event) {
       return $options.contactLink();
     })
   }, " NEXT STEP ")])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
