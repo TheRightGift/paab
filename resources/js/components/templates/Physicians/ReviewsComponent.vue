@@ -5,7 +5,7 @@
                 <a href="#!" class="black-text" @click="goBackToNormal">
                     <i
                         class="
-                            medium
+                            small
                             material-icons
                             modal-close
                             tempOneAddTestiIcon
@@ -28,6 +28,7 @@
                         v-for="(review) in reviews"
                         :key="review"
                     >
+                    <div class="reviewsProImgDiv">
                         <img
                             :src="
                                 review.imageURL != null
@@ -41,10 +42,11 @@
                             "
                             class="responsive-img testiProImg"
                         />
-                        <div class="testiMapDiv">
-                            <p class="testiMapProName">{{ review.lastname }}
+                    </div>
+                        <div class="testimonialDiv">
+                            <p class="singleReviewName">{{ review.lastname }}
                                         {{ review.firstname }}</p>
-                            <p class="testiMapTxt">
+                            <p class="singleReviewComment">
                                 {{review.comment}}
                             </p>
                         </div>
@@ -86,6 +88,8 @@
                 </div>
             </div>
         </div>
+
+        
     </div>
 </template>
 <script>

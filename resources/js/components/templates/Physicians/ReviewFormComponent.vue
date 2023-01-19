@@ -1,12 +1,11 @@
 <template>
     <div>
         <!-- Add Testimonial Modal Structure -->
-        <div id="modal1" class="modal">
+        <div id="addReviewModal" class="modal">
             <div class="modal-content">
                 <div>
                     <i
                         class="
-                            medium
                             material-icons
                             modal-close
                             tempOneAddTestiIcon
@@ -16,17 +15,26 @@
                 </div>
 
                 <form id="reviewForm" @submit.prevent="subReview">
-                    <div id="reviwProMainDiv">
-                        <div class="setProDiv">
+                    <!-- <div id="addReviewProMainDiv flex"> -->
+                        <!-- <div class="setProDiv">
                             <i class="material-icons" id="setProImg">person</i>
-                        </div>
+                        </div> -->
 
-                        <div class="setProEditIconDiv">
+                        <!-- <div class="setProEditIconDiv">
                             <input
                                 type="file"
                                 @change="getImage"
                                 accept="image/*"
                             />
+                        </div> -->
+                    <!-- </div> -->
+                    <div class="addReviewProMainDiv">
+                        <div class="addReviewProDiv">
+                            <i class="material-icons addReviewProImg">person</i>
+                        </div>
+                
+                        <div class="reviewProEditIconDiv">
+                            <i class="material-icons setProEditIcon">edit</i>
                         </div>
                     </div>
 

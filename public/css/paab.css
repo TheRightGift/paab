@@ -2771,3 +2771,21 @@ div .col .s9 input.clientCreatePortInput1 {
 .btn {
     background-color: #46166B !important;
 }
+.addReviewProDiv {
+    background: #d9d9d9;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+}
+.addReviewProMainDiv {
+    width: 20%;
+    margin: 0 auto 6vh auto;
+}
+.material-icons.addReviewProImg {
+    font-size: 3.5rem;
+    margin-left: 0.8vw;
+    margin-top: 0.9vh;
+    color: rgba(0, 0, 0, 0.5);
+}

@@ -2,11 +2,40 @@
     <div class="section scrollspy physiExpContainerDiv" id="experience" v-show="experience == null">
         <div class="row">
             <div class="col s12">
+                <h3 class="title">
+                    MY EXPERIENCE
+                    <span class="primaryColorBoxDesign2"></span>
+                </h3>
+                <div class="experienceImgContainDiv">
+                    <div class="surgeonBannerImgDiv">
+                        <img  v-if="preview == '1'" src="/media/img/surgeonbanner.png"  alt="surgeonbanner.png" class="surgeonBannerImg">
+                        <img  v-else :src="location+'media/img/surgeonbanner.png'"  alt="surgeonbanner.png" class="surgeonBannerImg">
+                    </div>
+
+                    <div class="experiences">
+                        <div class="experience">
+                            <p class="experienceTitle">10yrs+</p>
+                            <p class="experienceTxt">Experience</p>
+                        </div>
+                        <div class="experience">
+                            <p class="experienceTitle">2,000+</p>
+                            <p class="experienceTxt">Ward Rounds</p>
+                        </div>
+                        <div class="experience">
+                            <p class="experienceTitle">10yrs+</p>
+                            <p class="experienceTxt">Volunteer/Outreach</p>
+                        </div>
+                        <div>
+                            <p class="experienceTitle">15</p>
+                            <p class="experienceTxt">Certifications</p>
+                        </div>
+                    </div>
+                </div>  
                 <p class="expMainTitle">Experience</p>
                 <p class="expMainTxt">MY ACHIEVEMENT</p>
             </div>
 
-            <div class="col s12 m3 l2">
+            <!-- <div class="col s12 m3 l2">
                 <div class="expLeftBarDiv">
                     <div class="expLeftBarInnerDiv">
                         <div class="expLeftBarTxtDiv">
@@ -36,25 +65,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="col s12 m9 l10" v-if="preview == '1'">
-                <img src="/media/img/physicianTemplate.png" 
-                    alt="physicianTemplate.png" class="responsive-img" 
-                    id="expRightDivImg"
-                >
-            </div>
-            <div class="col s12 m9 l10" v-else>
-                <img :src="location+'media/img/physicianTemplate.png'" 
-                    alt="physicianTemplate.png" class="responsive-img" 
-                    id="expRightDivImg"
-                >
-            </div>
+            
         </div>
     </div>
     <div class="section scrollspy physiExpContainerDiv" id="experience" v-show="experience != null">
         <div class="row">
-            <div class="col s12">
+            <!-- <div class="col s12">
                 <p class="expMainTitle">Experience</p>
                 <p class="expMainTxt">MY ACHIEVEMENT</p>
             </div>
@@ -81,6 +99,37 @@
                     id="expRightDivImg"
                     v-else-if="promo != ''"
                 >
+            </div> -->
+            <div class="col s12">
+                <h3 class="title">
+                    MY EXPERIENCE
+                    <span class="primaryColorBoxDesign2"></span>
+                </h3>
+                <div class="experienceImgContainDiv">
+                    <div class="surgeonBannerImgDiv">
+                        <img  v-if="preview == '1'" src="/media/img/surgeonbanner.png"  alt="surgeonbanner.png" class="surgeonBannerImg">
+                        <img  v-else :src="location+'media/img/surgeonbanner.png'"  alt="surgeonbanner.png" class="surgeonBannerImg">
+                    </div>
+
+                    <div class="experienceAchieveDiv">
+                        <div class="experience" v-for="(feat, index) in feats" :key="index">
+                            <p class="experienceTitle">{{feat}} {{index == 'experience' ? 'Yrs' : null}}</p>
+                            <p class="experienceTxt">{{index}} {{ index == 'volunteer' ? 'services' : null }} {{ index == 'ward' ? 'rounds' : null}}</p>
+                        </div>
+                        <!-- <div class="experience">
+                            <p class="experienceTitle">2,000+</p>
+                            <p class="experienceTxt">Ward Rounds</p>
+                        </div>
+                        <div class="experience">
+                            <p class="experienceTitle">10yrs+</p>
+                            <p class="experienceTxt">Volunteer/Outreach</p>
+                        </div>
+                        <div>
+                            <p class="experienceTitle">15</p>
+                            <p class="experienceTxt">Certifications</p>
+                        </div> -->
+                    </div>
+                </div>  
             </div>
         </div>
     </div>
