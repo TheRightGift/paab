@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Tenants\CV_Experience;
 use Illuminate\Http\Request;
 
-use validator;
+use Validator;
 
 class CVExperienceController extends Controller
 {
@@ -17,7 +17,9 @@ class CVExperienceController extends Controller
      */
     public function index()
     {
-        //
+        $experience = CV_Experience::latest()->all();
+
+        return response()->json(['message' => 'Fetched OnSuccess', 'experience' => $experience]);
     }
 
     /**
@@ -27,6 +29,48 @@ class CVExperienceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    {
+        $data = json_decode($request->input('data'));
+        $inputs = Validator::make($request->all(), [
+            // 'data' => 'required',
+            'data.*.institution' => 'required',
+            'data.*.yearStart' => 'required',
+            'data.*.monthStart' => 'required',
+            'data.*.yearEnd' => 'nullable',
+            'data.*.monthEnd' => 'nullable',
+            'data.*.position' => 'required',
+            'data.*.location' => 'required',
+            'data.*.activities' => 'required',
+        ]); 
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            foreach ($data as $row) {
+                $experience = new CV_Experience();
+                $experience->institution = $row->institution;
+                $experience->position = $row->position;
+                $experience->yearStart = $row->yearStart;
+                $experience->monthStart = $row->monthStart;
+                $experience->monthEnd = $row->monthEnd;
+                $experience->yearEnd = $row->yearEnd;
+                $experience->monthEnd = $row->monthEnd;
+                $experience->location = $row->location;
+                $experience->activities = $row->activities;
+                $experience->save();
+            }
+            return response(['experience' => $experience, 'message' => 'Created Success'], 201);
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\CV_Experience  $cV_Experience
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $cV_Experience)
     {
         $data = json_decode($request->input('data'));
         $removed = json_decode($request->input('removed'));
@@ -40,7 +84,6 @@ class CVExperienceController extends Controller
             'data.*.position' => 'required',
             'data.*.location' => 'required',
             'data.*.activities' => 'required',
-            'data.*.icon' => 'required|image|mimes:jpg,png|max:10',
         ]); 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);
@@ -66,16 +109,18 @@ class CVExperienceController extends Controller
                     $experience2Update->yearEnd = $row->yearEnd;
                     $experience2Update->monthEnd = $row->monthEnd;
                     $experience2Update->location = $row->location;
+                    $experience2Update->activities = $row->activities;
                     $experience2Update->save();
                 }
                 else {
-                    $experiences->intitution = $row->intitution;
+                    $experiences->institution = $row->institution;
                     $experiences->position = $row->position;
                     $experiences->yearStart = $row->yearStart;
                     $experiences->monthEnd = $row->monthEnd;
                     $experiences->yearEnd = $row->yearEnd;
                     $experiences->monthEnd = $row->monthEnd;
                     $experiences->location = $row->location;
+                    $experiences->activities = $row->activities;
                     $experiences->save();
                 }
                 
@@ -87,40 +132,6 @@ class CVExperienceController extends Controller
                 return response()->json(['message' => 'Error Updating', 'experiences' => $experience2Update, 'status' => 501], 501);
             }
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\CV_Experience  $cV_Experience
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CV_Experience $cV_Experience)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\CV_Experience  $cV_Experience
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CV_Experience $cV_Experience)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CV_Experience  $cV_Experience
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, CV_Experience $cV_Experience)
-    {
-        //
     }
 
     /**

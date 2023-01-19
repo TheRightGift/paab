@@ -496,7 +496,7 @@
                             </p>
                         
                             <div class="file-field input-field" id="genUploadFavIconDiv" v-if="bio.CV == null">
-                                <a class="waves-effect waves-light btn modal-trigger" href="#cvModal">Modal</a>
+                                <a class="waves-effect waves-light btn modal-trigger" href="#cvModal">Let us get to know you more</a>
 
                                 <!-- <input type="file" @change="CVUpload"
                                     accept="application/msword, application/vnd.ms-powerpoint,application/pdf," />

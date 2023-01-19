@@ -21,16 +21,6 @@ class CVAdditionalSchoolController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -38,29 +28,28 @@ class CVAdditionalSchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $inputs = Validator::make($request->all(), [
+            'institution' => 'required',
+            'yearStart' => 'required',
+            'monthStart' => 'required',
+            'yearEnd' => 'nullable',
+            'monthEnd' => 'nullable',
+            'degree' => 'required',
+            'title' => 'required',
+        ]); 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\CV_Additional_School  $cV_Additional_School
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CV_Additional_School $cV_Additional_School)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\CV_Additional_School  $cV_Additional_School
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CV_Additional_School $cV_Additional_School)
-    {
-        //
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            $additionalSchool = CV_Additional_School::create($input);
+            if ($additionalSchool == true) {
+                return response()->json(['message' => 'Success', 'school' => $additionalSchool], 201);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'school' => $additionalSchool], 501);
+            }
+        }
     }
 
     /**
@@ -70,9 +59,32 @@ class CVAdditionalSchoolController extends Controller
      * @param  \App\Models\CV_Additional_School  $cV_Additional_School
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CV_Additional_School $cV_Additional_School)
+    public function update(Request $request, $cV_Additional_School)
     {
-        //
+        $inputs = Validator::make($request->all(), [
+            'institution' => 'required',
+            'yearStart' => 'required',
+            'monthStart' => 'required',
+            'yearEnd' => 'nullable',
+            'monthEnd' => 'nullable',
+            'degree' => 'required',
+            'title' => 'required',
+        ]); 
+
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            $schools = new CV_Additional_School();
+            $school2Update = $schools->find($cV_Additional_School);
+            $school2Update->update($input);
+            if ($school2Update == true) {
+                return response()->json(['message' => 'Success', 'school' => $school2Update, 'status' => 200], 200);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'school' => $school2Update], 501);
+            }
+        }
     }
 
     /**
@@ -81,7 +93,7 @@ class CVAdditionalSchoolController extends Controller
      * @param  \App\Models\CV_Additional_School  $cV_Additional_School
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CV_Additional_School $cV_Additional_School)
+    public function destroy($cV_Additional_School)
     {
         //
     }

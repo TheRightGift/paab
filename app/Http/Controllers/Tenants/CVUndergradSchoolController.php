@@ -21,16 +21,6 @@ class CVUndergradSchoolController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -38,31 +28,31 @@ class CVUndergradSchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputs = Validator::make($request->all(), [
+            'institution' => 'required',
+            'yearStart' => 'required',
+            'monthStart' => 'required',
+            'yearEnd' => 'nullable',
+            'monthEnd' => 'nullable',
+            'major' => 'required',
+            'minor' => 'nullable',
+        ]); 
+
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            $gradSchool = CV_Undergrad_School::create($input);
+            if ($gradSchool == true) {
+                return response()->json(['message' => 'Success', 'school' => $gradSchool], 201);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'school' => $gradSchool], 501);
+            }
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\CV_Undergrad_School  $cV_Undergrad_School
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CV_Undergrad_School $cV_Undergrad_School)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\CV_Undergrad_School  $cV_Undergrad_School
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CV_Undergrad_School $cV_Undergrad_School)
-    {
-        //
-    }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -70,9 +60,32 @@ class CVUndergradSchoolController extends Controller
      * @param  \App\Models\CV_Undergrad_School  $cV_Undergrad_School
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CV_Undergrad_School $cV_Undergrad_School)
+    public function update(Request $request, $cV_Undergrad_School)
     {
-        //
+        $inputs = Validator::make($request->all(), [
+            'institution' => 'required',
+            'yearStart' => 'required',
+            'monthStart' => 'required',
+            'yearEnd' => 'nullable',
+            'monthEnd' => 'nullable',
+            'major' => 'required',
+            'minor' => 'nullable',
+        ]); 
+
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            $schools = new CV_Undergrad_School();
+            $school2Update = $schools->find($cV_Medical_School);
+            $school2Update->update($input);
+            if ($school2Update == true) {
+                return response()->json(['message' => 'Success', 'school' => $school2Update, 'status' => 200], 200);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'school' => $school2Update], 501);
+            }
+        }
     }
 
     /**

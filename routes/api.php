@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::put('/updateAdmin/{id}', [App\Http\Controllers\DashboardController::class, 'updateAdmin']);
     Route::patch('/changePassword', [App\Http\Controllers\AuthController::class, 'changePassword']);
     Route::get('/check_password', [App\Http\Controllers\AuthController::class, 'check_password']);
+    
 });
 Route::group(['middleware'=>'auth:api'], function(){
 });
