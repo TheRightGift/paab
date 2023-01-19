@@ -423,7 +423,7 @@
                 </div>
         
                 <!-- Feed Section -->
-                <div id="feedsSection" class="section scrollspy">
+                <div id="feeds" class="section scrollspy">
                     <h3 class="title">
                         MY FEEDS
                         <span class="primaryColorBoxDesign3"></span>
