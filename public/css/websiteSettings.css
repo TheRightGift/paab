@@ -526,6 +526,9 @@ input[type=text]:not(.browser-default).bioInput {
     height: 190px;
     background-color: #f4f4f4;
 }
+.bioPics {
+    height: 30vh;
+}
 .materialize-textarea.bioDescribeInput { 
     width: 100%;
 }

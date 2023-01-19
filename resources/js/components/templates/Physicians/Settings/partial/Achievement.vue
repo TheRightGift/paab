@@ -12,6 +12,9 @@
                 
                     <form @submit.prevent="saveAchievement">
                         <div class="row">
+                            <div class="col l12">
+                                <p class="achieveTitle">Banner image</p>
+                            </div>
                             <div class="col l6 file-field input-field" id="genUploadFavIconDiv" v-if="achievement.banner == null">
                                 <p class="genTxt">
                                     Banner must not be greater than 500KB(1249x743).
@@ -24,18 +27,18 @@
                                 </div>
                             </div>
                     
-                            <div v-else class="col l6 flex no-space-between">
-                                <img width="319" height="319" class="responsive-img" :src="
+                            <div v-else class="col l6">
+                                <img class="col l9 responsive-img noPaddingLeft" :src="
                                     typeof achievement.banner == 'string'
                                         ? 'tenancy/assets/' + achievement.banner
                                         : uploaded
                                 " />
-                                <div class="faviconUploadBtnCol">
+                                <div class="col l3 faviconUploadBtnCol">
                                     <button type="button" class="btn-flat redBorderBtn matchngBtn" @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
                                 </div>
                             </div>
                             <div class="col l6">
-                                <img src="/media/img/editWebsiteSettings/achieveImg.png" alt="achieveImg.png" class="">
+                                <img src="/media/img/editWebsiteSettings/achieveImg.png" alt="achieveImg.png" class="responsive-img right">
                             </div>
                         </div>
                         <div class="row">
@@ -52,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="col l6">
-                                <img src="/media/img/editWebsiteSettings/achieveImg1.png" alt="achieveImg1.png" class="1">
+                                <img src="/media/img/editWebsiteSettings/achieveImg1.png" alt="achieveImg1.png" class="responsive-img right">
                             </div>  
                         </div>
                 
@@ -70,7 +73,7 @@
                                 </div>
                             </div>
                             <div class="col l6">
-                                <img src="/media/img/editWebsiteSettings/achieveImg2.png" alt="achieveImg2.png" class="1">
+                                <img src="/media/img/editWebsiteSettings/achieveImg2.png" alt="achieveImg2.png" class="responsive-img right">
                             </div>
                         </div>
                 
@@ -88,7 +91,7 @@
                                 </div>
                             </div>
                             <div class="col l6">
-                                <img src="/media/img/editWebsiteSettings/achieveImg3.png" alt="achieveImg3.png" class="1">
+                                <img src="/media/img/editWebsiteSettings/achieveImg3.png" alt="achieveImg3.png" class="responsive-img right">
                             </div>
                         </div>
                 
@@ -107,7 +110,7 @@
                     
                             
                             <div class="col l6">
-                                <img src="/media/img/editWebsiteSettings/achieveImg4.png" alt="achieveImg4.png" class="1">
+                                <img src="/media/img/editWebsiteSettings/achieveImg4.png" alt="achieveImg4.png" class="responsive-img right">
                             </div>
                         </div>
                 
