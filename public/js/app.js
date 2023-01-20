@@ -26506,7 +26506,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "circleDivTitle"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, "SHOWCASE YOUR PROFESSION WITH "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("White Coat Domain")], -1 /* HOISTED */);
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "circleDivtxt"
+  "class": "circleDivtxtSmall"
 }, " Our professional wish is that you STAND OUT in your career, from medical practitioners, lawyers, engineers etc. ", -1 /* HOISTED */);
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "circleBtnDiv"
@@ -26770,7 +26770,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_FooterComponent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("FooterComponent");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navbar & SideNav Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_HeaderComponent, {
     type: 'main'
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("div class=\"row circleGenDiv\">\r\n            <div class=\"col s12 m4 l7\">\r\n                <div class=\"circlDiv\">\r\n                    <div class=\"circlDiv1\">\r\n                        <div class=\"circlDiv2\">\r\n                            <div class=\"circleTxtDiv\">\r\n                                <p class=\"circleDivTitle\">SHOWCASE YOUR PROFESSION WITH PaaB</p>\r\n                                <p class=\"circleDivtxt\">\r\n                                    It is a long established fact that a reader will be \r\n                                    distracted by the readable content of a page.\r\n                                </p>\r\n\r\n                                <a href=\"/templates\" class=\"btn circleDivBtn\">\r\n                                    preview templates\r\n                                </a>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>                \r\n            </div>\r\n\r\n            <div class=\"col s12 m8 l5\">\r\n                <div class=\"portraitImgDiv\">\r\n                    <div class=\"portraitImgContainDiv\">\r\n                        <img :src=\"'./media/img/portrait2.png'\" alt=\"portrait2.png\" class=\"portraitImg\" id=\"portrait2\">\r\n\r\n                        <div class=\"portraitImgInnerDiv\">\r\n                            <img :src=\"'./media/img/portrait3.png'\" alt=\"portrait3.png\" class=\"portraitImg\" id=\"portrait3\">\r\n\r\n                            <div class=\"portraitImgCircleDiv\"></div>\r\n                        </div>\r\n                    </div>\r\n\r\n                    <div class=\"portraitImgContainDiv1\">\r\n                        <div class=\"portraitImgRightDiv\">\r\n                            <div class=\"portraitImgRightInnerDiv\">\r\n                                <img :src=\"'./media/img/portrait.png'\" alt=\"portrait.png\" class=\"portraitImg\" id=\"portrait\">\r\n                            </div>\r\n\r\n                            <div class=\"portraitImgCircleRightDiv\"></div>\r\n\r\n                            <div class=\"portraitImgRightInnerDiv1\">\r\n                                <img :src=\"'./media/img/portrait1.png'\" alt=\"portrait1.png\" class=\"portraitImg\" id=\"portrait1\">\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n\r\n                </div>\r\n            </div>\r\n        </div"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Small Device SHOCASE Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, _hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Small Device SHOCASE Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, _hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: './media/img/portrait2.png',
     alt: "portrait2.png",
     "class": "portraitImg",
@@ -29213,30 +29213,98 @@ var _hoisted_2 = {
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, "White Coat Domain", -1 /* HOISTED */);
 var _hoisted_4 = [_hoisted_3];
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<ul id=\"nav-mobile\" class=\"section table-of-contents right hide-on-med-and-down\"><li><a href=\"#product\" class=\"navLinks\">Product</a></li><li><a href=\"#features\" class=\"navLinks\">Features</a></li><li><a href=\"/templates\" class=\"navLinks\">Templates</a></li><li><a href=\"#support\" class=\"navLinks\">Support</a></li><li><a href=\"/auth/login\" class=\"loginLink\">Log in</a></li></ul>", 1);
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<nav class=\"hide-on-large-only white\" id=\"sideNav\"><a href=\"#\" data-target=\"slide-out\" class=\"sidenav-trigger\"><i class=\"material-icons sideNavIcon\" id=\"sideNavIcon\">menu</i></a><a href=\"/\" class=\"sideNavBrandLogo\"><small class=\"fs-sm\">White Coat Domain</small></a><ul id=\"slide-out\" class=\"sidenav\"><!-- &lt;li&gt; --><!-- &lt;div class=&quot;user-view&quot;&gt;\r\n                            &lt;div class=&quot;background&quot; id=&quot;sideNavImgDiv&quot;&gt;\r\n                                &lt;img :src=&quot;&#39;./media/img/istockphoto-1390124896-170667a.jpg&#39;&quot; id=&quot;sidNavImg&quot;&gt;\r\n                            &lt;/div&gt;\r\n                        &lt;/div&gt; --><!-- &lt;/li&gt; --><li class=\"sideNavLinkMgTp\"><a href=\"#product\" class=\"navLinks white-text\">Product</a></li><li><a href=\"#features\" class=\"navLinks white-text\">Features</a></li><li><a href=\"/templates\" class=\"navLinks white-text\">Templates</a></li><li><a href=\"#support\" class=\"navLinks white-text\">Support</a></li><li><div class=\"divider\"></div></li><li><a href=\"/auth/login\" class=\"loginLink deep-purple-text accent-4\">Log in</a></li></ul></nav>", 1);
-var _hoisted_7 = {
+var _hoisted_6 = {
+  "class": "hide-on-large-only white",
+  id: "sideNav"
+};
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "#",
+  "data-target": "slide-out",
+  "class": "sidenav-trigger"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "material-icons sideNavIcon",
+  id: "sideNavIcon"
+}, "menu")], -1 /* HOISTED */);
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "/",
+  "class": "sideNavBrandLogo"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
+  "class": "fs-sm"
+}, "White Coat Domain")], -1 /* HOISTED */);
+var _hoisted_9 = {
+  id: "slide-out",
+  "class": "sidenav"
+};
+var _hoisted_10 = ["src"];
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<li class=\"sideNavLinkMgTp\"><a href=\"#product\" class=\"navLinks white-text\">Product</a></li><li><a href=\"#features\" class=\"navLinks white-text\">Features</a></li><li><a href=\"/templates\" class=\"navLinks white-text\">Templates</a></li><li><a href=\"#support\" class=\"navLinks white-text\">Support</a></li><li><div class=\"divider\"></div></li><li><a href=\"/auth/login\" class=\"loginLink deep-purple-text accent-4\">Log in</a></li>", 6);
+var _hoisted_17 = {
   key: 1
 };
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"nav-wrapper navbarWrap\"><a href=\"/\" class=\"brand-logo\" id=\"tempLogo\"><small>White Coat Domain</small></a><ul id=\"nav-mobile\" class=\"section right table-of-contents hide-on-med-and-down\"><li><a href=\"#template\" class=\"navLinks tempScrollLink\">Templates</a></li><li><a href=\"#support\" class=\"navLinks tempScrollLink\">Support</a></li><li class=\"marginLeft-25\"><a href=\"/auth/login\" class=\"right tempLoginLink loginLink\">Log in</a></li></ul></div>", 1);
-var _hoisted_9 = [_hoisted_8];
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<nav class=\"hide-on-large-only white\" id=\"sideNav\"><a href=\"#\" data-target=\"slide-out\" class=\"sidenav-trigger\"><i class=\"material-icons sideNavIcon\" id=\"sideNavIcon\">menu</i></a><a href=\"/\" class=\"sideNavBrandLogo\"><small class=\"fs-sm\">White Coat Domain</small></a><ul id=\"slide-out\" class=\"sidenav\"><!-- &lt;li&gt; --><!-- &lt;div class=&quot;user-view&quot;&gt;\r\n                        &lt;div class=&quot;background&quot; id=&quot;sideNavImgDiv&quot;&gt;\r\n                            &lt;img src=&quot;/media/img/istockphoto-1390124896-170667a.jpg&quot; id=&quot;sidNavImg&quot;&gt;\r\n                        &lt;/div&gt;\r\n                    &lt;/div&gt; --><!-- &lt;/li&gt; --><li><a href=\"#template\" class=\"sideNavLinkMgTp navLinks white-text\">Templates</a></li><li><a href=\"#support\" class=\"navLinks white-text\">Support</a></li><li><a href=\"/auth/login\" class=\"loginLink deep-purple-text accent-4\">Log in</a></li></ul></nav>", 1);
-var _hoisted_11 = {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"nav-wrapper navbarWrap\"><a href=\"/\" class=\"brand-logo\" id=\"tempLogo\"><small>White Coat Domain</small></a><ul id=\"nav-mobile\" class=\"section right table-of-contents hide-on-med-and-down\"><li><a href=\"#template\" class=\"navLinks tempScrollLink\">Templates</a></li><li><a href=\"#support\" class=\"navLinks tempScrollLink\">Support</a></li><li class=\"marginLeft-25\"><a href=\"/auth/login\" class=\"right tempLoginLink loginLink\">Log in</a></li></ul></div>", 1);
+var _hoisted_19 = [_hoisted_18];
+var _hoisted_20 = {
+  "class": "hide-on-large-only white",
+  id: "sideNav"
+};
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "#",
+  "data-target": "slide-out",
+  "class": "sidenav-trigger"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "material-icons sideNavIcon",
+  id: "sideNavIcon"
+}, "menu")], -1 /* HOISTED */);
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "/",
+  "class": "sideNavBrandLogo"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
+  "class": "fs-sm"
+}, "White Coat Domain")], -1 /* HOISTED */);
+var _hoisted_23 = {
+  id: "slide-out",
+  "class": "sidenav"
+};
+var _hoisted_24 = ["src"];
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "#template",
+  "class": "sideNavLinkMgTp navLinks white-text"
+}, "Templates")], -1 /* HOISTED */);
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "#support",
+  "class": "navLinks white-text"
+}, "Support")], -1 /* HOISTED */);
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "divider"
+})], -1 /* HOISTED */);
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "/auth/login",
+  "class": "loginLink deep-purple-text accent-4"
+}, "Log in")], -1 /* HOISTED */);
+var _hoisted_29 = {
   key: 2
 };
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"nav-wrapper navbarWrap\"><a href=\"#\" class=\"brand-logo\" id=\"physiPortPageLogo\">Dr. Akerele Adebayo</a><ul id=\"nav-mobile\" class=\"section table-of-contents right hide-on-med-and-down\"><li><a href=\"#services\" id=\"physiTempNavLinks\">Services</a></li><li><a href=\"#experience\" id=\"physiTempNavLinks\">Experience</a></li><li><a href=\"#testimonials\" id=\"physiTempNavLinks\">Testimonials</a></li><li><a href=\"#feeds\" id=\"physiTempNavLinks\">Feeds</a></li><li><a href=\"#contact\" id=\"physiTempContactBtn\">Contact Me</a></li></ul></div>", 1);
-var _hoisted_13 = [_hoisted_12];
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<nav class=\"hide-on-large-only white\" id=\"sideNav\"><a href=\"#\" data-target=\"slide-out\" class=\"sidenav-trigger\"><i class=\"material-icons sideNavIcon\" id=\"sideNavIcon\">menu</i></a><a href=\"#\" class=\"\" id=\"physiPortPageLogo\">Dr. Akerele Adebayo</a><ul id=\"slide-out\" class=\"sidenav\"><!-- &lt;li&gt; --><!-- &lt;div class=&quot;user-view&quot;&gt;\r\n                        &lt;div class=&quot;background&quot; id=&quot;sideNavImgDiv&quot;&gt;\r\n                            &lt;img src=&quot;/media/img/istockphoto-1390124896-170667a.jpg&quot; id=&quot;sidNavImg&quot;&gt;\r\n                        &lt;/div&gt;\r\n                    &lt;/div&gt; --><!-- &lt;/li&gt; --><li class=\"sideNavLinkMgTp\"><a href=\"#services\" id=\"physiTempNavLinks\">Services</a></li><li><a href=\"#experience\" id=\"physiTempNavLinks\">Experience</a></li><li><a href=\"#testimonials\" id=\"physiTempNavLinks\">Testimonials</a></li><li><a href=\"#\" id=\"physiTempNavLinks\">Feeds</a></li><li><div class=\"divider\"></div></li><li><a href=\"#contact\" id=\"physiTempContactBtn\">Contact Me</a></li></ul></nav>", 1);
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"nav-wrapper navbarWrap\"><a href=\"#\" class=\"brand-logo\" id=\"physiPortPageLogo\">Dr. Akerele Adebayo</a><ul id=\"nav-mobile\" class=\"section table-of-contents right hide-on-med-and-down\"><li><a href=\"#services\" id=\"physiTempNavLinks\">Services</a></li><li><a href=\"#experience\" id=\"physiTempNavLinks\">Experience</a></li><li><a href=\"#testimonials\" id=\"physiTempNavLinks\">Testimonials</a></li><li><a href=\"#feeds\" id=\"physiTempNavLinks\">Feeds</a></li><li><a href=\"#contact\" id=\"physiTempContactBtn\">Contact Me</a></li></ul></div>", 1);
+var _hoisted_31 = [_hoisted_30];
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<nav class=\"hide-on-large-only white\" id=\"sideNav\"><a href=\"#\" data-target=\"slide-out\" class=\"sidenav-trigger\"><i class=\"material-icons sideNavIcon\" id=\"sideNavIcon\">menu</i></a><a href=\"#\" class=\"\" id=\"physiPortPageLogo\">Dr. Akerele Adebayo</a><ul id=\"slide-out\" class=\"sidenav\"><!-- &lt;li&gt; --><!-- &lt;div class=&quot;user-view&quot;&gt;\r\n                        &lt;div class=&quot;background&quot; id=&quot;sideNavImgDiv&quot;&gt;\r\n                            &lt;img src=&quot;/media/img/istockphoto-1390124896-170667a.jpg&quot; id=&quot;sidNavImg&quot;&gt;\r\n                        &lt;/div&gt;\r\n                    &lt;/div&gt; --><!-- &lt;/li&gt; --><li class=\"sideNavLinkMgTp\"><a href=\"#services\" id=\"physiTempNavLinks\">Services</a></li><li><a href=\"#experience\" id=\"physiTempNavLinks\">Experience</a></li><li><a href=\"#testimonials\" id=\"physiTempNavLinks\">Testimonials</a></li><li><a href=\"#\" id=\"physiTempNavLinks\">Feeds</a></li><li><div class=\"divider\"></div></li><li><a href=\"#contact\" id=\"physiTempContactBtn\">Contact Me</a></li></ul></nav>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$props.type === 'main' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navbar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.scrollPosition >= 5 ? 'altNav' : 'navbar', "hide-on-med-and-down"])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "/",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.scrollPosition >= 5 ? 'altBrandLogo' : 'brandLogo', "hide-on-med-and-down"])
-  }, _hoisted_4, 2 /* CLASS */), _hoisted_5])], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SideNav Section "), _hoisted_6])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.type === 'template' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navbar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", {
+  }, _hoisted_4, 2 /* CLASS */), _hoisted_5])], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SideNav Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_6, [_hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: './media/img/wcdLogoWhiteSmall.png',
+    "class": "mobileNavLogo",
+    alt: ""
+  }, null, 8 /* PROPS */, _hoisted_10)]), _hoisted_11])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.type === 'template' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navbar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.scrollPosition >= 5 ? 'altNav' : 'navbar', "hide-on-med-and-down"])
-  }, _hoisted_9, 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SideNav Section "), _hoisted_10])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.type === 'singleTemplate' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navbar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", {
+  }, _hoisted_19, 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SideNav Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_20, [_hoisted_21, _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: './media/img/wcdLogoWhiteSmall.png',
+    "class": "mobileNavLogo",
+    alt: ""
+  }, null, 8 /* PROPS */, _hoisted_24)]), _hoisted_25, _hoisted_26, _hoisted_27, _hoisted_28])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.type === 'singleTemplate' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Navbar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$data.scrollPosition >= 5 ? 'altNav' : 'navbar', "navbar hide-on-med-and-down"])
-  }, _hoisted_13, 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SideNav Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"navbar-fixed\"> "), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </div> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  }, _hoisted_31, 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SideNav Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"navbar-fixed\"> "), _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </div> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),

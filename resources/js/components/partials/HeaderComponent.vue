@@ -7,6 +7,7 @@
                     <a href="/" v-bind:class="scrollPosition >= 5 ? 'altBrandLogo' : 'brandLogo'"
                         class="hide-on-med-and-down"><small >White Coat Domain</small></a>
                     <ul id="nav-mobile" class="section table-of-contents right hide-on-med-and-down">
+                        
                         <li><a href="#product" class="navLinks">Product</a></li>
                         <li><a href="#features" class="navLinks">Features</a></li>
                         <li><a href="/templates" class="navLinks">Templates</a></li>
@@ -25,14 +26,10 @@
                 <a href="/" class="sideNavBrandLogo"><small class="fs-sm">White Coat Domain</small></a>
 
                 <ul id="slide-out" class="sidenav">
-                    <!-- <li> -->
-                    <!-- <div class="user-view">
-                            <div class="background" id="sideNavImgDiv">
-                                <img :src="'./media/img/istockphoto-1390124896-170667a.jpg'" id="sidNavImg">
-                            </div>
-                        </div> -->
-                    <!-- </li> -->
-
+                    <li>
+                            <img :src="'./media/img/wcdLogoWhiteSmall.png'" class="mobileNavLogo" alt=""/>
+                    </li>
+                    
                     <li class="sideNavLinkMgTp"><a href="#product" class="navLinks white-text">Product</a></li>
                     <li><a href="#features" class="navLinks white-text">Features</a></li>
                     <li><a href="/templates" class="navLinks white-text">Templates</a></li>
@@ -51,6 +48,7 @@
                     <a href="/" class="brand-logo" id="tempLogo"><small >White Coat Domain</small></a>
 
                     <ul id="nav-mobile" class="section right table-of-contents hide-on-med-and-down">
+                        
                         <li>
                             <a href="#template" class="navLinks tempScrollLink">Templates</a>
                         </li>
@@ -72,16 +70,15 @@
                 <a href="/" class="sideNavBrandLogo"><small class="fs-sm">White Coat Domain</small></a>
 
                 <ul id="slide-out" class="sidenav">
-                    <!-- <li> -->
-                    <!-- <div class="user-view">
-                        <div class="background" id="sideNavImgDiv">
-                            <img src="/media/img/istockphoto-1390124896-170667a.jpg" id="sidNavImg">
-                        </div>
-                    </div> -->
-                    <!-- </li> -->
+                    <li>
+                        <img :src="'./media/img/wcdLogoWhiteSmall.png'" class="mobileNavLogo" alt=""/>
+                    </li>
 
                     <li><a href="#template" class="sideNavLinkMgTp navLinks white-text">Templates</a></li>
                     <li><a href="#support" class="navLinks white-text">Support</a></li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
                     <li><a href="/auth/login" class="loginLink deep-purple-text accent-4">Log in</a></li>
                 </ul>
             </nav>

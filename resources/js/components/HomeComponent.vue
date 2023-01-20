@@ -3,61 +3,10 @@
         <!-- Navbar & SideNav Section -->
         <HeaderComponent :type="'main'"></HeaderComponent>
 
-        <!--div class="row circleGenDiv">
-            <div class="col s12 m4 l7">
-                <div class="circlDiv">
-                    <div class="circlDiv1">
-                        <div class="circlDiv2">
-                            <div class="circleTxtDiv">
-                                <p class="circleDivTitle">SHOWCASE YOUR PROFESSION WITH PaaB</p>
-                                <p class="circleDivtxt">
-                                    It is a long established fact that a reader will be 
-                                    distracted by the readable content of a page.
-                                </p>
-
-                                <a href="/templates" class="btn circleDivBtn">
-                                    preview templates
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-            </div>
-
-            <div class="col s12 m8 l5">
-                <div class="portraitImgDiv">
-                    <div class="portraitImgContainDiv">
-                        <img :src="'./media/img/portrait2.png'" alt="portrait2.png" class="portraitImg" id="portrait2">
-
-                        <div class="portraitImgInnerDiv">
-                            <img :src="'./media/img/portrait3.png'" alt="portrait3.png" class="portraitImg" id="portrait3">
-
-                            <div class="portraitImgCircleDiv"></div>
-                        </div>
-                    </div>
-
-                    <div class="portraitImgContainDiv1">
-                        <div class="portraitImgRightDiv">
-                            <div class="portraitImgRightInnerDiv">
-                                <img :src="'./media/img/portrait.png'" alt="portrait.png" class="portraitImg" id="portrait">
-                            </div>
-
-                            <div class="portraitImgCircleRightDiv"></div>
-
-                            <div class="portraitImgRightInnerDiv1">
-                                <img :src="'./media/img/portrait1.png'" alt="portrait1.png" class="portraitImg" id="portrait1">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div-->
-
         <!-- Small Device SHOCASE Section -->
         <div class="hide-on-med-and-up">
             <p class="circleDivTitle"><small>SHOWCASE YOUR PROFESSION WITH </small>White Coat Domain</p>
-            <p class="circleDivtxt">
+            <p class="circleDivtxtSmall">
                 Our professional wish is that you STAND OUT in your career, from
                 medical practitioners, lawyers, engineers etc.
             </p>
