@@ -761,7 +761,7 @@ div .col .s9 input.clientCreatePortInput1 {
     margin-top: 2vh;
     width: 90%;
     padding: 0 2vw;
-    height: 7vh;
+    /* height: 7vh; */
 }
 #clientCreatePortInput::placeholder,
 #clientCreatePortInput1::placeholder {
@@ -964,7 +964,7 @@ div .col .s9 input.clientCreatePortInput1 {
 #logoutModal {
     /* background-color: var(--primary); */
     border-radius: 20px;
-    width: 30vw;
+    width: 50vw;
 }
 .logoutModalImageRow {
     display: flex;

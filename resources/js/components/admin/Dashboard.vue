@@ -158,8 +158,8 @@
     export default {
         components: {
             InnerFooterComponent,
-            AdminMobileNavComponent,
-            MobileNavComponent
+            MobileNavComponent,
+            SidenavComponent,
         },
         data() {
             return {

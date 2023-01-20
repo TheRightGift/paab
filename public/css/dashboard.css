@@ -1,5 +1,7 @@
 /* Dashboard Section */
-
+.p10 {
+    padding: 10px;
+}
 .dashLeftBar {
     background: var(--primary);
     border-radius: 3px;
@@ -389,6 +391,12 @@
 
 /* Media Query on Medium Device */
 @media screen and (max-width: 992px) and (min-width: 640px) {
+    .dashRightImgTxtDiv {
+        top: 5vh;
+    }
+    .dashWlcNoteInnerDiv {
+        top: 2vh;
+    }
     .shapeDeg {
         width: 38.86px;
         height: 80px;
@@ -484,7 +492,8 @@
 
     .dashRightImgTxtDiv {
         position: absolute;
-        top: 13vh;
+        /* top: 13vh; */
+        top: 10vh;
         left: 6vw;
     }
 
