@@ -496,14 +496,14 @@
                             </p>
                         
                             <div class="file-field input-field" id="genUploadFavIconDiv" v-if="bio.CV == null">
-                                <a class="waves-effect waves-light btn-flat modal-trigger" href="#cvModal">Let us get to know you more</a>
+                                <!-- <a class="waves-effect waves-light btn-flat modal-trigger" href="#cvModal">Let us get to know you more</a> -->
 
-                                <!-- <input type="file" @change="CVUpload"
+                                <input type="file" @change="CVUpload"
                                     accept="application/msword, application/vnd.ms-powerpoint,application/pdf," />
                                 <div class="file-path-wrapper">
                                     <input class="file-path validate" type="text" id="genInput1" placeholder="File must not be more than 2MB" />
                                     <i class="material-icons" id="genUploadFavIcon">file_upload</i>
-                                </div> -->
+                                </div>
                             </div>
                             <div v-else class="flex no-space-between">
                                 <p>

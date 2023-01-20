@@ -47,7 +47,7 @@
                 </div>
                 <div class="col s12 m7 l7">
                     <div class="formContainDiv">
-                        <p class="contactFormTitle">
+                        <p class="contactFormTitle greenBg">
                             Free Consultation for a first time client
                         </p>
                         <form @submit.prevent="sendMail">
