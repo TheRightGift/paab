@@ -5,7 +5,7 @@
             <nav v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class="hide-on-med-and-down">
                 <div class="nav-wrapper navbarWrap">
                     <a href="/" v-bind:class="scrollPosition >= 5 ? 'altBrandLogo' : 'brandLogo'"
-                        class="hide-on-med-and-down">WhiteCoatDomain</a>
+                        class="hide-on-med-and-down"><small >White Coat Domain</small></a>
                     <ul id="nav-mobile" class="section table-of-contents right hide-on-med-and-down">
                         <li><a href="#product" class="navLinks">Product</a></li>
                         <li><a href="#features" class="navLinks">Features</a></li>
@@ -22,7 +22,7 @@
                     <i class="material-icons sideNavIcon" id="sideNavIcon">menu</i>
                 </a>
 
-                <a href="/" class="sideNavBrandLogo">WhiteCoatDomain</a>
+                <a href="/" class="sideNavBrandLogo"><small class="fs-sm">White Coat Domain</small></a>
 
                 <ul id="slide-out" class="sidenav">
                     <!-- <li> -->
@@ -48,7 +48,7 @@
             <!-- Navbar -->
             <nav v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class="hide-on-med-and-down">
                 <div class="nav-wrapper navbarWrap">
-                    <a href="/" class="brand-logo" id="tempLogo">WhiteCoatDomain</a>
+                    <a href="/" class="brand-logo" id="tempLogo"><small >White Coat Domain</small></a>
 
                     <ul id="nav-mobile" class="section right table-of-contents hide-on-med-and-down">
                         <li>
@@ -69,7 +69,7 @@
                     <i class="material-icons sideNavIcon" id="sideNavIcon">menu</i>
                 </a>
 
-                <a href="/" class="sideNavBrandLogo">WhiteCoatDomain</a>
+                <a href="/" class="sideNavBrandLogo"><small class="fs-sm">White Coat Domain</small></a>
 
                 <ul id="slide-out" class="sidenav">
                     <!-- <li> -->

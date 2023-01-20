@@ -115,7 +115,7 @@
     /* padding-left: 9px; */
     text-align: center;
     letter-spacing: -0.015em;
-    height: 5vh;
+    /* height: 5vh; */
 }
 #setFormBtn {
     background: var(--primary);

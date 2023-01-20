@@ -80,12 +80,12 @@
                                     {{admin.email}}
                                 </td>
                                 <td class="right">
-                                    <a @click="getId2Edit(admin)" href="#!" class="modal-trigger marginRight1 btn addStaffEditBtn">
-                                        Edit
+                                    <a @click="getId2Edit(admin)" href="#!" class="modal-trigger marginRight1 ">
+                                        <i class="material-icons">edit</i>
                                     </a>
                                     <!-- Delete Staff Modal Trigger -->
-                                    <a @click="getId2Del(admin)" href="#deleteStaffModal" class="marginRight1 btn addStaffDeleteBtn modal-trigger">
-                                        Delete
+                                    <a @click="getId2Del(admin)" href="#deleteStaffModal" class="marginRight1 modal-trigger">
+                                        <i class="material-icons red-text">delete</i>
                                     </a>
                                 </td>
                             </tr>

@@ -112,10 +112,10 @@
                                         </div>
                                     </div>
                                     <div class="row" v-else>
-                                        <p class="white-text center-align noVertMargin">You have not created any website yet for a client! Work Hard bro!</p>
+                                        <p class="white-text center-align noVertMargin p10">You have not created any website yet for a client! Work Hard bro!</p>
                                     </div>
                                     <div class="row" id="myWebRmMgRow">
-                                        <div class="col s12 center-align">
+                                        <div class="col s12 center-align ">
                                             <a @click="navigateToClientsWebPages" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create website</a>
                                         </div>
                                     </div>

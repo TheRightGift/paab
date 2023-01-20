@@ -25,11 +25,7 @@ a.active {
     border-bottom: 4px solid var(--primary);
     padding: 0px;
 }
-.navbar-fixed {
-    position: relative;
-    height: 56px;
-    z-index: 997;
-}
+
 nav {
     background-color: var(--white);
 }
@@ -645,8 +641,8 @@ a.sidenav-trigger {
     color: var(--primary);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 50%;
-    width: 12vw;
-    height: 6.5vh;
+    /* width: 12vw;
+    height: 6.5vh; */
 }
 .material-icons.sidenavListIcon {
     font-size: 3.5rem;
@@ -654,8 +650,30 @@ a.sidenav-trigger {
     justify-content: center;
 }
 
+/* Added */
+nav .sidenav-trigger {
+    height: 0 !important;
+}
+
+.custom-navbar-fixed {
+    position: relative;
+    height: 56px;
+    z-index: 997;
+}
 /* Media Query on Medium Device */
 @media screen and (max-width: 992px) and (min-width: 640px) {
+    .custom-navbar-fixed {
+        position: static;
+        height: 0px;
+        z-index: 997;
+    }
+    .rm_mg_pd {
+        margin-top: 30px !important;
+    }
+    .physiRightImg {
+        width: auto;
+        height: auto !important;
+    }
     .surgeonHeroClientName {
         font-size: 2.2rem;
         font-family: "Montserrat", sans-serif;
@@ -828,6 +846,33 @@ a.sidenav-trigger {
 
 /* Media Query on small device */
 @media screen and (max-width: 640px) {
+    .custom-navbar-fixed {
+        position: static;
+        height: 0px;
+        z-index: 997;
+    }
+    .physiSummaryTxt {
+        width: 100%;
+        margin: 0;
+    }
+    .physiTempName {
+        margin-left: 0;
+        font-size: 2.6rem;
+        font-family: "Montserrat", sans-serif;
+        color: var(--black);
+    }
+    .expLeftBarDiv {
+        background-color: var(--primary);
+    }
+    a.physiTempBtn {
+        width: 100%;
+        margin-left: 0;
+    }
+    .physiRightImg {
+        width: 100%;
+        float: none !important;
+        height: 200px !important;
+    }
     .surgeonHeroClientName {
         font-size: 2.2rem;
         font-family: "Montserrat", sans-serif;
@@ -984,7 +1029,7 @@ a.sidenav-trigger {
     }
 
     .experienceTitle {
-        font-size: 1.8rem;
+        font-size: 1.2rem;
         font-weight: 600;
         font-family: "Montserrat", sans-serif;
         margin: 0;
@@ -992,7 +1037,7 @@ a.sidenav-trigger {
     }
 
     .experienceTxt {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
         font-family: "Poppins", sans-serif;
         font-weight: 600;
         margin: 0;

@@ -385,3 +385,488 @@
 a.btn.circleDivBtn {
     background-color: var(--component);
 }
+
+/* New Styling added below */
+.socialMediaInnerDiv {
+    width: 70%;
+    margin-top: 15vh;
+}
+
+
+/* Media Query on Medium Device */
+@media screen and (max-width: 992px) and (min-width: 640px) {
+    #banner {
+        background-image: none;
+        height: 100vh;
+        background-repeat: no-repeat;
+    }
+    .circleTxtDiv {
+        position: absolute;
+        top: 0vh;
+        left: 3vw;
+    }
+    .circleDivTitle {
+        width: 45vw;
+        font-size: 2.6rem;
+        font-weight: 700;
+        color: var(--primary);
+        font-family: "Montserrat", sans-serif;
+    }
+    .circleDivtxt {
+        width: 400px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--black);
+        font-family: "Poppins", sans-serif;
+        text-align: left;
+        margin-bottom: 4vh;
+    }
+    .portfolioDiv {
+        background: var(--primary);
+        box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
+        margin-top: 5vh;
+        z-index: 100;
+        padding-top: 11vh;
+        padding-bottom: 11vh;
+    }
+    .portfolioTitle {
+        width: 45%;
+        margin: auto;
+        font-weight: 700;
+        font-size: 2rem;
+        align-items: center;
+        text-align: center;
+        letter-spacing: -0.01em;
+        line-height: 48px;
+        color: var(--white);
+        font-family: "Montserrat", sans-serif;
+    }
+    .portfolioTxt {
+        width: 90%;
+        margin: 23px auto 0 auto;
+        font-weight: 400;
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        line-height: 24px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        letter-spacing: -0.015em;
+        color: var(--white);
+    }
+    .moreThanLandTxt {
+        width: 70%;
+        margin: 0 auto;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        line-height: 24px;
+        align-items: center;
+        text-align: center;
+        letter-spacing: -0.015em;
+    }
+    .liveChatInnerDiv {
+        width: 80%;
+        margin-top: 15vh;
+    }
+    .liveChatImgInnerDiv {
+        width: 200px;
+        height: 200px;
+        background-color: rgba(231, 156, 161, 0.5);
+        border-radius: 50%;
+        margin-left: 0vw;
+    }
+    #chatImage{
+        width: 30vw;
+        position: relative;
+        bottom: 5vh;
+    }
+    .liveChatTitle {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        line-height: 39px;
+        color: var(--primary);
+        margin-bottom: 10px;
+        text-align: left;
+    }
+    .liveChatTxt {
+        font-family: "Poppins" sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        line-height: 24px;
+        margin: 0;
+        text-align: left;
+        width: 80%;
+    }
+    .cvInnerDiv {
+        width: 70%;
+        margin-top: 23vh;
+    }
+    .cvImgInnerDivSm {
+        width: 200px;
+        height: 200px;
+        background: rgba(119, 70, 255, 0.5);
+        border-radius: 50%;
+        margin-top: 0vh;
+        margin-left: 50vw;
+    }
+    #cvImage {
+        width: 28vw;
+        position: relative;
+        bottom: 5vh;
+    }
+    .cvWriteUpDiv {
+        position: relative;
+        left: 34vw;
+    }
+    .cvTitle {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 13px;
+        text-align: right;
+    }
+    .cvTxt {
+        font-family: "Poppins" sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        margin: 0;
+        text-align: right;
+    }
+    .socialMediaInnerDiv {
+        width: 80%;
+        margin-top: 2vh;
+    }
+    .socialMediaImgInnerDiv {
+        display: flex;
+        /* width: 200px;
+        height: 200px; */
+        background: rgba(211, 240, 251, 0.5);
+        border-radius: 50%;
+        margin: 12vh 0 0 0vw;
+    }
+    #socialMediaImage{
+        position: relative;
+        bottom: 20px;
+        left: 3px;
+        width: 80vw;
+        height: 29vh;
+    }
+    #facebookImg{
+        width: 8vw;
+        margin: 70px 0 0 33px;
+    }
+    #twiterImg {
+        width: 8vw;
+        margin: 20px 0 0 155px;
+    }
+    .socialMediaWriteUpDiv {
+        width: 85%;
+    }
+    .socialMediaTitle {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        color: var(--primary);
+        margin-top: 3vh;
+        margin-bottom: 13px;
+        text-align: left;
+    }
+    .socialMediaTxt {
+        font-family: "Poppins" sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        margin: 0;
+        text-align: left;
+    }
+    .clientRevInnerDiv {
+        width: 70%;
+        margin-top: 15vh;
+    }
+    .clientRevImgInnerDiv {
+        width: 200px;
+        height: 200px;
+        background: rgba(254, 197, 38, 0.5);
+        border-radius: 50%;
+        margin: 5vh 0 0 48vw;
+    }
+    #clientRevImage {
+        position: relative;
+        bottom: 40px;
+        right: 45px;
+    }
+    .clientRevWriteUpDiv {
+        position: relative;
+        left: 5vw;
+        bottom: 12vh;
+    }
+    .clientRevTitle {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        color: var(--primary);
+        margin: 130px 0 0 9px;
+        text-align: right;
+    }
+    .clientRevTxt {
+        font-family: "Poppins" sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        margin: 0;
+        text-align: right;
+    }
+    .templatesRowTxt {
+        font-family: "Poppins" sans-serif;
+        font-weight: 600;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .templatesInnerDiv {
+        width: 70%;
+        margin: 15vh auto 0 auto;
+    }
+}
+
+/* Media Query on small device */
+@media screen and (max-width: 640px) {
+    .circleTxtDiv {
+        position: absolute;
+        top: 20vh;
+        left: 5vw;
+        /* text-align: center; */
+    }
+    .circleDivTitle {
+        width: 90%;
+        margin: 12vh auto 3vh auto;
+        font-size: 2.75rem;
+        font-weight: 700;
+        color: var(--primary);
+        font-family: "Montserrat", sans-serif;
+        text-align: center;
+    }
+    .circleDivtxt {
+        /* width: 400px; */
+        font-weight: 600;
+        font-size: 1rem;
+        color: var(--black);
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .portfolioDiv {
+        background: var(--primary);
+        box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
+        /* margin-top: 17.5vh; */
+        z-index: 100;
+        padding-top: 4vh;
+        padding-bottom: 15vh;
+    }
+    .ellipseLargeSm {
+        width: 50px;
+        height: 50px;
+        background: var(--component);
+        border-radius: 50%;
+    }
+    .ellipseSmallSm {
+        width: 25px;
+        height: 25px;
+        background: var(--component);
+        border-radius: 50%;
+        position: relative;
+        top: 3vh;
+        right: 2vw;
+    }
+    .portfolioTitle {
+        width: 90%;
+        margin: auto;
+        font-weight: 700;
+        font-size: 2rem;
+        align-items: center;
+        text-align: center;
+        line-height: 48px;
+        color: var(--white);
+        font-family: "Montserrat", sans-serif;
+    }
+    .portfolioTxt {
+        width: 95%;
+        margin: 23px auto 0 auto;
+        font-weight: 400;
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        line-height: 24px;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        color: var(--white);
+    }
+    .moreThanLandTitle {
+        font-weight: 700;
+        font-size: 1.5rem;
+        align-items: center;
+        text-align: center;
+        color: var(--primary);
+        font-family: "Montserrat", sans-serif;
+    }
+    .moreThanLandTxt {
+        width: 95%;
+        margin: 0 auto;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        align-items: center;
+        text-align: center;
+    }
+    .liveChatInnerDiv {
+        width: 95%;
+        margin-top: 15vh;
+    }
+    .liveChatImgInnerDiv {
+        width: 130px;
+        height: 130px;
+        background-color: rgba(231, 156, 161, 0.5);
+        border-radius: 50%;
+        margin-left: 0vw;
+    }
+    #chatImage {
+        width: 38vw;
+        position: relative;
+        bottom: 3vh;
+    }
+    .liveChatTitle {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        color: var(--primary);
+        margin-top: 6vh;
+        margin-bottom: 19px;
+        text-align: left;
+    }
+    .liveChatTxt {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        margin: 0;
+        text-align: left;
+        color: #464646;
+    }
+    .cvInnerDiv {
+        width: 95%;
+        margin-top: 15vh;
+    }
+    .cvImgInnerDivSm {
+        width: 130px;
+        height: 130px;
+        background: rgba(119, 70, 255, 0.5);
+        border-radius: 50%;
+        margin-top: 0vh;
+        margin-left: 57vw;
+    }
+    #cvImage {
+        width: 38vw;
+        position: relative;
+        bottom: 3vh;
+    }
+    .cvTitle {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 13px;
+        text-align: right;
+    }
+    .cvTxt {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        margin: 0;
+        text-align: right;
+    }
+    .socialMediaInnerDiv {
+        width: 95%;
+        margin-top: 16vh;
+    }
+    .socialMediaImgInnerDiv {
+        display: flex;
+        width: 130px;
+        height: 130px;
+        background: rgba(211, 240, 251, 0.5);
+        border-radius: 50%;
+        margin-left: 0vw;
+    }
+    #socialMediaImage {
+        position: relative;
+        bottom: 20px;
+        left: 3px;
+        max-width: 55vw;
+        height: 20vh;
+    }
+    #facebookImg {
+        width: 12vw;
+        position: absolute;
+        margin: 36px 0 0 25px;
+    }
+    #twiterImg {
+        width: 12vw;
+        position: absolute;
+        margin: 12px 0 0 110px;
+    }
+    .socialMediaTitle {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 13px;
+        text-align: left;
+    }
+    .socialMediaTxt {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        margin: 0;
+        text-align: left;
+    }
+    .clientRevInnerDiv {
+        width: 95%;
+        margin-top: 15vh;
+    }
+    .clientRevImgInnerDiv {
+        width: 130px;
+        height: 130px;
+        background: rgba(254, 197, 38, 0.5);
+        border-radius: 50%;
+        margin-top: 3vh;
+        margin-left: 55vw;
+    }
+    #clientRevImage {
+        position: relative;
+        bottom: 40px;
+        right: 45px;
+        width: 40vw;
+    }
+    .clientRevTitle,
+    .templatesRowTitle {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        color: var(--primary);
+        margin-top: 5vh;
+        margin-bottom: 13px;
+    }
+    .clientRevTxt {
+        font-family: "Montserrat" sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        margin: 0;
+    }
+    .templatesRowTxt {
+        font-family: "Montserrat" sans-serif;
+        width: 98%;
+        margin: 0 auto;
+    }
+    .templatesInnerDiv {
+        width: 90%;
+        margin: 15vh auto 0 auto;
+    }
+}

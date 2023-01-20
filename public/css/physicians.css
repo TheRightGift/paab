@@ -283,7 +283,7 @@ input[type="file"]:active::before {
         line-height: 35px;
         letter-spacing: 0.1px;
         color: #6750A4;
-        margin-top: 3vh;
+        /* margin-top: 26vh; */
         margin-bottom: 3vh;
     }
     .physiExpContainerDiv,

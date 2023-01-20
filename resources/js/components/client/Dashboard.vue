@@ -103,12 +103,12 @@
                                     <div v-else>
                                         <div  v-if="(websites.length > 0)">
                                             <div class="row noMarginBottom"  v-for="website in websites" :key="website.id">
-                                                <div class="col s2">
+                                                <div class="col s3">
                                                     <div class="webWhiteProDiv">
                                                         <img :src="'/media/img/templateThumbnail/'+website.template.profession.name+'/'+website.template.imageUrl" class="responsive-img" />
                                                     </div>
                                                 </div>
-                                                <div class="col s8">
+                                                <div class="col s7">
                                                     <p class="domainname">
                                                         {{website.name}}
                                                     </p>

@@ -53,10 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="row settingsInptuRow">
-                                <div>
-                                    
-                                </div>                                
+                            <div class="settingsInptuRow">                            
                                 <form @submit.prevent="updateUserDetails()">
                                     <div class="row">
                                         <div
