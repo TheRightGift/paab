@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="keywords" content="Website builder, Physician Website Builder, Personal Website Builder, Physician Brand Website">
+    <meta name="description" content="White Coat Domain - A dose of your medical story - building a brand around your medical career">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="robots" content="all">
+    <meta content="WhiteCoatDomain" property="og:site_name">
+    <meta content="website" property="og:type">
+    <meta content="https://whitecoatdomain.com/" property="og:url">
+    <meta content="White Coat DOmain - is a fast-growing Peopl-as-a-Brand solution that helps physician own and easy to setup, easy to manage and very financial comfortable web presence for showcasing ther thriving careers." property="og:title">
+    <meta content="White Coat Domain - A dose of your medical story - building a brand around your medical career. We provide medical practitioners with a web presence to promote and showcase their thriving career." property="og:description">
+    <meta content="https://whitecoatdomain.com/img/whiteCoatDomain.png" property="og:image">
+    <meta content="400" property="og:image:width">
+    <meta content="400" property="og:image:height">
+    <meta content="An image of the White Coat Domain logo" property="og:image:alt">
+
+    
     <title>{{env('APP_NAME')}}: White Coat Domain - Reset Password</title>
     <link rel="shortcut icon" href="{{ asset('/media/img/logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
