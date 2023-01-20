@@ -3,7 +3,7 @@
         <div class="row authContainDiv">
             <div class="col s12 m12 l6 loginContainer">
                 <div class="wlcNoteDiv">
-                    <p class="wlcNoteLogo">PaaB</p>
+                    <p class="wlcNoteLogo">WhiteCoatDomain</p>
                     <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
                     <p class="wlcNoteTxt">
                         It is a long established fact that a reader will be

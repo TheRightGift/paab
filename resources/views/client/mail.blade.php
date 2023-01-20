@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{env('APP_NAME')}}: People as a Brand - Mail</title>
+        <title>{{env('APP_NAME')}}: White Coat Domain - Mail</title>
         <link rel="shortcut icon" href="{{ asset('/media/img/logo.png') }}" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">

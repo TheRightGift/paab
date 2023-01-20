@@ -138,7 +138,7 @@
                                                 <div class="cardImgDiv">
                                                     <i class="material-icons" id="cardImg">person</i>
                                                 </div>
-                                                <a href="#" class="cardProName">info@paab.com</a>
+                                                <a href="#" class="cardProName">admin@whitecoatdomain.com</a>
                                             </div>
                                         </div>
                                     

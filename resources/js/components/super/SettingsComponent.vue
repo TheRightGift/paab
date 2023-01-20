@@ -36,7 +36,7 @@
 
                                 <div class="setProTitleDiv">
                                     <p class="mySetTitle">Settings</p>
-                                    <span class="mySetName">chigozie@paab.com</span>
+                                    <span class="mySetName">admin@whitecoatdomain.com</span>
                                 </div>
                             </div>
 
@@ -59,7 +59,7 @@
                                 <div class="row rm_mg">
                                     <div class="input-field col s12 rm_mg sm_mg">
                                         <input placeholder="Email" id="settingEmail" type="email"
-                                            value="chigozie@paab.com" class="validate">
+                                            value="admin@whitecoatdomain.com" class="validate">
                                     </div>
                                 </div>
 

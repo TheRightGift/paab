@@ -160,7 +160,7 @@
                                                     >
                                                 </div>
                                                 <a href="#" class="cardProName"
-                                                    >info@paab.com</a
+                                                    >admin@whitecoatdomain.com</a
                                                 >
                                             </div>
                                         </div>
