@@ -38,7 +38,7 @@
                     </p>
                 </div>
                 <div class="col s12">
-                    <iframe :src="linkedin" height="500" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>                </div>
+                    <iframe :src="'https://www.linkedin.com/embed/feed/update/urn:li:share:'+linkedin" height="500" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>                </div>
                 </div>
             </div>
         </div>

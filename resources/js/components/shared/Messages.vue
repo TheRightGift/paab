@@ -32,35 +32,6 @@
                     </p>
                 </div>
 
-                <!-- Mail Black div -->
-                <!--div class="mailBlackDiv" id="mailScrollDiv" @click="showSingleMesg()">
-                    <div class="webBlackDiv1">
-                        <div class="row" id="mailInnerDiv">
-                            <div class="col s2 m2 l1">
-                                <div class="webWhiteProDiv" id="">
-                                    <i class="material-icons" id="tempProIcon">person</i>
-                                </div>
-                            </div>
-                            <div class="col s8 m9 l10">
-                                <a href="#" class="mailLink">info@paab.com</a>
-                                <p class="mailP">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                    when an unknown printer took a galley of type and scrambled it to make a type
-                                    specimen
-                                    book. It has survived not only five centuries, but also the leap into electronic
-                                    typesetting,
-                                    remaining essentially
-                                    unchanged.
-                                </p>
-                            </div>
-                            <div class="col s2 m1 l1">
-                                <span class="mailTime right">Now</span>
-                            </div>
-                        </div>
-                    </div>
-                </div-->
-
             </div>
         </div>
     </div>

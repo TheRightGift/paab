@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="col s8 m9 l10">
-                                <a href="#" class="mailLink">info@paab.com</a>
+                                <a href="#" class="mailLink">admin@whitecoatdomain.com</a>
                                 <p class="mailP">
                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="col s8 m9 l10">
-                                <a href="#" class="mailLink">info@paab.com</a>
+                                <a href="#" class="mailLink">admin@whitecoatdomain.com</a>
                                 <p class="mailP">
                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                             <div class="col s8 m9 l10">
-                                <a href="#" class="mailLink">info@paab.com</a>
+                                <a href="#" class="mailLink">admin@whitecoatdomain.com</a>
                                 <p class="mailP">
                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                             <div class="col s8 m9 l10">
-                                <a href="#" class="mailLink">info@paab.com</a>
+                                <a href="#" class="mailLink">admin@whitecoatdomain.com</a>
                                 <p class="mailP">
                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,

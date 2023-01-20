@@ -24,7 +24,7 @@
                             </div>
                 
                             <div class="col l10">
-                                <a href="#" class="clientSendemailTitle">info@paab.com</a>
+                                <a href="#" class="clientSendemailTitle">admin@whitecoatdomain.com</a>
                                 <p class="clientSendemailTxt">
                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                                     industry's standard
