@@ -49,7 +49,7 @@ export default {
     data() {
         return {
             facebook: "",
-            twitter: "",
+            twitter: "WhiteCoatD_HQ",
             linkedin: ""
         }
     },
