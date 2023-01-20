@@ -36,7 +36,7 @@ class BioController extends Controller
             'about' => 'required|max:614|min:600',
             'lastname' => 'nullable',
             'firstname' => 'nullable',
-            'CV' => 'required|file|mimes:doc,pdf,docx,zip|max:2000',
+            'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
             'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=454,min_height=528',
         ]); 
 

@@ -169,8 +169,7 @@
                                         location + 'tenancy/assets/' + bio.photo
                                     "
                                     alt="doc.png"
-                                    class="responsive-img"
-                                    id="physiRightImg"
+                                    class="responsive-img physiRightImg"
                                 />
 
                             </div>

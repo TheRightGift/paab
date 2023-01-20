@@ -2,7 +2,7 @@
     <div>
         <div class="tempOneRevDiv">
             <div class="tempOneRevInnerDiv">
-                <a href="#!" class="black-text" @click="goBackToNormal">
+                <a class="black-text" @click="goBackToNormal">
                     <i
                         class="
                             small

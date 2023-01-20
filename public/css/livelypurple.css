@@ -121,7 +121,7 @@
     -webkit-transition: background-color .2s ease-out;
     transition: background-color .2s ease-out;
     cursor: pointer;
-    background-color: var(--black) !important;
+    /* background-color: var(--black) !important; */
     font-size: 14px;
     outline: 0;
     display: inline-block;
@@ -224,7 +224,7 @@
     color: #000000;
     margin: 9vh 0 0 0;
 }
-#Template1 .expMainTxt {
+#Template1 .expMainTxt, .feeds {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: lighter;
@@ -234,12 +234,24 @@
     text-align: center;
     margin: 0 0 10vh 0;
 }
-#Template1 .expLeftBarDiv {
+.feedsContainDiv {
+    margin-top: 9vh;
+}
+.experienceImgContainDiv .col.s12.m3.l2{
+    width: 16.6666666667%;
+    margin-left: auto;
+}
+.surgeonBannerImgDiv {
+    width: 83.3333333333%;
+    margin-left: auto;
+    float: right;
+}
+#Template1 .experiences {
     background: #6750A4;
     border-radius: 10px;
     padding: 3vh 1.5vw;
 }
-#Template1 .expLeftBarTxt {
+#Template1 .experienceTitle {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -251,7 +263,7 @@
     color: #FFFFFF;
     margin: 0 0 1vh 0;
 }
-#Template1 .expLeftBarTxt1 {
+#Template1 .experienceTxt {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: lighter;
@@ -269,10 +281,10 @@
 #Template1 .expLeftBarInnerDiv:last-child {
     border-bottom: none;
 }
-#Template1 .expLeftBarInnerDiv .expLeftBarTxtDiv {
+#Template1 .expLeftBarInnerDiv .experience {
     padding: 5.7vh 0 3vh;
 }
-#Template1 #expRightDivImg {
+#Template1 .bannerImg {
     width: 100%;
     height: 73.5vh;
     border-radius: 10px;

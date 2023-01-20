@@ -2789,3 +2789,6 @@ div .col .s9 input.clientCreatePortInput1 {
     margin-top: 0.9vh;
     color: rgba(0, 0, 0, 0.5);
 }
+.spinner-layer {
+    border-color: var(--white);
+}

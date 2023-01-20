@@ -398,11 +398,11 @@
                                     <i class="material-icons addreview right" title="Add Review">add_circle</i>
                                 </a>
                             </div>
-                            <p class="tesimonialsWriteupTxt">
+                            <p class="tesimonialsWriteupTxt" v-if="userReview != undefined">
                                 {{userReview.comment}}
                             </p>
                             <!-- Load More Modal Trigger -->
-                            <a class="loadMoreReviews" href="#!" @click="goToReviews">Load More</a>
+                            <a class="loadMoreReviews" @click="goToReviews">Load More</a>
                         </div>
                     </div>
                 </div>
@@ -535,7 +535,7 @@
         },
         mounted() {
             setTimeout(() => {
-                this.userReview = this.reviewsFront[0];
+                this.reviewsFront != null ? this.userReview = this.reviewsFront[0] : null;
             
             }, 2000);
         },
@@ -546,3 +546,8 @@
         },
     };
 </script>
+<style>
+    a:hover {
+        cursor: pointer;
+    }
+</style>

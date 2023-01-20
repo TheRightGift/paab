@@ -1,14 +1,14 @@
 <template>
-    <div class="section scrollspy feedsContainDiv" id="feeds">
+    <div class="section scrollspy feedsContainDiv">
         <div class="row">
             <div class="col s12">
-                <h3 class="title">
+                <h3 class="center-align feeds">
                     MY FEEDS
                     <span class="primaryColorBoxDesign3"></span>
                 </h3>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="feeds">
 
             <div class="col s12 l4">
                 <div class="col s12">
@@ -58,10 +58,11 @@ export default {
     },
     watch: {
         socials(newVal, oldVal) {
-            this.facebook = newVal.facebook;
-            this.linkedin = newVal.linkedin;
-            this.twitter = newVal.twitter;
-            console.log(newVal)
+            if (newVal != null) {
+                this.facebook = newVal.facebook;
+                this.linkedin = newVal.linkedin;
+                this.twitter = newVal.twitter;
+            }
             // if (newVal != null) console.log(newVal)
         }
     }
