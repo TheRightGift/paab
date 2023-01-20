@@ -557,12 +557,15 @@ a.loginLink:hover {
     height: 74px;
     border-radius: 50%;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #proImg {
     font-size: 4rem;
-    margin-left: 0.5vw;
-    margin-top: 0.2vh;
+    /* margin-left: 0.5vw;
+    margin-top: 0.2vh; */
     color: rgba(0, 0, 0, 0.5);
 }
 
@@ -1437,7 +1440,7 @@ div .col .s9 input.clientCreatePortInput1 {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50%;
         width: 6vw;
-        height: 6.5vh;
+        height: 4.5vh;
         line-height: 52px;
     }
     .sideNavBrandLogo {
@@ -1445,7 +1448,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-weight: 500;
         color: var(--primary);
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        margin-left: 35vw;
+        margin-left: 25vw;
         font-family: "Montserrat", sans-serif;
     }
     #banner {
@@ -1795,6 +1798,19 @@ div .col .s9 input.clientCreatePortInput1 {
 
 /* Media Query on small device */
 @media screen and (max-width: 640px) {
+    /* Added for heading */
+    .fs-sm {
+        font-size: 0.6em;
+    }
+    #webAddContainer {
+        display: block !important;
+        text-align: center;
+    }
+    .settingsInptuRow {
+        width: 95%;
+    }
+
+
     .circlDiv2 {
         width: 100vw;
         height: 95vh;
@@ -1852,14 +1868,15 @@ div .col .s9 input.clientCreatePortInput1 {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50%;
         width: 13vw;
-        height: 6.5vh;
+        height: 5.5vh;
+        text-align: center;
     }
     .sideNavBrandLogo {
         font-size: 2.7rem;
         font-weight: 500;
         color: var(--primary);
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        margin-left: 14vw;
+        margin-left: 5vw;
         font-family: "Montserrat", sans-serif;
     }
     /* #navLinks {
@@ -2209,8 +2226,11 @@ div .col .s9 input.clientCreatePortInput1 {
 
     /* Signup Small Device */
     .authRightDiv {
-        width: 90%;
+        /* width: 90%; */
         margin: 13vh auto 0 auto;
+    }
+    .input-field input{
+        text-align: center;
     }
     .authTitle {
         margin-bottom: 3vh;
@@ -2754,7 +2774,8 @@ div .col .s9 input.clientCreatePortInput1 {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50%;
         width: 13vw;
-        height: 6.5vh;
+        height: 5.5vh;
+        text-align: center;
     }
 
     /* Id for mobile sidenav list icon not needed again, it's been changed to class */

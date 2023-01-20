@@ -56,12 +56,11 @@
 
         <!-- Small Device SHOCASE Section -->
         <div class="hide-on-med-and-up">
-            <p class="circleDivTitle">SHOWCASE YOUR PROFESSION WITH PaaB</p>
+            <p class="circleDivTitle"><small>SHOWCASE YOUR PROFESSION WITH </small>White Coat Domain</p>
             <p class="circleDivtxt">
                 Our professional wish is that you STAND OUT in your career, from
                 medical practitioners, lawyers, engineers etc.
             </p>
-            distracted by the readable content of a page.
 
             <div class="circleBtnDiv">
                 <a href="/templates" class="btn circleDivBtn">

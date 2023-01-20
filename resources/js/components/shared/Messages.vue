@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Sidenav for small devices -->
-        <AdminMobileNavComponent />
+        <mobile-nav-component />
 
         <div class="row" id="dashRowDiv">
             <!-- Sidebar for large and medium devices -->
@@ -68,11 +68,11 @@
 
 <script>
 import SidenavComponent from "../partials/SideNavComponent.vue";
-import AdminMobileNavComponent from "../partials/AdminMobileNavComponent.vue";
+import MobileNavComponent from '../partials/MobileNavComponent.vue';
 export default {
     components: {
         SidenavComponent,
-        AdminMobileNavComponent,
+        MobileNavComponent,
     },
     data() {
         return {

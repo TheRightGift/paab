@@ -50,7 +50,7 @@
         <!-- Customer Support Section -->
         <div class="section scrollspy cusSupportDiv" id="support">
             <div class="row cusSupportInnerDiv">
-                <div class="col s12 m12 l7 cusSupportImgDiv">
+                <div class="col s12 m12 l7 cusSupportImgDiv hide-on-med-and-down">
                     <img src="/media/img/CARE.png" alt="CARE.png" id="careImg">
                 </div>
         
