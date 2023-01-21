@@ -5,7 +5,8 @@
         </div>
         <div v-show="!loading">
             <HeaderComponent :user="user"/>
-            <ServicesComponent :title="title" :user="user" :services="services" :bio="bio" :location="location" :preview="preview"/>
+            <AboutMeComponent :title="title" :user="user" :bio="bio" :location="location" :preview="preview"/>
+            <ServicesComponent :services="services" />
             <ExperienceComponent  :experience="achievement" :location="location" :preview="preview"/>
             <SocialMediaComponent :socials="socials"/>
             <TestimonialsComponent :reviews="reviews" :preview="preview"/>
@@ -20,6 +21,7 @@
     import ServicesComponent from "./ServicesComponent.vue";
     import SocialMediaComponent from "./SocialMediaComponent.vue";
     import TestimonialsComponent from "./TestimonialsComponent.vue";
+    import AboutMeComponent from "./AboutMeComponent.vue";
     let bio = '/api/bio';
     let service = '/api/service';
     let achievement = '/api/achievement';
@@ -34,6 +36,7 @@
             SocialMediaComponent,
             TestimonialsComponent,
             ContactComponent,
+            AboutMeComponent
         },
         data() {
             return {

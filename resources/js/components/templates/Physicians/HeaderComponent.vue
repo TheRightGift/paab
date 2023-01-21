@@ -10,6 +10,9 @@
                     class="section table-of-contents right hide-on-med-and-down"
                 >
                     <li>
+                        <a href="#about" class="physiTempNavLinks">About Me</a>
+                    </li>
+                    <li>
                         <a href="#services" class="physiTempNavLinks">Services</a>
                     </li>
                     <li>
@@ -17,12 +20,12 @@
                             >Experience</a
                         >
                     </li>
+                    <li><a href="#feeds" class="physiTempNavLinks">Feeds</a></li>
                     <li>
                         <a href="#testimonials" class="physiTempNavLinks"
                             >Testimonials</a
                         >
                     </li>
-                    <li><a href="#feeds" class="physiTempNavLinks">Feeds</a></li>
                     <li>
                         <a href="#contact" class="physiTempContactBtn"
                             >Contact Me</a
@@ -54,19 +57,21 @@
                 </div>
             </div>
             </li> -->
-
+            <li class="sideNavLinkMgTp">
+                <a href="#about" id="physiTempNavLinks">About Me</a>
+            </li>
             <li class="sideNavLinkMgTp">
                 <a href="#services" id="physiTempNavLinks">Services</a>
             </li>
             <li>
                 <a href="#experience" id="physiTempNavLinks">Experience</a>
             </li>
+            <li><a href="#" id="physiTempNavLinks">Feeds</a></li>
             <li>
                 <a href="#testimonials" id="physiTempNavLinks"
                     >Testimonials</a
                 >
             </li>
-            <li><a href="#" id="physiTempNavLinks">Feeds</a></li>
             <li>
                 <div class="divider"></div>
             </li>

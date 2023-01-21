@@ -144,7 +144,9 @@ input[type="file"]:hover::before {
 input[type="file"]:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
-
+.input-field textarea {
+    text-align: center;
+}
 .min-height-40 {
     min-height: 40vh !important;
 }
