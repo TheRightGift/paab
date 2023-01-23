@@ -1,4 +1,62 @@
-#Template1 #physiPortPageLogo {
+nav {
+    background-color: var(--white);
+}
+/* .section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+} */
+/* .navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+} */
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#physiPortPageLogo {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -15,7 +73,65 @@
     line-height: 22px;
     margin-left: 0.7vw;
 }
-#Template1 .physiTempContactBtn {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiTempContactBtn {
     border-radius: 6px;
     width: 130px;
     height: 40px;
@@ -29,12 +145,128 @@
     color: #ffffff;
     border: none;
 }
-#Template1 .physiTempContactBtn:hover {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiTempContactBtn:hover {
     background: #ffffff;
     color: #6750a4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-#Template1 .profileImg {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.profileImg {
     background: #6750a4;
     box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -45,7 +277,65 @@
     top: 20vh;
     right: 12vw;
 }
-#Template1 .physiRightImg {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiRightImg {
     position: absolute;
     left: 33px;
     top: 30px;
@@ -53,12 +343,128 @@
     box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
     transform: rotate(1.5deg);
 }
-#Template1 .physiContainerDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiContainerDiv {
     width: 84.5%;
     margin: auto;
     padding-top: 36vh;
 }
-#Template1 .physiTempNavLinks {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiTempNavLinks {
     font-weight: 600;
     font-size: 1.1rem;
     font-family: "Montserrat", sans-serif;
@@ -68,16 +474,190 @@
     color: rgb(34, 34, 34);
     padding-bottom: 3vh;
 }
-#Template1 .physiTempNavLinks:hover {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiTempNavLinks:hover {
     background-color: white;
     border-bottom: 4px solid rgba(0, 0, 0, 0.5);
 }
-#Template1 .physiTempNavLinks.active {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiTempNavLinks.active {
     border-bottom: 4px solid rgba(0, 0, 0, 0.91);
     padding: 0 0 3vh 0;
 }
 
-#Template1 .physiTempNameTitle {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiTempNameTitle {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -87,7 +667,65 @@
     color: #000000;
     margin: 0 0 0 0.2vw;
 }
-#Template1 .physiTempName {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiTempName {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -98,7 +736,65 @@
     margin-top: 3vh;
     margin-bottom: 3vh;
 }
-#Template1 .physiSummaryTxt {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiSummaryTxt {
     font-family: "Poppins", sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -107,7 +803,65 @@
     letter-spacing: 0.1px;
     color: rgba(0, 0, 0, 0.8);
 }
-#Template1 .physiTempBtn {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiTempBtn {
     background: transparent;
     border: 1px solid #6750a4;
     box-shadow: none;
@@ -132,7 +886,65 @@
     vertical-align: middle;
     -webkit-tap-highlight-color: transparent;
 }
-#Template1 .servicesMainTitle {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.servicesMainTitle {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -142,9 +954,67 @@
     text-align: center;
     letter-spacing: 0.1px;
     color: #000000;
-    /* margin: 25vh 0 0 0; */
+    margin: 0 0 0 0;
 }
-#Template1 .servicesWhatIdo {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.servicesWhatIdo {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -154,7 +1024,65 @@
     text-align: center;
     margin: 0 0 10vh 0;
 }
-#Template1 .servicesIconsDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.servicesIconsDiv {
     /* position: absolute; */
     width: 50px;
     height: 50px;
@@ -168,7 +1096,65 @@
     justify-content: center;
     align-items: center;
 }
-#Template1 .servcesHeading {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.servcesHeading {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -179,14 +1165,130 @@
     letter-spacing: 0.1px;
     color: #000000;
 }
-#Template1 .servicesTitle,
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.servicesTitle,
 .servcesHeading.forSurgeon,
 .title,
 .feedsMainTitle.forSurgeon,
 .greenBg {
     display: none;
 }
-#Template1 .servicesTxt {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.servicesTxt {
     font-family: "Poppins", sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -197,27 +1299,317 @@
     letter-spacing: 0.1px;
     color: rgba(0, 0, 0, 0.7);
 }
-#Template1 .servicesIcons {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.servicesIcons {
     color: #ffffff;
     margin: 1.3vh 0 0 0.7vw;
     font-size: 2.3rem;
 }
-#Template1 .servicesIcons1 {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.servicesIcons1 {
     color: #ffffff;
     /* margin: 1.3vh 0 0 0.7vw; */
     font-size: 2rem;
 }
-#Template1 .servicesIcons2 {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.servicesIcons2 {
     color: #ffffff;
     /* margin: 1.3vh 0 0 0.7vw; */
     font-size: 2rem;
 }
-#Template1 .physiExpContainerDiv,
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.physiExpContainerDiv,
 .feedsContainDiv {
     width: 84.5%;
     margin: auto;
 }
-#Template1 .expMainTitle,
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.expMainTitle,
 .feedsTitle {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
@@ -230,7 +1622,65 @@
     color: #000000;
     margin: 9vh 0 0 0;
 }
-#Template1 .expMainTxt,
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.expMainTxt,
 .feeds {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
@@ -253,12 +1703,128 @@
     margin-left: auto;
     float: right;
 }
-#Template1 .experiences {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.experiences {
     background: #6750a4;
     border-radius: 10px;
     padding: 3vh 1.5vw;
 }
-#Template1 .experienceTitle {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.experienceTitle {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -270,7 +1836,65 @@
     color: #ffffff;
     margin: 0 0 1vh 0;
 }
-#Template1 .experienceTxt {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.experienceTxt {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: lighter;
@@ -282,25 +1906,373 @@
     color: #ffffff;
     margin: 0 0 1.5vh 0;
 }
-#Template1 .expLeftBarInnerDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.expLeftBarInnerDiv {
     border-bottom: 1px solid rgba(217, 217, 217, 0.65);
 }
-#Template1 .expLeftBarInnerDiv:last-child {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.expLeftBarInnerDiv:last-child {
     border-bottom: none;
 }
-#Template1 .expLeftBarInnerDiv .experience {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.expLeftBarInnerDiv .experience {
     padding: 5.7vh 0 3vh;
 }
-#Template1 .bannerImg {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.bannerImg {
     width: 100%;
     height: 73.5vh;
     border-radius: 10px;
 }
-#Template1 #feedsTwitterIcon {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#feedsTwitterIcon {
     color: #6750a4;
     font-size: 1.3rem;
 }
-#Template1 .feedsMainTxt {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.feedsMainTxt {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: lighter;
@@ -310,13 +2282,129 @@
     text-align: center;
     margin: 0 0 1vh 0;
 }
-#Template1 .feedsCard {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.feedsCard {
     background: #6750a4;
     border: 1px solid #938f99;
     border-radius: 12px;
     padding: 2vh 0vw;
 }
-#Template1 .feedsProDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.feedsProDiv {
     background: #d0bcff;
     height: 40px;
     width: 40px;
@@ -324,12 +2412,128 @@
     text-align: center;
     margin-left: 1vw;
 }
-#Template1 .feedsProImg {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.feedsProImg {
     font-size: 1.2rem;
     font-family: "Montserrat", sans-serif;
     line-height: 40px;
 }
-#Template1 .feedsCardHeader {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.feedsCardHeader {
     margin: 0;
     font-family: "Roboto", sans-serif;
     font-style: normal;
@@ -339,7 +2543,65 @@
     letter-spacing: 0.1px;
     color: #e6e1e5;
 }
-#Template1 .feedsCardSubhead {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.feedsCardSubhead {
     margin: 0;
     font-family: "Roboto";
     font-style: normal;
@@ -349,18 +2611,250 @@
     letter-spacing: 0.25px;
     color: #e6e1e5;
 }
-#Template1 #feedsCardImg {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#feedsCardImg {
     width: 100%;
 }
-#Template1 #feedsCardRowDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#feedsCardRowDiv {
     margin-bottom: 0;
 }
-#Template1 #feedsCardIcon {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#feedsCardIcon {
     color: #cac4d0;
     position: relative;
     right: 1vw;
 }
-#Template1 .feedsCardTxt1 {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.feedsCardTxt1 {
     font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -372,7 +2866,65 @@
     margin-left: 1vw;
     margin-top: 5vh;
 }
-#Template1 .feedsCardTxt {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.feedsCardTxt {
     margin: 0;
     font-family: "Roboto";
     font-style: normal;
@@ -383,7 +2935,65 @@
     color: #e6e1e5;
     margin-left: 1vw;
 }
-#Template1 .feedsCardTitle {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.feedsCardTitle {
     margin: 0;
     font-family: "Roboto", sans-serif;
     font-style: normal;
@@ -394,7 +3004,65 @@
     color: #e6e1e5;
     margin-left: 1vw;
 }
-#Template1 #feedsCardBtn {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#feedsCardBtn {
     background: transparent;
     box-shadow: none;
     border: 1px solid rgb(126, 125, 125);
@@ -411,16 +3079,190 @@
     text-transform: capitalize;
     margin-top: 3vh;
 }
-#Template1 #feedsFacebookIcon {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#feedsFacebookIcon {
     color: #6750a4;
     font-size: 1.2rem;
 }
-#Template1 .facebookFeedsIcon {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.facebookFeedsIcon {
     margin: 5vh 0;
 }
 
 /* Testimonials Secion */
-#Template1 #testiMapImg {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiMapImg {
     background-image: url("../media/img/map.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -429,7 +3271,65 @@
     height: 80vh;
     margin-top: 12vh;
 }
-#Template1 .testimonialDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.testimonialDiv {
     background: var(--primary);
     box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
     padding: 1vh 2vw;
@@ -458,7 +3358,65 @@
 .contactMainDiv .col.s12.m7.l7 {
     width: 100%;
 }
-#Template1 .singleReviewName {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.singleReviewName {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
@@ -468,7 +3426,65 @@
     letter-spacing: 0.1px;
     color: #ffffff;
 }
-#Template1 .singleReviewComment {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.singleReviewComment {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
@@ -478,30 +3494,378 @@
     letter-spacing: 0.1px;
     color: rgba(255, 255, 255, 0.7);
 }
-#Template1 .testiProImg {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.testiProImg {
     border-radius: 50%;
     position: relative;
     left: 10vw;
     top: 2.5vh;
     height: 57px;
 }
-#Template1 #testiSecondImgRowOneDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiSecondImgRowOneDiv {
     position: relative;
     bottom: 9vh;
 }
-#Template1 #testiSecondImgRowTwoDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiSecondImgRowTwoDiv {
     position: relative;
     bottom: 4vh;
 }
-#Template1 #testiSecondImgRowThreeDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiSecondImgRowThreeDiv {
     position: relative;
     top: 7vh;
 }
-#Template1 .contactContainDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.contactContainDiv {
     width: 70%;
     margin: auto;
 }
-#Template1 #testiLname,
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiLname,
 #testiFname,
 #testiEmail,
 #testiPhone {
@@ -510,10 +3874,242 @@
     padding: 0 1.5vw;
     width: 90%;
 }
-#Template1 #testiLname::placeholder,
-#Template1 #testiFname::placeholder,
-#Template1 #testiEmail::placeholder,
-#Template1 #testiPhone::placeholder {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiLname::placeholder,
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiFname::placeholder,
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiEmail::placeholder,
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiPhone::placeholder {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -522,14 +4118,130 @@
     letter-spacing: 0.1px;
     color: rgba(0, 0, 0, 0.6);
 }
-#Template1 #testiTextarea1 {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiTextarea1 {
     border: 1px solid #6750a4;
     border-radius: 10px;
     width: 99.5%;
     height: 22vh;
     padding: 3vh 1.5vw;
 }
-#Template1 #testiTextarea1::placeholder {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiTextarea1::placeholder {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -538,10 +4250,126 @@
     letter-spacing: 0.1px;
     color: rgba(0, 0, 0, 0.6);
 }
-#Template1 #testiContactFormTitleDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiContactFormTitleDiv {
     margin-bottom: 5vh;
 }
-#Template1 .testiContactBtn {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+.testiContactBtn {
     background: #6750a4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -554,12 +4382,128 @@
     line-height: 20px;
     height: 5vh;
 }
-#Template1 #testiContactBtnIcon {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#testiContactBtnIcon {
     color: #938f99;
     position: relative;
     top: 0.5vh;
 }
-#Template1 #tempPublishBtn {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#tempPublishBtn {
     /* width: 15vw;
     height: 5vh; */
     background-color: #7746ff;
@@ -576,7 +4520,65 @@
     text-transform: uppercase;
     margin-bottom: 3vh;
 }
-#Template1 #tempExitBtn {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#tempExitBtn {
     /* width: 15vw;
     height: 5vh; */
     background-color: rgb(25, 25, 25);
@@ -592,7 +4594,65 @@
     border-bottom-right-radius: 0;
     text-transform: uppercase;
 }
-#Template1 #tempPubExtDiv {
+nav {
+    background-color: var(--white);
+}
+.section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+}
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid var(--primary);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#tempPubExtDiv {
     position: fixed;
     right: 0;
     bottom: 40vh;
@@ -609,15 +4669,23 @@
         height: auto !important;
     }
     .hide-on-large-only.white {
-        margin-bottom: 20vh;
+        margin-bottom: 45vh;
     }
     .physiRightImg {
         position: unset !important;
     }
     .profileImg {
-        top: 9vh !important;
-        right: 0vw !important;
-        width: 100% !important;
+        top: 12vh !important;
+        right: 4vw;
+        width: 238px;
         height: auto;
+    }
+    .contactContainDiv {
+        width: 90%;
+        margin: auto;
+    }
+    #testiLname, #testiFname, #testiEmail, #testiPhone {
+        padding: 0;
+        width: 100%;
     }
 }

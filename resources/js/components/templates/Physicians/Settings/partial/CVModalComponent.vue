@@ -3,7 +3,7 @@
         <div id="cvModal" class="modal">
             <div class="modal-content">
                 <h4>Let us know more about you</h4>
-                <div v-show="view == 1">
+                <div v-show="view == 0">
                     <textarea
                         placeholder="Summary"
                         id=""
@@ -21,15 +21,7 @@
                             <input class="custom-class" v-model="cv.skills" />
                         </div>
                     </div>
-                    <div class="input-field col s12">
-                        <select v-model="cv.license">
-                            <option value="" disabled selected>
-                                Choose how you got your license
-                            </option>
-                            <option value="board">Board</option>
-                            <option value="government">Government</option>
-                        </select>
-                    </div>
+                    
                     <div>   
                         <button
                             @click.prevent="saveCV"
@@ -57,294 +49,237 @@
                         </button>
                     </div>
                 </div>
-                <div v-show="view == 2">
-                    <div v-if="edu == 0">
-                        <h6>Tell us about your time in Med School <small>Important so that patients can view your site</small></h6>
-                        <div class="row">
-                            <div class="input-field col s8">
-                                <input
-                                    placeholder="Institution"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvMedSchool.institution"
-                                />
-                            </div>
-                            <div class="col s4">
-                                <label>Browser Select</label>
-                                <select
-                                    class="browser-default"
-                                    v-model="cvMedSchool.type"
-                                >
-                                    <option value="" disabled selected>
-                                        Choose your degree
-                                    </option>
-                                    <option value="MD">MD</option>
-                                    <option value="DO">DO</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s3">
-                                <input
-                                    placeholder="Start(Year)"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvMedSchool.yearStart"
-                                />
-                            </div>
-                            <div class="input-field col s3">
-                                <input
-                                    type="text"
-                                    class="validate"
-                                    placeholder="Start(Month)"
-                                    v-model="cvMedSchool.monthStart"
-                                />
-                            </div>
-                            <div class="input-field col s3">
-                                <input
-                                    placeholder="End(Year)"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvMedSchool.yearEnd"
-                                />
-                            </div>
-                            <div class="input-field col s3">
-                                <input
-                                    type="text"
-                                    class="validate"
-                                    placeholder="End(Month)"
-                                    v-model="cvMedSchool.monthEnd"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-if="edu == 1">
-                        <h6>Tell us about your time in Undergrad School</h6>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input
-                                    placeholder="Institution"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvGradSchool.institution"
-                                />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s6">
-                                <input
-                                    placeholder=" Major"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvGradSchool.major"
-                                />
-                            </div>
-                            <div class="col s6">
-                                <input
-                                    placeholder=" Minor"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvGradSchool.minor"
-                                />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s3">
-                                <input
-                                    placeholder="Start(Year)"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvGradSchool.yearStart"
-                                />
-                            </div>
-                            <div class="input-field col s3">
-                                <input
-                                    type="text"
-                                    class="validate"
-                                    placeholder="Start(Month)"
-                                    v-model="cvGradSchool.monthStart"
-                                />
-                            </div>
-                            <div class="input-field col s3">
-                                <input
-                                    placeholder="End(Year)"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvGradSchool.yearEnd"
-                                />
-                            </div>
-                            <div class="input-field col s3">
-                                <input
-                                    type="text"
-                                    class="validate"
-                                    placeholder="End(Month)"
-                                    v-model="cvGradSchool.monthEnd"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-if="edu == 2">
-                        <h6>
-                            Any other school you attended, you want to add ?
-                            <small>Optional</small>
-                        </h6>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input
-                                    placeholder="Institution"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvAdditionalSchool.institution"
-                                />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s8">
-                                <input
-                                    placeholder="Title"
-                                    id="first_name"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvAdditionalSchool.title"
-                                />
-                            </div>
-                            <div class="input-field col s4">
-                                <input
-                                    placeholder="Degree"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvAdditionalSchool.degree"
-                                />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s3">
-                                <input
-                                    placeholder="Start(Year)"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvAdditionalSchool.yearStart"
-                                />
-                            </div>
-                            <div class="input-field col s3">
-                                <input
-                                    type="text"
-                                    class="validate"
-                                    placeholder="Start(Month)"
-                                    v-model="cvAdditionalSchool.monthStart"
-                                />
-                            </div>
-                            <div class="input-field col s3">
-                                <input
-                                    placeholder="End(Year)"
-                                    type="text"
-                                    class="validate"
-                                    v-model="cvAdditionalSchool.yearEnd"
-                                />
-                            </div>
-                            <div class="input-field col s3">
-                                <input
-                                    type="text"
-                                    class="validate"
-                                    placeholder="End(Month)"
-                                    v-model="cvAdditionalSchool.monthEnd"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <button v-if="!loading" class="btn waves waves-effect" @click.prevent="saveEdu">Save</button>
-                        <button  v-if="loading" class="btn">
-                            <div class="preloader-wrapper small active">
-                                <div
-                                    class="spinner-layer spinner-white-only"
-                                >
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </button>
-                        <a href="#!" class="btn-flat right" @click="edu != 2 ? edu ++ : null" title="skip to next">
-                            <i class="material-icons">chevron_right</i>
-                        </a>
-                        <a href="#!" class="btn-flat right" @click="edu != 0 ? edu -- : null">
-                            <i class="material-icons">chevron_left</i>
-                        </a>
-                    </div>
-                </div>
-                <div v-show="view == 3">
-                    <div>
-                        <h6>Tell us about your Trainings</h6>
-                        <div
-                            v-for="(training, index) in cvTrainings"
-                            :key="index"
-                        >
-                            <p>
-                                Trainings {{ index + 1 }}
-                                <i
-                                    @click="
-                                        removeTraining(index),
-                                            pushToTrash(training)
-                                    "
-                                    v-show="index != 0"
-                                    class="material-icons cursor right"
-                                    id="bioAddBtn"
-                                >
-                                    cancel
-                                </i>
-                            </p>
+                <div v-show="view == 1">
+                    <p v-if="!showEduForm">Did you attend UnderGrad School? <a class="btn waves waves-effect" @click="(showEdu(), edu = 0)">Yes</a> <a class="btn waves waves-effect" @click="(showEdu(), edu = 1)">No</a></p>
+                    <p v-if="edu === ''">Any other School you attended? <a class="btn waves waves-effect" @click="(edu = 2)">Yes</a> <a class="btn waves waves-effect" @click="procNo">No</a></p>
 
-                            <div class="row">
-                                <div class="input-field col s8">
+                    <div v-show="showEduForm">
+                        <div v-if="edu === 1">
+                            <h6>Tell us about your time in Med School <small>Important so that patients can view your site</small></h6>
+                            <div class="row" v-show="medSchoolInput == 0">
+                                <div class="input-field col s12" >
                                     <input
                                         placeholder="Institution"
                                         type="text"
                                         class="validate"
-                                        v-model="training.institution"
+                                        v-model="cvMedSchool.institution"
                                     />
                                 </div>
-                                <div class="input-field col s4">
+                            </div>
+                            <div class="row" v-show="medSchoolInput == 1">
+                                <div class="col s12">
+                                    <label>Browser Select</label>
+                                    <select
+                                        class="browser-default"
+                                        v-model="cvMedSchool.type"
+                                    >
+                                        <option value="" disabled selected>
+                                            Choose your degree
+                                        </option>
+                                        <option value="MD">MD</option>
+                                        <option value="DO">DO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row"  v-show="medSchoolInput == 2">
+                                <div class="input-field col s6">
                                     <input
-                                        placeholder="Location"
+                                        placeholder="Start(Year)"
                                         type="text"
                                         class="validate"
-                                        v-model="training.location"
+                                        v-model="cvMedSchool.yearStart"
+                                    />
+                                </div>
+                                <div class="input-field col s6">
+                                    <input
+                                        type="text"
+                                        class="validate"
+                                        placeholder="Start(Month)"
+                                        v-model="cvMedSchool.monthStart"
+                                    />
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input
+                                            placeholder="End(Year)"
+                                            type="text"
+                                            class="validate"
+                                            v-model="cvMedSchool.yearEnd"
+                                        />
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input
+                                            type="text"
+                                            class="validate"
+                                            placeholder="End(Month)"
+                                            v-model="cvMedSchool.monthEnd"
+                                        />
+                                    </div>
+                                </div>
+                                <button v-if="!loading" class="btn waves waves-effect" @click.prevent="saveMedSchoolTest">Save</button>
+                                <button  v-if="loading" class="btn">
+                                    <div class="preloader-wrapper small active">
+                                        <div
+                                            class="spinner-layer spinner-white-only"
+                                        >
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                                <!-- <p v-if="showEduForm">Did you attend any other School, you want to include? <a class="btn waves waves-effect" @click="(showEdu(), edu = 0)">Yes</a> <a class="btn waves waves-effect" @click="(showEdu(), edu = 1)">No</a></p> -->
+                            </div>
+                            <div class="row">
+                                <div class="text-center">
+                                    <div class="custom-badge" v-for="i in medSchoolCount" :class="{'active': i == (medSchoolInput+1)}" :key="i"></div>
+                                </div>
+                                <a href="#!" class="btn-flat right" @click="medSchoolInput != 2 ? medSchoolInput ++ : null" title="skip to next">
+                                    <i class="material-icons">chevron_right</i>
+                                </a>
+                                <a href="#!" class="btn-flat right" @click="medSchoolInput != 0 ? medSchoolInput -- : null">
+                                    <i class="material-icons">chevron_left</i>
+                                </a>
+                            </div>
+                        </div>
+                        <div v-if="edu === 0">
+                            <h6>Tell us about your time in Undergrad School</h6>
+                            <div class="row" v-show="undergradSchoolInput == 0">
+                                <div class="input-field col s12">
+                                    <input
+                                        placeholder="Institution"
+                                        type="text"
+                                        class="validate"
+                                        v-model="cvGradSchool.institution"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row" v-show="undergradSchoolInput == 1">
+                                <div class="col s12">
+                                    <input
+                                        placeholder=" Major"
+                                        type="text"
+                                        class="validate"
+                                        v-model="cvGradSchool.major"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row" v-show="undergradSchoolInput == 2">
+                                <div class="col s12">
+                                    <input
+                                        placeholder="Minor(Optional)"
+                                        type="text"
+                                        class="validate"
+                                        v-model="cvGradSchool.minor"
+                                    />
+                                </div>
+                            </div>
+                            <div v-show="undergradSchoolInput == 3">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input
+                                            placeholder="Start(Year)"
+                                            type="text"
+                                            class="validate"
+                                            v-model="cvGradSchool.yearStart"
+                                        />
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input
+                                            type="text"
+                                            class="validate"
+                                            placeholder="Start(Month)"
+                                            v-model="cvGradSchool.monthStart"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input
+                                            placeholder="End(Year)"
+                                            type="text"
+                                            class="validate"
+                                            v-model="cvGradSchool.yearEnd"
+                                        />
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input
+                                            type="text"
+                                            class="validate"
+                                            placeholder="End(Month)"
+                                            v-model="cvGradSchool.monthEnd"
+                                        />
+                                    </div>
+                                </div>
+                                <button v-if="!loading" class="btn waves waves-effect" @click.prevent="saveCont">Save And Continue to Med School</button>
+                                <button  v-if="loading" class="btn">
+                                    <div class="preloader-wrapper small active">
+                                        <div
+                                            class="spinner-layer spinner-white-only"
+                                        >
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                            <div class="row">
+                                <div class="text-center">
+                                    <div class="custom-badge" v-for="i in undergradSchoolCount" :class="{'active': i == (undergradSchoolInput+1)}" :key="i"></div>
+                                </div>
+                                <a href="#!" class="btn-flat right" @click="undergradSchoolInput != 3 ? undergradSchoolInput ++ : null" title="skip to next">
+                                    <i class="material-icons">chevron_right</i>
+                                </a>
+                                <a href="#!" class="btn-flat right" @click="undergradSchoolInput != 0 ? undergradSchoolInput -- : null">
+                                    <i class="material-icons">chevron_left</i>
+                                </a>
+                            </div>
+                        </div>
+                        <div v-if="edu === 2">
+                            <h6>
+                                Any other school you attended, you want to add ?
+                                <small>Optional</small>
+                            </h6>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input
+                                        placeholder="Institution"
+                                        type="text"
+                                        class="validate"
+                                        v-model="cvAdditionalSchool.institution"
                                     />
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col s6">
-                                    <label>Browser Select</label>
-                                    <select
-                                        class="browser-default"
-                                        v-model="training.specialty"
-                                    >
-                                        <option value="" disabled selected>
-                                            Is this a specialty
-                                        </option>
-                                        <option value="Y">Yes</option>
-                                        <option value="N">No</option>
-                                    </select>
+                                <div class="input-field col s8">
+                                    <input
+                                        placeholder="Title"
+                                        id="first_name"
+                                        type="text"
+                                        class="validate"
+                                        v-model="cvAdditionalSchool.title"
+                                    />
                                 </div>
-                                <div class="col s6">
-                                    <label>Browser Select</label>
-                                    <select
-                                        class="browser-default"
-                                        v-model="training.sub_specialty"
-                                    >
-                                        <option value="" disabled selected>
-                                            Is this a subspecialty
-                                        </option>
-                                        <option value="Y">Yes</option>
-                                        <option value="N">No</option>
-                                    </select>
+                                <div class="input-field col s4">
+                                    <input
+                                        placeholder="Degree"
+                                        type="text"
+                                        class="validate"
+                                        v-model="cvAdditionalSchool.degree"
+                                    />
                                 </div>
                             </div>
                             <div class="row">
@@ -353,7 +288,7 @@
                                         placeholder="Start(Year)"
                                         type="text"
                                         class="validate"
-                                        v-model="training.yearStart"
+                                        v-model="cvAdditionalSchool.yearStart"
                                     />
                                 </div>
                                 <div class="input-field col s3">
@@ -361,7 +296,7 @@
                                         type="text"
                                         class="validate"
                                         placeholder="Start(Month)"
-                                        v-model="training.monthStart"
+                                        v-model="cvAdditionalSchool.monthStart"
                                     />
                                 </div>
                                 <div class="input-field col s3">
@@ -369,7 +304,7 @@
                                         placeholder="End(Year)"
                                         type="text"
                                         class="validate"
-                                        v-model="training.yearEnd"
+                                        v-model="cvAdditionalSchool.yearEnd"
                                     />
                                 </div>
                                 <div class="input-field col s3">
@@ -377,74 +312,223 @@
                                         type="text"
                                         class="validate"
                                         placeholder="End(Month)"
-                                        v-model="training.monthEnd"
+                                        v-model="cvAdditionalSchool.monthEnd"
                                     />
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s6">
-                                    <label>Browser Select</label>
-                                    <select
-                                        class="browser-default"
-                                        v-model="training.type"
-                                        required
-                                    >
-                                        <option value="" disabled selected>
-                                            Training type
-                                        </option>
-                                        <option value="Internship">Internship</option>
-                                        <option value="Fellowship">Fellowship</option>
-                                        <option value="Residency">Residency</option>
-                                    </select>
-                                </div>
-                                <div class="col s6">
-                                    <input
-                                        type="text"
-                                        class="validate"
-                                        placeholder="Position during your training"
-                                        v-model="training.title"
-                                    />
-                                </div>
-                                
                             </div>
                         </div>
-
-                        <small>Have more Trainings </small>
-                        <button
-                            @click="addMoreTrainings"
-                            class="btn btn-small waves waves-effect"
-                        >
-                            Add More
-                        </button>
-                        <div>   
-                            <button
-                                @click.prevent="saveTraining"
-                                class="waves-effect waves-green btn"
-                                v-if="!loading"
-                            >
-                                Save
-                            </button>
+                        <!-- <div class="row">
+                            <button v-if="!loading" class="btn waves waves-effect" @click.prevent="saveEdu">Save</button>
                             <button  v-if="loading" class="btn">
-                            <div class="preloader-wrapper small active">
-                                <div
-                                    class="spinner-layer spinner-white-only"
-                                >
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="circle-clipper right">
-                                        <div class="circle"></div>
+                                <div class="preloader-wrapper small active">
+                                    <div
+                                        class="spinner-layer spinner-white-only"
+                                    >
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </button>
-                        </div>
+                            </button>
+                            <a href="#!" class="btn-flat right" @click="edu != 2 ? edu ++ : null" title="skip to next">
+                                <i class="material-icons">chevron_right</i>
+                            </a>
+                            <a href="#!" class="btn-flat right" @click="edu != 0 ? edu -- : null">
+                                <i class="material-icons">chevron_left</i>
+                            </a>
+                        </div> -->
                     </div>
                 </div>
-                <div v-show="view == 4">
+                <div v-show="view == 2">
+                    <div>
+                        <h6>Tell us about your Trainings</h6>
+                        <p v-if="!showTrainingForm">Did you have any internship to add? <a class="btn waves waves-effect" @click="showTrainingForm = !showTrainingForm, cvTraining = 'internship'">Yes</a> <a class="btn waves waves-effect" @click="saveAndNext">No</a></p>
+                        <p v-if="!showTrainingForm">Did you have any FellowShip? <a class="btn waves waves-effect" @click="showTrainingForm = !showTrainingForm, cvTraining = 'internship'">Yes</a> <a class="btn waves waves-effect" @click="saveAndNext">No</a></p>
+                        <p v-if="!showTrainingForm">Did you have any Residency? <a class="btn waves waves-effect" @click="showTrainingForm = !showTrainingForm, cvTraining = 'internship'">Yes</a> <a class="btn waves waves-effect" @click="saveAndNext">No</a></p>
+                        <div v-show="showTrainingForm">
+                            <div
+                                v-for="(training, index) in cvTrainings"
+                                :key="index"
+                            >
+                                <p>
+                                    Trainings {{ index + 1 }}
+                                    <i
+                                        @click="
+                                            removeTraining(index),
+                                                pushToTrash(training)
+                                        "
+                                        v-show="index != 0"
+                                        class="material-icons cursor right"
+                                        id="bioAddBtn"
+                                    >
+                                        cancel
+                                    </i>
+                                </p>
+    
+                                <div class="row" v-if="showTrainingInputs === 0">
+                                    <div class="input-field col s12">
+                                        <input
+                                            placeholder="Which organization / Institution?"
+                                            type="text"
+                                            class="validate"
+                                            v-model="training.institution"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row" v-if="showTrainingInputs === 1">
+                                    <div class="input-field col s12">
+                                        <input
+                                            placeholder="Whats the location of your training"
+                                            type="text"
+                                            class="validate"
+                                            v-model="training.location"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row" v-if="showTrainingInputs === 2">
+                                    <div class="input-field col s12">
+                                        <input
+                                            placeholder="Any Specialty?"
+                                            type="text"
+                                            class="validate"
+                                            v-model="training.specialty"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row" v-if="showTrainingInputs === 3">
+                                    <div class="input-field col s12">
+                                        <input
+                                            placeholder="Any SubSpecialty?"
+                                            type="text"
+                                            class="validate"
+                                            v-model="training.sub_specialty"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row" v-if="showTrainingInputs === 4">
+                                    <div class="input-field col s3">
+                                        <input
+                                            placeholder="Start(Year)"
+                                            type="text"
+                                            class="validate"
+                                            v-model="training.yearStart"
+                                        />
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <input
+                                            type="text"
+                                            class="validate"
+                                            placeholder="Start(Month)"
+                                            v-model="training.monthStart"
+                                        />
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <input
+                                            placeholder="End(Year)"
+                                            type="text"
+                                            class="validate"
+                                            v-model="training.yearEnd"
+                                        />
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <input
+                                            type="text"
+                                            class="validate"
+                                            placeholder="End(Month)"
+                                            v-model="training.monthEnd"
+                                        />
+                                    </div>
+
+                                    <div>   
+                                        <button
+                                            @click.prevent="saveTraining"
+                                            class="waves-effect waves-green btn"
+                                            v-if="!loading"
+                                        >
+                                            Save
+                                        </button>
+                                        <button  v-if="loading" class="btn">
+                                        <div class="preloader-wrapper small active">
+                                            <div
+                                                class="spinner-layer spinner-white-only"
+                                            >
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="text-center">
+                                        <div class="custom-badge" v-for="i in showTrainingInputCount" :class="{'active': i == (showTrainingInputCount+1)}" :key="i"></div>
+                                    </div>
+                                    <a href="#!" class="btn-flat right" @click="showTrainingInputs != 4 ? showTrainingInputs ++ : null" title="skip to next">
+                                        <i class="material-icons">chevron_right</i>
+                                    </a>
+                                    <a href="#!" class="btn-flat right" @click="showTrainingInputs != 0 ? showTrainingInputs -- : null">
+                                        <i class="material-icons">chevron_left</i>
+                                    </a>
+                                </div>
+                                <!-- <div class="row">
+                                    <div class="col s6">
+                                        <label>Browser Select</label>
+                                        <select
+                                            class="browser-default"
+                                            v-model="training.type"
+                                            required
+                                        >
+                                            <option value="" disabled selected>
+                                                Training type
+                                            </option>
+                                            <option value="Internship">Internship</option>
+                                            <option value="Fellowship">Fellowship</option>
+                                            <option value="Residency">Residency</option>
+                                        </select>
+                                    </div>
+                                    <div class="col s6">
+                                        <input
+                                            type="text"
+                                            class="validate"
+                                            placeholder="Position during your training"
+                                            v-model="training.title"
+                                        />
+                                    </div>
+                                    
+                                </div> -->
+                            </div>
+                            <small>Have more Trainings </small>
+                            <button
+                                @click="addMoreTrainings"
+                                class="btn btn-small waves waves-effect"
+                            >
+                                Is this an fellowship?
+                            </button>
+                            <button
+                                @click="addMoreTrainings"
+                                class="btn btn-small waves waves-effect"
+                            >
+                                Is this an Residency?
+                            </button>
+                        </div>
+
+                        
+                    </div>
+                </div>
+                <div v-show="view == 3">
                     <div>
                         <h6>Tell us about your Experiences</h6>
                         <div
@@ -465,7 +549,7 @@
                                 </i>
                             </p>
 
-                            <div class="row">
+                            <div class="row" v-show="showExperienceInputs === 0">
                                 <div class="input-field col s12">
                                     <input
                                         placeholder="Institution"
@@ -475,8 +559,8 @@
                                     />
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s8">
+                            <div class="row" v-show="showExperienceInputs === 1">
+                                <div class="input-field col s12">
                                     <input
                                         placeholder="Position you held"
                                         type="text"
@@ -484,6 +568,8 @@
                                         v-model="experience.position"
                                     />
                                 </div>
+                            </div>
+                            <div class="row" v-show="showExperienceInputs === 2">
                                 <div class="input-field col s4">
                                     <input
                                         placeholder="Location"
@@ -493,8 +579,8 @@
                                     />
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s3">
+                            <div class="row" v-show="showExperienceInputs === 3">
+                                <div class="input-field col s6">
                                     <input
                                         placeholder="Start(Year)"
                                         type="text"
@@ -502,7 +588,7 @@
                                         v-model="experience.yearStart"
                                     />
                                 </div>
-                                <div class="input-field col s3">
+                                <div class="input-field col s6">
                                     <input
                                         type="text"
                                         class="validate"
@@ -510,7 +596,7 @@
                                         v-model="experience.monthStart"
                                     />
                                 </div>
-                                <div class="input-field col s3">
+                                <div class="input-field col s6">
                                     <input
                                         placeholder="End(Year)"
                                         type="text"
@@ -518,7 +604,7 @@
                                         v-model="experience.yearEnd"
                                     />
                                 </div>
-                                <div class="input-field col s3">
+                                <div class="input-field col s6">
                                     <input
                                         type="text"
                                         class="validate"
@@ -527,38 +613,78 @@
                                     />
                                 </div>
                             </div>
-                            <div class="row" v-for="(input, indexact) in experience.activities" :key="indexact">
-                                <div class="input-field col s10">
-                                    <input
-                                        placeholder="Responsibilities"
-                                        type="text"
-                                        class="validate"
-                                        v-model="input.activity"
-                                    />
+                            <div v-show="showExperienceInputs === 4">
+                                <div class="row" v-for="(input, indexact) in experience.activities" :key="indexact">
+                                    <div class="input-field col s10">
+                                        <input
+                                            placeholder="Responsibilities"
+                                            type="text"
+                                            class="validate"
+                                            v-model="input.activity"
+                                        />
+                                    </div>
+                                    <div class="col s2">
+                                        <i
+                                            @click="
+                                                addMoreActitvity(index)
+                                            "
+                                            class="material-icons cursor right"
+                                            id="bioAddBtn"
+                                        >
+                                            add
+                                        </i>
+    
+                                        <i
+                                            @click="
+                                                removeActivity(index, indexact), activityToTrash(input)
+                                            "
+                                            v-show="indexact != 0"
+                                            class="material-icons cursor right"
+                                            id="bioAddBtn"
+                                        >
+                                            cancel
+                                        </i>
+    
+                                    </div>
                                 </div>
-                                <div class="col s2">
-                                    <i
-                                        @click="
-                                            addMoreActitvity(index)
-                                        "
-                                        class="material-icons cursor right"
-                                        id="bioAddBtn"
-                                    >
-                                        add
-                                    </i>
 
-                                    <i
-                                        @click="
-                                            removeActivity(index, indexact), activityToTrash(input)
-                                        "
-                                        v-show="indexact != 0"
-                                        class="material-icons cursor right"
-                                        id="bioAddBtn"
+                                <div>   
+                                    <button
+                                        @click.prevent="saveExperience"
+                                        class="waves-effect waves-green btn"
+                                        v-if="!loading"
                                     >
-                                        cancel
-                                    </i>
-
+                                        Save
+                                    </button>
+                                    <button  v-if="loading" class="btn">
+                                    <div class="preloader-wrapper small active">
+                                        <div
+                                            class="spinner-layer spinner-white-only"
+                                        >
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="text-center">
+                                    <div class="custom-badge" v-for="i in showExperienceInputCount" :class="{'active': i == (showTrainingInputCount+1)}" :key="i"></div>
                                 </div>
+                                <a href="#!" class="btn-flat right" @click="showExperienceInputs != 4 ? showExperienceInputs ++ : null" title="skip to next">
+                                    <i class="material-icons">chevron_right</i>
+                                </a>
+                                <a href="#!" class="btn-flat right" @click="showExperienceInputs != 0 ? showExperienceInputs -- : null">
+                                    <i class="material-icons">chevron_left</i>
+                                </a>
                             </div>
                         </div>
 
@@ -569,35 +695,10 @@
                         >
                             Add More
                         </button>
-                        <div>   
-                            <button
-                                @click.prevent="saveExperience"
-                                class="waves-effect waves-green btn"
-                                v-if="!loading"
-                            >
-                                Save
-                            </button>
-                            <button  v-if="loading" class="btn">
-                            <div class="preloader-wrapper small active">
-                                <div
-                                    class="spinner-layer spinner-white-only"
-                                >
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </button>
-                        </div>
+                        
                     </div>
                 </div>
-                <div v-show="view == 5">
+                <div v-show="view == 4">
                     <div
                         v-for="(reference, index) in cvReferences"
                         :key="index"
@@ -616,8 +717,8 @@
                                 cancel
                             </i>
                         </p>
-                        <div class="row">
-                            <div class="input-field col s2">
+                        <div class="row" v-show="showRefferalInputs === 0">
+                            <div class="input-field col s12">
                                 <input
                                     placeholder="Dr."
                                     type="text"
@@ -625,7 +726,9 @@
                                     v-model="reference.title"
                                 />
                             </div>
-                            <div class="input-field col s5">
+                        </div>
+                        <di class="row" v-show="showRefferalInputs === 1">
+                            <div class="input-field col s12">
                                 <input
                                     placeholder="Name"
                                     type="text"
@@ -633,7 +736,9 @@
                                     v-model="reference.name"
                                 />
                             </div>
-                            <div class="input-field col s5">
+                        </di>
+                        <div class="row" v-show="showRefferalInputs === 2">
+                            <div class="input-field col s12">
                                 <input
                                     placeholder="Position"
                                     type="text"
@@ -642,8 +747,8 @@
                                 />
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s6">
+                        <div class="row" v-show="showRefferalInputs === 3">
+                            <div class="input-field col s12">
                                 <input
                                     placeholder="Harvard University, England"
                                     type="text"
@@ -651,24 +756,18 @@
                                     v-model="reference.location"
                                 />
                             </div>
-                            <div class="input-field col s6">
-                                <input
-                                    placeholder="Phone"
-                                    type="text"
-                                    class="validate"
-                                    v-model="reference.phone"
-                                />
                             </div>
-                        </div>
-                    </div>
-                    <small>Have more Referreal </small>
-                    <button
-                        @click="addMoreReferences"
-                        class="btn btn-small waves waves-effect"
-                    >
-                        Add More
-                    </button>
-                    <div>   
+                            <div class="row" v-show="showRefferalInputs === 4">
+                                <div class="input-field col s12">
+                                    <input
+                                        placeholder="Phone"
+                                        type="text"
+                                        class="validate"
+                                        v-model="reference.phone"
+                                    />
+                                </div>
+
+                                <div>   
                         <button
                             @click.prevent="saveReference"
                             class="waves-effect waves-green btn"
@@ -693,6 +792,56 @@
                                 </div>
                             </div>
                         </button>
+                    </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="text-center">
+                            <div class="custom-badge" v-for="i in showRefferalInputCount" :class="{'active': i == (showRefferalInputCount+1)}" :key="i"></div>
+                        </div>
+                        <a href="#!" class="btn-flat right" @click="showRefferalInputs != 4 ? showRefferalInputs ++ : null" title="skip to next">
+                            <i class="material-icons">chevron_right</i>
+                        </a>
+                        <a href="#!" class="btn-flat right" @click="showRefferalInputs != 0 ? showRefferalInputs -- : null">
+                            <i class="material-icons">chevron_left</i>
+                        </a>
+                    </div>
+                    <small>Have more Referreal </small>
+                    <button
+                        @click="addMoreReferences"
+                        class="btn btn-small waves waves-effect"
+                    >
+                        Add More
+                    </button>
+                    
+                </div>
+                <div v-show="view == 5">
+                    <h6>License</h6>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input
+                                placeholder="What year you obtained your license?"
+                                type="text"
+                                class="validate"
+                                v-model="license.year"
+                            />
+                        </div>
+                        <div class="input-field col s12">
+                            <input
+                                placeholder="How was this license obtained?"
+                                type="text"
+                                class="validate"
+                                v-model="license.type"
+                            />
+                        </div>
+                        <div class="input-field col s12">
+                            <input
+                                placeholder="Location of issuance?"
+                                type="text"
+                                class="validate"
+                                v-model="license.location"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -722,6 +871,24 @@
         </div>
     </div>
 </template>
+<style>
+    .custom-badge {
+        width: 15px;
+        height: 15px;
+        background-color: rgb(175, 173, 173);
+        border-radius: 15px;
+    }
+    .custom-badge.active {
+        background-color: var(--primary);
+    }
+    .custom-badge.input-filled {
+        background-color: rgb(98, 235, 98);
+    }
+    .text-center {
+        display: flex;
+        justify-content: center;
+    }
+</style>
 <script>
     export default {
         name: "CvModal",
@@ -740,6 +907,7 @@
             return {
                 activities: [],
                 activity: "",
+                cvTraining: "",
                 cv: {
                     summary: "",
                     skills: [],
@@ -815,8 +983,28 @@
                 cvTrainingUpdate: 0,
                 cvReferencesRemoved: [],
                 edu: 0,
+                license: {
+                    year: "",
+                    issuance: "",
+                    location: "",
+                    type: "",
+                },
                 loading: false,
-                view: 1,
+                showEduForm: false,
+                view: 0,
+                medSchoolInput: 0,
+                medSchoolCount: 3,
+                undergradSchoolInput: 0,
+                undergradSchoolCount: 4,
+                showTrainingForm: false,
+                showTrainingInputs: 0,
+                showTrainingInputCount: 4,
+                showExperienceForm: false,
+                showExperienceInputs: 0,
+                showExperienceInputCount: 4,
+                showReferralForm: false,
+                showRefferalInputs: 0,
+                showRefferalInputCount: 4
             };
         },
         methods: {
@@ -870,7 +1058,7 @@
                 this.cvExperiences.splice(index, 1);
             },
             previous(){
-                this.view != 1 ? this.view-- : null;
+                this.view != 0 ? this.view-- : null;
             },
             pushToTrash(e) {
                 this.view == 3
@@ -918,6 +1106,9 @@
                             });
                         }
                     });
+            },
+            saveCont() {
+                this.edu = 1;
             },
             saveEdu () {
                 if (this.edu == 0){
@@ -1129,6 +1320,15 @@
                         }
                     });
             },
+            showEdu() {
+                this.showEduForm = !this.showEduForm;
+            },
+            saveMedSchoolTest() {
+                this.edu = "";
+            },
+            procNo() {
+                this.saveAndNext();
+            }
         },
         watch: {
             cv(newVal, oldVal) {

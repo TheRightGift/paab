@@ -856,8 +856,9 @@ nav .sidenav-trigger {
         height: 0px;
         z-index: 997;
     }
+    
     .hide-on-large-only.white {
-        margin-bottom: 15vh;
+        margin-bottom: 40vh;
     }
     .col.s12.m6.l6.rm_mg_pd {
         /* position: absolute;
@@ -893,9 +894,9 @@ nav .sidenav-trigger {
     .physiRightImg {
         width: 100%;
         float: none !important;
-        height: 30vh !important;
+        height: 45vh !important;
         object-fit: cover;
-        margin-top: 1vh;
+        margin-top: 2vh;
         object-position: top center;
     }
     .surgeonHeroClientName {

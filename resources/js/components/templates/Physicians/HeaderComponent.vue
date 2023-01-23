@@ -58,17 +58,17 @@
             </div>
             </li> -->
             <li class="sideNavLinkMgTp">
-                <a href="#about" id="physiTempNavLinks">About Me</a>
+                <a href="#about" class="physiTempNavLinks">About Me</a>
             </li>
             <li class="sideNavLinkMgTp">
-                <a href="#services" id="physiTempNavLinks">Services</a>
+                <a href="#services" class="physiTempNavLinks">Services</a>
             </li>
             <li>
-                <a href="#experience" id="physiTempNavLinks">Experience</a>
+                <a href="#experience" class="physiTempNavLinks">Experience</a>
             </li>
-            <li><a href="#" id="physiTempNavLinks">Feeds</a></li>
+            <li><a href="#" class="physiTempNavLinks">Feeds</a></li>
             <li>
-                <a href="#testimonials" id="physiTempNavLinks"
+                <a href="#testimonials" class="physiTempNavLinks"
                     >Testimonials</a
                 >
             </li>
@@ -76,7 +76,7 @@
                 <div class="divider"></div>
             </li>
             <li>
-                <a href="#contact" id="physiTempContactBtn">Contact Me</a>
+                <a href="#contact" class="physiTempContactBtn">Contact Me</a>
             </li>
         </ul>
     </nav>
