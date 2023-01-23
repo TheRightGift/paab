@@ -169,7 +169,9 @@
                         </div>
                     </div>
                     <!-- Template Stuff -->
-                    
+                    <!--div class="row">
+                        <a class="waves-effect waves-light btn" @click="pushCities()">Get Cities</a>
+                    </div-->
                 </div>
                 <!-- <InnerFooterComponent /> -->
             </div>
@@ -222,7 +224,8 @@
                 templates: [],
                 user: {},
                 view: 0,
-                mail: []
+                mail: [],
+                cities: null
             };
         },
         mounted() {
@@ -231,8 +234,61 @@
             this.getTemplates();
             this.getClientsWebsites();
             setInterval(this.getCurrentTimeInterval, 1000);
+            this.getCities();
         },
         methods: {
+            pushCities(){
+                let postCity = async (city) => {
+                    return axios
+                    .post("https://whitecoatdomain.com/api/insertCity", city)
+                    .then((res) => {
+                        console.log(city.id);
+                        // this.cities.shift();
+                        return true;
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        return false
+                    });
+                }
+
+
+                // this.cities.forEach(async function(city){
+                //     await postCity(city);
+                // });
+
+                let i = 0;
+                let citiesLen = this.cities.length;
+
+                function myLoop(cities) {   
+                    setTimeout(async function() {   //  call a 3s setTimeout when the loop is called
+                        console.log(cities[i]['id']);
+
+                        await postCity(cities[i]);
+                        i++;                    //  increment the counter
+                        if (i < citiesLen) {           //  if the counter < 10, call the loop function
+                            myLoop(cities);             //  ..  again which will trigger another 
+                        }                       //  ..  setTimeout()
+                    }, 2500);
+                    // console.log(cities[i]['id']);
+                }
+
+                myLoop(this.cities); 
+
+            },
+            getCities(){
+                axios
+                .get("/api/getCities/0")
+                .then((res) => {
+                    // console.log(res.data.cities);
+                    this.cities = res.data.cities;
+                    alert('done');
+                    alert('done')
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            },
             createTemplate() {
                 this.loading = !this.loading;
                 let formData = new FormData();

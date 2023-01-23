@@ -9,6 +9,10 @@ class City extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name', 'state_id', 'state_code', 'country_id', 'country_code', 'latitude', 'longitude', 'flag', 'wikiDataId'
+    ];
+
     public function users() {
         return $this->hasMany(User::class);
     }
