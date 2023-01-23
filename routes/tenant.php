@@ -22,7 +22,7 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
 Route::middleware([
     'web',
-    InitializeTenancyByDomain::class,
+    InitializeTenancyByDomainOrSubdomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::get('/', [App\Http\Controllers\TenantController::class, 'template']);
@@ -31,13 +31,13 @@ Route::middleware([
 });
 Route::middleware([
     'web',
-    InitializeTenancyByDomain::class,
+    InitializeTenancyByDomainOrSubdomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
 });
 // ['middleware'=>'auth:api']
-Route::middleware(['auth:api',InitializeTenancyByDomain::class,
+Route::middleware(['auth:api',InitializeTenancyByDomainOrSubdomain::class,
 PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     
     Route::post('/bio', [App\Http\Controllers\Tenants\BioController::class, 'store']);

@@ -63,3 +63,5 @@ Route::get('countries', [CountryController::class, 'index']);
 Route::get('states/{country_id}', [CountryController::class, 'states']);
 Route::get('cities/{state_id}', [CountryController::class, 'cities']);
 Route::post('verifyOTP', [AuthController::class, 'verifyOTP']);
+// Route::get('getCities/{startRow}', [CountryController::class, 'getCities']);
+// Route::post('insertCity', [CountryController::class, 'insertCity']);
