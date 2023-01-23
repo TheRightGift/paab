@@ -1,6 +1,6 @@
 <template>
-    <div class="section scrollspy physiExpContainerDiv" id="experience" v-show="experience == null">
-        <div class="row">
+    <div class="section scrollspy physiExpContainerDiv" id="experience" >
+        <div class="row" v-show="experience == null">
             <div class="col s12">
                 <h3 class="title">
                     MY EXPERIENCE
@@ -45,30 +45,7 @@
                 
             </div>       
         </div>
-    </div>
-    <div class="section scrollspy physiExpContainerDiv" id="experience" v-show="experience != null">
-        <!-- <div class="row">
-            <div class="col s12">
-                <h3 class="title">
-                    MY EXPERIENCE
-                    <span class="primaryColorBoxDesign2"></span>
-                </h3>
-                <div class="experienceImgContainDiv">
-                    <div class="surgeonBannerImgDiv">
-                        <img  v-if="preview == '1'" src="/media/img/surgeonbanner.png"  alt="surgeonbanner.png" class="surgeonBannerImg">
-                        <img  v-else :src="location+'media/img/surgeonbanner.png'"  alt="surgeonbanner.png" class="surgeonBannerImg">
-                    </div>
-
-                    <div class="experienceAchieveDiv">
-                        <div class="experience" v-for="(feat, index) in feats" :key="index">
-                            <p class="experienceTitle">{{feat}} {{index == 'experience' ? 'Yrs' : null}}</p>
-                            <p class="experienceTxt">{{index}} {{ index == 'volunteer' ? 'services' : null }} {{ index == 'ward' ? 'rounds' : null}}</p>
-                        </div>
-                    </div>
-                </div>  
-            </div>
-        </div> -->
-        <div class="row">
+        <div class="row" v-show="experience != null">
             <div class="col s12">
                 <h3 class="title">
                     MY EXPERIENCE

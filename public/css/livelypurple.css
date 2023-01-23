@@ -1,5 +1,80 @@
-#Template1 #physiPortPageLogo {
-    font-family: 'Montserrat', sans-serif;
+:root {
+    --primary: #6750a4;
+    --secondary: #6750A4;
+    --black: #000000;
+    --white: #ffffff;
+
+    --component: rgba(0, 0, 0, 0.5);
+}
+a.active {
+    border-bottom: 4px solid var(--primary);
+    padding: 0px;
+}
+
+nav {
+    background-color: var(--white);
+}
+#nav-mobile.section {
+    padding-top: 1rem;
+}
+.section {
+    /* padding-top: 1rem !important; */
+    /* padding-bottom: 1rem !important; */
+}
+/* .navbarWrap {
+    width: 90%;
+    margin: 0 auto;
+} */
+a.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+}
+a.physiTempNavLinks {
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    position: relative;
+    bottom: 2vh;
+}
+a.physiTempNavLinks:hover {
+    background-color: white;
+    border-bottom: 4px solid rgba(113, 96, 187, 0.5);
+    padding: 0;
+    border-left: none;
+    margin: 0 0.96vw;
+}
+
+a.physiTempNavLinks.active {
+    padding: 0;
+    border-left: none;
+    margin: 0 0.9vw;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+a.physiTempContactBtn {
+    background-color: var(--primary);
+    padding: 2.5vh 1.5vw;
+    margin-top: 10px;
+    line-height: 1px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--white);
+    position: relative;
+    bottom: 2vh;
+    right: -2vw;
+}
+a.physiTempContactBtn:hover {
+    background-color: var(--black);
+    color: var(--primary);
+    border-left: var(--primary);
+    padding-left: 1.5vw;
+}
+a.physiTempContactBtn.active {
+    padding-left: 1.5vw;
+    border-left: var(--primary);
+}
+#physiPortPageLogo {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 1.25rem;
@@ -15,27 +90,30 @@
     line-height: 22px;
     margin-left: 0.7vw;
 }
-#Template1 .physiTempContactBtn {
+
+.physiTempContactBtn {
     border-radius: 6px;
-    width: 130px;
+    /* width: 130px; */
     height: 40px;
     margin-top: 12px;
     text-align: center;
     line-height: 42px;
     font-weight: 600;
     font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    background: #6750A4;
-    color: #FFFFFF;
+    font-family: "Montserrat", sans-serif;
+    background: var(--primary);
+    color: #ffffff;
     border: none;
 }
-#Template1 .physiTempContactBtn:hover {
-    background: #FFFFFF;
-    color: #6750A4;
+
+.physiTempContactBtn:hover {
+    background: #ffffff;
+    color: var(--primary);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-#Template1 .profileImg {
-    background: #6750A4;
+
+.profileImg {
+    background: var(--primary);
     box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     transform: rotate(-3.7deg);
@@ -45,7 +123,8 @@
     top: 20vh;
     right: 12vw;
 }
-#Template1 .physiRightImg {
+
+.physiRightImg {
     position: absolute;
     left: 33px;
     top: 30px;
@@ -53,32 +132,43 @@
     box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
     transform: rotate(1.5deg);
 }
-#Template1 .physiContainerDiv {
+
+.physiContainerDiv#services {
+    width: 84.5%;
+    margin: auto;
+    padding-top: 25vh;
+}
+
+.physiContainerDiv#about {
     width: 84.5%;
     margin: auto;
     padding-top: 36vh;
 }
-#Template1 .physiTempNavLinks {
+
+.physiTempNavLinks {
     font-weight: 600;
     font-size: 1.1rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     border-left: none;
     padding: 0;
-    margin-right: 4.5vw;
+    /* margin-right: 4.5vw; */
     color: rgb(34, 34, 34);
     padding-bottom: 3vh;
 }
-#Template1 .physiTempNavLinks:hover {
+
+.physiTempNavLinks:hover {
     background-color: white;
-    border-bottom: 4px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 4px solid var(--primary);
 }
-#Template1 .physiTempNavLinks.active {
-    border-bottom: 4px solid rgba(0, 0, 0, 0.91);
+
+.physiTempNavLinks.active {
+    border-bottom: 4px solid var(--primary);
     padding: 0 0 3vh 0;
 }
 
-#Template1 .physiTempNameTitle {
-    font-family: 'Montserrat', sans-serif;
+
+.physiTempNameTitle {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
@@ -87,19 +177,21 @@
     color: #000000;
     margin: 0 0 0 0.2vw;
 }
-#Template1 .physiTempName {
-    font-family: 'Montserrat', sans-serif;
+
+.physiTempName {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 2.5rem;
     line-height: 35px;
     letter-spacing: 0.1px;
-    color: #6750A4;
+    color: var(--primary);
     margin-top: 3vh;
     margin-bottom: 3vh;
 }
-#Template1 .physiSummaryTxt {
-    font-family: 'Poppins', sans-serif;
+
+.physiSummaryTxt {
+    font-family: "Poppins", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
@@ -107,19 +199,20 @@
     letter-spacing: 0.1px;
     color: rgba(0, 0, 0, 0.8);
 }
-#Template1 .physiTempBtn {
+
+.physiTempBtn {
     background: transparent;
-    border: 1px solid #6750A4;
+    border: 1px solid var(--primary);
     box-shadow: none;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     border-radius: 100px;
     margin-top: 3vh;
     text-decoration: none;
-    color: #6750A4;
+    color: var(--primary);
     text-align: center;
-    letter-spacing: .5px;
-    -webkit-transition: background-color .2s ease-out;
-    transition: background-color .2s ease-out;
+    letter-spacing: 0.5px;
+    -webkit-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
     cursor: pointer;
     /* background-color: var(--black) !important; */
     font-size: 14px;
@@ -132,8 +225,9 @@
     vertical-align: middle;
     -webkit-tap-highlight-color: transparent;
 }
-#Template1 .servicesMainTitle {
-    font-family: 'Montserrat', sans-serif;
+
+.servicesMainTitle {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
@@ -142,19 +236,21 @@
     text-align: center;
     letter-spacing: 0.1px;
     color: #000000;
-    margin: 25vh 0 0 0;
+    margin: 0 0 0 0;
 }
-#Template1 .servicesWhatIdo {
-    font-family: 'Montserrat', sans-serif;
+
+.servicesWhatIdo {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 2.25rem;
     line-height: 44px;
-    color: #6750A4;
+    color: var(--primary);
     text-align: center;
     margin: 0 0 10vh 0;
 }
-#Template1 .servicesIconsDiv {
+
+.servicesIconsDiv {
     /* position: absolute; */
     width: 50px;
     height: 50px;
@@ -162,14 +258,15 @@
     top: 940px; */
     border-radius: 50%;
     margin: 0 auto;
-    background: #6750A4;
+    background: var(--primary);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#Template1 .servcesHeading {
-    font-family: 'Montserrat', sans-serif;
+
+.servcesHeading {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1.563rem;
@@ -179,11 +276,17 @@
     letter-spacing: 0.1px;
     color: #000000;
 }
-#Template1 .servicesTitle, .servcesHeading.forSurgeon, .title, .feedsMainTitle.forSurgeon, .greenBg {
+
+.servicesTitle,
+.servcesHeading.forSurgeon,
+.title,
+.feedsMainTitle.forSurgeon,
+.greenBg {
     display: none;
 }
-#Template1 .servicesTxt {
-    font-family: 'Poppins', sans-serif;
+
+.servicesTxt {
+    font-family: "Poppins", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
@@ -193,27 +296,34 @@
     letter-spacing: 0.1px;
     color: rgba(0, 0, 0, 0.7);
 }
-#Template1 .servicesIcons {
-    color: #FFFFFF;
+
+.servicesIcons {
+    color: #ffffff;
     margin: 1.3vh 0 0 0.7vw;
     font-size: 2.3rem;
 }
-#Template1 .servicesIcons1 {
-    color: #FFFFFF;
+
+.servicesIcons1 {
+    color: #ffffff;
     /* margin: 1.3vh 0 0 0.7vw; */
     font-size: 2rem;
 }
-#Template1 .servicesIcons2 {
-    color: #FFFFFF;
+
+.servicesIcons2 {
+    color: #ffffff;
     /* margin: 1.3vh 0 0 0.7vw; */
     font-size: 2rem;
 }
-#Template1 .physiExpContainerDiv, .feedsContainDiv {
+
+.physiExpContainerDiv,
+.feedsContainDiv {
     width: 84.5%;
     margin: auto;
 }
-#Template1 .expMainTitle, .feedsTitle { 
-    font-family: 'Montserrat', sans-serif;
+
+.expMainTitle,
+.feedsTitle {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
@@ -224,20 +334,22 @@
     color: #000000;
     margin: 9vh 0 0 0;
 }
-#Template1 .expMainTxt, .feeds {
-    font-family: 'Montserrat', sans-serif;
+
+.expMainTxt,
+.feeds {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: lighter;
     font-size: 2.25rem;
     line-height: 44px;
-    color: #6750A4;
+    color: var(--primary);
     text-align: center;
     margin: 0 0 10vh 0;
 }
 .feedsContainDiv {
     margin-top: 9vh;
 }
-.experienceImgContainDiv .col.s12.m3.l2{
+.experienceImgContainDiv .col.s12.m3.l2 {
     width: 16.6666666667%;
     margin-left: auto;
 }
@@ -246,13 +358,15 @@
     margin-left: auto;
     float: right;
 }
-#Template1 .experiences {
-    background: #6750A4;
+
+.experiences {
+    background: var(--primary);
     border-radius: 10px;
     padding: 3vh 1.5vw;
 }
-#Template1 .experienceTitle {
-    font-family: 'Montserrat', sans-serif;
+
+.experienceTitle {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 2.25rem;
@@ -260,11 +374,12 @@
     text-align: center;
     align-items: center;
     letter-spacing: 0.1px;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0 0 1vh 0;
 }
-#Template1 .experienceTxt {
-    font-family: 'Montserrat', sans-serif;
+
+.experienceTxt {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: lighter;
     font-size: 0.875rem;
@@ -272,128 +387,146 @@
     align-items: center;
     text-align: center;
     letter-spacing: 0.1px;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0 0 1.5vh 0;
 }
-#Template1 .expLeftBarInnerDiv {
+
+.expLeftBarInnerDiv {
     border-bottom: 1px solid rgba(217, 217, 217, 0.65);
 }
-#Template1 .expLeftBarInnerDiv:last-child {
+
+.expLeftBarInnerDiv:last-child {
     border-bottom: none;
 }
-#Template1 .expLeftBarInnerDiv .experience {
+
+.expLeftBarInnerDiv .experience {
     padding: 5.7vh 0 3vh;
 }
-#Template1 .bannerImg {
+
+.bannerImg {
     width: 100%;
     height: 73.5vh;
     border-radius: 10px;
 }
-#Template1 #feedsTwitterIcon {
-    color: #6750A4;
+
+#feedsTwitterIcon {
+    color: var(--primary);
     font-size: 1.3rem;
 }
-#Template1 .feedsMainTxt {
-    font-family: 'Montserrat', sans-serif;
+
+.feedsMainTxt {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: lighter;
     font-size: 2.25rem;
     line-height: 44px;
-    color: #6750A4;
+    color: var(--primary);
     text-align: center;
     margin: 0 0 1vh 0;
 }
-#Template1 .feedsCard {
-    background: #6750A4;
-    border: 1px solid #938F99;
+
+.feedsCard {
+    background: var(--primary);
+    border: 1px solid #938f99;
     border-radius: 12px;
     padding: 2vh 0vw;
 }
-#Template1 .feedsProDiv {
-    background: #D0BCFF;
+
+.feedsProDiv {
+    background: #d0bcff;
     height: 40px;
     width: 40px;
     border-radius: 50%;
     text-align: center;
     margin-left: 1vw;
 }
-#Template1 .feedsProImg {
+
+.feedsProImg {
     font-size: 1.2rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     line-height: 40px;
 }
-#Template1 .feedsCardHeader {
+
+.feedsCardHeader {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
     line-height: 24px;
     letter-spacing: 0.1px;
-    color: #E6E1E5;
+    color: #e6e1e5;
 }
-#Template1 .feedsCardSubhead {
+
+.feedsCardSubhead {
     margin: 0;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
     font-size: 0.875rem;
     line-height: 20px;
     letter-spacing: 0.25px;
-    color: #E6E1E5;
+    color: #e6e1e5;
 }
-#Template1 #feedsCardImg {
+
+#feedsCardImg {
     width: 100%;
 }
-#Template1 #feedsCardRowDiv {
+
+#feedsCardRowDiv {
     margin-bottom: 0;
 }
-#Template1 #feedsCardIcon {
-    color: #CAC4D0;
+
+#feedsCardIcon {
+    color: #cac4d0;
     position: relative;
     right: 1vw;
 }
-#Template1 .feedsCardTxt1 {
-    font-family: 'Roboto', sans-serif;
+
+.feedsCardTxt1 {
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 0.875rem;
     line-height: 20px;
     letter-spacing: 0.25px;
-    color: #CAC4D0;
+    color: #cac4d0;
     width: 70%;
     margin-left: 1vw;
     margin-top: 5vh;
 }
-#Template1 .feedsCardTxt {
+
+.feedsCardTxt {
     margin: 0;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
     font-size: 0.875rem;
     line-height: 20px;
     letter-spacing: 0.25px;
-    color: #E6E1E5;
+    color: #e6e1e5;
     margin-left: 1vw;
 }
-#Template1 .feedsCardTitle {
+
+.feedsCardTitle {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
     line-height: 24px;
     letter-spacing: 0.1px;
-    color: #E6E1E5;
+    color: #e6e1e5;
     margin-left: 1vw;
 }
-#Template1 #feedsCardBtn {
+
+#feedsCardBtn {
     background: transparent;
     box-shadow: none;
     border: 1px solid rgb(126, 125, 125);
     border-radius: 100px;
 
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 500;
     font-size: 0.875rem;
@@ -404,17 +537,14 @@
     text-transform: capitalize;
     margin-top: 3vh;
 }
-#Template1 #feedsFacebookIcon {
-    color: #6750A4;
+#feedsFacebookIcon {
+    color: var(--primary);
     font-size: 1.2rem;
 }
-#Template1 .facebookFeedsIcon {
-    margin: 5vh 0;
-}
-
 /* Testimonials Secion */
-#Template1 #testiMapImg {
-    background-image: url('../media/img/map.png');
+
+#testiMapImg {
+    background-image: url("../media/img/map.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -422,7 +552,7 @@
     height: 80vh;
     margin-top: 12vh;
 }
-#Template1 .testimonialDiv {
+.testimonialDiv {
     background: var(--primary);
     box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
     padding: 1vh 2vw;
@@ -449,20 +579,22 @@
     margin: 0.3vh 0 0 0.1vw;
 }
 .contactMainDiv .col.s12.m7.l7 {
-    width: 100%;
+    width: 58%;
+    margin-left: 21%;
+    margin-right: 21%;
 }
-#Template1 .singleReviewName {
-    font-family: 'Poppins';
+.singleReviewName {
+    font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
     font-size: 0.875rem;
     line-height: 20px;
     text-align: center;
     letter-spacing: 0.1px;
-    color: #FFFFFF;
+    color: #ffffff;
 }
-#Template1 .singleReviewComment {
-    font-family: 'Poppins';
+.singleReviewComment {
+    font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
     font-size: 0.875rem;
@@ -471,38 +603,38 @@
     letter-spacing: 0.1px;
     color: rgba(255, 255, 255, 0.7);
 }
-#Template1 .testiProImg {
+.testiProImg {
     border-radius: 50%;
     position: relative;
     left: 10vw;
     top: 2.5vh;
     height: 57px;
 }
-#Template1 #testiSecondImgRowOneDiv {
+#testiSecondImgRowOneDiv {
     position: relative;
     bottom: 9vh;
 }
-#Template1 #testiSecondImgRowTwoDiv {
+#testiSecondImgRowTwoDiv {
     position: relative;
     bottom: 4vh;
 }
-#Template1 #testiSecondImgRowThreeDiv {
+#testiSecondImgRowThreeDiv {
     position: relative;
     top: 7vh;
 }
-#Template1 .contactContainDiv {
-    width: 70%;
-    margin: auto;
-}
-#Template1 #testiLname, #testiFname, #testiEmail, #testiPhone {
-    border: 1px solid #6750A4;
+
+#testiLname,
+#testiFname,
+#testiEmail,
+#testiPhone {
+    border: 1px solid var(--primary);
     border-radius: 10px;
     padding: 0 1.5vw;
     width: 90%;
 }
-#Template1 #testiLname::placeholder, #Template1 #testiFname::placeholder,
-#Template1 #testiEmail::placeholder, #Template1 #testiPhone::placeholder {
-    font-family: 'Montserrat', sans-serif;
+
+#testiPhone::placeholder {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.875rem;
@@ -510,15 +642,17 @@
     letter-spacing: 0.1px;
     color: rgba(0, 0, 0, 0.6);
 }
-#Template1 #testiTextarea1 {
-    border: 1px solid #6750A4;
+
+#testiTextarea1 {
+    border: 1px solid var(--primary);
     border-radius: 10px;
-    width: 99.5%;
+    width: 100.5%;
     height: 22vh;
     padding: 3vh 1.5vw;
 }
-#Template1 #testiTextarea1::placeholder{
-    font-family: 'Montserrat', sans-serif;
+
+#testiTextarea1::placeholder {
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 0.875rem;
@@ -526,33 +660,37 @@
     letter-spacing: 0.1px;
     color: rgba(0, 0, 0, 0.6);
 }
-#Template1 #testiContactFormTitleDiv {
+
+#testiContactFormTitleDiv {
     margin-bottom: 5vh;
 }
-#Template1 .testiContactBtn {
-    background: #6750A4;
+
+.testiContactBtn {
+    background: var(--primary);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     width: 97.4%;
     margin-left: 0.7vw;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
     line-height: 20px;
     height: 5vh;
 }
-#Template1 #testiContactBtnIcon {
-    color: #938F99;
+
+#testiContactBtnIcon {
+    color: #938f99;
     position: relative;
     top: 0.5vh;
 }
-#Template1 #tempPublishBtn {
+
+#tempPublishBtn {
     /* width: 15vw;
     height: 5vh; */
-    background-color: #7746FF;
+    background-color: #7746ff;
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
@@ -564,12 +702,13 @@
     text-transform: uppercase;
     margin-bottom: 3vh;
 }
-#Template1 #tempExitBtn {
+
+#tempExitBtn {
     /* width: 15vw;
     height: 5vh; */
     background-color: rgb(25, 25, 25);
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
@@ -580,8 +719,47 @@
     border-bottom-right-radius: 0;
     text-transform: uppercase;
 }
-#Template1 #tempPubExtDiv {
+
+#tempPubExtDiv {
     position: fixed;
     right: 0;
     bottom: 40vh;
+}
+@media screen and (max-width: 992px) and (min-width: 640px) {
+}
+@media screen and (max-width: 640px) {
+    .experienceImgContainDiv .col.s12.m3.l2,
+    .surgeonBannerImgDiv {
+        width: 100%;
+        margin-left: auto;
+    }
+    .bannerImg {
+        height: auto !important;
+    }
+    .hide-on-large-only.white {
+        margin-bottom: 45vh;
+    }
+    .physiRightImg {
+        position: unset !important;
+    }
+    .profileImg {
+        top: 12vh !important;
+        right: 4vw;
+        width: 238px;
+        height: auto;
+    }
+    .contactContainDiv {
+        width: 90%;
+        margin: auto;
+    }
+    #testiLname, #testiFname, #testiEmail, #testiPhone {
+        padding: 0;
+        width: 100%;
+    }
+    .physiContainerDiv#about {
+        padding-top: 10vh;
+    }
+    .physiContainerDiv#services {
+        padding-top: 7vh;
+    }
 }

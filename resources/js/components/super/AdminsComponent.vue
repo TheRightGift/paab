@@ -247,6 +247,7 @@
                             let elem = document.getElementById("addStaffModal"); //.getElementsByClassName('modal-close').click()
                             var instance = M.Modal.getInstance(elem);
                             instance.close();
+                            location.reload();
                         }
                     })
                     .catch((err) => {

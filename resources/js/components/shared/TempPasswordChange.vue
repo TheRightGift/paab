@@ -12,13 +12,13 @@
                 <div class="section">
                     <div class="row">
                         <h1 class="center">Password Change</h1>
-                        <div class="col offset-s4 s4">
+                        <div class="col offset-l4 s12 l4 offset-m2 m8">
                             <p>Please change your password from here</p>
                         </div>
                     </div>
                     <form @submit.prevent="changePassword" autocomplete="off">
                         <div class="row">
-                            <div class="input-field col offset-s4 s4">
+                            <div class="input-field col offset-l4 s12 l4 offset-m2 m8">
                                 <input
                                     type="password"
                                     class="validate input"
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col offset-s4 s4">
+                            <div class="input-field col offset-l4 s12 l4 offset-m2 m8">
                                 <small
                                     >Password should not be less than eight
                                     characters</small
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col offset-s4 s4">
+                            <div class="input-field col offset-l4 s12 l4 offset-m2 m8">
                                 <input
                                     type="password"
                                     class="validate input"
@@ -55,7 +55,7 @@
                         </div>
                         <div class="centered">
                             <div class="row">
-                                <div class="col offset-s4 s4">
+                                <div class="col offset-l4 s12 l4 offset-m2 m8">
                                     <button
                                         class="
                                             btn
@@ -70,8 +70,9 @@
                                         Update
                                     </button>
                                     <button
-                                        class="btn getStartBtn"
+                                        class="btn  col s12 disabled"
                                         v-else-if="loading"
+                                        :disabled="loading"
                                     >
                                         <div
                                             class="
@@ -144,6 +145,7 @@
         },
         methods: {
             changePassword() {
+                this.loading = !this.loading;
                 axios
                     .patch("/api/changePassword", this.pass)
                     .then((res) => {
@@ -152,11 +154,13 @@
                                 html: "Check Your current password",
                                 classes: "errorNotifier",
                             });
+                            this.loading = !this.loading;
                         } else if (res.data.user == true) {
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
+                            this.loading = !this.loading;
                             location.replace("/dashboard");
                         }
                     })

@@ -369,14 +369,14 @@
                     typeof website.domains === "object"
                         ? website.domains[0].domain
                         : website.domains;
-                window.open(`http://${this.tenant.domain}:8000`, "_blank");
+                window.open(`http://${this.tenant.domain}.whitecoatdomain.com`, "_blank");
             },
             updateWebsite(website) {
                 this.tenant.domain =
                     typeof website.domains === "object"
                         ? website.domains[0].domain
                         : website.domains;
-                window.open(`http://${this.tenant.domain}:8000/setting`, "_blank");
+                window.open(`http://${this.tenant.domain}.whitecoatdomain.com/setting`, "_blank");
             },
             processTemp(evt) {
                 this.selectedTemplate = evt.id;
