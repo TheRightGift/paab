@@ -34,7 +34,7 @@ class TenantController extends Controller
         }
         try {
             $tenants = Tenant::find($request->name);
-            $domains = DB::table('domains')->where('domain', $request->name .'.localhost')->first();
+            $domains = DB::table('domains')->where('domain', $request->name)->first();
             if (empty($tenants) && empty($domains)) {
                 $tenant = Tenant::create([
                     'name' => $inputs->validated()['name'],
@@ -44,7 +44,7 @@ class TenantController extends Controller
                     'user_id' => $inputs->validated()['user_id'],
                 ]);
                 if ($tenant) {
-                    $domain = $tenant->domains()->create(['domain' => $request->name .'.localhost']); //Determine how to handle domain
+                    $domain = $tenant->domains()->create(['domain' => $request->name]); //Determine how to handle domain
                     if ($request->has('email')) {
                         $order = AdminClientOrder::create([
                             'tenant_id' => $tenant->id,
@@ -86,7 +86,7 @@ class TenantController extends Controller
             if ($request->has('domain')) {
                 try {
                     $domain = $tenant->domains->find($inputs->validated()['domain_id']);
-                    $domain->domain = $inputs->validated()['domain'].'.localhost';
+                    $domain->domain = $inputs->validated()['domain'];
                     $domain->save();
                 } catch (DomainsOccupiedByOtherTenantException $e) {
                     return response()->json(["Domain already in use."]);

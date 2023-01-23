@@ -1,6 +1,6 @@
 <template>
     <div class="custom-navbar-fixed">
-        <nav  v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class='hide-on-med-and-down navbar'>
+        <nav  v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class='hide-on-med-and-down'>
             <div class="nav-wrapper navbarWrap">
                 <a href="/" class="brand-logo" id="physiPortPageLogo"
                     >{{user == '' ? 'Dr John Doe' : user}}</a

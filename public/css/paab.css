@@ -1124,6 +1124,9 @@ div .col .s9 input.clientCreatePortInput1 {
 
 /* Media Query on Medium Device */
 @media screen and (max-width: 992px) and (min-width: 640px) {
+    h1.center {
+        width: 85%;
+    }
     .circlDiv2 {
         width: 40vw;
         height: 107.9vh;
@@ -1802,6 +1805,10 @@ div .col .s9 input.clientCreatePortInput1 {
     .fs-sm {
         font-size: 0.6em;
     }
+    h1.center {
+        width: 95%;
+        font-size: 3rem;
+    }
     #webAddContainer {
         display: block !important;
         text-align: center;
@@ -2432,7 +2439,7 @@ div .col .s9 input.clientCreatePortInput1 {
     .row .col.s1.otpDigits {
         background-color: #d9d9d9;
         height: 7vh;
-        width: 13vw;
+        width: 12vw;
         text-align: center;
         margin-right: 1vw;
         border-radius: 10px;
@@ -2442,9 +2449,9 @@ div .col .s9 input.clientCreatePortInput1 {
         text-transform: capitalize;
         background: var(--primary);
         border-radius: 10px;
-        width: 90%;
+        width: 100% !important;
         height: 6vh;
-        margin-left: 3vw;
+        margin-left: 0vw !important;
         margin-top: 6vh;
     }
     #otpEmailDiv {

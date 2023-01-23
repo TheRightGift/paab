@@ -106,7 +106,7 @@
                     />
                 </form>
             </div>
-
+            <p v-if="shown"><b>Still does'nt see the mail, check your spam/junk box, most messages ends up there</b></p>
             <button
                 class="btn col s12"
                 id="otpEmailBtn"
@@ -128,7 +128,8 @@
             return {
                 userInputedOTP: "",
                 key: key.substring(7),
-                disabled: 0
+                disabled: 0,
+                shown: false,
             };
         },
         props: {
@@ -136,7 +137,11 @@
             type: String,
             email: String,
         },
-        mounted() {},
+        mounted() {
+            setTimeout(() => {
+                this.shown = true;
+            }, 7000);
+        },
         methods: {
             confirmOTP() {
                 if (this.userInputedOTP.length !== 6) {
