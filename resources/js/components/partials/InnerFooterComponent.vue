@@ -1,7 +1,7 @@
 <template>
-    <div class="copyWrite">
+    <footer class="copyWrite">
         &copy; White Coat Domain. {{getYear()}}. We support your brand!
-    </div>
+    </footer>
 </template>
 <script>
     export default {

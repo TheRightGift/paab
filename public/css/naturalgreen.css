@@ -667,6 +667,15 @@ nav .sidenav-trigger {
 }
 /* Media Query on Medium Device */
 @media screen and (max-width: 992px) and (min-width: 640px) {
+    /* #sideNavIcon {
+        height: 4.5vh;
+    } */
+    .physiSummaryTxt {
+        width: 88%;
+    }
+    .physiContainerDiv {
+        width: 100%;
+    }
     .custom-navbar-fixed {
         position: static;
         height: 0px;
@@ -858,7 +867,7 @@ nav .sidenav-trigger {
     }
     
     .hide-on-large-only.white {
-        margin-bottom: 40vh;
+        margin-bottom: 42vh;
     }
     .col.s12.m6.l6.rm_mg_pd {
         /* position: absolute;

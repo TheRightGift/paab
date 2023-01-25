@@ -5,11 +5,11 @@
         </div>
         <div v-show="!loading">
             <HeaderComponent :user="user"/>
-            <AboutMeComponent :title="title" :user="user" :bio="bio" :location="location" :preview="preview"/>
+            <AboutMeComponent :tenant="tenant" :title="title" :user="user" :bio="bio" :location="location" :preview="preview"/>
             <ServicesComponent :services="services" />
-            <ExperienceComponent  :experience="achievement" :location="location" :preview="preview"/>
+            <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview"/>
             <SocialMediaComponent :socials="socials"/>
-            <TestimonialsComponent :reviews="reviews" :preview="preview"/>
+            <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>
             <ContactComponent :preview="preview"/>
         </div>
     </div>
@@ -55,6 +55,7 @@
             user: String,
             preview: String,
             title: String,
+            tenant: String,
         },
         mounted() {
             // if(this.templateId)

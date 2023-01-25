@@ -1,6 +1,6 @@
 :root {
     --primary: #6750a4;
-    --secondary: #6750A4;
+    --secondary: #6750a4;
     --black: #000000;
     --white: #ffffff;
 
@@ -151,7 +151,7 @@ a.physiTempContactBtn.active {
     font-family: "Montserrat", sans-serif;
     border-left: none;
     padding: 0;
-    /* margin-right: 4.5vw; */
+    margin-right: 1.5vw;
     color: rgb(34, 34, 34);
     padding-bottom: 3vh;
 }
@@ -165,7 +165,6 @@ a.physiTempContactBtn.active {
     border-bottom: 4px solid var(--primary);
     padding: 0 0 3vh 0;
 }
-
 
 .physiTempNameTitle {
     font-family: "Montserrat", sans-serif;
@@ -557,6 +556,9 @@ a.physiTempContactBtn.active {
     box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
     padding: 1vh 2vw;
     color: #fff;
+    /* margin-top: -10px; */
+    text-align: center;
+    margin-bottom: 10px;
 }
 .tempOneAddTestiLname {
     border: 1px solid var(--primary);
@@ -605,10 +607,10 @@ a.physiTempContactBtn.active {
 }
 .testiProImg {
     border-radius: 50%;
-    position: relative;
+    /* position: relative;
     left: 10vw;
-    top: 2.5vh;
-    height: 57px;
+    top: 2.5vh; */
+    height: 57px !important;
 }
 #testiSecondImgRowOneDiv {
     position: relative;
@@ -726,8 +728,31 @@ a.physiTempContactBtn.active {
     bottom: 40vh;
 }
 @media screen and (max-width: 992px) and (min-width: 640px) {
+    #testiMapImg {
+        height: auto;
+    }
+    .profileImg {
+        width: 317.62px;
+        height: 370.96px;
+        /* top: 51vh; */
+        right: 8vw;
+    }
+    .physiRightImg {
+        left: 7px;
+top: 7px;
+    }
+    .physiContainerDiv#about {
+        padding-top: 0px;
+    }
 }
 @media screen and (max-width: 640px) {
+    #testiMapImg {
+        height: auto;
+    }
+    .contactMainDiv .col.s12.m7.l7 {
+        width: 100%;
+        margin-left: auto;
+    }
     .experienceImgContainDiv .col.s12.m3.l2,
     .surgeonBannerImgDiv {
         width: 100%;
@@ -752,7 +777,10 @@ a.physiTempContactBtn.active {
         width: 90%;
         margin: auto;
     }
-    #testiLname, #testiFname, #testiEmail, #testiPhone {
+    #testiLname,
+    #testiFname,
+    #testiEmail,
+    #testiPhone {
         padding: 0;
         width: 100%;
     }

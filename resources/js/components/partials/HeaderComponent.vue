@@ -2,17 +2,50 @@
     <div>
         <span v-if="type === 'main'">
             <!-- Navbar -->
-            <nav v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class="hide-on-med-and-down">
+            <nav
+                v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'"
+                class="hide-on-med-and-down"
+            >
                 <div class="nav-wrapper navbarWrap">
-                    <a href="/" v-bind:class="scrollPosition >= 5 ? 'altBrandLogo' : 'brandLogo'"
-                        class="hide-on-med-and-down"><small >White Coat Domain</small></a>
-                    <ul id="nav-mobile" class="section table-of-contents right hide-on-med-and-down">
-                        
+                    <a
+                        href="/"
+                        v-bind:class="
+                            scrollPosition >= 5 ? 'altBrandLogo' : 'brandLogo'
+                        "
+                        class="hide-on-med-and-down"
+                        ><img
+                            v-bind:src="
+                                scrollPosition >= 5
+                                    ? '/media/img/whiteCoatDomain.png'
+                                    : '/media/img/whiteCoatDomain1.png'
+                            "
+                            alt="whiteCoatDomain.png"
+                            v-bind:class="
+                                scrollPosition >= 5
+                                    ? 'primaryLogo'
+                                    : 'whiteLogo'
+                            "
+                    /></a>
+                    <ul
+                        id="nav-mobile"
+                        class="
+                            section
+                            table-of-contents
+                            right
+                            hide-on-med-and-down
+                        "
+                    >
                         <li><a href="#product" class="navLinks">Product</a></li>
-                        <li><a href="#features" class="navLinks">Features</a></li>
-                        <li><a href="/templates" class="navLinks">Templates</a></li>
+                        <li>
+                            <a href="#features" class="navLinks">Features</a>
+                        </li>
+                        <li>
+                            <a href="/templates" class="navLinks">Templates</a>
+                        </li>
                         <li><a href="#support" class="navLinks">Support</a></li>
-                        <li><a href="/auth/login" class="loginLink">Log in</a></li>
+                        <li>
+                            <a href="/auth/login" class="loginLink">Log in</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -20,43 +53,105 @@
             <!-- SideNav Section -->
             <nav class="hide-on-large-only white" id="sideNav">
                 <a href="#" data-target="slide-out" class="sidenav-trigger">
-                    <i class="material-icons sideNavIcon" id="sideNavIcon">menu</i>
+                    <i class="material-icons sideNavIcon" id="sideNavIcon"
+                        >menu</i
+                    >
                 </a>
 
-                <a href="/" class="sideNavBrandLogo"><small class="fs-sm">White Coat Domain</small></a>
+                <a href="/" class="sideNavBrandLogo">
+                    <img
+                        src="/media/img/whiteCoatDomainMobile.png"
+                        alt="whiteCoatDomain.png"
+                        class="sidenavLogo"
+                    />
+                </a>
 
                 <ul id="slide-out" class="sidenav">
                     <li>
-                            <img :src="'./media/img/wcdLogoWhiteSmall.png'" class="mobileNavLogo" alt=""/>
+                        <img
+                            :src="'./media/img/wcdLogoWhiteSmall.png'"
+                            class="mobileNavLogo"
+                            alt=""
+                        />
                     </li>
-                    
-                    <li class="sideNavLinkMgTp"><a href="#product" class="navLinks white-text">Product</a></li>
-                    <li><a href="#features" class="navLinks white-text">Features</a></li>
-                    <li><a href="/templates" class="navLinks white-text">Templates</a></li>
-                    <li><a href="#support" class="navLinks white-text">Support</a></li>
+
+                    <li class="sideNavLinkMgTp">
+                        <a href="#product" class="navLinks white-text"
+                            >Product</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#features" class="navLinks white-text"
+                            >Features</a
+                        >
+                    </li>
+                    <li>
+                        <a href="/templates" class="navLinks white-text"
+                            >Templates</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#support" class="navLinks white-text"
+                            >Support</a
+                        >
+                    </li>
                     <li>
                         <div class="divider"></div>
                     </li>
-                    <li><a href="/auth/login" class="loginLink deep-purple-text accent-4">Log in</a></li>
+                    <li>
+                        <a
+                            href="/auth/login"
+                            class="loginLink deep-purple-text accent-4"
+                            >Log in</a
+                        >
+                    </li>
                 </ul>
             </nav>
         </span>
         <span v-if="type === 'template'">
             <!-- Navbar -->
-            <nav v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class="hide-on-med-and-down">
+            <nav
+                v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'"
+                class="hide-on-med-and-down"
+            >
                 <div class="nav-wrapper navbarWrap">
-                    <a href="/" class="brand-logo" id="tempLogo"><small >White Coat Domain</small></a>
+                    <a href="/" class="brand-logo" id="tempLogo"
+                        ><img
+                            src="/media/img/whiteCoatDomain.png"
+                            alt="whiteCoatDomain.png"
+                            v-bind:class="
+                                scrollPosition >= 5
+                                    ? 'tempNavLogo'
+                                    : 'tempMainLogo'
+                            "
+                    /></a>
 
-                    <ul id="nav-mobile" class="section right table-of-contents hide-on-med-and-down">
-                        
+                    <ul
+                        id="nav-mobile"
+                        class="
+                            section
+                            right
+                            table-of-contents
+                            hide-on-med-and-down
+                        "
+                    >
                         <li>
-                            <a href="#template" class="navLinks tempScrollLink">Templates</a>
+                            <a href="#template" class="navLinks tempScrollLink"
+                                >Templates</a
+                            >
                         </li>
                         <li>
-                            <a href="#support" class="navLinks tempScrollLink">Support</a>
+                            <a href="#support" class="navLinks tempScrollLink"
+                                >Support</a
+                            >
                         </li>
-                        <li class="marginLeft-25"><a href="/auth/login" class="right tempLoginLink loginLink">Log
-                                in</a></li>
+                        <li class="marginLeft-25">
+                            <a
+                                href="/auth/login"
+                                class="right tempLoginLink loginLink"
+                                >Log in</a
+                            >
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -64,38 +159,95 @@
             <!-- SideNav Section -->
             <nav class="hide-on-large-only white" id="sideNav">
                 <a href="#" data-target="slide-out" class="sidenav-trigger">
-                    <i class="material-icons sideNavIcon" id="sideNavIcon">menu</i>
+                    <i class="material-icons sideNavIcon" id="sideNavIcon"
+                        >menu</i
+                    >
                 </a>
 
-                <a href="/" class="sideNavBrandLogo"><small class="fs-sm">White Coat Domain</small></a>
+                <a href="/" class="sideNavBrandLogo">
+                    <img
+                        src="/media/img/whiteCoatDomainMobile.png"
+                        alt="whiteCoatDomain.png"
+                        class="sidenavTempLogo"
+                    />
+                </a>
 
                 <ul id="slide-out" class="sidenav">
                     <li>
-                        <img :src="'./media/img/wcdLogoWhiteSmall.png'" class="mobileNavLogo" alt=""/>
+                        <img
+                            :src="'./media/img/wcdLogoWhiteSmall.png'"
+                            class="mobileNavLogo"
+                            alt=""
+                        />
                     </li>
 
-                    <li><a href="#template" class="sideNavLinkMgTp navLinks white-text">Templates</a></li>
-                    <li><a href="#support" class="navLinks white-text">Support</a></li>
+                    <li>
+                        <a
+                            href="#template"
+                            class="sideNavLinkMgTp navLinks white-text"
+                            >Templates</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#support" class="navLinks white-text"
+                            >Support</a
+                        >
+                    </li>
                     <li>
                         <div class="divider"></div>
                     </li>
-                    <li><a href="/auth/login" class="loginLink deep-purple-text accent-4">Log in</a></li>
+                    <li>
+                        <a
+                            href="/auth/login"
+                            class="loginLink deep-purple-text accent-4"
+                            >Log in</a
+                        >
+                    </li>
                 </ul>
             </nav>
         </span>
         <span v-if="type === 'singleTemplate'">
             <!-- Navbar -->
-            <nav v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class="navbar hide-on-med-and-down">
+            <nav
+                v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'"
+                class="navbar hide-on-med-and-down"
+            >
                 <div class="nav-wrapper navbarWrap">
-                    <a href="#" class="brand-logo" id="physiPortPageLogo">Dr. Akerele Adebayo</a>
-                    <ul id="nav-mobile" class="section table-of-contents right hide-on-med-and-down">
+                    <a href="#" class="brand-logo" id="physiPortPageLogo"
+                        >Dr. Akerele Adebayo</a
+                    >
+                    <ul
+                        id="nav-mobile"
+                        class="
+                            section
+                            table-of-contents
+                            right
+                            hide-on-med-and-down
+                        "
+                    >
                         <li>
-                            <a href="#services" id="physiTempNavLinks">Services</a>
+                            <a href="#services" id="physiTempNavLinks"
+                                >Services</a
+                            >
                         </li>
-                        <li><a href="#experience" id="physiTempNavLinks">Experience</a></li>
-                        <li><a href="#testimonials" id="physiTempNavLinks">Testimonials</a></li>
-                        <li><a href="#feeds" id="physiTempNavLinks">Feeds</a></li>
-                        <li><a href="#contact" id="physiTempContactBtn">Contact Me</a></li>
+                        <li>
+                            <a href="#experience" id="physiTempNavLinks"
+                                >Experience</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#testimonials" id="physiTempNavLinks"
+                                >Testimonials</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#feeds" id="physiTempNavLinks">Feeds</a>
+                        </li>
+                        <li>
+                            <a href="#contact" id="physiTempContactBtn"
+                                >Contact Me</a
+                            >
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -103,10 +255,15 @@
             <!-- SideNav Section -->
             <!-- <div class="navbar-fixed"> -->
             <nav class="hide-on-large-only white" id="sideNav">
-                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons sideNavIcon"
-                        id="sideNavIcon">menu</i></a>
+                <a href="#" data-target="slide-out" class="sidenav-trigger"
+                    ><i class="material-icons sideNavIcon" id="sideNavIcon"
+                        >menu</i
+                    ></a
+                >
 
-                <a href="#" class="" id="physiPortPageLogo">Dr. Akerele Adebayo</a>
+                <a href="#" class="" id="physiPortPageLogo"
+                    >Dr. Akerele Adebayo</a
+                >
 
                 <ul id="slide-out" class="sidenav">
                     <!-- <li> -->
@@ -117,14 +274,28 @@
                     </div> -->
                     <!-- </li> -->
 
-                    <li class="sideNavLinkMgTp"><a href="#services" id="physiTempNavLinks">Services</a></li>
-                    <li><a href="#experience" id="physiTempNavLinks">Experience</a></li>
-                    <li><a href="#testimonials" id="physiTempNavLinks">Testimonials</a></li>
+                    <li class="sideNavLinkMgTp">
+                        <a href="#services" id="physiTempNavLinks">Services</a>
+                    </li>
+                    <li>
+                        <a href="#experience" id="physiTempNavLinks"
+                            >Experience</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#testimonials" id="physiTempNavLinks"
+                            >Testimonials</a
+                        >
+                    </li>
                     <li><a href="#" id="physiTempNavLinks">Feeds</a></li>
                     <li>
                         <div class="divider"></div>
                     </li>
-                    <li><a href="#contact" id="physiTempContactBtn">Contact Me</a></li>
+                    <li>
+                        <a href="#contact" id="physiTempContactBtn"
+                            >Contact Me</a
+                        >
+                    </li>
                 </ul>
             </nav>
             <!-- </div> -->
@@ -132,25 +303,25 @@
     </div>
 </template>
 <script>
-export default {
-    data() {
-        return {};
-    },
-    props: {
-        type: String
-    },
-    data() {
-        return {
-            scrollPosition: null
-        };
-    },
-    mounted() {
-        window.addEventListener('scroll', this.updateScroll);
-    },
-    methods: {
-        updateScroll() {
-            this.scrollPosition = window.scrollY
-        }
-    }
-};
+    export default {
+        data() {
+            return {};
+        },
+        props: {
+            type: String,
+        },
+        data() {
+            return {
+                scrollPosition: null,
+            };
+        },
+        mounted() {
+            window.addEventListener("scroll", this.updateScroll);
+        },
+        methods: {
+            updateScroll() {
+                this.scrollPosition = window.scrollY;
+            },
+        },
+    };
 </script>

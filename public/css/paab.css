@@ -1443,7 +1443,7 @@ div .col .s9 input.clientCreatePortInput1 {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50%;
         width: 6vw;
-        height: 4.5vh;
+        height: 7.5vh;
         line-height: 52px;
     }
     .sideNavBrandLogo {
@@ -1451,7 +1451,7 @@ div .col .s9 input.clientCreatePortInput1 {
         font-weight: 500;
         color: var(--primary);
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        margin-left: 25vw;
+        margin-left: 35%;
         font-family: "Montserrat", sans-serif;
     }
     #banner {
@@ -1796,6 +1796,16 @@ div .col .s9 input.clientCreatePortInput1 {
     /* Changed homepage "PREVIEW TEMPLATE" button color */
     a.btn.circleDivBtn {
         background-color: var(--primary);
+    }
+
+    /* HeaderComponent Logo for HomeComponent on medium device  */
+    .sidenavLogo {
+        width: 7.5vw;
+    }
+
+    /* HeaderComponent Logo for TemplateComponent on medium device */
+    img.sidenavTempLogo {
+        width: 7.5%;
     }
 }
 
@@ -2715,6 +2725,24 @@ div .col .s9 input.clientCreatePortInput1 {
         background-color: var(--white);
         margin-left: 20px;
     }
+     /* ******************************************************************************************** */
+    /* HeaderComponent Logo for HomeComponent on small device  */
+    .sidenavLogo {
+        width: 12.5vw;
+    }
+    .sideNavBrandLogo {
+        font-size: 2.7rem;
+        font-weight: 500;
+        color: var(--primary);
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-left: 24vw;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    /* HeaderComponent Logo for TemplateComponent on small device */
+    img.sidenavTempLogo {
+        width: 12.5%;
+    }
 }
 
 
@@ -2785,6 +2813,10 @@ div .col .s9 input.clientCreatePortInput1 {
         text-align: center;
     }
 
+    .col .row.createWebRow {
+        display: block;
+    }
+
     /* Id for mobile sidenav list icon not needed again, it's been changed to class */
     /* #sideNavIcon {
         font-size: 3.5rem;
@@ -2801,11 +2833,14 @@ div .col .s9 input.clientCreatePortInput1 {
 }
 .addReviewProDiv {
     background: #d9d9d9;
-    width: 74px;
-    height: 74px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     margin: auto;
     display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .addReviewProMainDiv {
     width: 20%;
@@ -2813,10 +2848,34 @@ div .col .s9 input.clientCreatePortInput1 {
 }
 .material-icons.addReviewProImg {
     font-size: 3.5rem;
-    margin-left: 0.8vw;
-    margin-top: 0.9vh;
+    /* margin-left: 0.8vw;
+    margin-top: 0.9vh; */
     color: rgba(0, 0, 0, 0.5);
 }
 .spinner-layer {
     border-color: var(--white);
+}
+/* ********************************************************************************************** */
+/* HeaderComponent Logo Styling for HomepageComponent*/
+
+img.primaryLogo {
+    width: 5.2%;
+}
+
+img.whiteLogo {
+    width: 10%;
+}
+
+/* HeaderComponent Logo Styling for TemplateComponent*/
+img.tempNavLogo {
+    width: 33%;
+}
+
+img.tempMainLogo {
+    width: 50%;
+}
+
+/* Auth Logo Styling */
+img.authLogo {
+    width: 20%;
 }

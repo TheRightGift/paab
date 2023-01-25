@@ -29,14 +29,6 @@ Route::middleware([
 
     Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
 });
-Route::middleware([
-    'web',
-    InitializeTenancyByDomainOrSubdomain::class,
-    PreventAccessFromCentralDomains::class,
-])->group(function () {
-    Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
-});
-// ['middleware'=>'auth:api']
 Route::middleware(['auth:api',InitializeTenancyByDomainOrSubdomain::class,
 PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     

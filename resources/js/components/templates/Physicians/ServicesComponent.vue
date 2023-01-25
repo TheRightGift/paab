@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col s12 rm_mg_pd">
             <div class="section scrollspy physiContainerDiv" id="services">
-                <div v-if="services == null">
+                <div v-if="services == null || services.length === 0">
                     <div class="row whatIdoTxtRowDiv">
                         <div class="col s12">
                             <p class="servicesMainTitle">Services</p>

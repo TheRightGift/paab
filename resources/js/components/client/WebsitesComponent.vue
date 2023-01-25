@@ -175,6 +175,8 @@
                                                     </div>
                                                 </div>
                                             </div>
+            <InnerFooterComponent />
+
                                             <div class="centre">
                                                 <button
                                                     :disabled="loading"
@@ -226,7 +228,6 @@
                 />
             </div>
         </div>
-        <InnerFooterComponent />
     </div>
 </template>
 <script>

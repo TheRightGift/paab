@@ -36,7 +36,7 @@ class BioController extends Controller
             'about' => 'required|max:614|min:600',
             'lastname' => 'nullable',
             'firstname' => 'nullable',
-            'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
+            // 'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
             'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=454,min_height=528',
         ]); 
 
@@ -47,9 +47,15 @@ class BioController extends Controller
             if($request->hasFile('photo')){
                 $photo = $request->file('photo');
                 $ext = $request->file('photo')->getClientOriginalExtension();
-                $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
+                // $path = $request->file('photo')->storeAs(
+                //     strtolower(tenant('id')), strtolower(tenant('id')).'biophoto'.'.'.$ext
+                // );
+                $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
+                $path = $photo->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+                // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
                 
-                $input['photo'] = $stored;
+                $input['photo'] = $name;
+                // dd($path);
             } 
             if($request->hasFile('CV')){
                 $cv = $request->file('CV');
@@ -94,9 +100,12 @@ class BioController extends Controller
                 if($request->hasFile('photo')){
                     $photo = $request->file('photo');
                     $ext = $request->file('photo')->getClientOriginalExtension();
-                    $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
+                    // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
                     
-                    $input['photo'] = $stored;
+                    $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
+                    $path = $photo->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+
+                    $input['photo'] = $name;
                 } 
                 if($request->hasFile('CV')){
                     $cv = $request->file('CV');

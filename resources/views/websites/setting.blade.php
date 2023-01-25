@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Your Settings - {{tenant('id')}}</title>
-    <link rel="shortcut icon" href="{{ tenant_asset('/img/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ $tenantID.'/img/favicon.png' }}" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">   
-        <physician-website-settings user="{{ $user }}"></physician-website-settings>
+        <physician-website-settings user="{{ $user }}" tenant="{{ $tenantID }}"></physician-website-settings>
     </div>
     
     <script src="{{ global_asset('js/app.js') }}"></script>

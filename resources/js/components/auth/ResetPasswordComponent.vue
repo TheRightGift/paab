@@ -3,21 +3,29 @@
         <div class="row authContainDiv" v-if="verifiedEmail == 1">
             <div class="col s12 m12 l6 welcomeContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
+                    <a href="/" class="wlcNoteLogo">
+                        <img
+                            src="/media/img/whiteCoatDomain1.png"
+                            alt="whiteCoatDomain.png"
+                            class="authLogo"
+                        />
+                    </a>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
                     <p class="wlcNoteTxt">
-                        Life does not give you a reset button but with White Coat Domain, we do *winks*
+                        Life does not give you a reset button but with White
+                        Coat Domain, we do *winks*
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support
+                        your brand!
                     </p>
                 </div>
             </div>
 
             <div class="col s12 m12 l6 welcomeContainer">
-                <VerifyEmailComponent @res="setOTP" :type="'reset'"/>
+                <VerifyEmailComponent @res="setOTP" :type="'reset'" />
             </div>
         </div>
 
@@ -33,13 +41,19 @@
                         <span class="right">Nathan Sykes</span>
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support
+                        your brand!
                     </p>
                 </div>
             </div>
 
             <div class="col s12 m12 l6 otpContainer">
-                <OtpComponent @res="otpVerifier" :otp="otp" :type="reset" :email="user.email"/>
+                <OtpComponent
+                    @res="otpVerifier"
+                    :otp="otp"
+                    :type="reset"
+                    :email="user.email"
+                />
             </div>
         </div>
 
@@ -51,10 +65,12 @@
                         Start your journey <br />with us...
                     </p>
                     <p class="wlcNoteTxt">
-                        The first step to stand out is by creating something unique and extraordinary
+                        The first step to stand out is by creating something
+                        unique and extraordinary
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support
+                        your brand!
                     </p>
                 </div>
             </div>
@@ -151,7 +167,7 @@
     export default {
         components: {
             VerifyEmailComponent,
-            OtpComponent
+            OtpComponent,
         },
         data() {
             return {
@@ -174,14 +190,14 @@
             getYear() {
                 return new Date().getFullYear();
             },
-            setOTP(value){
-                if(value.status === 200){
+            setOTP(value) {
+                if (value.status === 200) {
                     this.user.email = value.email;
                     this.updateVerifiedEmail(2);
-                }                
+                }
             },
-            otpVerifier(value){
-                if(value === 200){
+            otpVerifier(value) {
+                if (value === 200) {
                     this.updateVerifiedEmail(3);
                 } else {
                     // use toast to notify

@@ -178,12 +178,12 @@ class TemplateController extends Controller
         $profession = $template->profession->name;
         $templateCSS = $template->styleFile;
         $template = $template->title;
-
+        $tenantID = strtolower(tenant('id')); // For getting the file location;
         $preview = true;
         if($profession === 'Physician'){
-            return view('websites.physician', compact('preview', 'template', 'templateCSS'));
+            return view('websites.physician', compact('preview', 'template', 'templateCSS', 'tenantID'));
         } else if($profession === 'Legal'){
-            return view('websites.legal', compact('preview', 'template', 'templateCSS'));
+            return view('websites.legal', compact('preview', 'template', 'templateCSS', 'tenantID'));
         }
     }
 }

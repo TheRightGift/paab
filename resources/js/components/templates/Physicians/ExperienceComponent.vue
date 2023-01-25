@@ -11,7 +11,7 @@
                 <div class="experienceImgContainDiv">
                     <div class="surgeonBannerImgDiv">
                         <img  v-if="preview == '1'" src="/media/img/surgeonbanner.png"  alt="surgeonbanner.png" class="bannerImg">
-                        <img  v-else :src="location+'media/img/surgeonbanner.png'"  alt="surgeonbanner.png" class="bannerImg">
+                        <img  v-else :src="'media/img/surgeonbanner.png'"  alt="surgeonbanner.png" class="bannerImg">
                     </div>
                     <div class="col s12 m3 l2">
                         <div class="expLeftBarDiv experiences">
@@ -55,11 +55,11 @@
                 <p class="expMainTxt">MY ACHIEVEMENT</p>
                 <div class="experienceImgContainDiv">
                     <div class="surgeonBannerImgDiv" v-if="experience != null">
-                        <img :src="location+'tenancy/assets/'+experience.banner" 
+                        <img :src="'/media/'+tenant+'/img/'+experience.banner" 
                             alt="physicianTemplate.png" class="bannerImg"
                             v-if="promo == ''"
                         >
-                        <img :src="location+'tenancy/assets/'+promo.banner" 
+                        <img :src="'/media/'+tenant+'/img/promo/'+promo.banner" 
                             alt="physicianTemplate.png" class="bannerImg" 
                             v-else-if="promo != ''"
                         >
@@ -92,6 +92,7 @@
             experience: Object,
             location: String,
             preview: String,
+            tenant: String,
         },
         watch: {
             experience (newVal, oldVal) {

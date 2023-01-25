@@ -140,6 +140,7 @@
                 @servicesLink="servicesLink"
                 @bioSave="bioSave($event)"
                 @bioUpdate="bioUpdate($event)"
+                :tenant="tenant"
             />
             <ServicesComponent
                 :servicesModal="servicesModal"
@@ -156,6 +157,7 @@
                 @saveAchievement="saveAchievement($event)"
                 @socialLink="socialLink"
                 @achieveGoBackBtn="achieveGoBackBtn"
+                :tenant="tenant"
             />
             <SocialComponent
                 :socialsModal="socialsModal"
@@ -229,6 +231,7 @@
             contact: Object,
             general: Object,
             achievement: Object,
+            tenant: String,
         },
         mounted() {
             this.genModal = true;
@@ -241,8 +244,10 @@
                     localStorage.setItem('refreshed', refreshed);
                 }
             }
-            let refreshed = parseInt(localStorage.getItem('refreshed')) + 1;
-            localStorage.setItem('refreshed', refreshed);
+            else {
+                let refreshed = localStorage.getItem('refreshed') === null ? 0 : parseInt(localStorage.getItem('refreshed')) + 1;
+                localStorage.setItem('refreshed', refreshed);
+            }
         },
         methods: {
             checkIfFieldIsEmpty() {

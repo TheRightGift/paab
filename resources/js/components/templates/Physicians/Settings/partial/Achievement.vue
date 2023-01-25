@@ -30,7 +30,7 @@
                             <div v-else class="col l6">
                                 <img class="col l9 responsive-img noPaddingLeft" :src="
                                     typeof achievement.banner == 'string'
-                                        ? 'tenancy/assets/' + achievement.banner
+                                        ? '/media/'+tenant+'/img/'+ achievement.banner
                                         : uploaded
                                 " />
                                 <div class="col l3 faviconUploadBtnCol">
@@ -159,6 +159,7 @@
             achieveModal: Boolean,
             saved: Object,
             loading: Boolean,
+            tenant: String,
         },
         data() {
             return {

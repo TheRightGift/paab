@@ -45,10 +45,7 @@
                                 <!-- offset-l3 media/img/doc.png-->
                                 <div class="profileImg" v-if="preview == '0'">
                                     <img
-                                        :src="
-                                            location +
-                                            'media/img/surgeonhero.png'
-                                        "
+                                        :src="'media/img/surgeonhero.png'"
                                         alt="doc.png"
                                         class="responsive-img physiRightImg"
                                     />
@@ -83,11 +80,7 @@
 
                                     <a
                                         class="physiTempBtn"
-                                        :href="
-                                            location +
-                                            'tenancy/assets/' +
-                                            bio.CV
-                                        "
+                                        :href="'tenancy/assets/' + bio.CV"
                                     >
                                         Download My curriculum vitae
                                     </a>
@@ -98,11 +91,7 @@
                                 <!-- offset-l3 media/img/doc.png-->
                                 <div class="profileImg" v-if="preview == '0'">
                                     <img
-                                        :src="
-                                            location +
-                                            'tenancy/assets/' +
-                                            bio.photo
-                                        "
+                                        :src="'/media/'+tenant+'/img/'+ bio.photo"
                                         alt="doc.png"
                                         class="responsive-img physiRightImg"
                                     />
@@ -124,6 +113,7 @@
             location: String,
             preview: String,
             title: String,
+            tenant: String,
         },
     };
 </script>

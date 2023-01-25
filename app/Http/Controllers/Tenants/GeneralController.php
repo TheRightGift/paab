@@ -44,9 +44,11 @@ class GeneralController extends Controller
             if($request->hasFile('favicon')){
                 $general = $request->file('favicon');
                 $ext = $request->file('favicon')->getClientOriginalExtension();
-                $stored = \Storage::disk('public')->putFileAs('img', $general, 'favicon'.'.'.$ext);
-                
-                $input['favicon'] = $stored;
+                // $stored = \Storage::disk('public')->putFileAs('img', $general, 'favicon'.'.'.$ext);
+                $name = 'favicon'.'.'.$ext;
+                $path = $general->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+
+                $input['favicon'] = $name;
             } 
             
             $general = General::create($input);
@@ -81,9 +83,12 @@ class GeneralController extends Controller
             if($request->hasFile('favicon')){
                 $file = $request->file('favicon');
                 $ext = $request->file('favicon')->getClientOriginalExtension();
-                $stored = \Storage::disk('public')->putFileAs('img', $file, 'favicon'.'.'.$ext);
+                // $stored = \Storage::disk('public')->putFileAs('img', $file, 'favicon'.'.'.$ext);
                 
-                $input['favicon'] = $stored;
+                $name = 'favicon'.'.'.$ext;
+                $path = $general->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+
+                $input['favicon'] = $name;
             } 
             $generals = new General();
             $general2Update = $generals->find($general);

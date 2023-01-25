@@ -57,7 +57,7 @@
                                     class="responsive-img"
                                     :src="
                                         typeof promotion.banner == 'string'
-                                            ? 'tenancy/assets/' +
+                                            ? '/media/'+tenant+'/img/promo/'+
                                               promotion.banner
                                             : uploaded
                                     "
@@ -148,7 +148,7 @@
                                 <div class="webWhiteProDiv">
                                     <img
                                         :src="
-                                            'tenancy/assets/' + promotion.banner
+                                            '/media/'+tenant+'/img/promo/'+ promotion.banner
                                         "
                                         class="responsive-img"
                                     />
@@ -214,6 +214,9 @@
                 uploaded: null,
                 proEdit: {},
             };
+        },
+        props: {
+            tenant: String
         },
         mounted() {
             this.getPromotions();

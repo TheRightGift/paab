@@ -1,244 +1,8 @@
 <template>
-    <ReviewsComponent v-if="showReviews" :reviews="reviews" @goBack="goBack"/>
+    <ReviewsComponent :reviews="reviews" @goBack="goBack" :tenant="tenant"/>
     <!-- Load More Modal Structure -->
-    <div class="section scrollspy testiContainDiv" id="testimonials" v-else>
-        <!-- Modal For loadMore -->
-        <div id="loadMoreReviews" class="modal">
-                <div class="testimonialReviewDiv">
-                    <div class="testimonialReviewInnerDiv">
-                        <i class="material-icons modal-close reviewsModalClose">arrow_back</i>
-            
-                        <p class="reviewsTitle">Reviews</p>
-                    </div>
-                    <div>
-                        <div class="row">
-                            <!-- Testimonials First Row -->
-                            <div class="col s12">
-                                <p class="reviewsTime right">Now</p>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <!-- Testimonials Second Row -->
-                            <div class="col s12">
-                                <p class="reviewsTime right">1 day ago</p>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <!-- Testimonials Third Row -->
-                            <div class="col s12">
-                                <p class="reviewsTime right">3 days ago</p>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <!-- Testimonials Forth Row -->
-                            <div class="col s12">
-                                <p class="reviewsTime right">1 week ago</p>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <!-- Testimonials Fift Row -->
-                            <div class="col s12">
-                                <p class="reviewsTime right">1 month ago</p>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <div class="col s12 m4 l4">
-                                <div class="reviewsProImgDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img reviewsProImg">
-                                </div>
-                                <div class="reviewWriteupBoxDiv">
-                                    <p class="reviewProName">Mr. Akin Olu</p>
-                                    <p class="reviewTxt">
-                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                        It has roots in a piece.
-                                    </p>
-                                </div>
-                            </div>
-            
-                            <div class="col s12">
-                                <a href="#" class="reviewLoadMoreLink">Load more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
+    <div class="section scrollspy testiContainDiv" id="testimonials" >
+        
         <div class="row">
             <div class="col s12">
                 <h3 class="feedsMainTitle forSurgeon">
@@ -251,7 +15,8 @@
             <div class="testimonialsContainer">
                 <div class="col s12 tempReviewOptDiv">
                     <div>
-                        <a class="modal-trigger" href="#!" @click="goToReviews">
+                        <a class="modal-trigger" href="#loadMoreReviews" > 
+                            <!-- @click="goToReviews" -->
                             CLIENT REVIEWS({{ reviewLen }})
                         </a>
                     </div>
@@ -338,7 +103,8 @@
                                 The point of using Lorem Ipsum is
                             </p>
                             <!-- Load More Modal Trigger -->
-                            <a class="loadMoreReviews" href="#!" @click="goToReviews">Load More</a>
+                            <a class="loadMoreReviews modal-trigger" href="#loadMoreReviews" >Load More</a>
+                            <!-- @click="goToReviews" -->
                         </div>
                     </div>
                 </div>
@@ -353,7 +119,7 @@
                                             <img
                                                 :src="
                                                     review.imageURL != null
-                                                        ? 'tenancy/assets/' +
+                                                        ? '/media/'+tenant+'/img/reviews/'+
                                                         review.imageURL
                                                         : '/media/img/testiProImg.png'
                                                 "
@@ -402,7 +168,8 @@
                                 {{userReview.comment}}
                             </p>
                             <!-- Load More Modal Trigger -->
-                            <a class="loadMoreReviews" @click="goToReviews">Load More</a>
+                            <a class="loadMoreReviews modal-trigger" href="#loadMoreReviews">Load More</a>
+                            <!-- @click="goToReviews" -->
                         </div>
                     </div>
                 </div>
@@ -425,10 +192,11 @@
                                 v-for="(review, index) in reviewsFront"
                                 :key="review.id"
                             >
+                            <div class="flex flex-centered">
                                 <img
                                     :src="
                                         review.imageURL != null
-                                            ? 'tenancy/assets/' +
+                                            ? '/media/'+tenant+'/img/reviews/'+
                                               review.imageURL
                                             : '/media/img/user.png'
                                     "
@@ -441,6 +209,7 @@
                                     width="64"
                                     height="57"
                                 />
+                            </div>
                                 <div class="testimonialDiv">
                                     <p class="testiMapProName">
                                         {{ review.lastname }}
@@ -465,28 +234,8 @@
         </div>
     </div>
     <!-- Add Testimonial Modal Structure -->
-    <!-- <div id="modal2" class="modal tempOneModal2Div">
-        <div class="modal-content">
-            <div>
-                <p class="tempOneModal2Txt">
-                    is simply dummy text of the printing and typesetting
-                    industry. Lorem Ipsum has been the industry's standard dummy
-                    text ever since the 1500s, when
-                </p>
-
-                <div class="tempOneModal2BtnDiv">
-                    <button
-                        class="btn"
-                        id="tempOneModal2Btn"
-                        @click="goToReviews"
-                    >
-                        view more
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <ReviewFormComponent :preview="preview"/>
+    
+    <ReviewFormComponent :preview="preview" :tenant="tenant"/>
 </template>
 <script>
     import ReviewFormComponent from "./ReviewFormComponent.vue";
@@ -502,6 +251,7 @@
         props: {
             reviews: Object,
             preview: String,
+            tenant: String,
         },
         computed: {
             reviewLen() {
@@ -546,8 +296,14 @@
         },
     };
 </script>
-<style>
+<style scoped>
     a:hover {
         cursor: pointer;
+    }
+    .flex-centered {
+        justify-content: center !important;
+    }
+    .testimonialDiv {
+        margin-top: -10px;
     }
 </style>
