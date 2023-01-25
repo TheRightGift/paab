@@ -114,11 +114,11 @@ class TenantController extends Controller
         $pageTitles = General::first();
         $pageTitle = !empty($pageTitles) ? $pageTitles->title : null;
         $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'Admin' ? null : $tenant->user->title->name;
-       
+        $tenantID = strtolower(tenant('id')); // For getting the file location;
         $user = !empty($bioTB) ? $title.' '.$bioTB->firstname.' '.$bioTB->lastname : null;
         
         if($profession === 'Physician'){
-            return view('websites.physician', compact('template', 'user', 'templateCSS', 'title', 'pageTitle'));
+            return view('websites.physician', compact('template', 'user', 'templateCSS', 'title', 'pageTitle', 'tenantID'));
         } else {
             dd($profession);
         }
@@ -126,7 +126,8 @@ class TenantController extends Controller
 
     public function setting(Request $request) {
         $user = tenant()->user;
-        return view('websites.setting', compact('user'));
+        $tenantID = strtolower(tenant('id')); // For getting the file location;
+        return view('websites.setting', compact('user', 'tenantID'));
     }
 
     public function tenancies() {

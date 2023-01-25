@@ -43,9 +43,10 @@ class AchievementController extends Controller
             if($request->hasFile('banner')){
                 $banner = $request->file('banner');
                 $ext = $request->file('banner')->getClientOriginalExtension();
-                $stored = \Storage::disk('public')->putFileAs('img', $banner, 'banner'.'.'.$ext);
-                
-                $input['banner'] = $stored;
+                // $stored = \Storage::disk('public')->putFileAs('img', $banner, 'banner'.'.'.$ext);
+                $name = 'banner'.'.'.$ext;
+                $path = $banner->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+                $input['banner'] = $path;
             } 
             $achievement = Achievement::create($input);
             if ($achievement == true) {
@@ -78,9 +79,11 @@ class AchievementController extends Controller
             if($request->hasFile('banner')){
                 $banner = $request->file('banner');
                 $ext = $request->file('banner')->getClientOriginalExtension();
-                $stored = \Storage::disk('public')->putFileAs('img', $banner, 'banner'.'.'.$ext);
+                // $stored = \Storage::disk('public')->putFileAs('img', $banner, 'banner'.'.'.$ext);
                 
-                $input['banner'] = $stored;
+                $name = 'banner'.'.'.$ext;
+                $path = $banner->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+                $input['banner'] = $name;
             } 
             $achievements = new Achievement();
             $achievement2Update = $achievements->find($achievement);

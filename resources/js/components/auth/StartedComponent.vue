@@ -4,84 +4,131 @@
         <div id="helpModal1" class="modal">
             <div class="modal-content">
                 <p>
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat helpModalCloseBtn">Go Back</a>
+                    <a
+                        href="#!"
+                        class="
+                            modal-close
+                            waves-effect waves-green
+                            btn-flat
+                            helpModalCloseBtn
+                        "
+                        >Go Back</a
+                    >
                 </p>
                 <h5 class="helpModalTitle">How to sign up</h5>
                 <div class="helpModalTxts">
                     <p>Create your portfolio with these easy steps:</p>
-                    <p>1. Enter your professional name and title e.g Dr Bayo Akerele.</p>
+                    <p>
+                        1. Enter your professional name and title e.g Dr Bayo
+                        Akerele.
+                    </p>
                     <p>2. Enter your email and mobile number.</p>
                     <p>3. Select your gender, country, state and city.</p>
                     <p>4. Create a Strong password e.g. Qwerty123@</p>
                     <p>5. Tap Sign Up</p>
-                    <p>6. To finish creating your account, you need to confirm your email or phone number.</p>
+                    <p>
+                        6. To finish creating your account, you need to confirm
+                        your email or phone number.
+                    </p>
                 </div>
             </div>
         </div>
         <div class="row authContainDiv" v-if="verifiedEmail == 1">
             <div class="col s12 m12 l6 welcomeContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
+                    <a href="/" class="wlcNoteLogo">
+                        <img
+                            src="/media/img/whiteCoatDomain1.png"
+                            alt="whiteCoatDomain.png"
+                            class="authLogo"
+                        />
+                    </a>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
                     <p class="wlcNoteTxt">
-                        Let us ensure that your email address is active and accurate , that is the only way we can reach you effectively.
+                        Let us ensure that your email address is active and
+                        accurate , that is the only way we can reach you
+                        effectively.
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support
+                        your brand!
                     </p>
                 </div>
             </div>
 
             <div class="col s12 m12 l6 welcomeContainer">
-                <VerifyEmailComponent @resData="setOTP" :type="'register'"/>
+                <VerifyEmailComponent @resData="setOTP" :type="'register'" />
             </div>
         </div>
 
         <div class="row authContainDiv" v-if="verifiedEmail == 2">
             <div class="col s12 m12 l6 otpContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
+                    <a href="/" class="wlcNoteLogo">
+                        <img
+                            src="/media/img/whiteCoatDomain1.png"
+                            alt="whiteCoatDomain.png"
+                            class="authLogo"
+                        />
+                    </a>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
                     <p class="wlcNoteTxt">
                         “ Good things come to those who wait”.
-                        <span class="getStartedOtpSpan right">Nathan Sykes</span>
+                        <span class="getStartedOtpSpan right"
+                            >Nathan Sykes</span
+                        >
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support
+                        your brand!
                     </p>
                 </div>
             </div>
 
             <div class="col s12 m12 l6 otpContainer">
-                <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'"/>
+                <OtpComponent
+                    @res="otpVerifier"
+                    :otp="otp"
+                    :type="'register'"
+                />
             </div>
         </div>
 
         <div class="row authContainDiv" v-if="verifiedEmail == 3">
             <div class="col s12 m12 l6 regContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
+                    <a href="/" class="wlcNoteLogo">
+                        <img
+                            src="/media/img/whiteCoatDomain1.png"
+                            alt="whiteCoatDomain.png"
+                            class="authLogo"
+                        />
+                    </a>
                     <p class="wlcNoteTitle">
                         Start your journey <br />with us...
                     </p>
                     <p class="wlcNoteTxt">
-                        White Coat Domain is the easiest and quickest way to build your brand presence. 
-                        At your fingertips, take your professional career to
-                        the next level by building an outstanding online portfolio to showcase your career and promote yourself.
+                        White Coat Domain is the easiest and quickest way to
+                        build your brand presence. At your fingertips, take your
+                        professional career to the next level by building an
+                        outstanding online portfolio to showcase your career and
+                        promote yourself.
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        &copy; White Coat Domain. {{ getYear() }}. We support your brand!
+                        &copy; White Coat Domain. {{ getYear() }}. We support
+                        your brand!
                     </p>
                 </div>
             </div>
 
             <div class="col s12 m12 l6 regContainer">
                 <div class="authRightDiv">
-                    <p class="authTitle">SIGN UP
+                    <p class="authTitle">
+                        SIGN UP
                         <!-- Signup Help Modal Trigger -->
                         <a class="modal-trigger" href="#helpModal1">
                             <i class="material-icons helpIcon right">help</i>
@@ -133,16 +180,7 @@
                         </div>
 
                         <div class="row">
-                            <div
-                                class="
-                                    input-field
-                                    col
-                                    l6
-                                    m6
-                                    s6
-                                    noPaddingLeft
-                                "
-                            >
+                            <div class="input-field col l6 m6 s6 noPaddingLeft">
                                 <input
                                     placeholder="Email"
                                     id="signupEmail"
@@ -151,15 +189,7 @@
                                     readonly
                                 />
                             </div>
-                            <div
-                                class="
-                                    input-field
-                                    col
-                                    l6
-                                    m6
-                                    s6
-                                "
-                            >
+                            <div class="input-field col l6 m6 s6">
                                 <input
                                     placeholder="Zipcode"
                                     id="signupZipcode"
@@ -171,14 +201,7 @@
 
                         <div class="row">
                             <div
-                                class="
-                                    input-field
-                                    col
-                                    l6
-                                    m6
-                                    s12
-                                    noPaddingLeft
-                                "
+                                class="input-field col l6 m6 s12 noPaddingLeft"
                             >
                                 <input
                                     placeholder="Phone Number"
@@ -374,7 +397,7 @@
     export default {
         components: {
             VerifyEmailComponent,
-            OtpComponent
+            OtpComponent,
         },
         data() {
             return {
@@ -398,7 +421,7 @@
                     password: "",
                     cPassword: "",
                     profession: "",
-                    zipcode: ""
+                    zipcode: "",
                 },
                 verifiedEmail: 1,
             };
@@ -425,51 +448,55 @@
                         })
                     )
                     .catch((errors) => {
-                        console.log(errors)
+                        console.log(errors);
                     });
             },
             getYear() {
                 return new Date().getFullYear();
             },
-            otpVerifier(value){
-                if(value === 200){
+            otpVerifier(value) {
+                if (value === 200) {
                     this.updateVerifiedEmail(3);
                 }
             },
-            setOTP(value){
+            setOTP(value) {
                 this.otp = value.otp;
                 this.userReg.email = value.email;
                 this.updateVerifiedEmail(2);
             },
             sortCities() {
-                axios.get(`/api/cities/${this.userReg.state}`).then(res => {
-                    if (res.data.status == 200) {
-                        this.cities = res.data.cities;
-                    }
-                    else {
-                        M.toast({
-                            html: 'Error getting cities',
-                            classes: "errorNotifier",
-                        });
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
+                axios
+                    .get(`/api/cities/${this.userReg.state}`)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            this.cities = res.data.cities;
+                        } else {
+                            M.toast({
+                                html: "Error getting cities",
+                                classes: "errorNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             },
             sortStates() {
-                axios.get(`/api/states/${this.userReg.country}`).then(res => {
-                    if (res.data.status == 200) {
-                        this.states = res.data.states;
-                    }
-                    else {
-                        M.toast({
-                            html: 'Error getting states',
-                            classes: "errorNotifier",
-                        });
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
+                axios
+                    .get(`/api/states/${this.userReg.country}`)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            this.states = res.data.states;
+                        } else {
+                            M.toast({
+                                html: "Error getting states",
+                                classes: "errorNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             },
             submitRegistrationForm() {
                 if (

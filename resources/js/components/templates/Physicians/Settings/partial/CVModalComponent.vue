@@ -727,7 +727,7 @@
                                 />
                             </div>
                         </div>
-                        <di class="row" v-show="showRefferalInputs === 1">
+                        <div class="row" v-show="showRefferalInputs === 1">
                             <div class="input-field col s12">
                                 <input
                                     placeholder="Name"
@@ -736,7 +736,7 @@
                                     v-model="reference.name"
                                 />
                             </div>
-                        </di>
+                        </div>
                         <div class="row" v-show="showRefferalInputs === 2">
                             <div class="input-field col s12">
                                 <input

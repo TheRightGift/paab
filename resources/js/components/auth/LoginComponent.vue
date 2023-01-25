@@ -3,21 +3,30 @@
         <div class="row authContainDiv">
             <div class="col s12 m12 l6 loginContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">White Coat Domain</a>
+                    <a href="/" class="wlcNoteLogo">
+                        <img
+                            src="/media/img/whiteCoatDomain1.png"
+                            alt="whiteCoatDomain.png"
+                            class="authLogo"
+                        />
+                    </a>
                     <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
                     <p class="wlcNoteTxt">
-                        The World is still listening , it is time to tell your brand story with our professional , 
-                        powerful and easy to use portfolio builder for your career.
+                        The World is still listening , it is time to tell your
+                        brand story with our professional , powerful and easy to
+                        use portfolio builder for your career.
                     </p>
                     <p class="wlcNoteFooterTxt">
-                        © White Coat Domain, Inc. {{getYear()}}. We love our users!
+                        © White Coat Domain, Inc. {{ getYear() }}. We love our
+                        users!
                     </p>
                 </div>
             </div>
 
             <div class="col s12 m12 l6 loginContainer">
                 <div class="authRightDiv">
-                    <p class="authTitle">LOGIN
+                    <p class="authTitle">
+                        LOGIN
                         <!-- Login Help Modal Trigger -->
                         <a class="modal-trigger" href="#helpModal">
                             <i class="material-icons helpIcon right">help</i>
@@ -32,19 +41,30 @@
                     <div id="helpModal" class="modal">
                         <div class="modal-content">
                             <p>
-                                <a href="#!" class="modal-close waves-effect waves-green btn-flat helpModalCloseBtn">Go Back</a>
+                                <a
+                                    href="#!"
+                                    class="
+                                        modal-close
+                                        waves-effect waves-green
+                                        btn-flat
+                                        helpModalCloseBtn
+                                    "
+                                    >Go Back</a
+                                >
                             </p>
                             <h5 class="helpModalTitle">How to login</h5>
                             <p class="helpModalTxts">
-                                Saving you the stress of long logins, you can access your 
-                                profile by linking any of your social media accounts like
-                                Facebook, Instagram and Twitter.
+                                Saving you the stress of long logins, you can
+                                access your profile by linking any of your
+                                social media accounts like Facebook, Instagram
+                                and Twitter.
                             </p>
 
                             <p class="helpModalTxts">
-                                Presenting your best work is the final step in your workflow. 
-                                Join the world of leading professionals . Share your
-                                professional brand with the world.
+                                Presenting your best work is the final step in
+                                your workflow. Join the world of leading
+                                professionals . Share your professional brand
+                                with the world.
                             </p>
                         </div>
                     </div>
@@ -141,9 +161,9 @@
 </template>
 
 <script>
-import SocialLoginComponent from '../partials/SocialLoginComponent.vue';
+    import SocialLoginComponent from "../partials/SocialLoginComponent.vue";
     export default {
-    components: { SocialLoginComponent },
+        components: { SocialLoginComponent },
         data() {
             return {
                 loginLoading: false,
@@ -153,8 +173,7 @@ import SocialLoginComponent from '../partials/SocialLoginComponent.vue';
                 },
             };
         },
-        mounted() {
-        },
+        mounted() {},
         methods: {
             getYear() {
                 return new Date().getFullYear();

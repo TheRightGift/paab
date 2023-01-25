@@ -127,7 +127,7 @@ input[type="file"]::-webkit-file-upload-button {
     visibility: hidden;
 }
 input[type="file"]::before {
-    content: url("/media/img/pen.png");
+    content: url("/media/img/upload.png");
     display: inline-block;
     border: none;
     border-radius: 3px;
@@ -156,6 +156,15 @@ input[type="file"]:active::before {
 /* MEDIA QUERY STARTS HERE */
 /* Media Query on Medium Device */
 @media screen and (max-width: 992px) and (min-width: 640px) {
+    .physiTempBtn {
+        font-size: 12px !important;
+    }
+    #tempOneAddTestiReview {
+        width: 105%;
+    }
+    #tempOneTestiSubBtn {
+        margin-left: 10px;
+    }
     .physiContainerDiv {
         width: 84.5%;
         margin: auto;
@@ -242,6 +251,22 @@ input[type="file"]:active::before {
 
 /* Media Query on small device */
 @media screen and (max-width: 640px) {
+    .modal .modal-content {
+        padding: 0;
+    }
+    .addReviewProMainDiv  {
+        width: auto;
+    }
+    #tempOneTestiSubBtn {
+        margin-left: 10px;
+        width: 97%;
+    }
+    #tempOneAddTestiReview {
+        width: 105%;
+    }
+    .physiTempBtn {
+        font-size: 12px !important;
+    }
     #sideNavIcon  {
         width: 13vw;
         height: 8.5vh;

@@ -309,7 +309,7 @@
                             <div v-else class="flex no-space-between">
                                 <img width="100" height="100" class="responsive-img" :src="
                                     typeof bio.photo == 'string'
-                                        ? 'tenancy/assets/' + bio.photo
+                                        ? '/media/'+tenant+'/img/'+ bio.photo
                                         : uploaded
                                 " />
                                 <a class="
@@ -361,7 +361,7 @@
                                         class="bioPics"
                                         :src="
                                             typeof bio.photo == 'string'
-                                                ? 'tenancy/assets/' + bio.photo
+                                                ? '/media/'+tenant+'/img/'+ bio.photo
                                                 : uploaded
                                         "
                                     />
@@ -378,7 +378,7 @@
                                 class="responsive-img"
                                 :src="
                                     typeof bio.photo == 'string'
-                                        ? 'tenancy/assets/' + bio.photo
+                                        ? '/media/'+tenant+'/img/'+ bio.photo
                                         : uploaded
                                 "
                             />
@@ -580,7 +580,7 @@
 import CVModalComponent from './CVModalComponent.vue';
     export default {
     components: { CVModalComponent },
-        props: ["user", "bioModal", "bioModal1", "bioModal2", "bioModal3", "saved", 'loading'],
+        props: ["user", "bioModal", "bioModal1", "bioModal2", "bioModal3", "saved", 'loading', 'tenant'],
         data() {
             return {
                 bio: {

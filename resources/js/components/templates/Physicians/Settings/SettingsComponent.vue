@@ -13,10 +13,12 @@
                 :general="general"
                 :loading="loading"
                 v-show="!promoView" class="fullPage"
+                :tenant="tenant"
             />
             <PromotionalsComponent
                 @close="promoView = false"
                 v-show="promoView"
+                :tenant="tenant"
             />
         </div>
     </div>
@@ -51,6 +53,7 @@
         },
         props: {
             user: String,
+            tenant: String,
         },
         data() {
             return {
@@ -65,6 +68,7 @@
                 loggedIn: false,
                 initialCheck: false,
                 promoView: false,
+                centralURL: process.env.MIX_APP_URL,
             };
         },
         created() {
@@ -145,8 +149,9 @@
                         classes: "errorNotifier",
                     });
                 } else {
+                    
                     axios
-                        .post("http://localhost:8000/api/tenant/auth/login", e)
+                        .post(`${this.centralURL}/api/tenant/auth/login`, e)
                         .then((res) => {
                             this.setCookie("_token", res.data.access_token, 1);
                             this.saveAccessToken(

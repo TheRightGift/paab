@@ -42,9 +42,11 @@ class ReviewsController extends Controller
             if($request->hasFile('imageURL')){
                 $imageURL = $request->file('imageURL');
                 $ext = $request->file('imageURL')->getClientOriginalExtension();
-                $stored = \Storage::disk('public')->putFileAs('img/reviews', $imageURL, $input['firstname'].$input['lastname'].'.'.$ext);
-                
-                $input['imageURL'] = $stored;
+                // $stored = \Storage::disk('public')->putFileAs('img/reviews', $imageURL, $input['firstname'].$input['lastname'].'.'.$ext);
+                $name = $input['firstname'].$input['lastname'].'.'.$ext;
+                $path = $imageURL->move(public_path('/media/'.strtolower(tenant('id')).'/img/reviews'), $name);
+
+                $input['imageURL'] = $name;
             } 
             $review = Reviews::create($input);
             if ($review == true) {
@@ -78,9 +80,10 @@ class ReviewsController extends Controller
             if($request->hasFile('imageURL')){
                 $image = $request->file('imageURL');
                 $name = $image->getClientOriginalName();
-                $image->file(storage_path('/media/img/' . $name));
-                // $image->move(public_path('/media/img/'), $name);
-                $input['imageURL'] = '/media/img/'.$name;
+                $name = $input['firstname'].$input['lastname'].'.'.$ext;
+                $path = $imageURL->move(public_path('/media/'.strtolower(tenant('id')).'/img/reviews'), $name);
+
+                $input['imageURL'] = $name;
             } 
             $reviews = new Reviews();
             $reviews->find($review);

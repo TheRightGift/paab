@@ -45,9 +45,10 @@ class PromotionController extends Controller
             if($request->hasFile('banner')){
                 $banner = $request->file('banner');
                 $ext = $request->file('banner')->getClientOriginalExtension();
-                $stored = \Storage::disk('public')->putFileAs('img/promo', $banner, $this->UUID().'.'.$ext);
-                
-                $input['banner'] = $stored;
+                // $stored = \Storage::disk('public')->putFileAs('img/promo', $banner, $this->UUID().'.'.$ext);
+                $name = $this->UUID().'.'.$ext;
+                $path = $banner->move(public_path('/media/'.strtolower(tenant('id')).'/img/promo'), $name);
+                $input['banner'] = $name;
             } 
             $input['expiry'] = new Carbon($input['expiry']);
             $promotion = Promotion::create($input);
@@ -84,9 +85,11 @@ class PromotionController extends Controller
             if($request->hasFile('banner')){
                 $banner = $request->file('banner');
                 $ext = $request->file('banner')->getClientOriginalExtension();
-                $stored = \Storage::disk('public')->putFileAs('img/promo', $banner, $this->UUID().'.'.$ext);
+                // $stored = \Storage::disk('public')->putFileAs('img/promo', $banner, $this->UUID().'.'.$ext);
                 
-                $input['banner'] = $stored;
+                $name = $this->UUID().'.'.$ext;
+                $path = $banner->move(public_path('/media/'.strtolower(tenant('id')).'/img/promo'), $name);
+                $input['banner'] = $name;
             } 
             $input['expiry'] = new Carbon($input['expiry']);
             $promotions = new Promotion();
