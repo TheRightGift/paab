@@ -2,11 +2,11 @@
     <div>
         <div id="loadMoreReviews" class="modal">
             <div class="testimonialReviewDiv">
-                <div class="testimonialReviewInnerDiv">
+                <!-- <div class="testimonialReviewInnerDiv">
                     <i class="material-icons modal-close reviewsModalClose">arrow_back</i>
         
                     <p class="reviewsTitle">Reviews</p>
-                </div>
+                </div> -->
                 <div class="tempOneRevDiv">
                     <div class="tempOneRevInnerDiv">
                         <a class="black-text" @click="goBackToNormal">

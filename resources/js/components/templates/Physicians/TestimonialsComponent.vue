@@ -255,7 +255,7 @@
         },
         computed: {
             reviewLen() {
-                return this.reviews.total;
+                return this.reviews.total || 0;
             },
             reviewsFront() {
                 return this.reviews.data ? this.reviews.data.slice(0, 5) : null;

@@ -44,7 +44,7 @@
                                 Service
                             </h5>
                             <div class="servicesIconsDiv">
-                                <i class="fa-solid fa-tooth servicesIcons"></i>
+                                <i class="fa-solid fa-briefcase-medical servicesIcons1"></i>
                             </div>
 
                             <p class="servcesHeading forDoc">Service Two</p>
@@ -66,7 +66,7 @@
                             <div class="servicesIconsDiv">
                                 <i
                                     class="
-                                        fa-sharp fa-solid fa-heart-pulse
+                                        fa-sharp fa-solid fa-briefcase-medical
                                         servicesIcons2
                                     "
                                 ></i>
