@@ -14,26 +14,26 @@
                         <img  v-else :src="'media/img/surgeonbanner.png'"  alt="surgeonbanner.png" class="bannerImg">
                     </div>
                     <div class="col s12 m3 l2">
-                        <div class="expLeftBarDiv experiences">
-                            <div class="expLeftBarInnerDiv">
+                        <div class="row expLeftBarDiv experiences">
+                            <div class="col s6 m12 l12 expLeftBarInnerDiv">
                                 <div class="experience">
                                     <p class="experienceTitle">10 Yrs</p>
                                     <p class="experienceTxt">Experience</p>
                                 </div>
                             </div>
-                            <div class="expLeftBarInnerDiv">
+                            <div class="col s6 m12 l12 expLeftBarInnerDiv">
                                 <div class="experience">
                                     <p class="experienceTitle">2,000</p>
                                     <p class="experienceTxt">Ward Rounds</p>
                                 </div>
                             </div>
-                            <div class="expLeftBarInnerDiv">
+                            <div class="col s6 m12 l12 expLeftBarInnerDiv">
                                 <div class="experience">
                                     <p class="experienceTitle">10yrs</p>
                                     <p class="experienceTxt">Volunteer services</p>
                                 </div>
                             </div>
-                            <div class="expLeftBarInnerDiv">
+                            <div class="col s6 m12 l12 expLeftBarInnerDiv">
                                 <div class="experience">
                                     <p class="experienceTitle">15</p>
                                     <p class="experienceTxt">Certifications</p>
@@ -65,8 +65,8 @@
                         >
                     </div>
                     <div class="col s12 m3 l2">
-                        <div class="expLeftBarDiv experiences">
-                            <div class="expLeftBarInnerDiv" v-for="(feat, index) in feats" :key="index">
+                        <div class="row expLeftBarDiv experiences">
+                            <div class="col s6 m12 l12 expLeftBarInnerDiv" v-for="(feat, index) in feats" :key="index">
                                 <div class="experience">
                                     <p class="experienceTitle">{{feat}} {{index == 'experience' ? 'Yrs' : null}}</p>
                                     <p class="experienceTxt">{{index}} {{ index == 'volunteer' ? 'services' : null }} {{ index == 'ward' ? 'rounds' : null}}</p>

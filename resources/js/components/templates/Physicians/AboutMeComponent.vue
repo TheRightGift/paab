@@ -36,7 +36,7 @@
                                     </p>
 
                                     <a href="#" class="physiTempBtn">
-                                        Download My curriculum vitae
+                                        View My curriculum vitae
                                     </a>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                         class="physiTempBtn"
                                         :href="'tenancy/assets/' + bio.CV"
                                     >
-                                        Download My curriculum vitae
+                                        View My curriculum vitae
                                     </a>
                                 </div>
                             </div>

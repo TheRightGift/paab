@@ -145,27 +145,6 @@ a.physiTempContactBtn.active {
     padding-top: 36vh;
 }
 
-.physiTempNavLinks {
-    font-weight: 600;
-    font-size: 1.1rem;
-    font-family: "Montserrat", sans-serif;
-    border-left: none;
-    padding: 0;
-    margin-right: 1.5vw;
-    color: rgb(34, 34, 34);
-    padding-bottom: 3vh;
-}
-
-.physiTempNavLinks:hover {
-    background-color: white;
-    border-bottom: 4px solid var(--primary);
-}
-
-.physiTempNavLinks.active {
-    border-bottom: 4px solid var(--primary);
-    padding: 0 0 3vh 0;
-}
-
 .physiTempNameTitle {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
@@ -362,6 +341,7 @@ a.physiTempContactBtn.active {
     background: var(--primary);
     border-radius: 10px;
     padding: 3vh 1.5vw;
+    margin-right: 0.1vw !important;
 }
 
 .experienceTitle {
@@ -727,6 +707,11 @@ a.physiTempContactBtn.active {
     right: 0;
     bottom: 40vh;
 }
+
+.tempOneRevDiv {
+    padding: 0;
+}
+
 @media screen and (max-width: 992px) and (min-width: 640px) {
     #testiMapImg {
         height: auto;
@@ -739,10 +724,83 @@ a.physiTempContactBtn.active {
     }
     .physiRightImg {
         left: 7px;
-top: 7px;
+        top: 7px;
     }
     .physiContainerDiv#about {
         padding-top: 0px;
+    }
+
+    #physiPortPageLogo {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: #000000;
+        margin-top: 3vh;
+        position: absolute;
+        left: 45vw;
+    }
+    a.physiTempNavLinks {
+        font-family: "Montserrat", sans-serif;
+        color: var(--white) !important;
+        position: relative;
+        bottom: 2vh;
+    }
+    a.physiTempNavLinks:hover {
+        background-color: white;
+        border-bottom: 4px solid rgba(113, 96, 187, 0.5);
+        padding: 0 0 0 4vw;
+        border-left: none;
+        margin: 0 0.96vw;
+    }
+    a.physiTempNavLinks.active {
+        padding: 0 0 0 4vw;
+        border-left: none;
+        margin: 0 !important;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+    a.physiTempContactBtn {
+        width: 50%;
+        background-color: var(--white);
+        padding: 0vh 0vw;
+        margin-top: 0px;
+        margin-left: 3vw;
+        font-family: "Montserrat", sans-serif;
+        color: var(--primary) !important;
+        position: relative;
+        bottom: 0vh;
+        right: 0vw;
+    }
+    a.physiTempContactBtn:hover {
+        background-color: var(--white) !important;
+        color: var(--primary) !important;
+    }
+    a.physiTempContactBtn.active {
+        background-color: var(--white) !important;
+        color: var(--primary) !important;
+    }
+    .physiSidenavTempName {
+        font-size: 1.5rem !important;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        color: var(--white) !important;
+        /* text-align: center; */
+    }
+    .experiences {
+        background: var(--primary);
+        border-radius: 10px;
+        padding: 0.5vh 0vw;
+        /* width: 18vw; */
+        margin-right: 0.1vw !important;
+    }
+    .contactContainDiv {
+        width: 100%;
+        margin: auto;
+    }
+    .contactMainDiv .col.s12.m7.l7 {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
     }
 }
 @media screen and (max-width: 640px) {
@@ -756,22 +814,29 @@ top: 7px;
     .experienceImgContainDiv .col.s12.m3.l2,
     .surgeonBannerImgDiv {
         width: 100%;
-        margin-left: auto;
+        /* margin-left: auto; */
     }
-    .bannerImg {
+    img.bannerImg {
         height: auto !important;
+        width: 100%;
     }
     .hide-on-large-only.white {
         margin-bottom: 45vh;
     }
     .physiRightImg {
         position: unset !important;
+        transform: rotate(0deg);
+        box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
     }
     .profileImg {
         top: 12vh !important;
-        right: 4vw;
-        width: 238px;
+        right: 2.5vw !important;
+        width: 95%;
         height: auto;
+        transform: rotate(0deg);
+        background: none;
+        box-shadow: 0px 0px 0px rgba(255, 255, 255, 0);
+        border-radius: 0px;
     }
     .contactContainDiv {
         width: 90%;
@@ -789,5 +854,109 @@ top: 7px;
     }
     .physiContainerDiv#services {
         padding-top: 7vh;
+    }
+    .physiTempName {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 2rem;
+        line-height: 35px;
+        letter-spacing: 0.1px;
+        color: var(--primary);
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+    }
+    .feedsMainTxt {
+        font-family: "Montserrat", sans-serif;
+        font-weight: lighter;
+        font-size: 1.7rem !important;
+        line-height: 44px;
+        color: var(--primary);
+        text-align: center;
+        margin: 0 0 1vh 0;
+    }
+    .expMainTxt,
+    .feeds {
+        font-family: "Montserrat", sans-serif;
+        font-weight: lighter;
+        font-size: 1.8rem;
+        line-height: 44px;
+        color: var(--primary);
+        text-align: center;
+        margin: 0 0 10vh 0;
+    }
+        
+    .expLeftBarInnerDiv:nth-child(3) {
+        border-bottom: none;
+        border-right: 1px solid rgba(217, 217, 217, 0.65);
+    }
+    .expLeftBarInnerDiv:first-child {
+        border-right: 1px solid rgba(217, 217, 217, 0.65);
+    }
+    .experiences {
+        background: var(--primary);
+        border-radius: 10px;
+        padding: 3vh 1.5vw;
+        margin-right: 0vw;
+        width: 93vw;
+    }
+    .physiExpContainerDiv,
+    .feedsContainDiv {
+        width: 99%;
+        margin: auto;
+    }
+    #physiPortPageLogo {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: #000000;
+        margin-top: 3vh;
+        margin-left: 13vw;
+    }
+    a.physiTempNavLinks {
+        font-family: "Montserrat", sans-serif;
+        color: var(--white) !important;
+        position: relative;
+        bottom: 2vh;
+    }
+    a.physiTempNavLinks:hover {
+        background-color: white;
+        border-bottom: 4px solid rgba(113, 96, 187, 0.5);
+        padding: 0 0 0 7.5vw;
+        border-left: none;
+        margin: 0 0.96vw;
+    }
+    a.physiTempNavLinks.active {
+        padding: 0 0 0 7.5vw;
+        border-left: none;
+        margin: 0 !important;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+    a.physiTempContactBtn {
+        width: 50%;
+        background-color: var(--white);
+        padding: 0vh 0vw;
+        margin-top: 0px;
+        margin-left: 7vw;
+        font-family: "Montserrat", sans-serif;
+        color: var(--primary) !important;
+        position: relative;
+        bottom: 0vh;
+        right: 0vw;
+    }
+    a.physiTempContactBtn:hover {
+        background-color: var(--white) !important;
+        color: var(--primary) !important;
+    }
+    a.physiTempContactBtn.active {
+        background-color: var(--white) !important;
+        color: var(--primary) !important;
+    }
+    .physiSidenavTempName {
+        font-size: 1.5rem !important;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        color: var(--white) !important;
+        /* text-align: center; */
     }
 }
