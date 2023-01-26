@@ -30,7 +30,7 @@
                             <div v-else class="col l6">
                                 <img class="col l9 responsive-img noPaddingLeft" :src="
                                     typeof achievement.banner == 'string'
-                                        ? '/media/'+tenant+'/img/'+ achievement.banner
+                                        ? '/media/tenants/'+tenant+'/img/'+ achievement.banner
                                         : uploaded
                                 " />
                                 <div class="col l3 faviconUploadBtnCol">

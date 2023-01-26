@@ -25,7 +25,7 @@
                     :src="
                         'https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F' +
                         facebook +
-                        '&tabs=timeline&width=405&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId'
+                        '&tabs=timeline&width=405&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=387648135838115'
                     "
                     width="100%"
                     height="500"

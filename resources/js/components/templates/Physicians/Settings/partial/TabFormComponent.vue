@@ -116,6 +116,7 @@
                 :genModal1="genModal1"
                 :saved="general"
                 :loading="loading"
+                :tenant="tenant"
                 @genNextBtn="genNextBtn"
                 @generalSave="generalSave($event)"
                 @generalUpdate="generalUpdate($event)"
@@ -248,6 +249,8 @@
                 let refreshed = localStorage.getItem('refreshed') === null ? 0 : parseInt(localStorage.getItem('refreshed')) + 1;
                 localStorage.setItem('refreshed', refreshed);
             }
+
+            
         },
         methods: {
             checkIfFieldIsEmpty() {

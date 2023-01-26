@@ -24,8 +24,7 @@
                         </div>
 
                         <p class="genTxt">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry.
+                            CLick on the '+' icon above to view input field for adding extra services you render. You must enter atleast one service.
                         </p>
                         <form
                             enctype="multipart/form-data"
