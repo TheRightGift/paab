@@ -324,8 +324,12 @@ a.physiTempContactBtn.active {
     text-align: center;
     margin: 0 0 10vh 0;
 }
+.feeds {
+    color: var(--white);
+    margin-bottom: 5vh;
+}
 .feedsContainDiv {
-    margin-top: 9vh;
+    margin-top: 5vh;
 }
 .experienceImgContainDiv .col.s12.m3.l2 {
     width: 16.6666666667%;
