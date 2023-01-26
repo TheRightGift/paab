@@ -178,8 +178,7 @@ class TenantController extends Controller
         ]); 
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
-        }
-        else {
+        } else {
             $input = $inputs->validated();
             $tenantUser = new TenantUser();
             $tenant = $tenantUser->where('user_id', $input['user_id'])->latest()->first();

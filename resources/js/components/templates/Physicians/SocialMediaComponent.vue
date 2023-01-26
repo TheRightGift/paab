@@ -91,9 +91,9 @@
     export default {
         data() {
             return {
-                facebook: "",
+                facebook: "whiteCoatDomain",
                 twitter: "WhiteCoatD_HQ",
-                linkedin: "",
+                linkedin: "7024316559623958529",
             };
         },
         props: {

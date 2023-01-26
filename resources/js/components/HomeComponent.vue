@@ -112,7 +112,7 @@
                             engineers etc.
                         </p>
 
-                        <a href="/templates" class="btn circleDivBtn">
+                        <a href="/templates" class="btn circleDivBtnLg">
                             preview templates
                         </a>
                     </div>

@@ -453,34 +453,35 @@
                 let data = {
                     _method: "PUT",
                 };
+                // console.log(e)
                 if (e.update == 1) {
                     request = `/api/social/${e.id}`;
                     e = { ...e, ...data };
                 }
                 axios
-                    .post(request, e)
-                    .then((res) => {
-                        if (res.status == 201 || res.data.status == 200) {
-                            this.loading = !this.loading;
-                            M.toast({
-                                html: res.data.message,
-                                classes: "successNotifier",
-                            });
-                            this.socialErrors = false;
-                            this.contactLink();
-                        }
-                    })
-                    .catch((err) => {
+                .post(request, e)
+                .then((res) => {
+                    if (res.status == 201 || res.data.status == 200) {
                         this.loading = !this.loading;
-                        if (err.response.status == 400) {
-                            err.response.data.forEach((el) => {
-                                M.toast({
-                                    html: el,
-                                    classes: "errorNotifier",
-                                });
+                        M.toast({
+                            html: res.data.message,
+                            classes: "successNotifier",
+                        });
+                        this.socialErrors = false;
+                        this.contactLink();
+                    }
+                })
+                .catch((err) => {
+                    this.loading = !this.loading;
+                    if (err.response.status == 400) {
+                        err.response.data.forEach((el) => {
+                            M.toast({
+                                html: el,
+                                classes: "errorNotifier",
                             });
-                        }
-                    });
+                        });
+                    }
+                });
             },
             saveContact(e) {
                 this.loading = !this.loading;

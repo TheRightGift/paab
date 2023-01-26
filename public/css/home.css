@@ -35,17 +35,23 @@
     color: white;
     font-family: "Poppins", sans-serif;
 }
-.circleDivBtn {
+.circleDivBtn, .circleDivBtnLg {
     width: 198px;
     height: 40px;
-    background: var(--primary);
+    background-color: var(--primary);
     border-radius: 6px;
     font-weight: 400;
     font-size: 0.9rem;
     font-family: "Montserrat", sans-serif;
 }
+.btn.circleDivBtnLg {
+    background-color: var(--white) !important;
+    color: var(--primary);
+}
 .btn.circleDivBtn:hover,
-.btn.circleDivBtn:active {
+.btn.circleDivBtn:active,
+.btn.circleDivBtnLg:hover,
+.btn.circleDivBtnLg:active {
     background: var(--component);
 }
 .portraitImgDiv {

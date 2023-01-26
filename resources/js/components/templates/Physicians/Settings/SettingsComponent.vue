@@ -151,17 +151,25 @@
                 } else {
                     
                     axios
-                        .post(`${this.centralURL}/api/tenant/auth/login`, e)
+                        .post(`http://nupaab.io/api/tenant/auth/login`, e)
                         .then((res) => {
-                            this.setCookie("_token", res.data.access_token, 1);
-                            this.saveAccessToken(
-                                res.data.access_token,
-                                res.data.user.id,
-                                e.email
-                            );
+                            if(res.data.status === 404){
+                                M.toast({
+                                    html: "Invalid Credentials",
+                                    classes: "errorNotifier",
+                                });
+                            } else {
+                                this.setCookie("_token", res.data.access_token, 1);
+                                this.saveAccessToken(
+                                    res.data.access_token,
+                                    res.data.user.id,
+                                    e.email
+                                );
+                            }
+                            this.loading = false;
                         })
                         .catch((err) => {
-                            console.log(err);
+                            console.log(`Error: ${err}`);
                             this.loading = false;
                         });
                 }

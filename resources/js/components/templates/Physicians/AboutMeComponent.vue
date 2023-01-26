@@ -91,7 +91,7 @@
                                 <!-- offset-l3 media/img/doc.png-->
                                 <div class="profileImg" v-if="preview == '0'">
                                     <img
-                                        :src="'/media/'+tenant+'/img/'+ bio.photo"
+                                        :src="'/media/tenants/'+tenant+'/img/'+ bio.photo"
                                         alt="doc.png"
                                         class="responsive-img physiRightImg"
                                     />

@@ -55,11 +55,11 @@
                 <p class="expMainTxt">MY ACHIEVEMENT</p>
                 <div class="experienceImgContainDiv">
                     <div class="surgeonBannerImgDiv" v-if="experience != null">
-                        <img :src="'/media/'+tenant+'/img/'+experience.banner" 
+                        <img :src="'/media/tenants/'+tenant+'/img/'+experience.banner" 
                             alt="physicianTemplate.png" class="bannerImg"
                             v-if="promo == ''"
                         >
-                        <img :src="'/media/'+tenant+'/img/promo/'+promo.banner" 
+                        <img :src="'/media/tenants/'+tenant+'/img/promo/'+promo.banner" 
                             alt="physicianTemplate.png" class="bannerImg" 
                             v-else-if="promo != ''"
                         >
