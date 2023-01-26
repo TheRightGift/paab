@@ -75,8 +75,7 @@
                             <p class="genTitle1">Provide your full name</p>
                         
                             <p class="genTxt">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry.
+                                Your names are auto inputted with the names you provided during registration. you can change it if you wish so.
                             </p>
                         
                             <div class="input-field">
@@ -288,42 +287,6 @@
                             Upload Curriculum
                         </p>
                     </div>
-
-                    <!--div class="row">
-                        <div class="col s7">
-                            <p class="genTitle1">Upload a clear picture of you</p>
-                        
-                            <p class="genTxt">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry.
-                            </p>
-                        
-                            <div class="file-field input-field" id="genUploadFavIconDiv" v-if="bio.photo == null">
-                                <input type="file" @change="photoUpload" accept=".jpg, .png" />
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" id="genInput1"
-                                        placeholder="Image must be .jpg/.png and not greater than 1MB(500x500)" />
-                                    <i class="material-icons" id="genUploadFavIcon">file_upload</i>
-                                </div>
-                            </div>
-                            <div v-else class="flex no-space-between">
-                                <img width="100" height="100" class="responsive-img" :src="
-                                    typeof bio.photo == 'string'
-                                        ? '/media/tenants/'+tenant+'/img/'+ bio.photo
-                                        : uploaded
-                                " />
-                                <a class="
-                                    waves-effect waves-light
-                                    btn-small btn
-                                    red
-                                " @click="deleteImg">Change</a>
-                            </div>
-                        </div>
-
-                        <div class="col s5">
-                            <img src="/media/img/editWebsiteSettings/fullnameProImg.png" alt="fullnameProImg.png" class="editWebIllustrativeImg" width="420" height="300">
-                        </div>
-                    </div-->
                     <div class="row">
                         <div class="col l12">
                             <p class="genTitle1">Upload a clear picture of you</p>
@@ -331,7 +294,7 @@
 
                         <div class="col l6">
                             <p class="genTxt">
-                                Image must be .jpg/.png and not greater than 1MB(500x500).
+                                Image must be .jpg/.png. The size must not be more than 1MB. The dimension should be 451px (width) by 512px (height).
                             </p>
 
                             <div

@@ -48,8 +48,7 @@
                     </div>  
                     <div class="col s6">
                         <p class="genTxt">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry.
+                            Input your website title in the input field below.
                         </p>
                     
                         <div class="input-field col l12 genInput">
@@ -144,7 +143,7 @@
                                 <div v-else class="flex no-space-between">
                                     <img width="100" height="100" class="responsive-img" :src="
                                         typeof general.favicon == 'string'
-                                            ? 'tenancy/assets/' + general.favicon
+                                            ? '/media/tenants/'+tenant+'/img/' + general.favicon
                                             : uploaded
                                     " />                                
                                 </div>
@@ -228,7 +227,7 @@
                 generalErrors: false,
             };
         },
-        props: ["genModal", "genModal1", "saved", "loading"],
+        props: ["genModal", "genModal1", "saved", "loading", "tenant"],
         methods: {
             deleteImg() {
                 this.general.oldFav = this.general.favicon;
