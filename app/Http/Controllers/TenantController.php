@@ -220,10 +220,6 @@ class TenantController extends Controller
         }
     }
 
-    public function claim() {
-        // Claims the website
-    }
-
     public function checkEmail(Request $request) {
         // Check if user->visits != null
         $orders = AdminClientOrder::where([['email', $request->email], ['claimed', null]])->first();
@@ -268,6 +264,24 @@ class TenantController extends Controller
         else {
             return response()->json(['message' => 'Your website might have been claimed']);
         }
-        // else ignore
+    }
+
+    public function claim(Request $request) {
+        $value = $request->session()->pull('tenant', 'default');
+        if (!empty($value) && $value !== 'default') {
+            $orders = AdminClientOrder::where([['tenant_id', $value], ['claimed', null]])->first();
+            $authUser = auth()->user();
+            $tenant = Tenant::find($value);
+            $tenant->user_id = $authUser->id;
+            $orders->claimed = 1;
+            $tenantSave = $tenant->save();
+            $orderSave = $orders->save();
+            if ($tenantSave === true && $orderSave) {
+                return view('client.dashboard');
+            }
+        }
+        else {
+            return view('client.dashboard');
+        }
     }
 }

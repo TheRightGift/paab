@@ -232,7 +232,7 @@ p.wlcNoteFooterTxt {
 .btn.getStartBtn:hover,
 .btn.getStartBtn:active {
     background-color: var(--black);
-    color: var(--primary);
+    color: var(--white);
 }
 .btn.getStartBtn:visited {
     background-color: var(--primary);

@@ -309,7 +309,7 @@
                             <div v-else class="flex no-space-between">
                                 <img width="100" height="100" class="responsive-img" :src="
                                     typeof bio.photo == 'string'
-                                        ? '/media/'+tenant+'/img/'+ bio.photo
+                                        ? '/media/tenants/'+tenant+'/img/'+ bio.photo
                                         : uploaded
                                 " />
                                 <a class="
@@ -361,7 +361,7 @@
                                         class="bioPics"
                                         :src="
                                             typeof bio.photo == 'string'
-                                                ? '/media/'+tenant+'/img/'+ bio.photo
+                                                ? '/media/tenants/'+tenant+'/img/'+ bio.photo
                                                 : uploaded
                                         "
                                     />
@@ -378,7 +378,7 @@
                                 class="responsive-img"
                                 :src="
                                     typeof bio.photo == 'string'
-                                        ? '/media/'+tenant+'/img/'+ bio.photo
+                                        ? '/media/tenants/'+tenant+'/img/'+ bio.photo
                                         : uploaded
                                 "
                             />

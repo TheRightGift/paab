@@ -47,7 +47,7 @@ class PromotionController extends Controller
                 $ext = $request->file('banner')->getClientOriginalExtension();
                 // $stored = \Storage::disk('public')->putFileAs('img/promo', $banner, $this->UUID().'.'.$ext);
                 $name = $this->UUID().'.'.$ext;
-                $path = $banner->move(public_path('/media/'.strtolower(tenant('id')).'/img/promo'), $name);
+                $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img/promo'), $name);
                 $input['banner'] = $name;
             } 
             $input['expiry'] = new Carbon($input['expiry']);
@@ -88,7 +88,7 @@ class PromotionController extends Controller
                 // $stored = \Storage::disk('public')->putFileAs('img/promo', $banner, $this->UUID().'.'.$ext);
                 
                 $name = $this->UUID().'.'.$ext;
-                $path = $banner->move(public_path('/media/'.strtolower(tenant('id')).'/img/promo'), $name);
+                $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img/promo'), $name);
                 $input['banner'] = $name;
             } 
             $input['expiry'] = new Carbon($input['expiry']);

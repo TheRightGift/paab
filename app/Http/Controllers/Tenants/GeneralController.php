@@ -46,7 +46,7 @@ class GeneralController extends Controller
                 $ext = $request->file('favicon')->getClientOriginalExtension();
                 // $stored = \Storage::disk('public')->putFileAs('img', $general, 'favicon'.'.'.$ext);
                 $name = 'favicon'.'.'.$ext;
-                $path = $general->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+                $path = $general->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
 
                 $input['favicon'] = $name;
             } 
@@ -86,7 +86,7 @@ class GeneralController extends Controller
                 // $stored = \Storage::disk('public')->putFileAs('img', $file, 'favicon'.'.'.$ext);
                 
                 $name = 'favicon'.'.'.$ext;
-                $path = $general->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+                $path = $general->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
 
                 $input['favicon'] = $name;
             } 

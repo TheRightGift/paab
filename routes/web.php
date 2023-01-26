@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,9 @@ Route::get('/', function () {
 Route::get('/templates', function () {
     return view('template');
 });
+
+Route::get('/claim', [App\Http\Controllers\SettingController::class, 'claim']);
+
 
 Route::get('/preview/{templateId}', [App\Http\Controllers\TemplateController::class, 'renderTemplate']);
 
@@ -68,9 +72,8 @@ Route::prefix('client')->middleware(['auth', 'can:run_client_ops'])->group(funct
     Route::get('/websites', function () {
         return view('client.websites');
     }); //->middleware('can:run_client_ops')
-    Route::get('/dashboard', function () {
-        return view('client.dashboard');
-    });
+    Route::get('/dashboard', [App\Http\Controllers\TenantController::class, 'claim']);
+        
     Route::get('/mail', function () {
         return view('client.mail');
     });

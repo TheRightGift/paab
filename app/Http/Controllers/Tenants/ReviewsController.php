@@ -44,7 +44,7 @@ class ReviewsController extends Controller
                 $ext = $request->file('imageURL')->getClientOriginalExtension();
                 // $stored = \Storage::disk('public')->putFileAs('img/reviews', $imageURL, $input['firstname'].$input['lastname'].'.'.$ext);
                 $name = $input['firstname'].$input['lastname'].'.'.$ext;
-                $path = $imageURL->move(public_path('/media/'.strtolower(tenant('id')).'/img/reviews'), $name);
+                $path = $imageURL->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img/reviews'), $name);
 
                 $input['imageURL'] = $name;
             } 
@@ -81,7 +81,7 @@ class ReviewsController extends Controller
                 $image = $request->file('imageURL');
                 $name = $image->getClientOriginalName();
                 $name = $input['firstname'].$input['lastname'].'.'.$ext;
-                $path = $imageURL->move(public_path('/media/'.strtolower(tenant('id')).'/img/reviews'), $name);
+                $path = $imageURL->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img/reviews'), $name);
 
                 $input['imageURL'] = $name;
             } 

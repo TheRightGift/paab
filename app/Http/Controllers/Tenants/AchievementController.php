@@ -45,7 +45,7 @@ class AchievementController extends Controller
                 $ext = $request->file('banner')->getClientOriginalExtension();
                 // $stored = \Storage::disk('public')->putFileAs('img', $banner, 'banner'.'.'.$ext);
                 $name = 'banner'.'.'.$ext;
-                $path = $banner->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+                $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                 $input['banner'] = $path;
             } 
             $achievement = Achievement::create($input);
@@ -82,7 +82,7 @@ class AchievementController extends Controller
                 // $stored = \Storage::disk('public')->putFileAs('img', $banner, 'banner'.'.'.$ext);
                 
                 $name = 'banner'.'.'.$ext;
-                $path = $banner->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+                $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                 $input['banner'] = $name;
             } 
             $achievements = new Achievement();
