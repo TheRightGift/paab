@@ -1,0 +1,350 @@
+:root {
+    --primary: #46166B;
+    --secondary: #46166B;
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #a4a2a2;
+    --component: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* this targets the default scrollbar (compulsory) */
+::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 7px rgba(0,0,0,0.8);*/
+    background-color: var(--primary);
+    /*border-radius: 8px;*/
+}
+
+/* the new scrollbar will have a flat appearance with the set background color */
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 100px var(--primary);
+    background-color: var(--primary);
+    /*border-radius: 8px;*/
+}
+
+/* this will style the thumb, ignoring the track */
+
+::-webkit-scrollbar-button {
+    height: 0;
+    /* background-color: rgba(0,151,0,1);*/
+}
+
+/* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+::-webkit-scrollbar-corner {
+    background-color: var(--black);
+}
+
+/* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+::-webkit-scrollbar-track-piece {
+    background-color: var(--white);
+}
+
+::-webkit-scrollbar-button:horizontal {
+    width: 5px;
+    /* Select the down or left scroll button when it's being hovered by the mouse */
+}
+
+
+
+
+/* button.waves-effect.waves-green.btn.cvSetupSkipBtn {
+    background-color: var(--primary);
+    border-radius: 6px;
+    padding: 0 40px;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 1vw;
+} */
+/* small.refExpTxt {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-left: 0.5vw;
+} */
+
+/* button.waves-effect.waves-green.btn.cvSetupNextStepBtn {
+    background-color: var(--black);
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 0.5vw;
+} */
+
+
+
+
+ul.cvModalLinkHolder {
+    background-color: var(--primary);
+    margin: 0;
+    display: flex;
+    /* padding: 2vh 1vw; */
+    padding: 0 1vw;
+    height: 7vh;
+}
+.cvModalLinkList {
+    margin-right: 2.5vw;
+    line-height: 3.5rem;
+}
+.cvModalLinkList:nth-child(7) {
+    margin-right: 0vw;
+    line-height: 3.5rem;
+}
+.cvModalLinkNum {
+    background-color: #D9D9D9;
+    color: var(--primary);
+    padding: 0.5px 5px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+}
+a.cvModalLink {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--white);
+    font-size: 0.9rem;
+}
+.material-icons.cvModalExitIcon {
+    font-size: 1.3rem;
+    color: #D9D9D9;
+    position: relative;
+    top: 0.5vh;
+}
+.cvSetupTitle {
+    color: var(--primary);
+    font-family: 'Montserrat' sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    padding-top: 3vh 0;
+    margin: 2vh 0 1vh 0;
+}
+.cvSetupTextarea {
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    height: 20vh;
+    padding: 1vh 0.5vw;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+}
+.cvSetupTextarea::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.7);
+}
+.maxChar {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: -0.015em;
+}
+button.waves-effect.waves-green.btn.cvSetupSaveBtn {
+    background-color: var(--primary);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+}
+button.waves-effect.waves-green.btn.cvSetupNextStepBtn {
+    background-color: var(--primary);
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    /* margin-left: 1vw; */
+}
+button.waves-effect.waves-green.btn.cvSetupBackStepBtn {
+    background-color: var(--black);
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    margin-right: 0.5vw;
+}
+div.cvNextStepBtnDiv {
+    padding: 5vh 0 5vh 0;
+}
+div.cvNextStepBtnDiv1 {
+    padding: 0vh 0 5vh 0;
+}
+.cvSetupRadioBtnHolder {
+    margin-right: 6vw;
+}
+.cvSetupRadioBtnHolder:last-child {
+    margin-right: 0vw;
+}
+span.cvSetupRadioBtnSpan {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--black);
+    padding: 0;
+}
+.cvSetupRadioBtnDiv {
+    margin-top: 5vh;
+}
+
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:after {
+    background-color: var(--primary);
+}
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:before,
+[type="radio"].with-gap:checked+span:after {
+    border: 2px solid var(--primary);
+}
+.cvSetupEduIndicatorDiv {
+    display: flex;
+}
+.cvSetupEduIndicatorP {
+    border-bottom: 3px solid var(--primary);
+    margin-right: 3vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.5);
+    padding-right: 1.5vw;
+}
+.cvSetupEduIndicatorP:last-child {
+    margin-right: 0;
+}
+i.material-icons.cvSetupEduIndicatorIcon {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+input.validate.cvSetupInput {
+    width: 87%;
+    font-weight: 700;
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    height: 4vh;
+    padding: 0 1vw;
+}
+input.validate.cvSetupInput1 {
+    width: 93%;
+    font-weight: 700;
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    height: 4vh;
+    padding: 0 1vw;
+}
+input.validate.cvSetupInput1::placeholder,
+input.validate.cvSetupInput::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+div.input-field.col.s6 {
+    margin-bottom: 0;
+}
+i.material-icons.chevronIcon {
+    color: var(--white);
+    font-size: 0.8rem;
+}
+a.chevronIconLink {
+    background-color: var(--primary);
+    margin-left: 1vw;
+    border-radius: 20px;
+    padding: 0 0.25vw;
+}
+
+select {
+    background-color: transparent;
+    width: 95.5%;
+    padding: 5px;
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    height: 4vh;
+}
+.lt_mb {
+    margin-bottom: 0.9vh;
+}
+.goToMedSchBtn {
+    background-color: var(--primary);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+}
+.cvSetupRadioBtnInnerDiv {
+    margin-bottom: 13vh;
+}
+.cvMoreInternP {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--black);
+    position: relative;
+    top: 1vh;
+}
+.material-icons.cvMoreInternIcon {
+    position: relative;
+    top: 0.8vh;
+    left: 1vw;
+    color: var(--primary);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Media Query on Medium Device */
+@media screen and (max-width: 992px) and (min-width: 640px) {
+    input.validate.cvSetupInput {
+        width: 98%;
+    }
+    input.validate.cvSetupInput1 {
+        width: 98%;
+    }
+    select.browser-default.cvSetupInput {
+        width: 101%;
+    }
+    a.chevronIconLink {
+        background-color: var(--primary);
+        margin-left: 1vw;
+        border-radius: 20px;
+        padding: 0 0.4vw;
+    }
+}
+
+/* Media Query for Small Devices */
+@media screen and (max-width: 640px) {
+    .cvSetupTitle {
+        color: var(--primary);
+        font-family: 'Montserrat' sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        padding-top: 3vh 0;
+        margin: 2vh 0 1vh 0;
+    }
+    [type="radio"]:not(:checked)+span,
+    [type="radio"]:checked+span {
+       position: relative;
+       padding-left: 26px;
+       font-size: 0.9rem;
+    }
+    button.waves-effect.waves-green.btn.cvSetupSaveBtn {
+       background-color: var(--primary);
+       border-radius: 6px;
+       font-size: 0.8rem;
+       font-family: 'Montserrat', sans-serif;
+       margin-bottom: 3vh;
+    }
+    a.chevronIconLink {
+       background-color: var(--primary);
+       margin-left: 1vw;
+       border-radius: 20px;
+       padding: 0 1vw;
+    }
+    div.input-field.col.s12.l6 {
+        margin-bottom: 0;
+    }
+    div.input-field.col.s12 {
+        margin-bottom: 0;
+    }
+    input.validate.cvSetupInput {
+        width: 100%;
+    }
+    input.validate.cvSetupInput1 {
+        width: 100%;
+    }
+    select.browser-default.cvSetupInput {
+        width: 104%;
+    }
+}

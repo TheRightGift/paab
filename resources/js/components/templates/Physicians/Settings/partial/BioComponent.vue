@@ -341,7 +341,7 @@
                                 class="responsive-img"
                                 :src="
                                     typeof bio.photo == 'string'
-                                        ? '/media/'+tenant+'/img/'+ bio.photo
+                                        ? '/media/tenants/'+tenant+'/img/'+ bio.photo
                                         : uploaded
                                 "
                             />

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ global_asset('css/paab.css') }}">
     <link rel="stylesheet" href="{{ global_asset('css/auth.css') }}">
     <link rel="stylesheet" href="{{ global_asset('css/websiteSettings.css') }}">
+    <link rel="stylesheet" href="{{ global_asset('css/cvSetup.css') }}">
     <link rel="stylesheet" href="{{ global_asset('fonts/material-icons.css') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

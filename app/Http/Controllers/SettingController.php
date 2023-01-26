@@ -38,4 +38,15 @@ class SettingController extends Controller
             }
         }
     }
+
+    public function claim(Request $request) {
+        $searchQuery = $request->query('claimable');
+        if (!empty($searchQuery)) {
+            $a = $request->session()->put('tenant', $searchQuery);
+            return redirect('auth/getstarted');
+        }
+        else {
+            return redirect('auth/login');
+        }
+    }
 }

@@ -51,7 +51,7 @@ class BioController extends Controller
                 //     strtolower(tenant('id')), strtolower(tenant('id')).'biophoto'.'.'.$ext
                 // );
                 $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
-                $path = $photo->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+                $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                 // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
                 
                 $input['photo'] = $name;
@@ -103,7 +103,7 @@ class BioController extends Controller
                     // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
                     
                     $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
-                    $path = $photo->move(public_path('/media/'.strtolower(tenant('id')).'/img'), $name);
+                    $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
 
                     $input['photo'] = $name;
                 } 
