@@ -1,6 +1,6 @@
 <template>
     <div class="section scrollspy contactContainDiv" id="contact">
-        <div class="row">
+        <div class="row" id="templateContact">
             <div class="col s12" id="testiContactFormTitleDiv">
                 <p class="feedsMainTitle expMainTitle">Contact Me</p>
                 <p class="feedsMainTxt">SCHEDULE AN APPOINTMENT</p>

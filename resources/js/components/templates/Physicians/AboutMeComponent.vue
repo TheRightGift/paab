@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="templateAbout">
         <div class="row">
             <div class="col s12 rm_mg_pd">
                 <div class="section scrollspy physiContainerDiv" id="about">
@@ -8,7 +8,7 @@
                             <div class="col s12 m6 l6">
                                 <div class="containerDiv">
                                     <h3 class="physiTempName">
-                                        Hi, I’m
+                                        Hi, I'm
                                         <br />
                                         Dr Chidinma Felix
                                         <span
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
 
-                            <div class="col s12 m6 l6 rm_mg_pd">
+                            <div class="col s12 m6 l6 rm_mg_pd profileImgContainer">
                                 <!-- offset-l3 media/img/doc.png-->
                                 <div class="profileImg" v-if="preview == '0'">
                                     <img
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
 
-                            <div class="col s12 m6 l6 rm_mg_pd">
+                            <div class="col s12 m6 l6 rm_mg_pd profileImgContainer">
                                 <!-- offset-l3 media/img/doc.png-->
                                 <div class="profileImg" v-if="preview == '0'">
                                     <img
