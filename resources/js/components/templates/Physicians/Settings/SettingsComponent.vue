@@ -35,7 +35,7 @@
     import TabForm from "./partial/TabFormComponent.vue";
     import TenantLoginComponent from "./TenantLoginComponent.vue";
     import PromotionalsComponent from "./partial/PromotionalsComponent.vue";
-
+    let centralURL = process.env.MIX_APP_URL;
     let bio = "/api/bio";
     let service = "/api/service";
     let achievement = "/api/achievement";
@@ -68,7 +68,7 @@
                 loggedIn: false,
                 initialCheck: false,
                 promoView: false,
-                centralURL: process.env.MIX_APP_URL,
+                centralURL: centralURL,
             };
         },
         created() {

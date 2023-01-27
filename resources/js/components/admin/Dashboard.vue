@@ -102,7 +102,7 @@
                                             </div>
     
                                             <div class="col s2 m2 l2">
-                                                <a href="#" id="cardViewLink"
+                                                <a href="#" id="cardViewLink" @click="gotoDomain(clientWeb)"
                                                     >View</a
                                                 >
                                             </div>
@@ -257,6 +257,10 @@
                 }).catch(err => {
                     console.log(err);
                 });
+            },
+            gotoDomain(website) {
+                let domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
+                window.open(`https://${domain}.whitecoatdomain.com`,'_blank');
             },
             navigateToClientsWebPages() {
                 window.location.replace("/admin/client");

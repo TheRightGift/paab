@@ -205,6 +205,7 @@
     import MobileNavComponent from '../partials/MobileNavComponent.vue';
     import SidenavComponent from '../partials/SideNavComponent.vue';
     import InnerFooterComponent from '../partials/InnerFooterComponent.vue';
+    let centralURL = process.env.MIX_APP_URL;
     export default {
         components: {
             SidenavComponent,
@@ -215,6 +216,7 @@
             return {
                 bg_img: "/media/img/istockphoto-1390124896-170667a.jpg",
                 pro_img: "/media/img/yuna.jpg",
+                centralURL: centralURL,
                 months: [
                     "January",
                     "February",
@@ -327,7 +329,7 @@
             },
             gotoDomain(website) {
                 let domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
-                window.open(`http://${domain}:8000`,'_blank');
+                window.open(`http://${domain}.whitecoatdomain.com`,'_blank');
             },
             checkMailExist() {
                 axios.post('/api/checkMailExist', {email: this.user.email}).then(res => {
