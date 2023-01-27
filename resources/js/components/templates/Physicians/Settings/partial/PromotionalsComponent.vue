@@ -148,7 +148,7 @@
                                 <div class="webWhiteProDiv">
                                     <img
                                         :src="
-                                            '/media/'+tenant+'/img/promo/'+ promotion.banner
+                                            '/media/tenants/'+tenant+'/img/promo/'+ promotion.banner
                                         "
                                         class="responsive-img"
                                     />

@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s6">
+                        <div class="col s12 m12 l6">
                             <p class="genTitle1">Provide your full name</p>
                         
                             <p class="genTxt">
@@ -93,7 +93,7 @@
                             </div> -->
                         </div>
 
-                        <div class="col s6">
+                        <div class="col s12 m12 l6">
                             <img src="/media/img/editWebsiteSettings/fullname.png" alt="fullname.png" class="editWebIllustrativeImg">
                         </div>
                     </div>
@@ -180,7 +180,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s6">
+                        <div class="col s12 m12 l6">
                             <p class="genTitle1">About You</p>
                         
                             <p class="genTxt">
@@ -203,7 +203,7 @@
                             </div> -->
                         </div>
 
-                        <div class="col s6">
+                        <div class="col s12 m12 l6">
                             <img src="/media/img/editWebsiteSettings/fullnameDescription.png" alt="fullnameDescription.png" class="editWebIllustrativeImg">
                         </div>
                     </div>
@@ -287,6 +287,42 @@
                             Upload Curriculum
                         </p>
                     </div>
+
+                    <!--div class="row">
+                        <div class="col s7">
+                            <p class="genTitle1">Upload a clear picture of you</p>
+                        
+                            <p class="genTxt">
+                                Lorem Ipsum is simply dummy text of the printing and
+                                typesetting industry.
+                            </p>
+                        
+                            <div class="file-field input-field" id="genUploadFavIconDiv" v-if="bio.photo == null">
+                                <input type="file" @change="photoUpload" accept=".jpg, .png" />
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" id="genInput1"
+                                        placeholder="Image must be .jpg/.png and not greater than 1MB(500x500)" />
+                                    <i class="material-icons" id="genUploadFavIcon">file_upload</i>
+                                </div>
+                            </div>
+                            <div v-else class="flex no-space-between">
+                                <img width="100" height="100" class="responsive-img" :src="
+                                    typeof bio.photo == 'string'
+                                        ? '/media/'+tenant+'/img/'+ bio.photo
+                                        : uploaded
+                                " />
+                                <a class="
+                                    waves-effect waves-light
+                                    btn-small btn
+                                    red
+                                " @click="deleteImg">Change</a>
+                            </div>
+                        </div>
+
+                        <div class="col s5">
+                            <img src="/media/img/editWebsiteSettings/fullnameProImg.png" alt="fullnameProImg.png" class="editWebIllustrativeImg" width="420" height="300">
+                        </div>
+                    </div-->
                     <div class="row">
                         <div class="col l12">
                             <p class="genTitle1">Upload a clear picture of you</p>
@@ -324,7 +360,7 @@
                                         class="bioPics"
                                         :src="
                                             typeof bio.photo == 'string'
-                                                ? '/media/tenants/'+tenant+'/img/'+ bio.photo
+                                            ? '/media/tenants/'+tenant+'/img/'+ bio.photo
                                                 : uploaded
                                         "
                                     />
@@ -341,7 +377,7 @@
                                 class="responsive-img"
                                 :src="
                                     typeof bio.photo == 'string'
-                                        ? '/media/tenants/'+tenant+'/img/'+ bio.photo
+                                        ? '/media/'+tenant+'/img/'+ bio.photo
                                         : uploaded
                                 "
                             />
@@ -350,7 +386,7 @@
                             </div> -->
 
                         <div class="col l6">
-                            <img src="/media/img/editWebsiteSettings/fullname.png" alt="fullname.png">
+                            <img src="/media/img/editWebsiteSettings/fullname.png" alt="fullname.png" class="editWebIllustrativeImg2">
                         </div>
                     </div>
                         <!-- <div>
@@ -451,7 +487,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s7">
+                        <div class="col s12 m12 l7">
                             <p class="genTitle1">Your curriculum Vitae</p>
                         
                             <p class="genTxt">
@@ -506,7 +542,7 @@
                             </div>
                         </div>
 
-                        <div class="col s5">
+                        <div class="col s12 m12 l5">
                             <img src="/media/img/editWebsiteSettings/fullnameCv.png" alt="fullnameCv.png" class="editWebIllustrativeImg" width="420" height="300">
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row authContainDiv">
-            <div class="col s12 m12 l6 loginContainer">
+            <div class="col s12 m12 l6 loginContainer hide-on-med-and-down">
                 <div class="wlcNoteDiv">
                     <p class="wlcNoteLogo">WhiteCoatDomain</p>
                     <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
@@ -47,50 +47,7 @@
                             </div>
 
                             <!-- Login Social Media Handle -->
-                            <!-- <div class="row loginSocialMedDiv">
-                                <div
-                                    class="
-                                        col
-                                        l12
-                                        m12
-                                        s12
-                                        loginSocialMedInnerDiv
-                                    "
-                                >
-                                    <p class="loginSocialMedTxt">
-                                        or login with
-                                    </p>
-
-                                    <div class="socialMedIconsDiv">
-                                        <a href="/auth/login/linkedin">
-                                            <i
-                                                class="
-                                                    fa-brands
-                                                    fa-square-instagram
-                                                    socialMedIcons
-                                                "
-                                            ></i>
-                                        </a>
-                                        <a href="/auth/login/facebook">
-                                            <i
-                                                class="
-                                                    fa-brands fa-facebook
-                                                    socialMedIcons
-                                                "
-                                            ></i>
-                                        </a>
-                                        <a href="/auth/login/twitter">
-                                            <i
-                                                class="
-                                                    fa-brands fa-twitter
-                                                    socialMedIcons
-                                                "
-                                            ></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> -->
-
+                            <!-- <social-login-component /> -->
                             <div class="input-field col s12">
                                 <a
                                     type="button"
@@ -129,7 +86,9 @@
     </div>
 </template>
 <script>
+    import SocialLoginComponent from "../../../partials/SocialLoginComponent.vue";
     export default {
+        components: { SocialLoginComponent },
         data() {
             return {
                 loginLoading: false,

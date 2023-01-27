@@ -1,17 +1,18 @@
 <template>
-    <div>
+     <div>
         <div class="servicesModalDiv" v-if="servicesModal">
             <div class="editInnerGenModal">
                 <div class="row">
-                    <div class="col s6">
+                    <div class="col s12 m12 l6">
                         <div class="row">
-                            <p class="genTitle1 col s6">Add your services</p>
+                            <p class="genTitle1 col s10 m10 l6">Add your services</p>
                             <i
                                 v-if="services.length < 3"
                                 class="
-                                    col
-                                    s1
+                                    col s1 m1 l1
                                     offset-s1
+                                    offset-m1
+                                    offset-l1
                                     material-icons
                                     genTitle1
                                     cursor
@@ -24,7 +25,7 @@
                         </div>
 
                         <p class="genTxt">
-                            CLick on the '+' icon above to view input field for adding extra services you render. You must enter atleast one service.
+                            CLick on the '+' icon above to view input field for adding extra services you render. You must enter at least one service.
                         </p>
                         <form
                             enctype="multipart/form-data"
@@ -134,7 +135,7 @@
                         </form>
                     </div>
 
-                    <div class="col s6">
+                    <div class="col s12 m12 l6">
                         <img
                             src="/media/img/editWebsiteSettings/servicesImg.png"
                             alt="servicesImg.png"
