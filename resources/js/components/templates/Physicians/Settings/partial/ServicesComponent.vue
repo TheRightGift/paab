@@ -162,6 +162,17 @@
         </div>
     </div>
 </template>
+<style scoped>
+    .flex {
+        flex-direction: column;
+    }
+    #bioAddBtn {
+        font-size: 34px;
+    }
+    .genTitle1 {
+        font-size: 24px !important;
+    }
+</style>
 <script>
     export default {
         props: {

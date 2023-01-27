@@ -35,7 +35,7 @@
                                         sem. Praesent sapien massa, convallis a
                                     </p>
 
-                                    <a href="#" class="physiTempBtn">
+                                    <a href="#cvDetails" class="physiTempBtn waves-effect waves-light modal-trigger">
                                         View My curriculum vitae
                                     </a>
                                 </div>
@@ -78,10 +78,7 @@
                                         {{ bio.about }}
                                     </p>
 
-                                    <a
-                                        class="physiTempBtn"
-                                        :href="'tenancy/assets/' + bio.CV"
-                                    >
+                                    <a href="#cvDetails" class="physiTempBtn btn-flat waves-effect waves-light modal-trigger">
                                         View My curriculum vitae
                                     </a>
                                 </div>
@@ -102,6 +99,14 @@
                 </div>
             </div>
         </div>
+        <div id="cvDetails" class="modal">
+            <div class="modal-content">
+                <i class="material-icons right modal-close">close</i>
+                <!-- <h4>{{}}</h4>
+                <p>A bunch of text</p> -->
+                <p class="text-center"><strong>Curriculum Vitae is still in development mode, please check back later. Thanks</strong></p>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -117,9 +122,20 @@
         },
     };
 </script>
-<style>
-    #physiRightImg {
-        width: 428px;
-        height: 497px;
+<style lang="scss" scoped>
+@media only screen   
+and (min-width: 1370px)  
+and (max-width: 1605px)  
+{ /* STYLES GO HERE */
+    .physiRightImg {
+        height: 501.5px;
+        width: 445.93px;
     }
+} 
+.physiRightImg {
+        position: unset;
+}
+.physiTempBtn:hover {
+    text-decoration: none;
+}
 </style>
