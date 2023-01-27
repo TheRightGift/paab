@@ -16,6 +16,7 @@
                                 type="email"
                                 placeholder="Email"
                                 id="contactInput"
+                                class="contactInput"
                                 v-model="contact.email"
                             />
                         </div>
@@ -25,6 +26,7 @@
                                 type="tel"
                                 placeholder="Phone number"
                                 id="contactInput1"
+                                class="contactInput"
                                 v-model="contact.phone"
                             />
                         </div>
@@ -34,6 +36,7 @@
                                 type="address"
                                 placeholder="Location"
                                 id="contactInput2"
+                                class="contactInput"
                                 v-model="contact.address"
                             />
                         </div>

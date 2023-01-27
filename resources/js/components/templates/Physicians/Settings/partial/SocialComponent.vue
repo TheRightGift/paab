@@ -40,7 +40,7 @@
                                             type="text"
                                             class="socialInput"
                                             v-model="social.twitter"
-                                            placeholder="Enter your twitter username WITHOUT the @ sign. Eg Drpeters"
+                                            placeholder="Enter your twitter username eg @Drpeters"
                                         />
                                         <i
                                             class="fa-brands fa-twitter editSocialMedIcons"
@@ -184,7 +184,7 @@
                                         <b>Mobile: </b> CLick on your profile picture on the top-left corner of your mobile screen to view your handle name
                                     </li>
                                     <li>
-                                        Please do NOT include the @ sign.
+                                        Please prefix your handle name with the "@" sign. Just like is on twitter.
                                     </li>
                                     
                                 </ol>

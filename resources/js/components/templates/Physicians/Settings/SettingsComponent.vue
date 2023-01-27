@@ -151,7 +151,7 @@
                 } else {
                     
                     axios
-                        .post(`http://nupaab.io/api/tenant/auth/login`, e)
+                        .post(`${this.centralURL}/api/tenant/auth/login`, e)
                         .then((res) => {
                             if(res.data.status === 404){
                                 M.toast({

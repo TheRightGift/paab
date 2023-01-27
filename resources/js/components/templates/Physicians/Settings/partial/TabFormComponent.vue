@@ -5,7 +5,7 @@
                 <div>
                     <p class="editWebWlcTxt">Setup your website</p>
                 </div>
-                <div class="editWebiIllustrateDiv">
+                <div class="editWebiIllustrateDiv hide-on-med-and-down"> 
                     <img
                         src="/media/img/settings.png"
                         alt="settings.png"
@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="editWebNav">
+            <div class="editWebNav hide-on-med-and-down">
                 <div class="editInnerWebNav">
                     <ul id="editWebUl">
                         <li class="editWebLi">

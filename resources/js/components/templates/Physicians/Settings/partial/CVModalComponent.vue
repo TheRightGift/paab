@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <div id="cvModal" class="modal">
+    <div id="cvModal" class="modal">
             <ul class="cvModalLinkHolder hide-on-med-and-down">
                 <li class="cvModalLinkList">
                     <a href="#" class="cvModalLink" @click="sumHeaderLink()">
@@ -85,7 +84,7 @@
                     <small class="maxChar right"
                         >Maximum characters should be 600 words</small
                     >
-                    <div id="skills">
+                    <!-- <div id="skills">
                         <div
                             class="chips chips-placeholder"
                             limit="6"
@@ -94,7 +93,7 @@
                         >
                             <input class="custom-class" v-model="cv.skills" />
                         </div>
-                    </div>
+                    </div> -->
 
                     <div>
                         <button
@@ -1399,7 +1398,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!-- <div class="modal" id="cvModal">
+        <h1 class="centre">Still in construct, please check back later!</h1>
+    </div> -->
 </template>
 <style>
     .custom-badge {
@@ -1418,9 +1419,9 @@
         display: flex;
         justify-content: center;
     }
-    .modal {
+    /* .modal {
         width: 100%;
-    }
+    } */
 </style>
 <script>
     export default {

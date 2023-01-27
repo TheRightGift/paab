@@ -453,7 +453,7 @@ input[type=text]:not(.browser-default).genInput1 {
     font-weight: 700;
     background: #7746ff;
     border-radius: 6px;
-    width: 8vw;
+    /* width: 8vw; */
 }
 .genBottomBtnDiv {
     margin-top: 10vh;
@@ -473,13 +473,10 @@ input[type=text]:not(.browser-default).genInput1 {
     background: #7746ff;
     border-radius: 6px;
     font-family: "Montserrat", sans-serif;
-    font-style: normal;
     font-weight: 500;
     font-size: 0.938rem;
-    line-height: 18px;
-    letter-spacing: -0.015em;
     color: #ffffff;
-    width: 8vw;
+    /* width: 8vw; */
 }
 
 #genUploadFavIcon {
@@ -621,17 +618,11 @@ section.instructionSection h6 {
         50% 50% no-repeat rgb(249, 249, 249);
 }
 
-#contactInput,
-#contactInput1,
-#contactInput2 {
+div.input-field input.contactInput {
     font-family: "Montserrat", sans-serif;
-    font-style: normal;
     font-weight: 500;
     font-size: 15px;
-    line-height: 24px;
-    letter-spacing: -0.015em;
     color: rgba(0, 0, 0, 0.5);
-
     border: 1px solid #7746ff;
     border-radius: 10px;
     padding-left: 1vw;
@@ -920,8 +911,6 @@ nav ul .editWebSidenavDomainNameLink:hover {
 
 @media screen and (max-width: 992px) and (min-width: 640px) {    
 
-    /* ******************************************************************************************* */
-    /* New changes Starts here */
     /* Changed "chatImage" from id -> class */
     .chatImage {
         width: 30vw;
@@ -991,13 +980,154 @@ nav ul .editWebSidenavDomainNameLink:hover {
         height: 6.5vh;
         line-height: 52px;
     } */
-}
-
-@media screen and (max-width: 640px) {
-    
 
     /* ******************************************************************************************* */
     /* New changes Starts here */
+    nav .brand-logo {
+        position: absolute;
+        color: #fff;
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 0;
+    }
+    .sidenav li>a.editWebSidenavProImgDiv {
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 500;
+        height: 66px;
+        line-height: 48px;
+        padding: 0 32px;
+        margin: 7vh auto 3vh auto;
+    }
+    .sidenav li>a.editWebSidenavDomainNameLink {
+        color: #FFFFFF;
+        padding: 0 50px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        font-family: "Montserrat", sans-serif;
+    }
+    .sidenav li>a>i.material-icons.editWebSidenavTempIcon {
+        float: right;
+        height: 0px;
+        /* line-height: 48px; */
+        margin: 0;
+        color: #FFFFFF;
+    }
+    nav i.material-icons.sidenavMenuIcon {
+        display: block;
+        font-size: 40px;
+        height: 56px;
+    }
+    .editWebWlcTxt {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1.7rem;
+        line-height: 37px;
+        color: #7746ff;
+        margin-top: 6vh;
+    }
+    .genTxt {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.5);
+        width: 70vw;
+    }
+    .genTitle1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: lighter;
+        font-size: 1.5rem;
+        color: #7746ff;
+        margin-top: 3vh;
+        margin-bottom: 0;
+    }
+    #genInput {
+        border: 1px solid #7746ff;
+        border-radius: 10px;
+        padding-left: 1vw;
+        width: 75vw;
+        height: 40px;
+    }
+    input[type=text]:not(.browser-default) {
+        width: 245%;
+    }
+    div.input-field.col.l12.genInput {
+        padding-left: 0;
+    }
+    .genBottomBtnDiv {
+        margin-top: 4vh;
+    }
+    input[type=text]:not(.browser-default).genInput1 {
+        width: 94%;
+        padding-left: 0;
+        text-align: center;
+    }
+    .editWebIllustrativeImg {
+        margin-top: 0vh;
+        width: 100%;
+    }
+    p.genTitle.cursor {
+        font-size: 1rem;
+    }
+    .editWebIllustrativeImg2 {
+        margin-top: 0vh;
+        width: 100%;
+    }
+    #bioDescribeInput{
+        border: 1px solid #7746ff;
+        border-radius: 10px;
+        padding-left: 1vw;
+        width: 100%;
+        height: 190px;
+        background-color: #f4f4f4;
+    }
+    #genUploadFavIcon {
+        position: relative;
+        top: 0.5vh;
+        right: 5vw;
+        color: #7746ff;
+    }
+    .editSocialMedIcons {
+        color: #7746ff;
+        font-size: 25px;
+        position: absolute;
+        right: -36vw;
+        top: 1.5vh;
+    }
+    a.addSocialsInstruction {
+        position: relative;
+        left: 38vw;
+    }
+    div.input-field input.contactInput {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        border: 1px solid #7746ff;
+        border-radius: 10px;
+        padding-left: 1vw;
+        width: 75vw;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .genTitle {
+        margin-right: 2vw;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+    #genTitleCheck, #genTitleCheck1, #genTitleCheck2, .genTitleClear {
+        font-size: 16px !important;
+    }
+    nav .sidenav-trigger {
+        margin: 0;
+    }
+    .redBorderBtn {
+        width: auto;
+    }
     /* Changed "chatImage" from id -> class */
     .chatImage {
         width: 38vw;
@@ -1111,4 +1241,164 @@ nav ul .editWebSidenavDomainNameLink:hover {
         width: 13vw;
         height: 6.5vh;
     } */
+
+
+    /* ******************************************************************************************* */
+    /* New changes Starts here */
+    nav .brand-logo {
+        position: absolute;
+        color: #fff;
+        display: inline-block;
+        font-size: 1rem;
+        padding: 0;
+    }
+    .sidenav li>a.editWebSidenavProImgDiv {
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 500;
+        height: 66px;
+        line-height: 48px;
+        padding: 0 32px;
+        margin: 7vh auto 3vh auto;
+    }
+    .sidenav li>a.editWebSidenavDomainNameLink {
+        color: #FFFFFF;
+        padding: 0 50px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        font-family: "Montserrat", sans-serif;
+    }
+    .sidenav li>a>i.material-icons.editWebSidenavTempIcon {
+        float: right;
+        height: 0px;
+        /* line-height: 48px; */
+        margin: 0;
+        color: #FFFFFF;
+    }
+    nav i.material-icons.sidenavMenuIcon {
+        display: block;
+        font-size: 35px;
+        height: 56px;
+    }
+    .editWebWlcTxt {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: 37px;
+        color: #7746ff;
+        margin-top: 6vh;
+    }
+    .genTxt {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.5);
+        width: 80vw;
+        margin-top: 1vh;
+    }
+    .genTitle1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: lighter;
+        font-size: 1.2rem;
+        color: #7746ff;
+        margin-top: 3vh;
+        margin-bottom: 0;
+    }
+    input[type=text]:not(.browser-default) {
+        width: 135%;
+        margin: 0;
+        text-align: start;
+    }
+    div.input-field.col.l12.genInput {
+        padding-left: 0;
+    }
+    .genBottomBtnDiv {
+        margin-top: 6vh;
+    }
+    input[type=text]:not(.browser-default).genInput1 {
+        width: 94%;
+        padding-left: 0;
+        text-align: center;
+    }
+    .editWebIllustrativeImg {
+        margin-top: 1vh;
+        width: 100%;
+    }
+    p.genTitle.cursor {
+        font-size: 0.8rem;
+    }
+    .editWebIllustrativeImg2 {
+        margin-top: 0vh;
+        width: 100%;
+    }
+    #genInput {
+        border: 1px solid #7746ff;
+        border-radius: 10px;
+        padding-left: 1vw;
+        width: 80vw;
+        height: 40px;
+    }
+    #bioDescribeInput, .materialize-textarea.bioDescribeInput {
+        border: 1px solid #7746ff;
+        border-radius: 10px;
+        padding-left: 1vw;
+        width: 100%;
+        height: 190px;
+        background-color: #f4f4f4;
+    }
+    input[type=range] {
+        position: relative;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        width: 88%;
+        margin: 15px 0;
+        padding: 0;
+    }
+    .years {
+        position: absolute;
+        right: 10vw;
+    }
+    .achieveTitle {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        color: #000000;
+        margin: 1vh 0;
+    }
+    .sliderContainer {
+        width: 280px;
+    }
+    #genUploadFavIcon {
+        position: absolute;
+        top: 9vh;
+        right: 9vw;
+        /* left: 7vw; */
+        /* bottom: 4vh; */
+        color: #7746ff;
+    }
+    .editSocialMedIcons {
+        color: #7746ff;
+        font-size: 25px;
+        position: absolute;
+        right: -13vw;
+        top: 1.5vh;
+    }
+
+    a.addSocialsInstruction {
+        position: relative;
+        left: 10vw;
+    }
+    div.input-field input.contactInput {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        border: 1px solid #7746ff;
+        border-radius: 10px;
+        padding-left: 1vw;
+        width: 80vw;
+        height: 40px;
+    }
 }
