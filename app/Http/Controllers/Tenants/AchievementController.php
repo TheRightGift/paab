@@ -32,7 +32,7 @@ class AchievementController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1294,min_height=743',
+            'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1100,min_height=500',
             'feats' => 'required',
         ]); 
 
@@ -46,7 +46,7 @@ class AchievementController extends Controller
                 // $stored = \Storage::disk('public')->putFileAs('img', $banner, 'banner'.'.'.$ext);
                 $name = 'banner'.'.'.$ext;
                 $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
-                $input['banner'] = $path;
+                $input['banner'] = $name;
             } 
             $achievement = Achievement::create($input);
             if ($achievement == true) {
