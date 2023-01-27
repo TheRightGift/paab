@@ -7,10 +7,14 @@
             <HeaderComponent :user="user"/>
             <AboutMeComponent :tenant="tenant" :title="title" :user="user" :bio="bio" :location="location" :preview="preview"/>
             <ServicesComponent :services="services" />
-            <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview"/>
+            <div id="experienceContainer">
+                <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview"/>
+            </div>
             <SocialMediaComponent :socials="socials"/>
             <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>
-            <ContactComponent :preview="preview"/>
+            <div id="contactContainer">
+                <ContactComponent :preview="preview"/>
+            </div>
         </div>
     </div>
 </template>

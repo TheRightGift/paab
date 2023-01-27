@@ -1,5 +1,5 @@
 <template>
-    <div class="section scrollspy physiExpContainerDiv" id="experience" >
+    <div class="section scrollspy physiExpContainerDiv" id="experience">
         <div class="row" v-show="experience == null">
             <div class="col s12">
                 <h3 class="title">
