@@ -276,6 +276,14 @@ class TenantController extends Controller
             $orders->claimed = 1;
             $tenantSave = $tenant->save();
             $orderSave = $orders->save();
+            \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
+            DB::connection('mysql')->reconnect();
+            DB::setDatabaseName($tenant->tenancy_db_name);
+            $tenantUser = DB::table('tenant_users')->get();
+            if ($tenantUser != null) {
+                DB::table('tenant_users')->where('user_id', '!=' , null )->update(['user_id' => $authUser->id]);
+            }
             if ($tenantSave === true && $orderSave) {
                 return view('client.dashboard');
             }

@@ -101,7 +101,7 @@
                                             </div>
     
                                             <div class="col s2 m2 l2">
-                                                <a href="#" id="cardViewLink"
+                                                <a href="#" id="cardViewLink" @click="goToDomain(clientWeb)"
                                                     >View</a
                                                 >
                                             </div>
@@ -346,6 +346,10 @@
                 this.currentYear = d.getFullYear();
                 this.currentMidNoon = d.getHours() >= 12 ? "pm" : "am";
                 this.getCurrentTimeInterval();
+            },
+            gotoDomain(website) {
+                let domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
+                window.open(`https://${domain}.whitecoatdomain.com`,'_blank');
             },
             dayFormatter(d) {
                 {
