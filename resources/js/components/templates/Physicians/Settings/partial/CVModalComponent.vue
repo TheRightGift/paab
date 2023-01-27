@@ -1,1171 +1,297 @@
 <template>
     <div id="cvModal" class="modal">
-            <ul class="cvModalLinkHolder hide-on-med-and-down">
-                <li class="cvModalLinkList">
-                    <a href="#" class="cvModalLink" @click="sumHeaderLink()">
-                        <span
-                            class="cvModalLinkNum"
-                            :class="view == 0 ? 'active' : ''"
-                            >1</span
-                        >
-                        Summary
-                    </a>
-                </li>
-                <li class="cvModalLinkList">
-                    <a href="#" class="cvModalLink" @click="eduHeaderLink()">
-                        <span
-                            class="cvModalLinkNum"
-                            :class="view == 1 ? 'active' : ''"
-                            >2</span
-                        >
-                        Education
-                    </a>
-                </li>
-                <li class="cvModalLinkList">
-                    <a href="#" class="cvModalLink" @click="trainHeaderLink()">
-                        <span
-                            class="cvModalLinkNum"
-                            :class="view == 2 ? 'active' : ''"
-                            >3</span
-                        >
-                        Training
-                    </a>
-                </li>
-                <li class="cvModalLinkList">
-                    <a href="#" class="cvModalLink" @click="expHeaderLink()">
-                        <span
-                            class="cvModalLinkNum"
-                            :class="view == 3 ? 'active' : ''"
-                            >4</span
-                        >
-                        Experience
-                    </a>
-                </li>
-                <li class="cvModalLinkList">
-                    <a href="#" class="cvModalLink" @click="refHeaderLink()">
-                        <span
-                            class="cvModalLinkNum"
-                            :class="view == 4 ? 'active' : ''"
-                            >5</span
-                        >
-                        Reference
-                    </a>
-                </li>
-                <li class="cvModalLinkList">
-                    <a href="#" class="cvModalLink" @click="licHeaderLink()">
-                        <span
-                            class="cvModalLinkNum"
-                            :class="view == 5 ? 'active' : ''"
-                            >6</span
-                        >
-                        Licence
-                    </a>
-                </li>
-                <li class="cvModalLinkList">
-                    <a href="#" class="cvModalLink modal-close">
-                        <i class="material-icons cvModalExitIcon"
-                            >exit_to_app</i
-                        >
-                        EXIT
-                    </a>
-                </li>
-            </ul>
-            <div class="modal-content">
-                <div v-show="view == 0">
-                    <h4 class="cvSetupTitle">Let us know more about you</h4>
-                    <textarea
-                        placeholder="Typing..."
-                        id=""
-                        cols="30"
-                        rows="10"
-                        v-model="cv.summary"
-                        class="cvSetupTextarea"
-                    ></textarea>
-                    <small class="maxChar right"
-                        >Maximum characters should be 600 words</small
+        <!-- <ul class="cvModalLinkHolder hide-on-med-and-down">
+            <li class="cvModalLinkList">
+                <a href="#" class="cvModalLink" @click="sumHeaderLink()">
+                    <span
+                        class="cvModalLinkNum"
+                        :class="view == 0 ? 'active' : ''"
+                        >1</span
                     >
-                    <!-- <div id="skills">
-                        <div
-                            class="chips chips-placeholder"
-                            limit="6"
-                            secondaryPlaceholder="+Tag"
-                            placeholder="Enter a tag"
-                        >
-                            <input class="custom-class" v-model="cv.skills" />
-                        </div>
-                    </div> -->
+                    Summary
+                </a>
+            </li>
+            <li class="cvModalLinkList">
+                <a href="#" class="cvModalLink" @click="eduHeaderLink()">
+                    <span
+                        class="cvModalLinkNum"
+                        :class="view == 1 ? 'active' : ''"
+                        >2</span
+                    >
+                    Education
+                </a>
+            </li>
+            <li class="cvModalLinkList">
+                <a href="#" class="cvModalLink" @click="trainHeaderLink()">
+                    <span
+                        class="cvModalLinkNum"
+                        :class="view == 2 ? 'active' : ''"
+                        >3</span
+                    >
+                    Training
+                </a>
+            </li>
+            <li class="cvModalLinkList">
+                <a href="#" class="cvModalLink" @click="expHeaderLink()">
+                    <span
+                        class="cvModalLinkNum"
+                        :class="view == 3 ? 'active' : ''"
+                        >4</span
+                    >
+                    Experience
+                </a>
+            </li>
+            <li class="cvModalLinkList">
+                <a href="#" class="cvModalLink" @click="refHeaderLink()">
+                    <span
+                        class="cvModalLinkNum"
+                        :class="view == 4 ? 'active' : ''"
+                        >5</span
+                    >
+                    Reference
+                </a>
+            </li>
+            <li class="cvModalLinkList">
+                <a href="#" class="cvModalLink" @click="licHeaderLink()">
+                    <span
+                        class="cvModalLinkNum"
+                        :class="view == 5 ? 'active' : ''"
+                        >6</span
+                    >
+                    Licence
+                </a>
+            </li>
+            <li class="cvModalLinkList">
+                <a href="#" class="cvModalLink modal-close">
+                    <i class="material-icons cvModalExitIcon"
+                        >exit_to_app</i
+                    >
+                    EXIT
+                </a>
+            </li>
+        </ul>
+        <div class="modal-content">
+            <div v-show="view == 0">
+                <h4 class="cvSetupTitle">Let us know more about you</h4>
+                <textarea
+                    placeholder="Typing..."
+                    id=""
+                    cols="30"
+                    rows="10"
+                    v-model="cv.summary"
+                    class="cvSetupTextarea"
+                ></textarea>
+                <small class="maxChar right"
+                    >Maximum characters should be 600 words</small
+                >
+                
 
-                    <div>
-                        <button
-                            @click.prevent="saveCV"
-                            class="waves-effect waves-green btn cvSetupSaveBtn"
-                            v-if="!loading"
-                        >
-                            Save
-                        </button>
-                        <button v-if="loading" class="btn">
-                            <div class="preloader-wrapper small active">
-                                <div class="spinner-layer spinner-white-only">
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
+                <div>
+                    <button
+                        @click.prevent="saveCV"
+                        class="waves-effect waves-green btn cvSetupSaveBtn"
+                        v-if="!loading"
+                    >
+                        Save
+                    </button>
+                    <button v-if="loading" class="btn">
+                        <div class="preloader-wrapper small active">
+                            <div class="spinner-layer spinner-white-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
                                 </div>
                             </div>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="cvNextStepBtnDiv">
+                    <div class="right">
+                        <button
+                            @click="saveAndNext"
+                            v-if="view != 5"
+                            class="
+                                waves-effect waves-green
+                                btn
+                                cvSetupNextStepBtn
+                            "
+                        >
+                            Education
                         </button>
                     </div>
-
-                    <div class="cvNextStepBtnDiv">
-                        <div class="right">
-                            <button
-                                @click="saveAndNext"
-                                v-if="view != 5"
-                                class="
-                                    waves-effect waves-green
-                                    btn
-                                    cvSetupNextStepBtn
-                                "
-                            >
-                                Education
-                            </button>
+                </div>
+            </div>
+            <div v-show="view == 1">
+                <div v-if="!showEduForm">
+                    <h4 class="cvSetupTitle">
+                        Kindly answer the question below
+                    </h4>
+                    <div class="cvSetupRadioBtnDiv">
+                        <div class="cvSetupRadioBtnInnerDiv">
+                            <label class="cvSetupRadioBtnHolder">
+                                <input
+                                    class="with-gap cvSetupRadioBtn"
+                                    name="group1"
+                                    type="radio"
+                                    @click="showEdu(), (edu = 0)"
+                                />
+                                <span class="cvSetupRadioBtnSpan"
+                                    >I attended med school and undergrad
+                                    school</span
+                                >
+                            </label>
+                            <label class="cvSetupRadioBtnHolder">
+                                <input
+                                    class="with-gap cvSetupRadioBtn"
+                                    name="group1"
+                                    type="radio"
+                                    @click="edu = 2"
+                                />
+                                <span class="cvSetupRadioBtnSpan"
+                                    >I only attended med school</span
+                                >
+                            </label>
                         </div>
                     </div>
                 </div>
-                <div v-show="view == 1">
-                    <div v-if="!showEduForm">
-                        <h4 class="cvSetupTitle">
-                            Kindly answer the question below
-                        </h4>
-                        <div class="cvSetupRadioBtnDiv">
-                            <div class="cvSetupRadioBtnInnerDiv">
-                                <label class="cvSetupRadioBtnHolder">
-                                    <input
-                                        class="with-gap cvSetupRadioBtn"
-                                        name="group1"
-                                        type="radio"
-                                        @click="showEdu(), (edu = 0)"
-                                    />
-                                    <span class="cvSetupRadioBtnSpan"
-                                        >I attended med school and undergrad
-                                        school</span
-                                    >
-                                </label>
-                                <label class="cvSetupRadioBtnHolder">
-                                    <input
-                                        class="with-gap cvSetupRadioBtn"
-                                        name="group1"
-                                        type="radio"
-                                        @click="edu = 2"
-                                    />
-                                    <span class="cvSetupRadioBtnSpan"
-                                        >I only attended med school</span
-                                    >
-                                </label>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div v-show="showEduForm">
-                        <div v-if="edu === 1">
-                            <h6 class="cvSetupTitle">
-                                Tell us about your time in Med School
-                                <small
-                                    >Important so that patients can view your
-                                    site</small
-                                >
-                            </h6>
-                            <div class="row" v-show="medSchoolInput == 0">
-                                <div class="input-field col s12">
-                                    <input
-                                        placeholder="Institution"
-                                        type="text"
-                                        class="validate"
-                                        v-model="cvMedSchool.institution"
-                                    />
-                                </div>
-                            </div>
-                            <div class="row" v-show="medSchoolInput == 1">
-                                <div class="col s12">
-                                    <label>Browser Select</label>
-                                    <select
-                                        class="browser-default"
-                                        v-model="cvMedSchool.type"
-                                    >
-                                        <option value="" disabled selected>
-                                            Choose your degree
-                                        </option>
-                                        <option value="MD">MD</option>
-                                        <option value="DO">DO</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row" v-show="medSchoolInput == 2">
-                                <div class="input-field col s6">
-                                    <input
-                                        placeholder="Start(Year)"
-                                        type="text"
-                                        class="validate"
-                                        v-model="cvMedSchool.yearStart"
-                                    />
-                                </div>
-                                <div class="input-field col s6">
-                                    <input
-                                        type="text"
-                                        class="validate"
-                                        placeholder="Start(Month)"
-                                        v-model="cvMedSchool.monthStart"
-                                    />
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s6">
-                                        <input
-                                            placeholder="End(Year)"
-                                            type="text"
-                                            class="validate"
-                                            v-model="cvMedSchool.yearEnd"
-                                        />
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <input
-                                            type="text"
-                                            class="validate"
-                                            placeholder="End(Month)"
-                                            v-model="cvMedSchool.monthEnd"
-                                        />
-                                    </div>
-                                </div>
-                                <button
-                                    v-if="!loading"
-                                    class="btn waves waves-effect"
-                                    @click.prevent="saveMedSchoolTest"
-                                >
-                                    Save
-                                </button>
-                                <button v-if="loading" class="btn">
-                                    <div class="preloader-wrapper small active">
-                                        <div
-                                            class="
-                                                spinner-layer spinner-white-only
-                                            "
-                                        >
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
-                                <!-- <p v-if="showEduForm">Did you attend any other School, you want to include? <a class="btn waves waves-effect" @click="(showEdu(), edu = 0)">Yes</a> <a class="btn waves waves-effect" @click="(showEdu(), edu = 1)">No</a></p> -->
-                            </div>
-                        </div>
-                        <div v-if="edu === 0">
-                            <div v-show="undergradSchoolInput == 0">
-                                <div class="cvSetupEduIndicatorDiv">
-                                    <p class="cvSetupEduIndicatorP">
-                                        Undergrad School
-                                    </p>
-                                    <p class="cvSetupEduIndicatorP">
-                                        Medical School
-                                    </p>
-                                    <p class="cvSetupEduIndicatorP">Other</p>
-                                </div>
-                                <h6 class="cvSetupTitle">
-                                    Tell us about your time in Undergrad School
-                                </h6>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input
-                                            placeholder="Institution"
-                                            type="text"
-                                            class="validate cvSetupInput1"
-                                            v-model="cvGradSchool.institution"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder=" Major"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="cvGradSchool.major"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Minor (Optional)"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="cvGradSchool.minor"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Start (Year)"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="cvGradSchool.yearStart"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            placeholder="Start (Month)"
-                                            v-model="cvGradSchool.monthStart"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="End (Year)"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="cvGradSchool.yearEnd"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            placeholder="End (Month)"
-                                            v-model="cvGradSchool.monthEnd"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row" v-show="undergradSchoolInput == 1">
-                                <div class="cvSetupEduIndicatorDiv">
-                                    <p class="cvSetupEduIndicatorP">
-                                        <i
-                                            class="
-                                                material-icons
-                                                cvSetupEduIndicatorIcon
-                                            "
-                                            >check</i
-                                        >
-                                        Undergrad School
-                                    </p>
-                                    <p class="cvSetupEduIndicatorP">
-                                        Medical School
-                                    </p>
-                                    <p class="cvSetupEduIndicatorP">Other</p>
-                                </div>
-                                <h6 class="cvSetupTitle">
-                                    Tell us about your time in medical school
-                                </h6>
-                                <div class="row">
-                                    <div class="row lt_mb">
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                placeholder="Institution"
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                v-model="
-                                                    cvGradSchool.institution
-                                                "
-                                            />
-                                        </div>
-                                        <div class="input-field col s12 l6">
-                                            <select
-                                                class="
-                                                    browser-default
-                                                    cvSetupInput
-                                                "
-                                                v-model="cvMedSchool.type"
-                                            >
-                                                <option
-                                                    value=""
-                                                    disabled
-                                                    selected
-                                                >
-                                                    Choose your degree
-                                                </option>
-                                                <option value="MD">MD</option>
-                                                <option value="DO">DO</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row lt_mb">
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                placeholder="Start (Year)"
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                v-model="cvGradSchool.yearStart"
-                                            />
-                                        </div>
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                placeholder="Start (Month)"
-                                                v-model="
-                                                    cvGradSchool.monthStart
-                                                "
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="row lt_mb">
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                placeholder="End (Year)"
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                v-model="cvGradSchool.yearEnd"
-                                            />
-                                        </div>
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                placeholder="End (Month)"
-                                                v-model="cvGradSchool.monthEnd"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row" v-show="undergradSchoolInput == 2">
-                                <div class="cvSetupEduIndicatorDiv">
-                                    <p class="cvSetupEduIndicatorP">
-                                        <i
-                                            class="
-                                                material-icons
-                                                cvSetupEduIndicatorIcon
-                                            "
-                                            >check</i
-                                        >
-                                        Undergrad School
-                                    </p>
-                                    <p class="cvSetupEduIndicatorP">
-                                        <i
-                                            class="
-                                                material-icons
-                                                cvSetupEduIndicatorIcon
-                                            "
-                                            >check</i
-                                        >
-                                        Medical School
-                                    </p>
-                                    <p class="cvSetupEduIndicatorP">Other</p>
-                                </div>
-                                <h6 class="cvSetupTitle">
-                                    Any other school attended?
-                                    <small>optional</small>
-                                </h6>
-                                <div class="row">
-                                    <div class="row lt_mb">
-                                        <div class="input-field col s12">
-                                            <input
-                                                placeholder="Institution"
-                                                type="text"
-                                                class="validate cvSetupInput1"
-                                                v-model="
-                                                    cvGradSchool.institution
-                                                "
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="row lt_mb">
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                placeholder="Title"
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                v-model="
-                                                    cvGradSchool.institution
-                                                "
-                                            />
-                                        </div>
-                                        <div class="input-field col s12 l6">
-                                            <select
-                                                class="
-                                                    browser-default
-                                                    cvSetupInput
-                                                "
-                                                v-model="cvMedSchool.type"
-                                            >
-                                                <option
-                                                    value=""
-                                                    disabled
-                                                    selected
-                                                >
-                                                    Choose your degree
-                                                </option>
-                                                <option value="MD">MD</option>
-                                                <option value="DO">DO</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row lt_mb">
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                placeholder="Start (Year)"
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                v-model="cvGradSchool.yearStart"
-                                            />
-                                        </div>
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                placeholder="Start (Month)"
-                                                v-model="
-                                                    cvGradSchool.monthStart
-                                                "
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="row lt_mb">
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                placeholder="End (Year)"
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                v-model="cvGradSchool.yearEnd"
-                                            />
-                                        </div>
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                placeholder="End (Month)"
-                                                v-model="cvGradSchool.monthEnd"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="right">
-                                    <a
-                                        href="#!"
-                                        class="chevronIconLink"
-                                        @click="
-                                            undergradSchoolInput != 0
-                                                ? undergradSchoolInput--
-                                                : null
-                                        "
-                                    >
-                                        <i class="material-icons chevronIcon"
-                                            >chevron_left</i
-                                        >
-                                    </a>
-                                    <a
-                                        href="#!"
-                                        class="chevronIconLink"
-                                        @click="
-                                            undergradSchoolInput != 2
-                                                ? undergradSchoolInput++
-                                                : null
-                                        "
-                                        title="skip to next"
-                                    >
-                                        <i class="material-icons chevronIcon"
-                                            >chevron_right</i
-                                        >
-                                    </a>
-                                </div>
-                            </div>
-                            <div
-                                class="cvNextStepBtnDiv1"
-                                v-show="undergradSchoolInput == 2"
+                <div v-show="showEduForm">
+                    <div v-if="edu === 1">
+                        <h6 class="cvSetupTitle">
+                            Tell us about your time in Med School
+                            <small
+                                >Important so that patients can view your
+                                site</small
                             >
-                                <div class="right">
-                                    <button
-                                        @click="previous"
-                                        class="
-                                            waves-effect waves-green
-                                            btn
-                                            cvSetupBackStepBtn
-                                        "
-                                    >
-                                        Summary
-                                    </button>
-                                    <button
-                                        @click="saveAndNext"
-                                        v-if="view != 5"
-                                        class="
-                                            waves-effect waves-green
-                                            btn
-                                            cvSetupNextStepBtn
-                                        "
-                                    >
-                                        Training
-                                    </button>
-                                </div>
+                        </h6>
+                        <div class="row" v-show="medSchoolInput == 0">
+                            <div class="input-field col s12">
+                                <input
+                                    placeholder="Institution"
+                                    type="text"
+                                    class="validate"
+                                    v-model="cvMedSchool.institution"
+                                />
                             </div>
                         </div>
-                        <div v-if="edu === 2">
-                            <h6>
-                                Any other school you attended, you want to add ?
-                                <small>Optional</small>
-                            </h6>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input
-                                        placeholder="Institution"
-                                        type="text"
-                                        class="validate"
-                                        v-model="cvAdditionalSchool.institution"
-                                    />
-                                </div>
+                        <div class="row" v-show="medSchoolInput == 1">
+                            <div class="col s12">
+                                <label>Browser Select</label>
+                                <select
+                                    class="browser-default"
+                                    v-model="cvMedSchool.type"
+                                >
+                                    <option value="" disabled selected>
+                                        Choose your degree
+                                    </option>
+                                    <option value="MD">MD</option>
+                                    <option value="DO">DO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" v-show="medSchoolInput == 2">
+                            <div class="input-field col s6">
+                                <input
+                                    placeholder="Start(Year)"
+                                    type="text"
+                                    class="validate"
+                                    v-model="cvMedSchool.yearStart"
+                                />
+                            </div>
+                            <div class="input-field col s6">
+                                <input
+                                    type="text"
+                                    class="validate"
+                                    placeholder="Start(Month)"
+                                    v-model="cvMedSchool.monthStart"
+                                />
                             </div>
                             <div class="row">
-                                <div class="input-field col s8">
-                                    <input
-                                        placeholder="Title"
-                                        id="first_name"
-                                        type="text"
-                                        class="validate"
-                                        v-model="cvAdditionalSchool.title"
-                                    />
-                                </div>
-                                <div class="input-field col s4">
-                                    <input
-                                        placeholder="Degree"
-                                        type="text"
-                                        class="validate"
-                                        v-model="cvAdditionalSchool.degree"
-                                    />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s3">
-                                    <input
-                                        placeholder="Start(Year)"
-                                        type="text"
-                                        class="validate"
-                                        v-model="cvAdditionalSchool.yearStart"
-                                    />
-                                </div>
-                                <div class="input-field col s3">
-                                    <input
-                                        type="text"
-                                        class="validate"
-                                        placeholder="Start(Month)"
-                                        v-model="cvAdditionalSchool.monthStart"
-                                    />
-                                </div>
-                                <div class="input-field col s3">
+                                <div class="input-field col s6">
                                     <input
                                         placeholder="End(Year)"
                                         type="text"
                                         class="validate"
-                                        v-model="cvAdditionalSchool.yearEnd"
+                                        v-model="cvMedSchool.yearEnd"
                                     />
                                 </div>
-                                <div class="input-field col s3">
+                                <div class="input-field col s6">
                                     <input
                                         type="text"
                                         class="validate"
                                         placeholder="End(Month)"
-                                        v-model="cvAdditionalSchool.monthEnd"
+                                        v-model="cvMedSchool.monthEnd"
                                     />
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div v-show="view == 2">
-                    <div v-if="trainingSetup == 0">
-                        <div class="cvSetupEduIndicatorDiv">
-                            <p class="cvSetupEduIndicatorP">Internship</p>
-                            <p class="cvSetupEduIndicatorP">Fellowship</p>
-                            <p class="cvSetupEduIndicatorP">Residency</p>
-                        </div>
-                        <div class="row lt_mb">
-                            <h6 class="col s12 l8 cvSetupTitle">
-                                Tell us about your internship
-                            </h6>
-                            <p class="col s12 l4 cvMoreInternP">
-                                Have more internship?
-                                <i
-                                    @click="addMoreTrainingsIntern"
-                                    class="material-icons cvMoreInternIcon"
-                                    >add_circle</i
-                                >
-                            </p>
-                        </div>
-
-                        <div
-                            v-for="(training, index) in cvTrainingsIntern"
-                            :key="index"
-                        >
-                            <p>
-                                Trainings(Internship) {{ index + 1 }}
-                                <i
-                                    @click="
-                                        removeTrainingIntern(index),
-                                            pushToTrash(training)
-                                    "
-                                    v-show="index != 0"
-                                    class="material-icons cursor right"
-                                    id="bioAddBtn"
-                                >
-                                    cancel
-                                </i>
-                            </p>
-                            <div class="row">
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Institution"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.institution"
-                                        />
-                                    </div>
-
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Location"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.location"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Speciality"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.specialty"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            placeholder="Sub-Speciality"
-                                            v-model="training.sub_specialty"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Start (Year)"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.yearStart"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            placeholder="Start (Month)"
-                                            v-model="training.monthStart"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="End (Year)"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.yearEnd"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            placeholder="End (Month)"
-                                            v-model="training.monthEnd"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div v-if="trainingSetup == 1">
-                        <div class="cvSetupEduIndicatorDiv">
-                            <p class="cvSetupEduIndicatorP">
-                                <i
-                                    class="
-                                        material-icons
-                                        cvSetupEduIndicatorIcon
-                                    "
-                                    >check</i
-                                >
-                                Internship
-                            </p>
-                            <p class="cvSetupEduIndicatorP">Fellowship</p>
-                            <p class="cvSetupEduIndicatorP">Residency</p>
-                        </div>
-                        <div class="row lt_mb">
-                            <h6 class="col s12 l8 cvSetupTitle">
-                                Tell us about your fellowship
-                            </h6>
-                            <p class="col s12 l4 cvMoreInternP">
-                                Have more fellowship?
-                                <i
-                                    @click="addMoreTrainingsFellowship"
-                                    class="material-icons cvMoreInternIcon"
-                                    >add_circle</i
-                                >
-                            </p>
-                        </div>
-
-                        <div
-                            v-for="(training, index) in cvTrainingsFellowship"
-                            :key="index"
-                        >
-                            <p>
-                                Trainings(Fellowship) {{ index + 1 }}
-                                <i
-                                    @click="
-                                        removeTrainingFellowship(index),
-                                            pushToTrash(training)
-                                    "
-                                    v-show="index != 0"
-                                    class="material-icons cursor right"
-                                    id="bioAddBtn"
-                                >
-                                    cancel
-                                </i>
-                            </p>
-
-                            <div class="row">
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Institution"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.institution"
-                                        />
-                                    </div>
-
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Location"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.location"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Speciality"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.specialty"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            placeholder="Sub-Speciality"
-                                            v-model="training.sub_specialty"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Start (Year)"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.yearStart"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            placeholder="Start (Month)"
-                                            v-model="training.monthStart"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="End (Year)"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.yearEnd"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            placeholder="End (Month)"
-                                            v-model="training.monthEnd"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div v-if="trainingSetup == 2">
-                        <div class="cvSetupEduIndicatorDiv">
-                            <p class="cvSetupEduIndicatorP">
-                                <i
-                                    class="
-                                        material-icons
-                                        cvSetupEduIndicatorIcon
-                                    "
-                                    >check</i
-                                >
-                                Internship
-                            </p>
-                            <p class="cvSetupEduIndicatorP">
-                                <i
-                                    class="
-                                        material-icons
-                                        cvSetupEduIndicatorIcon
-                                    "
-                                    >check</i
-                                >
-                                Fellowship
-                            </p>
-                            <p class="cvSetupEduIndicatorP">Residency</p>
-                        </div>
-                        <div class="row lt_mb">
-                            <h6 class="col s12 l8 cvSetupTitle">
-                                Tell us about your Residency
-                            </h6>
-                            <p class="col s12 l4 cvMoreInternP">
-                                Have more residency?
-                                <i
-                                    @click="addMoreTrainingsResidency"
-                                    class="material-icons cvMoreInternIcon"
-                                    >add_circle</i
-                                >
-                            </p>
-                        </div>
-                        <div
-                            v-for="(training, index) in cvTrainingsResidency"
-                            :key="index"
-                        >
-                            <p>
-                                Trainings(Residency) {{ index + 1 }}
-                                <i
-                                    @click="
-                                        removeTrainingResidency(index),
-                                            pushToTrash(training)
-                                    "
-                                    v-show="index != 0"
-                                    class="material-icons cursor right"
-                                    id="bioAddBtn"
-                                >
-                                    cancel
-                                </i>
-                            </p>
-
-                            <div class="row">
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Institution"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.institution"
-                                        />
-                                    </div>
-
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Location"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.location"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Speciality"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.specialty"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            placeholder="Sub-Speciality"
-                                            v-model="training.sub_specialty"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="Start (Year)"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.yearStart"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            placeholder="Start (Month)"
-                                            v-model="training.monthStart"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="row lt_mb">
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            placeholder="End (Year)"
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            v-model="training.yearEnd"
-                                        />
-                                    </div>
-                                    <div class="input-field col s12 l6">
-                                        <input
-                                            type="text"
-                                            class="validate cvSetupInput"
-                                            placeholder="End (Month)"
-                                            v-model="training.monthEnd"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button
-                            @click.prevent="saveCV"
-                            class="waves-effect waves-green btn cvSetupSaveBtn"
-                            v-if="!loading"
-                        >
-                            Save
-                        </button>
-                    </div>
-                    <div class="row">
-                        <div class="right">
-                            <a
-                                href="#!"
-                                class="chevronIconLink"
-                                @click="
-                                    trainingSetup != 0 ? trainingSetup-- : null
-                                "
-                            >
-                                <i class="material-icons chevronIcon"
-                                    >chevron_left</i
-                                >
-                            </a>
-                            <a
-                                href="#!"
-                                class="chevronIconLink"
-                                @click="
-                                    trainingSetup != 2 ? trainingSetup++ : null
-                                "
-                                title="skip to next"
-                            >
-                                <i class="material-icons chevronIcon"
-                                    >chevron_right</i
-                                >
-                            </a>
-                        </div>
-                    </div>
-                    <div class="cvNextStepBtnDiv1">
-                        <div class="right">
                             <button
-                                @click="previous"
-                                class="
-                                    waves-effect waves-green
-                                    btn
-                                    cvSetupBackStepBtn
-                                "
+                                v-if="!loading"
+                                class="btn waves waves-effect"
+                                @click.prevent="saveMedSchoolTest"
                             >
-                                Education
+                                Save
                             </button>
-                            <button
-                                @click="saveAndNext"
-                                v-if="view != 5"
-                                class="
-                                    waves-effect waves-green
-                                    btn
-                                    cvSetupNextStepBtn
-                                "
-                            >
-                                Experience
+                            <button v-if="loading" class="btn">
+                                <div class="preloader-wrapper small active">
+                                    <div
+                                        class="
+                                            spinner-layer spinner-white-only
+                                        "
+                                    >
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </button>
                         </div>
                     </div>
-                </div>
-                <div v-show="view == 3">
-                    <div>
-                        <div class="row lt_mb">
-                            <h6 class="col s12 l8 cvSetupTitle">
-                                Tell us about your Experience
+                    <div v-if="edu === 0">
+                        <div v-show="undergradSchoolInput == 0">
+                            <div class="cvSetupEduIndicatorDiv">
+                                <p class="cvSetupEduIndicatorP">
+                                    Undergrad School
+                                </p>
+                                <p class="cvSetupEduIndicatorP">
+                                    Medical School
+                                </p>
+                                <p class="cvSetupEduIndicatorP">Other</p>
+                            </div>
+                            <h6 class="cvSetupTitle">
+                                Tell us about your time in Undergrad School
                             </h6>
-                            <p class="col s12 l4 cvMoreInternP">
-                                Have more experience?
-                                <i
-                                    class="material-icons cvMoreInternIcon"
-                                    @click="addMore"
-                                    >add_circle</i
-                                >
-                            </p>
-                        </div>
-                        <div
-                            v-for="(experience, index) in cvExperiences"
-                            :key="index"
-                        >
-                            <p>
-                                Experience {{ index + 1 }}
-                                <i
-                                    @click="
-                                        remove(index), pushToTrash(experience)
-                                    "
-                                    v-show="index != 0"
-                                    class="material-icons cursor right"
-                                    id="bioAddBtn"
-                                >
-                                    cancel
-                                </i>
-                            </p>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input
-                                        placeholder="Institution/Organization"
+                                        placeholder="Institution"
                                         type="text"
                                         class="validate cvSetupInput1"
-                                        vv-model="experience.institution"
+                                        v-model="cvGradSchool.institution"
                                     />
                                 </div>
                                 <div class="input-field col s12 l6">
                                     <input
-                                        placeholder="Location"
+                                        placeholder=" Major"
                                         type="text"
                                         class="validate cvSetupInput"
-                                        v-model="experience.position"
+                                        v-model="cvGradSchool.major"
                                     />
                                 </div>
                                 <div class="input-field col s12 l6">
                                     <input
-                                        placeholder="Position"
+                                        placeholder="Minor (Optional)"
                                         type="text"
                                         class="validate cvSetupInput"
                                         v-model="cvGradSchool.minor"
@@ -1206,15 +332,246 @@
                             </div>
                         </div>
 
-                        <button
-                            @click.prevent="saveCV"
-                            class="waves-effect waves-green btn cvSetupSaveBtn"
-                            v-if="!loading"
-                        >
-                            Save
-                        </button>
+                        <div class="row" v-show="undergradSchoolInput == 1">
+                            <div class="cvSetupEduIndicatorDiv">
+                                <p class="cvSetupEduIndicatorP">
+                                    <i
+                                        class="
+                                            material-icons
+                                            cvSetupEduIndicatorIcon
+                                        "
+                                        >check</i
+                                    >
+                                    Undergrad School
+                                </p>
+                                <p class="cvSetupEduIndicatorP">
+                                    Medical School
+                                </p>
+                                <p class="cvSetupEduIndicatorP">Other</p>
+                            </div>
+                            <h6 class="cvSetupTitle">
+                                Tell us about your time in medical school
+                            </h6>
+                            <div class="row">
+                                <div class="row lt_mb">
+                                    <div class="input-field col s12 l6">
+                                        <input
+                                            placeholder="Institution"
+                                            type="text"
+                                            class="validate cvSetupInput"
+                                            v-model="
+                                                cvGradSchool.institution
+                                            "
+                                        />
+                                    </div>
+                                    <div class="input-field col s12 l6">
+                                        <select
+                                            class="
+                                                browser-default
+                                                cvSetupInput
+                                            "
+                                            v-model="cvMedSchool.type"
+                                        >
+                                            <option
+                                                value=""
+                                                disabled
+                                                selected
+                                            >
+                                                Choose your degree
+                                            </option>
+                                            <option value="MD">MD</option>
+                                            <option value="DO">DO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row lt_mb">
+                                    <div class="input-field col s12 l6">
+                                        <input
+                                            placeholder="Start (Year)"
+                                            type="text"
+                                            class="validate cvSetupInput"
+                                            v-model="cvGradSchool.yearStart"
+                                        />
+                                    </div>
+                                    <div class="input-field col s12 l6">
+                                        <input
+                                            type="text"
+                                            class="validate cvSetupInput"
+                                            placeholder="Start (Month)"
+                                            v-model="
+                                                cvGradSchool.monthStart
+                                            "
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row lt_mb">
+                                    <div class="input-field col s12 l6">
+                                        <input
+                                            placeholder="End (Year)"
+                                            type="text"
+                                            class="validate cvSetupInput"
+                                            v-model="cvGradSchool.yearEnd"
+                                        />
+                                    </div>
+                                    <div class="input-field col s12 l6">
+                                        <input
+                                            type="text"
+                                            class="validate cvSetupInput"
+                                            placeholder="End (Month)"
+                                            v-model="cvGradSchool.monthEnd"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="cvNextStepBtnDiv1">
+                        <div class="row" v-show="undergradSchoolInput == 2">
+                            <div class="cvSetupEduIndicatorDiv">
+                                <p class="cvSetupEduIndicatorP">
+                                    <i
+                                        class="
+                                            material-icons
+                                            cvSetupEduIndicatorIcon
+                                        "
+                                        >check</i
+                                    >
+                                    Undergrad School
+                                </p>
+                                <p class="cvSetupEduIndicatorP">
+                                    <i
+                                        class="
+                                            material-icons
+                                            cvSetupEduIndicatorIcon
+                                        "
+                                        >check</i
+                                    >
+                                    Medical School
+                                </p>
+                                <p class="cvSetupEduIndicatorP">Other</p>
+                            </div>
+                            <h6 class="cvSetupTitle">
+                                Any other school attended?
+                                <small>optional</small>
+                            </h6>
+                            <div class="row">
+                                <div class="row lt_mb">
+                                    <div class="input-field col s12">
+                                        <input
+                                            placeholder="Institution"
+                                            type="text"
+                                            class="validate cvSetupInput1"
+                                            v-model="
+                                                cvGradSchool.institution
+                                            "
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row lt_mb">
+                                    <div class="input-field col s12 l6">
+                                        <input
+                                            placeholder="Title"
+                                            type="text"
+                                            class="validate cvSetupInput"
+                                            v-model="
+                                                cvGradSchool.institution
+                                            "
+                                        />
+                                    </div>
+                                    <div class="input-field col s12 l6">
+                                        <select
+                                            class="
+                                                browser-default
+                                                cvSetupInput
+                                            "
+                                            v-model="cvMedSchool.type"
+                                        >
+                                            <option
+                                                value=""
+                                                disabled
+                                                selected
+                                            >
+                                                Choose your degree
+                                            </option>
+                                            <option value="MD">MD</option>
+                                            <option value="DO">DO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row lt_mb">
+                                    <div class="input-field col s12 l6">
+                                        <input
+                                            placeholder="Start (Year)"
+                                            type="text"
+                                            class="validate cvSetupInput"
+                                            v-model="cvGradSchool.yearStart"
+                                        />
+                                    </div>
+                                    <div class="input-field col s12 l6">
+                                        <input
+                                            type="text"
+                                            class="validate cvSetupInput"
+                                            placeholder="Start (Month)"
+                                            v-model="
+                                                cvGradSchool.monthStart
+                                            "
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row lt_mb">
+                                    <div class="input-field col s12 l6">
+                                        <input
+                                            placeholder="End (Year)"
+                                            type="text"
+                                            class="validate cvSetupInput"
+                                            v-model="cvGradSchool.yearEnd"
+                                        />
+                                    </div>
+                                    <div class="input-field col s12 l6">
+                                        <input
+                                            type="text"
+                                            class="validate cvSetupInput"
+                                            placeholder="End (Month)"
+                                            v-model="cvGradSchool.monthEnd"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="right">
+                                <a
+                                    href="#!"
+                                    class="chevronIconLink"
+                                    @click="
+                                        undergradSchoolInput != 0
+                                            ? undergradSchoolInput--
+                                            : null
+                                    "
+                                >
+                                    <i class="material-icons chevronIcon"
+                                        >chevron_left</i
+                                    >
+                                </a>
+                                <a
+                                    href="#!"
+                                    class="chevronIconLink"
+                                    @click="
+                                        undergradSchoolInput != 2
+                                            ? undergradSchoolInput++
+                                            : null
+                                    "
+                                    title="skip to next"
+                                >
+                                    <i class="material-icons chevronIcon"
+                                        >chevron_right</i
+                                    >
+                                </a>
+                            </div>
+                        </div>
+                        <div
+                            class="cvNextStepBtnDiv1"
+                            v-show="undergradSchoolInput == 2"
+                        >
                             <div class="right">
                                 <button
                                     @click="previous"
@@ -1224,7 +581,7 @@
                                         cvSetupBackStepBtn
                                     "
                                 >
-                                    Training
+                                    Summary
                                 </button>
                                 <button
                                     @click="saveAndNext"
@@ -1235,39 +592,570 @@
                                         cvSetupNextStepBtn
                                     "
                                 >
-                                    Reference
+                                    Training
                                 </button>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div v-show="view == 4">
-                    <div>
-                        <div class="row lt_mb">
-                            <h6 class="col s12 l8 cvSetupTitle">
-                                Tell us about your Reference
-                            </h6>
-                            <p class="col s12 l4 cvMoreInternP">
-                                Have more reference?
-                                <i
-                                    class="material-icons cvMoreInternIcon"
-                                    @click="addMoreReferences"
-                                    >add_circle</i
-                                >
-                            </p>
+                    <div v-if="edu === 2">
+                        <h6>
+                            Any other school you attended, you want to add ?
+                            <small>Optional</small>
+                        </h6>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input
+                                    placeholder="Institution"
+                                    type="text"
+                                    class="validate"
+                                    v-model="cvAdditionalSchool.institution"
+                                />
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s12 l6">
+                            <div class="input-field col s8">
                                 <input
                                     placeholder="Title"
+                                    id="first_name"
                                     type="text"
-                                    class="validate cvSetupInput"
-                                    v-model="cvGradSchool.major"
+                                    class="validate"
+                                    v-model="cvAdditionalSchool.title"
+                                />
+                            </div>
+                            <div class="input-field col s4">
+                                <input
+                                    placeholder="Degree"
+                                    type="text"
+                                    class="validate"
+                                    v-model="cvAdditionalSchool.degree"
+                                />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s3">
+                                <input
+                                    placeholder="Start(Year)"
+                                    type="text"
+                                    class="validate"
+                                    v-model="cvAdditionalSchool.yearStart"
+                                />
+                            </div>
+                            <div class="input-field col s3">
+                                <input
+                                    type="text"
+                                    class="validate"
+                                    placeholder="Start(Month)"
+                                    v-model="cvAdditionalSchool.monthStart"
+                                />
+                            </div>
+                            <div class="input-field col s3">
+                                <input
+                                    placeholder="End(Year)"
+                                    type="text"
+                                    class="validate"
+                                    v-model="cvAdditionalSchool.yearEnd"
+                                />
+                            </div>
+                            <div class="input-field col s3">
+                                <input
+                                    type="text"
+                                    class="validate"
+                                    placeholder="End(Month)"
+                                    v-model="cvAdditionalSchool.monthEnd"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-show="view == 2">
+                <div v-if="trainingSetup == 0">
+                    <div class="cvSetupEduIndicatorDiv">
+                        <p class="cvSetupEduIndicatorP">Internship</p>
+                        <p class="cvSetupEduIndicatorP">Fellowship</p>
+                        <p class="cvSetupEduIndicatorP">Residency</p>
+                    </div>
+                    <div class="row lt_mb">
+                        <h6 class="col s12 l8 cvSetupTitle">
+                            Tell us about your internship
+                        </h6>
+                        <p class="col s12 l4 cvMoreInternP">
+                            Have more internship?
+                            <i
+                                @click="addMoreTrainingsIntern"
+                                class="material-icons cvMoreInternIcon"
+                                >add_circle</i
+                            >
+                        </p>
+                    </div>
+
+                    <div
+                        v-for="(training, index) in cvTrainingsIntern"
+                        :key="index"
+                    >
+                        <p>
+                            Trainings(Internship) {{ index + 1 }}
+                            <i
+                                @click="
+                                    removeTrainingIntern(index),
+                                        pushToTrash(training)
+                                "
+                                v-show="index != 0"
+                                class="material-icons cursor right"
+                                id="bioAddBtn"
+                            >
+                                cancel
+                            </i>
+                        </p>
+                        <div class="row">
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Institution"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.institution"
+                                    />
+                                </div>
+
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Location"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.location"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Speciality"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.specialty"
+                                    />
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        placeholder="Sub-Speciality"
+                                        v-model="training.sub_specialty"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Start (Year)"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.yearStart"
+                                    />
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        placeholder="Start (Month)"
+                                        v-model="training.monthStart"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="End (Year)"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.yearEnd"
+                                    />
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        placeholder="End (Month)"
+                                        v-model="training.monthEnd"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="trainingSetup == 1">
+                    <div class="cvSetupEduIndicatorDiv">
+                        <p class="cvSetupEduIndicatorP">
+                            <i
+                                class="
+                                    material-icons
+                                    cvSetupEduIndicatorIcon
+                                "
+                                >check</i
+                            >
+                            Internship
+                        </p>
+                        <p class="cvSetupEduIndicatorP">Fellowship</p>
+                        <p class="cvSetupEduIndicatorP">Residency</p>
+                    </div>
+                    <div class="row lt_mb">
+                        <h6 class="col s12 l8 cvSetupTitle">
+                            Tell us about your fellowship
+                        </h6>
+                        <p class="col s12 l4 cvMoreInternP">
+                            Have more fellowship?
+                            <i
+                                @click="addMoreTrainingsFellowship"
+                                class="material-icons cvMoreInternIcon"
+                                >add_circle</i
+                            >
+                        </p>
+                    </div>
+
+                    <div
+                        v-for="(training, index) in cvTrainingsFellowship"
+                        :key="index"
+                    >
+                        <p>
+                            Trainings(Fellowship) {{ index + 1 }}
+                            <i
+                                @click="
+                                    removeTrainingFellowship(index),
+                                        pushToTrash(training)
+                                "
+                                v-show="index != 0"
+                                class="material-icons cursor right"
+                                id="bioAddBtn"
+                            >
+                                cancel
+                            </i>
+                        </p>
+
+                        <div class="row">
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Institution"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.institution"
+                                    />
+                                </div>
+
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Location"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.location"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Speciality"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.specialty"
+                                    />
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        placeholder="Sub-Speciality"
+                                        v-model="training.sub_specialty"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Start (Year)"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.yearStart"
+                                    />
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        placeholder="Start (Month)"
+                                        v-model="training.monthStart"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="End (Year)"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.yearEnd"
+                                    />
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        placeholder="End (Month)"
+                                        v-model="training.monthEnd"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="trainingSetup == 2">
+                    <div class="cvSetupEduIndicatorDiv">
+                        <p class="cvSetupEduIndicatorP">
+                            <i
+                                class="
+                                    material-icons
+                                    cvSetupEduIndicatorIcon
+                                "
+                                >check</i
+                            >
+                            Internship
+                        </p>
+                        <p class="cvSetupEduIndicatorP">
+                            <i
+                                class="
+                                    material-icons
+                                    cvSetupEduIndicatorIcon
+                                "
+                                >check</i
+                            >
+                            Fellowship
+                        </p>
+                        <p class="cvSetupEduIndicatorP">Residency</p>
+                    </div>
+                    <div class="row lt_mb">
+                        <h6 class="col s12 l8 cvSetupTitle">
+                            Tell us about your Residency
+                        </h6>
+                        <p class="col s12 l4 cvMoreInternP">
+                            Have more residency?
+                            <i
+                                @click="addMoreTrainingsResidency"
+                                class="material-icons cvMoreInternIcon"
+                                >add_circle</i
+                            >
+                        </p>
+                    </div>
+                    <div
+                        v-for="(training, index) in cvTrainingsResidency"
+                        :key="index"
+                    >
+                        <p>
+                            Trainings(Residency) {{ index + 1 }}
+                            <i
+                                @click="
+                                    removeTrainingResidency(index),
+                                        pushToTrash(training)
+                                "
+                                v-show="index != 0"
+                                class="material-icons cursor right"
+                                id="bioAddBtn"
+                            >
+                                cancel
+                            </i>
+                        </p>
+
+                        <div class="row">
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Institution"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.institution"
+                                    />
+                                </div>
+
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Location"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.location"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Speciality"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.specialty"
+                                    />
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        placeholder="Sub-Speciality"
+                                        v-model="training.sub_specialty"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="Start (Year)"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.yearStart"
+                                    />
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        placeholder="Start (Month)"
+                                        v-model="training.monthStart"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row lt_mb">
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        placeholder="End (Year)"
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        v-model="training.yearEnd"
+                                    />
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input
+                                        type="text"
+                                        class="validate cvSetupInput"
+                                        placeholder="End (Month)"
+                                        v-model="training.monthEnd"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        @click.prevent="saveCV"
+                        class="waves-effect waves-green btn cvSetupSaveBtn"
+                        v-if="!loading"
+                    >
+                        Save
+                    </button>
+                </div>
+                <div class="row">
+                    <div class="right">
+                        <a
+                            href="#!"
+                            class="chevronIconLink"
+                            @click="
+                                trainingSetup != 0 ? trainingSetup-- : null
+                            "
+                        >
+                            <i class="material-icons chevronIcon"
+                                >chevron_left</i
+                            >
+                        </a>
+                        <a
+                            href="#!"
+                            class="chevronIconLink"
+                            @click="
+                                trainingSetup != 2 ? trainingSetup++ : null
+                            "
+                            title="skip to next"
+                        >
+                            <i class="material-icons chevronIcon"
+                                >chevron_right</i
+                            >
+                        </a>
+                    </div>
+                </div>
+                <div class="cvNextStepBtnDiv1">
+                    <div class="right">
+                        <button
+                            @click="previous"
+                            class="
+                                waves-effect waves-green
+                                btn
+                                cvSetupBackStepBtn
+                            "
+                        >
+                            Education
+                        </button>
+                        <button
+                            @click="saveAndNext"
+                            v-if="view != 5"
+                            class="
+                                waves-effect waves-green
+                                btn
+                                cvSetupNextStepBtn
+                            "
+                        >
+                            Experience
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div v-show="view == 3">
+                <div>
+                    <div class="row lt_mb">
+                        <h6 class="col s12 l8 cvSetupTitle">
+                            Tell us about your Experience
+                        </h6>
+                        <p class="col s12 l4 cvMoreInternP">
+                            Have more experience?
+                            <i
+                                class="material-icons cvMoreInternIcon"
+                                @click="addMore"
+                                >add_circle</i
+                            >
+                        </p>
+                    </div>
+                    <div
+                        v-for="(experience, index) in cvExperiences"
+                        :key="index"
+                    >
+                        <p>
+                            Experience {{ index + 1 }}
+                            <i
+                                @click="
+                                    remove(index), pushToTrash(experience)
+                                "
+                                v-show="index != 0"
+                                class="material-icons cursor right"
+                                id="bioAddBtn"
+                            >
+                                cancel
+                            </i>
+                        </p>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input
+                                    placeholder="Institution/Organization"
+                                    type="text"
+                                    class="validate cvSetupInput1"
+                                    vv-model="experience.institution"
                                 />
                             </div>
                             <div class="input-field col s12 l6">
                                 <input
-                                    placeholder="Name"
+                                    placeholder="Location"
+                                    type="text"
+                                    class="validate cvSetupInput"
+                                    v-model="experience.position"
+                                />
+                            </div>
+                            <div class="input-field col s12 l6">
+                                <input
+                                    placeholder="Position"
                                     type="text"
                                     class="validate cvSetupInput"
                                     v-model="cvGradSchool.minor"
@@ -1275,7 +1163,7 @@
                             </div>
                             <div class="input-field col s12 l6">
                                 <input
-                                    placeholder="Position"
+                                    placeholder="Start (Year)"
                                     type="text"
                                     class="validate cvSetupInput"
                                     v-model="cvGradSchool.yearStart"
@@ -1285,13 +1173,13 @@
                                 <input
                                     type="text"
                                     class="validate cvSetupInput"
-                                    placeholder="Institution"
+                                    placeholder="Start (Month)"
                                     v-model="cvGradSchool.monthStart"
                                 />
                             </div>
                             <div class="input-field col s12 l6">
                                 <input
-                                    placeholder="Phone Number"
+                                    placeholder="End (Year)"
                                     type="text"
                                     class="validate cvSetupInput"
                                     v-model="cvGradSchool.yearEnd"
@@ -1299,76 +1187,112 @@
                             </div>
                             <div class="input-field col s12 l6">
                                 <input
-                                    type="email"
+                                    type="text"
                                     class="validate cvSetupInput"
-                                    placeholder="Email"
+                                    placeholder="End (Month)"
                                     v-model="cvGradSchool.monthEnd"
                                 />
                             </div>
                         </div>
+                    </div>
 
-                        <button
-                            @click.prevent="saveCV"
-                            class="waves-effect waves-green btn cvSetupSaveBtn"
-                            v-if="!loading"
-                        >
-                            Save
-                        </button>
+                    <button
+                        @click.prevent="saveCV"
+                        class="waves-effect waves-green btn cvSetupSaveBtn"
+                        v-if="!loading"
+                    >
+                        Save
+                    </button>
 
-                        <div class="cvNextStepBtnDiv1">
-                            <div class="right">
-                                <button
-                                    @click="previous"
-                                    class="
-                                        waves-effect waves-green
-                                        btn
-                                        cvSetupBackStepBtn
-                                    "
-                                >
-                                    Experience
-                                </button>
-                                <button
-                                    @click="saveAndNext"
-                                    v-if="view != 5"
-                                    class="
-                                        waves-effect waves-green
-                                        btn
-                                        cvSetupNextStepBtn
-                                    "
-                                >
-                                    Licence
-                                </button>
-                            </div>
+                    <div class="cvNextStepBtnDiv1">
+                        <div class="right">
+                            <button
+                                @click="previous"
+                                class="
+                                    waves-effect waves-green
+                                    btn
+                                    cvSetupBackStepBtn
+                                "
+                            >
+                                Training
+                            </button>
+                            <button
+                                @click="saveAndNext"
+                                v-if="view != 5"
+                                class="
+                                    waves-effect waves-green
+                                    btn
+                                    cvSetupNextStepBtn
+                                "
+                            >
+                                Reference
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div v-show="view == 5">
-                    <h6 class="cvSetupTitle">Tell us about your License</h6>
+            </div>
+            <div v-show="view == 4">
+                <div>
+                    <div class="row lt_mb">
+                        <h6 class="col s12 l8 cvSetupTitle">
+                            Tell us about your Reference
+                        </h6>
+                        <p class="col s12 l4 cvMoreInternP">
+                            Have more reference?
+                            <i
+                                class="material-icons cvMoreInternIcon"
+                                @click="addMoreReferences"
+                                >add_circle</i
+                            >
+                        </p>
+                    </div>
                     <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field col s12 l6">
                             <input
-                                placeholder="What year did you obtained your license"
+                                placeholder="Title"
                                 type="text"
-                                class="validate cvSetupInput1"
-                                v-model="cvGradSchool.institution"
+                                class="validate cvSetupInput"
+                                v-model="cvGradSchool.major"
                             />
                         </div>
-
-                        <div class="input-field col s12">
+                        <div class="input-field col s12 l6">
                             <input
-                                placeholder="How was this license obtained"
+                                placeholder="Name"
                                 type="text"
-                                class="validate cvSetupInput1"
-                                v-model="cvGradSchool.institution"
+                                class="validate cvSetupInput"
+                                v-model="cvGradSchool.minor"
                             />
                         </div>
-
-                        <div class="input-field col s12">
+                        <div class="input-field col s12 l6">
                             <input
-                                placeholder="Location of issuance"
+                                placeholder="Position"
                                 type="text"
-                                class="validate cvSetupInput1"
-                                v-model="cvGradSchool.institution"
+                                class="validate cvSetupInput"
+                                v-model="cvGradSchool.yearStart"
+                            />
+                        </div>
+                        <div class="input-field col s12 l6">
+                            <input
+                                type="text"
+                                class="validate cvSetupInput"
+                                placeholder="Institution"
+                                v-model="cvGradSchool.monthStart"
+                            />
+                        </div>
+                        <div class="input-field col s12 l6">
+                            <input
+                                placeholder="Phone Number"
+                                type="text"
+                                class="validate cvSetupInput"
+                                v-model="cvGradSchool.yearEnd"
+                            />
+                        </div>
+                        <div class="input-field col s12 l6">
+                            <input
+                                type="email"
+                                class="validate cvSetupInput"
+                                placeholder="Email"
+                                v-model="cvGradSchool.monthEnd"
                             />
                         </div>
                     </div>
@@ -1391,13 +1315,83 @@
                                     cvSetupBackStepBtn
                                 "
                             >
-                                Reference
+                                Experience
+                            </button>
+                            <button
+                                @click="saveAndNext"
+                                v-if="view != 5"
+                                class="
+                                    waves-effect waves-green
+                                    btn
+                                    cvSetupNextStepBtn
+                                "
+                            >
+                                Licence
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+            <div v-show="view == 5">
+                <h6 class="cvSetupTitle">Tell us about your License</h6>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input
+                            placeholder="What year did you obtained your license"
+                            type="text"
+                            class="validate cvSetupInput1"
+                            v-model="cvGradSchool.institution"
+                        />
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input
+                            placeholder="How was this license obtained"
+                            type="text"
+                            class="validate cvSetupInput1"
+                            v-model="cvGradSchool.institution"
+                        />
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input
+                            placeholder="Location of issuance"
+                            type="text"
+                            class="validate cvSetupInput1"
+                            v-model="cvGradSchool.institution"
+                        />
+                    </div>
+                </div>
+
+                <button
+                    @click.prevent="saveCV"
+                    class="waves-effect waves-green btn cvSetupSaveBtn"
+                    v-if="!loading"
+                >
+                    Save
+                </button>
+
+                <div class="cvNextStepBtnDiv1">
+                    <div class="right">
+                        <button
+                            @click="previous"
+                            class="
+                                waves-effect waves-green
+                                btn
+                                cvSetupBackStepBtn
+                            "
+                        >
+                            Reference
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="modal-content">
+            <i class="material-icons right modal-close">close</i>
+            <p class="text-center"><strong>Curriculum Vitae is still in development mode, please check back later. Thanks</strong></p>
         </div>
+    </div>
     <!-- <div class="modal" id="cvModal">
         <h1 class="centre">Still in construct, please check back later!</h1>
     </div> -->
@@ -1419,6 +1413,9 @@
         display: flex;
         justify-content: center;
     }
+    /* .modal .modal-content {
+        padding: 10px;
+    } */
     /* .modal {
         width: 100%;
     } */
