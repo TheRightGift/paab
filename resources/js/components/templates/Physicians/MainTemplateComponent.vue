@@ -6,14 +6,16 @@
         <div v-show="!loading">
             <HeaderComponent :user="user"/>
             <AboutMeComponent :tenant="tenant" :title="title" :user="user" :bio="bio" :location="location" :preview="preview"/>
-            <ServicesComponent :services="services" />
-            <div id="experienceContainer">
-                <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview"/>
-            </div>
-            <SocialMediaComponent :socials="socials"/>
-            <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>
-            <div id="contactContainer">
-                <ContactComponent :preview="preview"/>
+            <div id="afterAboutWrapper">
+                <ServicesComponent :services="services" />
+                <div id="experienceContainer">
+                    <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview"/>
+                </div>
+                <SocialMediaComponent :socials="socials"/>
+                <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>
+                <div id="contactContainer">
+                    <ContactComponent :preview="preview"/>
+                </div>
             </div>
         </div>
     </div>

@@ -297,3 +297,50 @@ p.wlcNoteFooterTxt {
     line-height: 30px;
     color: #000000;
 }
+
+/* Media Query for Small Devices */
+@media screen and (max-width: 640px) {
+    .authContainDiv {
+        width: 90%;
+    }
+    .digit-group {
+        display: flex;
+    }
+    .row .col.regContainer {
+        display: block;
+        padding-top: 7vh;
+    }
+    .row .col.regContainer .authHeadingContainer {
+        margin-bottom: 5vh;
+    }
+
+    #reistrationForm .row .col.input-field {
+        padding: 0;
+    }
+
+    #signupTitle,
+    #signupLname,
+    #signupFName,
+    #signupEmail,
+    #signupPhone,
+    #signupCountry,
+    #signupGender,
+    #signupState,
+    #signupCity,
+    #signupPass,
+    #signCpass,
+    #signupProfession,
+    #signupZipcode {
+        padding-left: 0px;
+        text-align: center;
+    }
+    input[type=text]:not(.browser-default),
+    input[type=password]:not(.browser-default),
+    input[type=email]:not(.browser-default),
+    input[type=tel]:not(.browser-default) {
+        margin-bottom: 0;
+    }
+    #reistrationForm .input-field {
+        margin-bottom: 1.2rem;
+    }
+}

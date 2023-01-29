@@ -12,75 +12,76 @@
                                 <span class="primaryColorBoxDesign1"></span>
                             </h3>
                         </div>
+                        <div class="servicesRw">
+                            <div class="col s12 m4 l4">
+                                <h5 class="servcesHeading forSurgeon">
+                                    <span class="whatIdoServiceTitleNum">01.</span>
+                                    Service
+                                </h5>
+                                <div class="servicesIconsDiv">
+                                    <i
+                                        class="
+                                            fa-solid fa-briefcase-medical
+                                            servicesIcons1
+                                        "
+                                    ></i>
+                                </div>
 
-                        <div class="col m4 l4 s12">
-                            <h5 class="servcesHeading forSurgeon">
-                                <span class="whatIdoServiceTitleNum">01.</span>
-                                Service
-                            </h5>
-                            <div class="servicesIconsDiv">
-                                <i
-                                    class="
-                                        fa-solid fa-briefcase-medical
-                                        servicesIcons1
-                                    "
-                                ></i>
+                                <p class="servcesHeading forDoc">Service One</p>
+
+                                <p class="servicesTxt">
+                                    Contrary to popular belief, Lorem Ipsum is not
+                                    simply random text. It has roots in a piece of
+                                    classical Latin literature from 45 BC, making it
+                                    over 2000 years old. Richard McClintock, a Latin
+                                    professor at Hampden-Sydney College in Virginia
+                                </p>
                             </div>
 
-                            <p class="servcesHeading forDoc">Service One</p>
+                            <div class="col s12 m4 l4">
+                                <h5 class="servcesHeading forSurgeon">
+                                    <span class="whatIdoServiceTitleNum">02.</span>
+                                    Service
+                                </h5>
+                                <div class="servicesIconsDiv">
+                                    <i class="fa-solid fa-briefcase-medical servicesIcons1"></i>
+                                </div>
 
-                            <p class="servicesTxt">
-                                Contrary to popular belief, Lorem Ipsum is not
-                                simply random text. It has roots in a piece of
-                                classical Latin literature from 45 BC, making it
-                                over 2000 years old. Richard McClintock, a Latin
-                                professor at Hampden-Sydney College in Virginia
-                            </p>
-                        </div>
+                                <p class="servcesHeading forDoc">Service Two</p>
 
-                        <div class="col m4 l4 s12">
-                            <h5 class="servcesHeading forSurgeon">
-                                <span class="whatIdoServiceTitleNum">02.</span>
-                                Service
-                            </h5>
-                            <div class="servicesIconsDiv">
-                                <i class="fa-solid fa-briefcase-medical servicesIcons1"></i>
+                                <p class="servicesTxt">
+                                    Contrary to popular belief, Lorem Ipsum is not
+                                    simply random text. It has roots in a piece of
+                                    classical Latin literature from 45 BC, making it
+                                    over 2000 years old. Richard McClintock, a Latin
+                                    professor at Hampden-Sydney College in Virginia
+                                </p>
                             </div>
 
-                            <p class="servcesHeading forDoc">Service Two</p>
+                            <div class="col s12 m4 l4">
+                                <h5 class="servcesHeading forSurgeon">
+                                    <span class="whatIdoServiceTitleNum">03.</span>
+                                    Service
+                                </h5>
+                                <div class="servicesIconsDiv">
+                                    <i
+                                        class="
+                                            fa-sharp fa-solid fa-briefcase-medical
+                                            servicesIcons2
+                                        "
+                                    ></i>
+                                </div>
 
-                            <p class="servicesTxt">
-                                Contrary to popular belief, Lorem Ipsum is not
-                                simply random text. It has roots in a piece of
-                                classical Latin literature from 45 BC, making it
-                                over 2000 years old. Richard McClintock, a Latin
-                                professor at Hampden-Sydney College in Virginia
-                            </p>
-                        </div>
+                                <p class="servcesHeading forDoc">Service Three</p>
 
-                        <div class="col m4 l4 s12">
-                            <h5 class="servcesHeading forSurgeon">
-                                <span class="whatIdoServiceTitleNum">03.</span>
-                                Service
-                            </h5>
-                            <div class="servicesIconsDiv">
-                                <i
-                                    class="
-                                        fa-sharp fa-solid fa-briefcase-medical
-                                        servicesIcons2
-                                    "
-                                ></i>
+                                <p class="servicesTxt">
+                                    Contrary to popular belief, Lorem Ipsum is not
+                                    simply random text. It has roots in a piece of
+                                    classical Latin literature from 45 BC, making it
+                                    over 2000 years old. Richard McClintock, a Latin
+                                    professor at Hampden-Sydney College in Virginia
+                                </p>
                             </div>
-
-                            <p class="servcesHeading forDoc">Service Three</p>
-
-                            <p class="servicesTxt">
-                                Contrary to popular belief, Lorem Ipsum is not
-                                simply random text. It has roots in a piece of
-                                classical Latin literature from 45 BC, making it
-                                over 2000 years old. Richard McClintock, a Latin
-                                professor at Hampden-Sydney College in Virginia
-                            </p>
                         </div>
                     </div>
                 </div>

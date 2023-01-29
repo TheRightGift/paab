@@ -813,6 +813,49 @@ a.physiTempContactBtn.active {
     }
 }
 @media screen and (max-width: 640px) {
+    .row.about {
+        display: flex;
+        flex-direction: column;
+    }
+    .section.physiContainerDiv#about {
+        padding-top: 0vh;
+        width: 100%;
+        margin: 0;
+    }
+    .profileDesc {
+        order: 2;
+        position: relative;
+        top: -10vh;
+    }
+    .profileImgContainer {
+        order: 1;
+    }
+    #templateAbout {
+        position: relative;
+        top: -39.5vh;
+    }
+    .row .col.profileImgContainer {
+        display: block;
+        padding: 0;
+    }
+    #afterAboutWrapper {
+        position: relative;
+        top: -50vh;
+    }
+    .servicesRw {
+        display: flex !important;
+        flex-direction: row;
+        overflow: scroll;
+        width: 100%;
+        overflow-y: hidden;
+    }
+    .row .servicesRw .col.s12 {
+        width: 100%;
+        min-width: 100%;
+    }
+    .servicesRw::-webkit-scrollbar {
+        height: 0.5vh;
+    }
     #testiMapImg {
         height: auto;
     }
@@ -840,12 +883,15 @@ a.physiTempContactBtn.active {
     .profileImg {
         top: 12vh !important;
         right: 2.5vw !important;
-        width: 95%;
+        width: 100%;
         height: auto;
         transform: rotate(0deg);
         background: none;
         box-shadow: 0px 0px 0px rgba(255, 255, 255, 0);
         border-radius: 0px;
+    }
+    img.physiRightImg{
+        border-radius: 0;
     }
     .contactContainDiv {
         width: 90%;
@@ -857,9 +903,6 @@ a.physiTempContactBtn.active {
     #testiPhone {
         padding: 0;
         width: 100%;
-    }
-    .physiContainerDiv#about {
-        padding-top: 10vh;
     }
     .physiContainerDiv#services {
         padding-top: 7vh;
