@@ -68,6 +68,9 @@ body {
 .noPaddingLeft {
     padding-left: 0 !important;
 }
+.paddingBottom-2 {
+    padding-bottom: 2vh !important;
+}
 .noPaddingRight {
     padding-right: 0 !important;
 }

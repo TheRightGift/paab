@@ -2,19 +2,18 @@
     <div class="section scrollspy feedsContainDiv" id="feeds">
         <div class="row">
             <div class="col s12">
-                <h3 class="center-align feeds">
+                <h3 class="center-align feedsHeading">
                     MY FEEDS
                     <span class="primaryColorBoxDesign3"></span>
                 </h3>
             </div>
         </div>
-        <div class="row" id="feeds">
-            <div class="col s12 l4">
+        <div class="row">
+            <div class="col s12 l4 feeds">
                 <div class="col s12">
-                    <p class="facebookFeedsIcon center-align">
+                    <p class="facebookFeedsIcon">
                         <i
-                            class="fa-brands fa-facebook-square text"
-                            id="feedsFacebookIcon"
+                            class="fa-brands fa-facebook-square text feedsFacebookIcon"
                         ></i>
                         <span class="feedsTwitterTxt text">Facebook Feeds</span>
                     </p>
@@ -36,12 +35,11 @@
                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 ></iframe>
             </div>
-            <div class="col s12 l4">
+            <div class="col s12 l4 feeds paddingBottom-2">
                 <div class="col s12">
-                    <p class="facebookFeedsIcon center-align">
+                    <p class="facebookFeedsIcon">
                         <i
-                            class="fa-brands fa-twitter-square text"
-                            id="feedsFacebookIcon"
+                            class="fa-brands fa-twitter-square text feedsFacebookIcon"
                         ></i>
                         <span class="feedsTwitterTxt text">Twitter Feeds</span>
                     </p>
@@ -60,12 +58,11 @@
                 >
             </div>
 
-            <div class="col s12 l4">
+            <div class="col s12 l4 feeds">
                 <div class="col s12">
-                    <p class="facebookFeedsIcon center-align">
+                    <p class="facebookFeedsIcon">
                         <i
-                            class="fa-brands fa-linkedin text"
-                            id="feedsFacebookIcon"
+                            class="fa-brands fa-linkedin text feedsFacebookIcon"
                         ></i>
                         <span class="feedsTwitterTxt text">Linkedin Feeds</span>
                     </p>

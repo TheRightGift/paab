@@ -17,6 +17,9 @@ nav {
 #nav-mobile.section {
     padding-top: 1rem;
 }
+.headerNoSideNav, .extHeaderNoSideNav {
+    display: none;
+}
 .section {
     /* padding-top: 1rem !important; */
     /* padding-bottom: 1rem !important; */
@@ -336,6 +339,9 @@ a.physiTempContactBtn.active {
 .feedsContainDiv {
     margin-top: 5vh;
 }
+.feedsHeading {
+    color: var(--white);
+}
 .experienceImgContainDiv .col.s12.m3.l2 {
     width: 16.6666666667%;
     margin-left: auto;
@@ -525,8 +531,8 @@ a.physiTempContactBtn.active {
     text-transform: capitalize;
     margin-top: 3vh;
 }
-#feedsFacebookIcon {
-    color: var(--primary);
+.feedsFacebookIcon {
+    color: var(--white);
     font-size: 1.2rem;
 }
 /* Testimonials Secion */
@@ -813,6 +819,33 @@ a.physiTempContactBtn.active {
     }
 }
 @media screen and (max-width: 640px) {
+    nav.navMain {
+        display: none;
+    }
+    nav.headerNoSideNav {
+        display: block;
+        /* margin-bottom: 1vh; */
+    }
+    nav.headerNoSideNav .sideNavBrandLogo {
+        margin-left: 0;
+    }
+    ul.extHeaderNoSideNav {
+        display: flex;
+        background-color: #F6F3F3;
+        height: 40px;
+        line-height: 40px;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0 2vw;
+        /* box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%); */
+    }
+    ul.extHeaderNoSideNav li {
+        margin: 0 2.1vw;
+    }
+    ul.extHeaderNoSideNav li a{
+        color: var(--black);
+        font-size: 0.9rem;
+    }
     .row.about {
         display: flex;
         flex-direction: column;
@@ -824,30 +857,30 @@ a.physiTempContactBtn.active {
     }
     .profileDesc {
         order: 2;
-        position: relative;
-        top: -10vh;
     }
     .profileImgContainer {
         order: 1;
     }
-    #templateAbout {
-        position: relative;
-        top: -39.5vh;
-    }
+    /* #templateAbout { } */
     .row .col.profileImgContainer {
         display: block;
         padding: 0;
+        top: 0;
     }
-    #afterAboutWrapper {
-        position: relative;
-        top: -50vh;
-    }
+    /* #afterAboutWrapper {} */
     .servicesRw {
         display: flex !important;
         flex-direction: row;
         overflow: scroll;
         width: 100%;
         overflow-y: hidden;
+    }
+    .servicesIconsDiv {
+        width: 35px;
+        height: 35px;
+    }
+    .servicesIcons1 {
+        font-size: 1rem;
     }
     .row .servicesRw .col.s12 {
         width: 100%;
@@ -871,6 +904,7 @@ a.physiTempContactBtn.active {
     img.bannerImg {
         height: auto !important;
         width: 100%;
+        border-radius: 0;
     }
     .hide-on-large-only.white {
         margin-bottom: 55vh;
@@ -927,17 +961,18 @@ a.physiTempContactBtn.active {
         margin: 0 0 1vh 0;
     }
     .expMainTxt,
-    .feeds {
+    .feedsHeading,
+    .servicesWhatIdo {
         font-family: "Montserrat", sans-serif;
         font-weight: lighter;
         font-size: 1.8rem;
         line-height: 44px;
         color: var(--primary);
         text-align: center;
-        margin: 0 0 10vh 0;
+        margin: 0 0 5vh 0;
     }
         
-    .expLeftBarInnerDiv:nth-child(3) {
+    .expLeftBarInnerDiv:nth-child(3), .expLeftBarInnerDiv:nth-child(2) {
         border-bottom: none;
         border-right: 1px solid rgba(217, 217, 217, 0.65);
     }
@@ -946,10 +981,34 @@ a.physiTempContactBtn.active {
     }
     .experiences {
         background: var(--primary);
-        border-radius: 10px;
-        padding: 3vh 1.5vw;
-        margin-right: 0vw;
-        width: 93vw;
+        border-radius: 0px;
+        padding: 0;
+        margin-right: -0.75rem !important;
+    }
+    .expLeftBarInnerDiv .experience {
+        padding: 1vh 0;
+    }
+    p.experienceTitle {
+        font-size: 1.2rem;
+        font-weight: 300;
+        margin: 0;
+    }
+    
+    p.experienceTxt {
+        margin-bottom: 0;
+        font-size: 0.6rem;
+    }
+    #feeds {
+        background-color: unset;
+    }
+    .feeds {
+        background-color: var(--primary);
+    }
+    .feedsFacebookIcon {
+        color: var(--white);
+    }
+    .facebookFeedsIcon {
+        margin: 1vh 0 1.5vh 0;
     }
     .physiExpContainerDiv,
     .feedsContainDiv {

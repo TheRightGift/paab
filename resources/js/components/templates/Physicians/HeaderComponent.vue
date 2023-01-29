@@ -36,7 +36,7 @@
         </nav>
     </div>
     <div class="navbar-fixw">
-        <nav class="hide-on-large-only white" id="sideNav">
+        <nav class="hide-on-large-only white navMain" id="sideNav">
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons black-text sideNavIcon"
                     id="sideNavIcon">menu</i></a>
         
@@ -77,6 +77,29 @@
                 </li>
             </ul>
         </nav>
+
+        <nav class="headerNoSideNav center-align">
+            <a href="/" class="sideNavBrandLogo">
+                {{user == '' ? 'Dr Chidinma Felix' : user}}
+            </a>
+        </nav>
+        <ul class="extHeaderNoSideNav">
+            <li>
+                <a href="#services">Services</a>
+            </li>
+            <li>
+                <a href="#experience">Experience</a>
+            </li>
+            <li>
+                <a href="#testimonials">Testimonials</a>
+            </li>
+            <li>
+                <a href="#feeds">Feeds</a>
+            </li>
+            <li>
+                <a href="#contact">Contact Me</a>
+            </li>
+        </ul>
     </div>
     
 </template>
