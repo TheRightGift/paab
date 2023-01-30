@@ -78,10 +78,11 @@
                                     <p class="physiSummaryTxt">
                                         {{ bio.about }}
                                     </p>
-
-                                    <a href="#cvDetails" class="physiTempBtn waves-effect waves-light modal-trigger">
-                                        View My curriculum vitae
-                                    </a>
+                                    <p class="center-align">
+                                        <a href="#cvDetails" class="physiTempBtn btn-flat waves-effect waves-light modal-trigger">
+                                            View My curriculum vitae
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
 
