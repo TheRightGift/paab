@@ -177,52 +177,111 @@
             <div class="col s12">
                 <div id="testiMapImg">
                     <div class="row">
-                        <div v-if="reviewLen > 0">
-                            <div
-                                :class="{
-                                    'col s9 m8 l3 offset-l1': index == 0,
-                                    'col s9 l3 offset-s3 offset-m3 offset-l2':
-                                        index == 1,
-                                    'col s9 m8 l3 offset-l2': index == 2,
-                                    'col s9 m9 l3 offset-s3 offset-m3 offset-l2':
-                                        index == 3,
-                                    'col s9 m9 l3 offset-s2 offset-m2 offset-l4':
-                                        index == 4,
-                                }"
-                                v-for="(review, index) in reviewsFront"
-                                :key="review.id"
-                            >
-                            <div class="flex flex-centered">
-                                <img
-                                    :src="
-                                        review.imageURL != null
-                                            ? '/media/tenants/'+tenant+'/img/reviews/'+
-                                              review.imageURL
-                                            : '/media/img/user.png'
-                                    "
-                                    :alt="
-                                        review.imageURL != null
-                                            ? review.firstname + review.lastname
-                                            : 'testiProImg.png'
-                                    "
-                                    class="responsive-img testiProImg"
-                                    width="64"
-                                    height="57"
-                                />
-                            </div>
-                                <div class="testimonialDiv">
-                                    <p class="testiMapProName">
-                                        {{ review.lastname }}
-                                        {{ review.firstname }}
-                                    </p>
+                        <div class="testimonialRw" v-if="preview == '1'">
+                            <!-- Testimonials First Row -->
+                            <div class="col s12 m6 l3 offset-l1 temp_mg_bm">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
                                     <p class="testiMapTxt">
-                                        {{ sliceComment(review.comment) }}
-                                        {{ addDots(review.comment) }}
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 m6 l3 offset-l2" id="testiSecondImgRowOneDiv">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonials Second Row -->
+                            <div class="col s12 m6 l3 offset-l2">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 m6 l3 offset-l2" id="testiSecondImgRowTwoDiv">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonials Third Row -->
+                            <div class="col s12 m6 l3 offset-l4" id="testiSecondImgRowThreeDiv">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div v-else>
+                        <div v-if="reviewLen > 0 && preview == '0'" class="testimonialRw">
+                            <template v-for="(review, index) in reviewsFront"
+                                    :key="review.id">
+                                <div
+                                    class="col s12 m6 l3"
+                                    :class="{
+                                        'offset-l1 temp_mg_bm': index === 0,
+                                        'offset-l2':
+                                            index === 1|| index === 2 || index === 3,
+                                        'offset-l4':
+                                            index === 4,
+                                    }"
+                                    :id="{'testiSecondImgRowOneDiv': index === 1, 'testiSecondImgRowTwoDiv': index === 3, 'testiSecondImgRowThreeDiv': index === 4}"
+                                    
+                                >
+                                {{ index }}
+                                    <img
+                                        :src="
+                                            review.imageURL != null
+                                            ? '/media/tenants/'+tenant+'/img/reviews/'+
+                                                review.imageURL
+                                                : '/media/img/user.png'
+                                        "
+                                        :alt="
+                                            review.imageURL != null
+                                                ? review.firstname + review.lastname
+                                                : 'testiProImg.png'
+                                        "
+                                        class="responsive-img testiProImg"
+                                        width="64"
+                                        height="57"
+                                    />
+                                    <div class="testiMapDiv">
+                                        <p class="testiMapProName">
+                                            {{ review.lastname }}
+                                            {{ review.firstname }}
+                                        </p>
+                                        <p class="testiMapTxt">
+                                            {{ sliceComment(review.comment) }}
+                                            {{ addDots(review.comment) }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <div v-else-if="reviewLen < 1 && preview == '0'">
                             <p class="centre">
                                 Client Has no Review at the moment. You can see
                                 other customer success or reviews from here
