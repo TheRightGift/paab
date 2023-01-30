@@ -68,11 +68,13 @@
                         </div>
                     </form>
 
-                    <div class="genBottomBtnDiv">        
-                        <div class="flexed">
-                            <a href="#" class="btn right" id="genNextBtn" @click="contactGoBackBtn()">SOCIAL</a>
-                            <!-- <i class="material-icons">chevron_right</i> -->
-                        </div>
+                    <div class="genBottomBtnDiv">
+                        <a
+                            href="#"
+                            class="goBackBtn"
+                            @click="contactGoBackBtn()"
+                            >GO BACK</a
+                        >
                     </div>
                 </div>
             </div>
