@@ -14,7 +14,8 @@
                 </div>
             </div>
 
-            <div class="editWebNav hide-on-med-and-down">
+            <div class="editWebNav ">
+                <!-- hide-on-med-and-down -->
                 <div class="editInnerWebNav">
                     <ul id="editWebUl">
                         <li class="editWebLi">
