@@ -66,7 +66,7 @@
                             <div class="col s12 m6 l6 profileDesc">
                                 <div class="containerDiv">
                                     <h3 class="physiTempName">
-                                        Hi, I’m
+                                        Hi, I'm
                                         <br />
                                         {{ title }} {{ bio.firstname }}
                                         {{ bio.lastname }}
