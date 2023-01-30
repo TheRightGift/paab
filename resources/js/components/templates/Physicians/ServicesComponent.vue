@@ -95,12 +95,9 @@
                                 <span class="primaryColorBoxDesign1"></span>
                             </h3>
                         </div>
-                        <div
-                            :class="{ flexed: services.length <= 2 }"
-                            class="row"
-                        >
+                        <div :class="{ flexed: services.length <= 2 }" class="servicesRw">
                             <div
-                                class="col m4 l4 m-0"
+                                class="col s12 m4 l4"
                                 v-for="(service, index) in services"
                                 :key="service.id"
                             >
