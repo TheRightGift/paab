@@ -142,14 +142,13 @@
                     </form>
                 </div>
                 
-                <div class="genBottomBtnDiv">        
-                    <div class="flexed">
-                        <a href="#" class="btn right" id="genNextBtn" @click="achieveGoBackBtn()">SERVICES</a>
-                        <a href="#!" class="btn right" id="genNextBtn" @click="socialLink()">SOCIAL</a>
-                        <!-- <i class="material-icons">chevron_right</i> -->
-                    </div>
-                </div>
+                <div class="genBottomBtnDiv">
+                    <a href="#" class="goBackBtn" @click="achieveGoBackBtn()">GO BACK</a>
                 
+                    <button type="button" class="btn right" id="genNextBtn" @click="socialLink()">
+                        NEXT STEP
+                    </button>
+                </div>
             </div>
         </div>
     </div>

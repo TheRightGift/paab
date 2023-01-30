@@ -196,7 +196,7 @@
                                 <img
                                     :src="
                                         review.imageURL != null
-                                            ? '/media/tenants/'+tenant+'/img/reviews/'+
+                                            ? '/media/'+tenant+'/img/reviews/'+
                                               review.imageURL
                                             : '/media/img/user.png'
                                     "
