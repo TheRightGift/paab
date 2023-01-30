@@ -342,7 +342,7 @@ a.physiTempContactBtn.active {
 .feedsHeading {
     color: var(--white);
 }
-.experienceImgContainDiv .col.s12.m3.l2 {
+.experienceImgContainDiv .col.s12.m12.l2 {
     width: 16.6666666667%;
     margin-left: auto;
 }
@@ -727,6 +727,43 @@ a.physiTempContactBtn.active {
     padding: 0;
 }
 
+/* Added stylings for testimonial review */
+.testiProImg {
+    border-radius: 50%;
+    display: flex;
+    margin: 0 auto;
+    position: relative;
+    top: 1vh;
+
+}
+.testiMapDiv {
+    background: #6750A4;
+    box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
+    padding: 1vh 2vw;
+}
+.testiMapProName {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    text-align: center;
+    color: #FFFFFF;
+}
+.testiMapTxt {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+.tempOneRevTime {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    margin-top: 5vh;
+}
+
 @media screen and (max-width: 992px) and (min-width: 640px) {
     #testiMapImg {
         height: auto;
@@ -817,6 +854,121 @@ a.physiTempContactBtn.active {
         margin-left: 10%;
         margin-right: 10%;
     }
+
+    /* Added stylings for testimonial review */
+    #testiSecondImgRowOneDiv {
+        position: relative;
+        bottom: 0vh;
+    }
+
+    #testiSecondImgRowTwoDiv {
+        position: relative;
+        bottom: 0vh;
+    }
+
+    #testiSecondImgRowThreeDiv {
+        position: relative;
+        top: 0vh;
+    }
+    .row .testimonialRw .col.m6 {
+        width: 50%;
+        min-width: 50%;
+    }
+    .testimonialRw {
+        display: flex !important;
+        flex-direction: row;
+        overflow: scroll;
+        width: 100%;
+        overflow-y: hidden;
+    }
+    .testimonialRw::-webkit-scrollbar {
+        height: 0.5vh;
+    }
+
+    /* Added stylings for HeaderComponent */
+    nav.navMain {
+        display: none;
+    }
+    nav.headerNoSideNav {
+        display: block;
+        /* margin-bottom: 1vh; */
+    }
+    nav.headerNoSideNav .sideNavBrandLogo {
+        margin-left: 0;
+    }
+    ul.extHeaderNoSideNav {
+        display: flex;
+        justify-content: center;
+        background-color: #F6F3F3;
+        height: 40px;
+        line-height: 40px;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0 2vw;
+    }
+    ul.extHeaderNoSideNav li {
+        margin: 0 2.1vw;
+    }
+    ul.extHeaderNoSideNav li a {
+        color: var(--black);
+        font-size: 0.9rem;
+    }
+
+    /* Added stylings on AboutMe Component */
+    .row .col.profileImgContainer {
+        display: block;
+        padding: 0;
+        top: 3vh;
+        left: 6vw;
+    }
+
+    /* Added some stylings on ExperienceComponent */
+    .experienceImgContainDiv .col.s12.m12.l2,
+    .surgeonBannerImgDiv {
+        width: 100%;
+        /* margin-left: auto; */
+    }
+    img.bannerImg {
+        height: auto !important;
+        width: 100%;
+        border-radius: 0;
+    }
+    .experiences {
+        background: var(--primary);
+        border-radius: 0px;
+        padding: 0;
+        margin-right: -0.75rem !important;
+        display: flex;
+    }
+    .expLeftBarInnerDiv:nth-child(3),
+    .expLeftBarInnerDiv:nth-child(2) {
+        border-bottom: none;
+        border-right: 1px solid rgba(217, 217, 217, 0.65);
+    }
+    .expLeftBarInnerDiv:first-child {
+        border-right: 1px solid rgba(217, 217, 217, 0.65);
+    }
+    .expLeftBarInnerDiv .experience {
+        padding: 1vh 0;
+    }
+    p.experienceTitle {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin: 0;
+    }
+    p.experienceTxt {
+        margin-bottom: 0;
+        font-size: 0.8rem;
+    }
+
+    /* Added some stylings on Feeds */
+    #feeds {
+        background-color: unset;
+    }
+
+    .feeds {
+        background-color: var(--primary);
+    }
 }
 @media screen and (max-width: 640px) {
     nav.navMain {
@@ -896,7 +1048,7 @@ a.physiTempContactBtn.active {
         width: 100%;
         margin-left: auto;
     }
-    .experienceImgContainDiv .col.s12.m3.l2,
+    .experienceImgContainDiv .col.s12.m12.l2,
     .surgeonBannerImgDiv {
         width: 100%;
         /* margin-left: auto; */
@@ -1069,5 +1221,40 @@ a.physiTempContactBtn.active {
         font-weight: 700;
         color: var(--white) !important;
         /* text-align: center; */
+    }
+
+
+    /* Added stylings for testimonial review */
+    .testiMapDiv:first-child {
+        background: #6750A4;
+        box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
+        padding: 1vh 2vw;
+        margin-bottom: 9vh;
+    }
+    #testiSecondImgRowOneDiv {
+        position: relative;
+        bottom: 0vh;
+    }
+    #testiSecondImgRowTwoDiv {
+        position: relative;
+        bottom: 0vh;
+    }
+    #testiSecondImgRowThreeDiv {
+        position: relative;
+        top: 0vh;
+    }
+    .testimonialRw {
+        display: flex !important;
+        flex-direction: row;
+        overflow: scroll;
+        width: 100%;
+        overflow-y: hidden;
+    }
+    .row .testimonialRw .col.s12 {
+        width: 100%;
+        min-width: 100%;
+    }
+    .testimonialRw::-webkit-scrollbar {
+        height: 0.5vh;
     }
 }

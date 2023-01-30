@@ -141,7 +141,7 @@
                             href="#"
                             class="btn right"
                             id="genNextBtn"
-                            @click="genNextBtn1()"
+                            @click="bioLink()"
                             >BIOGRAPH</a
                         >
                     </div>
@@ -360,7 +360,7 @@
                             href="#"
                             class="btn right"
                             id="genNextBtn"
-                            @click="genNextBtn1()"
+                            @click="bioLink()"
                             >BIOGRAPH</a
                         >
                     </div>
