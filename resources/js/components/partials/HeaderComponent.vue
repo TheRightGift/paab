@@ -59,11 +59,12 @@
                 </a>
 
                 <a href="/" class="sideNavBrandLogo">
-                    <img
+                    <!--img
                         src="/media/img/whiteCoatDomainMobile.png"
                         alt="whiteCoatDomain.png"
                         class="sidenavLogo"
-                    />
+                    /-->
+                    WhiteCoatDomain
                 </a>
 
                 <ul id="slide-out" class="sidenav">
@@ -165,11 +166,12 @@
                 </a>
 
                 <a href="/" class="sideNavBrandLogo">
-                    <img
+                    <!--img
                         src="/media/img/whiteCoatDomainMobile.png"
                         alt="whiteCoatDomain.png"
                         class="sidenavTempLogo"
-                    />
+                    /-->
+                    WhiteCoatDomain
                 </a>
 
                 <ul id="slide-out" class="sidenav">

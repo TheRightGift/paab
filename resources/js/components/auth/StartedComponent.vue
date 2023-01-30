@@ -59,6 +59,9 @@
             </div>
 
             <div class="col s12 m12 l6 welcomeContainer">
+                <div class="authHeadingContainer center-align">
+                    <a href="/" class="authHeading">WhiteCoatDomain</a>
+                </div>
                 <VerifyEmailComponent @resData="setOTP" :type="'register'" />
             </div>
         </div>
@@ -90,6 +93,9 @@
             </div>
 
             <div class="col s12 m12 l6 otpContainer">
+                <div class="authHeadingContainer center-align">
+                    <a href="/" class="authHeading">WhiteCoatDomain</a>
+                </div>
                 <OtpComponent
                     @res="otpVerifier"
                     :otp="otp"
@@ -126,17 +132,19 @@
             </div>
 
             <div class="col s12 m12 l6 regContainer">
+                <div class="authHeadingContainer center-align">
+                    <a href="/" class="authHeading">WhiteCoatDomain</a>
+                </div>
                 <div class="authRightDiv">
                     <p class="authTitle">
                         SIGN UP
                         <!-- Signup Help Modal Trigger -->
-                        <a class="modal-trigger" href="#helpModal1">
+                        <!--a class="modal-trigger" href="#helpModal1">
                             <i class="material-icons helpIcon right">help</i>
-                        </a>
+                        </a-->
                     </p>
                     <p class="authTxt">
-                        It is a long established fact that a reader will be diIt
-                        is a long
+                        Please fillout the registration form. All fields are required.
                     </p>
 
                     <form id="reistrationForm">

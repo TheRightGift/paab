@@ -1,160 +1,160 @@
 <template>
-    <div>
-        <div class="row authContainDiv">
-            <div class="col s12 m12 l6 loginContainer hide-on-med-and-down">
-                <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">
-                        <img
-                            src="/media/img/whiteCoatDomain1.png"
-                            alt="whiteCoatDomain.png"
-                            class="authLogo"
-                        />
-                    </a>
-                    <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
-                    <p class="wlcNoteTxt">
-                        The World is still listening , it is time to tell your
-                        brand story with our professional , powerful and easy to
-                        use portfolio builder for your career.
-                    </p>
-                    <p class="wlcNoteFooterTxt">
-                        © White Coat Domain, Inc. {{ getYear() }}. We love our
-                        users!
-                    </p>
-                </div>
+    <div class="row authContainDiv">
+        <div class="col s12 m12 l6 loginContainer hide-on-med-and-down">
+            <div class="wlcNoteDiv">
+                <a href="/" class="wlcNoteLogo">
+                    <img
+                        src="/media/img/whiteCoatDomain1.png"
+                        alt="whiteCoatDomain.png"
+                        class="authLogo"
+                    />
+                </a>
+                <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
+                <p class="wlcNoteTxt">
+                    The World is still listening , it is time to tell your
+                    brand story with our professional , powerful and easy to
+                    use portfolio builder for your career.
+                </p>
+                <p class="wlcNoteFooterTxt">
+                    © White Coat Domain, Inc. {{ getYear() }}. We love our
+                    users!
+                </p>
             </div>
+        </div>
 
-            <div class="col s12 m12 l6 loginContainer">
-                <div class="authRightDiv">
-                    <p class="authTitle">
-                        LOGIN
-                        <!-- Login Help Modal Trigger -->
-                        <a class="modal-trigger" href="#helpModal">
-                            <i class="material-icons helpIcon right">help</i>
-                        </a>
-                    </p>
-                    <p class="authTxt">
-                        It is a long established fact that a reader will be diIt
-                        is a long
-                    </p>
+        <div class="col s12 m12 l6 loginContainer">
+            <div class="authRightDiv">
+                <div class="authHeadingContainer center-align">
+                    <a href="/" class="authHeading">WhiteCoatDomain</a>
+                </div>
+                <p class="authTitle">
+                    LOGIN
+                    <!-- Login Help Modal Trigger -->
+                    <!--a class="modal-trigger" href="#helpModal">
+                        <i class="material-icons helpIcon right">help</i>
+                    </a-->
+                </p>
+                <p class="authTxt">
+                    Please enter a valid combination of email and password
+                </p>
 
-                    <!-- Login Help Modal Structure -->
-                    <div id="helpModal" class="modal">
-                        <div class="modal-content">
-                            <p>
-                                <a
-                                    href="#!"
-                                    class="
-                                        modal-close
-                                        waves-effect waves-green
-                                        btn-flat
-                                        helpModalCloseBtn
-                                    "
-                                    >Go Back</a
-                                >
-                            </p>
-                            <h5 class="helpModalTitle">How to login</h5>
-                            <p class="helpModalTxts">
-                                Saving you the stress of long logins, you can
-                                access your profile by linking any of your
-                                social media accounts like Facebook, Instagram
-                                and Twitter.
-                            </p>
+                <!-- Login Help Modal Structure -->
+                <div id="helpModal" class="modal">
+                    <div class="modal-content">
+                        <p>
+                            <a
+                                href="#!"
+                                class="
+                                    modal-close
+                                    waves-effect waves-green
+                                    btn-flat
+                                    helpModalCloseBtn
+                                "
+                                >Go Back</a
+                            >
+                        </p>
+                        <h5 class="helpModalTitle">How to login</h5>
+                        <p class="helpModalTxts">
+                            Saving you the stress of long logins, you can
+                            access your profile by linking any of your
+                            social media accounts like Facebook, Instagram
+                            and Twitter.
+                        </p>
 
-                            <p class="helpModalTxts">
-                                Presenting your best work is the final step in
-                                your workflow. Join the world of leading
-                                professionals . Share your professional brand
-                                with the world.
-                            </p>
-                        </div>
+                        <p class="helpModalTxts">
+                            Presenting your best work is the final step in
+                            your workflow. Join the world of leading
+                            professionals . Share your professional brand
+                            with the world.
+                        </p>
                     </div>
+                </div>
 
-                    <form id="loginForm">
-                        <div class="row rm_mg">
-                            <div class="input-field col s12">
-                                <input
-                                    placeholder="Email"
-                                    v-model="loginUser.email"
-                                    id="user"
-                                    type="email"
-                                    class="validate"
-                                    required
-                                />
-                            </div>
+                <form id="loginForm">
+                    <div class="row rm_mg">
+                        <div class="input-field col s12">
+                            <input
+                                placeholder="Email"
+                                v-model="loginUser.email"
+                                id="user"
+                                type="email"
+                                class="validate"
+                                required
+                            />
+                        </div>
 
-                            <div class="input-field col s12">
-                                <input
-                                    placeholder="Password"
-                                    v-model="loginUser.password"
-                                    id="password"
-                                    type="password"
-                                    class="validate"
-                                />
+                        <div class="input-field col s12">
+                            <input
+                                placeholder="Password"
+                                v-model="loginUser.password"
+                                id="password"
+                                type="password"
+                                class="validate"
+                            />
 
-                                <small class="right resetPass">
-                                    <a
-                                        href="/auth/resetpassword"
-                                        class="grey-text"
-                                        >Reset Password?</a
-                                    >
-                                </small>
-                            </div>
-
-                            <!-- Login Social Media Handle -->
-                            <!-- <social-login-component /> -->
-
-                            <div class="input-field col s12">
+                            <small class="right resetPass">
                                 <a
-                                    type="button"
-                                    v-if="!loginLoading"
-                                    class="btn"
-                                    id="loginBtn"
-                                    @click.prevent="userLogin()"
+                                    href="/auth/resetpassword"
+                                    class="grey-text"
+                                    >Reset Password?</a
                                 >
-                                    sign in
-                                </a>
-                                <a class="btn" id="loginBtn" v-else>
-                                    <div class="preloader-wrapper small active">
-                                        <div
-                                            class="
-                                                spinner-layer spinner-white-only
-                                            "
-                                        >
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
-                                            </div>
+                            </small>
+                        </div>
+
+                        <!-- Login Social Media Handle -->
+                        <!-- <social-login-component /> -->
+
+                        <div class="input-field col s12">
+                            <a
+                                type="button"
+                                v-if="!loginLoading"
+                                class="btn"
+                                id="loginBtn"
+                                @click.prevent="userLogin()"
+                            >
+                                sign in
+                            </a>
+                            <a class="btn" id="loginBtn" v-else>
+                                <div class="preloader-wrapper small active">
+                                    <div
+                                        class="
+                                            spinner-layer spinner-white-only
+                                        "
+                                    >
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
                                         </div>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
+                        </div>
 
-                            <!-- Login Signup Link -->
-                            <div class="row">
-                                <div class="col l12 m12 s12 loginSignUpDiv">
-                                    <div class="loginSignUpInnerDiv">
-                                        <p class="loginSignUpTxt">
-                                            Don't have an account yet?
-                                        </p>
-                                        <p>
-                                            <a
-                                                href="/auth/getstarted"
-                                                class="loginSignUpLink"
-                                            >
-                                                Sign Up
-                                            </a>
-                                        </p>
-                                    </div>
+                        <!-- Login Signup Link -->
+                        <div class="row">
+                            <div class="col l12 m12 s12 loginSignUpDiv">
+                                <div class="loginSignUpInnerDiv">
+                                    <p class="loginSignUpTxt">
+                                        Don't have an account yet?
+                                    </p>
+                                    <p>
+                                        <a
+                                            href="/auth/getstarted"
+                                            class="loginSignUpLink"
+                                        >
+                                            Sign Up
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

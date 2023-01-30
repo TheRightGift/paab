@@ -37,7 +37,7 @@ class BioController extends Controller
             'lastname' => 'nullable',
             'firstname' => 'nullable',
             // 'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
-            'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=454,min_height=528',
+            'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=451,min_height=512',
         ]); 
 
         if ($inputs->fails()) {

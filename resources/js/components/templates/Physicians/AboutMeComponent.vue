@@ -4,8 +4,8 @@
             <div class="col s12 rm_mg_pd">
                 <div class="section scrollspy physiContainerDiv" id="about">
                     <div v-if="bio == null">
-                        <div class="row rm_mg_pd">
-                            <div class="col s12 m6 l6">
+                        <div class="row about">
+                            <div class="col s12 m6 l6 profileDesc">
                                 <div class="containerDiv">
                                     <h3 class="physiTempName">
                                         Hi, I'm
@@ -34,14 +34,15 @@
                                         accumsan id imperdiet et, porttitor at
                                         sem. Praesent sapien massa, convallis a
                                     </p>
-
-                                    <a href="#cvDetails" class="physiTempBtn waves-effect waves-light modal-trigger">
-                                        View My curriculum vitae
-                                    </a>
+                                    <p class="center-align">
+                                        <a href="#cvDetails" class="physiTempBtn waves-effect waves-light modal-trigger">
+                                            View My curriculum vitae
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
 
-                            <div class="col s12 m6 l6 rm_mg_pd profileImgContainer">
+                            <div class="col s12 m6 l6 profileImgContainer">
                                 <!-- offset-l3 media/img/doc.png-->
                                 <div class="profileImg" v-if="preview == '0'">
                                     <img

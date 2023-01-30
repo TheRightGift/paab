@@ -3,8 +3,9 @@
         <p class="authTitle" v-if="type === 'register'">GET STARTED</p>
         <p class="authTitle" v-if="type === 'reset'">RESET PASSWORD</p>
         <p class="authTxt">
-            It is a long established fact that a reader will be diIt
-            is a long
+            We need to verify your email before commencing the 
+            <span v-if="type === 'register'">registration</span>
+            <span v-if="type === 'reset'">password reset</span> process.
         </p>
 
         <form id="regEmailVerifier">

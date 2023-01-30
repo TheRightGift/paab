@@ -2,8 +2,7 @@
     <div class="authRightDiv">
         <p class="authTitle">INSERT OTP</p>
         <p class="otpEmailAuthTxt">
-            It is a long established fact that a reader will be diIt
-            is a long
+            A six digit OTP has been sent to your email. Please input to complete the verification process.
         </p>
 
         <div class="row rm_mg">
