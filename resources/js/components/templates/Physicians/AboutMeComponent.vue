@@ -62,8 +62,8 @@
                         </div>
                     </div>
                     <div v-else>
-                        <div class="row rm_mg_pd">
-                            <div class="col s12 m6 l6">
+                        <div class="row about">
+                            <div class="col s12 m6 l6 profileDesc">
                                 <div class="containerDiv">
                                     <h3 class="physiTempName">
                                         Hi, I’m
@@ -78,14 +78,15 @@
                                     <p class="physiSummaryTxt">
                                         {{ bio.about }}
                                     </p>
-
-                                    <a href="#cvDetails" class="physiTempBtn btn-flat waves-effect waves-light modal-trigger">
-                                        View My curriculum vitae
-                                    </a>
+                                    <p class="center-align">
+                                        <a href="#cvDetails" class="physiTempBtn btn-flat waves-effect waves-light modal-trigger">
+                                            View My curriculum vitae
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
 
-                            <div class="col s12 m6 l6 rm_mg_pd profileImgContainer">
+                            <div class="col s12 m6 l6 profileImgContainer">
                                 <!-- offset-l3 media/img/doc.png-->
                                 <div class="profileImg" v-if="preview == '0'">
                                     <img
