@@ -236,19 +236,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="genBottomBtnDiv">
-                        <a href="#" class="goBackBtn" @click="socialGoBackBtn()"
-                            >GO BACK</a
-                        >
-
-                        <button
-                            type="button"
-                            class="btn right"
-                            id="genNextBtn"
-                            @click="contactLink()"
-                        >
-                            NEXT STEP
-                        </button>
+                    
+                    <div class="genBottomBtnDiv">        
+                        <div class="flexed">
+                            <a href="#" class="btn right" id="genNextBtn" @click="socialGoBackBtn()">SOCIAL</a>
+                            <a href="#!" class="btn right" id="genNextBtn" @click="contactLink()">CONTACT</a>
+                            <!-- <i class="material-icons">chevron_right</i> -->
+                        </div>
                     </div>
                 </div>
             </div>

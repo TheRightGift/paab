@@ -4,10 +4,7 @@
             <div class="bioModalDiv" v-if="bioModal">
                 <div class="editInnerGenModal">
                     <div class="genTitleDiv">
-                        <p
-                            class="genTitle activeTab cursor"
-                            @click="bioGoBackBtn1"
-                        >
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck"
@@ -21,10 +18,14 @@
                                 "
                                 >clear</i
                             >
-                            Full Name
-                        </p>
-
-                        <p class="genTitle cursor" @click="bioNextBtn">
+                            <p
+                                class="genTitle activeTab cursor"
+                                @click="bioGoBackBtn1"
+                            >
+                                Full Name
+                            </p>
+                        </div>
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck1"
@@ -36,10 +37,12 @@
                                 v-else-if="bio.about == ''"
                                 >clear</i
                             >
-                            Description
-                        </p>
+                            <p class="genTitle cursor" @click="bioNextBtn">
+                                Description
+                            </p>
+                        </div>
 
-                        <p class="genTitle cursor" @click="bioNextBtn1">
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck2"
@@ -51,10 +54,12 @@
                                 v-else-if="bio.photo == null"
                                 >clear</i
                             >
-                            Upload Photo
-                        </p>
+                            <p class="genTitle cursor" @click="bioNextBtn1">
+                                Upload Photo
+                            </p>
+                        </div>
 
-                        <p class="genTitle cursor" @click="bioNextBtn2">
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck3"
@@ -66,8 +71,10 @@
                                 v-else-if="bio.CV == null"
                                 >clear</i
                             >
-                            Upload Curriculum
-                        </p>
+                            <p class="genTitle cursor" @click="bioNextBtn2">
+                                Upload Curriculum
+                            </p>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -97,13 +104,59 @@
                             <img src="/media/img/editWebsiteSettings/fullname.png" alt="fullname.png" class="editWebIllustrativeImg">
                         </div>
                     </div>
-
-                    <div class="genBottomBtnDiv">
-                        <a href="#" class="goBackBtn" @click="bioGoBackBtn()">GO BACK</a>
-                    
-                        <button type="button" class="btn right" id="genNextBtn" @click="bioNextBtn()">
-                            NEXT STEP
+                    <div class="flexed">
+                        <button  v-if="loading" class="btn">
+                            <div class="preloader-wrapper small active">
+                                <div
+                                    class="spinner-layer spinner-white-only"
+                                >
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </button>
+                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioSave" v-else-if="saved == null">
+                            Save
+                        </button>
+                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioUpdate" v-else disabled>
+                            Update
+                        </button>
+                        <div>
+                            <!-- <a
+                                href="#!"
+                                class="chevronIconLink"
+                                
+                            >
+                                <i class="material-icons chevronIcon"
+                                    >chevron_left</i
+                                >
+                            </a> -->
+                            <a
+                                href="#!"
+                                class="chevronIconLink"
+                                
+                                title="skip to next"
+                                @click="bioNextBtn()"
+                            >
+                                <i class="material-icons chevronIcon"
+                                    >chevron_right</i
+                                >
+                            </a>
+                        </div>
+                    </div>
+                    <div class="genBottomBtnDiv">        
+                        <div class="flexed">
+                            <a href="#" class="btn right" id="genNextBtn" @click="bioGoBackBtn()">GENERAL</a>
+                            <a href="#!" class="btn right" id="genNextBtn" @click="servicesLink()">SERVICES</a>
+                            
+                        </div>
                     </div>
                     
                 </div>
@@ -113,7 +166,7 @@
             <div class="bioModalDiv" v-if="bioModal1">
                 <div class="editInnerGenModal">
                     <div class="genTitleDiv">
-                        <p class="genTitle cursor" @click="bioGoBackBtn1">
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck"
@@ -127,13 +180,11 @@
                                 "
                                 >clear</i
                             >
-                            Full Name
-                        </p>
-
-                        <p
-                            class="genTitle cursor activeTab"
-                            @click="bioNextBtn"
-                        >
+                            <p class="genTitle cursor" @click="bioGoBackBtn1">
+                                Full Name
+                            </p>
+                        </div>
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck1"
@@ -145,10 +196,15 @@
                                 v-else-if="bio.about == ''"
                                 >clear</i
                             >
-                            Description
-                        </p>
+                            <p
+                                class="genTitle cursor activeTab"
+                                @click="bioNextBtn"
+                            >
+                                Description
+                            </p>
+                        </div>
 
-                        <p class="genTitle cursor" @click="bioNextBtn1">
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck2"
@@ -160,10 +216,11 @@
                                 v-else-if="bio.photo == null"
                                 >clear</i
                             >
-                            Upload Photo
-                        </p>
-
-                        <p class="genTitle cursor" @click="bioNextBtn2">
+                            <p class="genTitle cursor" @click="bioNextBtn1">
+                                Upload Photo
+                            </p>
+                        </div>
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck3"
@@ -175,8 +232,10 @@
                                 v-else-if="bio.CV == null"
                                 >clear</i
                             >
-                            Upload Curriculum
-                        </p>
+                            <p class="genTitle cursor" @click="bioNextBtn2">
+                                Upload Curriculum
+                            </p>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -207,13 +266,59 @@
                             <img src="/media/img/editWebsiteSettings/fullnameDescription.png" alt="fullnameDescription.png" class="editWebIllustrativeImg">
                         </div>
                     </div>
-                    
-                    <div class="genBottomBtnDiv">
-                        <a href="#" class="goBackBtn" @click="bioGoBackBtn1()">GO BACK</a>
-                    
-                        <button type="button" class="btn right" id="genNextBtn" @click="bioNextBtn1()">
-                            NEXT STEP
+                    <div class="flexed">
+                        <button  v-if="loading" class="btn">
+                            <div class="preloader-wrapper small active">
+                                <div
+                                    class="spinner-layer spinner-white-only"
+                                >
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </button>
+                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioSave" v-else-if="saved == null">
+                            Save
+                        </button>
+                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioUpdate" v-else disabled>
+                            Update
+                        </button>
+                        <div>
+                            <a
+                                href="#!"
+                                class="chevronIconLink"
+                                @click="bioGoBackBtn1()"
+                            >
+                                <i class="material-icons chevronIcon"
+                                    >chevron_left</i
+                                >
+                            </a>
+                            <a
+                                href="#!"
+                                class="chevronIconLink"
+                                
+                                title="skip to next"
+                                @click="bioNextBtn1()"
+                            >
+                                <i class="material-icons chevronIcon"
+                                    >chevron_right</i
+                                >
+                            </a>
+                        </div>
+                    </div>
+                    <div class="genBottomBtnDiv">        
+                        <div class="flexed">
+                            <a href="#" class="btn right" id="genNextBtn" @click="bioGoBackBtn()">GENERAL</a>
+                            <a href="#!" class="btn right" id="genNextBtn" @click="servicesLink()">SERVICES</a>
+                            <!-- <i class="material-icons">chevron_right</i> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -222,7 +327,7 @@
             <div class="bioModalDiv" v-if="bioModal2">
                 <div class="editInnerGenModal">
                     <div class="genTitleDiv">
-                        <p class="genTitle cursor" @click="bioGoBackBtn1">
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck"
@@ -236,10 +341,11 @@
                                 "
                                 >clear</i
                             >
-                            Full Name
-                        </p>
-
-                        <p class="genTitle cursor" @click="bioNextBtn">
+                            <p class="genTitle cursor" @click="bioGoBackBtn1">
+                                Full Name
+                            </p>
+                        </div>
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck1"
@@ -251,13 +357,11 @@
                                 v-else-if="bio.about == ''"
                                 >clear</i
                             >
-                            Description
-                        </p>
-
-                        <p
-                            class="genTitle cursor activeTab"
-                            @click="bioNextBtn1"
-                        >
+                            <p class="genTitle cursor" @click="bioNextBtn">
+                                Description
+                            </p>
+                        </div>
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck2"
@@ -269,10 +373,14 @@
                                 v-else-if="bio.photo == null"
                                 >clear</i
                             >
-                            Upload Photo
-                        </p>
-
-                        <p class="genTitle cursor" @click="bioNextBtn2">
+                            <p
+                                class="genTitle cursor activeTab"
+                                @click="bioNextBtn1"
+                            >
+                                Upload Photo
+                            </p>
+                        </div>
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck3"
@@ -284,8 +392,10 @@
                                 v-else-if="bio.CV == null"
                                 >clear</i
                             >
-                            Upload Curriculum
-                        </p>
+                            <p class="genTitle cursor" @click="bioNextBtn2">
+                                Upload Curriculum
+                            </p>
+                        </div>
                     </div>
 
                     <!--div class="row">
@@ -389,28 +499,61 @@
                             <img src="/media/img/editWebsiteSettings/fullname.png" alt="fullname.png" class="editWebIllustrativeImg2">
                         </div>
                     </div>
-                        <!-- <div>
-                                    <button type="button" class="btn" id="genModalBtn">
-                                        Upload
-                                    </button>
-                                </div> -->
 
-                    <div class="genBottomBtnDiv">
-                        <a
-                            href="#"
-                            class="goBackBtn"
-                            @click="bioGoBackBtn2()"
-                            >GO BACK</a
-                        >
-
-                        <button
-                            type="button"
-                            class="btn right"
-                            id="genNextBtn"
-                            @click="bioNextBtn2()"
-                        >
-                            NEXT STEP
+                    
+                    <div class="flexed">
+                        <button  v-if="loading" class="btn">
+                            <div class="preloader-wrapper small active">
+                                <div
+                                    class="spinner-layer spinner-white-only"
+                                >
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </button>
+                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioSave" v-else-if="saved == null">
+                            Save
+                        </button>
+                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioUpdate" v-else disabled>
+                            Update
+                        </button>
+                        <div>
+                            <a
+                                href="#!"
+                                class="chevronIconLink"
+                                @click="bioGoBackBtn2()"
+                            >
+                                <i class="material-icons chevronIcon"
+                                    >chevron_left</i
+                                >
+                            </a>
+                            <a
+                                href="#!"
+                                class="chevronIconLink"
+                                
+                                title="skip to next"
+                                @click="bioNextBtn2()"
+                            >
+                                <i class="material-icons chevronIcon"
+                                    >chevron_right</i
+                                >
+                            </a>
+                        </div>
+                    </div>
+                    <div class="genBottomBtnDiv">        
+                        <div class="flexed">
+                            <a href="#" class="btn right" id="genNextBtn" @click="bioGoBackBtn()">GENERAL</a>
+                            <a href="#!" class="btn right" id="genNextBtn" @click="servicesLink()">SERVICES</a>
+                            <!-- <i class="material-icons">chevron_right</i> -->
+                        </div>
                     </div>
                     
                 </div>
@@ -420,7 +563,7 @@
             <div class="bioModalDiv" v-if="bioModal3">
                 <div class="editInnerGenModal">
                     <div class="genTitleDiv">
-                        <p class="genTitle cursor" @click="bioGoBackBtn1">
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck"
@@ -434,10 +577,11 @@
                                 "
                                 >clear</i
                             >
-                            Full Name
-                        </p>
-
-                        <p class="genTitle cursor" @click="bioNextBtn">
+                            <p class="genTitle cursor" @click="bioGoBackBtn1">
+                                Full Name
+                            </p>
+                        </div>
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck1"
@@ -449,10 +593,11 @@
                                 v-else-if="bio.about == ''"
                                 >clear</i
                             >
-                            Description
-                        </p>
-
-                        <p class="genTitle cursor" @click="bioNextBtn1">
+                            <p class="genTitle cursor" @click="bioNextBtn">
+                                Description
+                            </p>
+                        </div>
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck2"
@@ -464,13 +609,11 @@
                                 v-else-if="bio.photo == null"
                                 >clear</i
                             >
-                            Upload Photo
-                        </p>
-
-                        <p
-                            class="genTitle cursor activeTab"
-                            @click="bioNextBtn2"
-                        >
+                            <p class="genTitle cursor" @click="bioNextBtn1">
+                                Upload Photo
+                            </p>
+                        </div>
+                        <div>
                             <i
                                 class="material-icons"
                                 id="genTitleCheck3"
@@ -482,8 +625,13 @@
                                 v-else-if="bio.CV == null"
                                 >clear</i
                             >
-                            Upload Curriculum
-                        </p>
+                            <p
+                                class="genTitle cursor activeTab"
+                                @click="bioNextBtn2"
+                            >
+                                Upload Curriculum
+                            </p>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -515,7 +663,16 @@
                                 </div>
                             </div>
                         
-                            <div>
+                            
+                          
+                        </div>
+
+                        <div class="col s12 m12 l5">
+                            <img src="/media/img/editWebsiteSettings/fullnameCv.png" alt="fullnameCv.png" class="editWebIllustrativeImg" width="420" height="300">
+                        </div>
+                    </div>
+                
+                    <div class="flexed">
                                 <button  v-if="loading" class="btn">
                                     <div class="preloader-wrapper small active">
                                         <div
@@ -539,23 +696,40 @@
                                 <button type="button" class="btn" id="genModalBtn" @click.prevent="bioUpdate" v-else>
                                     Update
                                 </button>
+                                <div>
+                                    <a
+                                        href="#!"
+                                        class="chevronIconLink"
+                                        @click="bioGoBackBtn3()"
+                                    >
+                                        <i class="material-icons chevronIcon"
+                                            >chevron_left</i
+                                        >
+                                    </a>
+                                    <!-- <a
+                                        href="#!"
+                                        class="chevronIconLink"
+                                        
+                                        title="skip to next"
+                                        @click="bioNextBtn2()"
+                                    >
+                                        <i class="material-icons chevronIcon"
+                                            >chevron_right</i
+                                        >
+                                    </a> -->
+                                </div>
                             </div>
+                    <div class="genBottomBtnDiv">        
+                        <div class="flexed">
+                            <a href="#" class="btn right" id="genNextBtn" @click="bioGoBackBtn()">GENERAL</a>
+                            <a href="#!" class="btn right" id="genNextBtn" @click="servicesLink()">SERVICES</a>
+                            <!-- <i class="material-icons">chevron_right</i> -->
                         </div>
-
-                        <div class="col s12 m12 l5">
-                            <img src="/media/img/editWebsiteSettings/fullnameCv.png" alt="fullnameCv.png" class="editWebIllustrativeImg" width="420" height="300">
-                        </div>
-                    </div>
-                    
-                    <div class="genBottomBtnDiv">
-                        <a href="#" class="goBackBtn" @click="bioGoBackBtn3()">GO BACK</a>
-                    
-                        <button type="button" class="btn right" id="genNextBtn" @click="servicesLink()">
-                            NEXT STEP
-                        </button>
                     </div>
                 </div>
             </div>
+
+            
         </div>
         <!-- Modal Structure -->
         <CVModalComponent />
@@ -573,6 +747,9 @@
     }
     .successColor {
         color: rgb(127, 247, 127);
+    }
+    .flexed {
+        justify-content: space-between;
     }
 </style>
 <script>

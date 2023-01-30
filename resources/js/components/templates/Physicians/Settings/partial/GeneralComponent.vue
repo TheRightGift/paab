@@ -3,7 +3,10 @@
         <div class="editGenModal" v-show="genModal">
             <div class="editInnerGenModal">
                 <div class="genTitleDiv">
-                    <p class="genTitle cursor activeTab" @click="genGoBackBtn()">
+                    <p
+                        class="genTitle cursor activeTab"
+                        @click="genGoBackBtn()"
+                    >
                         <i
                             class="material-icons"
                             id="genTitleCheck"
@@ -45,30 +48,105 @@
                 <div class="row">
                     <div class="col s12 m12 l12">
                         <p class="genTitle1">Input your title.</p>
-                    </div>  
+                    </div>
                     <div class="col s12 m12 l6">
                         <p class="genTxt">
                             Input your website title in the input field below.
                         </p>
-                    
+
                         <div class="input-field col l12 genInput">
-                            <input type="text" placeholder="Dr. Chigozie Chukwu" class="" v-model="general.title" />
-                        </div>                        
+                            <input
+                                type="text"
+                                placeholder="Dr. Chigozie Chukwu"
+                                class=""
+                                v-model="general.title"
+                            />
+                        </div>
                     </div>
-                    
+
                     <div class="col s12 m12 l6">
-                        <p><b>Title</b> or popularly <b>webpage title</b> is a short description of a webpage and appears at the top of a browser window as depicted in the image below. You can see title for my site and title for linkedin website.</p>
-                        <img src="/media/img/editWebsiteSettings/title-pointer.png" alt="website title description" class="responsive-img">
+                        <p>
+                            <b>Title</b> or popularly <b>webpage title</b> is a
+                            short description of a webpage and appears at the
+                            top of a browser window as depicted in the image
+                            below. You can see title for my site and title for
+                            linkedin website.
+                        </p>
+                        <img
+                            src="/media/img/editWebsiteSettings/title-pointer.png"
+                            alt="website title description"
+                            class="responsive-img"
+                        />
                     </div>
                 </div>
-
-                <div class="genBottomBtnDiv">
-                    <button type="button" class="btn right" id="genNextBtn" @click="genNextBtn()">
-                        NEXT STEP
+                <div class="flexed">
+                    <button v-if="loading" class="btn">
+                        <div class="preloader-wrapper small active">
+                            <div class="spinner-layer spinner-white-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
                     </button>
+                    <button
+                        type="button"
+                        class="btn-flat faviconUpdateBtn"
+                        disabled
+                        @click.prevent="generalSave"
+                        v-else-if="saved == null"
+                    >
+                        Save
+                    </button>
+                    <button
+                        type="button"
+                        class="btn-flat faviconUpdateBtn"
+                        @click.prevent="generalUpdate"
+                        v-else
+                        disabled
+                    >
+                        Update
+                    </button>
+                    <div>
+                        <!-- <a
+                            href="#!"
+                            class="chevronIconLink"
+                            @click="genGoBackBtn()"
+                        >
+                            <i class="material-icons chevronIcon"
+                                >chevron_left</i
+                            >
+                        </a> -->
+                        <a
+                            href="#!"
+                            class="chevronIconLink"
+                            title="skip to next"
+                            @click="genNextBtn"
+                        >
+                            <i class="material-icons chevronIcon"
+                                >chevron_right</i
+                            >
+                        </a>
+                    </div>
+                </div>
+                <div class="genBottomBtnDiv">
+                    <div class="">
+                        <a
+                            href="#"
+                            class="btn right"
+                            id="genNextBtn"
+                            @click="genNextBtn1()"
+                            >BIOGRAPH</a
+                        >
+                    </div>
                 </div>
             </div>
-
         </div>
 
         <!-- General Modal 1-->
@@ -122,82 +200,170 @@
                         <p class="genTxt">
                             File type must be in .png and not exceed 100kb.
                         </p>
-                        <div class="row"  v-if="general.favicon == null">
-                            <div class="col s12 m12 l12 file-field input-field" id="genUploadFavIconDiv">
-                                <input type="file" @change="favUpload" accept=".png" />
+                        <div class="row" v-if="general.favicon == null">
+                            <div
+                                class="col s12 m12 l12 file-field input-field"
+                                id="genUploadFavIconDiv"
+                            >
+                                <input
+                                    type="file"
+                                    @change="favUpload"
+                                    accept=".png"
+                                />
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate genInput1" type="text" placeholder="Pick Favicon"/>
+                                    <input
+                                        class="file-path validate genInput1"
+                                        type="text"
+                                        placeholder="Pick Favicon"
+                                    />
                                     <!--i class="material-icons" id="genUploadFavIcon">file_upload</i-->
                                 </div>
                             </div>
                         </div>
                         <div class="row vHMargin-5" v-else>
                             <div class="col l6">
-                                <div class="file-field input-field" id="genUploadFavIconDiv" v-if="general.favicon == null">
-                                    <input type="file" @change="favUpload" accept=".png" />
+                                <div
+                                    class="file-field input-field"
+                                    id="genUploadFavIconDiv"
+                                    v-if="general.favicon == null"
+                                >
+                                    <input
+                                        type="file"
+                                        @change="favUpload"
+                                        accept=".png"
+                                    />
                                     <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" id="genInput1" placeholder="Pick File" />
+                                        <input
+                                            class="file-path validate"
+                                            type="text"
+                                            id="genInput1"
+                                            placeholder="Pick File"
+                                        />
                                         <!--i class="material-icons" id="genUploadFavIcon">file_upload</i-->
                                     </div>
                                 </div>
                                 <div v-else class="flex no-space-between">
-                                    <img width="100" height="100" class="responsive-img" :src="
-                                        typeof general.favicon == 'string'
-                                        ? '/media/tenants/'+tenant+'/img/' + general.favicon
-                                            : uploaded
-                                    " />                                
+                                    <img
+                                        width="100"
+                                        height="100"
+                                        class="responsive-img"
+                                        :src="
+                                            typeof general.favicon == 'string'
+                                                ? '/media/tenants/' +
+                                                  tenant +
+                                                  '/img/' +
+                                                  general.favicon
+                                                : uploaded
+                                        "
+                                    />
                                 </div>
                             </div>
                             <div class="col l6 faviconUploadBtnCol">
-                                <button type="button" class="btn-flat redBorderBtn matchngBtn" @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
-                            </div>
-                        </div>
-                        <div class="row"> 
-                            <div class="col l12">
-                                <button  v-if="loading" class="btn">
-                                    <div class="preloader-wrapper small active">
-                                        <div
-                                            class="spinner-layer spinner-white-only"
-                                        >
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
-                                <button type="button" class="btn-flat faviconUpdateBtn" @click.prevent="generalSave" v-else-if="saved == null" :disabled="
-                                    general.favicon == null || general.title == ''
-                                ">
-                                    Save
-                                </button>
-                                <button type="button" class="btn-flat faviconUpdateBtn" @click.prevent="generalUpdate" v-else :disabled="
-                                    general.favicon == null || general.title == ''
-                                ">
-                                    Update
+                                <button
+                                    type="button"
+                                    class="btn-flat redBorderBtn matchngBtn"
+                                    @click="deleteImg"
+                                >
+                                    <i class="material-icons">swap_horiz</i>
                                 </button>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col l6">
                         <p>
-                            <b>Favicon</b> an icon associated with a particular website, typically displayed in the address bar of a browser accessing the site or next to the site name in a user's list of bookmarks. Please ensure the file is max 50px height and 50px width.
+                            <b>Favicon</b> an icon associated with a particular
+                            website, typically displayed in the address bar of a
+                            browser accessing the site or next to the site name
+                            in a user's list of bookmarks. Please ensure the
+                            file is max 50px height and 50px width.
                         </p>
-                        <img src="/media/img/editWebsiteSettings/favicon-pointer.png" alt="website favicon illustration." class="responsive-img"/>
+                        <img
+                            src="/media/img/editWebsiteSettings/favicon-pointer.png"
+                            alt="website favicon illustration."
+                            class="responsive-img"
+                        />
+                    </div>
+                </div>
+                <div class="row">
+                    <div >
+                        <div class="flexed">
+                            <button v-if="loading" class="btn col l4 s12 m5">
+                                <div class="preloader-wrapper small active">
+                                    <div
+                                        class="spinner-layer spinner-white-only"
+                                    >
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                            <button
+                                type="button"
+                                class="btn-flat faviconUpdateBtn col l4 s12 m5"
+                                @click.prevent="generalSave"
+                                v-else-if="saved == null"
+                                :disabled="
+                                    general.favicon == null ||
+                                    general.title == ''
+                                "
+                            >
+                                Save
+                            </button>
+                            <button
+                                type="button"
+                                class="btn-flat faviconUpdateBtn col s12 l4"
+                                @click.prevent="generalUpdate"
+                                v-else
+                                :disabled="
+                                    general.favicon == null ||
+                                    general.title == ''
+                                "
+                            >
+                                Update
+                            </button>
+                            <div>
+                                <a
+                                    href="#!"
+                                    class="chevronIconLink"
+                                    @click="genGoBackBtn()"
+                                >
+                                    <i class="material-icons chevronIcon"
+                                        >chevron_left</i
+                                    >
+                                </a>
+                                <!-- <a
+                                            href="#!"
+                                            class="chevronIconLink"
+                                            
+                                            title="skip to next"
+                                            @click="genNextBtn"
+                                        >
+                                            <i class="material-icons chevronIcon"
+                                                >chevron_right</i
+                                            >
+                                        </a> -->
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="genBottomBtnDiv">
-                    <a href="#" class="goBackBtn" @click="genGoBackBtn()">GO BACK</a>
-                
-                    <button type="button" class="btn right" id="genNextBtn" @click="genNextBtn1()">
-                        NEXT STEP
-                    </button>
+                    <div class="">
+                        <a
+                            href="#"
+                            class="btn right"
+                            id="genNextBtn"
+                            @click="genNextBtn1()"
+                            >BIOGRAPH</a
+                        >
+                    </div>
                 </div>
             </div>
         </div>

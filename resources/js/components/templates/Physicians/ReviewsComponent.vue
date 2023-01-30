@@ -39,7 +39,7 @@
                                 <img
                                     :src="
                                         review.imageURL != null
-                                            ? '/media/'+tenant+'/img/reviews/'+ review.imageURL
+                                            ? '/media/tenants/'+tenant+'/img/reviews/'+ review.imageURL
                                             : '/media/img/user.png'
                                     "
                                     :alt="
