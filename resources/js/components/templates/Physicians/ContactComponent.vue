@@ -3,11 +3,45 @@
         <div class="row" id="templateContact">
             <div class="col s12" id="testiContactFormTitleDiv">
                 <p class="feedsMainTitle expMainTitle">Contact Me</p>
-                <p class="feedsMainTxt">SCHEDULE AN APPOINTMENT</p>
+                <p class="contactHeaderTxt">SCHEDULE AN APPOINTMENT</p>
                 <h3 class="title">
                     CONTACT ME
                     <span class="primaryColorBoxDesign5"></span>
                 </h3>
+
+                <div v-if="preview != '1'" class="hide-on-large-only">
+                    <!-- Contact Modal Trigger -->
+                    <a class="modal-trigger contactEditBtn" href="#contactEditModal" v-if="isLoggedIn">
+                        <i class="material-icons editIcon">edit</i>
+                    </a>
+
+                    <!-- Contact Modal Structure -->
+                    <div id="contactEditModal" class="modal">
+                        <div class="modal-content">
+                            <div class="aboutWriteUpsEditModalInnerDiv">
+                                <a href="#!" class="modal-close editWriteUpsModalCloseBtn">
+                                    <i class="material-icons">keyboard_arrow_left</i>
+                                </a>
+                                <form>
+                                    <div class="row rm_mg">
+                                        <div class="input-field col s12 rm_mg">
+                                            <input type="text" v-model="contact.email" placeholder="youremail@handler.com" class="validate aboutWriteUpsInput">
+                                        </div>
+                                    </div>
+
+                                </form>
+                                <p class="servicesInputInstruct">Email you input will be the mail your client will contact you</p>
+                                <div class="editWriteUpsSaveBtnDiv">
+                                    <a href="#" class="editWriteUpsSaveBtn" @click.prevent="saveUpdateContact" v-if="!loading">
+                                        <span v-if="contactMail == null">Save</span>
+                                        <span @click="update = 1" v-else>Update</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="contactMainDiv">
                 <div class="col s12 m5 l5 greenBg">
@@ -62,7 +96,7 @@
                                         required
                                     />
                                 </div>
-                    
+
                                 <div class="input-field col s12 m6 l6">
                                     <input
                                         placeholder="First Name"
@@ -73,7 +107,7 @@
                                         required
                                     />
                                 </div>
-                    
+
                                 <div class="input-field col s12 m6 l6">
                                     <input
                                         placeholder="Email"
@@ -84,7 +118,7 @@
                                         required
                                     />
                                 </div>
-                    
+
                                 <div class="input-field col s12 m6 l6">
                                     <input
                                         placeholder="Phone Number"
@@ -95,7 +129,7 @@
                                         required
                                     />
                                 </div>
-                    
+
                                 <div class="input-field col s12">
                                     <textarea
                                         id="testiTextarea1"
@@ -105,10 +139,10 @@
                                         required
                                     ></textarea>
                                 </div>
-                    
+
                                 <button type="submit" class="btn testiContactBtn float-right" :disabled="saving">
                                     <span v-if="!saving">SUBMIT <i class="material-icons" id="testiContactBtnIcon">send</i></span>
-                                    
+
                                     <div class="preloader-wrapper small active" v-else>
                                         <div
                                             class="spinner-layer spinner-white-only"
@@ -137,6 +171,10 @@
 export default {
     data() {
         return {
+            contact: {
+                email: "",
+            },
+            loading: false,
             success: false,
             saving: false,
             appointment: {
@@ -145,11 +183,47 @@ export default {
                 email: "",
                 firstname: "",
                 lastname: "",
-            }
+            },
+            update: 0,
         }
     },
-    props: {preview: String},
+    props: {preview: String, isLoggedIn: Boolean, contactMail: Object},
     methods: {
+        saveUpdateContact() {
+            this.loading = !this.loading;
+            let request = `/api/contact`;
+            let data = {
+                _method: "PUT",
+            };
+            if (this.update == 1) {
+                request = `/api/contact/${this.contact.id}`;
+                this.contact = { ...this.contact, ...data };
+            }
+            axios
+                .post(request, this.contact)
+                .then((res) => {
+                    if (res.status == 201 || res.data.status == 200) {
+                        this.loading = !this.loading;
+                        M.toast({
+                            html: res.data.message,
+                            classes: "successNotifier",
+                        });
+                        // location.reload();
+                        // this.contactNextBtn()
+                    }
+                })
+                .catch((err) => {
+                    this.loading = !this.loading;
+                    if (err.response.status == 400) {
+                        err.response.data.forEach((el) => {
+                            M.toast({
+                                html: el,
+                                classes: "errorNotifier",
+                            });
+                        });
+                    }
+                });
+        },
         sendMail(){
             if (this.preview == '0') {
                 this.saving = true
@@ -176,6 +250,14 @@ export default {
                     // console.log(error);
                     this.saving = false
                 })
+            }
+        }
+    },
+    watch: {
+        contactMail(newVal, oldVal){
+            if (newVal != null) {
+                this.contact.email = newVal.email;
+                this.contact.id = newVal.id;
             }
         }
     },

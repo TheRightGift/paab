@@ -17,7 +17,7 @@
                         <img  v-if="preview == '1'" src="/media/img/surgeonbanner.png"  alt="surgeonbanner.png" class="bannerImg">
                         <img  v-else :src="'media/img/surgeonbanner.png'"  alt="surgeonbanner.png" class="bannerImg">
                     </div>
-                    <div class="col s12 m3 l2">
+                    <div class="col s12 m12 l2">
                         <div class="row expLeftBarDiv experiences">
                             <div class="col s3 m12 l12 expLeftBarInnerDiv">
                                 <div class="experience">
@@ -74,10 +74,10 @@
                     </div>
                     <div class="col s12 m3 l2">
                         <div class="row expLeftBarDiv experiences">
-                            <div class="col s3 m12 l12 expLeftBarInnerDiv" v-for="(feat, index) in feats" :key="index">
+                            <div class="col s6 m12 l12 expLeftBarInnerDiv" v-for="(feat, index) in feats" :key="index">
                                 <div class="experience">
                                     <p class="experienceTitle">{{feat}} {{index == 'experience' ? 'Yrs' : null}}</p>
-                                    <p class="experienceTxt">{{index}}{{ index == 'volunteer' ? 's' : null }} {{ index == 'ward' ? 'rounds' : null}}</p>
+                                    <p class="experienceTxt">{{index}} {{ index == 'volunteer' ? 'services' : null }} {{ index == 'ward' ? 'rounds' : null}}</p>
                                 </div>
                             </div>
                         </div>

@@ -4,17 +4,17 @@
             <div class="loader"></div>
         </div>
         <div v-show="!loading">
-            <HeaderComponent :user="user"/>
-            <AboutMeComponent :tenant="tenant" :title="title" :user="user" :bio="bio" :location="location" :preview="preview"/>
-            
-            <ServicesComponent :services="services" />
-            <div id="experienceContainer">
-                <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview"/>
-            </div>
-            <SocialMediaComponent :socials="socials"/>
-            <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>
+            <HeaderComponent :user="user" />
+            <AboutMeComponent :tenant="tenant" :title="title" :user="user" :bio="bio" :location="location" :preview="preview" :isLoggedIn="loggedIn" />
+
+            <ServicesComponent :services="services" :isLoggedIn="loggedIn" />
+<!--            <div id="experienceContainer">-->
+<!--                <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview"/>-->
+<!--            </div>-->
+<!--            <SocialMediaComponent :socials="socials"/>-->
+<!--            <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>-->
             <div id="contactContainer">
-                <ContactComponent :preview="preview"/>
+                <ContactComponent :preview="preview" :isLoggedIn="loggedIn" :contactMail="contactMail"/>
             </div>
         </div>
     </div>
@@ -32,6 +32,7 @@
     let achievement = '/api/achievement';
     let social = '/api/social';
     let review = '/api/review';
+    let contact = '/api/contact';
 
     export default {
         components: {
@@ -45,6 +46,7 @@
         },
         data() {
             return {
+                contactMail: {},
                 services: [],
                 bio: {},
                 achievement: {},
@@ -52,6 +54,7 @@
                 reviews: [],
                 loading: false,
                 location: "",
+                loggedIn: false,
             };
         },
         props: {
@@ -62,8 +65,10 @@
             title: String,
             tenant: String,
         },
+        created() {
+            this.loggedIn = this.getCookie('_token');
+        },
         mounted() {
-            // if(this.templateId)
             if (this.preview == '0') {
                 this.getLocations();
             }
@@ -76,6 +81,11 @@
             this.location = window.location.href // For absolute pathing
         },
         methods: {
+            getCookie(name) {
+                return document.cookie.split(";").some((c) => {
+                    return c.trim().startsWith(name + "=");
+                });
+            },
             getLocations() {
                 this.loading = true;
                 const requestBio = axios.get(bio);
@@ -83,9 +93,10 @@
                 const requestAchievement = axios.get(achievement);
                 const requestSocials = axios.get(social);
                 const requestReviews = axios.get(review);
+                const requestContact = axios.get(contact);
 
                 axios
-                    .all([requestBio, requestService, requestAchievement, requestSocials, requestReviews])
+                    .all([requestBio, requestService, requestAchievement, requestSocials, requestReviews, requestContact])
                     .then(
                         axios.spread((...responses) => {
                             const bioRes = responses[0];
@@ -93,11 +104,13 @@
                             const achievementRes = responses[2];
                             const socialRes = responses[3];
                             const reviewRes = responses[4];
+                            const contactRes = responses[5];
                             this.services = servicesRes.data.services;
                             this.bio = bioRes.data.bio;
                             this.achievement = achievementRes.data.achievement;
                             this.socials = socialRes.data.social;
                             this.reviews = reviewRes.data.reviews;
+                            this.contactMail = contactRes.data.contact;
 
                             this.loading = false;
                         })

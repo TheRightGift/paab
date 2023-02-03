@@ -12,22 +12,22 @@
 
 
     <link rel="stylesheet" href="{{ global_asset('css/materialize.min.css') }}">
-    <link rel="stylesheet" href="{{ global_asset('css/paab.css') }}">
-    <link rel="stylesheet" href="{{ global_asset('css/physicians.css') }}">
     <link rel="stylesheet" href="{{ global_asset('css/'.$templateCSS) }}">
+    <link rel="stylesheet" href="{{ global_asset('css/paab.css') }}">
+    <!--link rel="stylesheet" href="{{ global_asset('css/physicians.css') }}"-->
     <link rel="stylesheet" href="{{ global_asset('fonts/material-icons.css') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-    <div id="app">      
+    <div id="app">
         <physician-website-component tenant='{{$tenantID ?? null}}' preview='{{$preview ?? 0}}' title='{{$title ?? null}}' template="{{$template}}" user="{{$user ?? ''}}"></physician-website-component>
     </div>
-    
+
     <script src="{{ global_asset('js/app.js') }}"></script>
     <script src="{{ global_asset('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ global_asset('js/materialize.min.js') }}"></script>
-    <script src="{{ global_asset('js/paab.js') }}"></script>    
+    <script src="{{ global_asset('js/paab.js') }}"></script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
