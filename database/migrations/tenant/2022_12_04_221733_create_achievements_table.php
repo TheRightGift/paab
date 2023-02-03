@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
             $table->string('banner')->nullable();
-            $table->json('feats');
+            $table->json('feats')->nullable();
             $table->timestamps();
         });
     }

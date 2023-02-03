@@ -30,13 +30,14 @@
     <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/paab.css') }}">
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/claimantSetup.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('fonts/material-icons.css') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     <div id="app">       
-        <started-component></started-component>
+        <started-component claimant="{{session('userBiography')}}"></started-component>
     </div>
     
     <script src="{{ asset('js/app.js') }}"></script>

@@ -33,10 +33,10 @@ class ServiceController extends Controller
         // dd($request->input('data'));
         $data = json_decode($request->input('data'));
         $inputs = Validator::make($request->all(), [
-            // 'data' => 'required',
-            'data.*.title' => 'required',
-            'data.*.description' => 'required',
-            'data.*.icon' => 'required|image|mimes:jpg,png|max:10',
+            // 'data' => 'nullable',
+            'data.*.title' => 'nullable',
+            'data.*.description' => 'nullable',
+            'data.*.icon' => 'nullable|image|mimes:jpg,png|max:10',
         ]); 
 
         if ($inputs->fails()) {
@@ -74,10 +74,10 @@ class ServiceController extends Controller
         $data = json_decode($request->input('data'));
         $removed = json_decode($request->input('removed'));
         $inputs = Validator::make($request->all(), [
-            // 'data' => 'required',
-            'data.*.title' => 'required',
-            'data.*.description' => 'required',
-            'data.*.icon' => 'required|image|mimes:jpg,png|max:10',
+            // 'data' => 'nullable',
+            'data.*.title' => 'nullable',
+            'data.*.description' => 'nullable',
+            'data.*.icon' => 'nullable|image|mimes:jpg,png|max:10',
         ]); 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);

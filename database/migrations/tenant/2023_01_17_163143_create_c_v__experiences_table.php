@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('c_v__experiences', function (Blueprint $table) {
             $table->id();
-            $table->text('position');
-            $table->text('institution');
-            $table->text('location');
-            $table->integer('yearStart');
-            $table->integer('monthStart');
+            $table->text('position')->nullable();
+            $table->text('institution')->nullable();
+            $table->text('location')->nullable();
+            $table->integer('yearStart')->nullable();
+            $table->integer('monthStart')->nullable();
             $table->integer('yearEnd')->nullable();
             $table->integer('monthEnd')->nullable();
-            $table->json('activities');
+            $table->json('activities')->nullable();
             $table->timestamps();
         });
     }

@@ -32,15 +32,15 @@ class CVExperienceController extends Controller
     {
         $data = json_decode($request->input('data'));
         $inputs = Validator::make($request->all(), [
-            // 'data' => 'required',
-            'data.*.institution' => 'required',
-            'data.*.yearStart' => 'required',
-            'data.*.monthStart' => 'required',
+            // 'data' => 'nullable',
+            'data.*.institution' => 'nullable',
+            'data.*.yearStart' => 'nullable',
+            'data.*.monthStart' => 'nullable',
             'data.*.yearEnd' => 'nullable',
             'data.*.monthEnd' => 'nullable',
-            'data.*.position' => 'required',
-            'data.*.location' => 'required',
-            'data.*.activities' => 'required',
+            'data.*.position' => 'nullable',
+            'data.*.location' => 'nullable',
+            'data.*.activities' => 'nullable',
         ]); 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
@@ -75,15 +75,15 @@ class CVExperienceController extends Controller
         $data = json_decode($request->input('data'));
         $removed = json_decode($request->input('removed'));
         $inputs = Validator::make($request->all(), [
-            // 'data' => 'required',
-            'data.*.institution' => 'required',
-            'data.*.yearStart' => 'required',
-            'data.*.monthStart' => 'required',
+            // 'data' => 'nullable',
+            'data.*.institution' => 'nullable',
+            'data.*.yearStart' => 'nullable',
+            'data.*.monthStart' => 'nullable',
             'data.*.yearEnd' => 'nullable',
             'data.*.monthEnd' => 'nullable',
-            'data.*.position' => 'required',
-            'data.*.location' => 'required',
-            'data.*.activities' => 'required',
+            'data.*.position' => 'nullable',
+            'data.*.location' => 'nullable',
+            'data.*.activities' => 'nullable',
         ]); 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);

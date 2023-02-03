@@ -60,9 +60,9 @@ class SocialController extends Controller
     public function update(Request $request, $social)
     {
         $inputs = Validator::make($request->all(), [
-            'twitter' => 'required',
-            'linkedin' => 'required',
-            'facebook' => 'required',
+            'twitter' => 'nullable',
+            'linkedin' => 'nullable',
+            'facebook' => 'nullable',
         ]); 
 
         if ($inputs->fails()) {

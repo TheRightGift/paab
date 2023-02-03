@@ -10,7 +10,7 @@ Please run the following
     <code>php artisan serve</code> <br/> 
 </p>
 <p>
-    When claiming site, handle from backend is eg. <strong>https://whitecoatdomain.com/claim?claimable='pass in the tenant_id'</strong> crucial when passing    url to claim button on email.
+    When claiming site, handle from backend is eg. <strong>http://127.0.0.1:8000/claim?claimable=drjohndoe&mail=johndoe@gmail.com</strong> crucial when passing    url to claim button on email.
 </p>
 Note to self: As a result of <code>FK</code> - foreign key the <code>cities table</code> is the parent key with a reference at <code>users table</code><br/>
 

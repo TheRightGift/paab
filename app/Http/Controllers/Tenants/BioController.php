@@ -83,9 +83,9 @@ class BioController extends Controller
     public function update(Request $request, $bio)
     {
         $inputs = Validator::make($request->all(), [
-            'about' => 'required',
-            'firstname' => 'required',
-            'lastname' => 'required',
+            'about' => 'nullable',
+            'firstname' => 'nullable',
+            'lastname' => 'nullable',
             'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
             'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=500,min_height=500',
         ]); 

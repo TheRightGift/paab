@@ -33,7 +33,7 @@ class AchievementController extends Controller
     {
         $inputs = Validator::make($request->all(), [
             'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1100,min_height=500',
-            'feats' => 'required',
+            'feats' => 'nullable',
         ]); 
 
         if ($inputs->fails()) {
@@ -69,7 +69,7 @@ class AchievementController extends Controller
     {
         $inputs = Validator::make($request->all(), [
             'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1294,min_height=743',
-            'feats' => 'required',
+            'feats' => 'nullable',
         ]); 
 
         if ($inputs->fails()) {

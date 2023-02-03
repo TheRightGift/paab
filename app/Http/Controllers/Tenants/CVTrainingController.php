@@ -30,17 +30,17 @@ class CVTrainingController extends Controller
     {
         $data = json_decode($request->input('data'));
         $inputs = Validator::make($request->all(), [
-            // 'data' => 'required',
-            'data.*.institution' => 'required',
-            'data.*.yearStart' => 'required',
-            'data.*.monthStart' => 'required',
+            // 'data' => 'nullable',
+            'data.*.institution' => 'nullable',
+            'data.*.yearStart' => 'nullable',
+            'data.*.monthStart' => 'nullable',
             'data.*.yearEnd' => 'nullable',
             'data.*.monthEnd' => 'nullable',
-            'data.*.title' => 'required',
-            'data.*.location' => 'required',
-            'data.*.specialty' => 'required',
-            'data.*.sub_specialty' => 'required',
-            'data.*.type' => 'required',
+            'data.*.title' => 'nullable',
+            'data.*.location' => 'nullable',
+            'data.*.specialty' => 'nullable',
+            'data.*.sub_specialty' => 'nullable',
+            'data.*.type' => 'nullable',
         ]); 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
@@ -79,17 +79,17 @@ class CVTrainingController extends Controller
         $data = json_decode($request->input('data'));
         $removed = json_decode($request->input('removed'));
         $inputs = Validator::make($request->all(), [
-            // 'data' => 'required',
-            'data.*.institution' => 'required',
-            'data.*.yearStart' => 'required',
-            'data.*.monthStart' => 'required',
+            // 'data' => 'nullable',
+            'data.*.institution' => 'nullable',
+            'data.*.yearStart' => 'nullable',
+            'data.*.monthStart' => 'nullable',
             'data.*.yearEnd' => 'nullable',
             'data.*.monthEnd' => 'nullable',
-            'data.*.title' => 'required',
-            'data.*.location' => 'required',
-            'data.*.specialty' => 'required',
-            'data.*.sub_specialty' => 'required',
-            'data.*.type' => 'required',
+            'data.*.title' => 'nullable',
+            'data.*.location' => 'nullable',
+            'data.*.specialty' => 'nullable',
+            'data.*.sub_specialty' => 'nullable',
+            'data.*.type' => 'nullable',
         ]); 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);

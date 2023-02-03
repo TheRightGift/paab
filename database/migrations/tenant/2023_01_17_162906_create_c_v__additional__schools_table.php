@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('c_v__additional__schools', function (Blueprint $table) {
             $table->id();
             $table->text('institution');
-            $table->integer('yearStart');
-            $table->integer('monthStart');
+            $table->integer('yearStart')->nullable();
+            $table->integer('monthStart')->nullable();
             $table->integer('yearEnd')->nullable();
             $table->integer('monthEnd')->nullable();
             $table->string('degree');

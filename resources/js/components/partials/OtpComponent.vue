@@ -166,11 +166,6 @@
                             }, 4000);
                         }
                     } else if(this.type === 'reset'){
-                        // TODO: send otp to backend to verifie OTP and userID
-                        // if ok:
-                            //this.$emit('res', 200);
-                        // else
-                            // this.$emit('res', 404);
                             let data = {email: this.email, otp: this.userInputedOTP}
                             axios.post('/api/verifyOTP', data).then(res => {
                                 // console.log(res);

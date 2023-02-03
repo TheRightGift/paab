@@ -33,368 +33,375 @@
                 </div>
             </div>
         </div>
-        <div class="row authContainDiv" v-if="verifiedEmail == 1">
-            <div class="col s12 m12 l6 welcomeContainer hide-on-med-and-down">
-                <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">
-                        <img
-                            src="/media/img/whiteCoatDomain1.png"
-                            alt="whiteCoatDomain.png"
-                            class="authLogo"
-                        />
-                    </a>
-                    <p class="wlcNoteTitle">
-                        Start your journey <br />with us...
-                    </p>
-                    <p class="wlcNoteTxt">
-                        Let us ensure that your email address is active and
-                        accurate , that is the only way we can reach you
-                        effectively.
-                    </p>
-                    <p class="wlcNoteFooterTxt">
-                        &copy; White Coat Domain. {{ getYear() }}. We support
-                        your brand!
-                    </p>
+        <!-- Had to differentiate for those that are coming from claiming website -->
+        <div v-if="!claimant && claimaint === null">
+            <div class="row authContainDiv" v-if="verifiedEmail == 1">
+                <div class="col s12 m12 l6 welcomeContainer hide-on-med-and-down">
+                    <div class="wlcNoteDiv">
+                        <a href="/" class="wlcNoteLogo">
+                            <img
+                                src="/media/img/whiteCoatDomain1.png"
+                                alt="whiteCoatDomain.png"
+                                class="authLogo"
+                            />
+                        </a>
+                        <p class="wlcNoteTitle">
+                            Start your journey <br />with us...
+                        </p>
+                        <p class="wlcNoteTxt">
+                            Let us ensure that your email address is active and
+                            accurate , that is the only way we can reach you
+                            effectively.
+                        </p>
+                        <p class="wlcNoteFooterTxt">
+                            &copy; White Coat Domain. {{ getYear() }}. We support
+                            your brand!
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="col s12 m12 l6 welcomeContainer">
+                    <div class="authHeadingContainer center-align">
+                        <a href="/" class="authHeading">WhiteCoatDomain</a>
+                    </div>
+                    <VerifyEmailComponent @resData="setOTP" :type="'register'" />
                 </div>
             </div>
-
-            <div class="col s12 m12 l6 welcomeContainer">
-                <div class="authHeadingContainer center-align">
-                    <a href="/" class="authHeading">WhiteCoatDomain</a>
-                </div>
-                <VerifyEmailComponent @resData="setOTP" :type="'register'" />
-            </div>
-        </div>
-
-        <div class="row authContainDiv" v-if="verifiedEmail == 2">
-            <div class="col s12 m12 l6 otpContainer hide-on-med-and-down">
-                <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">
-                        <img
-                            src="/media/img/whiteCoatDomain1.png"
-                            alt="whiteCoatDomain.png"
-                            class="authLogo"
-                        />
-                    </a>
-                    <p class="wlcNoteTitle">
-                        Start your journey <br />with us...
-                    </p>
-                    <p class="wlcNoteTxt">
-                        “ Good things come to those who wait”.
-                        <span class="getStartedOtpSpan right"
-                            >Nathan Sykes</span
-                        >
-                    </p>
-                    <p class="wlcNoteFooterTxt">
-                        &copy; White Coat Domain. {{ getYear() }}. We support
-                        your brand!
-                    </p>
-                </div>
-            </div>
-
-            <div class="col s12 m12 l6 otpContainer">
-                <div class="authHeadingContainer center-align">
-                    <a href="/" class="authHeading">WhiteCoatDomain</a>
-                </div>
-                <OtpComponent
-                    @res="otpVerifier"
-                    :otp="otp"
-                    :type="'register'"
-                />
-            </div>
-        </div>
-
-        <div class="row authContainDiv" v-if="verifiedEmail == 3">
-            <div class="col s12 m12 l6 regContainer hide-on-med-and-down">
-                <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">
-                        <img
-                            src="/media/img/whiteCoatDomain1.png"
-                            alt="whiteCoatDomain.png"
-                            class="authLogo"
-                        />
-                    </a>
-                    <p class="wlcNoteTitle">
-                        Start your journey <br />with us...
-                    </p>
-                    <p class="wlcNoteTxt">
-                        White Coat Domain is the easiest and quickest way to
-                        build your brand presence. At your fingertips, take your
-                        professional career to the next level by building an
-                        outstanding online portfolio to showcase your career and
-                        promote yourself.
-                    </p>
-                    <p class="wlcNoteFooterTxt">
-                        &copy; White Coat Domain. {{ getYear() }}. We support
-                        your brand!
-                    </p>
-                </div>
-            </div>
-
-            <div class="col s12 m12 l6 regContainer">
-                <div class="authHeadingContainer center-align">
-                    <a href="/" class="authHeading">WhiteCoatDomain</a>
-                </div>
-                <div class="authRightDiv">
-                    <p class="authTitle">
-                        SIGN UP
-                        <!-- Signup Help Modal Trigger -->
-                        <!--a class="modal-trigger" href="#helpModal1">
-                            <i class="material-icons helpIcon right">help</i>
-                        </a-->
-                    </p>
-                    <p class="authTxt">
-                        Please fillout the registration form. All fields are required.
-                    </p>
-
-                    <form id="reistrationForm">
-                        <div class="row">
-                            <div class="input-field col l2 s12 noPaddingLeft">
-                                <select
-                                    class="browser-default"
-                                    id="signupTitle"
-                                    v-model="userReg.title"
-                                >
-                                    <option value="" disabled selected>
-                                        Title
-                                    </option>
-                                    <option
-                                        v-for="title in titles"
-                                        :key="title.id"
-                                        :value="title.id"
-                                    >
-                                        {{ title.name }}
-                                    </option>
-                                </select>
-                            </div>
-
-                            <div class="input-field col l5 s12">
-                                <input
-                                    placeholder="Last Name"
-                                    id="signupLname"
-                                    type="text"
-                                    v-model="userReg.lastname"
-                                />
-                            </div>
-
-                            <div class="input-field col l5 s12">
-                                <input
-                                    placeholder="First Name"
-                                    id="signupFName"
-                                    type="text"
-                                    v-model="userReg.firstname"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="input-field col l6 m6 s6 noPaddingLeft">
-                                <input
-                                    placeholder="Email"
-                                    id="signupEmail"
-                                    type="email"
-                                    v-model="userReg.email"
-                                    readonly
-                                />
-                            </div>
-                            <div class="input-field col l6 m6 s6">
-                                <input
-                                    placeholder="Zipcode"
-                                    id="signupZipcode"
-                                    type="text"
-                                    v-model="userReg.zipcode"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div
-                                class="input-field col l6 m6 s12 noPaddingLeft"
+    
+            <div class="row authContainDiv" v-if="verifiedEmail == 2">
+                <div class="col s12 m12 l6 otpContainer hide-on-med-and-down">
+                    <div class="wlcNoteDiv">
+                        <a href="/" class="wlcNoteLogo">
+                            <img
+                                src="/media/img/whiteCoatDomain1.png"
+                                alt="whiteCoatDomain.png"
+                                class="authLogo"
+                            />
+                        </a>
+                        <p class="wlcNoteTitle">
+                            Start your journey <br />with us...
+                        </p>
+                        <p class="wlcNoteTxt">
+                            “ Good things come to those who wait”.
+                            <span class="getStartedOtpSpan right"
+                                >Nathan Sykes</span
                             >
-                                <input
-                                    placeholder="Phone Number"
-                                    id="signupPhone"
-                                    type="tel"
-                                    class="validate"
-                                    v-model="userReg.phone"
-                                />
-                            </div>
-                            <div class="input-field col l6 s12 noPaddingRight">
-                                <select
-                                    class="browser-default"
-                                    id="signupProfession"
-                                    v-model="userReg.profession"
-                                >
-                                    <option value="" disabled selected>
-                                        Profession
-                                    </option>
-                                    <option
-                                        v-for="profession in professions"
-                                        :key="profession.id"
-                                        :value="profession.id"
+                        </p>
+                        <p class="wlcNoteFooterTxt">
+                            &copy; White Coat Domain. {{ getYear() }}. We support
+                            your brand!
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="col s12 m12 l6 otpContainer">
+                    <div class="authHeadingContainer center-align">
+                        <a href="/" class="authHeading">WhiteCoatDomain</a>
+                    </div>
+                    <OtpComponent
+                        @res="otpVerifier"
+                        :otp="otp"
+                        :type="'register'"
+                    />
+                </div>
+            </div>
+    
+            <div class="row authContainDiv" v-if="verifiedEmail == 3">
+                <div class="col s12 m12 l6 regContainer hide-on-med-and-down">
+                    <div class="wlcNoteDiv">
+                        <a href="/" class="wlcNoteLogo">
+                            <img
+                                src="/media/img/whiteCoatDomain1.png"
+                                alt="whiteCoatDomain.png"
+                                class="authLogo"
+                            />
+                        </a>
+                        <p class="wlcNoteTitle">
+                            Start your journey <br />with us...
+                        </p>
+                        <p class="wlcNoteTxt">
+                            White Coat Domain is the easiest and quickest way to
+                            build your brand presence. At your fingertips, take your
+                            professional career to the next level by building an
+                            outstanding online portfolio to showcase your career and
+                            promote yourself.
+                        </p>
+                        <p class="wlcNoteFooterTxt">
+                            &copy; White Coat Domain. {{ getYear() }}. We support
+                            your brand!
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="col s12 m12 l6 regContainer">
+                    <div class="authHeadingContainer center-align">
+                        <a href="/" class="authHeading">WhiteCoatDomain</a>
+                    </div>
+                    <div class="authRightDiv">
+                        <p class="authTitle">
+                            SIGN UP
+                            <!-- Signup Help Modal Trigger -->
+                            <!--a class="modal-trigger" href="#helpModal1">
+                                <i class="material-icons helpIcon right">help</i>
+                            </a-->
+                        </p>
+                        <p class="authTxt">
+                            Please fillout the registration form. All fields are required.
+                        </p>
+    
+                        <form id="reistrationForm">
+                            <div class="row">
+                                <div class="input-field col l2 s12 noPaddingLeft">
+                                    <select
+                                        class="browser-default"
+                                        id="signupTitle"
+                                        v-model="userReg.title"
                                     >
-                                        {{ profession.name }}
-                                    </option>
-                                </select>
+                                        <option value="" disabled selected>
+                                            Title
+                                        </option>
+                                        <option
+                                            v-for="title in titles"
+                                            :key="title.id"
+                                            :value="title.id"
+                                        >
+                                            {{ title.name }}
+                                        </option>
+                                    </select>
+                                </div>
+    
+                                <div class="input-field col l5 s12">
+                                    <input
+                                        placeholder="Last Name"
+                                        id="signupLname"
+                                        type="text"
+                                        v-model="userReg.lastname"
+                                    />
+                                </div>
+    
+                                <div class="input-field col l5 s12">
+                                    <input
+                                        placeholder="First Name"
+                                        id="signupFName"
+                                        type="text"
+                                        v-model="userReg.firstname"
+                                    />
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="input-field col l6 s12 noPaddingLeft">
-                                <select
-                                    class="browser-default"
-                                    id="signupCountry"
-                                    v-model="userReg.country"
-                                    @change="sortStates"
+    
+                            <div class="row">
+                                <div class="input-field col l6 m6 s6 noPaddingLeft">
+                                    <input
+                                        placeholder="Email"
+                                        id="signupEmail"
+                                        type="email"
+                                        v-model="userReg.email"
+                                        readonly
+                                    />
+                                </div>
+                                <div class="input-field col l6 m6 s6">
+                                    <input
+                                        placeholder="Zipcode"
+                                        id="signupZipcode"
+                                        type="text"
+                                        v-model="userReg.zipcode"
+                                    />
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div
+                                    class="input-field col l6 m6 s12 noPaddingLeft"
                                 >
-                                    <option value="" disabled selected>
-                                        Country
-                                    </option>
-                                    <option
-                                        v-for="country in countries"
-                                        :key="country.id"
-                                        :value="country.id"
+                                    <input
+                                        placeholder="Phone Number"
+                                        id="signupPhone"
+                                        type="tel"
+                                        class="validate"
+                                        v-model="userReg.phone"
+                                    />
+                                </div>
+                                <div class="input-field col l6 s12 noPaddingRight">
+                                    <select
+                                        class="browser-default"
+                                        id="signupProfession"
+                                        v-model="userReg.profession"
                                     >
-                                        {{ country.name }}
-                                    </option>
-                                </select>
+                                        <option value="" disabled selected>
+                                            Profession
+                                        </option>
+                                        <option
+                                            v-for="profession in professions"
+                                            :key="profession.id"
+                                            :value="profession.id"
+                                        >
+                                            {{ profession.name }}
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
-
-                            <div class="input-field col l6 s12 noPaddingRight">
-                                <select
-                                    class="browser-default"
-                                    id="signupGender"
-                                    v-model="userReg.gender"
+    
+                            <div class="row">
+                                <div class="input-field col l6 s12 noPaddingLeft">
+                                    <select
+                                        class="browser-default"
+                                        id="signupCountry"
+                                        v-model="userReg.country"
+                                        @change="sortStates"
+                                    >
+                                        <option value="" disabled selected>
+                                            Country
+                                        </option>
+                                        <option
+                                            v-for="country in countries"
+                                            :key="country.id"
+                                            :value="country.id"
+                                        >
+                                            {{ country.name }}
+                                        </option>
+                                    </select>
+                                </div>
+    
+                                <div class="input-field col l6 s12 noPaddingRight">
+                                    <select
+                                        class="browser-default"
+                                        id="signupGender"
+                                        v-model="userReg.gender"
+                                    >
+                                        <option value="" disabled selected>
+                                            Gender
+                                        </option>
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="input-field col l6 s12 noPaddingLeft">
+                                    <select
+                                        class="browser-default"
+                                        id="signupState"
+                                        v-model="userReg.state"
+                                        @change="sortCities"
+                                    >
+                                        <option value="" disabled selected>
+                                            State
+                                        </option>
+                                        <option
+                                            v-for="state in states"
+                                            :key="state.id"
+                                            :value="state.id"
+                                        >
+                                            {{ state.name }}
+                                        </option>
+                                    </select>
+                                </div>
+    
+                                <div class="input-field col l6 s12 noPaddingRight">
+                                    <select
+                                        class="browser-default"
+                                        id="signupCity"
+                                        v-model="userReg.city"
+                                    >
+                                        <option value="" disabled selected>
+                                            City
+                                        </option>
+                                        <option
+                                            v-for="city in cities"
+                                            :key="city.id"
+                                            :value="city.id"
+                                        >
+                                            {{ city.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div
+                                    class="
+                                        input-field
+                                        col
+                                        l12
+                                        m12
+                                        s12
+                                        noPaddingLeft
+                                    "
                                 >
-                                    <option value="" disabled selected>
-                                        Gender
-                                    </option>
-                                    <option value="M">Male</option>
-                                    <option value="F">Female</option>
-                                </select>
+                                    <input
+                                        placeholder="Password"
+                                        id="signupPass"
+                                        type="password"
+                                        class="validate"
+                                        v-model="userReg.password"
+                                    />
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="input-field col l6 s12 noPaddingLeft">
-                                <select
-                                    class="browser-default"
-                                    id="signupState"
-                                    v-model="userReg.state"
-                                    @change="sortCities"
+    
+                            <div class="row">
+                                <div
+                                    class="
+                                        input-field
+                                        col
+                                        l12
+                                        m12
+                                        s12
+                                        noPaddingLeft
+                                    "
                                 >
-                                    <option value="" disabled selected>
-                                        State
-                                    </option>
-                                    <option
-                                        v-for="state in states"
-                                        :key="state.id"
-                                        :value="state.id"
-                                    >
-                                        {{ state.name }}
-                                    </option>
-                                </select>
+                                    <input
+                                        placeholder="Confirm Password"
+                                        id="signCpass"
+                                        type="password"
+                                        class="validate"
+                                        v-model="userReg.cPassword"
+                                    />
+                                </div>
                             </div>
-
-                            <div class="input-field col l6 s12 noPaddingRight">
-                                <select
-                                    class="browser-default"
-                                    id="signupCity"
-                                    v-model="userReg.city"
+    
+                            <div class="row">
+                                <button
+                                    class="btn col l12 m12 s12"
+                                    v-if="!registrationLoading"
+                                    type="button"
+                                    id="signupBtn"
+                                    @click="submitRegistrationForm()"
                                 >
-                                    <option value="" disabled selected>
-                                        City
-                                    </option>
-                                    <option
-                                        v-for="city in cities"
-                                        :key="city.id"
-                                        :value="city.id"
-                                    >
-                                        {{ city.name }}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div
-                                class="
-                                    input-field
-                                    col
-                                    l12
-                                    m12
-                                    s12
-                                    noPaddingLeft
-                                "
-                            >
-                                <input
-                                    placeholder="Password"
-                                    id="signupPass"
-                                    type="password"
-                                    class="validate"
-                                    v-model="userReg.password"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div
-                                class="
-                                    input-field
-                                    col
-                                    l12
-                                    m12
-                                    s12
-                                    noPaddingLeft
-                                "
-                            >
-                                <input
-                                    placeholder="Confirm Password"
-                                    id="signCpass"
-                                    type="password"
-                                    class="validate"
-                                    v-model="userReg.cPassword"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <button
-                                class="btn col l12 m12 s12"
-                                v-if="!registrationLoading"
-                                type="button"
-                                id="signupBtn"
-                                @click="submitRegistrationForm()"
-                            >
-                                Sign Up
-                            </button>
-                            <a class="btn getStartBtn" v-else>
-                                <div class="preloader-wrapper small active">
-                                    <div
-                                        class="spinner-layer spinner-white-only"
-                                    >
-                                        <div class="circle-clipper left">
-                                            <div class="circle"></div>
-                                        </div>
-                                        <div class="gap-patch">
-                                            <div class="circle"></div>
-                                        </div>
-                                        <div class="circle-clipper right">
-                                            <div class="circle"></div>
+                                    Sign Up
+                                </button>
+                                <a class="btn getStartBtn" v-else>
+                                    <div class="preloader-wrapper small active">
+                                        <div
+                                            class="spinner-layer spinner-white-only"
+                                        >
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    </form>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div v-if="claimant || claimaint != null">
+            <claimaint-component-prop :claimaint="claimaint" :claimant="claimant" :titles="titles"/>
         </div>
     </div>
 </template>
 <script>
     import VerifyEmailComponent from "../partials/VerifyEmailComponent";
     import OtpComponent from "../partials/OtpComponent";
+    import ClaimaintComponentProp from './ClaimaintComponentProp.vue';
     // import cryptoJs from "crypto-js";
     // import { Base64 } from "js-base64";
     // const key = process.env.MIX_APP_KEY;
@@ -406,6 +413,7 @@
         components: {
             VerifyEmailComponent,
             OtpComponent,
+            ClaimaintComponentProp,
         },
         data() {
             return {
@@ -432,12 +440,25 @@
                     zipcode: "",
                 },
                 verifiedEmail: 1,
+                claimaint: null// if user refreshes page check if the process of claiming has started previously
             };
         },
         mounted() {
             this.getLocations();
+            this.checkIfComingFromClaim();
         },
         methods: {
+            checkIfComingFromClaim() {
+                let claimaintProcess = localStorage.getItem('claimproc');
+                if (this.claimant != '') {
+                    localStorage.setItem('claimproc', this.claimant);
+                }
+                else {
+                    if (claimaintProcess != null) {
+                        this.claimaint = claimaintProcess;
+                    }
+                }
+            },
             getLocations() {
                 const requestTitles = axios.get(title);
                 const requestCountries = axios.get(country);
@@ -561,6 +582,10 @@
                 this.verifiedEmail = num;
             },
         },
+        props: {
+            claimant: String,
+        },
+        
         computed: {},
     };
 </script>

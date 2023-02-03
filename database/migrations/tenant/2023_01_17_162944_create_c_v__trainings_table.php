@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->text('institution');
             $table->text('location');
-            $table->integer('yearStart');
-            $table->integer('monthStart');
+            $table->integer('yearStart')->nullable();
+            $table->integer('monthStart')->nullable();
             $table->integer('yearEnd')->nullable();
             $table->integer('monthEnd')->nullable();
             $table->string('specialty')->nullable();
