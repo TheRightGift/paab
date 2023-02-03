@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\TenantClaimController;
+use App\Http\Controllers\TenantController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -169,3 +173,38 @@ Route::prefix('supre')->middleware(['auth', 'can:run_superAdmin_ops'])->group(fu
         return view('shared.changepassview');
     });
 });
+
+Route::post('claim/saveuser', [TenantClaimController::class, 'saveUserDets']);
+
+Route::put('claim/updatebio', [TenantClaimController::class, 'updateUserBio']);
+
+Route::put('claim/updateDomain/{tenant}', [TenantController::class, 'update']);
+
+Route::get('claim/getTenantDomain', [TenantController::class, 'checkTenantNGetDets']);
+
+Route::put('claim/updateAvatar/{bio}', [TenantClaimController::class, 'updateUserPhoto']);
+
+Route::post('claim/saveUndergrad', [TenantClaimController::class, 'updateUserUndergradSchoolTime']);
+
+Route::post('claim/savemedicalschooltime', [TenantClaimController::class, 'saveMedicalSchoolTime']);
+
+Route::post('claim/saveinternship', [TenantClaimController::class, 'saveInternshipTime']);
+
+Route::post('claim/savefellowship', [TenantClaimController::class, 'saveFellowshipTime']);
+
+Route::post('claim/saveresidency', [TenantClaimController::class, 'saveResidencyTime']);
+
+Route::post('claim/saveexperience', [TenantClaimController::class, 'saveExperinceTime']);
+
+Route::post('claim/save/additonalqualification', [TenantClaimController::class, 'saveAdditionalSchoolTime']);
+
+Route::post('claim/save/service', [TenantClaimController::class, 'saveServiceOffered']);
+
+Route::post('claim/successdomainregistra', [TenantClaimController::class, 'sendMailForDomainRegistry']);
+
+
+
+
+
+
+

@@ -738,7 +738,6 @@ export default {
             axios
                 .post(`/api/template/${this.template.id}`, formData)
                 .then((res) => {
-                    console.log(res);
                     if (res.status == 200) {
                         this.loading = !this.loading;
                         M.toast({

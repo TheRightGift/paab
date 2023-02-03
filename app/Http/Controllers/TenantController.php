@@ -76,7 +76,8 @@ class TenantController extends Controller
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
-        
+        $sessionTenant = \Session::get('tenant');
+        $tenantID = !empty($sessionTenant) ? $sessionTenant : $tenantID;
         $tenant = Tenant::find($tenantID);
         if ($tenant !== null) {
             if ($request->has('template')) {
@@ -85,7 +86,7 @@ class TenantController extends Controller
             }
             if ($request->has('domain')) {
                 try {
-                    $domain = $tenant->domains->find($inputs->validated()['domain_id']);
+                    $domain = !empty($sessionTenant) ? $tenant->domains->first() : $tenant->domains->find($inputs->validated()['domain_id']);
                     $domain->domain = $inputs->validated()['domain'];
                     $domain->save();
                 } catch (DomainsOccupiedByOtherTenantException $e) {
@@ -268,28 +269,52 @@ class TenantController extends Controller
 
     public function claim(Request $request) {
         $value = $request->session()->pull('tenant', 'default');
+        $valueOfMail = $request->session()->pull('email', 'default');
         if (!empty($value) && $value !== 'default') {
-            $orders = AdminClientOrder::where([['tenant_id', $value], ['claimed', null]])->first();
-            $authUser = auth()->user();
-            $tenant = Tenant::find($value);
-            $tenant->user_id = $authUser->id;
-            $orders->claimed = 1;
-            $tenantSave = $tenant->save();
-            $orderSave = $orders->save();
-            \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-
-            DB::connection('mysql')->reconnect();
-            DB::setDatabaseName($tenant->tenancy_db_name);
-            $tenantUser = DB::table('tenant_users')->get();
-            if ($tenantUser != null) {
-                DB::table('tenant_users')->where('user_id', '!=' , null )->update(['user_id' => $authUser->id]);
+            $orders = AdminClientOrder::where([['tenant_id', $value], ['claimed', null], ['email', $valueOfMail]])->first();
+            if (!empty($orders)) {
+                $authUser = auth()->user();
+                $tenant = Tenant::find($value);
+                $tenant->user_id = $authUser->id;
+                $orders->claimed = 1;
+                $tenantSave = $tenant->save();
+                $orderSave = $orders->save();
+                \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+    
+                DB::connection('mysql')->reconnect();
+                DB::setDatabaseName($tenant->tenancy_db_name);
+                $tenantUser = DB::table('tenant_users')->get();
+                if ($tenantUser != null) {
+                    DB::table('tenant_users')->where('user_id', '!=' , null )->update(['user_id' => $authUser->id]);
+                }
+                if ($tenantSave === true && $orderSave) {
+                    return view('client.dashboard');
+                }
             }
-            if ($tenantSave === true && $orderSave) {
+            else {
+                return response()->json(['message' => "Invalid Email/Your website has been claimed!"]);
                 return view('client.dashboard');
             }
         }
         else {
             return view('client.dashboard');
+        }
+    }
+
+    /**
+     * This function gets the users details stored in its DB eg. tenantdrowere
+     */
+    public function checkTenantNGetDets (Request $request) {
+        $tenantToCheck = $request->session()->get('tenant');
+        $tenant = Tenant::find($tenantToCheck);
+        if (!empty($tenant)) {
+            $domain = $tenant->domains->first()->domain;
+            $tenantID = $tenant->id;
+            
+            return response()->json(['message' => "Tenant Data fetched onSuccess", 'domain' => $domain, 'tenantID' => $tenantID, 'status' => 200]);
+        }
+        else {
+            return response()->json(['message' => 'Please Signup']);
         }
     }
 }

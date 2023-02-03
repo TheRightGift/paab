@@ -29,12 +29,12 @@ class CVUndergradSchoolController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'institution' => 'required',
-            'yearStart' => 'required',
-            'monthStart' => 'required',
+            'institution' => 'nullable',
+            'yearStart' => 'nullable',
+            'monthStart' => 'nullable',
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
-            'major' => 'required',
+            'major' => 'nullable',
             'minor' => 'nullable',
         ]); 
 
@@ -63,12 +63,12 @@ class CVUndergradSchoolController extends Controller
     public function update(Request $request, $cV_Undergrad_School)
     {
         $inputs = Validator::make($request->all(), [
-            'institution' => 'required',
-            'yearStart' => 'required',
-            'monthStart' => 'required',
+            'institution' => 'nullable',
+            'yearStart' => 'nullable',
+            'monthStart' => 'nullable',
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
-            'major' => 'required',
+            'major' => 'nullable',
             'minor' => 'nullable',
         ]); 
 

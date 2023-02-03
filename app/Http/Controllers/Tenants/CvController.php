@@ -29,8 +29,8 @@ class CvController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'summary' => 'required',
-            'skills' => 'required',
+            'summary' => 'nullable',
+            'skills' => 'nullable',
             'license' => 'nullable',
         ]); 
 

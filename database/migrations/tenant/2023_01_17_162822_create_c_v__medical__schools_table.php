@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('c_v__medical__schools', function (Blueprint $table) {
             $table->id();
-            $table->text('institution');
-            $table->integer('yearStart');
-            $table->integer('monthStart');
+            $table->text('institution')->nullable();
+            $table->integer('yearStart')->nullable();
+            $table->integer('monthStart')->nullable();
             $table->integer('yearEnd')->nullable();
             $table->integer('monthEnd')->nullable();
             $table->enum('type', ['MD', 'DO'])->nullable();

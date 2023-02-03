@@ -29,12 +29,12 @@ class CVMedicalSchoolController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'institution' => 'required',
-            'yearStart' => 'required',
-            'monthStart' => 'required',
+            'institution' => 'nullable',
+            'yearStart' => 'nullable',
+            'monthStart' => 'nullable',
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
-            'type' => 'required',
+            'type' => 'nullable',
         ]); 
 
         if ($inputs->fails()) {
@@ -61,12 +61,12 @@ class CVMedicalSchoolController extends Controller
     public function update(Request $request, $cV_Medical_School)
     {
         $inputs = Validator::make($request->all(), [
-            'institution' => 'required',
-            'yearStart' => 'required',
-            'monthStart' => 'required',
+            'institution' => 'nullable',
+            'yearStart' => 'nullable',
+            'monthStart' => 'nullable',
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
-            'type' => 'required',
+            'type' => 'nullable',
         ]); 
 
         if ($inputs->fails()) {

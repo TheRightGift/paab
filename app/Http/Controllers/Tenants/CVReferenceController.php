@@ -30,12 +30,12 @@ class CVReferenceController extends Controller
     {
         $data = json_decode($request->input('data'));
         $inputs = Validator::make($request->all(), [
-            'data' => 'required',
-            'data.*.name' => 'required',
-            'data.*.location' => 'required',
-            'data.*.position' => 'required',
-            'data.*.phone' => 'required',
-            'data.*.title' => 'required',
+            'data' => 'nullable',
+            'data.*.name' => 'nullable',
+            'data.*.location' => 'nullable',
+            'data.*.position' => 'nullable',
+            'data.*.phone' => 'nullable',
+            'data.*.title' => 'nullable',
         ]); 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
@@ -66,12 +66,12 @@ class CVReferenceController extends Controller
         $data = json_decode($request->input('data'));
         $removed = json_decode($request->input('removed'));
         $inputs = Validator::make($request->all(), [
-            // 'data' => 'required',
-            'data.*.name' => 'required',
-            'data.*.location' => 'required',
-            'data.*.position' => 'required',
-            'data.*.phone' => 'required',
-            'data.*.title' => 'required',
+            // 'data' => 'nullable',
+            'data.*.name' => 'nullable',
+            'data.*.location' => 'nullable',
+            'data.*.position' => 'nullable',
+            'data.*.phone' => 'nullable',
+            'data.*.title' => 'nullable',
 
         ]); 
         if ($inputs->fails()) {

@@ -344,3 +344,571 @@ p.wlcNoteFooterTxt {
         margin-bottom: 1.2rem;
     }
 }
+
+
+/* For the claimant web */
+/* Media Query for Medium Devices */
+@media screen and (max-width: 992px) and (min-width: 640px) {
+    .row .col {
+        padding: 0;
+    }
+    .primaryColorDiv {
+        background-color: var(--primary);
+        padding: 3vh 4vw 0 0;
+        height: 48vh;
+    }
+    .contentDiv {
+        background: var(--white);
+        background-image: url("../media/img/pageBoldLogo.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 64vh;
+        border-radius: 0px 100px 0px 0px;
+        position: absolute;
+        top: 35.1vh;
+        padding-top: 9vh;
+    }
+    .headerDiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    .headerTitle {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 1.3rem;
+        text-align: right;
+        text-transform: uppercase;
+        color: var(--white);
+        width: 80%;
+        margin: 0;
+    }
+    .contentTitle {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        line-height: 24px;
+        text-align: center;
+        text-transform: capitalize;
+        color: var(--black);
+    }
+    a.btn.getStartedBtn {
+        background-color: var(--primary);
+        border-radius: 6px;
+        font-family: 'Montserrat', sans-serif;
+
+    }
+    .getStartedBtnDiv {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+    .col .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    form {
+        display: flex;
+        justify-content: center;
+    }
+    .formInnerDiv {
+        display: flex;
+        width: 90%;
+    }
+    input[type=text]:not(.browser-default) {
+        border-bottom: 2.5px solid var(--primary);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: lighter;
+    }
+    .skipDiv {
+        display: flex;
+        justify-content: end;
+        margin-right: 4vw;
+    }
+    .skipTxt {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        text-decoration: underline;
+        text-transform: uppercase;
+        margin: 0 2vw;
+        position: relative;
+        top: 0.5vh;
+    }
+    /* .skipBtnIcon {
+        border: 2px solid var(--primary);
+        border-radius: 50px;
+        color: var(--primary);
+    } */
+    button.skipBtn {
+        padding: 0 0.5vw;
+        border-radius: 50px;
+        background-color: transparent;
+    }
+    .unAvailTitle {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        color: #D44141;
+        margin: 5vh 0 0 4vw;
+    }
+    .unAvailTxt {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 0.7rem;
+        margin: 0;
+    }
+    .primaryTxt {
+        text-align: center;
+        color: var(--primary);
+        font-family: 'Montserrat', sans-serif;
+    }
+    table {
+        width: 95%;
+    }
+    table tr {
+        border: 1px solid #D9D9D9;
+    }
+    table tr td {
+        padding: 0.5rem 1rem;
+    }
+    .domainTdName {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: var(--black);
+    }
+    .domainTdState {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: #078523;
+        text-align: right;
+    }
+    .domainSelectP {
+        margin: 0.5vh 0 0 0;
+    }
+    .domianMainDiv {
+        margin-bottom: 1vh;
+    }
+    .proImgDiv {
+        width: 38%;
+        height: 35vh;
+        border: 9px solid #d9d9d9;
+        margin: auto;
+    }
+    .proImg {
+        width: 100%;
+        height: 32.7vh;
+    }
+    .proImgBtnContainDiv {
+        display: flex;
+        width: 50%;
+        margin: 2vh auto;
+    }
+    .file-path.validate.proImgInput {
+        width: 20%;
+        border-bottom-color: #D44141;
+        float: right;
+        height: 1.7vh;
+    }
+    .file-path.validate.proImgInput::placeholder {
+        color: #D44141;
+    }
+    .proImgYesBtn {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        text-decoration: underline;
+        color: var(--black);
+        margin-left: 7vw;
+    }
+    .proImgInputDiv {
+        position: relative;
+        top: -1.7vh;
+    }
+    .proInputFileUpladIcon {
+        position: relative;
+        top: -1.9vh;
+        color: #9e9c9f;
+    }
+    .proImgInstruct {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 8px;
+        color: var(--black);
+        text-align: center;
+        position: absolute;
+        top: 7vh;
+        margin-top: 0;
+    }
+    .proImgBtnMainDiv {
+        position: relative;
+        margin-bottom: 0vh;
+    }
+    .proImgInstructDiv {
+        display: flex;
+        justify-content: center;
+    }
+    .primaryColorDocsImg {
+        height: 22vh;
+    }
+
+
+    [type="radio"].with-gap:checked+span:after {
+        background-color: var(--primary);
+    }
+
+    [type="radio"]:not(:checked)+span:before,
+    [type="radio"]:not(:checked)+span:after,
+    [type="radio"].with-gap:checked+span:after,
+    [type="radio"]:checked+span:after,
+    [type="radio"].with-gap:checked+span:before,
+    [type="radio"].with-gap:checked+span:after {
+        border: 2px solid var(--primary);
+    }
+}
+
+/* Media Query for Small Devices */
+@media screen and (max-width: 640px) {
+    .mx-datepicker {
+        width: 100% !important;
+    }
+    .row .col {
+        padding: 0;
+    }
+    .primaryColorDiv {
+        background-color: var(--primary);
+        padding: 3vh 4vw 0 0;
+        height: 48vh;
+    }
+    .contentDiv {
+        background: var(--white);
+        background-image: url("../media/img/pageBoldLogo.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 64vh;
+        border-radius: 0px 100px 0px 0px;
+        position: absolute;
+        top: 35.1vh;
+        padding-top: 9vh;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .headerDiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    .headerTitle {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 1.3rem;
+        text-align: right;
+        text-transform: uppercase;
+        color: var(--white);
+        width: 80%;
+        margin: 0;
+    }
+    .contentTitle {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        line-height: 24px;
+        text-align: center;
+        text-transform: capitalize;
+        color: var(--black);
+    }
+    a.btn.getStartedBtn {
+        background-color: var(--primary);
+        border-radius: 6px;
+        font-family: 'Montserrat', sans-serif;
+        
+    }
+    .getStartedBtnDiv {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+    .col .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    form {
+        /* display: flex; */
+        justify-content: center;
+    }
+    .formInnerDiv {
+        display: flex;
+        /* width: 90%; */
+        width: 100%
+    }
+    .mx-input {
+        width: 4rem !important;
+    }
+    .mx-icon-calendar {
+        display: none;
+    }
+    input[type=text]:not(.browser-default), select.browser-default  {
+        border-bottom: 2.5px solid var(--primary);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: lighter;
+    }
+    select.browser-default {
+        border: none;
+        border-bottom: 2.5px solid var(--primary);
+        height: 3.15rem;
+        outline: none;
+    }
+    .input-field input {
+        text-align: justify;
+    }
+    .skipDiv {
+        display: flex;
+        justify-content: end;
+        margin-right: 4vw;
+    }
+    .skipTxt {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        text-decoration: underline;
+        text-transform: uppercase;
+        margin: 0 2vw;
+        position: relative;
+        top: 0.5vh;
+    }
+    /* .skipBtnIcon {
+        border: 2px solid var(--primary);
+        border-radius: 50px;
+        color: var(--primary);
+    } */
+    button.skipBtn {
+        padding: 0 0.5vw;
+        border-radius: 50px;
+        background-color: transparent;
+    }
+    .unAvailTitle, .availTitle {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        color: #D44141;
+        margin: 5vh 0 0 4vw;
+    }
+    .availTitle {
+        color: #41d45a !important;
+    }
+    .unAvailTxt {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 0.7rem;
+        margin: 0;
+    }
+    .unAvailTxt {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 0.7rem;
+        margin: 0;
+    }
+    .primaryTxt {
+        text-align: center;
+        color: var(--primary);
+        font-family: 'Montserrat', sans-serif;
+    }
+    table {
+        width: 95%;
+    }
+    table tr {
+        border: 1px solid #D9D9D9;
+    }
+    table tr td {
+        padding: 0.5rem 1rem;
+    }
+    .domainTdName {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: var(--black);
+    }
+    .domainTdState {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: #078523;
+        text-align: right;
+    }
+    .domainSelectP {
+        margin: 0.5vh 0 0 0;
+    }
+    .domianMainDiv {
+        margin-bottom: 1vh;
+    }
+    .proImgDiv {
+        width: 50%;
+        height: 30vh;
+        border: 9px solid #d9d9d9;
+        margin: auto;
+    }
+    .proImg {
+        width: 100%;
+        height: 27.7vh;
+    }
+    .proImgBtnContainDiv {
+        display: flex;
+        width: 50%;
+        margin: 0vh auto 0 auto;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .file-path.validate.proImgInput {
+        width: 20%;
+        border-bottom-color: #D44141;
+        float: right;
+        height: 1.7vh;
+    }
+    .file-path.validate.proImgInput::placeholder {
+        color: #D44141;
+    }
+    .proImgYesBtn {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        text-decoration: underline;
+        color: var(--black);
+    }
+    .proImgInputDiv {
+        position: relative; 
+        top: -1.7vh;
+    }
+    .proInputFileUpladIcon {
+        position: relative;
+        top: -1.9vh;
+        color: #9e9c9f;
+    }
+    .proImgInstruct {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 8px;
+        color: var(--black);
+        text-align: center;
+        position: absolute;
+        top: 7vh;
+        margin-top: 0;
+    }
+    .proImgBtnMainDiv {
+        position: relative;
+        margin-bottom: 4vh;
+    }
+    .proImgInstructDiv {
+        display: flex;
+        justify-content: center;
+    }
+
+
+    /* Acadamic Section */
+    .radioBtnSpan {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 0.75rem;
+        text-transform: capitalize;
+        color: var(--black);
+    }
+    .acaMainDiv {
+        width: 96%;
+        margin: auto;
+    }
+    input.validate.formInput {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 0.9rem;
+        /* height: 3vh; */
+    }
+    .spaceAround {
+        display: flex;
+        justify-content: space-around;
+    }
+    .schQuesP {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.5);
+    }
+    .schQuesP1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        color: #1E1E1E;
+    }
+    input.validate.formInput1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 0.9rem;
+        height: 1rem;
+    }
+    .input-field.col.formInput1ColDiv {
+        margin-top: 0.5vh;
+    }
+
+    /* Internship Section */
+    .radioBtnMainDiv {
+        width: 80%;
+        margin: auto;
+    }
+
+    /* Service Section */
+    .serviceSuccessTxt {
+        color: #078523;
+    }
+    button.goLiveFreeBtn {
+        background-color: var(--primary);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        padding: 3vh 8vw 8vh 8vw;
+        line-height: 2.9vh;
+    }
+    button.btn.goLiveProBtn {
+        background-color: #C2A300 !important;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        padding: 3vh 8vw 8vh 8vw;
+        line-height: 2.9vh;
+    }
+    div.row.serviceBtnRowDiv {
+        margin-top: 8vh;
+    }
+    ul {
+        width: 90%;
+        margin: 2.5vh auto 0 auto;
+    }
+    ul>li {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+    ul:not(.browser-default)>li {
+        list-style-type: disc;
+    }
+
+
+    [type="radio"].with-gap:checked+span:after {
+        background-color: var(--primary);
+    }
+
+    [type="radio"]:not(:checked)+span:before,
+    [type="radio"]:not(:checked)+span:after,
+    [type="radio"].with-gap:checked+span:after,
+    [type="radio"]:checked+span:after,
+    [type="radio"].with-gap:checked+span:before,
+    [type="radio"].with-gap:checked+span:after {
+        border: 2px solid var(--primary);
+    }
+    .proImgDiv {
+        border-radius: 0;
+    }
+}

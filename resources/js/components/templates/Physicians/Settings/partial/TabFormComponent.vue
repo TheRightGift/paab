@@ -356,7 +356,6 @@
                     axios
                         .post(`/api/bio`, formData)
                         .then((res) => {
-                            console.log(res);
                             if (res.status == 201) {
                                 this.loading = !this.loading;
                                 M.toast({

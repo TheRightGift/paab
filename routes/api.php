@@ -8,6 +8,9 @@ use App\Http\Controllers\TenantController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DomainCheckerController;
+use App\Http\Controllers\TenantClaimController;
+
 
 use App\Http\Controllers\Tenants\BioController;
 
@@ -63,5 +66,8 @@ Route::get('countries', [CountryController::class, 'index']);
 Route::get('states/{country_id}', [CountryController::class, 'states']);
 Route::get('cities/{state_id}', [CountryController::class, 'cities']);
 Route::post('verifyOTP', [AuthController::class, 'verifyOTP']);
+Route::post('domain/check', [DomainCheckerController::class, 'check']);
+
+
 // Route::get('getCities/{startRow}', [CountryController::class, 'getCities']);
 // Route::post('insertCity', [CountryController::class, 'insertCity']);
