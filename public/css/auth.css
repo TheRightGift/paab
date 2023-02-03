@@ -553,9 +553,90 @@ p.wlcNoteFooterTxt {
         display: flex;
         justify-content: center;
     }
-    .primaryColorDocsImg {
-        height: 22vh;
+
+    /* Acadamic Section */
+    .radioBtnSpan {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 0.75rem;
+        text-transform: capitalize;
+        color: var(--black);
     }
+    .acaMainDiv {
+        width: 55%;
+        margin: auto;
+    }
+    input.validate.formInput {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+    .spaceAround {
+        display: flex;
+        justify-content: space-around;
+    }
+    .schQuesP {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.5);
+    }
+    .schQuesP1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        color: #1E1E1E;
+    }
+    input.validate.formInput1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 0.9rem;
+        height: 1rem;
+    }
+    .input-field.col.formInput1ColDiv {
+        margin-top: 0.5vh;
+    }
+
+    /* Internship Section */
+    .radioBtnMainDiv {
+        width: 80%;
+        margin: auto;
+    }
+
+    /* Service Section */
+    .serviceSuccessTxt {
+        color: #078523;
+    }
+    button.goLiveFreeBtn {
+        background-color: var(--primary);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        padding: 3vh 8vw 8vh 8vw;
+        line-height: 2.9vh;
+    }
+    button.goLiveProBtn {
+        background-color: #C2A300;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        padding: 3vh 8vw 8vh 8vw;
+        line-height: 2.9vh;
+    }
+    div.row.serviceBtnRowDiv {
+        margin-top: 8vh;
+    }
+    ul {
+        width: 85%;
+        margin: 2.5vh auto 0 auto;
+    }
+    ul>li {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+    ul:not(.browser-default)>li {
+        list-style-type: disc;
+    }
+
 
 
     [type="radio"].with-gap:checked+span:after {
@@ -569,6 +650,11 @@ p.wlcNoteFooterTxt {
     [type="radio"].with-gap:checked+span:before,
     [type="radio"].with-gap:checked+span:after {
         border: 2px solid var(--primary);
+    }
+
+    /* Changed the height from 22vh to 22.5vh */
+    .primaryColorDocsImg {
+        height: 22.5vh;
     }
 }
 
@@ -629,7 +715,7 @@ p.wlcNoteFooterTxt {
         background-color: var(--primary);
         border-radius: 6px;
         font-family: 'Montserrat', sans-serif;
-        
+
     }
     .getStartedBtnDiv {
         display: flex;
@@ -783,7 +869,7 @@ p.wlcNoteFooterTxt {
         color: var(--black);
     }
     .proImgInputDiv {
-        position: relative; 
+        position: relative;
         top: -1.7vh;
     }
     .proInputFileUpladIcon {
@@ -910,5 +996,9 @@ p.wlcNoteFooterTxt {
     }
     .proImgDiv {
         border-radius: 0;
+    }
+
+    .primaryColorDocsImg {
+        height: 19.5vh;
     }
 }

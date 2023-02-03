@@ -1,8 +1,8 @@
 :root {
-    --primary: #6750a4;
-    --secondary: #6750a4;
-    --black: #000000;
-    --white: #ffffff;
+    --primary: #6750a4 !important;
+    --secondary: #6750a4  !important;;
+    --black: #000000  !important;;
+    --white: #ffffff  !important;;
 
     --component: rgba(0, 0, 0, 0.5);
 }
@@ -20,10 +20,10 @@ nav {
 .headerNoSideNav, .extHeaderNoSideNav {
     display: none;
 }
-.section {
-    /* padding-top: 1rem !important; */
-    /* padding-bottom: 1rem !important; */
-}
+/* .section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+} */
 /* .navbarWrap {
     width: 90%;
     margin: 0 auto;
@@ -342,7 +342,7 @@ a.physiTempContactBtn.active {
 .feedsHeading {
     color: var(--white);
 }
-.experienceImgContainDiv .col.s12.m3.l2 {
+.experienceImgContainDiv .col.s12.m12.l2 {
     width: 16.6666666667%;
     margin-left: auto;
 }
@@ -646,6 +646,7 @@ a.physiTempContactBtn.active {
     width: 100.5%;
     height: 22vh;
     padding: 3vh 1.5vw;
+    text-align: center;
 }
 
 #testiTextarea1::placeholder {
@@ -727,6 +728,57 @@ a.physiTempContactBtn.active {
     padding: 0;
 }
 
+/* Added stylings for testimonial review */
+.testiProImg {
+    border-radius: 50%;
+    display: flex;
+    margin: 0 auto;
+    position: relative;
+    top: 1vh;
+
+}
+.testiMapDiv {
+    background: #6750A4;
+    box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
+    padding: 1vh 2vw;
+}
+.testiMapProName {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    text-align: center;
+    color: #FFFFFF;
+}
+.testiMapTxt {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+.tempOneRevTime {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    margin-top: 5vh;
+}
+
+/* ************************************************************************************** */
+.rm_mg {
+    margin: 0;
+}
+.contactHeaderTxt {
+    font-family: "Montserrat", sans-serif;
+    font-weight: lighter;
+    font-size: 2rem !important;
+    line-height: 44px;
+    color: var(--primary);
+    text-align: center;
+    margin: 0 0 1vh 0;
+}
+
 @media screen and (max-width: 992px) and (min-width: 640px) {
     #testiMapImg {
         height: auto;
@@ -741,10 +793,6 @@ a.physiTempContactBtn.active {
         left: 7px;
         top: 7px;
     }
-    .physiContainerDiv#about {
-        padding-top: 0px;
-    }
-
     #physiPortPageLogo {
         font-family: "Montserrat", sans-serif;
         font-weight: 700;
@@ -817,28 +865,344 @@ a.physiTempContactBtn.active {
         margin-left: 10%;
         margin-right: 10%;
     }
-}
-@media screen and (max-width: 640px) {
+
+    /* Added stylings for testimonial review */
+    #testiSecondImgRowOneDiv {
+        position: relative;
+        bottom: 0vh;
+    }
+
+    #testiSecondImgRowTwoDiv {
+        position: relative;
+        bottom: 0vh;
+    }
+
+    #testiSecondImgRowThreeDiv {
+        position: relative;
+        top: 0vh;
+    }
+    .row .testimonialRw .col.m6 {
+        width: 50%;
+        min-width: 50%;
+    }
+    .testimonialRw {
+        display: flex !important;
+        flex-direction: row;
+        overflow: scroll;
+        width: 100%;
+        overflow-y: hidden;
+    }
+    .testimonialRw::-webkit-scrollbar {
+        height: 0.5vh;
+    }
+
+    /* Added stylings for HeaderComponent */
     nav.navMain {
         display: none;
     }
-    nav.headerNoSideNav {
-        display: block;
-        /* margin-bottom: 1vh; */
-    }
+
     nav.headerNoSideNav .sideNavBrandLogo {
         margin-left: 0;
     }
     ul.extHeaderNoSideNav {
         display: flex;
+        justify-content: center;
         background-color: #F6F3F3;
         height: 40px;
         line-height: 40px;
         margin-top: 0;
         margin-bottom: 0;
         padding: 0 2vw;
-        /* box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%); */
     }
+    ul.extHeaderNoSideNav li {
+        margin: 0 2.1vw;
+    }
+    ul.extHeaderNoSideNav li a {
+        color: var(--black);
+        font-size: 0.9rem;
+    }
+
+    /* Added stylings on AboutMe Component */
+    .row .col.profileImgContainer {
+        display: block;
+        padding: 0;
+        top: 3vh;
+        left: 6vw;
+    }
+
+    /* Added some stylings on ExperienceComponent */
+    .experienceImgContainDiv .col.s12.m12.l2,
+    .surgeonBannerImgDiv {
+        width: 100%;
+        /* margin-left: auto; */
+    }
+    img.bannerImg {
+        height: auto !important;
+        width: 100%;
+        border-radius: 0;
+    }
+    .experiences {
+        background: var(--primary);
+        border-radius: 0px;
+        padding: 0;
+        margin-right: -0.75rem !important;
+        display: flex;
+    }
+    .expLeftBarInnerDiv:nth-child(3),
+    .expLeftBarInnerDiv:nth-child(2) {
+        border-bottom: none;
+        border-right: 1px solid rgba(217, 217, 217, 0.65);
+    }
+    .expLeftBarInnerDiv:first-child {
+        border-right: 1px solid rgba(217, 217, 217, 0.65);
+    }
+    .expLeftBarInnerDiv .experience {
+        padding: 1vh 0;
+    }
+    p.experienceTitle {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin: 0;
+    }
+    p.experienceTxt {
+        margin-bottom: 0;
+        font-size: 0.8rem;
+    }
+
+    /* Added some stylings on Feeds */
+    #feeds {
+        background-color: unset;
+    }
+
+    .feeds {
+        background-color: var(--primary);
+    }
+
+    /* ************************************************************************************ */
+    nav.headerNoSideNav {
+        display: block;
+        /* margin-bottom: 1vh; */
+        height: auto;
+    }
+    a.active {
+        border-bottom: 4px solid var(--primary);
+        padding: 0px 15px;
+    }
+    a.mobileNavLink {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+    }
+    i.material-icons.sidenavTriggerIcon {
+        color: var(--primary);
+        line-height: 5vh;
+        font-size: 3rem;
+        margin-top: 2.5vh;
+    }
+    /* a.sidenav-trigger.sidenavTriggerLink {
+        width: 5vw;
+        height: 5vh;
+        border-radius: 50px;
+        margin-top: 3vh;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    } */
+    ul li>a.sidenavLink {
+        font-size: 1.2rem;
+        font-family: 'Poppins', sans-serif;
+        color: var(--white);
+        letter-spacing: 0.7px;
+    }
+    .physiContainerDiv#about {
+        padding-top: 12vh;
+    }
+
+    /* About Me Img edit modal*/
+    /* ********************************************** */
+    a.modal-trigger.aboutImgEditBtn {
+        width: 40px;
+        height: 40px;
+        background-color: #edebeb;
+        border-radius: 50px;
+        position: absolute;
+        top: 5%;
+        right: 6vw;
+    }
+    i.material-icons.editIcon {
+        color: #554c8a;
+        line-height: 40px;
+        display: flex;
+        justify-content: center;
+        font-size: 2.3rem;
+    }
+    div.aboutImgModalDiv {
+        width: 50%;
+        height: 37vh;
+        margin: 2.5vh auto 0 auto;
+
+    }
+    img.aboutImgModal {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
+    }
+    /* ************************************************** */
+    a.editImgChangeBtn {
+        background-color: #524988;
+        color: var(--white);
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.9rem;
+        padding: 0.3vh 2vw;
+    }
+    div.editImgChangeBtnDiv {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.8vh;
+    }
+    p.aboutImgSize {
+        text-align: center;
+        font-size: 0.8rem;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 1.8vh;
+    }
+    a.modal-close.editImgModalCloseBtn {
+        margin-left: 5vw;
+        color: var(--black);
+        text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
+        font-size: 2rem;
+    }
+    div.aboutImgEditModalInnerDiv {
+        padding: 1vh 0 5vh 0;
+    }
+
+    /* About Me Writeup edit modal */
+    /* *********************************************** */
+    a.modal-trigger.aboutWriteUpsEditBtn {
+        width: 40px;
+        height: 40px;
+        background-color: #edebeb;
+        border-radius: 50px;
+        position: absolute;
+        top: 0;
+        left: 30vw;
+    }
+    /* *********************************************** */
+    a.modal-close.editWriteUpsModalCloseBtn {
+        margin-left: -3vw;
+        color: var(--black);
+        text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
+        font-size: 2rem;
+    }
+    div.aboutWriteUpsEditModalInnerDiv {
+        width: 80%;
+        margin: auto;
+        padding: 1vh 0 5vh 0;
+    }
+    input.validate.aboutWriteUpsInput {
+        text-align: start;
+        height: 2vh;
+        border-bottom-color: var(--primary);
+    }
+    textarea.materialize-textarea.aboutWriteUpsInput {
+        text-align: start;
+        border: 1px solid var(--primary);
+        padding: 0.5vh 1.5vw;
+    }
+    p.aboutWriteUpsSize {
+        font-size: 0.7rem;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 0;
+    }
+    a.editWriteUpsSaveBtn {
+        background-color: #524988;
+        color: var(--white);
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.9rem;
+        padding: 0.3vh 2vw;
+    }
+    div.editWriteUpsSaveBtnDiv {
+        margin-top: 0vh;
+    }
+
+    /* Service edit modal */
+    .whatIdoTxtRowDiv {
+        position: relative;
+    }
+    /* ************************************************ */
+    a.modal-trigger.servicesEditBtn {
+        width: 40px;
+        height: 40px;
+        background-color: #edebeb;
+        border-radius: 50px;
+        position: absolute;
+        top: -3vh;
+        right: 30vw;
+    }
+    /* ************************************************ */
+    textarea.materialize-textarea.servicesTextarea {
+        text-align: start;
+        border: 1px solid var(--primary);
+        padding: 0.5vh 1.5vw;
+        min-height: 17vh;
+    }
+    a.servicesAddMoreBtn {
+        color: var(--black);
+        text-decoration: underline;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: end;
+        position: relative;
+        bottom: 2vh;
+    }
+
+    /* Contact Me Edit Btn */
+    #testiContactFormTitleDiv {
+        position: relative;
+    }
+    /* ************************************************ */
+    a.modal-trigger.contactEditBtn {
+        width: 40px;
+        height: 40px;
+        background-color: #edebeb;
+        border-radius: 50px;
+        position: absolute;
+        top: 6vh;
+        right: 30vw;
+    }
+    .contactHeaderTxt {
+        font-family: "Montserrat", sans-serif;
+        font-weight: lighter;
+        font-size: 1.9rem !important;
+        line-height: 44px;
+        color: var(--primary);
+        text-align: center;
+        margin: 0 0 1vh 0;
+    }
+    /* ************************************************ */
+
+    p.servicesInputInstruct {
+        font-size: 0.7rem;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 0;
+        text-align: right;
+    }
+    a.sidenav-close.sidenavCloseBtn {
+        margin: 2vh 0 4vh 0;
+    }
+
+    i.material-icons.sidenavCloseIcon {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    nav.navMain {
+        display: none;
+    }
+
+    nav.headerNoSideNav .sideNavBrandLogo {
+        margin-left: 0;
+    }
+
     ul.extHeaderNoSideNav li {
         margin: 0 2.1vw;
     }
@@ -849,11 +1213,6 @@ a.physiTempContactBtn.active {
     .row.about {
         display: flex;
         flex-direction: column;
-    }
-    .section.physiContainerDiv#about {
-        padding-top: 0vh;
-        width: 100%;
-        margin: 0;
     }
     .profileDesc {
         order: 2;
@@ -896,7 +1255,7 @@ a.physiTempContactBtn.active {
         width: 100%;
         margin-left: auto;
     }
-    .experienceImgContainDiv .col.s12.m3.l2,
+    .experienceImgContainDiv .col.s12.m12.l2,
     .surgeonBannerImgDiv {
         width: 100%;
         /* margin-left: auto; */
@@ -915,8 +1274,9 @@ a.physiTempContactBtn.active {
         box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
     }
     .profileImg {
-        top: 12vh !important;
-        right: 2.5vw !important;
+        position: relative;
+        /*top: 12vh !important;*/
+        /*right: 2.5vw !important;*/
         width: 100%;
         height: auto;
         transform: rotate(0deg);
@@ -971,7 +1331,7 @@ a.physiTempContactBtn.active {
         text-align: center;
         margin: 0 0 5vh 0;
     }
-        
+
     .expLeftBarInnerDiv:nth-child(3), .expLeftBarInnerDiv:nth-child(2) {
         border-bottom: none;
         border-right: 1px solid rgba(217, 217, 217, 0.65);
@@ -993,7 +1353,7 @@ a.physiTempContactBtn.active {
         font-weight: 300;
         margin: 0;
     }
-    
+
     p.experienceTxt {
         margin-bottom: 0;
         font-size: 0.6rem;
@@ -1069,5 +1429,259 @@ a.physiTempContactBtn.active {
         font-weight: 700;
         color: var(--white) !important;
         /* text-align: center; */
+    }
+
+
+    /* Added stylings for testimonial review */
+    .testiMapDiv:first-child {
+        background: #6750A4;
+        box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
+        padding: 1vh 2vw;
+        margin-bottom: 9vh;
+    }
+    #testiSecondImgRowOneDiv {
+        position: relative;
+        bottom: 0vh;
+    }
+    #testiSecondImgRowTwoDiv {
+        position: relative;
+        bottom: 0vh;
+    }
+    #testiSecondImgRowThreeDiv {
+        position: relative;
+        top: 0vh;
+    }
+    .testimonialRw {
+        display: flex !important;
+        flex-direction: row;
+        overflow: scroll;
+        width: 100%;
+        overflow-y: hidden;
+    }
+    .row .testimonialRw .col.s12 {
+        width: 100%;
+        min-width: 100%;
+    }
+    .testimonialRw::-webkit-scrollbar {
+        height: 0.5vh;
+    }
+
+
+    /* ************************************************************************************ */
+    ul.extHeaderNoSideNav {
+        display: flex;
+        background-color: #F6F3F3;
+        height: 40px;
+        line-height: 40px;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0 2vw;
+        justify-content: space-around;
+        /* box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%); */
+    }
+    nav.headerNoSideNav {
+        display: block;
+        /* margin-bottom: 1vh; */
+        height: auto;
+    }
+    a.active {
+        border-bottom: 4px solid var(--primary);
+        padding: 0px 15px;
+    }
+    a.mobileNavLink {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+    }
+    i.material-icons.sidenavTriggerIcon {
+        color: var(--primary);
+        line-height: 5.5vh;
+        font-size: 2.5rem;
+    }
+    /* a.sidenav-trigger.sidenavTriggerLink {
+        width: 10vw;
+        height: 5vh;
+        border-radius: 50px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    } */
+    ul li>a.sidenavLink {
+        font-size: 1.2rem;
+        font-family: 'Poppins', sans-serif;
+        color: var(--white);
+        letter-spacing: 0.7px;
+    }
+    .section.physiContainerDiv#about {
+        padding-top: 5vh;
+        width: 100%;
+        margin: 0;
+    }
+
+
+    /* About Me Img edit modal*/
+    a.modal-trigger.aboutImgEditBtn {
+        width: 30px;
+        height: 30px;
+        background-color: #edebeb;
+        border-radius: 50px;
+        position: absolute;
+        top: 5%;
+        right: 6vw;
+    }
+    i.material-icons.editIcon {
+        color: #554c8a;
+        line-height: 35px;
+        display: flex;
+        justify-content: center;
+    }
+    /* ************************************************* */
+    div.aboutImgModalDiv {
+        width: 55%;
+        height: 25vh;
+        margin: 2.5vh auto 0 auto;
+    }
+    img.aboutImgModal {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
+    }
+    /* ************************************************* */
+    a.editImgChangeBtn {
+        background-color: #524988;
+        color: var(--white);
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.9rem;
+        padding: 0.3vh 2vw;
+    }
+    div.editImgChangeBtnDiv {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.8vh;
+    }
+    p.aboutImgSize {
+        text-align: center;
+        font-size: 0.8rem;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 1.8vh;
+    }
+    a.modal-close.editImgModalCloseBtn {
+        margin-left: 5vw;
+        color: var(--black);
+        text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
+        font-size: 2rem;
+    }
+    div.aboutImgEditModalInnerDiv {
+        padding: 1vh 0 5vh 0;
+    }
+
+    /* About Me Writeup edit modal */
+    a.modal-trigger.aboutWriteUpsEditBtn {
+        width: 30px;
+        height: 30px;
+        background-color: #edebeb;
+        border-radius: 50px;
+        position: absolute;
+        top: 0;
+        right: 6vw;
+    }
+    a.modal-close.editWriteUpsModalCloseBtn {
+        margin-left: -3vw;
+        color: var(--black);
+        text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
+        font-size: 2rem;
+    }
+    div.aboutWriteUpsEditModalInnerDiv {
+        width: 80%;
+        margin: auto;
+        padding: 1vh 0 5vh 0;
+    }
+    input.validate.aboutWriteUpsInput {
+        text-align: start;
+        height: 2vh;
+        border-bottom-color: var(--primary);
+    }
+    textarea.materialize-textarea.aboutWriteUpsInput {
+        text-align: start;
+        border: 1px solid var(--primary);
+        padding: 0.5vh 1.5vw;
+    }
+    p.aboutWriteUpsSize {
+        font-size: 0.7rem;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 0;
+    }
+    a.editWriteUpsSaveBtn {
+        background-color: #524988;
+        color: var(--white);
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.9rem;
+        padding: 0.3vh 2vw;
+    }
+    div.editWriteUpsSaveBtnDiv {
+        margin-top: 0vh;
+    }
+
+    /* Service edit modal */
+    .whatIdoTxtRowDiv {
+        position: relative;
+    }
+    a.modal-trigger.servicesEditBtn {
+        width: 30px;
+        height: 30px;
+        background-color: #edebeb;
+        border-radius: 50px;
+        position: absolute;
+        top: 0.1vh;
+        right: 6vw;
+    }
+    textarea.materialize-textarea.servicesTextarea {
+        text-align: start;
+        border: 1px solid var(--primary);
+        padding: 0.5vh 1.5vw;
+        min-height: 17vh;
+    }
+    a.servicesAddMoreBtn {
+        color: var(--black);
+        text-decoration: underline;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: end;
+        position: relative;
+        bottom: 2vh;
+    }
+
+    /* Contact Me Edit Btn */
+    #testiContactFormTitleDiv {
+        position: relative;
+    }
+    a.modal-trigger.contactEditBtn {
+        width: 30px;
+        height: 30px;
+        background-color: #edebeb;
+        border-radius: 50px;
+        position: absolute;
+        top: 7vh;
+        right: 6vw;
+    }
+    p.servicesInputInstruct {
+        font-size: 0.7rem;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 0;
+        text-align: right;
+    }
+    .contactHeaderTxt {
+        font-family: "Montserrat", sans-serif;
+        font-weight: lighter;
+        font-size: 1.5rem !important;
+        line-height: 44px;
+        color: var(--primary);
+        text-align: center;
+        margin: 0 0 1vh 0;
+    }
+
+    a.sidenav-close.sidenavCloseBtn {
+        margin: 2vh 0 4vh 0;
+    }
+    i.material-icons.sidenavCloseIcon {
+        font-size: 3rem;
     }
 }

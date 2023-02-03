@@ -108,3 +108,10 @@
         },
     };
 </script>
+<style>
+@media screen and (max-width: 640px) {
+    ul:not(.browser-default)>li {
+        list-style-type: none;
+    }
+}
+</style>

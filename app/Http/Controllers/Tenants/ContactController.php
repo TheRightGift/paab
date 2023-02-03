@@ -31,10 +31,10 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'phone' => 'required',
-            'email' => 'required',
-            'address' => 'required',
-        ]); 
+            'phone' => 'nullable',
+            'email' => 'nullable',
+            'address' => 'nullable',
+        ]);
 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
@@ -60,10 +60,10 @@ class ContactController extends Controller
     public function update(Request $request, $contact)
     {
         $inputs = Validator::make($request->all(), [
-            'phone' => 'required',
-            'email' => 'required',
-            'address' => 'required',
-        ]); 
+            'phone' => 'nullable',
+            'email' => 'nullable',
+            'address' => 'nullable',
+        ]);
 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);

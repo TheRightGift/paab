@@ -64,16 +64,16 @@
                                                     class="right m-0"
                                                     :class="{
                                                         redColor:
-                                                            service.description
-                                                                .length <= 239,
+                                                            service.description != null ? service.description
+                                                                .length <= 239 : null,
                                                         successColor:
-                                                            service.description
-                                                                .length >= 239,
+                                                             service.description != null ? service.description
+                                                                .length >= 239 : null,
                                                     }"
                                                 >
                                                     {{
-                                                        service.description
-                                                            .length
+                                                        service.description != null ? service.description
+                                                            .length : null
                                                     }}/239
                                                 </p>
                                             </div>
@@ -144,8 +144,8 @@
                     </div>
                 </div>
 
-            
-                <div class="genBottomBtnDiv">        
+
+                <div class="genBottomBtnDiv">
                     <div class="flexed">
                         <a href="#" class="btn right" id="genNextBtn" @click="servicesGoBackBtn()">BIOGRAPH</a>
                         <a href="#!" class="btn right" id="genNextBtn" @click="achieveLink()">ACHIEVEMENT</a>

@@ -26,8 +26,118 @@
                     <div>
                         <div class="row">
                             <!-- Testimonials First Row -->
+                            <!-- Testimonials First Row -->
                             <div class="col s12">
                                 <p class="tempOneRevTime right">Now</p>
+                            </div>
+                            
+                            <div class="col s12 m6 l4">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 m6 l4">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 m6 l4">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonials Second Row -->
+                            <div class="col s12">
+                                <p class="tempOneRevTime right">1 days ago</p>
+                            </div>
+                            
+                            <div class="col s12 m6 l4">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 m6 l4">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 m6 l4">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonials Third Row -->
+                            <div class="col s12">
+                                <p class="tempOneRevTime right">3 days ago</p>
+                            </div>
+                            
+                            <div class="col s12 m6 l4">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 m6 l4">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="col s12 m6 l4">
+                                <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
+                                <div class="testiMapDiv">
+                                    <p class="testiMapProName">Mr. Akin Olu</p>
+                                    <p class="testiMapTxt">
+                                        Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                        It has roots in a piece.
+                                    </p>
+                                </div>
                             </div>
 
                             <div
@@ -39,7 +149,7 @@
                                 <img
                                     :src="
                                         review.imageURL != null
-                                            ? '/media/tenants/'+tenant+'/img/reviews/'+ review.imageURL
+                                            ? '/media/'+tenant+'/img/reviews/'+ review.imageURL
                                             : '/media/img/user.png'
                                     "
                                     :alt="

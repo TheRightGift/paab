@@ -84,7 +84,7 @@
                 <small class="maxChar right"
                     >Maximum characters should be 600 words</small
                 >
-                
+
 
                 <div>
                     <button
@@ -1425,16 +1425,16 @@
         name: "CvModal",
         mounted() {
             // var data = $('#skills').material_chip('data')
-            setTimeout(() => {
-                let elem = document
-                    .getElementById("skills")
-                    .getElementsByClassName("chips");
-
-                var instance = M.Chips.getInstance(elem);
-                //     instance.onChipAdd: (event, chip) => {
-                // console.log(event[0].M_Chips.chipsData);
-                // console.log( instance)
-            }, 5000);
+            // setTimeout(() => {
+            //     let elem = document
+            //         .getElementById("skills")
+            //         .getElementsByClassName("chips");
+            //
+            //     var instance = M.Chips.getInstance(elem);
+            //     //     instance.onChipAdd: (event, chip) => {
+            //     // console.log(event[0].M_Chips.chipsData);
+            //     // console.log( instance)
+            // }, 5000);
         },
         data() {
             return {

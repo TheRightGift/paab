@@ -149,7 +149,7 @@
                         classes: "errorNotifier",
                     });
                 } else {
-                    
+
                     axios
                         .post(`${this.centralURL}/api/tenant/auth/login`, e)
                         .then((res) => {
@@ -166,7 +166,6 @@
                                     e.email
                                 );
                             }
-                            this.loading = false;
                         })
                         .catch((err) => {
                             console.log(`Error: ${err}`);
@@ -184,13 +183,14 @@
                     .post("/api/savelogin", data)
                     .then((res) => {
                         if (res.data.status == 201) {
-                            this.loading = false;
                             if (localStorage.getItem('візіт') != null){
                                 localStorage.getItem('візіт') + 1;
                             }
                             localStorage.setItem('візіт', 1);
-                            location.reload();
-                            this.loggedIn = true;
+                            this.loading = false;
+                            window.location.href = `http://${location.host}`;
+                            // location.reload();
+                            // this.loggedIn = true;
                         }
                     })
                     .catch((err) => {
