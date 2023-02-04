@@ -448,7 +448,7 @@
                                                             "
                                                             v-model="underGrad.yearEnd"
                                                         /> -->
-                                                        <date-picker v-model:value="underGrad.yearEnd" type="year" placeholder="Year" format="2023"></date-picker>
+                                                        <date-picker v-model:value="underGrad.yearEnd" type="year" placeholder="Year"></date-picker>
                                                     </div>
                                                 </div>
                                             </div>
