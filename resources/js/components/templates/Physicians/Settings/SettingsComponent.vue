@@ -163,7 +163,8 @@
                                 this.saveAccessToken(
                                     res.data.access_token,
                                     res.data.user.id,
-                                    e.email
+                                    e.email,
+                                    res.data.user.role,
                                 );
                             }
                         })
@@ -173,7 +174,7 @@
                         });
                 }
             },
-            saveAccessToken(accessToken, user_id, email) {
+            saveAccessToken(accessToken, user_id, email, role) {
                 let data = {
                     accessToken: accessToken,
                     user_id: user_id,
@@ -188,7 +189,7 @@
                             }
                             localStorage.setItem('візіт', 1);
                             this.loading = false;
-                            window.location.href = `http://${location.host}`;
+                            role === 'Admin' ? location.reload() : window.location.href = `http://${location.host}`;
                             // location.reload();
                             // this.loggedIn = true;
                         }

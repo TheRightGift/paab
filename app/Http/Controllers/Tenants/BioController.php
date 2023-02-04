@@ -33,12 +33,12 @@ class BioController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'about' => 'required|max:614|min:600',
+            'about' => 'nullable|max:614|min:600',
             'lastname' => 'nullable',
             'firstname' => 'nullable',
             // 'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
             'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=451,min_height=512',
-        ]); 
+        ]);
 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
@@ -53,24 +53,24 @@ class BioController extends Controller
                 $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
                 $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                 // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
-                
+
                 $input['photo'] = $name;
                 // dd($path);
-            } 
+            }
             if($request->hasFile('CV')){
                 $cv = $request->file('CV');
                 $ext = $request->file('CV')->getClientOriginalExtension();
                 $stored = \Storage::disk('public')->putFileAs('doc', $cv, strtolower(tenant('id')).'CV'.'.'.$ext);
 
                 $input['CV'] = $stored;
-            } 
+            }
             $bio = Bio::create($input);
             // $achivementData =$input
             // $this->cr8_achievement($input);
             // $this->cr8_service($request);
 
             return response(['bio' => $bio, 'message' => 'Created Success'], 201);
-        }    
+        }
     }
 
     /**
@@ -88,7 +88,7 @@ class BioController extends Controller
             'lastname' => 'nullable',
             'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
             'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=500,min_height=500',
-        ]); 
+        ]);
 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
@@ -101,19 +101,19 @@ class BioController extends Controller
                     $photo = $request->file('photo');
                     $ext = $request->file('photo')->getClientOriginalExtension();
                     // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
-                    
+
                     $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
                     $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
 
                     $input['photo'] = $name;
-                } 
+                }
                 if($request->hasFile('CV')){
                     $cv = $request->file('CV');
                     $ext = $request->file('CV')->getClientOriginalExtension();
                     $stored = \Storage::disk('public')->putFileAs('doc', $cv, strtolower(tenant('id')).'CV'.'.'.$ext);
-    
+
                     $input['CV'] = $stored;
-                } 
+                }
                 $bio2Update->update($input);
                 if ($bio2Update == true) {
                     $this->settingschangeNotify();
@@ -125,7 +125,7 @@ class BioController extends Controller
                 // $this->upd_achievement($input);
                 // $this->upd_service($input);
             }
-        }    
+        }
     }
 
     /**
@@ -162,7 +162,7 @@ class BioController extends Controller
             $image->file(storage_path('/media/img/' . $name));
             // $image->move(public_path('/media/img/'), $name);
             $request['icon_filename'] = '/media/img/'.$name;
-        } 
+        }
         return Service::create($request);
     }
 
@@ -173,7 +173,7 @@ class BioController extends Controller
             $image->file(storage_path('/media/img/' . $name));
             // $image->move(public_path('/media/img/'), $name);
             $request['icon_filename'] = '/media/img/'.$name;
-        } 
+        }
         #TODO: Run a check to make sure if this is an array
         $service = new Service();
         $service->find($request['serv_id']);

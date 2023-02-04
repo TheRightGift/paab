@@ -139,7 +139,9 @@
                         <a href="#!" class="modal-close editWriteUpsModalCloseBtn">
                             <i class="material-icons">keyboard_arrow_left</i>
                         </a>
-                        <a href="#!" class="servicesAddMoreBtn" @click="addMore()" v-if="services.length < 3">ADD MORE</a>
+                        <span v-if="services !== null">
+                            <a href="#!" class="servicesAddMoreBtn" @click="addMore()" v-if="services.length < 3">ADD MORE</a>
+                        </span>
                         <div
                             v-for="(service, index) in servicesRend"
                             :key="index"
@@ -186,7 +188,9 @@
                         </div>
                         <div class="editWriteUpsSaveBtnDiv">
                             <a href="#" class="editWriteUpsSaveBtn" @click.prevent="serviceSave" v-if="!loading">
-                                <span v-if="services.length == 0">Save</span>
+                                <span v-if="services !== null">
+                                    <span v-if="services.length === 0">Save</span>
+                                </span>
                                 <span @click="update = 1" v-else>Update</span>
                             </a>
                             <a href="#!" class="editWriteupsSaveBtn" v-else>
@@ -277,9 +281,11 @@
         },
         watch: {
             services(newVal, oldVal) {
-                if (newVal.length > 0) {
-                    this.servicesRend = newVal;
-                    this.service = newVal[0].id;
+                if (newVal !== null) {
+                    if (newVal.length > 0) {
+                        this.servicesRend = newVal;
+                        this.service = newVal[0].id;
+                    }
                 }
             },
         },

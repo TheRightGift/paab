@@ -28,7 +28,7 @@ class TenantController extends Controller
             'user_id' => ['required'],
             'description' => ['required'],
             'email' => 'nullable|unique:admin_client_orders',
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
@@ -40,7 +40,7 @@ class TenantController extends Controller
                     'name' => $inputs->validated()['name'],
                     'description' => $inputs->validated()['description'],
                     'template_id' => $inputs->validated()['template_id'],
-                    'id' => $inputs->validated()['name'],
+                    'id' => strtolower($inputs->validated()['name']),
                     'user_id' => $inputs->validated()['user_id'],
                 ]);
                 if ($tenant) {
@@ -71,8 +71,8 @@ class TenantController extends Controller
             'template' => ['nullable'],
             'domain' => ['nullable'],
             'domain_id' => ['nullable'],
-        ]); 
-        
+        ]);
+
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
@@ -87,7 +87,7 @@ class TenantController extends Controller
             if ($request->has('domain')) {
                 try {
                     $domain = !empty($sessionTenant) ? $tenant->domains->first() : $tenant->domains->find($inputs->validated()['domain_id']);
-                    $domain->domain = $inputs->validated()['domain'];
+                    $domain->domain = str_replace('.com', '', $inputs->validated()['domain']);
                     $domain->save();
                 } catch (DomainsOccupiedByOtherTenantException $e) {
                     return response()->json(["Domain already in use."]);
@@ -117,7 +117,7 @@ class TenantController extends Controller
         $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'Admin' ? null : $tenant->user->title->name;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         $user = !empty($bioTB) ? $title.' '.$bioTB->firstname.' '.$bioTB->lastname : null;
-        
+
         if($profession === 'Physician'){
             return view('websites.physician', compact('template', 'user', 'templateCSS', 'title', 'pageTitle', 'tenantID'));
         } else {
@@ -131,13 +131,31 @@ class TenantController extends Controller
         return view('websites.setting', compact('user', 'tenantID'));
     }
 
+    public function publicfeature(Request $request) {
+        $user = tenant()->user;
+        $tenantID = strtolower(tenant('id')); // For getting the file location;
+        return view('tempSettings.publicfeature', compact('user', 'tenantID'));
+    }
+
+    public function milestone(Request $request) {
+        $user = tenant()->user;
+        $tenantID = strtolower(tenant('id')); // For getting the file location;
+        return view('tempSettings.milestones', compact('user', 'tenantID'));
+    }
+
+    public function social(Request $request) {
+        $user = tenant()->user;
+        $tenantID = strtolower(tenant('id')); // For getting the file location;
+        return view('tempSettings.socialmedia', compact('user', 'tenantID'));
+    }
+
     public function tenancies() {
         // Get the authenticaed user
         // When coming from mobile request for user->id
         $user = auth()->user()->id;
         $tenancies = Tenant::where('user_id', $user)->with('domains', 'template', 'template.profession', 'order')->latest()->paginate(10);
         // Sort by alphabetical order for domain only and email
-        
+
         // Filter by assigned order
         return response()->json(['message' => 'Tenants fetched', 'tenants' => $tenancies, 'status' => 200], 200);
     }
@@ -176,7 +194,7 @@ class TenantController extends Controller
             'user_id' => ['required'],
             'accessToken' => 'required',
             'email' => 'required'
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         } else {
@@ -200,7 +218,7 @@ class TenantController extends Controller
                 $tenantUser->user_id = $input['user_id'];
                 $tenantUser->accessToken = $input['accessToken'];
                 $tenantUser->save();
-                
+
                 (new User)->forceFill([
                     'email' => $input['email'],
                 ])->notify(new LoginNotifier($this->locator(), $hostname));
@@ -253,7 +271,7 @@ class TenantController extends Controller
                     }
                 }
             }
-            
+
             // Check in Orders where claimed is null if email exists
                 // If exists then update tenantTB with userID
                 // Update AdminClientOrderTB with claimed = 1
@@ -280,7 +298,7 @@ class TenantController extends Controller
                 $tenantSave = $tenant->save();
                 $orderSave = $orders->save();
                 \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-    
+
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 $tenantUser = DB::table('tenant_users')->get();
@@ -310,7 +328,7 @@ class TenantController extends Controller
         if (!empty($tenant)) {
             $domain = $tenant->domains->first()->domain;
             $tenantID = $tenant->id;
-            
+
             return response()->json(['message' => "Tenant Data fetched onSuccess", 'domain' => $domain, 'tenantID' => $tenantID, 'status' => 200]);
         }
         else {
