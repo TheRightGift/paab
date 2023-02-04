@@ -4,13 +4,13 @@
             <div class="loader"></div>
         </div>
         <div v-show="!loading">
-            <HeaderComponent :user="user" />
+            <HeaderComponent :user="user" :isLoggedIn="loggedIn" :achievement="achievement" :preview="preview"/>
             <AboutMeComponent :tenant="tenant" :title="title" :user="user" :bio="bio" :location="location" :preview="preview" :isLoggedIn="loggedIn" />
 
             <ServicesComponent :services="services" :isLoggedIn="loggedIn" />
-<!--            <div id="experienceContainer">-->
-<!--                <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview"/>-->
-<!--            </div>-->
+            <div id="experienceContainer" v-if="(achievement !== null && preview === '0') || preview === '1'">
+                <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview"/>
+            </div>
 <!--            <SocialMediaComponent :socials="socials"/>-->
 <!--            <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>-->
             <div id="contactContainer">

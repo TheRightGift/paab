@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('c_v__trainings', function (Blueprint $table) {
             $table->id();
-            $table->text('institution');
-            $table->text('location');
+            $table->text('institution')->nullable();
+            $table->text('location')->nullable();
             $table->integer('yearStart')->nullable();
             $table->integer('monthStart')->nullable();
             $table->integer('yearEnd')->nullable();

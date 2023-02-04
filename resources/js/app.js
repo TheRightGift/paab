@@ -57,6 +57,10 @@ import SettingsComponent from './components/templates/Physicians/Settings/Settin
 // Shared
 import mails from './components/shared/Messages';
 
+import Milestones from "./components/templates/Physicians/Settings/tempSettings/Milestones";
+import SocialMedia from "./components/templates/Physicians/Settings/tempSettings/SocialMedia";
+import PublicFeature from "./components/templates/Physicians/Settings/tempSettings/PublicFeature";
+
 
 
 
@@ -94,6 +98,10 @@ app.component('physician-website-component', PhysicianWebsiteComponent);
 app.component('physician-website-settings', SettingsComponent);
 
 app.component("mail-component", mails);
+
+app.component("milestones-component", Milestones);
+app.component("social-media-component", SocialMedia);
+app.component("public-feature-component", PublicFeature);
 
 
 /**

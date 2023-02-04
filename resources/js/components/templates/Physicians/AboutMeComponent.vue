@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col s12 rm_mg_pd">
                 <div class="section scrollspy physiContainerDiv" id="about">
-                    <div v-if="bio == null">
+                    <div v-if="bio === null && preview === '1'">
                         <div class="row about">
                             <div class="col s12 m6 l6 profileDesc">
                                 <div class="containerDiv">
@@ -45,9 +45,9 @@
 
                             <div class="col s12 m6 l6 profileImgContainer">
                                 <!-- offset-l3 media/img/doc.png-->
-                                <div class="profileImg" v-if="preview == '0'">
+                                <div class="profileImg" v-if="preview === '0'">
                                     <img
-                                        :src="'media/img/surgeonhero.png'"
+                                        src="'media/img/surgeonhero.png'"
                                         alt="doc.png"
                                         class="responsive-img physiRightImg"
                                     />
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    <div v-else>
+                    <div v-else-if="bio !== null">
                         <div class="row about">
                             <div class="col s12 m6 l6 profileDesc">
                                 <div class="containerDiv">
@@ -80,11 +80,11 @@
                                         {{ bio.about }}
                                     </p>
 
-                                    <p class="center-align">
-                                        <a href="#cvDetails" class="physiTempBtn waves-effect waves-light modal-trigger">
-                                            View My curriculum vitae
-                                        </a>
-                                    </p>
+<!--                                    <p class="center-align">-->
+<!--                                        <a href="#cvDetails" class="physiTempBtn waves-effect waves-light modal-trigger">-->
+<!--                                            View My curriculum vitae-->
+<!--                                        </a>-->
+<!--                                    </p>-->
 
                                     <div class="hide-on-large-only">
                                         <!-- About WriteUp Modal Trigger -->
@@ -97,7 +97,7 @@
 
                             <div class="col s12 m6 l6 profileImgContainer">
                                 <!-- offset-l3 media/img/doc.png-->
-                                <div class="profileImg" v-if="preview == '0'">
+                                <div class="profileImg" v-if="preview === '0' && bio !== null">
                                     <img
                                         :src="typeof about.photo == 'string'
                                             ? '/media/tenants/'+tenant+'/img/'+ about.photo
@@ -128,7 +128,7 @@
                         <i class="material-icons">keyboard_arrow_left</i>
                     </a>
                     <form enctype="multipart/form-data">
-                        <div class="aboutImgModalDiv">
+                        <div class="aboutImgModalDiv" v-if="isLoggedIn">
                             <img
                                 alt="doc.png" class="responsive-img aboutImgModal"
                                 :src="
@@ -204,7 +204,7 @@
 export default {
     computed: {
         aboutCount() {
-            return this.about.about.length;
+            return this.about.about != null ?  this.about.about.length : "";
         },
     },
     data() {

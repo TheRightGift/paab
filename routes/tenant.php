@@ -28,10 +28,15 @@ Route::middleware([
     Route::get('/', [App\Http\Controllers\TenantController::class, 'template']);
 
     Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
+    Route::get('/milestones', [App\Http\Controllers\TenantController::class, 'milestone']);
+
+    Route::get('/socialmedia', [App\Http\Controllers\TenantController::class, 'social']);
+
+    Route::get('/public_feature', [App\Http\Controllers\TenantController::class, 'publicfeature']);
 });
 Route::middleware(['auth:api',InitializeTenancyByDomainOrSubdomain::class,
 PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
-    
+
     Route::post('/bio', [App\Http\Controllers\Tenants\BioController::class, 'store']);
     Route::put('/bio/{id}', [App\Http\Controllers\Tenants\BioController::class, 'update']);
     Route::delete('/bio/{id}', [App\Http\Controllers\Tenants\BioController::class, 'destroy']);
@@ -47,19 +52,19 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::post('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'store']);
     Route::put('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'update']);
     Route::delete('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'destroy']);
-    
+
     Route::post('/general', [App\Http\Controllers\Tenants\GeneralController::class, 'store']);
     Route::put('/general/{id}', [App\Http\Controllers\Tenants\GeneralController::class, 'update']);
     Route::delete('/general/{id}', [App\Http\Controllers\Tenants\GeneralController::class, 'destroy']);
-    
+
     Route::post('/service', [App\Http\Controllers\Tenants\ServiceController::class, 'store']);
     Route::put('/service/{id}', [App\Http\Controllers\Tenants\ServiceController::class, 'update']);
     Route::delete('/service/{id}', [App\Http\Controllers\Tenants\ServiceController::class, 'destroy']);
-    
+
     Route::post('/social', [App\Http\Controllers\Tenants\SocialController::class, 'store']);
     Route::put('/social/{id}', [App\Http\Controllers\Tenants\SocialController::class, 'update']);
     Route::delete('/social/{id}', [App\Http\Controllers\Tenants\SocialController::class, 'destroy']);
-    
+
     Route::post('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'store']);
     Route::put('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'update']);
     Route::delete('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'destroy']);
@@ -67,9 +72,9 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::post('/review', [App\Http\Controllers\Tenants\ReviewsController::class, 'store'])->withoutMiddleware(['auth:api']);
     Route::put('/review/{id}', [App\Http\Controllers\Tenants\ReviewsController::class, 'update']);
     Route::delete('/review/{id}', [App\Http\Controllers\Tenants\ReviewsController::class, 'destroy']);
-    
+
     Route::post('/imagedel', [App\Http\Controllers\Tenants\GeneralController::class, 'deleteImage']);
-    
+
     // CVs
     Route::post('/cvexperience', [App\Http\Controllers\Tenants\CVExperienceController::class, 'store']);
     Route::put('/cvexperience', [App\Http\Controllers\Tenants\CVExperienceController::class, 'update']);
@@ -101,7 +106,7 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
 
     Route::post('/verifyToken', [App\Http\Controllers\TenantController::class, 'verifyToken'])->withoutMiddleware(['auth:api']);
     Route::post('/savelogin', [App\Http\Controllers\TenantController::class, 'saveAccessToken'])->withoutMiddleware(['auth:api']);
-    
+
     Route::post('/schedule', [App\Http\Controllers\Tenants\MessagesController::class, 'store'])->withoutMiddleware(['auth:api']);
     Route::get('/review', [App\Http\Controllers\Tenants\ReviewsController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/achievement', [App\Http\Controllers\Tenants\AchievementController::class, 'index'])->withoutMiddleware(['auth:api']);

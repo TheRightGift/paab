@@ -45,9 +45,9 @@
                             </div>
                         </div>
                     </div>
-                </div>  
-                
-            </div>       
+                </div>
+
+            </div>
         </div>
         <div v-show="experience != null">
             <div class="row noMarginBottom">
@@ -67,24 +67,24 @@
                             alt="physicianTemplate.png" class="bannerImg"
                             v-if="promo == ''"
                         >
-                        <img :src="'/media/tenants/'+tenant+'/img/promo/'+promo.banner" 
-                            alt="physicianTemplate.png" class="bannerImg" 
+                        <img :src="'/media/tenants/'+tenant+'/img/promo/'+promo.banner"
+                            alt="physicianTemplate.png" class="bannerImg"
                             v-else-if="promo != ''"
                         >
                     </div>
-                    <div class="col s12 m3 l2">
+                    <div class="col s12 m12 l2">
                         <div class="row expLeftBarDiv experiences">
-                            <div class="col s6 m12 l12 expLeftBarInnerDiv" v-for="(feat, index) in feats" :key="index">
+                            <div class="col s3 m12 l12 expLeftBarInnerDiv" v-for="(feat, index) in feats" :key="index">
                                 <div class="experience">
                                     <p class="experienceTitle">{{feat}} {{index == 'experience' ? 'Yrs' : null}}</p>
-                                    <p class="experienceTxt">{{index}} {{ index == 'volunteer' ? 'services' : null }} {{ index == 'ward' ? 'rounds' : null}}</p>
+                                    <p class="experienceTxt">{{index}} {{ index == 'volunteer' ? 's' : null }} {{ index == 'ward' ? 'rounds' : null}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>  
-                
-            </div>       
+                </div>
+
+            </div>
         </div>
     </div>
 </template>

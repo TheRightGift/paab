@@ -81,7 +81,7 @@
         <div class="navbar-fixed">
             <nav class="headerNoSideNav center-align">
                 <!-- Sidenav Trigger -->
-                <a href="#" data-target="slide" class="sidenav-trigger sidenavTriggerLink">
+                <a href="#" data-target="slide" class="sidenav-trigger sidenavTriggerLink" v-if="isLoggedIn">
                     <i class="material-icons sidenavTriggerIcon">settings</i>
                 </a>
                 <a href="/" class="sideNavBrandLogo">
@@ -89,14 +89,14 @@
                 </a>
                 <ul class="extHeaderNoSideNav">
                     <li>
-                        <a href="#about" class="mobileNavLink">About Me</a>
+                        <a href="#about" class="mobileNavLink">About</a>
                     </li>
                     <li>
                         <a href="#services" class="mobileNavLink">Services</a>
                     </li>
-                    <!-- <li>
+                    <li v-if="(achievement !== null && preview === '0') || preview === '1'">
                             <a href="#experience">Experience</a>
-                        </li> -->
+                        </li>
                     <!-- <li>
                             <a href="#testimonials">Testimonials</a>
                         </li> -->
@@ -104,7 +104,7 @@
                         <a href="#feeds">Feeds</a>
                     </li> -->
                     <li>
-                        <a href="#contact" class="mobileNavLink">Contact Me</a>
+                        <a href="#contact" class="mobileNavLink">Contact</a>
                     </li>
                 </ul>
             </nav>
@@ -145,6 +145,9 @@ export default {
     },
     props: {
         user: String,
+        isLoggedIn: Boolean,
+        preview: String,
+        achievement: Object,
     },
     mounted() {
         window.addEventListener('scroll', this.updateScroll);

@@ -382,7 +382,7 @@
                                                             <option :value="''" disabled selected>Month</option>
                                                             <option v-for="(month, index) in months" :key="index" :value="index+1">{{ month }}</option>
                                                         </select>
-                                                        
+
                                                     </div>
                                                     <div
                                                         class="
@@ -429,7 +429,7 @@
                                                             <option :value="''" disabled selected>Month</option>
                                                             <option v-for="(month, index) in months" :key="index" :value="index+1">{{ month }}</option>
                                                         </select>
-                                                        
+
                                                     </div>
                                                     <div
                                                         class="
@@ -521,7 +521,7 @@
                                                             <option :value="''" disabled selected>Month</option>
                                                             <option v-for="(month, index) in months" :key="index" :value="index+1">{{ month }}</option>
                                                         </select>
-                                                       
+
                                                     </div>
                                                     <div
                                                         class="
@@ -558,7 +558,7 @@
                                                             <option :value="''" disabled selected>Month</option>
                                                             <option v-for="(month, index) in months" :key="index" :value="index+1">{{ month }}</option>
                                                         </select>
-                                                        
+
                                                     </div>
                                                     <div
                                                         class="
@@ -1309,7 +1309,7 @@
                     <div v-show="view == 10">
                         <div v-show="servicesCheck == 0">
                             <p class="contentTitle">Do you render any services?</p>
-                            
+
                             <div class="radioBtnMainDiv">
                                 <p>
                                     <label @click="servicesSelected()">
@@ -1340,7 +1340,7 @@
 
                         <div v-show="servicesCheck == 2">
                             <p class="contentTitle">Do you want to add more services?</p>
-                        
+
                             <div class="radioBtnMainDiv">
                                 <p>
                                     <label @click="addMoreServicesSelected()">
@@ -1429,7 +1429,7 @@
                                 <button
                                     class="skipBtn"
                                     @click="prev1()"
-                                   
+
                                 >
                                     <i class="material-icons"
                                         >keyboard_arrow_left</i
@@ -1469,7 +1469,7 @@
                                 <button
                                     class="skipBtn"
                                     @click="prev2()"
-                                    
+
                                 >
                                     <i class="material-icons"
                                         >keyboard_arrow_left</i
@@ -1501,7 +1501,7 @@
                                 <button
                                     class="skipBtn"
                                     @click="prev3()"
-                                    
+
                                 >
                                     <i class="material-icons"
                                         >keyboard_arrow_left</i
@@ -1531,7 +1531,7 @@
                                 <button
                                     class="skipBtn"
                                     @click="prev4()"
-                                    
+
                                 >
                                     <i class="material-icons"
                                         >keyboard_arrow_left</i
@@ -1561,7 +1561,7 @@
                                 <button
                                     class="skipBtn"
                                     @click="prev5()"
-                                    
+
                                 >
                                     <i class="material-icons"
                                         >keyboard_arrow_left</i
@@ -1591,7 +1591,7 @@
                                 <button
                                     class="skipBtn"
                                     @click="prev6()"
-                                    
+
                                 >
                                     <i class="material-icons"
                                         >keyboard_arrow_left</i
@@ -1643,16 +1643,16 @@
                         </div>
                         <div v-if="view == 10">
                             <div class="skipDiv">
-                                <button class="skipBtn" 
-                                    @click="prev8()" 
+                                <button class="skipBtn"
+                                    @click="prev8()"
                                     :disabled="servicesCheck >= 3"
                                     :class="servicesCheck >= 3 ? 'btnOff' : 'btnOn'"
                                 >
                                     <i class="material-icons">keyboard_arrow_left</i>
                                 </button>
                                     <span class="skipTxt">skip</span>
-                                <button class="skipBtn" 
-                                    @click="next8()" 
+                                <button class="skipBtn"
+                                    @click="next8()"
                                     :disabled="servicesCheck == 0"
                                     :class="servicesCheck < 1 ? 'btnOff' : 'btnOn'"
                                 >
@@ -1662,16 +1662,16 @@
                         </div>
                         <div v-if="view == 11">
                             <div class="skipDiv">
-                                <button class="skipBtn" 
-                                    @click="prev9()" 
+                                <button class="skipBtn"
+                                    @click="prev9()"
                                     :disabled="view < 10"
                                     :class="view < 10 ? 'btnOff' : 'btnOn'"
                                 >
                                     <i class="material-icons">keyboard_arrow_left</i>
                                 </button>
                                     <span class="skipTxt">skip</span>
-                                <button class="skipBtn" 
-                                    @click="next9()" 
+                                <button class="skipBtn"
+                                    @click="next9()"
                                     :disabled="view == 11"
                                     :class="view >= 11 ? 'btnOff' : 'btnOn'"
                                 >
@@ -1895,7 +1895,7 @@
             },
             generateMultiple() {
                 let title = this.titles.filter(
-                    (el) => el.id == this.bioData.title_id
+                    (el) => el.id == this.bio.title_id
                 );
                 this.domainSuggestions.push({
                     name: (
@@ -2026,7 +2026,8 @@
                     this.experiences.position != '' ||
                     this.experiences.location != ''
                 ) {
-                    this.experiences.yearStart != '' || this.experiences.yearEnd != '' ? (this.experiences.yearStart = this.experiences.yearStart.getFullYear() , this.experiences.yearEnd = this.experiences.yearEnd.getFullYear()) : null
+                    this.experiences.yearStart != ''  ? this.experiences.yearStart = this.experiences.yearStart.getFullYear() : null;
+                    this.experiences.yearEnd != '' ? this.experiences.yearEnd = this.experiences.yearEnd.getFullYear() : null;
                     axios
                         .post("/claim/saveexperience", this.experiences)
                         .then((res) => {
@@ -2051,9 +2052,10 @@
                     this.underGrad.major != '' ||
                     this.underGrad.yearStart != '' ||
                     this.underGrad.monthStart != '' ||
-                    this.underGrad.minor != '' 
+                    this.underGrad.minor != ''
                 ) {
-                    this.underGrad.yearStart != '' || this.underGrad.yearEnd != '' ? (this.underGrad.yearStart = this.underGrad.yearStart.getFullYear() , this.underGrad.yearEnd = this.underGrad.yearEnd.getFullYear()) : null
+                    this.underGrad.yearStart != ''  ? this.underGrad.yearStart = this.underGrad.yearStart.getFullYear() : null;
+                    this.underGrad.yearEnd != '' ? this.underGrad.yearEnd = this.underGrad.yearEnd.getFullYear() : null;
                     axios
                         .post("/claim/saveUndergrad", this.underGrad)
                         .then((res) => {
@@ -2076,9 +2078,10 @@
                     this.additionalSchool.monthEnd != '' ||
                     this.additionalSchool.degree != '' ||
                     this.additionalSchool.yearStart != '' ||
-                    this.additionalSchool.monthStart != '' 
+                    this.additionalSchool.monthStart != ''
                 ) {
-                    this.additionalSchool.yearStart != '' || this.additionalSchool.yearEnd != '' ? (this.additionalSchool.yearStart = this.additionalSchool.yearStart.getFullYear() , this.additionalSchool.yearEnd = this.additionalSchool.yearEnd.getFullYear()) : null
+                    this.additionalSchool.yearStart != ''  ? this.additionalSchool.yearStart = this.additionalSchool.yearStart.getFullYear() : null;
+                    this.additionalSchool.yearEnd != '' ? this.additionalSchool.yearEnd = this.additionalSchool.yearEnd.getFullYear() : null;
                     axios
                         .post("/claim/save/additonalqualification", this.additionalSchool)
                         .then((res) => {
@@ -2102,9 +2105,10 @@
                     this.medSchool.monthEnd != '' ||
                     this.medSchool.type != '' ||
                     this.medSchool.yearStart != '' ||
-                    this.medSchool.monthStart != '' 
+                    this.medSchool.monthStart != ''
                 ) {
-                    this.medSchool.yearStart != '' || this.medSchool.yearEnd != '' ? (this.medSchool.yearStart = this.medSchool.yearStart.getFullYear() , this.medSchool.yearEnd = this.medSchool.yearEnd.getFullYear()) : null
+                    this.medSchool.yearStart != ''  ? this.medSchool.yearStart = this.medSchool.yearStart.getFullYear() : null;
+                    this.medSchool.yearEnd != '' ? this.medSchool.yearEnd = this.medSchool.yearEnd.getFullYear() : null;
                     axios
                         .post("/claim/savemedicalschooltime", this.medSchool)
                         .then((res) => {
@@ -2128,9 +2132,10 @@
                     this.internship.type != '' ||
                     this.internship.yearStart != '' ||
                     this.internship.monthStart != '' ||
-                    this.internship.location != '' 
+                    this.internship.location != ''
                 ) {
-                    this.internship.yearStart != '' || this.internship.yearEnd != '' ? (this.internship.yearStart = this.internship.yearStart.getFullYear() , this.internship.yearEnd = this.internship.yearEnd.getFullYear()) : null
+                    this.internship.yearStart != ''  ? this.internship.yearStart = this.internship.yearStart.getFullYear() : null;
+                    this.internship.yearEnd != '' ? this.internship.yearEnd = this.internship.yearEnd.getFullYear() : null;
                     axios
                         .post("/claim/saveinternship", this.internship)
                         .then((res) => {
@@ -2175,7 +2180,8 @@
                     this.fellowship.yearStart != '' ||
                     this.fellowship.monthStart != ''
                 ) {
-                    this.fellowship.yearStart != '' || this.fellowship.yearEnd != '' ? (this.fellowship.yearStart = this.fellowship.yearStart.getFullYear() , this.fellowship.yearEnd = this.fellowship.yearEnd.getFullYear()) : null
+                    this.fellowship.yearStart != ''  ? this.fellowship.yearStart = this.fellowship.yearStart.getFullYear() : null;
+                    this.fellowship.yearEnd != '' ? this.fellowship.yearEnd = this.fellowship.yearEnd.getFullYear() : null;
                     axios
                         .post("/claim/savefellowship", this.fellowship)
                         .then((res) => {
@@ -2198,9 +2204,10 @@
                     this.residency.monthEnd != '' ||
                     this.residency.type != '' ||
                     this.residency.yearStart != '' ||
-                    this.residency.monthStart != '' 
+                    this.residency.monthStart != ''
                 ) {
-                    this.residency.yearStart != '' || this.residency.yearEnd != '' ? (this.residency.yearStart = this.residency.yearStart.getFullYear() , this.residency.yearEnd = this.residency.yearEnd.getFullYear()) : null
+                    this.residency.yearStart != ''  ? this.residency.yearStart = this.residency.yearStart.getFullYear() : null;
+                    this.residency.yearEnd != '' ? this.residency.yearEnd = this.residency.yearEnd.getFullYear() : null;
                     axios
                         .post("/claim/saveresidency", this.residency)
                         .then((res) => {
@@ -2314,7 +2321,7 @@
             },
             next1() {
                 this.attendedSchInfo != 3 ? (this.saveUndergradSchoolTime(), this.attendedSchInfo++) : null;
-                    
+
                 if (this.attendedSchInfo >= 3) {
                     this.academicCheck = 2;
                 }
@@ -2455,7 +2462,7 @@
                 this.service = {
                     title: "",
                 };
-            }, 
+            },
             addMoreServicesNotSelected() {
                 this.view = 11;
             },
@@ -2484,7 +2491,7 @@
                  * What this does is to get the saved dummy password for the user and whatever plan he chose and send details
                  * to the user, getting the email from the session on the server and sending to him
                  */
-                 
+
                 let data = {plan: val, password: localStorage.getItem('passwordGen'), domain: this.domainSelected};
                 axios.post('/claim/successdomainregistra', data).then(res => {
                     if (res.status == 201) {
@@ -2535,14 +2542,7 @@
     .flex {
         display: flex;
     }
-    .btnOn {
-        border: 2px solid var(--primary);
-        color: var(--primary);
-    }
-    .btnOff {
-        border: 2px solid #d9d9d9;
-        color: #d9d9d9;
-    }
+
     .center-align {
         justify-content: center !important;
     }
