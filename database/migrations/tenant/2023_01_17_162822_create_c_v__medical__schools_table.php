@@ -20,7 +20,8 @@ return new class extends Migration
             $table->integer('monthStart')->nullable();
             $table->integer('yearEnd')->nullable();
             $table->integer('monthEnd')->nullable();
-            $table->enum('type', ['MD', 'DO'])->nullable();
+//             $table->enum('type', ['MD', 'DO'])->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

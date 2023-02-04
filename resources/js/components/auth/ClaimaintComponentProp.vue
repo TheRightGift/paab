@@ -466,7 +466,7 @@
                             </p>
 
                             <div>
-                                <div v-if="attendedMedSch == 0">
+                                <div v-if="attendedMedSch === 0">
                                     <form class="mainForm">
                                         <div class="row formContainDiv">
                                             <div class="input-field col s12">
@@ -481,7 +481,7 @@
                                     </form>
                                 </div>
 
-                                <div v-if="attendedMedSch == 1">
+                                <div v-if="attendedMedSch === 1">
                                     <form class="mainForm">
                                         <div class="row formContainDiv">
                                             <div class="input-field col s12">
@@ -496,7 +496,7 @@
                                     </form>
                                 </div>
 
-                                <div v-if="attendedMedSch == 2">
+                                <div v-if="attendedMedSch === 2">
                                     <form class="mainForm">
                                         <div class="row formInnerDiv">
                                             <div class="col s6">
@@ -1360,12 +1360,13 @@
 
                     <!-- Publish Section -->
                     <div v-show="view == 11">
-                        <p class="contentTitle">
+                        <p class="contentTitle" v-if="!showGoLiveBtns">
                             <span class="serviceSuccessTxt">Congrats!</span>
-                            Curriculum Vitae completed
+                            Your site has been setup successfully! <span class="serviceSuccessTxt">Hooray!</span>
+                            <p class="timer">Redirecting you to your site in {{ countdown }}s</p>
                         </p>
 
-                        <div class="row serviceBtnRowDiv">
+                        <div class="row serviceBtnRowDiv" v-if="showGoLiveBtns">
                             <div class="col s5 m4 offset-s1 offset-m2">
                                 <button class="waves-effect waves-light btn goLiveFreeBtn modal-trigger" href="#modal1" @click="sendEmail('freemium')">
                                     Go live <br> Free
@@ -1713,6 +1714,7 @@
                     title_id: "",
                     photo: null
                 },
+                countdown: 10,
                 domainCheckPassed: null,
                 domainSuggestions: [],
                 domainSelected: "",
@@ -1801,7 +1803,7 @@
                     'DEC'
                 ],
                 tenantId: null,
-
+                showGoLiveBtns: true,
                 academicCheck: 0,
                 attendedSchInfo: 0,
                 attendedMedSch: 0,
@@ -2307,7 +2309,6 @@
                     })
                 }
             },
-
             undergradMedSelected() {
                 this.academicCheck = 1;
                 this.attendedSchInfo = 0;
@@ -2501,7 +2502,11 @@
                         });
                         localStorage.removeItem('claimproc');
                         localStorage.removeItem('passwordGen');
-                        location.replace(`http://${this.domainSelected}.whitecoatdomain.com`);
+                        this.showGoLiveBtns = false;
+                        let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()
+                        var instance = M.Modal.getInstance(elem);
+                        instance.close();
+                        this.countdownTimer();
                     }
                 }).catch(err => {
                     let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()
@@ -2509,6 +2514,17 @@
                     instance.close();
                     console.log(err);
                 })
+            },
+            countdownTimer() {
+                if (this.countdown > 0) {
+                    setTimeout(() => {
+                        this.countdown -= 1;
+                        this.countdownTimer();
+                    }, 1000)
+                }
+                else {
+                    location.replace(`http://${this.domainSelected}.whitecoatdomain.com`);
+                }
             }
         },
         props: { claimaint: String, titles: Array, claimant: String },
