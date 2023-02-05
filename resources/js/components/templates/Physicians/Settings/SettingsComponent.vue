@@ -165,6 +165,7 @@
                                     res.data.user.id,
                                     e.email,
                                     res.data.user.role,
+                                    res.data.user.visits
                                 );
                             }
                         })
@@ -174,7 +175,7 @@
                         });
                 }
             },
-            saveAccessToken(accessToken, user_id, email, role) {
+            saveAccessToken(accessToken, user_id, email, role, visits) {
                 let data = {
                     accessToken: accessToken,
                     user_id: user_id,
@@ -184,10 +185,11 @@
                     .post("/api/savelogin", data)
                     .then((res) => {
                         if (res.data.status == 201) {
-                            if (localStorage.getItem('візіт') != null){
-                                localStorage.getItem('візіт') + 1;
-                            }
-                            localStorage.setItem('візіт', 1);
+                            localStorage.setItem('візіт', visits + 1);
+                            // if (localStorage.getItem('візіт') != null){
+                            //     localStorage.getItem('візіт') + 1;
+                            // }
+                            // else
                             this.loading = false;
                             role === 'Admin' ? location.reload() : window.location.href = `http://${location.host}`;
                             // location.reload();

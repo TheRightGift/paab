@@ -426,6 +426,10 @@
 }
 input[type=text]:not(.browser-default) {
     height: 2vh;
+    width: 4rem;
+}
+input[type=number]:not(.browser-default) {
+    width: 6rem;
 }
 .input-field.col.s3.offset-s5 {
     display: flex;

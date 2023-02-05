@@ -32,6 +32,9 @@ Route::middleware([
 
     Route::get('/socialmedia', [App\Http\Controllers\TenantController::class, 'social']);
 
+    Route::get('/password_change', [App\Http\Controllers\TenantController::class, 'passchange']);
+
+
     Route::get('/public_feature', [App\Http\Controllers\TenantController::class, 'publicfeature']);
 });
 Route::middleware(['auth:api',InitializeTenancyByDomainOrSubdomain::class,

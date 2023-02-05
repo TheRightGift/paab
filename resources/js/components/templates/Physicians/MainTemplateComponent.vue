@@ -9,7 +9,7 @@
 
             <ServicesComponent :services="services" :isLoggedIn="loggedIn" />
             <div id="experienceContainer" v-if="(achievement !== null && preview === '0') || preview === '1'">
-                <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview"/>
+                <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview" :isLoggedIn="loggedIn"/>
             </div>
 <!--            <SocialMediaComponent :socials="socials"/>-->
 <!--            <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>-->
@@ -67,6 +67,9 @@
         },
         created() {
             this.loggedIn = this.getCookie('_token');
+            if (this.loggedIn) {
+                localStorage.getItem('візіт') <= 1 ? location.href = `http://${location.host}/password_change` : null;
+            }
         },
         mounted() {
             if (this.preview == '0') {
