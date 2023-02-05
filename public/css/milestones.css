@@ -93,7 +93,7 @@
         font-family: 'Montserrat', sans-serif;
         font-weight: lighter;
         height: 2vh;
-        padding: 0 1vw;
+        padding: 3px 1vw;
     }
     [type="radio"]:not(:checked)+span,
     [type="radio"]:checked+span {
@@ -256,7 +256,7 @@
         font-family: 'Montserrat', sans-serif;
         font-weight: lighter;
         height: 2vh;
-        padding: 0 1vw;
+        padding: 3px 1vw;
     }
     [type="radio"]:not(:checked)+span,
     [type="radio"]:checked+span {

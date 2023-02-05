@@ -60,7 +60,7 @@ import mails from './components/shared/Messages';
 import Milestones from "./components/templates/Physicians/Settings/tempSettings/Milestones";
 import SocialMedia from "./components/templates/Physicians/Settings/tempSettings/SocialMedia";
 import PublicFeature from "./components/templates/Physicians/Settings/tempSettings/PublicFeature";
-
+import PasswordChange from "./components/templates/Physicians/Settings/tempSettings/PasswordChange.vue";
 
 
 
@@ -102,6 +102,7 @@ app.component("mail-component", mails);
 app.component("milestones-component", Milestones);
 app.component("social-media-component", SocialMedia);
 app.component("public-feature-component", PublicFeature);
+app.component("password-change-component", PasswordChange);
 
 
 /**

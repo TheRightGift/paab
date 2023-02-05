@@ -137,6 +137,12 @@ class TenantController extends Controller
         return view('tempSettings.publicfeature', compact('user', 'tenantID'));
     }
 
+    public function passchange(Request $request) {
+        $user = tenant()->user;
+        $tenantID = strtolower(tenant('id')); // For getting the file location;
+        return view('tempSettings.changepassview', compact('user', 'tenantID'));
+    }
+
     public function milestone(Request $request) {
         $user = tenant()->user;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
