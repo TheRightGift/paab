@@ -71,6 +71,12 @@
                             alt="physicianTemplate.png" class="bannerImg"
                             v-else-if="promo != ''"
                         >
+                        <div class="hide-on-large-only">
+                            <!-- About Edit Img Modal Trigger -->
+                            <a class="modal-trigger aboutImgEditBtn" href="#aboutImgEditModal" v-if="isLoggedIn">
+                                <i class="material-icons editIcon">edit</i>
+                            </a>
+                        </div>
                     </div>
                     <div class="col s12 m12 l2">
                         <div class="row expLeftBarDiv experiences">
@@ -101,6 +107,7 @@
             location: String,
             preview: String,
             tenant: String,
+            isLoggedIn: Boolean,
         },
         watch: {
             experience (newVal, oldVal) {
