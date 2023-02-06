@@ -145,7 +145,7 @@
                         <form class="formContain">
                             <div class="row" v-if="!uploadingBanner">
                                 <div class="col s9">
-                                    <p class="bannerImgInstruct">The image should be 451px width and 512px height</p>
+                                    <p class="bannerImgInstruct">The image should be 1024px width and 512px height</p>
                                 </div>
                                 <div class="file-field input-field col s3">
                                     <i class="material-icons bannerInputIcon right">

@@ -67,13 +67,21 @@
                             <div class="col s12 m6 l6 profileDesc">
                                 <div class="containerDiv">
                                     <h3 class="physiTempName">
-                                        Hi, I’m
-                                        <br />
-                                        {{ title }} {{ bio.firstname }}
-                                        {{ bio.lastname }}
-                                        <span
-                                            class="primaryColorBoxDesign"
-                                        ></span>
+                                        <span>
+                                            Hi, I’m
+                                            <br />
+                                            {{ title }} {{ bio.firstname }}
+                                            {{ bio.lastname }}
+                                            <span
+                                                class="primaryColorBoxDesign"
+                                            ></span>
+                                        </span>
+                                        <span class="hide-on-large-only physiTempNameEdit">
+                                            <!-- About WriteUp Modal Trigger -->
+                                            <a class="modal-trigger aboutWriteUpsEditBtn" href="#aboutWriteUpsEditModal" v-if="isLoggedIn">
+                                                <i class="material-icons editIcon">edit</i>
+                                            </a>
+                                        </span>
                                     </h3>
 
                                     <p class="physiSummaryTxt">

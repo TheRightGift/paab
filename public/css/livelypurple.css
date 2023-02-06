@@ -1305,12 +1305,19 @@ a.physiTempContactBtn.active {
     .physiTempName {
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
-        font-size: 2rem;
+        font-size: 1.6rem;
         line-height: 35px;
         letter-spacing: 0.1px;
         color: var(--primary);
         margin-top: 3vh;
         margin-bottom: 3vh;
+        display: flex;
+        justify-content: space-between;
+    }
+    .physiTempNameEdit {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
     .feedsMainTxt {
         font-family: "Montserrat", sans-serif;
@@ -1326,7 +1333,7 @@ a.physiTempContactBtn.active {
     .servicesWhatIdo {
         font-family: "Montserrat", sans-serif;
         font-weight: lighter;
-        font-size: 1.8rem;
+        font-size: 1.3rem;
         line-height: 44px;
         color: var(--primary);
         text-align: center;
@@ -1495,7 +1502,7 @@ a.physiTempContactBtn.active {
     }
     i.material-icons.sidenavTriggerIcon {
         color: var(--primary);
-        line-height: 5.5vh;
+        line-height: 56px;
         font-size: 2.5rem;
     }
     /* a.sidenav-trigger.sidenavTriggerLink {
@@ -1516,7 +1523,6 @@ a.physiTempContactBtn.active {
         margin: 0;
     }
 
-
     /* About Me Img edit modal*/
     a.modal-trigger.aboutImgEditBtn {
         width: 30px;
@@ -1525,13 +1531,14 @@ a.physiTempContactBtn.active {
         border-radius: 50px;
         position: absolute;
         top: 5%;
-        right: 6vw;
+        right: 2vw;
     }
     i.material-icons.editIcon {
         color: #554c8a;
-        line-height: 35px;
+        line-height: 31px;
         display: flex;
         justify-content: center;
+        font-size: 18px;
     }
     /* ************************************************* */
     div.aboutImgModalDiv {
@@ -1579,9 +1586,9 @@ a.physiTempContactBtn.active {
         height: 30px;
         background-color: #edebeb;
         border-radius: 50px;
-        position: absolute;
-        top: 0;
-        right: 6vw;
+        position: relative;
+        /* top: 0; */
+        /* right: 6vw; */
     }
     a.modal-close.editWriteUpsModalCloseBtn {
         margin-left: -3vw;
@@ -1631,7 +1638,7 @@ a.physiTempContactBtn.active {
         border-radius: 50px;
         position: absolute;
         top: 0.1vh;
-        right: 6vw;
+        right: -4vw;
     }
     textarea.materialize-textarea.servicesTextarea {
         text-align: start;
@@ -1661,7 +1668,7 @@ a.physiTempContactBtn.active {
         border-radius: 50px;
         position: absolute;
         top: 7vh;
-        right: 6vw;
+        right: -4vw;
     }
     p.servicesInputInstruct {
         font-size: 0.7rem;
@@ -1672,7 +1679,7 @@ a.physiTempContactBtn.active {
     .contactHeaderTxt {
         font-family: "Montserrat", sans-serif;
         font-weight: lighter;
-        font-size: 1.5rem !important;
+        font-size: 1.3rem !important;
         line-height: 44px;
         color: var(--primary);
         text-align: center;
