@@ -435,7 +435,7 @@ class TenantClaimController extends Controller
     }
 
     public function sendMailForDomainRegistry(Request $request) {
-        $value = $request->session()->pull('tenant', 'default');
+        $value = $request->session()->pull('tenant', 'default'); //
         $valueOfMail = $request->session()->get('email');
         $this->validate($request, [
             'password' => 'required',
@@ -520,7 +520,7 @@ class TenantClaimController extends Controller
         $achievementDb = DB::table('achievements')->first();
         $servicesDb = DB::table('services')->first();
         $cvExperience = DB::table('c_v__experiences')->first();
-        $publicFeaturingDb = DB::table('public_featurings')->get();
+        $publicFeaturingDb = DB::table('public_featurings')->latest()->get();
 //        $awardDb = DB::table('awards')->first();
         $pronoun = $user->gender !== null ? $user->gender === 'M' ? 'he' : 'she' : 'he';
         $address = $user->gender !== null ? $user->gender === 'M' ? 'his' : 'her' : 'his';
@@ -536,7 +536,6 @@ class TenantClaimController extends Controller
         $seedPublicFeaturesA = '';
         $seedAwardsA = '';
         $feat = '';
-
         if ($bioDb !== null) {
             $seedBioA = 'Dr. '.$bioDb->firstname.' '.$bioDb->lastname.' ';
         }
@@ -548,22 +547,22 @@ class TenantClaimController extends Controller
             $seedGradA = $seedGradCheckA.'an undergraduate degree'.$cvUndergradDb->major.' from the '.$cvUndergradDb->institution.'.';
         }
         if ($cvIntern !== null) {
-            $seedInternA = $pronoun.' started out as an intern at the '.$cvIntern->institution;
+            $seedInternA = '. '.$pronoun.' started out as an intern at the '.$cvIntern->institution;
         }
         if ($cvResidency !== null) {
             $seedInternCheckA = $cvIntern !== null ? ', ' : '';
             $seedResidencyA = $cvIntern !== null ? $seedInternCheckA.'then proceeded to '.$cvResidency->institution.' for '.$address.' residency.' : $pronoun.' did '.$address.' residency at'.$cvResidency->institution;
         }
         if ($cvExperience !== null) {
-            $feat = json_decode(json_decode($achievementDb->feats));
+            $feat = $achievementDb !== null ? json_decode(json_decode($achievementDb->feats)) : $feat;
 
-            $seedExpA = ' With more than '.$feat->experience.' years of experience as an '.$cvMedDb->type.', ';
-            $seedCurrExpB = ' '.$pronoun.' is currently the '.$cvExperience->position.' at '.$cvExperience->institution;
+            $seedExpA = $feat !== '' ? ' With more than '.$feat->experience : ' With many years of experience as an '.$cvMedDb->type.', ';
+            $seedCurrExpB = '. '.$pronoun.' is currently the '.$cvExperience->position.' at '.$cvExperience->institution.'.';
         }
         if ($servicesDb !== null) {
             $seedServiceA = $pronoun.' has dedicated years to patient care throughout every '.$servicesDb->title.' experience';
         }
-        if ($publicFeaturingDb !== null){
+        if ($publicFeaturingDb->count() !== 0){
             $seedPublicFeaturesA = '. '.$pronoun.' keeps lending '.$address.' voice to the audience by making local and international media rounds by featuring on '.$publicFeaturingDb[0]->title.'.';
         }
         if ($achievementDb !== null) {

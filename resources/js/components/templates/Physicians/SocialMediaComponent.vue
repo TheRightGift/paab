@@ -2,9 +2,9 @@
     <div class="section scrollspy feedsContainDiv" id="feeds">
         <div class="row">
             <div class="col s12">
-                <div class="hide-on-large-only right modalTriggerHolder">
+                <div class="hide-on-large-only right modalTriggerHolder" v-if="isLoggedIn">
                     <!-- About Edit Img Modal Trigger -->
-                    <a class="modal-trigger" href="#socialPresence" v-if="isLoggedIn">
+                    <a class="modal-trigger" href="#socialPresence">
                         <i class="material-icons editIcon">edit</i>
                     </a>
                 </div>
@@ -16,7 +16,7 @@
         </div>
         <div class="row">
 
-            <div class="col s12 l4 feeds" v-if="facebook !== null">
+            <div class="col s12 l4 feeds" v-show="facebook !== null">
                 <div class="col s12">
                     <p class="facebookFeedsIcon">
                         <i
@@ -213,5 +213,8 @@ export default {
     iframe div._2lqh {
         display: none !important;
         width: 0 !important;
+    }
+    .feedsHeading {
+        color: var(--white);
     }
 </style>
