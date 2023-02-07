@@ -32,7 +32,7 @@ class AchievementController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1100,min_height=500',
+            'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1024,min_height=512',
             'feats' => 'nullable',
         ]); 
 
@@ -68,7 +68,7 @@ class AchievementController extends Controller
     public function update(Request $request, $achievement)
     {
         $inputs = Validator::make($request->all(), [
-            'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1294,min_height=743',
+            'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1024,min_height=512',
             'feats' => 'nullable',
         ]); 
 

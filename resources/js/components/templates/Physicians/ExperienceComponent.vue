@@ -83,7 +83,7 @@
                             <div class="col s3 m12 l12 expLeftBarInnerDiv" v-for="(feat, index) in feats" :key="index">
                                 <div class="experience">
                                     <p class="experienceTitle">{{feat}} {{index == 'experience' ? 'Yrs' : null}}</p>
-                                    <p class="experienceTxt">{{index}} {{ index == 'volunteer' ? 's' : null }} {{ index == 'ward' ? 'rounds' : null}}</p>
+                                    <p class="experienceTxt">{{index}}{{ index == 'volunteer' ? 's' : null }} {{ index == 'ward' ? 'rounds' : null}}</p>
                                 </div>
                             </div>
                         </div>
