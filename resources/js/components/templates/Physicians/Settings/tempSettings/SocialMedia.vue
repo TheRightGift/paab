@@ -5,7 +5,7 @@
                 <div class="primaryColorDiv">
                     <div class="headerDiv">
                         <a href="/">
-                            <img src="/media/img/setupWeb/wcdMobileLogo.png" alt="wcdMobileLogo.png">
+                            <img src="/media/img/wcdMobileLogo.png" alt="wcdMobileLogo.png">
                         </a>
                         <p class="headerTitle">
                             It is time for the world
@@ -13,20 +13,20 @@
                         </p>
                     </div>
                     <div>
-                        <img src="/media/img/setupWeb/3dDoctors.png" alt="3dDoctors.png" class="primaryColorDocsImg">
+                        <img src="/media/img/3dDoctors.png" alt="3dDoctors.png" class="primaryColorDocsImg">
                     </div>
                 </div>
             </div>
 
             <div class="col s12">
-                <div class="contentDiv">
+                <div class="contentDiv container">
                     <div v-show="view == 0">
                         <p class="contentTitle">
-                            Do you want to setup your facebook 
+                            Do you want to setup your facebook
                             posts to stream on your website
                         </p>
-                        
-                        <form class="formContain">
+
+                        <div class="formContain">
                             <div class="row">
                                 <div class="col s7 offset-s4">
                                     <label class="radioBtnLabel">
@@ -39,19 +39,19 @@
                                     </label>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                     <div v-show="view == 1">
-                        <p class="contentTitle">How to get my facebook id</p>
-                        
-                        <form class="formContain">
+
+                        <div class="formContain">
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
-                                    <input type="text" placeholder="Id" class="validate">
+                                    <input type="text" placeholder="Input your Facebook Id" class="validate" v-model="social.facebook">
                                 </div>
                             </div>
-                            
+                            <p class="contentTitle">How to get your facebook id</p>
+
                             <ul class="collapsible">
                                 <li>
                                     <div class="collapsible-header">
@@ -76,16 +76,16 @@
                                     </div>
                                 </li>
                             </ul>
-                        </form>
+                        </div>
                     </div>
 
                     <div v-show="view == 2">
                         <p class="contentTitle">
-                            Do you want to setup your twitter 
+                            Do you want to setup your twitter
                             posts to stream on your website
                         </p>
-                        
-                        <form class="formContain">
+
+                        <div class="formContain">
                             <div class="row">
                                 <div class="col s7 offset-s4">
                                     <label class="radioBtnLabel">
@@ -98,19 +98,19 @@
                                     </label>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                     <div v-show="view == 3">
-                        <p class="contentTitle">How to get my Twitter id</p>
-                        
-                        <form class="formContain">
+
+                        <div class="formContain">
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
-                                    <input type="text" placeholder="Id" class="validate">
+                                    <input type="text" placeholder="Input your twitter Id" class="validate" v-model="social.twitter">
                                 </div>
                             </div>
-                        
+                            <p class="contentTitle">How to get my Twitter id</p>
+
                             <ul class="collapsible">
                                 <li>
                                     <div class="collapsible-header">
@@ -135,16 +135,16 @@
                                     </div>
                                 </li>
                             </ul>
-                        </form>
+                        </div>
                     </div>
 
                     <div v-show="view == 4">
                         <p class="contentTitle">
-                            Do you want to setup your instagram 
+                            Do you want to setup your instagram
                             posts to stream on your website
                         </p>
-                        
-                        <form class="formContain">
+
+                        <div class="formContain">
                             <div class="row">
                                 <div class="col s7 offset-s4">
                                     <label class="radioBtnLabel">
@@ -157,19 +157,19 @@
                                     </label>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                     <div v-show="view == 5">
-                        <p class="contentTitle">How to get my Instagram id</p>
-                        
-                        <form class="formContain">
+
+                        <div class="formContain">
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
-                                    <input type="text" placeholder="Id" class="validate">
+                                    <input type="text" placeholder="Input your instagram Id" class="validate" v-model="social.instagram">
                                 </div>
                             </div>
-                        
+
+                            <p class="contentTitle">How to get my Instagram id</p>
                             <ul class="collapsible">
                                 <li>
                                     <div class="collapsible-header">
@@ -194,16 +194,16 @@
                                     </div>
                                 </li>
                             </ul>
-                        </form>
+                        </div>
                     </div>
 
                     <div v-show="view == 6">
                         <p class="contentTitle">
-                            Do you want to setup your tiktok 
+                            Do you want to setup your tiktok
                             posts to stream on your website
                         </p>
-                        
-                        <form class="formContain">
+
+                        <div class="formContain">
                             <div class="row">
                                 <div class="col s7 offset-s4">
                                     <label class="radioBtnLabel">
@@ -216,19 +216,19 @@
                                     </label>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                     <div v-show="view == 7">
-                        <p class="contentTitle">How to get my Tiktok id</p>
-                        
-                        <form class="formContain">
+
+                        <div class="formContain">
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
-                                    <input type="text" placeholder="Id" class="validate">
+                                    <input type="text" placeholder="Input your tiktok Id" class="validate" v-model="social.tiktok">
                                 </div>
                             </div>
-                        
+                            <p class="contentTitle">How to get my Tiktok id</p>
+
                             <ul class="collapsible">
                                 <li>
                                     <div class="collapsible-header">
@@ -253,18 +253,18 @@
                                     </div>
                                 </li>
                             </ul>
-                        </form>
+                        </div>
                     </div>
 
                     <div v-show="view == 8">
                         <p class="contentTitle">Are you satisfied with the changes?</p>
 
-                        <form class="formContain">
+                        <div class="formContain">
                             <div class="row">
                                 <div class="col s7 offset-s4">
                                     <label class="radioBtnLabel">
                                         <input class="with-gap" name="group1" type="radio" />
-                                        <span class="radioBtnSpan" @click="yesSatisfy()">Yes</span>
+                                        <span class="radioBtnSpan" @click="(yesSatisfy(), saveSocials())">Yes</span>
                                     </label>
                                     <label @click="noSatisfy()">
                                         <input class="with-gap" name="group1" type="radio" />
@@ -272,37 +272,38 @@
                                     </label>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                     <div v-show="view == 9">
-                        <p class="milestoneCongratMsg">Congratulations!!!</p>
                         <p class="contentTitle">
-                            on completing your Social media process. 
+                            <span class="milestoneCongratMsg">Congratulations!!!</span>
+                            <br>
+                            on completing your Social media process.
                             please click the link to preview on your website
                         </p>
 
                         <div class="viewWebBtnDiv">
-                            <a href="/preview/1" class="btn viewWebBtn">
+                            <a :href="host" class="btn viewWebBtn">
                                 View website
                             </a>
                         </div>
                     </div>
 
                     <!-- Prev/Next Button Section -->
-                    <div v-if="view != 9" class="skipDiv">
-                        <button 
-                            class="skipBtn" 
+                    <div v-if="view !== 9 && view !== 0 && view !== 2 && view !== 4 && view !== 6" class="skipDiv">
+                        <button
+                            class="skipBtn"
                             @click="prev()" :disabled="view < 1"
                             :class="view > 0 ? 'btnOn' : 'btnOff'"
                         >
                             <i class="material-icons">keyboard_arrow_left</i>
                         </button>
-                            <span class="skipTxt">skip</span>
-                        <button 
-                            class="skipBtn" @click="next()" 
-                            :disabled="view == view.length"
-                            :class="view != 9 ? 'btnOn' : 'btnOff'"
+                        <span class="skipTxt">skip</span>
+                        <button
+                            class="skipBtn" @click="next()"
+                            :disabled="view === view.length"
+                            :class="view !== 9 ? 'btnOn' : 'btnOff'"
                         >
                             <i class="material-icons">keyboard_arrow_right</i>
                         </button>
@@ -318,11 +319,69 @@ export default {
     components: {},
     data() {
         return {
+            loading: false,
+            fetching: false,
             view: 0,
+            social: {
+                facebook: "",
+                twitter: "",
+                tiktok: "",
+                instagram: "",
+            },
+            host: "",
         };
     },
-    mounted() { },
+    mounted() {
+        this.getSavedSocials();
+        this.host = `http://${location.host}`;
+    },
     methods: {
+        saveSocials() {
+            if (
+                this.social.facebook !== '' ||
+                this.social.tiktok !== '' ||
+                this.social.instagram !== '' ||
+                this.social.twitter !== ''
+            ) {
+                this.loading = !this.loading;
+                let request = `/api/social`;
+                let data = {
+                    _method: "PUT",
+                };
+                if (this.update == 1) {
+                    request = `/api/social/${this.social.id}`;
+                    this.social = { ...this.social, ...data };
+                }
+                axios
+                    .post(request, this.social)
+                    .then((res) => {
+                        if (res.status == 201 || res.data.status == 200) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            this.loading = !this.loading;
+                        }
+                    })
+                    .catch((err) => {
+                        this.loading = !this.loading;
+                        console.log(err);
+                    });
+            }
+        },
+        getSavedSocials(){
+            this.fetching = !this.fetching;
+            axios.get('/api/social').then(res => {
+                if (res.data.social !== null) {
+                    this.social = res.data.social;
+                    this.update = 1;
+                    this.fetching = !this.fetching;
+                }
+            }).catch(reportError => {
+                this.fetching = !this.fetching;
+                console.log(reportError)
+            })
+        },
         prev() {
             this.view != 0 ? this.view-- : null;
         },
@@ -362,18 +421,3 @@ export default {
     },
 };
 </script>
-<style>
-.flex {
-    display: flex;
-}
-
-.btnOn {
-    border: 2px solid var(--primary);
-    color: var(--primary);
-}
-
-.btnOff {
-    border: 2px solid #D9D9D9;
-    color: #D9D9D9;
-}
-</style>

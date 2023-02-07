@@ -4,17 +4,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>White Coat Domain - Milestones</title>
-        <link rel="shortcut icon" href="{{ asset('/media/img/logo.png') }}" type="image/x-icon">
+        <title>{{$user->firstname}} {{$user->lastname}} - Social Presence</title>
+        <link rel="shortcut icon" href="{{ global_asset('/media/img/logo.png') }}" type="image/x-icon">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
 
-        <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
-        <!-- <link rel="stylesheet" href="{{ asset('css/paab.css') }}"> -->
-        <link rel="stylesheet" href="{{ asset('css/socialMedia.css') }}">
-        <link rel="stylesheet" href="{{ asset('fonts/material-icons.css') }}">
+        <link rel="stylesheet" href="{{ global_asset('css/materialize.min.css') }}">
+        <link rel="stylesheet" href="{{ global_asset('css/socials.css') }}">
+        <link rel="stylesheet" href="{{ global_asset('css/'.$templateCSS) }}">
+        <link rel="stylesheet" href="{{ global_asset('fonts/material-icons.css') }}">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
@@ -22,10 +22,10 @@
         <div id="app">
             <social-media-component />
         </div>
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
-        <script src="{{ asset('js/materialize.min.js') }}"></script>
-        <script src="{{ asset('js/paab.js') }}"></script>
+        <script src="{{ global_asset('js/app.js') }}"></script>
+        <script src="{{ global_asset('js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ global_asset('js/materialize.min.js') }}"></script>
+        <script src="{{ global_asset('js/paab.js') }}"></script>
         <script>
             M.AutoInit();
         </script>

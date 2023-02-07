@@ -1196,6 +1196,9 @@ a.physiTempContactBtn.active {
 }
 
 @media screen and (max-width: 640px) {
+    nav ul a {
+        padding: 0;
+    }
     nav.navMain {
         display: none;
     }
@@ -1692,4 +1695,16 @@ a.physiTempContactBtn.active {
     i.material-icons.sidenavCloseIcon {
         font-size: 3rem;
     }
+    div.bannerImgDiv {
+        width: 90%;
+        height: 35vh;
+        border: 15px solid #d9d9d9;
+        margin: auto;
+    }
+}
+.modalTriggerHolder {
+    width: 30px;
+    height: 30px;
+    background-color: #edebeb;
+    border-radius: 50%;
 }

@@ -2237,10 +2237,10 @@
                         .put("/claim/updatebio", this.bio)
                         .then((res) => {
                             if (res.data.status == 200) {
-                                M.toast({
-                                    html: res.data.msg,
-                                    classes: "successNotifier",
-                                });
+                                // M.toast({
+                                //     html: res.data.msg,
+                                //     classes: "successNotifier",
+                                // });
                                 localStorage.setItem(
                                     "claimproc",
                                     JSON.stringify([res.data.user])

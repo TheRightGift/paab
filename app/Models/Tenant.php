@@ -8,6 +8,9 @@ use Stancl\Tenancy\Database\Concerns\HasDatabase;
 use Stancl\Tenancy\Database\Concerns\HasDomains;
 use Laravel\Passport\HasApiTokens;
 
+/**
+ * @method static find(mixed $searchTenant)
+ */
 class Tenant extends BaseTenant implements TenantWithDatabase
 {
     use HasDatabase, HasDomains, HasApiTokens;

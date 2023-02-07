@@ -5,6 +5,9 @@ namespace App\Models\Tenants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method find(Bio $bio)
+ */
 class Bio extends Model
 {
     use HasFactory;

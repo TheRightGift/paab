@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tenants\Social;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
@@ -117,9 +118,9 @@ class TenantController extends Controller
         $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'Admin' ? null : $tenant->user->title->name;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         $user = !empty($bioTB) ? $title.' '.$bioTB->firstname.' '.$bioTB->lastname : null;
-
+        $socials = Social::latest()->first();
         if($profession === 'Physician'){
-            return view('websites.physician', compact('template', 'user', 'templateCSS', 'title', 'pageTitle', 'tenantID'));
+            return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID'));
         } else {
             dd($profession);
         }
@@ -127,33 +128,60 @@ class TenantController extends Controller
 
     public function setting(Request $request) {
         $user = tenant()->user;
+//        $templateCSS = $user->template->styleFile;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         return view('websites.setting', compact('user', 'tenantID'));
     }
 
-    public function publicfeature(Request $request) {
+    public function public_feature(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    {
         $user = tenant()->user;
+        $tenancies = new Tenant();
+        $tenant = $tenancies->find(tenant('id'));
+        $templateCSS = $tenant->template->styleFile;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
-        return view('tempSettings.publicfeature', compact('user', 'tenantID'));
+        return view('websites.tempSettings.public-feature', compact('user', 'tenantID', 'templateCSS'));
     }
 
     public function passchange(Request $request) {
         $user = tenant()->user;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
-        return view('tempSettings.changepassview', compact('user', 'tenantID'));
+        return view('websites.tempSettings.changepassview', compact('user', 'tenantID'));
     }
 
     public function milestone(Request $request) {
         $user = tenant()->user;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
-        return view('tempSettings.milestones', compact('user', 'tenantID'));
+        return view('websites.tempSettings.milestones', compact('user', 'tenantID'));
     }
 
     public function social(Request $request) {
         $user = tenant()->user;
+        $tenancies = new Tenant();
+        $tenant = $tenancies->find(tenant('id'));
+        $templateCSS = $tenant->template->styleFile;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
-        return view('tempSettings.socialmedia', compact('user', 'tenantID'));
+        return view('websites.tempSettings.socialmedia', compact('user', 'tenantID', 'templateCSS'));
     }
+
+    public function general(Request $request) {
+        $user = tenant()->user;
+        $tenancies = new Tenant();
+        $tenant = $tenancies->find(tenant('id'));
+        $templateCSS = $tenant->template->styleFile;
+        $tenantID = strtolower(tenant('id')); // For getting the file location;
+        return view('websites.tempSettings.general', compact('user', 'tenantID', 'templateCSS'));
+    }
+
+    public function biography(Request $request) {
+        $user = tenant()->user;
+        $tenancies = new Tenant();
+        $tenant = $tenancies->find(tenant('id'));
+        $templateCSS = $tenant->template->styleFile;
+        $tenantID = strtolower(tenant('id')); // For getting the file location;
+        return view('websites.tempSettings.biography', compact('user', 'tenantID', 'templateCSS'));
+    }
+
 
     public function tenancies() {
         // Get the authenticaed user

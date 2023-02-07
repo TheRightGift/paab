@@ -158,6 +158,7 @@
                                     html: "Invalid Credentials",
                                     classes: "errorNotifier",
                                 });
+                                this.loading = !this.loading;
                             } else {
                                 this.setCookie("_token", res.data.access_token, 1);
                                 this.saveAccessToken(
