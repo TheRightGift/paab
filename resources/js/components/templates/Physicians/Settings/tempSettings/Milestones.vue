@@ -21,7 +21,7 @@
             <div class="col s12">
                 <div class="contentDiv">
                     <div v-show="view === 0">
-                        <p class="contentTitle">How many experience do you have</p>
+                        <p class="contentTitle">How many years of experience do you have?</p>
 
                         <form class="formContain">
                             <div class="row">
@@ -34,7 +34,7 @@
                     </div>
 
                     <div v-show="view === 1">
-                        <p class="contentTitle">Have you done any volunteer work?</p>
+                        <p class="contentTitle">Have you been involved in any charity/volunteer work?</p>
 
                         <form class="formContain">
                             <div class="row">
@@ -53,7 +53,7 @@
                     </div>
 
                     <div v-show="view === 2">
-                        <p class="contentTitle">How many have you done</p>
+                        <p class="contentTitle">How many have you done?</p>
 
                         <form class="formContain">
                             <div class="row">
@@ -65,7 +65,7 @@
                     </div>
 
                     <div v-show="view === 3">
-                        <p class="contentTitle">Do you have any awards?</p>
+                        <p class="contentTitle">Have you been a recipient of any award/honors ?</p>
 
                         <form class="formContain">
                             <div class="row">
@@ -84,7 +84,7 @@
                     </div>
 
                     <div v-show="view === 4">
-                        <p class="contentTitle">How many awards do you have</p>
+                        <p class="contentTitle">How many awards/honors have you received?</p>
 
                         <form class="formContain">
                             <div class="row">
@@ -96,7 +96,7 @@
                     </div>
 
                     <div v-show="view === 5">
-                        <p class="contentTitle">Do you have any certificates?</p>
+                        <p class="contentTitle">Have you taken any certification courses?</p>
 
                         <form class="formContain">
                             <div class="row">
@@ -115,7 +115,7 @@
                     </div>
 
                     <div v-show="view === 6">
-                        <p class="contentTitle">How many certificates do you have?</p>
+                        <p class="contentTitle">How many certification have you acquired?</p>
 
                         <form class="formContain">
                             <div class="row">

@@ -188,7 +188,7 @@
                         </div>
                         <div class="editWriteUpsSaveBtnDiv">
                             <a href="#" class="editWriteUpsSaveBtn" @click.prevent="serviceSave" v-if="!loading">
-                                <span v-if="services !== null">
+                                <span v-if="services !== null && services.length === 0">
                                     <span v-if="services.length === 0">Save</span>
                                 </span>
                                 <span @click="update = 1" v-else>Update</span>
