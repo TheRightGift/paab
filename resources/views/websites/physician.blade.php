@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <physician-website-component tenant='{{$tenantID ?? null}}' preview='{{$preview ?? 0}}' title='{{$title ?? null}}' template="{{$template}}" user="{{$user ?? ''}}"></physician-website-component>
+        <physician-website-component social="{{$socials ?? null}}" tenant='{{$tenantID ?? null}}' preview='{{$preview ?? 0}}' title='{{$title ?? null}}' template="{{$template}}" user="{{$user ?? ''}}"></physician-website-component>
     </div>
 
     <script src="{{ global_asset('js/app.js') }}"></script>
@@ -29,5 +29,7 @@
     <script src="{{ global_asset('js/materialize.min.js') }}"></script>
     <script src="{{ global_asset('js/paab.js') }}"></script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+    <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>

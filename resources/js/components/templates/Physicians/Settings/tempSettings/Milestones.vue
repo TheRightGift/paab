@@ -145,7 +145,7 @@
                         <form class="formContain">
                             <div class="row" v-if="!uploadingBanner">
                                 <div class="col s9">
-                                    <p class="bannerImgInstruct">The image should be 451px width and 512px height</p>
+                                    <p class="bannerImgInstruct">The image should be 10241px width and 512px height</p>
                                 </div>
                                 <div class="file-field input-field col s3">
                                     <i class="material-icons bannerInputIcon right">
@@ -184,8 +184,11 @@
                     </div>
 
                     <div v-show="view === 9">
-                        <p class="milestoneCongratMsg">Congratulations!!!</p>
-                        <p class="contentTitle">on completing your milestone process</p>
+                        <p class="contentTitle">
+                            <span class="milestoneCongratMsg">Congratulations!!!</span>
+                            <br>
+                            on completing your milestone process
+                        </p>
 
                         <div class="viewWebBtnDiv">
                             <a href="#" @click="replace" class="btn viewWebBtn">

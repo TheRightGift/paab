@@ -32,8 +32,9 @@ class SocialController extends Controller
     {
         $inputs = Validator::make($request->all(), [
             'twitter' => 'nullable|string',
-            'linkedin' => 'nullable|string',
             'facebook' => 'nullable|string',
+            'tiktok' => 'nullable|string',
+            'instagram' => 'nullable|string',
         ]);
 
         if ($inputs->fails()) {
@@ -60,10 +61,12 @@ class SocialController extends Controller
     public function update(Request $request, $social)
     {
         $inputs = Validator::make($request->all(), [
-            'twitter' => 'nullable',
-            'linkedin' => 'nullable',
-            'facebook' => 'nullable',
-        ]); 
+            'twitter' => 'nullable|string',
+            'linkedin' => 'nullable|string',
+            'facebook' => 'nullable|string',
+            'tiktok' => 'nullable|string',
+            'instagram' => 'nullable|string',
+        ]);
 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);

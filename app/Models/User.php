@@ -9,6 +9,10 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @method static create(array $input)
+ * @method static where(string $string, mixed $email)
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
@@ -66,7 +70,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
-    
+
     public function tenants()
     {
         return $this->hasMany(Tenant::class);

@@ -30,12 +30,15 @@ Route::middleware([
     Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
     Route::get('/milestones', [App\Http\Controllers\TenantController::class, 'milestone']);
 
-    Route::get('/socialmedia', [App\Http\Controllers\TenantController::class, 'social']);
+    Route::get('/socialmedia_presence', [App\Http\Controllers\TenantController::class, 'social']);
 
     Route::get('/password_change', [App\Http\Controllers\TenantController::class, 'passchange']);
 
+    Route::get('/general', [App\Http\Controllers\TenantController::class, 'general']);
 
-    Route::get('/public_feature', [App\Http\Controllers\TenantController::class, 'publicfeature']);
+    Route::get('/biography', [App\Http\Controllers\TenantController::class, 'biography']);
+
+    Route::get('/public_feature', [App\Http\Controllers\TenantController::class, 'public_feature']);
 });
 Route::middleware(['auth:api',InitializeTenancyByDomainOrSubdomain::class,
 PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
@@ -55,6 +58,10 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::post('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'store']);
     Route::put('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'update']);
     Route::delete('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'destroy']);
+
+    Route::post('/public_feature', [App\Http\Controllers\Tenants\PublicFeaturingController::class, 'store']);
+    Route::put('/public_feature/{id}', [App\Http\Controllers\Tenants\PublicFeaturingController::class, 'update']);
+    Route::delete('/public_feature/{id}', [App\Http\Controllers\Tenants\PublicFeaturingController::class, 'destroy']);
 
     Route::post('/general', [App\Http\Controllers\Tenants\GeneralController::class, 'store']);
     Route::put('/general/{id}', [App\Http\Controllers\Tenants\GeneralController::class, 'update']);

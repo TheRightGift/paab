@@ -100,9 +100,9 @@
                     <!-- <li>
                             <a href="#testimonials">Testimonials</a>
                         </li> -->
-                    <!-- <li>
+                     <li v-if="(feeds !== null && feeds !== '' && preview === '0') || preview === '1'">
                         <a href="#feeds">Feeds</a>
-                    </li> -->
+                    </li>
                     <li>
                         <a href="#contact" class="mobileNavLink">Contact</a>
                     </li>
@@ -117,17 +117,19 @@
                 </a>
             </li>
 
-            <li><a href="#!" class="sidenavLink">General</a></li>
+            <li><a href="/general" class="sidenavLink">General</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="/biography" class="sidenavLink">Bio</a></li>
             <li><div class="divider"></div></li>
             <li><a href="#!" class="sidenavLink">About</a></li>
             <li><div class="divider"></div></li>
             <li><a href="/milestones" class="sidenavLink">Milestones</a></li>
             <li><div class="divider"></div></li>
-            <li><a href="#!" class="sidenavLink">Public Features</a></li>
+            <li><a href="/public_feature" class="sidenavLink">Public Features</a></li>
             <li><div class="divider"></div></li>
             <li><a href="#!" class="sidenavLink">Services</a></li>
             <li><div class="divider"></div></li>
-            <li><a href="#!" class="sidenavLink">Social Media</a></li>
+            <li><a href="socialmedia_presence" class="sidenavLink">Social Media</a></li>
             <li><div class="divider"></div></li>
             <li><a href="#!" class="sidenavLink">CV Generator</a></li>
             <li><div class="divider"></div></li>
@@ -148,6 +150,7 @@ export default {
         isLoggedIn: Boolean,
         preview: String,
         achievement: Object,
+        feeds: String,
     },
     mounted() {
         window.addEventListener('scroll', this.updateScroll);

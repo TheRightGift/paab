@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tenants;
 use App\Http\Controllers\Controller;
 use App\Models\Tenants\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Validator;
 use App\Trait\ServiceNotifier;
 
@@ -14,7 +15,7 @@ class ContactController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -26,7 +27,7 @@ class ContactController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -54,8 +55,8 @@ class ContactController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
+     * @param Contact $contact
+     * @return Response
      */
     public function update(Request $request, $contact)
     {
@@ -85,8 +86,8 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
+     * @param Contact $contact
+     * @return Response
      */
     public function destroy($contact)
     {

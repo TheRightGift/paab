@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="experienceImgContainDiv">
                     <div class="surgeonBannerImgDiv" v-if="experience != null">
-                        <img :src="'/media/tenants/'+tenant+'/img/'+experience.banner"
+                        <img :src="'/media/tenants/'+tenant+'/img/'+banner"
                             alt="physicianTemplate.png" class="bannerImg"
                             v-if="promo == ''"
                         >
@@ -73,7 +73,7 @@
                         >
                         <div class="hide-on-large-only">
                             <!-- About Edit Img Modal Trigger -->
-                            <a class="modal-trigger aboutImgEditBtn" href="#aboutImgEditModal" v-if="isLoggedIn">
+                            <a class="modal-trigger aboutImgEditBtn" href="#experienceUpdate" v-if="isLoggedIn">
                                 <i class="material-icons editIcon">edit</i>
                             </a>
                         </div>
@@ -92,14 +92,77 @@
 
             </div>
         </div>
+        <div id="experienceUpdate" class="modal">
+            <div class="modal-content">
+                <div class="aboutWriteUpsEditModalInnerDiv">
+                    <a href="#!" class="modal-close editWriteUpsModalCloseBtn">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                    </a>
+                    <form enctype="multipart/form-data">
+                        <div class="bannerImgDiv" v-if="isLoggedIn">
+                            <img
+                                alt="doc.png" class="responsive-img aboutImgModal"
+                                :src="
+                                    typeof banner == 'string'
+                                    ? '/media/tenants/'+tenant+'/img/'+ banner
+                                        : uploaded == null ? '/media/tenants/'+tenant+'/img/'+ banner : uploaded
+                                "
+                            />
+                        </div>
+                        <div class="editImgChangeBtnDiv">
+                            <input type="file" id="our-btn" hidden @change="addBannerchiever($event)" accept=".jpg, .png"/>
+
+                            <!--our custom file upload button-->
+                            <div class="centered">
+                                <div v-if="errorse.length > 0" >
+                                    <p class="error" v-for="(error, index) in errorse" :key="index">{{error}}</p>
+                                </div>
+                                <div>
+                                    <label for="our-btn" class="editImgChangeBtn" v-if="!uploadingBanner">Change Image</label>
+                                    <p v-else>Uploading image <i class="fas fa-spinner fa-spin"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="aboutImgSize">The Image should be 1024px width and 512px height and .jpg oR .png</p>
+                    </form>
+                    <div class="row rm_mg">
+                        <div class="input-field col s12">
+                            <input type="number" v-model="feats.experience" class="validate aboutWriteUpsInput" placeholder="Experience In year(s)">
+                        </div>
+                        <div class="input-field col s12 rm_mg">
+                            <input type="number" v-model="feats.award" class="validate aboutWriteUpsInput" placeholder="Awards">
+                        </div>
+                        <div class="input-field col s12">
+                            <input type="number" v-model="feats.certificate" class="validate aboutWriteUpsInput" placeholder="Certificate(s) you have">
+                        </div>
+                        <div class="input-field col s12 rm_mg">
+                            <input type="number" v-model="feats.volunteer" class="validate aboutWriteUpsInput" placeholder="Volunteer Services">
+                        </div>
+                    </div>
+                    <div class="editWriteUpsSaveBtnDiv">
+                        <a href="#" class="editWriteUpsSaveBtn" @click.prevent="updateAchievements()" v-if="!loading">
+                            Update
+                        </a>
+                        <a href="#" class="editWriteUpsSaveBtn" v-else>
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
     export default {
         data() {
             return {
+                uploadingBanner: false,
                 feats: {},
                 promo: "",
+                loading: false,
+                banner: null,
+                errorse: [],
+                uploaded: null,
             };
         },
         props: {
@@ -111,7 +174,11 @@
         },
         watch: {
             experience (newVal, oldVal) {
-                if (newVal != null) this.feats = JSON.parse(newVal.feats);
+                if (newVal !== null) {
+                    this.feats = JSON.parse(newVal.feats);
+                    this.banner = newVal.banner;
+                }
+
             }
         },
         mounted() {
@@ -126,8 +193,60 @@
                 }).catch(err => {
                     console.log(err)
                 })
-            }
+            },
+            request(request, formData) {
+                axios
+                    .post(request, formData)
+                    .then((res) => {
+                        if (res.status === 201 || res.data.status === 200) {
+                            this.loading = !this.loading;
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            this.uploadingBanner = !this.uploadingBanner;
+                            this.update = 1;
+                            this.experience.id = res.data.achievement.id;
+                            this.banner = res.data.achievement.banner;
+                            location.reload();
+                        }
+                    })
+                    .catch((err) => {
+                        if (err.response.status === 400) {
+                            this.errorse = err.response.data;
+                            this.loading = !this.loading;
+                            this.uploadingBanner = !this.uploadingBanner;
+                        }
+                    });
+            },
+            addBannerchiever(e) {
+                this.errorse = [];
+                if (!e.target.files.length) return;
+                this.uploadingBanner = true;
+                this.experience.banner = e.target.files[0];
+                let formData = new FormData();
+                formData.append("_method", "PUT");
+                let request = `/api/achievement/${this.experience.id}`;
+                formData.append("banner", this.experience.banner);
+                this.request(request, formData);
+                typeof(this.banner) !== 'string' ? this.uploaded = URL.createObjectURL(e.target.files[0]) : null;
+            },
+            updateAchievements() {
+                this.loading = !this.loading;
+                let formData = new FormData();
+                formData.append("_method", "PUT");
+                let request = `/api/achievement/${this.experience.id}`;
+                formData.append("feats", JSON.stringify(this.feats));
+                this.request(request, formData);
+            },
         },
         computed: {},
     };
 </script>
+<style scoped>
+.editImgChangeBtn {
+    background-color: var(--primary);
+    padding: 0.5rem;
+    color: var(--white);
+}
+</style>

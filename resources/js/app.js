@@ -61,7 +61,8 @@ import Milestones from "./components/templates/Physicians/Settings/tempSettings/
 import SocialMedia from "./components/templates/Physicians/Settings/tempSettings/SocialMedia";
 import PublicFeature from "./components/templates/Physicians/Settings/tempSettings/PublicFeature";
 import PasswordChange from "./components/templates/Physicians/Settings/tempSettings/PasswordChange.vue";
-
+import General from "./components/templates/Physicians/Settings/tempSettings/General";
+import Bio from "./components/templates/Physicians/Settings/tempSettings/Bio";
 
 
 app.component('home-component', HomeComponent);
@@ -103,7 +104,8 @@ app.component("milestones-component", Milestones);
 app.component("social-media-component", SocialMedia);
 app.component("public-feature-component", PublicFeature);
 app.component("password-change-component", PasswordChange);
-
+app.component("general-component", General);
+app.component("bio-component", Bio);
 
 /**
  * The following block of code may be used to automatically register your

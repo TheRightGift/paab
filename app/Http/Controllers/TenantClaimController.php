@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tenant;
@@ -9,11 +10,16 @@ use App\Models\AdminClientOrder;
 
 use Illuminate\Support\Facades\Hash;
 
-use Validator;
-use DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\ValidationException;
 
 class TenantClaimController extends Controller
 {
+    /**
+     * @throws ValidationException
+     */
     public function saveUserDets(Request $request) {
         $inputs = Validator::make($request->all(), [
             'firstname' => 'required',
@@ -22,15 +28,15 @@ class TenantClaimController extends Controller
             'email' => 'nullable|unique:users',
             'password' => 'required',
             'othername' => 'nullable',
-        ]); 
-    
+        ]);
+
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
             $input['password'] = Hash::make($request->password);
-            if (!empty(\Session::get('email'))) {
-                $input['email'] = \Session::get('email');
+            if (!empty(Session::get('email'))) {
+                $input['email'] = Session::get('email');
                 $findUser = User::where('email', $input['email'])->first();
                 if(!(empty($findUser))){
                     $user = $findUser->update($input);
@@ -42,24 +48,28 @@ class TenantClaimController extends Controller
             }
         }
     }
-    // Saves User bioData incase of update
+    // Saves User bioData encase of update
+
+    /**
+     * @throws ValidationException
+     */
     public function updateUserBio(Request $request) {
         $inputs = Validator::make($request->all(), [
             'firstname' => 'nullable',
             'lastname' => 'nullable',
             'othername' => 'nullable',
             'title_id' => 'nullable',
-        ]); 
-    
+        ]);
+
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
-            $tenantToFind = \Session::get('tenant');
+            $tenantToFind = Session::get('tenant');
             $tenant = Tenant::find($tenantToFind);
             if (!empty($tenant)) {
-                \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-        
+                Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 $userData = DB::table('bios')->where('id', '!=' , null )->update($input);
@@ -70,14 +80,18 @@ class TenantClaimController extends Controller
         }
     }
 
-    // Update Domain 
+    // Update Domain
+
+    /**
+     * @throws ValidationException
+     */
     public function updateUserPhoto(Request $request, $bioID) {
         $inputs = Validator::make($request->all(), [
             'photo' => 'required|image|mimes:jpg,png|max:1000|dimensions:min_width=451,min_height=512',
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
-        } 
+        }
         else {
             $input = $inputs->validated();
             $searchTenant = $request->session()->get('tenant');
@@ -86,14 +100,14 @@ class TenantClaimController extends Controller
                 if($request->hasFile('photo')){
                     $photo = $request->file('photo');
                     $ext = $request->file('photo')->getClientOriginalExtension();
-                    
+
                     $name = $tenant->id.'biophoto'.'.'.$ext;
                     $path = $photo->move(public_path('/media/tenants/'.$tenant->id.'/img'), $name);
 
                     $input['photo'] = $name;
-                    
-                    \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-            
+
+                    Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
                     DB::connection('mysql')->reconnect();
                     DB::setDatabaseName($tenant->tenancy_db_name);
                     // Check the bio and get the names eg. FNAME, LNAME, ONAME
@@ -101,7 +115,7 @@ class TenantClaimController extends Controller
                     $updated = DB::table('bios')->first();
                     return response(['bio' => $updated, 'message' => 'Update Success', 'status' => 200], 200);
                 }
-            } 
+            }
         }
 
     }
@@ -115,17 +129,17 @@ class TenantClaimController extends Controller
             'monthEnd' => 'nullable',
             'major' => 'nullable',
             'minor' => 'nullable',
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
-        } 
+        }
         else {
             $input = $inputs->validated();
             $searchTenant = $request->session()->get('tenant');
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
-                \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-        
+                Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
@@ -142,7 +156,7 @@ class TenantClaimController extends Controller
                 else {
                     return response()->json(['message' => 'Failed', 'school' => $gradSchool], 501);
                 }
-            } 
+            }
         }
 
     }
@@ -155,17 +169,17 @@ class TenantClaimController extends Controller
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
             'type' => 'nullable',
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
-        } 
+        }
         else {
             $input = $inputs->validated();
             $searchTenant = $request->session()->get('tenant');
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
-                \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-        
+                Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
@@ -182,7 +196,7 @@ class TenantClaimController extends Controller
                 else {
                     return response()->json(['message' => 'No data updated', 'school' => $gradSchool], 200);
                 }
-            } 
+            }
         }
     }
 
@@ -194,17 +208,17 @@ class TenantClaimController extends Controller
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
             'type' => 'nullable',
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
-        } 
+        }
         else {
             $input = $inputs->validated();
             $searchTenant = $request->session()->get('tenant');
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
-                \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-        
+                Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
@@ -221,7 +235,7 @@ class TenantClaimController extends Controller
                 else {
                     return response()->json(['message' => 'No data updated', 'trainings' => $internship], 200);
                 }
-            } 
+            }
         }
     }
 
@@ -233,17 +247,17 @@ class TenantClaimController extends Controller
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
             'type' => 'nullable',
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
-        } 
+        }
         else {
             $input = $inputs->validated();
             $searchTenant = $request->session()->get('tenant');
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
-                \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-        
+                Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
@@ -260,7 +274,7 @@ class TenantClaimController extends Controller
                 else {
                     return response()->json(['message' => 'No data updated', 'trainings' => $fellowship], 200);
                 }
-            } 
+            }
         }
     }
 
@@ -272,17 +286,17 @@ class TenantClaimController extends Controller
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
             'type' => 'nullable',
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
-        } 
+        }
         else {
             $input = $inputs->validated();
             $searchTenant = $request->session()->get('tenant');
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
-                \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-        
+                Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
@@ -299,7 +313,7 @@ class TenantClaimController extends Controller
                 else {
                     return response()->json(['message' => 'No data updated', 'trainings' => $residency], 200);
                 }
-            } 
+            }
         }
     }
 
@@ -312,17 +326,17 @@ class TenantClaimController extends Controller
             'monthEnd' => 'nullable',
             'position' => 'nullable',
             'location' => 'nullable',
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
-        } 
+        }
         else {
             $input = $inputs->validated();
             $searchTenant = $request->session()->get('tenant');
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
-                \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-        
+                Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
@@ -340,7 +354,7 @@ class TenantClaimController extends Controller
                 else {
                     return response()->json(['message' => 'No data updated', 'experience' => $experience], 200);
                 }
-            } 
+            }
         }
     }
 
@@ -353,17 +367,17 @@ class TenantClaimController extends Controller
             'monthEnd' => 'nullable',
             'title' => 'nullable',
             'degree' => 'nullable',
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
-        } 
+        }
         else {
             $input = $inputs->validated();
             $searchTenant = $request->session()->get('tenant');
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
-                \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-        
+                Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
@@ -381,24 +395,24 @@ class TenantClaimController extends Controller
                 else {
                     return response()->json(['message' => 'No data updated', 'additonalQualication' => $additonalQualication], 200);
                 }
-            } 
+            }
         }
     }
 
     public function saveServiceOffered(Request $request) {
         $inputs = Validator::make($request->all(), [
             'title' => 'required',
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
-        } 
+        }
         else {
             $input = $inputs->validated();
             $searchTenant = $request->session()->get('tenant');
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
-                \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-        
+                Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
@@ -416,7 +430,7 @@ class TenantClaimController extends Controller
                 else {
                     return response()->json(['message' => 'No data updated', 'service' => $service], 200);
                 }
-            } 
+            }
         }
     }
 
@@ -427,7 +441,7 @@ class TenantClaimController extends Controller
             'password' => 'required',
             'plan' => 'required',
             'domain' => 'required',
-        ]);  
+        ]);
         if (!empty($value) && $value !== 'default') {
             $orders = AdminClientOrder::where([['tenant_id', $value], ['claimed', null], ['email', $valueOfMail]])->first();
             if (!empty($orders)) {
@@ -451,17 +465,17 @@ class TenantClaimController extends Controller
                             $message->from('admin@whitecoatdomain.com');
                             $message->to($request->session()->pull('email'), tenant('id'))->subject('Website is now live!');
                         });
-                    \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-                    
+                    Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
                     DB::connection('mysql')->reconnect();
                     DB::setDatabaseName($tenant->tenancy_db_name);
                     $tenantUser = DB::table('tenant_users')->get();
                     if ($tenantUser != null) {
                         DB::table('tenant_users')->where('user_id', '!=' , null )->update(['user_id' => $authUser]);
                         $request->session()->pull('email', 'default');
-                        return response()->json(['message' => 'You have successfully setup your website'], 201); 
+                        return response()->json(['message' => 'You have successfully setup your website'], 201);
                     }
-                }   
+                }
             }
             else {
                 return response()->json(['message' => "Invalid Email/Your website has been claimed!"]);

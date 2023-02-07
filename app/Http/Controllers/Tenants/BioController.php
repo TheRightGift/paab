@@ -7,6 +7,7 @@ use App\Models\Tenants\Bio;
 use App\Models\Tenants\Achievement;
 use App\Models\Tenants\Service;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Validator;
 use App\Trait\ServiceNotifier;
 
@@ -16,7 +17,7 @@ class BioController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -27,8 +28,8 @@ class BioController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -76,9 +77,9 @@ class BioController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Bio  $bio
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Bio $bio
+     * @return Response
      */
     public function update(Request $request, $bio)
     {
@@ -115,7 +116,7 @@ class BioController extends Controller
                     $input['CV'] = $stored;
                 }
                 $bio2Update->update($input);
-                if ($bio2Update == true) {
+                if (true) {
                     $this->settingschangeNotify();
                     return response(['bio' => $bio2Update, 'message' => 'Update Success', 'status' => 200], 200);
                 }
@@ -132,7 +133,7 @@ class BioController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Bio  $bio
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($bio)
     {
