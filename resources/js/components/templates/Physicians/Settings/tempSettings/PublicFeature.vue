@@ -22,7 +22,7 @@
                 <div class="contentDiv">
                     <div v-show="view === 0">
                         <p class="contentTitle">
-                            Have you featured in a public event?
+                            Have you made any media rounds/features ?
                         </p>
 
                         <div class="formContain">
@@ -42,7 +42,7 @@
                     </div>
 
                     <div v-show="view === 1">
-                        <p class="contentTitle">Who is the organizer?</p>
+                        <p class="contentTitle">Name of the media house?</p>
 
                         <div class="formContain">
                             <div class="row">
@@ -59,14 +59,14 @@
                         <div class="formContain">
                             <div class="row">
                                 <div class="input-field col s10 offset-s1">
-                                    <input type="text" placeholder="Title of the program" class="validate" v-model="program.title">
+                                    <input type="text" placeholder="CNN Health" class="validate" v-model="program.title">
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div v-show="view === 3">
-                        <p class="contentTitle">Is there a URL to this program?</p>
+                        <p class="contentTitle">Kindly provide the link, <b>if available</b>?</p>
 
                         <div class="formContain">
                             <div class="row">

@@ -452,6 +452,7 @@ class TenantClaimController extends Controller
                 $orders->claimed = 1;
                 $tenantSave = $tenant->save();
                 $orderSave = $orders->save();
+                $this->generateIntro($tenant, $valueOfMail);
                 if ($tenantSave === true && $orderSave) {
                     $userToUpdate->plan = $request->plan == 'freemium' ? 'F' : 'P';
                     $userToUpdate->save();
@@ -485,5 +486,90 @@ class TenantClaimController extends Controller
         else {
             return redirect('auth/login');
         }
+    }
+
+    /**
+     ** Generates the CV Intro automatically for a user: This is for starters only
+     *
+     * $seedWord = `Dr. Dionne Ibekie is an expert in Aestheistiologist with an M.D. from Pittsburgh School of Medicine and an undergraduate degree in Sociology from the University of Michigan- Ann Arbor.
+     * She started out as an intern at the UPMC Shadyside hospital, then proceeded to Brigham and Women’s Hospital for her residency.
+     * With more than 10 years of experience as an anaesthesiologist, she has dedicated years to patient care throughout every surgical experience.
+     * She is currently the Assistant Medical Director/Staff Anesthesiologist.
+     * She keeps lending her voice to the audience by making local and international media rounds by featuring on Middays with Perri Small, Channels Tv, and The Ivy Drip podcast.
+     * She has been a recipient of numerous awards in and out of her fields such as the University of Pittsburgh School of Medicine Dean’s Merit Scholarship, Carolyn Carter Excellence Award, and many others.'`
+     *
+     * Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+     * DB::connection('mysql')->reconnect();
+     * DB::setDatabaseName($tenant->tenancy_db_name);
+    **/
+
+    public function generateIntro($tenant, $email) {
+        // Gets the DBs to make all calls from
+        $user = User::where('email', $email)->first();
+        Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
+        DB::connection('mysql')->reconnect();
+        DB::setDatabaseName($tenant->tenancy_db_name);
+
+        $bioDb = DB::table('bios')->first();
+        $cvMedDb = DB::table('c_v__medical__schools')->first();
+        $cvUndergradDb = DB::table('c_v__undergrad__schools')->first();
+        $cvIntern = DB::table('c_v__trainings')->where('type', 'internship')->first();
+        $cvFellowship = DB::table('c_v__trainings')->where('type', 'fellowship')->first();
+        $cvResidency = DB::table('c_v__trainings')->where('type', 'residency')->first();
+        $achievementDb = DB::table('achievements')->first();
+        $servicesDb = DB::table('services')->first();
+        $cvExperience = DB::table('c_v__experiences')->first();
+        $publicFeaturingDb = DB::table('public_featurings')->get();
+//        $awardDb = DB::table('awards')->first();
+        $pronoun = $user->gender !== null ? $user->gender === 'M' ? 'he' : 'she' : 'he';
+        $address = $user->gender !== null ? $user->gender === 'M' ? 'his' : 'her' : 'his';
+
+        $seedBioA = '';
+        $seedMedA = '';
+        $seedGradA = '';
+        $seedInternA = '';
+        $seedResidencyA = '';
+        $seedExpA = '';
+        $seedCurrExpB = '';
+        $seedServiceA = '';
+        $seedPublicFeaturesA = '';
+        $seedAwardsA = '';
+        $feat = '';
+
+        if ($bioDb !== null) {
+            $seedBioA = 'Dr. '.$bioDb->firstname.' '.$bioDb->lastname.' ';
+        }
+        if ($cvMedDb !== null) {
+            $seedMedA = 'is an expert in '.$cvMedDb->type.' with an M.D. from '.$cvMedDb->institution;
+        }
+        if ($cvUndergradDb !== null) {
+            $seedGradCheckA = $cvMedDb !== null ? 'and ' : '';
+            $seedGradA = $seedGradCheckA.'an undergraduate degree'.$cvUndergradDb->major.' from the '.$cvUndergradDb->institution.'.';
+        }
+        if ($cvIntern !== null) {
+            $seedInternA = $pronoun.' started out as an intern at the '.$cvIntern->institution;
+        }
+        if ($cvResidency !== null) {
+            $seedInternCheckA = $cvIntern !== null ? ', ' : '';
+            $seedResidencyA = $cvIntern !== null ? $seedInternCheckA.'then proceeded to '.$cvResidency->institution.' for '.$address.' residency.' : $pronoun.' did '.$address.' residency at'.$cvResidency->institution;
+        }
+        if ($cvExperience !== null) {
+            $feat = json_decode(json_decode($achievementDb->feats));
+
+            $seedExpA = ' With more than '.$feat->experience.' years of experience as an '.$cvMedDb->type.', ';
+            $seedCurrExpB = ' '.$pronoun.' is currently the '.$cvExperience->position.' at '.$cvExperience->institution;
+        }
+        if ($servicesDb !== null) {
+            $seedServiceA = $pronoun.' has dedicated years to patient care throughout every '.$servicesDb->title.' experience';
+        }
+        if ($publicFeaturingDb !== null){
+            $seedPublicFeaturesA = '. '.$pronoun.' keeps lending '.$address.' voice to the audience by making local and international media rounds by featuring on '.$publicFeaturingDb[0]->title.'.';
+        }
+        if ($achievementDb !== null) {
+            $seedAwardsA = '. '.$pronoun.' has been a recipient of numerous awards in and out of '.$address.' fields such as the University of Pittsburgh School of Medicine Dean’s Merit Scholarship, Carolyn Carter Excellence Award, and many others.';
+        }
+        $seedWord = $seedBioA . $seedMedA . $seedGradA . $seedInternA . $seedResidencyA . $seedExpA . $seedServiceA . $seedCurrExpB . $seedPublicFeaturesA . $seedAwardsA;
+        DB::table('bios')->where('id', !null)->update(['about' => $seedWord]);
     }
 }

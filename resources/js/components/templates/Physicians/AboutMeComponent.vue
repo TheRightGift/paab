@@ -17,22 +17,9 @@
                                     </h3>
 
                                     <p class="physiSummaryTxt">
-                                        Sed porttitor lectus nibh. Proin eget
-                                        tortor risus. Curabitur aliquet quam id
-                                        dui posuere blandit. Vestibulum ante
-                                        ipsum primis in faucibus orci luctus et
-                                        ultrices posuere cubilia Curae; Donec
-                                        velit neque, auctor sit amet aliquam
-                                        vel, ullamcorper sit amet ligula. Cras
-                                        ultricies ligula sed magna dictum porta.
-                                        Quisque velit nisi, pretium ut lacinia
-                                        in, elementum id enim. Mauris blandit
-                                        aliquet elit, eget tincidunt nibh
-                                        pulvinar a. Pellentesque in ipsum id
-                                        orci porta dapibus. Nulla porttitor
-                                        accumsan tincidunt. Curabitur arcu erat,
-                                        accumsan id imperdiet et, porttitor at
-                                        sem. Praesent sapien massa, convallis a
+                                        Dr. John Doe is an expert in Aestheistiologist with an M.D. from Pittsburgh School of Medicine and an undergraduate degree in Sociology from the University of Michigan- Ann Arbor.
+                                        She started out as an intern at the UPMC Shadyside hospital, then proceeded to Brigham and Women’s Hospital for her residency.
+                                        With more than 10 years of experience as an anaesthesiologist, she has dedicated years to patient care throughout every surgical experience.
                                     </p>
                                     <p class="center-align">
                                         <a href="#cvDetails" class="physiTempBtn waves-effect waves-light modal-trigger">
@@ -94,12 +81,12 @@
 <!--                                        </a>-->
 <!--                                    </p>-->
 
-                                    <div class="hide-on-large-only">
-                                        <!-- About WriteUp Modal Trigger -->
-                                        <a class="modal-trigger aboutWriteUpsEditBtn" href="#aboutWriteUpsEditModal" v-if="isLoggedIn">
-                                            <i class="material-icons editIcon">edit</i>
-                                        </a>
-                                    </div>
+<!--                                    <div class="hide-on-large-only">-->
+<!--                                        &lt;!&ndash; About WriteUp Modal Trigger &ndash;&gt;-->
+<!--                                        <a class="modal-trigger aboutWriteUpsEditBtn" href="#aboutWriteUpsEditModal" v-if="isLoggedIn">-->
+<!--                                            <i class="material-icons editIcon">edit</i>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
                                 </div>
                             </div>
 

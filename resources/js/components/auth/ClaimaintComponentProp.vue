@@ -236,7 +236,7 @@
 
                             <div class="proImgBtnMainDiv">
                                 <div class="proImgBtnContainDiv">
-                                    <a href="#" class="proImgYesBtn">Yes</a>
+                                    <a href="#" class="proImgYesBtn" @click="view = 4">Yes</a>
                                     <div
                                         class="file-field input-field"
                                         id="genUploadFavIconDiv"
@@ -324,7 +324,7 @@
                                         <div class="row formContainDiv">
                                             <div class="input-field col s12">
                                                 <input
-                                                    placeholder="What Institution did you attend"
+                                                    placeholder="Name of institution?"
                                                     v-model="underGrad.institution"
                                                     type="text"
                                                     class="validate formInput"
@@ -339,7 +339,7 @@
                                         <div class="row formInnerDiv">
                                             <div class="input-field col s5">
                                                 <input
-                                                    placeholder="What major"
+                                                    placeholder="What was your major?"
                                                     type="text"
                                                     v-model="underGrad.major"
                                                     class="validate formInput"
@@ -347,7 +347,7 @@
                                             </div>
                                             <div class="input-field col s6">
                                                 <input
-                                                    placeholder="What minor(optional)"
+                                                    placeholder="What was your minor(optional)?"
                                                     type="text"
                                                     v-model="underGrad.minor"
                                                     class="validate formInput"
@@ -362,7 +362,7 @@
                                         <div class="row formInnerDiv">
                                             <div class="col s6">
                                                 <p class="schQuesP">
-                                                    When did you start
+                                                    When did you start?
                                                 </p>
                                                 <div class="row spaceAround">
                                                     <div class="col s3">
@@ -409,7 +409,7 @@
 
                                             <div class="col s6">
                                                 <p class="schQuesP">
-                                                    When did you end
+                                                    When did you end?
                                                 </p>
                                                 <div class="row spaceAround">
                                                     <div class="col s2">
@@ -471,7 +471,7 @@
                                         <div class="row formContainDiv">
                                             <div class="input-field col s12">
                                                 <input
-                                                    placeholder="What Institution did you attend"
+                                                    placeholder="Name of institution?"
                                                     type="text"
                                                     class="validate formInput"
                                                     v-model="medSchool.institution"
@@ -486,7 +486,7 @@
                                         <div class="row formContainDiv">
                                             <div class="input-field col s12">
                                                 <input
-                                                    placeholder="What degree"
+                                                    placeholder="What was your degree?"
                                                     type="text"
                                                     class="validate formInput"
                                                     v-model="medSchool.type"
@@ -501,7 +501,7 @@
                                         <div class="row formInnerDiv">
                                             <div class="col s6">
                                                 <p class="schQuesP">
-                                                    When did you start
+                                                    When did you start?
                                                 </p>
                                                 <div class="row spaceAround">
                                                     <div class="col s3">
@@ -538,7 +538,7 @@
 
                                             <div class="col s6">
                                                 <p class="schQuesP">
-                                                    When did you end
+                                                    When did you end?
                                                 </p>
                                                 <div class="row spaceAround">
                                                     <div class="col s2">
@@ -585,7 +585,7 @@
                         <!-- Internship Check -->
                         <div v-show="internshipCheck == 0">
                             <p class="contentTitle">
-                                Did you attend internship?
+                                Have you completed your internship program?
                             </p>
 
                             <div class="radioBtnMainDiv">
@@ -621,7 +621,7 @@
                                 <div class="row formContainDiv">
                                     <div class="input-field col s12">
                                         <input
-                                            placeholder="What Institution did you attend"
+                                            placeholder="Name of institution?"
                                             type="text"
                                             class="validate formInput"
                                             v-model="internship.institution"
@@ -640,7 +640,7 @@
                                 <div class="row formInnerDiv">
                                     <div class="col s6">
                                         <p class="schQuesP">
-                                            When did you start
+                                            When did you start?
                                         </p>
                                         <div class="row spaceAround">
                                             <div class="col s3">
@@ -674,7 +674,7 @@
                                     </div>
 
                                     <div class="col s5">
-                                        <p class="schQuesP">When did you end</p>
+                                        <p class="schQuesP">When did you end?</p>
                                         <div class="row spaceAround">
                                             <div class="col s2">
                                                 <p class="schQuesP1">End</p>
@@ -714,7 +714,7 @@
                         <!-- Fellowship Check -->
                         <div v-show="fellowshipCheck == 0">
                             <p class="contentTitle">
-                                Did you attended fellowship?
+                                Have you completed your fellowship program?
                             </p>
 
                             <div class="radioBtnMainDiv">
@@ -750,7 +750,7 @@
                                 <div class="row formContainDiv">
                                     <div class="input-field col s12">
                                         <input
-                                            placeholder="What Institution did you attend"
+                                            placeholder="Name of institution?"
                                             type="text"
                                             class="validate formInput"
                                             v-model="fellowship.institution"
@@ -769,7 +769,7 @@
                                 <div class="row formInnerDiv">
                                     <div class="col s6">
                                         <p class="schQuesP">
-                                            When did you start
+                                            When did you start?
                                         </p>
                                         <div class="row spaceAround">
                                             <div class="col s3">
@@ -803,7 +803,7 @@
                                     </div>
 
                                     <div class="col s6">
-                                        <p class="schQuesP">When did you end</p>
+                                        <p class="schQuesP">When did you end?</p>
                                         <div class="row spaceAround">
                                             <div class="col s2">
                                                 <p class="schQuesP1">End</p>
@@ -843,7 +843,7 @@
                         <!-- Residency Check -->
                         <div v-show="residencyCheck == 0">
                             <p class="contentTitle">
-                                Did you attended residency?
+                                Have you completed your residency program?
                             </p>
 
                             <div class="radioBtnMainDiv">
@@ -879,7 +879,7 @@
                                 <div class="row formContainDiv">
                                     <div class="input-field col s12">
                                         <input
-                                            placeholder="What Institution did you attend"
+                                            placeholder="Name of institution?"
                                             type="text"
                                             class="validate formInput"
                                             v-model="residency.institution"
@@ -898,7 +898,7 @@
                                 <div class="row formInnerDiv">
                                     <div class="col s6">
                                         <p class="schQuesP">
-                                            When did you start
+                                            When did you start?
                                         </p>
                                         <div class="row spaceAround">
                                             <div class="col s3">
@@ -932,7 +932,7 @@
                                     </div>
 
                                     <div class="col s5">
-                                        <p class="schQuesP">When did you end</p>
+                                        <p class="schQuesP">When did you end?</p>
                                         <div class="row spaceAround">
                                             <div class="col s2">
                                                 <p class="schQuesP1">End</p>
@@ -978,7 +978,7 @@
                                 <div class="row formContainDiv">
                                     <div class="input-field col s12">
                                         <input
-                                            placeholder="What hospital/medical/institutions"
+                                            placeholder="Name of hospital/medical establishment?"
                                             type="text"
                                             class="validate formInput"
                                             v-model="experiences.institution"
@@ -996,7 +996,7 @@
                                 <div class="row formContainDiv">
                                     <div class="input-field col s12">
                                         <input
-                                            placeholder="What is the location"
+                                            placeholder="Where is the location?"
                                             type="text"
                                             class="validate formInput"
                                             v-model="experiences.location"
@@ -1014,7 +1014,7 @@
                                 <div class="row formContainDiv">
                                     <div class="input-field col s12">
                                         <input
-                                            placeholder="What is your position"
+                                            placeholder="What is your position?"
                                             type="text"
                                             class="validate formInput"
                                             v-model="experiences.position"
@@ -1032,7 +1032,7 @@
                                 <div class="row formInnerDiv">
                                     <div class="col s6">
                                         <p class="schQuesP">
-                                            When did you start
+                                            When did you start?
                                         </p>
                                         <div class="row spaceAround">
                                             <div class="col s3">
@@ -1066,7 +1066,7 @@
                                     </div>
 
                                     <div class="col s5">
-                                        <p class="schQuesP">When did you end</p>
+                                        <p class="schQuesP">When did you end?</p>
                                         <div class="row spaceAround">
                                             <div class="col s2">
                                                 <p class="schQuesP1">End</p>
@@ -1102,7 +1102,7 @@
 
                         <div v-show="experienceCheck == 4">
                             <p class="contentTitle">
-                                Do you want to add more experience
+                                Do you want to add more experience?
                             </p>
                             <div class="radioBtnMainDiv">
                                 <p>
@@ -1133,7 +1133,7 @@
                     <div v-show="view == 9">
                         <div v-show="addQualificaion == 0">
                             <p class="contentTitle">
-                                Do you have additional academic qualifications
+                                Do you have additional academic qualifications?
                             </p>
                             <div class="radioBtnMainDiv">
                                 <p>
@@ -1168,7 +1168,7 @@
                                 <div class="row formContainDiv">
                                     <div class="input-field col s12">
                                         <input
-                                            placeholder="What institution"
+                                            placeholder="Name of institution?"
                                             type="text"
                                             class="validate formInput"
                                             v-model="additionalSchool.institution"
@@ -1187,7 +1187,7 @@
                                 <div class="row formContainDiv">
                                     <div class="input-field col s12">
                                         <input
-                                            placeholder="What degree"
+                                            placeholder="What was your degree?"
                                             type="text"
                                             class="validate formInput"
                                             v-model="additionalSchool.degree"
@@ -1206,7 +1206,7 @@
                                 <div class="row formInnerDiv">
                                     <div class="col s6">
                                         <p class="schQuesP">
-                                            When did you start
+                                            When did you start?
                                         </p>
                                         <div class="row spaceAround">
                                             <div class="col s3">
@@ -1240,7 +1240,7 @@
                                     </div>
 
                                     <div class="col s6">
-                                        <p class="schQuesP">When did you end</p>
+                                        <p class="schQuesP">When did you end?</p>
                                         <div class="row spaceAround">
                                             <div class="col s2">
                                                 <p class="schQuesP1">End</p>
@@ -1360,11 +1360,11 @@
 
                     <!-- Publish Section -->
                     <div v-show="view == 11">
-                        <p class="contentTitle" v-if="!showGoLiveBtns">
+                        <div class="contentTitle" v-if="!showGoLiveBtns">
                             <span class="serviceSuccessTxt">Congrats!</span>
                             Your site has been setup successfully! <span class="serviceSuccessTxt">Hooray!</span>
                             <p class="timer">Redirecting you to your site in {{ countdown }}s</p>
-                        </p>
+                        </div>
 
                         <div class="row serviceBtnRowDiv" v-if="showGoLiveBtns">
                             <div class="col s5 m4 offset-s1 offset-m2">
@@ -1820,11 +1820,11 @@
         mounted() {
             this.getTenantNDomain();
             document.addEventListener('DOMContentLoaded', function() {
-                var elems = document.querySelector('#modal1');
+                let elems = document.querySelector('#modal1');
                 let options = {
                     dismissible: false,
                 }
-                var instances = M.Modal.init(elems, options);
+                let instances = M.Modal.init(elems, options);
             });
         },
         methods: {
@@ -1874,7 +1874,7 @@
                     .then((res) => {
                         console.log(res);
                         if (res.data.status == 200) {
-                            this.domainSelected = res.data.domain;
+                            this.domainSelected = `${res.data.domain}.com`;
                             this.initialDomain = res.data.domain;
                             this.tenantId = res.data.tenantID;
                         }
@@ -2154,7 +2154,6 @@
                 }
             },
             saveServiceOffered() {
-                console.log('hey');
                 if (
                     this.service.title != ''
                 ) {
@@ -2510,7 +2509,7 @@
                     }
                 }).catch(err => {
                     let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()
-                    var instance = M.Modal.getInstance(elem);
+                    let instance = M.Modal.getInstance(elem);
                     instance.close();
                     console.log(err);
                 })
