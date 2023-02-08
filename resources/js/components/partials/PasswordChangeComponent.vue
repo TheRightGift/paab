@@ -134,7 +134,7 @@
             changePassword() {
                 this.loading = !this.loading;
                 axios
-                    .patch("http://localhost:8000/api/changePassword", this.pass)
+                    .patch("/api/changePassword", this.pass)
                     .then((res) => {
                         if (res.data.error == 401) {
                             M.toast({
