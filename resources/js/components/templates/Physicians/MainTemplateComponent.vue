@@ -65,9 +65,9 @@
             social: String,
         },
         created() {
-            this.loggedIn = this.getCookie('_token');
+            this.loggedIn = this.preview === '0' && localStorage.getItem('roler') !== 'Admin' ? this.getCookie('_token') : false;
             if (this.loggedIn) {
-                localStorage.getItem('візіт') <= 1 ? location.href = `http://${location.host}/password_change` : null;
+                localStorage.getItem('візіт') <= 1 && localStorage.getItem(('візіт')) !== null ? location.href = `http://${location.host}/password_change` : null;
             }
         },
         mounted() {

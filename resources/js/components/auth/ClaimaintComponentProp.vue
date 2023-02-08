@@ -486,7 +486,7 @@
                                         <div class="row formContainDiv">
                                             <div class="input-field col s12">
                                                 <input
-                                                    placeholder="What was your degree?"
+                                                    placeholder="Specialization?"
                                                     type="text"
                                                     class="validate formInput"
                                                     v-model="medSchool.type"
@@ -2522,7 +2522,8 @@
                     }, 1000)
                 }
                 else {
-                    location.replace(`http://${this.domainSelected}.whitecoatdomain.com`);
+                    let domainSelected = this.domainSelected.replace('.com', '');
+                    location.replace(`http://${domainSelected}.whitecoatdomain.com`);
                 }
             }
         },

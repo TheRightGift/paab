@@ -9,9 +9,9 @@
                     <span class="primaryColorBoxDesign5"></span>
                 </h3>
 
-                <div v-if="preview != '1'" class="hide-on-large-only">
+                <div v-if="isLoggedIn" class="hide-on-large-only" >
                     <!-- Contact Modal Trigger -->
-                    <a class="modal-trigger contactEditBtn" href="#contactEditModal" v-if="isLoggedIn">
+                    <a class="modal-trigger contactEditBtn" href="#contactEditModal">
                         <i class="material-icons editIcon">edit</i>
                     </a>
 

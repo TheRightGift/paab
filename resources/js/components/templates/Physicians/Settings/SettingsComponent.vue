@@ -192,6 +192,7 @@
                             // }
                             // else
                             this.loading = false;
+                            localStorage.setItem('roler', role);
                             role === 'Admin' ? location.reload() : window.location.href = `http://${location.host}`;
                             // location.reload();
                             // this.loggedIn = true;

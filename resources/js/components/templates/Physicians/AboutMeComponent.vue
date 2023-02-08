@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col s12 rm_mg_pd">
                 <div class="section scrollspy physiContainerDiv" id="about">
-                    <div v-if="bio === null && preview === '1'">
+                    <div v-if="preview === '1'">
                         <div class="row about">
                             <div class="col s12 m6 l6 profileDesc">
                                 <div class="containerDiv">
@@ -72,7 +72,12 @@
                                     </h3>
 
                                     <p class="physiSummaryTxt">
-                                        {{ bio.about }}
+                                        <span v-if="bio.about !== null">{{ bio.about }}</span>
+                                        <span v-else>
+                                            Dr. {{ user.firstname ?? 'John' }} {{user.lastname ?? 'Doe'}} is an expert in Aestheistiologist with an M.D. from Pittsburgh School of Medicine and an undergraduate degree in Sociology from the University of Michigan- Ann Arbor.
+                                            She started out as an intern at the UPMC Shadyside hospital, then proceeded to Brigham and Women’s Hospital for her residency.
+                                            With more than 10 years of experience as an anaesthesiologist, she has dedicated years to patient care throughout every surgical experience.
+                                        </span>
                                     </p>
 
 <!--                                    <p class="center-align">-->
@@ -92,7 +97,7 @@
 
                             <div class="col s12 m6 l6 profileImgContainer">
                                 <!-- offset-l3 media/img/doc.png-->
-                                <div class="profileImg" v-if="preview === '0' && bio !== null">
+                                <div class="profileImg" v-if="bio !== null">
                                     <img
                                         :src="typeof about.photo == 'string'
                                             ? '/media/tenants/'+tenant+'/img/'+ about.photo
@@ -123,7 +128,7 @@
                         <i class="material-icons">keyboard_arrow_left</i>
                     </a>
                     <form enctype="multipart/form-data">
-                        <div class="aboutImgModalDiv" v-if="isLoggedIn">
+                        <div class="aboutImgModalDiv" v-if="bio !== null">
                             <img
                                 alt="doc.png" class="responsive-img aboutImgModal"
                                 :src="
