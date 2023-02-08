@@ -521,7 +521,6 @@ class TenantClaimController extends Controller
         $servicesDb = DB::table('services')->first();
         $cvExperience = DB::table('c_v__experiences')->first();
         $publicFeaturingDb = DB::table('public_featurings')->latest()->get();
-//        $awardDb = DB::table('awards')->first();
         $pronoun = $user->gender !== null ? $user->gender === 'M' ? 'he' : 'she' : 'he';
         $address = $user->gender !== null ? $user->gender === 'M' ? 'his' : 'her' : 'his';
 
