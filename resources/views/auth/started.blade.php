@@ -19,7 +19,7 @@
     <meta content="400" property="og:image:height">
     <meta content="An image of the White Coat Domain logo" property="og:image:alt">
 
-    
+
     <title>{{env('APP_NAME')}}: White Coat Domain - Getting Started</title>
     <link rel="shortcut icon" href="{{ asset('/media/img/logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
@@ -28,18 +28,18 @@
 
 
     <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/claimantSetup.css') }}">
     <link rel="stylesheet" href="{{ asset('css/paab.css') }}">
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
-    <!-- <link rel="stylesheet" href="{{ asset('css/claimantSetup.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('fonts/material-icons.css') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-    <div id="app">       
+    <div id="app">
         <started-component claimant="{{session('userBiography')}}"></started-component>
     </div>
-    
+
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('js/materialize.min.js') }}"></script>

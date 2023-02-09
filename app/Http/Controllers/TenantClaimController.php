@@ -452,7 +452,6 @@ class TenantClaimController extends Controller
                 $orders->claimed = 1;
                 $tenantSave = $tenant->save();
                 $orderSave = $orders->save();
-                $this->generateIntro($tenant, $valueOfMail);
                 if ($tenantSave === true && $orderSave) {
                     $userToUpdate->plan = $request->plan == 'freemium' ? 'F' : 'P';
                     $userToUpdate->save();
@@ -463,9 +462,10 @@ class TenantClaimController extends Controller
                         'password' => $request->password,
                         'domain' => $request->domain,
                     ), function($message) use ($request) {
-                            $message->from('admin@whitecoatdomain.com');
-                            $message->to($request->session()->pull('email'), tenant('id'))->subject('Website is now live!');
-                        });
+                        $message->from('admin@whitecoatdomain.com');
+                        $message->to($request->session()->pull('email'), tenant('id'))->subject('Website is now live!');
+                    });
+                    $this->generateIntro($tenant, $valueOfMail);
                     Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 
                     DB::connection('mysql')->reconnect();

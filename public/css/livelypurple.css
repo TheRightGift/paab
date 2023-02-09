@@ -8,14 +8,14 @@
 }
 a.active {
     border-bottom: 4px solid var(--primary);
-    padding: 0em;
+    padding: 0;
 }
 
 nav {
     background-color: var(--white);
 }
 #nav-mobile.section {
-    padding-top: 1rem;
+    padding-top: 1rem !important;
 }
 .headerNoSideNav, .extHeaderNoSideNav {
     display: none;
@@ -112,7 +112,7 @@ a.physiTempContactBtn.active {
 .physiTempContactBtn:hover {
     background: #ffffff;
     color: var(--primary);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .profileImgContainer {
     display: flex;
@@ -122,11 +122,11 @@ a.physiTempContactBtn.active {
 }
 .profileImg {
     background: var(--primary);
-    box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     transform: rotate(-3.7deg);
-    width: 427.62px;
-    height: 479.96px;
+    width: 428px;
+    height: 480px;
     /* position: absolute;
     top: 20vh;
     right: 12vw; */
@@ -137,7 +137,7 @@ a.physiTempContactBtn.active {
     left: 33px;
     top: 30px;
     border-radius: 10px;
-    box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.25);
     transform: rotate(1.5deg);
 }
 
@@ -159,7 +159,7 @@ a.physiTempContactBtn.active {
     font-weight: 500;
     font-size: 1rem;
     line-height: 20px;
-    letter-spacing: 0.1px;
+    letter-spacing: 0;
     color: #000000;
     margin: 0 0 0 0.2vw;
 }
@@ -170,7 +170,7 @@ a.physiTempContactBtn.active {
     font-weight: 500;
     font-size: 2.5rem;
     line-height: 35px;
-    letter-spacing: 0.1px;
+    letter-spacing: 0;
     color: var(--primary);
     margin-top: 3vh;
     margin-bottom: 3vh;
@@ -182,7 +182,7 @@ a.physiTempContactBtn.active {
     font-weight: 400;
     font-size: 1rem;
     line-height: 20px;
-    letter-spacing: 0.1px;
+    letter-spacing: 0;
     color: rgba(0, 0, 0, 0.8);
 }
 
@@ -196,7 +196,7 @@ a.physiTempContactBtn.active {
     text-decoration: none;
     color: var(--primary);
     text-align: center;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
     cursor: pointer;
@@ -245,7 +245,7 @@ a.physiTempContactBtn.active {
     border-radius: 50%;
     margin: 0 auto;
     background: var(--primary);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -259,7 +259,7 @@ a.physiTempContactBtn.active {
     line-height: 20px;
     align-items: center;
     text-align: center;
-    letter-spacing: 0.1px;
+    letter-spacing: 0;
     color: #000000;
 }
 
@@ -1120,7 +1120,7 @@ a.physiTempContactBtn.active {
         padding: 0.3vh 2vw;
     }
     div.editWriteUpsSaveBtnDiv {
-        margin-top: 0vh;
+        margin-top: 0;
     }
 
     /* Service edit modal */
