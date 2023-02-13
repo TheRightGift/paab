@@ -187,19 +187,18 @@
                     .then((res) => {
                         if (res.data.status == 201) {
                             localStorage.setItem('візіт', visits + 1);
-                            // if (localStorage.getItem('візіт') != null){
-                            //     localStorage.getItem('візіт') + 1;
-                            // }
-                            // else
                             this.loading = false;
-                            localStorage.setItem('roler', role);
                             role === 'Admin' ? location.reload() : window.location.href = `http://${location.host}`;
-                            // location.reload();
-                            // this.loggedIn = true;
                         }
                     })
                     .catch((err) => {
-                        console.log(err);
+                        console.log(err.response);
+                        if (err.response.status === 401) {
+                            M.toast({
+                                html: err.response.data.message,
+                                classes: 'errorNotifier'
+                            })
+                        } 
                         this.loading = false;
                     });
             },
