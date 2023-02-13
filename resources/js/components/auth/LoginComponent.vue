@@ -202,7 +202,7 @@
                                         2
                                     );
                                     window.location.href = "/dashboard";
-                                } else if (res.data.status == 501) {
+                                } else if (res.data.status == 404) {
                                     M.toast({
                                         html: res.data.error,
                                         classes: "errorNotifier",

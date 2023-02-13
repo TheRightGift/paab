@@ -53,6 +53,7 @@
                 loading: false,
                 location: "",
                 loggedIn: false,
+                initialCheck: false,
             };
         },
         props: {
@@ -65,10 +66,7 @@
             social: String,
         },
         created() {
-            this.loggedIn = this.preview === '0' && localStorage.getItem('roler') !== 'Admin' ? this.getCookie('_token') : false;
-            if (this.loggedIn) {
-                localStorage.getItem('візіт') <= 1 && localStorage.getItem(('візіт')) !== null ? location.href = `http://${location.host}/password_change` : null;
-            }
+            this.checkAuth();
         },
         mounted() {
             if (this.preview == '0') {
@@ -83,6 +81,33 @@
             this.location = window.location.href // For absolute pathing
         },
         methods: {
+            checkAuth() {
+                this.initialCheck = true;
+                const _token = ("; " + document.cookie)
+                    .split(`; _token=`)
+                    .pop()
+                    .split(";")[0];
+                if (_token == "") {
+                    this.initialCheck = false;
+                    this.loggedIn = false;
+                } else {
+                    axios
+                        .post("/api/verifyToken", { accessToken: _token })
+                        .then((res) => {
+                            if (res.data.status == 401) {
+                                this.loggedIn = false;
+                                this.initialCheck = false;
+                            } else if (res.data.status == 200) {
+                                this.initialCheck = false;
+                                this.loggedIn = true;
+                            }
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            this.initialCheck = false;
+                        });
+                }
+            },
             getCookie(name) {
                 return document.cookie.split(";").some((c) => {
                     return c.trim().startsWith(name + "=");
