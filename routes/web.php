@@ -61,23 +61,23 @@ Route::prefix('auth')->group(function () {
             return redirect('/dashboard');
         } else {
             return view('auth.login');
-        }    
+        }
     });
     Route::get('/resetpassword', function () {
         if (Auth::user()) {
             return redirect('/dashboard');
         } else {
             return view('auth.resetpassword');
-        }    
+        }
     });
 });
-// 'auth', 
+// 'auth',
 Route::prefix('client')->middleware(['auth', 'can:run_client_ops'])->group(function () {
     Route::get('/websites', function () {
         return view('client.websites');
     }); //->middleware('can:run_client_ops')
     Route::get('/dashboard', [App\Http\Controllers\TenantController::class, 'claim']);
-        
+
     Route::get('/mail', function () {
         return view('client.mail');
     });
@@ -87,7 +87,7 @@ Route::prefix('client')->middleware(['auth', 'can:run_client_ops'])->group(funct
     Route::get('/support', function () {
         return view('client.support');
     });
-    
+
     Route::get('/singlemail', function () {
         return view('client.singlemail');
     });
@@ -206,5 +206,7 @@ Route::post('claim/successdomainregistra', [TenantClaimController::class, 'sendM
 
 
 
-
-
+Route::post('/subscription/create', [App\Http\Controllers\SubscriptionController::class, 'subscribe']);
+Route::get('/testModal', function(){
+    return view('test');
+});

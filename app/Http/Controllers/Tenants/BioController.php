@@ -38,7 +38,7 @@ class BioController extends Controller
             'lastname' => 'nullable',
             'firstname' => 'nullable',
             // 'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
-            'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=451,min_height=512',
+            'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:width=451,height=512',
         ]);
 
         if ($inputs->fails()) {
@@ -88,7 +88,7 @@ class BioController extends Controller
             'firstname' => 'nullable',
             'lastname' => 'nullable',
             'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
-            'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=500,min_height=500',
+            'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=451,min_height=512,max_width=451,max_height=512',
         ]);
 
         if ($inputs->fails()) {

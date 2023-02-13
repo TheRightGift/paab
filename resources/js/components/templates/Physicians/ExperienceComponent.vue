@@ -51,13 +51,21 @@
         </div>
         <div v-show="experience != null">
             <div class="row noMarginBottom">
-                <div class="col s12">
+                <div class="col s12 serviceHeading">
                     <h3 class="title">
                         MY EXPERIENCE
                         <span class="primaryColorBoxDesign2"></span>
                     </h3>
-                    <p class="expMainTitle">Experience</p>
-                    <p class="expMainTxt">MY ACHIEVEMENT</p>
+                    <div>
+                        <p class="expMainTitle">Experience</p>
+                        <p class="expMainTxt">MY ACHIEVEMENT</p>
+                    </div>
+                    <div class="">
+                        <!-- About Edit Img Modal Trigger -->
+                        <a class="modal-trigger iconBox" href="#experienceUpdate" v-if="isLoggedIn">
+                            <i class="material-icons editIcon">edit</i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -71,12 +79,6 @@
                             alt="physicianTemplate.png" class="bannerImg"
                             v-else-if="promo != ''"
                         >
-                        <div class="hide-on-large-only">
-                            <!-- About Edit Img Modal Trigger -->
-                            <a class="modal-trigger aboutImgEditBtn" href="#experienceUpdate" v-if="isLoggedIn">
-                                <i class="material-icons editIcon">edit</i>
-                            </a>
-                        </div>
                     </div>
                     <div class="col s12 m12 l2">
                         <div class="row expLeftBarDiv experiences">

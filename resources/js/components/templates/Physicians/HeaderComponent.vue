@@ -15,21 +15,55 @@
                     <li>
                         <a href="#services" class="physiTempNavLinks">Services</a>
                     </li>
-                    <li>
+                    <li v-if="(achievement !== null && preview === '0') || preview === '1'">
                         <a href="#experience" class="physiTempNavLinks"
                         >Experience</a
                         >
                     </li>
-                    <li><a href="#feeds" class="physiTempNavLinks">Feeds</a></li>
-                    <li>
+                    <li v-if="(feeds !== null && feeds !== '' && preview === '0') || preview === '1'"><a href="#feeds" class="physiTempNavLinks">Feeds</a></li>
+                    <!-- <li>
                         <a href="#testimonials" class="physiTempNavLinks"
                         >Testimonials</a
                         >
-                    </li>
+                    </li> -->
                     <li>
                         <a href="#contact" class="physiTempContactBtn"
                         >Contact Me</a
                         >
+                    </li>
+                    <li v-if="isLoggedIn">
+                        <a class='dropdown-trigger physiTempSettingsNavLink' href='#' data-target='dropSettings'>
+                            <i class="material-icons physiTempSettingsIcon">settings</i>
+                        </a>
+                    </li>
+                </ul>
+                <ul id='dropSettings' class='dropdown-content'>
+                    <li>
+                        <a href="/general" class="dropSetLink">General</a>
+                    </li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li>
+                        <a href="/biography" class="dropSetLink">Bio</a>
+                    </li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li>
+                        <a href="/milestones" class="dropSetLink">Milestones</a>
+                    </li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li>
+                        <a href="/public_feature" class="dropSetLink">Public Features</a>
+                    </li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li>
+                        <a href="#!" class="dropSetLink">Services</a>
+                    </li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li>
+                        <a href="/socialmedia_presence" class="dropSetLink">Social Media</a>
+                    </li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li>
+                        <a href="#!" class="dropSetLink">CV Generator</a>
                     </li>
                 </ul>
             </div>
@@ -96,13 +130,13 @@
                     </li>
                     <li v-if="(achievement !== null && preview === '0') || preview === '1'">
                             <a href="#experience">Experience</a>
-                        </li>
+                    </li>
+                    <li v-if="(feeds !== null && feeds !== '' && preview === '0') || preview === '1'">
+                        <a href="#feeds">Feeds</a>
+                    </li>
                     <!-- <li>
                             <a href="#testimonials">Testimonials</a>
                         </li> -->
-                     <li v-if="(feeds !== null && feeds !== '' && preview === '0') || preview === '1'">
-                        <a href="#feeds">Feeds</a>
-                    </li>
                     <li>
                         <a href="#contact" class="mobileNavLink">Contact</a>
                     </li>

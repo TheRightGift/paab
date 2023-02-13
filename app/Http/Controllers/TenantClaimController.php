@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -446,6 +447,7 @@ class TenantClaimController extends Controller
             $orders = AdminClientOrder::where([['tenant_id', $value], ['claimed', null], ['email', $valueOfMail]])->first();
             if (!empty($orders)) {
                 $userToUpdate = User::where('email', $valueOfMail)->first();
+//                Auth::loginUsingId($userToUpdate->id, true);
                 $authUser = $userToUpdate->id;
                 $tenant = Tenant::find($value);
                 $tenant->user_id = $authUser;
@@ -474,7 +476,7 @@ class TenantClaimController extends Controller
                     if ($tenantUser != null) {
                         DB::table('tenant_users')->where('user_id', '!=' , null )->update(['user_id' => $authUser]);
                         $request->session()->pull('email', 'default');
-                        return response()->json(['message' => 'You have successfully setup your website'], 201);
+                        return response()->json(['message' => 'You have successfully setup your website', 'user' => $authUser], 201);
                     }
                 }
             }

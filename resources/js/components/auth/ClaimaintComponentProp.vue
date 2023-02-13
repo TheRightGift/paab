@@ -1699,16 +1699,19 @@
             </div>
         </div>
         </div>
+        <PaymentModalComponent :setModal="setModal" :user="user" @countDown="timerStart($event)"/>
     </div>
 </template>
 <script>
     import InnerFooter from "../partials/InnerFooterComponent.vue";
     import DatePicker from 'vue-datepicker-next';
     import 'vue-datepicker-next/index.css';
+    import PaymentModalComponent from "../partials/PaymentModalComponent.vue";
     export default {
         components: {
+            PaymentModalComponent,
             InnerFooter,
-            DatePicker
+            DatePicker,
         },
 
         data() {
@@ -1821,7 +1824,8 @@
                 experienceCheck: 0,
                 addQualificaion: 0,
                 servicesCheck: 0,
-
+                setModal: false,
+                user: 0,
             };
         },
         mounted() {
@@ -2494,6 +2498,10 @@
             next10() {
                 this.academicCheck = 1;
             },
+            timerStart(e) {
+                this.showGoLiveBtns = false;
+                this.countdownTimer();
+            },
             sendEmail(val) {
                 /**
                  * What this does is to get the saved dummy password for the user and whatever plan he chose and send details
@@ -2509,11 +2517,19 @@
                         });
                         localStorage.removeItem('claimproc');
                         localStorage.removeItem('passwordGen');
-                        this.showGoLiveBtns = false;
                         let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()
-                        var instance = M.Modal.getInstance(elem);
+                        let paymentModal = document.getElementById('paymentModal');
+                        let instance = M.Modal.getInstance(elem);
+                        let paymentModalInstance = M.Modal.getInstance(paymentModal);
                         instance.close();
-                        this.countdownTimer();
+                        if (val === 'premium') {
+                            this.user = res.data.user;
+                            this.setModal = true;
+                            paymentModalInstance.open();
+                        }
+                        else {
+                            this.timerStart();
+                        }
                     }
                 }).catch(err => {
                     let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()

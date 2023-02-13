@@ -63,9 +63,9 @@
                                                 class="primaryColorBoxDesign"
                                             ></span>
                                         </span>
-                                        <span class="hide-on-large-only physiTempNameEdit">
+                                        <span class="physiTempNameEdit">
                                             <!-- About WriteUp Modal Trigger -->
-                                            <a class="modal-trigger aboutWriteUpsEditBtn" href="#aboutWriteUpsEditModal" v-if="isLoggedIn">
+                                            <a class="modal-trigger iconBox" href="#aboutWriteUpsEditModal" title="Edit Name and Description" v-if="isLoggedIn">
                                                 <i class="material-icons editIcon">edit</i>
                                             </a>
                                         </span>
@@ -106,7 +106,7 @@
                                         class="responsive-img physiRightImg"
                                     />
 
-                                    <div class="hide-on-large-only">
+                                    <div class="">
                                         <!-- About Edit Img Modal Trigger -->
                                         <a class="modal-trigger aboutImgEditBtn" href="#aboutImgEditModal" v-if="isLoggedIn">
                                             <i class="material-icons editIcon">edit</i>
@@ -249,35 +249,43 @@ export default {
                 });
         },
         updateAbout() {
-            this.loading = !this.loading;
-            let formData = new FormData();
-            formData.append("firstname", this.about.name.split(" ")[0]);
-            formData.append("othername", this.about.name.split(" ")[2]);
-            formData.append("lastname", this.about.name.split(" ")[1]);
-            formData.append("about", this.about.about);
-            formData.append("_method", 'PUT');
-            axios
-                .post(`/api/bio/${this.bio.id}`, formData)
-                .then((res) => {
-                    if (res.data.status == 200) {
-                        M.toast({
-                            html: res.data.message,
-                            classes: "successNotifier",
-                        });
-                        this.loading = !this.loading;
-                    }
-                })
-                .catch((err) => {
-                    this.loading = !this.loading;
-                    if (err.response.status == 400) {
-                        err.response.data.forEach((el) => {
+            if (this.aboutCount === 614 || this.aboutCount > 600) {
+                let formData = new FormData();
+                this.loading = !this.loading;
+                formData.append("firstname", this.about.name.split(" ")[0]);
+                formData.append("othername", this.about.name.split(" ")[2]);
+                formData.append("lastname", this.about.name.split(" ")[1]);
+                formData.append("about", this.about.about);
+                formData.append("_method", 'PUT');
+                axios
+                    .post(`/api/bio/${this.bio.id}`, formData)
+                    .then((res) => {
+                        if (res.data.status == 200) {
                             M.toast({
-                                html: el,
-                                classes: "errorNotifier",
+                                html: res.data.message,
+                                classes: "successNotifier",
                             });
-                        });
-                    }
-                });
+                            this.loading = !this.loading;
+                        }
+                    })
+                    .catch((err) => {
+                        this.loading = !this.loading;
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            }
+            else {
+                M.toast({
+                    html: 'The about you should be greater than 600 in lenght',
+                    classess: 'errorNotifier',
+                })
+            }
         }
     },
     props: {

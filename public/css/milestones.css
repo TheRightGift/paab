@@ -1,11 +1,213 @@
-:root {
-    --primary: #46166B;
-    --secondary: #46166B;
-    --black: #000000;
-    --white: #ffffff;
-    --gray: #a4a2a2;
-    --component: rgba(0, 0, 0, 0.5);
+.row .col {
+    padding: 0;
 }
+
+.primaryColorDiv {
+    background-color: var(--primary);
+    padding: 3vh 4vw 0 0;
+    height: 48vh;
+}
+
+.contentDiv {
+    background: var(--white);
+    background-image: url("../media/img/pageBoldLogo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 64vh;
+    border-radius: 0px 100px 0px 0px;
+    position: absolute;
+    top: 35.1vh;
+    padding-top: 9vh;
+}
+
+.headerDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.headerTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 2.2rem;
+    text-align: right;
+    text-transform: uppercase;
+    color: var(--white);
+    width: 60%;
+    margin: 0;
+}
+
+.contentTitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 24px;
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 3vh;
+    color: var(--black);
+}
+
+/* Prev/Next Button */
+.skipDiv {
+    display: flex;
+    justify-content: end;
+    margin-right: 4vw;
+    margin-top: 5vh;
+}
+
+button.skipBtn {
+    padding: 0 0.1vw;
+    border-radius: 50px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.skipTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: underline;
+    text-transform: uppercase;
+    margin: 0 2vw;
+    position: relative;
+    top: 0.5vh;
+}
+
+/* Form Styling */
+form.formContain {
+    width: 60%;
+    margin: auto;
+}
+
+input[type=number]:not(.browser-default) {
+    border-bottom: 2.5px solid var(--primary);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+    /* height: 2vh; */
+    padding: 0 1vw;
+}
+
+[type="radio"]:not(:checked)+span,
+[type="radio"]:checked+span {
+    position: relative;
+    padding-left: 29px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--black);
+}
+
+label.radioBtnLabel {
+    margin-right: 8vw;
+}
+
+[type="radio"].with-gap:checked+span:after {
+    background-color: var(--black);
+}
+
+[type="radio"]:not(:checked)+span:before,
+[type="radio"]:not(:checked)+span:after,
+[type="radio"].with-gap:checked+span:after,
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:before,
+[type="radio"].with-gap:checked+span:after {
+    border: 2px solid var(--black);
+}
+
+div.bannerImgDiv {
+    width: 1024px;
+    height: 512px;
+    border: 15px solid #d9d9d9;
+    margin: auto;
+}
+
+img.bannerImg {
+    width: 100%;
+    height: 100%;
+}
+
+p.bannerImgInstruct {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--black);
+}
+
+/* .file-path.validate.bannerImgInput {
+    border-bottom: none;
+}
+
+.file-path.validate.bannerImgInput::placeholder {
+    color: #808080;
+} */
+
+.file-field.input-field.col {
+    margin: 0;
+}
+
+/* .material-icons.bannerInputIcon {
+    color: #808080;
+    margin: 1vh 0 0 0;
+} */
+
+.milestoneCongratMsg {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-align: center;
+    color: #03915C;
+}
+
+a.btn.viewWebBtn {
+    background: #524988;
+    padding: 20px 24px;
+    line-height: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.viewWebBtnDiv {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.primaryColorDocsImgLarge {
+    height: 26vh;
+    position: absolute;
+    top: 9.1vh;
+    left: 4vw;
+}
+.contentInnerDiv {
+    width: 50%;
+    margin: auto;
+}
+
+a.proImgSelectFile {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: underline;
+    color: #808080;
+    position: relative;
+    bottom: 1vh;
+}
+.proInputFileUpladIcon {
+    position: relative;
+    top: 0.7vh;
+    color: #9e9c9f;
+}
+.upBannerDiv {
+    position: relative;
+    top: 2vh;
+    left: 2.5vw;
+}
+
 
 /* Media Query for Medium Devices */
 @media screen and (max-width: 992px) and (min-width: 640px) {
@@ -19,7 +221,7 @@
     }
     .contentDiv {
         background: var(--white);
-        background-image: url("../media/img/setupWeb/pageBoldLogo.png");
+        background-image: url("../media/img/pageBoldLogo.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -39,20 +241,22 @@
     .headerTitle {
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
-        font-size: 1.3rem;
+        font-size: 1.8rem;
         text-align: right;
         text-transform: uppercase;
         color: var(--white);
-        width: 80%;
+        width: 60%;
         margin: 0;
     }
     .primaryColorDocsImg {
         height: 22.5vh;
+        position: absolute;
+        top: 13vh;
     }
     .contentTitle {
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         line-height: 24px;
         text-align: center;
         text-transform: capitalize;
@@ -68,7 +272,7 @@
         margin-top: 5vh;
     }
     button.skipBtn {
-        padding: 0 0.5vw;
+        padding: 0 0.2vw;
         border-radius: 50px;
         background-color: transparent;
     }
@@ -84,16 +288,16 @@
     }
 
     /* Form Styling */
-    form.formContain {
-        width: 60%;
+    form.formContain, form.formContain1 {
+        width: 65%;
         margin: auto;
     }
     input[type=number]:not(.browser-default) {
         border-bottom: 2.5px solid var(--primary);
         font-family: 'Montserrat', sans-serif;
         font-weight: lighter;
-        height: 2vh;
-        padding: 3px 1vw;
+        /* height: 2vh; */
+        padding: 0 1vw;
     }
     [type="radio"]:not(:checked)+span,
     [type="radio"]:checked+span {
@@ -134,20 +338,21 @@
         font-weight: 500;
         font-size: 1rem;
         color: var(--black);
+        margin-left: 2vw;
     }
-    .file-path.validate.bannerImgInput {
+    /* .file-path.validate.bannerImgInput {
         border-bottom: none;
     }
     .file-path.validate.bannerImgInput::placeholder {
         color: #808080;
-    }
+    } */
     .file-field.input-field.col {
         margin: 0;
     }
-    .material-icons.bannerInputIcon {
+    /* .material-icons.bannerInputIcon {
         color: #808080;
         margin: 1vh 0 0 0;
-    }
+    } */
     .milestoneCongratMsg {
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
@@ -168,6 +373,33 @@
         align-items: center;
         margin-top: 5vh;
     }
+
+    .wcdMobileLogo {
+        width: 10vw;
+    }
+    .contentInnerDiv {
+        width: 80%;
+        margin: auto;
+    }
+    a.proImgSelectFile {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        text-decoration: underline;
+        color: #808080;
+        position: relative;
+        bottom: 1vh;
+    }
+    .proInputFileUpladIcon {
+        position: relative;
+        top: 0.6vh;
+        color: #9e9c9f;
+    }
+    .upBannerDiv {
+        position: relative;
+        top: 1.5vh;
+        left: 2.5vw;
+    }
 }
 
 /* Media Query for Small Devices */
@@ -182,7 +414,7 @@
     }
     .contentDiv {
         background: var(--white);
-        background-image: url("../media/img/setupWeb/pageBoldLogo.png");
+        background-image: url("../media/img/pageBoldLogo.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -215,7 +447,7 @@
     .contentTitle {
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         line-height: 24px;
         text-align: center;
         text-transform: capitalize;
@@ -247,7 +479,7 @@
     }
 
     /* Form Styling */
-    form.formContain {
+    form.formContain, form.formContain1 {
         width: 85%;
         margin: auto;
     }
@@ -255,8 +487,8 @@
         border-bottom: 2.5px solid var(--primary);
         font-family: 'Montserrat', sans-serif;
         font-weight: lighter;
-        height: 2vh;
-        padding: 3px 1vw;
+        /* height: 2vh; */
+        padding: 0 1vw;
     }
     [type="radio"]:not(:checked)+span,
     [type="radio"]:checked+span {
@@ -299,19 +531,19 @@
         font-size: 0.8rem;
         color: var(--black);
     }
-    .file-path.validate.bannerImgInput {
+    /* .file-path.validate.bannerImgInput {
         border-bottom: none;
     }
     .file-path.validate.bannerImgInput::placeholder {
         color: #808080;
-    }
+    } */
     .file-field.input-field.col {
         margin: 0;
     }
-    .material-icons.bannerInputIcon {
+    /* .material-icons.bannerInputIcon {
         color: #808080;
         margin: 1vh 0 0 0;
-    }
+    } */
     .milestoneCongratMsg {
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
@@ -331,5 +563,28 @@
         /* justify-content: center; */
         align-items: center;
         margin-top: 5vh;
+    }
+    .contentInnerDiv {
+        width: 100%;
+        margin: 0;
+    }
+    a.proImgSelectFile {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        text-decoration: underline;
+        color: #808080;
+        position: relative;
+        bottom: 1vh;
+    }
+    .proInputFileUpladIcon {
+        position: relative;
+        top: 0.6vh;
+        color: #9e9c9f;
+    }
+    .upBannerDiv {
+        position: relative;
+        top: 1vh;
+        left: 2.5vw;
     }
 }

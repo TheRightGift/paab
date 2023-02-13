@@ -5,15 +5,19 @@
                 <div class="primaryColorDiv">
                     <div class="headerDiv">
                         <a href="/">
-                            <img src="/media/img/wcdMobileLogo.png" alt="wcdMobileLogo.png">
+                            <img src="/media/img/wcdMobileLogo.png" alt="wcdMobileLogo.png" class="hide-on-large-only wcdMobileLogo">
+                            <img src="/media/img/wcdMobileLogoLarge.png" alt="wcdMobileLogoLarge.png" class="hide-on-med-and-down">
                         </a>
                         <p class="headerTitle">
                             It is time for the world
                             to hear your pulse
                         </p>
                     </div>
-                    <div>
+                    <div class="hide-on-large-only">
                         <img src="/media/img/3dDoctors.png" alt="3dDoctors.png" class="primaryColorDocsImg">
+                    </div>
+                    <div class="hide-on-med-and-down">
+                        <img src="/media/img/3dDoctorsLarge.png" alt="3dDoctorsLarge.png" class="primaryColorDocsImgLarge">
                     </div>
                 </div>
             </div>
@@ -36,12 +40,12 @@
                         </form>
                     </div>
 
-                    <div v-show="view === 1">
+                    <div v-show="view === 1" class="flexedOnLarge">
                         <p class="contentTitle">Do you like this picture as your main image?</p>
 
                         <div class="proImgDiv">
                             <img v-if="false" src="/media/img/profilePics.png" alt="profilePics.png" class="proImg">
-                            <img :src="typeof bio.photo === 'string'
+                            <img :src="typeof photo === 'string'
                                         ? '/media/tenants/' +
                                           tenantid +
                                           '/img/' +
@@ -50,15 +54,17 @@
                         </div>
 
                         <div class="proImgBtnMainDiv">
+                            <div class="centered">
+                                <div v-if="errors.length > 0" >
+                                    <p class="error" v-for="(error, index) in errors" :key="index">{{error}}</p>
+                                </div>
+                            </div>
                             <form class="proImgBtnContainDiv" v-if="!uploadPhotoProcessing">
                                 <a href="#" class="proImgYesBtn" @click="yesProImg()">Yes</a>
                                 <input type="file" id="actual-btn" hidden @change="updatePhoto" accept=".jpg, .png"/>
 
                                 <!--our custom file upload button-->
                                 <div class="centered">
-                                    <div v-if="errors.length > 0" >
-                                        <p class="error" v-for="(error, index) in errors" :key="index">{{error}}</p>
-                                    </div>
                                     <div>
                                         <label for="actual-btn" class="proImgSelectFile" >Change Image<i class="material-icons proInputFileUpladIcon">file_upload</i></label>
                                     </div>
@@ -172,20 +178,20 @@ export default {
             })
         },
         updatePhoto(e) {
-
+                this.errors = [];
                 this.uploadPhotoProcessing = true;
                 let formData = new FormData();
                 formData.append('photo', e.target.files[0]);
                 this.update === 1 ? formData.append('_method', 'PUT') : null;
                 let request = this.update === 1 ? `/api/bio/${this.bio.id}` : '.api/bio';
                 axios.post(request, formData).then(res => {
-                    console.log(res);
                     if (res.data.status === 200 || res.data.status === 201) {
                         M.toast({
                             html: res.data.message,
                             classes: "successNotifier",
                         });
-                        this.photo = res.data.bio.photo;
+                        this.photo = e.target.files[0];
+                        this.uploaded = URL.createObjectURL(e.target.files[0]);
                         this.uploadPhotoProcessing = false;
                     }
                 }).catch(err => {
