@@ -237,32 +237,39 @@ class TenantController extends Controller
         } else {
             $input = $inputs->validated();
             $tenantUser = new TenantUser();
-            $tenant = $tenantUser->where('user_id', $input['user_id'])->latest()->first();
-            $locator = $this->locator();
-            $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-            if ($tenant != null) {
-                $tenant->user_id = $input['user_id'];
-                $tenant->accessToken = $input['accessToken'];
-                $tenant->save();
-                (new User)->forceFill([
-                    'email' => $input['email'],
-                ])->notify(new LoginNotifier($this->locator(), $hostname));
-                if ($tenant == true) {
-                    return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
+            // Check that the userID matches the userId of the tenant trying to login
+            $userTenant = tenant();
+            if ($userTenant->user_id === $input['user_id']) {
+                $tenant = $tenantUser->where('user_id', $input['user_id'])->latest()->first();
+                $locator = $this->locator();
+                $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+                if ($tenant !== null) {
+                    $tenant->accessToken = $input['accessToken'];
+                    $tenant->save();
+                    (new User)->forceFill([
+                        'email' => $input['email'],
+                    ])->notify(new LoginNotifier($this->locator(), $hostname));
+                    if ($tenant == true) {
+                        return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
+                    }
                 }
-            }
-            elseif ($tenant == null) {
-                $tenantUser->user_id = $input['user_id'];
-                $tenantUser->accessToken = $input['accessToken'];
-                $tenantUser->save();
+                elseif ($tenant === null) {
+                    $tenantUser->user_id = $input['user_id'];
+                    $tenantUser->accessToken = $input['accessToken'];
+                    $tenantUser->save();
 
-                (new User)->forceFill([
-                    'email' => $input['email'],
-                ])->notify(new LoginNotifier($this->locator(), $hostname));
-                if ($tenantUser == true) {
-                    return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
+                    (new User)->forceFill([
+                        'email' => $input['email'],
+                    ])->notify(new LoginNotifier($this->locator(), $hostname));
+                    if ($tenantUser == true) {
+                        return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
+                    }
                 }
             }
+            else {
+                return response()->json(['message' => 'Invalid Credentials, Please check your account to verify details', 'status' => 401], 401);
+            }
+            
         }
     }
 

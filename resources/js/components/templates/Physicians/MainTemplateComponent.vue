@@ -94,6 +94,7 @@
                     axios
                         .post("/api/verifyToken", { accessToken: _token })
                         .then((res) => {
+                            console.log(res)
                             if (res.data.status == 401) {
                                 this.loggedIn = false;
                                 this.initialCheck = false;
