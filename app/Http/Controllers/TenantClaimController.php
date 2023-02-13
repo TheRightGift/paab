@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -446,13 +447,13 @@ class TenantClaimController extends Controller
             $orders = AdminClientOrder::where([['tenant_id', $value], ['claimed', null], ['email', $valueOfMail]])->first();
             if (!empty($orders)) {
                 $userToUpdate = User::where('email', $valueOfMail)->first();
+//                Auth::loginUsingId($userToUpdate->id, true);
                 $authUser = $userToUpdate->id;
                 $tenant = Tenant::find($value);
                 $tenant->user_id = $authUser;
                 $orders->claimed = 1;
                 $tenantSave = $tenant->save();
                 $orderSave = $orders->save();
-                $this->generateIntro($tenant, $valueOfMail);
                 if ($tenantSave === true && $orderSave) {
                     $userToUpdate->plan = $request->plan == 'freemium' ? 'F' : 'P';
                     $userToUpdate->save();
@@ -463,9 +464,10 @@ class TenantClaimController extends Controller
                         'password' => $request->password,
                         'domain' => $request->domain,
                     ), function($message) use ($request) {
-                            $message->from('admin@whitecoatdomain.com');
-                            $message->to($request->session()->pull('email'), tenant('id'))->subject('Website is now live!');
-                        });
+                        $message->from('admin@whitecoatdomain.com');
+                        $message->to($request->session()->pull('email'), tenant('id'))->subject('Website is now live!');
+                    });
+                    $this->generateIntro($tenant, $valueOfMail);
                     Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 
                     DB::connection('mysql')->reconnect();
@@ -474,7 +476,7 @@ class TenantClaimController extends Controller
                     if ($tenantUser != null) {
                         DB::table('tenant_users')->where('user_id', '!=' , null )->update(['user_id' => $authUser]);
                         $request->session()->pull('email', 'default');
-                        return response()->json(['message' => 'You have successfully setup your website'], 201);
+                        return response()->json(['message' => 'You have successfully setup your website', 'user' => $authUser], 201);
                     }
                 }
             }

@@ -90,43 +90,47 @@
                 <div v-else-if="services != null || services.length !== 0">
                     <div class="row whatIdoTxtRowDiv">
                         <div class="col s12">
-                            <p class="servicesMainTitle">Services</p>
-                            <p class="servicesWhatIdo">WHAT I DO</p>
-                            <h3 class="title">
-                                WHAT I DO
-                                <span class="primaryColorBoxDesign1"></span>
-                            </h3>
-                            <div class="hide-on-large-only">
-                                <!-- Services Modal Trigger -->
-                                <a class="modal-trigger servicesEditBtn" href="#servicesEditModal" v-if="isLoggedIn">
-                                    <i class="material-icons editIcon">edit</i>
-                                </a>
+                            <div class="serviceHeading">
+                                <div>
+                                    <p class="servicesMainTitle">Services</p>
+                                    <p class="servicesWhatIdo">WHAT I DO</p>
+                                </div>
+                                <h3 class="title">
+                                    WHAT I DO
+                                    <span class="primaryColorBoxDesign1"></span>
+                                </h3>
+                                <div class="">
+                                    <!-- Services Modal Trigger -->
+                                    <a class="modal-trigger iconBox" href="#servicesEditModal" v-if="isLoggedIn">
+                                        <i class="material-icons editIcon">edit</i>
+                                    </a>
+                                </div>
                             </div>
 
-                        </div>
-                        <div :class="{ flexed: services.length <= 2 }" class="servicesRw">
-                            <div
-                                class="col s12 m4 l4"
-                                v-for="(service, index) in services"
-                                :key="service.id"
-                            >
-                                <h5 class="servcesHeading forSurgeon">
-                                    <span class="whatIdoServiceTitleNum">0{{index}}.</span>
-                                    {{ service.title }}
-                                </h5>
-                                <div class="servicesIconsDiv">
-                                    <i
-                                        class="
-                                            fa-solid fa-briefcase-medical
-                                            servicesIcons1
-                                        "
-                                        :class="service.icon"
-                                    ></i>
+                            <div :class="{ flexed: services.length <= 2 }" class="servicesRw">
+                                <div
+                                    class="col s12 m4 l4"
+                                    v-for="(service, index) in services"
+                                    :key="service.id"
+                                >
+                                    <h5 class="servcesHeading forSurgeon">
+                                        <span class="whatIdoServiceTitleNum">0{{index}}.</span>
+                                        {{ service.title }}
+                                    </h5>
+                                    <div class="servicesIconsDiv">
+                                        <i
+                                            class="
+                                                fa-solid fa-briefcase-medical
+                                                servicesIcons1
+                                            "
+                                            :class="service.icon"
+                                        ></i>
+                                    </div>
+                                    <p class="servcesHeading forDoc">{{ service.title }}</p>
+                                    <p class="servicesTxt">
+                                        {{ service.description }}
+                                    </p>
                                 </div>
-                                <p class="servcesHeading forDoc">{{ service.title }}</p>
-                                <p class="servicesTxt">
-                                    {{ service.description }}
-                                </p>
                             </div>
                         </div>
                     </div>

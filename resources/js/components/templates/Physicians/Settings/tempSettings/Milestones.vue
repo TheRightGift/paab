@@ -5,15 +5,19 @@
                 <div class="primaryColorDiv">
                     <div class="headerDiv">
                         <a href="/">
-                            <img src="/media/img/wcdMobileLogo.png" alt="wcdMobileLogo.png">
+                            <img src="/media/img/wcdMobileLogo.png" alt="wcdMobileLogo.png" class="hide-on-large-only wcdMobileLogo">
+                            <img src="/media/img/wcdMobileLogoLarge.png" alt="wcdMobileLogoLarge.png" class="hide-on-med-and-down">
                         </a>
                         <p class="headerTitle">
                             It is time for the world
                             to hear your pulse
                         </p>
                     </div>
-                    <div>
+                    <div class="hide-on-large-only">
                         <img src="/media/img/3dDoctors.png" alt="3dDoctors.png" class="primaryColorDocsImg">
+                    </div>
+                    <div class="hide-on-med-and-down">
+                        <img src="/media/img/3dDoctorsLarge.png" alt="3dDoctorsLarge.png" class="primaryColorDocsImgLarge">
                     </div>
                 </div>
             </div>
@@ -131,10 +135,10 @@
 
                         <div class="bannerImgDiv">
                             <img v-if="initialAchieve.banner !== null" :src="typeof achievement.banner == 'string'
-                                        ? '/media/tenants/'+tenant+'/img/'+ initialAchieve.banner
-                                        : uploaded"
+                                        ? '/media/tenants/'+tenant+'/img/'+ achievement.banner
+                                        : uploaded !== null ? uploaded : '/media/tenants/'+tenant+'/img/'+initialAchieve.banner"
                                  alt="milestoneBanner.png"
-                                 class="bannerImg"
+                                 class="bannerImg init"
                             >
                             <img src="/media/img/milestoneBanner.png" v-else
                                  alt="milestoneBanner.png"
@@ -262,6 +266,7 @@
                     },
                     banner: null,
                 },
+                uploadImageSuccess: 0,
             };
         },
         mounted() {
@@ -279,7 +284,7 @@
                 this.achievement.oldBanner = this.achievement.banner;
                 this.achievement.banner = null;
             },
-            request(request, formData) {
+            request(request, formData, image = null) {
                 axios
                     .post(request, formData)
                     .then((res) => {
@@ -290,12 +295,15 @@
                                 classes: "successNotifier",
                             });
                             this.uploadingBanner = !this.uploadingBanner;
+                            this.uploadImageSuccess = 1;
+                            console.log(image)
+                            this.uploaded = image !== null ?  URL.createObjectURL(image.target.files[0]) : this.oldBanner;
                             this.update = 1;
                             this.achievement.id = res.data.achievement.id;
                             this.initialAchieve = res.data.achievement;
                             let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()
                             var instance = M.Modal.getInstance(elem);
-                            instance.close();
+                            image === null ? instance.close() : null;
                         }
                     })
                     .catch((err) => {
@@ -331,8 +339,8 @@
                 this.update !== 1 || this.achievement.oldBanner
                     ? formData.append("banner", this.achievement.banner)
                     : null;
-                this.request(request, formData);
-                this.uploaded = URL.createObjectURL(e.target.files[0]);
+                let image = e;
+                this.request(request, formData, image);
             },
             saveAchievement(e) {
                 this.loading = !this.loading;

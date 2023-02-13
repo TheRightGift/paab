@@ -6,16 +6,45 @@
 
     --component: rgba(0, 0, 0, 0.5);
 }
+::-webkit-scrollbar {
+    width: 5px;
+} /* this targets the default scrollbar (compulsory) */
+::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 7px rgba(0,0,0,0.8);*/
+    background-color: var(--primary);
+    /*border-radius: 8px;*/
+} /* the new scrollbar will have a flat appearance with the set background color */
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 100px var(--primary);
+    background-color: var(--primary);
+    /*border-radius: 8px;*/
+} /* this will style the thumb, ignoring the track */
+
+::-webkit-scrollbar-button {
+    height: 0;
+    /* background-color: rgba(0,151,0,1);*/
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+::-webkit-scrollbar-corner {
+    background-color: var(--black);
+} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+::-webkit-scrollbar-track-piece {
+    background-color: var(--white);
+}
+::-webkit-scrollbar-button:horizontal {
+    width: 5px;
+    /* Select the down or left scroll button when it's being hovered by the mouse */
+}
 a.active {
     border-bottom: 4px solid var(--primary);
-    padding: 0em;
+    padding: 0;
 }
 
 nav {
     background-color: var(--white);
 }
 #nav-mobile.section {
-    padding-top: 1rem;
+    padding-top: 1rem !important;
 }
 .headerNoSideNav, .extHeaderNoSideNav {
     display: none;
@@ -112,7 +141,7 @@ a.physiTempContactBtn.active {
 .physiTempContactBtn:hover {
     background: #ffffff;
     color: var(--primary);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .profileImgContainer {
     display: flex;
@@ -122,11 +151,11 @@ a.physiTempContactBtn.active {
 }
 .profileImg {
     background: var(--primary);
-    box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     transform: rotate(-3.7deg);
-    width: 427.62px;
-    height: 479.96px;
+    width: 428px;
+    height: 480px;
     /* position: absolute;
     top: 20vh;
     right: 12vw; */
@@ -137,7 +166,7 @@ a.physiTempContactBtn.active {
     left: 33px;
     top: 30px;
     border-radius: 10px;
-    box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.25);
     transform: rotate(1.5deg);
 }
 
@@ -159,7 +188,7 @@ a.physiTempContactBtn.active {
     font-weight: 500;
     font-size: 1rem;
     line-height: 20px;
-    letter-spacing: 0.1px;
+    letter-spacing: 0;
     color: #000000;
     margin: 0 0 0 0.2vw;
 }
@@ -170,7 +199,7 @@ a.physiTempContactBtn.active {
     font-weight: 500;
     font-size: 2.5rem;
     line-height: 35px;
-    letter-spacing: 0.1px;
+    letter-spacing: 0;
     color: var(--primary);
     margin-top: 3vh;
     margin-bottom: 3vh;
@@ -182,8 +211,9 @@ a.physiTempContactBtn.active {
     font-weight: 400;
     font-size: 1rem;
     line-height: 20px;
-    letter-spacing: 0.1px;
+    letter-spacing: 0;
     color: rgba(0, 0, 0, 0.8);
+    text-transform: capitalize;
 }
 
 .physiTempBtn {
@@ -196,7 +226,7 @@ a.physiTempContactBtn.active {
     text-decoration: none;
     color: var(--primary);
     text-align: center;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     -webkit-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
     cursor: pointer;
@@ -245,7 +275,7 @@ a.physiTempContactBtn.active {
     border-radius: 50%;
     margin: 0 auto;
     background: var(--primary);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -259,7 +289,7 @@ a.physiTempContactBtn.active {
     line-height: 20px;
     align-items: center;
     text-align: center;
-    letter-spacing: 0.1px;
+    letter-spacing: 0;
     color: #000000;
 }
 
@@ -365,7 +395,7 @@ a.physiTempContactBtn.active {
     font-style: normal;
     font-weight: 700;
     font-size: 2.25rem;
-    line-height: 20px;
+    line-height: 30px;
     text-align: center;
     align-items: center;
     letter-spacing: 0.1px;
@@ -384,6 +414,7 @@ a.physiTempContactBtn.active {
     letter-spacing: 0.1px;
     color: #ffffff;
     margin: 0 0 1.5vh 0;
+    text-transform: capitalize;
 }
 
 .expLeftBarInnerDiv {
@@ -780,6 +811,194 @@ a.physiTempContactBtn.active {
     margin: 0 0 1vh 0;
 }
 
+/* Template Edit Modal buttons */
+a.modal-trigger.iconBox {
+    width: 30px;
+    height: 30px;
+    background-color: #edebeb;
+    border-radius: 50px;
+    display: block;
+}
+i.material-icons.editIcon {
+    color: #554c8a;
+    line-height: 31px;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+}
+a.modal-trigger.aboutImgEditBtn {
+    width: 30px;
+    height: 30px;
+    background-color: #edebeb;
+    border-radius: 50px;
+    position: absolute;
+    top: 5vh;
+    right: 1vw;
+}
+.whatIdoTxtRowDiv {
+    position: relative;
+}
+#testiContactFormTitleDiv {
+    position: relative;
+}
+a.modal-trigger.contactEditBtn {
+    width: 2.5vw;
+    height: 5vh;
+    background-color: #edebeb;
+    border-radius: 50px;
+    position: absolute;
+    top: 13vh;
+    right: 21vw;
+}
+/* About Me Writeup edit modal */
+div.aboutWriteUpsEditModalInnerDiv {
+    width: 80%;
+    margin: auto;
+    padding: 1vh 0 5vh 0;
+}
+a.modal-close.editWriteUpsModalCloseBtn {
+    margin-left: -3vw;
+    color: var(--black);
+    text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
+    font-size: 2rem;
+}
+input.validate.aboutWriteUpsInput {
+    text-align: start;
+    height: 2vh;
+    border-bottom-color: var(--primary);
+}
+textarea.materialize-textarea.aboutWriteUpsInput {
+    text-align: start;
+    border: 1px solid var(--primary);
+    padding: 0.5vh 0.5vw 2.5vh 0.5vw;
+}
+p.aboutWriteUpsSize {
+    font-size: 0.7rem;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0;
+}
+a.editWriteUpsSaveBtn {
+    background-color: #524988;
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    padding: 0.3vh 2vw;
+}
+div.editWriteUpsSaveBtnDiv {
+    margin-top: 0vh;
+}
+
+/* About Me Img edit modal*/
+div.aboutImgModalDiv {
+    width: 37%;
+    height: 39vh;
+    margin: 2.5vh auto 0 auto;
+}
+img.aboutImgModal {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
+}
+a.editImgChangeBtn {
+    background-color: #524988;
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    padding: 0.3vh 2vw;
+}
+div.editImgChangeBtnDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.8vh;
+}
+p.aboutImgSize {
+    text-align: center;
+    font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 1.8vh;
+}
+a.modal-close.editImgModalCloseBtn {
+    margin-left: 5vw;
+    color: var(--black);
+    text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
+    font-size: 2rem;
+}
+div.aboutImgEditModalInnerDiv {
+    padding: 1vh 0 5vh 0;
+}
+
+/* Service edit modal */
+.whatIdoTxtRowDiv {
+    position: relative;
+}
+textarea.materialize-textarea.servicesTextarea {
+    text-align: start;
+    border: 1px solid var(--primary);
+    padding: 0.5vh 1.5vw;
+    min-height: 17vh;
+}
+a.servicesAddMoreBtn {
+    color: var(--black);
+    text-decoration: underline;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: end;
+    position: relative;
+    bottom: 2vh;
+}
+
+/* Contact Me Edit Btn */
+p.servicesInputInstruct {
+    font-size: 0.7rem;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0;
+    text-align: right;
+}
+
+a.physiTempSettingsNavLink {
+    background-color: transparent;
+}
+a.physiTempSettingsNavLink:hover {
+    background-color: transparent;
+}
+i.material-icons.physiTempSettingsIcon {
+    position: relative;
+    bottom: 2vh;
+    left: 3vw;
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+i.material-icons.physiTempSettingsIcon:hover {
+    color: var(--black);
+}
+#dropSettings {
+    min-width: 12vw;
+}
+.dropdown-content li>a.dropSetLink {
+    font-size: 1.1rem;
+    font-family: "Montserrat", sans-serif;
+    color: var(--primary);
+}   
+.dropdown-content li>a.dropSetLink:hover {
+    background-color: transparent;
+    border-left: none;
+}
+.dropdown-content li:hover {
+    border-left: 1px solid var(--primary);
+}
+.physiTempName {
+    display: flex;
+    align-items: center;
+}
+.serviceHeading {
+    display: flex;
+    justify-content: center;
+}
+#experience .serviceHeading {
+    align-items: baseline;
+}
+
 @media screen and (max-width: 992px) and (min-width: 640px) {
     #testiMapImg {
         height: auto;
@@ -1120,7 +1339,7 @@ a.physiTempContactBtn.active {
         padding: 0.3vh 2vw;
     }
     div.editWriteUpsSaveBtnDiv {
-        margin-top: 0vh;
+        margin-top: 0;
     }
 
     /* Service edit modal */
@@ -1536,13 +1755,7 @@ a.physiTempContactBtn.active {
         top: 5%;
         right: 2vw;
     }
-    i.material-icons.editIcon {
-        color: #554c8a;
-        line-height: 31px;
-        display: flex;
-        justify-content: center;
-        font-size: 18px;
-    }
+    
     /* ************************************************* */
     div.aboutImgModalDiv {
         width: 55%;
@@ -1584,15 +1797,7 @@ a.physiTempContactBtn.active {
     }
 
     /* About Me Writeup edit modal */
-    a.modal-trigger.aboutWriteUpsEditBtn {
-        width: 30px;
-        height: 30px;
-        background-color: #edebeb;
-        border-radius: 50px;
-        position: relative;
-        /* top: 0; */
-        /* right: 6vw; */
-    }
+    
     a.modal-close.editWriteUpsModalCloseBtn {
         margin-left: -3vw;
         color: var(--black);
@@ -1708,3 +1913,4 @@ a.physiTempContactBtn.active {
     background-color: #edebeb;
     border-radius: 50%;
 }
+

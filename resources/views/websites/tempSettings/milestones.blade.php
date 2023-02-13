@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>White Coat Domain - Milestones</title>
+        <title>{{$user->firstname}} {{$user->lastname}} - Milestones</title>
         <link rel="shortcut icon" href="{{ asset('/media/img/logo.png') }}" type="image/x-icon">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
@@ -12,7 +12,7 @@
 
 
         <link rel="stylesheet" href="{{ global_asset('css/materialize.min.css') }}">
-        <!-- <link rel="stylesheet" href="{{ global_asset('css/paab.css') }}"> -->
+        <link rel="stylesheet" href="{{ global_asset('css/'.$templateCSS) }}">
         <link rel="stylesheet" href="{{ global_asset('css/milestones.css') }}">
         <link rel="stylesheet" href="{{ global_asset('fonts/material-icons.css') }}">
         <!-- CSRF Token -->

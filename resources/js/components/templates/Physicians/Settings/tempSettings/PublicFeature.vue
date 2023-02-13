@@ -5,15 +5,19 @@
                 <div class="primaryColorDiv">
                     <div class="headerDiv">
                         <a href="/">
-                            <img src="/media/img/wcdMobileLogo.png" alt="wcdMobileLogo.png">
+                            <img src="/media/img/wcdMobileLogo.png" alt="wcdMobileLogo.png" class="hide-on-large-only wcdMobileLogo">
+                            <img src="/media/img/wcdMobileLogoLarge.png" alt="wcdMobileLogoLarge.png" class="hide-on-med-and-down">
                         </a>
                         <p class="headerTitle">
                             It is time for the world
                             to hear your pulse
                         </p>
                     </div>
-                    <div>
+                    <div class="hide-on-large-only">
                         <img src="/media/img/3dDoctors.png" alt="3dDoctors.png" class="primaryColorDocsImg">
+                    </div>
+                    <div class="hide-on-med-and-down">
+                        <img src="/media/img/3dDoctorsLarge.png" alt="3dDoctorsLarge.png" class="primaryColorDocsImgLarge">
                     </div>
                 </div>
             </div>
@@ -27,7 +31,7 @@
 
                         <div class="formContain">
                             <div class="row">
-                                <div class="col s7 offset-s4">
+                                <div class="col s7 offset-s4 offset-l5">
                                     <label class="radioBtnLabel">
                                         <input class="with-gap" name="group1" type="radio" />
                                         <span class="radioBtnSpan" @click="yesPubEvent()">Yes</span>

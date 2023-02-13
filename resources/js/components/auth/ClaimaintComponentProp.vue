@@ -8,23 +8,29 @@
                             <img
                                 src="/media/img/wcdMobileLogo.png"
                                 alt="wcdMobileLogo.png"
+                                class="hide-on-large-only wcdMobileLogo"
                             />
+                            <img src="/media/img/wcdMobileLogoLarge.png" alt="wcdMobileLogoLarge.png" class="hide-on-med-and-down">
                         </a>
                         <p class="headerTitle">
                             It is time for the world to hear your pulse
                         </p>
                     </div>
-                    <div>
+                    <div class="hide-on-large-only">
                         <img
                             src="/media/img/3dDoctors.png"
                             alt="3dDoctors.png"
                             class="primaryColorDocsImg"
                         />
                     </div>
+                    <div class="hide-on-med-and-down">
+                        <img src="/media/img/3dDoctorsLarge.png" alt="3dDoctorsLarge.png" class="primaryColorDocsImgLarge">
+                    </div>
                 </div>
             </div>
             <div class="col s12">
                 <div class="contentDiv">
+                    <div class="contentInnerDiv">
                     <!-- Get Started Section -->
                     <div v-show="view == 0">
                         <p class="contentTitle">
@@ -98,14 +104,14 @@
                     </div>
 
                     <!-- Domain name check section -->
-                    <div v-show="view == 2">
+                    <div v-show="view == 2" class="container">
                         <p class="contentTitle">
                             Are you ok with this domain name?
                         </p>
 
                         <div>
                             <div class="row formInnerDiv">
-                                <div class="input-field col s8">
+                                <div class="input-field col s10">
                                     <input
                                         type="text"
                                         v-model="domainSelected"
@@ -122,7 +128,7 @@
                                         name
                                     </p>
                                 </div>
-                                <div class="col s4">
+                                <div class="col s2">
                                     <i
                                         class="fas fa-spinner fa-spin fa-1x"
                                         v-if="checkingSuggestion"
@@ -217,7 +223,7 @@
                             Are you ok with this picture?
                         </p>
 
-                        <div class="proImgDiv">
+                        <div class="proImgContainer">
                             <img
                                 :src="
                                     typeof bio.photo == 'string'
@@ -230,7 +236,6 @@
                                 :alt="bioData.firstname + ' avatar'"
                                 class="proImg"
                             />
-                            <i class="fas fa-spinner fa-spin fa-2x" v-if="uploadPhotoProcessing"></i>
                         </div>
                         <form enctype="multipart/form-data">
 
@@ -246,7 +251,7 @@
                                             @change="photoUpload"
                                             accept=".jpg, .png"
                                         />
-                                        <div class="file-path-wrapper">
+                                        <div class="file-path-wrapper" v-if="!uploadPhotoProcessing">
                                             <input
                                                 class="file-path validate genInput1"
                                                 type="text"
@@ -262,6 +267,7 @@
                                                 >file_upload</i
                                             >
                                         </div>
+                                        <p v-else>Uploading Image<i class="fas fa-circle-notch"></i></p>
                                     </div>
                                 </div>
                                 <div class="proImgInstructDiv">
@@ -1692,16 +1698,20 @@
                 </div>
             </div>
         </div>
+        </div>
+        <PaymentModalComponent :setModal="setModal" :user="user" @countDown="timerStart($event)"/>
     </div>
 </template>
 <script>
     import InnerFooter from "../partials/InnerFooterComponent.vue";
     import DatePicker from 'vue-datepicker-next';
     import 'vue-datepicker-next/index.css';
+    import PaymentModalComponent from "../partials/PaymentModalComponent.vue";
     export default {
         components: {
+            PaymentModalComponent,
             InnerFooter,
-            DatePicker
+            DatePicker,
         },
 
         data() {
@@ -1814,7 +1824,8 @@
                 experienceCheck: 0,
                 addQualificaion: 0,
                 servicesCheck: 0,
-
+                setModal: false,
+                user: 0,
             };
         },
         mounted() {
@@ -1860,7 +1871,6 @@
                     this.updateDomain();
                 }
                 if (this.view == 3) {
-                    this.updatePhoto();
                     this.view++;
                 }
                 this.view != 4 ? this.view++ : this.academicCheck = 0;
@@ -1983,7 +1993,7 @@
             photoUpload(e) {
                 if (!e.target.files.length) return;
                 this.bio.photo = e.target.files[0];
-                this.uploaded = URL.createObjectURL(e.target.files[0]);
+                this.updatePhoto(e);
             },
             prev() {
                 this.view != 0 ? this.view-- : null;
@@ -2225,7 +2235,7 @@
                 }
             },
             // If the user decides to alter the first view, update the tenant part
-            updateBio() {
+            updateBio(e) {
                 if (
                     this.bio.lastname != this.bioData.lastname ||
                     this.bio.firstname != this.bioData.firstname ||
@@ -2244,6 +2254,7 @@
                                     "claimproc",
                                     JSON.stringify([res.data.user])
                                 );
+                                this.uploaded = URL.createObjectURL(e.target.files[0]);
                                 this.bioData = res.data.user;
                             }
                         })
@@ -2292,6 +2303,7 @@
                                 "claimproc",
                                 JSON.stringify([res.data.bio])
                             );
+                            this.bio = res.data.bio;
                             this.uploadPhotoProcessing = false;
                         }
                     }).catch(err => {
@@ -2486,13 +2498,17 @@
             next10() {
                 this.academicCheck = 1;
             },
+            timerStart(e) {
+                this.showGoLiveBtns = false;
+                this.countdownTimer();
+            },
             sendEmail(val) {
                 /**
                  * What this does is to get the saved dummy password for the user and whatever plan he chose and send details
                  * to the user, getting the email from the session on the server and sending to him
                  */
 
-                let data = {plan: val, password: localStorage.getItem('passwordGen'), domain: this.domainSelected};
+                let data = {plan: val, password: localStorage.getItem('passwordGen'), domain: this.domainSelected.replace('.com', '')};
                 axios.post('/claim/successdomainregistra', data).then(res => {
                     if (res.status == 201) {
                         M.toast({
@@ -2501,11 +2517,19 @@
                         });
                         localStorage.removeItem('claimproc');
                         localStorage.removeItem('passwordGen');
-                        this.showGoLiveBtns = false;
                         let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()
-                        var instance = M.Modal.getInstance(elem);
+                        let paymentModal = document.getElementById('paymentModal');
+                        let instance = M.Modal.getInstance(elem);
+                        let paymentModalInstance = M.Modal.getInstance(paymentModal);
                         instance.close();
-                        this.countdownTimer();
+                        if (val === 'premium') {
+                            this.user = res.data.user;
+                            this.setModal = true;
+                            paymentModalInstance.open();
+                        }
+                        else {
+                            this.timerStart();
+                        }
                     }
                 }).catch(err => {
                     let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()

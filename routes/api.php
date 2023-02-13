@@ -30,7 +30,15 @@ use App\Http\Controllers\Tenants\BioController;
 //     return $request->user();
 // });
 Route::post('/tenant/auth/login', [App\Http\Controllers\AuthController::class, 'login']);
-
+Route::group(['prefix' => 'v1'], function(){
+    // For when user trys to create domain, user is not authenticated yet;
+//    TODO: Remember to create another endpoint for storing payment data, when logged in
+    Route::get('/user/setup-intent', [App\Http\Controllers\SubscriptionController::class, 'getSetupIntent']);
+    Route::post('/user/payments', [App\Http\Controllers\SubscriptionController::class, 'postPaymentMethods']);
+    Route::get('/user/payment-methods', [App\Http\Controllers\SubscriptionController::class, 'getPaymentMethods']);
+    Route::put('/user/subscription', [App\Http\Controllers\SubscriptionController::class, 'updateSubscription']);
+    Route::post('/user/remove-payment', [App\Http\Controllers\SubscriptionController::class, 'removePaymentMethod'])->middleware('auth.api');
+});
 Route::group(['middleware' => 'auth.api'], function() {
     Route::get('/user', function(Request $request) {
         return $request->user();
@@ -55,7 +63,7 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::put('/updateAdmin/{id}', [App\Http\Controllers\DashboardController::class, 'updateAdmin']);
     Route::patch('/changePassword', [App\Http\Controllers\AuthController::class, 'changePassword']);
     Route::get('/check_password', [App\Http\Controllers\AuthController::class, 'check_password']);
-    
+
 });
 Route::group(['middleware'=>'auth:api'], function(){
 });

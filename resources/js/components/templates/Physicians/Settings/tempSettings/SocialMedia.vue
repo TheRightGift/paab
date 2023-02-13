@@ -5,15 +5,19 @@
                 <div class="primaryColorDiv">
                     <div class="headerDiv">
                         <a href="/">
-                            <img src="/media/img/wcdMobileLogo.png" alt="wcdMobileLogo.png">
+                            <img src="/media/img/wcdMobileLogo.png" alt="wcdMobileLogo.png" class="hide-on-large-only wcdMobileLogo">
+                            <img src="/media/img/wcdMobileLogoLarge.png" alt="wcdMobileLogoLarge.png" class="hide-on-med-and-down">
                         </a>
                         <p class="headerTitle">
                             It is time for the world
                             to hear your pulse
                         </p>
                     </div>
-                    <div>
+                    <div class="hide-on-large-only">
                         <img src="/media/img/3dDoctors.png" alt="3dDoctors.png" class="primaryColorDocsImg">
+                    </div>
+                    <div class="hide-on-med-and-down">
+                        <img src="/media/img/3dDoctorsLarge.png" alt="3dDoctorsLarge.png" class="primaryColorDocsImgLarge">
                     </div>
                 </div>
             </div>
@@ -51,31 +55,32 @@
                                 </div>
                             </div>
                             <p class="contentTitle">How to get your facebook id</p>
-
-                            <ul class="collapsible">
-                                <li>
-                                    <div class="collapsible-header">
-                                        <i class="material-icons">smartphone</i>
-                                        <span class="contentTitle1">How to get my facebook id via mobile</span>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <video class="socialMediaHandVidTag" controls>
-                                            <source src="/media/videos/get_facebook_pro_page_name.mp4" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="collapsible-header">
-                                        <i class="material-icons">laptop_windows</i>
-                                        <span class="contentTitle1">How to get my facebook id via desktop</span>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <video class="socialMediaHandVidTag" controls>
-                                            <source src="/media/videos/get_facebook_pro_page_name.mp4" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="container">
+                                <ul class="collapsible">
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">smartphone</i>
+                                            <span class="contentTitle1">How to get my facebook id via mobile</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_facebook_pro_page_name.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">laptop_windows</i>
+                                            <span class="contentTitle1">How to get my facebook id via desktop</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_facebook_pro_page_name.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -110,31 +115,32 @@
                                 </div>
                             </div>
                             <p class="contentTitle">How to get my Twitter id</p>
-
-                            <ul class="collapsible">
-                                <li>
-                                    <div class="collapsible-header">
-                                        <i class="material-icons">smartphone</i>
-                                        <span class="contentTitle1">How to get my Twitter id via mobile</span>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <video class="socialMediaHandVidTag" controls>
-                                            <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="collapsible-header">
-                                        <i class="material-icons">laptop_windows</i>
-                                        <span class="contentTitle1">How to get my Twitter id via desktop</span>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <video class="socialMediaHandVidTag" controls>
-                                            <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="container">
+                                <ul class="collapsible">
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">smartphone</i>
+                                            <span class="contentTitle1">How to get my Twitter id via mobile</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">laptop_windows</i>
+                                            <span class="contentTitle1">How to get my Twitter id via desktop</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -170,30 +176,32 @@
                             </div>
 
                             <p class="contentTitle">How to get my Instagram id</p>
-                            <ul class="collapsible">
-                                <li>
-                                    <div class="collapsible-header">
-                                        <i class="material-icons">smartphone</i>
-                                        <span class="contentTitle1">How to get my Instagram id via mobile</span>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <video class="socialMediaHandVidTag" controls>
-                                            <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="collapsible-header">
-                                        <i class="material-icons">laptop_windows</i>
-                                        <span class="contentTitle1">How to get my Instagram id via desktop</span>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <video class="socialMediaHandVidTag" controls>
-                                            <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="container">
+                                <ul class="collapsible">
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">smartphone</i>
+                                            <span class="contentTitle1">How to get my Instagram id via mobile</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">laptop_windows</i>
+                                            <span class="contentTitle1">How to get my Instagram id via desktop</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -228,31 +236,32 @@
                                 </div>
                             </div>
                             <p class="contentTitle">How to get my Tiktok id</p>
-
-                            <ul class="collapsible">
-                                <li>
-                                    <div class="collapsible-header">
-                                        <i class="material-icons">smartphone</i>
-                                        <span class="contentTitle1">How to get my Tiktok id via mobile</span>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <video class="socialMediaHandVidTag" controls>
-                                            <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="collapsible-header">
-                                        <i class="material-icons">laptop_windows</i>
-                                        <span class="contentTitle1">How to get my Tiktok id via desktop</span>
-                                    </div>
-                                    <div class="collapsible-body">
-                                        <video class="socialMediaHandVidTag" controls>
-                                            <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="container">
+                                <ul class="collapsible">
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">smartphone</i>
+                                            <span class="contentTitle1">How to get my Tiktok id via mobile</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">laptop_windows</i>
+                                            <span class="contentTitle1">How to get my Tiktok id via desktop</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 

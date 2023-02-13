@@ -86,7 +86,7 @@ class GeneralController extends Controller
                 // $stored = \Storage::disk('public')->putFileAs('img', $file, 'favicon'.'.'.$ext);
                 
                 $name = 'favicon'.'.'.$ext;
-                $path = $general->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
+                $path = $file->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
 
                 $input['favicon'] = $name;
             } 

@@ -151,8 +151,11 @@ class TenantController extends Controller
 
     public function milestone(Request $request) {
         $user = tenant()->user;
+        $tenancies = new Tenant();
+        $tenant = $tenancies->find(tenant('id'));
+        $templateCSS = $tenant->template->styleFile;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
-        return view('websites.tempSettings.milestones', compact('user', 'tenantID'));
+        return view('websites.tempSettings.milestones', compact('user', 'tenantID', 'templateCSS'));
     }
 
     public function social(Request $request) {
