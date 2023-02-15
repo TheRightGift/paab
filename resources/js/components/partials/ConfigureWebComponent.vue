@@ -52,7 +52,7 @@
 
             <div class="row" id="configWebInputDiv" v-if="user.role == 'Admin'">
                 <label class="col s12 configWebInputLabel"
-                    >Assign website</label
+                    >Edit client Mail</label
                 >
                 <div class="col s9">
                     <input
@@ -72,7 +72,7 @@
                         :disabled="email == '' || email == claimantMail"
                         v-if="!granting"
                     >
-                        GIVE ACCESS
+                        Update
                     </button>
                     <button
                         type="button"
@@ -112,7 +112,7 @@
                 <div>
                     <button
                         type="button"
-                        class="col s1 offset-s1 btn right"
+                        class="col s3 l2 m4 offset-s1 btn right"
                         id="configWebBtn"
                         @click.prevent="updateDomainTemplate"
                         :disabled="selectedTemplate == web.template_id"

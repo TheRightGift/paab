@@ -35,6 +35,7 @@
                                             class="custom-file-input edit icon"
                                             type="file"
                                             id="setProEditIcon"
+                                            placeholder="Avatar"
                                         />
 
                                         <!-- <i
@@ -60,7 +61,7 @@
                                             class="
                                                 input-field
                                                 col
-                                                s2
+                                                s12
                                                 rm_mg
                                                 sm_mg
                                             "
@@ -90,7 +91,7 @@
                                         </div>
 
                                         <div
-                                            class="input-field col rm_mg sm_mg"
+                                            class="input-field col rm_mg sm_mg s12 l6"
                                             :class="{
                                                 s6: user.role === 'Admin',
                                                 s5: user.role === 'Client',
@@ -110,9 +111,10 @@
                                             class="
                                                 input-field
                                                 col
-                                                s4
                                                 rm_mg
                                                 sm_mg
+                                                s12
+                                                l6
                                             "
                                             :class="{
                                                 s6: user.role === 'Admin',
@@ -135,7 +137,8 @@
                                             class="
                                                 input-field
                                                 col
-                                                s6
+                                                s12
+                                                l6
                                                 rm_mg
                                                 sm_mg
                                             "
@@ -157,7 +160,8 @@
                                             class="
                                                 input-field
                                                 col
-                                                s6
+                                                s12
+                                                l6
                                                 rm_mg
                                                 sm_mg
                                             "

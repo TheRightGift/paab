@@ -754,7 +754,7 @@ div .col .s9 input.clientCreatePortInput1 {
     margin-top: 2vh;
     /* width: 90%; */
     padding: 0 2vw;
-    height: 6vh;
+    /* height: 6vh; */
 }
 #clientCreatePortInput,
 #clientCreatePortInput1 {
@@ -765,6 +765,9 @@ div .col .s9 input.clientCreatePortInput1 {
     width: 90%;
     padding: 0 2vw;
     /* height: 7vh; */
+}
+.clientCreatePortBtnDiv {
+    margin-top: 2vh;
 }
 #clientCreatePortInput::placeholder,
 #clientCreatePortInput1::placeholder {
@@ -850,7 +853,7 @@ div .col .s9 input.clientCreatePortInput1 {
     background: var(--primary);
     border-radius: 6px;
     margin-top: 2.5vh;
-    height: 5vh;
+    /* height: 5vh; */
     width: 7vw;
 }
 #configWebInput {
@@ -859,7 +862,7 @@ div .col .s9 input.clientCreatePortInput1 {
     border-radius: 100px;
     margin-top: 2vh;
     padding: 0 2vw;
-    height: 6vh;
+    /* height: 6vh; */
 }
 .configWebLoadTxt {
     font-family: "Montserrat", sans-serif;
@@ -1445,8 +1448,8 @@ div .col .s9 input.clientCreatePortInput1 {
         color: var(--primary);
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50%;
-        width: 6vw;
-        height: 7.5vh;
+        width: 50px;
+        height: 50px;
         line-height: 52px;
     }
     .sideNavBrandLogo {
@@ -1459,7 +1462,7 @@ div .col .s9 input.clientCreatePortInput1 {
     }
     #banner {
         background-image: none;
-        height: 100vh;
+        height: auto;
         background-repeat: no-repeat;
     }
     .circleDivtxt {

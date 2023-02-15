@@ -98,14 +98,14 @@
                                                     <p class="cardProName">
                                                         {{clientWeb.name}}
                                                     </p>
+                                                    <div class="col s2 m2 l2">
+                                                        <a href="#" id="cardViewLink" @click="gotoDomain(clientWeb)"
+                                                            >View</a
+                                                        >
+                                                    </div>
                                                 </div>
                                             </div>
     
-                                            <div class="col s2 m2 l2">
-                                                <a href="#" id="cardViewLink" @click="gotoDomain(clientWeb)"
-                                                    >View</a
-                                                >
-                                            </div>
     
                                             <div class="col s12">
                                                 <hr class="cardLine" />

@@ -37,6 +37,7 @@ class SettingController extends Controller
                 $input['avatar'] = $name;
             } 
             $user = auth()->user()->id;
+            $input['gender'] = $input['gender'] === 'null' ? 'M' : $input['gender'];
             $user2Update = User::find($user)->update($input);
             if ($user2Update == true) {
                 return response(['user' => $user2Update, 'message' => 'Update Success', 'status' => 200], 200);

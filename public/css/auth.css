@@ -70,6 +70,7 @@ p.wlcNoteFooterTxt {
     color: var(--primary);
     margin-bottom: 0;
     margin-top: 0;
+    text-align: center;
 }
 .authTxt {
     font-family: "Poppins", sans-serif;

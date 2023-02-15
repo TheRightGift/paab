@@ -361,11 +361,11 @@
                                     
                                 </div>
 
-                                <div class="row">
+                                <div class="row pl-3">
                                     <button
                                         :disabled="currentIndex == 0"
                                         type="button"
-                                        class="col s2 offset-s2 btn"
+                                        class="col s2 offset-s2 btn m3"
                                         id="uploadThumbnailBtn"
                                         @click="prev()"
                                     >
@@ -374,7 +374,7 @@
                                     <button
                                         :disabled="currentIndex == 2"
                                         type="button"
-                                        class="col s2 offset-s1 btn"
+                                        class="col s2 offset-s1 btn m3 offset-m1 offset-l1"
                                         id="uploadThumbnailBtn"
                                         @click="next()"
                                     >
@@ -382,7 +382,7 @@
                                     </button>
                                     <button
                                         type="submit"
-                                        class="col s2 btn offset-s1"
+                                        class="col s2 btn offset-s1 m3 offset-m1 offset-l1"
                                         id="uploadThumbnailBtn"
                                         :disabled="!filled"
                                     >
@@ -860,4 +860,5 @@ export default {
         width: 240px;
         height: 159px;
     }
+    
 </style>

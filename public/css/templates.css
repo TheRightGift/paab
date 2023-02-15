@@ -367,7 +367,7 @@ a.tempSetDelBtn {
     /* margin-top: 2vh; */
     /* padding: 0 2vw; */
     text-align: center;
-    height: 7vh;
+    /* height: 7vh; */
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 15px;
@@ -399,7 +399,7 @@ a.tempSetDelBtn {
     background: var(--primary);
     border-radius: 6px;
     margin-top: 3.5vh;
-    height: 5vh;
+    /* height: 5vh; */
     /* width: 7vw; */
     font-family: 'Montserrat', sans-serif;
 }
@@ -427,10 +427,20 @@ a.tempSetDelBtn {
 .clientTempPageRowDiv {
     padding: 0 2%;
 }
-
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+    .pl-3 {
+        padding-left: 3rem;
+    }
+  }
 
 /* Media Query on Medium Device */
 @media screen and (max-width: 992px) and (min-width: 640px) {
+    .pl-3 {
+        padding-left: 3rem;
+    }
     .tempContainInnerDiv {
         width: 95%;
         margin: 17vh auto 0 auto;
@@ -461,6 +471,9 @@ a.tempSetDelBtn {
 
 /* Media Query on small device */
 @media screen and (max-width: 640px) {
+    .col .row.addTitleInputDiv {
+        width: 80%;
+    }
     .tempContainInnerDiv {
         width: 95%;
         margin: 17vh auto 0 auto;
@@ -516,7 +529,7 @@ a.tempSetDelBtn {
         border-radius: 6px;
         margin-top: 3.5vh;
         height: 5vh;
-        width: 15vw;
+        width: 24vw;
         font-family: 'Montserrat', sans-serif;
         margin-left: 5vw;
     }
