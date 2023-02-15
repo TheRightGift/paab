@@ -80,7 +80,7 @@
                                     {{admin.email}}
                                 </td>
                                 <td class="right">
-                                    <a @click="getId2Edit(admin)" href="#!" class="modal-trigger marginRight1 ">
+                                    <a @click="getId2Edit(admin)" href="#addStaffModal" class="modal-trigger marginRight1 ">
                                         <i class="material-icons">edit</i>
                                     </a>
                                     <!-- Delete Staff Modal Trigger -->
@@ -113,7 +113,7 @@
 
         <!-- Add Staff Modal Structure -->
         <div id="addStaffModal" class="modal">
-            <form @submit.prevent="createAdmin">
+            <form @submit.prevent="createUpdateAdmin">
                 <div class="row">
                     <div class="input-field col s12 m6 l6">
                         <input
@@ -160,7 +160,8 @@
 
                 <div class="row center-align">
                     <button class="staffCreateBtn btn-flat" :disabled="loading">
-                        Create
+                        <span v-if="!update">Create</span>
+                        <span v-else>Update</span>
                     </button>
                 </div>
             </form>
@@ -178,7 +179,7 @@
             </div>
             <div class="row center-align">
                 <p class="staffDeleteModalTitle">
-                    You are about to delete this client
+                    You are about to delete this admin
                 </p>
             </div>
 
@@ -220,20 +221,23 @@
                 },
                 admins: [],
                 addStaff: 1,
+                email: "",
                 loading: false,
                 search: "",
+                update: 0,
             };
         },
         mounted() {
             this.getAdmins();
         },
         methods: {
-            createAdmin() {
+            createUpdateAdmin() {
                 this.loading = !this.loading;
-                axios
-                    .post("/api/admin", this.admin)
+                let data = this.update === 1 ? this.email === this.admin.email ? {firstname: this.admin.firstname, lastname: this.admin.lastname, othername: this.admin.othername, role: 'Admin'} : this.admin : null;
+                let request = this.update === 1 ? axios.put(`/api/updateAdmin/${this.admin.id}`, data) : axios.post("/api/admin", this.admin);
+                request
                     .then((res) => {
-                        if (res.status == 201) {
+                        if (res.status === 201 || res.status === 200) {
                             this.loading = !this.loading;
                             M.toast({
                                 html: res.data.message,
@@ -244,6 +248,7 @@
                             this.admin.email = "";
                             this.admin.othername = "";
                             this.admin.password = "";
+                            this.update === 0;
                             let elem = document.getElementById("addStaffModal"); //.getElementsByClassName('modal-close').click()
                             var instance = M.Modal.getInstance(elem);
                             instance.close();
@@ -314,6 +319,8 @@
                 this.admin.lastname = admin.lastname;
                 this.admin.othername = admin.othername;
                 this.admin.email = admin.email;
+                this.email = admin.email;
+                this.update = 1;
             }
         },
     };

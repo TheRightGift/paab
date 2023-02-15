@@ -192,6 +192,7 @@ export default {
             domainName: "",
             claimantMail: "",
             professionID: 0,
+            loading: false,
         };
     },
     computed: {},
@@ -313,7 +314,6 @@ export default {
                 })
                 .then((res) => {
                     if (res.data.status == 200) {
-                        console.log(res);
                         M.toast({
                             html: res.data.message,
                             classes: "successNotifier",
@@ -353,7 +353,6 @@ export default {
             axios
                 .post("/api/access", data)
                 .then((res) => {
-                    console.log(res);
                     if (res.status == 201) {
                         this.granting = false;
                         M.toast({
