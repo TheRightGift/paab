@@ -61,7 +61,7 @@
                 </div>
     
                 <div class="col s12 m12 l6 welcomeContainer">
-                    <div class="authHeadingContainer center-align">
+                    <div class="authHeadingContainer center-align hide-on-large-only">
                         <a href="/" class="authHeading">WhiteCoatDomain</a>
                     </div>
                     <VerifyEmailComponent @resData="setOTP" :type="'register'" />
@@ -95,7 +95,7 @@
                 </div>
     
                 <div class="col s12 m12 l6 otpContainer">
-                    <div class="authHeadingContainer center-align">
+                    <div class="authHeadingContainer center-align hide-on-large-only">
                         <a href="/" class="authHeading">WhiteCoatDomain</a>
                     </div>
                     <OtpComponent
@@ -134,7 +134,7 @@
                 </div>
     
                 <div class="col s12 m12 l6 regContainer">
-                    <div class="authHeadingContainer center-align">
+                    <div class="authHeadingContainer center-align hide-on-large-only">
                         <a href="/" class="authHeading">WhiteCoatDomain</a>
                     </div>
                     <div class="authRightDiv">

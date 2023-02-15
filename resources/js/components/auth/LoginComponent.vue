@@ -24,7 +24,7 @@
 
         <div class="col s12 m12 l6 loginContainer">
             <div class="authRightDiv">
-                <div class="authHeadingContainer center-align">
+                <div class="authHeadingContainer center-align hide-on-large-only">
                     <a href="/" class="authHeading">WhiteCoatDomain</a>
                 </div>
                 <p class="authTitle">
