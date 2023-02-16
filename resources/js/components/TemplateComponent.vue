@@ -14,9 +14,7 @@
                             </p>
         
                             <p class="tempPageTxt">
-                                Discover thousands of easy to customize website templates
-                                made by professional designers that are responsive and
-                                conversion optimized.
+                                Discover thousands of easy to use and customized templates made by professional designers that are responsive and conversion optimized.
                             </p>
         
                             <a href="/auth/getstarted" class="btn tempPageBtn">

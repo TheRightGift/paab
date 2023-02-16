@@ -2,7 +2,7 @@
     <div class="authRightDiv">
         <p class="authTitle">INSERT OTP</p>
         <p class="otpEmailAuthTxt">
-            A six digit OTP has been sent to your email. Please input to complete the verification process.
+            You are almost there, get ready to conquer the world. 
         </p>
 
         <div class="row rm_mg">
@@ -105,7 +105,7 @@
                     />
                 </form>
             </div>
-            <p v-if="shown"><b>Still does'nt see the mail, check your spam/junk box, most messages ends up there</b></p>
+            <p v-if="shown"><b>Still can't find the mail? Check your spam/junk box. Most messages ends up there.</b></p>
             <button
                 class="btn col s12"
                 id="otpEmailBtn"

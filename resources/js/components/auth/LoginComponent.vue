@@ -11,9 +11,9 @@
                 </a>
                 <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
                 <p class="wlcNoteTxt">
-                    The World is still listening , it is time to tell your
-                    brand story with our professional , powerful and easy to
-                    use portfolio builder for your career.
+                    The World is listening, it is time to tell your brand story with our professional, powerful and easy to use portfolio builder.
+
+
                 </p>
                 <p class="wlcNoteFooterTxt">
                     © White Coat Domain, Inc. {{ getYear() }}. We love our
@@ -24,7 +24,7 @@
 
         <div class="col s12 m12 l6 loginContainer">
             <div class="authRightDiv">
-                <div class="authHeadingContainer center-align">
+                <div class="authHeadingContainer center-align hide-on-large-only">
                     <a href="/" class="authHeading">WhiteCoatDomain</a>
                 </div>
                 <p class="authTitle">
@@ -35,7 +35,7 @@
                     </a-->
                 </p>
                 <p class="authTxt">
-                    Please enter a valid combination of email and password
+                    Build a brand online and let your potential patients find you.
                 </p>
 
                 <!-- Login Help Modal Structure -->

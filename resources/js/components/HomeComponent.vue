@@ -2,13 +2,12 @@
     <div id="home">
         <!-- Navbar & SideNav Section -->
         <HeaderComponent :type="'main'"></HeaderComponent>
-
+        
         <!-- Small Device SHOCASE Section -->
         <div class="hide-on-med-and-up">
             <p class="circleDivTitle"><small>SHOWCASE YOUR PROFESSION WITH </small>White Coat Domain</p>
             <p class="circleDivtxtSmall">
-                Our professional wish is that you STAND OUT in your career, from
-                medical practitioners, lawyers, engineers etc.
+                Our professional wish is that you STAND OUT in your medical practice and share more with the world what makes you an awesome physician. 
             </p>
 
             <div class="circleBtnDiv">
@@ -107,9 +106,7 @@
                             <small>SHOWCASE YOUR PROFESSION WITH </small>White Coat Domain
                         </p>
                         <p class="circleDivtxt">
-                            Our professional wish is that you STAND OUT in your
-                            career, from medical practitioners, lawyers,
-                            engineers etc.
+                            Our professional wish is that you STAND OUT in your medical practice and share more with the world what makes you an awesome physician. 
                         </p>
 
                         <a href="/templates" class="btn circleDivBtnLg">
@@ -168,21 +165,14 @@
         </div>
 
         <!-- Page Arrow Up -->
-        <button
-            class="fixedArrowUpIconBtn hide-on-med-and-down"
-            id="fixedArrowUpIconBtn"
-            onclick="topFunction()"
-        >
+        <button class="fixedArrowUpIconBtn hide-on-med-and-down" id="fixedArrowUpIconBtn" onclick="topFunction()">
             <div class="fixedArrowUpIconInnerDiv">
                 <div class="fixedArrowUpCircleDiv"></div>
                 <i class="fa-solid fa-arrow-up" id="fixedArrowUpIcon"></i>
             </div>
         </button>
 
-        <div
-            class="section scrollspy portfolioDiv hide-on-small-only"
-            id="product"
-        >
+        <div class="section scrollspy portfolioDiv hide-on-small-only" id="product">
             <div class="portfolioInnerDiv">
                 <p class="portfolioTitle">MAKE YOUR PORTFOLIO WORK FOR YOU</p>
 
@@ -244,9 +234,7 @@
                     <div class="col l6 liveChatWriteUpDiv">
                         <p class="liveChatTitle">LIVE CHAT</p>
                         <p class="liveChatTxt">
-                            Creating that unique digital portfolio requires the right platform and an expert support team right behind you. As you
-                            progress in finding your digital identity, we are here every step of the way. Our 24/7 helpdesk is here to guide you as
-                            you make those important steps.
+                            Creating that outstanding online portfolio may require a support system. For that reason we have our help desk on standby to guide you through as you make those important steps. 
                         </p>
                     </div>
                 </div>
@@ -268,7 +256,7 @@
                     <div class="col l6 cvWriteUpDiv">
                         <p class="cvTitle">CURRICULUM VITAE</p>
                         <p class="cvTxt">
-                            Get noticed quickly by potential clients and customers.
+                            Fill in your details and have access to your auto generated curriculum vitae (cv)
                         </p>
                     </div>
 
@@ -310,8 +298,7 @@
                     <div class="col l6 socialMediaWriteUpDiv">
                         <p class="socialMediaTitle">SOCIAL MEDIA POST</p>
                         <p class="socialMediaTxt">
-                            An amazing opportunity for people to see the social part that makes you 
-                            awesome by linking your social media platforms.
+                            Let your patients  connect with you on social level and see you outside the white coat by linking all your social media platforms.
                         </p>
                     </div>
                 </div>
@@ -341,8 +328,7 @@
                     <div class="col l6 clientRevWriteUpDiv">
                         <p class="clientRevTitle">CLIENT REVIEW</p>
                         <p class="clientRevTxt">
-                            Appraisals , Reviews and Constructive Criticism on display, 
-                            to encourage word of mouth marketing and potential clients.
+                            Whether it is a “Thank you note” or Constructive criticism on display to encourage word of mouth marketing for potential patients.  
                         </p>
                     </div>
 
@@ -471,6 +457,7 @@
         components: {
             FooterComponent,
             HeaderComponent,
+            ImageCropper
         },
         data() {
             return {};
