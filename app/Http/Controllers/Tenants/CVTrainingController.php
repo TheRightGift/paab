@@ -17,7 +17,8 @@ class CVTrainingController extends Controller
      */
     public function index()
     {
-        //
+        $trainings = CV_Training::latest()->get();
+        return response()->json(['message' => 'Success', 'trainings' => $trainings]);
     }
 
     /**
@@ -110,10 +111,10 @@ class CVTrainingController extends Controller
                     $training2Update = $cV_Trainings->find($row->id);
                     $training2Update->institution = $row->institution;
                     $training2Update->title = $row->title;
-                    $training2Update->yearStart = $row->yearStart;
-                    $training2Update->monthEnd = $row->monthEnd;
-                    $training2Update->yearEnd = $row->yearEnd;
-                    $training2Update->monthEnd = $row->monthEnd;
+                    $row->yearStart !== "" ? $training2Update->yearStart = $row->yearStart : null;
+                    $row->monthStart !== "" ? $training2Update->monthStart = $row->monthStart : null;
+                    $row->yearEnd !== "" ? $training2Update->yearEnd = $row->yearEnd : null;
+                    $row->monthEnd !== "" ? $training2Update->monthEnd = $row->monthEnd : null;
                     $training2Update->location = $row->location;
                     $training2Update->specialty = $row->specialty;
                     $training2Update->sub_specialty = $row->sub_specialty;
@@ -123,10 +124,10 @@ class CVTrainingController extends Controller
                 else {
                     $cV_Trainings->institution = $row->institution;
                     $cV_Trainings->title = $row->title;
-                    $cV_Trainings->yearStart = $row->yearStart;
-                    $cV_Trainings->monthEnd = $row->monthEnd;
-                    $cV_Trainings->yearEnd = $row->yearEnd;
-                    $cV_Trainings->monthEnd = $row->monthEnd;
+                    $row->yearStart !== "" ? $cV_Trainings->yearStart = $row->yearStart : null;
+                    $row->monthEnd !== "" ? $cV_Trainings->monthEnd = $row->monthEnd : null;
+                    $row->yearEnd !== "" ? $cV_Trainings->yearEnd = $row->yearEnd : null;
+                    $row->monthEnd !== "" ? $cV_Trainings->monthEnd = $row->monthEnd : null;
                     $cV_Trainings->location = $row->location;
                     $cV_Trainings->specialty = $row->specialty;
                     $cV_Trainings->sub_specialty = $row->sub_specialty;

@@ -185,6 +185,15 @@ class TenantController extends Controller
         return view('websites.tempSettings.biography', compact('user', 'tenantID', 'templateCSS'));
     }
 
+    public function cv_generator(Request $request) {
+        $user = tenant()->user;
+        $tenancies = new Tenant();
+        $tenant = $tenancies->find(tenant('id'));
+        $templateCSS = $tenant->template->styleFile;
+        $tenantID = strtolower(tenant('id')); // For getting the file location;
+        return view('websites.tempSettings.cv_generator', compact('user', 'tenantID', 'templateCSS'));
+    }
+
 
     public function tenancies() {
         // Get the authenticaed user

@@ -17,7 +17,8 @@ class CVMedicalSchoolController extends Controller
      */
     public function index()
     {
-        //
+        $medSchool = CV_Medical_School::latest()->first();
+        return response()->json(['message' => 'Success', 'medSchool' => $medSchool]);
     }
 
     /**

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->text('summary');
             $table->json('skills')->nullable();
-            $table->enum('license', ['board', 'government'])->nullable();
             $table->timestamps();
         });
     }

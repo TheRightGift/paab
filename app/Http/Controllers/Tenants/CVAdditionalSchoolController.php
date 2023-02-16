@@ -17,7 +17,8 @@ class CVAdditionalSchoolController extends Controller
      */
     public function index()
     {
-        //
+        $additionalSchool = CV_Additional_School::latest()->first();
+        return response()->json(['message' => 'Success', 'additionalSchool' => $additionalSchool]);
     }
 
     /**

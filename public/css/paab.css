@@ -343,6 +343,7 @@ a.loginLink:hover {
     letter-spacing: -0.015em;
     color: rgba(0, 0, 0, 0.8);
     margin: 12vh 0 2vh 0;
+    padding: 0 4rem;
 }
 
 /* Template Navigation */
@@ -1457,8 +1458,10 @@ div .col .s9 input.clientCreatePortInput1 {
         font-weight: 500;
         color: var(--primary);
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        margin-left: 35%;
+        /* margin-left: 35%; */
         font-family: "Montserrat", sans-serif;
+        display: flex;
+        justify-content: center;
     }
     #banner {
         background-image: none;
@@ -2826,11 +2829,20 @@ div .col .s9 input.clientCreatePortInput1 {
 .spinner-layer {
     border-color: var(--white);
 }
+@media only screen and (min-width: 601px) {
+    nav {
+        height: 64px;
+        line-height: 64px;
+        position: fixed;
+        z-index: 1;
+    }
+}
 /* ********************************************************************************************** */
 /* HeaderComponent Logo Styling for HomepageComponent*/
 
 img.primaryLogo {
-    width: 5.2%;
+    width: 4.2%;
+    padding: .5rem 0;
 }
 
 img.whiteLogo {
@@ -2839,7 +2851,8 @@ img.whiteLogo {
 
 /* HeaderComponent Logo Styling for TemplateComponent*/
 img.tempNavLogo {
-    width: 33%;
+    width: 26%;
+    padding: 0.5rem 0;
 }
 
 img.tempMainLogo {

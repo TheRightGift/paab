@@ -63,7 +63,7 @@
                     </li>
                     <li class="divider" tabindex="-1"></li>
                     <li>
-                        <a href="#!" class="dropSetLink">CV Generator</a>
+                        <a href="/cv_generator" class="dropSetLink">CV Generator</a>
                     </li>
                 </ul>
             </div>
@@ -165,7 +165,7 @@
             <li><div class="divider"></div></li>
             <li><a href="socialmedia_presence" class="sidenavLink">Social Media</a></li>
             <li><div class="divider"></div></li>
-            <li><a href="#!" class="sidenavLink">CV Generator</a></li>
+            <li><a href="/cv_generator" class="sidenavLink">CV Generator</a></li>
             <li><div class="divider"></div></li>
         </ul>
 

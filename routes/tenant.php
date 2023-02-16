@@ -39,6 +39,8 @@ Route::middleware([
     Route::get('/biography', [App\Http\Controllers\TenantController::class, 'biography']);
 
     Route::get('/public_feature', [App\Http\Controllers\TenantController::class, 'public_feature']);
+
+    Route::get('/cv_generator', [App\Http\Controllers\TenantController::class, 'cv_generator']);
 });
 Route::middleware(['auth:api',InitializeTenancyByDomainOrSubdomain::class,
 PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
@@ -87,23 +89,24 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
 
     // CVs
     Route::post('/cvexperience', [App\Http\Controllers\Tenants\CVExperienceController::class, 'store']);
-    Route::put('/cvexperience', [App\Http\Controllers\Tenants\CVExperienceController::class, 'update']);
+    Route::put('/cvexperience/{expo}', [App\Http\Controllers\Tenants\CVExperienceController::class, 'update']);
     Route::get('/cvexperience', [App\Http\Controllers\Tenants\CVExperienceController::class, 'index']);
+    Route::delete('/cvexperience/{expo}', [App\Http\Controllers\Tenants\CVExperienceController::class, 'destroy']);
 
     Route::post('/cv', [App\Http\Controllers\Tenants\CvController::class, 'store']);
-    Route::put('/cv', [App\Http\Controllers\Tenants\CvController::class, 'update']);
+    Route::put('/cv/{cv}', [App\Http\Controllers\Tenants\CvController::class, 'update']);
     Route::get('/cv', [App\Http\Controllers\Tenants\CvController::class, 'index']);
 
     Route::post('/cvmed_school', [App\Http\Controllers\Tenants\CVMedicalSchoolController::class, 'store']);
-    Route::put('/cvmed_school', [App\Http\Controllers\Tenants\CVMedSchoolController::class, 'update']);
-    Route::get('/cvmed_school', [App\Http\Controllers\Tenants\CVMedSchoolController::class, 'index']);
+    Route::put('/cvmed_school/{cvmed}', [App\Http\Controllers\Tenants\CVMedicalSchoolController::class, 'update']);
+    Route::get('/cvmed_school', [App\Http\Controllers\Tenants\CVMedicalSchoolController::class, 'index']);
 
     Route::post('/cv_otherschool', [App\Http\Controllers\Tenants\CVAdditionalSchoolController::class, 'store']);
-    Route::put('/cv_otherschool', [App\Http\Controllers\Tenants\CVAdditionalSchoolController::class, 'update']);
+    Route::put('/cv_otherschool/{cv_other}', [App\Http\Controllers\Tenants\CVAdditionalSchoolController::class, 'update']);
     Route::get('/cv_otherschool', [App\Http\Controllers\Tenants\CVAdditionalSchoolController::class, 'index']);
 
     Route::post('/cv_gradschool', [App\Http\Controllers\Tenants\CVUndergradSchoolController::class, 'store']);
-    Route::put('/cv_gradschool', [App\Http\Controllers\Tenants\CVUndergradSchoolController::class, 'update']);
+    Route::put('/cv_gradschool/{cvundgergrad}', [App\Http\Controllers\Tenants\CVUndergradSchoolController::class, 'update']);
     Route::get('/cv_gradschool', [App\Http\Controllers\Tenants\CVUndergradSchoolController::class, 'index']);
 
     Route::post('/cvtraining', [App\Http\Controllers\Tenants\CVTrainingController::class, 'store']);
@@ -111,8 +114,14 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::get('/cvtraining', [App\Http\Controllers\Tenants\CVTrainingController::class, 'index']);
 
     Route::post('/cvreferral', [App\Http\Controllers\Tenants\CVReferenceController::class, 'store']);
-    Route::put('/cvreferral', [App\Http\Controllers\Tenants\CVReferenceController::class, 'update']);
+    Route::put('/cvreferral/{ref}', [App\Http\Controllers\Tenants\CVReferenceController::class, 'update']);
     Route::get('/cvreferral', [App\Http\Controllers\Tenants\CVReferenceController::class, 'index']);
+    Route::delete('/cvreferral/{expo}', [App\Http\Controllers\Tenants\CVReferenceController::class, 'destroy']);
+
+    Route::post('/license', [App\Http\Controllers\Tenants\LicenseController::class, 'store']);
+    Route::put('/license/{ref}', [App\Http\Controllers\Tenants\LicenseController::class, 'update']);
+    Route::get('/license', [App\Http\Controllers\Tenants\LicenseController::class, 'index']);
+    Route::delete('/license/{expo}', [App\Http\Controllers\Tenants\LicenseController::class, 'destroy']);
 
     Route::post('/verifyToken', [App\Http\Controllers\TenantController::class, 'verifyToken'])->withoutMiddleware(['auth:api']);
     Route::post('/savelogin', [App\Http\Controllers\TenantController::class, 'saveAccessToken'])->withoutMiddleware(['auth:api']);

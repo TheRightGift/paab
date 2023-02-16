@@ -12,6 +12,5 @@ class Cv extends Model
     protected $fillable = [
         'summary',
         'skills',
-        'license',
     ];
 }

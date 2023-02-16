@@ -17,7 +17,8 @@ class CvController extends Controller
      */
     public function index()
     {
-        //
+        $cvSummary = CV::latest()->first();
+        return response()->json(['message' => 'Success', 'cvSummary' => $cvSummary]);
     }
 
     /**
@@ -55,9 +56,26 @@ class CvController extends Controller
      * @param  \App\Models\Cv  $cv
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cv $cv)
+    public function update(Request $request, $cv)
     {
-        //
+        $inputs = Validator::make($request->all(), [
+            'summary' => 'nullable',
+            'skills' => 'nullable',
+            'license' => 'nullable',
+        ]); 
+
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            $cv = CV::find($cv)->update($input);
+            if ($cv == true) {
+                return response()->json(['message' => 'Success', 'cv' => $cv, 'status' => 200]);
+            }
+            else {
+                return response()->json(['message' => 'Failed', 'cv' => $cv], 501);
+            }
+        }
     }
 
     /**
