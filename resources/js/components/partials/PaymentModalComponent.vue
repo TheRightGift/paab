@@ -90,8 +90,10 @@
             */
             configureStripe(){
                 this.stripe = Stripe( this.stripeAPIToken );
-
-                this.elements = this.stripe.elements();
+                const appearance = {
+                    theme: 'night'
+                };
+                this.elements = this.stripe.elements({appearance});
                 this.card = this.elements.create('card');
 
                 this.card.mount('#card-element');

@@ -1854,6 +1854,7 @@
                                 this.domainCheckPassed = false;
                             }
                             this.checkingSuggestion = false;
+                            // return this.domainCheckPassed;
                         })
                         .catch((err) => {
                             console.log(err);
@@ -1911,7 +1912,7 @@
                 );
                 this.domainSuggestions.push({
                     name: (
-                        title[0].name +
+                        (title[0].name).replace(/\./g,'') +
                         this.bio.firstname +
                         this.bio.lastname +
                         ".com"
@@ -1919,7 +1920,7 @@
                 });
                 this.domainSuggestions.push({
                     name: (
-                        title[0].name +
+                        title[0].name.replace(/\./g,'') +
                         this.bio.lastname +
                         this.bio.firstname +
                         ".com"
@@ -1929,7 +1930,7 @@
                     name: (
                         this.bio.firstname +
                         this.bio.lastname +
-                        title[0].name +
+                        title[0].name.replace(/\./g,'') +
                         ".com"
                     ).toLowerCase(),
                 });
@@ -1937,20 +1938,20 @@
                     name: (
                         this.bio.lastname +
                         this.bio.firstname +
-                        title[0].name +
+                        title[0].name.replace(/\./g,'') +
                         ".com"
                     ).toLowerCase(),
                 });
                 this.domainSuggestions.push({
                     name: (
-                        title[0].name +
+                        title[0].name.replace(/\./g,'') +
                         this.bio.lastname +
                         ".com"
                     ).toLowerCase(),
                 });
                 this.domainSuggestions.push({
                     name: (
-                        title[0].name +
+                        title[0].name.replace(/\./g,'') +
                         this.bioData.firstname +
                         ".com"
                     ).toLowerCase(),
@@ -2264,23 +2265,26 @@
                 }
             },
             updateDomain() {
-                if (this.initialDomain != this.domainSelected) {
-                    axios
-                        .put(`/claim/updateDomain/tenant`, {
-                            domain: this.domainSelected,
-                        })
-                        .then((res) => {
-                            if (res.data.status == 200) {
-                                this.initialDomain = res.data.domain.domain;
-                                M.toast({
-                                    html: res.data.message,
-                                    classes: "successNotifier",
-                                });
-                            }
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                        });
+                if (this.initialDomain != this.domainSelected.replace('.com','') ) {
+                    this.checkDomainAvailability();
+                    if (this.domainCheckPassed === true) {
+                        axios
+                            .put(`/claim/updateDomain/tenant`, {
+                                domain: this.domainSelected,
+                            })
+                            .then((res) => {
+                                if (res.data.status == 200) {
+                                    this.initialDomain = res.data.domain.domain;
+                                    M.toast({
+                                        html: res.data.message,
+                                        classes: "successNotifier",
+                                    });
+                                }
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            });
+                    } else M.toast({html: 'Domain Not Available!', classes: 'errorNotifier'});
                 }
             },
             updatePhoto() {

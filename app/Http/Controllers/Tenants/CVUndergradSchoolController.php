@@ -17,7 +17,8 @@ class CVUndergradSchoolController extends Controller
      */
     public function index()
     {
-        //
+        $underGradSchool = CV_Undergrad_School::latest()->first();
+        return response()->json(['message' => 'Success', 'underGradSchool' => $underGradSchool]);
     }
 
     /**
@@ -77,7 +78,7 @@ class CVUndergradSchoolController extends Controller
         } else {
             $input = $inputs->validated();
             $schools = new CV_Undergrad_School();
-            $school2Update = $schools->find($cV_Medical_School);
+            $school2Update = $schools->find($cV_Undergrad_School);
             $school2Update->update($input);
             if ($school2Update == true) {
                 return response()->json(['message' => 'Success', 'school' => $school2Update, 'status' => 200], 200);

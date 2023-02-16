@@ -1,6 +1,6 @@
 <template>
     <div id="cvModal" class="modal">
-        <!-- <ul class="cvModalLinkHolder hide-on-med-and-down">
+        <ul class="cvModalLinkHolder hide-on-med-and-down">
             <li class="cvModalLinkList">
                 <a href="#" class="cvModalLink" @click="sumHeaderLink()">
                     <span
@@ -1386,11 +1386,11 @@
                     </div>
                 </div>
             </div>
-        </div> -->
-        <div class="modal-content">
+        </div>
+        <!-- <div class="modal-content">
             <i class="material-icons right modal-close">close</i>
             <p class="text-center"><strong>Curriculum Vitae is still in development mode, please check back later. Thanks</strong></p>
-        </div>
+        </div> -->
     </div>
     <!-- <div class="modal" id="cvModal">
         <h1 class="centre">Still in construct, please check back later!</h1>

@@ -462,7 +462,7 @@ class TenantClaimController extends Controller
                         'email' => $valueOfMail,
                         'plan' => $request->get('plan'),
                         'password' => $request->password,
-                        'domain' => $request->domain,
+                        'domain' => $tenant->domains[0]->domain,
                     ), function($message) use ($request) {
                         $message->from('admin@whitecoatdomain.com');
                         $message->to($request->session()->pull('email'), tenant('id'))->subject('Website is now live!');

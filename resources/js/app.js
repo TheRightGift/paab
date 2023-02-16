@@ -63,7 +63,7 @@ import PublicFeature from "./components/templates/Physicians/Settings/tempSettin
 import PasswordChange from "./components/templates/Physicians/Settings/tempSettings/PasswordChange.vue";
 import General from "./components/templates/Physicians/Settings/tempSettings/General";
 import Bio from "./components/templates/Physicians/Settings/tempSettings/Bio";
-import TestModal from "./components/partials/PaymentModalComponent.vue"
+import CVGenerator from "./components/templates/Physicians/Settings/tempSettings/CVGenerator.vue"
 
 app.component('home-component', HomeComponent);
 app.component('login-component', LoginComponent);
@@ -107,7 +107,7 @@ app.component("password-change-component", PasswordChange);
 app.component("general-component", General);
 app.component("bio-component", Bio);
 
-app.component("test-component", TestModal);
+app.component("cvgenerator-component", CVGenerator);
 
 /**
  * The following block of code may be used to automatically register your

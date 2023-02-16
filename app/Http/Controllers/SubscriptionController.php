@@ -115,6 +115,7 @@ class SubscriptionController extends Controller
 
             return response()->json(['message' => 'Subscription completed', 'status' => 'ok'], 200);
         } catch (Exception $e) {
+            // dd($e);
             return response()->json(['message' => 'success', 'error' =>$e->getMessage()]);
         }
 

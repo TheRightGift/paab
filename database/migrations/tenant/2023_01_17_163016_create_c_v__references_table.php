@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('position');
             $table->string('location');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('phone')->nullable();
+            $table->string('institution');
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }
