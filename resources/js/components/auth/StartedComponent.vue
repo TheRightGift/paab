@@ -49,9 +49,7 @@
                             Start your journey <br />with us...
                         </p>
                         <p class="wlcNoteTxt">
-                            Let us ensure that your email address is active and
-                            accurate , that is the only way we can reach you
-                            effectively.
+                            Let us ensure that your email address is active and accurate , that is the only way we can reach you effectively. <br/><br/>P.S Also check your spam, we might meet you there.
                         </p>
                         <p class="wlcNoteFooterTxt">
                             &copy; White Coat Domain. {{ getYear() }}. We support
@@ -82,10 +80,8 @@
                             Start your journey <br />with us...
                         </p>
                         <p class="wlcNoteTxt">
-                            “ Good things come to those who wait”.
-                            <span class="getStartedOtpSpan right"
-                                >Nathan Sykes</span
-                            >
+                            “Good things come to those who wait”.
+                            <span class="getStartedOtpSpan right">Nathan Sykes</span>
                         </p>
                         <p class="wlcNoteFooterTxt">
                             &copy; White Coat Domain. {{ getYear() }}. We support
@@ -98,11 +94,7 @@
                     <div class="authHeadingContainer center-align hide-on-large-only">
                         <a href="/" class="authHeading">WhiteCoatDomain</a>
                     </div>
-                    <OtpComponent
-                        @res="otpVerifier"
-                        :otp="otp"
-                        :type="'register'"
-                    />
+                    <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'"/>
                 </div>
             </div>
     

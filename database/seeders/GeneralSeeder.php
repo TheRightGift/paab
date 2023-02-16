@@ -23,14 +23,14 @@ class GeneralSeeder extends Seeder
         $title = [
             [
                 'profession_id' => 1,
-                'name' => 'DO.',
+                'name' => 'DO',
             ],
             [
-                'name' => 'MD.',
+                'name' => 'MD',
                 'profession_id' => 1
             ],
             [
-                'name' => 'MD.',
+                'name' => 'DD',
                 'profession_id' => 1
             ],
         ];
