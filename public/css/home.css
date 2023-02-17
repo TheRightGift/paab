@@ -1,6 +1,8 @@
 /* HOME */
 
-
+body {
+    width: 100% !important;
+}
 #banner {
     background-image: url("../media/img/bannerCircle.png");
     /* height: 100vh; */

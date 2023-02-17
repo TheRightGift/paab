@@ -133,36 +133,34 @@
                     <div v-show="view === 7">
                         <p class="contentTitle">Upload a banner</p>
 
-                        <div class="bannerImgDiv">
-                            <img v-if="initialAchieve.banner !== null" :src="typeof achievement.banner == 'string'
-                                        ? '/media/tenants/'+tenant+'/img/'+ achievement.banner
-                                        : uploaded !== null ? uploaded : '/media/tenants/'+tenant+'/img/'+initialAchieve.banner"
-                                 alt="milestoneBanner.png"
-                                 class="bannerImg init"
-                            >
-                            <img src="/media/img/milestoneBanner.png" v-else
-                                 alt="milestoneBanner.png"
-                                 class="bannerImg"
-                            >
+                        <div v-if="!uploadingBanner ">
+                            <div v-show="!showCropper" class="bannerImgDiv">
+                                <img v-if="initialAchieve.banner !== null" :src="typeof achievement.banner == 'string'
+                                            ? '/media/tenants/'+tenant+'/img/'+ achievement.banner
+                                            : uploaded !== null ? uploaded : '/media/tenants/'+tenant+'/img/'+initialAchieve.banner"
+                                     alt="milestoneBanner.png"
+                                     class="bannerImg init"
+                                >
+                                <img src="/media/img/milestoneBanner.png" v-else
+                                     alt="milestoneBanner.png"
+                                     class="bannerImg"
+                                >
+                            </div>
+                            <div v-show="showCropper" class="bannerCropper">
+                                <image-cropper :height="551" :width="1132" @uploadPhoto="addBannerchiever($event)" />
+                            </div>
                         </div>
 
                         <form class="formContain">
-                            <div class="row" v-if="!uploadingBanner">
+                            <div class="row" v-if="!uploadingBanner" v-show="!showCropper">
                                 <div class="col s9">
                                     <p class="bannerImgInstruct">The image should be 1024px width and 512px height</p>
                                 </div>
-                                <div class="file-field input-field col s3">
-                                    <i class="material-icons bannerInputIcon right">
-                                        file_upload
-                                        <input type="file" @change="addBannerchiever" accept="image/*" >
-                                    </i>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate bannerImgInput" type="text" placeholder="Upload">
-                                    </div>
+                                <div class="col s3 pull-m1">
+                                    <button class="btn btn-small waves waves-green" @click.prevent="showCropper=true">Change</button>
                                 </div>
                             </div>
                             <div v-else>
-
                                 <p class="centered">Uploading Banner <i class="fas fa-spinner fa-spin fa-2xl"></i></p>
                             </div>
                         </form>
@@ -199,7 +197,7 @@
                     </div>
 
                     <!-- Prev/Next Button Section -->
-                    <div v-if="view !== 9" class="skipDiv">
+                    <div v-if="view !== 9" class="skipDiv" v-show="!showCropper">
                         <button class="skipBtn"
                             @click="prev()"
                             :disabled="view < 1"
@@ -230,8 +228,9 @@
     </div>
 </template>
 <script>
+    import ImageCropper from '../../../../partials/ImageCropper.vue';
     export default {
-        components: { },
+        components: { ImageCropper },
         created() {
             this.loggedIn = this.getCookie('_token');
             if (!this.loggedIn) location.replace(`http://${location.host}`)
@@ -267,6 +266,7 @@
                     banner: null,
                 },
                 uploadImageSuccess: 0,
+                showCropper: false,
             };
         },
         mounted() {
@@ -289,21 +289,21 @@
                     .post(request, formData)
                     .then((res) => {
                         if (res.status === 201 || res.data.status === 200) {
-                            this.loading = !this.loading;
+                            this.loading = false;
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
                             this.uploadingBanner = !this.uploadingBanner;
                             this.uploadImageSuccess = 1;
-                            console.log(image)
-                            this.uploaded = image !== null ?  URL.createObjectURL(image.target.files[0]) : this.oldBanner;
+                            this.uploaded = image !== null ?  image : this.oldBanner;
                             this.update = 1;
                             this.achievement.id = res.data.achievement.id;
                             this.initialAchieve = res.data.achievement;
                             let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()
                             var instance = M.Modal.getInstance(elem);
                             image === null ? instance.close() : null;
+                            this.showCropper = false;
                         }
                     })
                     .catch((err) => {
@@ -320,16 +320,24 @@
                             var instance = M.Modal.getInstance(elem);
                             instance.close();
                         }
+                        if (err.response.status === 413) {
+                            this.loading = !this.loading;
+                            this.uploadingBanner = !this.uploadingBanner;
+                            M.toast({
+                                html: err.response.statusText,
+                                classes: 'errorNotifier'
+                            })
+                        }
+                        console.log(err)
                     });
             },
             replace() {
                 location.href = this.host;
             },
             addBannerchiever(e) {
-                if (!e.target.files.length) return;
                 this.deleteImg();
                 this.uploadingBanner = true;
-                this.achievement.banner = e.target.files[0];
+                this.achievement.banner = {};
                 let formData = new FormData();
                 let request = `/api/achievement`;
                 if (this.update === 1) {
@@ -337,7 +345,7 @@
                     request = `/api/achievement/${this.achievement.id}`;
                 }
                 this.update !== 1 || this.achievement.oldBanner
-                    ? formData.append("banner", this.achievement.banner)
+                    ? formData.append("banner", e)
                     : null;
                 let image = e;
                 this.request(request, formData, image);

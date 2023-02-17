@@ -101,7 +101,7 @@
                         <i class="material-icons">keyboard_arrow_left</i>
                     </a>
                     <form enctype="multipart/form-data">
-                        <div class="bannerImgDiv" v-if="isLoggedIn">
+                        <div class="bannerImgDiv" v-if="isLoggedIn" v-show="!showCropper">
                             <img
                                 alt="doc.png" class="responsive-img aboutImgModal"
                                 :src="
@@ -111,8 +111,10 @@
                                 "
                             />
                         </div>
+                        <div v-show="showCropper" class="bannerCropper">
+                            <ImageCropper :height="551" :width="1132" @uploadPhoto="addBannerchiever($event)" />
+                        </div>
                         <div class="editImgChangeBtnDiv">
-                            <input type="file" id="our-btn" hidden @change="addBannerchiever($event)" accept=".jpg, .png"/>
 
                             <!--our custom file upload button-->
                             <div class="centered">
@@ -120,14 +122,14 @@
                                     <p class="error" v-for="(error, index) in errorse" :key="index">{{error}}</p>
                                 </div>
                                 <div>
-                                    <label for="our-btn" class="editImgChangeBtn" v-if="!uploadingBanner">Change Image</label>
+                                    <label for="our-btn" class="editImgChangeBtn" v-if="!uploadingBanner" @click="showCropper=true" v-show="!showCropper">Change Image</label>
                                     <p v-else>Uploading image <i class="fas fa-spinner fa-spin"></i></p>
                                 </div>
                             </div>
                         </div>
-                        <p class="aboutImgSize">The Image should be 1024px width and 512px height and .jpg oR .png</p>
+                        <p class="aboutImgSize" v-show="!showCropper">The Image should be 1024px width and 512px height and .jpg oR .png</p>
                     </form>
-                    <div class="row rm_mg">
+                    <div class="row rm_mg" v-show="!showCropper">
                         <div class="input-field col s12">
                             <input type="number" v-model="feats.experience" class="validate aboutWriteUpsInput" placeholder="Experience In year(s)">
                         </div>
@@ -141,7 +143,7 @@
                             <input type="number" v-model="feats.volunteer" class="validate aboutWriteUpsInput" placeholder="Volunteer Services">
                         </div>
                     </div>
-                    <div class="editWriteUpsSaveBtnDiv">
+                    <div class="editWriteUpsSaveBtnDiv" v-show="!showCropper">
                         <a href="#" class="editWriteUpsSaveBtn" @click.prevent="updateAchievements()" v-if="!loading">
                             Update
                         </a>
@@ -155,7 +157,9 @@
     </div>
 </template>
 <script>
+import ImageCropper from '../../partials/ImageCropper.vue';
     export default {
+        components: {ImageCropper},
         data() {
             return {
                 uploadingBanner: false,
@@ -165,6 +169,7 @@
                 banner: null,
                 errorse: [],
                 uploaded: null,
+                showCropper: false,
             };
         },
         props: {
@@ -219,19 +224,26 @@
                             this.loading = !this.loading;
                             this.uploadingBanner = !this.uploadingBanner;
                         }
+                        if (err.response.status === 413) {
+                            this.loading = !this.loading;
+                            this.uploadingBanner = !this.uploadingBanner;
+                            M.toast({
+                                html: err.response.statusText,
+                                classes: 'errorNotifier'
+                            })
+                        }
                     });
             },
             addBannerchiever(e) {
                 this.errorse = [];
-                if (!e.target.files.length) return;
                 this.uploadingBanner = true;
-                this.experience.banner = e.target.files[0];
+                this.experience.banner = {};
                 let formData = new FormData();
                 formData.append("_method", "PUT");
                 let request = `/api/achievement/${this.experience.id}`;
-                formData.append("banner", this.experience.banner);
+                formData.append("banner", e);
                 this.request(request, formData);
-                typeof(this.banner) !== 'string' ? this.uploaded = URL.createObjectURL(e.target.files[0]) : null;
+                typeof(this.banner) !== 'string' ? this.uploaded = e : null;
             },
             updateAchievements() {
                 this.loading = !this.loading;

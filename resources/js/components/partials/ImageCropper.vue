@@ -12,11 +12,9 @@
       <section class="cropper-area">
         <div class="img-cropper">
           <vue-cropper
-          :minCanvasWidth="width"
-            :minCanvasHeight="height"
+            :aspect-ratio="xAxis / yAxis"
             ref="cropper"
             :src="imgSrc"
-            :aspect-ratio="451 / 512"
             preview=".preview"
             dragMode='move'
             :autoCropArea="0.65"
@@ -39,13 +37,15 @@
             href="#"
             role="button"
             @click.prevent="cropImage"
+            class="btn waves waves-green"
           >
-            Crop
+            Crop & Save
           </a>
           
           <a
             href="#"
             role="button"
+            class="btn waves waves-green"
             @click.prevent="showFileChooser"
           >
             Upload Image
@@ -77,7 +77,7 @@ export default {
   },
   data() {
     return {
-      
+      imgSrc: '/media/img/placeholder.jpg',
       cropImg: '',
       data: null,
     };
@@ -85,7 +85,8 @@ export default {
   props: {
     height: Number,
     width: Number,
-    imgSrc: String,
+    xAxis: Number,
+    yAxis: Number,
   },
   methods: {
     cropImage() {
@@ -146,7 +147,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 body {
   font-family: Arial, Helvetica, sans-serif;
   width: 1024px;
@@ -188,8 +189,8 @@ input[type="file"] {
 
 .actions a {
   display: inline-block;
-  padding: 5px 15px;
-  background: #0062CC;
+  /* padding: 5px 15px; */
+  background: var(--primary);
   color: white;
   text-decoration: none;
   border-radius: 3px;

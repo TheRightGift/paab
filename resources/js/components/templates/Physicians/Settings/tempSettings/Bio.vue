@@ -41,16 +41,22 @@
                     </div>
 
                     <div v-show="view === 1" class="flexedOnLarge">
-                        <p class="contentTitle">Do you like this picture as your main image?</p>
-
-                        <div class="proImgDiv">
-                            <img v-if="false" src="/media/img/profilePics.png" alt="profilePics.png" class="proImg">
+                        <p class="contentTitle" v-show="!showCropper">Do you like this picture as your main image?</p>
+                        <div v-show="showCropper" class="flexed">
+                            <p class="contentTitle">Alright, Upload a clear picture OR</p>
+                            <a class="btn-flat btn waves offsetS2" href="#" @click="showCropper = false">Cancel</a>
+                        </div>
+                        <div class="proImgDiv" v-if="!showCropper">
+                            <img v-if="false"  src="/media/img/profilePics.png" alt="profilePics.png" class="proImg">
                             <img :src="typeof photo === 'string'
                                         ? '/media/tenants/' +
                                           tenantid +
                                           '/img/' +
                                           photo
                                         : uploaded" v-else :alt="bio.firstname" class="proImg">
+                        </div>
+                        <div class="proCenter" v-show="showCropper" v-if="!uploadPhotoProcessing">
+                            <image-cropper  :height="512" :width="451" @uploadPhoto="updatePhoto($event)" />
                         </div>
 
                         <div class="proImgBtnMainDiv">
@@ -59,21 +65,21 @@
                                     <p class="error" v-for="(error, index) in errors" :key="index">{{error}}</p>
                                 </div>
                             </div>
-                            <form class="proImgBtnContainDiv" v-if="!uploadPhotoProcessing">
+                            <form class="proImgBtnContainDiv" v-if="!uploadPhotoProcessing" v-show="!showCropper">
                                 <a href="#" class="proImgYesBtn" @click="yesProImg()">Yes</a>
-                                <input type="file" id="actual-btn" hidden @change="updatePhoto" accept=".jpg, .png"/>
+                                <!-- <input type="file" id="actual-btn" hidden @change="updatePhoto" accept=".jpg, .png"/> -->
 
                                 <!--our custom file upload button-->
                                 <div class="centered">
                                     <div>
-                                        <label for="actual-btn" class="proImgSelectFile" >Change Image<i class="material-icons proInputFileUpladIcon">file_upload</i></label>
+                                        <label for="actual-btn" class="proImgSelectFile" @click="showCropper=true">Change Image<i class="material-icons proInputFileUpladIcon">file_upload</i></label>
                                     </div>
 
                                 </div>
                             </form>
                             <p v-else class="centered">Uploading image <i class="fas fa-spinner fa-spin"></i></p>
                         </div>
-                        <div class="proImgInstructDiv">
+                        <div class="proImgInstructDiv" v-show="!showCropper">
                             <p class="proImgInstruct">The image should be 451px width and 512px height</p>
                         </div>
                     </div>
@@ -114,7 +120,7 @@
                     <div v-if="loading && view === 3"><p class="centered">Updating your changes <i class="fas fa-circle-notch fa-spin fa-3xl"></i></p></div>
 
                     <!-- Prev/Next Button Section -->
-                    <div v-if="view !== 3" class="skipDiv">
+                    <div v-if="view !== 3" class="skipDiv" v-show="!showCropper">
                         <button class="skipBtn"
                                 @click="prev()"
                                 :disabled="view < 1"
@@ -138,9 +144,9 @@
     </div>
 </template>
 <script>
-let bioData = {};
+import ImageCropper from '../../../../partials/ImageCropper.vue';
 export default {
-    components: { },
+    components: { ImageCropper },
     data() {
         return {
             bio: {
@@ -153,6 +159,7 @@ export default {
             errors: [],
             host: "",
             loading: false,
+            showCropper: false,
             uploadPhotoProcessing: false,
             view: 0,
             uploaded: null,
@@ -170,7 +177,6 @@ export default {
                 if (res.data.bio !== null) {
                     this.update = 1;
                     this.bio = res.data.bio;
-                    bioData = res.data.bio;
                     this.photo = res.data.bio.photo;
                 }
             }).catch(err => {
@@ -181,7 +187,7 @@ export default {
                 this.errors = [];
                 this.uploadPhotoProcessing = true;
                 let formData = new FormData();
-                formData.append('photo', e.target.files[0]);
+                formData.append('photo', e);
                 this.update === 1 ? formData.append('_method', 'PUT') : null;
                 let request = this.update === 1 ? `/api/bio/${this.bio.id}` : '.api/bio';
                 axios.post(request, formData).then(res => {
@@ -190,9 +196,10 @@ export default {
                             html: res.data.message,
                             classes: "successNotifier",
                         });
-                        this.photo = e.target.files[0];
-                        this.uploaded = URL.createObjectURL(e.target.files[0]);
+                        this.photo = {};
+                        this.uploaded = e;
                         this.uploadPhotoProcessing = false;
+                        this.showCropper = false;
                     }
                 }).catch(err => {
                     if (err.response.status === 400) {

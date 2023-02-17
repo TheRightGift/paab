@@ -46,7 +46,7 @@ class BioController extends Controller
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
-            if($request->hasFile('photo')){
+            if($request->has('photo')){
                 try {
                     // $photo = $request->file('photo');
                     // $ext = $request->file('photo')->getClientOriginalExtension();
@@ -57,12 +57,11 @@ class BioController extends Controller
                     // $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                     // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
                     $safeName = strtolower(tenant('id')).'biophoto'.'.'.'png';
-                    $file = public_path().'/media/tenants/'.$tenant->id.'/img/'.$safeName;
+                    $file = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/'.$safeName;
                     $success = Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($file);
                     $input['photo'] = $safeName;
-                    // dd($path);
                 } catch (\Throwable $th) {
                     return response($inputs->errors()->all(), 400);
                 }
@@ -107,7 +106,7 @@ class BioController extends Controller
             $bios = new Bio();
             $bio2Update = $bios->find($bio);
             if ($bio2Update != null) {
-                if($request->hasFile('photo')){
+                if($request->has('photo')){
                     // $photo = $request->file('photo');
                     // $ext = $request->file('photo')->getClientOriginalExtension();
                     // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
@@ -115,7 +114,7 @@ class BioController extends Controller
                     // $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
                     // $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                     $safeName = strtolower(tenant('id')).'biophoto'.'.'.'png';
-                    $file = public_path().'/media/tenants/'.$tenant->id.'/img/'.$safeName;
+                    $file = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/'.$safeName;
                     $success = Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($file);

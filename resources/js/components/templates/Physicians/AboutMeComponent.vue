@@ -128,8 +128,8 @@
                         <i class="material-icons">keyboard_arrow_left</i>
                     </a>
                     <form enctype="multipart/form-data">
-                        <div class="aboutImgModalDiv" v-if="bio !== null">
-                            <img
+                        <div class="aboutImgModalDiv" v-if="bio !== null ">
+                            <img v-if="!showCropper"
                                 alt="doc.png" class="responsive-img aboutImgModal"
                                 :src="
                                     typeof about.photo == 'string'
@@ -137,9 +137,12 @@
                                         : uploaded == null ? '/media/tenants/'+tenant+'/img/'+ bio.photo : uploaded
                                 "
                             />
+                            <div v-show="showCropper">
+                                <image-cropper :height="512" :width="451" @uploadPhoto="photoUpload($event)" :xAxis="451" :yAxis="512"/>
+                            </div>
                         </div>
                         <div class="editImgChangeBtnDiv">
-                            <input type="file" id="actual-btn" hidden @change="photoUpload" accept=".jpg, .png"/>
+                            <!-- <input type="file" id="actual-btn" hidden @change="photoUpload" accept=".jpg, .png"/> -->
 
                             <!--our custom file upload button-->
                             <div class="centered">
@@ -147,12 +150,13 @@
                                     <p class="error" v-for="(error, index) in errors" :key="index">{{error}}</p>
                                 </div>
                                 <div>
-                                    <label for="actual-btn" class="editImgChangeBtn" v-if="!loading">Change Image</label>
+                                    <label for="actual-btn" class="editImgChangeBtn" v-if="!loading" v-show="!showCropper" @click="showCropper=true">Change Image</label>
                                     <p v-else>Uploading image <i class="fas fa-spinner fa-spin"></i></p>
                                 </div>
+                                
                             </div>
                         </div>
-                        <p class="aboutImgSize">The Image should be 451px width and 512px height and .jpg oR .png</p>
+                        <p class="aboutImgSize" v-show="!showCropper">The Image should be 451px width and 512px height and .jpg oR .png</p>
                     </form>
                 </div>
             </div>
@@ -201,11 +205,15 @@
     </div>
 </template>
 <script>
+import ImageCropper from '../../partials/ImageCropper.vue';
 export default {
     computed: {
         aboutCount() {
             return this.about.about != null ?  this.about.about.length : "";
         },
+    },
+    components: {
+        ImageCropper,
     },
     data() {
         return {
@@ -217,17 +225,18 @@ export default {
             errors: [],
             loading: false,
             uploaded: null,
+            showCropper: false,
             txt: 'Sed porttitor lectus nibh. Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit. Vestibulum ante ipsum primis Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Curabitur arcu erat'
         };
     },
     methods: {
         photoUpload(e) {
             this.errors = [];
-            if (!e.target.files.length) return;
-            this.about.photo = e.target.files[0];
+            // if (!e.target.files.length) return;
+            // this.about.photo = e.target.files[0];
             this.loading = !this.loading;
             let formData = new FormData();
-            formData.append("photo", this.about.photo);
+            formData.append("photo", e);
             formData.append("_method", 'PUT');
             axios
                 .post(`/api/bio/${this.bio.id}`, formData)
@@ -238,7 +247,9 @@ export default {
                             classes: "successNotifier",
                         });
                         this.loading = !this.loading;
-                        this.uploaded = URL.createObjectURL(e.target.files[0]);
+                        this.about.photo = null;
+                        this.uploaded = e;
+                        this.showCropper = false;
                     }
                 })
                 .catch((err) => {

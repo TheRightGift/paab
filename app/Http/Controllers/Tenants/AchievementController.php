@@ -32,7 +32,7 @@ class AchievementController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'banner' => 'nullable|max:500',
+            'banner' => 'nullable',
             'feats' => 'nullable',
         ]); 
 
@@ -47,8 +47,8 @@ class AchievementController extends Controller
                 // $name = 'banner'.'.'.$ext;
                 // $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                 $safeName = 'banner'.'.'.'png';
-                $file = public_path().'/media/tenants/'.$tenant->id.'/img/'.$safeName;
-                $success = Image::make(file_get_contents($request['photo']))->resize(1024, 512, function ($constraint) {
+                $file = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/'.$safeName;
+                $success = Image::make(file_get_contents($request['banner']))->resize(1132, 551, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($file);
                 $input['banner'] = $safeName;
@@ -89,8 +89,8 @@ class AchievementController extends Controller
                 // $name = 'banner'.'.'.$ext;
                 // $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                 $safeName = 'banner'.'.'.'png';
-                $file = public_path().'/media/tenants/'.$tenant->id.'/img/'.$safeName;
-                $success = Image::make(file_get_contents($request['photo']))->resize(1024, 512, function ($constraint) {
+                $file = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/'.$safeName;
+                $success = Image::make(file_get_contents($request['banner']))->resize(1132, 551, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($file);
                 $input['banner'] = $safeName;

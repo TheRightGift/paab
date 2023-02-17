@@ -1,3 +1,6 @@
+body {
+    width: 100% !important;
+}
 .row .col {
     padding: 0;
 }

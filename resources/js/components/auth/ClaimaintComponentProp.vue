@@ -219,14 +219,18 @@
 
                     <!-- Client Img check section -->
                     <div v-show="view == 3">
-                        <p class="contentTitle">
+                        <p class="contentTitle" v-show="!showCropper">
                             Are you ok with this picture?
                         </p>
+                        <div v-show="showCropper" class="flexed">
+                            <p class="contentTitle">Alright, Upload a clear picture then OR</p>
+                            <a class="btn-flat btn waves offsetS2" href="#" @click="showCropper = false">Cancel</a>
+                        </div>
 
-                        <div class="proImgContainer">
+                        <div class="proImgContainer" v-show="!showCropper">
                             <img
                                 :src="
-                                    typeof bio.photo == 'string'
+                                    typeof bio.photo === 'string'
                                         ? '/media/tenants/' +
                                           tenantId +
                                           '/img/' +
@@ -241,39 +245,29 @@
 
                             <div class="proImgBtnMainDiv">
                                 <div class="proImgBtnContainDiv">
-                                    <a href="#" class="proImgYesBtn" @click="view = 4">Yes</a>
+                                    <a href="#" class="proImgYesBtn" @click="view = 4" v-show="!showCropper">Yes</a>
                                     <div
-                                        class="file-field input-field"
+                                        class=""
                                         id="genUploadFavIconDiv"
                                     >
-                                        <input
-                                            type="file"
-                                            @change="photoUpload"
-                                            accept=".jpg, .png"
-                                        />
-                                        <div class="file-path-wrapper" v-if="!uploadPhotoProcessing">
-                                            <input
-                                                class="file-path validate genInput1"
-                                                type="text"
-                                                placeholder="Change"
-                                                id="customInput"
-                                                value="No"
-                                            />
-                                            <i
-                                                class="
-                                                    material-icons
-                                                    proInputFileUpladIcon
-                                                "
-                                                >file_upload</i
+                                        <div class="" v-if="!uploadPhotoProcessing">
+                                            <a
+                                                href="#"
+                                                role="button"
+                                                @click.prevent="showFileChooser"
+                                                v-show="!showCropper"
+                                                class="decorate"
                                             >
-                                            <image-cropper :imgSrc="'/media/img/451x512holder.png'" :height="512" :width="451" @uploadPhoto="photoUpload($event)" />
+                                                Change
+                                            </a>
+                                            <image-cropper v-show="showCropper" :height="512" :width="451" @uploadPhoto="photoUpload($event)" />
                                         </div>
                                         <p v-else>Uploading Image<i class="fas fa-circle-notch"></i></p>
                                     </div>
                                 </div>
-                                <div class="proImgInstructDiv">
+                                <div class="proImgInstructDiv" v-show="!showCropper">
                                     <p class="proImgInstruct">
-                                        The image should be 451px width and 512px
+                                        The image should be greater than 451px width and 512px
                                         height
                                     </p>
                                 </div>
@@ -1719,6 +1713,7 @@
 
         data() {
             return {
+                showCropper: false,
                 view: 0,
                 bio: {
                     firstname: "",
@@ -1842,6 +1837,10 @@
             });
         },
         methods: {
+            showFileChooser() {
+                // this.$refs.photo.click();
+                this.showCropper = true;
+            },
             checkDomainAvailability() {
                 if (this.domainSelected != "") {
                     this.checkingSuggestion = true;
@@ -1886,7 +1885,6 @@
                 axios
                     .get("/claim/getTenantDomain")
                     .then((res) => {
-                        console.log(res);
                         if (res.data.status == 200) {
                             this.domainSelected = `${res.data.domain}.com`;
                             this.initialDomain = res.data.domain;
@@ -1995,9 +1993,6 @@
                 return password;
             },
             photoUpload(e) {
-                console.log(e);
-                // if (!e.target.files.length) return;
-                // this.bio.photo = e.target.files[0];
                 this.updatePhoto(e);
             },
             prev() {
@@ -2292,48 +2287,46 @@
                 }
             },
             updatePhoto(e) {
-                // if (typeof(this.bio.photo) == 'string') {
-                //     return 'blinke';
-                // }
-                // else {
-                    this.uploadPhotoProcessing = true;
-                    let formData = new FormData();
-                    formData.append('photo', e);
-                    formData.append('_method', 'PUT')
-                    axios.post('/claim/updateAvatar/bio', formData).then(res => {
-                        // console.log(res);
-                        if (res.data.status == 200) {
-                            M.toast({
-                                html: res.data.message,
-                                classes: "successNotifier",
-                            });
-                            localStorage.setItem(
-                                "claimproc",
-                                JSON.stringify([res.data.bio])
-                            );
-                            this.bio = res.data.bio;
-                            this.uploadPhotoProcessing = false;
-                        }
-                    }).catch(err => {
-                        if (err.response.status == 400) {
-                            err.response.data.forEach((el) => {
-                                M.toast({
-                                    html: el,
-                                    classes: "errorNotifier",
-                                });
-                            });
-                        }
-                        if (err.response.status == 413) {
-                            
-                                M.toast({
-                                    html: err.response.statusText,
-                                    classes: "errorNotifier",
-                                });
-                        }
+                this.uploadPhotoProcessing = true;
+                let formData = new FormData();
+                formData.append('photo', e);
+                formData.append('_method', 'PUT')
+                axios.post('/claim/updateAvatar/bio', formData).then(res => {
+                    // console.log(res);
+                    if (res.data.status == 200) {
+                        M.toast({
+                            html: res.data.message,
+                            classes: "successNotifier",
+                        });
+                        localStorage.setItem(
+                            "claimproc",
+                            JSON.stringify([res.data.bio])
+                        );
+                        this.bio = res.data.bio;
                         this.uploadPhotoProcessing = false;
-                        console.log(err);
+                        this.showCropper = false;
+                        this.uploaded = e;
+                        this.bio.photo = {};
+                    }
+                }).catch(err => {
+                    if (err.response.status == 400) {
+                        err.response.data.forEach((el) => {
+                            M.toast({
+                                html: el,
+                                classes: "errorNotifier",
+                            });
+                        });
+                    }
+                    if (err.response.status == 413) {
+                        
+                            M.toast({
+                                html: err.response.statusText,
+                                classes: "errorNotifier",
+                            });
+                    }
+                    this.uploadPhotoProcessing = false;
+                    console.log(err);
                     })
-                // }
             },
             undergradMedSelected() {
                 this.academicCheck = 1;
@@ -2616,13 +2609,13 @@
         margin-top: 0;
         margin-bottom: 0;
     }
-    #customInput {
+    #cs {
         width: 3rem;
         border-bottom: 0;
         text-decoration: underline;
         color: rgb(160, 88, 88);
     }
-    #customInput::placeholder {
+    #cs::placeholder {
         color: rgb(231, 111, 111);
     }
     select {

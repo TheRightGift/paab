@@ -1,10 +1,24 @@
 :root {
     --primary: #6750a4 !important;
-    --secondary: #6750a4  !important;;
-    --black: #000000  !important;;
-    --white: #ffffff  !important;;
+    --secondary: #6750a4 !important;
+    --black: #000000 !important;
+    --white: #ffffff !important;
 
     --component: rgba(0, 0, 0, 0.5);
+}
+.successNotifier {
+    background-color: var(--white);
+    color: rgb(42, 97, 42);
+}
+.errorNotifier {
+    background-color: var(--white);
+    color: rgb(97, 42, 51);
+}
+
+.btn,
+.btn-small,
+.actions a {
+    background-color: var(--primary);
 }
 ::-webkit-scrollbar {
     width: 5px;
@@ -46,7 +60,8 @@ nav {
 #nav-mobile.section {
     padding-top: 1rem !important;
 }
-.headerNoSideNav, .extHeaderNoSideNav {
+.headerNoSideNav,
+.extHeaderNoSideNav {
     display: none;
 }
 /* .section {
@@ -767,29 +782,28 @@ a.physiTempContactBtn.active {
     margin: 0 auto;
     position: relative;
     top: 1vh;
-
 }
 .testiMapDiv {
-    background: #6750A4;
+    background: #6750a4;
     box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
     padding: 1vh 2vw;
 }
 .testiMapProName {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-size: 0.875rem;
     text-align: center;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 .testiMapTxt {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-size: 0.875rem;
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
 }
 .tempOneRevTime {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 20px;
@@ -874,13 +888,13 @@ textarea.materialize-textarea.aboutWriteUpsInput {
 }
 p.aboutWriteUpsSize {
     font-size: 0.7rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     margin-top: 0;
 }
 a.editWriteUpsSaveBtn {
     background-color: #524988;
     color: var(--white);
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 0.9rem;
     padding: 0.3vh 2vw;
 }
@@ -902,7 +916,7 @@ img.aboutImgModal {
 a.editImgChangeBtn {
     background-color: #524988;
     color: var(--white);
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 0.9rem;
     padding: 0.3vh 2vw;
 }
@@ -914,7 +928,7 @@ div.editImgChangeBtnDiv {
 p.aboutImgSize {
     text-align: center;
     font-size: 0.8rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     margin-top: 1.8vh;
 }
 a.modal-close.editImgModalCloseBtn {
@@ -951,7 +965,7 @@ a.servicesAddMoreBtn {
 /* Contact Me Edit Btn */
 p.servicesInputInstruct {
     font-size: 0.7rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     margin-top: 0;
     text-align: right;
 }
@@ -975,12 +989,12 @@ i.material-icons.physiTempSettingsIcon:hover {
 #dropSettings {
     min-width: 12vw;
 }
-.dropdown-content li>a.dropSetLink {
+.dropdown-content li > a.dropSetLink {
     font-size: 1.1rem;
     font-family: "Montserrat", sans-serif;
     color: var(--primary);
-}   
-.dropdown-content li>a.dropSetLink:hover {
+}
+.dropdown-content li > a.dropSetLink:hover {
     background-color: transparent;
     border-left: none;
 }
@@ -1127,7 +1141,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     ul.extHeaderNoSideNav {
         display: flex;
         justify-content: center;
-        background-color: #F6F3F3;
+        background-color: #f6f3f3;
         height: 40px;
         line-height: 40px;
         margin-top: 0;
@@ -1209,7 +1223,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         padding: 0px 15px;
     }
     a.mobileNavLink {
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         font-weight: 700;
     }
     i.material-icons.sidenavTriggerIcon {
@@ -1225,9 +1239,9 @@ i.material-icons.physiTempSettingsIcon:hover {
         margin-top: 3vh;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     } */
-    ul li>a.sidenavLink {
+    ul li > a.sidenavLink {
         font-size: 1.2rem;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         color: var(--white);
         letter-spacing: 0.7px;
     }
@@ -1248,16 +1262,15 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
     i.material-icons.editIcon {
         color: #554c8a;
-        line-height: 40px;
+        line-height: 30px;
         display: flex;
         justify-content: center;
-        font-size: 2.3rem;
+        font-size: 1.3rem;
     }
     div.aboutImgModalDiv {
         width: 50%;
         height: 37vh;
         margin: 2.5vh auto 0 auto;
-
     }
     img.aboutImgModal {
         width: 100%;
@@ -1268,7 +1281,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     a.editImgChangeBtn {
         background-color: #524988;
         color: var(--white);
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         font-size: 0.9rem;
         padding: 0.3vh 2vw;
     }
@@ -1280,7 +1293,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     p.aboutImgSize {
         text-align: center;
         font-size: 0.8rem;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         margin-top: 1.8vh;
     }
     a.modal-close.editImgModalCloseBtn {
@@ -1328,13 +1341,13 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
     p.aboutWriteUpsSize {
         font-size: 0.7rem;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         margin-top: 0;
     }
     a.editWriteUpsSaveBtn {
         background-color: #524988;
         color: var(--white);
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         font-size: 0.9rem;
         padding: 0.3vh 2vw;
     }
@@ -1401,7 +1414,7 @@ i.material-icons.physiTempSettingsIcon:hover {
 
     p.servicesInputInstruct {
         font-size: 0.7rem;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         margin-top: 0;
         text-align: right;
     }
@@ -1429,7 +1442,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     ul.extHeaderNoSideNav li {
         margin: 0 2.1vw;
     }
-    ul.extHeaderNoSideNav li a{
+    ul.extHeaderNoSideNav li a {
         color: var(--black);
         font-size: 0.9rem;
     }
@@ -1507,7 +1520,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         box-shadow: 0px 0px 0px rgba(255, 255, 255, 0);
         border-radius: 0px;
     }
-    img.physiRightImg{
+    img.physiRightImg {
         border-radius: 0;
     }
     .contactContainDiv {
@@ -1562,7 +1575,8 @@ i.material-icons.physiTempSettingsIcon:hover {
         margin: 0 0 5vh 0;
     }
 
-    .expLeftBarInnerDiv:nth-child(3), .expLeftBarInnerDiv:nth-child(2) {
+    .expLeftBarInnerDiv:nth-child(3),
+    .expLeftBarInnerDiv:nth-child(2) {
         border-bottom: none;
         border-right: 1px solid rgba(217, 217, 217, 0.65);
     }
@@ -1661,10 +1675,9 @@ i.material-icons.physiTempSettingsIcon:hover {
         /* text-align: center; */
     }
 
-
     /* Added stylings for testimonial review */
     .testiMapDiv:first-child {
-        background: #6750A4;
+        background: #6750a4;
         box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
         padding: 1vh 2vw;
         margin-bottom: 9vh;
@@ -1696,11 +1709,10 @@ i.material-icons.physiTempSettingsIcon:hover {
         height: 0.5vh;
     }
 
-
     /* ************************************************************************************ */
     ul.extHeaderNoSideNav {
         display: flex;
-        background-color: #F6F3F3;
+        background-color: #f6f3f3;
         height: 40px;
         line-height: 40px;
         margin-top: 0;
@@ -1719,7 +1731,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         padding: 0px 15px;
     }
     a.mobileNavLink {
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         font-weight: 700;
     }
     i.material-icons.sidenavTriggerIcon {
@@ -1733,9 +1745,9 @@ i.material-icons.physiTempSettingsIcon:hover {
         border-radius: 50px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     } */
-    ul li>a.sidenavLink {
+    ul li > a.sidenavLink {
         font-size: 1.2rem;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         color: var(--white);
         letter-spacing: 0.7px;
     }
@@ -1755,7 +1767,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         top: 5%;
         right: 2vw;
     }
-    
+
     /* ************************************************* */
     div.aboutImgModalDiv {
         width: 55%;
@@ -1771,7 +1783,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     a.editImgChangeBtn {
         background-color: #524988;
         color: var(--white);
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         font-size: 0.9rem;
         padding: 0.3vh 2vw;
     }
@@ -1783,7 +1795,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     p.aboutImgSize {
         text-align: center;
         font-size: 0.8rem;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         margin-top: 1.8vh;
     }
     a.modal-close.editImgModalCloseBtn {
@@ -1797,7 +1809,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
 
     /* About Me Writeup edit modal */
-    
+
     a.modal-close.editWriteUpsModalCloseBtn {
         margin-left: -3vw;
         color: var(--black);
@@ -1821,13 +1833,13 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
     p.aboutWriteUpsSize {
         font-size: 0.7rem;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         margin-top: 0;
     }
     a.editWriteUpsSaveBtn {
         background-color: #524988;
         color: var(--white);
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         font-size: 0.9rem;
         padding: 0.3vh 2vw;
     }
@@ -1880,7 +1892,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
     p.servicesInputInstruct {
         font-size: 0.7rem;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         margin-top: 0;
         text-align: right;
     }
@@ -1913,4 +1925,3 @@ i.material-icons.physiTempSettingsIcon:hover {
     background-color: #edebeb;
     border-radius: 50%;
 }
-
