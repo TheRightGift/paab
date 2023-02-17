@@ -255,8 +255,8 @@
                                             <input
                                                 class="file-path validate genInput1"
                                                 type="text"
-                                                placeholder="No"
-                                                id="custom-input"
+                                                placeholder="Change"
+                                                id="customInput"
                                                 value="No"
                                             />
                                             <i
@@ -266,6 +266,7 @@
                                                 "
                                                 >file_upload</i
                                             >
+                                            <image-cropper :imgSrc="'/media/img/451x512holder.png'" :height="512" :width="451" @uploadPhoto="photoUpload($event)" />
                                         </div>
                                         <p v-else>Uploading Image<i class="fas fa-circle-notch"></i></p>
                                     </div>
@@ -1707,11 +1708,13 @@
     import DatePicker from 'vue-datepicker-next';
     import 'vue-datepicker-next/index.css';
     import PaymentModalComponent from "../partials/PaymentModalComponent.vue";
+    import ImageCropper from '../partials/ImageCropper.vue';
     export default {
         components: {
             PaymentModalComponent,
             InnerFooter,
             DatePicker,
+            ImageCropper,
         },
 
         data() {
@@ -1992,8 +1995,9 @@
                 return password;
             },
             photoUpload(e) {
-                if (!e.target.files.length) return;
-                this.bio.photo = e.target.files[0];
+                console.log(e);
+                // if (!e.target.files.length) return;
+                // this.bio.photo = e.target.files[0];
                 this.updatePhoto(e);
             },
             prev() {
@@ -2287,17 +2291,17 @@
                     } else M.toast({html: 'Domain Not Available!', classes: 'errorNotifier'});
                 }
             },
-            updatePhoto() {
-                if (typeof(this.bio.photo) == 'string') {
-                    return 'blinke';
-                }
-                else {
+            updatePhoto(e) {
+                // if (typeof(this.bio.photo) == 'string') {
+                //     return 'blinke';
+                // }
+                // else {
                     this.uploadPhotoProcessing = true;
                     let formData = new FormData();
-                    formData.append('photo', this.bio.photo);
+                    formData.append('photo', e);
                     formData.append('_method', 'PUT')
                     axios.post('/claim/updateAvatar/bio', formData).then(res => {
-                        console.log(res);
+                        // console.log(res);
                         if (res.data.status == 200) {
                             M.toast({
                                 html: res.data.message,
@@ -2319,10 +2323,17 @@
                                 });
                             });
                         }
+                        if (err.response.status == 413) {
+                            
+                                M.toast({
+                                    html: err.response.statusText,
+                                    classes: "errorNotifier",
+                                });
+                        }
                         this.uploadPhotoProcessing = false;
                         console.log(err);
                     })
-                }
+                // }
             },
             undergradMedSelected() {
                 this.academicCheck = 1;
@@ -2605,13 +2616,13 @@
         margin-top: 0;
         margin-bottom: 0;
     }
-    #custom-input {
+    #customInput {
         width: 3rem;
         border-bottom: 0;
         text-decoration: underline;
         color: rgb(160, 88, 88);
     }
-    #custom-input::placeholder {
+    #customInput::placeholder {
         color: rgb(231, 111, 111);
     }
     select {

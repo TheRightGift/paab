@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
-
+use Image;
 class TenantClaimController extends Controller
 {
     /**
@@ -88,7 +88,7 @@ class TenantClaimController extends Controller
      */
     public function updateUserPhoto(Request $request, $bioID) {
         $inputs = Validator::make($request->all(), [
-            'photo' => 'required|image|mimes:jpg,png|max:1000|dimensions:min_width=451,min_height=512',
+            // 'photo' => 'required|image|mimes:jpg,png|max:1000|dimensions:min_width=451,min_height=512',
         ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
@@ -98,23 +98,36 @@ class TenantClaimController extends Controller
             $searchTenant = $request->session()->get('tenant');
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
-                if($request->hasFile('photo')){
-                    $photo = $request->file('photo');
-                    $ext = $request->file('photo')->getClientOriginalExtension();
+                if($request->has('photo')){
+                    try {
+                        // $photo = $request->file('photo');
+                        // $ext = $request->file('photo')->getClientOriginalExtension();
 
-                    $name = $tenant->id.'biophoto'.'.'.$ext;
-                    $path = $photo->move(public_path('/media/tenants/'.$tenant->id.'/img'), $name);
+                        // $name = $tenant->id.'biophoto'.'.'.$ext;
+                        // $path = $photo->move(public_path('/media/tenants/'.$tenant->id.'/img'), $name);
+                        $safeName = $tenant->id.'biophoto'.'.'.'png';
+                        $file = public_path().'/media/tenants/'.$tenant->id.'/img/'.$safeName;
+                        try {
+                            $success = Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
+                                $constraint->aspectRatio();
+                            })->save($file);
+                        } catch (Illuminate\Http\Exceptions\PostTooLargeException $th) {
+                            return response->json(['errors' => $th], 400);
+                        }
+                        // file_put_contents(public_path().'/media/tenants/'.strtolower(tenant('id')).'/img', $file);
+                        $input['photo'] = $safeName;
+                        Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 
-                    $input['photo'] = $name;
-
-                    Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-
-                    DB::connection('mysql')->reconnect();
-                    DB::setDatabaseName($tenant->tenancy_db_name);
-                    // Check the bio and get the names eg. FNAME, LNAME, ONAME
-                    $photoSave = DB::table('bios')->where('id', !null)->update($input);
-                    $updated = DB::table('bios')->first();
-                    return response(['bio' => $updated, 'message' => 'Update Success', 'status' => 200], 200);
+                        DB::connection('mysql')->reconnect();
+                        DB::setDatabaseName($tenant->tenancy_db_name);
+                        // Check the bio and get the names eg. FNAME, LNAME, ONAME
+                        $photoSave = DB::table('bios')->where('id', !null)->update($input);
+                        $updated = DB::table('bios')->first();
+                        return response(['bio' => $updated, 'message' => 'Update Success', 'status' => 200], 200);
+                    } catch (Illuminate\Http\Exceptions\PostTooLargeException $th) {
+                        return response->json(['errors' => $th], 400);
+                    }
+                    
                 }
             }
         }

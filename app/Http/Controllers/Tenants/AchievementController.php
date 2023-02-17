@@ -7,7 +7,7 @@ use App\Models\Tenants\Achievement;
 use Illuminate\Http\Request;
 use Validator;
 use App\Trait\ServiceNotifier;
-
+use Image;
 
 class AchievementController extends Controller
 {
@@ -32,7 +32,7 @@ class AchievementController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1024,min_height=512',
+            'banner' => 'nullable|max:500',
             'feats' => 'nullable',
         ]); 
 
@@ -40,13 +40,18 @@ class AchievementController extends Controller
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
-            if($request->hasFile('banner')){
-                $banner = $request->file('banner');
-                $ext = $request->file('banner')->getClientOriginalExtension();
+            if($request->has('banner')){
+                // $banner = $request->file('banner');
+                // $ext = $request->file('banner')->getClientOriginalExtension();
                 // $stored = \Storage::disk('public')->putFileAs('img', $banner, 'banner'.'.'.$ext);
-                $name = 'banner'.'.'.$ext;
-                $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
-                $input['banner'] = $name;
+                // $name = 'banner'.'.'.$ext;
+                // $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
+                $safeName = 'banner'.'.'.'png';
+                $file = public_path().'/media/tenants/'.$tenant->id.'/img/'.$safeName;
+                $success = Image::make(file_get_contents($request['photo']))->resize(1024, 512, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($file);
+                $input['banner'] = $safeName;
             } 
             $achievement = Achievement::create($input);
             if ($achievement == true) {
@@ -68,7 +73,7 @@ class AchievementController extends Controller
     public function update(Request $request, $achievement)
     {
         $inputs = Validator::make($request->all(), [
-            'banner' => 'nullable|image|mimes:png,jpg,gif|max:500|dimensions:min_width=1024,min_height=512',
+            'banner' => 'nullable',
             'feats' => 'nullable',
         ]); 
 
@@ -76,14 +81,19 @@ class AchievementController extends Controller
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
-            if($request->hasFile('banner')){
-                $banner = $request->file('banner');
-                $ext = $request->file('banner')->getClientOriginalExtension();
+            if($request->has('banner')){
+                // $banner = $request->file('banner');
+                // $ext = $request->file('banner')->getClientOriginalExtension();
                 // $stored = \Storage::disk('public')->putFileAs('img', $banner, 'banner'.'.'.$ext);
                 
-                $name = 'banner'.'.'.$ext;
-                $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
-                $input['banner'] = $name;
+                // $name = 'banner'.'.'.$ext;
+                // $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
+                $safeName = 'banner'.'.'.'png';
+                $file = public_path().'/media/tenants/'.$tenant->id.'/img/'.$safeName;
+                $success = Image::make(file_get_contents($request['photo']))->resize(1024, 512, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($file);
+                $input['banner'] = $safeName;
             } 
             $achievements = new Achievement();
             $achievement2Update = $achievements->find($achievement);
