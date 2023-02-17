@@ -12,10 +12,25 @@
       <section class="cropper-area">
         <div class="img-cropper">
           <vue-cropper
+          :minCanvasWidth="width"
+            :minCanvasHeight="height"
             ref="cropper"
-            :aspect-ratio="16 / 9"
             :src="imgSrc"
+            :aspect-ratio="451 / 512"
             preview=".preview"
+            dragMode='move'
+            :autoCropArea="0.65"
+            :restore= "false"
+            :guides= "false"
+            :center= "false"
+            :highlight= "false"
+            :cropBoxMovable= "false"
+            :cropBoxResizable= "false"
+            :toggleDragModeOnDblclick= "false"
+            :data="{ 
+              width: width,
+              height:  height,
+            }"
           />
         </div>
         <div class="actions">
@@ -38,7 +53,7 @@
         </div>
       </section>
       <!--TODO: Remove this section-->
-      <section class="preview-area">
+      <!-- <section class="preview-area">
         <p>Cropped Image</p>
         <div class="cropped-image">
           <img
@@ -47,7 +62,7 @@
             alt="Cropped Image"
           />
         </div>
-      </section>
+      </section> -->
     </div>
   </div>
 </template>
@@ -62,15 +77,21 @@ export default {
   },
   data() {
     return {
-      imgSrc: '/media/img/surgeonbanner.png',
+      
       cropImg: '',
       data: null,
     };
+  },
+  props: {
+    height: Number,
+    width: Number,
+    imgSrc: String,
   },
   methods: {
     cropImage() {
       // get image data for post processing, e.g. upload or setting image src
       // TODO: convert to file and save
+      this.$emit('uploadPhoto', this.$refs.cropper.getCroppedCanvas().toDataURL())
       this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
     },
     

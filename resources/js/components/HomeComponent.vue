@@ -457,7 +457,6 @@
         components: {
             FooterComponent,
             HeaderComponent,
-            ImageCropper
         },
         data() {
             return {};

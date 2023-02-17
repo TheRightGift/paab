@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Validator;
 use App\Trait\ServiceNotifier;
+use Image;
 
 class BioController extends Controller
 {
@@ -38,7 +39,7 @@ class BioController extends Controller
             'lastname' => 'nullable',
             'firstname' => 'nullable',
             // 'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
-            'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:width=451,height=512',
+            // 'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:width=451,height=512',
         ]);
 
         if ($inputs->fails()) {
@@ -46,17 +47,25 @@ class BioController extends Controller
         } else {
             $input = $inputs->validated();
             if($request->hasFile('photo')){
-                $photo = $request->file('photo');
-                $ext = $request->file('photo')->getClientOriginalExtension();
-                // $path = $request->file('photo')->storeAs(
-                //     strtolower(tenant('id')), strtolower(tenant('id')).'biophoto'.'.'.$ext
-                // );
-                $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
-                $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
-                // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
-
-                $input['photo'] = $name;
-                // dd($path);
+                try {
+                    // $photo = $request->file('photo');
+                    // $ext = $request->file('photo')->getClientOriginalExtension();
+                    // $path = $request->file('photo')->storeAs(
+                    //     strtolower(tenant('id')), strtolower(tenant('id')).'biophoto'.'.'.$ext
+                    // );
+                    // $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
+                    // $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
+                    // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
+                    $safeName = strtolower(tenant('id')).'biophoto'.'.'.'png';
+                    $file = public_path().'/media/tenants/'.$tenant->id.'/img/'.$safeName;
+                    $success = Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($file);
+                    $input['photo'] = $safeName;
+                    // dd($path);
+                } catch (\Throwable $th) {
+                    return response($inputs->errors()->all(), 400);
+                }
             }
             if($request->hasFile('CV')){
                 $cv = $request->file('CV');
@@ -88,7 +97,7 @@ class BioController extends Controller
             'firstname' => 'nullable',
             'lastname' => 'nullable',
             'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
-            'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=451,min_height=512,max_width=451,max_height=512',
+            // 'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=451,min_height=512,max_width=451,max_height=512',
         ]);
 
         if ($inputs->fails()) {
@@ -99,14 +108,18 @@ class BioController extends Controller
             $bio2Update = $bios->find($bio);
             if ($bio2Update != null) {
                 if($request->hasFile('photo')){
-                    $photo = $request->file('photo');
-                    $ext = $request->file('photo')->getClientOriginalExtension();
+                    // $photo = $request->file('photo');
+                    // $ext = $request->file('photo')->getClientOriginalExtension();
                     // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
 
-                    $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
-                    $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
-
-                    $input['photo'] = $name;
+                    // $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
+                    // $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
+                    $safeName = strtolower(tenant('id')).'biophoto'.'.'.'png';
+                    $file = public_path().'/media/tenants/'.$tenant->id.'/img/'.$safeName;
+                    $success = Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($file);
+                    $input['photo'] = $safeName;
                 }
                 if($request->hasFile('CV')){
                     $cv = $request->file('CV');
