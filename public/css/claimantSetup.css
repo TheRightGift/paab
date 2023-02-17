@@ -57,7 +57,15 @@
     padding: 3vh 4vw 0 0;
     height: 48vh;
 }
-
+.flexed {
+    display: flex;
+    align-items: center;
+    justify-content: unset !important;
+}
+.offsetS2 {
+    margin-left: 2rem;
+    color: var(--white);
+}
 select.browser-default {
     border: none;
     border-bottom: 2.5px solid var(--primary);
@@ -87,7 +95,12 @@ select.browser-default {
     justify-content: flex-end;
     align-items: flex-end;
 }
-
+.decorate {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgb(126, 53, 53);
+    font-family: inherit;
+}
 .headerTitle {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -296,7 +309,7 @@ table tr td {
 
 .proImgBtnMainDiv {
     position: relative;
-    margin-bottom: 0vh;
+    margin-bottom: 7vh;
 }
 
 .proImgInstructDiv {

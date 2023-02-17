@@ -1,3 +1,6 @@
+body {
+    width: 100% !important;
+}
 /* Dashboard Section */
 .p10 {
     padding: 10px;

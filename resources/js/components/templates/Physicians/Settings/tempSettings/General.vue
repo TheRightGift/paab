@@ -68,7 +68,8 @@
 
                     <div v-show="view == 2">
                         <p class="contentTitle">Set up a favicon logo</p>
-
+                        <p class="centered">The favicon logo is usually the icon beside the title of a webpage URL</p>
+                        <p class="centered"><small >The image for favicon should be less than 100KiloBytes</small></p>
                         <form class="formContain">
                             <input type="file" id="viewWebBtn" hidden @change="favUpload" accept=".png"/>
 
