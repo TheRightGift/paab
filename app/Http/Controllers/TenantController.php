@@ -40,7 +40,7 @@ class TenantController extends Controller
                 $tenant = Tenant::create([
                     'name' => $inputs->validated()['name'],
                     'description' => $inputs->validated()['description'],
-                    'template_id' => $inputs->validated()['template_id'],
+                    'template_id' => $inputs->validated()['template_id'] ?? Template::first()->id,
                     'id' => strtolower($inputs->validated()['name']),
                     'user_id' => $inputs->validated()['user_id'],
                 ]);

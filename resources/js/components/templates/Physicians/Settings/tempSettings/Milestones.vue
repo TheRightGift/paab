@@ -147,7 +147,7 @@
                                 >
                             </div>
                             <div v-show="showCropper" class="bannerCropper">
-                                <image-cropper :height="551" :width="1132" @uploadPhoto="addBannerchiever($event)" />
+                                <image-cropper :height="743" :width="1294" @uploadPhoto="addBannerchiever($event)" />
                             </div>
                         </div>
 

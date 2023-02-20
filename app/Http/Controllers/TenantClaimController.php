@@ -36,8 +36,8 @@ class TenantClaimController extends Controller
         } else {
             $input = $inputs->validated();
             $input['password'] = Hash::make($request->password);
-            if (!empty(Session::get('email'))) {
-                $input['email'] = Session::get('email');
+            if (!empty(Session::get('email')) || $request->confirmHash === 'hashkeill') {
+                $input['email'] = $input['email'] ?? Session::get('email');
                 $findUser = User::where('email', $input['email'])->first();
                 if(!(empty($findUser))){
                     $user = $findUser->update($input);
@@ -73,11 +73,15 @@ class TenantClaimController extends Controller
 
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
-                $userData = DB::table('bios')->where('id', '!=' , null )->update($input);
+                if (!empty($request->id)) {
+                    $userData = DB::table('bios')->where('id', '!=' , null )->update($input);
+                }
+                else {
+                    $userData = DB::table('bios')->insert($input);
+                }
                 $userBiography = DB::table('bios')->first();
                 return response(['status' => 200, 'user' => $userBiography, 'msg' => 'Updated onSuccess'], 200);
             }
-            dd('hdhhdhd');
         }
     }
 
@@ -106,8 +110,12 @@ class TenantClaimController extends Controller
                         // $name = $tenant->id.'biophoto'.'.'.$ext;
                         // $path = $photo->move(public_path('/media/tenants/'.$tenant->id.'/img'), $name);
                         $safeName = $tenant->id.'biophoto'.'.'.'png';
-                        $file = public_path().'/media/tenants/'.$tenant->id.'/img/'.$safeName;
+                        $save_path = public_path().'/media/tenants/'.$tenant->id.'/img/';
+                        if (!file_exists($save_path)) {
+                            mkdir($save_path, 0755, true);
+                        }
                         try {
+                            $file = $save_path.$safeName;
                             $success = Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
                                 $constraint->aspectRatio();
                             })->save($file);
@@ -458,17 +466,17 @@ class TenantClaimController extends Controller
         ]);
         if (!empty($value) && $value !== 'default') {
             $orders = AdminClientOrder::where([['tenant_id', $value], ['claimed', null], ['email', $valueOfMail]])->first();
-            if (!empty($orders)) {
-                $userToUpdate = User::where('email', $valueOfMail)->first();
-//                Auth::loginUsingId($userToUpdate->id, true);
+            $userToUpdate = User::where('email', $valueOfMail)->first();
+            if (!empty($orders) || $userToUpdate->registration_completed === 'Pending') {
                 $authUser = $userToUpdate->id;
                 $tenant = Tenant::find($value);
                 $tenant->user_id = $authUser;
-                $orders->claimed = 1;
+                !empty($orders) ? $orders->claimed = 1 : null;
                 $tenantSave = $tenant->save();
-                $orderSave = $orders->save();
-                if ($tenantSave === true && $orderSave) {
+                !empty($orders)  ? $orderSave = $orders->save() : null;
+                if ($tenantSave === true || $orderSave) {
                     $userToUpdate->plan = $request->plan == 'freemium' ? 'F' : 'P';
+                    $userToUpdate->registration_completed = 'Active';
                     $userToUpdate->save();
                     \Mail::send('websites.domain_claim',
                     array(

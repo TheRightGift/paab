@@ -57,7 +57,11 @@ class BioController extends Controller
                     // $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                     // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
                     $safeName = strtolower(tenant('id')).'biophoto'.'.'.'png';
-                    $file = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/'.$safeName;
+                    $save_path = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/';
+                    if (!file_exists($save_path)) {
+                        mkdir($save_path, 0755, true);
+                    }
+                    $file = $save_path.$safeName;
                     $success = Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($file);

@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Signup Help Modal Structure -->
-        <div id="helpModal1" class="modal">
+        <!-- <div id="helpModal1" class="modal">
             <div class="modal-content">
                 <p>
                     <a
@@ -32,7 +32,7 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Had to differentiate for those that are coming from claiming website -->
         <div v-if="!claimant && claimaint === null">
             <div class="row authContainDiv" v-if="verifiedEmail == 1">
@@ -97,290 +97,11 @@
                     <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'"/>
                 </div>
             </div>
-    
-            <div class="row authContainDiv" v-if="verifiedEmail == 3">
-                <div class="col s12 m12 l6 regContainer hide-on-med-and-down">
-                    <div class="wlcNoteDiv">
-                        <a href="/" class="wlcNoteLogo">
-                            <img
-                                src="/media/img/whiteCoatDomain1.png"
-                                alt="whiteCoatDomain.png"
-                                class="authLogo"
-                            />
-                        </a>
-                        <p class="wlcNoteTitle">
-                            Start your journey <br />with us...
-                        </p>
-                        <p class="wlcNoteTxt">
-                            White Coat Domain is the easiest and quickest way to
-                            build your brand presence. At your fingertips, take your
-                            professional career to the next level by building an
-                            outstanding online portfolio to showcase your career and
-                            promote yourself.
-                        </p>
-                        <p class="wlcNoteFooterTxt">
-                            &copy; White Coat Domain. {{ getYear() }}. We support
-                            your brand!
-                        </p>
-                    </div>
-                </div>
-    
-                <div class="col s12 m12 l6 regContainer">
-                    <div class="authHeadingContainer center-align hide-on-large-only">
-                        <a href="/" class="authHeading">WhiteCoatDomain</a>
-                    </div>
-                    <div class="authRightDiv">
-                        <p class="authTitle">
-                            SIGN UP
-                            <!-- Signup Help Modal Trigger -->
-                            <!--a class="modal-trigger" href="#helpModal1">
-                                <i class="material-icons helpIcon right">help</i>
-                            </a-->
-                        </p>
-                        <p class="authTxt">
-                            Please fillout the registration form. All fields are required.
-                        </p>
-    
-                        <form id="reistrationForm">
-                            <div class="row">
-                                <div class="input-field col l2 s12 noPaddingLeft">
-                                    <select
-                                        class="browser-default"
-                                        id="signupTitle"
-                                        v-model="userReg.title"
-                                    >
-                                        <option value="" disabled selected>
-                                            Title
-                                        </option>
-                                        <option
-                                            v-for="title in titles"
-                                            :key="title.id"
-                                            :value="title.id"
-                                        >
-                                            {{ title.name }}
-                                        </option>
-                                    </select>
-                                </div>
-    
-                                <div class="input-field col l5 s12">
-                                    <input
-                                        placeholder="Last Name"
-                                        id="signupLname"
-                                        type="text"
-                                        v-model="userReg.lastname"
-                                    />
-                                </div>
-    
-                                <div class="input-field col l5 s12">
-                                    <input
-                                        placeholder="First Name"
-                                        id="signupFName"
-                                        type="text"
-                                        v-model="userReg.firstname"
-                                    />
-                                </div>
-                            </div>
-    
-                            <div class="row">
-                                <div class="input-field col l6 m6 s6 noPaddingLeft">
-                                    <input
-                                        placeholder="Email"
-                                        id="signupEmail"
-                                        type="email"
-                                        v-model="userReg.email"
-                                        readonly
-                                    />
-                                </div>
-                                <div class="input-field col l6 m6 s6">
-                                    <input
-                                        placeholder="Zipcode"
-                                        id="signupZipcode"
-                                        type="text"
-                                        v-model="userReg.zipcode"
-                                    />
-                                </div>
-                            </div>
-    
-                            <div class="row">
-                                <div
-                                    class="input-field col l6 m6 s12 noPaddingLeft"
-                                >
-                                    <input
-                                        placeholder="Phone Number"
-                                        id="signupPhone"
-                                        type="tel"
-                                        class="validate"
-                                        v-model="userReg.phone"
-                                    />
-                                </div>
-                                <div class="input-field col l6 s12 noPaddingRight">
-                                    <select
-                                        class="browser-default"
-                                        id="signupProfession"
-                                        v-model="userReg.profession"
-                                    >
-                                        <option value="" disabled selected>
-                                            Profession
-                                        </option>
-                                        <option
-                                            v-for="profession in professions"
-                                            :key="profession.id"
-                                            :value="profession.id"
-                                        >
-                                            {{ profession.name }}
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-    
-                            <div class="row">
-                                <div class="input-field col l6 s12 noPaddingLeft">
-                                    <select
-                                        class="browser-default"
-                                        id="signupCountry"
-                                        v-model="userReg.country"
-                                        @change="sortStates"
-                                    >
-                                        <option value="" disabled selected>
-                                            Country
-                                        </option>
-                                        <option
-                                            v-for="country in countries"
-                                            :key="country.id"
-                                            :value="country.id"
-                                        >
-                                            {{ country.name }}
-                                        </option>
-                                    </select>
-                                </div>
-    
-                                <div class="input-field col l6 s12 noPaddingRight">
-                                    <select
-                                        class="browser-default"
-                                        id="signupGender"
-                                        v-model="userReg.gender"
-                                    >
-                                        <option value="" disabled selected>
-                                            Gender
-                                        </option>
-                                        <option value="M">Male</option>
-                                        <option value="F">Female</option>
-                                    </select>
-                                </div>
-                            </div>
-    
-                            <div class="row">
-                                <div class="input-field col l6 s12 noPaddingLeft">
-                                    <select
-                                        class="browser-default"
-                                        id="signupState"
-                                        v-model="userReg.state"
-                                        @change="sortCities"
-                                    >
-                                        <option value="" disabled selected>
-                                            State
-                                        </option>
-                                        <option
-                                            v-for="state in states"
-                                            :key="state.id"
-                                            :value="state.id"
-                                        >
-                                            {{ state.name }}
-                                        </option>
-                                    </select>
-                                </div>
-    
-                                <div class="input-field col l6 s12 noPaddingRight">
-                                    <select
-                                        class="browser-default"
-                                        id="signupCity"
-                                        v-model="userReg.city"
-                                    >
-                                        <option value="" disabled selected>
-                                            City
-                                        </option>
-                                        <option
-                                            v-for="city in cities"
-                                            :key="city.id"
-                                            :value="city.id"
-                                        >
-                                            {{ city.name }}
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-    
-                            <div class="row">
-                                <div
-                                    class="
-                                        input-field
-                                        col
-                                        l12
-                                        m12
-                                        s12
-                                        noPaddingLeft
-                                    "
-                                >
-                                    <input
-                                        placeholder="Password"
-                                        id="signupPass"
-                                        type="password"
-                                        class="validate"
-                                        v-model="userReg.password"
-                                    />
-                                </div>
-                            </div>
-    
-                            <div class="row">
-                                <div
-                                    class="
-                                        input-field
-                                        col
-                                        l12
-                                        m12
-                                        s12
-                                        noPaddingLeft
-                                    "
-                                >
-                                    <input
-                                        placeholder="Confirm Password"
-                                        id="signCpass"
-                                        type="password"
-                                        class="validate"
-                                        v-model="userReg.cPassword"
-                                    />
-                                </div>
-                            </div>
-    
-                            <div class="row">
-                                <button
-                                    class="btn col l12 m12 s12"
-                                    v-if="!registrationLoading"
-                                    type="button"
-                                    id="signupBtn"
-                                    @click="submitRegistrationForm()"
-                                >
-                                    Sign Up
-                                </button>
-                                <a class="btn getStartBtn" v-else>
-                                    <div class="preloader-wrapper small active">
-                                        <div
-                                            class="spinner-layer spinner-white-only"
-                                        >
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </form>
+            
+            <div v-if="verifiedEmail === 3">
+                <div id="cover-spin">
+                    <div class="valign-wrapper">
+                        <h6 class="">Saving data, please hang on. You will be redirected to complete your registration</h6>
                     </div>
                 </div>
             </div>
@@ -394,6 +115,7 @@
     import VerifyEmailComponent from "../partials/VerifyEmailComponent";
     import OtpComponent from "../partials/OtpComponent";
     import ClaimaintComponentProp from './ClaimaintComponentProp.vue';
+    import { faker } from '@faker-js/faker';
     // import cryptoJs from "crypto-js";
     // import { Base64 } from "js-base64";
     // const key = process.env.MIX_APP_KEY;
@@ -431,6 +153,7 @@
                     profession: "",
                     zipcode: "",
                 },
+                verifying: false,
                 verifiedEmail: 1,
                 claimaint: null// if user refreshes page check if the process of claiming has started previously
             };
@@ -450,6 +173,33 @@
                         this.claimaint = claimaintProcess;
                     }
                 }
+            },
+            createTenant(datum) {
+                let data = {
+                    name: faker.datatype.uuid(),
+                    description: faker.lorem.paragraph(),
+                    user_id: datum.id,
+                };
+                axios.post('/api/tenant_without_auth', data).then(res => {
+                    if (res.data.status === 200) {
+                        document.location.href = `claim?claimable=${res.data.domain.tenant.id}&mail=${this.userReg.email}`;
+                        this.verifying = false;
+                        console.log(location.host);
+                    }
+                }).catch(err => { 
+                    console.log(err);
+                })
+            },
+            passwordGenerator() {
+                var chars =
+                    "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                var passwordLength = 12;
+                var password = "";
+                for (var i = 0; i <= passwordLength; i++) {
+                    var randomNumber = Math.floor(Math.random() * chars.length);
+                    password += chars.substring(randomNumber, randomNumber + 1);
+                }
+                return password;
             },
             getLocations() {
                 const requestTitles = axios.get(title);
@@ -478,7 +228,18 @@
             otpVerifier(value) {
                 if (value === 200) {
                     this.updateVerifiedEmail(3);
+                    this.saveMailAndCreateUser();
                 }
+            },
+            saveMailAndCreateUser() {
+                this.verifying = true;
+                axios.post('/claim/saveuser', {confirmHash: 'hashkeill', firstname: faker.name.firstName(), lastname: faker.name.lastName(), email: this.userReg.email, password: this.passwordGenerator(),}).then(res => {
+                    if (res.data.status === 201) {
+                        this.createTenant(res.data.user);
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
             },
             setOTP(value) {
                 this.otp = value.otp;
@@ -519,57 +280,57 @@
                         console.log(err);
                     });
             },
-            submitRegistrationForm() {
-                if (
-                    !this.userReg.email ||
-                    !this.userReg.firstname ||
-                    !this.userReg.lastname ||
-                    !this.userReg.phone ||
-                    !this.userReg.country ||
-                    !this.userReg.gender ||
-                    !this.userReg.state ||
-                    !this.userReg.city ||
-                    !this.userReg.zipcode ||
-                    !this.userReg.password ||
-                    this.userReg.password !== this.userReg.cPassword
-                ) {
-                    M.toast({
-                        html: "Please fill every field in the registration form.",
-                        classes: "errorNotifier",
-                    });
-                } else {
-                    this.registrationLoading = true;
-                    let data = {
-                        email: this.userReg.email,
-                        firstname: this.userReg.firstname,
-                        lastname: this.userReg.lastname,
-                        phone: this.userReg.phone,
-                        gender: this.userReg.gender,
-                        city_id: this.userReg.city,
-                        title_id: this.userReg.title,
-                        zipcode: this.userReg.zipcode,
-                        password: this.userReg.password,
-                    };
-                    axios
-                        .post("/auth/register", data)
-                        .then((res) => {
-                            if (res.status === 200) {
-                                if (res.data.status == 200) {
-                                    window.location.href = "/auth/login";
-                                } else if (res.data.status == 501) {
-                                    M.toast({
-                                        html: res.data.error,
-                                        classes: "errorNotifier",
-                                    });
-                                }
-                                this.registrationLoading = false;
-                            }
-                        })
-                        .catch((err) => {
-                            console.log(`Error: ${err.response}`);
-                        });
-                }
-            },
+            // submitRegistrationForm() {
+            //     if (
+            //         !this.userReg.email ||
+            //         !this.userReg.firstname ||
+            //         !this.userReg.lastname ||
+            //         !this.userReg.phone ||
+            //         !this.userReg.country ||
+            //         !this.userReg.gender ||
+            //         !this.userReg.state ||
+            //         !this.userReg.city ||
+            //         !this.userReg.zipcode ||
+            //         !this.userReg.password ||
+            //         this.userReg.password !== this.userReg.cPassword
+            //     ) {
+            //         M.toast({
+            //             html: "Please fill every field in the registration form.",
+            //             classes: "errorNotifier",
+            //         });
+            //     } else {
+            //         this.registrationLoading = true;
+            //         let data = {
+            //             email: this.userReg.email,
+            //             firstname: this.userReg.firstname,
+            //             lastname: this.userReg.lastname,
+            //             phone: this.userReg.phone,
+            //             gender: this.userReg.gender,
+            //             city_id: this.userReg.city,
+            //             title_id: this.userReg.title,
+            //             zipcode: this.userReg.zipcode,
+            //             password: this.userReg.password,
+            //         };
+            //         axios
+            //             .post("/auth/register", data)
+            //             .then((res) => {
+            //                 if (res.status === 200) {
+            //                     if (res.data.status == 200) {
+            //                         window.location.href = "/auth/login";
+            //                     } else if (res.data.status == 501) {
+            //                         M.toast({
+            //                             html: res.data.error,
+            //                             classes: "errorNotifier",
+            //                         });
+            //                     }
+            //                     this.registrationLoading = false;
+            //                 }
+            //             })
+            //             .catch((err) => {
+            //                 console.log(`Error: ${err.response}`);
+            //             });
+            //     }
+            // },
             updateVerifiedEmail(num) {
                 this.verifiedEmail = num;
             },
@@ -581,3 +342,37 @@
         computed: {},
     };
 </script>
+<style>
+    #cover-spin {
+    position:fixed;
+    width:100%;
+    left:0;right:0;top:0;bottom:0;
+    background-color: rgba(255,255,255,0.7);
+    z-index:9999;
+}
+
+@-webkit-keyframes spin {
+	from {-webkit-transform:rotate(0deg);}
+	to {-webkit-transform:rotate(360deg);}
+}
+
+@keyframes spin {
+	from {transform:rotate(0deg);}
+	to {transform:rotate(360deg);}
+}
+
+#cover-spin::after {
+    content:'';
+    display:block;
+    position:absolute;
+    left:48%;top:40%;
+    width:40px;height:40px;
+    border-style:solid;
+    border-color:black;
+    border-top-color:transparent;
+    border-width: 4px;
+    border-radius:50%;
+    -webkit-animation: spin .8s linear infinite;
+    animation: spin .8s linear infinite;
+}
+</style>

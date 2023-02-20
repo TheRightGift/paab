@@ -76,6 +76,7 @@ Route::get('cities/{state_id}', [CountryController::class, 'cities']);
 Route::post('verifyOTP', [AuthController::class, 'verifyOTP']);
 Route::post('domain/check', [DomainCheckerController::class, 'check']);
 
-
+// No auth required
+Route::post('tenant_without_auth', [App\Http\Controllers\TenantController::class, 'create']);
 // Route::get('getCities/{startRow}', [CountryController::class, 'getCities']);
 // Route::post('insertCity', [CountryController::class, 'insertCity']);

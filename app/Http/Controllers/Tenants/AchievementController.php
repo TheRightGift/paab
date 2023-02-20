@@ -48,7 +48,7 @@ class AchievementController extends Controller
                 // $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                 $safeName = 'banner'.'.'.'png';
                 $file = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/'.$safeName;
-                $success = Image::make(file_get_contents($request['banner']))->resize(1132, 551, function ($constraint) {
+                $success = Image::make(file_get_contents($request['banner']))->resize(1294, 743, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($file);
                 $input['banner'] = $safeName;
@@ -90,7 +90,7 @@ class AchievementController extends Controller
                 // $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                 $safeName = 'banner'.'.'.'png';
                 $file = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/'.$safeName;
-                $success = Image::make(file_get_contents($request['banner']))->resize(1132, 551, function ($constraint) {
+                $success = Image::make(file_get_contents($request['banner']))->resize(1294, 743, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($file);
                 $input['banner'] = $safeName;
