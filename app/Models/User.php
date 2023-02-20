@@ -43,7 +43,8 @@ class User extends Authenticatable
         'access_token',
         'visits',
         'gender',
-        'avatar'
+        'avatar',
+        'registration_completed'
     ];
 
     /**

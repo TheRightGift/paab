@@ -44,12 +44,14 @@ class DashboardController extends Controller
             'othername' => ['nullable'],
             'password' => ['nullable'],
             'role' => ['required'],
+            'registration_completed' => ['nullable'],
         ]); 
         
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
+            $input->registration_completed = 'Active';
             $input['password'] = Hash::make($input['email']);
             $input['role'] = 'Admin';
             $admin = User::create($input);

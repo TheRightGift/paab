@@ -26,7 +26,6 @@ Route::get('/templates', function () {
     return view('template');
 });
 
-Route::get('/claim', [App\Http\Controllers\SettingController::class, 'claim']);
 
 
 Route::get('/preview/{templateId}', [App\Http\Controllers\TemplateController::class, 'renderTemplate']);
@@ -36,6 +35,7 @@ Route::get('/login/{provider}/callback', [App\Http\Controllers\SocialController:
 
 // Auth
 Route::prefix('auth')->group(function () {
+    Route::get('/claim', [App\Http\Controllers\SettingController::class, 'claim']);
     Route::get('/login/{provider}', [App\Http\Controllers\SocialController::class, 'redirect']);
     Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
     Route::post('/register', [App\Http\Controllers\AuthController::class, 'register']);

@@ -82,6 +82,7 @@
                                         type="text"
                                         v-model="bio.firstname"
                                         class="validate"
+                                        placeholder="Firstname"
                                     />
                                 </div>
                                 <div class="input-field col s3">
@@ -89,6 +90,7 @@
                                         type="text"
                                         v-model="bio.lastname"
                                         class="validate"
+                                        placeholder="Lastname"
                                     />
                                 </div>
                                 <div class="input-field col s3">
@@ -260,7 +262,9 @@
                                             >
                                                 Change
                                             </a>
-                                            <image-cropper v-show="showCropper" :height="512" :width="451" @uploadPhoto="photoUpload($event)" />
+                                            <div>
+                                                <image-cropper v-show="showCropper" :height="512" :width="451" @uploadPhoto="photoUpload($event)" />
+                                            </div>
                                         </div>
                                         <p v-else>Uploading Image<i class="fas fa-circle-notch"></i></p>
                                     </div>
@@ -584,7 +588,7 @@
                     <!-- Internship Section -->
                     <div v-show="view == 5">
                         <!-- Internship Check -->
-                        <div v-show="internshipCheck == 0">
+                        <div v-show="internshipCheck == 0" class="container">
                             <p class="contentTitle">
                                 Have you completed your internship program?
                             </p>
@@ -713,7 +717,7 @@
                     <!-- Fellowship Section -->
                     <div v-show="view == 6">
                         <!-- Fellowship Check -->
-                        <div v-show="fellowshipCheck == 0">
+                        <div v-show="fellowshipCheck == 0" class="container">
                             <p class="contentTitle">
                                 Have you completed your fellowship program?
                             </p>
@@ -842,7 +846,7 @@
                     <!-- Residency Section -->
                     <div v-show="view == 7">
                         <!-- Residency Check -->
-                        <div v-show="residencyCheck == 0">
+                        <div v-show="residencyCheck == 0" class="container">
                             <p class="contentTitle">
                                 Have you completed your residency program?
                             </p>
@@ -1360,7 +1364,7 @@
                     </div>
 
                     <!-- Publish Section -->
-                    <div v-show="view == 11">
+                    <div v-show="view == 11" class="container">
                         <div class="contentTitle" v-if="!showGoLiveBtns">
                             <span class="serviceSuccessTxt">Congrats!</span>
                             Your site has been setup successfully! <span class="serviceSuccessTxt">Hooray!</span>
@@ -1395,7 +1399,7 @@
                     </div>
 
                     <!-- Prev/Next Button Section -->
-                    <div>
+                    <div class="mt-5">
                         <div v-if="view > 0 && view <= 3" class="skipDiv">
                             <button
                                 class="skipBtn"
@@ -1713,6 +1717,7 @@
 
         data() {
             return {
+                setDomain: false,
                 showCropper: false,
                 view: 0,
                 bio: {
@@ -1852,11 +1857,15 @@
                         .then((res) => {
                             if (res.data.status == 1) {
                                 this.domainCheckPassed = true;
+                                this.setDomain ? this.updateDomain() : null;
                             } else if (res.data.status == 0) {
                                 this.domainCheckPassed = false;
+                                if (this.setDomain) {
+                                    M.toast({html: 'Domain Not Available!', classes: 'errorNotifier'});
+                                    this.view = 2;
+                                }
                             }
                             this.checkingSuggestion = false;
-                            // return this.domainCheckPassed;
                         })
                         .catch((err) => {
                             console.log(err);
@@ -1871,7 +1880,10 @@
                     this.generateMultiple();
                 }
                 if (this.view === 2) {
-                    this.updateDomain();
+                    this.setDomain = true;
+                    if (this.initialDomain != this.domainSelected.replace('.com','') ) {
+                        this.checkDomainAvailability();
+                    }
                 }
                 if (this.view == 3) {
                     this.view++;
@@ -1974,12 +1986,14 @@
             },
             parseClaimaintData(dataToParse) {
                 let data = JSON.parse(dataToParse);
-                this.bioData = data[0];
-                this.bio.firstname = data[0].firstname;
-                this.bio.lastname = data[0].lastname;
-                this.bio.othername = data[0].othername;
-                this.bio.title_id = data[0].title_id;
-                this.bio.photo = data[0].photo;
+                console.log(typeof(data), data.length);
+                this.bioData = data.length === undefined ? data : data[0];
+                this.bio.firstname = this.bioData.firstname;
+                this.bio.lastname = this.bioData.lastname;
+                this.bio.othername = this.bioData.othername;
+                this.bio.title_id = this.bioData.title_id;
+                this.bio.photo = this.bioData.photo;
+                this.bio.id = this.bioData.id;
             },
             passwordGenerator() {
                 var chars =
@@ -2264,9 +2278,6 @@
                 }
             },
             updateDomain() {
-                if (this.initialDomain != this.domainSelected.replace('.com','') ) {
-                    this.checkDomainAvailability();
-                    if (this.domainCheckPassed === true) {
                         axios
                             .put(`/claim/updateDomain/tenant`, {
                                 domain: this.domainSelected,
@@ -2278,13 +2289,14 @@
                                         html: res.data.message,
                                         classes: "successNotifier",
                                     });
+                                    this.setDomain = false;
                                 }
                             })
                             .catch((err) => {
                                 console.log(err);
                             });
-                    } else M.toast({html: 'Domain Not Available!', classes: 'errorNotifier'});
-                }
+                    
+                
             },
             updatePhoto(e) {
                 this.uploadPhotoProcessing = true;
@@ -2638,5 +2650,8 @@
                     width: 40%;
                     /* margin-top: 50%; */
                 }
+            }
+            .mt-5 {
+                margin-top: 5rem;
             }
 </style>

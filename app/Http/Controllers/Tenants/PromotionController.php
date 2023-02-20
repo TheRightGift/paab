@@ -43,11 +43,17 @@ class PromotionController extends Controller
         } else {
             $input = $inputs->validated();
             if($request->hasFile('banner')){
-                $banner = $request->file('banner');
-                $ext = $request->file('banner')->getClientOriginalExtension();
-                // $stored = \Storage::disk('public')->putFileAs('img/promo', $banner, $this->UUID().'.'.$ext);
-                $name = $this->UUID().'.'.$ext;
-                $path = $banner->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img/promo'), $name);
+                // $banner = $request->file('banner');
+                // $ext = $request->file('banner')->getClientOriginalExtension();
+                $name = $this->UUID().'.'.'png';
+                $save_path = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/promo';
+                if (!file_exists($save_path)) {
+                    mkdir($save_path, 0755, true);
+                }
+                $file = $save_path.$name;
+                $success = Image::make(file_get_contents($request['banner']))->resize(1294, 743, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($file);
                 $input['banner'] = $name;
             } 
             $input['expiry'] = new Carbon($input['expiry']);

@@ -55,14 +55,17 @@ class SettingController extends Controller
         
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
+                $user = User::where('email', $searchEmail)->firstOrFail();
                 $orders = AdminClientOrder::where([['tenant_id', $searchTenant], ['claimed', null], ['email', $searchEmail]])->first();
-                if (!empty($orders)) {
+                if (!empty($orders) || $user->registration_completed === 'Pending') {
                     \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
             
                     DB::connection('mysql')->reconnect();
                     DB::setDatabaseName($tenant->tenancy_db_name);
                     // Check the bio and get the names eg. FNAME, LNAME, ONAME
-                    $userBiography = DB::table('bios')->get();
+                    $bio = DB::table('bios')->get();
+                    $userBiography = $bio->isEmpty() ? collect(['firstname' => '', 'lastname' => '', 'title_id' => '', 'othername' => '']) : $bio;
+                    // dd($userBiography, $bio->isEmpty());
                     return redirect('auth/getstarted')->with(['userBiography' => $userBiography]);
                 }
                 else {
