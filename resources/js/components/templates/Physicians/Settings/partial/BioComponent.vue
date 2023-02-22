@@ -295,7 +295,7 @@
                             </span>
                             <i
                                 class="material-icons genTitleClear"
-                                v-else-if="bio.about == ''"
+                                v-else-if="bio.about === ''"
                                 >clear</i
                             >
                             <p class="genTitle cursor" @click="bioNextBtn">
@@ -306,12 +306,12 @@
                             <i
                                 class="material-icons"
                                 id="genTitleCheck2"
-                                v-if="bio.photo != null"
+                                v-if="bio.photo !== null"
                                 >check</i
                             >
                             <i
                                 class="material-icons genTitleClear"
-                                v-else-if="bio.photo == null"
+                                v-else-if="bio.photo === null"
                                 >clear</i
                             >
                             <p
