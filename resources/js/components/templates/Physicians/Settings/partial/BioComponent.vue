@@ -26,12 +26,14 @@
                             </p>
                         </div>
                         <div>
-                            <i
-                                class="material-icons"
-                                id="genTitleCheck1"
-                                v-if="bio.about.length > 600"
+                            <span v-if="bio.about !== null">
+                                <i
+                                    class="material-icons"
+                                    id="genTitleCheck1"
+                                    v-if="bio.about.length > 600"
                                 >check</i
-                            >
+                                >
+                            </span>
                             <i
                                 class="material-icons genTitleClear"
                                 v-else-if="bio.about == ''"
@@ -80,19 +82,19 @@
                     <div class="row">
                         <div class="col s12 m12 l6">
                             <p class="genTitle1">Provide your full name</p>
-                        
+
                             <p class="genTxt">
                                 Your names are auto inputted with the names you provided during registration. you can change it if you wish so.
                             </p>
-                        
+
                             <div class="input-field">
                                 <input type="text" v-model="bio.lastname" placeholder="Last Name" class="bioInput" />
                             </div>
-                        
+
                             <div class="input-field">
                                 <input type="text" v-model="bio.firstname" placeholder="First Name" class="bioInput" />
                             </div>
-                        
+
                             <!-- <div>
                                 <button type="button" class="btn" id="genModalBtn">
                                     save
@@ -104,44 +106,11 @@
                             <img src="/media/img/editWebsiteSettings/fullname.png" alt="fullname.png" class="editWebIllustrativeImg">
                         </div>
                     </div>
-                    <div class="flexed">
-                        <button  v-if="loading" class="btn">
-                            <div class="preloader-wrapper small active">
-                                <div
-                                    class="spinner-layer spinner-white-only"
-                                >
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </button>
-                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioSave" v-else-if="saved == null">
-                            Save
-                        </button>
-                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioUpdate" v-else disabled>
-                            Update
-                        </button>
-                        <div>
-                            <!-- <a
-                                href="#!"
-                                class="chevronIconLink"
-                                
-                            >
-                                <i class="material-icons chevronIcon"
-                                    >chevron_left</i
-                                >
-                            </a> -->
+                        <div class="right">
                             <a
-                                href="#!"
+                                href="#"
                                 class="chevronIconLink"
-                                
+
                                 title="skip to next"
                                 @click="bioNextBtn()"
                             >
@@ -150,15 +119,14 @@
                                 >
                             </a>
                         </div>
-                    </div>
-                    <div class="genBottomBtnDiv">        
+                    <div class="genBottomBtnDiv">
                         <div class="flexed">
                             <a href="#" class="btn right" id="genNextBtn" @click="bioGoBackBtn()">GENERAL</a>
-                            <a href="#!" class="btn right" id="genNextBtn" @click="servicesLink()">SERVICES</a>
-                            
+                            <a href="#" class="btn right" id="genNextBtn" @click="servicesLink()">SERVICES</a>
+
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -170,13 +138,13 @@
                             <i
                                 class="material-icons"
                                 id="genTitleCheck"
-                                v-if="bio.firstname != '' || bio.lastname != ''"
+                                v-if="bio.firstname !== '' || bio.lastname !== ''"
                                 >check</i
                             >
                             <i
                                 class="material-icons genTitleClear"
                                 v-else-if="
-                                    bio.firstname == '' || bio.lastname == ''
+                                    bio.firstname === '' || bio.lastname === ''
                                 "
                                 >clear</i
                             >
@@ -185,15 +153,17 @@
                             </p>
                         </div>
                         <div>
-                            <i
-                                class="material-icons"
-                                id="genTitleCheck1"
-                                v-if="bio.about.length > 600"
+                            <span v-if="bio.about !== null">
+                                <i
+                                    class="material-icons"
+                                    id="genTitleCheck1"
+                                    v-if="bio.about.length > 600"
                                 >check</i
-                            >
+                                >
+                            </span>
                             <i
                                 class="material-icons genTitleClear"
-                                v-else-if="bio.about == ''"
+                                v-else-if="bio.about === ''"
                                 >clear</i
                             >
                             <p
@@ -241,58 +211,28 @@
                     <div class="row">
                         <div class="col s12 m12 l6">
                             <p class="genTitle1">About You</p>
-                        
+
                             <p class="genTxt">
                                 Readers only looks at vital info about you, so make
                                 it catchy. Not more than (614) and not less than
                                 (600) characters.
                             </p>
-                        
+
                             <div class="input-field">
                                 <textarea v-model="bio.about" class="materialize-textarea bioDescribeInput" placeholder="Highly skilled Pediatrician with 9 year of experience ..." maxlength="614"></textarea>
                                 <p class="right m-0 " :class="{redColor: aboutCount <= 599, successColor: aboutCount >= 614}">
                                     {{aboutCount}}/614
                                 </p>
                             </div>
-                        
-                            <!-- <div>
-                                <button type="button" class="btn" id="genModalBtn">
-                                    save
-                                </button>
-                            </div> -->
                         </div>
 
                         <div class="col s12 m12 l6">
                             <img src="/media/img/editWebsiteSettings/fullnameDescription.png" alt="fullnameDescription.png" class="editWebIllustrativeImg">
                         </div>
                     </div>
-                    <div class="flexed">
-                        <button  v-if="loading" class="btn">
-                            <div class="preloader-wrapper small active">
-                                <div
-                                    class="spinner-layer spinner-white-only"
-                                >
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </button>
-                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioSave" v-else-if="saved == null">
-                            Save
-                        </button>
-                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioUpdate" v-else disabled>
-                            Update
-                        </button>
-                        <div>
+                        <div class="right">
                             <a
-                                href="#!"
+                                href="#"
                                 class="chevronIconLink"
                                 @click="bioGoBackBtn1()"
                             >
@@ -301,9 +241,9 @@
                                 >
                             </a>
                             <a
-                                href="#!"
+                                href="#"
                                 class="chevronIconLink"
-                                
+
                                 title="skip to next"
                                 @click="bioNextBtn1()"
                             >
@@ -312,11 +252,10 @@
                                 >
                             </a>
                         </div>
-                    </div>
-                    <div class="genBottomBtnDiv">        
+                    <div class="genBottomBtnDiv">
                         <div class="flexed">
                             <a href="#" class="btn right" id="genNextBtn" @click="bioGoBackBtn()">GENERAL</a>
-                            <a href="#!" class="btn right" id="genNextBtn" @click="servicesLink()">SERVICES</a>
+                            <a href="#" class="btn right" id="genNextBtn" @click="servicesLink()">SERVICES</a>
                             <!-- <i class="material-icons">chevron_right</i> -->
                         </div>
                     </div>
@@ -331,13 +270,13 @@
                             <i
                                 class="material-icons"
                                 id="genTitleCheck"
-                                v-if="bio.firstname != '' || bio.lastname != ''"
+                                v-if="bio.firstname !== '' || bio.lastname !== ''"
                                 >check</i
                             >
                             <i
                                 class="material-icons genTitleClear"
                                 v-else-if="
-                                    bio.firstname == '' || bio.lastname == ''
+                                    bio.firstname === '' || bio.lastname === ''
                                 "
                                 >clear</i
                             >
@@ -346,15 +285,17 @@
                             </p>
                         </div>
                         <div>
-                            <i
-                                class="material-icons"
-                                id="genTitleCheck1"
-                                v-if="bio.about.length > 600"
+                            <span v-if="bio.about !== null">
+                                <i
+                                    class="material-icons"
+                                    id="genTitleCheck1"
+                                    v-if="bio.about.length > 600"
                                 >check</i
-                            >
+                                >
+                            </span>
                             <i
                                 class="material-icons genTitleClear"
-                                v-else-if="bio.about == ''"
+                                v-else-if="bio.about === ''"
                                 >clear</i
                             >
                             <p class="genTitle cursor" @click="bioNextBtn">
@@ -365,12 +306,12 @@
                             <i
                                 class="material-icons"
                                 id="genTitleCheck2"
-                                v-if="bio.photo != null"
+                                v-if="bio.photo !== null"
                                 >check</i
                             >
                             <i
                                 class="material-icons genTitleClear"
-                                v-else-if="bio.photo == null"
+                                v-else-if="bio.photo === null"
                                 >clear</i
                             >
                             <p
@@ -384,12 +325,12 @@
                             <i
                                 class="material-icons"
                                 id="genTitleCheck3"
-                                v-if="bio.CV != null"
+                                v-if="bio.CV !== null"
                                 >check</i
                             >
                             <i
                                 class="material-icons genTitleClear"
-                                v-else-if="bio.CV == null"
+                                v-else-if="bio.CV === null"
                                 >clear</i
                             >
                             <p class="genTitle cursor" @click="bioNextBtn2">
@@ -397,42 +338,6 @@
                             </p>
                         </div>
                     </div>
-
-                    <!--div class="row">
-                        <div class="col s7">
-                            <p class="genTitle1">Upload a clear picture of you</p>
-                        
-                            <p class="genTxt">
-                                Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry.
-                            </p>
-                        
-                            <div class="file-field input-field" id="genUploadFavIconDiv" v-if="bio.photo == null">
-                                <input type="file" @change="photoUpload" accept=".jpg, .png" />
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" id="genInput1"
-                                        placeholder="Image must be .jpg/.png and not greater than 1MB(500x500)" />
-                                    <i class="material-icons" id="genUploadFavIcon">file_upload</i>
-                                </div>
-                            </div>
-                            <div v-else class="flex no-space-between">
-                                <img width="100" height="100" class="responsive-img" :src="
-                                    typeof bio.photo == 'string'
-                                        ? '/media/'+tenant+'/img/'+ bio.photo
-                                        : uploaded
-                                " />
-                                <a class="
-                                    waves-effect waves-light
-                                    btn-small btn
-                                    red
-                                " @click="deleteImg">Change</a>
-                            </div>
-                        </div>
-
-                        <div class="col s5">
-                            <img src="/media/img/editWebsiteSettings/fullnameProImg.png" alt="fullnameProImg.png" class="editWebIllustrativeImg" width="420" height="300">
-                        </div>
-                    </div-->
                     <div class="row">
                         <div class="col l12">
                             <p class="genTitle1">Upload a clear picture of you</p>
@@ -446,7 +351,7 @@
                             <div
                                 class="file-field input-field"
                                 id="genUploadFavIconDiv"
-                                v-if="bio.photo == null"
+                                v-if="bio.photo == null && !showCropper"
                             >
                                 <input
                                     type="file"
@@ -458,49 +363,38 @@
                                         class="file-path validate genInput1"
                                         type="text"
                                         placeholder="Pick a Picture"
+                                        @change="showCropper = true"
                                     />
                                     <!--i class="material-icons" id="genUploadFavIcon"
                                         >file_upload</i
                                     -->
                                 </div>
                             </div>
-                            <div v-else class="">
+                            <div v-else class="" v-show="!showCropper">
                                 <div class="col l9 center-align">
                                     <img
                                         class="bioPics"
-                                        :src="
-                                            typeof bio.photo == 'string'
+                                        :src=" uploaded !== null ? uploaded :
+                                            typeof bio.photo === 'string'
                                             ? '/media/tenants/'+tenant+'/img/'+ bio.photo
                                                 : uploaded
                                         "
                                     />
                                 </div>
                                 <div class="col l3 faviconUploadBtnCol">
-                                    <button type="button" class="btn-flat redBorderBtn matchngBtn" @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
+                                    <button type="button" class="btn-flat redBorderBtn matchngBtn" @click="(deleteImg, showCropper=true)"><i class="material-icons">swap_horiz</i></button>
                                 </div>
                             </div>
+                            <div v-show="showCropper">
+                                <ImageCropper :height="512" :width="451" @uploadPhoto="photoUpload($event)"/>
+                            </div>
                         </div>
-                        <!-- <div v-else class="flex">
-                            <img
-                                width="100"
-                                height="100"
-                                class="responsive-img"
-                                :src="
-                                    typeof bio.photo == 'string'
-                                        ? '/media/'+tenant+'/img/'+ bio.photo
-                                        : uploaded
-                                "
-                            />
-                            <div class="faviconUploadBtnCol">
-                                <button type="button" class="btn-flat redBorderBtn matchngBtn"  @click="deleteImg"><i class="material-icons">swap_horiz</i></button>                                
-                            </div> -->
-
                         <div class="col l6">
                             <img src="/media/img/editWebsiteSettings/fullname.png" alt="fullname.png" class="editWebIllustrativeImg2">
                         </div>
                     </div>
 
-                    
+
                     <div class="flexed">
                         <button  v-if="loading" class="btn">
                             <div class="preloader-wrapper small active">
@@ -538,7 +432,7 @@
                             <a
                                 href="#!"
                                 class="chevronIconLink"
-                                
+
                                 title="skip to next"
                                 @click="bioNextBtn2()"
                             >
@@ -548,14 +442,14 @@
                             </a>
                         </div>
                     </div>
-                    <div class="genBottomBtnDiv">        
+                    <div class="genBottomBtnDiv">
                         <div class="flexed">
                             <a href="#" class="btn right" id="genNextBtn" @click="bioGoBackBtn()">GENERAL</a>
                             <a href="#!" class="btn right" id="genNextBtn" @click="servicesLink()">SERVICES</a>
                             <!-- <i class="material-icons">chevron_right</i> -->
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -582,12 +476,14 @@
                             </p>
                         </div>
                         <div>
-                            <i
-                                class="material-icons"
-                                id="genTitleCheck1"
-                                v-if="bio.about.length > 600"
+                            <span v-if="bio.about !== null">
+                                <i
+                                    class="material-icons"
+                                    id="genTitleCheck1"
+                                    v-if="bio.about.length > 600"
                                 >check</i
-                            >
+                                >
+                            </span>
                             <i
                                 class="material-icons genTitleClear"
                                 v-else-if="bio.about == ''"
@@ -637,11 +533,11 @@
                     <div class="row">
                         <div class="col s12 m12 l7">
                             <p class="genTitle1">Your curriculum Vitae</p>
-                        
+
                             <p class="genTxt">
                                 Let your clients know more about you.
                             </p>
-                        
+
                             <div class="file-field input-field" id="genUploadFavIconDiv" v-if="bio.CV == null">
                                 <a class="waves-effect waves-light btn-flat modal-trigger" href="#cvModal">Let us get to know you more</a>
 
@@ -659,67 +555,67 @@
                                     }}
                                 </p>
                                 <div class="faviconUploadBtnCol">
-                                    <button type="button" class="btn-flat redBorderBtn matchngBtn"  @click="deleteCV"><i class="material-icons">swap_horiz</i></button>                                
+                                    <button type="button" class="btn-flat redBorderBtn matchngBtn"  @click="deleteCV"><i class="material-icons">swap_horiz</i></button>
                                 </div>
                             </div>
-                        
-                            
-                          
+
+
+
                         </div>
 
                         <div class="col s12 m12 l5">
                             <img src="/media/img/editWebsiteSettings/fullnameCv.png" alt="fullnameCv.png" class="editWebIllustrativeImg" width="420" height="300">
                         </div>
                     </div>
-                
+
                     <div class="flexed">
-                                <button  v-if="loading" class="btn">
-                                    <div class="preloader-wrapper small active">
-                                        <div
-                                            class="spinner-layer spinner-white-only"
-                                        >
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
-                                            </div>
-                                        </div>
+                        <button  v-if="loading" class="btn">
+                            <div class="preloader-wrapper small active">
+                                <div
+                                    class="spinner-layer spinner-white-only"
+                                >
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
                                     </div>
-                                </button>
-                                <button type="button" class="btn" id="genModalBtn" @click.prevent="bioSave" v-else-if="saved == null">
-                                    Save
-                                </button>
-                                <button type="button" class="btn" id="genModalBtn" @click.prevent="bioUpdate" v-else>
-                                    Update
-                                </button>
-                                <div>
-                                    <a
-                                        href="#!"
-                                        class="chevronIconLink"
-                                        @click="bioGoBackBtn3()"
-                                    >
-                                        <i class="material-icons chevronIcon"
-                                            >chevron_left</i
-                                        >
-                                    </a>
-                                    <!-- <a
-                                        href="#!"
-                                        class="chevronIconLink"
-                                        
-                                        title="skip to next"
-                                        @click="bioNextBtn2()"
-                                    >
-                                        <i class="material-icons chevronIcon"
-                                            >chevron_right</i
-                                        >
-                                    </a> -->
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
                                 </div>
                             </div>
-                    <div class="genBottomBtnDiv">        
+                        </button>
+                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioSave" v-else-if="saved == null">
+                            Save
+                        </button>
+                        <button type="button" class="btn" id="genModalBtn" @click.prevent="bioUpdate" v-else>
+                            Update
+                        </button>
+                        <div>
+                            <a
+                                href="#!"
+                                class="chevronIconLink"
+                                @click="bioGoBackBtn3()"
+                            >
+                                <i class="material-icons chevronIcon"
+                                    >chevron_left</i
+                                >
+                            </a>
+                            <!-- <a
+                                href="#!"
+                                class="chevronIconLink"
+
+                                title="skip to next"
+                                @click="bioNextBtn2()"
+                            >
+                                <i class="material-icons chevronIcon"
+                                    >chevron_right</i
+                                >
+                            </a> -->
+                        </div>
+                    </div>
+                    <div class="genBottomBtnDiv">
                         <div class="flexed">
                             <a href="#" class="btn right" id="genNextBtn" @click="bioGoBackBtn()">GENERAL</a>
                             <a href="#!" class="btn right" id="genNextBtn" @click="servicesLink()">SERVICES</a>
@@ -729,7 +625,7 @@
                 </div>
             </div>
 
-            
+
         </div>
         <!-- Modal Structure -->
         <CVModalComponent />
@@ -754,8 +650,9 @@
 </style>
 <script>
 import CVModalComponent from './CVModalComponent.vue';
+import ImageCropper from "../../../../partials/ImageCropper.vue";
     export default {
-    components: { CVModalComponent },
+    components: {ImageCropper, CVModalComponent },
         props: ["user", "bioModal", "bioModal1", "bioModal2", "bioModal3", "saved", 'loading', 'tenant'],
         data() {
             return {
@@ -769,6 +666,7 @@ import CVModalComponent from './CVModalComponent.vue';
                 uploaded: null,
                 uploadedfile: null,
                 bioeErrors: false,
+                showCropper: false,
             };
         },
         computed: {
@@ -786,9 +684,9 @@ import CVModalComponent from './CVModalComponent.vue';
                 this.bio.CV = null;
             },
             photoUpload(e) {
-                if (!e.target.files.length) return;
-                this.bio.photo = e.target.files[0];
-                this.uploaded = URL.createObjectURL(e.target.files[0]);
+                this.bio.photo = e;
+                this.uploaded = e;
+                this.showCropper = false;
             },
             CVUpload(e) {
                 if (!e.target.files.length) return;
@@ -829,10 +727,10 @@ import CVModalComponent from './CVModalComponent.vue';
                 let data = {
                     _method: "PUT",
                 };
-                if (this.bio.oldPhoto && this.bio.oldCV) {
+                if (this.uploaded !== null && this.bio.oldCV) {
                     data = { ...data, ...this.bio };
                 }
-                if (this.bio.oldPhoto) {
+                if (this.uploaded) {
                     let toSend = {
                         firstname: this.bio.firstname,
                         lastname: this.bio.lastname,

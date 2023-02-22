@@ -2,13 +2,15 @@
     <div>
         <p>{{author.firstname}} {{author.lastname}}</p>
         <PasswordChangeComponent :tenant="true"/>
+        <FooterComponent />
     </div>
 </template>
 <script>
 import PasswordChangeComponent from "../../../../partials/PasswordChangeComponent.vue";
+import FooterComponent from "../../FooterComponent.vue";
 export default {
     name: 'PasswordChangeForTenant',
-    components: {PasswordChangeComponent},
+    components: {FooterComponent, PasswordChangeComponent},
     data() {
         return {
             author: {},

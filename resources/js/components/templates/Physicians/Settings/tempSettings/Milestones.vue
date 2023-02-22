@@ -215,6 +215,7 @@
                         </button>
                     </div>
 
+                    <FooterComponent />
                 </div>
             </div>
             <div id="modal1" class="modal">
@@ -229,8 +230,9 @@
 </template>
 <script>
     import ImageCropper from '../../../../partials/ImageCropper.vue';
+    import FooterComponent from "../../FooterComponent.vue";
     export default {
-        components: { ImageCropper },
+        components: {FooterComponent, ImageCropper },
         created() {
             this.loggedIn = this.getCookie('_token');
             if (!this.loggedIn) location.replace(`http://${location.host}`)

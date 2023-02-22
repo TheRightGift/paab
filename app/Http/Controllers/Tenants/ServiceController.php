@@ -132,9 +132,9 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy($service)
     {
-        $service->delete();
+        Service::findOrFail($service)->delete();
         return response()->json([], 204);
     }
 }

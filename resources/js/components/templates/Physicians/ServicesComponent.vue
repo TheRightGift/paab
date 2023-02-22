@@ -2,7 +2,7 @@
     <div id="templateService" class="row">
         <div class="col s12 rm_mg_pd">
             <div class="section scrollspy physiContainerDiv" id="services">
-                <div v-if="services == null || services.length === 0">
+                <div v-if="services == null || services.length === 0 && preview === '1'">
                     <div class="row whatIdoTxtRowDiv">
                         <div class="col s12">
                             <p class="servicesMainTitle">Services</p>
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <div v-else-if="services != null || services.length !== 0">
+                <div v-else-if="services !== null && services.length !== 0 && preview === '0'">
                     <div class="row whatIdoTxtRowDiv">
                         <div class="col s12">
                             <div class="serviceHeading">
@@ -282,6 +282,7 @@
         props: {
             services: Array,
             isLoggedIn: Boolean,
+            preview: String
         },
         watch: {
             services(newVal, oldVal) {

@@ -139,6 +139,8 @@
                             </button>
                         </div>
                     </div>
+
+                    <FooterComponent />
                 </div>
             </div>
         </div>
@@ -146,8 +148,10 @@
     </div>
 </template>
 <script>
+import FooterComponent from "../../FooterComponent.vue";
+
 export default {
-    components: { },
+    components: {FooterComponent},
     created() {
         this.isLoggedIn = this.getCookie('_token');
         if (!this.isLoggedIn) location.replace(`http://${location.host}`)

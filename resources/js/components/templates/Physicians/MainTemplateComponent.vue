@@ -4,10 +4,10 @@
             <div class="loader"></div>
         </div>
         <div v-show="!loading">
-            <HeaderComponent :user="user" :isLoggedIn="loggedIn" :achievement="achievement" :feeds="social" :preview="preview"/>
+            <HeaderComponent :services="services" :user="user" :isLoggedIn="loggedIn" :achievement="achievement" :feeds="social" :preview="preview"/>
             <AboutMeComponent :tenant="tenant" :title="title" :user="user" :bio="bio" :location="location" :preview="preview" :isLoggedIn="loggedIn" />
 
-            <ServicesComponent :services="services" :isLoggedIn="loggedIn" />
+            <ServicesComponent :services="services" :isLoggedIn="loggedIn" :preview="preview"/>
             <div id="experienceContainer" v-if="(achievement !== null && preview === '0') || preview === '1'">
                 <ExperienceComponent :tenant="tenant"  :experience="achievement" :location="location" :preview="preview" :isLoggedIn="loggedIn"/>
             </div>
@@ -16,6 +16,7 @@
             <div id="contactContainer">
                 <ContactComponent :preview="preview" :isLoggedIn="loggedIn" :contactMail="contactMail"/>
             </div>
+            <FooterComponent />
         </div>
     </div>
 </template>
@@ -27,6 +28,7 @@
     import SocialMediaComponent from "./SocialMediaComponent.vue";
     import TestimonialsComponent from "./TestimonialsComponent.vue";
     import AboutMeComponent from "./AboutMeComponent.vue";
+    import FooterComponent from './FooterComponent.vue';
     let bio = '/api/bio';
     let service = '/api/service';
     let achievement = '/api/achievement';
@@ -41,7 +43,8 @@
             SocialMediaComponent,
             TestimonialsComponent,
             ContactComponent,
-            AboutMeComponent
+            AboutMeComponent,
+            FooterComponent,
         },
         data() {
             return {

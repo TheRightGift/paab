@@ -979,7 +979,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     font-size: 1.1rem;
     font-family: "Montserrat", sans-serif;
     color: var(--primary);
-}   
+}
 .dropdown-content li>a.dropSetLink:hover {
     background-color: transparent;
     border-left: none;
@@ -1755,7 +1755,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         top: 5%;
         right: 2vw;
     }
-    
+
     /* ************************************************* */
     div.aboutImgModalDiv {
         width: 55%;
@@ -1797,7 +1797,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
 
     /* About Me Writeup edit modal */
-    
+
     a.modal-close.editWriteUpsModalCloseBtn {
         margin-left: -3vw;
         color: var(--black);
@@ -1913,4 +1913,15 @@ i.material-icons.physiTempSettingsIcon:hover {
     background-color: #edebeb;
     border-radius: 50%;
 }
-
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+}
+.contentDiv .footer {
+    position: fixed !important;
+}

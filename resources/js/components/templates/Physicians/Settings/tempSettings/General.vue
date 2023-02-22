@@ -138,15 +138,17 @@
                             <i class="material-icons">keyboard_arrow_right</i>
                         </button>
                     </div>
-
+                    <FooterComponent />
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+import FooterComponent from "../../FooterComponent.vue";
+
 export default {
-    components: {},
+    components: {FooterComponent},
     data() {
         return {
             errors: [],
