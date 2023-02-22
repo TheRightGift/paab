@@ -325,12 +325,12 @@
                             <i
                                 class="material-icons"
                                 id="genTitleCheck3"
-                                v-if="bio.CV != null"
+                                v-if="bio.CV !== null"
                                 >check</i
                             >
                             <i
                                 class="material-icons genTitleClear"
-                                v-else-if="bio.CV == null"
+                                v-else-if="bio.CV === null"
                                 >clear</i
                             >
                             <p class="genTitle cursor" @click="bioNextBtn2">
