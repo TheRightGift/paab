@@ -12,7 +12,7 @@
                     <li>
                         <a href="#about" class="physiTempNavLinks">About Me</a>
                     </li>
-                    <li>
+                    <li v-if="(services !== null && services.length !== 0 && preview === '0') || preview === '1'">
                         <a href="#services" class="physiTempNavLinks">Services</a>
                     </li>
                     <li v-if="(achievement !== null && preview === '0') || preview === '1'">
@@ -55,7 +55,7 @@
                     </li>
                     <li class="divider" tabindex="-1"></li>
                     <li>
-                        <a href="#!" class="dropSetLink">Services</a>
+                        <a href="/services_rendered" class="dropSetLink">Services</a>
                     </li>
                     <li class="divider" tabindex="-1"></li>
                     <li>
@@ -155,8 +155,6 @@
             <li><div class="divider"></div></li>
             <li><a href="/biography" class="sidenavLink">Bio</a></li>
             <li><div class="divider"></div></li>
-            <li><a href="#!" class="sidenavLink">About</a></li>
-            <li><div class="divider"></div></li>
             <li><a href="/milestones" class="sidenavLink">Milestones</a></li>
             <li><div class="divider"></div></li>
             <li><a href="/public_feature" class="sidenavLink">Public Features</a></li>
@@ -185,6 +183,7 @@ export default {
         preview: String,
         achievement: Object,
         feeds: String,
+        services: Array
     },
     mounted() {
         window.addEventListener('scroll', this.updateScroll);

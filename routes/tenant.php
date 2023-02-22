@@ -40,6 +40,8 @@ Route::middleware([
 
     Route::get('/public_feature', [App\Http\Controllers\TenantController::class, 'public_feature']);
 
+    Route::get('/services_rendered', [App\Http\Controllers\TenantController::class, 'services_rendered']);
+
     Route::get('/cv_generator', [App\Http\Controllers\TenantController::class, 'cv_generator']);
 });
 Route::middleware(['auth:api',InitializeTenancyByDomainOrSubdomain::class,
@@ -122,9 +124,12 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::put('/license/{ref}', [App\Http\Controllers\Tenants\LicenseController::class, 'update']);
     Route::get('/license', [App\Http\Controllers\Tenants\LicenseController::class, 'index']);
     Route::delete('/license/{expo}', [App\Http\Controllers\Tenants\LicenseController::class, 'destroy']);
+    
+    Route::delete('/service', [App\Http\Controllers\Tenants\ServiceController::class, 'destroy']);
 
     Route::post('/verifyToken', [App\Http\Controllers\TenantController::class, 'verifyToken'])->withoutMiddleware(['auth:api']);
     Route::post('/savelogin', [App\Http\Controllers\TenantController::class, 'saveAccessToken'])->withoutMiddleware(['auth:api']);
+
 
     Route::post('/schedule', [App\Http\Controllers\Tenants\MessagesController::class, 'store'])->withoutMiddleware(['auth:api']);
     Route::get('/review', [App\Http\Controllers\Tenants\ReviewsController::class, 'index'])->withoutMiddleware(['auth:api']);

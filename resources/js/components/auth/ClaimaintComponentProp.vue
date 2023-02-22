@@ -2349,7 +2349,6 @@
             },
             prev1() {
                 this.attendedSchInfo != 0 ? this.attendedSchInfo-- : this.view = 3;
-
             },
             next1() {
                 this.attendedSchInfo != 3 ? (this.saveUndergradSchoolTime(), this.attendedSchInfo++) : null;

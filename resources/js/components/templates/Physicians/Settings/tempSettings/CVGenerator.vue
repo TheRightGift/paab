@@ -167,7 +167,7 @@
                                     <span v-if="!cvUpdate">Save</span>
                                     <span v-else>Update</span>
                                 </button>
-                                
+
                                 <button v-else class=" waves-effect waves-green
                                         btn
                                         cvSetupSaveBtn">
@@ -572,7 +572,7 @@
                                                 <span v-else>Update</span>
                                             </button>
                                             <button v-else class="btn waves-effect waves-green
-                                                    
+
                                                     cvSetupSaveBtn
                                                     right">
                                                 <i class="fas fa-circle-notch fa-2x fa-spin"></i>                                            </button>
@@ -608,7 +608,7 @@
                                                 Other
                                             </p>
                                         </div>
-                                        
+
                                         <h6 class="cvSetupTitle">
                                             Any other school attended?
                                             <small>optional</small>
@@ -803,7 +803,7 @@
                                             <span v-if="!cvAdditionalSchoolUpdate">Save</span>
                                             <span v-else>Update</span>
                                         </button>
-                                        
+
                                         <button v-else class="waves-effect waves-green
                                                 btn
                                                 cvSetupSaveBtn
@@ -856,7 +856,7 @@
                                             <a
                                                 href="#!"
                                                 class="chevronIconLink"
-                                                @click="  
+                                                @click="
                                                     prevEduBtn
                                                 "
                                             >
@@ -886,7 +886,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="cvNextStepBtnDiv1">
                                         <div class="right">
                                             <button
@@ -1076,7 +1076,7 @@
                                     <h6 class="col s12 l8 cvSetupTitle">
                                         Tell us about your fellowship
                                     </h6>
-                                    
+
                                 </div>
 
                                 <div class="row">
@@ -1174,7 +1174,7 @@
                                                     ></date-picker>
                                         </div>
                                         <div class="input-field col s12 l6">
-                                            
+
                                             <select
                                                 class="
                                                     validate
@@ -1361,7 +1361,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="row" :class="{'flex-column': trainingSetup === 2}">
                                 <div v-if="trainingSetup === 2" >
                                     <button
@@ -1451,7 +1451,7 @@
                                         Tell us about your Experience
                                     </h6>
                                 </div>
-                                
+
                                     <div class="row">
                                         <div class="input-field col s12 l12">
                                             <input
@@ -1556,9 +1556,9 @@
                                                     {{ month }}
                                                 </option>
                                             </select>
-                                            
+
                                         </div>
-                                        
+
                                         <div>
                                             <button
                                                 @click.prevent="saveExperience"
@@ -1610,7 +1610,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="experiencesRow card"  v-for="expo in cvExperiences" :key="expo.id">
                                 <div class="ruleoutxt card-content">
@@ -1874,6 +1874,7 @@
                             </div>
                         </div>
                     </div>
+                    <FooterComponent />
                 </div>
             </div>
         </div>
@@ -1905,6 +1906,7 @@
 </style>
 <script>
     import DatePicker from "vue-datepicker-next";
+    import FooterComponent from '../../FooterComponent.vue';
     import "vue-datepicker-next/index.css";
     let cvXpo = '/api/cvexperience';
     let summy = '/api/cv';
@@ -1918,6 +1920,7 @@
     export default {
         name: "CvModal",
         components: {
+            FooterComponent,
             DatePicker,
         },
         mounted() {
@@ -1970,7 +1973,7 @@
                     title: "",
                     degree: "",
                 },
-                cvExperience: 
+                cvExperience:
                     {
                         institution: "",
                         yearStart: "",
@@ -1982,7 +1985,7 @@
                         activities: [{ activity: "" }],
                     },
                 cvExperiences: [],
-                cvTrainingsResidency: 
+                cvTrainingsResidency:
                     {
                         institution: "",
                         yearStart: "",
@@ -1995,8 +1998,8 @@
                         sub_specialty: "",
                         type: "residency",
                     },
-                
-                cvTrainingsFellowship: 
+
+                cvTrainingsFellowship:
                     {
                         institution: "",
                         yearStart: "",
@@ -2009,8 +2012,8 @@
                         sub_specialty: "",
                         type: "fellowship",
                     },
-                
-                cvTrainingsIntern: 
+
+                cvTrainingsIntern:
                     {
                         institution: "",
                         yearStart: "",
@@ -2021,9 +2024,9 @@
                         location: "",
                         type: "internship",
                     },
-                
 
-                cvReference: 
+
+                cvReference:
                     {
                         name: "",
                         location: "",
@@ -2142,7 +2145,6 @@
                                 this.cvMedSchoolUpdate = 1;
                             }
                             if (otherSchoolRes.data.additionalSchool !== null) {
-                                console.log(otherSchoolRes.data)
                                 let e = otherSchoolRes.data.additionalSchool;
                                 this.cvAdditionalSchool = e;
                                 this.cvAdditionalSchool.yearStart = new Date(`${e.yearStart}`);
@@ -2262,7 +2264,7 @@
                     .catch((err) => {
                         if (err.response.status == 400) {
                             this.loading = !this.loading;
-                            err.response.data.forEach((el) => {
+                            err.response.data.errors.forEach((el) => {
                                 M.toast({
                                     html: el,
                                     classes: "errorNotifier",
@@ -2276,7 +2278,10 @@
                     if (!this.medSchoolOnly) {
                         this.undergradSchoolInput--;
                     }
-                } 
+                    else if(this.medSchoolOnly) {
+                        this.undergradSchoolInput = 1;
+                    }
+                }
             },
             nextEduBtn() {
                 if (this.undergradSchoolInput === 0) {
@@ -2286,101 +2291,9 @@
                     this.undergradSchoolInput++;
                 }
             },
-
-            // addMoreActitvity(e) {
-            //     this.cvExperiences[e].activities.push({ activity: "" });
-            // },
-            // addMore() {
-            //     this.cvExperiences.push({
-            //         institution: "",
-            //         yearStart: "",
-            //         yearEnd: "",
-            //         monthStart: "",
-            //         monthEnd: "",
-            //         position: "",
-            //         location: "",
-            //         activities: [{ activity: "" }],
-            //     });
-            // },
-            // addMoreReferences() {
-            //     this.cvReferences.push({
-            //         name: "",
-            //         location: "",
-            //         phone: "",
-            //         position: "",
-            //     });
-            // },
-            // addMoreTrainingsFellowship() {
-            //     this.cvTrainingsFellowship.push({
-            //         institution: "",
-            //         yearStart: "",
-            //         yearEnd: "",
-            //         monthStart: "",
-            //         monthEnd: "",
-            //         title: "",
-            //         location: "",
-            //         specialty: "",
-            //         sub_specialty: "",
-            //         type: "fellowship",
-            //     });
-            // },
-            // addMoreTrainingsResidency() {
-            //     this.cvTrainingsResidency.push({
-            //         institution: "",
-            //         yearStart: "",
-            //         yearEnd: "",
-            //         monthStart: "",
-            //         monthEnd: "",
-            //         title: "",
-            //         location: "",
-            //         specialty: "",
-            //         sub_specialty: "",
-            //         type: "residency",
-            //     });
-            // },
-            // addMoreTrainingsIntern() {
-            //     this.cvTrainingsIntern.push({
-            //         institution: "",
-            //         yearStart: "",
-            //         yearEnd: "",
-            //         monthStart: "",
-            //         monthEnd: "",
-            //         title: "",
-            //         location: "",
-            //         type: "internship",
-            //     });
-            // },
-            // removeActivity(e, index) {
-            //     this.cvExperiences[e].activities.splice(index, 1);
-            // },
-            // removeTrainingFellowship(index) {
-            //     this.cvTrainingsFellowship.splice(index, 1);
-            // },
-            // removeTrainingIntern(index) {
-            //     this.cvTrainingsIntern.splice(index, 1);
-            // },
-            // removeTrainingResidency(index) {
-            //     this.cvTrainingsResidency.splice(index, 1);
-            // },
-            // removeReference(index) {
-            //     this.cvReferences.splice(index, 1);
-            // },
-            // remove(index) {
-            //     this.cvExperiences.splice(index, 1);
-            // },
             previous() {
                 this.view != 0 ? this.view-- : null;
             },
-            // pushToTrash(e) {
-            //     this.view == 3
-            //         ? this.cvTrainingRemoved.push(e)
-            //         : this.view == 5
-            //         ? this.cvReferencesRemoved.push(e)
-            //         : this.cvExperienceRemoved.push(e);
-            // },
-            // activityToTrash(e) {
-            //     this.cvExperienceActivityRemoved.push(e);
-            // },
             saveAndNext() {
                 this.view != 5 ? this.view++ : null;
             },
@@ -2699,10 +2612,6 @@
                 this.view = 5;
             },
         },
-        watch: {
-            cv(newVal, oldVal) {
-                console.log(newVal, oldVal);
-            },
-        },
+
     };
 </script>

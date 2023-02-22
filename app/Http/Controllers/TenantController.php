@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tenants\Social;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
 
 use App\Models\Tenant;
@@ -14,7 +14,6 @@ use App\Models\Template;
 use App\Models\Tenants\TenantUser as TenantUser;
 use App\Models\AdminClientOrder;
 use App\Models\User;
-use DB;
 use App\Notifications\Tenants\LoginNotifier;
 use Stevebauman\Location\Facades\Location;
 use Validator;
@@ -141,6 +140,16 @@ class TenantController extends Controller
         $templateCSS = $tenant->template->styleFile;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         return view('websites.tempSettings.public-feature', compact('user', 'tenantID', 'templateCSS'));
+    }
+
+    public function services_rendered(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    {
+        $user = tenant()->user;
+        $tenancies = new Tenant();
+        $tenant = $tenancies->find(tenant('id'));
+        $templateCSS = $tenant->template->styleFile;
+        $tenantID = strtolower(tenant('id')); // For getting the file location;
+        return view('websites.tempSettings.services', compact('user', 'tenantID', 'templateCSS'));
     }
 
     public function passchange(Request $request) {
@@ -278,7 +287,7 @@ class TenantController extends Controller
             else {
                 return response()->json(['message' => 'Invalid Credentials, Please check your account to verify details', 'status' => 401], 401);
             }
-            
+
         }
     }
 

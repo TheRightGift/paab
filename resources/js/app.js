@@ -59,6 +59,7 @@ import mails from './components/shared/Messages';
 
 import Milestones from "./components/templates/Physicians/Settings/tempSettings/Milestones";
 import SocialMedia from "./components/templates/Physicians/Settings/tempSettings/SocialMedia";
+import ServicesRendered from "./components/templates/Physicians/Settings/tempSettings/ServicesRendered";
 import PublicFeature from "./components/templates/Physicians/Settings/tempSettings/PublicFeature";
 import PasswordChange from "./components/templates/Physicians/Settings/tempSettings/PasswordChange.vue";
 import General from "./components/templates/Physicians/Settings/tempSettings/General";
@@ -106,6 +107,7 @@ app.component("public-feature-component", PublicFeature);
 app.component("password-change-component", PasswordChange);
 app.component("general-component", General);
 app.component("bio-component", Bio);
+app.component("services-rendered-component", ServicesRendered);
 
 app.component("cvgenerator-component", CVGenerator);
 

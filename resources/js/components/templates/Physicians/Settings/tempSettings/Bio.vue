@@ -137,7 +137,7 @@
                             <i class="material-icons">keyboard_arrow_right</i>
                         </button>
                     </div>
-
+                    <FooterComponent />
                 </div>
             </div>
         </div>
@@ -145,8 +145,9 @@
 </template>
 <script>
 import ImageCropper from '../../../../partials/ImageCropper.vue';
+import FooterComponent from '../../FooterComponent.vue';
 export default {
-    components: { ImageCropper },
+    components: { ImageCropper, FooterComponent },
     data() {
         return {
             bio: {

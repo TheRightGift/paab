@@ -239,7 +239,7 @@ font-weight: 700;
 font-size: 0.8rem;
 color: rgba(0, 0, 0, 0.5);
 }
-input.validate.cvSetupInput1 {
+input.validate.cvSetupInput1, textarea.materialize-textarea {
     width: 93.5%;
     font-weight: 700;
     border: 1px solid var(--primary);
@@ -249,7 +249,7 @@ input.validate.cvSetupInput1 {
     padding: 0 1vw;
 }
 input.validate.cvSetupInput1::placeholder, input::placeholder,
-input.validate.cvSetupInput::placeholder {
+input.validate.cvSetupInput::placeholder, textarea.validate.cvSetupInput1::placeholder {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 0.8rem;
@@ -361,7 +361,7 @@ select {
         color: var(--black);
     }
 
-    input.validate.cvSetupInput, input.validate.cvSetupInput1 {
+    input.validate.cvSetupInput, input.validate.cvSetupInput1, textarea.validate.cvSetupInput1 {
         width: 95%;
     }
     select.browser-default, .mx-datepicker {
@@ -441,7 +441,7 @@ padding-right: .2rem;
     .mx-input {
         text-align: center;
     }
-    input.validate.cvSetupInput, input.validate.cvSetupInput1, select.browser-default, .mx-datepicker {
+    input.validate.cvSetupInput, input.validate.cvSetupInput1, select.browser-default, .mx-datepicker, textarea.validate.cvSetupInput1{
         width: 98% !important;
         margin: 0 !important;
         padding-left: 0 !important;

@@ -5,7 +5,7 @@
                 <div>
                     <p class="editWebWlcTxt">Setup your website</p>
                 </div>
-                <div class="editWebiIllustrateDiv hide-on-med-and-down"> 
+                <div class="editWebiIllustrateDiv hide-on-med-and-down">
                     <img
                         src="/media/img/settings.png"
                         alt="settings.png"
@@ -251,7 +251,7 @@
                 localStorage.setItem('refreshed', refreshed);
             }
 
-            
+
         },
         methods: {
             checkIfFieldIsEmpty() {
