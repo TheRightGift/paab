@@ -185,7 +185,7 @@
                                         </div>
                                         <div class="collapsible-body">
                                             <video class="socialMediaHandVidTag" controls>
-                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                                <source src="/media/videos/get_instagram_handle.webm" type="video/webm">
                                             </video>
                                         </div>
                                     </li>
@@ -196,7 +196,7 @@
                                         </div>
                                         <div class="collapsible-body">
                                             <video class="socialMediaHandVidTag" controls>
-                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                                <source src="/media/videos/get_instagram_handle.webm" type="video/webm">
                                             </video>
                                         </div>
                                     </li>
@@ -245,7 +245,7 @@
                                         </div>
                                         <div class="collapsible-body">
                                             <video class="socialMediaHandVidTag" controls>
-                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                                <source src="/media/videos/get_tiktok_handle.webm" type="video/webm">
                                             </video>
                                         </div>
                                     </li>
@@ -256,7 +256,7 @@
                                         </div>
                                         <div class="collapsible-body">
                                             <video class="socialMediaHandVidTag" controls>
-                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                                <source src="/media/videos/get_tiktok_handle.webm" type="video/webm">
                                             </video>
                                         </div>
                                     </li>
