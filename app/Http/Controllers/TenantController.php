@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tenants\Social;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
-
-use App\Models\Tenant;
-use App\Models\Tenants\Bio;
-use App\Models\Tenants\General;
-use App\Models\Template;
-use App\Models\Tenants\TenantUser as TenantUser;
-use App\Models\AdminClientOrder;
-use App\Models\User;
-use App\Notifications\Tenants\LoginNotifier;
-use Stevebauman\Location\Facades\Location;
-use Validator;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Tenant;
+use App\Models\Template;
+
+use App\Models\Tenants\Bio;
+use Illuminate\Http\Request;
+use App\Models\Tenants\Social;
+use App\Models\Tenants\General;
+use App\Models\AdminClientOrder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Stevebauman\Location\Facades\Location;
+use App\Notifications\Tenants\LoginNotifier;
+use App\Models\Tenants\TenantUser as TenantUser;
+use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
 
 class TenantController extends Controller
 {
@@ -76,7 +78,7 @@ class TenantController extends Controller
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
-        $sessionTenant = \Session::get('tenant');
+        $sessionTenant = Session::get('tenant');
         $tenantID = !empty($sessionTenant) ? $sessionTenant : $tenantID;
         $tenant = Tenant::find($tenantID);
         if ($tenant !== null) {
@@ -102,8 +104,22 @@ class TenantController extends Controller
         }
     }
 
+    public function checkTokenForEdit($request) {
+        if ($request->has('token')) {
+            $tokenQuery = $request->get('token');
+            if ($tokenQuery !== null) {
+                $tokenDB = DB::table('tokens')->where([['token', $tokenQuery,], ['can', 'edit']])->first();
+                $data = tenancy()->central(function ($tenant) {
+                    return AdminClientOrder::where([['tenant_id', $tenant->id], ['claimed', '=', null]])->first();
+                });
+                return $tokenDB !== null && $data !== null ? ['can' => true, 'email' => $data->email] :  ['can' => false, 'email' => null];
+            }
+        }
+    }
+
     // Renders / of template
-    public function template() {
+    public function template(Request $request) {
+        
         // Get the template_id and get its details
         $tenancies = new Tenant();
         $tenant = $tenancies->find(tenant('id'));
@@ -118,8 +134,18 @@ class TenantController extends Controller
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         $user = !empty($bioTB) ? $title.' '.$bioTB->firstname.' '.$bioTB->lastname : null;
         $socials = Social::latest()->first();
+        $canDo = $this->checkTokenForEdit($request);
+        if ($canDo !== null) {
+            $can = $canDo['can'];
+            $email = $canDo['email'];
+        }
+        else {
+            $can = false;
+            $email = '';
+        }
+        // dd($canEdit);
         if($profession === 'Physician'){
-            return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID'));
+            return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email'));
         } else {
             dd($profession);
         }
@@ -127,7 +153,6 @@ class TenantController extends Controller
 
     public function setting(Request $request) {
         $user = tenant()->user;
-//        $templateCSS = $user->template->styleFile;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         return view('websites.setting', compact('user', 'tenantID'));
     }
@@ -259,14 +284,14 @@ class TenantController extends Controller
             $userTenant = tenant();
             if ($userTenant->user_id === $input['user_id']) {
                 $tenant = $tenantUser->where('user_id', $input['user_id'])->latest()->first();
-                $locator = $this->locator();
+                // $locator = $this->locator();
                 $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
                 if ($tenant !== null) {
                     $tenant->accessToken = $input['accessToken'];
                     $tenant->save();
                     (new User)->forceFill([
                         'email' => $input['email'],
-                    ])->notify(new LoginNotifier($this->locator(), $hostname));
+                    ])->notify(new LoginNotifier($this->locator($request), $hostname));
                     if ($tenant == true) {
                         return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                     }
@@ -278,7 +303,7 @@ class TenantController extends Controller
 
                     (new User)->forceFill([
                         'email' => $input['email'],
-                    ])->notify(new LoginNotifier($this->locator(), $hostname));
+                    ])->notify(new LoginNotifier($this->locator($request), $hostname));
                     if ($tenantUser == true) {
                         return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                     }
@@ -291,9 +316,11 @@ class TenantController extends Controller
         }
     }
 
-    private function locator() {
-        if ($position = Location::get()) {
+    private function locator($request) {
+        $ip = $request->ip();
+        if ($ip) {
             // Successfully retrieved position.
+            $position = Location::get($ip);
             return $position;
         } else {
             // Failed retrieving position.

@@ -353,21 +353,14 @@
                                 id="genUploadFavIconDiv"
                                 v-if="bio.photo == null && !showCropper"
                             >
-                                <input
-                                    type="file"
-                                    @change="photoUpload"
-                                    accept=".jpg, .png"
-                                />
-                                <div class="file-path-wrapper">
+                               
+                                <div class="">
                                     <input
-                                        class="file-path validate genInput1"
-                                        type="text"
-                                        placeholder="Pick a Picture"
-                                        @change="showCropper = true"
+                                        class=" validate genInput1"
+                                        type="button"
+                                        value="Click to Choose Avatar"
+                                        @click="showCropper = true"
                                     />
-                                    <!--i class="material-icons" id="genUploadFavIcon"
-                                        >file_upload</i
-                                    -->
                                 </div>
                             </div>
                             <div v-else class="" v-show="!showCropper">
