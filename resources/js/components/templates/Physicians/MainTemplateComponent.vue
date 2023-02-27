@@ -16,7 +16,10 @@
             <div id="contactContainer">
                 <ContactComponent :preview="preview" :isLoggedIn="loggedIn" :contactMail="contactMail"/>
             </div>
-            <FooterComponent />
+            <FooterComponent/>
+            <div class="fixedBtmBtn" v-if="can === '1'">
+                <a target="_self" :href="'https://whitecoatdomain.com/auth/claim?claimable='+tenant+'&mail='+email" class="btn waves waves-effect">Edit your website Now</a>
+            </div>
         </div>
     </div>
 </template>
@@ -67,6 +70,8 @@
             title: String,
             tenant: String,
             social: String,
+            can: String,
+            email: String,
         },
         created() {
             this.checkAuth();

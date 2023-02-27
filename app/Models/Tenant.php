@@ -10,6 +10,7 @@ use Laravel\Passport\HasApiTokens;
 
 /**
  * @method static find(mixed $searchTenant)
+ * @method static where(mixed $ser)
  */
 class Tenant extends BaseTenant implements TenantWithDatabase
 {

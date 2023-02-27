@@ -28,6 +28,7 @@ Route::middleware([
     Route::get('/', [App\Http\Controllers\TenantController::class, 'template']);
 
     Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
+    
     Route::get('/milestones', [App\Http\Controllers\TenantController::class, 'milestone']);
 
     Route::get('/socialmedia_presence', [App\Http\Controllers\TenantController::class, 'social']);

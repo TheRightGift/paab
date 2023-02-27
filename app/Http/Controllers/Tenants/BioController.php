@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use App\Http\Controllers\Controller;
+use Image;
 use App\Models\Tenants\Bio;
-use App\Models\Tenants\Achievement;
-use App\Models\Tenants\Service;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Validator;
 use App\Trait\ServiceNotifier;
-use Image;
+use App\Models\Tenants\Service;
+use Illuminate\Support\Facades\DB;
+use App\Models\Tenants\Achievement;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class BioController extends Controller
 {
@@ -62,7 +64,7 @@ class BioController extends Controller
                         mkdir($save_path, 0755, true);
                     }
                     $file = $save_path.$safeName;
-                    $success = Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
+                    Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($file);
                     $input['photo'] = $safeName;
@@ -78,9 +80,15 @@ class BioController extends Controller
                 $input['CV'] = $stored;
             }
             $bio = Bio::create($input);
-            // $achivementData =$input
-            // $this->cr8_achievement($input);
-            // $this->cr8_service($request);
+            $tokenDB = DB::table('tokens');
+            if ($tokenDB->get()->isEmpty()) {
+                $tokenDB->insert([
+                    'token' => Str::UUID(),
+                    'can' => 'edit',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
 
             return response(['bio' => $bio, 'message' => 'Created Success'], 201);
         }
