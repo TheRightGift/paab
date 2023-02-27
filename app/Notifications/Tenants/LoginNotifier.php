@@ -50,7 +50,7 @@ class LoginNotifier extends Notification
     {
         return (new MailMessage)
             ->line('Hi you just logged in to '.$this->hostname.', at '.Carbon::now() )
-            ->line('From '.$this->locator->countryName.', '.$this->locator->regionName)
+            ->line(config('APP_ENV') === 'production' ? 'From '.$this->locator->countryName.', '.$this->locator->cityName : null)
             ->line('If this was not you please send us a message or login to your main dashboard to change password')
             // ->action('Notification Action', url('/'))
             ->line('Thank you for using our application!');

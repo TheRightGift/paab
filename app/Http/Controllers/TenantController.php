@@ -153,7 +153,6 @@ class TenantController extends Controller
 
     public function setting(Request $request) {
         $user = tenant()->user;
-//        $templateCSS = $user->template->styleFile;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         return view('websites.setting', compact('user', 'tenantID'));
     }
@@ -285,14 +284,14 @@ class TenantController extends Controller
             $userTenant = tenant();
             if ($userTenant->user_id === $input['user_id']) {
                 $tenant = $tenantUser->where('user_id', $input['user_id'])->latest()->first();
-                $locator = $this->locator();
+                // $locator = $this->locator();
                 $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
                 if ($tenant !== null) {
                     $tenant->accessToken = $input['accessToken'];
                     $tenant->save();
                     (new User)->forceFill([
                         'email' => $input['email'],
-                    ])->notify(new LoginNotifier($this->locator(), $hostname));
+                    ])->notify(new LoginNotifier($this->locator($request), $hostname));
                     if ($tenant == true) {
                         return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                     }
@@ -304,7 +303,7 @@ class TenantController extends Controller
 
                     (new User)->forceFill([
                         'email' => $input['email'],
-                    ])->notify(new LoginNotifier($this->locator(), $hostname));
+                    ])->notify(new LoginNotifier($this->locator($request), $hostname));
                     if ($tenantUser == true) {
                         return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                     }
@@ -317,9 +316,11 @@ class TenantController extends Controller
         }
     }
 
-    private function locator() {
-        if ($position = Location::get()) {
+    private function locator($request) {
+        $ip = $request->ip();
+        if ($ip) {
             // Successfully retrieved position.
+            $position = Location::get($ip);
             return $position;
         } else {
             // Failed retrieving position.
