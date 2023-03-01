@@ -32,7 +32,7 @@ use App\Http\Controllers\Tenants\BioController;
 Route::post('/tenant/auth/login', [App\Http\Controllers\AuthController::class, 'login']);
 Route::group(['prefix' => 'v1'], function(){
     // For when user trys to create domain, user is not authenticated yet;
-//    TODO: Remember to create another endpoint for storing payment data, when logged in
+    //    TODO: Remember to create another endpoint for storing payment data, when logged in
     Route::get('/user/setup-intent', [App\Http\Controllers\SubscriptionController::class, 'getSetupIntent']);
     Route::post('/user/payments', [App\Http\Controllers\SubscriptionController::class, 'postPaymentMethods']);
     Route::get('/user/payment-methods', [App\Http\Controllers\SubscriptionController::class, 'getPaymentMethods']);
