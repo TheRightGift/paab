@@ -180,10 +180,12 @@ class TemplateController extends Controller
         $template = $template->title;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         $preview = true;
-        if($profession === 'Physician'){
-            return view('websites.physician', compact('preview', 'template', 'templateCSS', 'tenantID'));
-        } else if($profession === 'Legal'){
-            return view('websites.legal', compact('preview', 'template', 'templateCSS', 'tenantID'));
-        }
+        $email = null;
+        $can = null;
+        // if($profession === 'Physician'){
+        return view('websites.physician', compact('preview', 'template', 'templateCSS', 'tenantID', 'email', 'can'));
+        // } else if($profession === 'Legal'){
+        //     return view('websites.legal', compact('preview', 'template', 'templateCSS', 'tenantID'));
+        // }
     }
 }

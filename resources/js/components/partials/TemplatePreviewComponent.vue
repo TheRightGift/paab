@@ -102,11 +102,7 @@
             clientProfessionID: Number,
         },
         mounted() {
-            this.clientProfessionID == undefined ? this.getTemplates(this.professionId) : this.getTemplates(this.clientProfessionID);
-            this.role === "Admin" || this.role === "SuperAdmin" ? this.getTemplates(1) : null;
-            // this.role === "Admin" || this.role === "SuperAdmin" ? this.getProfessions() : null;
-
-            console.log(this.professionId, this.clientProfessionID)
+            this.getTemplates(1);
         },
         methods: {
             getTemplates(professionId, index = 0) {

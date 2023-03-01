@@ -149,31 +149,30 @@
                         classes: "errorNotifier",
                     });
                 } else {
-
                     axios
-                        .post(`${this.centralURL}/api/tenant/auth/login`, e)
-                        .then((res) => {
-                            if(res.data.status === 404){
-                                M.toast({
-                                    html: "Invalid Credentials",
-                                    classes: "errorNotifier",
-                                });
-                                this.loading = !this.loading;
-                            } else {
-                                this.setCookie("_token", res.data.access_token, 1);
-                                this.saveAccessToken(
-                                    res.data.access_token,
-                                    res.data.user.id,
-                                    e.email,
-                                    res.data.user.role,
-                                    res.data.user.visits
-                                );
-                            }
-                        })
-                        .catch((err) => {
-                            console.log(`Error: ${err}`);
-                            this.loading = false;
-                        });
+                    .post(`${this.centralURL}/api/tenant/auth/login`, e)
+                    .then((res) => {
+                        if(res.data.status === 404){
+                            M.toast({
+                                html: "Invalid Credentials",
+                                classes: "errorNotifier",
+                            });
+                            this.loading = !this.loading;
+                        } else {
+                            this.setCookie("_token", res.data.access_token, 1);
+                            this.saveAccessToken(
+                                res.data.access_token,
+                                res.data.user.id,
+                                e.email,
+                                res.data.user.role,
+                                res.data.user.visits
+                            );
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(`Error: ${err}`);
+                        this.loading = false;
+                    });
                 }
             },
             saveAccessToken(accessToken, user_id, email, role, visits) {
