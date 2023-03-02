@@ -63,6 +63,7 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::post('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'store']);
     Route::put('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'update']);
     Route::delete('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'destroy']);
+    Route::get('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'index'])->withoutMiddleware(['auth.api']);
 
     Route::post('/public_feature', [App\Http\Controllers\Tenants\PublicFeaturingController::class, 'store']);
     Route::put('/public_feature/{id}', [App\Http\Controllers\Tenants\PublicFeaturingController::class, 'update']);
@@ -80,10 +81,6 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::put('/social/{id}', [App\Http\Controllers\Tenants\SocialController::class, 'update']);
     Route::delete('/social/{id}', [App\Http\Controllers\Tenants\SocialController::class, 'destroy']);
 
-    Route::post('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'store']);
-    Route::put('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'update']);
-    Route::delete('/contact/{id}', [App\Http\Controllers\Tenants\ContactController::class, 'destroy']);
-
     Route::post('/review', [App\Http\Controllers\Tenants\ReviewsController::class, 'store'])->withoutMiddleware(['auth:api']);
     Route::put('/review/{id}', [App\Http\Controllers\Tenants\ReviewsController::class, 'update']);
     Route::delete('/review/{id}', [App\Http\Controllers\Tenants\ReviewsController::class, 'destroy']);
@@ -93,37 +90,37 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     // CVs
     Route::post('/cvexperience', [App\Http\Controllers\Tenants\CVExperienceController::class, 'store']);
     Route::put('/cvexperience/{expo}', [App\Http\Controllers\Tenants\CVExperienceController::class, 'update']);
-    Route::get('/cvexperience', [App\Http\Controllers\Tenants\CVExperienceController::class, 'index']);
+    Route::get('/cvexperience', [App\Http\Controllers\Tenants\CVExperienceController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::delete('/cvexperience/{expo}', [App\Http\Controllers\Tenants\CVExperienceController::class, 'destroy']);
 
     Route::post('/cv', [App\Http\Controllers\Tenants\CvController::class, 'store']);
     Route::put('/cv/{cv}', [App\Http\Controllers\Tenants\CvController::class, 'update']);
-    Route::get('/cv', [App\Http\Controllers\Tenants\CvController::class, 'index']);
+    Route::get('/cv', [App\Http\Controllers\Tenants\CvController::class, 'index'])->withoutMiddleware(['auth:api']);
 
     Route::post('/cvmed_school', [App\Http\Controllers\Tenants\CVMedicalSchoolController::class, 'store']);
     Route::put('/cvmed_school/{cvmed}', [App\Http\Controllers\Tenants\CVMedicalSchoolController::class, 'update']);
-    Route::get('/cvmed_school', [App\Http\Controllers\Tenants\CVMedicalSchoolController::class, 'index']);
+    Route::get('/cvmed_school', [App\Http\Controllers\Tenants\CVMedicalSchoolController::class, 'index'])->withoutMiddleware(['auth:api']);
 
     Route::post('/cv_otherschool', [App\Http\Controllers\Tenants\CVAdditionalSchoolController::class, 'store']);
     Route::put('/cv_otherschool/{cv_other}', [App\Http\Controllers\Tenants\CVAdditionalSchoolController::class, 'update']);
-    Route::get('/cv_otherschool', [App\Http\Controllers\Tenants\CVAdditionalSchoolController::class, 'index']);
+    Route::get('/cv_otherschool', [App\Http\Controllers\Tenants\CVAdditionalSchoolController::class, 'index'])->withoutMiddleware(['auth:api']);
 
     Route::post('/cv_gradschool', [App\Http\Controllers\Tenants\CVUndergradSchoolController::class, 'store']);
     Route::put('/cv_gradschool/{cvundgergrad}', [App\Http\Controllers\Tenants\CVUndergradSchoolController::class, 'update']);
-    Route::get('/cv_gradschool', [App\Http\Controllers\Tenants\CVUndergradSchoolController::class, 'index']);
+    Route::get('/cv_gradschool', [App\Http\Controllers\Tenants\CVUndergradSchoolController::class, 'index'])->withoutMiddleware(['auth:api']);
 
     Route::post('/cvtraining', [App\Http\Controllers\Tenants\CVTrainingController::class, 'store']);
     Route::put('/cvtraining', [App\Http\Controllers\Tenants\CVTrainingController::class, 'update']);
-    Route::get('/cvtraining', [App\Http\Controllers\Tenants\CVTrainingController::class, 'index']);
+    Route::get('/cvtraining', [App\Http\Controllers\Tenants\CVTrainingController::class, 'index'])->withoutMiddleware(['auth:api']);
 
     Route::post('/cvreferral', [App\Http\Controllers\Tenants\CVReferenceController::class, 'store']);
     Route::put('/cvreferral/{ref}', [App\Http\Controllers\Tenants\CVReferenceController::class, 'update']);
-    Route::get('/cvreferral', [App\Http\Controllers\Tenants\CVReferenceController::class, 'index']);
+    Route::get('/cvreferral', [App\Http\Controllers\Tenants\CVReferenceController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::delete('/cvreferral/{expo}', [App\Http\Controllers\Tenants\CVReferenceController::class, 'destroy']);
 
     Route::post('/license', [App\Http\Controllers\Tenants\LicenseController::class, 'store']);
     Route::put('/license/{ref}', [App\Http\Controllers\Tenants\LicenseController::class, 'update']);
-    Route::get('/license', [App\Http\Controllers\Tenants\LicenseController::class, 'index']);
+    Route::get('/license', [App\Http\Controllers\Tenants\LicenseController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::delete('/license/{expo}', [App\Http\Controllers\Tenants\LicenseController::class, 'destroy']);
     
     Route::delete('/service', [App\Http\Controllers\Tenants\ServiceController::class, 'destroy']);
@@ -137,10 +134,8 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::get('/achievement', [App\Http\Controllers\Tenants\AchievementController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/promotion', [App\Http\Controllers\Tenants\PromotionController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/bio', [App\Http\Controllers\Tenants\BioController::class, 'index'])->withoutMiddleware(['auth:api']);
-    Route::get('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/social', [App\Http\Controllers\Tenants\SocialController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/service', [App\Http\Controllers\Tenants\ServiceController::class, 'index'])->withoutMiddleware(['auth:api']);
-    Route::get('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/general', [App\Http\Controllers\Tenants\GeneralController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/activePromo', [App\Http\Controllers\Tenants\PromotionController::class, 'getLatestInTime'])->withoutMiddleware(['auth:api']);
 

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use App\Http\Controllers\Controller;
-use App\Models\Tenants\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Validator;
 use App\Trait\ServiceNotifier;
+use App\Models\Tenants\Contact;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {

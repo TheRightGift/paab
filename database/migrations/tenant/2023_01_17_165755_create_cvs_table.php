@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('summary');
             $table->json('skills')->nullable();
+            $table->text('title');
             $table->timestamps();
         });
     }

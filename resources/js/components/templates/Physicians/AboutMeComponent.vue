@@ -80,11 +80,11 @@
                                         </span>
                                     </p>
 
-<!--                                    <p class="center-align">-->
-<!--                                        <a href="#cvDetails" class="physiTempBtn waves-effect waves-light modal-trigger">-->
-<!--                                            View My curriculum vitae-->
-<!--                                        </a>-->
-<!--                                    </p>-->
+                                   <p class="center-align" v-if="CVComponentShow">
+                                       <a href="#cvDetails" class="physiTempBtn waves-effect waves-light modal-trigger">
+                                           View My curriculum vitae
+                                       </a>
+                                   </p>
 
 <!--                                    <div class="hide-on-large-only">-->
 <!--                                        &lt;!&ndash; About WriteUp Modal Trigger &ndash;&gt;-->
@@ -194,18 +194,13 @@
         </div>
 
         <!-- For CV MODAL DETAILS -->
-        <div id="cvDetails" class="modal">
-            <div class="modal-content">
-                <i class="material-icons right modal-close">close</i>
-                <!-- <h4>{{}}</h4>
-                <p>A bunch of text</p> -->
-                <p class="text-center"><strong>Curriculum Vitae is still in development mode, please check back later. Thanks</strong></p>
-            </div>
-        </div>
+        
+        <CVComponent :CV="CV" :contact="contact" :preview="preview" :user="user"/>
     </div>
 </template>
 <script>
 import ImageCropper from '../../partials/ImageCropper.vue';
+import CVComponent from './CVComponent.vue';
 export default {
     computed: {
         aboutCount() {
@@ -214,14 +209,17 @@ export default {
     },
     components: {
         ImageCropper,
+        CVComponent
     },
     data() {
+        CVComponent
         return {
             about: {
                 about: "",
                 name: "",
                 photo: null,
             },
+            CVComponentShow: false,
             errors: [],
             loading: false,
             uploaded: null,
@@ -308,6 +306,8 @@ export default {
         title: String,
         tenant: String,
         isLoggedIn: Boolean,
+        CV: Object,
+        contact: Object,
     },
     watch: {
         bio(newval, oldval) {
@@ -315,6 +315,11 @@ export default {
                 this.about.name = newval.firstname+' '+newval.lastname+' '+newval.othername;
                 this.about.about = newval.about;
                 this.about.photo = newval.photo;
+            }
+        },
+        CV(newval, oldval) {
+            if (newval.medschool !== null ) { // newval.license !== null && 
+                this.CVComponentShow = true;
             }
         }
     },
