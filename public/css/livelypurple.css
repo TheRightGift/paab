@@ -43,8 +43,14 @@ a.active {
 nav {
     background-color: var(--white);
 }
+.navbar-fixed nav {
+    z-index: 999;
+}
 #nav-mobile.section {
     padding-top: 1rem !important;
+}
+.navbar-fixed {
+    position: unset !important;
 }
 .headerNoSideNav, .extHeaderNoSideNav {
     display: none;
@@ -97,8 +103,8 @@ a.physiTempContactBtn {
 }
 a.physiTempContactBtn:hover {
     background-color: var(--black);
-    color: var(--primary);
-    border-left: var(--primary);
+    color: var(--white);
+    border-left: var(--white);
     padding-left: 1.5vw;
 }
 a.physiTempContactBtn.active {
@@ -976,7 +982,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     min-width: 12vw;
 }
 .dropdown-content li>a.dropSetLink {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: "Montserrat", sans-serif;
     color: var(--primary);
 }
@@ -1115,7 +1121,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     .testimonialRw::-webkit-scrollbar {
         height: 0.5vh;
     }
-
+    
     /* Added stylings for HeaderComponent */
     nav.navMain {
         display: none;
@@ -1905,6 +1911,15 @@ i.material-icons.physiTempSettingsIcon:hover {
         height: 35vh;
         border: 15px solid #d9d9d9;
         margin: auto;
+    }
+    .primaryColor {
+        padding-right: .1rem;
+    }
+    .date-range {
+        font-size: .8rem;
+    }
+    .header {
+        font-size: 1.25rem;
     }
 }
 .modalTriggerHolder {

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use App\Http\Controllers\Controller;
 use App\Models\Tenants\Cv;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class CvController extends Controller
 {
@@ -32,7 +32,7 @@ class CvController extends Controller
         $inputs = Validator::make($request->all(), [
             'summary' => 'nullable',
             'skills' => 'nullable',
-            'license' => 'nullable',
+            'title' => 'nullable',
         ]); 
 
         if ($inputs->fails()) {
@@ -61,7 +61,7 @@ class CvController extends Controller
         $inputs = Validator::make($request->all(), [
             'summary' => 'nullable',
             'skills' => 'nullable',
-            'license' => 'nullable',
+            'title' => 'nullable',
         ]); 
 
         if ($inputs->fails()) {

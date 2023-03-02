@@ -141,6 +141,18 @@
                             <h4 class="cvSetupTitle">
                                 Let us know more about you
                             </h4>
+                            <div class="row">
+                                <div class="input-field col s12 l12">
+                                    <input
+                                        placeholder="Surgeon"
+                                        type="text"
+                                        class="validate cvSetupInput1 sumInput"
+                                        v-model="
+                                            cv.title
+                                        "
+                                    />
+                                </div>
+                            </div>
                             <textarea
                                 placeholder="Typing..."
                                 id=""
@@ -153,7 +165,7 @@
                             <small class="maxChar right"
                                 >{{cv.summary.length || 0}} count. Maximum characters should be 614 characters</small
                             >
-
+                            
                             <div>
                                 <button
                                     @click.prevent="saveCV"
@@ -1897,12 +1909,7 @@
         display: flex;
         justify-content: center;
     }
-    /* .modal .modal-content {
-                padding: 10px;
-            } */
-    /* .modal {
-                width: 100%;
-            } */
+    
 </style>
 <script>
     import DatePicker from "vue-datepicker-next";
@@ -1945,7 +1952,7 @@
                 cv: {
                     summary: "",
                     skills: [],
-                    license: "",
+                    title: "",
                 },
                 cvMedSchool: {
                     institution: "",
@@ -2307,7 +2314,7 @@
                 }
                 formData.append("skills", JSON.stringify(this.cv.skills));
                 formData.append("summary", this.cv.summary);
-                formData.append("license", this.cv.license);
+                formData.append("title", this.cv.title);
                 axios
                     .post(request, formData)
                     .then((res) => {

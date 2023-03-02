@@ -25,7 +25,17 @@
                                 <form>
                                     <div class="row rm_mg">
                                         <div class="input-field col s12 rm_mg">
-                                            <input type="text" v-model="contact.email" placeholder="youremail@handler.com" class="validate aboutWriteUpsInput">
+                                            <input type="text" v-model="contact.phone" placeholder="+17792973" class="validate aboutWriteUpsInput">
+                                        </div>
+                                    </div>
+                                    <div class="row rm_mg">
+                                        <div class="input-field col s12 rm_mg">
+                                            <input type="text" v-model="contact.address" placeholder="Address" class="validate aboutWriteUpsInput">
+                                        </div>
+                                    </div>
+                                    <div class="row rm_mg">
+                                        <div class="input-field col s12 rm_mg">
+                                            <input type="email" v-model="contact.email" placeholder="youremail@handler.com" class="validate aboutWriteUpsInput">
                                         </div>
                                     </div>
 
@@ -34,7 +44,10 @@
                                 <div class="editWriteUpsSaveBtnDiv">
                                     <a href="#" class="editWriteUpsSaveBtn" @click.prevent="saveUpdateContact" v-if="!loading">
                                         <span v-if="contactMail == null">Save</span>
-                                        <span @click="update = 1" v-else>Update</span>
+                                        <span v-else>Update</span>
+                                    </a>
+                                    <a href="#" class="editWriteUpsSaveBtn" v-else>
+                                        <i class="fas fa-circle-notch fa-spin"></i>
                                     </a>
                                 </div>
                             </div>
@@ -173,6 +186,8 @@ export default {
         return {
             contact: {
                 email: "",
+                phone: "",
+                address: "",
             },
             loading: false,
             success: false,
@@ -257,7 +272,10 @@ export default {
         contactMail(newVal, oldVal){
             if (newVal != null) {
                 this.contact.email = newVal.email;
+                this.contact.phone = newVal.phone;
+                this.contact.address = newVal.address;
                 this.contact.id = newVal.id;
+                this.update = 1;
             }
         }
     },

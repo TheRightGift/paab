@@ -305,7 +305,10 @@ select {
     font-size: 2rem;
     cursor: pointer;
 }
-
+.sumInput {
+    width: 96.7% !important;
+    margin-left: 0 !important;
+}
 /* Media Query on Medium Device */
 @media screen and (max-width: 992px) and (min-width: 640px) {
     .row .col {
@@ -360,7 +363,10 @@ select {
         margin-bottom: 3vh;
         color: var(--black);
     }
-
+    .sumInput {
+        width: 96.7% !important;
+        margin-left: 0 !important;
+    }
     input.validate.cvSetupInput, input.validate.cvSetupInput1, textarea.validate.cvSetupInput1 {
         width: 95%;
     }

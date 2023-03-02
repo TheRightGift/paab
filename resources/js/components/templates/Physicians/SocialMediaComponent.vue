@@ -26,21 +26,7 @@
                     </p>
                 </div>
 
-                <iframe
-                    id="fb"
-                    :src="
-                        'https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F' +
-                        facebook +
-                        '&tabs=timeline&width=405&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=387648135838115'
-                    "
-                    width="100%"
-                    height="500"
-                    style="border: none; overflow: hidden"
-                    scrolling="no"
-                    frameborder="0"
-                    allowfullscreen="true"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                ></iframe>
+                <div class="fb-page" :data-href="'https://www.facebook.com/'+facebook" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote :cite="'https://www.facebook.com/'+facebook" class="fb-xfbml-parse-ignore"><a :href="'https://www.facebook.com/'+facebook">{{ facebook }}</a></blockquote></div>
             </div>
             <div v-if="twitter !== null" class="col s12 l4 feeds paddingBottom-2">
                 <div class="col s12">
@@ -90,17 +76,6 @@
                     </p>
                 </div>
                 <div class="col s12">
-<!--                    <iframe-->
-<!--                        :src="-->
-<!--                            'https://www.linkedin.com/embed/feed/update/urn:li:share:' +-->
-<!--                            linkedin-->
-<!--                        "-->
-<!--                        height="500"-->
-<!--                        width="100%"-->
-<!--                        frameborder="0"-->
-<!--                        allowfullscreen=""-->
-<!--                        title="Embedded post"-->
-<!--                    ></iframe>-->
                     <blockquote class="tiktok-embed" :cite="'https://www.tiktok.com/@'+tiktok" :data-unique-id="tiktok" data-embed-from="oembed" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" :href="'https://www.tiktok.com/@'+tiktok+'?refer=creator_embed'">@{{ tiktok }}</a> </section> </blockquote>
                 </div>
             </div>

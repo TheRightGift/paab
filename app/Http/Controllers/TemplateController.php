@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Template;
 use App\Models\Profession;
 use Illuminate\Http\Request;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class TemplateController extends Controller
 {
@@ -180,10 +180,8 @@ class TemplateController extends Controller
         $template = $template->title;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         $preview = true;
-        if($profession === 'Physician'){
-            return view('websites.physician', compact('preview', 'template', 'templateCSS', 'tenantID'));
-        } else if($profession === 'Legal'){
-            return view('websites.legal', compact('preview', 'template', 'templateCSS', 'tenantID'));
-        }
+        $can = false;
+        $email = '';
+        return view('websites.physician', compact('preview', 'template', 'templateCSS', 'tenantID', 'can', 'email'));
     }
 }
