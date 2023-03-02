@@ -102,32 +102,13 @@
             clientProfessionID: Number,
         },
         mounted() {
-            this.clientProfessionID == undefined
-                ? this.getTemplates(this.professionId)
-                : this.getTemplates(this.clientProfessionID);
-            this.role === "Admin" || this.role === "SuperAdmin" ? this.getTemplates(1) : null;
-            // this.role === "Admin" || this.role === "SuperAdmin" ? this.getProfessions() : null;
+            this.getTemplates(1);
         },
         methods: {
-            // getProfessions() {
-            //     axios
-            //         .get("/api/profession")
-            //         .then((res) => {
-            //             this.professions = res.data.professionals;
-            //             this.selectedIndex =
-            //                 this.clientProfessionID != undefined
-            //                     ? this.professions.findIndex(
-            //                           (el) => el.id == this.clientProfessionID
-            //                       )
-            //                     : 0;
-            //         })
-            //         .catch((err) => {
-            //             console.log(err);
-            //         });
-            // },
             getTemplates(professionId, index = 0) {
                 this.selectedIndex = index;
                 this.loading = true;
+                
                 let url = "";
                 if (professionId == 0) {
                     url = `/api/template`;

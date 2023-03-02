@@ -51,7 +51,7 @@ class DashboardController extends Controller
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
-            $input->registration_completed = 'Active';
+            $input['registration_completed'] = 'Active';
             $input['password'] = Hash::make($input['email']);
             $input['role'] = 'Admin';
             $admin = User::create($input);
