@@ -203,7 +203,7 @@ Route::post('claim/save/service', [TenantClaimController::class, 'saveServiceOff
 Route::post('claim/successdomainregistra', [TenantClaimController::class, 'sendMailForDomainRegistry']);
 
 
-
+Route::get('/claim/data', [TenantClaimController::class, 'getData']);
 
 
 Route::post('/subscription/create', [App\Http\Controllers\SubscriptionController::class, 'subscribe']);

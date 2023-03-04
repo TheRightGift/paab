@@ -180,7 +180,7 @@ input[type="file"] {
 }
 
 .cropper-area {
-  width: 614px;
+  width: 100%;
 }
 
 .actions {

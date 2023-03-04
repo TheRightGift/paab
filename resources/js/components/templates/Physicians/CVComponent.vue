@@ -322,7 +322,7 @@
                                 <div class="mb-2" v-if="undergradschool !== null">
                                     <p class="title">Undergraduate</p>
                                     <p class="m-03">{{ undergradschool.major }}</p>
-                                    <p class="flexedNoSpace"><i class="material-icons primaryColor">date_range</i><span class="date-range"> {{ undergradschool.monthStart }}/{{undergradschool.yearStart}} - {{ undergradschool.monthEnd }}/{{undergradschool.yearEnd}}</span></p>
+                                    <p class="flexedNoSpace" v-if="undergradschool !== null"><i class="material-icons primaryColor">date_range</i><span class="date-range"> {{ undergradschool.monthStart }}/{{undergradschool.yearStart}} - {{ undergradschool.monthEnd }}/{{undergradschool.yearEnd}}</span></p>
                                 </div>
                                 <div class="mb-2">
                                     <p class="title">Medical</p>
@@ -337,7 +337,7 @@
                                 <div v-if="otherschool !== null">
                                     <p class="title">Other School</p>
                                     <p class="m-03">{{ otherschool.title }}</p>
-                                    <p class="flexedNoSpace"><i class="material-icons primaryColor">date_range</i><span class="date-range"> {{ undergradschool.monthStart }}/{{undergradschool.yearStart}} - {{ undergradschool.monthEnd }}/{{undergradschool.yearEnd}}</span></p>
+                                    <p class="flexedNoSpace"><i class="material-icons primaryColor">date_range</i><span class="date-range"> {{ otherschool.monthStart }}/{{otherschool.yearStart}} - {{ otherschool.monthEnd }}/{{otherschool.yearEnd}}</span></p>
                                 </div>
                             </div>
                         </div>

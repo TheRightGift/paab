@@ -158,6 +158,7 @@
                 }).then( function( response ){
                     this.requesting = !this.requesting;
                     this.paymentSuccessful = 1;
+                    this.$emit('popupClose');
                     M.toast({
                         html: 'You have successfuly subscribed to domain premium plan!',
                         classes: 'successNotifier'

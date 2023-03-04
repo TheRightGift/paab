@@ -59,9 +59,9 @@ class SettingController extends Controller
             
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
-                $user = User::where('email', $searchEmail)->first();
+                $user = User::where('email', $searchEmail);
                 $orders = AdminClientOrder::where([['tenant_id', $searchTenant], ['claimed', null], ['email', $searchEmail]])->first();
-                if (!empty($orders) || $user->registration_completed === 'Pending') {
+                if (!empty($orders) || $user->firstOrFail()->registration_completed === 'Pending') {
                     Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 
                     DB::connection('mysql')->reconnect();
