@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Tenants;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Tenants\CV_Experience;
-use Illuminate\Http\Request;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class CVExperienceController extends Controller
 {
@@ -67,8 +67,7 @@ class CVExperienceController extends Controller
             'monthStart' => 'required',
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
-            'position' => 'required',
-            'location' => 'required',
+            'city_id' => 'required',
         ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
@@ -160,8 +159,7 @@ class CVExperienceController extends Controller
             'monthStart' => 'required',
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
-            'position' => 'required',
-            'location' => 'required',
+            'city_id' => 'required',
         ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);

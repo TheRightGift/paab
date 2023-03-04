@@ -2,22 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tenant;
+use Illuminate\Http\Request;
 use App\Models\AdminClientOrder;
-
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
-use Image;
+use Illuminate\Http\Exceptions\PostTooLargeException;
+
 class TenantClaimController extends Controller
 {
+    /**
+     * Gets the medical, additional, undergrad, services, experiences, trainings a user has inputted
+     * Incase he dismisses along the time of filling the getstartd and comes later on
+     *
+     * @return JsonResponse
+     */
+    public function getData() 
+    {
+        $tenantToFind = Session::get('tenant');
+        $tenants = new Tenant();
+        $tenant = $tenants->find($tenantToFind);
+        Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
+        DB::connection('mysql')->reconnect();
+        DB::setDatabaseName($tenant->tenancy_db_name);
+        $medSchool = DB::table('c_v__medical__schools')->first();
+        $otherEdu = DB::table('c_v__additional__schools')->first();
+        $undergrad = DB::table('c_v__undergrad__schools')->first();
+        $services = DB::table('services')->get();
+        $experiences = DB::table('c_v__experiences')->get();
+        $training = DB::table('c_v__trainings')->get();
+        return response()->json(['medschool' => $medSchool, 'otheredu' => $otherEdu, 'undergrad' => $undergrad, 'services' => $services, 'experiences' => $experiences, 'trainings' => $training]);
+    }
     /**
      * @throws ValidationException
      */
@@ -56,10 +81,10 @@ class TenantClaimController extends Controller
      */
     public function updateUserBio(Request $request) {
         $inputs = Validator::make($request->all(), [
-            'firstname' => 'nullable',
-            'lastname' => 'nullable',
+            'firstname' => 'required',
+            'lastname' => 'required',
             'othername' => 'nullable',
-            'title_id' => 'nullable',
+            'title_id' => 'required',
         ]);
 
         if ($inputs->fails()) {
@@ -119,8 +144,8 @@ class TenantClaimController extends Controller
                             $success = Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
                                 $constraint->aspectRatio();
                             })->save($file);
-                        } catch (Illuminate\Http\Exceptions\PostTooLargeException $th) {
-                            return response->json(['errors' => $th], 400);
+                        } catch (PostTooLargeException $th) {
+                            return response()->json(['errors' => $th], 400);
                         }
                         // file_put_contents(public_path().'/media/tenants/'.strtolower(tenant('id')).'/img', $file);
                         $input['photo'] = $safeName;
@@ -129,11 +154,11 @@ class TenantClaimController extends Controller
                         DB::connection('mysql')->reconnect();
                         DB::setDatabaseName($tenant->tenancy_db_name);
                         // Check the bio and get the names eg. FNAME, LNAME, ONAME
-                        $photoSave = DB::table('bios')->where('id', !null)->update($input);
+                        $photoSave = DB::table('bios')->where('id', $request->id)->update($input);
                         $updated = DB::table('bios')->first();
                         return response(['bio' => $updated, 'message' => 'Update Success', 'status' => 200], 200);
-                    } catch (Illuminate\Http\Exceptions\PostTooLargeException $th) {
-                        return response->json(['errors' => $th], 400);
+                    } catch (PostTooLargeException $th) {
+                        return response()->json(['errors' => $th], 400);
                     }
                     
                 }
@@ -346,8 +371,7 @@ class TenantClaimController extends Controller
             'monthStart' => 'nullable',
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
-            'position' => 'nullable',
-            'location' => 'nullable',
+            'city_id' => 'nullable',
         ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
@@ -579,7 +603,7 @@ class TenantClaimController extends Controller
             $feat = $achievementDb !== null ? json_decode(json_decode($achievementDb->feats)) : $feat;
 
             $seedExpA = $feat !== '' ? ' With more than '.$feat->experience : ' With many years of experience as an '.$cvMedDb->type.', ';
-            $seedCurrExpB = '. '.$pronoun.' is currently the '.$cvExperience->position.' at '.$cvExperience->institution.'.';
+            $seedCurrExpB = '. '.$pronoun.' is currently the working at '.$cvExperience->institution.'.';
         }
         if ($servicesDb !== null) {
             $seedServiceA = $pronoun.' has dedicated years to patient care throughout every '.$servicesDb->title.' experience';

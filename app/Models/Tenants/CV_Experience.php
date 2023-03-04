@@ -10,9 +10,8 @@ class CV_Experience extends Model
     use HasFactory;
 
     protected $fillable = [
-        'position',
             'institution',
-            'location',
+            'city_id',
             'yearStart',
             'monthStart',
             'yearEnd',

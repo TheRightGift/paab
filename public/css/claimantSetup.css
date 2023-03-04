@@ -57,6 +57,15 @@
     padding: 3vh 4vw 0 0;
     height: 48vh;
 }
+.customFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ul>li {
+    text-align: center;
+}
 .flexed {
     display: flex;
     align-items: center;
@@ -249,7 +258,7 @@ table tr td {
 
 .proImgContainer {
     width: 80%;
-    height: 35vh;
+    height: 50vh;
     border: 9px solid #d9d9d9;
     margin: auto;
 }
@@ -264,7 +273,7 @@ table tr td {
     justify-content: space-between;
     width: 35.5%;
     margin: 2vh auto;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .file-path.validate.proImgInput {
@@ -439,6 +448,7 @@ ul:not(.browser-default)>li {
 .contentInnerDiv {
     width: 50%;
     margin: auto;
+    margin-top: 15vh;
 }
 a.proImgSelectFile {
     font-family: 'Montserrat', sans-serif;
@@ -761,7 +771,7 @@ a.proImgSelectFile {
         font-size: 0.8rem;
     }
     ul:not(.browser-default)>li {
-        list-style-type: disc;
+        list-style-type: none;
     }
 
 
@@ -1111,6 +1121,7 @@ a.proImgSelectFile {
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
         font-size: 0.8rem;
+        text-align: center;
     }
     ul:not(.browser-default)>li {
         list-style-type: disc;
@@ -1137,6 +1148,7 @@ a.proImgSelectFile {
     .contentInnerDiv {
         width: 100%;
         margin: 0;
+        margin-top: 7.5vh;
     }
     a.proImgSelectFile {
         font-family: 'Montserrat', sans-serif;

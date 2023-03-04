@@ -107,7 +107,7 @@
             </div>
         </div>
         <div v-if="claimant || claimaint != null">
-            <claimaint-component-prop :claimaint="claimaint" :claimant="claimant" :titles="titles"/>
+            <claimaint-component-prop :claimaint="claimaint" :claimant="claimant" :titles="titles" :countries="countries"/>
         </div>
     </div>
 </template>
@@ -131,12 +131,12 @@
         },
         data() {
             return {
-                cities: [],
+               
                 countries: [],
                 otp: "",
                 professions: [],
                 registrationLoading: false,
-                states: [],
+                
                 titles: [],
                 userReg: {
                     email: "",
@@ -246,40 +246,8 @@
                 this.userReg.email = value.email;
                 this.updateVerifiedEmail(2);
             },
-            sortCities() {
-                axios
-                    .get(`/api/cities/${this.userReg.state}`)
-                    .then((res) => {
-                        if (res.data.status == 200) {
-                            this.cities = res.data.cities;
-                        } else {
-                            M.toast({
-                                html: "Error getting cities",
-                                classes: "errorNotifier",
-                            });
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-            },
-            sortStates() {
-                axios
-                    .get(`/api/states/${this.userReg.country}`)
-                    .then((res) => {
-                        if (res.data.status == 200) {
-                            this.states = res.data.states;
-                        } else {
-                            M.toast({
-                                html: "Error getting states",
-                                classes: "errorNotifier",
-                            });
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-            },
+            
+            
             // submitRegistrationForm() {
             //     if (
             //         !this.userReg.email ||
