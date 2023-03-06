@@ -4,7 +4,7 @@
             <div class="container">
                 <small class="text-center">Your website creation progress</small>
                 <ul class="progressbar">
-                    <li :class="{active: step.filled}"  v-for="(step, index) in steps" :key="index">
+                    <li :class="{filled: step.filled, active: view == (index + 1)}"  v-for="(step, index) in steps" :key="index">
                         <small class="font-poppins">{{ step.stepValue }}</small>
                     </li>
                     
@@ -22,15 +22,8 @@ export default {
             ]
         }
     },
-    props: {steps: Object},
-    watch: {
-        steps: {
-            handler(newValue, oldValue) {
-                console.log(newValue)
-            },
-            deep: true
-        }
-    }
+    props: {steps: Object, view: Number},
+   
 }
 </script>
 <style scoped>
@@ -97,25 +90,34 @@ export default {
   left: -50%;
   z-index: -1;
 }
-.progressbar li.active:before{
- border-color: var(--primary);
- background: var(--primary);
+.progressbar li.filled:before{
+ border-color: var(--gray);
+ background: var(--gray);
  color: white
 }
-/* .progressbar li.active:after{
+/* .progressbar li.filled:after{
  background: var(--primary);
 } */
-.progressbar li.active + li:after{
- background: var(--primary);
+.progressbar li.filled + li:after{
+ background: var(--gray);
  
 }
 
-.progressbar li.active + li.active:before{
- background: var(--primary);
+.progressbar li.filled + li.filled:before{
+ background: var(--gray);
  /* width: 100%; */
 }
+.progressbar li.active:before{
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white
+}
 
-/* .progressbar li.active + li:before{
+.progressbar li.filled.active:before{
+    border-color: var(--primary);
+}
+
+/* .progressbar li.filled + li:before{
 border-color: var(--primary);
 background: var(--primary);
 color: white;

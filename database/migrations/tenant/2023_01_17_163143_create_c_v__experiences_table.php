@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('c_v__experiences', function (Blueprint $table) {
             $table->id();
             $table->text('institution')->nullable();
-            $table->unsignedMediumInteger('city_id');
+            $table->unsignedMediumInteger('city_id')->nullable();
             $table->integer('yearStart')->nullable();
             $table->integer('monthStart')->nullable();
             $table->integer('yearEnd')->nullable();

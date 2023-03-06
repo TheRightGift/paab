@@ -51,7 +51,7 @@
                 <div id="page"></div>
                 <div class="contentDiv">
                     <!-- <button @click="popup" >Click Me</button> -->
-                    <ProgressComponent v-if="view >= 1" :steps="steps" />
+                    <ProgressComponent v-if="view >= 1" :steps="steps" :view="view" />
                     <div class="contentInnerDiv">
                         <!-- Get Started Section -->
                         <div v-show="view == 0">
@@ -396,6 +396,8 @@
                                                 class="with-gap"
                                                 name="acadamic"
                                                 type="radio"
+                                                value="1"
+                                                v-model="acadRoute"
                                             />
                                             <span class="radioBtnSpan"
                                                 >Undergraduate School and
@@ -409,6 +411,8 @@
                                                 class="with-gap"
                                                 name="acadamic"
                                                 type="radio"
+                                                value="2"
+                                                v-model="acadRoute"
                                             />
                                             <span class="radioBtnSpan"
                                                 >Only Medical School</span
@@ -791,12 +795,7 @@
                         <!-- Internship Section -->
                         <div v-show="view == 5">
                             <!-- Internship Check -->
-                            <div
-                                v-show="
-                                    internshipCheck == 0 && internUpdate === 0
-                                "
-                                class="container"
-                            >
+                            <div v-show="internshipCheck == 0 && internUpdate === 0" class="container">
                                 <p class="contentTitle">
                                     Have you completed your internship program?
                                 </p>
@@ -962,7 +961,7 @@
                             <!-- Fellowship Check -->
                             <div
                                 v-show="
-                                    fellowshipCheck == 0 &&
+                                    fellowshipCheck === 0 &&
                                     fellowshipUpdate === 0
                                 "
                                 class="container"
@@ -1568,7 +1567,7 @@
 
                         <!-- Add More Quarifications Section -->
                         <div v-show="view == 9">
-                            <div v-show="addQualificaion == 0">
+                            <div v-show="addQualificaion == 0 && additionalSchoolUpdate == 0">
                                 <p class="contentTitle">
                                     Do you have additional academic
                                     qualifications?
@@ -1914,7 +1913,7 @@
 
                         <!-- Prev/Next Button Section -->
                         <div class="mt-5">
-                            <div v-if="view > 0 && view <= 3" class="skipDiv">
+                            <div v-if="view > 0 && view <= 3 || (view == 4 && academicCheck == 0)" class="skipDiv">
                                 <button
                                     class="skipBtn"
                                     @click="prev()"
@@ -1929,7 +1928,7 @@
                                 <button
                                     class="skipBtn"
                                     @click="next()"
-                                    :disabled="view == view.length"
+                                    :disabled="view == view.length || (view == 4 && academicCheck == 0)"
                                     :class="view != 4 ? 'btnOn' : 'btnOff'"
                                 >
                                     <i class="material-icons"
@@ -1943,10 +1942,7 @@
                             </div>
                             <div v-if="view == 4 && academicCheck == 1">
                                 <div class="skipDiv">
-                                    <!-- :disabled="academicCheck == 0"  :class="
-                                            attendedSchInfo > 0 ? 'btnOn' : 'btnOff'
-                                        "-->
-                                    <button class="skipBtn" @click="prev1()">
+                                    <button class="skipBtn" @click="prev(1)">
                                         <i class="material-icons"
                                             >keyboard_arrow_left</i
                                         >
@@ -1954,7 +1950,7 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next1()"
+                                        @click="next(1)"
                                         :disabled="
                                             academicCheck ==
                                             academicCheck.length
@@ -1971,19 +1967,13 @@
                                     </button>
                                 </div>
                             </div>
-                            <div
-                                v-if="
-                                    view == 4 &&
-                                    academicCheck == 2 &&
-                                    attendedMedSch <= 3
-                                "
-                            >
+                            <div v-if="view == 4 && academicCheck == 2 && attendedMedSch <= 3">
                                 <div class="skipDiv">
                                     <!-- :disabled="academicCheck == 0"
                                         :class="
                                             attendedMedSch > 0 ? 'btnOn' : 'btnOff'
                                         " -->
-                                    <button class="skipBtn" @click="prev2()">
+                                    <button class="skipBtn" @click="prev(1)">
                                         <i class="material-icons"
                                             >keyboard_arrow_left</i
                                         >
@@ -1991,7 +1981,7 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next2()"
+                                        @click="next(1)"
                                         :disabled="
                                             academicCheck ==
                                             academicCheck.length
@@ -2010,11 +2000,7 @@
                             </div>
                             <div v-if="view == 5">
                                 <div class="skipDiv">
-                                    <!-- :disabled="internshipCheck == 0"
-                                        :class="
-                                            internshipCheck > 0 ? 'btnOn' : 'btnOff'
-                                        " -->
-                                    <button class="skipBtn" @click="prev3()">
+                                    <button class="skipBtn" @click="prev(2)">
                                         <i class="material-icons"
                                             >keyboard_arrow_left</i
                                         >
@@ -2022,7 +2008,7 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next3()"
+                                        @click="next(2)"
                                         :disabled="internshipCheck == 0"
                                         :class="
                                             internshipCheck < 1
@@ -2038,11 +2024,7 @@
                             </div>
                             <div v-if="view == 6">
                                 <div class="skipDiv">
-                                    <!-- :disabled="fellowshipCheck == 0"
-                                        :class="
-                                            fellowshipCheck > 0 ? 'btnOn' : 'btnOff'
-                                        " -->
-                                    <button class="skipBtn" @click="prev4()">
+                                    <button class="skipBtn" @click="prev(3)">
                                         <i class="material-icons"
                                             >keyboard_arrow_left</i
                                         >
@@ -2050,7 +2032,7 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next4()"
+                                        @click="next(3)"
                                         :disabled="fellowshipCheck == 0"
                                         :class="
                                             fellowshipCheck < 1
@@ -2066,11 +2048,7 @@
                             </div>
                             <div v-if="view == 7">
                                 <div class="skipDiv">
-                                    <!-- :disabled="residencyCheck == 0"
-                                        :class="
-                                            residencyCheck > 0 ? 'btnOn' : 'btnOff'
-                                        " -->
-                                    <button class="skipBtn" @click="prev5()">
+                                    <button class="skipBtn" @click="prev(4)">
                                         <i class="material-icons"
                                             >keyboard_arrow_left</i
                                         >
@@ -2078,7 +2056,7 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next5()"
+                                        @click="next(4)"
                                         :disabled="residencyCheck == 0"
                                         :class="
                                             residencyCheck < 1
@@ -2094,11 +2072,7 @@
                             </div>
                             <div v-if="view == 8">
                                 <div class="skipDiv">
-                                    <!-- :disabled="experienceCheck == 0"
-                                        :class="
-                                            experienceCheck > 0 ? 'btnOn' : 'btnOff'
-                                        " -->
-                                    <button class="skipBtn" @click="prev6()">
+                                    <button class="skipBtn" @click="prev(5)">
                                         <i class="material-icons"
                                             >keyboard_arrow_left</i
                                         >
@@ -2106,10 +2080,10 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next6()"
-                                        :disabled="experienceCheck > 4"
+                                        @click="next(5)"
+                                        :disabled="experienceCheck >= 3"
                                         :class="
-                                            experienceCheck > 4
+                                            experienceCheck >= 3
                                                 ? 'btnOff'
                                                 : 'btnOn'
                                         "
@@ -2123,14 +2097,9 @@
                             <div v-if="view == 9">
                                 <div class="skipDiv">
                                     <button
-                                        class="skipBtn"
-                                        @click="prev7()"
-                                        :disabled="addQualificaion == 0"
-                                        :class="
-                                            addQualificaion > 0
-                                                ? 'btnOn'
-                                                : 'btnOff'
-                                        "
+                                        class="skipBtn btnOn"
+                                        @click="prev(6)"
+                                        
                                     >
                                         <i class="material-icons"
                                             >keyboard_arrow_left</i
@@ -2139,10 +2108,10 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next7()"
-                                        :disabled="addQualificaion > 5"
+                                        @click="next(6)"
+                                        :disabled="addQualificaion > 5 || addQualificaion == 0"
                                         :class="
-                                            addQualificaion > 5
+                                            addQualificaion > 5  || addQualificaion == 0
                                                 ? 'btnOff'
                                                 : 'btnOn'
                                         "
@@ -2157,7 +2126,7 @@
                                 <div class="skipDiv">
                                     <button
                                         class="skipBtn"
-                                        @click="prev8()"
+                                        @click="prev(7)"
                                         :disabled="servicesCheck >= 3"
                                         :class="
                                             servicesCheck >= 3
@@ -2172,7 +2141,7 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next8()"
+                                        @click="next(7)"
                                         :disabled="servicesCheck == 0"
                                         :class="
                                             servicesCheck < 1
@@ -2190,7 +2159,7 @@
                                 <div class="skipDiv">
                                     <button
                                         class="skipBtn"
-                                        @click="prev9()"
+                                        @click="prev(8)"
                                         :disabled="view < 10"
                                         :class="view < 10 ? 'btnOff' : 'btnOn'"
                                     >
@@ -2201,7 +2170,7 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next9()"
+                                        @click="next(8)"
                                         :disabled="view == 11"
                                         :class="view >= 11 ? 'btnOff' : 'btnOn'"
                                     >
@@ -2267,16 +2236,16 @@
                 experienceUpdate: 0,
                 serviceUpdate: 0,
                 steps: [
-                    { stepValue: "Name", filled: false },
-                    { stepValue: "Domain", filled: false },
-                    { stepValue: "Avatar", filled: false },
-                    { stepValue: "Academic", filled: false },
-                    { stepValue: "Internship", filled: false },
-                    { stepValue: "Fellowship", filled: false },
-                    { stepValue: "Residency", filled: false },
-                    { stepValue: "Experience", filled: false },
-                    { stepValue: "Education", filled: false },
-                    { stepValue: "Services", filled: false },
+                    { stepValue: "Name", filled: false, current: 0 },
+                    { stepValue: "Domain", filled: false, current: 0 },
+                    { stepValue: "Avatar", filled: false, current: 0 },
+                    { stepValue: "Academic", filled: false, current: 0 },
+                    { stepValue: "Internship", filled: false, current: 0 },
+                    { stepValue: "Fellowship", filled: false, current: 0 },
+                    { stepValue: "Residency", filled: false, current: 0 },
+                    { stepValue: "Experience", filled: false, current: 0 },
+                    { stepValue: "Education", filled: false, current: 0 },
+                    { stepValue: "Services", filled: false, current: 0 },
                 ],
                 setDomain: false,
                 showCropper: false,
@@ -2380,7 +2349,6 @@
                 academicCheck: 0,
                 attendedSchInfo: 0,
                 attendedMedSch: 0,
-
                 internshipCheck: 0,
                 fellowshipCheck: 0,
                 residencyCheck: 0,
@@ -2389,6 +2357,7 @@
                 servicesCheck: 0,
                 setModal: false,
                 user: 0,
+                acadRoute: 0
             };
         },
         mounted() {
@@ -2577,36 +2546,178 @@
                         });
                 }
             },
-            next() {
-                if (this.view === 2) {
-                    this.setDomain = true;
-                    if (
-                        this.initialDomain !=
-                        this.domainSelected.replace(".com", "")
-                    ) {
-                        this.checkDomainAvailability();
+            prev(num = null) {
+                if(num === null){
+                    if(this.view == 5){
+                        this.attendedSchInfo = 0
                     }
-                }
-                if (this.view == 3) {
-                    this.view++;
-                }
-                if (this.view === 1) {
-                    this.registerUpdateUser();
-                    this.updateBio();
-                    if (
-                        (this.bio.title_id !== null || this.bio.title_id !== "") &&
-                        this.bio.firstname !== "" &&
-                        this.bio.lastname !== ""
-                    ) {
-                        this.generateMultiple();
-                        this.view = 2;
+
+                    this.view != 0 ? this.view-- : null;
+                } else if(num === 1){//academics
+                    if(this.academicCheck === 1){//underGrad
+                        // this.attendedSchInfo != 0 ? this.attendedSchInfo-- : (this.view = 3);
+                        this.attendedSchInfo != 0 ? this.attendedSchInfo-- : null;
+                        if (this.attendedSchInfo == 0) {
+                            this.academicCheck = 0;
+                            // reset school route option
+                            this.acadRoute = 0;
+                        }
+                    } else if(this.academicCheck === 2){//medSchool
+                        // this.attendedMedSch != 0 ? this.attendedMedSch-- : (this.attendedSchInfo = 3);
+                        this.attendedMedSch != 0 ? this.attendedMedSch-- : null;
+
+                        if (this.attendedMedSch == 0) {
+                            this.academicCheck = 0;
+                            // reset school route option
+                            this.acadRoute = 0;
+                        }
+                    }
+                } else if(num === 2){//internship
+                    // this.internshipCheck != 0 ? this.internshipCheck-- : ((this.view = 4), (this.attendedMedSch = 2));
+                    
+                    if(this.internshipCheck <= 1){
+                        this.view = 4;
+                        this.academicCheck = 0;
+                        this.acadRoute = 0;
+                        this.attendedMedSch = 0;
+                        this.attendedSchInfo = 0
                     } else {
-                        this.view = 1;
+                        this.internshipCheck--;
                     }
-                } else if (this.view != 4) {
-                    this.view++;
+                } else if(num === 3){//fellowship
+                    // this.fellowshipCheck != 0 ? this.fellowshipCheck-- : (this.view = 5);
+                    if(this.fellowshipCheck <= 1){
+                        this.view = 5;
+                        this.internshipCheck = 1;
+                    } else {
+                        this.fellowshipCheck--;
+                    }
+                } else if(num === 4){//residency
+                    // this.residencyCheck != 0 ? this.residencyCheck-- : this.view--;
+                    if(this.residencyCheck <= 1){
+                        this.view = 6;
+                        this.fellowshipCheck = 1;
+                    } else {
+                        this.residencyCheck--;
+                    }
+                }  else if(num === 5){//experience
+                    // this.experienceCheck != 0 ? this.experienceCheck-- : this.view--;
+                    if(this.experienceCheck <= 1){
+                        this.view = 7;
+                        this.residencyCheck = 1;
+                    } else {
+                        this.experienceCheck--;
+                    }
+                }  else if( num === 6){//additional Ed
+                    // this.addQualificaion != 0 ? this.addQualificaion-- : this.view--;
+                    if(this.addQualificaion <= 1){
+                        this.view = 8;
+                        this.experienceCheck = 1;
+                    } else {
+                        this.addQualificaion--;
+                    }
+                } else if(num === 7){//service
+                    // this.servicesCheck != 0 ? this.servicesCheck-- : null;
+                    if(this.servicesCheck <= 1){
+                        this.view = 9;
+                        this.addQualificaion = 1;
+                    } else {
+                        this.servicesCheck--;
+                    }
+                } else if(num == 8) {
+                    this.servicesCheck != 0 ? this.servicesCheck-- : null;
+
+                    if (this.servicesCheck < 3) {
+                        this.view = 10;
+                        this.servicesCheck = 0;
+                    }
                 }
-                // else  (this.academicCheck = 0);
+                
+            },
+            next(num = null) {
+                if(num === null){
+                    if (this.view === 2) {
+                        this.setDomain = true;
+                        if (
+                            this.initialDomain !=
+                            this.domainSelected.replace(".com", "")
+                        ) {
+                            this.checkDomainAvailability();
+                        }
+                    }
+                    if (this.view == 3) {
+                        this.view++;
+                    }
+                    if (this.view === 1) {
+                        this.registerUpdateUser();
+                        this.updateBio();
+                        if (
+                            (this.bio.title_id !== null || this.bio.title_id !== "") &&
+                            this.bio.firstname !== "" &&
+                            this.bio.lastname !== ""
+                        ) {
+                            this.generateMultiple();
+                            this.view = 2;
+                        } else {
+                            this.view = 1;
+                        }
+                    } else if (this.view != 4) {
+                        this.view++;
+                    }
+                } else if(num === 1){//academics
+                    if(this.academicCheck === 1){//underGrad
+                        this.attendedSchInfo != 3 ? (this.saveUndergradSchoolTime(), this.attendedSchInfo++) : null;
+
+                        if (this.attendedSchInfo >= 3) {
+                            this.academicCheck = 2;
+                        }
+                    } else if(this.academicCheck === 2){//medSchool
+                        this.attendedMedSch != 3 ? (this.saveMedSchoolTime(), this.attendedMedSch++) : null;
+
+                        if (this.attendedMedSch == 3) {
+                            this.view = 5;
+                        }
+                    }
+                } else if(num === 2){//internship
+                    this.internshipCheck != 3 ? (this.saveInternshipTime(), this.internshipCheck++) : null;
+
+                    if (this.internshipCheck >= 3) {
+                        this.view = 6;
+                    }
+                } else if(num === 3){//fellowship
+                    this.fellowshipCheck != 3 ? (this.saveFellowshipTime(), this.fellowshipCheck++) : null;
+
+                    if (this.fellowshipCheck >= 3) {
+                        this.view = 7;
+                    }
+                } else if(num === 4){//residency
+                    this.residencyCheck != 3 ? (this.saveResidencyTime(), this.residencyCheck++) : null;
+
+                    if (this.residencyCheck >= 3) {
+                        this.view = 8;
+                    }
+                } else if(num === 5){//experience
+                    this.experienceCheck != 5 ? (this.saveExperience(), this.experienceCheck++) : null;
+
+                    if (this.experienceCheck >= 5) {
+                        this.view = 9;
+                    }
+                } else if( num === 6){//additional Ed
+                    this.addQualificaion != 5 ? (this.saveAdditionalSchoolTime(), this.addQualificaion++) : null;
+
+                    if (this.addQualificaion >= 5) {
+                        this.view = 10;
+                    }
+                } else if(num === 7){//services
+                    if (this.servicesCheck == 1) {
+                        this.saveServiceOffered();
+                    }
+                    this.servicesCheck != 3 ? this.servicesCheck++ : null;
+                    if (this.servicesCheck >= 3) {
+                        this.view = 11;
+                    }
+                }
+                
             },
             getStarted() {
                 this.view = 1;
@@ -2733,9 +2844,7 @@
             photoUpload(e) {
                 this.updatePhoto(e);
             },
-            prev() {
-                this.view != 0 ? this.view-- : null;
-            },
+            
             // If user clicks on next for the view 1 register user or update details
             registerUpdateUser() {
                 if (
@@ -3167,71 +3276,69 @@
             medSelected() {
                 this.academicCheck = 2;
             },
-            prev1() {
-                this.attendedSchInfo != 0
-                    ? this.attendedSchInfo--
-                    : (this.view = 3);
-            },
-            next1() {
-                this.attendedSchInfo != 3
-                    ? (this.saveUndergradSchoolTime(), this.attendedSchInfo++)
-                    : null;
+            // prev1() {
+            //     console.log('here')
+            //     this.attendedSchInfo != 0 ? this.attendedSchInfo-- : (this.view = 3);
+            // },
+            // next1() {
+            //     console.log('here1')
+            //     this.attendedSchInfo != 3 ? (this.saveUndergradSchoolTime(), this.attendedSchInfo++) : null;
 
-                if (this.attendedSchInfo >= 3) {
-                    this.academicCheck = 2;
-                }
-            },
-            prev2() {
-                this.attendedMedSch != 0
-                    ? this.attendedMedSch--
-                    : (this.attendedSchInfo = 3);
-                if (this.attendedMedSch == 0) {
-                    this.academicCheck = 0;
-                }
-            },
-            next2() {
-                this.attendedMedSch != 3
-                    ? (this.saveMedSchoolTime(), this.attendedMedSch++)
-                    : null;
+            //     if (this.attendedSchInfo >= 3) {
+            //         this.academicCheck = 2;
+            //     }
+            // },
+            // prev2() {
+            //     this.attendedMedSch != 0
+            //         ? this.attendedMedSch--
+            //         : (this.attendedSchInfo = 3);
+            //     if (this.attendedMedSch == 0) {
+            //         this.academicCheck = 0;
+            //     }
+            // },
+            // next2() {
+            //     this.attendedMedSch != 3
+            //         ? (this.saveMedSchoolTime(), this.attendedMedSch++)
+            //         : null;
 
-                if (this.attendedMedSch == 3) {
-                    this.view = 5;
-                }
-            },
+            //     if (this.attendedMedSch == 3) {
+            //         this.view = 5;
+            //     }
+            // },
             internSelected() {
                 this.internshipCheck = 1;
             },
             internNotSelected() {
                 this.view = 6;
             },
-            prev3() {
-                this.internshipCheck != 0
-                    ? this.internshipCheck--
-                    : ((this.view = 4), (this.attendedMedSch = 2));
-            },
-            next3() {
-                this.internshipCheck != 3
-                    ? (this.saveInternshipTime(), this.internshipCheck++)
-                    : null;
+            // prev3() {
+            //     this.internshipCheck != 0
+            //         ? this.internshipCheck--
+            //         : ((this.view = 4), (this.attendedMedSch = 2));
+            // },
+            // next3() {
+            //     this.internshipCheck != 3
+            //         ? (this.saveInternshipTime(), this.internshipCheck++)
+            //         : null;
 
-                if (this.internshipCheck >= 3) {
-                    this.view = 6;
-                }
-            },
-            prev4() {
-                this.fellowshipCheck != 0
-                    ? this.fellowshipCheck--
-                    : (this.view = 5);
-            },
-            next4() {
-                this.fellowshipCheck != 3
-                    ? (this.saveFellowshipTime(), this.fellowshipCheck++)
-                    : null;
+            //     if (this.internshipCheck >= 3) {
+            //         this.view = 6;
+            //     }
+            // },
+            // prev4() {
+            //     this.fellowshipCheck != 0
+            //         ? this.fellowshipCheck--
+            //         : (this.view = 5);
+            // },
+            // next4() {
+            //     this.fellowshipCheck != 3
+            //         ? (this.saveFellowshipTime(), this.fellowshipCheck++)
+            //         : null;
 
-                if (this.fellowshipCheck >= 3) {
-                    this.view = 7;
-                }
-            },
+            //     if (this.fellowshipCheck >= 3) {
+            //         this.view = 7;
+            //     }
+            // },
             fellowSelected() {
                 this.fellowshipCheck = 1;
             },
@@ -3244,30 +3351,30 @@
             residencyNotSelected() {
                 this.view = 8;
             },
-            prev5() {
-                this.residencyCheck != 0 ? this.residencyCheck-- : this.view--;
-            },
-            next5() {
-                this.residencyCheck != 3
-                    ? (this.saveResidencyTime(), this.residencyCheck++)
-                    : null;
+            // prev5() {
+            //     this.residencyCheck != 0 ? this.residencyCheck-- : this.view--;
+            // },
+            // next5() {
+            //     this.residencyCheck != 3
+            //         ? (this.saveResidencyTime(), this.residencyCheck++)
+            //         : null;
 
-                if (this.residencyCheck >= 3) {
-                    this.view = 8;
-                }
-            },
-            prev6() {
-                this.experienceCheck != 0 ? this.experienceCheck-- : this.view--;
-            },
-            next6() {
-                this.experienceCheck != 5
-                    ? (this.saveExperience(), this.experienceCheck++)
-                    : null;
+            //     if (this.residencyCheck >= 3) {
+            //         this.view = 8;
+            //     }
+            // },
+            // prev6() {
+            //     this.experienceCheck != 0 ? this.experienceCheck-- : this.view--;
+            // },
+            // next6() {
+            //     this.experienceCheck != 5
+            //         ? (this.saveExperience(), this.experienceCheck++)
+            //         : null;
 
-                if (this.experienceCheck >= 5) {
-                    this.view = 9;
-                }
-            },
+            //     if (this.experienceCheck >= 5) {
+            //         this.view = 9;
+            //     }
+            // },
             expSelected() {
                 this.experienceCheck = 0;
                 this.experiences = {
@@ -3284,18 +3391,18 @@
             expNotSelected() {
                 this.view = 9;
             },
-            prev7() {
-                this.addQualificaion != 0 ? this.addQualificaion-- : this.view--;
-            },
-            next7() {
-                this.addQualificaion != 5
-                    ? (this.saveAdditionalSchoolTime(), this.addQualificaion++)
-                    : null;
+            // prev7() {
+            //     this.addQualificaion != 0 ? this.addQualificaion-- : this.view--;
+            // },
+            // next7() {
+            //     this.addQualificaion != 5
+            //         ? (this.saveAdditionalSchoolTime(), this.addQualificaion++)
+            //         : null;
 
-                if (this.addQualificaion >= 5) {
-                    this.view = 10;
-                }
-            },
+            //     if (this.addQualificaion >= 5) {
+            //         this.view = 10;
+            //     }
+            // },
             addQualSelected() {
                 this.addQualificaion = 1;
             },
@@ -3316,21 +3423,21 @@
             addMoreQualNotSelected() {
                 this.view = 10;
             },
-            prev8() {
-                this.servicesCheck != 0 ? this.servicesCheck-- : null;
+            // prev8() {
+            //     this.servicesCheck != 0 ? this.servicesCheck-- : null;
 
-                // if (this.servicesCheck < 2) {
-                //     this.view = 9;
-                //     this.addQualificaion = 4;
-                // }
-            },
-            next8() {
-                if (this.servicesCheck == 1) this.saveServiceOffered();
-                this.servicesCheck != 3 ? this.servicesCheck++ : null;
-                if (this.servicesCheck >= 3) {
-                    this.view = 11;
-                }
-            },
+            //     // if (this.servicesCheck < 2) {
+            //     //     this.view = 9;
+            //     //     this.addQualificaion = 4;
+            //     // }
+            // },
+            // next8() {
+            //     if (this.servicesCheck == 1) this.saveServiceOffered();
+            //     this.servicesCheck != 3 ? this.servicesCheck++ : null;
+            //     if (this.servicesCheck >= 3) {
+            //         this.view = 11;
+            //     }
+            // },
             addMoreServicesSelected() {
                 this.servicesCheck = 1;
                 this.service = {

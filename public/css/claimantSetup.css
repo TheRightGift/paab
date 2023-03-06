@@ -188,10 +188,13 @@ input[type=text]:not(.browser-default) {
 }
 
 button.skipBtn {
-    padding: 0 0.1vw;
-    border-radius: 50px;
-    background-color: transparent;
+    /* padding: 0 0.1vw;
+    border-radius: 50px;*/
+    background-color: transparent; 
     cursor: pointer;
+}
+button.skipBtn:first-child {
+    margin-right: 1rem;
 }
 .mx-datepicker {
     width: 100% !important;
@@ -932,9 +935,9 @@ a.proImgSelectFile {
         color: var(--primary);
     } */
     button.skipBtn {
-        padding: 0 0.5vw;
+        /* padding: 0 0.5vw;
         border-radius: 50px;
-        background-color: transparent;
+        background-color: transparent; */
     }
     .unAvailTitle {
         font-family: 'Montserrat', sans-serif;

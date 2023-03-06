@@ -8,7 +8,7 @@ class DomainCheckerController extends Controller
 {
     public function check(Request $request)
     {
-        // dd(gettype($request->domain), $request->domain);
+        // return gettype($request->domain);
         $whois = Factory::get()->createWhois();
         try {
             //code...
