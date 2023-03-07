@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\TenantClaimController;
 use App\Http\Controllers\TenantController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes

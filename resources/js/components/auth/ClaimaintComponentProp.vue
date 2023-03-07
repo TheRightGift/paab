@@ -10,7 +10,7 @@
                         >Continue to payment</a
                     ></span
                 >
-                <iframe id="iframe"></iframe>
+                <iframe title="Your website preview" srcdoc="Loading..."  id="iframe" onload="this.removeAttribute('srcdoc')"></iframe>
             </div>
             <div class="col s12">
                 <div class="primaryColorDiv">
@@ -2370,7 +2370,6 @@
                 };
                 let instances = M.Modal.init(elems, options);
             });
-            // this.popup();
 
             document.getElementById("page").onclick = function () {
                 if (document.getElementById("popup").style.display == "block") {
@@ -3276,69 +3275,14 @@
             medSelected() {
                 this.academicCheck = 2;
             },
-            // prev1() {
-            //     console.log('here')
-            //     this.attendedSchInfo != 0 ? this.attendedSchInfo-- : (this.view = 3);
-            // },
-            // next1() {
-            //     console.log('here1')
-            //     this.attendedSchInfo != 3 ? (this.saveUndergradSchoolTime(), this.attendedSchInfo++) : null;
-
-            //     if (this.attendedSchInfo >= 3) {
-            //         this.academicCheck = 2;
-            //     }
-            // },
-            // prev2() {
-            //     this.attendedMedSch != 0
-            //         ? this.attendedMedSch--
-            //         : (this.attendedSchInfo = 3);
-            //     if (this.attendedMedSch == 0) {
-            //         this.academicCheck = 0;
-            //     }
-            // },
-            // next2() {
-            //     this.attendedMedSch != 3
-            //         ? (this.saveMedSchoolTime(), this.attendedMedSch++)
-            //         : null;
-
-            //     if (this.attendedMedSch == 3) {
-            //         this.view = 5;
-            //     }
-            // },
+            
             internSelected() {
                 this.internshipCheck = 1;
             },
             internNotSelected() {
                 this.view = 6;
             },
-            // prev3() {
-            //     this.internshipCheck != 0
-            //         ? this.internshipCheck--
-            //         : ((this.view = 4), (this.attendedMedSch = 2));
-            // },
-            // next3() {
-            //     this.internshipCheck != 3
-            //         ? (this.saveInternshipTime(), this.internshipCheck++)
-            //         : null;
-
-            //     if (this.internshipCheck >= 3) {
-            //         this.view = 6;
-            //     }
-            // },
-            // prev4() {
-            //     this.fellowshipCheck != 0
-            //         ? this.fellowshipCheck--
-            //         : (this.view = 5);
-            // },
-            // next4() {
-            //     this.fellowshipCheck != 3
-            //         ? (this.saveFellowshipTime(), this.fellowshipCheck++)
-            //         : null;
-
-            //     if (this.fellowshipCheck >= 3) {
-            //         this.view = 7;
-            //     }
-            // },
+            
             fellowSelected() {
                 this.fellowshipCheck = 1;
             },
@@ -3351,30 +3295,7 @@
             residencyNotSelected() {
                 this.view = 8;
             },
-            // prev5() {
-            //     this.residencyCheck != 0 ? this.residencyCheck-- : this.view--;
-            // },
-            // next5() {
-            //     this.residencyCheck != 3
-            //         ? (this.saveResidencyTime(), this.residencyCheck++)
-            //         : null;
-
-            //     if (this.residencyCheck >= 3) {
-            //         this.view = 8;
-            //     }
-            // },
-            // prev6() {
-            //     this.experienceCheck != 0 ? this.experienceCheck-- : this.view--;
-            // },
-            // next6() {
-            //     this.experienceCheck != 5
-            //         ? (this.saveExperience(), this.experienceCheck++)
-            //         : null;
-
-            //     if (this.experienceCheck >= 5) {
-            //         this.view = 9;
-            //     }
-            // },
+            
             expSelected() {
                 this.experienceCheck = 0;
                 this.experiences = {
@@ -3391,18 +3312,7 @@
             expNotSelected() {
                 this.view = 9;
             },
-            // prev7() {
-            //     this.addQualificaion != 0 ? this.addQualificaion-- : this.view--;
-            // },
-            // next7() {
-            //     this.addQualificaion != 5
-            //         ? (this.saveAdditionalSchoolTime(), this.addQualificaion++)
-            //         : null;
-
-            //     if (this.addQualificaion >= 5) {
-            //         this.view = 10;
-            //     }
-            // },
+            
             addQualSelected() {
                 this.addQualificaion = 1;
             },
@@ -3423,21 +3333,7 @@
             addMoreQualNotSelected() {
                 this.view = 10;
             },
-            // prev8() {
-            //     this.servicesCheck != 0 ? this.servicesCheck-- : null;
-
-            //     // if (this.servicesCheck < 2) {
-            //     //     this.view = 9;
-            //     //     this.addQualificaion = 4;
-            //     // }
-            // },
-            // next8() {
-            //     if (this.servicesCheck == 1) this.saveServiceOffered();
-            //     this.servicesCheck != 3 ? this.servicesCheck++ : null;
-            //     if (this.servicesCheck >= 3) {
-            //         this.view = 11;
-            //     }
-            // },
+            
             addMoreServicesSelected() {
                 this.servicesCheck = 1;
                 this.service = {
@@ -3476,12 +3372,14 @@
                 let domainSelected = this.domainSelected.replace(".com", "");
                 document.getElementById("popup").showpopup = function () {
                     document.getElementById("popup").style.display = "block";
+                    domainSelected = 'mdemmapowerful'
                     document.getElementById("iframe").src =
                         `http://${domainSelected}.${domain}`;
+                    document.getElementById("iframe").srcdoc = '<!DOCTYPE html><div class="loader"></div>';
+                    document.getElementById("iframe").addEventListener('load', () => iframe.removeAttribute('srcdoc'));
                     document.getElementById("page").className = "darken";
                     document.getElementById("page").style.display = "block";
                 };
-
                 document.getElementById("popup").showpopup();
             },
             sendEmail(val) {
@@ -3681,5 +3579,8 @@
     }
     .justify-center {
         justify-content: center !important;
+    }
+    .holds-the-iframe {
+        background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100% 100%"><text fill="%23FF0000" x="50%" y="50%" font-family="\'Lucida Grande\', sans-serif" font-size="24" text-anchor="middle">PLACEHOLDER</text></svg>') 0px 0px no-repeat;
     }
 </style>
