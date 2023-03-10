@@ -435,7 +435,7 @@
                 this.experiences = newval.experience;
                 if (this.experiences.length !== 0) {
                     this.experiences.forEach((el, index) => {
-                        axios.get(`http://localhost:8000/api/getStateNCity/${el.city_id}`).then(res1 => {
+                        axios.get(`https://whitecoatdomain.com/api/getStateNCity/${el.city_id}`).then(res1 => {
                             this.experiences[index] =  {...this.experiences[index], state: res1.data.state, city: res1.data.city};
                         }).catch(err => {
                             console.log(err)

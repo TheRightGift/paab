@@ -2235,7 +2235,7 @@
             },
             getStateNCity() {
                 this.cvExperiences.forEach((el, index) => {
-                    axios.get(`http://localhost:8000/api/getStateNCity/${el.city_id}`).then(res => {
+                    axios.get(`https://whitecoatdomain.com/api/getStateNCity/${el.city_id}`).then(res => {
                         this.cvExperiences[index] =  {...this.cvExperiences[index], state: res.data.state, city: res.data.city};
                     }).catch(err => {
                         console.log(err)
@@ -2471,7 +2471,7 @@
                                 classes: "successNotifier",
                             });
                             
-                            axios.get(`http://localhost:8000/api/getStateNCity/${this.cvExperience.city_id}`).then(res1 => {
+                            axios.get(`https://whitecoatdomain.com/api/getStateNCity/${this.cvExperience.city_id}`).then(res1 => {
                                 this.cvExperience =  {...this.cvExperience, state: res1.data.state, city: res1.data.city};
                                 res.status === 201 ? this.cvExperiences.unshift(this.cvExperience) : null;
                                 this.cvExperience = {
