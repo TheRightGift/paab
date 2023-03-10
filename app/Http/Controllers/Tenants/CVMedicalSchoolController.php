@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Tenants;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Tenants\CV_Medical_School;
-use Illuminate\Http\Request;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class CVMedicalSchoolController extends Controller
 {
@@ -35,7 +35,6 @@ class CVMedicalSchoolController extends Controller
             'monthStart' => 'nullable',
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
-            'type' => 'nullable',
         ]); 
 
         if ($inputs->fails()) {
@@ -67,7 +66,6 @@ class CVMedicalSchoolController extends Controller
             'monthStart' => 'nullable',
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
-            'type' => 'nullable',
         ]); 
 
         if ($inputs->fails()) {

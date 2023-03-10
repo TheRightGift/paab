@@ -214,6 +214,8 @@
                             const countryRes = responses[1];
                             const professionRes = responses[2];
                             this.countries = countryRes.data.countries;
+
+                            this.countries.sort(function(x, y){ return x.name == 'United States' || x.name == 'Canada' ? -1 : y.name == 'United States' || y.name == 'Canada' ? 1 : 0; });
                             this.titles = titleRes.data.titles;
                             this.professions = professionRes.data.professionals;
                         })

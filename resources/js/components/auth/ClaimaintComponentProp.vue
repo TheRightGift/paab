@@ -82,6 +82,7 @@
                                             required
                                             class="browser-default"
                                             id="userTitle"
+                                            @change="switchText($event)"
                                         >
                                             <option
                                                 :value="null"
@@ -624,7 +625,7 @@
                             <div v-show="academicCheck == 2">
                                 <!-- <div> -->
                                 <p class="contentTitle">
-                                    Tell us about your time in medical school
+                                    Tell us about your time in {{medText}} school
                                 </p>
 
                                 <div>
@@ -646,25 +647,8 @@
                                             </div>
                                         </form>
                                     </div>
-
+                               
                                     <div v-if="attendedMedSch === 1">
-                                        <form class="mainForm">
-                                            <div class="row formContainDiv">
-                                                <div
-                                                    class="input-field col s12"
-                                                >
-                                                    <input
-                                                        placeholder="Specialization?"
-                                                        type="text"
-                                                        class="validate formInput"
-                                                        v-model="medSchool.type"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                    <div v-if="attendedMedSch === 2">
                                         <form class="mainForm">
                                             <div class="row formInnerDiv">
                                                 <div class="col s6">
@@ -1431,12 +1415,12 @@
                                 </p>
                                 <form class="mainForm">
                                     <div class="row formInnerDiv">
-                                        <div class="col s6">
+                                        <div class="col s12">
                                             <p class="schQuesP">
                                                 When did you start?
                                             </p>
                                             <div class="row spaceAround">
-                                                <div class="col s3">
+                                                <div class="col s6">
                                                     <p class="schQuesP1">
                                                         Start
                                                     </p>
@@ -1469,7 +1453,7 @@
                                                     </select>
                                                 </div>
                                                 <div
-                                                    class="input-field col s4 formInput1ColDiv"
+                                                    class="input-field col s6 formInput1ColDiv"
                                                 >
                                                     <date-picker
                                                         v-model:value="
@@ -1481,87 +1465,8 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="col s5">
-                                            <p class="schQuesP">
-                                                When did you end?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s2">
-                                                    <p class="schQuesP1">End</p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            experiences.monthEnd
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            experiences.yearEnd
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </form>
-                            </div>
-
-                            <div v-show="experienceCheck == 3">
-                                <p class="contentTitle">
-                                    Do you want to add more experience?
-                                </p>
-                                <div class="radioBtnMainDiv">
-                                    <p>
-                                        <label @click="expSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan"
-                                                >Yes</span
-                                            >
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label @click="expNotSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">No</span>
-                                        </label>
-                                    </p>
-                                </div>
                             </div>
                         </div>
 
@@ -1749,134 +1654,12 @@
                                     </div>
                                 </form>
                             </div>
-
-                            <div v-show="addQualificaion == 4">
-                                <p class="contentTitle">
-                                    Do you want to add more additional
-                                    qualifications
-                                </p>
-
-                                <div class="radioBtnMainDiv">
-                                    <p>
-                                        <label @click="addMoreQualSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan"
-                                                >Yes</span
-                                            >
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label
-                                            @click="addMoreQualNotSelected()"
-                                        >
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">No</span>
-                                        </label>
-                                    </p>
-                                </div>
-                            </div>
                         </div>
 
-                        <!-- Service Section -->
-                        <div v-show="view == 10">
-                            <div v-show="servicesCheck == 0">
-                                <p class="contentTitle">
-                                    Do you render any services?
-                                </p>
-
-                                <div class="radioBtnMainDiv">
-                                    <p>
-                                        <label @click="servicesSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan"
-                                                >Yes</span
-                                            >
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label @click="servicesNotSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">No</span>
-                                        </label>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div v-show="servicesCheck == 1">
-                                <p class="contentTitle">
-                                    Tell us about your services
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formContainDiv">
-                                        <div class="input-field col s12">
-                                            <input
-                                                placeholder="Title"
-                                                type="text"
-                                                class="validate formInput"
-                                                v-model="service.title"
-                                            />
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div v-show="servicesCheck == 2">
-                                <p class="contentTitle">
-                                    Do you want to add more services?
-                                </p>
-
-                                <div class="radioBtnMainDiv">
-                                    <p>
-                                        <label
-                                            @click="addMoreServicesSelected()"
-                                        >
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan"
-                                                >Yes</span
-                                            >
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label
-                                            @click="
-                                                addMoreServicesNotSelected()
-                                            "
-                                        >
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">No</span>
-                                        </label>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                       
 
                         <!-- Publish Section -->
-                        <div v-show="view == 11" class="container">
+                        <div v-show="view == 10" class="container">
                             <div class="contentTitle" v-if="!showGoLiveBtns">
                                 <span class="serviceSuccessTxt">Congrats!</span>
                                 Your site has been setup successfully!
@@ -2122,39 +1905,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div v-if="view == 10">
-                                <div class="skipDiv">
-                                    <button
-                                        class="skipBtn"
-                                        @click="prev(7)"
-                                        :disabled="servicesCheck >= 3"
-                                        :class="
-                                            servicesCheck >= 3
-                                                ? 'btnOff'
-                                                : 'btnOn'
-                                        "
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_left</i
-                                        >
-                                    </button>
-
-                                    <button
-                                        class="skipBtn"
-                                        @click="next(7)"
-                                        :disabled="servicesCheck == 0"
-                                        :class="
-                                            servicesCheck < 1
-                                                ? 'btnOff'
-                                                : 'btnOn'
-                                        "
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_right</i
-                                        >
-                                    </button>
-                                </div>
-                            </div>
+                            
                             <div v-if="view == 11">
                                 <div class="skipDiv">
                                     <button
@@ -2204,7 +1955,7 @@
     </div>
 </template>
 <script>
-    let env = process.env.MIX_APP_URL;
+    let env = process.env.MIX_APP_ENV;
     let domain = env === 'production' ? 'whitecoatdomain.com' : 'localhost:8000';
     import InnerFooter from "../partials/InnerFooterComponent.vue";
     import DatePicker from "vue-datepicker-next";
@@ -2223,6 +1974,7 @@
 
         data() {
             return {
+                medText: 'Medical',
                 stateSelected: "",
                 countrySelected: "",
                 states: [],
@@ -2245,7 +1997,7 @@
                     { stepValue: "Residency", filled: false, current: 0 },
                     { stepValue: "Experience", filled: false, current: 0 },
                     { stepValue: "Education", filled: false, current: 0 },
-                    { stepValue: "Services", filled: false, current: 0 },
+                    { stepValue: "Payment", filled: false, current: 0 },
                 ],
                 setDomain: false,
                 showCropper: false,
@@ -2266,9 +2018,7 @@
                 experiences: {
                     institution: "",
                     yearStart: "",
-                    yearEnd: "",
                     monthStart: "",
-                    monthEnd: "",
                     city_id: "",
                 },
                 internship: {
@@ -2327,9 +2077,6 @@
                     monthEnd: "",
                     type: "residency",
                 },
-                service: {
-                    title: "",
-                },
                 months: [
                     "JAN",
                     "FEB",
@@ -2380,6 +2127,19 @@
             };
         },
         methods: {
+            switchText(val) {
+                let valText;
+                if (!val) {
+                    val = document.querySelector('#userTitle');
+                    valText = val.selectedOptions[0].innerText;
+                } else valText= val.target.selectedOptions[0].innerText;
+                if (valText === 'DD') {
+                    this.medText = 'Dental';
+                }
+                else {
+                    this.medText = 'Medical';
+                }
+            },
             getData() {
                 axios
                     .get("/claim/data")
@@ -2414,7 +2174,6 @@
                             this.steps[8].filled = true;
                         }
                         let expo = res.data.experiences[0];
-                        let service = res.data.services[0];
                         res.data.experiences.length !== 0
                             ? ((this.steps[7].filled = true),
                               (this.experiences = expo),
@@ -2425,11 +2184,6 @@
                                   `${expo.yearEnd}`
                               )),
                               (this.experienceUpdate = 1))
-                            : null;
-                        res.data.services.length !== 0
-                            ? ((this.service = service),
-                              (this.steps[9].filled = true),
-                              (this.serviceUpdate = 1))
                             : null;
                         // Trainings
                         let internship = res.data.trainings.find(
@@ -2459,6 +2213,7 @@
                               (this.residencyUpdate = 1),
                               this.residencySelected())
                             : null;
+                            this.switchText();
                     })
                     .catch((error) => {
                         console.log(error);
@@ -2601,7 +2356,7 @@
                     }
                 }  else if(num === 5){//experience
                     // this.experienceCheck != 0 ? this.experienceCheck-- : this.view--;
-                    if(this.experienceCheck <= 1){
+                    if(this.experienceCheck <= 0){
                         this.view = 7;
                         this.residencyCheck = 1;
                     } else {
@@ -2671,9 +2426,9 @@
                             this.academicCheck = 2;
                         }
                     } else if(this.academicCheck === 2){//medSchool
-                        this.attendedMedSch != 3 ? (this.saveMedSchoolTime(), this.attendedMedSch++) : null;
+                        this.attendedMedSch != 2 ? (this.saveMedSchoolTime(), this.attendedMedSch++) : null;
 
-                        if (this.attendedMedSch == 3) {
+                        if (this.attendedMedSch == 2) {
                             this.view = 5;
                         }
                     }
@@ -2696,26 +2451,18 @@
                         this.view = 8;
                     }
                 } else if(num === 5){//experience
-                    this.experienceCheck != 5 ? (this.saveExperience(), this.experienceCheck++) : null;
+                    this.experienceCheck != 3 ? (this.saveExperience(), this.experienceCheck++) : null;
 
-                    if (this.experienceCheck >= 5) {
+                    if (this.experienceCheck >= 3) {
                         this.view = 9;
                     }
                 } else if( num === 6){//additional Ed
-                    this.addQualificaion != 5 ? (this.saveAdditionalSchoolTime(), this.addQualificaion++) : null;
+                    this.addQualificaion != 3 ? (this.saveAdditionalSchoolTime(), this.addQualificaion++) : null;
 
-                    if (this.addQualificaion >= 5) {
+                    if (this.addQualificaion >= 3) {
                         this.view = 10;
                     }
-                } else if(num === 7){//services
-                    if (this.servicesCheck == 1) {
-                        this.saveServiceOffered();
-                    }
-                    this.servicesCheck != 3 ? this.servicesCheck++ : null;
-                    if (this.servicesCheck >= 3) {
-                        this.view = 11;
-                    }
-                }
+                } 
                 
             },
             getStarted() {
@@ -2897,12 +2644,9 @@
             saveExperience() {
                 if (
                     (this.experiences.institution != "" ||
-                        this.experiences.yearEnd != "" ||
-                        this.experiences.monthEnd != "" ||
                         this.experiences.yearStart != "" ||
                         this.experiences.monthStart != "" ||
-                        this.experiences.position != "" ||
-                        this.experiences.location != "") &&
+                        this.experiences.city_id != "") &&
                     this.experienceUpdate === 0
                 ) {
                     this.experiences.yearStart != ""
@@ -3139,10 +2883,7 @@
             },
             saveResidencyTime() {
                 if (
-                    (this.residency.institution != "" ||
-                        this.residency.yearEnd != "" ||
-                        this.residency.monthEnd != "" ||
-                        this.residency.type != "" ||
+                    (this.residency.institution !== "" ||
                         this.residency.yearStart != "" ||
                         this.residency.monthStart != "") &&
                     this.residencyUpdate === 0
@@ -3452,12 +3193,6 @@
                     // console.log(val, oldval, 'l');
                     if (oldval == undefined && val != null)
                         this.parseClaimaintData(this.claimaint);
-                },
-            },
-            titles: {
-                // immediate: true,
-                handler(val, oldval) {
-                    // if (val) console.log(this.generateMultiple(), oldval);
                 },
             },
         },

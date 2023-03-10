@@ -26,9 +26,23 @@ class CountryController extends Controller
         $states = State::where('country_id', $country)->get();
         return response(['states' => $states,  'message' => 'Retrieved Success', 'status' => 200], 200);
     }
+
     public function cities($state) {
         $cities = City::where('state_id', $state)->get();
         return response(['cities' => $cities,  'message' => 'Retrieved Success', 'status' => 200], 200);
+    }
+
+    /**
+     * Returns the country a user selected
+     * From the country id get the states and get the selected state:frontend
+     *
+     * @param [type] $city_id
+     * @return void
+     */
+    public function getCountryStateFromCity($city_id) {
+        $city = City::find($city_id);
+        $state = State::find($city->state_id);
+        return response()->json(['city' => $city, 'state' => $state], 200);
     }
     // public function getCities($startRow) {
     //     $startRow = (int)$startRow;

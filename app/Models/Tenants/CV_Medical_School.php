@@ -15,6 +15,5 @@ class CV_Medical_School extends Model
         'monthStart',
         'yearEnd',
         'monthEnd',
-        'type',
     ];
 }
