@@ -29,8 +29,8 @@ class StripeEventListener
      */
     public function handle(WebhookReceived $event): void
     {
-        if ($event->payload['type'] === 'invoice.payment_succeeded' || $event->payload['type'] === 'customer.subscription.updated' || $event->payload['type'] === 'customer.subscription.created') {
-            // Handle the incoming event...
+        if ($event->payload['type'] === 'invoice.payment_succeeded') {
+            // Handle the incoming event...  || $event->payload['type'] === 'customer.subscription.updated' || $event->payload['type'] === 'customer.subscription.created'
             $data = $event->payload['data']['object'];
             DB::table('payments')->insert([
                 'customer_id' => $data['customer'],

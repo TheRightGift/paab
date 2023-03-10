@@ -327,7 +327,6 @@
                                 <div class="mb-2">
                                     <p class="title">Medical</p>
                                     <div v-if="medschool !== null">
-                                        <p class="m-03">{{ medschool.type }}</p>
                                         <p class="flexedNoSpace"><i class="material-icons primaryColor">date_range</i><span class="date-range"> {{ medschool.monthStart }}/{{medschool.yearStart}} - {{ medschool.monthEnd }}/{{medschool.yearEnd}}</span></p>
                                     </div>
                                     <div v-else>
@@ -361,9 +360,8 @@
                                 <h5>Experience</h5>
                                 <div :class="{'mb-2':  index === 0 | index === 1}" v-for="(experience, index) in experiences" :key="experience.id">
                                     <p class="title">{{ experience.institution }}</p>
-                                    <p class="m-03">{{ experience.position }}</p>
-                                    <p class="flexedNoSpace"><i class="material-icons primaryColor">location_on</i>{{ experience.location }}</p>
-                                    <p class="flexedNoSpace"><i class="material-icons primaryColor">date_range</i><span class="date-range"> {{ experience.monthStart }}/{{experience.yearStart}} - {{ experience.monthEnd }}/{{experience.yearEnd}}</span></p>
+                                    <p class="flexedNoSpace" v-if="experience.state"><i class="material-icons primaryColor">location_on</i>{{ experience.state.name }} / {{ experience.city.name }}</p>
+                                    <p class="flexedNoSpace"><i class="material-icons primaryColor">date_range</i><span class="date-range"> {{ experience.monthStart }}/{{experience.yearStart}} - {{experience.yearEnd === null ? 'Present' : experience.monthEnd +'/'+ experience.yearEnd}}</span></p>
                                 </div>
                                 <div v-if="experiences.length === 0">
                                     <p>-</p>
@@ -435,6 +433,15 @@
         watch: {
             CV(newval) {
                 this.experiences = newval.experience;
+                if (this.experiences.length !== 0) {
+                    this.experiences.forEach((el, index) => {
+                        axios.get(`https://whitecoatdomain.com/api/getStateNCity/${el.city_id}`).then(res1 => {
+                            this.experiences[index] =  {...this.experiences[index], state: res1.data.state, city: res1.data.city};
+                        }).catch(err => {
+                            console.log(err)
+                        })
+                    })
+                }
                 this.summary = newval.summary;
                 this.medschool = newval.medschool;
                 this.otherschool = newval.otherschool;

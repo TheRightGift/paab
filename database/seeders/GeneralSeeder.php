@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\User;
 class GeneralSeeder extends Seeder
 {
     /**
@@ -35,7 +35,8 @@ class GeneralSeeder extends Seeder
             ],
         ];
         collect($title)->each(function ($title) {\App\Models\Title::create($title);});
-        \App\Models\User::create([
+        $user = new User();
+        $user->create([
             'firstname' => 'George',
             'lastname' => 'Ibekie',
             'email' => 'ceo@whietcoatdomain.com',

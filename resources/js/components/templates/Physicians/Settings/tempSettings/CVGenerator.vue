@@ -416,7 +416,7 @@
                                                         input-field
                                                         col
                                                         s12
-                                                        l6
+                                                        l12
                                                     "
                                                 >
                                                     <input
@@ -424,33 +424,14 @@
                                                         type="text"
                                                         class="
                                                             validate
-                                                            cvSetupInput
+                                                            cvSetupInput1
                                                         "
                                                         v-model="
                                                             cvMedSchool.institution
                                                         "
                                                     />
                                                 </div>
-                                                <div
-                                                    class="
-                                                        input-field
-                                                        col
-                                                        s12
-                                                        l6
-                                                    "
-                                                >
-                                                    <input
-                                                        placeholder="Specialization?"
-                                                        type="text"
-                                                        class="
-                                                            validate
-                                                            cvSetupInput
-                                                        "
-                                                        v-model="
-                                                            cvMedSchool.type
-                                                        "
-                                                    />
-                                                </div>
+                                                
                                             </div>
                                             <div class="row lt_mb">
                                                 <div
@@ -1473,21 +1454,78 @@
                                                 v-model="cvExperience.institution"
                                             />
                                         </div>
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                placeholder="Position"
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                v-model="cvExperience.position"
-                                            />
+                                        <div class="input-field col s12 l4">
+                                            <select
+                                                class="
+                                                    validate
+                                                    formInput1
+                                                    browser-default
+                                                "
+                                                v-model="countrySelected"
+                                                @change="sortStates"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Country
+                                                </option>
+                                                <option
+                                                    v-for="country in countries"
+                                                    :key="country.id"
+                                                    :value="country.id"
+                                                >
+                                                    {{ country.name }}
+                                                </option>
+                                            </select>
                                         </div>
-                                        <div class="input-field col s12 l6">
-                                            <input
-                                                placeholder="Location"
-                                                type="text"
-                                                class="validate cvSetupInput"
-                                                v-model="cvExperience.location"
-                                            />
+                                        <div class="input-field col s12 l4">
+                                            <select
+                                                class="validate formInput1 browser-default"
+                                                v-model="stateSelected"
+                                                @change="sortCities"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                >
+                                                    State
+                                                </option>
+                                                <option
+                                                    v-for="state in states"
+                                                    :key="state.id"
+                                                    :value="state.id"
+                                                >
+                                                    {{ state.name }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="input-field col s12 l4">
+                                            <select
+                                                class="
+                                                    validate
+                                                    formInput1
+                                                    browser-default
+                                                "
+                                                v-model="cvExperience.city_id"
+                                            >
+                                                <option
+                                                    value=""
+                                                    disabled
+                                                    selected
+                                                >
+                                                    City
+                                                </option>
+                                                <option
+                                                    v-for="city in cities"
+                                                    :key="city.id"
+                                                    :value="city.id"
+                                                >
+                                                    {{ city.name }}
+                                                </option>
+                                            </select>
                                         </div>
                                         <div class="input-field col s12 l6">
                                             <date-picker
@@ -1630,13 +1668,9 @@
                                         <i class="material-icons">home</i>
                                         <h6>{{expo.institution}}</h6>
                                     </div>
-                                    <div class="flex">
+                                    <div class="flex" v-if=expo.state>
                                         <i class="material-icons">location_on</i>
-                                        <p>{{expo.location}}</p>
-                                    </div>
-                                    <div class="flex">
-                                        <i class="material-icons">account_box</i>
-                                        <p>{{expo.position}}</p>
+                                        <p>{{expo.state.name}}/{{ expo.city.name }}</p>
                                     </div>
                                     <div class="flex">
                                         <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -1924,6 +1958,8 @@
     let underGrad = '/api/cv_gradschool';
     let license = '/api/license';
     let bio = '/api/bio';
+    let countries = 'https://whitecoatdomain.com/api/countries';
+
     export default {
         name: "CvModal",
         components: {
@@ -1943,11 +1979,15 @@
             //     // console.log( instance)
             // }, 5000);
             this.getData();
+            
         },
         data() {
             return {
                 activities: [],
                 activity: "",
+                cities: [],
+                countries: [],
+                countrySelected: "",
                 cvTraining: "",
                 cv: {
                     summary: "",
@@ -1987,8 +2027,7 @@
                         yearEnd: "",
                         monthStart: "",
                         monthEnd: "",
-                        position: "",
-                        location: "",
+                        city_id: "",
                         activities: [{ activity: "" }],
                     },
                 cvExperiences: [],
@@ -2059,6 +2098,8 @@
                     type: "",
                 },
                 loading: false,
+                states: [],
+                stateSelected: "",
                 showEduForm: false,
                 view: 0,
                 medSchoolInput: 0,
@@ -2112,6 +2153,7 @@
                 const requestUnderGrad = axios.get(underGrad);
                 const requestLicense = axios.get(license);
                 const requestBio = axios.get(bio);
+                const requestCountry = axios.get(countries);
                 axios
                     .all([
                         requestSummary,
@@ -2122,7 +2164,8 @@
                         requestOtherSchool,
                         requestUnderGrad,
                         requestLicense,
-                        requestBio
+                        requestBio,
+                        requestCountry,
                     ])
                     .then(
                         axios.spread((...responses) => {
@@ -2135,12 +2178,21 @@
                             const underGradRes = responses[6];
                             const licenseRes = responses[7];
                             const bioRes = responses[8];
+                            const countryRes = responses[9];
+
+                            this.countries = countryRes.data.countries;
+                            this.countries.sort(function(x, y){ return x.name == 'United States' || x.name == 'Canada' ? -1 : y.name == 'United States' || y.name == 'Canada' ? 1 : 0; });
 
                             if (summaryRes.data.cvSummary !== null) {
                                 this.cv = summaryRes.data.cvSummary;
                                 this.cvUpdate = 1;
                             }
                             this.cvExperiences = cvExpRes.data.experience;
+                            this.cvExperiences.length !== 0  ? this.getStateNCity() : 0;                           //     // let res = ;
+                            //     console.log();
+                            //     // this.cvExperiences[index].state = res.data.state;
+                            //     // el.state = 
+                            // }) : 0;
                             this.trainings = trainingRes.data.trainings;
                             this.trainings.length !== 0 ? this.populateTraining() : null;
                             this.cvReferences = referralRes.data.referral;
@@ -2180,6 +2232,49 @@
                         console.log(errors);
                     });
 
+            },
+            getStateNCity() {
+                this.cvExperiences.forEach((el, index) => {
+                    axios.get(`https://whitecoatdomain.com/api/getStateNCity/${el.city_id}`).then(res => {
+                        this.cvExperiences[index] =  {...this.cvExperiences[index], state: res.data.state, city: res.data.city};
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                })
+            },
+            sortCities() {
+                axios
+                    .get(`https://whitecoatdomain.com/api/cities/${this.stateSelected}`)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            this.cities = res.data.cities;
+                        } else {
+                            M.toast({
+                                html: "Error getting cities",
+                                classes: "errorNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            },
+            sortStates() {
+                axios
+                    .get(`https://whitecoatdomain.com/api/states/${this.countrySelected}`)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            this.states = res.data.states;
+                        } else {
+                            M.toast({
+                                html: "Error getting states",
+                                classes: "errorNotifier",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             },
             deleteMe(e) {
                 axios.delete(`/api/cvexperience/${e.id}`).then(res => {
@@ -2227,6 +2322,10 @@
                 this.cvExperience.yearStart = new Date(`${e.yearStart}`);
                 this.cvExperience.yearEnd = new Date(`${e.yearEnd}`);
                 this.cvExperienceUpdate = 1;
+                this.countrySelected = e.city.country_id;
+                this.sortStates();
+                this.stateSelected = e.city.state_id;
+                this.sortCities();
             },
             populateTraining() {
                 let internship = this.trainings.find(el => el.type === 'internship');
@@ -2371,20 +2470,29 @@
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
-                            res.status === 201 ? this.cvExperiences.unshift(this.cvExperience) : null;
-                            this.cvExperience = {
-                                institution: "",
-                                yearStart: "",
-                                yearEnd: "",
-                                monthStart: "",
-                                monthEnd: "",
-                                position: "",
-                                location: "",
-                                activities: [{ activity: "" }],
-                            }
+                            
+                            axios.get(`https://whitecoatdomain.com/api/getStateNCity/${this.cvExperience.city_id}`).then(res1 => {
+                                this.cvExperience =  {...this.cvExperience, state: res1.data.state, city: res1.data.city};
+                                res.status === 201 ? this.cvExperiences.unshift(this.cvExperience) : null;
+                                this.cvExperience = {
+                                    institution: "",
+                                    yearStart: "",
+                                    yearEnd: "",
+                                    monthStart: "",
+                                    monthEnd: "",
+                                    city_id: "",
+                                    activities: [{ activity: "" }],
+                                };
+                                this.countrySelected = "";
+                                this.stateSelected = "";
+                            }).catch(err => {
+                                console.log(err)
+                            })
+                            
                         }
                     })
                     .catch((err) => {
+                        console.log(err);
                         if (err.response.status == 400) {
                             this.loading = !this.loading;
                             err.response.data.forEach((el) => {

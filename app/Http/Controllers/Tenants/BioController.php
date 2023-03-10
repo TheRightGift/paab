@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use Image;
 use App\Models\Tenants\Bio;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -12,6 +11,8 @@ use App\Models\Tenants\Service;
 use Illuminate\Support\Facades\DB;
 use App\Models\Tenants\Achievement;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class BioController extends Controller
@@ -50,14 +51,6 @@ class BioController extends Controller
             $input = $inputs->validated();
             if($request->has('photo')){
                 try {
-                    // $photo = $request->file('photo');
-                    // $ext = $request->file('photo')->getClientOriginalExtension();
-                    // $path = $request->file('photo')->storeAs(
-                    //     strtolower(tenant('id')), strtolower(tenant('id')).'biophoto'.'.'.$ext
-                    // );
-                    // $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
-                    // $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
-                    // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
                     $safeName = strtolower(tenant('id')).'biophoto'.'.'.'png';
                     $save_path = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/';
                     if (!file_exists($save_path)) {
@@ -71,13 +64,6 @@ class BioController extends Controller
                 } catch (\Throwable $th) {
                     return response($inputs->errors()->all(), 400);
                 }
-            }
-            if($request->hasFile('CV')){
-                $cv = $request->file('CV');
-                $ext = $request->file('CV')->getClientOriginalExtension();
-                $stored = \Storage::disk('public')->putFileAs('doc', $cv, strtolower(tenant('id')).'CV'.'.'.$ext);
-
-                $input['CV'] = $stored;
             }
             $bio = Bio::create($input);
             $tokenDB = DB::table('tokens');
@@ -107,7 +93,6 @@ class BioController extends Controller
             'about' => 'nullable',
             'firstname' => 'nullable',
             'lastname' => 'nullable',
-            'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
             // 'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=451,min_height=512,max_width=451,max_height=512',
         ]);
 
@@ -119,25 +104,16 @@ class BioController extends Controller
             $bio2Update = $bios->find($bio);
             if ($bio2Update != null) {
                 if($request->has('photo')){
-                    // $photo = $request->file('photo');
-                    // $ext = $request->file('photo')->getClientOriginalExtension();
-                    // $stored = \Storage::disk('public')->putFileAs('img', $photo, strtolower(tenant('id')).'biophoto'.'.'.$ext);
-
-                    // $name = strtolower(tenant('id')).'biophoto'.'.'.$ext;
-                    // $path = $photo->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
                     $safeName = strtolower(tenant('id')).'biophoto'.'.'.'png';
-                    $file = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/'.$safeName;
-                    $success = Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
+                    $file_path = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/';
+                    if (!file_exists($file_path)) {
+                        mkdir($file_path, 0755, true);
+                    }
+                    $file = $file_path.$safeName;
+                    Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($file);
                     $input['photo'] = $safeName;
-                }
-                if($request->hasFile('CV')){
-                    $cv = $request->file('CV');
-                    $ext = $request->file('CV')->getClientOriginalExtension();
-                    $stored = \Storage::disk('public')->putFileAs('doc', $cv, strtolower(tenant('id')).'CV'.'.'.$ext);
-
-                    $input['CV'] = $stored;
                 }
                 $bio2Update->update($input);
                 if (true) {
@@ -147,8 +123,6 @@ class BioController extends Controller
                 else {
                     return response()->json(['message' => 'Failed', 'bio' => $bio2Update], 501);
                 }
-                // $this->upd_achievement($input);
-                // $this->upd_service($input);
             }
         }
     }

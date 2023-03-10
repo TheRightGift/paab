@@ -80,3 +80,4 @@ Route::post('domain/check', [DomainCheckerController::class, 'check']);
 Route::post('tenant_without_auth', [App\Http\Controllers\TenantController::class, 'create']);
 // Route::get('getCities/{startRow}', [CountryController::class, 'getCities']);
 // Route::post('insertCity', [CountryController::class, 'insertCity']);
+Route::get('/getStateNCity/{city}', [CountryController::class, 'getCountryStateFromCity']);
