@@ -1660,7 +1660,7 @@
 
                         <!-- Publish Section -->
                         <div v-show="view == 10" class="container">
-                            <div class="contentTitle" v-if="!showGoLiveBtns">
+                            <div class="contentTitle" v-if="!showGoLiveBtns" >
                                 <span class="serviceSuccessTxt">Congrats!</span>
                                 Your site has been setup successfully!
                                 <span class="serviceSuccessTxt">Hooray!</span>
@@ -1670,28 +1670,7 @@
                                 </p>
                             </div>
 
-                            <div
-                                class="row serviceBtnRowDiv"
-                                v-if="showGoLiveBtns"
-                            >
-                                <div class="col s12 m12 l12 customFlex">
-                                    <button
-                                        class="waves-effect waves-light btn goLiveProBtn modal-trigger"
-                                        href="#modal1"
-                                        @click="sendEmail('premium')"
-                                    >
-                                        Go live <br />
-                                        Pro
-                                    </button>
-
-                                    <ul>
-                                        <li>Secured website</li>
-                                        <li>Custom domain name</li>
-                                        <li>Branded email</li>
-                                        <li>Social media stream</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <go-live-component :showGoLiveBtns="showGoLiveBtns" :bio="bio" @sendEmail="sendEmail($event)"/>
                         </div>
 
                         <!-- Prev/Next Button Section -->
@@ -1892,7 +1871,6 @@
                                     <button
                                         class="skipBtn"
                                         @click="next(6)"
-                                        :disabled="addQualificaion > 5 || addQualificaion == 0"
                                         :class="
                                             addQualificaion > 5  || addQualificaion == 0
                                                 ? 'btnOff'
@@ -1906,11 +1884,11 @@
                                 </div>
                             </div>
                             
-                            <div v-if="view == 11">
+                            <div v-if="view == 10">
                                 <div class="skipDiv">
                                     <button
                                         class="skipBtn"
-                                        @click="prev(8)"
+                                        @click="prev(7)"
                                         :disabled="view < 10"
                                         :class="view < 10 ? 'btnOff' : 'btnOn'"
                                     >
@@ -1921,9 +1899,9 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next(8)"
-                                        :disabled="view == 11"
-                                        :class="view >= 11 ? 'btnOff' : 'btnOn'"
+                                        @click="next(7)"
+                                        :disabled="view == 10"
+                                        :class="view >= 10 ? 'btnOff' : 'btnOn'"
                                     >
                                         <i class="material-icons"
                                             >keyboard_arrow_right</i
@@ -1963,6 +1941,7 @@
     import PaymentModalComponent from "../partials/PaymentModalComponent.vue";
     import ImageCropper from "../partials/ImageCropper.vue";
     import ProgressComponent from "../partials/ProgressComponent.vue";
+    import GoLiveComponent from '../partials/GoLiveComponent.vue';
     export default {
         components: {
             PaymentModalComponent,
@@ -1970,6 +1949,7 @@
             DatePicker,
             ImageCropper,
             ProgressComponent,
+            GoLiveComponent,
         },
 
         data() {
@@ -2370,23 +2350,10 @@
                     } else {
                         this.addQualificaion--;
                     }
-                } else if(num === 7){//service
-                    // this.servicesCheck != 0 ? this.servicesCheck-- : null;
-                    if(this.servicesCheck <= 1){
+                } else if(num === 7){//payment
                         this.view = 9;
                         this.addQualificaion = 1;
-                    } else {
-                        this.servicesCheck--;
-                    }
-                } else if(num == 8) {
-                    this.servicesCheck != 0 ? this.servicesCheck-- : null;
-
-                    if (this.servicesCheck < 3) {
-                        this.view = 10;
-                        this.servicesCheck = 0;
-                    }
-                }
-                
+                }                
             },
             next(num = null) {
                 if(num === null){
@@ -2455,13 +2422,12 @@
 
                     if (this.experienceCheck >= 3) {
                         this.view = 9;
+                        if (this.additionalSchoolUpdate === 1) {
+                            this.addQualificaion = 1;
+                        }
                     }
                 } else if( num === 6){//additional Ed
-                    this.addQualificaion != 3 ? (this.saveAdditionalSchoolTime(), this.addQualificaion++) : null;
-
-                    if (this.addQualificaion >= 3) {
-                        this.view = 10;
-                    }
+                    this.addQualificaion !== 3 ? (this.saveAdditionalSchoolTime(), this.addQualificaion++) : this.view = 10;
                 } 
                 
             },
@@ -3071,26 +3037,8 @@
                     degree: "",
                 };
             },
-            addMoreQualNotSelected() {
-                this.view = 10;
-            },
             
-            addMoreServicesSelected() {
-                this.servicesCheck = 1;
-                this.service = {
-                    title: "",
-                };
-                this.serviceUpdate = 0;
-            },
-            addMoreServicesNotSelected() {
-                this.view = 11;
-            },
-            servicesSelected() {
-                this.servicesCheck = 1;
-            },
-            servicesNotSelected() {
-                this.view = 11;
-            },
+            
             prev9() {
                 this.servicesCheck != 0 ? this.servicesCheck-- : null;
 

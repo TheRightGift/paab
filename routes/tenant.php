@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 Use Stancl\Tenancy\Middleware\InitializeTenancyBySubdomain;
@@ -26,6 +27,8 @@ Route::middleware([
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::get('/', [App\Http\Controllers\TenantController::class, 'template']);
+
+    Route::post('/auth/verifyEmailForRegistration', [AuthController::class, 'verifyEmailForWebsiteEdit']);
 
     Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
     

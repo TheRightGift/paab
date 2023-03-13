@@ -7,28 +7,30 @@
                         <h1>Payment Information</h1>
                         <a href="#!" class="modal-close waves-effect waves-green btn right"><i class="fa-solid fa-xmark"></i></a>
                     </div>
-                    <div class="form-container">
-                        <div class="field-container">
-                            <label for="name" class="browser-default">Card Holder Name *</label>
-                            <input id="name" maxlength="20" type="text" class="browser-default" v-model="name">
-                        </div>
-                        <div class="field-container">
-                            <label>Card</label>
-                            <div id="card-element">
-
+                    <form id="payment-form">
+                        <div class="form-container">
+                            <div class="field-container">
+                                <label for="name" class="browser-default">Card Holder Name *</label>
+                                <input id="name" maxlength="20" type="text" class="browser-default" v-model="name">
+                            </div>
+                            <div class="field-container">
+                                <label>Card</label>
+                                <div id="card-element">
+    
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s12 l8 m8">
-                            <button  id="add-card-button" class="waves waves-effect btn-large deep-purple lighten-2" @click.prevent="subscribe">
-                                <span v-if="!requesting"><i class="fas fa-lock"></i> Pay Securely</span>
-                                <span class="fas fa-circle-notch fa-spin" v-else></span>
-                            </button>
-
+                        <div id="card-element-errors" role="alert"></div>
+                        <div class="row">
+                            <div class="col s12 l8 m8">
+                                <button  id="add-card-button" class="waves waves-effect btn-large deep-purple lighten-2" @click.prevent="subscribe">
+                                    <span v-if="!requesting"><i class="fas fa-lock"></i> Subscribe</span>
+                                    <span class="fas fa-circle-notch fa-spin" v-else></span>
+                                </button>
+    
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div v-else class="flex-d">
                     <p class="check">
@@ -89,14 +91,28 @@
                 creating the card element.
             */
             configureStripe(){
-                this.stripe = Stripe( this.stripeAPIToken );
                 const appearance = {
-                    theme: 'night'
+                    theme: 'stripe',
+                    variables: {
+                        colorPrimary: '#0570de',
+                        colorBackground: '#ffffff',
+                        colorText: '#30313d',
+                        colorDanger: '#df1b41',
+                        fontFamily: 'Ideal Sans, system-ui, sans-serif',
+                        spacingUnit: '2px',
+                        borderRadius: '4px',
+                        // See all possible variables below
+                    }
                 };
-                this.elements = this.stripe.elements({appearance});
+                this.stripe = Stripe( this.stripeAPIToken, {appearance} );
+                this.elements = this.stripe.elements();
                 this.card = this.elements.create('card');
 
                 this.card.mount('#card-element');
+                this.card.on('change', function (event) {
+                    this.displayError(event);
+                });
+                
             },
             /*
        Includes Stripe.js dynamically
@@ -190,16 +206,25 @@
                     }
                 }.bind(this));
             },
+            displayError(event){
+                this.requesting = false;
+                let displayError = document.getElementById('card-element-errors');
+                if (event.error) {
+                    displayError.textContent = event.error.message;
+                } else {
+                    displayError.textContent = '';
+                }
+            }
         },
         mounted() {
             this.includeStripe('js.stripe.com/v3/', function(){
                 this.configureStripe();
             }.bind(this) );
-            // setTimeout(() => {
-            //     let elem = document.getElementById('paymentModal');
-            //     let instance = M.Modal.getInstance(elem);
-            //     instance.open()
-            // }, 1000)
+            let card = document.getElementById('card-element');
+            var vue = this;
+            card.addEventListener('change', function (event) {
+                vue.displayError(event);
+            });
         },
         watch: {
             setModal(newval, oldval) {
@@ -250,6 +275,8 @@
 }
 .flexed {
     display: flex;
+    justify-content: space-between !important;
+    align-items: unset !important;
 }
 .form-container .field-container:first-of-type {
     grid-area: name;
