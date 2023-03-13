@@ -3,7 +3,7 @@
         <div v-show="loading">
             <div class="loader"></div>
         </div>
-        <div v-show="!loading">
+        <div v-show="!loading && !otpPrompt">
             <HeaderComponent
                 :services="services"
                 :user="user"
@@ -60,20 +60,48 @@
                 />
             </div>
             <FooterComponent />
-            <div class="fixedBtmBtn" v-if="can === '1'">
-                <a
-                    target="_self"
-                    :href="
+            <!-- :href="
                         'https://whitecoatdomain.com/auth/claim?claimable=' +
                         tenant +
                         '&mail=' +
                         email
-                    "
-                    class="btn waves waves-effect"
-                    >Edit your website Now</a
-                >
+                    " -->
+            <div class="fixedBtmBtn" v-if="can === '1'">
+                <button class="btn waves waves-effect" @click="sendOtp" :disabled="disabledBtn">Edit your website Now <i class="fas fa-circle-notch fa-spin" v-if="disabledBtn"></i></button>
             </div>
+            
         </div>
+        <div class="row authContainDiv" v-if="otpPrompt">
+                <div class="col s12 m12 l6 otpContainer hide-on-med-and-down">
+                    <div class="wlcNoteDiv">
+                        <a href="/" class="wlcNoteLogo">
+                            <img
+                                src="/media/img/whiteCoatDomain1.png"
+                                alt="whiteCoatDomain.png"
+                                class="authLogo"
+                            />
+                        </a>
+                        <p class="wlcNoteTitle">
+                            Start your journey <br />with us...
+                        </p>
+                        <p class="wlcNoteTxt">
+                            “Good things come to those who wait”.
+                            <span class="getStartedOtpSpan right">Nathan Sykes</span>
+                        </p>
+                        <p class="wlcNoteFooterTxt">
+                            &copy; White Coat Domain. {{ getYear() }}. We support
+                            your brand!
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="col s12 m12 l6 otpContainer">
+                    <div class="authHeadingContainer center-align hide-on-large-only">
+                        <a href="/" class="authHeading">WhiteCoatDomain</a>
+                    </div>
+                    <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'"/>
+                </div>
+            </div>
     </div>
 </template>
 <script lang="js">
@@ -85,6 +113,7 @@ import SocialMediaComponent from "./SocialMediaComponent.vue";
 import TestimonialsComponent from "./TestimonialsComponent.vue";
 import AboutMeComponent from "./AboutMeComponent.vue";
 import FooterComponent from './FooterComponent.vue';
+import OtpComponent from '../../partials/OtpComponent.vue';
 let bio = '/api/bio';
 let service = '/api/service';
 let achievement = '/api/achievement';
@@ -99,6 +128,8 @@ let cvMed = '/api/cvmed_school';
 let cvOther = '/api/cv_otherschool';
 let underGrad = '/api/cv_gradschool';
 let license = '/api/license';
+let env = process.env.MIX_APP_ENV;
+let domain = env === 'production' ? 'https://whitecoatdomain.com' : 'http://localhost:8000'
 
 export default {
     components: {
@@ -110,6 +141,7 @@ export default {
         ContactComponent,
         AboutMeComponent,
         FooterComponent,
+        OtpComponent,
     },
     data() {
         return {
@@ -123,6 +155,9 @@ export default {
             loggedIn: false,
             initialCheck: false,
             CV: {},
+            otpPrompt: false,
+            disabledBtn: false,
+            otp: null,
         };
     },
     props: {
@@ -152,6 +187,42 @@ export default {
         this.location = window.location.href // For absolute pathing
     },
     methods: {
+        getYear() {
+            return new Date().getFullYear();
+        },
+        otpVerifier(value) {
+            if (value === 200) {
+                window.location.replace(`${domain}/auth/claim?claimable=${this.tenant}&mail=${this.email}`);
+            }
+        },
+        sendOtp() {
+            let data = {
+                email: this.email,
+            }
+            this.disabledBtn = !this.disabledBtn;
+            axios
+                .post("/auth/verifyEmailForRegistration", data)
+                .then((res) => {
+                    if (res.status === 200) {
+                        if (res.data.status == 200) {
+                                this.otp = res.data.otp,
+                                this.otpPrompt = true;
+                                this.disabledBtn = !this.disabledBtn;
+                    
+                        } else if (res.data.status == 404) {
+                            M.toast({
+                                html: res.data.error,
+                                classes: "errorNotifier",
+                            });
+                            this.disabledBtn = !this.disabledBtn;
+                        }
+                    }
+                })
+                .catch((err) => {
+                    console.log(err.response);
+                    this.disabledBtn = !this.disabledBtn;
+                });
+        },  
         checkAuth() {
             this.initialCheck = true;
             const _token = ("; " + document.cookie)

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Services\Auth;
 
+use App\Models\AdminClientOrder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ use App\Models\Verifier;
 
 use Carbon\Carbon;
 use Cookie;
+$mail = '';
 
 class EmailAuthService {
 
@@ -165,6 +167,25 @@ class EmailAuthService {
         }        
     }
 
+    public function verifyEmailForWebsiteEdit($request){
+        $data = $this->emailDataValidation($request);
+        if ($data->fails()){
+            return response()->json(['errors' => $data->errors()->all()]);
+        } else {
+            $input = $data->validated();
+            $userVerified = $this->confirmEmailOnAdminClientTable($input['email']);
+            if($userVerified == 200){//verified that email does exist
+                $otp = $this->genOTP();
+                $crypted = Crypt::encryptString($otp);
+                $this->maileOTP($input['email'], $otp);
+                
+                return ['status' => 200, 'otp' => $crypted];
+            } else {//!verified
+                return ['status' => 404, 'error' => 'Account with this email exists.'];
+            }
+        }        
+    }
+
     public function resetPassword($request){
         $data = $this->passwordResetDataValidation($request);
         if ($data->fails()){
@@ -188,7 +209,7 @@ class EmailAuthService {
     public function sendOtpForUserResetPassword($request){
         $data = $this->emailDataValidation($request);
         if ($data->fails()){
-            return ['status' => 501, 'error' => $regData->errors()->all()];
+            return ['status' => 501, 'error' => $data->errors()->all()];
         } else {
             $input = $data->validated();
             $verifyUserEmail = $this->confirmEmail($input['email']);
@@ -230,6 +251,19 @@ class EmailAuthService {
         } else {
             return 404;
         }
+    }
+
+    private function confirmEmailOnAdminClientTable($email) {
+        $GLOBALS['mail'] = $email;
+        return tenancy()->central(function ($tenant) {
+            $adminClientOrders = new AdminClientOrder();
+            $email = $adminClientOrders->where('email', $GLOBALS['mail'])->first();
+            if (!empty($email)) {
+                return 200;
+            } else {
+                return 404;
+            }
+        });
     }
 
     public function verifyOtPs (Request $request) {

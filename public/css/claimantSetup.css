@@ -422,9 +422,9 @@ ul>li {
     font-size: 0.8rem;
 }
 
-ul:not(.browser-default)>li {
+/* ul:not(.browser-default)>li {
     list-style-type: disc;
-}
+} */
 
 
 

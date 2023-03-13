@@ -37,6 +37,12 @@ class AuthController extends Controller
         $user = $emailAuthService->register($request);
         return response($user);
     }
+    
+    public function verifyEmailForWebsiteEdit(Request $request, EmailAuthService $emailAuthService){
+        $verifierRes = $emailAuthService->verifyEmailForWebsiteEdit($request);
+        return response($verifierRes);
+    }
+
 
     public function verifyEmailForRegistration(Request $request, EmailAuthService $emailAuthService){
         $verifierRes = $emailAuthService->verifyEmailForRegistration($request);
