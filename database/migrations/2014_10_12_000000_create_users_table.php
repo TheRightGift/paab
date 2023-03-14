@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -36,6 +37,7 @@ return new class extends Migration
             $table->text('accessToken')->nullable()->default(null);
             $table->text('access_token')->nullable()->default(null);
             $table->integer('visits')->nullable();
+            $table->string('device_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

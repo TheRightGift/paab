@@ -11,11 +11,18 @@ use App\Http\Services\Auth\EmailAuthService;
 
 class AuthController extends Controller
 {
+    public function pre_login(Request $request, EmailAuthService $emailAuthService)
+    {
+        $user = $emailAuthService->pre_login($request);
+        return response($user);
+    }
+
     public function login(Request $request, EmailAuthService $emailAuthService)
     {
         $user = $emailAuthService->login($request);
         return response($user);
     }
+    
 
     public function changePassword (Request $request, EmailAuthService $emailAuthService) {
         $service = $emailAuthService->changePassword($request);

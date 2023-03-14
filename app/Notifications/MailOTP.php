@@ -11,11 +11,7 @@ class MailOTP extends Notification
 {
     use Queueable;
 
-    /**
-     * The order instance.
-     *
-     * @var \App\Models\Order
-     */
+    
     public $otp;
 
     /**

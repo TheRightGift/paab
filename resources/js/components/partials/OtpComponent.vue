@@ -2,7 +2,8 @@
     <div class="authRightDiv">
         <p class="authTitle">INSERT OTP</p>
         <p class="otpEmailAuthTxt">
-            You are almost there, get ready to conquer the world. 
+            <span v-if="text !== undefined">{{ text }} </span>
+            <span v-else>You are almost there, get ready to conquer the world.</span>
         </p>
 
         <div class="row rm_mg">
@@ -135,6 +136,7 @@
             otp: String,
             type: String,
             email: String,
+            text: String,
         },
         mounted() {
             setTimeout(() => {
