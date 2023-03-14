@@ -24,7 +24,7 @@
     </div>
     <div v-if="!loggedIn">
         <div v-if="!initialCheck">
-            <TenantLoginComponent @loginUser="login($event)" :loading="loading"/>
+            <TenantLoginComponent :errors="errors" :logginIn="logginIn" :otp="otp" :otpPrompt="otpPrompt" @anteLogin="anteLogin($event)" @loginUser="login($event)" :loading="loading"/>
         </div>
         <div class="loader" v-else></div>
     </div>
@@ -69,12 +69,46 @@
                 initialCheck: false,
                 promoView: false,
                 centralURL: centralURL,
+
+                errors: {},
+                logginIn: false,
+                otp: "",
+                otpPrompt: false,
             };
         },
         created() {
             this.checkAuth();
         },
         methods: {
+            async anteLogin(e) {
+                this.logginIn = !this.logginIn;
+                let data = {
+                    email: e.email,
+                    password: e.password,
+                };
+                await axios.post(`${this.centralURL}/api/tenant/auth/ante_login`, data).then(res => {
+                    if (res.status === 200) {
+                        if (res.data.status == 200) {
+                            this.setCookie(
+                                "_token",
+                                res.data.access_token,
+                                2
+                            );
+                            
+                            this.setCookie("_token", res.data.access_token, 1);
+                            this.saveAccessToken(
+                                res.data.access_token,
+                                res.data.user.id,
+                                e.email,
+                                res.data.user.role,
+                                res.data.user.visits
+                            );
+                        }
+                    }
+                }).catch(error => {
+                    console.error();
+                })
+            },
             getLocations() {
                 this.loading = true;
                 const requestBio = axios.get(bio);
@@ -152,26 +186,45 @@
                     axios
                     .post(`${this.centralURL}/api/tenant/auth/login`, e)
                     .then((res) => {
-                        if(res.data.status === 404){
-                            M.toast({
-                                html: "Invalid Credentials",
-                                classes: "errorNotifier",
-                            });
-                            this.loading = !this.loading;
-                        } else {
-                            this.setCookie("_token", res.data.access_token, 1);
-                            this.saveAccessToken(
-                                res.data.access_token,
-                                res.data.user.id,
-                                e.email,
-                                res.data.user.role,
-                                res.data.user.visits
-                            );
+                        if (res.status === 200) {
+                            if (res.data.status == 200) {
+                                this.setCookie("_token", res.data.access_token, 1);
+                                this.saveAccessToken(
+                                    res.data.access_token,
+                                    res.data.user.id,
+                                    e.email,
+                                    res.data.user.role,
+                                    res.data.user.visits
+                                );
+                            } else if (res.data.status == 404) {
+                                M.toast({
+                                    html: res.data.error,
+                                    classes: "errorNotifier",
+                                });
+                            }
                         }
+                        if (res.data.status === 422) {
+                            if (res.data.message == 'Device changed') {
+                                this.otpPrompt = true;
+                                this.otp = res.data.otp;
+                            }
+                        }
+                        // if(res.data.status === 404){
+                        //     M.toast({
+                        //         html: "Invalid Credentials",
+                        //         classes: "errorNotifier",
+                        //     });
+                        //     this.loading = !this.loading;
+                        // } else {
+                            
+                        // }
                     })
                     .catch((err) => {
                         console.log(`Error: ${err}`);
                         this.loading = false;
+                        if (err.response.status === 422) {
+                            this.errors = err.response.data.errors;
+                        }
                     });
                 }
             },
@@ -198,6 +251,7 @@
                                 classes: 'errorNotifier'
                             })
                         } 
+                        this.logginIn = !this.logginIn;
                         this.loading = false;
                     });
             },

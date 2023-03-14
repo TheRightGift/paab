@@ -403,6 +403,9 @@ a.btn.circleDivBtn {
 
 /* Media Query on Medium Device */
 @media screen and (max-width: 992px) and (min-width: 640px) {
+    .sidenav-overlay {
+        z-index: 0 !important;
+    }
     .portraitImgDiv {
         height: 70vh;
     }

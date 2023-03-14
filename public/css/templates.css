@@ -438,6 +438,9 @@ a.tempSetDelBtn {
 
 /* Media Query on Medium Device */
 @media screen and (max-width: 992px) and (min-width: 640px) {
+    .sidenav-overlay {
+        z-index: 0 !important;
+    }
     .pl-3 {
         padding-left: 3rem;
     }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Services\Auth;
 
+use App\Mail\DeviceChanged;
 use App\Models\AdminClientOrder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -73,21 +74,91 @@ class EmailAuthService {
         return $validator;
     }
 
-    public function login(Request $request){
-        $loginData = $request->validate([
-            'email' => 'email|required',
-            'password' => 'required'
-        ]);        
-
-        if (!auth()->attempt($loginData)) {
-            return ['status' => 404, 'error' => 'Invalid Credentials'];
+    public function login(Request $request) : array | Request
+    {
+        if ($request->has('email')){
+            $credentials = [
+                'email' => $request->email,
+                'password' => $request->password,
+            ];
         }
-        $accessToken = auth()->user()->createToken('accessToken')->accessToken;
-        $user = User::find(auth()->user()->id);
-        $user->visits = $user->visits + 1;
-        $user->accessToken = $accessToken;
-        $user->save();
-        return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];
+        // // $this->checkUserDevice('err');
+
+        // if (Auth::attemptWhen(['email' => $credentials['email'], 'password' => $credentials['password'], 'device_id' => $this->checkUserDevice('err')], function (User $user) {
+        //     return $user->visits === 1;
+        // })) {
+        //     // Authentication was successful...
+        //     $accessToken = auth()->user()->createToken('accessToken')->accessToken;
+        //     $user = User::find(auth()->user()->id);
+        //     $user->visits = $user->visits + 1;
+        //     $user->accessToken = $accessToken;
+    
+        //     $user->save();
+        //     return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];
+        // }
+ 
+        if (Auth::attempt($credentials)) {
+            $accessToken = auth()->user()->createToken('accessToken')->accessToken;
+            $user = User::find(auth()->user()->id);
+            $user->visits = $user->visits + 1;
+            $user->accessToken = $accessToken;
+            $user->device_id = $this->getUserAgent();
+    
+            $user->save();
+            return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];
+        }
+       
+    }
+
+    public function pre_login(Request $request) {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+        $users = new User();
+        $user = $users->where('email', $credentials['email'])->first();
+        if ($user) {
+            if (Hash::check($credentials['password'], $user->password)) {
+                if ($user->visits !== null) {
+                    if ($user->device_id !== $this->getUserAgent()) {
+                        $otp = $this->genOTP();
+                        $crypted = Crypt::encryptString($otp);
+                        $serverAgent = $_SERVER['HTTP_USER_AGENT'];
+                        Mail::to($user->email)->send(new DeviceChanged($otp, $serverAgent));
+                        return ['status' => 422, 'message' => 'Device changed', 'otp' => $crypted];
+                    }
+                    else {
+                        return $this->login($request);
+                    }
+                }
+                else {
+                    return $this->login($request);
+                }
+            } else {
+                $response = ["status" => 404, "error" => "Invalid Credentials"];
+                return $response;
+            }
+        } else {
+            $response = ['status' => 404, "error" => 'Invalid Credentials'];
+            return $response;
+        }
+        
+
+        // if($user->device_id === $serverDeviceID) {
+        //     // Login
+        // } 
+        // else {
+        //     // Send an otp to user email
+        //     // If 
+        // }
+    }
+
+    private function getUserAgent() {
+        $serverAgent = $_SERVER['HTTP_USER_AGENT'];
+        $firstParenthesis = strpos($serverAgent, '(');
+        $secondParenthesis = strpos($serverAgent, ')');
+        $string = substr($serverAgent, $firstParenthesis, $secondParenthesis - $firstParenthesis + 1);
+        return $string;
     }
 
     public function register(Request $request){
