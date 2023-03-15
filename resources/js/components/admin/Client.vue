@@ -133,9 +133,11 @@
                                         @click="sendMail(clientWebo)"
                                         class="marginRight1"
                                         title="Configure my webiste details"
+                                        v-if="!sending"
                                     >
                                         <img src="/media/img/mailer.svg" alt="svg" :title="'send mail to '+clientWebo.order.email "/>
                                     </a>
+                                    <i class="fas fa-circle-notch fa-spin marginRight1" v-else></i>
                                     <a
                                         href="#!"
                                         @click="configureWebsite(clientWebo)"
@@ -284,6 +286,7 @@
                     prev_page_url: null,
                 },
                 search: "",
+                sending: false,
                 selectedTemplate: 0,
                 tenant: { template_id: 0, domain: "", domain_id: 0, id: 0 },
                 domainName: "",
@@ -340,8 +343,15 @@
                                 html: err.response.data.message,
                                 classes: "errorNotifier",
                             });
-                            this.creating = false;
                         }
+                        if (err.response.status == 501) {
+                        M.toast({
+                            html: err.response.data.errors,
+                            classes: "errorNotifier",
+                        });
+                        this.creating = false;
+                    }
+
                     });
             },
             domain(evt) {
@@ -397,9 +407,27 @@
                 );
             },
             sendMail(mail) {
-                axios.post('urltosendto', {email: mail, url: 'unkowond'}).then(res => {
+                this.sending = true;
+                let data = {
+                    "email": mail.order.email,
+                    "url": `http://${mail.domains[0].domain}.whitecoatdomain.com`,
+                    "profilePix": "string",
+                    "title": mail.domains[0].domain,
+                    'tenancy_db_name': mail.tenancy_db_name
+                };
+                axios.post('/api/sendClaimMail', data).then(res => {
+                    this.sending = false;
+                    M.toast({
+                        html: res.message,
+                        classes: 'errorNotifier'
+                    })
                     console.log(res);
                 }).catch(err => {
+                    this.sending = false;
+                    M.toast({
+                        html: res.message,
+                        classes: 'errorNotifier'
+                    })
                     console.log(err);
                 })
             },
@@ -420,7 +448,7 @@
                     })
                     .then((res) => {
                         if (res.data.status == 200) {
-                            console.log(res);
+                            // console.log(res);
                             M.toast({
                                 html: res.data.message,
                                 classes: "successNotifier",

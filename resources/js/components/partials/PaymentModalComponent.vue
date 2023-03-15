@@ -10,15 +10,24 @@
                     <form id="payment-form">
                         <div class="form-container">
                             <div class="field-container">
-                                <label for="name" class="browser-default">Card Holder Name *</label>
-                                <input id="name" maxlength="20" type="text" class="browser-default" v-model="name">
-                            </div>
-                            <div class="field-container">
-                                <label>Card</label>
-                                <div id="card-element">
-    
+                                <div class="mb-2">
+                                    <label for="name" class="browser-default">Card Holder Name *</label>
+                                    <input id="name" maxlength="20" type="text" class="browser-default" v-model="name">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="name" class="browser-default">Coupon<i>(If any)</i></label>
+                                    <input id="coupon" maxlength="20" type="text" class="browser-default" v-model="coupon">
+                                </div>
+                                <div>
+                                    <label>Card</label>
+                                    <div id="card-element">
+                                        
+                                    </div>
                                 </div>
                             </div>
+                            <!-- <div class="field-container">
+                            </div> -->
+                            
                         </div>
                         <div id="card-element-errors" role="alert"></div>
                         <div class="row">
@@ -55,6 +64,7 @@
         },  
         data() {
             return {
+                coupon: "",
                 email: "",
                 cardNumber: "",
                 code: "",
@@ -168,10 +178,12 @@
              * Subscribe::Saves the card and customer to DB as stripe customer
             **/
             updateSubscription(){
-                axios.put(`/api/v1/user/subscription?GUID=${this.user}`, {
+                let data = {
                     plan: this.plan, // Only premium plan
                     payment: this.paymentMethodSelected
-                }).then( function( response ){
+                }
+                if (this.coupon !== '') data.coupon = this.coupon;
+                axios.put(`/api/v1/user/subscription?GUID=${this.user}`, data).then( function( response ){
                     this.requesting = !this.requesting;
                     this.paymentSuccessful = 1;
                     this.$emit('popupClose');
@@ -179,7 +191,17 @@
                         html: 'You have successfuly subscribed to domain premium plan!',
                         classes: 'successNotifier'
                     })
-                }.bind(this));
+                }.bind(this)).catch(err => {
+                    console.log(err)
+                    if (err.response.status === 500) {
+                        M.toast({
+                            html: err.response.data.message,
+                            classes: 'errorNotifier'
+                        });
+                        this.loadIntent();
+                    }
+                    this.requesting = !this.requesting;
+                });
             },
             subscribe() {
                 this.addPaymentStatus = 1;
@@ -238,6 +260,9 @@
     }
 </script>
 <style scoped >
+.mb-2 {
+    margin-bottom: 2rem;
+}
 .p-0 {
     padding: 0 !important;
 }
@@ -283,16 +308,19 @@
 }
 
 .form-container .field-container:nth-of-type(2) {
-    grid-area: number;
+    grid-area: coupon;
 }
 
-.form-container .field-container:nth-of-type(3) {
+/* .form-container .field-container:nth-of-type(3) {
     grid-area: expiration;
 }
 
 .form-container .field-container:nth-of-type(4) {
     grid-area: security;
 }
+.form-container .field-container:nth-of-type(5) {
+    grid-area: coupon;
+} */
 
 .field-container input {
     -webkit-box-sizing: border-box;

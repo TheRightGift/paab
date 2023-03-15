@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tenant_id');
             $table->integer('claimed')->nullable();
             $table->string('email')->unique();
+            $table->integer('times_mailed')->default(0);
             $table->timestamps();
         });
     }

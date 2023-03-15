@@ -20,7 +20,8 @@ use Stevebauman\Location\Facades\Location;
 use App\Notifications\Tenants\LoginNotifier;
 use App\Models\Tenants\TenantUser as TenantUser;
 use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
-
+use GuzzleHttp\Middleware;
+use GuzzleHttp\Handler\CurlHandler;
 class TenantController extends Controller
 {
     public function create(Request $request) {
@@ -422,6 +423,77 @@ class TenantController extends Controller
         }
         else {
             return response()->json(['message' => 'Please Signup']);
+        }
+    }
+
+    public function sendEmail(Request $request) {
+        // Makes a curl request to 
+        $inputs = Validator::make($request->all(), [
+            'email' => 'required',
+            'url' => 'required',
+            'title' => 'required',
+            'profilePix' => 'required',
+            'tenancy_db_name' => 'required'
+        ]);
+        if ($inputs->fails()) {
+            return response()->json(['errors' => $inputs->errors()->all()], 501);
+        }
+        else {
+            $input = $inputs->validated();
+            Config::set('database.connections.mysql.database', $input['tenancy_db_name']);
+
+            DB::connection('mysql')->reconnect();
+            DB::setDatabaseName($input['tenancy_db_name']);
+            $url = 'http://ec2-100-25-150-165.compute-1.amazonaws.com/notifications/email';
+            $token = DB::table('tokens')->first()->token;
+            $bio = DB::table('bios')->first();
+            $name = $bio->firstname.' '.$bio->lastname;
+            $email = $input["email"];
+            $profilePix = $input["profilePix"];
+            $title = $input["title"];
+            $urlToPost = $input["url"];
+            $data = [
+                "email" => $input['email'],
+                "url" => $input['url'],
+                "title" => $input['title'],
+                "profilePix" => $input['profilePix'],
+                "token" => $token,
+                "name" => $name
+            ];
+            
+            $handler = new CurlHandler();
+            $client = new \GuzzleHttp\Client();
+            // $response = $client->request('GET', $url);
+
+            // $header
+            // Send an asynchronous request.
+            $tapMiddleware = Middleware::tap(function ($request) {
+                // echo $request->getHeaderLine('Content-Type');
+                // application/json
+                // echo $request->getBody();
+                // {"foo":"bar"}
+            });
+            // NOTES : Returned 504; 
+            // [
+            //     "email"=> "amaizupeter@yahoo.com",
+            //     "url"=> "http://drgibekie.whitecoatdomain.com",
+            //     "names"=> "George Ibekie",
+            //     "profilePix"=> "string",
+            //     "title"=> "drgibekie",
+            //     "token"=> "8cd3adce-4b4b-4722-8c12-fed0b7ebfcb5"
+            // ]
+            $response = $client->request('POST', $url, [
+                'json' => [
+                    "email"=> $email,
+                    "url"=> $urlToPost,
+                    "names"=> $name,
+                    "profilePix"=> "string",
+                    "title"=> $title,
+                    "token"=> $token
+                ],
+                'handler' => $tapMiddleware($handler)
+            ]);
+            return $response;
         }
     }
 }
