@@ -67,8 +67,8 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::get('/check_password', [App\Http\Controllers\AuthController::class, 'check_password']);
     Route::post('/sendClaimMail', [TenantController::class, 'sendEmail']);
 });
-Route::group(['middleware'=>'auth:api'], function(){
-});
+// Route::group(['middleware'=>'auth:api'], function(){
+// });
 Route::get('template', [TemplateController::class, 'index']);
 Route::resource('/profession', ProfessionController::class);
 Route::apiResource('title', TitleController::class);

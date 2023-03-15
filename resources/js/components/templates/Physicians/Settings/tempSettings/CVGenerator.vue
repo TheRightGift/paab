@@ -255,7 +255,7 @@
                                             </p>
                                         </div>
                                         <h6 class="cvSetupTitle">
-                                            Tell us about your time in Undergrad
+                                            Tell us about your time in Undergraduate
                                             School
                                         </h6>
                                         <div class="row">
@@ -396,7 +396,7 @@
                                                     "
                                                     >check</i
                                                 >
-                                                Undergrad School
+                                                Undergraduate School
                                             </p>
                                             <p class="cvSetupEduIndicatorP">
                                                 Medical School
@@ -406,7 +406,7 @@
                                             </p>
                                         </div>
                                         <h6 class="cvSetupTitle">
-                                            Tell us about your time in medical
+                                            Tell us about your time in medical/dental
                                             school
                                         </h6>
                                         <div class="row">
@@ -585,7 +585,7 @@
                                                     "
                                                     >check</i
                                                 >
-                                                Undergrad School
+                                                Undergraduate School
                                             </p>
                                             <p class="cvSetupEduIndicatorP">
                                                 <i

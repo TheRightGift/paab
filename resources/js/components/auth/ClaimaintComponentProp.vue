@@ -550,7 +550,7 @@
 
                                                 <div class="col s6">
                                                     <p class="schQuesP">
-                                                        When did you end?
+                                                        When did you finish?
                                                     </p>
                                                     <div
                                                         class="row spaceAround"
@@ -559,7 +559,7 @@
                                                             <p
                                                                 class="schQuesP1"
                                                             >
-                                                                End
+                                                                Finish
                                                             </p>
                                                         </div>
                                                         <div
@@ -712,7 +712,7 @@
 
                                                 <div class="col s6">
                                                     <p class="schQuesP">
-                                                        When did you end?
+                                                        When did you finish?
                                                     </p>
                                                     <div
                                                         class="row spaceAround"
@@ -721,7 +721,7 @@
                                                             <p
                                                                 class="schQuesP1"
                                                             >
-                                                                End
+                                                                Finish
                                                             </p>
                                                         </div>
                                                         <div
@@ -889,11 +889,11 @@
 
                                         <div class="col s5">
                                             <p class="schQuesP">
-                                                When did you end?
+                                                When did you finish?
                                             </p>
                                             <div class="row spaceAround">
                                                 <div class="col s2">
-                                                    <p class="schQuesP1">End</p>
+                                                    <p class="schQuesP1">Finish</p>
                                                 </div>
                                                 <div
                                                     class="input-field col s4 formInput1ColDiv"
@@ -1059,11 +1059,11 @@
 
                                         <div class="col s6">
                                             <p class="schQuesP">
-                                                When did you end?
+                                                When did you finish?
                                             </p>
                                             <div class="row spaceAround">
                                                 <div class="col s2">
-                                                    <p class="schQuesP1">End</p>
+                                                    <p class="schQuesP1">Finish</p>
                                                 </div>
                                                 <div
                                                     class="input-field col s4 formInput1ColDiv"
@@ -1228,11 +1228,11 @@
 
                                         <div class="col s5">
                                             <p class="schQuesP">
-                                                When did you end?
+                                                When did you finish?
                                             </p>
                                             <div class="row spaceAround">
                                                 <div class="col s2">
-                                                    <p class="schQuesP1">End</p>
+                                                    <p class="schQuesP1">Finish</p>
                                                 </div>
                                                 <div
                                                     class="input-field col s4 formInput1ColDiv"
@@ -1311,7 +1311,7 @@
                                         <div class="col s12">
                                             <p class="schQuesP text-center">
                                                 Please select the
-                                                country/state/city you worked
+                                                country/state/city you work
                                                 in?
                                             </p>
                                         </div>

@@ -164,7 +164,7 @@
                 <div v-show="showEduForm">
                     <div v-if="edu === 1">
                         <h6 class="cvSetupTitle">
-                            Tell us about your time in Med School
+                            Tell us about your time in Medical/Dental School
                             <small
                                 >Important so that patients can view your
                                 site</small
@@ -270,7 +270,7 @@
                                 <p class="cvSetupEduIndicatorP">Other</p>
                             </div>
                             <h6 class="cvSetupTitle">
-                                Tell us about your time in Undergrad School
+                                Tell us about your time as an Undergraduate
                             </h6>
                             <div class="row">
                                 <div class="input-field col s12">
@@ -350,7 +350,7 @@
                                 <p class="cvSetupEduIndicatorP">Other</p>
                             </div>
                             <h6 class="cvSetupTitle">
-                                Tell us about your time in medical school
+                                Tell us about your time in Medical/Dental school
                             </h6>
                             <div class="row">
                                 <div class="row lt_mb">
@@ -1108,7 +1108,7 @@
                 <div>
                     <div class="row lt_mb">
                         <h6 class="col s12 l8 cvSetupTitle">
-                            Tell us about your Experience
+                            Tell us about your experience as an attending phyisicain
                         </h6>
                         <p class="col s12 l4 cvMoreInternP">
                             Have more experience?
