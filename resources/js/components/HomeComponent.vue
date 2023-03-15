@@ -5,7 +5,7 @@
         
         <!-- Small Device SHOCASE Section -->
         <div class="hide-on-med-and-up">
-            <p class="circleDivTitle"><small>SHOWCASE YOUR PROFESSION WITH </small>White Coat Domain</p>
+            <p class="circleDivTitle"><small>As a physician, <br/>showcase your <br/>public image with </small><br/>White Coat Domain</p>
             <p class="circleDivtxtSmall">
                 Our professional wish is that you STAND OUT in your medical practice and share more with the world what makes you an awesome physician. 
             </p>
@@ -103,7 +103,7 @@
                 <div class="col l6 circleTxtDiv">
                     <div class="">
                         <p class="circleDivTitle">
-                            <small>SHOWCASE YOUR PROFESSION WITH </small>White Coat Domain
+                            <small>As a physician, <br/>showcase your <br/>public image with </small><br/>White Coat Domain
                         </p>
                         <p class="circleDivtxt">
                             Our professional wish is that you STAND OUT in your medical practice and share more with the world what makes you an awesome physician. 

@@ -445,6 +445,7 @@ class TenantController extends Controller
             DB::connection('mysql')->reconnect();
             DB::setDatabaseName($input['tenancy_db_name']);
             $url = 'http://ec2-100-25-150-165.compute-1.amazonaws.com/notifications/email';
+            // $url = 'http://localhost:3000/notifications/email';
             $token = DB::table('tokens')->first()->token;
             $bio = DB::table('bios')->first();
             $name = $bio->firstname.' '.$bio->lastname;
@@ -458,7 +459,7 @@ class TenantController extends Controller
                 "title" => $input['title'],
                 "profilePix" => $input['profilePix'],
                 "token" => $token,
-                "name" => $name
+                "names" => $name
             ];
             
             $handler = new CurlHandler();
