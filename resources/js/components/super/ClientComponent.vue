@@ -242,7 +242,13 @@ export default {
                             html: err.response.data.message,
                             classes: "errorNotifier",
                         });
-                        this.creating = false;
+                    }
+                    this.creating = false;
+                    if (err.response.status == 501) {
+                        M.toast({
+                            html: err.response.data.errors,
+                            classes: "errorNotifier",
+                        });
                     }
                 });
         },
@@ -375,7 +381,7 @@ export default {
             axios
                 .get("/api/access")
                 .then((res) => {
-                    console.log(res);
+                    // console.log(res);
                 })
                 .catch((err) => {
                     console.log(err);

@@ -110,7 +110,7 @@
                 this.loading = true;
                 
                 let url = "";
-                if (professionId == 0) {
+                if (professionId == 0 || this.type == 'preview') {
                     url = `/api/template`;
                 } else {
                     url = `/api/template/${professionId}`;

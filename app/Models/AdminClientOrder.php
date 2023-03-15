@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AdminClientOrder extends Model
 {
     use HasFactory;
-    protected $fillable = ['tenant_id', 'user_id', 'email', 'claimed'];
+    protected $fillable = ['tenant_id', 'user_id', 'email', 'claimed', 'times_mailed'];
     public function tenant()
     {
         return $this->belongsTo(Tenant::class, 'tenant_id');

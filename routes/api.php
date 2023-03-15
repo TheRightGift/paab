@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::get('/userLocationDets/{id}', [App\Http\Controllers\CountryController::class, 'getRelation']);
     Route::put('/updateUser/{id}', [App\Http\Controllers\SettingController::class, 'updateUser']);
     // Templates
-    Route::resource('/template', TemplateController::class);
+    Route::resource('/template', TemplateController::class)->except('index');
     Route::get('/templates', [TemplateController::class, 'getIndex']);
     Route::put('/deleteTemplate/{id}', [TemplateController::class, 'delete']);
     Route::patch('/approveTemplate/{id}', [TemplateController::class, 'approve']);
@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::put('/updateAdmin/{id}', [App\Http\Controllers\DashboardController::class, 'updateAdmin']);
     Route::patch('/changePassword', [App\Http\Controllers\AuthController::class, 'changePassword']);
     Route::get('/check_password', [App\Http\Controllers\AuthController::class, 'check_password']);
-
+    Route::post('/sendClaimMail', [TenantController::class, 'sendEmail']);
 });
 // Route::group(['middleware'=>'auth:api'], function(){
 // });

@@ -672,7 +672,7 @@ export default {
             axios
                 .post("/api/template", formData)
                 .then((res) => {
-                    console.log(res);
+                    // console.log(res);
                     if (res.status == 201) {
                         this.loading = !this.loading;
                         M.toast({

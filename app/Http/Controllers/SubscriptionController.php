@@ -23,13 +23,11 @@ class SubscriptionController extends Controller
         $user = $this->user($request);
         $planID = $request->get('plan');
         $paymentID = $request->get('payment');
-
         if( !$user->subscribed('premium') ){
-            $user->newSubscription( 'premium', $planID )
+            if( $coupon = $request->get('coupon') ) {
+                $user->newSubscription( 'premium', $planID )->withCoupon($coupon)
                 ->create( $paymentID );
-        }else{
-//            $user->subscription('premium')->swap( $planID );
-//            return response()->json(['message' => 'We are currently running only one plan and you are subscribed already'], 200);
+            }
         }
 
         return response()->json([
@@ -91,7 +89,7 @@ class SubscriptionController extends Controller
     public function subscribe(Request $request)
     {
         $user = empty($request->user) ? auth()->user() : User::where('id', $request->user)->first(); //Get the user id from request
-
+        
         $input = $request->all();
         $token =  $request->token;
         $paymentMethod = $request->paymentMethod;
@@ -108,10 +106,20 @@ class SubscriptionController extends Controller
                 ['source' => $token]
             );
 
-            $user->newSubscription('test',$input['plane'])
-                ->create($paymentMethod, [
-                    'email' => $user->email,
-                ]);
+            if( $coupon = $request->get('coupon') ) {
+                $user->newSubscription('test', $input['plane'])
+                    ->withCoupon($coupon)
+                    ->create($paymentMethod, [
+                        'email' => $user->email,
+                        'name' => $user->firstname.$user->lastname,
+                    ]);
+
+            } else {
+                $user->newSubscription('test', $input['plane'])
+                    ->create($paymentMethod, [
+                        'email' => $user->email,
+                    ]);
+            }
 
             return response()->json(['message' => 'Subscription completed', 'status' => 'ok'], 200);
         } catch (Exception $e) {
