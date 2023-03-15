@@ -24,32 +24,12 @@ invoice.payment_succeeded</code></p>
 
 <strong>NOTE</strong><p>Remember to change <code> APP_ENV </code> to <code> 'production' </code> and <code> APP_DEBUG </code> to <code> false </code></p>
 
-## Tasks from MVP
+## Tasks 
 
-### Back End
-
-- [x] Sync Profession and Template Model for Central DB and Tenant DB.
-- [x] Dev Client Dashboard endpoints.
-- [x] Rem: Setup AWS SES for mailables
-- [ ] Cropper for images upload
-- [x] Authenticate tenant on redirect to tenant settings
-- [ ] Template: Upload template thumbnail (resitrict image dimensions to 512px(W) by 345px(H))
-- [x] Template: Get thumbnail by professionId
-- [x] Template: Get single template
-- [x] Tenancy: Attach Template to tenancy
-- [x] Tenancy: Insert and update data for webiste
-- [x] Tenancy: CHange Template for website
-- [ ] All Dashboards: Add a domain lookup and doamin name suggestion
-- [ ] Website: Add a domain lookup and doamin name suggestion
-- [ ] ...
-
-### Front End
-- [ ] dev mobile view for all Auth
-- [x] dev client dashboard components
-- [x] dev make nav a component
-- [x] Template: Display all templates
-- [x] Template: Display templates by professionId
-- [x] Template: Preview single template
-- [x] Website: User attach Template to website
-- [x] Website: Edit default data for website
-- [ ] ...
+- [ ] Integrate company stripe account
+- [ ] Develop Domain module (API endpoints)
+- [ ] Setup and test TSL (both for central and for tenants)
+- [ ] Increase AWS EC2 from tmicro to tLarge or tXLarge
+- [ ] Setup 2 instances of app
+- [ ] Change session from file to db
+- [ ] Setup NGINX Load Balancer for 2 app instances
