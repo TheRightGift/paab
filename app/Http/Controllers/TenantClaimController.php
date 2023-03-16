@@ -586,7 +586,7 @@ class TenantClaimController extends Controller
             $seedBioA = 'Dr. '.$bioDb->firstname.' '.$bioDb->lastname.' ';
         }
         if ($cvMedDb !== null) {
-            $seedMedA = 'is an expert in '.$cvMedDb->type.' with an M.D. from '.$cvMedDb->institution;
+            $seedMedA = 'graduated as an M.D. from '.$cvMedDb->institution;
         }
         if ($cvUndergradDb !== null) {
             $seedGradCheckA = $cvMedDb !== null ? 'and ' : '';
