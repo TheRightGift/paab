@@ -133,11 +133,14 @@
                                         @click="sendMail(clientWebo)"
                                         class="marginRight1"
                                         title="Configure my webiste details"
-                                        v-if="!sending"
+                                        v-if="!sending && clientWebo.order.times_mailed === 0"
                                     >
                                         <img src="/media/img/mailer.svg" alt="svg" :title="'send mail to '+clientWebo.order.email "/>
                                     </a>
-                                    <i class="fas fa-circle-notch fa-spin marginRight1" v-else></i>
+                                    <a href="#!" @click="sendMail(clientWebo)" class="marginRight1" :title="'Resend Message to user. You have mailed him '+clientWebo.order.times_mailed+' time'" v-else-if="!sending && clientWebo.order.times_mailed > 0"><i class="material-icons" id="webWhiteIcon">autorenew</i></a>
+                                    <a class="marginRight1"  v-else>
+                                        <i class="fas fa-circle-notch fa-spin"></i>
+                                    </a>
                                     <a
                                         href="#!"
                                         @click="configureWebsite(clientWebo)"
@@ -418,14 +421,13 @@
                 axios.post('/api/sendClaimMail', data).then(res => {
                     this.sending = false;
                     M.toast({
-                        html: res.message,
-                        classes: 'errorNotifier'
+                        html: res.data.status,
+                        classes: 'successNotifier'
                     })
-                    console.log(res);
                 }).catch(err => {
                     this.sending = false;
                     M.toast({
-                        html: res.message,
+                        html: err.response.data.message,
                         classes: 'errorNotifier'
                     })
                     console.log(err);

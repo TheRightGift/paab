@@ -445,7 +445,6 @@ class TenantController extends Controller
             DB::connection('mysql')->reconnect();
             DB::setDatabaseName($input['tenancy_db_name']);
             $url = 'http://ec2-100-25-150-165.compute-1.amazonaws.com/notifications/email';
-            // $url = 'http://localhost:3000/notifications/email';
             $token = DB::table('tokens')->first()->token;
             $bio = DB::table('bios')->first();
             $name = $bio->firstname.' '.$bio->lastname;
@@ -454,46 +453,34 @@ class TenantController extends Controller
             $title = $input["title"];
             $urlToPost = $input["url"];
             $data = [
-                "email" => $input['email'],
-                "url" => $input['url'],
-                "title" => $input['title'],
-                "profilePix" => $input['profilePix'],
+                "email" => $email,
+                "url" => $urlToPost,
+                "title" => $title,
+                "profilePix" => "string",
                 "token" => $token,
                 "names" => $name
             ];
             
             $handler = new CurlHandler();
             $client = new \GuzzleHttp\Client();
-            // $response = $client->request('GET', $url);
-
-            // $header
-            // Send an asynchronous request.
             $tapMiddleware = Middleware::tap(function ($request) {
                 // echo $request->getHeaderLine('Content-Type');
                 // application/json
                 // echo $request->getBody();
                 // {"foo":"bar"}
             });
-            // NOTES : Returned 504; 
-            // [
-            //     "email"=> "amaizupeter@yahoo.com",
-            //     "url"=> "http://drgibekie.whitecoatdomain.com",
-            //     "names"=> "George Ibekie",
-            //     "profilePix"=> "string",
-            //     "title"=> "drgibekie",
-            //     "token"=> "8cd3adce-4b4b-4722-8c12-fed0b7ebfcb5"
-            // ]
             $response = $client->request('POST', $url, [
-                'json' => [
-                    "email"=> $email,
-                    "url"=> $urlToPost,
-                    "names"=> $name,
-                    "profilePix"=> "string",
-                    "title"=> $title,
-                    "token"=> $token
-                ],
+                'json' => $data,
                 'handler' => $tapMiddleware($handler)
             ]);
+            if ($response->getStatusCode() === 200) {
+                Config::set('database.connections.mysql.database', env('DB_DATABASE'));
+
+                DB::connection('mysql')->reconnect();
+                DB::setDatabaseName(env('DB_DATABASE'));
+                $user = AdminClientOrder::where('email', $email)->first();
+                $user->update(['times_mailed' => $user->times_mailed + 1]);
+            }
             return $response;
         }
     }
