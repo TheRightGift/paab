@@ -1934,7 +1934,7 @@
 </template>
 <script>
     let env = process.env.MIX_APP_ENV;
-    let domain = env === 'production' ? 'whitecoatdomain.com' : 'localhost:8000';
+    let domain = 'whitecoatdomain.com';
     import InnerFooter from "../partials/InnerFooterComponent.vue";
     import DatePicker from "vue-datepicker-next";
     import "vue-datepicker-next/index.css";
