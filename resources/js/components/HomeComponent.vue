@@ -7,7 +7,7 @@
         <div class="hide-on-med-and-up">
             <p class="circleDivTitle"><small>As a physician, <br/>showcase your <br/>public image with </small><br/>White Coat Domain</p>
             <p class="circleDivtxtSmall">
-                Our professional wish is that you STAND OUT in your medical practice and share more with the world what makes you an awesome physician. 
+                As physicians, maintaining and managing your public profile is critical. We believe you should consciously manage your online identity by securing a personal domain name and maintaining an active website outside of the social media noise.
             </p>
 
             <div class="circleBtnDiv">
@@ -106,7 +106,7 @@
                             <small>As a physician, <br/>showcase your <br/>public image with </small><br/>White Coat Domain
                         </p>
                         <p class="circleDivtxt">
-                            Our professional wish is that you STAND OUT in your medical practice and share more with the world what makes you an awesome physician. 
+                            As physicians, maintaining and managing your public profile is critical. We believe you should consciously manage your online identity by securing a personal domain name and maintaining an active website outside of the social media noise.
                         </p>
 
                         <a href="/templates" class="btn circleDivBtnLg">

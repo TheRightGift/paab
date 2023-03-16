@@ -86,18 +86,20 @@
                                 <div class="cardContentProfile">
                                     <div  v-if="(clientsWeb.length > 0)">
                                         <div class="row" id="myWebRmMgRow"  v-for="clientWeb in clientsWeb" :key="clientWeb.id">
-                                            <div class="col s10 m10 l10">
-                                                <div class="cardImgMainDiv">
-                                                    <div class="cardImgDiv">
-                                                        <i
-                                                            class="material-icons"
-                                                            id="cardImg"
-                                                            >person</i
-                                                        >
+                                            <div class="col s12 m10 l10">
+                                                <div class="">
+                                                    <div class="col s10 m10 l10 cardImgMainDiv">
+                                                        <div class="cardImgDiv">
+                                                            <i
+                                                                class="material-icons"
+                                                                id="cardImg"
+                                                                >person</i
+                                                            >
+                                                        </div>
+                                                        <p class="cardProName">
+                                                            {{clientWeb.name}}
+                                                        </p>
                                                     </div>
-                                                    <p class="cardProName">
-                                                        {{clientWeb.name}}
-                                                    </p>
                                                     <div class="col s2 m2 l2">
                                                         <a href="#" id="cardViewLink" @click="gotoDomain(clientWeb)"
                                                             >View</a
