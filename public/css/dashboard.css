@@ -58,7 +58,7 @@ body {
 }
 
 .dashLeftBarTitle {
-    margin: 0 0 4vh 0;
+    margin: 0px 0px 4vh 0px;
     color: #d9d9d9;
     font-family: "Poppins", sans-serif;
     text-align: center;
@@ -268,14 +268,14 @@ body {
 }
 
 .cardImgDiv {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     background: #d9d9d9;
     border-radius: 50%;
 }
 
 #cardImg {
-    font-size: 3rem;
+    font-size: 1.8rem;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -285,8 +285,8 @@ body {
 
 .cardImgMainDiv {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* justify-content: space-between; */
+    /* align-items: center; */
 }
 
 .cardProName,
@@ -301,14 +301,16 @@ body {
     /* font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;*/
-    font-size: 1.25rem;
-    line-height: 30px;
+    /* font-size: 1.25rem; */
+    
     /* color: var(--primary); */
-    margin-left: 1vw;
+    /* margin-left: 1vw; */
 }
 .cardProName {
     font-size: 1rem;
     color: var(--white);
+    margin: 0 0 0 1vw;
+    line-height: 40px;
 }
 
 #cardViewLink {
@@ -316,7 +318,7 @@ body {
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
-    line-height: 24px;
+    line-height: 40px;
     text-decoration: underline;
     color: #f4f4f4;
     /* position: relative;
@@ -451,6 +453,38 @@ body {
 
 /* Media Query on small device */
 @media screen and (max-width: 640px) {
+    .dashLeftBarTitle {
+        margin: 0px 0px 2vh 0px;
+    }
+    .dashRightImgTxt {
+        margin: 0 auto;
+        width: 95%;
+    }
+    .cardProName {
+        font-size: 1rem;
+        color: var(--white);
+        margin: 0 0 0 1vw;
+        line-height: 30px;
+    }
+    #cardViewLink {
+        line-height: 30px;
+    }
+    
+    .cardImgDiv {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #cardImg {
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        line-height: initial;
+        color: rgba(0, 0, 0, 0.5);
+    }
     .shapeDegDiv {
         display: flex;
         position: relative;
@@ -498,6 +532,7 @@ body {
         color: var(--white);
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         margin: 0 0 1vh 0;
+        text-align: center;
     }
 
     .dashRightImgTxtDiv {

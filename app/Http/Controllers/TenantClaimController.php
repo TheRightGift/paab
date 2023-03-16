@@ -215,7 +215,7 @@ class TenantClaimController extends Controller
             'monthStart' => 'nullable',
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
-            'type' => 'nullable',
+            // 'type' => 'nullable',
         ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
@@ -509,7 +509,7 @@ class TenantClaimController extends Controller
                         'password' => $request->password,
                         'domain' => $tenant->domains[0]->domain,
                     ), function($message) use ($request) {
-                        $message->from('admin@whitecoatdomain.com');
+                        $message->from('admin@whitecoatdomain.com', 'White Coat Domain');
                         $message->to($request->session()->pull('email'), tenant('id'))->subject('Website is now live!');
                     });
                     $this->generateIntro($tenant, $valueOfMail);
@@ -586,7 +586,7 @@ class TenantClaimController extends Controller
             $seedBioA = 'Dr. '.$bioDb->firstname.' '.$bioDb->lastname.' ';
         }
         if ($cvMedDb !== null) {
-            $seedMedA = 'graduated as an M.D. from '.$cvMedDb->institution;
+            $seedMedA = 'is an physician with an M.D. from '.$cvMedDb->institution;
         }
         if ($cvUndergradDb !== null) {
             $seedGradCheckA = $cvMedDb !== null ? 'and ' : '';
@@ -602,7 +602,7 @@ class TenantClaimController extends Controller
         if ($cvExperience !== null) {
             $feat = $achievementDb !== null ? json_decode(json_decode($achievementDb->feats)) : $feat;
 
-            $seedExpA = $feat !== '' ? ' With more than '.$feat->experience : ' With many years of experience as an '.$cvMedDb->type.', ';
+            $seedExpA = $feat !== '' ? ' With more than '.$feat->experience : ' With many years of experience, ';
             $seedCurrExpB = '. '.$pronoun.' is currently the working at '.$cvExperience->institution.'.';
         }
         if ($servicesDb !== null) {
