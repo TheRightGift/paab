@@ -3061,7 +3061,7 @@
                 let domainSelected = this.domainSelected.replace(".com", "");
                 document.getElementById("popup").showpopup = function () {
                     document.getElementById("popup").style.display = "block";
-                    domainSelected = 'mdemmapowerful'
+                    // domainSelected = 'mdemmapowerful'
                     document.getElementById("iframe").src =
                         `http://${domainSelected}.${domain}`;
                     document.getElementById("iframe").srcdoc = '<!DOCTYPE html><div class="loader"></div>';
