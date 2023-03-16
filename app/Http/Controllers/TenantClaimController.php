@@ -215,7 +215,7 @@ class TenantClaimController extends Controller
             'monthStart' => 'nullable',
             'yearEnd' => 'nullable',
             'monthEnd' => 'nullable',
-            'type' => 'nullable',
+            // 'type' => 'nullable',
         ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);

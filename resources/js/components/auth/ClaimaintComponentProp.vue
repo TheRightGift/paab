@@ -2619,10 +2619,10 @@
                         ? (this.experiences.yearStart =
                               this.experiences.yearStart.getFullYear())
                         : null;
-                    this.experiences.yearEnd != ""
-                        ? (this.experiences.yearEnd =
-                              this.experiences.yearEnd.getFullYear())
-                        : null;
+                    // this.experiences.yearEnd != ""
+                    //     ? (this.experiences.yearEnd =
+                    //           this.experiences.yearEnd.getFullYear())
+                    //     : null;
                     axios
                         .post("/claim/saveexperience", this.experiences)
                         .then((res) => {
