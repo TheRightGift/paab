@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
 use App\Models\User;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
@@ -9,8 +10,8 @@ use App\Models\AdminClientOrder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
@@ -502,12 +503,13 @@ class TenantClaimController extends Controller
                     $userToUpdate->plan = $request->plan == 'freemium' ? 'F' : 'P';
                     $userToUpdate->registration_completed = 'Active';
                     $userToUpdate->save();
-                    \Mail::send('websites.domain_claim',
+                    Mail::send('websites.domain_claim',
                     array(
                         'email' => $valueOfMail,
                         'plan' => $request->get('plan'),
                         'password' => $request->password,
                         'domain' => $tenant->domains[0]->domain,
+                        'names' => $userToUpdate->firstname.' '.$userToUpdate->lastname,
                     ), function($message) use ($request) {
                         $message->from('admin@whitecoatdomain.com', 'White Coat Domain');
                         $message->to($request->session()->pull('email'), tenant('id'))->subject('Website is now live!');

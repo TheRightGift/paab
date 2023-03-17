@@ -11,7 +11,7 @@ use Carbon\Carbon;
 class SettingsNotifier extends Notification
 {
     use Queueable;
-
+    public $domain;
     /**
      * Create a new notification instance.
      *

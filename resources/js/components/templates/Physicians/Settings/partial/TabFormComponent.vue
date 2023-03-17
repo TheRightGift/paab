@@ -376,6 +376,12 @@
                                     });
                                 });
                             }
+                            if (err.response.status == 413) {
+                                M.toast({
+                                    html: 'Picture '+err.response.statusText,
+                                    classes: "errorNotifier",
+                                });
+                            }
                         });
                 }
             },
@@ -403,12 +409,19 @@
                     })
                     .catch((err) => {
                         this.loading = !this.loading;
+                        console.log(err.response.status);
                         if (err.response.status == 400) {
                             err.response.data.forEach((el) => {
                                 M.toast({
                                     html: el,
                                     classes: "errorNotifier",
                                 });
+                            });
+                        }
+                        if (err.response.status == 413) {
+                            M.toast({
+                                html: err.response.statusText,
+                                classes: "errorNotifier",
                             });
                         }
                     });

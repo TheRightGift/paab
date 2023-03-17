@@ -2179,13 +2179,13 @@
                             ? ((this.internship = internship),
                               (this.steps[4].filled = true),
                               (this.internUpdate = 1),
-                              this.internSelected())
+                              (this.internSelected()), (this.internship.yearStart = new Date(`${internship.yearStart}`)), (this.internship.yearEnd = new Date(`${internship.yearEnd}`)))
                             : null;
                         fellowship !== undefined
                             ? ((this.fellowship = fellowship),
                               (this.steps[5].filled = true),
                               (this.fellowshipUpdate = 1),
-                              this.fellowSelected())
+                              this.fellowSelected(), (this.fellowship.yearStart = new Date(`${fellowship.yearStart}`)), (this.fellowship.yearEnd = new Date(`${fellowship.yearEnd}`)))
                             : null;
                         residency !== undefined
                             ? ((this.residency = residency),
@@ -2619,10 +2619,6 @@
                         ? (this.experiences.yearStart =
                               this.experiences.yearStart.getFullYear())
                         : null;
-                    // this.experiences.yearEnd != ""
-                    //     ? (this.experiences.yearEnd =
-                    //           this.experiences.yearEnd.getFullYear())
-                    //     : null;
                     axios
                         .post("/claim/saveexperience", this.experiences)
                         .then((res) => {
