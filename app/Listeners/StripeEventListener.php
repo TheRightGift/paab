@@ -34,7 +34,7 @@ class StripeEventListener
         if ($event->payload['type'] === 'invoice.payment_succeeded') {
             // Handle the incoming event...  || $event->payload['type'] === 'customer.subscription.updated' || $event->payload['type'] === 'customer.subscription.created'
             $data = $event->payload['data']['object'];
-            $discount = $data['discount'] === null ? json_encode(['value' => null]) : json_encode(['id' => $data['discount']['coupon']['id'], 'percentage' => $data['discount']['coupon']['percent_off'], 'amount_off' => $data['discount']['amount_off']]) ;
+            $discount = $data['discount'] === null ? json_encode(['value' => null]) : json_encode(['id' => $data['discount']['coupon']['id'], 'percentage' => $data['discount']['coupon']['percent_off'], 'amount_off' => $data['discount']['coupon']['amount_off']]) ;
             DB::table('payments')->insert([
                 'customer_id' => $data['customer'],
                 'collection_method' => $data['collection_method'],
