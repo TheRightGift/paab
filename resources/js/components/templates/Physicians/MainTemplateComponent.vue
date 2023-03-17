@@ -150,6 +150,10 @@ export default {
             this.socials = null;
         }
         this.location = window.location.href // For absolute pathing
+        var dropdowns = document.querySelectorAll('.dropdown-trigger')
+        for (var i = 0; i < dropdowns.length; i++){
+            M.Dropdown.init(dropdowns[i]);
+        }
     },
     methods: {
         checkAuth() {

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use App\Models\AdminClientOrder;
+use App\Models\Title;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -572,6 +573,8 @@ class TenantClaimController extends Controller
         $publicFeaturingDb = DB::table('public_featurings')->latest()->get();
         $pronoun = $user->gender !== null ? $user->gender === 'M' ? 'he' : 'she' : 'he';
         $address = $user->gender !== null ? $user->gender === 'M' ? 'his' : 'her' : 'his';
+        $pronounCaps = $user->gender !== null ? $user->gender === 'M' ? 'He' : 'She' : 'He';
+        $addressCaps = $user->gender !== null ? $user->gender === 'M' ? 'His' : 'Her' : 'His';
 
         $seedBioA = '';
         $seedMedA = '';
@@ -584,39 +587,49 @@ class TenantClaimController extends Controller
         $seedPublicFeaturesA = '';
         $seedAwardsA = '';
         $feat = '';
+
+        Config::set('database.connections.mysql.database', env('DB_DATABASE'));
+
+        DB::connection('mysql')->reconnect();
+        DB::setDatabaseName(env('DB_DATABASE'));
+        $degree = Title::where('id', $bioDb->title_id)->first()->name;
         if ($bioDb !== null) {
             $seedBioA = 'Dr. '.$bioDb->firstname.' '.$bioDb->lastname.' ';
         }
+        
         if ($cvMedDb !== null) {
-            $seedMedA = 'is an physician with an M.D. from '.$cvMedDb->institution;
+            $seedMedA = 'is a physician with a '.$degree.'.'.' from '.$cvMedDb->institution.'. ';
         }
         if ($cvUndergradDb !== null) {
-            $seedGradCheckA = $cvMedDb !== null ? 'and ' : '';
-            $seedGradA = $seedGradCheckA.'an undergraduate degree'.$cvUndergradDb->major.' from the '.$cvUndergradDb->institution.'.';
+            $seedGradA = 'I have an undergraduate degree of '.$cvUndergradDb->major.' from the '.$cvUndergradDb->institution.'. ';
         }
         if ($cvIntern !== null) {
-            $seedInternA = '. '.$pronoun.' started out as an intern at the '.$cvIntern->institution;
+            $seedInternA = $pronounCaps.' started out as an intern at the '.$cvIntern->institution;
         }
         if ($cvResidency !== null) {
-            $seedInternCheckA = $cvIntern !== null ? ', ' : '';
-            $seedResidencyA = $cvIntern !== null ? $seedInternCheckA.'then proceeded to '.$cvResidency->institution.' for '.$address.' residency.' : $pronoun.' did '.$address.' residency at'.$cvResidency->institution;
+            $seedInternCheckA = $cvIntern !== null ? ' , ' : '';
+            $seedResidencyA = $cvIntern !== null ? $seedInternCheckA.' '.$pronoun.' then proceeded to '.$cvResidency->institution.' for '.$address.' residency. ' : $pronounCaps.' did '.$address.' residency at '.$cvResidency->institution.'. ';
         }
         if ($cvExperience !== null) {
             $feat = $achievementDb !== null ? json_decode(json_decode($achievementDb->feats)) : $feat;
 
-            $seedExpA = $feat !== '' ? ' With more than '.$feat->experience : ' With many years of experience, ';
-            $seedCurrExpB = '. '.$pronoun.' is currently the working at '.$cvExperience->institution.'.';
+            $seedExpA = $feat !== '' ? ' With more than '.$feat->experience.' of experience, ' : ' With years of experience, ';
+            $seedCurrExpB = $pronoun.' is currently working at '.$cvExperience->institution.'. ';
         }
         if ($servicesDb !== null) {
-            $seedServiceA = $pronoun.' has dedicated years to patient care throughout every '.$servicesDb->title.' experience';
+            $seedServiceA = 'My dedication as a physician is equal to none, I render services as a '.$servicesDb->title.' expert. ';
         }
         if ($publicFeaturingDb->count() !== 0){
-            $seedPublicFeaturesA = '. '.$pronoun.' keeps lending '.$address.' voice to the audience by making local and international media rounds by featuring on '.$publicFeaturingDb[0]->title.'.';
+            $seedPublicFeaturesA = $pronounCaps.' keeps lending '.$address.' voice to the audience by making local and international media rounds by featuring on '.$publicFeaturingDb[0]->title.'. ';
         }
         if ($achievementDb !== null) {
-            $seedAwardsA = '. '.$pronoun.' has been a recipient of numerous awards in and out of '.$address.' fields such as the University of Pittsburgh School of Medicine Dean’s Merit Scholarship, Carolyn Carter Excellence Award, and many others.';
+            $seedAwardsA = $pronounCaps.' also is a recipient of numerous awards in and out of '.$address.' fields such as the University of Pittsburgh School of Medicine Dean’s Merit Scholarship, Carolyn Carter Excellence Award, and many others. ';
         }
-        $seedWord = $seedBioA . $seedMedA . $seedGradA . $seedInternA . $seedResidencyA . $seedExpA . $seedServiceA . $seedCurrExpB . $seedPublicFeaturesA . $seedAwardsA;
+        Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+
+        DB::connection('mysql')->reconnect();
+        DB::setDatabaseName($tenant->tenancy_db_name);
+        $seedWord = $seedBioA . $seedMedA . $seedGradA . $seedInternA . $seedResidencyA . $seedExpA . $seedCurrExpB . $seedServiceA. $seedPublicFeaturesA . $seedAwardsA;
         DB::table('bios')->where('id', !null)->update(['about' => $seedWord]);
     }
 }
