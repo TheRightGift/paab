@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('collection_method');
             $table->string('currency');
             $table->string('billing_reason');
-            $table->float('amount_paid');
+            $table->integer('amount_paid');
             $table->integer('amount_remaining');
+            $table->json('discount')->nullable();
             $table->string('account_country')->nullable();
             $table->timestamps();
         });

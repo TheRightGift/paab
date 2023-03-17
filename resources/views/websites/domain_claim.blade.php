@@ -1,10 +1,21 @@
+<h3>Dr {{ $names }}</h3>
 
-<h2>Your Website is now live</h2>
-<p class="lead">Hooray!, You have taken the first step of securing your domain name, you can now reach more clients by your online presence</p>
-<p><b>Note:</b> To login to your account please use the password below to do so, happy surfing</p>
-<p class="center">{{ $password }}</p>
-<p>If you login for the first time, you will be redirected to change your password, please input the password above and choose new password to change your password</p>
-<p><b>Note:</b> Note you can change this password later OR in case you weren't able to login, you can Reset your password from <a href="https://whitecoatdomain.com/auth/resetpassword">https://whitecoatdomain.com/auth/resetpassword</a></p>
-<p>To make changes to your site, click <a href="http://{{$domain}}.whitecoatdomain.com/setting" target="_blank">http://{{$domain}}.whitecoatdomain.com/setting</a>
+<h5>Your website is now live!</h5>
+
+<p class="lead">
+    To login into the backend of your website to make FURTHER changes or updates please use the link and password below. 
+    When you login for the first time, you will be prompted to change your temporary password.
+</p>
+
+<p>Happy surfing!</p>
+
+<p class="center">Temporary Password: {{ $password }}</p>
+
+<a href="http://{{$domain}}.whitecoatdomain.com/setting" target="_blank">http://{{$domain}}.whitecoatdomain.com/setting</a>
 
 <p>Thank You</p>
+
+<p>White Coat Domain</p>
+
+
+
