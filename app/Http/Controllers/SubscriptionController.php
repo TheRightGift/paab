@@ -23,10 +23,16 @@ class SubscriptionController extends Controller
         $user = $this->user($request);
         $planID = $request->get('plan');
         $paymentID = $request->get('payment');
+        $mail = $request->get('email');
+        $domainName = $request->get('domain');
         if( !$user->subscribed('premium') ){
             if( $coupon = $request->get('coupon') ) {
                 $user->newSubscription( 'premium', $planID )->withCoupon($coupon)
-                ->create( $paymentID );
+                ->create( $paymentID, [
+                    'email' => $mail,
+                ], [
+                    'metadata' => ['domainName' => $domainName],
+                ] );
             }
         }
 
