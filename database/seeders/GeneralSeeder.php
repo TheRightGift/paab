@@ -33,6 +33,18 @@ class GeneralSeeder extends Seeder
                 'name' => 'DD',
                 'profession_id' => 1
             ],
+            [
+                'name' => 'DDS',
+                'profession_id' => 1
+            ],
+            [
+                'name' => 'OD',
+                'profession_id' => 1
+            ],
+            [
+                'name' => 'DPM',
+                'profession_id' => 1
+            ],
         ];
         collect($title)->each(function ($title) {\App\Models\Title::create($title);});
         $user = new User();

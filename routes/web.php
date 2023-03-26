@@ -105,22 +105,46 @@ Route::prefix('client')->middleware(['auth', 'can:run_client_ops'])->group(funct
 // Admin Routes
 Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(function () {
     Route::get('/client', function () {
-        return view('admin.client');
+        if (Auth::user()) {
+            return view('admin.client');
+        } else {
+            return view('auth.login');
+        }
     });
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        if (Auth::user()) {
+            return view('admin.dashboard');
+        } else {
+            return view('auth.login');
+        }
     });
     Route::get('/mail', function () {
-        return view('admin.mail');
+        if (Auth::user()) {
+            return view('admin.mail');
+        } else {
+            return view('auth.login');
+        }
     });
     Route::get('/settings', function () {
-        return view('admin.settings');
+        if (Auth::user()) {
+            return view('admin.settings');
+        } else {
+            return view('auth.login');
+        }
     });
     Route::get('/template', function () {
-        return view('admin.template');
+        if (Auth::user()) {
+            return view('admin.template');
+        } else {
+            return view('auth.login');
+        }
     });
     Route::get('/password-change', function () {
-        return view('shared.changepassview');
+        if (Auth::user()) {
+            return view('shared.changepassview');
+        } else {
+            return view('auth.login');
+        }
     });
 });
 

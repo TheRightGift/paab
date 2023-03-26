@@ -3,6 +3,9 @@
 body {
     width: 100% !important;
 }
+.height-75 {
+    height: 75vh !important;
+}
 #banner {
     background-image: url("../media/img/bannerCircle.png");
     /* height: 100vh; */

@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="col l6 portraitImgDiv">
-                    <div class="innerPortraitImgDiv">
+                    <div class="innerPortraitImgDiv height-75">
                         <div class="portraitImgContainDiv">
                             <img
                                 :src="'./media/img/portrait2.png'"
