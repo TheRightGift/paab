@@ -33,6 +33,12 @@ class SubscriptionController extends Controller
                 ], [
                     'metadata' => ['domainName' => $domainName, 'email' => $mail],
                 ] );
+            }else {
+                $user->newSubscription( 'premium', $planID )->create( $paymentID, [
+                    'email' => $mail,
+                ], [
+                    'metadata' => ['domainName' => $domainName, 'email' => $mail],
+                ] );
             }
         }
 

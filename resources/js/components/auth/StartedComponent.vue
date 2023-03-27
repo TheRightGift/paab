@@ -167,7 +167,7 @@
                 let claimaintProcess = localStorage.getItem('claimproc');
                 if (this.claimant != '') {
                     localStorage.setItem('claimproc', this.claimant);
-                    localStorage.setItem('email', this.userEmail);
+                    localStorage.setItem('email', this.useremail);
                 }
                 else {
                     if (claimaintProcess != null) {
@@ -308,7 +308,7 @@
         },
         props: {
             claimant: String,
-            userEmail: String,
+            useremail: String,
         },
         
         computed: {},
