@@ -345,7 +345,7 @@ export default {
     },
     mounted() {
         this.getSavedSocials();
-        this.host = `http://${location.host}`;
+        this.host = `https://${location.host}`;
     },
     methods: {
         saveSocials() {

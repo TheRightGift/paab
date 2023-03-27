@@ -3060,7 +3060,7 @@
                     document.getElementById("popup").style.display = "block";
                     // domainSelected = 'mdemmapowerful'
                     document.getElementById("iframe").src =
-                        `http://${domainSelected}.${domain}`;
+                        `https://${domainSelected}.${domain}`;
                     document.getElementById("iframe").srcdoc = '<!DOCTYPE html><div class="loader"></div>';
                     document.getElementById("iframe").addEventListener('load', () => iframe.removeAttribute('srcdoc'));
                     document.getElementById("page").className = "darken";
@@ -3112,7 +3112,7 @@
                 } else {
                     let domainSelected = this.domainSelected.replace(".com", "");
                     location.replace(
-                        `http://${domainSelected}.${domain}`
+                        `https://${domainSelected}.${domain}`
                     );
                 }
             },

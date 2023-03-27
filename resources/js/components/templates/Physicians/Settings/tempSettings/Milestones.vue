@@ -235,7 +235,7 @@
         components: {FooterComponent, ImageCropper },
         created() {
             this.loggedIn = this.getCookie('_token');
-            if (!this.loggedIn) location.replace(`http://${location.host}`)
+            if (!this.loggedIn) location.replace(`https://${location.host}`)
         },
         data() {
             return {
@@ -249,7 +249,7 @@
                     banner: null,
                     update: 0,
                 },
-                host: 'http://'+location.host,
+                host: 'https://'+location.host,
                 uploaded: null,
                 view: 0,
                 loggedIn: false,

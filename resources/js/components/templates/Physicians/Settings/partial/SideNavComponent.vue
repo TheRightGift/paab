@@ -91,7 +91,7 @@
                 location.replace("/");
             },
             openNew() {
-                window.open(`http://${this.host}`, "_blank");
+                window.open(`https://${this.host}`, "_blank");
             },
             openPromotionals() {
                 this.$emit('openPromotionals');

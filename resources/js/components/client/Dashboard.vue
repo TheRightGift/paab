@@ -329,7 +329,7 @@
             },
             gotoDomain(website) {
                 let domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
-                window.open(`http://${domain}.whitecoatdomain.com`,'_blank');
+                window.open(`https://${domain}.whitecoatdomain.com`,'_blank');
             },
             checkMailExist() {
                 axios.post('/api/checkMailExist', {email: this.user.email}).then(res => {

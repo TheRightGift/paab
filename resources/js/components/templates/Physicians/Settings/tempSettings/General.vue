@@ -165,7 +165,7 @@ export default {
     },
     mounted() {
         this.getSaved();
-        this.host = `http://${location.host}`
+        this.host = `https://${location.host}`
     },
     methods: {
         deleteImg() {

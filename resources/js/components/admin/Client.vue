@@ -413,7 +413,7 @@
                 this.sending = true;
                 let data = {
                     "email": mail.order.email,
-                    "url": `http://${mail.domains[0].domain}.whitecoatdomain.com`,
+                    "url": `https://${mail.domains[0].domain}.whitecoatdomain.com`,
                     "profilePix": "string",
                     "title": mail.domains[0].domain,
                     'tenancy_db_name': mail.tenancy_db_name
@@ -478,7 +478,7 @@
                     typeof website.domains === "object"
                         ? website.domains[0].domain
                         : website.domains;
-                window.open(`http://${this.tenant.domain}.whitecoatdomain.com/setting`, "_blank");
+                window.open(`https://${this.tenant.domain}.whitecoatdomain.com/setting`, "_blank");
             },
             giveAccess(evt) {
                 this.granting = true;

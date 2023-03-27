@@ -169,7 +169,7 @@ export default {
         };
     },
     mounted() {
-        this.host = `http://${location.host}`;
+        this.host = `https://${location.host}`;
         this.getBiography();
     },
     methods: {
