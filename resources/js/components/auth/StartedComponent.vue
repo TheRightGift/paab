@@ -73,7 +73,7 @@
             </div>
         </div>
         <div v-if="claimant || claimaint != null">
-            <claimaint-component-prop :claimaint="claimaint" :claimant="claimant" :titles="titles" :countries="countries"/>
+            <claimaint-component-prop :claimaint="claimaint" :claimant="claimant" :titles="titles" :countries="countries" :userMail="userMail"/>
         </div>
     </div>
 </template>
@@ -121,6 +121,7 @@
                 },
                 verifying: false,
                 verifiedEmail: 1,
+                userMail: null,
                 claimaint: null// if user refreshes page check if the process of claiming has started previously
             };
         },
@@ -131,6 +132,7 @@
         methods: {
             checkIfComingFromClaim() {
                 let claimaintProcess = localStorage.getItem('claimproc');
+                let emailProcess = localStorage.getItem('email');
                 if (this.claimant != '') {
                     localStorage.setItem('claimproc', this.claimant);
                     localStorage.setItem('email', this.useremail);
@@ -138,6 +140,7 @@
                 else {
                     if (claimaintProcess != null) {
                         this.claimaint = claimaintProcess;
+                        this.userMail = emailProcess;
                     }
                 }
             },
