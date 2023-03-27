@@ -31,7 +31,7 @@ class SubscriptionController extends Controller
                 ->create( $paymentID, [
                     'email' => $mail,
                 ], [
-                    'metadata' => ['domainName' => $domainName],
+                    'metadata' => ['domainName' => $domainName, 'email' => $mail],
                 ] );
             }
         }
