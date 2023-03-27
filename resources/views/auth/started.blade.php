@@ -38,7 +38,7 @@
 </head>
 <body>
     <div id="app">
-        <started-component claimant="{{session('userBiography')}}" userEmail="{{session('userEmail')}}"></started-component>
+        <started-component claimant="{{session('userBiography')}}" useremail="{{session('userMail')}}"></started-component>
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>

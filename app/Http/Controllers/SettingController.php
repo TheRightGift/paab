@@ -52,6 +52,7 @@ class SettingController extends Controller
     {
         $searchTenant = $request->query('claimable');
         $searchEmail = $request->query('mail');
+
         if (!empty($searchTenant) && !empty($searchEmail)) {
             $request->session()->put('tenant', $searchTenant);
             $request->session()->put('email', $searchEmail);
@@ -69,7 +70,6 @@ class SettingController extends Controller
                     // Check the bio and get the names eg. FNAME, LNAME, ONAME
                     $bio = DB::table('bios')->get();
                     $userBiography = $bio->isEmpty() ? collect(['firstname' => '', 'lastname' => '', 'title_id' => '', 'othername' => '']) : $bio;
-                    
                     return redirect('auth/getstarted')->with(['userBiography' => $userBiography, 'userMail' => $searchEmail]);
                 } else {
                     return redirect('auth/login');

@@ -115,7 +115,7 @@
                         // See all possible variables below
                     }
                 };
-                this.stripe = Stripe( this.stripeAPIToken, {appearance} );
+                this.stripe = Stripe( this.stripeAPIToken );
                 this.elements = this.stripe.elements();
                 this.card = this.elements.create('card');
 
@@ -183,7 +183,7 @@
                     plan: this.plan, // Only premium plan
                     payment: this.paymentMethodSelected,
                     domain: this.domainName,
-                    email: localStorage.getItem('email');
+                    email: localStorage.getItem('email')
                 }
                 if (this.coupon !== '') data.coupon = this.coupon;
                 axios.put(`/api/v1/user/subscription?GUID=${this.user}`, data).then( function( response ){

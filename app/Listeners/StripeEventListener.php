@@ -94,10 +94,8 @@ class StripeEventListener
                     return $this->configureEmail($domainName, $key, $email, $mail);
                 }
                 else {
-                    return response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
+                    echo response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
                 }
-                // dd($xml);
-                print_r($xml);//$response->withoutHeader('Transfer-Encoding');
             } catch (\Throwable $th) {
                 //throw $th;
                 echo $th->getMessage();
@@ -163,11 +161,12 @@ class StripeEventListener
             $xml = simplexml_load_string($body);
             if (htmlentities((string)$xml->reply->detail) === 'success' && htmlentities((string)$xml->reply->code) === 300) {
                 // Request SSL Certificate
-                $this->requestSSL();
-                return response()->json(["message" => htmlentities((string)$xml->reply->detail), "status" =>  htmlentities((string)$xml->reply->code)]);
+                $this->requestSSL($domainName);
+                echo response()->json(["message" => htmlentities((string)$xml->reply->detail), "status" =>  htmlentities((string)$xml->reply->code)]);
             }
             else {
-                return response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
+                echo response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
+                exit;
             }
         } catch (\Throwable $th) {
             echo $th->getMessage();

@@ -1929,6 +1929,7 @@
             :user="user"
             @countDown="timerStart($event)"
             @popupClose="popupClose($event)"
+            :domainName="domainSelected"
         />
     </div>
 </template>
