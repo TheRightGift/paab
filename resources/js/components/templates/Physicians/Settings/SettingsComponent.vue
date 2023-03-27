@@ -240,7 +240,7 @@
                         if (res.data.status == 201) {
                             localStorage.setItem('візіт', visits + 1);
                             this.loading = false;
-                            role === 'Admin' ? location.reload() : window.location.href = `http://${location.host}`;
+                            role === 'Admin' ? location.reload() : window.location.href = `https://${location.host}`;
                         }
                     })
                     .catch((err) => {

@@ -154,7 +154,7 @@ export default {
     components: {FooterComponent},
     created() {
         this.isLoggedIn = this.getCookie('_token');
-        if (!this.isLoggedIn) location.replace(`http://${location.host}`)
+        if (!this.isLoggedIn) location.replace(`https://${location.host}`)
     },
     data() {
         return {
@@ -171,7 +171,7 @@ export default {
         };
     },
     mounted() {
-        this.host = `http://${location.host}`;
+        this.host = `https://${location.host}`;
     },
     methods: {
         addMore() {
@@ -236,7 +236,7 @@ export default {
             this.view != 5 ? this.view++ : null;
         },
         noPubEvent() {
-            window.location.href = `http://${location.host}`;
+            window.location.href = `https://${location.host}`;
         },
         prev() {
             this.view != 0 ? this.view-- : null;

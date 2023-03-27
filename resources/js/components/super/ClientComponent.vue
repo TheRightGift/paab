@@ -347,7 +347,7 @@ export default {
                 typeof website.domains === "object"
                     ? website.domains[0].domain
                     : website.domains;
-            window.open(`http://${this.tenant.domain}.whitecoatdomain.com/setting`, "_blank");
+            window.open(`https://${this.tenant.domain}.whitecoatdomain.com/setting`, "_blank");
         },
         giveAccess(evt) {
             this.granting = true;

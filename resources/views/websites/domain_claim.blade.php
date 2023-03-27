@@ -11,7 +11,7 @@
 
 <p class="center">Temporary Password: {{ $password }}</p>
 
-<a href="http://{{$domain}}.whitecoatdomain.com/setting" target="_blank">http://{{$domain}}.whitecoatdomain.com/setting</a>
+<a href="https://{{$domain}}.whitecoatdomain.com/setting" target="_blank">https://{{$domain}}.whitecoatdomain.com/setting</a>
 
 <p>Thank You</p>
 

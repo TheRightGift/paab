@@ -149,7 +149,7 @@
                             });
                             this.loading = !this.loading;
                             localStorage.setItem('візіт', (localStorage.getItem('візіт') + 1));
-                            this.tenant === true ? location.href = `http://${location.host}` : location.replace("/dashboard");
+                            this.tenant === true ? location.href = `https://${location.host}` : location.replace("/dashboard");
                         }
                     })
                     .catch((err) => {
