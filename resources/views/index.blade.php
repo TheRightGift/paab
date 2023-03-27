@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="keywords" content="Website builder, Physician Website Builder, Personal Website Builder, Physician Brand Website">
     <meta name="description" content="White Coat Domain - A dose of your medical story - building a brand around your medical career">
     <meta name="referrer" content="no-referrer-when-downgrade">
