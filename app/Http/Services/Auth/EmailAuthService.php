@@ -107,6 +107,10 @@ class EmailAuthService {
             $user->save();
             return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];
         }
+        else {
+            return ["status" => 404, "error" => "Invalid Credentials"];
+
+        }
        
     }
 

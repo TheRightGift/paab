@@ -70,7 +70,7 @@ class SettingController extends Controller
                     $bio = DB::table('bios')->get();
                     $userBiography = $bio->isEmpty() ? collect(['firstname' => '', 'lastname' => '', 'title_id' => '', 'othername' => '']) : $bio;
                     
-                    return redirect('auth/getstarted')->with(['userBiography' => $userBiography]);
+                    return redirect('auth/getstarted')->with(['userBiography' => $userBiography, 'userMail' => $searchEmail]);
                 } else {
                     return redirect('auth/login');
                 }

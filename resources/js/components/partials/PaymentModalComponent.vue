@@ -87,6 +87,7 @@
         props: {
             setModal: Boolean,
             user: Number,
+            domainName: String,
         },
         methods: {
             addOneYear(date) {
@@ -180,7 +181,9 @@
             updateSubscription(){
                 let data = {
                     plan: this.plan, // Only premium plan
-                    payment: this.paymentMethodSelected
+                    payment: this.paymentMethodSelected,
+                    domain: this.domainName,
+                    email: localStorage.getItem('email');
                 }
                 if (this.coupon !== '') data.coupon = this.coupon;
                 axios.put(`/api/v1/user/subscription?GUID=${this.user}`, data).then( function( response ){

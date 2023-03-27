@@ -63,12 +63,13 @@ class StripeEventListener
                 'names' => $names,
             ];
             Mail::to($data['customer_email'])->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
+            $this->registerDomain($data);
         }
     }
 
     public function registerDomain($data) {
-        $domainName = $data['metadata']['domainName'];
-        $mail = $data['metadata']['email'];
+        $domainName = $data['lines']['data'][0]['metadata']['domainName'];
+        $mail = $data['lines']['data'][0]['metadata']['email'];
         $years = 1;
         $key = env('NAMESILO_API_KEY');
         $api = env('NAMESILO_API_URL');
@@ -162,11 +163,32 @@ class StripeEventListener
             $xml = simplexml_load_string($body);
             if (htmlentities((string)$xml->reply->detail) === 'success' && htmlentities((string)$xml->reply->code) === 300) {
                 // Request SSL Certificate
+                $this->requestSSL();
                 return response()->json(["message" => htmlentities((string)$xml->reply->detail), "status" =>  htmlentities((string)$xml->reply->code)]);
             }
             else {
                 return response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
             }
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+            exit;
+        }
+    }
+
+    public function requestSSL($domainName){
+        $data = [
+            "DomainName" => $domainName,
+        ];
+        try {
+            $handler = new CurlHandler();
+            $client = new \GuzzleHttp\Client();
+            $tapMiddleware = Middleware::tap(function ($request) {});
+            $response = $client->request('POST', env('AWS_UTILITY_URL'), [
+                'json'    => $data,
+                'handler' => $tapMiddleware($handler)
+            ]);
+            $body = $response->getBody(); 
+            echo $body;
         } catch (\Throwable $th) {
             echo $th->getMessage();
             exit;
