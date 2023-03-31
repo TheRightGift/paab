@@ -29,7 +29,12 @@ invoice.payment_succeeded</code></p>
 - [ ] Integrate company stripe account
 - [ ] Develop Domain module (API endpoints)
 - [ ] Setup and test TSL (both for central and for tenants)
-- [ ] Increase AWS EC2 from tmicro to tLarge or tXLarge
-- [ ] Setup 2 instances of app
+- [x] Increase AWS EC2 from tmicro to tLarge or tXLarge
+- [x] Setup 2 instances of app
 - [ ] Change session from file to db
 - [ ] Setup NGINX Load Balancer for 2 app instances
+- [ ] Namesilo: purchase domain from namesilo
+- [ ] AWS: create Route53 Hosted zone
+- [ ] AWS: Update Hosted zone's A-record and CNAME record
+- [ ] AWS: get value of NS record (4nameserver IPs)
+- [ ] Namesilo:change domain nameservers to point to AWS 
