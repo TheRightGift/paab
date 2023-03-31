@@ -38,11 +38,12 @@ class StripeEventListener
         if ($event->payload['type'] === 'invoice.payment_succeeded') {
             // Handle the incoming event...  || $event->payload['type'] === 'customer.subscription.updated' || $event->payload['type'] === 'customer.subscription.created'
             $data = $event->payload['data']['object'];
+            $amountPaid = number_format($data['amount_paid']/100, 2, '.', '');
             $discount = $data['discount'] === null ? json_encode(['value' => null]) : json_encode(['id' => $data['discount']['coupon']['id'], 'percentage' => $data['discount']['coupon']['percent_off'], 'amount_off' => $data['discount']['coupon']['amount_off']]) ;
             DB::table('payments')->insert([
                 'customer_id' => $data['customer'],
                 'collection_method' => $data['collection_method'],
-                'amount_paid' => $data['amount_paid'],
+                'amount_paid' => $amountPaid,
                 'currency' => $data['currency'],
                 'created' => $data['created'],
                 'billing_reason' => $data['billing_reason'],
@@ -62,12 +63,12 @@ class StripeEventListener
                 'invoice_pdf' => $data['invoice_pdf'],
                 'names' => $names,
             ];
-            Mail::to($data['customer_email'])->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
-            $this->registerDomain($data);
+            
+            $this->registerDomain($data, $dataForMail);
         }
     }
 
-    public function registerDomain($data) {
+    public function registerDomain($data, $dataForMail) {
         $domainName = $data['lines']['data'][0]['metadata']['domainName'];
         $mail = $data['lines']['data'][0]['metadata']['email'];
         $years = 1;
@@ -76,22 +77,17 @@ class StripeEventListener
         if ($domainName !== null && $mail !== null) {
             try {
                 $URL = "{$api}/registerDomain?version=1&type=xml&key={$key}&domain={$domainName}&years={$years}&private=1&auto_renew=1";
-                $handler = new CurlHandler();
                 $client = new \GuzzleHttp\Client();
-                $tapMiddleware = Middleware::tap(function ($request) {
-                    // echo $request->getHeaderLine('Content-Type');
-                    // // application/json
-                    // echo $request->getBody();
-                });
-                $response = $client->request('GET', $URL, [
-                    'handler' => $tapMiddleware($handler)
-                ]);
+               
+                $response = $client->request('GET', $URL);
                 $body = $response->getBody(); 
                 $xml = simplexml_load_string($body);
                 if (htmlentities((string)$xml->reply->detail) === 'success' && htmlentities((string)$xml->reply->code) === 300) {
                     // Create a function for mail forward
-                    $email = 'consultancy@'.$domainName;
-                    return $this->configureEmail($domainName, $key, $email, $mail);
+                    $email = 'consultancy';
+                    $this->configureEmail($domainName, $key, $email, $mail);
+                    $this->runAWSUtility($domainName, $dataForMail);
+                    echo 'Domain Purchase is successful';
                 }
                 else {
                     echo response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
@@ -104,46 +100,6 @@ class StripeEventListener
         }
         else {
             return response()->json(['message' => 'Failure', 'status' => 422], 422);
-        }
-    }
-
-    public function changeNameServers(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'domainName' => 'required',
-            'ns1' =>  'required',
-            'ns2' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response($validator->errors()->all(), 400);
-        }
-        else {
-            $key = env('NAMESILO_API_KEy');
-            $input = $validator->validated();
-            try {
-                $URL = "https://www.namesilo.com/api/changeNameServers?version=1&type=xml&key={$key}&domain={$input['domainName']}&ns1={$input['ns1']}.COM&ns2={$input['ns2']}";
-                $handler = new CurlHandler();
-                $client = new \GuzzleHttp\Client();
-                $tapMiddleware = Middleware::tap(function ($request) {
-                    // echo $request->getHeaderLine('Content-Type');
-                    // application/json
-                    // echo $request->getBody();
-                    // {"foo":"bar"}
-                });
-                $response = $client->request('GET', $URL, [
-                    'handler' => $tapMiddleware($handler)
-                ]);
-                $parser = simplexml_load_string($response->getBody()) or die("Error: Cannot create object");
-                if ($parser->detail === 'success' && $parser->code === 300) {
-                    return response()->json(["message" => $parser->detail, "status" => $parser->code]);
-                }
-                else {
-                    return $response;
-                }
-            } catch (\Throwable $th) {
-                echo $th->getMessage();
-                exit;
-            }
         }
     }
 
@@ -160,8 +116,8 @@ class StripeEventListener
             $body = $response->getBody(); 
             $xml = simplexml_load_string($body);
             if (htmlentities((string)$xml->reply->detail) === 'success' && htmlentities((string)$xml->reply->code) === 300) {
-                // Request SSL Certificate
-                $this->requestSSL($domainName);
+                // Request AWS Facility
+                // return 
                 echo response()->json(["message" => htmlentities((string)$xml->reply->detail), "status" =>  htmlentities((string)$xml->reply->code)]);
             }
             else {
@@ -174,7 +130,7 @@ class StripeEventListener
         }
     }
 
-    public function requestSSL($domainName){
+    public function runAWSUtility($domainName, $dataForMail){
         $data = [
             "DomainName" => $domainName,
         ];
@@ -187,6 +143,7 @@ class StripeEventListener
                 'handler' => $tapMiddleware($handler)
             ]);
             $body = $response->getBody(); 
+            Mail::to($data['customer_email'])->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
             echo $body;
         } catch (\Throwable $th) {
             echo $th->getMessage();
