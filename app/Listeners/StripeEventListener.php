@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Handler\CurlHandler;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Validator;
@@ -84,10 +85,10 @@ class StripeEventListener
                 $xml = simplexml_load_string($body);
                 if (htmlentities((string)$xml->reply->detail) === 'success' && htmlentities((string)$xml->reply->code) === 300) {
                     // Create a function for mail forward
-                    $email = 'consultancy';
-                    $this->configureEmail($domainName, $key, $email, $mail);
-                    $this->runAWSUtility($domainName, $dataForMail);
-                    echo 'Domain Purchase is successful';
+                    // $email = 'consultancy';
+                    // $this->configureEmail($domainName, $key, $email, $mail);
+                    return $this->runAWSUtility($domainName, $dataForMail);
+                    // echo 'Domain Purchase is successful';
                 }
                 else {
                     echo response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
@@ -135,19 +136,21 @@ class StripeEventListener
             "DomainName" => $domainName,
         ];
         try {
-            $handler = new CurlHandler();
-            $client = new \GuzzleHttp\Client();
-            $tapMiddleware = Middleware::tap(function ($request) {});
-            $response = $client->request('POST', env('AWS_UTILITY_URL'), [
-                'json'    => $data,
-                'handler' => $tapMiddleware($handler)
-            ]);
-            $body = $response->getBody(); 
-            Mail::to($data['customer_email'])->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
-            echo $body;
+            $response = Http::post(env('AWS_UTILITY_URL'), $data)->throw();
+            // wait for the API call to finish before continuing
+            $responseBody = $response->body();
+
+            // handle the API response
+            if ($responseBody === 'success') {
+                // do something if the API call succeeded
+                echo 'Success';
+            } else {
+                // do something if the API call failed
+                Mail::to($data['customer_email'])->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
+            }
         } catch (\Throwable $th) {
-            echo $th->getMessage();
-            exit;
+            return $th->getMessage();
         }
+        echo 'MEAL';
     }
 }
