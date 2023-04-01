@@ -413,10 +413,11 @@
                 this.sending = true;
                 let data = {
                     "email": mail.order.email,
-                    "url": `https://${mail.domains[0].domain}.whitecoatdomain.com`,
+                    "url": `https://whitecoatdomain.com/getstarted`,
                     "profilePix": "string",
                     "title": mail.domains[0].domain,
-                    'tenancy_db_name': mail.tenancy_db_name
+                    'tenancy_db_name': mail.tenancy_db_name,
+                    'tenant_id': mail.domains[0].tenant_id,
                 };
                 axios.post('/api/sendClaimMail', data).then(res => {
                     this.sending = false;

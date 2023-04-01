@@ -10,7 +10,7 @@ Please run the following
     <code>php artisan serve</code> <br/> 
 </p>
 <p>
-    When claiming site, handle from backend is changed to  eg. <strong>{tenantDomain}.localhost:8000/?token={tokenObtained}</strong> instead of <strong>http://127.0.0.1:8000/auth/claim?claimable=drjohndoe&mail=johndoe@gmail.com</strong> crucial when passing url to claim button on email.
+    When claiming site, handle from backend is changed to  eg. <strong>{tenantDomain}.localhost:8000/?token={tokenObtained}</strong> instead of <strong>https://whitecoatdomain.com/getstarted?token={token}&physician={tenant_id}</strong> crucial when passing url to claim button on email.
 </p>
 Note to self: As a result of <code>FK</code> - foreign key the <code>cities table</code> is the parent key with a reference at <code>users table</code><br/>
 <b>IMPORTANT</b><p>For <strong>Stripe</strong> get 'api' keys for webhook and secret and rerun <code> php artisan cashier:webhook</code> to reconfigure for the inputted 'api</p>

@@ -88,6 +88,19 @@
                                     {{ domain(clientWebo) }}
                                 </td>
                                 <td class="right">
+                                    <a
+                                        href="#!"
+                                        @click="sendMail(clientWebo)"
+                                        class="marginRight1"
+                                        title="Configure my webiste details"
+                                        v-if="!sending && clientWebo.order.times_mailed === 0"
+                                    >
+                                        <img src="/media/img/mailer.svg" alt="svg" :title="'send mail to '+clientWebo.order.email "/>
+                                    </a>
+                                    <a href="#!" @click="sendMail(clientWebo)" class="marginRight1" :title="'Resend Message to user. You have mailed him '+clientWebo.order.times_mailed+' time'" v-else-if="!sending && clientWebo.order.times_mailed > 0"><i class="material-icons" id="webWhiteIcon">autorenew</i></a>
+                                    <a class="marginRight1"  v-else>
+                                        <i class="fas fa-circle-notch fa-spin"></i>
+                                    </a>
                                     <a href="#!" @click="configureWebsite(clientWebo)" class="marginRight1"
                                         title="Configure my webiste details">
                                         <i class="material-icons" id="webWhiteIcon">settings</i>
@@ -187,6 +200,7 @@ export default {
                 prev_page_url: null,
             },
             search: "",
+            sending: false,
             selectedTemplate: 0,
             tenant: { template_id: 0, domain: "", domain_id: 0, id: 0 },
             domainName: "",
@@ -387,6 +401,31 @@ export default {
                     console.log(err);
                 });
         },
+        sendMail(mail) {
+                this.sending = true;
+                let data = {
+                    "email": mail.order.email,
+                    "url": `https://whitecoatdomain.com/getstarted`,
+                    "profilePix": "string",
+                    "title": mail.domains[0].domain,
+                    'tenancy_db_name': mail.tenancy_db_name,
+                    'tenant_id': mail.domains[0].tenant_id,
+                };
+                axios.post('/api/sendClaimMail', data).then(res => {
+                    this.sending = false;
+                    M.toast({
+                        html: res.data.status,
+                        classes: 'successNotifier'
+                    })
+                }).catch(err => {
+                    this.sending = false;
+                    M.toast({
+                        html: err.response.data.message,
+                        classes: 'errorNotifier'
+                    })
+                    console.log(err);
+                })
+            },
     },
 };
 </script>

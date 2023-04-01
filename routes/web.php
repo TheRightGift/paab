@@ -234,3 +234,5 @@ Route::post('/subscription/create', [App\Http\Controllers\SubscriptionController
 Route::get('/testModal', function(){
     return view('test');
 });
+
+Route::get('/getstarted', [TenantClaimController::class, 'checkIfTenantIDNGetDomain']);
