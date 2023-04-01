@@ -119,8 +119,7 @@ class TenantController extends Controller
     }
 
     // Renders / of template
-    public function template(Request $request) {
-        
+    public function template(Request $request) {   
         // Get the template_id and get its details
         $tenancies = new Tenant();
         $tenant = $tenancies->find(tenant('id'));
@@ -131,7 +130,7 @@ class TenantController extends Controller
         $bioTB = Bio::first();
         $pageTitles = General::first();
         $pageTitle = !empty($pageTitles) ? $pageTitles->title : null;
-        $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'Admin' ? null : $tenant->user->title->name;
+        $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'SuperAdmin' ? null : $tenant->user->title->name;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         $user = !empty($bioTB) ? $title.' '.$bioTB->firstname.' '.$bioTB->lastname : null;
         $socials = Social::latest()->first();
@@ -433,7 +432,8 @@ class TenantController extends Controller
             'url' => 'required',
             'title' => 'required',
             'profilePix' => 'required',
-            'tenancy_db_name' => 'required'
+            'tenancy_db_name' => 'required',
+            'tenant_id' => 'required'
         ]);
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
@@ -452,13 +452,15 @@ class TenantController extends Controller
             $profilePix = $input["profilePix"];
             $title = $input["title"];
             $urlToPost = $input["url"];
+            $tenantID = $input['tenant_id'];
             $data = [
                 "email" => $email,
                 "url" => $urlToPost,
                 "title" => $title,
                 "profilePix" => "string",
                 "token" => $token,
-                "names" => $name
+                "names" => $name,
+                "tenant_id" => $tenantID,
             ];
             
             $handler = new CurlHandler();

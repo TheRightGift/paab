@@ -112,7 +112,29 @@ class TenantClaimController extends Controller
         }
     }
 
-    // Update Domain
+    /**
+     * Detects the tenantId passed in as query parameter and checks if exist and get the domain
+     *
+     * @return void
+     */
+    public function checkIfTenantIDNGetDomain(Request $request){
+        
+        $tenantIDCheck = $request->has('physician');
+        $tokenCheck = $request->has('token');
+        if($tenantIDCheck && $tokenCheck) {
+            $tenant = Tenant::findOrFail($request->get('physician'));
+            $domain = $tenant->domains[0]['domain'];
+            if (!empty($request->get('token'))) {
+                $token = $request->get('token');
+                return redirect("https://$domain.whitecoatdomain.com?token=$token");
+            }
+            else {
+                return redirect('auth/login');
+            }
+        }else {
+            return redirect('auth/login');
+        }
+    }
 
     /**
      * @throws ValidationException
