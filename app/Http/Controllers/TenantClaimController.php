@@ -651,7 +651,7 @@ class TenantClaimController extends Controller
 
         DB::connection('mysql')->reconnect();
         DB::setDatabaseName($tenant->tenancy_db_name);
-        $seedWord = $seedBioA . $seedMedA . $seedGradA . $seedInternA . $seedResidencyA . $seedExpA . $seedCurrExpB . $seedServiceA. $seedPublicFeaturesA . $seedAwardsA;
+        $seedWord = $seedMedA . $seedGradA . $seedInternA . $seedResidencyA . $seedExpA . $seedCurrExpB . $seedServiceA. $seedPublicFeaturesA . $seedAwardsA; //$seedBioA . 
         DB::table('bios')->where('id', !null)->update(['about' => $seedWord]);
     }
 }

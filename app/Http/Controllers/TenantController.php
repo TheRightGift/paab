@@ -447,7 +447,8 @@ class TenantController extends Controller
             $url = 'http://ec2-3-84-168-226.compute-1.amazonaws.com/notifications/email';
             $token = DB::table('tokens')->first()->token;
             $bio = DB::table('bios')->first();
-            $name = $bio->firstname.' '.$bio->lastname;
+            $firstname = $bio->firstname;
+            $lastname = $bio->lastname;
             $email = $input["email"];
             $profilePix = $input["profilePix"];
             $title = $input["title"];
@@ -457,9 +458,9 @@ class TenantController extends Controller
                 "email" => $email,
                 "url" => $urlToPost,
                 "title" => $title,
-                "profilePix" => "string",
                 "token" => $token,
-                "names" => $name,
+                "firstname" => $firstname,
+                'lastname' => $lastname,
                 "tenant_id" => $tenantID,
             ];
             

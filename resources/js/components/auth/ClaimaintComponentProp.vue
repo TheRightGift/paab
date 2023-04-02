@@ -940,8 +940,177 @@
                             </div>
                         </div>
 
-                        <!-- Fellowship Section -->
+                        <!-- Residency Section -->
                         <div v-show="view == 6">
+                            <!-- Residency Check -->
+                            <div
+                                v-show="
+                                    residencyCheck == 0 && residencyUpdate === 0
+                                "
+                                class="container"
+                            >
+                                <p class="contentTitle">
+                                    Have you completed your residency program?
+                                </p>
+
+                                <div class="radioBtnMainDiv">
+                                    <p>
+                                        <label @click="residencySelected()">
+                                            <input
+                                                class="with-gap"
+                                                name="intern"
+                                                type="radio"
+                                            />
+                                            <span class="radioBtnSpan"
+                                                >Yes</span
+                                            >
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label @click="residencyNotSelected()">
+                                            <input
+                                                class="with-gap"
+                                                name="intern"
+                                                type="radio"
+                                            />
+                                            <span class="radioBtnSpan">No</span>
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div v-show="residencyCheck == 1">
+                                <p class="contentTitle">
+                                    Tell us about your residency program
+                                </p>
+
+                                <form class="mainForm">
+                                    <div class="row formContainDiv">
+                                        <div class="input-field col s12">
+                                            <input
+                                                placeholder="Name of institution?"
+                                                type="text"
+                                                class="validate formInput"
+                                                v-model="residency.institution"
+                                            />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div v-show="residencyCheck == 2">
+                                <p class="contentTitle">
+                                    Tell us about your residency program
+                                </p>
+
+                                <form class="mainForm">
+                                    <div class="row formInnerDiv">
+                                        <div class="col s6">
+                                            <p class="schQuesP">
+                                                When did you start?
+                                            </p>
+                                            <div class="row spaceAround">
+                                                <div class="col s3">
+                                                    <p class="schQuesP1">
+                                                        Start
+                                                    </p>
+                                                </div>
+                                                <div
+                                                    class="input-field col s4 formInput1ColDiv"
+                                                >
+                                                    <select
+                                                        class="validate formInput1 browser-default"
+                                                        v-model="
+                                                            residency.monthStart
+                                                        "
+                                                    >
+                                                        <option
+                                                            :value="''"
+                                                            disabled
+                                                            selected
+                                                        >
+                                                            Month
+                                                        </option>
+                                                        <option
+                                                            v-for="(
+                                                                month, index
+                                                            ) in months"
+                                                            :key="index"
+                                                            :value="index + 1"
+                                                        >
+                                                            {{ month }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div
+                                                    class="input-field col s4 formInput1ColDiv"
+                                                >
+                                                    <date-picker
+                                                        v-model:value="
+                                                            residency.yearStart
+                                                        "
+                                                        type="year"
+                                                        placeholder="Year"
+                                                    ></date-picker>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col s5">
+                                            <p class="schQuesP">
+                                                When did you finish?
+                                            </p>
+                                            <div class="row spaceAround">
+                                                <div class="col s2">
+                                                    <p class="schQuesP1">Finish</p>
+                                                </div>
+                                                <div
+                                                    class="input-field col s4 formInput1ColDiv"
+                                                >
+                                                    <select
+                                                        class="validate formInput1 browser-default"
+                                                        v-model="
+                                                            residency.monthEnd
+                                                        "
+                                                    >
+                                                        <option
+                                                            :value="''"
+                                                            disabled
+                                                            selected
+                                                        >
+                                                            Month
+                                                        </option>
+                                                        <option
+                                                            v-for="(
+                                                                month, index
+                                                            ) in months"
+                                                            :key="index"
+                                                            :value="index + 1"
+                                                        >
+                                                            {{ month }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div
+                                                    class="input-field col s4 formInput1ColDiv"
+                                                >
+                                                    <date-picker
+                                                        v-model:value="
+                                                            residency.yearEnd
+                                                        "
+                                                        type="year"
+                                                        placeholder="Year"
+                                                    ></date-picker>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Fellowship Section -->
+                        <div v-show="view == 7">
                             <!-- Fellowship Check -->
                             <div
                                 v-show="
@@ -1098,175 +1267,6 @@
                                                     <date-picker
                                                         v-model:value="
                                                             fellowship.yearEnd
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <!-- Residency Section -->
-                        <div v-show="view == 7">
-                            <!-- Residency Check -->
-                            <div
-                                v-show="
-                                    residencyCheck == 0 && residencyUpdate === 0
-                                "
-                                class="container"
-                            >
-                                <p class="contentTitle">
-                                    Have you completed your residency program?
-                                </p>
-
-                                <div class="radioBtnMainDiv">
-                                    <p>
-                                        <label @click="residencySelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan"
-                                                >Yes</span
-                                            >
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label @click="residencyNotSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">No</span>
-                                        </label>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div v-show="residencyCheck == 1">
-                                <p class="contentTitle">
-                                    Tell us about your residency program
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formContainDiv">
-                                        <div class="input-field col s12">
-                                            <input
-                                                placeholder="Name of institution?"
-                                                type="text"
-                                                class="validate formInput"
-                                                v-model="residency.institution"
-                                            />
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div v-show="residencyCheck == 2">
-                                <p class="contentTitle">
-                                    Tell us about your residency program
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formInnerDiv">
-                                        <div class="col s6">
-                                            <p class="schQuesP">
-                                                When did you start?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s3">
-                                                    <p class="schQuesP1">
-                                                        Start
-                                                    </p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            residency.monthStart
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            residency.yearStart
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col s5">
-                                            <p class="schQuesP">
-                                                When did you finish?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s2">
-                                                    <p class="schQuesP1">Finish</p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            residency.monthEnd
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            residency.yearEnd
                                                         "
                                                         type="year"
                                                         placeholder="Year"
@@ -1791,13 +1791,13 @@
                                             >keyboard_arrow_left</i
                                         >
                                     </button>
-
+    
                                     <button
                                         class="skipBtn"
                                         @click="next(3)"
-                                        :disabled="fellowshipCheck == 0"
+                                        :disabled="residencyCheck == 0"
                                         :class="
-                                            fellowshipCheck < 1
+                                            residencyCheck < 1
                                                 ? 'btnOff'
                                                 : 'btnOn'
                                         "
@@ -1819,9 +1819,9 @@
                                     <button
                                         class="skipBtn"
                                         @click="next(4)"
-                                        :disabled="residencyCheck == 0"
+                                        :disabled="fellowshipCheck == 0"
                                         :class="
-                                            residencyCheck < 1
+                                            fellowshipCheck < 1
                                                 ? 'btnOff'
                                                 : 'btnOn'
                                         "
@@ -1974,8 +1974,8 @@
                     { stepValue: "Avatar", filled: false, current: 0 },
                     { stepValue: "Academic", filled: false, current: 0 },
                     { stepValue: "Internship", filled: false, current: 0 },
-                    { stepValue: "Fellowship", filled: false, current: 0 },
                     { stepValue: "Residency", filled: false, current: 0 },
+                    { stepValue: "Fellowship", filled: false, current: 0 },
                     { stepValue: "Experience", filled: false, current: 0 },
                     { stepValue: "Education", filled: false, current: 0 },
                     { stepValue: "Payment", filled: false, current: 0 },
@@ -2321,25 +2321,26 @@
                     }
                 } else if(num === 3){//fellowship
                     // this.fellowshipCheck != 0 ? this.fellowshipCheck-- : (this.view = 5);
-                    if(this.fellowshipCheck <= 1){
+                    if(this.residencyCheck <= 1){
                         this.view = 5;
                         this.internshipCheck = 1;
                     } else {
-                        this.fellowshipCheck--;
+                        this.residencyCheck--;
                     }
                 } else if(num === 4){//residency
                     // this.residencyCheck != 0 ? this.residencyCheck-- : this.view--;
-                    if(this.residencyCheck <= 1){
+                    
+                    if(this.fellowshipCheck <= 1){
                         this.view = 6;
-                        this.fellowshipCheck = 1;
+                        this.residencyCheck = 1;
                     } else {
-                        this.residencyCheck--;
+                        this.fellowshipCheck--;
                     }
                 }  else if(num === 5){//experience
                     // this.experienceCheck != 0 ? this.experienceCheck-- : this.view--;
                     if(this.experienceCheck <= 0){
                         this.view = 7;
-                        this.residencyCheck = 1;
+                        this.fellowshipCheck = 1;
                     } else {
                         this.experienceCheck--;
                     }
@@ -2406,16 +2407,16 @@
                     if (this.internshipCheck >= 3) {
                         this.view = 6;
                     }
-                } else if(num === 3){//fellowship
-                    this.fellowshipCheck != 3 ? (this.saveFellowshipTime(), this.fellowshipCheck++) : null;
-
-                    if (this.fellowshipCheck >= 3) {
-                        this.view = 7;
-                    }
-                } else if(num === 4){//residency
+                } else if(num === 3){//residency
                     this.residencyCheck != 3 ? (this.saveResidencyTime(), this.residencyCheck++) : null;
 
                     if (this.residencyCheck >= 3) {
+                        this.view = 7;
+                    }
+                } else if(num === 4){//fellowship
+                    this.fellowshipCheck != 3 ? (this.saveFellowshipTime(), this.fellowshipCheck++) : null;
+
+                    if (this.fellowshipCheck >= 3) {
                         this.view = 8;
                     }
                 } else if(num === 5){//experience
@@ -2780,6 +2781,8 @@
                                     html: res.data.message,
                                     classes: "successNotifier",
                                 });
+                                this.internship.yearStart = new Date(`${this.internship.yearStart}`);
+                                this.internship.yearEnd = new Date(`${this.internship.yearEnd}`);
                                 this.internshipCheck === 3
                                     ? (this.steps[4].filled = true)
                                     : null;
@@ -2834,8 +2837,10 @@
                                     html: res.data.message,
                                     classes: "successNotifier",
                                 });
+                                this.fellowship.yearStart = new Date(`${this.fellowship.yearStart}`);
+                                this.fellowship.yearEnd = new Date(`${this.fellowship.yearEnd}`);
                                 this.fellowshipCheck === 3
-                                    ? (this.steps[5].filled = true)
+                                    ? (this.steps[6].filled = true)
                                     : null;
                             }
                         })
@@ -2867,6 +2872,11 @@
                                     html: res.data.message,
                                     classes: "successNotifier",
                                 });
+                                this.residency.yearStart = new Date(`${this.residency.yearStart}`);
+                                this.residency.yearEnd = new Date(`${this.residency.yearEnd}`);
+                                this.residencyCheck === 3
+                                    ? (this.steps[5].filled = true)
+                                    : null;
                             }
                         })
                         .catch((err) => {
@@ -2991,13 +3001,13 @@
                 this.fellowshipCheck = 1;
             },
             fellowNotSelected() {
-                this.view = 7;
+                this.view = 8;
             },
             residencySelected() {
                 this.residencyCheck = 1;
             },
             residencyNotSelected() {
-                this.view = 8;
+                this.view = 7;
             },
             
             expSelected() {
