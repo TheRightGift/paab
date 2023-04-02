@@ -3,6 +3,7 @@
         <div class="root">
             <div class="container">
                 <small class="text-center">Your website creation progress</small>
+                <small class="text-center"><strong>You can only make changes once from here, subsequent changes will be from your settings dashboard</strong></small>
                 <ul class="progressbar">
                     <li :class="{filled: step.filled, active: view == (index + 1)}"  v-for="(step, index) in steps" :key="index">
                         <small class="font-poppins">{{ step.stepValue }}</small>
