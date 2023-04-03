@@ -1,6 +1,7 @@
 <?php
 namespace App\Listeners;
 
+use App\Mail\WebsiteLive;
 use GuzzleHttp\Middleware;
 use App\Events\StripeEvent;
 use Illuminate\Http\Request;
@@ -74,33 +75,29 @@ class StripeEventListener
         $years = 1;
         $key = env('NAMESILO_API_KEY');
         $api = env('NAMESILO_API_URL');
-        if ($domainName !== null && $mail !== null) {
-            try {
-                $URL = "{$api}/registerDomain?version=1&type=xml&key={$key}&domain={$domainName}&years={$years}&private=1&auto_renew=1";
-                $client = new \GuzzleHttp\Client();
+        // if ($domainName !== null && $mail !== null) {
+        //     try {
+        //         $URL = "{$api}/registerDomain?version=1&type=xml&key={$key}&domain={$domainName}&years={$years}&private=1&auto_renew=1";
+        //         $client = new \GuzzleHttp\Client();
                
-                $response = $client->request('GET', $URL);
-                $body = $response->getBody(); 
-                $xml = simplexml_load_string($body);
-                if (htmlentities((string)$xml->reply->detail) === 'success' && htmlentities((string)$xml->reply->code) === 300) {
-                    // Create a function for mail forward
-                    // $email = 'consultancy';
-                    // $this->configureEmail($domainName, $key, $email, $mail);
+        //         $response = $client->request('GET', $URL);
+        //         $body = $response->getBody(); 
+        //         $xml = simplexml_load_string($body);
+                // if (htmlentities((string)$xml->reply->code) == 300) { // && htmlentities((string)$xml->reply->detail) == 'success'
                     return $this->runAWSUtility($data, $dataForMail);
-                    // echo 'Domain Purchase is successful';
-                }
-                else {
-                    echo response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
-                }
-            } catch (\Throwable $th) {
-                //throw $th;
-                echo $th->getMessage();
-                exit;
-            }
-        }
-        else {
-            return response()->json(['message' => 'Failure', 'status' => 422], 422);
-        }
+                // }
+                // else {
+                //     return response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
+                // }
+            // } catch (\Throwable $th) {
+            //     //throw $th;
+            //     echo $th->getMessage();
+            //     exit;
+            // }
+        // }
+        // else {
+        //     return response()->json(['message' => 'Failure', 'status' => 422], 422);
+        // }
     }
 
     public function configureEmail($domainName, $key, $email, $forward1) {
@@ -131,36 +128,50 @@ class StripeEventListener
     }
 
     public function runAWSUtility($data, $dataForMail){
-        $data = [
-            "DomainName" => $data['lines']['data'][0]['metadata']['domainName'],
+        $domainName = $data['lines']['data'][0]['metadata']['domainName'];
+        $email = $data['lines']['data'][0]['metadata']['email'];
+        $domain = str_replace('.com', '', $data['lines']['data'][0]['metadata']['domainName']);
+        $password = $data['lines']['data'][0]['metadata']['password'];
+        $name = $data['lines']['data'][0]['metadata']['firstname'].' '.$data['lines']['data'][0]['metadata']['lastname'];
+        $detail = [
+            'email' => $email,
+            'plan' => 'Premium(Yearly Renewal)',
+            'password' => $password,
+            'domain' => $domain,
+            'name' => $name,
         ];
         try {
-            $response = Http::post(env('AWS_UTILITY_URL'), $data)->throw();
-            // wait for the API call to finish before continuing
-            $responseBody = $response->body();
+            $handler = new CurlHandler();
+            $client = new \GuzzleHttp\Client();
+            $tapMiddleware = Middleware::tap(function ($request) {});
+            $data = ["DomainName" => $domainName];
 
-            // handle the API response
-            if ($responseBody === 'success') {
-                // do something if the API call succeeded
-                echo 'Success';
-            } else {
-                // do something if the API call failed
-                Mail::to($data['customer_email'])->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
-                Mail::send('websites.domain_claim',
-                    array(
-                        'email' => $data['customer_email'],
-                        'plan' => 'Premium(Yearly Renewal)',
-                        'password' => $data['lines']['data'][0]['metadata']['password'],
-                        'domain' => str_replace('.com', '', $data['lines']['data'][0]['metadata']['domainName']),
-                        'names' => $data['lines']['data'][0]['metadata']['firstname'].' '.$data['lines']['data'][0]['metadata']['lastname'],
-                    ), function($message) use ($data) {
-                        $message->from('admin@whitecoatdomain.com', 'White Coat Domain');
-                        $message->to($data['customer_email'], tenant('id'))->subject('Website is now live!');
-                    });
+            $response = $client->request('POST', 'https://wcdawsutility.playmock.com.ng/createzone', [
+                'json' => $data,
+                'handler' => $tapMiddleware($handler)
+            ]);
+
+            $responseCode = $response->getStatusCode();
+            if ($responseCode == 200) {
+                Mail::to($email)->send(new WebsiteLive($detail));
+                Mail::to($email)->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
+                echo 200;
             }
+            // echo $responseBody;
+            // print_r($responseBody);
+            // echo $domainName, $email, $domain, $password, $name;
+            // handle the API response
+            // if ($responseBody == 'InProgress') {
+            //     // do something if the API call succeeded
+            
+           
+               
+            // } else {
+            //     // do something if the API call failed
+            //     echo 501;
+            // }
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
-        echo 'MEAL';
     }
 }
