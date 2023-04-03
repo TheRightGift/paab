@@ -3099,7 +3099,6 @@
                                 classes: "successNotifier",
                             });
                             localStorage.removeItem("claimproc");
-                            localStorage.removeItem("passwordGen");
                             this.user = res.data.user;
                             let elem = document.getElementById("modal1");
                             let instance = M.Modal.getInstance(elem);

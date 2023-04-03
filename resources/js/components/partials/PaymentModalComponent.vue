@@ -197,6 +197,7 @@
                         html: 'You have successfuly subscribed to domain premium plan!',
                         classes: 'successNotifier'
                     })
+                    localStorage.removeItem("passwordGen");
                 }.bind(this)).catch(err => {
                     console.log(err)
                     if (err.response.status === 500) {
