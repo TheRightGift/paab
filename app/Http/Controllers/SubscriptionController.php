@@ -24,11 +24,9 @@ class SubscriptionController extends Controller
         $planID = $request->get('plan');
         $paymentID = $request->get('payment');
         $mail = $request->get('email');
+        $tenantID = $request->get('tenant_id');
         $domainName = $request->get('domain');
-        $password = $request->get('password');
-        $firstname = $request->get('firstname');
         $plan = $request->get('plan');
-        $lastname = $request->get('lastname');
 
         if( !$user->subscribed('premium') ){
             if( $coupon = $request->get('coupon') ) {
@@ -36,13 +34,14 @@ class SubscriptionController extends Controller
                 ->create( $paymentID, [
                     'email' => $mail,
                 ], [
-                    'metadata' => ['domainName' => $domainName, 'email' => $mail, 'password' => $password, 'firstname' => $firstname, 'lastname' => $lastname, 'plan' => $plan],
+                    'metadata' => ['domainName' => $domainName, 'tenant_id' => $tenantID, 'plan' => $plan],
                 ] );
             }else {
                 $user->newSubscription( 'premium', $planID )->create( $paymentID, [
                     'email' => $mail,
                 ], [
-                    'metadata' => ['domainName' => $domainName, 'email' => $mail, 'password' => $password, 'firstname' => $firstname, 'lastname' => $lastname, 'plan' => $plan],
+                    'metadata' => ['domainName' => $domainName, 'tenant_id' => $tenantID, 'plan' => $plan],
+                    // 'metadata' => ['domainName' => $domainName, 'email' => $mail, 'password' => $password, 'firstname' => $firstname, 'lastname' => $lastname, 'plan' => $plan],
                 ] );
             }
         }

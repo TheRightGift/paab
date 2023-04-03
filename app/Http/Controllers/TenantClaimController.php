@@ -526,7 +526,10 @@ class TenantClaimController extends Controller
                     $userToUpdate->plan = $request->plan == 'freemium' ? 'F' : 'P';
                     $userToUpdate->registration_completed = 'Active';
                     $userToUpdate->save();
-                    
+                    DB::table('tenant_password_tables')->insert([
+                        'tenant_id' => $value,
+                        'password' => $request->password,
+                    ]);
                     $this->generateIntro($tenant, $valueOfMail);
                     Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 
