@@ -7,7 +7,7 @@
             <div class="customCard">
                 <div class="nameOnCard">{{ bio.firstname ?? 'john' }} {{ bio.lastname ?? 'doe' }}</div>
                 <div class="numberOnCard">.... 65432</div>
-                <div class="amountOnCard">$ 0.00</div>
+                <div class="amountOnCard">$ 144.00</div>
                 <div class="cardType">
                     <div class="red ellipsis"></div>
                     <div class="gold ellipsis"></div>
