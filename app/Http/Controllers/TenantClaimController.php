@@ -526,17 +526,7 @@ class TenantClaimController extends Controller
                     $userToUpdate->plan = $request->plan == 'freemium' ? 'F' : 'P';
                     $userToUpdate->registration_completed = 'Active';
                     $userToUpdate->save();
-                    Mail::send('websites.domain_claim',
-                    array(
-                        'email' => $valueOfMail,
-                        'plan' => $request->get('plan'),
-                        'password' => $request->password,
-                        'domain' => $tenant->domains[0]->domain,
-                        'names' => $userToUpdate->firstname.' '.$userToUpdate->lastname,
-                    ), function($message) use ($request) {
-                        $message->from('admin@whitecoatdomain.com', 'White Coat Domain');
-                        $message->to($request->session()->pull('email'), tenant('id'))->subject('Website is now live!');
-                    });
+                    
                     $this->generateIntro($tenant, $valueOfMail);
                     Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 

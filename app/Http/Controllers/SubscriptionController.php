@@ -25,19 +25,24 @@ class SubscriptionController extends Controller
         $paymentID = $request->get('payment');
         $mail = $request->get('email');
         $domainName = $request->get('domain');
+        $password = $request->get('password');
+        $firstname = $request->get('firstname');
+        $plan = $request->get('plan');
+        $lastname = $request->get('lastname');
+
         if( !$user->subscribed('premium') ){
             if( $coupon = $request->get('coupon') ) {
                 $user->newSubscription( 'premium', $planID )->withCoupon($coupon)
                 ->create( $paymentID, [
                     'email' => $mail,
                 ], [
-                    'metadata' => ['domainName' => $domainName, 'email' => $mail],
+                    'metadata' => ['domainName' => $domainName, 'email' => $mail, 'password' => $password, 'firstname' => $firstname, 'lastname' => $lastname, 'plan' => $plan],
                 ] );
             }else {
                 $user->newSubscription( 'premium', $planID )->create( $paymentID, [
                     'email' => $mail,
                 ], [
-                    'metadata' => ['domainName' => $domainName, 'email' => $mail],
+                    'metadata' => ['domainName' => $domainName, 'email' => $mail, 'password' => $password, 'firstname' => $firstname, 'lastname' => $lastname, 'plan' => $plan],
                 ] );
             }
         }
@@ -106,7 +111,6 @@ class SubscriptionController extends Controller
         $token =  $request->token;
         $paymentMethod = $request->paymentMethod;
         try {
-
             Stripe::setApiKey(env('STRIPE_SECRET'));
 
             if (is_null($user->stripe_id)) {
@@ -125,7 +129,6 @@ class SubscriptionController extends Controller
                         'email' => $user->email,
                         'name' => $user->firstname.$user->lastname,
                     ]);
-
             } else {
                 $user->newSubscription('test', $input['plane'])
                     ->create($paymentMethod, [

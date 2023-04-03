@@ -1930,6 +1930,7 @@
             @countDown="timerStart($event)"
             @popupClose="popupClose($event)"
             :domainName="domainSelected"
+            :bio="bio"
         />
     </div>
 </template>

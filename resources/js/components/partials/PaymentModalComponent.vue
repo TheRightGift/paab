@@ -45,9 +45,8 @@
                     <p class="check">
                         <i class="fa-solid fa-check"></i>
                     </p>
-                    <h5 class="centered p-0">Subscription Scuccessfuly Created</h5>
-                    <p class="centered cheer">Cheers</p>
-                    <p class="centered text">You have subscribed to yearly plan of 50USD for the domain you selected, and will be renewed on {{ addOneYear(new Date()) }}</p>
+                    <h5 class="centered p-0">Scuccessful</h5>
+                    <p class="centered text">Congratulations on the successful creation of your website! You have opted for a yearly plan that includes both hosting and domain registration at a cost of $144. Please note that your service will renew automatically one year from today. You should have received an email containing your login credentials, which will grant you access to the backend of your website. From there, you can add additional services and make any necessary updates. Thank you for choosing WhiteCoatDomain.</p>
                     <button class="modal-close waves-effect waves-green btn btn-rounded" @click="countDown">Close</button>
                 </div>
             </div>
@@ -88,6 +87,7 @@
             setModal: Boolean,
             user: Number,
             domainName: String,
+            bio: Object,
         },
         methods: {
             addOneYear(date) {
@@ -183,7 +183,10 @@
                     plan: this.plan, // Only premium plan
                     payment: this.paymentMethodSelected,
                     domain: this.domainName,
-                    email: localStorage.getItem('email')
+                    email: localStorage.getItem('email'),
+                    firstname: this.bio.firstname,
+                    lastname: this.bio.lastname,
+                    password: localStorage.getItem("passwordGen"),
                 }
                 if (this.coupon !== '') data.coupon = this.coupon;
                 axios.put(`/api/v1/user/subscription?GUID=${this.user}`, data).then( function( response ){

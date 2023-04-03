@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Listeners;
 
 use GuzzleHttp\Middleware;
@@ -87,7 +86,7 @@ class StripeEventListener
                     // Create a function for mail forward
                     // $email = 'consultancy';
                     // $this->configureEmail($domainName, $key, $email, $mail);
-                    return $this->runAWSUtility($domainName, $dataForMail);
+                    return $this->runAWSUtility($data, $dataForMail);
                     // echo 'Domain Purchase is successful';
                 }
                 else {
@@ -131,9 +130,9 @@ class StripeEventListener
         }
     }
 
-    public function runAWSUtility($domainName, $dataForMail){
+    public function runAWSUtility($data, $dataForMail){
         $data = [
-            "DomainName" => $domainName,
+            "DomainName" => $data['lines']['data'][0]['metadata']['domainName'],
         ];
         try {
             $response = Http::post(env('AWS_UTILITY_URL'), $data)->throw();
@@ -147,6 +146,17 @@ class StripeEventListener
             } else {
                 // do something if the API call failed
                 Mail::to($data['customer_email'])->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
+                Mail::send('websites.domain_claim',
+                    array(
+                        'email' => $data['customer_email'],
+                        'plan' => 'Premium(Yearly Renewal)',
+                        'password' => $data['lines']['data'][0]['metadata']['password'],
+                        'domain' => str_replace('.com', '', $data['lines']['data'][0]['metadata']['domainName']),
+                        'names' => $data['lines']['data'][0]['metadata']['firstname'].' '.$data['lines']['data'][0]['metadata']['lastname'],
+                    ), function($message) use ($data) {
+                        $message->from('admin@whitecoatdomain.com', 'White Coat Domain');
+                        $message->to($data['customer_email'], tenant('id'))->subject('Website is now live!');
+                    });
             }
         } catch (\Throwable $th) {
             return $th->getMessage();
