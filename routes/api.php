@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfessionController;
@@ -83,3 +84,5 @@ Route::post('tenant_without_auth', [App\Http\Controllers\TenantController::class
 // Route::get('getCities/{startRow}', [CountryController::class, 'getCities']);
 // Route::post('insertCity', [CountryController::class, 'insertCity']);
 Route::get('/getStateNCity/{city}', [CountryController::class, 'getCountryStateFromCity']);
+
+Route::get('test_awsutil/{tenant_id}', [APIController::class, 'registerDomain'])->name('api.domain.register');

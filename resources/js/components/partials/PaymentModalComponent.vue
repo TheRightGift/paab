@@ -179,14 +179,23 @@
              * Subscribe::Saves the card and customer to DB as stripe customer
             **/
             updateSubscription(){
+                const queryString = window.location.search;
+
+                // Create an object with key-value pairs of each parameter
+                const params = new URLSearchParams(queryString);
+
+                // Get the value of a specific parameter, e.g. "param1"
+                const claimable = params.get('claimable');
+
                 let data = {
                     plan: this.plan, // Only premium plan
                     payment: this.paymentMethodSelected,
-                    domain: this.domainName,
+                    tenant_id: claimable,
                     email: localStorage.getItem('email'),
-                    firstname: this.bio.firstname,
-                    lastname: this.bio.lastname,
-                    password: localStorage.getItem("passwordGen"),
+                    // domain: this.domainName,
+                    // firstname: this.bio.firstname,
+                    // lastname: this.bio.lastname,
+                    // password: localStorage.getItem("passwordGen"),
                 }
                 if (this.coupon !== '') data.coupon = this.coupon;
                 axios.put(`/api/v1/user/subscription?GUID=${this.user}`, data).then( function( response ){

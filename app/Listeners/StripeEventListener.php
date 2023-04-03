@@ -3,6 +3,7 @@ namespace App\Listeners;
 
 use App\Mail\WebsiteLive;
 use GuzzleHttp\Middleware;
+use GuzzleHttp\Client;
 use App\Events\StripeEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -54,124 +55,25 @@ class StripeEventListener
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-            $user = DB::table('users')->where('stripe_id', $data['customer'])->first();
-            if ($user !== null) {
-                $names = 'Dr. '.$user->firstname.' '.$user->lastname;
-            }
-            else $names = "";
-            $dataForMail = [
-                'hosted_invoice_url' => $data['hosted_invoice_url'],
-                'invoice_pdf' => $data['invoice_pdf'],
-                'names' => $names,
-            ];
-            
-            $this->registerDomain($data, $dataForMail);
-        }
-    }
-
-    public function registerDomain($data, $dataForMail) {
-        $domainName = $data['lines']['data'][0]['metadata']['domainName'];
-        $mail = $data['lines']['data'][0]['metadata']['email'];
-        $years = 1;
-        $key = env('NAMESILO_API_KEY');
-        $api = env('NAMESILO_API_URL');
-        // if ($domainName !== null && $mail !== null) {
-        //     try {
-        //         $URL = "{$api}/registerDomain?version=1&type=xml&key={$key}&domain={$domainName}&years={$years}&private=1&auto_renew=1";
-        //         $client = new \GuzzleHttp\Client();
-               
-        //         $response = $client->request('GET', $URL);
-        //         $body = $response->getBody(); 
-        //         $xml = simplexml_load_string($body);
-                // if (htmlentities((string)$xml->reply->code) == 300) { // && htmlentities((string)$xml->reply->detail) == 'success'
-                    return $this->runAWSUtility($data, $dataForMail);
-                // }
-                // else {
-                //     return response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
-                // }
-            // } catch (\Throwable $th) {
-            //     //throw $th;
-            //     echo $th->getMessage();
-            //     exit;
+            // $user = DB::table('users')->where('stripe_id', $data['customer'])->first();
+            // if ($user !== null) {
+            //     $names = 'Dr. '.$user->firstname.' '.$user->lastname;
             // }
-        // }
-        // else {
-        //     return response()->json(['message' => 'Failure', 'status' => 422], 422);
-        // }
-    }
-
-    public function configureEmail($domainName, $key, $email, $forward1) {
-        $api = env('NAMESILO_API_URL');
-        try {
-            $URL = "{$api}/configureEmailForward?version=1&type=xml&key={$key}&domain={$domainName}&email={$email}&forward1={$forward1}";
-            $handler = new CurlHandler();
-            $client = new \GuzzleHttp\Client();
-            $tapMiddleware = Middleware::tap(function ($request) {});
-            $response = $client->request('GET', $URL, [
-                'handler' => $tapMiddleware($handler)
-            ]);
-            $body = $response->getBody(); 
-            $xml = simplexml_load_string($body);
-            if (htmlentities((string)$xml->reply->detail) === 'success' && htmlentities((string)$xml->reply->code) === 300) {
-                // Request AWS Facility
-                // return 
-                echo response()->json(["message" => htmlentities((string)$xml->reply->detail), "status" =>  htmlentities((string)$xml->reply->code)]);
-            }
-            else {
-                echo response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
-                exit;
-            }
-        } catch (\Throwable $th) {
-            echo $th->getMessage();
-            exit;
+            // else $names = "";
+            // $dataForMail = [
+            //     'hosted_invoice_url' => $data['hosted_invoice_url'],
+            //     'invoice_pdf' => $data['invoice_pdf'],
+            //     'names' => $names,
+            // ];
+            // Mail::to($data['customer_email'])->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
+            // $tenant_id = $data['lines']['data'][0]['metadata']['tenant_id'];
+            // $domainName = $data['lines']['data'][0]['metadata']['domainName'];
+            $client = new Client();
+            $url = route('api.domain.register', ['stripe_id' => $data['customer']]);
+            $response = $client->request('GET', $url);
+            // $this->registerDomain($data, $dataForMail);
         }
     }
 
-    public function runAWSUtility($data, $dataForMail){
-        $domainName = $data['lines']['data'][0]['metadata']['domainName'];
-        $email = $data['lines']['data'][0]['metadata']['email'];
-        $domain = str_replace('.com', '', $data['lines']['data'][0]['metadata']['domainName']);
-        $password = $data['lines']['data'][0]['metadata']['password'];
-        $name = $data['lines']['data'][0]['metadata']['firstname'].' '.$data['lines']['data'][0]['metadata']['lastname'];
-        $detail = [
-            'email' => $email,
-            'plan' => 'Premium(Yearly Renewal)',
-            'password' => $password,
-            'domain' => $domain,
-            'name' => $name,
-        ];
-        try {
-            $handler = new CurlHandler();
-            $client = new \GuzzleHttp\Client();
-            $tapMiddleware = Middleware::tap(function ($request) {});
-            $data = ["DomainName" => $domainName];
-
-            $response = $client->request('POST', 'https://wcdawsutility.playmock.com.ng/createzone', [
-                'json' => $data,
-                'handler' => $tapMiddleware($handler)
-            ]);
-
-            $responseCode = $response->getStatusCode();
-            if ($responseCode == 200) {
-                Mail::to($email)->send(new WebsiteLive($detail));
-                Mail::to($email)->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
-                echo 200;
-            }
-            // echo $responseBody;
-            // print_r($responseBody);
-            // echo $domainName, $email, $domain, $password, $name;
-            // handle the API response
-            // if ($responseBody == 'InProgress') {
-            //     // do something if the API call succeeded
-            
-           
-               
-            // } else {
-            //     // do something if the API call failed
-            //     echo 501;
-            // }
-        } catch (\Throwable $th) {
-            return $th->getMessage();
-        }
-    }
+    
 }
