@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
@@ -143,12 +142,12 @@ class TenantController extends Controller
             $can = false;
             $email = '';
         }
-        // dd($canEdit);
-        if($profession === 'Physician'){
-            return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email'));
-        } else {
-            dd($profession);
-        }
+        dd($can);
+        // if($profession === 'Physician'){
+        //     return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email'));
+        // } else {
+        //     dd($profession);
+        // }
     }
 
     public function setting(Request $request) {
