@@ -31,9 +31,7 @@ class APIController extends Controller
                 'domain' => $domain,
                 'name' => $user->firstname.' '.$user->lastname,
             ];
-            $res =  $this->runAWSUtility($domain, $detail);
-            echo $res;
-            // dd($tenant['domains'][0]['domain']);
+            return $this->runAWSUtility($domain, $detail);
         }
         else{
             return response()->json(['status' => 404, 'message' => 'Payment made against a physician that does not exist']);
@@ -107,25 +105,11 @@ class APIController extends Controller
 
             $responseCode = $response->getStatusCode();
             if ($responseCode == 200) {
-               $this->sendMail($detail);
-                echo 200;
+               return $this->sendMail($detail);
             }
             else {
                 echo 'Not available:'. $response->getStatusCode();
             }
-            // echo $responseBody;
-            // print_r($responseBody);
-            // echo $domainName, $email, $domain, $password, $name;
-            // handle the API response
-            // if ($responseBody == 'InProgress') {
-            //     // do something if the API call succeeded
-            
-           
-               
-            // } else {
-            //     // do something if the API call failed
-            //     echo 501;
-            // }
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
@@ -133,5 +117,6 @@ class APIController extends Controller
 
     private function sendMail($detail) {
         Mail::to($detail['email'])->send(new WebsiteLive($detail));
+        echo 200;
     }
 }
