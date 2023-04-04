@@ -31,7 +31,7 @@ class WebsiteLive extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Payment Succesful',
+            subject: 'Succesful Subscription ',
             from: new Address('admin@whitecoatdomain.com', 'White Coat Domain'),
         );
     }

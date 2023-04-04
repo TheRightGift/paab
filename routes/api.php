@@ -85,4 +85,4 @@ Route::post('tenant_without_auth', [App\Http\Controllers\TenantController::class
 // Route::post('insertCity', [CountryController::class, 'insertCity']);
 Route::get('/getStateNCity/{city}', [CountryController::class, 'getCountryStateFromCity']);
 
-Route::get('test_awsutil/{tenant_id}', [APIController::class, 'registerDomain'])->name('api.domain.register');
+Route::get('test_awsutil/{stripe_id}', [APIController::class, 'registerDomain'])->name('api.domain.register');
