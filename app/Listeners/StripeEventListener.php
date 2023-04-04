@@ -55,23 +55,11 @@ class StripeEventListener
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-            // $user = DB::table('users')->where('stripe_id', $data['customer'])->first();
-            // if ($user !== null) {
-            //     $names = 'Dr. '.$user->firstname.' '.$user->lastname;
-            // }
-            // else $names = "";
-            // $dataForMail = [
-            //     'hosted_invoice_url' => $data['hosted_invoice_url'],
-            //     'invoice_pdf' => $data['invoice_pdf'],
-            //     'names' => $names,
-            // ];
-            // Mail::to($data['customer_email'])->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
-            // $tenant_id = $data['lines']['data'][0]['metadata']['tenant_id'];
-            // $domainName = $data['lines']['data'][0]['metadata']['domainName'];
+            
             $client = new Client();
             $url = route('api.domain.register', ['stripe_id' => $data['customer']]);
             $response = $client->request('GET', $url);
-            // $this->registerDomain($data, $dataForMail);
+            echo $response->getBody();
         }
     }
 

@@ -352,7 +352,7 @@
                     formData.append("about", e.about);
                     formData.append("firstname", e.firstname);
                     formData.append("lastname", e.lastname);
-
+                    formData,append('gender', e.gender);
                     axios
                         .post(`/api/bio`, formData)
                         .then((res) => {
@@ -395,6 +395,7 @@
                 formData.append("firstname", e.firstname);
                 formData.append("lastname", e.lastname);
                 formData.append("about", e.about);
+                formData.append("gender", e.gender);
                 formData.append("_method", e._method);
                 axios
                     .post(`/api/bio/${e.id}`, formData)

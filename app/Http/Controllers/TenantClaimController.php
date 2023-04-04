@@ -586,10 +586,37 @@ class TenantClaimController extends Controller
         $servicesDb = DB::table('services')->first();
         $cvExperience = DB::table('c_v__experiences')->first();
         $publicFeaturingDb = DB::table('public_featurings')->latest()->get();
-        $pronoun = $user->gender !== null ? $user->gender === 'M' ? 'he' : 'she' : 'he';
-        $address = $user->gender !== null ? $user->gender === 'M' ? 'his' : 'her' : 'his';
-        $pronounCaps = $user->gender !== null ? $user->gender === 'M' ? 'He' : 'She' : 'He';
-        $addressCaps = $user->gender !== null ? $user->gender === 'M' ? 'His' : 'Her' : 'His';
+        if ($bioDb->gender !== null) {
+            $pronoun = "";
+            $address = "";
+            $pronounCaps = "";
+            switch ($bioDb->gender) {
+                case 'M':
+                    $pronoun = 'he';
+                    $address = 'his';
+                    $pronounCaps = 'He';
+                    break;
+                case 'F':
+                    $pronoun = 'she';
+                    $address = 'her';
+                    $pronounCaps = 'She';
+                    break;
+                case 'O':
+                    $pronoun = 'they';
+                    $address = 'them';
+                    $pronounCaps = 'They';
+                    break;
+                default:
+                    $pronoun = 'he';
+                    $address = 'his';
+                    $pronounCaps = 'He';
+                    break;
+            }
+        }
+        // $pronoun = $bioDb->gender !== null ? ($bioDb->gender === 'M' ? 'he' : 'she' : $bioDb->gender === 'O' ? 'they': ) 'he';
+        // $address = $bioDb->gender !== null ? $bioDb->gender === 'M' ? 'his' : 'her' : 'his';
+        // $pronounCaps = $bioDb->gender !== null ? $bioDb->gender === 'M' ? 'He' : 'She' : 'He';
+        // $addressCaps = $bioDb->gender !== null ? $bioDb->gender === 'M' ? 'His' : 'Her' : 'His';
 
         $seedBioA = '';
         $seedMedA = '';
