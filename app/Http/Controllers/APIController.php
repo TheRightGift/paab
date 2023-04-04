@@ -18,20 +18,20 @@ class APIController extends Controller
 {
     // Makes request to other APIs
     
-    public function registerDomain($tenantID) {
-        $user = User::where('stripe_id', $tenantID)->first();
+    public function registerDomain($stripeId) {
+        $user = User::where('stripe_id', $stripeId)->first();
         $tenant = Tenant::where('user_id', $user->id)->first();
         $adminClientOrder = AdminClientOrder::where('tenant_id', $tenant->id)->first();
         $tenantPassTB = DB::table('tenant_password_tables')->where('tenant_id', $tenant->id)->first();
         if (!empty($tenant)) {
             $domain = $tenant['domains'][0]['domain'];
-            $dataForMail = [
+            $detail = [
                 'email' => $adminClientOrder->email,
                 'password' => $tenantPassTB->password,
                 'domain' => $domain,
                 'name' => $user->firstname.' '.$user->lastname,
             ];
-            $res =  $this->runAWSUtility($domain, $dataForMail);
+            $res =  $this->runAWSUtility($domain, $detail);
             echo $res;
             // dd($tenant['domains'][0]['domain']);
         }
@@ -50,7 +50,7 @@ class APIController extends Controller
         //         $body = $response->getBody(); 
         //         $xml = simplexml_load_string($body);
         //         if (htmlentities((string)$xml->reply->code) == 300) { // && htmlentities((string)$xml->reply->detail) == 'success'
-        //             // return $this->runAWSUtility($data, $dataForMail);
+        //             // return $this->runAWSUtility($data, $detail);
         //         }
         //         else {
         //             return response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
@@ -93,12 +93,12 @@ class APIController extends Controller
         }
     }
 
-    public function runAWSUtility($domain, $dataForMail){
+    public function runAWSUtility($domain, $detail){
         try {
             $handler = new CurlHandler();
             $client = new \GuzzleHttp\Client();
             $tapMiddleware = Middleware::tap(function ($request) {});
-            $data = ["DomainName" => 'drdionneibekiemd.com'];
+            $data = ["DomainName" => $domain];
 
             $response = $client->request('POST', 'https://wcdawsutility.playmock.com.ng/createzone', [
                 'json' => $data,
@@ -106,9 +106,8 @@ class APIController extends Controller
             ]);
 
             $responseCode = $response->getStatusCode();
-            // echo $responseCode;
             if ($responseCode == 200) {
-               $this->sendMail($dataForMail);
+               $this->sendMail($detail);
                 echo 200;
             }
             else {
@@ -132,7 +131,7 @@ class APIController extends Controller
         }
     }
 
-    private function sendMail($dataForMail) {
-        Mail::to($dataForMail['email'])->send(new WebsiteLive($dataForMail));
+    private function sendMail($detail) {
+        Mail::to($detail['email'])->send(new WebsiteLive($detail));
     }
 }
