@@ -188,7 +188,6 @@
                     .then((res) => {
                         if (res.status === 200) {
                             if (res.data.status == 200) {
-                                this.setCookie("_token", res.data.access_token, 1);
                                 this.saveAccessToken(
                                     res.data.access_token,
                                     res.data.user.id,
@@ -238,6 +237,7 @@
                     .post("/api/savelogin", data)
                     .then((res) => {
                         if (res.data.status == 201) {
+                            this.setCookie("_token", res.data.access_token, 1);
                             localStorage.setItem('візіт', visits + 1);
                             this.loading = false;
                             role === 'Admin' ? location.reload() : window.location.href = `https://${location.host}`;
