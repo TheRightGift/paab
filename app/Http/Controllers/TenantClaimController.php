@@ -640,7 +640,7 @@ class TenantClaimController extends Controller
         }
         
         if ($cvMedDb !== null) {
-            $seedMedA = 'is a physician with a '.$degree.'.'.' from '.$cvMedDb->institution.'. ';
+            $seedMedA = 'a physician with a '.$degree.'.'.' from '.$cvMedDb->institution.'. ';
         }
         if ($cvUndergradDb !== null) {
             $seedGradA = 'I have an undergraduate degree of '.$cvUndergradDb->major.' from the '.$cvUndergradDb->institution.'. ';
