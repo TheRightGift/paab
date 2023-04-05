@@ -60,6 +60,7 @@
                 />
             </div>
             <FooterComponent />
+     
             <div class="fixedBtmBtn" v-if="can === '1'">
                 <a
                     target="_self"
