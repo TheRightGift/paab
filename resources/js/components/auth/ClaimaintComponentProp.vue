@@ -1310,8 +1310,7 @@
                         </div>
 
                         <!-- Experience Section -->
-                        <div v-show="view == 8">
-                            <!-- Experience Check -->
+                        <!-- <div v-show="view == 8">
                             <div v-show="experienceCheck == 0">
                                 <p class="contentTitle">
                                     Tell us about your experience
@@ -1498,10 +1497,10 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Add More Quarifications Section -->
-                        <div v-show="view == 9">
+                        <div v-show="view == 8">
                             <div v-show="addQualificaion == 0 && additionalSchoolUpdate == 0">
                                 <p class="contentTitle">
                                     Do you have additional academic
@@ -1689,7 +1688,7 @@
                        
 
                         <!-- Publish Section -->
-                        <div v-show="view == 10" class="container">
+                        <div v-show="view == 9" class="container">
                             <div class="contentTitle" v-if="!showGoLiveBtns" >
                                 <span class="serviceSuccessTxt">Congrats!</span>
                                 Your site has been setup successfully!
@@ -1862,7 +1861,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div v-if="view == 8">
+                            <!-- <div v-if="view == 8">
                                 <div class="skipDiv">
                                     <button class="skipBtn" @click="prev(5)">
                                         <i class="material-icons"
@@ -1885,12 +1884,12 @@
                                         >
                                     </button>
                                 </div>
-                            </div>
-                            <div v-if="view == 9">
+                            </div> -->
+                            <div v-if="view == 8">
                                 <div class="skipDiv">
                                     <button
                                         class="skipBtn btnOn"
-                                        @click="prev(6)"
+                                        @click="prev(5)"
                                         
                                     >
                                         <i class="material-icons"
@@ -1900,7 +1899,7 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next(6)"
+                                        @click="next(5)"
                                         :class="
                                             addQualificaion > 5  || addQualificaion == 0
                                                 ? 'btnOff'
@@ -1914,13 +1913,13 @@
                                 </div>
                             </div>
                             
-                            <div v-if="view == 10">
+                            <div v-if="view == 9">
                                 <div class="skipDiv">
                                     <button
                                         class="skipBtn"
-                                        @click="prev(7)"
-                                        :disabled="view < 10"
-                                        :class="view < 10 ? 'btnOff' : 'btnOn'"
+                                        @click="prev(6)"
+                                        :disabled="view < 9"
+                                        :class="view < 9 ? 'btnOff' : 'btnOn'"
                                     >
                                         <i class="material-icons"
                                             >keyboard_arrow_left</i
@@ -1929,9 +1928,9 @@
 
                                     <button
                                         class="skipBtn"
-                                        @click="next(7)"
-                                        :disabled="view == 10"
-                                        :class="view >= 10 ? 'btnOff' : 'btnOn'"
+                                        @click="next(6)"
+                                        :disabled="view == 9"
+                                        :class="view >= 9 ? 'btnOff' : 'btnOn'"
                                     >
                                         <i class="material-icons"
                                             >keyboard_arrow_right</i
@@ -2007,7 +2006,7 @@
                     { stepValue: "Internship", filled: false, current: 0 },
                     { stepValue: "Residency", filled: false, current: 0 },
                     { stepValue: "Fellowship", filled: false, current: 0 },
-                    { stepValue: "Experience", filled: false, current: 0 },
+                    // { stepValue: "Experience", filled: false, current: 0 },
                     { stepValue: "Education", filled: false, current: 0 },
                     { stepValue: "Payment", filled: false, current: 0 },
                 ],
@@ -2367,29 +2366,31 @@
                     } else {
                         this.fellowshipCheck--;
                     }
-                }  else if(num === 5){//experience
-                    // this.experienceCheck != 0 ? this.experienceCheck-- : this.view--;
-                    if(this.experienceCheck <= 0){
-                        this.view = 7;
-                        this.fellowshipCheck = 1;
-                    } else {
-                        this.experienceCheck--;
-                    }
-                }  else if( num === 6){//additional Ed
+                }  
+                // else if(num === 5){//experience
+                //     // this.experienceCheck != 0 ? this.experienceCheck-- : this.view--;
+                //     if(this.experienceCheck <= 0){
+                //         this.view = 7;
+                //         this.fellowshipCheck = 1;
+                //     } else {
+                //         this.experienceCheck--;
+                //     }
+                // }  
+                else if( num === 5){//additional Ed
                     // this.addQualificaion != 0 ? this.addQualificaion-- : this.view--;
                     if(this.addQualificaion <= 1){
-                        this.view = 8;
-                        this.experienceCheck = 1;
+                        this.view = 7;
+                        this.fellowshipCheck = 1;
+                        // this.experienceCheck = 1;
                     } else {
                         this.addQualificaion--;
                     }
-                } else if(num === 7){//payment
-                        this.view = 9;
+                } else if(num === 6){//payment
+                        this.view = 8;
                         this.addQualificaion = 1;
                 }                
             },
             next(num = null) {
-                console.log(this.view)
                 if(num === null){
                     if (this.view === 2) {
                         this.setDomain = true;
@@ -2455,17 +2456,19 @@
                     if (this.fellowshipCheck >= 3) {
                         this.view = 8;
                     }
-                } else if(num === 5){//experience
-                    this.experienceCheck != 3 ? (this.saveExperience(), this.experienceCheck++) : null;
+                } 
+                // else if(num === 5){//experience
+                //     this.experienceCheck != 3 ? (this.saveExperience(), this.experienceCheck++) : null;
 
-                    if (this.experienceCheck >= 3) {
-                        this.view = 9;
-                        if (this.additionalSchoolUpdate === 1) {
-                            this.addQualificaion = 1;
-                        }
-                    }
-                } else if( num === 6){//additional Ed
-                    this.addQualificaion !== 3 ? (this.saveAdditionalSchoolTime(), this.addQualificaion++) : this.view = 10;
+                //     if (this.experienceCheck >= 3) {
+                //         this.view = 9;
+                //         if (this.additionalSchoolUpdate === 1) {
+                //             this.addQualificaion = 1;
+                //         }
+                //     }
+                // } 
+                else if( num === 5){//additional Ed
+                    this.addQualificaion !== 3 ? (this.saveAdditionalSchoolTime(), this.addQualificaion++) : this.view = 9;
                 } 
                 
             },
@@ -3067,7 +3070,7 @@
                 this.addQualificaion = 1;
             },
             addQualNotSelected() {
-                this.view = 10;
+                this.view = 9;
             },
             addMoreQualSelected() {
                 this.addQualificaion = 1;
