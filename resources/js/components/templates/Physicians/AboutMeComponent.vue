@@ -57,8 +57,8 @@
                                         <span>
                                             Hi, I’m
                                             <br />
-                                            {{ title }} {{ bio.firstname }}
-                                            {{ bio.lastname }}
+                                            {{ bio.firstname }}
+                                            {{ bio.lastname }}({{ title }})
                                             <span
                                                 class="primaryColorBoxDesign"
                                             ></span>

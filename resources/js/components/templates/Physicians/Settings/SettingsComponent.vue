@@ -195,6 +195,7 @@
                                     res.data.user.role,
                                     res.data.user.visits
                                 );
+                                this.setCookie("_token", res.data.access_token, 1);
                             } else if (res.data.status == 404) {
                                 M.toast({
                                     html: res.data.error,
@@ -237,7 +238,6 @@
                     .post("/api/savelogin", data)
                     .then((res) => {
                         if (res.data.status == 201) {
-                            this.setCookie("_token", res.data.access_token, 1);
                             localStorage.setItem('візіт', visits + 1);
                             this.loading = false;
                             role === 'Admin' ? location.reload() : window.location.href = `https://${location.host}`;
