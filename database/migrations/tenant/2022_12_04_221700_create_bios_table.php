@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('title_id')->nullable();
             $table->string('lastname')->nullable();
             $table->string('othername')->nullable();
+            $table->enum('gender', ['M', 'F', 'O']);
             $table->timestamps();
         });
     }

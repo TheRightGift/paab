@@ -807,6 +807,16 @@
                                             <span class="radioBtnSpan">No</span>
                                         </label>
                                     </p>
+                                    <p>
+                                        <label @click="internNotSelected()">
+                                            <input
+                                                class="with-gap"
+                                                name="intern"
+                                                type="radio"
+                                            />
+                                            <span class="radioBtnSpan">Ongoing</span>
+                                        </label>
+                                    </p>
                                 </div>
                             </div>
 
@@ -974,6 +984,16 @@
                                                 type="radio"
                                             />
                                             <span class="radioBtnSpan">No</span>
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label @click="residencyNotSelected()">
+                                            <input
+                                                class="with-gap"
+                                                name="intern"
+                                                type="radio"
+                                            />
+                                            <span class="radioBtnSpan">Ongoing</span>
                                         </label>
                                     </p>
                                 </div>
@@ -1144,6 +1164,16 @@
                                                 type="radio"
                                             />
                                             <span class="radioBtnSpan">No</span>
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label @click="fellowNotSelected()">
+                                            <input
+                                                class="with-gap"
+                                                name="intern"
+                                                type="radio"
+                                            />
+                                            <span class="radioBtnSpan">Ongoing</span>
                                         </label>
                                     </p>
                                 </div>
@@ -2359,6 +2389,7 @@
                 }                
             },
             next(num = null) {
+                console.log(this.view)
                 if(num === null){
                     if (this.view === 2) {
                         this.setDomain = true;
@@ -2376,7 +2407,7 @@
                         this.registerUpdateUser();
                         this.updateBio();
                         if (
-                            (this.bio.title_id !== null || this.bio.title_id !== "") &&
+                            (this.bio.title_id !== null && this.bio.title_id !== "") &&
                             this.bio.firstname !== "" &&
                             this.bio.lastname !== ""
                         ) {
@@ -2384,6 +2415,10 @@
                             this.view = 2;
                         } else {
                             this.view = 1;
+                            M.toast({
+                                html: 'Please select a title',
+                                classes: 'errorNotifier'
+                            })
                         }
                     } else if (this.view != 4) {
                         this.view++;

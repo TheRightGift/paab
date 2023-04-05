@@ -31,37 +31,33 @@ class APIController extends Controller
                 'domain' => $domain,
                 'name' => $user->firstname.' '.$user->lastname,
             ];
-            return $this->runAWSUtility($domain, $detail);
+            $domainDotCom = $domain.'.com';
+            $years = 1;
+            $key = env('NAMESILO_API_KEY');
+            $api = env('NAMESILO_API_URL');
+            try {
+                $URL = "{$api}/registerDomain?version=1&type=xml&key={$key}&domain={$domainDotCom}&years={$years}&private=1&auto_renew=1";
+                $client = new \GuzzleHttp\Client();
+            
+                $response = $client->request('GET', $URL);
+                $body = $response->getBody(); 
+                $xml = simplexml_load_string($body);
+                if (htmlentities((string)$xml->reply->code) == 300) { // && htmlentities((string)$xml->reply->detail) == 'success'
+                    // return $this->runAWSUtility($data, $detail);
+                    return $this->runAWSUtility($domainDotCom, $detail);
+                }
+                else {
+                    return response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
+                }
+            } catch (\Throwable $th) {
+                echo $th->getMessage();
+                exit;
+            }
         }
         else{
             return response()->json(['status' => 404, 'message' => 'Payment made against a physician that does not exist']);
         }
-        // $years = 1;
-        // $key = env('NAMESILO_API_KEY');
-        // $api = env('NAMESILO_API_URL');
-        // if ($domainName !== null && $mail !== null) {
-        //     try {
-        //         $URL = "{$api}/registerDomain?version=1&type=xml&key={$key}&domain={$domainName}&years={$years}&private=1&auto_renew=1";
-        //         $client = new \GuzzleHttp\Client();
-               
-        //         $response = $client->request('GET', $URL);
-        //         $body = $response->getBody(); 
-        //         $xml = simplexml_load_string($body);
-        //         if (htmlentities((string)$xml->reply->code) == 300) { // && htmlentities((string)$xml->reply->detail) == 'success'
-        //             // return $this->runAWSUtility($data, $detail);
-        //         }
-        //         else {
-        //             return response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
-        //         }
-        //     } catch (\Throwable $th) {
-        //         //throw $th;
-        //         echo $th->getMessage();
-        //         exit;
-        //     }
-        // }
-        // else {
-        //     return response()->json(['message' => 'Failure', 'status' => 422], 422);
-        // }
+        
     }
 
     public function configureEmail($domainName, $key, $email, $forward1) {

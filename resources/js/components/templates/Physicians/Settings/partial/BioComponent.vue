@@ -26,21 +26,21 @@
                             </p>
                         </div>
                         <div>
-                            <span v-if="bio.about !== null">
+                            <span v-if="bio.gender !== null">
                                 <i
                                     class="material-icons"
                                     id="genTitleCheck1"
-                                    v-if="bio.about.length > 600"
+                                    v-if="bio.gender != ''"
                                 >check</i
                                 >
                             </span>
                             <i
                                 class="material-icons genTitleClear"
-                                v-else-if="bio.about == ''"
+                                v-else-if="bio.gender == ''"
                                 >clear</i
                             >
                             <p class="genTitle cursor" @click="bioNextBtn">
-                                Description
+                                Gender
                             </p>
                         </div>
 
@@ -157,20 +157,20 @@
                                 <i
                                     class="material-icons"
                                     id="genTitleCheck1"
-                                    v-if="bio.about.length > 600"
+                                    v-if="bio.gender != ''"
                                 >check</i
                                 >
                             </span>
                             <i
                                 class="material-icons genTitleClear"
-                                v-else-if="bio.about === ''"
+                                v-else-if="bio.gender === ''"
                                 >clear</i
                             >
                             <p
                                 class="genTitle cursor activeTab"
                                 @click="bioNextBtn"
                             >
-                                Description
+                                Gender
                             </p>
                         </div>
 
@@ -212,18 +212,19 @@
                         <div class="col s12 m12 l6">
                             <p class="genTitle1">About You</p>
 
-                            <p class="genTxt">
-                                Readers only looks at vital info about you, so make
-                                it catchy. Not more than (614) and not less than
-                                (600) characters.
-                            </p>
-
-                            <div class="input-field">
+                            <select class="browser-default" v-model="bio.gender">
+                                <option value="" disabled selected>Choose gender</option>
+                                <option value="M">Male, He/Him</option>
+                                <option value="F">Female, She/Her</option>
+                                <option value="O">Others, They/Them</option>
+                            </select>
+                            
+                            <!-- <div class="input-field">
                                 <textarea v-model="bio.about" class="materialize-textarea bioDescribeInput" placeholder="Highly skilled Pediatrician with 9 year of experience ..." maxlength="614"></textarea>
                                 <p class="right m-0 " :class="{redColor: aboutCount <= 599, successColor: aboutCount >= 614}">
                                     {{aboutCount}}/614
                                 </p>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="col s12 m12 l6">
@@ -285,21 +286,21 @@
                             </p>
                         </div>
                         <div>
-                            <span v-if="bio.about !== null">
+                            <span v-if="bio.gender !== ''">
                                 <i
                                     class="material-icons"
                                     id="genTitleCheck1"
-                                    v-if="bio.about.length > 600"
+                                    v-if="bio.gender !== ''"
                                 >check</i
                                 >
                             </span>
                             <i
                                 class="material-icons genTitleClear"
-                                v-else-if="bio.about === ''"
+                                v-else-if="bio.gender === ''"
                                 >clear</i
                             >
                             <p class="genTitle cursor" @click="bioNextBtn">
-                                Description
+                                Gender
                             </p>
                         </div>
                         <div>
@@ -469,21 +470,21 @@
                             </p>
                         </div>
                         <div>
-                            <span v-if="bio.about !== null">
+                            <span v-if="bio.gender !== null">
                                 <i
                                     class="material-icons"
                                     id="genTitleCheck1"
-                                    v-if="bio.about.length > 600"
+                                    v-if="bio.gender !== null"
                                 >check</i
                                 >
                             </span>
                             <i
                                 class="material-icons genTitleClear"
-                                v-else-if="bio.about == ''"
+                                v-else-if="bio.gender == ''"
                                 >clear</i
                             >
                             <p class="genTitle cursor" @click="bioNextBtn">
-                                Description
+                                Gender
                             </p>
                         </div>
                         <div>
@@ -651,7 +652,7 @@ import ImageCropper from "../../../../partials/ImageCropper.vue";
             return {
                 bio: {
                     photo: null,
-                    about: "",
+                    gender: "",
                     firstname: this.user.firstname,
                     lastname: this.user.lastname,
                     CV: null,
@@ -662,11 +663,7 @@ import ImageCropper from "../../../../partials/ImageCropper.vue";
                 showCropper: false,
             };
         },
-        computed: {
-            aboutCount() {
-                return this.bio.about.length;
-            },
-        },
+        
         methods: {
             deleteImg() {
                 this.bio.oldPhoto = this.bio.photo;
@@ -727,9 +724,10 @@ import ImageCropper from "../../../../partials/ImageCropper.vue";
                     let toSend = {
                         firstname: this.bio.firstname,
                         lastname: this.bio.lastname,
-                        about: this.bio.about,
+                        gender: this.bio.gender,
                         photo: this.bio.photo,
                         id: this.bio.id,
+                        about: "",
                     };
                     data = { ...data, ...toSend };
                 }
@@ -737,17 +735,19 @@ import ImageCropper from "../../../../partials/ImageCropper.vue";
                     let toSend = {
                         firstname: this.bio.firstname,
                         lastname: this.bio.lastname,
-                        about: this.bio.about,
+                        gender: this.bio.gender,
                         CV: this.bio.CV,
                         id: this.bio.id,
+                        about: "",
                     };
                     data = { ...data, ...toSend };
                 } else {
                     let detail = {
                         firstname: this.bio.firstname,
                         lastname: this.bio.lastname,
-                        about: this.bio.about,
+                        gender: this.bio.gender,
                         id: this.bio.id,
+                        about: "",
                     };
                     data = { ...data, ...detail };
                 }
@@ -761,7 +761,7 @@ import ImageCropper from "../../../../partials/ImageCropper.vue";
             saved(newVal, oldVal) {
                 if (newVal != null) {
                     this.bio.photo = newVal.photo;
-                    this.bio.about = newVal.about;
+                    this.bio.gender = newVal.gender;
                     this.bio.id = newVal.id;
                     this.bio.firstname = newVal.firstname;
                     this.bio.lastname = newVal.lastname;

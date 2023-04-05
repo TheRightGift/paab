@@ -90,6 +90,10 @@
     margin-top: 3vh;
     margin-bottom: 3vh;
 }
+.errorNotifier {
+    color: #ffffff;
+    background-color: #e75542;
+}
 .physiTempTxt {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
