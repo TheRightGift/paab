@@ -38,7 +38,7 @@ class BioController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            'about' => 'nullable|max:614|min:600',
+            // 'about' => 'nullable|max:614|min:600',
             'lastname' => 'nullable',
             'firstname' => 'nullable',
             'gender' => 'required'

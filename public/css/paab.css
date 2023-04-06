@@ -5,6 +5,9 @@
     --white: #ffffff;
     --gray: #a4a2a2;
     --component: rgba(0, 0, 0, 0.5);
+    --pri: #16c2d5;
+    --sec: #10217d;
+    --ter: #2e4450;
 }
 ::-webkit-scrollbar {
     width: 5px;
@@ -77,8 +80,20 @@ body {
 .noMarginBottom {
     margin-bottom: 0 !important;
 }
+.noMarginTop {
+    margin-top: 0 !important;
+}
+.noMarginLeft {
+    margin-left: 0 !important;
+}
 .marginTop-5 {
     margin-top: 5vh;
+}
+.marginTop-15 {
+    margin-top: 15vh;
+}
+.marginBottom-5 {
+    margin-bottom: 5vh;
 }
 .marginTop-2 {
     margin-top: 2vh;

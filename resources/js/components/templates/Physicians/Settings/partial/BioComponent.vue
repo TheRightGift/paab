@@ -679,9 +679,9 @@ import ImageCropper from "../../../../partials/ImageCropper.vue";
                 this.showCropper = false;
             },
             CVUpload(e) {
-                if (!e.target.files.length) return;
-                this.bio.CV = e.target.files[0];
-                this.uploadedfile = e.target.files[0].name;
+                // if (!e.target.files.length) return;
+                // this.bio.CV = e.target.files[0];
+                // this.uploadedfile = e.target.files[0].name;
             },
             bioGoBackBtn() {
                 this.$emit("bioGoBackBtn");

@@ -12,9 +12,9 @@
                 >
                 <iframe title="Your website preview" srcdoc="Loading..."  id="iframe" onload="this.removeAttribute('srcdoc')"></iframe>
             </div>
-            <div class="col s12">
-                <div class="primaryColorDiv">
-                    <div class="headerDiv">
+            <div class="col s12 noPaddingLeft noPaddingRight">
+                <div class="websiteClaimContainer">
+                    <!--div class="headerDiv">
                         <a href="/">
                             <img
                                 src="/media/img/wcdMobileLogo.png"
@@ -30,8 +30,8 @@
                         <p class="headerTitle">
                             It is time for the world to hear your pulse
                         </p>
-                    </div>
-                    <div class="hide-on-large-only">
+                    </div-->
+                    <!--div class="hide-on-large-only">
                         <img
                             src="/media/img/3dDoctors.png"
                             alt="3dDoctors.png"
@@ -44,1914 +44,1836 @@
                             alt="3dDoctorsLarge.png"
                             class="primaryColorDocsImgLarge"
                         />
-                    </div>
-                </div>
-            </div>
-            <div class="col s12">
-                <div id="page"></div>
-                <div class="contentDiv">
-                    <!-- <button @click="popup" >Click Me</button> -->
-                    <ProgressComponent v-if="view >= 1" :steps="steps" :view="view" />
-                    <div class="contentInnerDiv">
-                        <!-- Get Started Section -->
-                        <div v-show="view == 0">
-                            <p class="contentTitle">
-                                Lets help you setup your website
-                            </p>
+                    </div-->
+                    <div class="col l6 s12 noPaddingLeft">
+                        <div id="page"></div>
+                        <div class="contentDiv">
+                            <!-- <button @click="popup" >Click Me</button> -->
+                            <!--ProgressComponent v-if="view >= 1" :steps="steps" :view="view" /-->
+                            <div class="contentInnerDiv">
+                                <!-- Get Started Section -->
+                                <div v-show="view == 0" class="intro">
+                                    <div class="center-align">
+                                        <a href="/">
+                                            <img
+                                                src="/media/img/wcdMobileLogo.png"
+                                                alt="wcdMobileLogo.png"
+                                                class="hide-on-large-only wcdMobileLogo"
+                                            />
+                                            <img
+                                                src="/media/img/whiteCoatDomain.png"
+                                                alt="WhiteCoatDomain Logo"
+                                                class="hide-on-med-and-down"
+                                            />
+                                        </a>
+                                        <p class="contentTitle marginTop-10">
+                                            Lets help you setup your website
+                                        </p>
 
-                            <div class="getStartedBtnDiv">
-                                <a
-                                    class="waves-effect waves-light btn getStartedBtn"
-                                    @click="getStarted()"
-                                    >GET STARTED</a
-                                >
-                            </div>
-                        </div>
-
-                        <!-- Confirm your name section -->
-                        <div v-show="view == 1">
-                            <p class="contentTitle">
-                                Is it okay to address you as follows?
-                            </p>
-
-                            <form>
-                                <div class="row formInnerDiv">
-                                    <div class="input-field col s2">
-                                        <select
-                                            v-model="bio.title_id"
-                                            required
-                                            class="browser-default"
-                                            id="userTitle"
-                                            @change="switchText($event)"
-                                        >
-                                            <option
-                                                :value="null"
-                                                disabled
-                                                selected
+                                        <div class="getStartedBtnDiv">
+                                            <a
+                                                class="waves-effect waves-light btn getStartedBtn"
+                                                @click="getStarted()"
+                                                >GET STARTED</a
                                             >
-                                                Title
-                                            </option>
-                                            <option
-                                                v-for="title in titles"
-                                                :key="title.id"
-                                                :value="title.id"
-                                            >
-                                                {{ title.name }}
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                    <div class="input-field col s3">
-                                        <input
-                                            type="text"
-                                            v-model="bio.firstname"
-                                            class="validate"
-                                            placeholder="Firstname"
-                                        />
-                                    </div>
-                                    <div class="input-field col s3">
-                                        <input
-                                            type="text"
-                                            v-model="bio.lastname"
-                                            class="validate"
-                                            placeholder="Lastname"
-                                        />
-                                    </div>
-                                    <div class="input-field col s3">
-                                        <input
-                                            type="text"
-                                            v-model="bio.othername"
-                                            class="validate"
-                                            placeholder="Othernames"
-                                        />
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <!-- Domain name check section -->
-                        <div v-show="view == 2" class="container">
-                            <p class="contentTitle">
-                                Are you ok with this domain name?
-                            </p>
-
-                            <div>
-                                <div class="row formInnerDiv">
-                                    <div class="input-field col s10">
-                                        <input
-                                            type="text"
-                                            v-model="domainSelected"
-                                            class="validate"
-                                            placeholder="Hit enter to search"
-                                            @keyup="domainCheckPassed = null"
-                                            @keyup.enter.prevent="
-                                                checkDomainAvailability
-                                            "
-                                        />
-                                        <p class="unAvailTxt">
-                                            Not satisfied with the suggestions
-                                            below, type in your preferred domain
-                                            name
-                                        </p>
-                                    </div>
-                                    <div class="col s2">
-                                        <i
-                                            class="fas fa-spinner fa-spin fa-1x"
-                                            v-if="checkingSuggestion"
-                                        ></i>
-                                        <p
-                                            class="unAvailTitle"
-                                            v-if="domainCheckPassed == false"
-                                        >
-                                            Unavailable
-                                        </p>
-                                        <p
-                                            class="availTitle"
-                                            v-if="domainCheckPassed == true"
-                                        >
-                                            Available
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col s12 domianMainDiv">
-                                    <p class="primaryTxt">Suggestions</p>
-                                    <div v-show="!loadingSuggestions">
-                                        <template
-                                            v-for="(
-                                                suggestion, index
-                                            ) in domainSuggestions"
-                                            :key="index"
-                                        >
-                                            <div class="col s1">
-                                                <p class="domainSelectP">
-                                                    <label>
-                                                        <input
-                                                            class="with-gap"
-                                                            name="group1"
-                                                            type="radio"
-                                                            :value="
-                                                                suggestion.name
-                                                            "
-                                                            v-model="
-                                                                domainSelected
-                                                            "
-                                                        />
-                                                        <span></span>
-                                                    </label>
-                                                </p>
-                                            </div>
-                                            <div class="col s11">
-                                                <table>
-                                                    <!-- Table Head Section if ever needed
-                                                    <thead><tr><th></th></tr></thead> -->
-                                                    <tbody>
-                                                        <tr>
-                                                            <td
-                                                                class="domainTdName"
-                                                            >
-                                                                {{
-                                                                    suggestion.name
-                                                                }}
-                                                            </td>
-                                                            <td
-                                                                class="domainTdState"
-                                                            >
-                                                                Available
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </template>
-                                    </div>
-                                    <div class="flex center-align p-10">
-                                        <div v-if="loadingSuggestions">
-                                            <i
-                                                class="fas fa-spinner fa-spin fa-2x"
-                                            ></i>
-                                            <p>Loading Suggestions</p>
                                         </div>
-                                        <p
-                                            class="centered"
-                                            v-if="domainSuggestions.length < 1"
-                                        >
-                                            No available suggestions
-                                        </p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- Client Img check section -->
-                        <div v-show="view == 3">
-                            <p
-                                class="contentTitle"
-                                v-show="
-                                    !showCropper &&
-                                    (bioData.photo !== null ||
-                                        uploaded !== null)
-                                "
-                            >
-                                Are you ok with this picture?
-                            </p>
-                            <p
-                                class="contentTitle"
-                                v-show="
-                                    !showCropper &&
-                                    bioData.photo === null &&
-                                    uploaded === null
-                                "
-                            >
-                                Upload Your Avatar
-                            </p>
-                            <div v-show="showCropper" class="flexed">
-                                <p class="contentTitle">
-                                    Alright, Upload a clear picture then OR
-                                </p>
-                                <a
-                                    class="btn-flat btn waves offsetS2"
-                                    href="#"
-                                    @click="showCropper = false"
-                                    >Cancel</a
-                                >
-                            </div>
+                                <!-- Confirm your name section -->
+                                <div v-show="view == 1">
+                                    <div class="row">
+                                        <h4 class="sectionTitle">
+                                            Basic information
+                                        </h4>
+                                        
+                                        <div class="row formInnerDiv">
+                                            <div class="input-field selectInputField noMarginLeft col l2 s2 noPaddingLeft">
+                                                <select
+                                                    v-model="bio.title_id"
+                                                    required
+                                                    class="browser-default"
+                                                    id="userTitle"
+                                                    @change="switchText($event)"
+                                                >
+                                                    <option
+                                                        :value="null"
+                                                        disabled
+                                                        selected
+                                                    >
+                                                        Pick Title
+                                                    </option>
+                                                    <option
+                                                        v-for="title in titles"
+                                                        :key="title.id"
+                                                        :value="title.id"
+                                                    >
+                                                        {{ title.name }}
+                                                    </option>
+                                                </select>
+                                                <label>Title</label>
+                                            </div>
 
-                            <div class="proImgContainer" v-show="!showCropper">
-                                <img
-                                    :src="
-                                        typeof bio.photo === 'string'
-                                            ? '/media/tenants/' +
-                                              tenantId +
-                                              '/img/' +
-                                              bioData.photo
-                                            : uploaded
-                                    "
-                                    :alt="bioData.firstname + ' avatar'"
-                                    class="proImg"
-                                    v-if="
-                                        bioData.photo !== null ||
-                                        uploaded !== null
-                                    "
-                                />
-                                <img
-                                    class="proImg"
-                                    src="/media/img/doctor.png"
-                                    v-else-if="bioData.photo === null"
-                                />
-                            </div>
-                            <form enctype="multipart/form-data">
-                                <div class="proImgBtnMainDiv">
-                                    <div
-                                        class="proImgBtnContainDiv"
-                                        :class="{
-                                            'justify-center':
-                                                bioData.photo === null &&
-                                                uploaded === null,
-                                        }"
-                                    >
-                                        <a
-                                            href="#"
-                                            class="proImgYesBtn"
-                                            @click="view = 4"
+                                            <div class="input-field col l3 s3">
+                                                <input
+                                                    type="text"
+                                                    v-model="bio.firstname"
+                                                    class="validate"
+                                                    placeholder="Firstname"
+                                                />
+                                                <label>Firstname</label>
+                                            </div>
+                                            <div class="input-field col l3 s3">
+                                                <input
+                                                    type="text"
+                                                    v-model="bio.lastname"
+                                                    class="validate"
+                                                    placeholder="Lastname"
+                                                />
+                                                <label>Lastname</label>
+                                            </div>
+                                            <div class="input-field col s3">
+                                                <input
+                                                    type="text"
+                                                    v-model="bio.othername"
+                                                    class="validate"
+                                                    placeholder="Othernames"
+                                                />
+                                                <label>Othername</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h4 class="sectionTitle">
+                                            Domain name
+                                        </h4>
+                                        <div>
+                                            <div class="row">
+                                                <div class="input-field col l12 s12 noPaddingLeft">
+                                                    <input
+                                                        type="text"
+                                                        v-model="domainSelected"
+                                                        class="validate noMarginBottom"
+                                                        placeholder="Hit enter to search"
+                                                        @keyup="checkDomainAvailability"
+                                                    />
+                                                    <div class="col l12 s12 right-align">
+                                                        <i
+                                                            class="fas fa-spinner fa-spin fa-1x"
+                                                            v-if="checkingSuggestion"
+                                                        ></i>
+                                                        <small
+                                                            class="unAvailTitle"
+                                                            v-if="domainCheckPassed == false"
+                                                        >
+                                                            Unavailable
+                                                        </small>
+                                                        <small
+                                                            class="availTitle"
+                                                            v-if="domainCheckPassed == true"
+                                                        >
+                                                            Available
+                                                        </small>
+                                                    </div>
+                                                    <p class="unAvailTxt noMarginBottom">
+                                                        Not satisfied with the suggestions
+                                                        below, type in your preferred domain
+                                                        name or <a href="#!" @click="generateMultiple">Display Suggestions</a>.
+                                                    </p>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <div class="row" v-if="loadingSuggestions">
+                                            <div class="col s12 domianMainDiv">
+                                                <!--p class="noMarginTop"><a href="">Display Suggestions</a></p-->
+                                                <div v-show="!loadingSuggestions">
+                                                    <template
+                                                        v-for="(
+                                                            suggestion, index
+                                                        ) in domainSuggestions"
+                                                        :key="index"
+                                                    >
+                                                        <div class="col s1">
+                                                            <p class="domainSelectP">
+                                                                <label>
+                                                                    <input
+                                                                        class="with-gap"
+                                                                        name="group1"
+                                                                        type="radio"
+                                                                        :value="
+                                                                            suggestion.name
+                                                                        "
+                                                                        v-model="
+                                                                            domainSelected
+                                                                        "
+                                                                    />
+                                                                    <span></span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col s11">
+                                                            <table>
+                                                                <!-- Table Head Section if ever needed
+                                                                <thead><tr><th></th></tr></thead> -->
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td
+                                                                            class="domainTdName"
+                                                                        >
+                                                                            {{
+                                                                                suggestion.name
+                                                                            }}
+                                                                        </td>
+                                                                        <td
+                                                                            class="domainTdState"
+                                                                        >
+                                                                            Available
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                                <div class="flex center-align p-10">
+                                                    <div v-if="loadingSuggestions">
+                                                        <i
+                                                            class="fas fa-spinner fa-spin fa-2x"
+                                                        ></i>
+                                                        <p>Loading Suggestions</p>
+                                                    </div>
+                                                    <p
+                                                        class="centered"
+                                                        v-if="domainSuggestions.length < 1"
+                                                    >
+                                                        No available suggestions
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h4 class="sectionTitle">
+                                            Brand image
+                                        </h4>
+                                        <!--p
+                                            class="contentTitle"
                                             v-show="
                                                 !showCropper &&
                                                 (bioData.photo !== null ||
                                                     uploaded !== null)
                                             "
-                                            >Yes</a
                                         >
-                                        <div class="" id="genUploadFavIconDiv">
-                                            <div
-                                                class=""
-                                                v-if="!uploadPhotoProcessing"
-                                            >
-                                                <a
-                                                    href="#"
-                                                    role="button"
-                                                    @click.prevent="
-                                                        showFileChooser
-                                                    "
-                                                    v-show="!showCropper"
-                                                    class="decorate"
+                                            Are you ok with this picture?
+                                        </p>
+                                        <p
+                                            class="contentTitle"
+                                            v-show="
+                                                !showCropper &&
+                                                bioData.photo === null &&
+                                                uploaded === null
+                                            "
+                                        >
+                                            Upload Your Avatar
+                                        </p-->
+                                        <div v-show="showCropper" class="cFlex flexRight">
+                                            <!--p class="contentTitle">
+                                                Alright, Upload a clear picture then OR
+                                            </p-->
+                                            <a class="right" href="#" @click="showCropper = false">
+                                                <i class="material-icons priText">clear</i>
+                                            </a>
+                                        </div>
+
+                                        <div class="proImgContainer" v-show="!showCropper">
+                                            <img
+                                                :src="
+                                                    typeof bio.photo === 'string'
+                                                        ? '/media/tenants/' +
+                                                        tenantId +
+                                                        '/img/' +
+                                                        bioData.photo
+                                                        : uploaded
+                                                "
+                                                :alt="bioData.firstname + ' avatar'"
+                                                class="proImg"
+                                                v-if="
+                                                    bioData.photo !== null ||
+                                                    uploaded !== null
+                                                "
+                                            />
+                                            <img
+                                                class="proImg"
+                                                src="/media/img/doctor.png"
+                                                v-else-if="bioData.photo === null"
+                                            />
+                                        </div>
+                                        <form enctype="multipart/form-data">
+                                            <div class="proImgBtnMainDiv">
+                                                <div
+                                                    class="proImgBtnContainDiv"
+                                                    :class="{
+                                                        'justify-center':
+                                                            bioData.photo === null &&
+                                                            uploaded === null,
+                                                    }"
                                                 >
-                                                    <span
-                                                        v-if="
-                                                            bioData.photo !==
-                                                                null ||
-                                                            uploaded !== null
+                                                    <!--a
+                                                        href="#"
+                                                        class="proImgYesBtn"
+                                                        @click="view = 4"
+                                                        v-show="
+                                                            !showCropper &&
+                                                            (bioData.photo !== null ||
+                                                                uploaded !== null)
                                                         "
-                                                        >Change</span
+                                                        >Yes</a
+                                                    -->
+                                                    <div class="" id="genUploadFavIconDiv">
+                                                        <div
+                                                            class=""
+                                                            v-if="!uploadPhotoProcessing"
+                                                        >
+                                                            <div class="col l12 center-align marginTop-5">
+                                                                <a
+                                                                    href="#"
+                                                                    role="button"
+                                                                    @click.prevent="
+                                                                        showFileChooser
+                                                                    "
+                                                                    v-show="!showCropper"
+                                                                    class="btn btn-flat"
+                                                                >
+                                                                    <span
+                                                                        v-if="
+                                                                            bioData.photo !==
+                                                                                null ||
+                                                                            uploaded !== null
+                                                                        "
+                                                                        >
+                                                                            <i class="material-icons white-text">edit</i>
+                                                                        </span
+                                                                    >
+                                                                    <span v-else>Upload</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col s12">
+                                                                    <image-cropper v-if="tenantId"
+                                                                        v-show="showCropper"
+                                                                        :height="512"
+                                                                        :width="451"
+                                                                        :img="'/media/tenants/'+tenantId +'/img/'+bioData.photo"
+                                                                        @uploadPhoto="
+                                                                            photoUpload(
+                                                                                $event
+                                                                            )
+                                                                        "
+                                                                    />
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <p v-else>
+                                                            Uploading Image<i
+                                                                class="fas fa-circle-notch"
+                                                            ></i>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <!--div
+                                                    class="proImgInstructDiv"
+                                                    v-show="!showCropper"
+                                                >
+                                                    <p class="proImgInstruct">
+                                                        The image should be greater than
+                                                        451px width and 512px height
+                                                    </p>
+                                                </div-->
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="row">
+                                        <h4 class="sectionTitle">
+                                            Undergraduate School <br/>
+                                            <small>Only fill if you had an undergrad progam before medical school</small>
+                                        </h4>
+
+                                        <div class="row">
+                                            <div class="col l12 s12 noPaddingLeft">
+                                                <input
+                                                    placeholder="Name of institution"
+                                                    v-model="
+                                                        underGrad.institution
+                                                    "
+                                                    type="text"
+                                                    class="validate formInput"
+                                                />
+                                                <label>Name of institution</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s6 noPaddingLeft">
+                                                <input
+                                                    placeholder="What was your major?"
+                                                    type="text"
+                                                    v-model="
+                                                        underGrad.major
+                                                    "
+                                                    class="validate formInput"
+                                                />
+                                                <label>Undergraduate Major</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <input
+                                                    placeholder="What was your minor(optional)?"
+                                                    type="text"
+                                                    v-model="
+                                                        underGrad.minor
+                                                    "
+                                                    class="validate formInput"
+                                                />
+                                                <label>Undergraduate Minor(optional)</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col l6 s6 noPaddingLeft">
+                                                <p class="schQuesP">
+                                                    When did you start?
+                                                </p>
+                                                <div
+                                                    class="row spaceAround"
+                                                >
+                                                    <div
+                                                        class="input-field col s6 formInput1ColDiv noPaddingLeft"
                                                     >
-                                                    <span v-else>Upload</span>
-                                                </a>
-                                                <div class="row">
-                                                    <div class="col s12">
-                                                        <image-cropper
-                                                            v-show="showCropper"
-                                                            :height="512"
-                                                            :width="451"
-                                                            @uploadPhoto="
-                                                                photoUpload(
-                                                                    $event
-                                                                )
+                                                        <select
+                                                            class="validate formInput1 browser-default"
+                                                            v-model="
+                                                                underGrad.monthStart
                                                             "
-                                                        />
+                                                        >
+                                                            <option
+                                                                :value="''"
+                                                                disabled
+                                                                selected
+                                                            >
+                                                                Month
+                                                            </option>
+                                                            <option
+                                                                v-for="(
+                                                                    month,
+                                                                    index
+                                                                ) in months"
+                                                                :key="index"
+                                                                :value="
+                                                                    index +
+                                                                    1
+                                                                "
+                                                            >
+                                                                {{ month }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div
+                                                        class="input-field col s6 formInput1ColDiv"
+                                                    >
+                                                        <!-- <input
+                                                            placeholder="Year"
+                                                            type="text"
+                                                            class="
+                                                                validate
+                                                                formInput1
+                                                            "
+                                                            v-model="underGrad.yearStart"
+                                                        /> -->
+                                                        <date-picker
+                                                            v-model:value="
+                                                                underGrad.yearStart
+                                                            "
+                                                            type="year"
+                                                            placeholder="Year"
+                                                        ></date-picker>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <p v-else>
-                                                Uploading Image<i
-                                                    class="fas fa-circle-notch"
-                                                ></i>
+
+                                            <div class="col l6 s6">
+                                                <p class="schQuesP">
+                                                    When did you finish?
+                                                </p>
+                                                <div
+                                                    class="row spaceAround"
+                                                >
+                                                    <div
+                                                        class="input-field col s6 formInput1ColDiv noPaddingLeft"
+                                                    >
+                                                        <select
+                                                            class="validate formInput1 browser-default"
+                                                            v-model="
+                                                                underGrad.monthEnd
+                                                            "
+                                                        >
+                                                            <option
+                                                                :value="''"
+                                                                disabled
+                                                                selected
+                                                            >
+                                                                Month
+                                                            </option>
+                                                            <option
+                                                                v-for="(
+                                                                    month,
+                                                                    index
+                                                                ) in months"
+                                                                :key="index"
+                                                                :value="
+                                                                    index +
+                                                                    1
+                                                                "
+                                                            >
+                                                                {{ month }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div
+                                                        class="input-field col s6 formInput1ColDiv noPaddingRight"
+                                                    >
+                                                        <!-- <input
+                                                            placeholder="Year"
+                                                            type="text"
+                                                            class="
+                                                                validate
+                                                                formInput1
+                                                            "
+                                                            v-model="underGrad.yearEnd"
+                                                        /> -->
+                                                        <date-picker
+                                                            v-model:value="
+                                                                underGrad.yearEnd
+                                                            "
+                                                            type="year"
+                                                            placeholder="Year"
+                                                        ></date-picker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h4 class="sectionTitle">
+                                            {{medText}} School
+                                        </h4>
+
+                                        <div class="row">
+                                            <div
+                                                class="input-field col l12 s12 noPaddingLeft"
+                                            >
+                                                <input
+                                                    placeholder="Name of institution"
+                                                    type="text"
+                                                    class="validate formInput"
+                                                    v-model="
+                                                        medSchool.institution
+                                                    "
+                                                />
+                                                <label>Name of institution</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col l6 s6 noPaddingLeft">
+                                                <p class="schQuesP">
+                                                    When did you start?
+                                                </p>
+                                                <div
+                                                    class="row spaceAround"
+                                                >
+                                                    <div
+                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
+                                                    >
+                                                        <select
+                                                            class="validate formInput1 browser-default"
+                                                            v-model="
+                                                                medSchool.monthStart
+                                                            "
+                                                        >
+                                                            <option
+                                                                :value="''"
+                                                                disabled
+                                                                selected
+                                                            >
+                                                                Month
+                                                            </option>
+                                                            <option
+                                                                v-for="(
+                                                                    month,
+                                                                    index
+                                                                ) in months"
+                                                                :key="index"
+                                                                :value="
+                                                                    index +
+                                                                    1
+                                                                "
+                                                            >
+                                                                {{ month }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div
+                                                        class="input-field col l6 s6 formInput1ColDiv"
+                                                    >
+                                                        <date-picker
+                                                            v-model:value="
+                                                                medSchool.yearStart
+                                                            "
+                                                            type="year"
+                                                            placeholder="Year"
+                                                        ></date-picker>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col s6 noPaddingLeft">
+                                                <p class="schQuesP">
+                                                    When did you finish?
+                                                </p>
+                                                <div
+                                                    class="row spaceAround"
+                                                >
+                                                    <div
+                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
+                                                    >
+                                                        <select
+                                                            class="validate formInput1 browser-default"
+                                                            v-model="
+                                                                medSchool.monthEnd
+                                                            "
+                                                        >
+                                                            <option
+                                                                :value="''"
+                                                                disabled
+                                                                selected
+                                                            >
+                                                                Month
+                                                            </option>
+                                                            <option
+                                                                v-for="(
+                                                                    month,
+                                                                    index
+                                                                ) in months"
+                                                                :key="index"
+                                                                :value="
+                                                                    index +
+                                                                    1
+                                                                "
+                                                            >
+                                                                {{ month }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div
+                                                        class="input-field col l6 s6 formInput1ColDiv noPaddingRight"
+                                                    >
+                                                        <date-picker
+                                                            v-model:value="
+                                                                medSchool.yearEnd
+                                                            "
+                                                            type="year"
+                                                            placeholder="Year"
+                                                        ></date-picker>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Internship Section -->
+                                <div v-show="view == 5">
+                                    <!-- Internship Check -->
+                                    <div v-show="internshipCheck == 0 && internUpdate === 0" class="container">
+                                        <p class="contentTitle">
+                                            Have you completed your internship program?
+                                        </p>
+
+                                        <div class="radioBtnMainDiv">
+                                            <p>
+                                                <label @click="internSelected()">
+                                                    <input
+                                                        class="with-gap"
+                                                        name="intern"
+                                                        type="radio"
+                                                    />
+                                                    <span class="radioBtnSpan"
+                                                        >Yes</span
+                                                    >
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label @click="internNotSelected()">
+                                                    <input
+                                                        class="with-gap"
+                                                        name="intern"
+                                                        type="radio"
+                                                    />
+                                                    <span class="radioBtnSpan">No</span>
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label @click="internNotSelected()">
+                                                    <input
+                                                        class="with-gap"
+                                                        name="intern"
+                                                        type="radio"
+                                                    />
+                                                    <span class="radioBtnSpan">Ongoing</span>
+                                                </label>
                                             </p>
                                         </div>
                                     </div>
+
+                                    <div v-show="internshipCheck == 1">
+                                        <p class="contentTitle">
+                                            Tell us about your internship program
+                                        </p>
+
+                                        <form class="mainForm">
+                                            <div class="row formContainDiv">
+                                                <div class="input-field col s12">
+                                                    <input
+                                                        placeholder="Name of institution?"
+                                                        type="text"
+                                                        class="validate formInput"
+                                                        v-model="internship.institution"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div v-show="internshipCheck == 2">
+                                        <p class="contentTitle">
+                                            Tell us about your internship program
+                                        </p>
+
+                                        <form class="mainForm">
+                                            <div class="row formInnerDiv">
+                                                <div class="col s6">
+                                                    <p class="schQuesP">
+                                                        When did you start?
+                                                    </p>
+                                                    <div class="row spaceAround">
+                                                        <div class="col s3">
+                                                            <p class="schQuesP1">
+                                                                Start
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <select
+                                                                class="validate formInput1 browser-default"
+                                                                v-model="
+                                                                    internship.monthStart
+                                                                "
+                                                            >
+                                                                <option
+                                                                    :value="''"
+                                                                    disabled
+                                                                    selected
+                                                                >
+                                                                    Month
+                                                                </option>
+                                                                <option
+                                                                    v-for="(
+                                                                        month, index
+                                                                    ) in months"
+                                                                    :key="index"
+                                                                    :value="index + 1"
+                                                                >
+                                                                    {{ month }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <date-picker
+                                                                v-model:value="
+                                                                    internship.yearStart
+                                                                "
+                                                                type="year"
+                                                                placeholder="Year"
+                                                            ></date-picker>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col s5">
+                                                    <p class="schQuesP">
+                                                        When did you finish?
+                                                    </p>
+                                                    <div class="row spaceAround">
+                                                        <div class="col s2">
+                                                            <p class="schQuesP1">Finish</p>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <select
+                                                                class="validate formInput1 browser-default"
+                                                                v-model="
+                                                                    internship.monthEnd
+                                                                "
+                                                            >
+                                                                <option
+                                                                    :value="''"
+                                                                    disabled
+                                                                    selected
+                                                                >
+                                                                    Month
+                                                                </option>
+                                                                <option
+                                                                    v-for="(
+                                                                        month, index
+                                                                    ) in months"
+                                                                    :key="index"
+                                                                    :value="index + 1"
+                                                                >
+                                                                    {{ month }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <date-picker
+                                                                v-model:value="
+                                                                    internship.yearEnd
+                                                                "
+                                                                type="year"
+                                                                placeholder="Year"
+                                                            ></date-picker>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- Residency Section -->
+                                <div v-show="view == 6">
+                                    <!-- Residency Check -->
                                     <div
-                                        class="proImgInstructDiv"
-                                        v-show="!showCropper"
+                                        v-show="
+                                            residencyCheck == 0 && residencyUpdate === 0
+                                        "
+                                        class="container"
                                     >
-                                        <p class="proImgInstruct">
-                                            The image should be greater than
-                                            451px width and 512px height
+                                        <p class="contentTitle">
+                                            Have you completed your residency program?
+                                        </p>
+
+                                        <div class="radioBtnMainDiv">
+                                            <p>
+                                                <label @click="residencySelected()">
+                                                    <input
+                                                        class="with-gap"
+                                                        name="intern"
+                                                        type="radio"
+                                                    />
+                                                    <span class="radioBtnSpan"
+                                                        >Yes</span
+                                                    >
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label @click="residencyNotSelected()">
+                                                    <input
+                                                        class="with-gap"
+                                                        name="intern"
+                                                        type="radio"
+                                                    />
+                                                    <span class="radioBtnSpan">No</span>
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label @click="residencyNotSelected()">
+                                                    <input
+                                                        class="with-gap"
+                                                        name="intern"
+                                                        type="radio"
+                                                    />
+                                                    <span class="radioBtnSpan">Ongoing</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div v-show="residencyCheck == 1">
+                                        <p class="contentTitle">
+                                            Tell us about your residency program
+                                        </p>
+
+                                        <form class="mainForm">
+                                            <div class="row formContainDiv">
+                                                <div class="input-field col s12">
+                                                    <input
+                                                        placeholder="Name of institution?"
+                                                        type="text"
+                                                        class="validate formInput"
+                                                        v-model="residency.institution"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div v-show="residencyCheck == 2">
+                                        <p class="contentTitle">
+                                            Tell us about your residency program
+                                        </p>
+
+                                        <form class="mainForm">
+                                            <div class="row formInnerDiv">
+                                                <div class="col s6">
+                                                    <p class="schQuesP">
+                                                        When did you start?
+                                                    </p>
+                                                    <div class="row spaceAround">
+                                                        <div class="col s3">
+                                                            <p class="schQuesP1">
+                                                                Start
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <select
+                                                                class="validate formInput1 browser-default"
+                                                                v-model="
+                                                                    residency.monthStart
+                                                                "
+                                                            >
+                                                                <option
+                                                                    :value="''"
+                                                                    disabled
+                                                                    selected
+                                                                >
+                                                                    Month
+                                                                </option>
+                                                                <option
+                                                                    v-for="(
+                                                                        month, index
+                                                                    ) in months"
+                                                                    :key="index"
+                                                                    :value="index + 1"
+                                                                >
+                                                                    {{ month }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <date-picker
+                                                                v-model:value="
+                                                                    residency.yearStart
+                                                                "
+                                                                type="year"
+                                                                placeholder="Year"
+                                                            ></date-picker>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col s5">
+                                                    <p class="schQuesP">
+                                                        When did you finish?
+                                                    </p>
+                                                    <div class="row spaceAround">
+                                                        <div class="col s2">
+                                                            <p class="schQuesP1">Finish</p>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <select
+                                                                class="validate formInput1 browser-default"
+                                                                v-model="
+                                                                    residency.monthEnd
+                                                                "
+                                                            >
+                                                                <option
+                                                                    :value="''"
+                                                                    disabled
+                                                                    selected
+                                                                >
+                                                                    Month
+                                                                </option>
+                                                                <option
+                                                                    v-for="(
+                                                                        month, index
+                                                                    ) in months"
+                                                                    :key="index"
+                                                                    :value="index + 1"
+                                                                >
+                                                                    {{ month }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <date-picker
+                                                                v-model:value="
+                                                                    residency.yearEnd
+                                                                "
+                                                                type="year"
+                                                                placeholder="Year"
+                                                            ></date-picker>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- Fellowship Section -->
+                                <div v-show="view == 7">
+                                    <!-- Fellowship Check -->
+                                    <div
+                                        v-show="
+                                            fellowshipCheck === 0 &&
+                                            fellowshipUpdate === 0
+                                        "
+                                        class="container"
+                                    >
+                                        <p class="contentTitle">
+                                            Have you completed your fellowship program?
+                                        </p>
+
+                                        <div class="radioBtnMainDiv">
+                                            <p>
+                                                <label @click="fellowSelected()">
+                                                    <input
+                                                        class="with-gap"
+                                                        name="intern"
+                                                        type="radio"
+                                                    />
+                                                    <span class="radioBtnSpan"
+                                                        >Yes</span
+                                                    >
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label @click="fellowNotSelected()">
+                                                    <input
+                                                        class="with-gap"
+                                                        name="intern"
+                                                        type="radio"
+                                                    />
+                                                    <span class="radioBtnSpan">No</span>
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label @click="fellowNotSelected()">
+                                                    <input
+                                                        class="with-gap"
+                                                        name="intern"
+                                                        type="radio"
+                                                    />
+                                                    <span class="radioBtnSpan">Ongoing</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div v-show="fellowshipCheck == 1">
+                                        <p class="contentTitle">
+                                            Tell us about your fellowship program
+                                        </p>
+
+                                        <form class="mainForm">
+                                            <div class="row formContainDiv">
+                                                <div class="input-field col s12">
+                                                    <input
+                                                        placeholder="Name of institution?"
+                                                        type="text"
+                                                        class="validate formInput"
+                                                        v-model="fellowship.institution"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div v-show="fellowshipCheck == 2">
+                                        <p class="contentTitle">
+                                            Tell us about your fellowship program
+                                        </p>
+
+                                        <form class="mainForm">
+                                            <div class="row formInnerDiv">
+                                                <div class="col s6">
+                                                    <p class="schQuesP">
+                                                        When did you start?
+                                                    </p>
+                                                    <div class="row spaceAround">
+                                                        <div class="col s3">
+                                                            <p class="schQuesP1">
+                                                                Start
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <select
+                                                                class="validate formInput1 browser-default"
+                                                                v-model="
+                                                                    fellowship.monthStart
+                                                                "
+                                                            >
+                                                                <option
+                                                                    :value="''"
+                                                                    disabled
+                                                                    selected
+                                                                >
+                                                                    Month
+                                                                </option>
+                                                                <option
+                                                                    v-for="(
+                                                                        month, index
+                                                                    ) in months"
+                                                                    :key="index"
+                                                                    :value="index + 1"
+                                                                >
+                                                                    {{ month }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <date-picker
+                                                                v-model:value="
+                                                                    fellowship.yearStart
+                                                                "
+                                                                type="year"
+                                                                placeholder="Year"
+                                                            ></date-picker>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col s6">
+                                                    <p class="schQuesP">
+                                                        When did you finish?
+                                                    </p>
+                                                    <div class="row spaceAround">
+                                                        <div class="col s2">
+                                                            <p class="schQuesP1">Finish</p>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <select
+                                                                class="validate formInput1 browser-default"
+                                                                v-model="
+                                                                    fellowship.monthEnd
+                                                                "
+                                                            >
+                                                                <option
+                                                                    :value="''"
+                                                                    disabled
+                                                                    selected
+                                                                >
+                                                                    Month
+                                                                </option>
+                                                                <option
+                                                                    v-for="(
+                                                                        month, index
+                                                                    ) in months"
+                                                                    :key="index"
+                                                                    :value="index + 1"
+                                                                >
+                                                                    {{ month }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <date-picker
+                                                                v-model:value="
+                                                                    fellowship.yearEnd
+                                                                "
+                                                                type="year"
+                                                                placeholder="Year"
+                                                            ></date-picker>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- Experience Section -->
+                                <!-- <div v-show="view == 8">
+                                    <div v-show="experienceCheck == 0">
+                                        <p class="contentTitle">
+                                            Tell us about your experience
+                                        </p>
+                                        <form class="mainForm">
+                                            <div class="row formContainDiv">
+                                                <div class="input-field col s12">
+                                                    <input
+                                                        placeholder="Name of hospital/medical establishment?"
+                                                        type="text"
+                                                        class="validate formInput"
+                                                        v-model="
+                                                            experiences.institution
+                                                        "
+                                                    />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div v-show="experienceCheck == 1">
+                                        <p class="contentTitle">
+                                            Tell us about your experience
+                                        </p>
+                                        <form class="">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <p class="schQuesP text-center">
+                                                        Please select the
+                                                        country/state/city you work
+                                                        in?
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row spaceAround mb-0">
+                                                <div class="col s4">
+                                                    <p class="schQuesP1 text-center">
+                                                        Country
+                                                    </p>
+                                                </div>
+                                                <div class="col s4">
+                                                    <p class="schQuesP1 text-center">
+                                                        State
+                                                    </p>
+                                                </div>
+                                                <div class="col s4">
+                                                    <p class="schQuesP1 text-center">
+                                                        City
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row spaceAround formInnerDiv">
+                                                <div
+                                                    class="input-field col s3 formInput1ColDiv"
+                                                >
+                                                    <select
+                                                        class="validate formInput1 browser-default"
+                                                        v-model="countrySelected"
+                                                        @change="sortStates"
+                                                    >
+                                                        <option
+                                                            :value="''"
+                                                            disabled
+                                                            selected
+                                                        >
+                                                            Country
+                                                        </option>
+                                                        <option
+                                                            v-for="country in countries"
+                                                            :key="country.id"
+                                                            :value="country.id"
+                                                        >
+                                                            {{ country.name }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div
+                                                    class="input-field col s3 formInput1ColDiv"
+                                                >
+                                                    <select
+                                                        class="validate formInput1 browser-default"
+                                                        v-model="stateSelected"
+                                                        @change="sortCities"
+                                                    >
+                                                        <option
+                                                            :value="''"
+                                                            disabled
+                                                            selected
+                                                        >
+                                                            State
+                                                        </option>
+                                                        <option
+                                                            v-for="state in states"
+                                                            :key="state.id"
+                                                            :value="state.id"
+                                                        >
+                                                            {{ state.name }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div
+                                                    class="input-field col s3 formInput1ColDiv"
+                                                >
+                                                    <select
+                                                        class="validate formInput1 browser-default"
+                                                        v-model="experiences.city_id"
+                                                    >
+                                                        <option
+                                                            value=""
+                                                            disabled
+                                                            selected
+                                                        >
+                                                            City
+                                                        </option>
+                                                        <option
+                                                            v-for="city in cities"
+                                                            :key="city.id"
+                                                            :value="city.id"
+                                                        >
+                                                            {{ city.name }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div v-show="experienceCheck == 2">
+                                        <p class="contentTitle">
+                                            Tell us about your experience
+                                        </p>
+                                        <form class="mainForm">
+                                            <div class="row formInnerDiv">
+                                                <div class="col s12">
+                                                    <p class="schQuesP">
+                                                        When did you start?
+                                                    </p>
+                                                    <div class="row spaceAround">
+                                                        <div class="col s6">
+                                                            <p class="schQuesP1">
+                                                                Start
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <select
+                                                                class="validate formInput1 browser-default"
+                                                                v-model="
+                                                                    experiences.monthStart
+                                                                "
+                                                            >
+                                                                <option
+                                                                    :value="''"
+                                                                    disabled
+                                                                    selected
+                                                                >
+                                                                    Month
+                                                                </option>
+                                                                <option
+                                                                    v-for="(
+                                                                        month, index
+                                                                    ) in months"
+                                                                    :key="index"
+                                                                    :value="index + 1"
+                                                                >
+                                                                    {{ month }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s6 formInput1ColDiv"
+                                                        >
+                                                            <date-picker
+                                                                v-model:value="
+                                                                    experiences.yearStart
+                                                                "
+                                                                type="year"
+                                                                placeholder="Year"
+                                                            ></date-picker>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div> -->
+
+                                <!-- Add More Quarifications Section -->
+                                <div v-show="view == 8">
+                                    <div v-show="addQualificaion == 0 && additionalSchoolUpdate == 0">
+                                        <p class="contentTitle">
+                                            Do you have additional academic
+                                            qualifications?
+                                        </p>
+                                        <div class="radioBtnMainDiv">
+                                            <p>
+                                                <label @click="addQualSelected()">
+                                                    <input
+                                                        class="with-gap"
+                                                        name="intern"
+                                                        type="radio"
+                                                    />
+                                                    <span class="radioBtnSpan"
+                                                        >Yes</span
+                                                    >
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <label @click="addQualNotSelected()">
+                                                    <input
+                                                        class="with-gap"
+                                                        name="intern"
+                                                        type="radio"
+                                                    />
+                                                    <span class="radioBtnSpan">No</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div v-show="addQualificaion == 1">
+                                        <p class="contentTitle">
+                                            Tell us about your academic qualifications
+                                        </p>
+
+                                        <form class="mainForm">
+                                            <div class="row formContainDiv">
+                                                <div class="input-field col s12">
+                                                    <input
+                                                        placeholder="Name of institution?"
+                                                        type="text"
+                                                        class="validate formInput"
+                                                        v-model="
+                                                            additionalSchool.institution
+                                                        "
+                                                    />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div v-show="addQualificaion == 2">
+                                        <p class="contentTitle">
+                                            Tell us about your academic qualifications
+                                        </p>
+
+                                        <form class="mainForm">
+                                            <div class="row formContainDiv">
+                                                <div class="input-field col s12">
+                                                    <input
+                                                        placeholder="What was your degree?"
+                                                        type="text"
+                                                        class="validate formInput"
+                                                        v-model="
+                                                            additionalSchool.degree
+                                                        "
+                                                    />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div v-show="addQualificaion == 3">
+                                        <p class="contentTitle">
+                                            Tell us about your academic qualifications
+                                        </p>
+
+                                        <form class="mainForm">
+                                            <div class="row formInnerDiv">
+                                                <div class="col s6">
+                                                    <p class="schQuesP">
+                                                        When did you start?
+                                                    </p>
+                                                    <div class="row spaceAround">
+                                                        <div class="col s3">
+                                                            <p class="schQuesP1">
+                                                                Start
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <select
+                                                                class="validate formInput1 browser-default"
+                                                                v-model="
+                                                                    additionalSchool.monthStart
+                                                                "
+                                                            >
+                                                                <option
+                                                                    :value="''"
+                                                                    disabled
+                                                                    selected
+                                                                >
+                                                                    Month
+                                                                </option>
+                                                                <option
+                                                                    v-for="(
+                                                                        month, index
+                                                                    ) in months"
+                                                                    :key="index"
+                                                                    :value="index + 1"
+                                                                >
+                                                                    {{ month }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <date-picker
+                                                                v-model:value="
+                                                                    additionalSchool.yearStart
+                                                                "
+                                                                type="year"
+                                                                placeholder="Year"
+                                                            ></date-picker>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col s6">
+                                                    <p class="schQuesP">
+                                                        When did you end?
+                                                    </p>
+                                                    <div class="row spaceAround">
+                                                        <div class="col s2">
+                                                            <p class="schQuesP1">End</p>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <select
+                                                                class="validate formInput1 browser-default"
+                                                                v-model="
+                                                                    additionalSchool.monthEnd
+                                                                "
+                                                            >
+                                                                <option
+                                                                    :value="''"
+                                                                    disabled
+                                                                    selected
+                                                                >
+                                                                    Month
+                                                                </option>
+                                                                <option
+                                                                    v-for="(
+                                                                        month, index
+                                                                    ) in months"
+                                                                    :key="index"
+                                                                    :value="index + 1"
+                                                                >
+                                                                    {{ month }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div
+                                                            class="input-field col s4 formInput1ColDiv"
+                                                        >
+                                                            <date-picker
+                                                                v-model:value="
+                                                                    additionalSchool.yearEnd
+                                                                "
+                                                                type="year"
+                                                                placeholder="Year"
+                                                            ></date-picker>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            
+
+                                <!-- Publish Section -->
+                                <div v-show="view == 9" class="container">
+                                    <div class="contentTitle" v-if="!showGoLiveBtns" >
+                                        <span class="serviceSuccessTxt">Congrats!</span>
+                                        Your site has been setup successfully!
+                                        <span class="serviceSuccessTxt">Hooray!</span>
+                                        <p class="timer">
+                                            Redirecting you to your site in
+                                            {{ countdown }}s
                                         </p>
                                     </div>
+
+                                    <go-live-component :showGoLiveBtns="showGoLiveBtns" :bio="bio" @sendEmail="sendEmail($event)"/>
                                 </div>
-                            </form>
-                        </div>
 
-                        <!-- Acadamic Section -->
-                        <div v-show="view == 4">
-                            <!-- Academic Check -->
-                            <div v-show="academicCheck == 0">
-                                <p class="contentTitle">
-                                    Which academic path suits you?
-                                </p>
-
-                                <div class="acaMainDiv">
-                                    <p>
-                                        <label @click="undergradMedSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="acadamic"
-                                                type="radio"
-                                                value="1"
-                                                v-model="acadRoute"
-                                            />
-                                            <span class="radioBtnSpan"
-                                                >Undergraduate School and
-                                                Medical School</span
+                                <!-- Prev/Next Button Section -->
+                                <div class="mt-5">
+                                    <div v-if="view > 0 && view <= 3 || (view == 4 && academicCheck == 0)" class="skipDiv">
+                                        <button
+                                            class="skipBtn"
+                                            @click="prev()"
+                                            :disabled="view <= 1"
+                                            :class="view > 1 ? 'btnOn' : 'btnOff'"
+                                        >
+                                            <i class="material-icons"
+                                                >keyboard_arrow_left</i
                                             >
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label @click="medSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="acadamic"
-                                                type="radio"
-                                                value="2"
-                                                v-model="acadRoute"
-                                            />
-                                            <span class="radioBtnSpan"
-                                                >Only Medical School</span
+                                        </button>
+
+                                        <button
+                                            class="skipBtn"
+                                            @click="next()"
+                                            :disabled="view == view.length || (view == 4 && academicCheck == 0)"
+                                            :class="view != 4 ? 'btnOn' : 'btnOff'"
+                                        >
+                                            <i class="material-icons"
+                                                >keyboard_arrow_right</i
                                             >
-                                        </label>
-                                    </p>
-                                </div>
-                            </div>
+                                        </button>
 
-                            <!-- Undergrad and Med school -->
-                            <div v-show="academicCheck == 1">
-                                <div>
-                                    <p class="contentTitle">
-                                        Tell us about your time in undergraduate
-                                        school
-                                    </p>
-
-                                    <div v-if="attendedSchInfo == 0">
-                                        <form class="mainForm">
-                                            <div class="row formContainDiv">
-                                                <div
-                                                    class="input-field col s12"
-                                                >
-                                                    <input
-                                                        placeholder="Name of institution?"
-                                                        v-model="
-                                                            underGrad.institution
-                                                        "
-                                                        type="text"
-                                                        class="validate formInput"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                    <div v-if="attendedSchInfo == 1">
-                                        <form class="mainForm">
-                                            <div class="row formInnerDiv">
-                                                <div class="input-field col s5">
-                                                    <input
-                                                        placeholder="What was your major?"
-                                                        type="text"
-                                                        v-model="
-                                                            underGrad.major
-                                                        "
-                                                        class="validate formInput"
-                                                    />
-                                                </div>
-                                                <div class="input-field col s6">
-                                                    <input
-                                                        placeholder="What was your minor(optional)?"
-                                                        type="text"
-                                                        v-model="
-                                                            underGrad.minor
-                                                        "
-                                                        class="validate formInput"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                    <div v-if="attendedSchInfo == 2">
-                                        <form class="mainForm">
-                                            <div class="row formInnerDiv">
-                                                <div class="col s6">
-                                                    <p class="schQuesP">
-                                                        When did you start?
-                                                    </p>
-                                                    <div
-                                                        class="row spaceAround"
-                                                    >
-                                                        <div class="col s3">
-                                                            <p
-                                                                class="schQuesP1"
-                                                            >
-                                                                Start
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="input-field col s4 formInput1ColDiv"
-                                                        >
-                                                            <select
-                                                                class="validate formInput1 browser-default"
-                                                                v-model="
-                                                                    underGrad.monthStart
-                                                                "
-                                                            >
-                                                                <option
-                                                                    :value="''"
-                                                                    disabled
-                                                                    selected
-                                                                >
-                                                                    Month
-                                                                </option>
-                                                                <option
-                                                                    v-for="(
-                                                                        month,
-                                                                        index
-                                                                    ) in months"
-                                                                    :key="index"
-                                                                    :value="
-                                                                        index +
-                                                                        1
-                                                                    "
-                                                                >
-                                                                    {{ month }}
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                        <div
-                                                            class="input-field col s4 formInput1ColDiv"
-                                                        >
-                                                            <!-- <input
-                                                                placeholder="Year"
-                                                                type="text"
-                                                                class="
-                                                                    validate
-                                                                    formInput1
-                                                                "
-                                                                v-model="underGrad.yearStart"
-                                                            /> -->
-                                                            <date-picker
-                                                                v-model:value="
-                                                                    underGrad.yearStart
-                                                                "
-                                                                type="year"
-                                                                placeholder="Year"
-                                                            ></date-picker>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col s6">
-                                                    <p class="schQuesP">
-                                                        When did you finish?
-                                                    </p>
-                                                    <div
-                                                        class="row spaceAround"
-                                                    >
-                                                        <div class="col s2">
-                                                            <p
-                                                                class="schQuesP1"
-                                                            >
-                                                                Finish
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="input-field col s4 formInput1ColDiv"
-                                                        >
-                                                            <select
-                                                                class="validate formInput1 browser-default"
-                                                                v-model="
-                                                                    underGrad.monthEnd
-                                                                "
-                                                            >
-                                                                <option
-                                                                    :value="''"
-                                                                    disabled
-                                                                    selected
-                                                                >
-                                                                    Month
-                                                                </option>
-                                                                <option
-                                                                    v-for="(
-                                                                        month,
-                                                                        index
-                                                                    ) in months"
-                                                                    :key="index"
-                                                                    :value="
-                                                                        index +
-                                                                        1
-                                                                    "
-                                                                >
-                                                                    {{ month }}
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                        <div
-                                                            class="input-field col s4 formInput1ColDiv"
-                                                        >
-                                                            <!-- <input
-                                                                placeholder="Year"
-                                                                type="text"
-                                                                class="
-                                                                    validate
-                                                                    formInput1
-                                                                "
-                                                                v-model="underGrad.yearEnd"
-                                                            /> -->
-                                                            <date-picker
-                                                                v-model:value="
-                                                                    underGrad.yearEnd
-                                                                "
-                                                                type="year"
-                                                                placeholder="Year"
-                                                            ></date-picker>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Med school -->
-                            <div v-show="academicCheck == 2">
-                                <!-- <div> -->
-                                <p class="contentTitle">
-                                    Tell us about your time in {{medText}} school
-                                </p>
-
-                                <div>
-                                    <div v-if="attendedMedSch === 0">
-                                        <form class="mainForm">
-                                            <div class="row formContainDiv">
-                                                <div
-                                                    class="input-field col s12"
-                                                >
-                                                    <input
-                                                        placeholder="Name of institution?"
-                                                        type="text"
-                                                        class="validate formInput"
-                                                        v-model="
-                                                            medSchool.institution
-                                                        "
-                                                    />
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                               
-                                    <div v-if="attendedMedSch === 1">
-                                        <form class="mainForm">
-                                            <div class="row formInnerDiv">
-                                                <div class="col s6">
-                                                    <p class="schQuesP">
-                                                        When did you start?
-                                                    </p>
-                                                    <div
-                                                        class="row spaceAround"
-                                                    >
-                                                        <div class="col s3">
-                                                            <p
-                                                                class="schQuesP1"
-                                                            >
-                                                                Start
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="input-field col s4 formInput1ColDiv"
-                                                        >
-                                                            <select
-                                                                class="validate formInput1 browser-default"
-                                                                v-model="
-                                                                    medSchool.monthStart
-                                                                "
-                                                            >
-                                                                <option
-                                                                    :value="''"
-                                                                    disabled
-                                                                    selected
-                                                                >
-                                                                    Month
-                                                                </option>
-                                                                <option
-                                                                    v-for="(
-                                                                        month,
-                                                                        index
-                                                                    ) in months"
-                                                                    :key="index"
-                                                                    :value="
-                                                                        index +
-                                                                        1
-                                                                    "
-                                                                >
-                                                                    {{ month }}
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                        <div
-                                                            class="input-field col s4 formInput1ColDiv"
-                                                        >
-                                                            <date-picker
-                                                                v-model:value="
-                                                                    medSchool.yearStart
-                                                                "
-                                                                type="year"
-                                                                placeholder="Year"
-                                                            ></date-picker>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col s6">
-                                                    <p class="schQuesP">
-                                                        When did you finish?
-                                                    </p>
-                                                    <div
-                                                        class="row spaceAround"
-                                                    >
-                                                        <div class="col s2">
-                                                            <p
-                                                                class="schQuesP1"
-                                                            >
-                                                                Finish
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="input-field col s4 formInput1ColDiv"
-                                                        >
-                                                            <select
-                                                                class="validate formInput1 browser-default"
-                                                                v-model="
-                                                                    medSchool.monthEnd
-                                                                "
-                                                            >
-                                                                <option
-                                                                    :value="''"
-                                                                    disabled
-                                                                    selected
-                                                                >
-                                                                    Month
-                                                                </option>
-                                                                <option
-                                                                    v-for="(
-                                                                        month,
-                                                                        index
-                                                                    ) in months"
-                                                                    :key="index"
-                                                                    :value="
-                                                                        index +
-                                                                        1
-                                                                    "
-                                                                >
-                                                                    {{ month }}
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                        <div
-                                                            class="input-field col s4 formInput1ColDiv"
-                                                        >
-                                                            <date-picker
-                                                                v-model:value="
-                                                                    medSchool.yearEnd
-                                                                "
-                                                                type="year"
-                                                                placeholder="Year"
-                                                            ></date-picker>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!-- </div> -->
-                            </div>
-                        </div>
-
-                        <!-- Internship Section -->
-                        <div v-show="view == 5">
-                            <!-- Internship Check -->
-                            <div v-show="internshipCheck == 0 && internUpdate === 0" class="container">
-                                <p class="contentTitle">
-                                    Have you completed your internship program?
-                                </p>
-
-                                <div class="radioBtnMainDiv">
-                                    <p>
-                                        <label @click="internSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan"
-                                                >Yes</span
-                                            >
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label @click="internNotSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">No</span>
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label @click="internNotSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">Ongoing</span>
-                                        </label>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div v-show="internshipCheck == 1">
-                                <p class="contentTitle">
-                                    Tell us about your internship program
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formContainDiv">
-                                        <div class="input-field col s12">
-                                            <input
-                                                placeholder="Name of institution?"
-                                                type="text"
-                                                class="validate formInput"
-                                                v-model="internship.institution"
-                                            />
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div v-show="internshipCheck == 2">
-                                <p class="contentTitle">
-                                    Tell us about your internship program
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formInnerDiv">
-                                        <div class="col s6">
-                                            <p class="schQuesP">
-                                                When did you start?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s3">
-                                                    <p class="schQuesP1">
-                                                        Start
-                                                    </p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            internship.monthStart
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            internship.yearStart
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col s5">
-                                            <p class="schQuesP">
-                                                When did you finish?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s2">
-                                                    <p class="schQuesP1">Finish</p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            internship.monthEnd
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            internship.yearEnd
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <!-- Residency Section -->
-                        <div v-show="view == 6">
-                            <!-- Residency Check -->
-                            <div
-                                v-show="
-                                    residencyCheck == 0 && residencyUpdate === 0
-                                "
-                                class="container"
-                            >
-                                <p class="contentTitle">
-                                    Have you completed your residency program?
-                                </p>
-
-                                <div class="radioBtnMainDiv">
-                                    <p>
-                                        <label @click="residencySelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan"
-                                                >Yes</span
-                                            >
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label @click="residencyNotSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">No</span>
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label @click="residencyNotSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">Ongoing</span>
-                                        </label>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div v-show="residencyCheck == 1">
-                                <p class="contentTitle">
-                                    Tell us about your residency program
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formContainDiv">
-                                        <div class="input-field col s12">
-                                            <input
-                                                placeholder="Name of institution?"
-                                                type="text"
-                                                class="validate formInput"
-                                                v-model="residency.institution"
-                                            />
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div v-show="residencyCheck == 2">
-                                <p class="contentTitle">
-                                    Tell us about your residency program
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formInnerDiv">
-                                        <div class="col s6">
-                                            <p class="schQuesP">
-                                                When did you start?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s3">
-                                                    <p class="schQuesP1">
-                                                        Start
-                                                    </p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            residency.monthStart
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            residency.yearStart
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col s5">
-                                            <p class="schQuesP">
-                                                When did you finish?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s2">
-                                                    <p class="schQuesP1">Finish</p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            residency.monthEnd
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            residency.yearEnd
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <!-- Fellowship Section -->
-                        <div v-show="view == 7">
-                            <!-- Fellowship Check -->
-                            <div
-                                v-show="
-                                    fellowshipCheck === 0 &&
-                                    fellowshipUpdate === 0
-                                "
-                                class="container"
-                            >
-                                <p class="contentTitle">
-                                    Have you completed your fellowship program?
-                                </p>
-
-                                <div class="radioBtnMainDiv">
-                                    <p>
-                                        <label @click="fellowSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan"
-                                                >Yes</span
-                                            >
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label @click="fellowNotSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">No</span>
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label @click="fellowNotSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">Ongoing</span>
-                                        </label>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div v-show="fellowshipCheck == 1">
-                                <p class="contentTitle">
-                                    Tell us about your fellowship program
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formContainDiv">
-                                        <div class="input-field col s12">
-                                            <input
-                                                placeholder="Name of institution?"
-                                                type="text"
-                                                class="validate formInput"
-                                                v-model="fellowship.institution"
-                                            />
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div v-show="fellowshipCheck == 2">
-                                <p class="contentTitle">
-                                    Tell us about your fellowship program
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formInnerDiv">
-                                        <div class="col s6">
-                                            <p class="schQuesP">
-                                                When did you start?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s3">
-                                                    <p class="schQuesP1">
-                                                        Start
-                                                    </p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            fellowship.monthStart
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            fellowship.yearStart
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col s6">
-                                            <p class="schQuesP">
-                                                When did you finish?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s2">
-                                                    <p class="schQuesP1">Finish</p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            fellowship.monthEnd
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            fellowship.yearEnd
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <!-- Experience Section -->
-                        <!-- <div v-show="view == 8">
-                            <div v-show="experienceCheck == 0">
-                                <p class="contentTitle">
-                                    Tell us about your experience
-                                </p>
-                                <form class="mainForm">
-                                    <div class="row formContainDiv">
-                                        <div class="input-field col s12">
-                                            <input
-                                                placeholder="Name of hospital/medical establishment?"
-                                                type="text"
-                                                class="validate formInput"
-                                                v-model="
-                                                    experiences.institution
-                                                "
-                                            />
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div v-show="experienceCheck == 1">
-                                <p class="contentTitle">
-                                    Tell us about your experience
-                                </p>
-                                <form class="">
-                                    <div class="row">
-                                        <div class="col s12">
-                                            <p class="schQuesP text-center">
-                                                Please select the
-                                                country/state/city you work
-                                                in?
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="row spaceAround mb-0">
-                                        <div class="col s4">
-                                            <p class="schQuesP1 text-center">
-                                                Country
-                                            </p>
-                                        </div>
-                                        <div class="col s4">
-                                            <p class="schQuesP1 text-center">
-                                                State
-                                            </p>
-                                        </div>
-                                        <div class="col s4">
-                                            <p class="schQuesP1 text-center">
-                                                City
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="row spaceAround formInnerDiv">
-                                        <div
-                                            class="input-field col s3 formInput1ColDiv"
-                                        >
-                                            <select
-                                                class="validate formInput1 browser-default"
-                                                v-model="countrySelected"
-                                                @change="sortStates"
-                                            >
-                                                <option
-                                                    :value="''"
-                                                    disabled
-                                                    selected
-                                                >
-                                                    Country
-                                                </option>
-                                                <option
-                                                    v-for="country in countries"
-                                                    :key="country.id"
-                                                    :value="country.id"
-                                                >
-                                                    {{ country.name }}
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div
-                                            class="input-field col s3 formInput1ColDiv"
-                                        >
-                                            <select
-                                                class="validate formInput1 browser-default"
-                                                v-model="stateSelected"
-                                                @change="sortCities"
-                                            >
-                                                <option
-                                                    :value="''"
-                                                    disabled
-                                                    selected
-                                                >
-                                                    State
-                                                </option>
-                                                <option
-                                                    v-for="state in states"
-                                                    :key="state.id"
-                                                    :value="state.id"
-                                                >
-                                                    {{ state.name }}
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div
-                                            class="input-field col s3 formInput1ColDiv"
-                                        >
-                                            <select
-                                                class="validate formInput1 browser-default"
-                                                v-model="experiences.city_id"
-                                            >
-                                                <option
-                                                    value=""
-                                                    disabled
-                                                    selected
-                                                >
-                                                    City
-                                                </option>
-                                                <option
-                                                    v-for="city in cities"
-                                                    :key="city.id"
-                                                    :value="city.id"
-                                                >
-                                                    {{ city.name }}
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div v-show="experienceCheck == 2">
-                                <p class="contentTitle">
-                                    Tell us about your experience
-                                </p>
-                                <form class="mainForm">
-                                    <div class="row formInnerDiv">
-                                        <div class="col s12">
-                                            <p class="schQuesP">
-                                                When did you start?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s6">
-                                                    <p class="schQuesP1">
-                                                        Start
-                                                    </p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            experiences.monthStart
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s6 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            experiences.yearStart
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div> -->
-
-                        <!-- Add More Quarifications Section -->
-                        <div v-show="view == 8">
-                            <div v-show="addQualificaion == 0 && additionalSchoolUpdate == 0">
-                                <p class="contentTitle">
-                                    Do you have additional academic
-                                    qualifications?
-                                </p>
-                                <div class="radioBtnMainDiv">
-                                    <p>
-                                        <label @click="addQualSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan"
-                                                >Yes</span
-                                            >
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label @click="addQualNotSelected()">
-                                            <input
-                                                class="with-gap"
-                                                name="intern"
-                                                type="radio"
-                                            />
-                                            <span class="radioBtnSpan">No</span>
-                                        </label>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div v-show="addQualificaion == 1">
-                                <p class="contentTitle">
-                                    Tell us about your academic qualifications
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formContainDiv">
-                                        <div class="input-field col s12">
-                                            <input
-                                                placeholder="Name of institution?"
-                                                type="text"
-                                                class="validate formInput"
-                                                v-model="
-                                                    additionalSchool.institution
-                                                "
-                                            />
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div v-show="addQualificaion == 2">
-                                <p class="contentTitle">
-                                    Tell us about your academic qualifications
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formContainDiv">
-                                        <div class="input-field col s12">
-                                            <input
-                                                placeholder="What was your degree?"
-                                                type="text"
-                                                class="validate formInput"
-                                                v-model="
-                                                    additionalSchool.degree
-                                                "
-                                            />
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div v-show="addQualificaion == 3">
-                                <p class="contentTitle">
-                                    Tell us about your academic qualifications
-                                </p>
-
-                                <form class="mainForm">
-                                    <div class="row formInnerDiv">
-                                        <div class="col s6">
-                                            <p class="schQuesP">
-                                                When did you start?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s3">
-                                                    <p class="schQuesP1">
-                                                        Start
-                                                    </p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            additionalSchool.monthStart
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            additionalSchool.yearStart
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col s6">
-                                            <p class="schQuesP">
-                                                When did you end?
-                                            </p>
-                                            <div class="row spaceAround">
-                                                <div class="col s2">
-                                                    <p class="schQuesP1">End</p>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <select
-                                                        class="validate formInput1 browser-default"
-                                                        v-model="
-                                                            additionalSchool.monthEnd
-                                                        "
-                                                    >
-                                                        <option
-                                                            :value="''"
-                                                            disabled
-                                                            selected
-                                                        >
-                                                            Month
-                                                        </option>
-                                                        <option
-                                                            v-for="(
-                                                                month, index
-                                                            ) in months"
-                                                            :key="index"
-                                                            :value="index + 1"
-                                                        >
-                                                            {{ month }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div
-                                                    class="input-field col s4 formInput1ColDiv"
-                                                >
-                                                    <date-picker
-                                                        v-model:value="
-                                                            additionalSchool.yearEnd
-                                                        "
-                                                        type="year"
-                                                        placeholder="Year"
-                                                    ></date-picker>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                       
-
-                        <!-- Publish Section -->
-                        <div v-show="view == 9" class="container">
-                            <div class="contentTitle" v-if="!showGoLiveBtns" >
-                                <span class="serviceSuccessTxt">Congrats!</span>
-                                Your site has been setup successfully!
-                                <span class="serviceSuccessTxt">Hooray!</span>
-                                <p class="timer">
-                                    Redirecting you to your site in
-                                    {{ countdown }}s
-                                </p>
-                            </div>
-
-                            <go-live-component :showGoLiveBtns="showGoLiveBtns" :bio="bio" @sendEmail="sendEmail($event)"/>
-                        </div>
-
-                        <!-- Prev/Next Button Section -->
-                        <div class="mt-5">
-                            <div v-if="view > 0 && view <= 3 || (view == 4 && academicCheck == 0)" class="skipDiv">
-                                <button
-                                    class="skipBtn"
-                                    @click="prev()"
-                                    :disabled="view <= 1"
-                                    :class="view > 1 ? 'btnOn' : 'btnOff'"
-                                >
-                                    <i class="material-icons"
-                                        >keyboard_arrow_left</i
-                                    >
-                                </button>
-
-                                <button
-                                    class="skipBtn"
-                                    @click="next()"
-                                    :disabled="view == view.length || (view == 4 && academicCheck == 0)"
-                                    :class="view != 4 ? 'btnOn' : 'btnOff'"
-                                >
-                                    <i class="material-icons"
-                                        >keyboard_arrow_right</i
-                                    >
-                                </button>
-
-                                <!-- <i class="material-icons skipBtnIcon" @click="prev()">keyboard_arrow_left</i>
-                                
-                                <i class="material-icons skipBtnIcon" @click="next()">keyboard_arrow_right</i> -->
-                            </div>
-                            <div v-if="view == 4 && academicCheck == 1">
-                                <div class="skipDiv">
-                                    <button class="skipBtn" @click="prev(1)">
-                                        <i class="material-icons"
-                                            >keyboard_arrow_left</i
-                                        >
-                                    </button>
-
-                                    <button
-                                        class="skipBtn"
-                                        @click="next(1)"
-                                        :disabled="
-                                            academicCheck ==
-                                            academicCheck.length
-                                        "
-                                        :class="
-                                            attendedSchInfo != 3
-                                                ? 'btnOn'
-                                                : 'btnOff'
-                                        "
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_right</i
-                                        >
-                                    </button>
-                                </div>
-                            </div>
-                            <div v-if="view == 4 && academicCheck == 2 && attendedMedSch <= 3">
-                                <div class="skipDiv">
-                                    <!-- :disabled="academicCheck == 0"
-                                        :class="
-                                            attendedMedSch > 0 ? 'btnOn' : 'btnOff'
-                                        " -->
-                                    <button class="skipBtn" @click="prev(1)">
-                                        <i class="material-icons"
-                                            >keyboard_arrow_left</i
-                                        >
-                                    </button>
-
-                                    <button
-                                        class="skipBtn"
-                                        @click="next(1)"
-                                        :disabled="
-                                            academicCheck ==
-                                            academicCheck.length
-                                        "
-                                        :class="
-                                            attendedMedSch != 3
-                                                ? 'btnOn'
-                                                : 'btnOff'
-                                        "
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_right</i
-                                        >
-                                    </button>
-                                </div>
-                            </div>
-                            <div v-if="view == 5">
-                                <div class="skipDiv">
-                                    <button class="skipBtn" @click="prev(2)">
-                                        <i class="material-icons"
-                                            >keyboard_arrow_left</i
-                                        >
-                                    </button>
-
-                                    <button
-                                        class="skipBtn"
-                                        @click="next(2)"
-                                        :disabled="internshipCheck == 0"
-                                        :class="
-                                            internshipCheck < 1
-                                                ? 'btnOff'
-                                                : 'btnOn'
-                                        "
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_right</i
-                                        >
-                                    </button>
-                                </div>
-                            </div>
-                            <div v-if="view == 6">
-                                <div class="skipDiv">
-                                    <button class="skipBtn" @click="prev(3)">
-                                        <i class="material-icons"
-                                            >keyboard_arrow_left</i
-                                        >
-                                    </button>
-    
-                                    <button
-                                        class="skipBtn"
-                                        @click="next(3)"
-                                        :disabled="residencyCheck == 0"
-                                        :class="
-                                            residencyCheck < 1
-                                                ? 'btnOff'
-                                                : 'btnOn'
-                                        "
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_right</i
-                                        >
-                                    </button>
-                                </div>
-                            </div>
-                            <div v-if="view == 7">
-                                <div class="skipDiv">
-                                    <button class="skipBtn" @click="prev(4)">
-                                        <i class="material-icons"
-                                            >keyboard_arrow_left</i
-                                        >
-                                    </button>
-
-                                    <button
-                                        class="skipBtn"
-                                        @click="next(4)"
-                                        :disabled="fellowshipCheck == 0"
-                                        :class="
-                                            fellowshipCheck < 1
-                                                ? 'btnOff'
-                                                : 'btnOn'
-                                        "
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_right</i
-                                        >
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- <div v-if="view == 8">
-                                <div class="skipDiv">
-                                    <button class="skipBtn" @click="prev(5)">
-                                        <i class="material-icons"
-                                            >keyboard_arrow_left</i
-                                        >
-                                    </button>
-
-                                    <button
-                                        class="skipBtn"
-                                        @click="next(5)"
-                                        :disabled="experienceCheck >= 3"
-                                        :class="
-                                            experienceCheck >= 3
-                                                ? 'btnOff'
-                                                : 'btnOn'
-                                        "
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_right</i
-                                        >
-                                    </button>
-                                </div>
-                            </div> -->
-                            <div v-if="view == 8">
-                                <div class="skipDiv">
-                                    <button
-                                        class="skipBtn btnOn"
-                                        @click="prev(5)"
+                                        <!-- <i class="material-icons skipBtnIcon" @click="prev()">keyboard_arrow_left</i>
                                         
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_left</i
-                                        >
-                                    </button>
+                                        <i class="material-icons skipBtnIcon" @click="next()">keyboard_arrow_right</i> -->
+                                    </div>
+                                    <div v-if="view == 4 && academicCheck == 1">
+                                        <div class="skipDiv">
+                                            <button class="skipBtn" @click="prev(1)">
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_left</i
+                                                >
+                                            </button>
 
-                                    <button
-                                        class="skipBtn"
-                                        @click="next(5)"
-                                        :class="
-                                            addQualificaion > 5  || addQualificaion == 0
-                                                ? 'btnOff'
-                                                : 'btnOn'
-                                        "
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_right</i
-                                        >
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div v-if="view == 9">
-                                <div class="skipDiv">
-                                    <button
-                                        class="skipBtn"
-                                        @click="prev(6)"
-                                        :disabled="view < 9"
-                                        :class="view < 9 ? 'btnOff' : 'btnOn'"
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_left</i
-                                        >
-                                    </button>
+                                            <button
+                                                class="skipBtn"
+                                                @click="next(1)"
+                                                :disabled="
+                                                    academicCheck ==
+                                                    academicCheck.length
+                                                "
+                                                :class="
+                                                    attendedSchInfo != 3
+                                                        ? 'btnOn'
+                                                        : 'btnOff'
+                                                "
+                                            >
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_right</i
+                                                >
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div v-if="view == 4 && academicCheck == 2 && attendedMedSch <= 3">
+                                        <div class="skipDiv">
+                                            <!-- :disabled="academicCheck == 0"
+                                                :class="
+                                                    attendedMedSch > 0 ? 'btnOn' : 'btnOff'
+                                                " -->
+                                            <button class="skipBtn" @click="prev(1)">
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_left</i
+                                                >
+                                            </button>
 
-                                    <button
-                                        class="skipBtn"
-                                        @click="next(6)"
-                                        :disabled="view == 9"
-                                        :class="view >= 9 ? 'btnOff' : 'btnOn'"
-                                    >
-                                        <i class="material-icons"
-                                            >keyboard_arrow_right</i
-                                        >
-                                    </button>
+                                            <button
+                                                class="skipBtn"
+                                                @click="next(1)"
+                                                :disabled="
+                                                    academicCheck ==
+                                                    academicCheck.length
+                                                "
+                                                :class="
+                                                    attendedMedSch != 3
+                                                        ? 'btnOn'
+                                                        : 'btnOff'
+                                                "
+                                            >
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_right</i
+                                                >
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div v-if="view == 5">
+                                        <div class="skipDiv">
+                                            <button class="skipBtn" @click="prev(2)">
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_left</i
+                                                >
+                                            </button>
+
+                                            <button
+                                                class="skipBtn"
+                                                @click="next(2)"
+                                                :disabled="internshipCheck == 0"
+                                                :class="
+                                                    internshipCheck < 1
+                                                        ? 'btnOff'
+                                                        : 'btnOn'
+                                                "
+                                            >
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_right</i
+                                                >
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div v-if="view == 6">
+                                        <div class="skipDiv">
+                                            <button class="skipBtn" @click="prev(3)">
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_left</i
+                                                >
+                                            </button>
+            
+                                            <button
+                                                class="skipBtn"
+                                                @click="next(3)"
+                                                :disabled="residencyCheck == 0"
+                                                :class="
+                                                    residencyCheck < 1
+                                                        ? 'btnOff'
+                                                        : 'btnOn'
+                                                "
+                                            >
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_right</i
+                                                >
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div v-if="view == 7">
+                                        <div class="skipDiv">
+                                            <button class="skipBtn" @click="prev(4)">
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_left</i
+                                                >
+                                            </button>
+
+                                            <button
+                                                class="skipBtn"
+                                                @click="next(4)"
+                                                :disabled="fellowshipCheck == 0"
+                                                :class="
+                                                    fellowshipCheck < 1
+                                                        ? 'btnOff'
+                                                        : 'btnOn'
+                                                "
+                                            >
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_right</i
+                                                >
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- <div v-if="view == 8">
+                                        <div class="skipDiv">
+                                            <button class="skipBtn" @click="prev(5)">
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_left</i
+                                                >
+                                            </button>
+
+                                            <button
+                                                class="skipBtn"
+                                                @click="next(5)"
+                                                :disabled="experienceCheck >= 3"
+                                                :class="
+                                                    experienceCheck >= 3
+                                                        ? 'btnOff'
+                                                        : 'btnOn'
+                                                "
+                                            >
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_right</i
+                                                >
+                                            </button>
+                                        </div>
+                                    </div> -->
+                                    <div v-if="view == 8">
+                                        <div class="skipDiv">
+                                            <button
+                                                class="skipBtn btnOn"
+                                                @click="prev(5)"
+                                                
+                                            >
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_left</i
+                                                >
+                                            </button>
+
+                                            <button
+                                                class="skipBtn"
+                                                @click="next(5)"
+                                                :class="
+                                                    addQualificaion > 5  || addQualificaion == 0
+                                                        ? 'btnOff'
+                                                        : 'btnOn'
+                                                "
+                                            >
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_right</i
+                                                >
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div v-if="view == 9">
+                                        <div class="skipDiv">
+                                            <button
+                                                class="skipBtn"
+                                                @click="prev(6)"
+                                                :disabled="view < 9"
+                                                :class="view < 9 ? 'btnOff' : 'btnOn'"
+                                            >
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_left</i
+                                                >
+                                            </button>
+
+                                            <button
+                                                class="skipBtn"
+                                                @click="next(6)"
+                                                :disabled="view == 9"
+                                                :class="view >= 9 ? 'btnOff' : 'btnOn'"
+                                            >
+                                                <i class="material-icons"
+                                                    >keyboard_arrow_right</i
+                                                >
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <!-- <InnerFooter /> -->
                             </div>
                         </div>
-
-                        <!-- <InnerFooter /> -->
-                    </div>
-                </div>
-                <div id="modal1" class="modal">
-                    <div class="modal-content">
-                        <i
-                            class="fas fa-spinner fa-spin fa-2xl flex center-align"
-                        ></i>
-                        <p class="centered">Setting up your site</p>
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                                <i
+                                    class="fas fa-spinner fa-spin fa-2xl flex center-align"
+                                ></i>
+                                <p class="centered">Setting up your site</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            
         </div>
         <PaymentModalComponent
             :setModal="setModal"
@@ -2138,6 +2060,9 @@
             };
         },
         methods: {
+            suggestDomainNames (){
+
+            },
             switchText(val) {
                 let valText;
                 if (!val) {
@@ -2282,33 +2207,36 @@
                 this.showCropper = true;
             },
             checkDomainAvailability() {
+                this.domainCheckPassed = null;
                 if (this.domainSelected != "") {
                     this.checkingSuggestion = true;
                     let domainToCheck = this.domainSelected.endsWith(".com")
                         ? this.domainSelected
                         : this.domainSelected + ".com";
                     axios
-                        .post("/api/domain/check", { domain: domainToCheck })
-                        .then((res) => {
-                            if (res.data.status == 1) {
-                                this.domainCheckPassed = true;
-                                this.setDomain ? this.updateDomain() : null;
-                            } else if (res.data.status == 0) {
-                                this.domainCheckPassed = false;
-                                if (this.setDomain) {
-                                    M.toast({
-                                        html: "Domain Not Available!",
-                                        classes: "errorNotifier",
-                                    });
-                                    this.view = 2;
-                                }
+                    .post("/api/domain/check", { domain: domainToCheck })
+                    .then((res) => {
+                        
+                        if (res.data.status == 1) {
+                            this.domainCheckPassed = true;
+                            this.setDomain ? this.updateDomain() : null;
+                        } else if (res.data.status == 0) {
+                            this.domainCheckPassed = false;
+                            if (this.setDomain) {
+                                M.toast({
+                                    html: "Domain Not Available!",
+                                    classes: "errorNotifier",
+                                });
+                                this.view = 2;
                             }
-                            this.checkingSuggestion = false;
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                            this.checkingSuggestion = false;
-                        });
+                        }
+                        this.checkingSuggestion = false;
+                        
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        this.checkingSuggestion = false;
+                    });
                 }
             },
             prev(num = null) {

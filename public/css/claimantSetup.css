@@ -1,11 +1,4 @@
-:root {
-    --primary: #46166B;
-    --secondary: #46166B;
-    --black: #000000;
-    --white: #ffffff;
-    --gray: #a4a2a2;
-    --component: rgba(0, 0, 0, 0.5);
-}
+
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -13,14 +6,14 @@
 /* this targets the default scrollbar (compulsory) */
 ::-webkit-scrollbar-track {
     /* box-shadow: inset 0 0 7px rgba(0,0,0,0.8);*/
-    background-color: var(--primary);
+    background-color: var(--pri);
     /*border-radius: 8px;*/
 }
 
 /* the new scrollbar will have a flat appearance with the set background color */
 ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 100px var(--primary);
-    background-color: var(--primary);
+    box-shadow: inset 0 0 100px var(--pri);
+    background-color: var(--pri);
     /*border-radius: 8px;*/
 }
 
@@ -47,15 +40,14 @@
     /* Select the down or left scroll button when it's being hovered by the mouse */
 }
 
-
-.row .col {
-    padding: 0;
+.priText {
+    color: var(--pri);
 }
-
-.primaryColorDiv {
-    background-color: var(--primary);
-    padding: 3vh 4vw 0 0;
-    height: 48vh;
+.row .col {
+    /* padding: 0; */
+}
+.btn {
+    background-color: var(--pri);
 }
 .customFlex {
     display: flex;
@@ -72,31 +64,29 @@ ul>li {
     justify-content: unset !important;
     padding: 0 1rem;
 }
+.cFlex {
+    display: flex;
+}
+.flexRight {
+    justify-content: flex-end;
+}
 .offsetS2 {
     margin-left: 2rem;
     color: var(--white);
 }
+
 select.browser-default {
-    border: none;
-    border-bottom: 2.5px solid var(--primary);
+    border: none;    
     height: 3.15rem;
     outline: none;
     background: transparent;
-    font-family: 'Montserrat', sans-serif;
 }
-
-.contentDiv {
-    background: var(--white);
-    background-image: url("../media/img/pageBoldLogo.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 64vh;
-    border-radius: 0px 100px 0px 0px;
-    position: absolute;
-    top: 35.1vh;
-    padding-top: 9vh;
+input[type=text]:not(.browser-default) {    
+    font-weight: lighter;
+}
+select.browser-default, input[type=text]:not(.browser-default) {
+    border-bottom: 1px solid var(--sec);
+    font-family: 'Montserrat', sans-serif;
 }
 
 .headerDiv {
@@ -121,7 +111,36 @@ select.browser-default {
     width: 60%;
     margin: 0;
 }
-
+.websiteClaimContainer {
+    /* background-color: var(--primary); */
+    height: 100vh;
+    background-image: url('../media/img/backgroundImg/physician1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+.contentDiv {
+    background: rgba(255, 255, 255, 0.8);
+    height: 100vh;
+    overflow: auto;
+    /* background-image: url("../media/img/pageBoldLogo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    
+    border-radius: 0px 100px 0px 0px;
+    position: absolute;
+    top: 35.1vh;
+    padding-top: 9vh; */
+}
+.contentInnerDiv {
+    padding: 1.5vh 2vw;
+}
+.contentInnerDiv p.contentTitle.marginTop-10 {
+    margin-top: 10vh;
+}
 .contentTitle {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -130,13 +149,39 @@ select.browser-default {
     text-align: center;
     text-transform: capitalize;
     color: var(--black);
+    margin-top: 0;
+}
+.contentInnerDiv .intro {
+    height: 86.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h4.sectionTitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+    /* line-height: 24px; */
+    /* text-align: center; */
+    color: var(--ter);
+}
+h4.sectionTitle small {
+    font-size: 0.85rem;
+}
+
+.contentInnerDiv .input-field.col label {
+    position: relative;
+    left: 0;
+}
+.contentInnerDiv .input-field.col.selectInputField label {
+    top: 1.2vh;
 }
 
 a.btn.getStartedBtn {
-    background-color: var(--primary);
+    background-color: var(--pri) !important;
     border-radius: 6px;
     font-family: 'Montserrat', sans-serif;
-
+    /* color: var(--black); */
 }
 
 .getStartedBtnDiv {
@@ -157,17 +202,11 @@ form.mainForm {
 
 .formInnerDiv {
     display: flex;
-    width: 90%;
+    /* width: 90%; */
 }
 
 .formContainDiv {
     width: 90%;
-}
-
-input[type=text]:not(.browser-default) {
-    border-bottom: 2.5px solid var(--primary);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: lighter;
 }
 
 .skipDiv {
@@ -207,13 +246,14 @@ button.skipBtn:first-child {
 }
 .unAvailTitle, .availTitle {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
-    margin: 5vh 0 0 4vw;
+    font-weight: 300;
+    font-size: 0.7rem;
+    
+    /* margin: 5vh 0 0 4vw; */
 }
 .unAvailTxt {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    font-weight: 300;
     font-size: 0.7rem;
     margin: 0;
 }
@@ -261,7 +301,7 @@ table tr td {
 
 .proImgContainer {
     width: 80%;
-    height: 50vh;
+    /* height: 50vh; */
     border: 9px solid #d9d9d9;
     margin: auto;
 }
@@ -272,10 +312,10 @@ table tr td {
 }
 
 .proImgBtnContainDiv {
-    display: flex;
-    justify-content: space-between;
-    width: 35.5%;
-    margin: 2vh auto;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* width: 35.5%; */
+    /* margin: 2vh auto; */
     /* align-items: center; */
 }
 
@@ -448,11 +488,7 @@ ul>li {
     top: 9.1vh;
     left: 4vw;
 }
-.contentInnerDiv {
-    width: 50%;
-    margin: auto;
-    margin-top: 15vh;
-}
+
 a.proImgSelectFile {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
@@ -489,7 +525,7 @@ a.proImgSelectFile {
     .row .col {
         padding: 0;
     }
-    .primaryColorDiv {
+    .websiteClaimContainer {
         background-color: var(--primary);
         padding: 3vh 4vw 0 0;
         height: 48vh;
@@ -840,7 +876,7 @@ a.proImgSelectFile {
     .row .col {
         padding: 0;
     }
-    .primaryColorDiv {
+    .websiteClaimContainer {
         background-color: var(--primary);
         padding: 3vh 4vw 0 0;
         height: 48vh;

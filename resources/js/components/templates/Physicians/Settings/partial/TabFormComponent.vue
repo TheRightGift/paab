@@ -339,20 +339,20 @@
             },
             bioSave(e) {
                 this.loading = !this.loading;
-                if (e.about.length > 614) {
-                    M.toast({
-                        html: "Your about must not be greater than 614 in character",
-                        classes: "errorNotifier",
-                    });
-                    this.loading = !this.loading;
-                } else {
+                // if (e.about.length > 614) {
+                //     M.toast({
+                //         html: "Your about must not be greater than 614 in character",
+                //         classes: "errorNotifier",
+                //     });
+                //     this.loading = !this.loading;
+                // } else {
                     let formData = new FormData();
-                    formData.append("CV", e.CV);
+                    // formData.append("CV", e.CV);
                     formData.append("photo", e.photo);
                     formData.append("about", e.about);
                     formData.append("firstname", e.firstname);
                     formData.append("lastname", e.lastname);
-                    formData,append('gender', e.gender);
+                    formData.append('gender', e.gender);
                     axios
                         .post(`/api/bio`, formData)
                         .then((res) => {
@@ -383,7 +383,7 @@
                                 });
                             }
                         });
-                }
+                // }
             },
             bioUpdate(e) {
                 this.loading = !this.loading;

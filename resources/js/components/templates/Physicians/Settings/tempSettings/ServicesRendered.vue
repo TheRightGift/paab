@@ -254,7 +254,7 @@
         margin-left: 1rem !important;
     }
     .contentDiv {
-        height: unset !important;
+        /* height: unset !important;*/
     }
     button.btn:disabled {
         background-color: #f5f5f5 !important;

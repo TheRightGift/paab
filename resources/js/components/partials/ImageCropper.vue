@@ -25,21 +25,26 @@
             :cropBoxMovable= "false"
             :cropBoxResizable= "false"
             :toggleDragModeOnDblclick= "false"
+            :minContainerWidth="500"
+            :minContainerHeight="500"
+            :minCropBoxWidth: width
+            :minCropBoxHeight: height
             :data="{ 
               width: width,
               height:  height,
             }"
           />
         </div>
-        <div class="actions">
+        <div class="actions center-align">
           
           <a
             href="#"
             role="button"
             @click.prevent="cropImage"
             class="btn waves waves-green"
+            disabled
           >
-            Crop & Save
+            <i class="material-icons">crop</i>
           </a>
           
           <a
@@ -48,7 +53,8 @@
             class="btn waves waves-green"
             @click.prevent="showFileChooser"
           >
-            Upload Image
+            <i class="material-icons">cloud_upload</i>
+            
           </a>
         </div>
       </section>
@@ -77,7 +83,8 @@ export default {
   },
   data() {
     return {
-      imgSrc: '/media/img/placeholder.jpg',
+      imgSrc: this.img,
+      // '/media/img/placeholder.jpg',
       cropImg: '',
       data: null,
     };
@@ -87,6 +94,7 @@ export default {
     width: Number,
     xAxis: Number,
     yAxis: Number,
+    img: String
   },
   methods: {
     cropImage() {
@@ -231,5 +239,9 @@ textarea {
 
 .cropped-image img {
   max-width: 100%;
+}
+.img-cropper {
+  display: flex;
+  justify-content: center
 }
 </style>
