@@ -27,8 +27,8 @@
             :toggleDragModeOnDblclick= "false"
             :minContainerWidth="500"
             :minContainerHeight="500"
-            :minCropBoxWidth: width
-            :minCropBoxHeight: height
+            :minCropBoxWidth="width"
+            :minCropBoxHeight="height"
             :data="{ 
               width: width,
               height:  height,
@@ -37,15 +37,13 @@
         </div>
         <div class="actions center-align">
           
-          <a
-            href="#"
-            role="button"
+        <button
             @click.prevent="cropImage"
             class="btn waves waves-green"
-            disabled
+            :disabled="imgNotSelected"
           >
             <i class="material-icons">crop</i>
-          </a>
+        </button>
           
           <a
             href="#"
@@ -87,7 +85,11 @@ export default {
       // '/media/img/placeholder.jpg',
       cropImg: '',
       data: null,
+      imgNotSelected: false,
     };
+  },
+  mounted() {
+    this.imgNotSelected = true;
   },
   props: {
     height: Number,
@@ -143,6 +145,7 @@ export default {
         };
 
         reader.readAsDataURL(file);
+        this.imgNotSelected = false;
       } else {
         alert('Sorry, FileReader API not supported');
       }
@@ -195,7 +198,7 @@ input[type="file"] {
   margin-top: 1rem;
 }
 
-.actions a {
+.actions a, .actions button {
   display: inline-block;
   /* padding: 5px 15px; */
   background: var(--primary);
