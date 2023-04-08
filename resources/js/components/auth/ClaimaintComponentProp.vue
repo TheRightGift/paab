@@ -48,8 +48,6 @@
                     <div class="col l6 s12 noPaddingLeft">
                         <div id="page"></div>
                         <div class="contentDiv">
-                            <!-- <button @click="popup" >Click Me</button> -->
-                            <!--ProgressComponent v-if="view >= 1" :steps="steps" :view="view" /-->
                             <div class="contentInnerDiv">
                                 <!-- Get Started Section -->
                                 <div v-show="view == 0" class="intro">
@@ -82,7 +80,7 @@
 
                                 <!-- Confirm your name section -->
                                 <div v-show="view == 1">
-                                    <div class="row">
+                                    <section class="row" id="bio">
                                         <h4 class="sectionTitle">
                                             Basic information
                                         </h4>
@@ -94,10 +92,11 @@
                                                     required
                                                     class="browser-default"
                                                     id="userTitle"
+                                                    data-label="true"
                                                     @change="switchText($event)"
                                                 >
                                                     <option
-                                                        :value="null"
+                                                        :value="''"
                                                         disabled
                                                         selected
                                                     >
@@ -119,7 +118,9 @@
                                                     type="text"
                                                     v-model="bio.firstname"
                                                     class="validate"
+                                                    required
                                                     placeholder="Firstname"
+                                                    @keyup="removeLabel($event)"
                                                 />
                                                 <label>Firstname</label>
                                             </div>
@@ -129,6 +130,7 @@
                                                     v-model="bio.lastname"
                                                     class="validate"
                                                     placeholder="Lastname"
+                                                    @keyup="removeLabel($event)"
                                                 />
                                                 <label>Lastname</label>
                                             </div>
@@ -138,13 +140,14 @@
                                                     v-model="bio.othername"
                                                     class="validate"
                                                     placeholder="Othernames"
+                                                    data-optional="true"
                                                 />
                                                 <label>Othername</label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </section>
 
-                                    <div class="row">
+                                    <section class="row" id="domain">
                                         <h4 class="sectionTitle">
                                             Domain name
                                         </h4>
@@ -156,7 +159,8 @@
                                                         v-model="domainSelected"
                                                         class="validate noMarginBottom"
                                                         placeholder="Hit enter to search"
-                                                        @keyup="checkDomainAvailability"
+                                                        @keyup="checkDomainAvailability($event)"
+                                                        data-no-label="true"
                                                     />
                                                     <div class="col l12 s12 right-align">
                                                         <i
@@ -254,7 +258,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </section>
 
                                     <div class="row">
                                         <h4 class="sectionTitle">
@@ -398,7 +402,7 @@
                                         </form>
                                     </div>
 
-                                    <div class="row">
+                                    <section class="row" id="underGrad">
                                         <h4 class="sectionTitle">
                                             Undergraduate School <br/>
                                             <small>Only fill if you had an undergrad progam before medical school</small>
@@ -411,6 +415,7 @@
                                                     v-model="
                                                         underGrad.institution
                                                     "
+                                                    @keyup="removeLabel($event)"
                                                     type="text"
                                                     class="validate formInput"
                                                 />
@@ -425,6 +430,7 @@
                                                     v-model="
                                                         underGrad.major
                                                     "
+                                                    @keyup="removeLabel($event)"
                                                     class="validate formInput"
                                                 />
                                                 <label>Undergraduate Major</label>
@@ -436,6 +442,7 @@
                                                     v-model="
                                                         underGrad.minor
                                                     "
+                                                    data-optional="true"
                                                     class="validate formInput"
                                                 />
                                                 <label>Undergraduate Minor(optional)</label>
@@ -457,6 +464,7 @@
                                                             v-model="
                                                                 underGrad.monthStart
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -483,19 +491,11 @@
                                                     <div
                                                         class="input-field col s6 formInput1ColDiv"
                                                     >
-                                                        <!-- <input
-                                                            placeholder="Year"
-                                                            type="text"
-                                                            class="
-                                                                validate
-                                                                formInput1
-                                                            "
-                                                            v-model="underGrad.yearStart"
-                                                        /> -->
                                                         <date-picker
                                                             v-model:value="
                                                                 underGrad.yearStart
                                                             "
+                                                            @change="removeLabel($event, 0)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -518,6 +518,7 @@
                                                             v-model="
                                                                 underGrad.monthEnd
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -548,6 +549,7 @@
                                                             v-model:value="
                                                                 underGrad.yearEnd
                                                             "
+                                                            @change="removeLabel($event, 1)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -555,9 +557,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </section>
 
-                                    <div class="row">
+                                    <section class="row" id="medSchool">
                                         <h4 class="sectionTitle">
                                             {{medText}} School
                                         </h4>
@@ -573,6 +575,7 @@
                                                     v-model="
                                                         medSchool.institution
                                                     "
+                                                    @keyup="removeLabel($event)"
                                                 />
                                                 <label>Name of institution</label>
                                             </div>
@@ -594,6 +597,7 @@
                                                             v-model="
                                                                 medSchool.monthStart
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -624,6 +628,7 @@
                                                             v-model:value="
                                                                 medSchool.yearStart
                                                             "
+                                                            @change="removeLabel($event, 2)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -646,6 +651,7 @@
                                                             v-model="
                                                                 medSchool.monthEnd
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -676,6 +682,7 @@
                                                             v-model:value="
                                                                 medSchool.yearEnd
                                                             "
+                                                            @change="removeLabel($event, 3)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -683,9 +690,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </section>
 
-                                    <div class="row">
+                                    <section class="row" id="internship">
                                         <h4 class="sectionTitle">
                                             Internship program
                                         </h4>
@@ -696,6 +703,7 @@
                                                     type="text"
                                                     class="validate formInput"
                                                     v-model="internship.institution"
+                                                    @keyup="removeLabel($event)"
                                                 />
                                                 <label for="Name of institution">Name of institution</label>
                                             </div>
@@ -714,6 +722,7 @@
                                                             v-model="
                                                                 internship.monthStart
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -740,6 +749,7 @@
                                                             v-model:value="
                                                                 internship.yearStart
                                                             "
+                                                            @change="removeLabel($event, 4)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -760,6 +770,7 @@
                                                             v-model="
                                                                 internship.monthEnd
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -786,6 +797,7 @@
                                                             v-model:value="
                                                                 internship.yearEnd
                                                             "
+                                                            @change="removeLabel($event, 5)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -793,10 +805,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </section>
 
                                     <!-- Residency Section -->
-                                    <div class="row">
+                                    <section class="row" id="residency">
                                         <h4 class="sectionTitle">
                                             Residency program
                                         </h4>
@@ -807,6 +819,7 @@
                                                     type="text"
                                                     class="validate formInput"
                                                     v-model="residency.institution"
+                                                    @keyup="removeLabel($event)"
                                                 />
                                                 <label for="Name of institution">Name of institution</label>
                                             </div>
@@ -825,6 +838,7 @@
                                                             v-model="
                                                                 residency.monthStart
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -851,6 +865,7 @@
                                                             v-model:value="
                                                                 residency.yearStart
                                                             "
+                                                            @change="removeLabel($event, 6)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -871,6 +886,7 @@
                                                             v-model="
                                                                 residency.monthEnd
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -897,6 +913,7 @@
                                                             v-model:value="
                                                                 residency.yearEnd
                                                             "
+                                                            @change="removeLabel($event, 7)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -904,11 +921,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </section>
 
 
                                     <!-- Fellowship Section -->
-                                    <div class="row">
+                                    <section class="row" id="fellowship">
                                         <h4 class="sectionTitle">
                                             Fellowship program
                                         </h4>
@@ -919,6 +936,7 @@
                                                     type="text"
                                                     class="validate formInput"
                                                     v-model="fellowship.institution"
+                                                    @keyup="removeLabel($event)"
                                                 />
                                                 <label for="Name of institution">Name of institution</label>
                                             </div>
@@ -937,6 +955,7 @@
                                                             v-model="
                                                                 fellowship.monthStart
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -963,6 +982,7 @@
                                                             v-model:value="
                                                                 fellowship.yearStart
                                                             "
+                                                            @change="removeLabel($event, 8)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -983,6 +1003,7 @@
                                                             v-model="
                                                                 fellowship.monthEnd
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -1009,6 +1030,7 @@
                                                             v-model:value="
                                                                 fellowship.yearEnd
                                                             "
+                                                            @change="removeLabel($event, 9)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -1016,9 +1038,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </section>
 
-                                    <div class="row">
+                                    <section class="row" id="additionalSchool">
                                         <h4 class="sectionTitle">
                                             Additional academic qualification
                                         </h4>
@@ -1031,6 +1053,7 @@
                                                     v-model="
                                                         additionalSchool.institution
                                                     "
+                                                    @keyup="removeLabel($event)"
                                                 />
                                                 <label for="Name of institution">Name of institution</label>
                                             </div>
@@ -1044,6 +1067,7 @@
                                                     v-model="
                                                         additionalSchool.degree
                                                     "
+                                                    @keyup="removeLabel($event)"
                                                 />
                                                 <label for="What was your degree">What was your degree</label>
                                             </div>
@@ -1062,6 +1086,7 @@
                                                             v-model="
                                                                 additionalSchool.monthStart
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -1088,6 +1113,7 @@
                                                             v-model:value="
                                                                 additionalSchool.yearStart
                                                             "
+                                                            @change="removeLabel($event, 10)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -1108,6 +1134,7 @@
                                                             v-model="
                                                                 additionalSchool.monthEnd
                                                             "
+                                                            @change="removeLabel($event)"
                                                         >
                                                             <option
                                                                 :value="''"
@@ -1134,6 +1161,7 @@
                                                             v-model:value="
                                                                 additionalSchool.yearEnd
                                                             "
+                                                            @change="removeLabel($event, 11)"
                                                             type="year"
                                                             placeholder="Year"
                                                         ></date-picker>
@@ -1141,7 +1169,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </section>
                                 </div>
 
 
@@ -1222,37 +1250,19 @@
             return {
                 suggestionLoaded: false,
                 medText: 'Medical',
-                stateSelected: "",
-                countrySelected: "",
-                states: [],
-                cities: [],
                 cvMedSchoolUpdate: 0,
                 underGradUpdate: 0,
                 additionalSchoolUpdate: 0,
                 internUpdate: 0,
                 residencyUpdate: 0,
                 fellowshipUpdate: 0,
-                experienceUpdate: 0,
-                serviceUpdate: 0,
-                steps: [
-                    { stepValue: "Name", filled: false, current: 0 },
-                    { stepValue: "Domain", filled: false, current: 0 },
-                    { stepValue: "Avatar", filled: false, current: 0 },
-                    { stepValue: "Academic", filled: false, current: 0 },
-                    { stepValue: "Internship", filled: false, current: 0 },
-                    { stepValue: "Residency", filled: false, current: 0 },
-                    { stepValue: "Fellowship", filled: false, current: 0 },
-                    // { stepValue: "Experience", filled: false, current: 0 },
-                    { stepValue: "Education", filled: false, current: 0 },
-                    { stepValue: "Payment", filled: false, current: 0 },
-                ],
                 setDomain: false,
                 showCropper: false,
                 view: 1,
                 bio: {
                     firstname: "",
                     lastname: "",
-                    othername: "",
+                    othername: "Othername",
                     title_id: "",
                     photo: null,
                 },
@@ -1262,21 +1272,12 @@
                 domainSelected: "",
                 bioData: {},
                 initialDomain: "",
-                experiences: {
-                    institution: "",
-                    yearStart: "",
-                    monthStart: "",
-                    city_id: "",
-                },
                 internship: {
                     institution: "",
                     yearStart: "",
                     yearEnd: "",
                     monthStart: "",
                     monthEnd: "",
-                    title: "",
-                    location: "",
-                    type: "internship",
                 },
                 loadingSuggestions: false,
                 checkingSuggestion: false,
@@ -1298,7 +1299,6 @@
                     yearEnd: "",
                     monthStart: "",
                     monthEnd: "",
-                    type: "",
                 },
                 additionalSchool: {
                     institution: "",
@@ -1314,7 +1314,6 @@
                     yearEnd: "",
                     monthStart: "",
                     monthEnd: "",
-                    type: "fellowship",
                 },
                 residency: {
                     institution: "",
@@ -1322,7 +1321,6 @@
                     yearEnd: "",
                     monthStart: "",
                     monthEnd: "",
-                    type: "residency",
                 },
                 months: [
                     "JAN",
@@ -1346,12 +1344,10 @@
                 internshipCheck: 0,
                 fellowshipCheck: 0,
                 residencyCheck: 0,
-                experienceCheck: 0,
                 addQualificaion: 0,
-                servicesCheck: 0,
                 setModal: false,
                 user: 0,
-                acadRoute: 0
+                acadRoute: 0,
             };
         },
         mounted() {
@@ -1375,13 +1371,10 @@
         },
         methods: {
             saveAll (){
-                if (this.bio.title_id === null || this.bio.title_id == '') {
-                    M.toast({
-                        html: "Please fulfill minimum requirement: Title is compulsory",
-                        classes: "errorNotifier"
-                    })
-                }else{
-                    try {                    
+                this.underGrad.minor === '' ? delete this.underGrad.minor : null;
+                this.bio.othername === '' || this.bio.othername === null ? delete this.bio.othername : null;
+                if (this.validator(this.additionalSchool) && this.validator(this.fellowship) && this.validator(this.residency) && this.validator(this.internship) && this.validator(this.medSchool) && this.validator(this.underGrad) && this.validator(this.bio) && this.domainSelected !== ''){ // && this.validator(this.domainSelected))
+                   try {                    
                         this.registerUpdateUser();
                         this.saveUndergradSchoolTime();
                         this.saveMedSchoolTime();
@@ -1404,9 +1397,13 @@
                         this.view = 2;
                     }
                 }
+                else {
+                    this.validationException();
+                }
             },
             switchText(val) {
                 let valText;
+                this.removeLabel(val)
                 if (!val) {
                     val = document.querySelector('#userTitle');
                     valText = val.selectedOptions[0].innerText;
@@ -1428,7 +1425,6 @@
                             this.medSchool.yearStart = new Date(`${e.yearStart}`);
                             this.medSchool.yearEnd = new Date(`${e.yearEnd}`);
                             this.cvMedSchoolUpdate = 1;
-                            this.steps[3].filled = true;
                         }
                         if (res.data.undergrad !== null) {
                             let e = res.data.undergrad;
@@ -1436,7 +1432,6 @@
                             this.underGrad.yearStart = new Date(`${e.yearStart}`);
                             this.underGrad.yearEnd = new Date(`${e.yearEnd}`);
                             this.underGradUpdate = 1;
-                            this.steps[3].filled = true;
                         }
                         if (res.data.otheredu !== null) {
                             let e = res.data.otheredu;
@@ -1448,12 +1443,10 @@
                                 `${e.yearEnd}`
                             );
                             this.additionalSchoolUpdate = 1;
-                            this.steps[8].filled = true;
                         }
                         let expo = res.data.experiences[0];
                         res.data.experiences.length !== 0
-                            ? ((this.steps[7].filled = true),
-                              (this.experiences = expo),
+                            ? ((this.experiences = expo),
                               (this.experiences.yearStart = new Date(
                                   `${expo.yearStart}`
                               )),
@@ -1474,18 +1467,15 @@
                         );
                         internship !== undefined
                             ? ((this.internship = internship),
-                              (this.steps[4].filled = true),
                               (this.internUpdate = 1),
                               (this.internship.yearStart = new Date(`${internship.yearStart}`)), (this.internship.yearEnd = new Date(`${internship.yearEnd}`)))
                             : null;
                         fellowship !== undefined
                             ? ((this.fellowship = fellowship),
-                              (this.steps[5].filled = true),
                               (this.fellowshipUpdate = 1), (this.fellowship.yearStart = new Date(`${fellowship.yearStart}`)), (this.fellowship.yearEnd = new Date(`${fellowship.yearEnd}`)))
                             : null;
                         residency !== undefined
                             ? ((this.residency = residency),
-                              (this.steps[6].filled = true),
                               (this.residencyUpdate = 1))
                             : null;
                             this.switchText();
@@ -1494,7 +1484,6 @@
                         console.log(error);
                     });
             },
-            
             makePayment() {
                 let paymentModal = document.getElementById("paymentModal");
                 let paymentModalInstance = M.Modal.getInstance(paymentModal);
@@ -1512,8 +1501,9 @@
                 // this.$refs.photo.click();
                 this.showCropper = true;
             },
-            checkDomainAvailability() {
+            checkDomainAvailability(el) {
                 this.domainCheckPassed = null;
+                this.removeLabel(el);
                 if (this.domainSelected != "") {
                     this.checkingSuggestion = true;
                     let domainToCheck = this.domainSelected.endsWith(".com")
@@ -1556,9 +1546,6 @@
                             this.domainSelected = `${res.data.domain}.com`;
                             this.initialDomain = res.data.domain;
                             this.tenantId = res.data.tenantID;
-                            res.data.domain !== null
-                                ? (this.steps[1].filled = true)
-                                : null;
                         }
                     })
                     .catch((err) => console.log(err));
@@ -1655,15 +1642,9 @@
                 this.bio.firstname = this.bioData.firstname;
                 this.bio.lastname = this.bioData.lastname;
                 this.bio.othername = this.bioData.othername;
-                this.bio.title_id = this.bioData.title_id;
+                this.bio.title_id = this.bioData.title_id === null ? "" : this.bioData.title_id;
                 this.bio.photo = this.bioData.photo;
                 this.bio.id = this.bioData.id;
-                if (this.bio.firstname !== "" || this.bio.lastname !== "") {
-                    this.steps[0].filled = true;
-                }
-                if (this.bio.photo !== undefined && this.bio.photo !== null) {
-                    this.steps[2].filled = true;
-                }
             },
             passwordGenerator() {
                 var chars =
@@ -1720,8 +1701,6 @@
                                         "passwordGen",
                                         this.bio.password
                                     );
-
-                                    this.steps[0].filled = true;
                                 }
                             })
                             .catch((err) => {
@@ -1754,13 +1733,7 @@
                         .post("/claim/saveUndergrad", this.underGrad)
                         .then((res) => {
                             if (res.data.status == 201) {
-                                // M.toast({
-                                //     html: res.data.message,
-                                //     classes: "successNotifier",
-                                // });
-                                this.attendedSchInfo === 2
-                                    ? (this.steps[3].filled = true)
-                                    : null;
+                                return true;
                             }
                         })
                         .catch((err) => {
@@ -1778,34 +1751,30 @@
                         this.additionalSchool.monthStart != "") &&
                     this.additionalSchoolUpdate === 0
                 ) {
-                    this.additionalSchool.yearStart != ""
-                        ? (this.additionalSchool.yearStart =
-                              this.additionalSchool.yearStart.getFullYear())
-                        : null;
-                    this.additionalSchool.yearEnd != ""
-                        ? (this.additionalSchool.yearEnd =
-                              this.additionalSchool.yearEnd.getFullYear())
-                        : null;
-                    axios
-                        .post(
-                            "/claim/save/additonalqualification",
-                            this.additionalSchool
-                        )
-                        .then((res) => {
-                            if (res.data.status == 201) {
-                                // M.toast({
-                                //     html: res.data.message,
-                                //     classes: "successNotifier",
-                                // });
-                                this.additionalSchool.id = res.data.id;
-                                this.addQualificaion === 4
-                                    ? (this.steps[8].filled = true)
-                                    : null;
-                            }
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                        });
+                    if (this.validator(this.additionalSchool)) {
+                        this.additionalSchool.yearStart != ""
+                            ? (this.additionalSchool.yearStart =
+                                this.additionalSchool.yearStart.getFullYear())
+                            : null;
+                        this.additionalSchool.yearEnd != ""
+                            ? (this.additionalSchool.yearEnd =
+                                this.additionalSchool.yearEnd.getFullYear())
+                            : null;
+                        axios.post("/claim/save/additonalqualification", this.additionalSchool)
+                            .then((res) => {
+                                if (res.data.status == 201) {
+                                    this.additionalSchool.id = res.data.id;
+                                    return true;
+                                }
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            });
+                    }
+                    else {
+                        this.additionalSchoolException = true;
+                        this.validationException();
+                    }
                 }
             },
             saveMedSchoolTime() {
@@ -1830,13 +1799,7 @@
                         .post("/claim/savemedicalschooltime", this.medSchool)
                         .then((res) => {
                             if (res.data.status == 201) {
-                                // M.toast({
-                                //     html: res.data.message,
-                                //     classes: "successNotifier",
-                                // });
-                                this.attendedMedSch === 2
-                                    ? (this.steps[3].filled = true)
-                                    : null;
+                                return true;
                             }
                         })
                         .catch((err) => {
@@ -1859,19 +1822,14 @@
                         ? (this.internship.yearEnd =
                               this.internship.yearEnd.getFullYear())
                         : null;
+                        this.internship.type = 'internship';
                     axios
                         .post("/claim/saveinternship", this.internship)
                         .then((res) => {
                             if (res.data.status == 201) {
-                                // M.toast({
-                                //     html: res.data.message,
-                                //     classes: "successNotifier",
-                                // });
                                 this.internship.yearStart = new Date(`${this.internship.yearStart}`);
                                 this.internship.yearEnd = new Date(`${this.internship.yearEnd}`);
-                                this.internshipCheck === 3
-                                    ? (this.steps[4].filled = true)
-                                    : null;
+                                return true;
                             }
                         })
                         .catch((err) => {
@@ -1896,19 +1854,14 @@
                         ? (this.fellowship.yearEnd =
                               this.fellowship.yearEnd.getFullYear())
                         : null;
+                        this.fellowship.type = "fellowship";
                     axios
                         .post("/claim/savefellowship", this.fellowship)
                         .then((res) => {
                             if (res.data.status == 201) {
-                                // M.toast({
-                                //     html: res.data.message,
-                                //     classes: "successNotifier",
-                                // });
                                 this.fellowship.yearStart = new Date(`${this.fellowship.yearStart}`);
                                 this.fellowship.yearEnd = new Date(`${this.fellowship.yearEnd}`);
-                                this.fellowshipCheck === 3
-                                    ? (this.steps[6].filled = true)
-                                    : null;
+                                return true;
                             }
                         })
                         .catch((err) => {
@@ -1931,19 +1884,14 @@
                         ? (this.residency.yearEnd =
                               this.residency.yearEnd.getFullYear())
                         : null;
+                        this.residency.type = residency;
                     axios
                         .post("/claim/saveresidency", this.residency)
                         .then((res) => {
                             if (res.data.status == 201) {
-                                // M.toast({
-                                //     html: res.data.message,
-                                //     classes: "successNotifier",
-                                // });
                                 this.residency.yearStart = new Date(`${this.residency.yearStart}`);
                                 this.residency.yearEnd = new Date(`${this.residency.yearEnd}`);
-                                this.residencyCheck === 3
-                                    ? (this.steps[5].filled = true)
-                                    : null;
+                                return true;
                             }
                         })
                         .catch((err) => {
@@ -1992,12 +1940,8 @@
                         .then((res) => {
                             if (res.data.status == 200) {
                                 this.initialDomain = res.data.domain.domain;
-                                // M.toast({
-                                //     html: res.data.message,
-                                //     classes: "successNotifier",
-                                // });
                                 this.setDomain = false;
-                                // this.steps[1].filled = true;
+                                return true;
                             }
                         })
                         .catch((err) => {
@@ -2029,7 +1973,6 @@
                             this.showCropper = false;
                             this.uploaded = e;
                             this.bio.photo = {};
-                            this.steps[2].filled = true;
                         }
                     })
                     .catch((err) => {
@@ -2116,6 +2059,149 @@
                     );
                 }
             },
+            validator(obj) {
+                // Passes an object of data
+                // Checks that each item in the object is filled
+                // Else each object should be empty
+                // If empty for any of the object, get the label and red it out 
+                // Refuse update or edit for other fields
+                let nonEmptyKey = null;
+                for (var key in obj) {
+                    if (!obj.hasOwnProperty(key)) {
+                        continue;
+                    }
+                    if (obj[key]) {
+                        nonEmptyKey = key;
+                        break;
+                    }
+                }
+                if (nonEmptyKey === null) {
+                    return true;
+                }
+                for (var key in obj) {
+                    if (!obj.hasOwnProperty(key) || key === nonEmptyKey) {
+                        continue;
+                    }
+                    if (!obj[key]) {
+                        return false;
+                    }
+                }
+                return true;
+            },
+            validationException() {
+                if (!this.validator(this.additionalSchool)) {
+                    this.loopInputsNCheckEmptyValues('additionalSchool');
+                    this.getOffset('additionalSchool')
+                }
+                if (!this.validator(this.fellowship)) {
+                    this.loopInputsNCheckEmptyValues('fellowship');
+                    this.getOffset('fellowship');
+                }
+                if (!this.validator(this.residency)) {
+                    this.loopInputsNCheckEmptyValues('residency');
+                    this.getOffset('residency');
+                }
+                if (!this.validator(this.internship)) {
+                    this.loopInputsNCheckEmptyValues('internship');
+                    this.getOffset('internship');
+                }
+                if (!this.validator(this.medSchool)) {
+                    this.loopInputsNCheckEmptyValues('medSchool');
+                    this.getOffset('medSchool');
+                }
+                if (!this.validator(this.underGrad)) {
+                    this.loopInputsNCheckEmptyValues('underGrad');
+                    this.getOffset('underGrad');
+                }
+                if (!this.validator(this.bio)) {
+                    this.loopInputsNCheckEmptyValues('bio');
+                    this.getOffset('bio');
+                }
+                if (this.domainSelected === '') {
+                    this.loopInputsNCheckEmptyValues('domain');
+                    this.getOffset('domain');
+                }
+                
+            },
+            createLabel(input) {
+                const newElement = document.createElement("label");
+                newElement.style.color = 'indianred';
+                newElement.style.fontSize = '0.75rem'
+                newElement.textContent = "Required";
+                input.style.margin = 0;
+                input.style.borderBottomColor = 'indianred';
+                input.insertAdjacentElement("afterend", newElement);
+                input.classList.add('bb-danger', 'required', 'm-0');
+            },
+            removeLabel(el, num = 0) {
+                const timestamp = Date.parse(el);
+                if (el === null || !isNaN(timestamp)) {
+                    let mxInput = document.querySelectorAll('.mx-input')[num];
+                    if (mxInput.nextElementSibling !== null && mxInput.nextElementSibling.tagName === 'LABEL') {
+                        mxInput.nextElementSibling.remove();
+                    } 
+                    if (mxInput.style.borderBottomColor !== "") {
+                        mxInput.style.borderBottomColor = "";
+                    }
+                } else {
+                    if (el.target.classList.contains('bb-danger', 'required')){
+                        el.target.classList.remove('bb-danger', 'required');
+                    }
+                    if (el.target.nextSibling !== null) {
+                        if (el.target.nextSibling.classList.contains('dangerTxt')) {
+                            el.target.nextSibling.classList.remove('dangerTxt');
+                        }
+                        if (el.target.hasAttribute('data-no-label')) {
+                            if (el.target.nextSibling.tagName === 'LABEL') {
+                                el.target.nextSibling.remove();
+                            }
+                        }
+                    }
+                    if (el.target.style.hasOwnProperty('border-bottom-color')) {
+                        el.target.style.removeProperty("border-bottom-color");
+                    }
+                    if (el.type === 'change') {
+                        if (el.target.nextSibling !== null && !el.target.hasAttribute('data-label')) {
+                            el.target.nextSibling.remove();
+                        }
+                        if (el.target.nextSibling !== null && el.target.hasAttribute('data-label')) {
+                            el.target.nextSibling.classList.remove('dangerTxt');
+                        }
+                        if (el.target.style) {
+                            el.target.style.removeProperty("border-bottom-color");
+                        }
+                    }
+                }
+            },
+            loopInputsNCheckEmptyValues(id) {
+                let mySection = document.querySelector(`#${id}`);
+                    let inputSelect = mySection.querySelectorAll("input, select");
+                    inputSelect.forEach(input => {
+                        if (!input.value) {
+                            if (input.nextSibling !== null) {
+                                if (input.nextSibling.localName == 'label' && !input.hasAttribute('data-optional')) {
+                                    input.nextSibling.classList.add('dangerTxt');
+                                    input.classList.add('bb-danger', 'required');
+                                }else if(input.nextSibling.localName != 'label') {
+                                    this.createLabel(input);
+                                }
+                            }
+                            else {
+                                this.createLabel(input);
+                            }
+                        }
+                        else {
+                            console.log(input.value);
+                        }
+                    });
+            },
+            getOffset(el) {
+                let DOMEL = document.querySelector(`#${el}`);
+                let container = document.querySelectorAll('.contentDiv');
+                const rect = DOMEL.getBoundingClientRect();
+                container[0].scrollTop += rect.top;
+            }
+
         },
         props: {
             claimaint: String,
@@ -2265,5 +2351,21 @@
     }
     .saveAllBtn {
         background-color: var(--pri) !important;
+    }
+    .bb-danger {
+        border-bottom-color: rgb(238, 118, 118) !important; 
+    }
+    .dangerTxt {
+        color: rgb(238, 118, 128);
+    }
+    .required::-webkit-input-placeholder {
+        color: rgb(238, 118, 128);
+    }
+
+    .input-field>label, label {
+        font-size: .75rem !important;
+    }
+    input.mx-input {
+        margin: 0px !important;
     }
 </style>
