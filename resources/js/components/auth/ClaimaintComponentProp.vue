@@ -1333,7 +1333,7 @@
         },
         methods: {
             saveAll (){
-                this.underGrad.minor === '' ? delete this.underGrad.minor : null;
+                this.underGrad.minor === ''|| this.underGrad.minor === null ? delete this.underGrad.minor : null;
                 this.bio.othername === '' || this.bio.othername === null ? delete this.bio.othername : null;
                 if (this.validator(this.additionalSchool) && this.validator(this.fellowship) && this.validator(this.residency) && this.validator(this.internship) && this.validator(this.medSchool) && this.validator(this.underGrad) && this.validator(this.bio) && this.domainSelected !== ''){ // && this.validator(this.domainSelected))
                    try {                    
@@ -1398,6 +1398,7 @@
                         if (res.data.otheredu !== null) {
                             let e = res.data.otheredu;
                             this.additionalSchool = e;
+                            delete this.additionalSchool.title;
                             this.additionalSchool.yearStart = new Date(
                                 `${e.yearStart}`
                             );
@@ -1428,17 +1429,17 @@
                             (el) => el.type === "residency"
                         );
                         internship !== undefined
-                            ? ((this.internship = internship),
+                            ? ((this.internship.institution = internship.institution),(this.internship.monthStart = internship.monthStart), (this.internship.yearStart = internship.yearStart), (this.internship.monthEnd = internship.monthEnd), (this.internship.yearEnd = internship.yearEnd),
                               (this.internUpdate = 1),
                               (this.internship.yearStart = new Date(`${internship.yearStart}`)), (this.internship.yearEnd = new Date(`${internship.yearEnd}`)))
                             : null;
                         fellowship !== undefined
-                            ? ((this.fellowship = fellowship),
+                            ? ((this.fellowship.institution = fellowship.institution),(this.fellowship.monthStart = fellowship.monthStart), (this.fellowship.yearStart = fellowship.yearStart), (this.fellowship.monthEnd = fellowship.monthEnd), (this.fellowship.yearEnd = fellowship.yearEnd),
                               (this.fellowshipUpdate = 1), (this.fellowship.yearStart = new Date(`${fellowship.yearStart}`)), (this.fellowship.yearEnd = new Date(`${fellowship.yearEnd}`)))
                             : null;
                         residency !== undefined
-                            ? ((this.residency = residency),
-                              (this.residencyUpdate = 1))
+                            ? ((this.residency.institution = residency.institution),(this.residency.monthStart = residency.monthStart), (this.residency.yearStart = residency.yearStart), (this.residency.monthEnd = residency.monthEnd), (this.residency.yearEnd = residency.yearEnd),
+                              (this.residencyUpdate = 1), (this.residency.yearStart = new Date(`${residency.yearStart}`)), (this.residency.yearEnd = new Date(`${residency.yearEnd}`)))
                             : null;
                             this.switchText();
                     })
@@ -1679,8 +1680,7 @@
                         this.underGrad.monthEnd != "" ||
                         this.underGrad.major != "" ||
                         this.underGrad.yearStart != "" ||
-                        this.underGrad.monthStart != "" ||
-                        this.underGrad.minor != "") &&
+                        this.underGrad.monthStart != "") &&
                     this.underGradUpdate === 0
                 ) {
                     this.underGrad.yearStart != ""
@@ -1744,7 +1744,6 @@
                     (this.medSchool.institution != "" ||
                         this.medSchool.yearEnd != "" ||
                         this.medSchool.monthEnd != "" ||
-                        this.medSchool.type != "" ||
                         this.medSchool.yearStart != "" ||
                         this.medSchool.monthStart != "") &&
                     this.cvMedSchoolUpdate === 0
@@ -1771,7 +1770,7 @@
             },
             saveInternshipTime() {
                 if (
-                    (this.internship.institution != "" ||
+                    (this.residency.institution != "" ||
                         this.internship.yearStart != "" ||
                         this.internship.monthStart != "") &&
                     this.internUpdate === 0
@@ -1846,7 +1845,7 @@
                         ? (this.residency.yearEnd =
                               this.residency.yearEnd.getFullYear())
                         : null;
-                        this.residency.type = residency;
+                        this.residency.type = 'residency';
                     axios
                         .post("/claim/saveresidency", this.residency)
                         .then((res) => {

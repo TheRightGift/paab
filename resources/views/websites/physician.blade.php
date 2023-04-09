@@ -35,5 +35,11 @@
     <script async src="//www.instagram.com/embed.js"></script>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="Lvp1FF6L"></script>
+    <script>
+        var dropdowns = document.querySelectorAll('.dropdown-trigger')
+        for (var i = 0; i < dropdowns.length; i++){
+            M.Dropdown.init(dropdowns[i]);
+        }
+    </script>
 </body>
 </html>

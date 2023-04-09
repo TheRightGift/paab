@@ -32,7 +32,7 @@
                         >
                     </li>
                     <li v-if="isLoggedIn">
-                        <a class='dropdown-trigger physiTempSettingsNavLink' href='#' data-target='dropSettings'>
+                        <a class='dropdown-trigger physiTempSettingsNavLink' href='#!' data-target='dropSettings'>
                             <i class="material-icons physiTempSettingsIcon">settings</i>
                         </a>
                     </li>
