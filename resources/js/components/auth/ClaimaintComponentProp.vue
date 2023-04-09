@@ -1155,7 +1155,7 @@
                         </div>
                     </div>
 
-                    <div class="col l6 s12  noPaddingLeft noPaddingRight fullpage">
+                    <div class="col l6 s12  noPaddingLeft noPaddingRight fullpage" v-if='view < 2'>
                         <div class="col l6 offset-l6 hide-on-med-and-down" v-if='view > 0'>
                             <a href="/" target="_blank">
                                 <img src="/media/img/wcd-logo-noBckg.png" alt="whitecoatdomain logo" class="responsive-img"/>
@@ -1219,7 +1219,7 @@
                 fellowshipUpdate: 0,
                 setDomain: false,
                 showCropper: false,
-                view: 1,
+                view: 2,
                 bio: {
                     firstname: "",
                     lastname: "",
@@ -1312,6 +1312,7 @@
             };
         },
         mounted() {
+            this.popup();
             this.getTenantNDomain();
             this.getData();
             document.addEventListener("DOMContentLoaded", function () {
@@ -2296,11 +2297,19 @@
         #popup {
             padding: 0;
         }
+        .paymentOverlay {
+            height: 90vh;
+            margin: 2% 10%;
+        }
     }
     @media only screen and (max-width: 992px) {
         .modal {
             width: 20%;
             /* margin-top: 50%; */
+        }
+        .paymentOverlay {
+            height: 90vh;
+            margin: 2% 10%;
         }
     }
     @media screen and (max-width: 640px) {
@@ -2311,6 +2320,10 @@
         #popup {
             width: 95%;
             padding: 1em 0 0 0;
+        }
+
+        .paymentOverlay {
+            height: 88vh;
         }
     }
     .justify-center {

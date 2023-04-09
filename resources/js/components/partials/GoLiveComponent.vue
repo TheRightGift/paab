@@ -1,9 +1,9 @@
 <template>
     <div
-        class="row serviceBtnRowDiv"
+        class="row"
         v-show="showGoLiveBtns"
     >
-        <div class="col s12 m12 l12 customFlex">
+        <!--div class="col s12 m12 l12 customFlex">
             <div class="customCard">
                 <div class="nameOnCard">{{ bio.firstname ?? 'john' }} {{ bio.lastname ?? 'doe' }}</div>
                 <div class="numberOnCard">.... 65432</div>
@@ -20,6 +20,7 @@
                 <li>Branded email</li>
                 <li>Social media stream</li>
             </ul>
+            
 
             <button
                 class="waves-effect waves-light btn modal-trigger col s12"
@@ -28,7 +29,84 @@
             >
                 Go live
             </button>
+        </div-->
+        <div class="row">
+            <div class="col l12 s12">
+                <h4>Pay less for premium services.</h4>
+            </div>
         </div>
+        <div class="row featureContainer">
+            <div>
+                
+                <div class="col l6 offset-l6 s12 feature featurePremium center-align greyText">
+                    Premium
+                </div>
+            </div>
+            <div>
+                <div class="col l6 s6 feature featureBackground">
+                    <b>Pro website templates</b>
+                </div>
+                <div class="col l6 s6 feature featurePremium center-align">
+                    <i class="material-icons">check</i>
+                </div>
+            </div>
+            <div>
+                <div class="col l6 s6 feature featureBackground">
+                    <b>Secured website</b>
+                </div>
+                <div class="col l6 s6 feature featurePremium center-align">
+                    <i class="material-icons">check</i>
+                </div>
+            </div>
+            <div>
+                <div class="col l6 s6 feature featureBackground">
+                    <b>Custom domain name</b>
+                </div>
+                <div class="col l6 s6 feature featurePremium center-align">
+                    <i class="material-icons">check</i>
+                </div>
+            </div>
+            <div>
+                <div class="col l6 s6 feature featureBackground">
+                    <b>Domain hosting</b>
+                </div>
+                <div class="col l6 s6 feature featurePremium center-align">
+                    <i class="material-icons">check</i>
+                </div>
+            </div>
+            <div>   
+                <div class="col l6 s6 feature featureBackground">
+                    <b>Branded email</b>
+                </div>
+                <div class="col l6 s6 feature featurePremium center-align">
+                    <i class="material-icons">check</i>
+                </div>
+            </div>
+            <div>
+                <div class="col l6 s6 feature featureBackground">
+                    <b>Social media stream</b>
+                </div>
+                <div class="col l6 s6 feature featurePremium center-align">
+                    <i class="material-icons">check</i>
+                </div>
+            </div>
+            <div>
+                <div class="col l6 s6 feature">
+                    <b>Price (Annual)</b>
+                </div>
+                <div class="col l6 s6 feature featurePremium center-align borderBottom greyText">
+                    <b>$144.00 </b>
+                </div>
+            </div>
+        </div>
+
+        <button
+            class="waves-effect waves-light btn modal-trigger col s12"
+            href="#modal1"
+            @click="sendEmail('premium')"
+        >
+            Go live
+        </button>
     </div>
 </template>
 <script>
@@ -47,76 +125,36 @@ export default {
 }
 </script>
 <style scoped>
-    .customCard {
-        position: relative;
-        width: 345px;
-        height: 187.26px;
-        background: #46166B;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 30px;
-        padding: 20px;
-        font-size: 14px;
-        color: var(--white);
-        font-weight: 600;
+    .featureContainer {
+        margin: 6vh 0;
     }
-    .nameOnCard {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        text-transform: uppercase;
+    .featureBackground {
+        background-color: #c8cbce;
     }
-
-    .cardType {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        display: flex;
+    .featurePremium {
+        background-color: var(--ter);
     }
-    .amountOnCard {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 30px;
+    .featurePremium:first-child {
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+        padding-top: 4vh
     }
-
-    .numberOnCard {
-        position: absolute;
-        top: 20px;
-        right: 20px;
+    .greyText {
+        color: #b6b6b9;
     }
-    .red {
-        background-color: #D44141
+    .borderBottom {
+        border-bottom-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
+        padding-bottom: 4vh !important;
     }
-    .gold {
-        background: rgba(212, 162, 65, 0.8);
-        margin-left: -2px;
+    .feature {
+        padding: 2.3vh 1.5vw;
     }
-    .ellipsis {
-        width: 18px;
-        height: 20.01px;
-        border-radius: 50%;
+    .feature i {
+        font-size: 1rem;
+        color: #adf802;
     }
     .btn {
-        background: var(--primary);
+        background-color: var(--pri) !important;
     }
-    @media only screen and (max-width: 640px) {
-        ul {
-            width: 84% !important;
-        }
-        ul > li {
-            text-align: justify !important;
-            font-size: 0.9rem;
-            list-style-type: disc !important;
-        }
-        ul li::marker {
-            font-size: 2em;
-            color: #46166B;
-        }
-    }
-    ul {
-        margin-bottom: 1rem;
-        list-style-type: none;
-    }
-    
 </style>
