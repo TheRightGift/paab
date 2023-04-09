@@ -64,17 +64,44 @@ class TenantClaimController extends Controller
             $input = $inputs->validated();
             $input['password'] = Hash::make($request->password);
             if (!empty(Session::get('email')) || $request->confirmHash === 'hashkeill') {
+                $tenantToFind = Session::get('tenant');
                 $input['email'] = $input['email'] ?? Session::get('email');
                 $findUser = User::where('email', $input['email'])->first();
                 if(!(empty($findUser))){
                     $user = $findUser->update($input);
+                    $this->createOrUpdatePassword($tenantToFind, $request->password);
                     return response(['status' => 200, 'user' => $user, 'msg' => 'Updated onSuccess'], 200);
                 } else {
                     $user = User::create($input);
+                    $this->createOrUpdatePassword($tenantToFind, $request->password);
                     return response(['status' => 201, 'user' => $user, 'msg' => 'Your data has been saved successfully'], 201);
                 }
             }
         }
+    }
+
+    /**
+     * Create Or Update password for the tenant
+     *
+     * @param [type] $data
+     * @return void
+     */
+    public function createOrUpdatePassword($tenantID, $password)
+    {
+        $instance = DB::table('tenant_password_tables')->where('tenant_id', $tenantID)->first();
+
+        if (!$instance) {
+            $instance = DB::table('tenant_password_tables')->insert([
+                'tenant_id' => $tenantID,
+                'password' => $password,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        } else {
+            DB::update('update tenant_password_tables set password = :password where id = :id', ['password' => $password, 'id' => $instance->id]);
+        }
+
+        return $instance;
     }
     // Saves User bioData encase of update
 
@@ -101,9 +128,12 @@ class TenantClaimController extends Controller
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 if (!empty($request->id)) {
+                    $input['updated_at'] = now();
                     $userData = DB::table('bios')->where('id', '!=' , null )->update($input);
                 }
                 else {
+                    $input['updated_at'] = now();
+                    $input['created_at'] = now();
                     $userData = DB::table('bios')->insert($input);
                 }
                 $userBiography = DB::table('bios')->first();
@@ -206,6 +236,7 @@ class TenantClaimController extends Controller
         }
         else {
             $input = $inputs->validated();
+            
             $searchTenant = $request->session()->get('tenant');
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
@@ -216,9 +247,12 @@ class TenantClaimController extends Controller
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
                 $cvUnderGrad = DB::table('c_v__undergrad__schools')->first();
                 if (!empty($cvUnderGrad)) {
+                    $input['updated_at'] = now();
                     $gradSchool = DB::table('c_v__undergrad__schools')->where('id', !null)->update($input);
                 }
                 else {
+                    $input['created_at'] = now();
+                    $input['updated_at'] = now();
                     $gradSchool = DB::table('c_v__undergrad__schools')->insert($input);
                 }
                 if ($gradSchool == true) {
@@ -256,9 +290,12 @@ class TenantClaimController extends Controller
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
                 $cvUnderGrad = DB::table('c_v__medical__schools')->first();
                 if (!empty($cvUnderGrad)) {
+                    $input['updated_at'] = now();
                     $gradSchool = DB::table('c_v__medical__schools')->where('id', !null)->update($input);
                 }
                 else {
+                    $input['created_at'] = now();
+                    $input['updated_at'] = now();
                     $gradSchool = DB::table('c_v__medical__schools')->insert($input);
                 }
                 if ($gradSchool == true) {
@@ -295,9 +332,12 @@ class TenantClaimController extends Controller
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
                 $internship = DB::table('c_v__trainings')->where('type', 'internship')->first();
                 if (!empty($internship)) {
+                    $input['updated_at'] = now();
                     $internship = DB::table('c_v__trainings')->where('type', 'internship')->update($input);
                 }
                 else {
+                    $input['created_at'] = now();
+                    $input['updated_at'] = now();
                     $internship = DB::table('c_v__trainings')->insert($input);
                 }
                 if ($internship == true) {
@@ -334,9 +374,12 @@ class TenantClaimController extends Controller
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
                 $fellowship = DB::table('c_v__trainings')->where('type', 'fellowship')->first();
                 if (!empty($fellowship)) {
+                    $input['updated_at'] = now();
                     $fellowship = DB::table('c_v__trainings')->where('type', 'fellowship')->update($input);
                 }
                 else {
+                    $input['created_at'] = now();
+                    $input['updated_at'] = now();
                     $fellowship = DB::table('c_v__trainings')->insert($input);
                 }
                 if ($fellowship == true) {
@@ -373,9 +416,12 @@ class TenantClaimController extends Controller
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
                 $residency = DB::table('c_v__trainings')->where('type', 'residency')->first();
                 if (!empty($residency)) {
+                    $input['updated_at'] = now();
                     $residency = DB::table('c_v__trainings')->where('type', 'residency')->update($input);
                 }
                 else {
+                    $input['created_at'] = now();
+                    $input['updated_at'] = now();
                     $residency = DB::table('c_v__trainings')->insert($input);
                 }
                 if ($residency == true) {
@@ -411,10 +457,13 @@ class TenantClaimController extends Controller
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
                 if ($request->has('id')) {
+                    $input['updated_at'] = now();
                     $experience = DB::table('c_v__experiences')->where('id', $request->id)->update($input);
                     $lastID = $request->id;
                 }
                 else {
+                    $input['created_at'] = now();
+                    $input['updated_at'] = now();
                     $experience = DB::table('c_v__experiences')->insert($input);
                     $lastID = DB::getPdo()->lastInsertId();
                 }
@@ -452,10 +501,13 @@ class TenantClaimController extends Controller
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
                 if ($request->has('id')) {
+                    $input['updated_at'] = now();
                     $additonalQualication = DB::table('c_v__additional__schools')->where('id', $request->id)->update($input);
                     $lastID = $request->id;
                 }
                 else {
+                    $input['created_at'] = now();
+                    $input['updated_at'] = now();
                     $additonalQualication = DB::table('c_v__additional__schools')->insert($input);
                     $lastID = DB::getPdo()->lastInsertId();
                 }
@@ -487,10 +539,13 @@ class TenantClaimController extends Controller
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
                 if ($request->has('id')) {
+                    $input['updated_at'] = now();
                     $service = DB::table('services')->where('id', $request->id)->update($input);
                     $lastID = $request->id;
                 }
                 else {
+                    $input['created_at'] = now();
+                    $input['updated_at'] = now();
                     $service = DB::table('services')->insert($input);
                     $lastID = DB::getPdo()->lastInsertId();
                 }
@@ -526,10 +581,6 @@ class TenantClaimController extends Controller
                     $userToUpdate->plan = $request->plan == 'freemium' ? 'F' : 'P';
                     $userToUpdate->registration_completed = 'Active';
                     $userToUpdate->save();
-                    DB::table('tenant_password_tables')->insert([
-                        'tenant_id' => $value,
-                        'password' => $request->password,
-                    ]);
                     $this->generateIntro($tenant, $valueOfMail);
                     Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 
