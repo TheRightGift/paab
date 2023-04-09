@@ -2,50 +2,15 @@
     <div>
         <div class="row">
             <div id="popup">
-                <span class="pl-1"
-                    >Preview website:
-                    <a
-                        class="btn btn-small waves waves-effect"
-                        @click="makePayment"
-                        >Continue to payment</a
-                    ></span
-                >
+                <div class="paymentOverlay cFlex">
+                    <a class="btn btn-small waves waves-effect" @click="makePayment">Continue to payment</a>
+                </div>
+                <h5 class="center-align">Preview website </h5>
                 <iframe title="Your website preview" srcdoc="Loading..."  id="iframe" onload="this.removeAttribute('srcdoc')"></iframe>
             </div>
             <div class="col s12 noPaddingLeft noPaddingRight">
                 <div class="websiteClaimContainer">
-                    <!--div class="headerDiv">
-                        <a href="/">
-                            <img
-                                src="/media/img/wcdMobileLogo.png"
-                                alt="wcdMobileLogo.png"
-                                class="hide-on-large-only wcdMobileLogo"
-                            />
-                            <img
-                                src="/media/img/wcdMobileLogoLarge.png"
-                                alt="wcdMobileLogoLarge.png"
-                                class="hide-on-med-and-down"
-                            />
-                        </a>
-                        <p class="headerTitle">
-                            It is time for the world to hear your pulse
-                        </p>
-                    </div-->
-                    <!--div class="hide-on-large-only">
-                        <img
-                            src="/media/img/3dDoctors.png"
-                            alt="3dDoctors.png"
-                            class="primaryColorDocsImg"
-                        />
-                    </div>
-                    <div class="hide-on-med-and-down">
-                        <img
-                            src="/media/img/3dDoctorsLarge.png"
-                            alt="3dDoctorsLarge.png"
-                            class="primaryColorDocsImgLarge"
-                        />
-                    </div-->
-                    <div class="col l6 s12 noPaddingLeft">
+                    <div class="col l6 s12 noPaddingLeft noPaddingRight">
                         <div id="page"></div>
                         <div class="contentDiv">
                             <div class="contentInnerDiv">
@@ -53,18 +18,18 @@
                                 <div v-show="view == 0" class="intro">
                                     <div class="center-align">
                                         <a href="/">
-                                            <img
-                                                src="/media/img/wcdMobileLogo.png"
+                                            <!--img
+                                                src="/media/img/wcd-logo-noBckg.png"
                                                 alt="wcdMobileLogo.png"
                                                 class="hide-on-large-only wcdMobileLogo"
-                                            />
+                                            /-->
                                             <img
-                                                src="/media/img/whiteCoatDomain.png"
+                                                src="/media/img/wcd-logo-noBckg.png"
                                                 alt="WhiteCoatDomain Logo"
                                                 class="hide-on-med-and-down"
                                             />
                                         </a>
-                                        <p class="contentTitle marginTop-10">
+                                        <p class="contentTitle marginTop-5">
                                             Lets help you setup your website
                                         </p>
 
@@ -86,7 +51,7 @@
                                         </h4>
                                         
                                         <div class="row formInnerDiv">
-                                            <div class="input-field selectInputField noMarginLeft col l2 s2 noPaddingLeft">
+                                            <div class="input-field selectInputField noMarginLeft col l2 m2 s6 noPaddingLeft paddingLeftSM">
                                                 <select
                                                     v-model="bio.title_id"
                                                     required
@@ -113,7 +78,7 @@
                                                 <label>Title</label>
                                             </div>
 
-                                            <div class="input-field col l3 s3">
+                                            <div class="input-field col l3 m3 s6">
                                                 <input
                                                     type="text"
                                                     v-model="bio.firstname"
@@ -124,7 +89,7 @@
                                                 />
                                                 <label>Firstname</label>
                                             </div>
-                                            <div class="input-field col l3 s3">
+                                            <div class="input-field col l3 m3 s6">
                                                 <input
                                                     type="text"
                                                     v-model="bio.lastname"
@@ -134,7 +99,7 @@
                                                 />
                                                 <label>Lastname</label>
                                             </div>
-                                            <div class="input-field col s3">
+                                            <div class="input-field col l3 m3 s6">
                                                 <input
                                                     type="text"
                                                     v-model="bio.othername"
@@ -153,7 +118,7 @@
                                         </h4>
                                         <div>
                                             <div class="row">
-                                                <div class="input-field col l12 s12 noPaddingLeft">
+                                                <div class="input-field col l12 s12 noPaddingLeft paddingLeftSM">
                                                     <input
                                                         type="text"
                                                         v-model="domainSelected"
@@ -264,30 +229,7 @@
                                         <h4 class="sectionTitle">
                                             Brand image
                                         </h4>
-                                        <!--p
-                                            class="contentTitle"
-                                            v-show="
-                                                !showCropper &&
-                                                (bioData.photo !== null ||
-                                                    uploaded !== null)
-                                            "
-                                        >
-                                            Are you ok with this picture?
-                                        </p>
-                                        <p
-                                            class="contentTitle"
-                                            v-show="
-                                                !showCropper &&
-                                                bioData.photo === null &&
-                                                uploaded === null
-                                            "
-                                        >
-                                            Upload Your Avatar
-                                        </p-->
                                         <div v-show="showCropper" class="cFlex flexRight">
-                                            <!--p class="contentTitle">
-                                                Alright, Upload a clear picture then OR
-                                            </p-->
                                             <a class="right" href="#" @click="showCropper = false">
                                                 <i class="material-icons priText">clear</i>
                                             </a>
@@ -409,7 +351,7 @@
                                         </h4>
 
                                         <div class="row">
-                                            <div class="col l12 s12 noPaddingLeft">
+                                            <div class="col l12 s12 noPaddingLeft paddingLeftSM">
                                                 <input
                                                     placeholder="Name of institution"
                                                     v-model="
@@ -423,7 +365,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="input-field col s6 noPaddingLeft">
+                                            <div class="input-field col l6 m6 s12 noPaddingLeft paddingLeftSM">
                                                 <input
                                                     placeholder="What was your major?"
                                                     type="text"
@@ -435,7 +377,7 @@
                                                 />
                                                 <label>Undergraduate Major</label>
                                             </div>
-                                            <div class="input-field col s6">
+                                            <div class="input-field col l6 m6 s12">
                                                 <input
                                                     placeholder="What was your minor(optional)?"
                                                     type="text"
@@ -449,7 +391,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col l6 s6 noPaddingLeft">
+                                            <div class="col l6 m6 s12 noPaddingLeft noPaddingRightMd paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you start?
                                                 </p>
@@ -503,7 +445,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col l6 s6">
+                                            <div class="col l6 m6 s12 noPaddingLeftMd paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you finish?
                                                 </p>
@@ -566,7 +508,7 @@
 
                                         <div class="row">
                                             <div
-                                                class="input-field col l12 s12 noPaddingLeft"
+                                                class="input-field col l12 s12 noPaddingLeft paddingLeftSM"
                                             >
                                                 <input
                                                     placeholder="Name of institution"
@@ -582,7 +524,7 @@
                                         </div>
 
                                         <div class="row">
-                                            <div class="col l6 s6 noPaddingLeft">
+                                            <div class="col l6 s6 noPaddingLeft paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you start?
                                                 </p>
@@ -636,7 +578,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col s6 noPaddingLeft">
+                                            <div class="col s6 noPaddingLeft paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you finish?
                                                 </p>
@@ -697,7 +639,7 @@
                                             Internship program
                                         </h4>
                                         <div class="row">
-                                            <div class="input-field col s12 noPaddingLeft">
+                                            <div class="input-field col s12 noPaddingLeft paddingLeftSM">
                                                 <input
                                                     placeholder="Name of institution"
                                                     type="text"
@@ -709,7 +651,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col l6 s6 noPaddingLeft">
+                                            <div class="col l6 s6 noPaddingLeft paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you start?
                                                 </p>
@@ -757,7 +699,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col s6 noPaddingLeft">
+                                            <div class="col s6 noPaddingLeft paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you finish?
                                                 </p>
@@ -813,7 +755,7 @@
                                             Residency program
                                         </h4>
                                         <div class="row">
-                                            <div class="input-field col s12 noPaddingLeft">
+                                            <div class="input-field col s12 noPaddingLeft paddingLeftSM">
                                                 <input
                                                     placeholder="Name of institution"
                                                     type="text"
@@ -825,7 +767,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col l6 s6 noPaddingLeft">
+                                            <div class="col l6 s6 noPaddingLeft paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you start?
                                                 </p>
@@ -873,7 +815,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col s6 noPaddingLeft">
+                                            <div class="col s6 noPaddingLeft paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you finish?
                                                 </p>
@@ -930,7 +872,7 @@
                                             Fellowship program
                                         </h4>
                                         <div class="row">
-                                            <div class="input-field col s12 noPaddingLeft">
+                                            <div class="input-field col s12 noPaddingLeft paddingLeftSM">
                                                 <input
                                                     placeholder="Name of institution"
                                                     type="text"
@@ -942,7 +884,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col l6 s6 noPaddingLeft">
+                                            <div class="col l6 s6 noPaddingLeft paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you start?
                                                 </p>
@@ -990,7 +932,7 @@
                                                 </div>
                                             </div>
     
-                                            <div class="col s6 noPaddingLeft">
+                                            <div class="col s6 noPaddingLeft paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you finish?
                                                 </p>
@@ -1045,7 +987,7 @@
                                             Additional academic qualification
                                         </h4>
                                         <div class="row">
-                                            <div class="input-field col s12 noPaddingLeft">
+                                            <div class="input-field col s12 noPaddingLeft paddingLeftSM">
                                                 <input
                                                     placeholder="Name of institution"
                                                     type="text"
@@ -1059,7 +1001,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="input-field col s12 noPaddingLeft">
+                                            <div class="input-field col s12 noPaddingLeft paddingLeftSM">
                                                 <input
                                                     placeholder="What was your degree"
                                                     type="text"
@@ -1073,7 +1015,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col l6 s6 noPaddingLeft">
+                                            <div class="col l6 s6 noPaddingLeft paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you start?
                                                 </p>
@@ -1121,7 +1063,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col s6 noPaddingLeft">
+                                            <div class="col s6 noPaddingLeft paddingLeftSM">
                                                 <p class="schQuesP">
                                                     When did you end?
                                                 </p>
@@ -1173,7 +1115,7 @@
                                 </div>
 
 
-                                <div class="mt-5" v-if="view == 1">
+                                <div class="marginTop-2 marginBottom-5" v-if="view == 1">
                                     <div class="skipDiv">
                                         <button
                                             class="saveAllBtn btn btn-small waves waves-effect"
@@ -1210,6 +1152,25 @@
                                 ></i>
                                 <p class="centered">Setting up your site</p>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="col l6 s12  noPaddingLeft noPaddingRight fullpage">
+                        <div class="col l6 offset-l6 hide-on-med-and-down" v-if='view > 0'>
+                            <a href="/" target="_blank">
+                                <img src="/media/img/wcd-logo-noBckg.png" alt="whitecoatdomain logo" class="responsive-img"/>
+                            </a>
+                        </div>
+                        <div class="col m6 s6 hide-on-large-only" v-if='view > 0'>
+                            <a href="/" target="_blank">
+                                <img src="/media/img/wcd-logo-noBckg.png" alt="whitecoatdomain logo" class="responsive-img"/>
+                            </a>
+                        </div>
+                        <div class="bottomOfPage white halfWidth hPadding-5 fullWidthMd">                            
+                            <small>
+                                <a href="/">Home</a>
+                                <span class="right">&copy; Copyright 2023. WhiteCoatDomain</span>
+                            </small>
                         </div>
                     </div>
                 </div>
@@ -2230,6 +2191,18 @@
     };
 </script>
 <style scoped>
+    .paymentOverlay {
+        position: absolute;
+        height: 100vh;
+        width: 80%;
+        margin: 0 10%;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.75);
+    }
+    .btn {
+        background-color: var(--pri) !important;
+    }
     /* Start popup */
     #popup {
         display: none;
@@ -2255,9 +2228,9 @@
         padding: 2em;
         position: absolute;
     }
-    .pl-1 {
+    /*.pl-1 {
         padding: 0 1em;
-    }
+    }*/
 
     .darken {
         background: rgba(0, 0, 0, 0.7);
@@ -2339,9 +2312,6 @@
             width: 95%;
             padding: 1em 0 0 0;
         }
-    }
-    .mt-5 {
-        margin-top: 5rem;
     }
     .justify-center {
         justify-content: center !important;

@@ -68,6 +68,10 @@ body {
     background-color: green;
     color: var(--white);
 }
+.hPadding-5 {
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
 .noPaddingLeft {
     padding-left: 0 !important;
 }
