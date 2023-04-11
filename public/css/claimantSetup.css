@@ -180,12 +180,15 @@ h4.sectionTitle small {
 .contentInnerDiv .input-field.col.selectInputField label {
     top: 1.2vh;
 }
-
+a.btn.getStartedBtn:hover, button.btn.saveAllBtn:hover, button.btn.goLiveBtn:hover {
+    background-color: var(--white) !important;
+    color: var(--pri) !important;
+    /* border: thin solid var(--pri) !important; */
+}
 a.btn.getStartedBtn {
     background-color: var(--pri) !important;
-    border-radius: 6px;
+    /* border-radius: 6px; */
     font-family: 'Montserrat', sans-serif;
-    /* color: var(--black); */
 }
 
 .getStartedBtnDiv {

@@ -101,7 +101,7 @@
         </div>
 
         <button
-            class="waves-effect waves-light btn modal-trigger col s12"
+            class="goLiveBtn waves-effect waves-light btn modal-trigger col s12"
             href="#modal1"
             @click="sendEmail('premium')"
         >

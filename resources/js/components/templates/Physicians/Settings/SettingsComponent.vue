@@ -209,6 +209,8 @@
                                 this.otp = res.data.otp;
                             }
                         }
+
+                        this.loading = false;
                         // if(res.data.status === 404){
                         //     M.toast({
                         //         html: "Invalid Credentials",

@@ -35,7 +35,7 @@
 
                                         <div class="getStartedBtnDiv">
                                             <a
-                                                class="waves-effect waves-light btn getStartedBtn"
+                                                class="waves-effect waves-black btn getStartedBtn"
                                                 @click="getStarted()"
                                                 >GET STARTED</a
                                             >
@@ -1118,7 +1118,7 @@
                                 <div class="marginTop-2 marginBottom-5" v-if="view == 1">
                                     <div class="skipDiv">
                                         <button
-                                            class="saveAllBtn btn btn-small waves waves-effect"
+                                            class="saveAllBtn btn btn-small waves-effect waves-black"
                                             @click="saveAll()"
                                         >
                                             Save & Publish
@@ -1219,7 +1219,7 @@
                 fellowshipUpdate: 0,
                 setDomain: false,
                 showCropper: false,
-                view: 2,
+                view: 0,
                 bio: {
                     firstname: "",
                     lastname: "",
@@ -1312,7 +1312,7 @@
             };
         },
         mounted() {
-            this.popup();
+            // this.popup();
             this.getTenantNDomain();
             this.getData();
             document.addEventListener("DOMContentLoaded", function () {
@@ -1335,6 +1335,7 @@
             saveAll (){
                 this.underGrad.minor === ''|| this.underGrad.minor === null ? delete this.underGrad.minor : null;
                 this.bio.othername === '' || this.bio.othername === null ? delete this.bio.othername : null;
+                
                 if (this.validator(this.additionalSchool) && this.validator(this.fellowship) && this.validator(this.residency) && this.validator(this.internship) && this.validator(this.medSchool) && this.validator(this.underGrad) && this.validator(this.bio) && this.domainSelected !== ''){ // && this.validator(this.domainSelected))
                    try {                    
                         this.registerUpdateUser();
