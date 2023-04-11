@@ -1,918 +1,177 @@
-/* HOME */
-
-body {
-    width: 100% !important;
+/* Helpers */
+.d-flex {
+    display: flex;
 }
-.height-75 {
-    height: 75vh !important;
+.justify-center {
+    justify-content: center;;
 }
-#banner {
-    background-image: url("../media/img/bannerCircle.png");
+.justify-between {
+    justify-content: space-between;
+}
+.align-center {
+    align-items: center;
+}
+.flex-col {
+    flex-direction: column;
+}
+.mb-6 {
+    margin-bottom: 6rem;
+}
+.mb-7 {
+    margin-bottom: 7rem;
+}
+.pt-5 {
+    padding-top: 5rem;
+}
+.mt-1 {
+    margin-top: 1rem;
+}
+.mt-9 {
+    margin-top: 9rem;
+}
+.customNav {
+    /* background: rgba(4, 23, 131, 0.15); */
+    background: var(--sec);
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 8rem;
+    padding: 1rem 8rem;
+    top: 0;
+}
+.introductoryBody, .advBody, .templateFeatureBody, .howToGetStartedBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.introductory {
+    padding-top: 10rem;
+}
+.introductory, .advert {
+    background-color: var(--sec);
+    width: 100%;
     /* height: 100vh; */
-    background-repeat: no-repeat;
 }
-#banner.row {
-    margin-bottom: 0;
+.button {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 16.25rem;
+    padding: 10px 56px;
+    border: none;
+    outline: none;
+    font-size: 1.125rem;
 }
-.bannerContainer {
-    width: 85%;
-    margin: 0 auto;
-    /* background-color: #000000; */
+.button.signin:hover, .button.signin:visited {
+    background-color: var(--white);
+    color: var(--sec);
+}
+.button.signin, .button:hover, .button:visited {
+    background-color: #D7B9AE;
+    color: var(--white);
+}
+.getstartedbtnFor {
+    background-color: var(--pri);
+    color: var(--white);
+}
+.getStartedBtn {
+    color: var(--pri);
+}
+.introductoryHeader {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--white);
+    font-size: 3.75rem;
+    text-align: center;
+    line-height: 4.571rem;
+    width: 35.813rem;
+    margin-bottom: .938rem;
+    /* font-family: 'Plus Jakarta Sans', sans-serif; */
+}
+.introductorySummary, .templateFeatureSummary, .contentSummary, .howToStep {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: var(--white);
+}
+.introductorySummary, .templateFeatureSummary {
+    text-align: center;
+    font-size: 1.125rem;
+    width: 57rem;
+    line-height: 1.5rem;
+}
+.getStartedLayout {
+    margin-bottom: 3rem;
+}
+.introductoryImageContainer {
+    background: linear-gradient(94.9deg, rgba(255, 255, 255, 0.28) 19.81%, rgba(255, 255, 255, 0.07) 100%);
+    display: inline-block;
+    padding: 1.725rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
+    margin-bottom: 5rem;
+}
+.introductoryImageContainer img {
+    display: block;
+    max-width: 100%;
     height: auto;
 }
-.circleTxtDiv {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.introductoryImg {
+    border-radius: .25rem;
 }
-.circleDivTitle {
-    width: 410px;
-    font-size: 2.5rem;
+.advert {
+    background-color: var(--white);
+    /* height: 100vh; */
+}
+.advHeader {
+    color: #2E4451;
+}
+/* #2E4451 */
+.advHeader, .templateFeatureHeader, .howToGetStartedHeader {
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    color: white;
-    font-family: "Montserrat", sans-serif;
+    font-size: 3.125rem;
+    line-height: 3.809rem;
+    width: 45.625rem;
+    text-align: center;
+    margin: 2.75rem;
 }
-.circleDivtxt {
-    width: 400px;
-    font-weight: 400;
-    font-size: 1rem;
-    color: white;
-    font-family: "Poppins", sans-serif;
+.templateFeatureHeader {
+    color: #FFFF;
 }
-.circleDivBtn, .circleDivBtnLg {
-    width: 198px;
-    height: 40px;
-    background-color: var(--primary);
-    border-radius: 6px;
-    font-weight: 400;
-    font-size: 0.9rem;
-    font-family: "Montserrat", sans-serif;
-}
-.btn.circleDivBtnLg {
-    background-color: var(--white) !important;
-    color: var(--primary);
-}
-.btn.circleDivBtn:hover,
-.btn.circleDivBtn:active,
-.btn.circleDivBtnLg:hover,
-.btn.circleDivBtnLg:active {
-    background: var(--component);
-}
-.portraitImgDiv {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.portraitImgInnerDiv {
-    width: 178px;
-    height: 386px;
-    background: rgba(30, 30, 30, 0.89);
-    box-shadow: 0px 10px 6px rgba(0, 0, 0, 0.25);
-    border-radius: 100px;
-}
-.portraitImg {
-    border-radius: 100px;
-}
-.innerPortraitImgDiv {
-    display: flex;
-    flex-direction: row;
-}
-.portraitImgCircleDiv {
-    width: 109px;
-    height: 109px;
-    background: var(--primary);
-    border-radius: 50%;
-}
-#portrait3 {
-    margin: 7px 0 0 6px;
-}
-.portraitImgCircleDiv {
-    margin: 90px 0 0 35px;
-}
-#portrait2 {
-    box-shadow: 0px 0px 1px rgba(195, 188, 188, 0.25);
-    margin-bottom: 1vh;
-}
-.portraitImgRightDiv {
-    width: 177px;
-    height: 562px;
-    background: rgba(30, 30, 30, 0.89);
-    box-shadow: 0px 10px 6px rgba(0, 0, 0, 0.25);
-    border-radius: 100px;
-}
-#portrait {
-    margin: 7px 0 0 6px;
-}
-.portraitImgCircleRightDiv {
-    width: 73px;
-    height: 73px;
-    background: var(--primary);
-    border-radius: 50%;
-    position: relative;
-    top: 70px;
-    left: 55px;
-}
-#portrait1 {
-    margin: 135px 0 0 6px;
+.howToGetStartedHeader {
+    color: #2E4451;
+    width: 25.625rem;
+    margin-bottom: .2rem;
 }
 
-.portraitImgContainDiv {
-    margin-right: 1vw;
-}
-.portfolioDiv {
-    background: var(--primary);
-    box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
-    /* margin-top: 17.5vh; */
-    z-index: 100;
-    padding-top: 11vh;
-    padding-bottom: 15vh;
-}
-.portfolioTitle {
-    width: 29%;
-    margin: auto;
-    font-weight: 700;
-    font-size: 2rem;
-    align-items: center;
-    text-align: center;
-    letter-spacing: -0.01em;
-    line-height: 48px;
-    color: #ffffff;
-    font-family: "Montserrat", sans-serif;
-}
-.portfolioInnerDiv {
-    display: flex;
-}
-.ellipseLarge {
-    width: 92.27px;
-    height: 94px;
-    background: var(--component);
-    border-radius: 50%;
-    position: absolute;
-    right: 300px;
-    bottom: -180px;
-}
-.ellipseSmall {
-    width: 46.13px;
-    height: 47px;
-    background: var(--component);
-    border-radius: 50%;
-    position: absolute;
-    right: 273px;
-    bottom: -193px;
-}
-.portfolioTxt {
-    width: 59%;
-    margin: 23px auto 0 auto;
-    font-weight: 400;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    line-height: 24px;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    letter-spacing: -0.015em;
-    color: #ffffff;
-}
-.moreThanLandInnerDiv {
-    margin-top: 13vh;
-}
-.moreThanLandTitle {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 39px;
-    align-items: center;
-    text-align: center;
-    letter-spacing: -0.015em;
-    color: var(--primary);
-    font-family: "Montserrat", sans-serif;
-}
-.moreThanLandTxt {
-    width: 44%;
-    margin: 0 auto;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 24px;
-    align-items: center;
-    text-align: center;
-    letter-spacing: -0.015em;
-}
-.liveChatInnerDiv {
-    width: 70%;
-    margin-top: 15vh;
-}
-.liveChatImgInnerDiv {
-    width: 256px;
-    height: 256px;
-    background-color: rgba(231, 156, 161, 0.5);
-    border-radius: 50%;
-}
-.liveChatTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 39px;
-    letter-spacing: -0.015em;
-    color: var(--primary);
-    margin-bottom: 13px;
-}
-.liveChatTxt {
-    font-family: "Poppins" sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    margin: 0;
-}
-#chatImage {
-    position: relative;
-    bottom: 40px;
-}
-.cvInnerDiv {
-    width: 70%;
-    margin-top: 15vh;
-}
-.cvImgInnerDiv {
-    width: 256px;
-    height: 256px;
-    background: rgba(119, 70, 255, 0.5);
-    border-radius: 50%;
-}
-#cvImage {
-    position: relative;
-    bottom: 40px;
-    right: 20px;
-}
-.cvTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 39px;
-    letter-spacing: -0.015em;
-    color: var(--primary);
-    margin-bottom: 13px;
-}
-.cvTxt {
-    font-family: "Poppins" sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    margin: 0;
-}
-.socialMediaInnerDiv {
-    width: 70%;
-    margin-top: 15vh;
-}
-.socialMediaImgInnerDiv {
-    display: flex;
-    width: 256px;
-    height: 256px;
-    background: rgba(211, 240, 251, 0.5);
-    border-radius: 50%;
-}
-.socialMediaTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 39px;
-    letter-spacing: -0.015em;
-    color: var(--primary);
-    margin-bottom: 13px;
-}
-.socialMediaTxt {
-    font-family: "Poppins" sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    margin: 0;
-}
-#socialMediaImage {
-    position: relative;
-    bottom: 30px;
-    left: 3px;
-    max-width: 120vw;
-    height: 36vh;
-}
-#facebookImg {
-    position: absolute;
-    margin: 89px 0 0 38px;
-}
-#twiterImg {
-    position: absolute;
-    margin: 27px 0 0 202px;
-}
-.clientRevInnerDiv {
-    width: 70%;
-    margin-top: 15vh;
-}
-.clientRevTitle,
-.templatesRowTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 39px;
-    letter-spacing: -0.015em;
-    color: var(--primary);
-    margin-bottom: 13px;
-}
-.clientRevTxt,
-.templatesRowTxt {
-    font-family: "Poppins" sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    margin: 0;
-}
-.clientRevImgInnerDiv {
-    width: 256px;
-    height: 256px;
-    background: rgba(254, 197, 38, 0.5);
-    border-radius: 50%;
-}
-#clientRevImage {
-    position: relative;
-    bottom: 40px;
-    right: 45px;
-}
-.templatesRow {
-    margin-top: 10vh;
-}
-.templatesRowTxt {
-    width: 50%;
-    margin: 0 auto;
-}
-.tempRowImgDiv {
-    display: flex;
-    justify-content: center;
-    margin: 10vh 0;
-}
-.templatesInnerDiv {
-    width: 39%;
-    margin: 15vh auto 0 auto;
-}
-.templatesTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 39px;
-    align-items: center;
-    text-align: center;
-    letter-spacing: -0.015em;
-    color: var(--primary);
-    margin-bottom: 0;
-}
-.templatesTxt {
-    font-family: "Poppins" sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 24px;
-    align-items: center;
-    text-align: center;
-    letter-spacing: -0.015em;
-    color: var(--component);
-}
-.tempImgDiv {
-    width: 99%;
-    margin: 10vh auto 0 6vw;
-}
-/* Changed homepage "PREVIEW TEMPLATE" button color */
-a.btn.circleDivBtn {
-    background-color: var(--component);
-}
-
-/* New Styling added below */
-.socialMediaInnerDiv {
-    width: 70%;
-    margin-top: 15vh;
-}
-
-
-/* Media Query on Medium Device */
-@media screen and (max-width: 992px) and (min-width: 640px) {
-    .sidenav-overlay {
-        z-index: 0 !important;
+@media screen and (max-width: 640px) { 
+    .customNav {
+        padding: 2rem 0.5rem;
     }
-    .portraitImgDiv {
-        height: 70vh;
-    }
-    .circleTxtDiv {
-        height: 60vh;
-    }
-    #banner {
-        background-image: none;
-        /* height: 100vh; */
-        background-repeat: no-repeat;
-    }
-    .circleTxtDiv {
-        position: absolute;
-        top: 0vh;
-        left: 3vw;
-    }
-    .circleDivTitle {
-        width: 45vw;
-        font-size: 2.6rem;
-        font-weight: 700;
-        color: var(--primary);
-        font-family: "Montserrat", sans-serif;
-    }
-    .circleDivtxt {
-        width: 400px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        color: var(--black);
-        font-family: "Poppins", sans-serif;
-        text-align: left;
-        margin-bottom: 4vh;
-    }
-    .portfolioDiv {
-        background: var(--primary);
-        box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
-        margin-top: 5vh;
-        z-index: 100;
-        padding-top: 11vh;
-        padding-bottom: 11vh;
-    }
-    .portfolioTitle {
-        width: 45%;
-        margin: auto;
-        font-weight: 700;
-        font-size: 2rem;
-        align-items: center;
-        text-align: center;
-        letter-spacing: -0.01em;
-        line-height: 48px;
-        color: var(--white);
-        font-family: "Montserrat", sans-serif;
-    }
-    .portfolioTxt {
-        width: 90%;
-        margin: 23px auto 0 auto;
-        font-weight: 400;
-        font-family: "Poppins", sans-serif;
-        font-size: 1rem;
-        line-height: 24px;
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        letter-spacing: -0.015em;
-        color: var(--white);
-    }
-    .moreThanLandTxt {
-        width: 70%;
-        margin: 0 auto;
-        font-family: "Poppins", sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        line-height: 24px;
-        align-items: center;
-        text-align: center;
-        letter-spacing: -0.015em;
-    }
-    .liveChatInnerDiv {
-        width: 80%;
-        margin-top: 15vh;
-    }
-    .liveChatImgInnerDiv {
-        width: 200px;
-        height: 200px;
-        background-color: rgba(231, 156, 161, 0.5);
-        border-radius: 50%;
-        margin-left: 0vw;
-    }
-    #chatImage{
-        width: 30vw;
-        position: relative;
-        bottom: 5vh;
-    }
-    .liveChatTitle {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 2rem;
-        line-height: 39px;
-        color: var(--primary);
-        margin-bottom: 10px;
-        text-align: left;
-    }
-    .liveChatTxt {
-        font-family: "Poppins" sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        line-height: 24px;
-        margin: 0;
-        text-align: left;
-        width: 80%;
-    }
-    .cvInnerDiv {
-        width: 70%;
-        margin-top: 23vh;
-    }
-    .cvImgInnerDivSm {
-        width: 200px;
-        height: 200px;
-        background: rgba(119, 70, 255, 0.5);
-        border-radius: 50%;
-        margin-top: 0vh;
-        margin-left: 50vw;
-    }
-    #cvImage {
-        width: 28vw;
-        position: relative;
-        bottom: 5vh;
-    }
-    .cvWriteUpDiv {
-        position: relative;
-        left: 34vw;
-    }
-    .cvTitle {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 2rem;
-        color: var(--primary);
-        margin-bottom: 13px;
-        text-align: right;
-    }
-    .cvTxt {
-        font-family: "Poppins" sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        margin: 0;
-        text-align: right;
-    }
-    .socialMediaInnerDiv {
-        width: 80%;
-        margin-top: 2vh;
-    }
-    .socialMediaImgInnerDiv {
-        display: flex;
-        /* width: 200px;
-        height: 200px; */
-        background: rgba(211, 240, 251, 0.5);
-        border-radius: 50%;
-        margin: 12vh 0 0 0vw;
-    }
-    #socialMediaImage{
-        position: relative;
-        bottom: 40px;
-        left: 3px;
-        width: 80vw;
-        height: 29vh;
-    }
-    #facebookImg{
-        width: 8vw;
-        margin: 70px 0 0 33px;
-    }
-    #twiterImg {
-        width: 8vw;
-        margin: 20px 0 0 155px;
-    }
-    .socialMediaWriteUpDiv {
-        width: 85%;
-    }
-    .socialMediaTitle {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 2rem;
-        color: var(--primary);
-        margin-top: 3vh;
-        margin-bottom: 13px;
-        text-align: left;
-    }
-    .socialMediaTxt {
-        font-family: "Poppins" sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        margin: 0;
-        text-align: left;
-    }
-    .clientRevInnerDiv {
-        width: 70%;
-        margin-top: 15vh;
-    }
-    .clientRevImgInnerDiv {
-        width: 200px;
-        height: 200px;
-        background: rgba(254, 197, 38, 0.5);
-        border-radius: 50%;
-        margin: 5vh 0 0 48vw;
-    }
-    #clientRevImage {
-        position: relative;
-        bottom: 40px;
-        right: 45px;
-    }
-    .clientRevWriteUpDiv {
-        position: relative;
-        left: 5vw;
-        bottom: 10vh;
-    }
-    .clientRevTitle {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 2rem;
-        color: var(--primary);
-        margin: 130px 0 0 9px;
-        text-align: right;
-    }
-    .clientRevTxt {
-        font-family: "Poppins" sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        margin: 0;
-        text-align: right;
-    }
-    .templatesRowTxt {
-        font-family: "Poppins" sans-serif;
-        font-weight: 600;
-        width: 80%;
-        margin: 0 auto;
-    }
-    .templatesInnerDiv {
-        width: 70%;
-        margin: 15vh auto 0 auto;
-    }
-}
-
-/* Media Query on small device */
-@media screen and (max-width: 640px) {
-    nav {
-        color: #fff;
-        background-color: #ee6e73;
+    .introductoryImg {
         width: 100%;
-        height: 56px;
-        line-height: 56px;
-        position: fixed;
-        top: 0;
-        z-index: 1;
     }
-    .sidenav-overlay {
-        z-index: 0;
+    .introductoryHeader, .introductorySummary, .templateFeatureSummary, .contentSummary {
+        width: fit-content;
     }
-    .circleTxtDiv {
-        position: absolute;
-        top: 20vh;
-        left: 5vw;
-        /* text-align: center; */
+    .introductoryHeader {
+        font-size: 2.875rem;
+        line-height: 3.571rem;
     }
-    .circleDivTitle {
-        width: 90%;
-        margin: 12vh auto 3vh auto;
-        font-size: 2.75rem;
-        font-weight: 700;
-        color: var(--primary);
-        font-family: "Montserrat", sans-serif;
-        text-align: center;
+    .introductoryImageContainer {
+        padding: .825rem;
     }
-    /* There are aroun4 implementations of .circleDivtxt. not sure why */
-    .circleDivtxtSmall {
-        padding: 0 3vw;
-        font-weight: 600;
-        font-size: 1rem;
-        color: var(--black);
-        font-family: "Poppins", sans-serif;
-        text-align: center;
-        margin: 0 auto;
+    .advHeader, .templateFeatureHeader {
+        width: 26.5rem;
     }
-    .portfolioDiv {
-        background: var(--primary);
-        box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
-        /* margin-top: 17.5vh; */
-        z-index: 100;
-        padding-top: 4vh;
-        padding-bottom: 15vh;
+    .content.mt-9 {
+        margin-top: 0rem;
     }
-    .ellipseLargeSm {
-        width: 50px;
-        height: 50px;
-        background: var(--component);
-        border-radius: 50%;
-    }
-    .ellipseSmallSm {
-        width: 25px;
-        height: 25px;
-        background: var(--component);
-        border-radius: 50%;
-        position: relative;
-        top: 3vh;
-        right: 2vw;
-    }
-    .portfolioTitle {
-        width: 90%;
-        margin: auto;
-        font-weight: 700;
-        font-size: 2rem;
-        align-items: center;
-        text-align: center;
-        line-height: 48px;
-        color: var(--white);
-        font-family: "Montserrat", sans-serif;
-    }
-    .portfolioTxt {
-        width: 95%;
-        margin: 23px auto 0 auto;
-        font-weight: 400;
-        font-family: "Poppins", sans-serif;
-        font-size: 1rem;
-        line-height: 24px;
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        color: var(--white);
-    }
-    .moreThanLandTitle {
-        font-weight: 700;
-        font-size: 1.5rem;
-        align-items: center;
-        text-align: center;
-        color: var(--primary);
-        font-family: "Montserrat", sans-serif;
-    }
-    .moreThanLandTxt {
-        width: 95%;
-        margin: 0 auto;
-        font-family: "Poppins", sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        align-items: center;
-        text-align: center;
-    }
-    .liveChatInnerDiv {
-        width: 95%;
-        margin-top: 15vh;
-    }
-    .liveChatImgInnerDiv {
-        width: 130px;
-        height: 130px;
-        background-color: rgba(231, 156, 161, 0.5);
-        border-radius: 50%;
-        margin-left: 0vw;
-    }
-    #chatImage {
-        width: 38vw;
-        position: relative;
-        bottom: 3vh;
-    }
-    .liveChatTitle {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 2rem;
-        color: var(--primary);
-        margin-top: 6vh;
-        margin-bottom: 19px;
-        text-align: left;
-    }
-    .liveChatTxt {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        margin: 0;
-        text-align: left;
-        color: #464646;
-    }
-    .cvInnerDiv {
-        width: 95%;
-        margin-top: 15vh;
-    }
-    .cvImgInnerDivSm {
-        width: 130px;
-        height: 130px;
-        background: rgba(119, 70, 255, 0.5);
-        border-radius: 50%;
-        margin-top: 0vh;
-        margin-left: 57vw;
-    }
-    #cvImage {
-        width: 38vw;
-        position: relative;
-        bottom: 3vh;
-    }
-    .cvTitle {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 2rem;
-        color: var(--primary);
-        margin-bottom: 13px;
-        text-align: right;
-    }
-    .cvTxt {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        margin: 0;
-        text-align: right;
-    }
-    .socialMediaInnerDiv {
-        width: 95%;
-        margin-top: 16vh;
-    }
-    .socialMediaImgInnerDiv {
-        display: flex;
-        width: 130px;
-        height: 130px;
-        background: rgba(211, 240, 251, 0.5);
-        border-radius: 50%;
-        margin-left: 0vw;
-    }
-    #socialMediaImage {
-        position: relative;
-        bottom: 20px;
-        left: 3px;
-        max-width: 55vw;
-        height: 20vh;
-    }
-    #facebookImg {
-        width: 12vw;
-        position: absolute;
-        margin: 36px 0 0 25px;
-    }
-    #twiterImg {
-        width: 12vw;
-        position: absolute;
-        margin: 12px 0 0 110px;
-    }
-    .socialMediaTitle {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 2rem;
-        color: var(--primary);
-        margin-bottom: 13px;
-        text-align: left;
-    }
-    .socialMediaTxt {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        margin: 0;
-        text-align: left;
-    }
-    .clientRevInnerDiv {
-        width: 95%;
-        margin-top: 15vh;
-    }
-    .clientRevImgInnerDiv {
-        width: 130px;
-        height: 130px;
-        background: rgba(254, 197, 38, 0.5);
-        border-radius: 50%;
-        margin-top: 3vh;
-        margin-left: 55vw;
-    }
-    #clientRevImage {
-        position: relative;
-        bottom: 40px;
-        right: 45px;
-        width: 40vw;
-    }
-    .clientRevTitle,
-    .templatesRowTitle {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 2rem;
-        color: var(--primary);
-        margin-top: 5vh;
-        margin-bottom: 13px;
-    }
-    .clientRevTxt {
-        font-family: "Montserrat" sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        margin: 0;
-    }
-    .templatesRowTxt {
-        font-family: "Montserrat" sans-serif;
-        width: 98%;
-        margin: 0 auto;
-    }
-    .templatesInnerDiv {
-        width: 90%;
-        margin: 15vh auto 0 auto;
+    .howToStep {
+        font-size: .9rem;
     }
 }
 
-@media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 1) { 
-    .banner {
-        height: 100vh;
+@media screen and (max-width: 992px) and (min-width: 640px) {
+    .introductorySummary {
+        width: 50rem;
     }
-      .bannerContainer  {
-          height: 100vh;
-      }
 }

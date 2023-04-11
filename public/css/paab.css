@@ -5,7 +5,7 @@
     --white: #ffffff;
     --gray: #a4a2a2;
     --component: rgba(0, 0, 0, 0.5);
-    --pri: #16c2d5;
+    --pri: #529dad;
     --sec: #10217d;
     --ter: #2e4450;
 }
@@ -14,12 +14,12 @@
 } /* this targets the default scrollbar (compulsory) */
 ::-webkit-scrollbar-track {
     /* box-shadow: inset 0 0 7px rgba(0,0,0,0.8);*/
-    background-color: var(--primary);
+    background-color: var(--sec);
     /*border-radius: 8px;*/
 } /* the new scrollbar will have a flat appearance with the set background color */
 ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 100px var(--primary);
-    background-color: var(--primary);
+    box-shadow: inset 0 0 100px var(--sec);
+    background-color: var(--sec);
     /*border-radius: 8px;*/
 } /* this will style the thumb, ignoring the track */
 
