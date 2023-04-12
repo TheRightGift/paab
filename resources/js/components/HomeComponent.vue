@@ -1,18 +1,41 @@
 <template>
     <div>
-        <div class="customNav d-flex justify-between align-center">
-             <div class="logoContainer">
-                 <img class="logo" src="../../../public/media/img/wcdlogowhite.svg" alt="Whitecoatdomain Logo">
-             </div>
-             <div class="signUpBtnContainer">
-                 <!-- On hover change to #D7B9AE and also visited -->
-                 <button class="button signin waves-effect waves-deep-orange">Sign in</button>
-             </div>
+        <div class="mainBackground">
+            <div class="customNav d-flex justify-between align-center">
+                <div class="logoContainer">
+                    <img class="logo" src="../../../public/media/img/wcdlogowhite.svg" alt="Whitecoatdomain Logo">
+                </div>
+                <div class="signUpBtnContainer">
+                    <!-- On hover change to #D7B9AE and also visited -->
+                    <button class="button signin waves-effect waves-deep-orange">Sign in</button>
+                </div>
+            </div>
+            <div class="d-flex flex-col">
+                <section class="introductory">
+                    <div class="container">
+                    <!-- Dark blue background -->
+                        <div class="introductoryBody">
+                            <p class="introductoryHeader">
+                                Showcase your public image with whitecoat domain
+                            </p>
+                            <p class="introductorySummary">
+                                As physicians, maintaining and managing your public profile is critical. We believe you should consciously manage your online identity by securing a personal domain name and maintaining an active website outside of the social media noise.
+                            </p>
+                            <div class="getStartedLayout">
+                                <button class="button getstartedbtn waves-effect waves-deep-orange">Get Started</button>
+                            </div>
+                            <div class="introductoryImageContainer"> 
+                                <img class="introductoryImg responsive-img" src="../../../public/media/img/introductoryImage.png" alt="Introductory Image of our template">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
+        
         <div class="d-flex flex-col">
-            <section class="introductory">
+            <!--section class="introductory">
                 <div class="container">
-                <!-- Dark blue background -->
                     <div class="introductoryBody">
                         <p class="introductoryHeader">
                             Showcase your public image with whitecoat domain
@@ -28,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section-->
             <section class="advert">
                 <div class="advBody">
                     <p class="advHeader">

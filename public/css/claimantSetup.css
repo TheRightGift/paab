@@ -128,16 +128,6 @@ select.browser-default, input[type=text]:not(.browser-default) {
     background: rgba(255, 255, 255, 0.8);
     height: 100vh;
     overflow: auto;
-    /* background-image: url("../media/img/pageBoldLogo.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    
-    border-radius: 0px 100px 0px 0px;
-    position: absolute;
-    top: 35.1vh;
-    padding-top: 9vh; */
 }
 .contentInnerDiv {
     padding: 1.5vh 2vw;
