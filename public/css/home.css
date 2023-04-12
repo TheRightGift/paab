@@ -17,6 +17,12 @@
 .mb-6 {
     margin-bottom: 6rem;
 }
+.mb-4 {
+    margin-bottom: 4rem;
+}
+.mt-2 {
+    margin-top: 2rem;
+}
 .mb-7 {
     margin-bottom: 7rem;
 }
@@ -39,7 +45,7 @@
     padding: 1rem 8rem;
     top: 0;
 }
-.introductoryBody, .advBody, .templateFeatureBody, .howToGetStartedBody {
+.introductoryBody, .advBody, .templateFeatureBody, .howToGetStartedBody, .templateBody {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -124,7 +130,7 @@
     color: #2E4451;
 }
 /* #2E4451 */
-.advHeader, .templateFeatureHeader, .howToGetStartedHeader {
+.advHeader, .templateFeatureHeader, .howToGetStartedHeader, .templateHeader {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 3.125rem;

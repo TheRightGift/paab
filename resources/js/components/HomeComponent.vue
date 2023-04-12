@@ -118,7 +118,63 @@
                         <p class="howToGetStartedHeader">
                             HOW TO GET STARTED
                         </p>
-                        <p class="howToStep">Follow these 6 simple steps to create a website today</p>
+                        <p class="howToStep mb-6">Follow these 6 simple steps to create a website today</p>
+                        <div class="row">
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                        </div>
+                        <div class="getStartedLayout mt-2 mb-6">
+                            <button class="button getstartedbtnFor waves-effect waves-deep-orange">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="templates">
+                <div class="container">
+                    <div class="templateBody">
+                        <p class="templateHeader">
+                            TEMPLATES FIT JUST FOR YOU
+                        </p>
                     </div>
                 </div>
             </section>
@@ -172,6 +228,25 @@
         color: #FFFF;
     }
     .howToGetStarted, .howToStep {
-        color: #000000;
+        color: var(--black);
+    }
+    .howToGetStartedBody .row > .col.l4.s12:nth-child(4), .howToGetStartedBody .row > .col.l4.s12:nth-child(5), .howToGetStartedBody .row > .col.l4.s12:nth-child(6) {
+        margin-top: 1.75rem;
+    }
+    .numberIcon {
+        background: var(--black);
+        border-radius: 10rem;
+        width: 1.875rem;
+        height: 1.875rem;
+        line-height: 1.875rem;
+        text-align: center;
+        color: var(--white)
+    }
+    .templates {
+        background: var(--sec);
+        height: 100vh;
+    }
+    .templateHeader {
+        width: 28.875rem;
     }
 </style>
