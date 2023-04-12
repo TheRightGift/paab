@@ -301,6 +301,13 @@ p.wlcNoteFooterTxt {
     line-height: 30px;
     color: #000000;
 }
+.sidenav-overlay {
+    z-index: 99 !important;
+}
+.sidenav {
+    height: calc(100vh - 10vh);
+    top: 10vh;
+}
 
 /* Media Query for Small Devices */
 @media screen and (max-width: 640px) {

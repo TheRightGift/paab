@@ -35,14 +35,19 @@
 .mt-9 {
     margin-top: 9rem;
 }
-.customNav {
-    /* background: rgba(4, 23, 131, 0.15); */
-    background: var(--sec);
+.mainBackground {
+    background-image: url('../media/img/backgroundImg/physician3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.customNav, .introductory, .advert {
+    background-color: rgba(16,33,125, 0.9);
+}
+.customNav {  
     z-index: 999;
-    position: fixed;
     width: 100%;
-    height: 8rem;
-    padding: 1rem 8rem;
+    padding: 7vh 7vw;
     top: 0;
 }
 .introductoryBody, .advBody, .templateFeatureBody, .howToGetStartedBody, .templateBody {
@@ -51,18 +56,17 @@
     justify-content: center;
     align-items: center;
 }
-.introductory {
+/* .introductory {
     padding-top: 10rem;
-}
+} */
 .introductory, .advert {
-    background-color: var(--sec);
+    /* background-color: var(--sec); */
     width: 100%;
-    /* height: 100vh; */
 }
 .button {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
     border-radius: 16.25rem;
-    padding: 10px 56px;
+    padding: 1.8vh 3vw;
     border: none;
     outline: none;
     font-size: 1.125rem;
