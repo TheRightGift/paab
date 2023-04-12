@@ -3,17 +3,15 @@
         <div class="mainBackground">
             <div class="customNav d-flex justify-between align-center">
                 <div class="logoContainer">
-                    <img class="logo" src="../../../public/media/img/wcdlogowhite.svg" alt="Whitecoatdomain Logo">
+                    <img class="logo" src="../../../public/media/img/wcdlogoWhite.png" alt="Whitecoatdomain Logo">
                 </div>
                 <div class="signUpBtnContainer">
-                    <!-- On hover change to #D7B9AE and also visited -->
                     <button class="button signin waves-effect waves-deep-orange">Sign in</button>
                 </div>
             </div>
             <div class="d-flex flex-col">
                 <section class="introductory">
                     <div class="container">
-                    <!-- Dark blue background -->
                         <div class="introductoryBody">
                             <p class="introductoryHeader">
                                 Showcase your public image with whitecoat domain
@@ -141,7 +139,167 @@
                         <p class="howToGetStartedHeader">
                             HOW TO GET STARTED
                         </p>
-                        <p class="howToStep">Follow these 6 simple steps to create a website today</p>
+                        <p class="howToStep mb-6">Follow these 6 simple steps to create a website today</p>
+                        <div class="row">
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                            <div class="col l4 s12">
+                                <div class="numberIcon">
+                                    <div>1</div>
+                                </div>
+                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                        </div>
+                        <div class="getStartedLayout mt-2 mb-6">
+                            <button class="button getstartedbtnFor waves-effect waves-deep-orange">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="templates">
+                <div class="container">
+                    <div class="templateBody">
+                        <p class="templateHeader">
+                            TEMPLATES FIT JUST FOR YOU
+                        </p>
+                        <p class="templateSummary mb-4">We are giving you the freedom to select from our multiple customized templates designed to meet your personal and professional taste. Our templates are seamless with drag and drop settings.</p>
+                        <div class="row">
+                            <div class="col l4 s12" v-for="(template, index) in templates.slice(0, 3)" :key="index">
+                                <img :src="'./media/img/'+template.imgUrl" alt="Template 1" class="responsive-img">
+                                <div class="d-flex justify-between mb-2">
+                                    <a href="#!" class="links">Select</a>
+                                    <a href="#!" class="links">Preview</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="navigation d-flex align-center">
+                            <i class="fa fa-angle-double-left"></i>
+                            <i class="material-icons">navigate_before</i>
+                            <p class="nav-links">1</p>
+                            <p class="nav-links">2</p>
+                            <p class="nav-links">3</p>
+                            <i class="material-icons">navigate_next</i>
+                            <i class="fa fa-angle-double-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="support">
+                <div class="container">
+                    <div class="supportBody">
+                        <p class="supportHeader">WE’RE ALWAYS HAPPY TO HELP</p>
+                        <div class="row">
+                            <div class="col l4 s12">
+                                <div class="centerOnSmall">
+                                    <div class="md-mb-2">
+                                        <p class="header">Technical support</p>
+                                        <p class="supportMail">techsupport@wcd.com</p>
+                                    </div>
+                                    <div>
+                                        <p class="header">Social media</p>
+                                        <div class="socials">
+                                            <img class="responsive-img" src="../../../public/media/img/facebook.png">
+                                            <img class="responsive-img" src="../../../public/media/img/twitter.png">
+                                            <img class="responsive-img" src="../../../public/media/img/insta.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col l8 s12">
+                                <div class="row">
+                                    <form class="col s12">
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <input required placeholder="Jane" id="first_name" type="text" class="validate">
+                                                <label for="first_name">First Name</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <input required placeholder="Doe" id="last_name" type="text" class="validate">
+                                                <label for="last_name">Last Name</label>
+                                            </div>
+                                        </div>
+                                       <div class="row">
+                                            <div class="input-field col s6">
+                                                <input required placeholder="janedoe@mail.com" id="first_name" type="text" class="validate">
+                                                <label for="first_name">Email</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <input required id="last_name" type="text" class="validate" placeholder="xxx-xxx-xxx">
+                                                <label for="last_name">Phone</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="textarea1">Message</label>
+                                            <div class="input-field col s12">
+                                                <textarea id="textarea1" class="materialize-textarea" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="getStartedLayout mb-4">
+                                            <button type="submit" class="button submitForSupport waves-effect waves-deep-orange">Get Started</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="footer">
+                <div class="container">
+                    <div class="footerBody">
+                        <div class="socials-footer">
+                            <a href="#!">
+                                <img class="responsive-img" src="../../../public/media/img/linkedinFooter.png" alt="our linkedin handle">
+                            </a>
+                            <a href="#!">
+                                <img class="responsive-img" src="../../../public/media/img/facebookFooter.png" alt="our facebook handle">
+                            </a>
+                            <a href="#!">
+                                <img class="responsive-img" src="../../../public/media/img/twitterFooter.png" alt="our twitter handle">
+                            </a>
+                            <a href="#!">
+                                <img class="responsive-img" src="../../../public/media/img/instaFooter.png" alt="our instagram handle">
+                            </a>
+                        </div>
+                        <div class="termsPrivacyPolicy">
+                            <a href="#!">Terms</a>
+                            <a href="#!">Privacy Policy</a>
+                            <p>&copy; 2023, Whitecoatdomain</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -149,52 +307,31 @@
     </div>
 </template>
 <style>
-    .custom-container{
-        width: 95%;
-        margin: auto;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 400;
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-    .article > p{
-        border-top: 2px solid var(--pri);
-        padding-top: 1rem;
-    }
-    .templateFeature {
-        background-color: #119DAD;
-        /* height: 100vh; */
-    }
-    .templateFeatureSummary {
-        font-size: 1rem;
-    }
-    .icon-container {
-        background: #FFFF;
-        padding: .725rem;
-        border-radius: 10rem;
-        box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.25);
-        width: 3.813rem;
-        height: 3.813rem;
-        text-align: center;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
-    .icon-container img {
-        width: 2.125rem;
-        height: 2.125rem;
-    }
-    .content-header {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.875rem;
-        font-weight: 700;
-        line-height: 2.286rem;
-        color: #FFFF;
-    }
-    .content {
-        color: #FFFF;
-    }
-    .howToGetStarted, .howToStep {
-        color: #000000;
-    }
+    
 </style>
+<script>
+export default {
+    data() {
+        return {
+            templates: [
+                {
+                    imgUrl: "templateOne.png",
+                },
+                {
+                    imgUrl: "templateTwo.png",
+                },
+                {
+                    imgUrl: "templateThree.png",
+                },
+                {
+                    imgUrl: "templateTwo.png",
+                },
+                {
+                    imgUrl: "templateOne.png",
+                },
+
+            ]
+        }
+    },
+}
+</script>
