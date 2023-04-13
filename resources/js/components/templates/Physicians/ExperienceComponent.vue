@@ -1,14 +1,10 @@
 <template>
-    <div class="section scrollspy physiExpContainerDiv" id="experience">
+    <div class="section scrollspy physiExpContainerDiv" id="miniBlog">
         <div v-show="experience == null">
-            <div class="row noMarginBottom">
-                <div class="col s12">
-                    <h3 class="title">
-                        MY EXPERIENCE
-                        <span class="primaryColorBoxDesign2"></span>
-                    </h3>
-                    <p class="expMainTitle">Experience</p>
-                    <p class="expMainTxt">MY ACHIEVEMENT</p>
+            <div class="row">
+                <div class="col l12">
+                    <span class="sectionSubHeading">MINI BLOG</span>
+                    <h2 class="sectionHeading">Shared <br/>updates &amp; thoughts.</h2>
                 </div>
             </div>
             <div  class="row">

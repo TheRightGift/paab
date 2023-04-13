@@ -72,6 +72,14 @@ body {
     padding-left: 5vw;
     padding-right: 5vw;
 }
+.noHorizontalPadding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.noVerticalPadding {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
 .noPaddingLeft {
     padding-left: 0 !important;
 }
@@ -84,6 +92,9 @@ body {
 .noMarginBottom {
     margin-bottom: 0 !important;
 }
+.noPaddingBottom {
+    padding-bottom: 0 !important;
+}
 .noMarginTop {
     margin-top: 0 !important;
 }
@@ -92,6 +103,9 @@ body {
 }
 .marginTop-5 {
     margin-top: 5vh;
+}
+.marginRight-5 {
+    margin-right: 5vh;
 }
 .marginTop-15 {
     margin-top: 15vh;
@@ -2822,7 +2836,7 @@ div .col .s9 input.clientCreatePortInput1 {
 }
 
 .btn {
-    background-color: #46166B !important;
+    background-color: #46166B;
 }
 .addReviewProDiv {
     background: #d9d9d9;

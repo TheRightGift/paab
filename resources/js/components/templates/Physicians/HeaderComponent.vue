@@ -1,5 +1,6 @@
 <template>
-    <div class="custom-navbar-fixed">
+    <!--Large device-->
+    <!--div class="custom-navbar-fixed">
         <nav  v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class='hide-on-med-and-down'>
             <div class="nav-wrapper navbarWrap">
                 <a href="/" class="brand-logo" id="physiPortPageLogo"
@@ -17,15 +18,10 @@
                     </li>
                     <li v-if="(achievement !== null && preview === '0') || preview === '1'">
                         <a href="#experience" class="physiTempNavLinks"
-                        >Experience</a
-                        >
+                        >Experience</a>
                     </li>
                     <li v-if="(feeds !== null && feeds !== '' && preview === '0') || preview === '1'"><a href="#feeds" class="physiTempNavLinks">Feeds</a></li>
-                    <!-- <li>
-                        <a href="#testimonials" class="physiTempNavLinks"
-                        >Testimonials</a
-                        >
-                    </li> -->
+                    
                     <li>
                         <a href="#contact" class="physiTempContactBtn"
                         >Contact Me</a
@@ -37,44 +33,7 @@
                         </a>
                     </li>
                 </ul>
-                <!--ul id='dropSettings' class='dropdown-content'>
-                    <li>
-                        <a href="/general" class="dropSetLink">General</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/biography" class="dropSetLink">Bio</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/milestones" class="dropSetLink">Milestones</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/public_feature" class="dropSetLink">Public Features</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/services_rendered" class="dropSetLink">Services</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/socialmedia_presence" class="dropSetLink">Social Media</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/cv_generator" class="dropSetLink">CV Generator</a>
-                    </li>
-                </ul-->
                 <ul id="slide-out" class="sidenav">
-                    <!--li><div class="user-view">
-                    <div class="background">
-                        <img src="images/office.jpg">
-                    </div>
-                    <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-                    <a href="#name"><span class="white-text name">John Doe</span></a>
-                    <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-                    </div></li-->
                     <li>
                         <a href="/general" class="dropSetLink">General</a>
                     </li>
@@ -102,17 +61,33 @@
                     <li>
                         <a href="/cv_generator" class="dropSetLink">CV Generator</a>
                     </li>
-                    <!--li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-                    <li><a href="#!">Second Link</a></li>
-                    <li><div class="divider"></div></li>
-                    <li><a class="subheader">Subheader</a></li>
-                    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li-->
                 </ul>
             </div>
         </nav>
+    </div-->
+    <div class="hide-on-med-and-down">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="container">
+                    <a href="#!" class="brand-logo">Dr. Olivia Felix</a>
+                    <ul class="centerNav">
+                        <li><a href="#!">Interests</a></li>
+                        <li><a href="#miniBlog">Mini Blog</a></li>
+                        <li><a href="#!">Feeds</a></li>
+                        <li><a href="#!">Testimonials</a></li>                        
+                    </ul>
+
+                    <ul class="right">
+                        <li><a href="#!">Contact</a></li>
+                        <li><a href="#!" class="waves-effect waves-light btn subscribeBtn">Subscribe</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
-    <div class="navbar-fixw">
-        <nav class="hide-on-large-only white navMain" id="sideNav">
+    <!--Small devices-->
+    <div class="navbar-fixw hide-on-large-only">
+        <nav class="white navMain" id="sideNav">
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons black-text sideNavIcon"
                                                                            id="sideNavIcon">menu</i></a>
 
@@ -238,9 +213,3 @@ export default {
     computed: {},
 };
 </script>
-<style lang="scss" scoped>
-    .sidenav-trigger {
-        display: block;
-    }
-    
-</style>

@@ -1,22 +1,24 @@
 :root {
-    --primary: #6750a4 !important;
-    --secondary: #6750a4  !important;;
-    --black: #000000  !important;;
-    --white: #ffffff  !important;;
-
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #a4a2a2;
     --component: rgba(0, 0, 0, 0.5);
+    --pri: #529dad;
+    --sec: #201E62;
+    --ter: #D7B9AE;
 }
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
 ::-webkit-scrollbar {
     width: 5px;
 } /* this targets the default scrollbar (compulsory) */
 ::-webkit-scrollbar-track {
     /* box-shadow: inset 0 0 7px rgba(0,0,0,0.8);*/
-    background-color: var(--primary);
+    background-color: var(--pri);
     /*border-radius: 8px;*/
 } /* the new scrollbar will have a flat appearance with the set background color */
 ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 100px var(--primary);
-    background-color: var(--primary);
+    box-shadow: inset 0 0 100px var(--pri);
+    background-color: var(--pri);
     /*border-radius: 8px;*/
 } /* this will style the thumb, ignoring the track */
 
@@ -35,40 +37,209 @@
     width: 5px;
     /* Select the down or left scroll button when it's being hovered by the mouse */
 }
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
 a.active {
-    border-bottom: 4px solid var(--primary);
+    border-bottom: 4px solid var(--pri);
     padding: 0;
 }
-
-nav {
-    background-color: var(--white);
+.container {
+    width: 85%;
+    max-width: unset;
 }
-.navbar-fixed nav {
-    z-index: 999;
+.cardNavContainer {
+    text-align: right;
+    position: relative;
+    top: 8vh;
+}
+button.roundBtn {
+    height: 10vh;
+    width: 4.6vw;
+    border-radius: 50%;
+    border: unset;
+    background-color: var(--white);
+    box-shadow: 0 4px 14px 0 rgba(24, 20, 67, 0.08);
+}
+button.roundBtn:hover, button.roundBtn:active, button.roundBtn:visited {
+    background-color: var(--ter);
+    color: var(--white);
+    height: 10.1vh;
+    width: 4.7vw;
+}
+.roundBtn i {
+    font-size: 6vh;
+}
+
+/* Navigation */
+nav {
+    height: 14vh;
+    line-height: 14vh;
+    position: static;
+    background-color: transparent;
+    box-shadow: unset;
+}
+a.brand-logo {
+    font-size: 3.8vh;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    /* font-family: 'Anek Latin', sans-serif */
+    color: var(--black);
+}
+nav ul a {
+    color: var(--black);
+    font-size: 2.6vh;
+}
+nav ul a:hover {
+    background-color: var(--white);
+    color: var(--ter);
+}
+nav ul.centerNav {
+    margin-left: 14vw;
+}
+nav ul li a.btn.subscribeBtn {
+    background-color: var(--ter);
+    color: var(--white);
+    text-transform: capitalize;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    border-radius: 4vh;
+}
+nav ul li a.btn.subscribeBtn:hover {
+    background-color: var(--white);
+    color: var(--ter);
+    
 }
 #nav-mobile.section {
     padding-top: 1rem !important;
 }
-.navbar-fixed {
-    position: unset !important;
+
+
+/* ABout */
+.templateAboutInner {
+    margin-top: -14vh;
 }
+.col .row.about {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+}
+.section.physiContainerDiv#about {
+    padding-top: 0;
+}
+.profileDesc {
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;   
+    background-image: url('../media/img/templates/1/backgroundVector.png');
+    background-repeat: no-repeat; 
+    background-position: bottom left;
+}
+.profileDescInner {
+    padding-left: 7vw;
+    padding-right: 1.8vw;
+}
+.profileImg {
+    margin-bottom: -0.9vh;
+}
+.profileImgContainer img.responsive-img {
+    width: 100%;
+}
+.sectionSubHeading {
+    font-size: 2.9vh;
+    color: var(--pri);
+    font-weight: 600;
+}
+.sectionHeading, h1.sectionHeading, h2.sectionHeading {  
+    margin: 0;  
+    font-weight: 700;
+    color: var(--sec);    
+    position: relative;
+}
+h1.sectionHeading {
+    font-size: 10vh; 
+    left: -0.3vw;    
+}
+h2.sectionHeading {
+    font-size: 6.5vh;
+    left: -0.27vw;
+}
+.profileDesc p {
+    font-size: 2.5vh;
+    line-height: 1.6em;
+    margin-bottom: 10vh;
+    
+}
+.viewCvBtn, .callBtn {
+    border-radius: 5vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    height: 8vh;
+    line-height: 8vh;
+    text-transform: capitalize;
+    font-size: 2.3vh;
+}
+.btn.viewCvBtn {
+    background-color: var(--ter);
+    margin-right: 3vw;
+}
+.btn.callBtn {
+    background-color: var(--pri);
+}
+.heroBtnRow {
+    margin-bottom: 22vh;
+}
+
+/* INTERESTS */
+.physiContainerDiv#services {
+    /* fullBackgroundVector.png */
+    background-image: url('../media/img/templates/1/fullBackgroundVector.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    padding-top: 10vh;
+}
+.customCarousel {
+    width: 100%;
+    overflow: hidden;
+}
+.inner {
+    transition: transform 0.2s;
+    white-space: nowrap;   
+    padding-bottom: 15vh;  
+}
+.customCard {
+    width: 30%;
+    margin-right: 3vh;
+    background-color: var(--white);
+    display: inline-flex;
+    padding: 7vh 2vw 4vh;
+    border: thin solid #f3f3f7;
+    border-radius: 26px;
+    box-shadow: 0 35px 40px 0 rgba(36, 49, 160, 0.06);
+}
+.customCard h3 {
+    font-size: 4vh;
+    border-bottom: thin solid var(--gray);
+    margin-bottom: 0;
+    padding-bottom: 3vh;
+    color: var(--sec);
+}
+.customCard p{
+    white-space: pre-wrap; 
+    font-size: 2.5vh;
+}
+.customCard img {
+    width: 6vw;
+}
+
 .headerNoSideNav, .extHeaderNoSideNav {
     display: none;
 }
-/* .section {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
-} */
-/* .navbarWrap {
-    width: 90%;
-    margin: 0 auto;
-} */
-a.brand-logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    font-family: "Montserrat", sans-serif;
-    color: var(--black);
-}
+
 a.physiTempNavLinks {
     font-family: "Montserrat", sans-serif;
     color: var(--black);
@@ -91,7 +262,7 @@ a.physiTempNavLinks.active {
     font-size: 1.1rem;
 }
 a.physiTempContactBtn {
-    background-color: var(--primary);
+    background-color: var(--pri);
     padding: 2.5vh 1.5vw;
     margin-top: 10px;
     line-height: 1px;
@@ -109,7 +280,7 @@ a.physiTempContactBtn:hover {
 }
 a.physiTempContactBtn.active {
     padding-left: 1.5vw;
-    border-left: var(--primary);
+    border-left: var(--pri);
 }
 #physiPortPageLogo {
     font-family: "Montserrat", sans-serif;
@@ -139,55 +310,24 @@ a.physiTempContactBtn.active {
     font-weight: 600;
     font-size: 1rem;
     font-family: "Montserrat", sans-serif;
-    background: var(--primary);
+    background: var(--pri);
     color: #ffffff;
     border: none;
 }
 
 .physiTempContactBtn:hover {
     background: #ffffff;
-    color: var(--primary);
+    color: var(--pri);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-.profileImgContainer {
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    top: -100px;
-}
-.profileImg {
-    background: var(--primary);
-    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    transform: rotate(-3.7deg);
-    width: 428px;
-    height: 480px;
-    /* position: absolute;
-    top: 20vh;
-    right: 12vw; */
-}
 
-.physiRightImg {
-    position: absolute;
-    left: 33px;
-    top: 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.25);
-    transform: rotate(1.5deg);
-    width: 100%;
-}
 
-.physiContainerDiv#services {
-    width: 84.5%;
-    margin: auto;
-    /* padding-top: 25vh; */
-}
 
-.physiContainerDiv#about {
+/* .physiContainerDiv#about {
     width: 84.5%;
     margin: auto;
     padding-top: 36vh;
-}
+} */
 
 .physiTempNameTitle {
     font-family: "Montserrat", sans-serif;
@@ -207,7 +347,7 @@ a.physiTempContactBtn.active {
     font-size: 2.5rem;
     line-height: 35px;
     letter-spacing: 0;
-    color: var(--primary);
+    color: var(--pri);
     margin-top: 3vh;
     margin-bottom: 3vh;
 }
@@ -225,13 +365,13 @@ a.physiTempContactBtn.active {
 
 .physiTempBtn {
     background: transparent;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--pri);
     box-shadow: none;
     font-family: "Montserrat", sans-serif;
     border-radius: 100px;
     margin-top: 3vh;
     text-decoration: none;
-    color: var(--primary);
+    color: var(--pri);
     text-align: center;
     letter-spacing: 1px;
     -webkit-transition: background-color 0.2s ease-out;
@@ -268,7 +408,7 @@ a.physiTempContactBtn.active {
     font-weight: 500;
     font-size: 2.25rem;
     line-height: 44px;
-    color: var(--primary);
+    color: var(--pri);
     text-align: center;
     margin: 0 0 10vh 0;
 }
@@ -281,7 +421,7 @@ a.physiTempContactBtn.active {
     top: 940px; */
     border-radius: 50%;
     margin: 0 auto;
-    background: var(--primary);
+    background: var(--pri);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
@@ -365,7 +505,7 @@ a.physiTempContactBtn.active {
     font-weight: lighter;
     font-size: 2.25rem;
     line-height: 44px;
-    color: var(--primary);
+    color: var(--pri);
     text-align: center;
     margin: 0 0 5vh 0;
 }
@@ -391,7 +531,7 @@ a.physiTempContactBtn.active {
 }
 
 .experiences {
-    background: var(--primary);
+    background: var(--pri);
     border-radius: 10px;
     padding: 1vh 1.5vw;
     margin-right: 0.1vw !important;
@@ -443,7 +583,7 @@ a.physiTempContactBtn.active {
 }
 
 #feedsTwitterIcon {
-    color: var(--primary);
+    color: var(--pri);
     font-size: 1.3rem;
 }
 
@@ -453,13 +593,13 @@ a.physiTempContactBtn.active {
     font-weight: lighter;
     font-size: 2.25rem;
     line-height: 44px;
-    color: var(--primary);
+    color: var(--pri);
     text-align: center;
     margin: 0 0 1vh 0;
 }
 
 .feedsCard {
-    background: var(--primary);
+    background: var(--pri);
     border: 1px solid #938f99;
     border-radius: 12px;
     padding: 2vh 0vw;
@@ -586,7 +726,7 @@ a.physiTempContactBtn.active {
     margin-top: 12vh;
 }
 .testimonialDiv {
-    background: var(--primary);
+    background: var(--pri);
     box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
     padding: 1vh 2vw;
     color: #fff;
@@ -595,13 +735,13 @@ a.physiTempContactBtn.active {
     margin-bottom: 10px;
 }
 .tempOneAddTestiLname {
-    border: 1px solid var(--primary);
+    border: 1px solid var(--pri);
 }
 .reviewProEditIconDiv {
     width: 23px;
     height: 23px;
     border-radius: 50%;
-    background-color: var(--primary);
+    background-color: var(--pri);
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     display: inline-block;
     position: relative;
@@ -663,7 +803,7 @@ a.physiTempContactBtn.active {
 #testiFname,
 #testiEmail,
 #testiPhone {
-    border: 1px solid var(--primary);
+    border: 1px solid var(--pri);
     border-radius: 10px;
     padding: 0 1.5vw;
     width: 90%;
@@ -680,7 +820,7 @@ a.physiTempContactBtn.active {
 }
 
 #testiTextarea1 {
-    border: 1px solid var(--primary);
+    border: 1px solid var(--pri);
     border-radius: 10px;
     width: 100.5%;
     height: 22vh;
@@ -703,7 +843,7 @@ a.physiTempContactBtn.active {
 }
 
 .testiContactBtn {
-    background: var(--primary);
+    background: var(--pri);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     width: 97.4%;
@@ -813,7 +953,7 @@ a.physiTempContactBtn.active {
     font-weight: lighter;
     font-size: 2rem !important;
     line-height: 44px;
-    color: var(--primary);
+    color: var(--pri);
     text-align: center;
     margin: 0 0 1vh 0;
 }
@@ -872,11 +1012,11 @@ a.modal-close.editWriteUpsModalCloseBtn {
 input.validate.aboutWriteUpsInput {
     text-align: start;
     height: 2vh;
-    border-bottom-color: var(--primary);
+    border-bottom-color: var(--pri);
 }
 textarea.materialize-textarea.aboutWriteUpsInput {
     text-align: start;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--pri);
     padding: 0.5vh 0.5vw 2.5vh 0.5vw;
 }
 p.aboutWriteUpsSize {
@@ -940,7 +1080,7 @@ div.aboutImgEditModalInnerDiv {
 }
 textarea.materialize-textarea.servicesTextarea {
     text-align: start;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--pri);
     padding: 0.5vh 1.5vw;
     min-height: 17vh;
 }
@@ -974,7 +1114,7 @@ i.material-icons.physiTempSettingsIcon {
     bottom: 2vh;
     left: 3vw;
     font-size: 2.5rem;
-    color: var(--primary);
+    color: var(--pri);
 }
 i.material-icons.physiTempSettingsIcon:hover {
     color: var(--black);
@@ -985,14 +1125,14 @@ i.material-icons.physiTempSettingsIcon:hover {
 .dropdown-content li>a.dropSetLink {
     font-size: 1rem;
     font-family: "Montserrat", sans-serif;
-    color: var(--primary);
+    color: var(--pri);
 }
 .dropdown-content li>a.dropSetLink:hover {
     background-color: transparent;
     border-left: none;
 }
 .dropdown-content li:hover {
-    border-left: 1px solid var(--primary);
+    border-left: 1px solid var(--pri);
 }
 .physiTempName {
     display: flex;
@@ -1056,18 +1196,18 @@ i.material-icons.physiTempSettingsIcon:hover {
         margin-top: 0px;
         margin-left: 3vw;
         font-family: "Montserrat", sans-serif;
-        color: var(--primary) !important;
+        color: var(--pri) !important;
         position: relative;
         bottom: 0vh;
         right: 0vw;
     }
     a.physiTempContactBtn:hover {
         background-color: var(--white) !important;
-        color: var(--primary) !important;
+        color: var(--pri) !important;
     }
     a.physiTempContactBtn.active {
         background-color: var(--white) !important;
-        color: var(--primary) !important;
+        color: var(--pri) !important;
     }
     .physiSidenavTempName {
         font-size: 1.5rem !important;
@@ -1077,7 +1217,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         /* text-align: center; */
     }
     .experiences {
-        background: var(--primary);
+        background: var(--pri);
         border-radius: 10px;
         padding: 0.5vh 0vw;
         /* width: 18vw; */
@@ -1169,7 +1309,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         border-radius: 0;
     }
     .experiences {
-        background: var(--primary);
+        background: var(--pri);
         border-radius: 0px;
         padding: 0;
         margin-right: -0.75rem !important;
@@ -1202,7 +1342,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
 
     .feeds {
-        background-color: var(--primary);
+        background-color: var(--pri);
     }
 
     /* ************************************************************************************ */
@@ -1212,7 +1352,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         height: auto;
     }
     a.active {
-        border-bottom: 4px solid var(--primary);
+        border-bottom: 4px solid var(--pri);
         padding: 0px 15px;
     }
     a.mobileNavLink {
@@ -1220,7 +1360,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         font-weight: 700;
     }
     i.material-icons.sidenavTriggerIcon {
-        color: var(--primary);
+        color: var(--pri);
         line-height: 5vh;
         font-size: 3rem;
         margin-top: 2.5vh;
@@ -1238,8 +1378,8 @@ i.material-icons.physiTempSettingsIcon:hover {
         color: var(--white);
         letter-spacing: 0.7px;
     }
-    .physiContainerDiv#about {
-        padding-top: 12vh;
+    .section.physiContainerDiv#about {
+        padding-top: 0;
     }
 
     /* About Me Img edit modal*/
@@ -1326,11 +1466,11 @@ i.material-icons.physiTempSettingsIcon:hover {
     input.validate.aboutWriteUpsInput {
         text-align: start;
         height: 2vh;
-        border-bottom-color: var(--primary);
+        border-bottom-color: var(--pri);
     }
     textarea.materialize-textarea.aboutWriteUpsInput {
         text-align: start;
-        border: 1px solid var(--primary);
+        border: 1px solid var(--pri);
         padding: 0.5vh 1.5vw;
     }
     p.aboutWriteUpsSize {
@@ -1366,7 +1506,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     /* ************************************************ */
     textarea.materialize-textarea.servicesTextarea {
         text-align: start;
-        border: 1px solid var(--primary);
+        border: 1px solid var(--pri);
         padding: 0.5vh 1.5vw;
         min-height: 17vh;
     }
@@ -1400,7 +1540,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         font-weight: lighter;
         font-size: 1.9rem !important;
         line-height: 44px;
-        color: var(--primary);
+        color: var(--pri);
         text-align: center;
         margin: 0 0 1vh 0;
     }
@@ -1537,7 +1677,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         font-size: 1.6rem;
         line-height: 35px;
         letter-spacing: 0.1px;
-        color: var(--primary);
+        color: var(--pri);
         margin-top: 3vh;
         margin-bottom: 3vh;
         display: flex;
@@ -1553,7 +1693,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         font-weight: lighter;
         font-size: 1.7rem !important;
         line-height: 44px;
-        color: var(--primary);
+        color: var(--pri);
         text-align: center;
         margin: 0 0 1vh 0;
     }
@@ -1564,7 +1704,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         font-weight: lighter;
         font-size: 1.3rem;
         line-height: 44px;
-        color: var(--primary);
+        color: var(--pri);
         text-align: center;
         margin: 0 0 5vh 0;
     }
@@ -1577,7 +1717,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         border-right: 1px solid rgba(217, 217, 217, 0.65);
     }
     .experiences {
-        background: var(--primary);
+        background: var(--pri);
         border-radius: 0px;
         padding: 0;
         margin-right: -0.75rem !important;
@@ -1599,7 +1739,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         background-color: unset;
     }
     .feeds {
-        background-color: var(--primary);
+        background-color: var(--pri);
     }
     .feedsFacebookIcon {
         color: var(--white);
@@ -1647,18 +1787,18 @@ i.material-icons.physiTempSettingsIcon:hover {
         margin-top: 0px;
         margin-left: 7vw;
         font-family: "Montserrat", sans-serif;
-        color: var(--primary) !important;
+        color: var(--pri) !important;
         position: relative;
         bottom: 0vh;
         right: 0vw;
     }
     a.physiTempContactBtn:hover {
         background-color: var(--white) !important;
-        color: var(--primary) !important;
+        color: var(--pri) !important;
     }
     a.physiTempContactBtn.active {
         background-color: var(--white) !important;
-        color: var(--primary) !important;
+        color: var(--pri) !important;
     }
     .physiSidenavTempName {
         font-size: 1.5rem !important;
@@ -1722,7 +1862,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         height: auto;
     }
     a.active {
-        border-bottom: 4px solid var(--primary);
+        border-bottom: 4px solid var(--pri);
         padding: 0px 15px;
     }
     a.mobileNavLink {
@@ -1730,7 +1870,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         font-weight: 700;
     }
     i.material-icons.sidenavTriggerIcon {
-        color: var(--primary);
+        color: var(--pri);
         line-height: 56px;
         font-size: 2.5rem;
     }
@@ -1819,11 +1959,11 @@ i.material-icons.physiTempSettingsIcon:hover {
     input.validate.aboutWriteUpsInput {
         text-align: start;
         height: 2vh;
-        border-bottom-color: var(--primary);
+        border-bottom-color: var(--pri);
     }
     textarea.materialize-textarea.aboutWriteUpsInput {
         text-align: start;
-        border: 1px solid var(--primary);
+        border: 1px solid var(--pri);
         padding: 0.5vh 1.5vw;
     }
     p.aboutWriteUpsSize {
@@ -1857,7 +1997,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
     textarea.materialize-textarea.servicesTextarea {
         text-align: start;
-        border: 1px solid var(--primary);
+        border: 1px solid var(--pri);
         padding: 0.5vh 1.5vw;
         min-height: 17vh;
     }
@@ -1896,7 +2036,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         font-weight: lighter;
         font-size: 1.3rem !important;
         line-height: 44px;
-        color: var(--primary);
+        color: var(--pri);
         text-align: center;
         margin: 0 0 1vh 0;
     }
@@ -1913,7 +2053,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         border: 15px solid #d9d9d9;
         margin: auto;
     }
-    .primaryColor {
+    .priColor {
         padding-right: .1rem;
     }
     .date-range {

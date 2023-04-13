@@ -1,54 +1,42 @@
 <template>
     <div id="templateAbout">
-        <div class="row">
-            <div class="col s12 rm_mg_pd">
-                <div class="section scrollspy physiContainerDiv" id="about">
+        <div class="row noMarginBottom">
+            <div class="col l12 noHorizontalPadding templateAboutInner">
+                <div class="section scrollspy physiContainerDiv noPaddingBottom" id="about">
                     <div v-if="preview === '1'">
-                        <div class="row about">
-                            <div class="col s12 m6 l6 profileDesc">
-                                <div class="containerDiv">
-                                    <h3 class="physiTempName">
-                                        Hi, I'm
-                                        <br />
-                                        Dr Chidinma Felix
-                                        <span
-                                            class="primaryColorBoxDesign"
-                                        ></span>
-                                    </h3>
-
-                                    <p class="physiSummaryTxt">
-                                        Dr. John Doe is an expert in Aestheistiologist with an M.D. from Pittsburgh School of Medicine and an undergraduate degree in Sociology from the University of Michigan- Ann Arbor.
-                                        She started out as an intern at the UPMC Shadyside hospital, then proceeded to Brigham and Women’s Hospital for her residency.
-                                        With more than 10 years of experience as an anaesthesiologist, she has dedicated years to patient care throughout every surgical experience.
+                        <div class="row about noMarginBottom">
+                            <div class="col l6 profileDesc">
+                                <div class="profileDescInner">
+                                    <span class="sectionSubHeading">Hi, I'm</span>
+                                    <h1 class="sectionHeading"> Dr. Olivia Felix</h1>
+                                    <p>
+                                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content 
                                     </p>
-                                    <p class="center-align">
-                                        <a href="#cvDetails" class="physiTempBtn waves-effect waves-light modal-trigger">
-                                            View My curriculum vitae
-                                        </a>
-                                    </p>
-
+                                    <div class="heroBtnRow">
+                                        <button class="waves-effect waves-light btn viewCvBtn">View Curriculum Vitae</button>
+                                        <button class="waves-effect waves-light btn callBtn">Call me</button>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="col s12 m6 l6 profileImgContainer">
-                                <!-- offset-l3 media/img/doc.png-->
+                            <div class="col l6 profileImgContainer noPaddingRight">
                                 <div class="profileImg" v-if="preview === '0'">
                                     <img
-                                        src="'media/img/surgeonhero.png'"
+                                        src="'media/img/templates/1/physicianHero.png'"
                                         alt="doc.png"
-                                        class="responsive-img physiRightImg"
+                                        class="responsive-img"
                                     />
                                 </div>
                                 <div class="profileImg" v-else>
                                     <img
-                                        src="/media/img/surgeonhero.png"
+                                        src="/media/img/templates/1/physicianHero.png"
                                         alt="doc.png"
-                                        class="responsive-img physiRightImg"
+                                        class="responsive-img"
                                     />
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--TODO: remodel this to reflect the template above-->
                     <div v-else-if="bio !== null">
                         <div class="row about">
                             <div class="col s12 m6 l6 profileDesc">
@@ -85,13 +73,6 @@
                                            View My curriculum vitae
                                        </a>
                                    </p>
-
-<!--                                    <div class="hide-on-large-only">-->
-<!--                                        &lt;!&ndash; About WriteUp Modal Trigger &ndash;&gt;-->
-<!--                                        <a class="modal-trigger aboutWriteUpsEditBtn" href="#aboutWriteUpsEditModal" v-if="isLoggedIn">-->
-<!--                                            <i class="material-icons editIcon">edit</i>-->
-<!--                                        </a>-->
-<!--                                    </div>-->
                                 </div>
                             </div>
 
@@ -325,7 +306,7 @@ export default {
     },
     };
 </script>
-<style lang="scss" scoped>
+<!--style lang="scss" scoped>
 label {
     background-color: var(--primary);
     color: white;
@@ -351,4 +332,4 @@ and (max-width: 1605px)
 .containerDiv {
     position: relative;
 }
-</style>
+</style-->

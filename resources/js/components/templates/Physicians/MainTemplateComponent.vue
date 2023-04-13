@@ -43,16 +43,16 @@
                     :isLoggedIn="loggedIn"
                 />
             </div>
-            <SocialMediaComponent
+            <!--SocialMediaComponent
                 :social="social"
                 v-if="
                     (social !== null && social !== '' && preview === '0') ||
                     preview === '1'
                 "
                 :isLoggedIn="loggedIn"
-            />
+            /-->
             <!--            <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>-->
-            <div id="contactContainer">
+            <!--div id="contactContainer">
                 <ContactComponent
                     :preview="preview"
                     :isLoggedIn="loggedIn"
@@ -73,7 +73,7 @@
                     class="btn waves waves-effect"
                     >Edit your website</a
                 >
-            </div>
+            </div-->
         </div>
     </div>
 </template>

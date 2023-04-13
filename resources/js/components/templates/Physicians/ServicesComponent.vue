@@ -1,9 +1,33 @@
 <template>
     <div id="templateService" class="row">
-        <div class="col s12 rm_mg_pd">
-            <div class="section scrollspy physiContainerDiv" id="services">
+        <div class="section scrollspy physiContainerDiv" id="services">
+            <div class="container">
                 <div v-if="services == null || services.length === 0 && preview === '1'">
-                    <div class="row whatIdoTxtRowDiv">
+                    <div class="row">
+                        <div class="col l8">
+                            <span class="sectionSubHeading">MY INTERESTS</span>
+                            <h2 class="sectionHeading">Experienced in <br/>multiple interests</h2>
+                        </div>
+                        <div class="col l4 cardNavContainer">
+                            <button class="roundBtn marginRight-5" @click="prev"><i class="material-icons">chevron_left</i></button>
+                            <button class="roundBtn" @click="next"><i class="material-icons">chevron_right</i></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l12 customCarousel">
+                            <div class="inner" ref="inner" :style="innerStyles">
+                                <div class="customCard" v-for="card in cards" :key="card">
+                                    <div>
+                                        <img :src="card.img" />
+                                        <h3>{{card.title}}</h3>
+
+                                        <p>{{card.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--div class="row whatIdoTxtRowDiv">
                         <div class="col s12">
                             <p class="servicesMainTitle">Services</p>
                             <p class="servicesWhatIdo">WHAT I DO</p>
@@ -85,7 +109,7 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div-->
                 </div>
                 <div v-else-if="services !== null && services.length !== 0 && preview === '0'">
                     <div class="row whatIdoTxtRowDiv">
@@ -136,71 +160,71 @@
                     </div>
                 </div>
             </div>
-            <!-- Services Modal Structure -->
-            <div id="servicesEditModal" class="modal">
-                <div class="modal-content">
-                    <div class="aboutWriteUpsEditModalInnerDiv">
-                        <a href="#!" class="modal-close editWriteUpsModalCloseBtn">
-                            <i class="material-icons">keyboard_arrow_left</i>
-                        </a>
-                        <span v-if="services !== null">
-                            <a href="#!" class="servicesAddMoreBtn" @click="addMore()" v-if="services.length < 3">ADD MORE</a>
-                        </span>
-                        <div
-                            v-for="(service, index) in servicesRend"
-                            :key="index"
-                        >
-                            <div class="row rm_mg">
-                                    <div class="input-field col s12">
-                                        <input type="text" class="validate aboutWriteUpsInput" v-model="service.title" maxlength="15">
-                                    </div>
-                                    <div class="input-field col s12 rm_mg">
-                                        <textarea class="materialize-textarea servicesTextarea" placeholder="description" maxlength="239" v-model="service.description"></textarea>
-                                        <p
-                                            class="right m-0"
-                                            :class="{
-                                                redColor:
-                                                    service.description != null ? service.description
-                                                        .length <= 239 : null,
-                                                successColor:
-                                                     service.description != null ? service.description
-                                                        .length >= 239 : null,
-                                            }"
-                                        >
-                                            {{
+        </div>
+        <!-- Services Modal Structure -->
+        <div id="servicesEditModal" class="modal">
+            <div class="modal-content">
+                <div class="aboutWriteUpsEditModalInnerDiv">
+                    <a href="#!" class="modal-close editWriteUpsModalCloseBtn">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                    </a>
+                    <span v-if="services !== null">
+                        <a href="#!" class="servicesAddMoreBtn" @click="addMore()" v-if="services.length < 3">ADD MORE</a>
+                    </span>
+                    <div
+                        v-for="(service, index) in servicesRend"
+                        :key="index"
+                    >
+                        <div class="row rm_mg">
+                                <div class="input-field col s12">
+                                    <input type="text" class="validate aboutWriteUpsInput" v-model="service.title" maxlength="15">
+                                </div>
+                                <div class="input-field col s12 rm_mg">
+                                    <textarea class="materialize-textarea servicesTextarea" placeholder="description" maxlength="239" v-model="service.description"></textarea>
+                                    <p
+                                        class="right m-0"
+                                        :class="{
+                                            redColor:
                                                 service.description != null ? service.description
-                                                    .length : 0
-                                            }}/239
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <label>&nbsp;</label>
-                                        <i
-                                            @click="
-                                                    remove(index),
-                                                        pushToTrash(service)
-                                                "
-                                            v-show="index != 0"
-                                            class="material-icons cursor"
-                                            id="bioAddBtn"
-                                        >
-                                            cancel
-                                        </i>
-                                    </div>
-                            </div>
-                            <p class="aboutWriteUpsSize">Description should not be more than 239 characters</p>
+                                                    .length <= 239 : null,
+                                            successColor:
+                                                    service.description != null ? service.description
+                                                    .length >= 239 : null,
+                                        }"
+                                    >
+                                        {{
+                                            service.description != null ? service.description
+                                                .length : 0
+                                        }}/239
+                                    </p>
+                                </div>
+                                <div>
+                                    <label>&nbsp;</label>
+                                    <i
+                                        @click="
+                                                remove(index),
+                                                    pushToTrash(service)
+                                            "
+                                        v-show="index != 0"
+                                        class="material-icons cursor"
+                                        id="bioAddBtn"
+                                    >
+                                        cancel
+                                    </i>
+                                </div>
                         </div>
-                        <div class="editWriteUpsSaveBtnDiv">
-                            <a href="#" class="editWriteUpsSaveBtn" @click.prevent="serviceSave" v-if="!loading">
-                                <span v-if="services !== null && services.length === 0">
-                                    <span v-if="services.length === 0">Save</span>
-                                </span>
-                                <span @click="update = 1" v-else>Update</span>
-                            </a>
-                            <a href="#!" class="editWriteupsSaveBtn" v-else>
-                                <i class="fas fa-spinner fa-spin"></i>
-                            </a>
-                        </div>
+                        <p class="aboutWriteUpsSize">Description should not be more than 239 characters</p>
+                    </div>
+                    <div class="editWriteUpsSaveBtnDiv">
+                        <a href="#" class="editWriteUpsSaveBtn" @click.prevent="serviceSave" v-if="!loading">
+                            <span v-if="services !== null && services.length === 0">
+                                <span v-if="services.length === 0">Save</span>
+                            </span>
+                            <span @click="update = 1" v-else>Update</span>
+                        </a>
+                        <a href="#!" class="editWriteupsSaveBtn" v-else>
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -222,7 +246,41 @@
                 update: 0,
                 removed: [],
                 loading: false,
+
+                cards: [
+                    {
+                        title: 'Cadiology',
+                        img: '/media/img/templates/1/cadio.svg',
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.'
+                    }, 
+                    {
+                        title: 'Orthopedics',
+                        img: '/media/img/templates/1/otho.svg',
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.'
+                    }, 
+                    {
+                        title: 'Gastroenterology',
+                        img: '/media/img/templates/1/gastro.svg',
+                        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.`
+                    }, 
+                    {
+                        title: 'Pediatric',
+                        img: '/media/img/templates/1/pedia.svg',
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.'
+                    },
+                    {
+                        title: 'Cadiology',
+                        img: '/media/img/templates/1/cadio.svg',
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.'
+                    }],
+                innerStyles: {},
+                step: '',
+                transitioning: false
             }
+        },
+        mounted () {
+            this.setStep()
+            this.resetTranslate()
         },
         methods: {
             addMore() {
@@ -278,6 +336,63 @@
                         }
                     });
             },
+            setStep () {
+                const innerWidth = this.$refs.inner.scrollWidth;
+                const totalCards = this.cards.length;
+                this.step = `${innerWidth / totalCards}px`;
+                
+            },
+            next () {
+                
+                if (this.transitioning){
+                     return;
+                } else {
+                    this.transitioning = true
+                    this.moveLeft()
+                    this.afterTransition(() => {
+                        const card = this.cards.shift()
+                        this.cards.push(card)
+                        this.resetTranslate()
+                        this.transitioning = false
+                    })
+                }                
+            },
+            prev () {
+                if (this.transitioning) return
+                this.transitioning = true
+                this.moveRight()
+                this.afterTransition(() => {
+                    const card = this.cards.pop()
+                    this.cards.unshift(card)
+                    this.resetTranslate()
+                    this.transitioning = false
+                })
+            },
+            moveLeft () {
+                this.innerStyles = {
+                    transform: `translateX(-${this.step}) translateX(-${this.step})`
+                }
+            },
+            moveRight () {
+                console.log(`translateX(-${this.step}) translateX(-${this.step})`)
+                this.innerStyles = {
+                    transform: `translateX(${this.step}) translateX(-${this.step})`
+                }
+            },
+            afterTransition (callback) {
+                const listener = () => {
+                    callback()
+                    this.$refs.inner.removeEventListener('transitionend', listener)
+                }
+                this.$refs.inner.addEventListener('transitionend', listener)
+            },
+            resetTranslate () {
+                let step = 0;
+                this.innerStyles = {
+                    transition: 'none',
+                    transform: `translateX(-${step})`
+                }
+            }
         },
         props: {
             services: Array,
