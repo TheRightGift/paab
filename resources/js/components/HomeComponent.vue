@@ -201,7 +201,7 @@
                             <div class="col l4 s12" v-for="(template, index) in templates.slice(0, 3)" :key="index">
                                 <img :src="'./media/img/'+template.imgUrl" alt="Template 1" class="responsive-img">
                                 <div class="d-flex justify-between mb-2">
-                                    <a href="#!" class="links">Select</a>
+                                    <!-- <a href="#!" class="links">Select</a> -->
                                     <a href="#!" class="links">Preview</a>
                                 </div>
                             </div>
