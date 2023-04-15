@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
     
-    <link rel="stylesheet" href="/css/materialize.min.css">
-    <link rel="stylesheet" href="/css/paab.css">
+    <link rel="stylesheet" href="https://whitecoatdomain.com/css/materialize.min.css">
+    <link rel="stylesheet" href="https://whitecoatdomain.com/css/paab.css">
     <link rel="stylesheet" href="{{ ('/css/'.$templateCSS) }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSRF Token -->
@@ -25,10 +25,10 @@
         <physician-website-component email="{{$email}}" can="{{$can}}" social="{{$socials ?? null}}" tenant='{{$tenantID ?? null}}' preview='{{$preview ?? 0}}' title='{{$title ?? null}}' template="{{$template}}" user="{{$user ?? ''}}"></physician-website-component>
     </div>
 
-    <script src="/js/app.js"></script>
-    <script src="/js/jquery-3.6.0.min.js"></script>
-    <script src="/js/materialize.min.js"></script>
-    <script src="/js/paab.js"></script>
+    <script src="https://whitecoatdomain.com/js/app.js"></script>
+    <script src="https://whitecoatdomain.com/js/jquery-3.6.0.min.js"></script>
+    <script src="https://whitecoatdomain.com/js/materialize.min.js"></script>
+    <script src="https://whitecoatdomain.com/js/paab.js"></script>
     <!--script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script async src="https://www.tiktok.com/embed.js"></script>
     <script async src="//www.instagram.com/embed.js"></script>

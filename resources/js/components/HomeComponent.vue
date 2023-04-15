@@ -58,17 +58,17 @@
                     <img class="introductoryImg responsive-img" src="../../../public/media/img/wcdHomeAdvSection.png" alt="Introductory Image of our template">
                     <div class="custom-container">
                         <div class="row">
-                            <div class="col l4 s12 article">
+                            <div class="col l4 m4 s12 article">
                                 <p>
                                     Select from our variety of ground breaking templates , designer fonts and eye catching colors that speaks to your style and professional taste.
                                 </p>
                             </div>
-                            <div class="col l4 s12 article">
+                            <div class="col l4 m4 s12 article">
                                 <p>
                                     Explore with our add ons- whether it is linking your social media platforms , scheduling an appointment and displaying client reviews.
                                 </p>
                             </div>
-                            <div class="col l4 s12 article">
+                            <div class="col l4 m4 s12 article">
                                 <p>
                                     Let your words travel faster by linking all your social media accounts to retain and grow your audience.
                                 </p>
@@ -140,7 +140,7 @@
                             HOW TO GET STARTED
                         </p>
                         <p class="howToStep mb-6">Follow these 6 simple steps to create a website today</p>
-                        <div class="row">
+                        <div class="row hide-on-med-and-down">
                             <div class="col l4 s12">
                                 <div class="numberIcon">
                                     <div>1</div>
@@ -182,6 +182,63 @@
                                 </div>
                                 <p class="howToCounterHeader">​Sign up for a free website builder.</p>
                                 <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                            </div>
+                        </div>
+
+                        <div class="row hide-on-large-only noMarginBottom">
+                            <div class="row">
+                                <div class="col s1">
+                                    1.
+                                </div>
+                                <div class="col s11">
+                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">​Sign up for a free website builder.</p>
+                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s1">
+                                    2.
+                                </div>
+                                <div class="col s11">
+                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">​Sign up for a free website builder.</p>
+                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s1">
+                                    3.
+                                </div>
+                                <div class="col s11">
+                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">​Sign up for a free website builder.</p>
+                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s1">
+                                    4.
+                                </div>
+                                <div class="col s11">
+                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">​Sign up for a free website builder.</p>
+                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s1">
+                                    5.
+                                </div>
+                                <div class="col s11">
+                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">​Sign up for a free website builder.</p>
+                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s1">
+                                    6.
+                                </div>
+                                <div class="col s11">
+                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">​Sign up for a free website builder.</p>
+                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="getStartedLayout mt-2 mb-6">
@@ -295,10 +352,20 @@
                                 <img class="responsive-img" src="../../../public/media/img/instaFooter.png" alt="our instagram handle">
                             </a>
                         </div>
-                        <div class="termsPrivacyPolicy">
-                            <a href="#!">Terms</a>
+                        <div class="termsPrivacyPolicy hide-on-med-and-down">
+                            <a href="#!">Terms of Use</a>
                             <a href="#!">Privacy Policy</a>
                             <p>&copy; 2023, Whitecoatdomain</p>
+                        </div>
+
+                        <div class="hide-on-large-only width-90">
+                            <div class="termsPrivacyPolicy">
+                                <a href="#!">Terms of Use</a>
+                                <a href="#!">Privacy Policy</a>
+                            </div>
+                            <div class="center-align">
+                                <p class="noMarginTop">&copy; 2023, Whitecoatdomain</p>
+                            </div>
                         </div>
                     </div>
                 </div>
