@@ -327,6 +327,9 @@ textarea, .input-field > input[type=text]:not(.browser-default) {
 
 /* Medium */
 @media screen and (max-width: 992px) and (min-width: 640px) {
+    .bold {
+        font-weight: 500;
+    }
     .customNav {
         padding: 4vh 4vw;
     }
@@ -359,7 +362,47 @@ textarea, .input-field > input[type=text]:not(.browser-default) {
         font-size: 2.5rem;
         margin: 6vh 2vw 3vh;
     }
+    .row.templateFeatureDetMed {
+        margin-bottom: 5vh;
+        margin-top: 3vh;
+    }
+    .templateFeatureDetMed .mb-7 {
+        margin-bottom: 0;
+    }
+    .templateFeatureDetMed .mt-9 {
+        margin-top: 0;
+    }
     
+    .icon-container {
+        width: 5vw;
+        height: 3.5vh;
+        /* margin: 0 auto; */
+    }
+    .right-align .icon-container {
+        margin-left: 80%;
+    }
+    .icon-container img {
+        width: 1.5vh;
+        height: unset;
+    }
+    /* .tempFeaturesFlexMedCenter {
+        display: flex;
+        justify-content: center;
+    }
+    .tempFeaturesFlexMedCenter img {
+        width: 40%;
+    } */
+    .templateFeatureDetMed .left-align, .templateFeatureDetMed .right-align {
+        margin-top: -3vh;
+    }
+
+    .templateBody .row .col.l4.s12 > img {
+        height: unset;
+    }
+
+    .supportHeader {
+        text-align: center;
+    }
 }
 
 /* Small */

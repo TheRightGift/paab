@@ -93,8 +93,8 @@
                             <button class="button getStartedBtn waves-effect waves-deep-orange">Get Started</button>
                         </div>
     
-                        <div class="row">
-                            <div class="col l4 s12">
+                        <div class="row templateFeatureDetMed">
+                            <div class="col l4 m4 s12 left-align">
                                 <div class="content mb-7 mt-9">
                                     <div class="icon-container">
                                         <img src="../../../public/media/img/message.svg" alt="message icon">
@@ -102,7 +102,7 @@
                                     <p class="content-header">LIVE CHAT</p>
                                     <p class="contentSummary">Creating that outstanding online portfolio may require a support system. For that reason we have our help desk on standby to guide you through as you make those important steps.</p>
                                 </div>
-                                <div class="content">
+                                <div class="content marginTop-4">
                                     <div class="icon-container">
                                         <img src="../../../public/media/img/like.svg" alt="like icon">
                                     </div>
@@ -110,10 +110,10 @@
                                     <p class="contentSummary">Let your patients connect with you on social level and see you outside the white coat by linking all your social media platforms.</p>
                                 </div>
                             </div>
-                            <div class="col l4 s12">
+                            <div class="col l4 m4 s12">
                                 <img class="responsive-img" src="../../../public/media/img/templateFeatureSectionImg.png" alt="Template Feature Image Rep">
                             </div>
-                            <div class="col l4 s12">
+                            <div class="col l4 m4 s12 right-align">
                                 <div class="content mb-7 mt-9">
                                     <div class="icon-container">
                                         <img src="../../../public/media/img/cv.png" width="50" height="50" alt="cv icon">
@@ -121,7 +121,7 @@
                                     <p class="content-header">CURRICULUM VITAE</p>
                                     <p class="contentSummary">Fill in your details and have access to your auto generated curriculum vitae (cv)</p>
                                 </div>
-                                <div class="content">
+                                <div class="content marginTop-6">
                                     <div class="icon-container">
                                         <img src="../../../public/media/img/reviewflag.svg" alt="flag-review icon">
                                     </div>
@@ -140,52 +140,52 @@
                             HOW TO GET STARTED
                         </p>
                         <p class="howToStep mb-6">Follow these 6 simple steps to create a website today</p>
-                        <div class="row hide-on-med-and-down">
-                            <div class="col l4 s12">
+                        <div class="row hide-on-small-only">
+                            <div class="col l4 m4 marginBottom-3">
                                 <div class="numberIcon">
                                     <div>1</div>
                                 </div>
-                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToCounterHeader bold">​Sign up for a free website builder.</p>
                                 <p class="howToInstruction">​Choose what kind of website you want to create.</p>
                             </div>
-                            <div class="col l4 s12">
+                            <div class="col l4 m4 marginBottom-3">
                                 <div class="numberIcon">
-                                    <div>1</div>
+                                    <div>2</div>
                                 </div>
-                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToCounterHeader bold">​Sign up for a free website builder.</p>
                                 <p class="howToInstruction">​Choose what kind of website you want to create.</p>
                             </div>
-                            <div class="col l4 s12">
+                            <div class="col l4 m4 marginBottom-3">
                                 <div class="numberIcon">
-                                    <div>1</div>
+                                    <div>3</div>
                                 </div>
-                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToCounterHeader bold">​Sign up for a free website builder.</p>
                                 <p class="howToInstruction">​Choose what kind of website you want to create.</p>
                             </div>
-                            <div class="col l4 s12">
+                            <div class="col l4 m4 marginBottom-3">
                                 <div class="numberIcon">
-                                    <div>1</div>
+                                    <div>4</div>
                                 </div>
-                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToCounterHeader bold">​Sign up for a free website builder.</p>
                                 <p class="howToInstruction">​Choose what kind of website you want to create.</p>
                             </div>
-                            <div class="col l4 s12">
+                            <div class="col l4 m4 marginBottom-3">
                                 <div class="numberIcon">
-                                    <div>1</div>
+                                    <div>5</div>
                                 </div>
-                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToCounterHeader bold">​Sign up for a free website builder.</p>
                                 <p class="howToInstruction">​Choose what kind of website you want to create.</p>
                             </div>
-                            <div class="col l4 s12">
+                            <div class="col l4 m4 marginBottom-3">
                                 <div class="numberIcon">
-                                    <div>1</div>
+                                    <div>6</div>
                                 </div>
-                                <p class="howToCounterHeader">​Sign up for a free website builder.</p>
+                                <p class="howToCounterHeader bold">​Sign up for a free website builder.</p>
                                 <p class="howToInstruction">​Choose what kind of website you want to create.</p>
                             </div>
                         </div>
 
-                        <div class="row hide-on-large-only noMarginBottom">
+                        <div class="row hide-on-med-and-up noMarginBottom">
                             <div class="row">
                                 <div class="col s1">
                                     1.
@@ -255,7 +255,7 @@
                         </p>
                         <p class="templateSummary mb-4">We are giving you the freedom to select from our multiple customized templates designed to meet your personal and professional taste. Our templates are seamless with drag and drop settings.</p>
                         <div class="row">
-                            <div class="col l4 s12" v-for="(template, index) in templates.slice(0, 3)" :key="index">
+                            <div class="col l4 m6 s12" v-for="(template, index) in templates.slice(0, 3)" :key="index">
                                 <img :src="'./media/img/'+template.imgUrl" alt="Template 1" class="responsive-img">
                                 <div class="d-flex justify-between mb-2">
                                     <!-- <a href="#!" class="links">Select</a> -->
@@ -280,7 +280,7 @@
                     <div class="supportBody">
                         <p class="supportHeader">WE’RE ALWAYS HAPPY TO HELP</p>
                         <div class="row">
-                            <div class="col l4 s12">
+                            <div class="col l4 m4 s12">
                                 <div class="centerOnSmall">
                                     <div class="md-mb-2">
                                         <p class="header">Technical support</p>
@@ -296,7 +296,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col l8 s12">
+                            <div class="col l8 m8 s12">
                                 <div class="row">
                                     <form class="col s12">
                                         <div class="row">
