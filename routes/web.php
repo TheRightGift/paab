@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\TenantClaimController;
 use App\Http\Controllers\TenantController;
+use App\Http\Controllers\WebhookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,9 @@ Route::get('/', function () {
 
 Route::get('/templates', function () {
     return view('template');
+});
+Route::get('/faqs', function () {
+    return view('faqs');
 });
 
 
@@ -236,3 +240,6 @@ Route::get('/testModal', function(){
 });
 
 Route::get('/getstarted', [TenantClaimController::class, 'checkIfTenantIDNGetDomain']);
+
+// Define a route to handle the webhook
+Route::post('/webhook', [WebhookController::class, 'handle']);

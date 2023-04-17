@@ -193,7 +193,7 @@ h2.sectionHeading {
 }
 
 /* INTERESTS */
-.physiContainerDiv#services {
+.physiContainerDiv#services, .background {
     /* fullBackgroundVector.png */
     background-image: url('../media/img/templates/1/fullBackgroundVector.png');
     background-repeat: no-repeat;
@@ -439,12 +439,18 @@ a.physiTempContactBtn.active {
     letter-spacing: 0;
     color: #000000;
 }
-
+.material-icons.reviewIcon {
+    font-size: 2rem;
+    color: #d29814;
+}
 .servicesTitle,
 .servcesHeading.forSurgeon,
 .title,
 .feedsMainTitle.forSurgeon,
 .greenBg {
+    /* display: none; */
+}
+.tempReviewOptDiv {
     display: none;
 }
 
@@ -910,10 +916,12 @@ a.physiTempContactBtn.active {
 /* Added stylings for testimonial review */
 .testiProImg {
     border-radius: 50%;
+    width: 57px;
     display: flex;
+    /* 
     margin: 0 auto;
     position: relative;
-    top: 1vh;
+    top: 1vh; */
 
 }
 .testiMapDiv {
@@ -1337,9 +1345,9 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
 
     /* Added some stylings on Feeds */
-    #feeds {
+    /* #feeds {
         background-color: unset;
-    }
+    } */
 
     .feeds {
         background-color: var(--pri);
@@ -2096,4 +2104,45 @@ i.material-icons.physiTempSettingsIcon:hover {
     z-index: 9999;
     background: url("//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif")
         50% 50% no-repeat rgb(249, 249, 249);
+}
+
+
+/* Inferred */
+.testimonialsProName {
+    font-size: 1.3rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    margin: 0;
+}
+.testimonialsProTitle {
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin: 0;
+}
+.testimonialsProImgdiv {
+    padding: 0.75rem;
+    background-color: #77DEF4;
+    border-radius: 1rem;
+    margin-bottom: 1.75rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.testimonialsProImgdiv:hover {
+    background-color: #546f75;
+    cursor: pointer;
+    color: white;
+}
+.testimonialsWriteupTitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 23px;
+}
+.tesimonialsWriteupTxt {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #73729C;
 }

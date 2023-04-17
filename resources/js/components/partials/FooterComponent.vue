@@ -1,55 +1,80 @@
 <template>
-    <footer class="footer">
-        <div class="footerContainDiv">
-                <div class="row footerInnerDiv">
-                    <div class="col l4 footerGridDivs">
-                        <p class="contactTitle">Contact</p>
-                        <a href="#" class="contactTxt">admin@whitecoatdomain.com</a>
-                    </div>
-
-                    <div class="col l4 footerGridDivs">
-                        <p class="locTitle">Location</p>
-                        <p class="locTxt">
-                            8 providence street,lekki,
-                            <br>
-                            Lagos,
-                            <br>
-                            Nigeria
-                        </p>
-                    </div>
-
-                    <div class="col l4">
-                        <p class="socialTitle">Socials</p>
-                        
-                        <div class="socialMedIconsDiv">
-                            <a href="#">
-                                <i class="fa-brands fa-square-instagram socialMedIcons"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-facebook socialMedIcons"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fa-brands fa-twitter socialMedIcons"></i>
-                            </a>
-                        </div>
-                    </div>
+    <section class="footer">
+        <div class="container">
+            <div class="footerBody">
+                <div class="socials-footer">
+                    <a href="#!" v-for="(image, index) in images" :key="index">
+                        <img class="responsive-img" :src="'./media/img/'+image.src" :alt="image.alt">
+                    </a>
                 </div>
+                <div class="termsPrivacyPolicy">
+                    <a href="#!">Terms</a>
+                    <a href="#!">Privacy Policy</a>
+                    <p>&copy; 2023, Whitecoatdomain</p>
+                </div>
+            </div>
         </div>
-        <InnerFooterComponent/>
-    </footer>
+    </section>
 </template>
 <script>
-    import InnerFooterComponent from './InnerFooterComponent.vue';
     export default {
-        components: {
-            InnerFooterComponent
-        },
         data() {
-            return {};
+            return {
+                images: [
+                    {
+                        src: 'linkedinFooter.png',
+                        alt: 'our linkedin handle'
+                    },
+                    {
+                        src: 'facebookFooter.png',
+                        alt: 'our facebook handle',
+                    },
+                    {
+                        src: 'twitterFooter.png',
+                        alt: 'our twitter handle'
+                    },
+                    {
+                        src: 'instaFooter.png',
+                        alt: 'our instagram handle'
+                    }
+                ]
+            }
         },
-        methods: {},
-        props: {},
-        mounted() {},
-        watch: {},
     };
 </script>
+<style scoped>
+.footer {
+    background: #2E4451;
+    color: var(--white);
+}
+.footer {
+    border-top: thin solid rgba(217, 217, 217, 0.5);
+    padding: 1.5vh;
+}
+.footerBody, .termsPrivacyPolicy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.termsPrivacyPolicy > a, .socials-footer > a:not(:last-of-type), .termsPrivacyPolicy > p {
+    margin: 0 1vw 0 0;
+    text-decoration: none;
+    color: var(--white);
+}
+.termsPrivacyPolicy > a:hover {
+    color: #D7B9AE;
+    text-decoration: underline #D7B9AE;
+}
+
+@media screen and (max-width: 640px) { 
+    .footerBody, .termsPrivacyPolicy {
+        flex-direction: column;
+    }
+    .termsPrivacyPolicy > a, .socials-footer, .termsPrivacyPolicy > p {
+        margin-bottom: .75vh;
+    }
+    .socials-footer > a:not(:last-of-type) {
+        margin-right: 4.5vw;
+    }
+}
+</style>

@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{$pageTitle ?? $template}}</title>
     <link rel="shortcut icon" href="{{ ('/media/tenants/'.$tenantID.'/img/favicon.png') }}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&family=Open+Sans:wght@300;400;500&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet"> -->
@@ -29,11 +32,14 @@
     <script src="/js/jquery-3.6.0.min.js"></script>
     <script src="/js/materialize.min.js"></script>
     <script src="/js/paab.js"></script>
-    <!--script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <script async src="https://www.tiktok.com/embed.js"></script>
-    <script async src="//www.instagram.com/embed.js"></script>
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="Lvp1FF6L"></script-->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0" nonce="WtqDSqzj"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script async src="//www.instagram.com/embed.js"></script>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+    <!--script async src="https://www.tiktok.com/embed.js"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v16.0" nonce="Lvp1FF6L"></script -->
     <script>
         var dropdowns = document.querySelectorAll('.dropdown-trigger')
         for (var i = 0; i < dropdowns.length; i++){

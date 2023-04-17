@@ -43,23 +43,23 @@
                     :isLoggedIn="loggedIn"
                 />
             </div>
-            <!--SocialMediaComponent
+            <!-- <SocialMediaComponent
                 :social="social"
                 v-if="
                     (social !== null && social !== '' && preview === '0') ||
                     preview === '1'
                 "
                 :isLoggedIn="loggedIn"
-            /-->
-            <!--            <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>-->
-            <!--div id="contactContainer">
+            /> -->
+            <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>
+           <div id="contactContainer">
                 <ContactComponent
                     :preview="preview"
                     :isLoggedIn="loggedIn"
                     :contactMail="contact"
                 />
             </div>
-            <FooterComponent />
+             <!--FooterComponent />
      
             <div class="fixedBtmBtn" v-if="can === '1'">
                 <a
