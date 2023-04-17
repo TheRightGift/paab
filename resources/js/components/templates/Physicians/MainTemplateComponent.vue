@@ -52,7 +52,7 @@
                 :isLoggedIn="loggedIn"
             /> -->
             <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>
-           <div id="contactContainer">
+            <div id="contactContainer">
                 <ContactComponent
                     :preview="preview"
                     :isLoggedIn="loggedIn"

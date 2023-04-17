@@ -5,7 +5,7 @@
         <div class="background">
             <div class="container">
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s12 mb-6">
                         <div class="col l8">
                             <span class="sectionSubHeading">TESTIMONIALS</span>
                             <h2 class="sectionHeading">What my client <br/>says about me</h2>
@@ -277,6 +277,9 @@
     };
 </script>
 <style scoped>
+.mb-6 {
+    margin-bottom: 5rem;
+}
 .d-flex {
     display: flex;
 }
@@ -286,36 +289,36 @@
 .justify-between {
     justify-content: space-between;
 }
-    a:hover {
-        cursor: pointer;
-    }
-    .flex-centered {
-        justify-content: center !important;
-    }
-    .testimonialDiv {
-        margin-top: -10px;
-    }
-    .clients {
-        height: 40vh;
-        overflow-y: auto;
-        padding: 1rem 1rem 0rem 1rem;
-        border-radius: 1rem;
-    }
-    .titleName {
-        width: 22vw;
-    }
-    .selected {
-        background-color: #546f75;
-        color: #FFFF;
-    }
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    .clients::-webkit-scrollbar {
+a:hover {
+    cursor: pointer;
+}
+.flex-centered {
+    justify-content: center !important;
+}
+.testimonialDiv {
+    margin-top: -10px;
+}
+.clients {
+    height: 40vh;
+    overflow-y: auto;
+    padding: 1rem 1rem 0rem 1rem;
+    border-radius: 1rem;
+}
+.titleName {
+    width: 22vw;
+}
+.selected {
+    background-color: #546f75;
+    color: #FFFF;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.clients::-webkit-scrollbar {
     display: none;
-    }
+}
 
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .clients {
+/* Hide scrollbar for IE, Edge and Firefox */
+.clients {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    }
+}
 </style>

@@ -2,12 +2,12 @@
     <div class="section scrollspy contactContainDiv" id="contact">
         <div class="row" id="templateContact">
             <div class="col s12" id="testiContactFormTitleDiv">
-                <p class="feedsMainTitle expMainTitle">Contact Me</p>
-                <p class="contactHeaderTxt">SCHEDULE AN APPOINTMENT</p>
-                <h3 class="title">
-                    CONTACT ME
+                <!-- <p class="feedsMainTitle expMainTitle">Contact Me</p>
+                <p class="contactHeaderTxt">SCHEDULE AN APPOINTMENT</p> -->
+                <h2 class="sectionHeader">
+                    Contact me
                     <span class="primaryColorBoxDesign5"></span>
-                </h3>
+                </h2>
 
                 <div v-if="isLoggedIn" class="" >
                     <!-- Contact Modal Trigger -->
@@ -56,8 +56,8 @@
                 </div>
 
             </div>
-            <div class="contactMainDiv">
-                <div class="col s12 m5 l5 greenBg">
+            <div class="contactMainDiv row">
+                <div class="col s12 m5 l5 greenBg pt-5">
                     <div class="row">
                         <div class="col s2">
                             <div class="contactIconDiv">
@@ -99,7 +99,7 @@
                         </p>
                         <form @submit.prevent="sendMail">
                             <div class="row">
-                                <div class="input-field col s12 m6 l6">
+                                <div class="input-field col s12 m12 l12">
                                     <input
                                         placeholder="Last Name"
                                         id="testiLname"
@@ -110,7 +110,7 @@
                                     />
                                 </div>
 
-                                <div class="input-field col s12 m6 l6">
+                                <div class="input-field col s12 m12 l12">
                                     <input
                                         placeholder="First Name"
                                         id="testiFname"
@@ -121,7 +121,7 @@
                                     />
                                 </div>
 
-                                <div class="input-field col s12 m6 l6">
+                                <div class="input-field col s12 m12 l12">
                                     <input
                                         placeholder="Email"
                                         id="testiEmail"
@@ -132,7 +132,7 @@
                                     />
                                 </div>
 
-                                <div class="input-field col s12 m6 l6">
+                                <div class="input-field col s12 m12 l12">
                                     <input
                                         placeholder="Phone Number"
                                         id="testiPhone"
@@ -152,26 +152,28 @@
                                         required
                                     ></textarea>
                                 </div>
-
-                                <button type="submit" class="btn testiContactBtn float-right" :disabled="saving">
-                                    <span v-if="!saving">SUBMIT <i class="material-icons" id="testiContactBtnIcon">send</i></span>
-
-                                    <div class="preloader-wrapper small active" v-else>
-                                        <div
-                                            class="spinner-layer spinner-white-only"
-                                        >
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
+                                <div class="right">
+                                    <button type="submit" class="btn testiContactBtn float-right" :disabled="saving">
+                                        <span v-if="!saving">SUBMIT</span>
+                                        <!-- <i class="material-icons" id="testiContactBtnIcon">send</i> -->
+    
+                                        <div class="preloader-wrapper small active" v-else>
+                                            <div
+                                                class="spinner-layer spinner-white-only"
+                                            >
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </button>
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
