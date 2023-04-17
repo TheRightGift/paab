@@ -4,11 +4,11 @@
             <div class="container">
                 <div v-if="services == null || services.length === 0 && preview === '1'">
                     <div class="row">
-                        <div class="col l8">
+                        <div class="col l8 s12">
                             <span class="sectionSubHeading">MY INTERESTS</span>
                             <h2 class="sectionHeading">Experienced in <br/>multiple interests</h2>
                         </div>
-                        <div class="col l4 cardNavContainer">
+                        <div class="col l4 s12 cardNavContainer">
                             <button class="roundBtn marginRight-5" @click="prev"><i class="material-icons">chevron_left</i></button>
                             <button class="roundBtn" @click="next"><i class="material-icons">chevron_right</i></button>
                         </div>
@@ -374,7 +374,7 @@
                 }
             },
             moveRight () {
-                console.log(`translateX(-${this.step}) translateX(-${this.step})`)
+                // console.log(`translateX(-${this.step}) translateX(-${this.step})`)
                 this.innerStyles = {
                     transform: `translateX(${this.step}) translateX(-${this.step})`
                 }

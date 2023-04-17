@@ -2,7 +2,7 @@
     --black: #000000;
     --white: #ffffff;
     --gray: #a4a2a2;
-    --component: rgba(0, 0, 0, 0.5);
+    --component: #2e4450;
     --pri: #529dad;
     --sec: #201E62;
     --ter: #D7B9AE;
@@ -53,6 +53,12 @@ a.active {
     position: relative;
     top: 8vh;
 }
+.cFlex {
+    display: flex;
+}
+.flexRight {
+    justify-content: flex-end;
+}
 button.roundBtn {
     height: 10vh;
     width: 4.6vw;
@@ -69,6 +75,15 @@ button.roundBtn:hover, button.roundBtn:active, button.roundBtn:visited {
 }
 .roundBtn i {
     font-size: 6vh;
+}
+.btn.btn-flat {
+    background-color: #e3e3e7;
+}
+.btn.btn-flat i {
+    color: var(--component);
+}
+.btn.btn-flat:hover, .btn.btn-flat:visited {
+    background-color: var(--pri);
 }
 
 /* Navigation */
@@ -1130,11 +1145,17 @@ a.physiTempSettingsNavLink {
 a.physiTempSettingsNavLink:hover {
     background-color: transparent;
 }
-i.material-icons.physiTempSettingsIcon {
+/* i.material-icons.physiTempSettingsIcon {
     position: relative;
     bottom: 2vh;
     left: 3vw;
     font-size: 2.5rem;
+    color: var(--pri);
+} */
+nav .nav-wrapper i.material-icons.physiTempSettingsIcon {
+    height: 14vh;
+    line-height: 14vh;
+    font-size: 2.5rem; 
     color: var(--pri);
 }
 i.material-icons.physiTempSettingsIcon:hover {
@@ -1165,6 +1186,145 @@ i.material-icons.physiTempSettingsIcon:hover {
 }
 #experience .serviceHeading {
     align-items: baseline;
+}
+
+/* Website settings */
+#showSettingsModal {
+    background-image: linear-gradient(to top left, #b7b7b7, #ffffff);
+}
+#showSettingsModal.modal {
+    max-height: 85%;
+}
+#showSettingsModal.modal .modal-content {
+    padding: 0;
+}
+.settingModalViewInitial {
+    padding: 2vh 1.5vw;
+}
+#showSettingsModal h3 {
+    margin-top: 5vh;
+    font-size: 3.7vh;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: var(--sec);
+}
+#showSettingsModal button.btn.closeSettingModal {
+    background-color: var(--black);
+    text-transform: capitalize;
+    border-radius: 5vh;
+    padding: 0 2vw;
+    height: 5vh;
+    line-height: 5vh;
+    font-size: 1.7vh;
+}
+.generalSettings {
+    display: flex;
+}
+.settingOptions {
+    padding: 2vh 1vw;
+    background-color: var(--white);
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 2vh;
+}
+.settingOptions h6 {
+    color: var(--sec);
+    font-weight: 600;
+}
+
+.optionSettingBackground {
+    background-image: url('../media/img/templates/1/settingOptionBackground.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 79vh;
+}
+.optionSettingBackground a, .optionSettingBackground h5 {
+    color: var(--white);       
+}
+.optionSettingBackground a {
+    text-transform: capitalize;
+}
+.optionSettingBackground h5 {
+    padding-left: 3vh;
+    font-size: 5.5vh; 
+}
+.row .col.optionSettingContainer {
+    background-color: var(--white);
+    overflow: auto;
+    height: 79vh;
+    padding-top: 4vh;
+}
+h4.settingOptionSectionTitle {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--component);
+}
+.optionSettingContainer input.validate.formInput {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.optionSettingContainer input[type=text]:not(.browser-default) {
+    border-bottom: 0.3vh solid var(--sec);
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 0;
+    height: 1.5rem;
+}
+.optionSettingContainer .input-field>label, .optionSettingContainer label {
+    font-size: .75rem !important;
+    position: relative;
+    left: 0;    
+}
+.settingImgContainer {
+    width: 80%;
+    /* height: 50vh; */
+    border: 9px solid #d9d9d9;
+    margin: auto;
+    position: relative;
+    top: 5vh;
+}
+.settingImg {
+    width: 100%;
+    height: 100%;
+}
+.settingImgBtnContainDiv {
+    /* display: flex;
+    justify-content: space-between;
+    width: 35.5%; */
+    margin: 2vh auto;
+}
+.settingImgBtnMainDiv {
+    position: relative;
+    margin-bottom: 7vh;
+}
+/* .formInnerDiv {
+    display: flex;
+} */
+.formInnerDiv .input-field.col.selectInputField label {
+    top: 1.2vh;
+}
+select.browser-default {
+    border: none;    
+    height: 3.15rem;
+    outline: none;
+    background: transparent;
+}
+select.browser-default, input[type=text]:not(.browser-default) {
+    border-bottom: 0.3vh solid var(--sec);
+    font-family: 'Montserrat', sans-serif;
+}
+.btn.saveSettingBtn {
+    background-color: var(--white);
+    color: var(--sec);
+    border-radius: 5vh;
+    padding: 0 2vw;
+    text-transform: capitalize;
+}
+.btn.saveSettingBtn:hover {
+    color: var(--white);
+    background-color: var(--sec);
 }
 
 @media screen and (max-width: 992px) and (min-width: 640px) {
@@ -1583,7 +1743,135 @@ i.material-icons.physiTempSettingsIcon:hover {
 }
 
 @media screen and (max-width: 640px) {
-    nav ul a {
+    .sidenav {
+        background-color: var(--white)
+    }
+    .sidenav li>a.brand-logo {
+        margin: 3vh 0;
+        font-size: 2.5vh;
+        font-weight: 600;
+    }
+    .sidenav li>a.brand-logo:hover {
+        background-color: unset;
+    }
+    .marginRight-5 {
+        margin-right: 2.5vh;
+    }
+    .container {
+        width: 100%;
+    }
+    nav, nav .sidenav-trigger i {
+        height: 6.9vh;
+        line-height: 6.9vh;
+    }
+    nav i.material-icons {
+        font-size: 3.9vh;
+    }
+    nav .brand-logo {
+        right: -10%;
+        left: unset;
+        font-size: 2.5vh;
+    }
+    nav a {
+        color: var(--sec);
+    }
+
+    /* ABOUT */
+    .templateAboutInner {
+        margin-top: -6.9vh;
+    }
+    .about {
+        display: flex;
+        flex-direction: column;
+    }
+    .row .col.profileDesc {
+        order: 2;
+        margin-top: -8vh;
+        z-index: -10;
+        display: block;
+        padding-top: 12vh;
+        height: unset;
+    }
+    .profileDescInner {
+        padding: 0;
+    }
+    .profileDescInner p {
+        margin-top: 1vh;
+        font-size: 2.1vh;
+        line-height: 1.4;
+        margin-bottom: 4vh;
+    }
+    .sectionSubHeading  {
+        font-size: 2.7vh;
+    }
+    h1.sectionHeading {
+        font-size: 5.5vh;
+    }
+    .heroBtnRow {
+        margin-bottom: 6vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .btn.viewCvBtn {
+        margin-right: unset;
+        margin-bottom: 3vh;
+    }
+    .viewCvBtn, .callBtn {
+        border-radius: 5vh;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+        height: 6vh;
+        line-height: 6vh;
+        text-transform: capitalize;
+        font-size: 1.9vh;
+    }
+    .row .col.profileImgContainer {
+        order: 1;
+        padding-left: 0;
+    }
+    .profileImgContainer img.responsive-img {
+        border-bottom-left-radius: 20vw;
+    }
+
+
+    /* Interests */
+    h2.sectionHeading {
+        font-size: 3.7vh;
+        left: -0.27vw;
+    }
+    .cardNavContainer {
+        text-align: unset;
+        position: relative;
+        top: 3vh;
+        margin-bottom: 5vh;
+    }
+    button.roundBtn {
+        height: 7.5vh;
+        width: 16vw;
+        /* border-radius: 50%; */
+        border: unset;
+        background-color: var(--white);
+        box-shadow: 0 4px 14px 0 rgba(24, 20, 67, 0.08);
+    }
+    .customCard {
+        width: 99%;
+    }
+
+    button.roundBtn:hover, button.roundBtn:active, button.roundBtn:visited {
+        background-color: var(--ter);
+        color: var(--white);
+        height: 7.6vh;
+        width: 16.1vw;
+    }
+    .physiContainerDiv#services {
+        background-position: right;
+    }
+
+
+
+
+    /* nav ul a {
         padding: 0;
     }
     nav.navMain {
@@ -1610,14 +1898,19 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
     .profileImgContainer {
         order: 1;
-    }
-    /* #templateAbout { } */
+    } */
+
+
+
+
+
+
+    /* #templateAbout { } 
     .row .col.profileImgContainer {
         display: block;
         padding: 0;
         top: 0;
     }
-    /* #afterAboutWrapper {} */
     .servicesRw {
         display: flex !important;
         flex-direction: row;
@@ -1649,7 +1942,6 @@ i.material-icons.physiTempSettingsIcon:hover {
     .experienceImgContainDiv .col.s12.m12.l2,
     .surgeonBannerImgDiv {
         width: 100%;
-        /* margin-left: auto; */
     }
     img.bannerImg {
         height: auto !important;
@@ -1666,8 +1958,6 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
     .profileImg {
         position: relative;
-        /*top: 12vh !important;*/
-        /*right: 2.5vw !important;*/
         width: 100%;
         height: auto;
         transform: rotate(0deg);
@@ -1826,11 +2116,7 @@ i.material-icons.physiTempSettingsIcon:hover {
         font-family: "Montserrat", sans-serif;
         font-weight: 700;
         color: var(--white) !important;
-        /* text-align: center; */
     }
-
-
-    /* Added stylings for testimonial review */
     .testiMapDiv:first-child {
         background: #6750A4;
         box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
@@ -1865,7 +2151,6 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
 
 
-    /* ************************************************************************************ */
     ul.extHeaderNoSideNav {
         display: flex;
         background-color: #F6F3F3;
@@ -1875,11 +2160,9 @@ i.material-icons.physiTempSettingsIcon:hover {
         margin-bottom: 0;
         padding: 0 2vw;
         justify-content: space-around;
-        /* box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%); */
     }
     nav.headerNoSideNav {
         display: block;
-        /* margin-bottom: 1vh; */
         height: auto;
     }
     a.active {
@@ -1895,12 +2178,6 @@ i.material-icons.physiTempSettingsIcon:hover {
         line-height: 56px;
         font-size: 2.5rem;
     }
-    /* a.sidenav-trigger.sidenavTriggerLink {
-        width: 10vw;
-        height: 5vh;
-        border-radius: 50px;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    } */
     ul li>a.sidenavLink {
         font-size: 1.2rem;
         font-family: 'Poppins', sans-serif;
@@ -1912,8 +2189,6 @@ i.material-icons.physiTempSettingsIcon:hover {
         width: 100%;
         margin: 0;
     }
-
-    /* About Me Img edit modal*/
     a.modal-trigger.aboutImgEditBtn {
         width: 30px;
         height: 30px;
@@ -1923,8 +2198,6 @@ i.material-icons.physiTempSettingsIcon:hover {
         top: 5%;
         right: 2vw;
     }
-
-    /* ************************************************* */
     div.aboutImgModalDiv {
         width: 55%;
         height: 25vh;
@@ -1935,7 +2208,6 @@ i.material-icons.physiTempSettingsIcon:hover {
         height: 100%;
         box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
     }
-    /* ************************************************* */
     a.editImgChangeBtn {
         background-color: #524988;
         color: var(--white);
@@ -1963,8 +2235,6 @@ i.material-icons.physiTempSettingsIcon:hover {
     div.aboutImgEditModalInnerDiv {
         padding: 1vh 0 5vh 0;
     }
-
-    /* About Me Writeup edit modal */
 
     a.modal-close.editWriteUpsModalCloseBtn {
         margin-left: -3vw;
@@ -2002,8 +2272,6 @@ i.material-icons.physiTempSettingsIcon:hover {
     div.editWriteUpsSaveBtnDiv {
         margin-top: 0vh;
     }
-
-    /* Service edit modal */
     .whatIdoTxtRowDiv {
         position: relative;
     }
@@ -2032,8 +2300,6 @@ i.material-icons.physiTempSettingsIcon:hover {
         position: relative;
         bottom: 2vh;
     }
-
-    /* Contact Me Edit Btn */
     #testiContactFormTitleDiv {
         position: relative;
     }
@@ -2082,7 +2348,7 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
     .header {
         font-size: 1.25rem;
-    }
+    }*/
 }
 .modalTriggerHolder {
     width: 30px;

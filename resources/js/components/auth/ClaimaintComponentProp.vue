@@ -268,17 +268,6 @@
                                                             uploaded === null,
                                                     }"
                                                 >
-                                                    <!--a
-                                                        href="#"
-                                                        class="proImgYesBtn"
-                                                        @click="view = 4"
-                                                        v-show="
-                                                            !showCropper &&
-                                                            (bioData.photo !== null ||
-                                                                uploaded !== null)
-                                                        "
-                                                        >Yes</a
-                                                    -->
                                                     <div class="" id="genUploadFavIconDiv">
                                                         <div
                                                             class=""
@@ -304,7 +293,9 @@
                                                                             <i class="material-icons white-text">edit</i>
                                                                         </span
                                                                     >
-                                                                    <span v-else>Upload</span>
+                                                                    <span v-else>
+                                                                        <i class="material-icons white-text">file_upload</i>
+                                                                    </span>
                                                                 </a>
                                                             </div>
                                                             <div class="row">
@@ -354,9 +345,7 @@
                                             <div class="col l12 s12 noPaddingLeft paddingLeftSM">
                                                 <input
                                                     placeholder="Name of institution"
-                                                    v-model="
-                                                        underGrad.institution
-                                                    "
+                                                    v-model="underGrad.institution"
                                                     @keyup="removeLabel($event)"
                                                     type="text"
                                                     class="validate formInput"
@@ -381,9 +370,7 @@
                                                 <input
                                                     placeholder="What was your minor(optional)?"
                                                     type="text"
-                                                    v-model="
-                                                        underGrad.minor
-                                                    "
+                                                    v-model="underGrad.minor"
                                                     data-optional="true"
                                                     class="validate formInput"
                                                 />
@@ -1312,7 +1299,6 @@
             };
         },
         mounted() {
-            // this.popup();
             this.getTenantNDomain();
             this.getData();
             document.addEventListener("DOMContentLoaded", function () {
