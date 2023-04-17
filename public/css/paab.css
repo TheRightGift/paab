@@ -72,6 +72,10 @@ body {
     padding-left: 5vw;
     padding-right: 5vw;
 }
+.hPadding-1 {
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
 .noHorizontalPadding {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -121,6 +125,9 @@ body {
 }
 .marginTop-2 {
     margin-top: 2vh;
+}
+.marginTop-1 {
+    margin-top: 1vh;
 }
 .marginTop-4 {
     margin-top: 4vh;

@@ -65,28 +65,43 @@
             </div>
         </nav>
     </div-->
-    <div class="hide-on-med-and-down">
+    <div class="">
         <nav>
             <div class="nav-wrapper">
                 <div class="container">
                     <a href="#!" class="brand-logo">Dr. Olivia Felix</a>
-                    <ul class="centerNav">
+                    <a href="#" data-target="mobileNav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="centerNav hide-on-med-and-down">
                         <li><a href="#!">Interests</a></li>
                         <li><a href="#miniBlog">Mini Blog</a></li>
                         <li><a href="#!">Feeds</a></li>
                         <li><a href="#!">Testimonials</a></li>                        
                     </ul>
 
-                    <ul class="right">
+                    <ul class="right hide-on-med-and-down">
                         <li><a href="#!">Contact</a></li>
                         <li><a href="#!" class="waves-effect waves-light btn subscribeBtn">Subscribe</a></li>
+                        <li v-if="isLoggedIn">
+                            <a class='modal-trigger physiTempSettingsNavLink' href='#showSettingsModal'>
+                                <i class="material-icons physiTempSettingsIcon">settings</i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        <ul class="sidenav" id="mobileNav">
+            <li><a href="#!" class="brand-logo">Dr. Olivia Felix</a></li>
+            <li><a href="#!">Interests</a></li>
+            <li><a href="#miniBlog">Mini Blog</a></li>
+            <li><a href="#!">Feeds</a></li>
+            <li><a href="#!">Testimonials</a></li>  
+            <li><a href="#!">Contact</a></li>
+            <li><a href="#!" class="waves-effect waves-light btn subscribeBtn">Subscribe</a></li>
+        </ul>
     </div>
     <!--Small devices-->
-    <div class="navbar-fixw hide-on-large-only">
+    <!--div class="navbar-fixw hide-on-large-only">
         <nav class="white navMain" id="sideNav">
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons black-text sideNavIcon"
                                                                            id="sideNavIcon">menu</i></a>
@@ -94,16 +109,6 @@
             <a href="#" class="" id="physiPortPageLogo">{{user == '' ? 'Dr John Doe' : user}}</a>
 
             <ul id="slide-out" class="sidenav">
-                <!-- <li>
-                    <div class="user-view">
-                        <div class="background" id="sideNavImgDiv">
-                            <img
-                                src="/media/img/istockphoto-1390124896-170667a.jpg"
-                                id="sidNavImg"
-                            />
-                        </div>
-                    </div>
-                    </li> -->
                 <li>
                     <a href="#" class="physiSidenavTempName">LIVELY PURPLE</a>
                 </li>
@@ -131,7 +136,6 @@
 
         <div class="navbar-fixed">
             <nav class="headerNoSideNav center-align">
-                <!-- Sidenav Trigger -->
                 <a href="#" data-target="slide" class="sidenav-trigger sidenavTriggerLink" v-if="isLoggedIn">
                     <i class="material-icons sidenavTriggerIcon">settings</i>
                 </a>
@@ -151,16 +155,12 @@
                     <li v-if="(feeds !== null && feeds !== '' && preview === '0') || preview === '1'">
                         <a href="#feeds">Feeds</a>
                     </li>
-                    <!-- <li>
-                            <a href="#testimonials">Testimonials</a>
-                        </li> -->
                     <li>
                         <a href="#contact" class="mobileNavLink">Contact</a>
                     </li>
                 </ul>
             </nav>
         </div>
-        <!-- Sidenav Content -->
         <ul id="slide" class="sidenav">
             <li>
                 <a href="#!" class="sidenav-close sidenavCloseBtn">
@@ -184,14 +184,349 @@
             <li><div class="divider"></div></li>
         </ul>
 
+    </div-->
+
+    <!-- Modal Structure -->
+    <div id="showSettingsModal" class="modal">
+        <div class="modal-content">
+            <div v-if="modalView == 0" class="settingModalViewInitial">
+                <div class="row">
+                    <div class="col l12">
+                        <h3>Settings</h3>
+                        <p class="marginTop-1">Update your website by selecting any of the links below</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l12">
+                        <button class="btn closeSettingModal right modal-close">Close settings</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l4">
+                        <div class="generalSettings settingOptions hoverable"  @click="showSettingOption(1, 'General')">
+                            <h6>General</h6>
+                            <img :src="'/media/img/templates/1/general.png'" alt="" class=""/>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="generalSettings settingOptions hoverable">
+                            <h6>Mini Blog</h6>
+                            <img :src="'/media/img/templates/1/miniBlog.png'" alt="" class=""/>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="generalSettings settingOptions hoverable">
+                            <h6>Interests</h6>
+                            <img :src="'/media/img/templates/1/interests.png'" alt="" class=""/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l4">
+                        <div class="generalSettings settingOptions hoverable">
+                            <h6>Feeds</h6>
+                            <img :src="'/media/img/templates/1/feeds.png'" alt="" class=""/>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="generalSettings settingOptions hoverable">
+                            <h6>Features</h6>
+                            <img :src="'/media/img/templates/1/publicFeatures.png'" alt="" class=""/>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="generalSettings settingOptions hoverable">
+                            <h6>CV</h6>
+                            <img :src="'/media/img/templates/1/cv.png'" alt="" class=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="modalView == 1">
+                <div class="row noMarginBottom">
+                    <div class="col l6 optionSettingBackground">
+                        <p>
+                            <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
+                        </p>
+                        <h5>
+                            {{modalTitle}}
+                        </h5>
+                    </div>
+                    <div class="col l6 optionSettingContainer">
+                        <div class="row hPadding-1">
+                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Basic</h4>
+                            <div class="formInnerDiv">
+                                <div class="input-field selectInputField col l12 m12 s12 paddingLeftSM">
+                                    <select
+                                        required
+                                        class="browser-default"
+                                        id="userTitle"
+                                        data-label="true"
+                                    >
+                                        <option
+                                            :value="''"
+                                            disabled
+                                            selected
+                                        >
+                                            Pick Title
+                                        </option>
+                                        <!--option
+                                            v-for="title in titles"
+                                            :key="title.id"
+                                            :value="title.id"
+                                        >
+                                            {{ title.name }}
+                                        </option-->
+                                    </select>
+                                    <label>Title</label>
+                                </div>
+
+                                <div class="input-field col l12">
+                                    <input
+                                        type="text"
+                                        class="validate formInput"
+                                        required
+                                        placeholder="Firstname"
+                                    />
+                                    <label>Firstname</label>
+                                </div>
+                                <div class="input-field col l12 m12 s12">
+                                    <input
+                                        type="text"
+                                        class="validate"
+                                        placeholder="Lastname"
+                                    />
+                                    <label>Lastname</label>
+                                </div>
+                                <div class="input-field col l12 m12 s12">
+                                    <input
+                                        type="text"
+                                        class="validate"
+                                        placeholder="Othernames"
+                                        data-optional="true"
+                                    />
+                                    <label>Othername</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row hPadding-1">
+                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Website Title</h4>
+                            <div class="input-field col l12">
+                                <input placeholder="Dr. Olivia Felix" id="websiteTitle" type="text" class="validate formInput">
+                                <label for="websiteTitle">Website title</label>
+                            </div>
+                        </div>
+
+                        <!--TODO: Image cropper doesnt work-->
+                        <div class="row hPadding-1">
+                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Site logo (favicon)</h4>
+                            <div v-show="showCropper" class="cFlex flexRight">
+                                <a class="right" href="#" @click="showCropper = false">
+                                    <i class="material-icons priText">clear</i>
+                                </a>
+                            </div>
+
+                            <div class="settingImgContainer" v-if="!showCropper">
+                                <!--img
+                                    :src="
+                                        typeof bio.photo === 'string'
+                                            ? '/media/tenants/' +
+                                            tenantId +
+                                            '/img/' +
+                                            bioData.photo
+                                            : uploaded
+                                    "
+                                    :alt="bioData.firstname + ' avatar'"
+                                    class="settingImg"
+                                    v-if="
+                                        bioData.photo !== null ||
+                                        uploaded !== null
+                                    "
+                                /-->
+                                <img
+                                    class="settingImg"
+                                    src="/media/img/templates/1/favPlaceholder.png"
+                                />
+                            </div>
+                            <form enctype="multipart/form-data">
+                                <div class="settingImgBtnMainDiv">
+                                    <div class="settingImgBtnContainDiv justify-center">
+                                        <div class="" id="genUploadFavIconDiv">
+                                            <div class="" v-if="!uploadPhotoProcessing">
+                                                <div class="col l12 center-align marginTop-5">
+                                                    <button
+                                                        href="#"
+                                                        role="button"
+                                                        @click.prevent="
+                                                            showFileChooser
+                                                        "
+                                                        v-if="!showCropper"
+                                                        class="btn btn-flat"
+                                                    >
+                                                        <!--span
+                                                            v-if="
+                                                                bioData.photo !==
+                                                                    null ||
+                                                                uploaded !== null
+                                                            "
+                                                            >
+                                                                <i class="material-icons white-text">edit</i>
+                                                            </span-->
+                                                            <i class="material-icons">file_upload</i>
+                                                    </button>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col s12">
+                                                        <image-cropper
+                                                            v-if="showCropper"
+                                                            :height="50"
+                                                            :width="50"
+                                                            :img="'/media/img/templates/1/favPlaceholder.png'"
+                                                            @uploadPhoto="
+                                                                photoUpload(
+                                                                    $event
+                                                                )
+                                                            "
+                                                        />
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <p v-else>
+                                                Uploading Image<i
+                                                    class="fas fa-circle-notch"
+                                                ></i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!--div
+                                        class="proImgInstructDiv"
+                                        v-show="!showCropper"
+                                    >
+                                        <p class="proImgInstruct">
+                                            The image should be greater than
+                                            451px width and 512px height
+                                        </p>
+                                    </div-->
+                                </div>
+                            </form>
+                        </div>
+
+                        <!--TODO: Image cropper doesnt work-->
+                        <div class="row hPadding-1">
+                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Profile Picture</h4>
+                            <div v-show="showCropper" class="cFlex flexRight">
+                                <a class="right" href="#" @click="showCropper = false">
+                                    <i class="material-icons priText">clear</i>
+                                </a>
+                            </div>
+
+                            <div class="settingImgContainer" v-if="!showCropper">
+                                <!--img
+                                    :src="
+                                        typeof bio.photo === 'string'
+                                            ? '/media/tenants/' +
+                                            tenantId +
+                                            '/img/' +
+                                            bioData.photo
+                                            : uploaded
+                                    "
+                                    :alt="bioData.firstname + ' avatar'"
+                                    class="settingImg"
+                                    v-if="
+                                        bioData.photo !== null ||
+                                        uploaded !== null
+                                    "
+                                /-->
+                                <img
+                                    class="settingImg"
+                                    src="/media/img/templates/1/physicianHero.png"
+                                />
+                            </div>
+                            <form enctype="multipart/form-data">
+                                <div class="settingImgBtnMainDiv">
+                                    <div class="settingImgBtnContainDiv justify-center">
+                                        <div class="" id="genUploadFavIconDiv">
+                                            <div class="" v-if="!uploadPhotoProcessing">
+                                                <div class="col l12 center-align marginTop-5">
+                                                    <button
+                                                        href="#"
+                                                        role="button"
+                                                        @click.prevent="
+                                                            showFileChooser
+                                                        "
+                                                        v-if="!showCropper"
+                                                        class="btn btn-flat"
+                                                    >
+                                                        <!--span
+                                                            v-if="
+                                                                bioData.photo !==
+                                                                    null ||
+                                                                uploaded !== null
+                                                            "
+                                                            >
+                                                                <i class="material-icons white-text">edit</i>
+                                                            </span-->
+                                                            <i class="material-icons">file_upload</i>
+                                                    </button>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col s12">
+                                                        <image-cropper
+                                                            v-if="showCropper"
+                                                            :height="50"
+                                                            :width="50"
+                                                            :img="'/media/img/templates/1/favPlaceholder.png'"
+                                                            @uploadPhoto="
+                                                                photoUpload(
+                                                                    $event
+                                                                )
+                                                            "
+                                                        />
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <p v-else>
+                                                Uploading Image<i
+                                                    class="fas fa-circle-notch"
+                                                ></i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!--div
+                                        class="proImgInstructDiv"
+                                        v-show="!showCropper"
+                                    >
+                                        <p class="proImgInstruct">
+                                            The image should be greater than
+                                            451px width and 512px height
+                                        </p>
+                                    </div-->
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="row hPadding-1 center-align">
+                            <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
-export default {
-    components: {},
+import ImageCropper from "../../partials/ImageCropper.vue";
+export default {    
+    components: {ImageCropper},
     data() {
         return {
-            scrollPosition: null,
+            modalView: 0,
+            modalTitle: "General",
+            showCropper: false,
+            uploadPhotoProcessing: false,
         };
     },
     props: {
@@ -202,13 +537,74 @@ export default {
         feeds: String,
         services: Array
     },
-    mounted() {
-        window.addEventListener('scroll', this.updateScroll);
-    },
+    mounted() {},
     methods: {
-        updateScroll() {
-            this.scrollPosition = window.scrollY
+        showSettingOption(num, title){
+            this.modalView = num;
+            this.modalTitle = title
         },
+        showFileChooser() {
+            // this.$refs.photo.click();
+            this.showCropper = true;
+        },
+        photoUpload(e) {
+                this.updatePhoto(e);
+        },
+        updatePhoto(e) {
+            this.uploadPhotoProcessing = true;
+            let formData = new FormData();
+            formData.append("photo", e);
+            formData.append("_method", "PUT");
+            formData.append("id", this.bioData.id);
+            console.log(formData)
+            // axios
+            // .post("/claim/updateAvatar/bio", formData)
+            // .then((res) => {
+            //     // console.log(res);
+            //     if (res.data.status == 200) {
+            //         M.toast({
+            //             html: res.data.message,
+            //             classes: "successNotifier",
+            //         });
+            //         localStorage.setItem(
+            //             "claimproc",
+            //             JSON.stringify([res.data.bio])
+            //         );
+            //         this.bio = res.data.bio;
+            //         this.uploadPhotoProcessing = false;
+            //         this.showCropper = false;
+            //         this.uploaded = e;
+            //         this.bio.photo = {};
+            //     }
+            // })
+            // .catch((err) => {
+            //     if (err.response.status == 400) {
+            //         err.response.data.forEach((el) => {
+            //             M.toast({
+            //                 html: el,
+            //                 classes: "errorNotifier",
+            //             });
+            //         });
+            //     }
+            //     if (err.response.status == 413) {
+            //         M.toast({
+            //             html: err.response.statusText,
+            //             classes: "errorNotifier",
+            //         });
+            //     }
+            //     this.uploadPhotoProcessing = false;
+            //     console.log(err);
+            // });
+        },
+        saveAndBack(num){
+            if(num == 1){//save general data
+
+            } else {
+
+            }
+
+            this.modalView = 0;
+        }
     },
     computed: {},
 };

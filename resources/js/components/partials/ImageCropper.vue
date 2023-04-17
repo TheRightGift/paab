@@ -201,7 +201,7 @@ input[type="file"] {
 .actions a, .actions button {
   display: inline-block;
   /* padding: 5px 15px; */
-  background: var(--primary);
+  background: var(--sec);
   color: white;
   text-decoration: none;
   border-radius: 3px;
