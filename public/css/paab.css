@@ -178,9 +178,9 @@ body {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-#feeds {
+/* #feeds {
     background-color: var(--primary);
-}
+} */
 
 .navbar {
     position: fixed;

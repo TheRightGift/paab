@@ -77,12 +77,9 @@
     outline: none;
     font-size: 1.125rem;
 }
-.button.signin:hover, .button.signin:visited, .submitForSupport {
+.button.signin:hover, .button.signin:visited {
     background-color: var(--white);
     color: var(--sec);
-}
-.submitForSupport {
-    color: #2E4451;
 }
 .button.signin, .button:hover, .button:visited {
     background-color: #D7B9AE;
@@ -142,7 +139,7 @@
 .advHeader {
     color: #2E4451;
 }
-.advHeader, .templateFeatureHeader, .howToGetStartedHeader, .templateHeader, .supportHeader {
+.advHeader, .templateFeatureHeader, .howToGetStartedHeader, .templateHeader {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 3.125rem;

@@ -1,118 +1,36 @@
 <template>
-    <div class="section scrollspy feedsContainDiv" id="feeds">
-        <div class="row">
-            <div class="col s12">
-                <div class="right modalTriggerHolder" v-if="isLoggedIn">
-                    <!-- About Edit Img Modal Trigger -->
-                    <a class="modal-trigger" href="#socialPresence">
-                        <i class="material-icons editIcon">edit</i>
-                    </a>
+    <div class="section scrollspy" id="feeds">
+        <div class="container">
+            <div class="row">
+                <div class="col l8">
+                    <span class="sectionSubHeading">MY INTERESTS</span>
+                    <h2 class="sectionHeading">Experienced in <br/>multiple interests</h2>
                 </div>
-                <h3 class="center-align feedsHeading">
-                    MY FEEDS
-                    <span class="primaryColorBoxDesign3"></span>
-                </h3>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col s12 l4 feeds" v-show="facebook !== null">
-                <div class="col s12">
-                    <p class="facebookFeedsIcon">
-                        <i
-                            class="fa-brands fa-facebook-square text feedsFacebookIcon"
-                        ></i>
-                        <span class="feedsTwitterTxt text">Facebook Feeds</span>
-                    </p>
-                </div>
-
-                <div class="fb-page" :data-href="'https://www.facebook.com/'+facebook" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote :cite="'https://www.facebook.com/'+facebook" class="fb-xfbml-parse-ignore"><a :href="'https://www.facebook.com/'+facebook">{{ facebook }}</a></blockquote></div>
-            </div>
-            <div v-if="twitter !== null" class="col s12 l4 feeds paddingBottom-2">
-                <div class="col s12">
-                    <p class="facebookFeedsIcon">
-                        <i
-                            class="fa-brands fa-twitter-square text feedsFacebookIcon"
-                        ></i>
-                        <span class="feedsTwitterTxt text">Twitter Feeds</span>
-                    </p>
-                </div>
-                <a
-                    class="twitter-timeline"
-                    data-width="100%"
-                    data-height="500"
-                    data-theme="light"
-                    :href="
-                        'https://twitter.com/' +
-                        twitter +
-                        '?ref_src=twsrc%5Etfw'
-                    "
-                    >Tweets by TwitterDev</a
-                >
-            </div>
-
-            <div class="col s12 l4 feeds" v-if="instagram !== null">
-                <div class="col s12">
-                    <p class="facebookFeedsIcon">
-                        <i
-                            class="fa-brands fa-instagram text feedsFacebookIcon"
-                        ></i>
-                        <span class="feedsTwitterTxt text">Instagram Feeds</span>
-                    </p>
-                </div>
-                <div class="col s12">
-                    <blockquote class="instagram-media" data-instgrm-captioned :data-instgrm-permalink="'https://www.instagram.com/reel/'+instagram+'/?utm_source=ig_embed&amp;utm_campaign=loading'" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; max-height:500px; height: 500px; overflow:auto; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a :href="'https://www.instagram.com/reel/'+instagram+'/?utm_source=ig_embed&amp;utm_campaign=loading'" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/Cm4dM8eJTRa/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Nature (@nature)</a></p></div></blockquote>
+                <div class="col l4 cardNavContainer">
+                    <button class="roundBtn marginRight-5" @click="prev"><i class="material-icons">chevron_left</i></button>
+                    <button class="roundBtn" @click="next"><i class="material-icons">chevron_right</i></button>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 l4 feeds" v-if="tiktok !== null">
-                <div class="col s12">
-                    <p class="facebookFeedsIcon">
-                        <i
-                            class="fa-brands fa-tiktok text feedsFacebookIcon"
-                        ></i>
-                        <span class="feedsTwitterTxt text">Tiktok Feeds</span>
-                    </p>
-                </div>
-                <div class="col s12">
-                    <blockquote class="tiktok-embed" :cite="'https://www.tiktok.com/@'+tiktok" :data-unique-id="tiktok" data-embed-from="oembed" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" :href="'https://www.tiktok.com/@'+tiktok+'?refer=creator_embed'">@{{ tiktok }}</a> </section> </blockquote>
-                </div>
-            </div>
-        </div>
-
-        <div id="socialPresence" class="modal">
-            <div class="modal-content">
-                <div class="aboutWriteUpsEditModalInnerDiv">
-                    <a href="#!" class="modal-close editWriteUpsModalCloseBtn">
-                        <i class="material-icons">keyboard_arrow_left</i>
-                    </a>
-                    <div class="row rm_mg">
-                        <div class="input-field col s12">
-                            <input type="text" v-model="facebook" class="validate aboutWriteUpsInput" placeholder="Facebook">
-                        </div>
-                        <div class="input-field col s12 rm_mg">
-                            <input type="text" v-model="twitter" class="validate aboutWriteUpsInput" placeholder="Twitter">
-                        </div>
-                        <div class="input-field col s12">
-                            <input type="text" v-model="tiktok" class="validate aboutWriteUpsInput" placeholder="Input tiktok embed id eg:CRM1234d">
-                        </div>
-                        <div class="input-field col s12 rm_mg">
-                            <input type="text" v-model="instagram" class="validate aboutWriteUpsInput" placeholder="Input Insta embed id eg:CRM1234d">
+        <div class="background">
+            <div class="container">
+                <div class="row">
+                    <div class="col l12 customCarousel">
+                        <div class="inner" ref="inner" :style="innerStyles">
+                            <div class="customCard w-50" v-for="card in socials" :key="card"> 
+                                <div>
+                                    <div class="cardHeader">
+                                        <h3 :class="{'red-text': card.color}">{{card.id}}</h3>
+                                    </div>
+                                    <p v-html="card.src"></p>
+                                    <!-- <div class="fb-page" :data-href="'https://www.facebook.com/'+facebook" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote :cite="'https://www.facebook.com/'+facebook" class="fb-xfbml-parse-ignore"><a :href="'https://www.facebook.com/'+facebook">{{ facebook }}</a></blockquote></div> -->
+                                </div>                            
+                            </div>   
                         </div>
                     </div>
-                    <div class="editWriteUpsSaveBtnDiv">
-                        <a href="#" class="editWriteUpsSaveBtn" @click.prevent="updateSocialHandles" v-if="!loading">
-                            Update
-                        </a>
-                        <a href="#" class="editWriteUpsSaveBtn" v-else>
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 <script>
@@ -126,7 +44,17 @@ export default {
             instagram: "CoUVYkmj6__",
             loading: false,
             id: "",
-        };
+
+            // 
+            innerStyles: {},
+            step: '',
+            transitioning: false,
+            socials: [],
+        }
+    },
+    mounted() {
+        this.setStep()
+            this.resetTranslate()
     },
     methods: {
         updateSocialHandles() {
@@ -154,7 +82,64 @@ export default {
                         });
                     }
                 });
-        }
+        },
+        setStep () {
+                const innerWidth = this.$refs.inner.scrollWidth;
+                const totalCards = this.socials.length;
+                this.step = `${innerWidth / totalCards}px`;
+                
+            },
+            next () {
+                
+                if (this.transitioning){
+                     return;
+                } else {
+                    this.transitioning = true
+                    this.moveLeft()
+                    this.afterTransition(() => {
+                        const card = this.socials.shift()
+                        this.socials.push(card)
+                        this.resetTranslate()
+                        this.transitioning = false
+                    })
+                }                
+            },
+            prev () {
+                if (this.transitioning) return
+                this.transitioning = true
+                this.moveRight()
+                this.afterTransition(() => {
+                    const card = this.socials.pop()
+                    this.socials.unshift(card)
+                    this.resetTranslate()
+                    this.transitioning = false
+                })
+            },
+            moveLeft () {
+                this.innerStyles = {
+                    transform: `translateX(-${this.step}) translateX(-${this.step})`
+                }
+            },
+            moveRight () {
+                console.log(`translateX(-${this.step}) translateX(-${this.step})`)
+                this.innerStyles = {
+                    transform: `translateX(${this.step}) translateX(-${this.step})`
+                }
+            },
+            afterTransition (callback) {
+                const listener = () => {
+                    callback()
+                    this.$refs.inner.removeEventListener('transitionend', listener)
+                }
+                this.$refs.inner.addEventListener('transitionend', listener)
+            },
+            resetTranslate () {
+                let step = 0;
+                this.innerStyles = {
+                    transition: 'none',
+                    transform: `translateX(-${step})`
+                }
+            }
     },
     props: {
         isLoggedIn: Boolean,
@@ -164,7 +149,25 @@ export default {
     watch: {
         social: {
             handler(newVal, olVal) {
-                console.log(newVal)
+                let facebook = {
+                    id: 'Facebook',
+                    src: `<div class="fb-page" data-href="https://www.facebook.com/${this.facebook}" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/${this.facebook}" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/${this.facebook}">${this.facebook}</a></blockquote></div></div>`,
+                };
+                let twitter = {
+                    id: 'Twitter',
+                    src: `<a class="twitter-timeline" data-width="100%" data-height="500" data-theme="light" width="100%" href="https://twitter.com/${this.twitter}?ref_src=twsrc%5Etfw">Tweets by ${this.twitter}</a>`,
+                };
+                let instagram = {
+                    id: 'Instagram',
+                    src: `<iframe src="https://www.instagram.com/reel/${this.instagram}/embed/captioned/?cr=1&v=14&wp=326&rd=http%3A%2F%2F127.0.0.1%3A8000&rp=%2Fpreview%2F1#%7B%22ci%22%3A0%2C%22os%22%3A3489.7999999998137%2C%22ls%22%3A3373.899999999441%2C%22le%22%3A3393.5%7D" />`,
+                    color: 'red'
+                };
+                let tiktok = {
+                    id: 'Tiktok',
+                    src: `<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@${this.tiktok}" data-unique-id="${this.tiktok}" data-embed-from="oembed" data-embed-type="creator" style="max-width: 780px; min-width: 288px; width: 32rem;" > <section> <a target="_blank" href="https://www.tiktok.com/@${this.tiktok}?refer=creator_embed">@${this.tiktok}</a> </section> </blockquote>`,
+                    shown: this.updateSocialHandles(),
+                    color: 'red'
+                };
                 if (newVal !== null && newVal !== '') {
                     newVal = JSON.parse(newVal);
                     this.facebook = newVal.facebook;
@@ -172,11 +175,47 @@ export default {
                     this.instagram = newVal.instagram;
                     this.tiktok = newVal.tiktok;
                     this.id = newVal.id;
+                    if (this.facebook !== '' || this.facebook !== null) {
+                        this.socials.push(facebook);
+                    }
+                    if (this.twitter !== '' || this.twitter !== null) {
+                        this.socials.push(twitter);
+                    }
+                    if (this.instagram !== '' || this.instagram !== null) {
+                        this.socials.push(instagram);
+                    }
+                    if (this.tiktok !== '' || this.tiktok !== null) {
+                        this.socials.push(tiktok);
+                    }
                 } else {
                     this.facebook = 'whiteCoatDomain';
                     this.twitter = 'WhiteCoatD_HQ';
                     this.instagram = 'CoUVYkmj6__';
                     this.tiktok = 'scout2015';
+                    this.socials = [
+                        {
+                            id: 'Facebook',
+                            src: `<div class="fb-page" data-href="https://www.facebook.com/${this.facebook}" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/${this.facebook}" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/${this.facebook}">${this.facebook}</a></blockquote></div></div>`,
+                            shown: this.updateSocialHandles(),
+                        },
+                        {
+                            id: 'Twitter',
+                            src: `<a class="twitter-timeline" data-width="100%" data-height="500" data-theme="light" width="100%" href="https://twitter.com/${this.twitter}?ref_src=twsrc%5Etfw">Tweets by ${this.twitter}</a>`,
+                            shown: this.updateSocialHandles(),
+                        },
+                        {
+                            id: 'Instagram',
+                            src: `<iframe src="https://www.instagram.com/reel/${this.instagram}/embed/captioned/?cr=1&v=14&wp=326&rd=http%3A%2F%2F127.0.0.1%3A8000&rp=%2Fpreview%2F1#%7B%22ci%22%3A0%2C%22os%22%3A3489.7999999998137%2C%22ls%22%3A3373.899999999441%2C%22le%22%3A3393.5%7D" />`,
+                            shown: this.updateSocialHandles(),
+                            color: 'red'
+                        },
+                        {
+                            id: 'Tiktok',
+                            src: `<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@${this.tiktok}" data-unique-id="${this.tiktok}" data-embed-from="oembed" data-embed-type="creator" style="max-width: 780px; min-width: 288px; width: 32rem;" > <section> <a target="_blank" href="https://www.tiktok.com/@${this.tiktok}?refer=creator_embed">@${this.tiktok}</a> </section> </blockquote>`,
+                            shown: this.updateSocialHandles(),
+                            color: 'red'
+                        }
+                    ]
                 }
             },
             deep: true,
@@ -186,13 +225,28 @@ export default {
 };
 </script>
 <style scoped>
-    iframe div._2lqh {
+.cardHeader {
+    margin-bottom: 1rem;
+}
+.w-50 {
+    width: 45%;
+}
+.redtoseclast:nth-child(3) {
+    color: red;
+    }
+iframe div._2lqh {
         display: none !important;
         width: 0 !important;
     }
     .feedsHeading {
         color: var(--white);
     }
+/* .customCard {
+    display: block;
+} */
+/* .inner {
+    display: flex;
+} */
 </style>
 <style>
 /* Inferred */
@@ -200,4 +254,14 @@ export default {
     height: 501px;
     max-height: 501px;
     overflow: auto;
-}</style>
+}
+iframe, .tiktok-embed, .twitter-timeline.twitter-timeline-rendered {
+    height: 500px;
+    width: 33vw !important;
+    border-radius: 1rem;
+    border: none;
+}
+blockquote {
+    padding-left: 0;
+}
+</style>

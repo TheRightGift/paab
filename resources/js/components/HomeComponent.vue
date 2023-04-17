@@ -275,101 +275,8 @@
                     </div>
                 </div>
             </section>
-            <section class="support">
-                <div class="container">
-                    <div class="supportBody">
-                        <p class="supportHeader">WE’RE ALWAYS HAPPY TO HELP</p>
-                        <div class="row">
-                            <div class="col l4 m4 s12">
-                                <div class="centerOnSmall">
-                                    <div class="md-mb-2">
-                                        <p class="header">Technical support</p>
-                                        <p class="supportMail">techsupport@wcd.com</p>
-                                    </div>
-                                    <div>
-                                        <p class="header">Social media</p>
-                                        <div class="socials">
-                                            <img class="responsive-img" src="../../../public/media/img/facebook.png">
-                                            <img class="responsive-img" src="../../../public/media/img/twitter.png">
-                                            <img class="responsive-img" src="../../../public/media/img/insta.png">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col l8 m8 s12">
-                                <div class="row">
-                                    <form class="col s12">
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <input required placeholder="Jane" id="first_name" type="text" class="validate">
-                                                <label for="first_name">First Name</label>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <input required placeholder="Doe" id="last_name" type="text" class="validate">
-                                                <label for="last_name">Last Name</label>
-                                            </div>
-                                        </div>
-                                       <div class="row">
-                                            <div class="input-field col s6">
-                                                <input required placeholder="janedoe@mail.com" id="first_name" type="text" class="validate">
-                                                <label for="first_name">Email</label>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <input required id="last_name" type="text" class="validate" placeholder="xxx-xxx-xxx">
-                                                <label for="last_name">Phone</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="textarea1">Message</label>
-                                            <div class="input-field col s12">
-                                                <textarea id="textarea1" class="materialize-textarea" required></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="getStartedLayout mb-4">
-                                            <button type="submit" class="button submitForSupport waves-effect waves-deep-orange">Get Started</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="footer">
-                <div class="container">
-                    <div class="footerBody">
-                        <div class="socials-footer">
-                            <a href="#!">
-                                <img class="responsive-img" src="../../../public/media/img/linkedinFooter.png" alt="our linkedin handle">
-                            </a>
-                            <a href="#!">
-                                <img class="responsive-img" src="../../../public/media/img/facebookFooter.png" alt="our facebook handle">
-                            </a>
-                            <a href="#!">
-                                <img class="responsive-img" src="../../../public/media/img/twitterFooter.png" alt="our twitter handle">
-                            </a>
-                            <a href="#!">
-                                <img class="responsive-img" src="../../../public/media/img/instaFooter.png" alt="our instagram handle">
-                            </a>
-                        </div>
-                        <div class="termsPrivacyPolicy hide-on-med-and-down">
-                            <a href="#!">Terms of Use</a>
-                            <a href="#!">Privacy Policy</a>
-                            <p>&copy; 2023, Whitecoatdomain</p>
-                        </div>
-
-                        <div class="hide-on-large-only width-90">
-                            <div class="termsPrivacyPolicy">
-                                <a href="#!">Terms of Use</a>
-                                <a href="#!">Privacy Policy</a>
-                            </div>
-                            <div class="center-align">
-                                <p class="noMarginTop">&copy; 2023, Whitecoatdomain</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <SupportComponent />
+            <FooterComponent />
         </div>
     </div>
 </template>
@@ -377,7 +284,10 @@
     
 </style>
 <script>
+import SupportComponent from './partials/SupportPageComponent.vue'
+import FooterComponent from './partials/FooterComponent.vue'
 export default {
+    components: { SupportComponent, FooterComponent },
     data() {
         return {
             templates: [

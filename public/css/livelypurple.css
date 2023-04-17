@@ -193,7 +193,7 @@ h2.sectionHeading {
 }
 
 /* INTERESTS */
-.physiContainerDiv#services {
+.physiContainerDiv#services, .background {
     /* fullBackgroundVector.png */
     background-image: url('../media/img/templates/1/fullBackgroundVector.png');
     background-repeat: no-repeat;
@@ -439,12 +439,31 @@ a.physiTempContactBtn.active {
     letter-spacing: 0;
     color: #000000;
 }
-
+.material-icons.reviewIcon {
+    font-size: 2rem;
+    color: #d29814;
+}
 .servicesTitle,
 .servcesHeading.forSurgeon,
 .title,
 .feedsMainTitle.forSurgeon,
 .greenBg {
+    /* display: none; */
+}
+h2.sectionHeader {
+    font-family: 'Raleway';
+    font-size: 3.125rem;
+    text-align: center;
+    font-weight: 700;
+    color: var(--sec);
+    position: relative;
+    margin-top: 0;
+    text-transform: none;
+    left: -0.75rem;
+    margin-bottom: 6rem;
+}
+h2.sectionHeader
+.tempReviewOptDiv {
     display: none;
 }
 
@@ -754,11 +773,11 @@ a.physiTempContactBtn.active {
     font-size: 1.3rem;
     margin: 0.3vh 0 0 0.1vw;
 }
-.contactMainDiv .col.s12.m7.l7 {
+/* .contactMainDiv .col.s12.m7.l7 {
     width: 58%;
     margin-left: 21%;
     margin-right: 21%;
-}
+} */
 .singleReviewName {
     font-family: "Poppins";
     font-style: normal;
@@ -799,7 +818,7 @@ a.physiTempContactBtn.active {
     top: 7vh;
 }
 
-#testiLname,
+/* #testiLname,
 #testiFname,
 #testiEmail,
 #testiPhone {
@@ -860,7 +879,7 @@ a.physiTempContactBtn.active {
     color: #938f99;
     position: relative;
     top: 0.5vh;
-}
+} */
 
 #tempPublishBtn {
     /* width: 15vw;
@@ -910,10 +929,12 @@ a.physiTempContactBtn.active {
 /* Added stylings for testimonial review */
 .testiProImg {
     border-radius: 50%;
+    width: 57px;
     display: flex;
+    /* 
     margin: 0 auto;
     position: relative;
-    top: 1vh;
+    top: 1vh; */
 
 }
 .testiMapDiv {
@@ -1337,9 +1358,9 @@ i.material-icons.physiTempSettingsIcon:hover {
     }
 
     /* Added some stylings on Feeds */
-    #feeds {
+    /* #feeds {
         background-color: unset;
-    }
+    } */
 
     .feeds {
         background-color: var(--pri);
@@ -2096,4 +2117,126 @@ i.material-icons.physiTempSettingsIcon:hover {
     z-index: 9999;
     background: url("//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif")
         50% 50% no-repeat rgb(249, 249, 249);
+}
+
+
+/* Inferred */
+.testimonialsProName {
+    font-size: 1.3rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    margin: 0;
+}
+.testimonialsProTitle {
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin: 0;
+}
+.testimonialsProImgdiv {
+    padding: 0.75rem;
+    background-color: #77DEF4;
+    border-radius: 1rem;
+    margin-bottom: 1.75rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.testimonialsProImgdiv:hover {
+    background-color: #546f75;
+    cursor: pointer;
+    color: white;
+}
+.testimonialsWriteupTitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 23px;
+}
+.tesimonialsWriteupTxt {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #73729C;
+}
+.primaryColorBoxDesign5 {
+    width: 10.5vw;
+    height: 3.5vh;
+    background-color: #77DEF4;
+    position: absolute;
+    left: 49.5vw;
+    top: 2.7vh;
+    z-index: -1;
+}
+.contactMainDiv {
+    width: 90%;
+    margin: 0 auto;
+}
+.contactIconDiv {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #77DEF4;
+}
+.material-icons.contactIcon {
+    font-size: 2.5rem;
+    position: relative;
+    left: 0.5vw;
+    bottom: 1vh;
+}
+.contactMeTitle {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+}
+.contactMeTxt {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+}
+.formContainDiv {
+    background-color: #77DEF4;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    padding: 2vh 4vw;
+}
+.contactFormTitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 38px;
+    width: 476px;
+    color: #000000;
+}
+.contactFormDiv {
+    width: 85%;
+    margin: 0 auto;
+}
+input.contactFormInput,
+textarea.contactFormInput {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    color: var(--black);
+}
+input.contactFormInput::placeholder,
+textarea.contactFormInput::placeholder {
+    padding: 0 0.5vw;
+    color: var(--black);
+}
+button.testiContactBtn.btn {
+    background-color: #1e1e1e !important;
+    color: #77DEF4;
+    text-transform: capitalize;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 2vh;
+}
+input[type=text]:not(.browser-default), textarea.contactFormInput {
+    border-bottom: 2px solid rgb(58, 56, 56);
+}
+.pt-5 {
+    padding-top: 5rem !important;
+}
+.sectionHeader {
+    text-align: center;
 }

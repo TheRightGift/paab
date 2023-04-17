@@ -2,292 +2,166 @@
     <ReviewsComponent :reviews="reviews" @goBack="goBack" :tenant="tenant"/>
     <!-- Load More Modal Structure -->
     <div class="section scrollspy testiContainDiv" id="testimonials" >
-        
-        <div class="row">
-            <div class="col s12">
-                <h3 class="feedsMainTitle forSurgeon">
-                    TESTIMONIALS
-                    <span class="primaryColorBoxDesign4"></span>
-                </h3>
-                <p class="feedsMainTitle center-align expMainTitle">Testimonials</p>
-                <p class="feedsMainTxt">WHAT MY CLIENT SAYS</p>
-            </div>
-            <div class="testimonialsContainer">
-                <div class="col s12 tempReviewOptDiv">
-                    <div>
-                        <a class="modal-trigger" href="#loadMoreReviews" > 
-                            <!-- @click="goToReviews" -->
-                            CLIENT REVIEWS({{ reviewLen }})
-                        </a>
-                    </div>
-                    <!-- Add Testimonial Modal Trigger -->
-                    <div>
-                        <a class="modal-trigger btn-flat" href="#addReviewModal">
-                            ADD A REVIEW
-                            <i class="material-icons right">add</i>
-                        </a>
-                    </div>
-                </div>
-                <div class="row" v-if="preview == '1'">
-                    <div class="greenBg">
-                        <div class="col s12 m5 l5">
-                            <div class="testimonialsProImgdiv">
-                                <div class="row ">
-                                    <div class="col s2">
-                                        <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="testiProImg">
-                                    </div>
-                                    <div class="col s10">
-                                        <div class="testimonialsProDiv">
-                                            <p class="testimonialsProName">Akerele A.</p>
-                                            <p class="testimonialsProTitle">Software Engineer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-    
-                            <div class="testimonialsProImgdiv1">
-                                <div class="row ">
-                                    <div class="col s2">
-                                        <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="testiProImg">
-                                    </div>
-                                    <div class="col s10">
-                                        <div class="testimonialsProDiv">
-                                            <p class="testimonialsProName">Akerele A.</p>
-                                            <p class="testimonialsProTitle">Software Engineer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div class="testimonialsProImgdiv1">
-                                <div class="row ">
-                                    <div class="col s2">
-                                        <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="testiProImg">
-                                    </div>
-                                    <div class="col s10">
-                                        <div class="testimonialsProDiv">
-                                            <p class="testimonialsProName">Akerele A.</p>
-                                            <p class="testimonialsProTitle">Software Engineer</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="col s12 m7 l7">
-                            <p class="testimonialsWriteupTitle">It was a great experience</p>
-                            <div class="testimonialsWriteupReviewDiv">
-                                <i class="material-icons reviewIcon">star</i>
-                                <i class="material-icons reviewIcon">star</i>
-                                <i class="material-icons reviewIcon">star</i>
-                                <i class="material-icons reviewIcon">star</i>
-                                
-                                <!-- Add Review Modal Trigger -->
-                                <a href="#addReviewModal" class="modal-trigger">
-                                    <i class="material-icons addreview right" title="Add Review">add_circle</i>
-                                </a>
-                            </div>
-                            <p class="tesimonialsWriteupTxt">
-                                It is a long established fact that a reader will be distracted by 
-                                the readable content of a page when looking at its layout. 
-                                The point of using Lorem Ipsum is that it has a more-or-less 
-                                normal distribution of letters, as opposed to using 
-                                'Content here, content here', making it look like readable English. 
-                                desktop publishing packages and web page editors now use Lorem Ipsum 
-                                as their default model text, and a search for 'lorem ipsum' will uncover
-                            </p>
-                            <p class="tesimonialsWriteupTxt">
-                                It is a long established fact that a reader will be distracted by 
-                                the readable content of a page when looking at its layout. 
-                                The point of using Lorem Ipsum is
-                            </p>
-                            <!-- Load More Modal Trigger -->
-                            <a class="loadMoreReviews modal-trigger" href="#loadMoreReviews" >Load More</a>
-                            <!-- @click="goToReviews" -->
+        <div class="background">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 mb-6">
+                        <div class="col l8">
+                            <span class="sectionSubHeading">TESTIMONIALS</span>
+                            <h2 class="sectionHeading">What my client <br/>says about me</h2>
                         </div>
                     </div>
-                </div>
-                <div class="row" v-else>
-                    <div class="greenBg">
-                        <div class="col s12 m5 l5">
-                            <div v-if="reviewLen > 0">
-                                <div class="" :class="{testimonialsProImgdiv: index == 0, testimonialsProImgdiv1: index > 0}" v-for="(review, index) in reviewsFront"
-                                    :key="review.id">
-                                    <div class="row " @click="showUserComment(review)">
-                                        <div class="col s2">
-                                            <img
-                                                :src="
-                                                    review.imageURL != null
-                                                        ? '/media/tenants/'+tenant+'/img/reviews/'+
-                                                        review.imageURL
-                                                        : '/media/img/testiProImg.png'
-                                                "
-                                                :alt="
-                                                    review.imageURL != null
-                                                        ? review.firstname + review.lastname
-                                                        : 'testiProImg.png'
-                                                "
-                                                class="testiProImg"
-                                            />
-                                        </div>
-                                        <div class="col s10">
-                                            <div class="testimonialsProDiv">
-                                                <p class="testimonialsProName">
-                                                    {{ review.lastname }}
-                                                    {{ review.firstname }}
-                                                </p>
-                                                <p class="testimonialsProTitle"></p>
+                    <div class="testimonialsContainer">
+                        <div class="row" v-if="preview == '1'">
+                            <div class="row">
+                                <div class="col s12 m5 l5">
+                                    <div class="clients">
+                                        <div @click="showReview(i, index)" class="testimonialsProImgdiv" :class="{ selected: selectedIndex === index }" v-for="(i, index) in revPreviews" :key="index">
+                                            <div class="d-flex align-center justify-between">
+                                                <div class="">
+                                                    <img :src="'/media/img/'+i.image" :alt="i.name" class="testiProImg">
+                                                </div>
+                                                <div class="titleName">
+                                                    <div class="testimonialsProDiv">
+                                                        <p class="testimonialsProName">{{i.name}}</p>
+                                                        <p class="testimonialsProTitle">{{i.title}}</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div v-else>
-                                <p class="centre">
-                                    Client Has no Review at the moment. You can see
-                                    other customer success or reviews from here
-                                </p>
-                            </div>
-                        </div>
-                    
-                        <div class="col s12 m7 l7">
-                            <p class="testimonialsWriteupTitle">It was a great experience</p>
-                            <div class="testimonialsWriteupReviewDiv">
-                                <i class="material-icons reviewIcon">star</i>
-                                <i class="material-icons reviewIcon">star</i>
-                                <i class="material-icons reviewIcon">star</i>
-                                <i class="material-icons reviewIcon">star</i>
-                                
-                                <!-- Add Review Modal Trigger -->
-                                <a href="#addReviewModal" class="modal-trigger">
-                                    <i class="material-icons addreview right" title="Add Review">add_circle</i>
-                                </a>
-                            </div>
-                            <p class="tesimonialsWriteupTxt" v-if="userReview != undefined">
-                                {{userReview.comment}}
-                            </p>
-                            <!-- Load More Modal Trigger -->
-                            <a class="loadMoreReviews modal-trigger" href="#loadMoreReviews">Load More</a>
-                            <!-- @click="goToReviews" -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12">
-                <div id="testiMapImg">
-                    <div class="row">
-                        <div v-if="reviewLen > 0">
-                            <div
-                                :class="{
-                                    'col s9 m8 l3 offset-l1': index == 0,
-                                    'col s9 l3 offset-s3 offset-m3 offset-l2':
-                                        index == 1,
-                                    'col s9 m8 l3 offset-l2': index == 2,
-                                    'col s9 m9 l3 offset-s3 offset-m3 offset-l2':
-                                        index == 3,
-                                    'col s9 m9 l3 offset-s2 offset-m2 offset-l4':
-                                        index == 4,
-                                }"
-                                v-for="(review, index) in reviewsFront"
-                                :key="review.id"
-                            >
-                            <div class="flex flex-centered">
-                                <img
-                                    :src="
-                                        review.imageURL != null
-                                            ? '/media/'+tenant+'/img/reviews/'+
-                                              review.imageURL
-                                            : '/media/img/user.png'
-                                    "
-                                    :alt="
-                                        review.imageURL != null
-                                            ? review.firstname + review.lastname
-                                            : 'testiProImg.png'
-                                    "
-                                    class="responsive-img testiProImg"
-                                    width="64"
-                                    height="57"
-                                />
-                            </div>
-                                <div class="testimonialDiv">
-                                    <p class="testiMapProName">
-                                        {{ review.lastname }}
-                                        {{ review.firstname }}
-                                    </p>
-                                    <p class="testiMapTxt">
-                                        {{ sliceComment(review.comment) }}
-                                        {{ addDots(review.comment) }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-else>
-                            <!-- <p class="centre">
-                                Client Has no Review at the moment. You can see
-                                other customer success or reviews from here
-                            </p> -->
                             
-                            <div class="testimonialRw">
-                                <!-- Testimonials First Row -->
-                                <div class="col s12 m6 l3 offset-l1 temp_mg_bm">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
-                                    <div class="testiMapDiv">
-                                        <p class="testiMapProName">Mr. Akin Olu</p>
-                                        <p class="testiMapTxt">
-                                            Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                            It has roots in a piece.
-                                        </p>
+                                <div class="col s12 m7 l7">
+                                    <p class="testimonialsWriteupTitle">It was a great experience</p>
+                                    <div class="testimonialsWriteupReviewDiv">
+                                        <i class="material-icons reviewIcon">star</i>
+                                        <i class="material-icons reviewIcon">star</i>
+                                        <i class="material-icons reviewIcon">star</i>
+                                        <i class="material-icons reviewIcon">star</i>
+                                        
+                                        <!-- Add Review Modal Trigger -->
+                                        <!-- <a href="#addReviewModal" class="modal-trigger">
+                                            <i class="material-icons addreview right" title="Add Review">add_circle</i>
+                                        </a> -->
                                     </div>
-                                </div>
-                                
-                                <div class="col s12 m6 l3 offset-l2" id="testiSecondImgRowOneDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
-                                    <div class="testiMapDiv">
-                                        <p class="testiMapProName">Mr. Akin Olu</p>
-                                        <p class="testiMapTxt">
-                                            Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                            It has roots in a piece.
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Testimonials Second Row -->
-                                <div class="col s12 m6 l3 offset-l2">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
-                                    <div class="testiMapDiv">
-                                        <p class="testiMapProName">Mr. Akin Olu</p>
-                                        <p class="testiMapTxt">
-                                            Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                            It has roots in a piece.
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col s12 m6 l3 offset-l2" id="testiSecondImgRowTwoDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
-                                    <div class="testiMapDiv">
-                                        <p class="testiMapProName">Mr. Akin Olu</p>
-                                        <p class="testiMapTxt">
-                                            Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                            It has roots in a piece.
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Testimonials Third Row -->
-                                <div class="col s12 m6 l3 offset-l4" id="testiSecondImgRowThreeDiv">
-                                    <img src="/media/img/testiProImg.png" alt="testiProImg.png" class="responsive-img testiProImg">
-                                    <div class="testiMapDiv">
-                                        <p class="testiMapProName">Mr. Akin Olu</p>
-                                        <p class="testiMapTxt">
-                                            Contrary to popular belief, Lorem Ipsum is not simply random text.
-                                            It has roots in a piece.
-                                        </p>
-                                    </div>
+                                    <p class="tesimonialsWriteupTxt">
+                                        {{ reviewOn }}
+                                    </p>
+                                    
                                 </div>
                             </div>
-
+                        </div>
+                        <div class="row" v-else>
+                            <div class="row">
+                                <div v-if="reviewLen > 0">
+                                    <div class="col s12 m5 l5">
+                                        <div class="clients">
+                                            <div @click="showReview(review, index)" class="testimonialsProImgdiv" :class="{ selected: selectedIndex === index }" v-for="(review, index) in reviews" :key="index">
+                                                <div class="d-flex align-center justify-between">
+                                                    <div class="">
+                                                        <img :src="'/media/img/'+review.image" :alt="review.name" class="testiProImg">
+                                                    </div>
+                                                    <div class="titleName">
+                                                        <div class="testimonialsProDiv">
+                                                            <p class="testimonialsProName">{{review.name}}</p>
+                                                            <p class="testimonialsProTitle">{{review.title}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col s12 m7 l7">
+                                        <p class="testimonialsWriteupTitle">It was a great experience</p>
+                                        <div class="testimonialsWriteupReviewDiv">
+                                            <i class="material-icons reviewIcon">star</i>
+                                            <i class="material-icons reviewIcon">star</i>
+                                            <i class="material-icons reviewIcon">star</i>
+                                            <i class="material-icons reviewIcon">star</i>
+                                            
+                                            <!-- Add Review Modal Trigger -->
+                                            <!-- <a href="#addReviewModal" class="modal-trigger">
+                                                <i class="material-icons addreview right" title="Add Review">add_circle</i>
+                                            </a> -->
+                                        </div>
+                                        <p class="tesimonialsWriteupTxt">
+                                            {{ reviewOn }}
+                                        </p>
+                                        
+                                    </div>
+                                </div>
+                                <div v-else>
+                                    <p class="centre">
+                                        Client Has no Review at the moment. You can view
+                                        other customer success or reviews from here
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="greenBg">
+                                <div class="col s12 m5 l5">
+                                    <div v-if="reviewLen > 0">
+                                        <div class="" :class="{testimonialsProImgdiv: index == 0, testimonialsProImgdiv1: index > 0}" v-for="(review, index) in reviewsFront"
+                                            :key="review.id">
+                                            <div class="row " @click="showUserComment(review)">
+                                                <div class="col s2">
+                                                    <img
+                                                        :src="
+                                                            review.imageURL != null
+                                                                ? '/media/tenants/'+tenant+'/img/reviews/'+
+                                                                review.imageURL
+                                                                : '/media/img/testiProImg.png'
+                                                        "
+                                                        :alt="
+                                                            review.imageURL != null
+                                                                ? review.firstname + review.lastname
+                                                                : 'testiProImg.png'
+                                                        "
+                                                        class="testiProImg"
+                                                    />
+                                                </div>
+                                                <div class="col s10">
+                                                    <div class="testimonialsProDiv">
+                                                        <p class="testimonialsProName">
+                                                            {{ review.lastname }}
+                                                            {{ review.firstname }}
+                                                        </p>
+                                                        <p class="testimonialsProTitle"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div v-else>
+                                        <p class="centre">
+                                            Client Has no Review at the moment. You can see
+                                            other customer success or reviews from here
+                                        </p>
+                                    </div>
+                                </div>
+                            
+                                <div class="col s12 m7 l7">
+                                    <p class="testimonialsWriteupTitle">It was a great experience</p>
+                                    <div class="testimonialsWriteupReviewDiv">
+                                        <i class="material-icons reviewIcon">star</i>
+                                        <i class="material-icons reviewIcon">star</i>
+                                        <i class="material-icons reviewIcon">star</i>
+                                        <i class="material-icons reviewIcon">star</i>
+                                        
+                                        <!-- Add Review Modal Trigger -->
+                                        <a href="#addReviewModal" class="modal-trigger">
+                                            <i class="material-icons addreview right" title="Add Review">add_circle</i>
+                                        </a>
+                                    </div>
+                                    <p class="tesimonialsWriteupTxt" v-if="userReview != undefined">
+                                        {{userReview.comment}}
+                                    </p>
+                                    <!-- Load More Modal Trigger -->
+                                    <a class="loadMoreReviews modal-trigger" href="#loadMoreReviews">Load More</a>
+                                    <!-- @click="goToReviews" -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -307,6 +181,45 @@
             return {
                 showReviews: false,
                 userReview: {},
+                revPreviews: [
+                    {
+                        id: 1,
+                        name: 'Akerele Adebayo',
+                        title: 'Software Engineer',
+                        image: 'user.png',
+                        review: `Desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover`
+                    },
+                    {
+                        id: 2,
+                        name: 'Akerele Adebayo',
+                        title: 'Software Engineer',
+                        image: 'user.png',
+                        review: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.`
+                    },
+                    {
+                        id: 3,
+                        name: 'Akerele Adebayo',
+                        title: 'Software Engineer',
+                        image: 'user.png',
+                        review: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters. Desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover`
+                    },
+                    {
+                        id: 4,
+                        name: 'Akerele Adebayo',
+                        title: 'Software Engineer',
+                        image: 'user.png',
+                        review: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover`
+                    },
+                    {
+                        id: 5,
+                        name: 'Akerele Adebayo',
+                        title: 'Software Engineer',
+                        image: 'user.png',
+                        review: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover`
+                    }
+                ],
+                reviewOn: {},
+                selectedIndex: null,
             };
         },
         props: {
@@ -323,6 +236,11 @@
             },
         },
         methods: {
+            
+            showReview(i, index) {
+                this.reviewOn = i.review;
+                this.selectedIndex = index !== undefined ? index : 0;
+            },
             showUserComment(review) {
                 this.userReview = review;
             },
@@ -345,6 +263,7 @@
             },
         },
         mounted() {
+            this.showReview(this.revPreviews[0]);
             setTimeout(() => {
                 this.reviewsFront != null ? this.userReview = this.reviewsFront[0] : null;
             
@@ -358,13 +277,48 @@
     };
 </script>
 <style scoped>
-    a:hover {
-        cursor: pointer;
-    }
-    .flex-centered {
-        justify-content: center !important;
-    }
-    .testimonialDiv {
-        margin-top: -10px;
-    }
+.mb-6 {
+    margin-bottom: 5rem;
+}
+.d-flex {
+    display: flex;
+}
+.align-center {
+    align-items: center;
+}
+.justify-between {
+    justify-content: space-between;
+}
+a:hover {
+    cursor: pointer;
+}
+.flex-centered {
+    justify-content: center !important;
+}
+.testimonialDiv {
+    margin-top: -10px;
+}
+.clients {
+    height: 40vh;
+    overflow-y: auto;
+    padding: 1rem 1rem 0rem 1rem;
+    border-radius: 1rem;
+}
+.titleName {
+    width: 22vw;
+}
+.selected {
+    background-color: #546f75;
+    color: #FFFF;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.clients::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.clients {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
 </style>
