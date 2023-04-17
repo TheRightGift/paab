@@ -31,10 +31,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
 
-    <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/paab.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <link rel="stylesheet" href="{{ asset('fonts/material-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('https://whitecoatdomain.com/css/materialize.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('https://whitecoatdomain.com/css/paab.css') }}">
+    <link rel="stylesheet" href="{{ asset('https://whitecoatdomain.com/css/home.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -43,9 +43,9 @@
         <home-component></home-component>
     </div>
     
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('js/materialize.min.js') }}"></script>
-    <script src="{{ asset('js/paab.js') }}"></script>
+    <script src="{{ asset('https://whitecoatdomain.com/js/app.js') }}"></script>
+    <script src="{{ asset('https://whitecoatdomain.com/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('https://whitecoatdomain.com/js/materialize.min.js') }}"></script>
+    <script src="{{ asset('https://whitecoatdomain.com/js/paab.js') }}"></script>
 </body>
 </html>
