@@ -2,11 +2,11 @@
     <div class="section scrollspy background" id="feeds">
         <div class="container">
             <div class="row">
-                <div class="col l8">
-                    <span class="sectionSubHeading">MY INTERESTS</span>
+                <div class="col l8 m8 s12">
+                    <span class="sectionSubHeading">SOCIAL FEEDS</span>
                     <h2 class="sectionHeading">Experienced in <br/>multiple interests</h2>
                 </div>
-                <div class="col l4 cardNavContainer">
+                <div class="col l4 m4 s12 cardNavContainer">
                     <!--button class="roundBtn marginRight-5" @click="prev"><i class="material-icons">chevron_left</i></button>
                     <button class="roundBtn" @click="next"><i class="material-icons">chevron_right</i></button-->
                     <a class="btn-floating btn-large waves-effect waves-light marginRight-5"  @click="prev"><i class="material-icons">chevron_left</i></a>
@@ -264,6 +264,25 @@ iframe, .tiktok-embed, .twitter-timeline.twitter-timeline-rendered {
 blockquote {
     padding-left: 0;
 }
+@media screen and (max-width: 992px) and (min-width: 640px) {
+    .w-50 {
+        width: 65% !important;
+    }
+    iframe, .tiktok-embed, .twitter-timeline.twitter-timeline-rendered {
+        height: 500px;
+        width: 53vw !important;
+        border-radius: 1rem;
+    }
+    #socailCardContainer .customCard {
+        padding: 1vh 2vw 0vh;
+    }
+
+    #socailCardContainer .customCard h3 {
+        padding-left: 3vw;
+        font-size: 2.7vh
+    }
+}
+
 
 @media screen and (max-width: 640px) { 
     iframe, .tiktok-embed, .twitter-timeline.twitter-timeline-rendered {

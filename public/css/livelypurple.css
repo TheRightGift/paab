@@ -1376,416 +1376,151 @@ footer {
 }
 
 @media screen and (max-width: 992px) and (min-width: 640px) {
-    #testiMapImg {
-        height: auto;
+    .sidenav {
+        background-color: var(--white)
     }
-    .profileImg {
-        width: 317.62px;
-        height: 370.96px;
-        /* top: 51vh; */
-        right: 8vw;
-    }
-    .physiRightImg {
-        left: 7px;
-        top: 7px;
-    }
-    #physiPortPageLogo {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 1.25rem;
-        color: #000000;
-        margin-top: 3vh;
-        position: absolute;
-        left: 45vw;
-    }
-    a.physiTempNavLinks {
-        font-family: "Montserrat", sans-serif;
-        color: var(--white) !important;
-        position: relative;
-        bottom: 2vh;
-    }
-    a.physiTempNavLinks:hover {
-        background-color: white;
-        border-bottom: 4px solid rgba(113, 96, 187, 0.5);
-        padding: 0 0 0 4vw;
-        border-left: none;
-        margin: 0 0.96vw;
-    }
-    a.physiTempNavLinks.active {
-        padding: 0 0 0 4vw;
-        border-left: none;
-        margin: 0 !important;
+    .sidenav li>a.brand-logo {
+        margin: 3vh 0;
+        font-size: 2.5vh;
         font-weight: 600;
-        font-size: 1.1rem;
     }
-    a.physiTempContactBtn {
-        width: 50%;
-        background-color: var(--white);
-        padding: 0vh 0vw;
-        margin-top: 0px;
-        margin-left: 3vw;
-        font-family: "Montserrat", sans-serif;
-        color: var(--pri) !important;
-        position: relative;
-        bottom: 0vh;
-        right: 0vw;
-    }
-    a.physiTempContactBtn:hover {
-        background-color: var(--white) !important;
-        color: var(--pri) !important;
-    }
-    a.physiTempContactBtn.active {
-        background-color: var(--white) !important;
-        color: var(--pri) !important;
-    }
-    .physiSidenavTempName {
-        font-size: 1.5rem !important;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        color: var(--white) !important;
-        /* text-align: center; */
-    }
-    /* .experiences {
-        background: var(--pri);
-        border-radius: 10px;
-        padding: 0.5vh 0vw;
-        margin-right: 0.1vw !important;
-    } */
-    .contactContainDiv {
-        width: 100%;
-        margin: auto;
-    }
-    .contactMainDiv .col.s12.m7.l7 {
-        width: 80%;
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-
-    /* Added stylings for testimonial review */
-    #testiSecondImgRowOneDiv {
-        position: relative;
-        bottom: 0vh;
-    }
-
-    #testiSecondImgRowTwoDiv {
-        position: relative;
-        bottom: 0vh;
-    }
-
-    #testiSecondImgRowThreeDiv {
-        position: relative;
-        top: 0vh;
-    }
-    .row .testimonialRw .col.m6 {
-        width: 50%;
-        min-width: 50%;
-    }
-    .testimonialRw {
-        display: flex !important;
-        flex-direction: row;
-        overflow: scroll;
-        width: 100%;
-        overflow-y: hidden;
-    }
-    .testimonialRw::-webkit-scrollbar {
-        height: 0.5vh;
-    }
-    
-    /* Added stylings for HeaderComponent */
-    nav.navMain {
-        display: none;
-    }
-
-    nav.headerNoSideNav .sideNavBrandLogo {
-        margin-left: 0;
-    }
-    ul.extHeaderNoSideNav {
-        display: flex;
-        justify-content: center;
-        background-color: #F6F3F3;
-        height: 40px;
-        line-height: 40px;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding: 0 2vw;
-    }
-    ul.extHeaderNoSideNav li {
-        margin: 0 2.1vw;
-    }
-    ul.extHeaderNoSideNav li a {
-        color: var(--black);
-        font-size: 0.9rem;
-    }
-
-    /* Added stylings on AboutMe Component */
-    .row .col.profileImgContainer {
-        display: block;
-        padding: 0;
-        top: 3vh;
-        left: 6vw;
-    }
-
-    /* Added some stylings on ExperienceComponent */
-    .experienceImgContainDiv .col.s12.m12.l2,
-    .surgeonBannerImgDiv {
-        width: 100%;
-        /* margin-left: auto; */
-    }
-    img.bannerImg {
-        height: auto !important;
-        width: 100%;
-        border-radius: 0;
-    }
-    /* .experiences {
-        background: var(--pri);
-        border-radius: 0px;
-        padding: 0;
-        margin-right: -0.75rem !important;
-        display: flex;
-    } */
-    .expLeftBarInnerDiv:nth-child(3),
-    .expLeftBarInnerDiv:nth-child(2) {
-        border-bottom: none;
-        border-right: 1px solid rgba(217, 217, 217, 0.65);
-    }
-    .expLeftBarInnerDiv:first-child {
-        border-right: 1px solid rgba(217, 217, 217, 0.65);
-    }
-    .expLeftBarInnerDiv .experience {
-        padding: 1vh 0;
-    }
-    /* p.experienceTitle {
-        font-size: 1.5rem;
-        font-weight: 300;
-        margin: 0;
-    }
-    p.experienceTxt {
-        margin-bottom: 0;
-        font-size: 0.8rem;
-    } */
-
-    /* Added some stylings on Feeds */
-    /* #feeds {
+    .sidenav li>a.brand-logo:hover {
         background-color: unset;
-    } */
-
-    .feeds {
-        background-color: var(--pri);
+    }
+    .marginRight-5 {
+        margin-right: 2.5vh;
+    }
+    .container {
+        width: 90%;
+    }
+    nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+        height: 8vh;
+        line-height: 8vh;
+    }
+    nav i.material-icons {
+        font-size: 3.9vh;
+    }
+    nav .brand-logo {
+        right: -5%;
+        left: unset;
+        font-size: 2.5vh;
+    }
+    nav a {
+        color: var(--sec);
     }
 
-    /* ************************************************************************************ */
-    nav.headerNoSideNav {
+    /* ABOUT */
+    .templateAboutInner {
+        margin-top: -8vh;
+    }
+    .about {
+        display: flex;
+        flex-direction: column;
+    }
+    .row .col.profileDesc {
+        order: 2;
+        margin-top: -12vh;
+        z-index: -10;
         display: block;
-        /* margin-bottom: 1vh; */
-        height: auto;
+        padding-top: 16vh;
+        height: unset;
+        text-align: center;
     }
-    a.active {
-        border-bottom: 4px solid var(--pri);
-        padding: 0px 15px;
+    .profileDescInner {
+        padding: 0 3vw;
     }
-    a.mobileNavLink {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
+    .profileDescInner p {
+        margin-top: 1vh;
+        font-size: 1.7vh;
+        line-height: 1.3;
+        margin-bottom: 4vh;
     }
-    i.material-icons.sidenavTriggerIcon {
-        color: var(--pri);
-        line-height: 5vh;
-        font-size: 3rem;
-        margin-top: 2.5vh;
+    .sectionSubHeading  {
+        font-size: 2.4vh;
     }
-    /* a.sidenav-trigger.sidenavTriggerLink {
-        width: 5vw;
+    h1.sectionHeading {
+        font-size: 4vh;
+    }
+    .heroBtnRow {
+        margin-bottom: 6vh;
+        display: flex;
+        justify-content: center;
+        /* justify-content: space-between; */
+    }
+    .btn.viewCvBtn {
+        margin-right: 2vw;
+        /* margin-bottom: 3vh; */
+    }
+    .viewCvBtn, .callBtn {
+        border-radius: 5vh;
+        padding-left: 3.5vw;
+        padding-right: 3.5vw;
         height: 5vh;
-        border-radius: 50px;
-        margin-top: 3vh;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    } */
-    ul li>a.sidenavLink {
-        font-size: 1.2rem;
-        font-family: 'Poppins', sans-serif;
-        color: var(--white);
-        letter-spacing: 0.7px;
+        line-height: 5vh;
+        text-transform: capitalize;
+        font-size: 1.6vh;
     }
-    .section.physiContainerDiv#about {
-        padding-top: 0;
+    .row .col.profileImgContainer {
+        order: 1;
+        padding-left: 0;
+    }
+    .profileImgContainer img.responsive-img {
+        border-bottom-left-radius: 20vw;
     }
 
-    /* About Me Img edit modal*/
-    /* ********************************************** */
-    a.modal-trigger.aboutImgEditBtn {
-        width: 40px;
-        height: 40px;
-        background-color: #edebeb;
-        border-radius: 50px;
-        position: absolute;
-        top: 5%;
-        right: 6vw;
+    /* Interests */
+    h2.sectionHeading {
+        font-size: 3.7vh;
+        left: -0.27vw;
     }
-    i.material-icons.editIcon {
-        color: #554c8a;
-        line-height: 40px;
-        display: flex;
-        justify-content: center;
-        font-size: 2.3rem;
-    }
-    div.aboutImgModalDiv {
-        width: 50%;
-        height: 37vh;
-        margin: 2.5vh auto 0 auto;
-
-    }
-    img.aboutImgModal {
-        width: 100%;
-        height: 100%;
-        box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
-    }
-    /* ************************************************** */
-    a.editImgChangeBtn {
-        background-color: #524988;
-        color: var(--white);
-        font-family: 'Poppins', sans-serif;
-        font-size: 0.9rem;
-        padding: 0.3vh 2vw;
-    }
-    div.editImgChangeBtnDiv {
-        display: flex;
-        justify-content: center;
-        margin-top: 1.8vh;
-    }
-    p.aboutImgSize {
-        text-align: center;
-        font-size: 0.8rem;
-        font-family: 'Poppins', sans-serif;
-        margin-top: 1.8vh;
-    }
-    a.modal-close.editImgModalCloseBtn {
-        margin-left: 5vw;
-        color: var(--black);
-        text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
-        font-size: 2rem;
-    }
-    div.aboutImgEditModalInnerDiv {
-        padding: 1vh 0 5vh 0;
-    }
-
-    /* About Me Writeup edit modal */
-    /* *********************************************** */
-    a.modal-trigger.aboutWriteUpsEditBtn {
-        width: 40px;
-        height: 40px;
-        background-color: #edebeb;
-        border-radius: 50px;
-        position: absolute;
-        top: 0;
-        left: 30vw;
-    }
-    /* *********************************************** */
-    a.modal-close.editWriteUpsModalCloseBtn {
-        margin-left: -3vw;
-        color: var(--black);
-        text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
-        font-size: 2rem;
-    }
-    div.aboutWriteUpsEditModalInnerDiv {
-        width: 80%;
-        margin: auto;
-        padding: 1vh 0 5vh 0;
-    }
-    input.validate.aboutWriteUpsInput {
-        text-align: start;
-        height: 2vh;
-        border-bottom-color: var(--pri);
-    }
-    textarea.materialize-textarea.aboutWriteUpsInput {
-        text-align: start;
-        border: 1px solid var(--pri);
-        padding: 0.5vh 1.5vw;
-    }
-    p.aboutWriteUpsSize {
-        font-size: 0.7rem;
-        font-family: 'Poppins', sans-serif;
-        margin-top: 0;
-    }
-    a.editWriteUpsSaveBtn {
-        background-color: #524988;
-        color: var(--white);
-        font-family: 'Poppins', sans-serif;
-        font-size: 0.9rem;
-        padding: 0.3vh 2vw;
-    }
-    div.editWriteUpsSaveBtnDiv {
-        margin-top: 0;
-    }
-
-    /* Service edit modal */
-    .whatIdoTxtRowDiv {
+    .cardNavContainer {
+        text-align: unset;
         position: relative;
+        top: 3vh;
+        margin-bottom: 5vh;
     }
-    /* ************************************************ */
-    a.modal-trigger.servicesEditBtn {
-        width: 40px;
-        height: 40px;
-        background-color: #edebeb;
-        border-radius: 50px;
-        position: absolute;
-        top: -3vh;
-        right: 30vw;
+    .btn-floating i {
+        color: var(--sec);
     }
-    /* ************************************************ */
-    textarea.materialize-textarea.servicesTextarea {
-        text-align: start;
-        border: 1px solid var(--pri);
-        padding: 0.5vh 1.5vw;
-        min-height: 17vh;
+    .customCard {
+        width: 55%;
     }
-    a.servicesAddMoreBtn {
-        color: var(--black);
-        text-decoration: underline;
-        font-size: 0.9rem;
+    .physiContainerDiv#services {
+        background-position: right;
+    }
+    a.btn-floating.btn-large {
+        height: 7.2vh;
+        width: 10vw;
+    }
+    .btn-floating.btn-large i {
+        line-height: 7.3vh;
+    }
+    .customCard {
+        padding: 6vh 4vw 3vh;
+        margin-right: 1vw;
+    }
+    .customCard h3 {
+        font-size: 2.5vh;
         font-weight: 600;
-        display: flex;
-        justify-content: end;
-        position: relative;
-        bottom: 2vh;
+    }
+    .customCard p {
+        font-size: 1.53vh;
+    }
+    .customCard img {
+        width: 14vw;
+    }
+    /* Testimony */
+    #testimonials .testimonialsContainer {
+        width: 90%;
     }
 
-    /* Contact Me Edit Btn */
-    #testiContactFormTitleDiv {
-        position: relative;
-    }
-    /* ************************************************ */
-    a.modal-trigger.contactEditBtn {
-        width: 40px;
-        height: 40px;
-        background-color: #edebeb;
-        border-radius: 50px;
-        position: absolute;
-        top: 6vh;
-        right: 30vw;
-    }
-    .contactHeaderTxt {
-        font-family: "Montserrat", sans-serif;
-        font-weight: lighter;
-        font-size: 1.9rem !important;
-        line-height: 44px;
-        color: var(--pri);
+    .row .col.testament {
         text-align: center;
-        margin: 0 0 1vh 0;
-    }
-    /* ************************************************ */
-
-    p.servicesInputInstruct {
-        font-size: 0.7rem;
-        font-family: 'Poppins', sans-serif;
-        margin-top: 0;
-        text-align: right;
-    }
-    a.sidenav-close.sidenavCloseBtn {
-        margin: 2vh 0 4vh 0;
     }
 
-    i.material-icons.sidenavCloseIcon {
-        font-size: 3rem;
+    /* Contacts */
+    .contactFormTitle {
+        font-size: 2.2vh;
     }
 }
 
