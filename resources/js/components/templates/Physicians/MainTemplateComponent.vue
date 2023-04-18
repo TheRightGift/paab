@@ -28,7 +28,7 @@
                 :services="services"
                 :isLoggedIn="loggedIn"
                 :preview="preview"
-            />
+            /> -->
             <MiniBlogComponent
                 :tenant="tenant"
                 :preview="preview"

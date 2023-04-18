@@ -1137,11 +1137,13 @@ h4.settingOptionSectionTitle {
     font-weight: 500;
     font-size: 0.9rem;
 }
-.optionSettingContainer input[type=text]:not(.browser-default) {
+.optionSettingContainer input[type=text]:not(.browser-default), textarea#miniBlogDecription {
     border-bottom: 0.3vh solid var(--sec);
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 0;
     height: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 .optionSettingContainer .input-field>label, .optionSettingContainer label {
     font-size: .75rem !important;

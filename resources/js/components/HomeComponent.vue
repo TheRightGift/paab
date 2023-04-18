@@ -32,24 +32,6 @@
         </div>
         
         <div class="d-flex flex-col">
-            <!--section class="introductory">
-                <div class="container">
-                    <div class="introductoryBody">
-                        <p class="introductoryHeader">
-                            Showcase your public image with whitecoat domain
-                        </p>
-                        <p class="introductorySummary">
-                            As physicians, maintaining and managing your public profile is critical. We believe you should consciously manage your online identity by securing a personal domain name and maintaining an active website outside of the social media noise.
-                        </p>
-                        <div class="getStartedLayout">
-                            <button class="button getstartedbtn waves-effect waves-deep-orange">Get Started</button>
-                        </div>
-                        <div class="introductoryImageContainer"> 
-                            <img class="introductoryImg responsive-img" src="../../../public/media/img/introductoryImage.png" alt="Introductory Image of our template">
-                        </div>
-                    </div>
-                </div>
-            </section-->
             <section class="advert">
                 <div class="advBody">
                     <p class="advHeader">
@@ -113,7 +95,7 @@
                             <div class="col l4 m4 s12">
                                 <img class="responsive-img" src="../../../public/media/img/templateFeatureSectionImg.png" alt="Template Feature Image Rep">
                             </div>
-                            <div class="col l4 m4 s12 right-align">
+                            <div class="col l4 m4 s12">
                                 <div class="content mb-7 mt-9">
                                     <div class="icon-container">
                                         <img src="../../../public/media/img/cv.png" width="50" height="50" alt="cv icon">
