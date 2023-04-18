@@ -48,6 +48,7 @@ a.active {
     width: 85%;
     max-width: unset;
 }
+
 .cardNavContainer {
     text-align: right;
     position: relative;
@@ -1237,6 +1238,19 @@ select.browser-default, input[type=text]:not(.browser-default) {
 
 
 /* Inferred */
+#testimonials .testimonialsContainer {
+    width: 70%;
+    margin: 0 auto;
+}
+.row .col.testifiers {
+    border-right: thin solid var(--gray);
+    padding-bottom: 3vh;
+    padding-right: 2vw;
+}
+.row .col.testament {
+    padding-left: 2vw;
+    padding-top: 1.5vh
+}
 .testimonialsProName {
     font-size: 1.3rem;
     font-family: "Montserrat", sans-serif;
@@ -1246,7 +1260,7 @@ select.browser-default, input[type=text]:not(.browser-default) {
 .testimonialsProTitle {
     font-size: 1rem;
     font-family: "Poppins", sans-serif;
-    font-weight: 600;
+    /* font-weight: 600; */
     margin: 0;
 }
 .testimonialsProImgdiv {
@@ -1907,7 +1921,15 @@ footer {
     .customCarousel .w-50 {
         width: 99% !important;
     }
+    
+    /* Testimony */
+    #testimonials .testimonialsContainer {
+        width: 90%;
+    }
 
+    .row .col.testament {
+        text-align: center;
+    }
 
     /* Contacts */
     .contactFormTitle {
