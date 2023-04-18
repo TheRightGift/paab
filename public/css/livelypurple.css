@@ -2512,12 +2512,12 @@ input[type=text]:not(.browser-default), textarea.contactFormInput {
     border: none;
     width: 40%;
 }
-#miniBlog .btn.saveSettingBtn:first-of-type {
+#miniBlog .btn.saveSettingBtn:first-of-type, #publicFeatures .btn.saveSettingBtn:first-of-type {
     background-color: var(--black);
     color: var(--white);
     margin-right: 0.9rem;
 }
-#miniBlog .btn.saveSettingBtn:first-of-type:hover {
+#miniBlog .btn.saveSettingBtn:first-of-type:hover, #publicFeatures .btn.saveSettingBtn:first-of-type:hover {
     background-color: var(--pri);
     color: var(--white);
     margin-right: 0.9rem;
@@ -2559,4 +2559,11 @@ video {
 .hPadding-2 {
     padding-left: 2vw;
     padding-right: 2vw;
+}
+.optionalColor {
+    font-family: 'Raleway';
+    font-weight: 600;
+    font-size: 0.725rem;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.48);
 }

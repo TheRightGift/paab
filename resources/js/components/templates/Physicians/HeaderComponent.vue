@@ -229,7 +229,7 @@
                         </div>
                     </div>
                     <div class="col l4">
-                        <div class="generalSettings settingOptions hoverable" @click="showSettingOption(4, 'Public Features')">
+                        <div class="generalSettings settingOptions hoverable" @click="showSettingOption(5, 'Public Features')">
                             <h6>Features</h6>
                             <img :src="'/media/img/templates/1/publicFeatures.png'" alt="" class=""/>
                         </div>
@@ -245,7 +245,7 @@
 
             <div v-show="modalView == 1">
                 <div class="row noMarginBottom">
-                    <div class="col l6 optionSettingBackground">
+                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
                         <p>
                             <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
                         </p>
@@ -516,7 +516,7 @@
             </div>
             <div v-show="modalView == 2">
                 <div class="row noMarginBottom" id="miniBlog">
-                    <div class="col l6 optionSettingBackground">
+                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
                         <p>
                             <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
                         </p>
@@ -631,7 +631,7 @@
             </div>
             <div v-show="modalView == 3">
                 <div class="row noMarginBottom" id="interests">
-                    <div class="col l6 optionSettingBackground">
+                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
                         <p>
                             <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
                         </p>
@@ -667,7 +667,7 @@
             </div>
             <div v-show="modalView == 4">
                 <div class="row noMarginBottom" id="feeds">
-                    <div class="col l6 optionSettingBackground">
+                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
                         <p>
                             <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
                         </p>
@@ -768,7 +768,6 @@
                                         <input
                                             type="text"
                                             class="validate formInput"
-                                            required
                                             placeholder="Instagram ID"
                                         />
                                         <label>Instagram ID</label>
@@ -810,7 +809,6 @@
                                         <input
                                             type="text"
                                             class="validate formInput"
-                                            required
                                             placeholder="Tiktok ID"
                                         />
                                         <label>Tiktok ID</label>
@@ -846,6 +844,49 @@
                         </div>
                         
                         <div class="row hPadding-1 center-align">
+                            <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-show="modalView == 5">
+                <div class="row noMarginBottom" id="publicFeatures">
+                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
+                        <p>
+                            <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
+                        </p>
+                        <h5>
+                            {{modalTitle}}
+                        </h5>
+                    </div>
+                    <div class="col l6 optionSettingContainer">
+                        <div>
+                            <div class="row hPadding-1">
+                                <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Your public profile</h4>
+                                <div class="formInnerDiv">
+                                    <div class="input-field col l12">
+                                        <input
+                                            type="text"
+                                            class="validate formInput"
+                                            required
+                                            placeholder="CNN Health"
+                                        />
+                                        <label>Program Title</label>
+                                    </div>
+                                    <div class="input-field col l12">
+                                        <input
+                                            type="text"
+                                            class="validate formInput"
+                                            required
+                                            placeholder="CNN, BBC"
+                                        />
+                                        <label>Program URL <span class="optionalColor">(Optional)</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row hPadding-1 center-align">
+                            <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Add New</button>
                             <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Back</button>
                         </div>
                     </div>
