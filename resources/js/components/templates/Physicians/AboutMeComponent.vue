@@ -38,61 +38,32 @@
                     </div>
                     <!--TODO: remodel this to reflect the template above-->
                     <div v-else-if="bio !== null">
-                        <div class="row about">
-                            <div class="col s12 m6 l6 profileDesc">
-                                <div class="containerDiv">
-                                    <h3 class="physiTempName">
-                                        <span>
-                                            Hi, I'm
-                                            <br />
-                                            {{ bio.firstname }}
-                                            {{ bio.lastname }}({{ title }})
-                                            <span
-                                                class="primaryColorBoxDesign"
-                                            ></span>
-                                        </span>
-                                        <span class="physiTempNameEdit">
-                                            <!-- About WriteUp Modal Trigger -->
-                                            <a class="modal-trigger iconBox" href="#aboutWriteUpsEditModal" title="Edit Name and Description" v-if="isLoggedIn">
-                                                <i class="material-icons editIcon">edit</i>
-                                            </a>
-                                        </span>
-                                    </h3>
-
-                                    <p class="physiSummaryTxt">
-                                        <span v-if="bio.about !== null">{{ bio.about }}</span>
-                                        <span v-else>
-                                            Dr. {{ user.firstname ?? 'John' }} {{user.lastname ?? 'Doe'}} is an expert in Aestheistiologist with an M.D. from Pittsburgh School of Medicine and an undergraduate degree in Sociology from the University of Michigan- Ann Arbor.
-                                            She started out as an intern at the UPMC Shadyside hospital, then proceeded to Brigham and Women’s Hospital for her residency.
-                                            With more than 10 years of experience as an anaesthesiologist, she has dedicated years to patient care throughout every surgical experience.
-                                        </span>
+                        <div class="row about noMarginBottom">
+                            <div class="col l6 profileDesc">
+                                <div class="profileDescInner">
+                                    <span class="sectionSubHeading">Hi, I'm</span>
+                                    <h1 class="sectionHeading">{{ bio.firstname }} {{ bio.lastname }} <span v-if="title !== ''">{{ title }}.</span></h1>
+                                    <p v-if="bio.about !== null">{{ bio.about }}</p>
+                                    <p v-else>
+                                        an expert in Aestheistiologist with an M.D. from Pittsburgh School of Medicine and an undergraduate degree in Sociology from the University of Michigan- Ann Arbor.
+                                        She started out as an intern at the UPMC Shadyside hospital, then proceeded to Brigham and Women’s Hospital for her residency.
+                                        With more than 10 years of experience as an anaesthesiologist, she has dedicated years to patient care throughout every surgical experience.
                                     </p>
-
-                                   <p class="center-align" v-if="CVComponentShow">
-                                       <a href="#cvDetails" class="physiTempBtn waves-effect waves-light modal-trigger">
-                                           View My curriculum vitae
-                                       </a>
-                                   </p>
+                                    <div class="heroBtnRow">
+                                        <button data-target="cvDetails" class="modal-trigger waves-effect waves-light btn viewCvBtn" v-if="CVComponentShow">View Curriculum Vitae</button>
+                                        <span v-if="contact !== null">
+                                            <button class="waves-effect waves-light btn callBtn" v-show="contact.phone != null || contact.phone != ''">Call me</button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="col s12 m6 l6 profileImgContainer">
-                                <!-- offset-l3 media/img/doc.png-->
-                                <div class="profileImg" v-if="bio !== null">
+                            <div class="col l6 profileImgContainer noPaddingRight">
+                                <div class="profileImg">
                                     <img
-                                        :src="typeof about.photo == 'string'
-                                            ? '/media/tenants/'+tenant+'/img/'+ about.photo
-                                                : uploaded == null ? '/media/tenants/'+tenant+'/img/'+ bio.photo : uploaded"
+                                        :src="typeof about.photo == 'string' ? '/media/tenants/'+tenant+'/img/'+ about.photo : uploaded == null ? '/media/tenants/'+tenant+'/img/'+ bio.photo : uploaded"
                                         alt="doc.png"
-                                        class="responsive-img physiRightImg"
+                                        class="responsive-img"
                                     />
-
-                                    <div class="">
-                                        <!-- About Edit Img Modal Trigger -->
-                                        <a class="modal-trigger aboutImgEditBtn" href="#aboutImgEditModal" v-if="isLoggedIn">
-                                            <i class="material-icons editIcon">edit</i>
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

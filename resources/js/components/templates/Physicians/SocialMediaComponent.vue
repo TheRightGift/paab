@@ -111,10 +111,10 @@ export default {
                 return;
             } else {
                 this.transitioning = true
-                this.moveRight()
+                this.moveLeft()
                 this.afterTransition(() => {
-                    const card = this.socials.pop()
-                    this.socials.unshift(card)
+                    const card = this.socials.shift()
+                    this.socials.push(card)
                     this.resetTranslate()
                     this.transitioning = false
                 })
@@ -171,29 +171,47 @@ export default {
                 let tiktok = {
                     id: 'Tiktok',
                     src: `<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@${this.tiktok}" data-unique-id="${this.tiktok}" data-embed-from="oembed" data-embed-type="creator" style="max-width: 780px; min-width: 288px; width: 32rem;" > <section> <a target="_blank" href="https://www.tiktok.com/@${this.tiktok}?refer=creator_embed">@${this.tiktok}</a> </section> </blockquote>`,
-                    shown: this.updateSocialHandles(),
                     color: 'red'
                 };
-                if (newVal !== null && newVal !== '') {
+                if (newVal !== null && newVal !== '' && this.preview === '0') {
+                    console.log(newVal)
                     newVal = JSON.parse(newVal);
                     this.facebook = newVal.facebook;
                     this.twitter = newVal.twitter;
                     this.instagram = newVal.instagram;
                     this.tiktok = newVal.tiktok;
                     this.id = newVal.id;
-                    if (this.facebook !== '' || this.facebook !== null) {
+                    if (newVal.facebook !== '' && newVal.facebook !== null) {
+                        facebook = {
+                            id: 'Facebook',
+                            src: `<div class="fb-page" data-href="https://www.facebook.com/${newVal.facebook}" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/${newVal.facebook}" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/${newVal.facebook}">${newVal.facebook}</a></blockquote></div></div>`,
+                        }
                         this.socials.push(facebook);
                     }
-                    if (this.twitter !== '' || this.twitter !== null) {
+                    if (newVal.twitter !== '' && newVal.twitter !== null) {
+                        twitter = {
+                            id: 'Twitter',
+                            src: `<a class="twitter-timeline" data-width="100%" data-height="500" data-theme="light" width="100%" href="https://twitter.com/${newVal.twitter}?ref_src=twsrc%5Etfw">Tweets by ${newVal.twitter}</a>`,
+                        }
                         this.socials.push(twitter);
                     }
-                    if (this.instagram !== '' || this.instagram !== null) {
+                    if (newVal.instagram !== '' && newVal.instagram !== null) {
+                        instagram = {
+                            id: 'Instagram',
+                            src: `<iframe src="https://www.instagram.com/reel/${newVal.instagram}/embed/captioned/?cr=1&v=14&wp=326&rd=http%3A%2F%2F127.0.0.1%3A8000&rp=%2Fpreview%2F1#%7B%22ci%22%3A0%2C%22os%22%3A3489.7999999998137%2C%22ls%22%3A3373.899999999441%2C%22le%22%3A3393.5%7D" />`,
+                            color: 'red'
+                        }
                         this.socials.push(instagram);
                     }
-                    if (this.tiktok !== '' || this.tiktok !== null) {
+                    if (newVal.tiktok !== '' && newVal.tiktok !== null) {
+                        tiktok = {
+                            id: 'Tiktok',
+                            src: `<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@${newVal.tiktok}" data-unique-id="${newVal.tiktok}" data-embed-from="oembed" data-embed-type="creator" style="max-width: 780px; min-width: 288px; width: 32rem;" > <section> <a target="_blank" href="https://www.tiktok.com/@${newVal.tiktok}?refer=creator_embed">@${newVal.tiktok}</a> </section> </blockquote>`,
+                            color: 'red'
+                        }
                         this.socials.push(tiktok);
                     }
-                } else {
+                } else if (this.preview == '1') {
                     this.facebook = 'whiteCoatDomain';
                     this.twitter = 'WhiteCoatD_HQ';
                     this.instagram = 'CoUVYkmj6__';

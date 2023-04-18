@@ -28,7 +28,7 @@
                 :services="services"
                 :isLoggedIn="loggedIn"
                 :preview="preview"
-            /> -->
+            />
             <MiniBlogComponent
                 :tenant="tenant"
                 :preview="preview"
@@ -41,6 +41,7 @@
                     preview === '1'
                 "
                 :isLoggedIn="loggedIn"
+                :preview="preview"
             />
             <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>
             <div id="contactContainer">
