@@ -69,7 +69,7 @@
         <nav>
             <div class="nav-wrapper">
                 <div class="container">
-                    <a href="#!" class="brand-logo">Dr. Olivia Felix</a>
+                    <a href="#!" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : user}}</a>
                     <a href="#" data-target="mobileNav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="centerNav hide-on-med-and-down">
                         <li><a href="#!">Interests</a></li>
@@ -91,7 +91,7 @@
             </div>
         </nav>
         <ul class="sidenav" id="mobileNav">
-            <li><a href="#!" class="brand-logo">Dr. Olivia Felix</a></li>
+            <li><a href="#!" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : user}}</a></li>
             <li><a href="#!">Interests</a></li>
             <li><a href="#miniBlog">Mini Blog</a></li>
             <li><a href="#!">Feeds</a></li>

@@ -53,91 +53,22 @@
                             </div>
                         </div>
                         <div class="row" v-else>
-                            <div class="row">
-                                <div v-if="reviewLen > 0">
-                                    <div class="col s12 m5 l5">
-                                        <div class="clients">
-                                            <div @click="showReview(review, index)" class="testimonialsProImgdiv" :class="{ selected: selectedIndex === index }" v-for="(review, index) in reviews" :key="index">
-                                                <div class="d-flex align-center justify-between">
-                                                    <div class="">
-                                                        <img :src="'/media/img/'+review.image" :alt="review.name" class="testiProImg">
-                                                    </div>
-                                                    <div class="titleName">
-                                                        <div class="testimonialsProDiv">
-                                                            <p class="testimonialsProName">{{review.name}}</p>
-                                                            <p class="testimonialsProTitle">{{review.title}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="col s12 m7 l7">
-                                        <p class="testimonialsWriteupTitle">It was a great experience</p>
-                                        <div class="testimonialsWriteupReviewDiv">
-                                            <i class="material-icons reviewIcon">star</i>
-                                            <i class="material-icons reviewIcon">star</i>
-                                            <i class="material-icons reviewIcon">star</i>
-                                            <i class="material-icons reviewIcon">star</i>
-                                            
-                                            <!-- Add Review Modal Trigger -->
-                                            <!-- <a href="#addReviewModal" class="modal-trigger">
-                                                <i class="material-icons addreview right" title="Add Review">add_circle</i>
-                                            </a> -->
-                                        </div>
-                                        <p class="tesimonialsWriteupTxt">
-                                            {{ reviewOn }}
-                                        </p>
-                                        
-                                    </div>
-                                </div>
-                                <div v-else>
-                                    <p class="centre">
-                                        Client Has no Review at the moment. You can view
-                                        other customer success or reviews from here
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="greenBg">
+                            <div class="row" v-if="reviewLen > 0">
                                 <div class="col s12 m5 l5">
-                                    <div v-if="reviewLen > 0">
-                                        <div class="" :class="{testimonialsProImgdiv: index == 0, testimonialsProImgdiv1: index > 0}" v-for="(review, index) in reviewsFront"
-                                            :key="review.id">
-                                            <div class="row " @click="showUserComment(review)">
-                                                <div class="col s2">
-                                                    <img
-                                                        :src="
-                                                            review.imageURL != null
-                                                                ? '/media/tenants/'+tenant+'/img/reviews/'+
-                                                                review.imageURL
-                                                                : '/media/img/testiProImg.png'
-                                                        "
-                                                        :alt="
-                                                            review.imageURL != null
-                                                                ? review.firstname + review.lastname
-                                                                : 'testiProImg.png'
-                                                        "
-                                                        class="testiProImg"
-                                                    />
+                                    <div class="clients">
+                                        <div @click="showReview(i, index)" class="testimonialsProImgdiv" :class="{ selected: selectedIndex === index }" v-for="(i, index) in revPreviews" :key="index">
+                                            <div class="d-flex align-center justify-between">
+                                                <div class="">
+                                                    <img :src="'/media/img/'+i.image" :alt="i.name" class="testiProImg">
                                                 </div>
-                                                <div class="col s10">
+                                                <div class="titleName">
                                                     <div class="testimonialsProDiv">
-                                                        <p class="testimonialsProName">
-                                                            {{ review.lastname }}
-                                                            {{ review.firstname }}
-                                                        </p>
-                                                        <p class="testimonialsProTitle"></p>
+                                                        <p class="testimonialsProName">{{i.name}}</p>
+                                                        <p class="testimonialsProTitle">{{i.title}}</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div v-else>
-                                        <p class="centre">
-                                            Client Has no Review at the moment. You can see
-                                            other customer success or reviews from here
-                                        </p>
                                     </div>
                                 </div>
                             
@@ -150,17 +81,21 @@
                                         <i class="material-icons reviewIcon">star</i>
                                         
                                         <!-- Add Review Modal Trigger -->
-                                        <a href="#addReviewModal" class="modal-trigger">
+                                        <!-- <a href="#addReviewModal" class="modal-trigger">
                                             <i class="material-icons addreview right" title="Add Review">add_circle</i>
-                                        </a>
+                                        </a> -->
                                     </div>
-                                    <p class="tesimonialsWriteupTxt" v-if="userReview != undefined">
-                                        {{userReview.comment}}
+                                    <p class="tesimonialsWriteupTxt">
+                                        {{ reviewOn }}
                                     </p>
-                                    <!-- Load More Modal Trigger -->
-                                    <a class="loadMoreReviews modal-trigger" href="#loadMoreReviews">Load More</a>
-                                    <!-- @click="goToReviews" -->
+                                    
                                 </div>
+                            </div>
+                            <div v-else class="centre col s12 m12 l12">
+                                <p >
+                                    Client Has no Review at the moment. You can view
+                                    other customer success or reviews from here
+                                </p>
                             </div>
                         </div>
                     </div>

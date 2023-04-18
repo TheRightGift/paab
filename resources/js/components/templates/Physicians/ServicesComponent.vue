@@ -1,6 +1,6 @@
 <template>
     <div id="templateService" class="row">
-        <div class="section scrollspy physiContainerDiv" id="services">
+        <div class="section scrollspy physiContainerDiv" id="services" v-if="(services == null || services.length === 0 && preview === '1') || (services !== null && services.length !== 0 && preview === '0')">
             <div class="container">
                 <div v-if="services == null || services.length === 0 && preview === '1'">
                     <div class="row">
@@ -112,48 +112,26 @@
                     </div-->
                 </div>
                 <div v-else-if="services !== null && services.length !== 0 && preview === '0'">
-                    <div class="row whatIdoTxtRowDiv">
-                        <div class="col s12">
-                            <div class="serviceHeading">
-                                <div>
-                                    <p class="servicesMainTitle">Services</p>
-                                    <p class="servicesWhatIdo">WHAT I DO</p>
-                                </div>
-                                <h3 class="title">
-                                    WHAT I DO
-                                    <span class="primaryColorBoxDesign1"></span>
-                                </h3>
-                                <div class="">
-                                    <!-- Services Modal Trigger -->
-                                    <a class="modal-trigger iconBox" href="#servicesEditModal" v-if="isLoggedIn">
-                                        <i class="material-icons editIcon">edit</i>
-                                    </a>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col l8 s12">
+                            <span class="sectionSubHeading">MY INTERESTS</span>
+                            <h2 class="sectionHeading">Experienced in <br/>multiple interests</h2>
+                        </div>
+                        <div class="col l4 s12 cardNavContainer">
+                            <button class="roundBtn marginRight-5" @click="prev"><i class="material-icons">chevron_left</i></button>
+                            <button class="roundBtn" @click="next"><i class="material-icons">chevron_right</i></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l12 customCarousel">
+                            <div class="inner" ref="inner" :style="innerStyles">
+                                <div class="customCard" v-for="card in cards" :key="card">
+                                    <div>
+                                        <img :src="card.img" />
+                                        <h3>{{card.title}}</h3>
 
-                            <div :class="{ flexed: services.length <= 2 }" class="servicesRw">
-                                <div
-                                    class="col s12 m4 l4"
-                                    v-for="(service, index) in services"
-                                    :key="service.id"
-                                >
-                                    <h5 class="servcesHeading forSurgeon">
-                                        <span class="whatIdoServiceTitleNum">0{{index}}.</span>
-                                        {{ service.title }}
-                                    </h5>
-                                    <div class="servicesIconsDiv">
-                                        <i
-                                            class="
-                                                fa-solid fa-briefcase-medical
-                                                servicesIcons1
-                                            "
-                                            :class="service.icon"
-                                        ></i>
+                                        <p>{{card.description}}</p>
                                     </div>
-                                    <p class="servcesHeading forDoc">{{ service.title }}</p>
-                                    <p class="servicesTxt">
-                                        {{ service.description }}
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -272,7 +250,7 @@
                         title: 'Cadiology',
                         img: '/media/img/templates/1/cadio.svg',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.'
-                    }],
+                }],
                 innerStyles: {},
                 step: '',
                 transitioning: false
@@ -337,7 +315,7 @@
                     });
             },
             setStep () {
-                const innerWidth = this.$refs.inner.scrollWidth;
+                // const innerWidth = this.$refs.inner.scrollWidth;
                 const totalCards = this.cards.length;
                 this.step = `${innerWidth / totalCards}px`;
                 
