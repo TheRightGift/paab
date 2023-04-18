@@ -29,28 +29,19 @@
                 :isLoggedIn="loggedIn"
                 :preview="preview"
             />
-            <div
-                id="experienceContainer"
-                v-if="
-                    (achievement !== null && preview === '0') || preview === '1'
-                "
-            >
-                <ExperienceComponent
-                    :tenant="tenant"
-                    :experience="achievement"
-                    :location="location"
-                    :preview="preview"
-                    :isLoggedIn="loggedIn"
-                />
-            </div>
-            <!-- <SocialMediaComponent
+            <MiniBlogComponent
+                :tenant="tenant"
+                :preview="preview"
+                :isLoggedIn="loggedIn"
+            />
+            <SocialMediaComponent
                 :social="social"
                 v-if="
                     (social !== null && social !== '' && preview === '0') ||
                     preview === '1'
                 "
                 :isLoggedIn="loggedIn"
-            /> -->
+            />
             <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>
             <div id="contactContainer">
                 <ContactComponent
@@ -59,7 +50,7 @@
                     :contactMail="contact"
                 />
             </div>
-             <!--FooterComponent />
+             <FooterComponent />
      
             <div class="fixedBtmBtn" v-if="can === '1'">
                 <a
@@ -73,13 +64,13 @@
                     class="btn waves waves-effect"
                     >Edit your website</a
                 >
-            </div-->
+            </div>
         </div>
     </div>
 </template>
 <script lang="js">
 import ContactComponent from "./ContactComponent.vue";
-import ExperienceComponent from "./ExperienceComponent.vue";
+import MiniBlogComponent from "./MiniBlogComponent.vue";
 import HeaderComponent from "./HeaderComponent.vue";
 import ServicesComponent from "./ServicesComponent.vue";
 import SocialMediaComponent from "./SocialMediaComponent.vue";
@@ -105,7 +96,7 @@ export default {
     components: {
         HeaderComponent,
         ServicesComponent,
-        ExperienceComponent,
+        MiniBlogComponent,
         SocialMediaComponent,
         TestimonialsComponent,
         ContactComponent,

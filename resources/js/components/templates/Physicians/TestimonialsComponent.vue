@@ -2,14 +2,12 @@
     <ReviewsComponent :reviews="reviews" @goBack="goBack" :tenant="tenant"/>
     <!-- Load More Modal Structure -->
     <div class="section scrollspy testiContainDiv" id="testimonials" >
-        <div class="background">
+        <div class="">
             <div class="container">
                 <div class="row">
                     <div class="col s12 mb-6">
-                        <div class="col l8">
                             <span class="sectionSubHeading">TESTIMONIALS</span>
-                            <h2 class="sectionHeading">What my client <br/>says about me</h2>
-                        </div>
+                            <h2 class="sectionHeading">What my clients <br/>say about me</h2>
                     </div>
                     <div class="testimonialsContainer">
                         <div class="row" v-if="preview == '1'">

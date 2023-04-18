@@ -1,6 +1,6 @@
 <template>
     <footer class="footer grey-text text-darken-3">
-        &copy; {{  new Date().getFullYear() }}, {{ location }}
+        &copy; {{  new Date().getFullYear() }}, Dr. Olivia Felix
     </footer>
 </template>
 <script>

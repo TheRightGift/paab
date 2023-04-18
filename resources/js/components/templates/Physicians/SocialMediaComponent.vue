@@ -1,5 +1,5 @@
 <template>
-    <div class="section scrollspy" id="feeds">
+    <div class="section scrollspy background" id="feeds">
         <div class="container">
             <div class="row">
                 <div class="col l8">
@@ -7,16 +7,19 @@
                     <h2 class="sectionHeading">Experienced in <br/>multiple interests</h2>
                 </div>
                 <div class="col l4 cardNavContainer">
-                    <button class="roundBtn marginRight-5" @click="prev"><i class="material-icons">chevron_left</i></button>
-                    <button class="roundBtn" @click="next"><i class="material-icons">chevron_right</i></button>
+                    <!--button class="roundBtn marginRight-5" @click="prev"><i class="material-icons">chevron_left</i></button>
+                    <button class="roundBtn" @click="next"><i class="material-icons">chevron_right</i></button-->
+                    <a class="btn-floating btn-large waves-effect waves-light marginRight-5"  @click="prev"><i class="material-icons">chevron_left</i></a>
+                    <a class="btn-floating btn-large waves-effect waves-light" @click="nextSocial"><i class="material-icons">chevron_right</i></a>
+
                 </div>
             </div>
         </div>
-        <div class="background">
+        <div class="">
             <div class="container">
-                <div class="row">
+                <div class="row noMarginBottom" id="socailCardContainer">
                     <div class="col l12 customCarousel">
-                        <div class="inner" ref="inner" :style="innerStyles">
+                        <div class="inner" ref="innerSocial" :style="innerStyles">
                             <div class="customCard w-50" v-for="card in socials" :key="card"> 
                                 <div>
                                     <div class="cardHeader">
@@ -53,8 +56,8 @@ export default {
         }
     },
     mounted() {
-        this.setStep()
-            this.resetTranslate()
+        this.setSocialStep()
+        this.resetTranslate()
     },
     methods: {
         updateSocialHandles() {
@@ -83,29 +86,30 @@ export default {
                     }
                 });
         },
-        setStep () {
-                const innerWidth = this.$refs.inner.scrollWidth;
-                const totalCards = this.socials.length;
-                this.step = `${innerWidth / totalCards}px`;
-                
-            },
-            next () {
-                
-                if (this.transitioning){
-                     return;
-                } else {
-                    this.transitioning = true
-                    this.moveLeft()
-                    this.afterTransition(() => {
-                        const card = this.socials.shift()
-                        this.socials.push(card)
-                        this.resetTranslate()
-                        this.transitioning = false
-                    })
-                }                
-            },
-            prev () {
-                if (this.transitioning) return
+        setSocialStep () {
+            const innerWidth = this.$refs.innerSocial.scrollWidth;
+            const totalSocials = this.socials.length;
+            this.step = `${innerWidth / totalSocials}px`;
+            // console.log(innerWidth, totalSocials)
+        },
+        nextSocial () {
+            if (this.transitioning){
+                    return;
+            } else {
+                this.transitioning = true
+                this.moveLeft();
+                this.afterTransition(() => {
+                    const card = this.socials.shift()
+                    this.socials.push(card)
+                    this.resetTranslate()
+                    this.transitioning = false
+                })
+            }                
+        },
+        prev () {
+            if (this.transitioning) {
+                return;
+            } else {
                 this.transitioning = true
                 this.moveRight()
                 this.afterTransition(() => {
@@ -114,32 +118,34 @@ export default {
                     this.resetTranslate()
                     this.transitioning = false
                 })
-            },
-            moveLeft () {
-                this.innerStyles = {
-                    transform: `translateX(-${this.step}) translateX(-${this.step})`
-                }
-            },
-            moveRight () {
-                console.log(`translateX(-${this.step}) translateX(-${this.step})`)
-                this.innerStyles = {
-                    transform: `translateX(${this.step}) translateX(-${this.step})`
-                }
-            },
-            afterTransition (callback) {
-                const listener = () => {
-                    callback()
-                    this.$refs.inner.removeEventListener('transitionend', listener)
-                }
-                this.$refs.inner.addEventListener('transitionend', listener)
-            },
-            resetTranslate () {
-                let step = 0;
-                this.innerStyles = {
-                    transition: 'none',
-                    transform: `translateX(-${step})`
-                }
+            }            
+        },
+        moveLeft () {
+            console.log(`translateX(-${this.step})`)
+            this.innerStyles = {
+                transform: `translateX(-${this.step})`
             }
+        },
+        moveRight () {
+            console.log(`translateX(${this.step})`)
+            this.innerStyles = {
+                transform: `translateX(${this.step})`
+            }
+        },
+        afterTransition (callback) {
+            const listener = () => {
+                callback()
+                this.$refs.innerSocial.removeEventListener('transitionend', listener)
+            }
+            this.$refs.innerSocial.addEventListener('transitionend', listener)
+        },
+        resetTranslate () {
+            let step = 0;
+            this.innerStyles = {
+                transition: 'none',
+                transform: `translateX(-${step})`
+            }
+        }
     },
     props: {
         isLoggedIn: Boolean,
@@ -241,12 +247,6 @@ iframe div._2lqh {
     .feedsHeading {
         color: var(--white);
     }
-/* .customCard {
-    display: block;
-} */
-/* .inner {
-    display: flex;
-} */
 </style>
 <style>
 /* Inferred */
@@ -263,5 +263,21 @@ iframe, .tiktok-embed, .twitter-timeline.twitter-timeline-rendered {
 }
 blockquote {
     padding-left: 0;
+}
+
+@media screen and (max-width: 640px) { 
+    iframe, .tiktok-embed, .twitter-timeline.twitter-timeline-rendered {
+        height: 500px;
+        width: 90vw !important;
+        border-radius: 1rem;
+    }
+    #socailCardContainer .customCard {
+        padding: 1vh 2vw 0vh;
+    }
+
+    #socailCardContainer .customCard h3 {
+        padding-left: 3vw;
+        font-size: 2.7vh
+    }
 }
 </style>

@@ -59,22 +59,21 @@ a.active {
 .flexRight {
     justify-content: flex-end;
 }
-button.roundBtn {
-    height: 10vh;
-    width: 4.6vw;
-    border-radius: 50%;
-    border: unset;
+a.btn-floating.btn-large {
+    height: 8.8vh;
+    width: 4.4vw;
     background-color: var(--white);
-    box-shadow: 0 4px 14px 0 rgba(24, 20, 67, 0.08);
 }
-button.roundBtn:hover, button.roundBtn:active, button.roundBtn:visited {
+.btn-floating.btn-large i {
+    color: var(--sec);
+    font-size: 5vh;
+    line-height: 9.5vh;
+}
+a.btn-floating.btn-large:hover, 
+a.btn-floating:active, 
+a.btn-floating:visited {
     background-color: var(--ter);
     color: var(--white);
-    height: 10.1vh;
-    width: 4.7vw;
-}
-.roundBtn i {
-    font-size: 6vh;
 }
 .btn.btn-flat {
     background-color: #e3e3e7;
@@ -217,6 +216,9 @@ h2.sectionHeading {
     height: 100vh;
     padding-top: 10vh;
 }
+.background#feeds {
+    height: unset;
+}
 .customCarousel {
     width: 100%;
     overflow: hidden;
@@ -224,7 +226,7 @@ h2.sectionHeading {
 .inner {
     transition: transform 0.2s;
     white-space: nowrap;   
-    padding-bottom: 15vh;  
+    padding-bottom: 7.5vh;  
 }
 .customCard {
     width: 30%;
@@ -335,14 +337,6 @@ a.physiTempContactBtn.active {
     color: var(--pri);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-
-
-
-/* .physiContainerDiv#about {
-    width: 84.5%;
-    margin: auto;
-    padding-top: 36vh;
-} */
 
 .physiTempNameTitle {
     font-family: "Montserrat", sans-serif;
@@ -511,7 +505,10 @@ h2.sectionHeader
     /* margin: 1.3vh 0 0 0.7vw; */
     font-size: 2rem;
 }
-
+#miniBlog {
+    background-color: #f1f1f6;
+    padding-top: 7vh;
+}
 .physiExpContainerDiv,
 .feedsContainDiv {
     width: 84.5%;
@@ -553,69 +550,6 @@ h2.sectionHeader
 .feedsHeading {
     color: var(--white);
 }
-.experienceImgContainDiv .col.s12.m12.l2 {
-    width: 16.6666666667%;
-    margin-left: auto;
-}
-.surgeonBannerImgDiv {
-    width: 83.3333333333%;
-    margin-left: auto;
-    float: right;
-    position: relative;
-}
-
-.experiences {
-    background: var(--pri);
-    border-radius: 10px;
-    padding: 1vh 1.5vw;
-    margin-right: 0.1vw !important;
-}
-
-.experienceTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2.25rem;
-    line-height: 30px;
-    text-align: center;
-    align-items: center;
-    letter-spacing: 0.1px;
-    color: #ffffff;
-    margin: 0 0 1vh 0;
-}
-
-.experienceTxt {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: lighter;
-    font-size: 0.875rem;
-    line-height: 20px;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.1px;
-    color: #ffffff;
-    margin: 0 0 1.5vh 0;
-    text-transform: capitalize;
-}
-
-.expLeftBarInnerDiv {
-    border-bottom: 1px solid rgba(217, 217, 217, 0.65);
-}
-
-.expLeftBarInnerDiv:last-child {
-    border-bottom: none;
-}
-
-.expLeftBarInnerDiv .experience {
-    padding: 5.7vh 0 3vh;
-}
-
-.bannerImg {
-    width: 100%;
-    /* height: 73.5vh; */
-    border-radius: 10px;
-}
-
 #feedsTwitterIcon {
     color: var(--pri);
     font-size: 1.3rem;
@@ -832,69 +766,6 @@ h2.sectionHeader
     position: relative;
     top: 7vh;
 }
-
-/* #testiLname,
-#testiFname,
-#testiEmail,
-#testiPhone {
-    border: 1px solid var(--pri);
-    border-radius: 10px;
-    padding: 0 1.5vw;
-    width: 90%;
-}
-
-#testiPhone::placeholder {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 0.875rem;
-    line-height: 20px;
-    letter-spacing: 0.1px;
-    color: rgba(0, 0, 0, 0.6);
-}
-
-#testiTextarea1 {
-    border: 1px solid var(--pri);
-    border-radius: 10px;
-    width: 100.5%;
-    height: 22vh;
-    padding: 3vh 1.5vw;
-    text-align: center;
-}
-
-#testiTextarea1::placeholder {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 0.875rem;
-    line-height: 20px;
-    letter-spacing: 0.1px;
-    color: rgba(0, 0, 0, 0.6);
-}
-
-#testiContactFormTitleDiv {
-    margin-bottom: 5vh;
-}
-
-.testiContactBtn {
-    background: var(--pri);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    width: 97.4%;
-    margin-left: 0.7vw;
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 20px;
-    height: 5vh;
-}
-
-#testiContactBtnIcon {
-    color: #938f99;
-    position: relative;
-    top: 0.5vh;
-} */
 
 #tempPublishBtn {
     /* width: 15vw;
@@ -1327,6 +1198,167 @@ select.browser-default, input[type=text]:not(.browser-default) {
     background-color: var(--sec);
 }
 
+.modalTriggerHolder {
+    width: 30px;
+    height: 30px;
+    background-color: #edebeb;
+    border-radius: 50%;
+}
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+}
+.contentDiv .footer {
+    position: fixed !important;
+}
+.fixedBtmBtn {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url("//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif")
+        50% 50% no-repeat rgb(249, 249, 249);
+}
+
+
+/* Inferred */
+.testimonialsProName {
+    font-size: 1.3rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    margin: 0;
+}
+.testimonialsProTitle {
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin: 0;
+}
+.testimonialsProImgdiv {
+    padding: 0.75rem;
+    background-color: #77DEF4;
+    border-radius: 1rem;
+    margin-bottom: 1.75rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.testimonialsProImgdiv:hover {
+    background-color: #546f75;
+    cursor: pointer;
+    color: white;
+}
+.testimonialsWriteupTitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 23px;
+}
+.tesimonialsWriteupTxt {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #73729C;
+}
+.primaryColorBoxDesign5 {
+    width: 10.5vw;
+    height: 3.5vh;
+    background-color: #77DEF4;
+    position: absolute;
+    left: 49.5vw;
+    top: 2.7vh;
+    z-index: -1;
+}
+.contactMainDiv {
+    width: 90%;
+    margin: 0 auto;
+}
+.contactIconDiv {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #77DEF4;
+}
+.material-icons.contactIcon {
+    font-size: 2.5rem;
+    position: relative;
+    left: 0.5vw;
+    bottom: 1vh;
+}
+.contactMeTitle {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+}
+.contactMeTxt {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+}
+.formContainDiv {
+    background-color: #77DEF4;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    padding: 2vh 4vw;
+}
+.contactFormTitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 38px;
+    /* width: 476px; */
+    color: #000000;
+}
+.contactFormDiv {
+    width: 85%;
+    margin: 0 auto;
+}
+input.contactFormInput,
+textarea.contactFormInput {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    color: var(--black);
+}
+input.contactFormInput::placeholder,
+textarea.contactFormInput::placeholder {
+    padding: 0 0.5vw;
+    color: var(--black);
+}
+button.testiContactBtn.btn {
+    background-color: #1e1e1e !important;
+    color: #77DEF4;
+    text-transform: capitalize;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 2vh;
+}
+input[type=text]:not(.browser-default), textarea.contactFormInput {
+    border-bottom: 2px solid rgb(58, 56, 56);
+}
+.pt-5 {
+    padding-top: 5rem !important;
+}
+.sectionHeader {
+    text-align: center;
+}
+
+footer {
+    padding: 3vh 0 1vh;
+}
+
 @media screen and (max-width: 992px) and (min-width: 640px) {
     #testiMapImg {
         height: auto;
@@ -1397,13 +1429,12 @@ select.browser-default, input[type=text]:not(.browser-default) {
         color: var(--white) !important;
         /* text-align: center; */
     }
-    .experiences {
+    /* .experiences {
         background: var(--pri);
         border-radius: 10px;
         padding: 0.5vh 0vw;
-        /* width: 18vw; */
         margin-right: 0.1vw !important;
-    }
+    } */
     .contactContainDiv {
         width: 100%;
         margin: auto;
@@ -1489,13 +1520,13 @@ select.browser-default, input[type=text]:not(.browser-default) {
         width: 100%;
         border-radius: 0;
     }
-    .experiences {
+    /* .experiences {
         background: var(--pri);
         border-radius: 0px;
         padding: 0;
         margin-right: -0.75rem !important;
         display: flex;
-    }
+    } */
     .expLeftBarInnerDiv:nth-child(3),
     .expLeftBarInnerDiv:nth-child(2) {
         border-bottom: none;
@@ -1507,7 +1538,7 @@ select.browser-default, input[type=text]:not(.browser-default) {
     .expLeftBarInnerDiv .experience {
         padding: 1vh 0;
     }
-    p.experienceTitle {
+    /* p.experienceTitle {
         font-size: 1.5rem;
         font-weight: 300;
         margin: 0;
@@ -1515,7 +1546,7 @@ select.browser-default, input[type=text]:not(.browser-default) {
     p.experienceTxt {
         margin-bottom: 0;
         font-size: 0.8rem;
-    }
+    } */
 
     /* Added some stylings on Feeds */
     /* #feeds {
@@ -1846,663 +1877,39 @@ select.browser-default, input[type=text]:not(.browser-default) {
         top: 3vh;
         margin-bottom: 5vh;
     }
-    button.roundBtn {
-        height: 7.5vh;
-        width: 16vw;
-        /* border-radius: 50%; */
-        border: unset;
-        background-color: var(--white);
-        box-shadow: 0 4px 14px 0 rgba(24, 20, 67, 0.08);
+    .btn-floating i {
+        color: var(--sec);
     }
     .customCard {
         width: 99%;
     }
-
-    button.roundBtn:hover, button.roundBtn:active, button.roundBtn:visited {
-        background-color: var(--ter);
-        color: var(--white);
-        height: 7.6vh;
-        width: 16.1vw;
-    }
     .physiContainerDiv#services {
         background-position: right;
     }
-
-
-
-
-    /* nav ul a {
-        padding: 0;
+    a.btn-floating.btn-large {
+        height: 8.5vh;
+        width: 18vw;
     }
-    nav.navMain {
-        display: none;
+    .btn-floating.btn-large i {
+        line-height: 9.3vh;
     }
-
-    nav.headerNoSideNav .sideNavBrandLogo {
-        margin-left: 0;
+    .customCard {
+        padding: 6vh 4vw 3vh;
+        margin-right: 1vw;
     }
-
-    ul.extHeaderNoSideNav li {
-        margin: 0 2.1vw;
-    }
-    ul.extHeaderNoSideNav li a{
-        color: var(--black);
-        font-size: 0.9rem;
-    }
-    .row.about {
-        display: flex;
-        flex-direction: column;
-    }
-    .profileDesc {
-        order: 2;
-    }
-    .profileImgContainer {
-        order: 1;
-    } */
-
-
-
-
-
-
-    /* #templateAbout { } 
-    .row .col.profileImgContainer {
-        display: block;
-        padding: 0;
-        top: 0;
-    }
-    .servicesRw {
-        display: flex !important;
-        flex-direction: row;
-        overflow: scroll;
-        width: 100%;
-        overflow-y: hidden;
-    }
-    .servicesIconsDiv {
-        width: 35px;
-        height: 35px;
-    }
-    .servicesIcons1 {
-        font-size: 1rem;
-    }
-    .row .servicesRw .col.s12 {
-        width: 100%;
-        min-width: 100%;
-    }
-    .servicesRw::-webkit-scrollbar {
-        height: 0.5vh;
-    }
-    #testiMapImg {
-        height: auto;
-    }
-    .contactMainDiv .col.s12.m7.l7 {
-        width: 100%;
-        margin-left: auto;
-    }
-    .experienceImgContainDiv .col.s12.m12.l2,
-    .surgeonBannerImgDiv {
-        width: 100%;
-    }
-    img.bannerImg {
-        height: auto !important;
-        width: 100%;
-        border-radius: 0;
-    }
-    .hide-on-large-only.white {
-        margin-bottom: 55vh;
-    }
-    .physiRightImg {
-        position: unset !important;
-        transform: rotate(0deg);
-        box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.25);
-    }
-    .profileImg {
-        position: relative;
-        width: 100%;
-        height: auto;
-        transform: rotate(0deg);
-        background: none;
-        box-shadow: 0px 0px 0px rgba(255, 255, 255, 0);
-        border-radius: 0px;
-    }
-    img.physiRightImg{
-        border-radius: 0;
-    }
-    .contactContainDiv {
-        width: 90%;
-        margin: auto;
-    }
-    #testiLname,
-    #testiFname,
-    #testiEmail,
-    #testiPhone {
-        padding: 0;
-        width: 100%;
-    }
-    .physiContainerDiv#services {
-        padding-top: 7vh;
-    }
-    .physiTempName {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 500;
-        font-size: 1.6rem;
-        line-height: 35px;
-        letter-spacing: 0.1px;
-        color: var(--pri);
-        margin-top: 3vh;
-        margin-bottom: 3vh;
-        display: flex;
-        justify-content: space-between;
-    }
-    .physiTempNameEdit {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-    }
-    .feedsMainTxt {
-        font-family: "Montserrat", sans-serif;
-        font-weight: lighter;
-        font-size: 1.7rem !important;
-        line-height: 44px;
-        color: var(--pri);
-        text-align: center;
-        margin: 0 0 1vh 0;
-    }
-    .expMainTxt,
-    .feedsHeading,
-    .servicesWhatIdo {
-        font-family: "Montserrat", sans-serif;
-        font-weight: lighter;
-        font-size: 1.3rem;
-        line-height: 44px;
-        color: var(--pri);
-        text-align: center;
-        margin: 0 0 5vh 0;
+    .customCard img {
+        width: 26vw;
     }
 
-    .expLeftBarInnerDiv:nth-child(3), .expLeftBarInnerDiv:nth-child(2) {
-        border-bottom: none;
-        border-right: 1px solid rgba(217, 217, 217, 0.65);
-    }
-    .expLeftBarInnerDiv:first-child {
-        border-right: 1px solid rgba(217, 217, 217, 0.65);
-    }
-    .experiences {
-        background: var(--pri);
-        border-radius: 0px;
-        padding: 0;
-        margin-right: -0.75rem !important;
-    }
-    .expLeftBarInnerDiv .experience {
-        padding: 1vh 0;
-    }
-    p.experienceTitle {
-        font-size: 1.2rem;
-        font-weight: 300;
-        margin: 0;
-    }
-
-    p.experienceTxt {
-        margin-bottom: 0;
-        font-size: 0.6rem;
-    }
-    #feeds {
-        background-color: unset;
-    }
-    .feeds {
-        background-color: var(--pri);
-    }
-    .feedsFacebookIcon {
-        color: var(--white);
-    }
-    .facebookFeedsIcon {
-        margin: 1vh 0 1.5vh 0;
-    }
-    .physiExpContainerDiv,
-    .feedsContainDiv {
-        width: 99%;
-        margin: auto;
-    }
-    #physiPortPageLogo {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 1.25rem;
-        color: #000000;
-        margin-top: 3vh;
-        margin-left: 13vw;
-    }
-    a.physiTempNavLinks {
-        font-family: "Montserrat", sans-serif;
-        color: var(--white) !important;
-        position: relative;
-        bottom: 2vh;
-    }
-    a.physiTempNavLinks:hover {
-        background-color: white;
-        border-bottom: 4px solid rgba(113, 96, 187, 0.5);
-        padding: 0 0 0 7.5vw;
-        border-left: none;
-        margin: 0 0.96vw;
-    }
-    a.physiTempNavLinks.active {
-        padding: 0 0 0 7.5vw;
-        border-left: none;
-        margin: 0 !important;
-        font-weight: 600;
-        font-size: 1.1rem;
-    }
-    a.physiTempContactBtn {
-        width: 50%;
-        background-color: var(--white);
-        padding: 0vh 0vw;
-        margin-top: 0px;
-        margin-left: 7vw;
-        font-family: "Montserrat", sans-serif;
-        color: var(--pri) !important;
-        position: relative;
-        bottom: 0vh;
-        right: 0vw;
-    }
-    a.physiTempContactBtn:hover {
-        background-color: var(--white) !important;
-        color: var(--pri) !important;
-    }
-    a.physiTempContactBtn.active {
-        background-color: var(--white) !important;
-        color: var(--pri) !important;
-    }
-    .physiSidenavTempName {
-        font-size: 1.5rem !important;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        color: var(--white) !important;
-    }
-    .testiMapDiv:first-child {
-        background: #6750A4;
-        box-shadow: inset 0px 4px 1000px rgba(0, 0, 0, 0.25);
-        padding: 1vh 2vw;
-        margin-bottom: 9vh;
-    }
-    #testiSecondImgRowOneDiv {
-        position: relative;
-        bottom: 0vh;
-    }
-    #testiSecondImgRowTwoDiv {
-        position: relative;
-        bottom: 0vh;
-    }
-    #testiSecondImgRowThreeDiv {
-        position: relative;
-        top: 0vh;
-    }
-    .testimonialRw {
-        display: flex !important;
-        flex-direction: row;
-        overflow: scroll;
-        width: 100%;
-        overflow-y: hidden;
-    }
-    .row .testimonialRw .col.s12 {
-        width: 100%;
-        min-width: 100%;
-    }
-    .testimonialRw::-webkit-scrollbar {
-        height: 0.5vh;
+    /* Socials */
+    .customCarousel .w-50 {
+        width: 99% !important;
     }
 
 
-    ul.extHeaderNoSideNav {
-        display: flex;
-        background-color: #F6F3F3;
-        height: 40px;
-        line-height: 40px;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding: 0 2vw;
-        justify-content: space-around;
+    /* Contacts */
+    .contactFormTitle {
+        font-size: 2.2vh;
     }
-    nav.headerNoSideNav {
-        display: block;
-        height: auto;
-    }
-    a.active {
-        border-bottom: 4px solid var(--pri);
-        padding: 0px 15px;
-    }
-    a.mobileNavLink {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-    }
-    i.material-icons.sidenavTriggerIcon {
-        color: var(--pri);
-        line-height: 56px;
-        font-size: 2.5rem;
-    }
-    ul li>a.sidenavLink {
-        font-size: 1.2rem;
-        font-family: 'Poppins', sans-serif;
-        color: var(--white);
-        letter-spacing: 0.7px;
-    }
-    .section.physiContainerDiv#about {
-        padding-top: 5vh;
-        width: 100%;
-        margin: 0;
-    }
-    a.modal-trigger.aboutImgEditBtn {
-        width: 30px;
-        height: 30px;
-        background-color: #edebeb;
-        border-radius: 50px;
-        position: absolute;
-        top: 5%;
-        right: 2vw;
-    }
-    div.aboutImgModalDiv {
-        width: 55%;
-        height: 25vh;
-        margin: 2.5vh auto 0 auto;
-    }
-    img.aboutImgModal {
-        width: 100%;
-        height: 100%;
-        box-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
-    }
-    a.editImgChangeBtn {
-        background-color: #524988;
-        color: var(--white);
-        font-family: 'Poppins', sans-serif;
-        font-size: 0.9rem;
-        padding: 0.3vh 2vw;
-    }
-    div.editImgChangeBtnDiv {
-        display: flex;
-        justify-content: center;
-        margin-top: 1.8vh;
-    }
-    p.aboutImgSize {
-        text-align: center;
-        font-size: 0.8rem;
-        font-family: 'Poppins', sans-serif;
-        margin-top: 1.8vh;
-    }
-    a.modal-close.editImgModalCloseBtn {
-        margin-left: 5vw;
-        color: var(--black);
-        text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
-        font-size: 2rem;
-    }
-    div.aboutImgEditModalInnerDiv {
-        padding: 1vh 0 5vh 0;
-    }
-
-    a.modal-close.editWriteUpsModalCloseBtn {
-        margin-left: -3vw;
-        color: var(--black);
-        text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.3);
-        font-size: 2rem;
-    }
-    div.aboutWriteUpsEditModalInnerDiv {
-        width: 80%;
-        margin: auto;
-        padding: 1vh 0 5vh 0;
-    }
-    input.validate.aboutWriteUpsInput {
-        text-align: start;
-        height: 2vh;
-        border-bottom-color: var(--pri);
-    }
-    textarea.materialize-textarea.aboutWriteUpsInput {
-        text-align: start;
-        border: 1px solid var(--pri);
-        padding: 0.5vh 1.5vw;
-    }
-    p.aboutWriteUpsSize {
-        font-size: 0.7rem;
-        font-family: 'Poppins', sans-serif;
-        margin-top: 0;
-    }
-    a.editWriteUpsSaveBtn {
-        background-color: #524988;
-        color: var(--white);
-        font-family: 'Poppins', sans-serif;
-        font-size: 0.9rem;
-        padding: 0.3vh 2vw;
-    }
-    div.editWriteUpsSaveBtnDiv {
-        margin-top: 0vh;
-    }
-    .whatIdoTxtRowDiv {
-        position: relative;
-    }
-    a.modal-trigger.servicesEditBtn {
-        width: 30px;
-        height: 30px;
-        background-color: #edebeb;
-        border-radius: 50px;
-        position: absolute;
-        top: 0.1vh;
-        right: -4vw;
-    }
-    textarea.materialize-textarea.servicesTextarea {
-        text-align: start;
-        border: 1px solid var(--pri);
-        padding: 0.5vh 1.5vw;
-        min-height: 17vh;
-    }
-    a.servicesAddMoreBtn {
-        color: var(--black);
-        text-decoration: underline;
-        font-size: 0.9rem;
-        font-weight: 600;
-        display: flex;
-        justify-content: end;
-        position: relative;
-        bottom: 2vh;
-    }
-    #testiContactFormTitleDiv {
-        position: relative;
-    }
-    a.modal-trigger.contactEditBtn {
-        width: 30px;
-        height: 30px;
-        background-color: #edebeb;
-        border-radius: 50px;
-        position: absolute;
-        top: 7vh;
-        right: -4vw;
-    }
-    p.servicesInputInstruct {
-        font-size: 0.7rem;
-        font-family: 'Poppins', sans-serif;
-        margin-top: 0;
-        text-align: right;
-    }
-    .contactHeaderTxt {
-        font-family: "Montserrat", sans-serif;
-        font-weight: lighter;
-        font-size: 1.3rem !important;
-        line-height: 44px;
-        color: var(--pri);
-        text-align: center;
-        margin: 0 0 1vh 0;
-    }
-
-    a.sidenav-close.sidenavCloseBtn {
-        margin: 2vh 0 4vh 0;
-    }
-    i.material-icons.sidenavCloseIcon {
-        font-size: 3rem;
-    }
-    div.bannerImgDiv {
-        width: 90%;
-        height: 35vh;
-        border: 15px solid #d9d9d9;
-        margin: auto;
-    }
-    .priColor {
-        padding-right: .1rem;
-    }
-    .date-range {
-        font-size: .8rem;
-    }
-    .header {
-        font-size: 1.25rem;
-    }*/
-}
-.modalTriggerHolder {
-    width: 30px;
-    height: 30px;
-    background-color: #edebeb;
-    border-radius: 50%;
-}
-.footer {
-    position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: transparent;
-    color: white;
-    text-align: center;
-}
-.contentDiv .footer {
-    position: fixed !important;
-}
-.fixedBtmBtn {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.loader {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url("//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif")
-        50% 50% no-repeat rgb(249, 249, 249);
-}
-
-
-/* Inferred */
-.testimonialsProName {
-    font-size: 1.3rem;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    margin: 0;
-}
-.testimonialsProTitle {
-    font-size: 1rem;
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    margin: 0;
-}
-.testimonialsProImgdiv {
-    padding: 0.75rem;
-    background-color: #77DEF4;
-    border-radius: 1rem;
-    margin-bottom: 1.75rem;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.testimonialsProImgdiv:hover {
-    background-color: #546f75;
-    cursor: pointer;
-    color: white;
-}
-.testimonialsWriteupTitle {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 23px;
-}
-.tesimonialsWriteupTxt {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 24px;
-    letter-spacing: 0.1px;
-    color: #73729C;
-}
-.primaryColorBoxDesign5 {
-    width: 10.5vw;
-    height: 3.5vh;
-    background-color: #77DEF4;
-    position: absolute;
-    left: 49.5vw;
-    top: 2.7vh;
-    z-index: -1;
-}
-.contactMainDiv {
-    width: 90%;
-    margin: 0 auto;
-}
-.contactIconDiv {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #77DEF4;
-}
-.material-icons.contactIcon {
-    font-size: 2.5rem;
-    position: relative;
-    left: 0.5vw;
-    bottom: 1vh;
-}
-.contactMeTitle {
-    margin: 0;
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-family: "Montserrat", sans-serif;
-}
-.contactMeTxt {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: "Poppins", sans-serif;
-}
-.formContainDiv {
-    background-color: #77DEF4;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
-    padding: 2vh 4vw;
-}
-.contactFormTitle {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 2rem;
-    line-height: 38px;
-    width: 476px;
-    color: #000000;
-}
-.contactFormDiv {
-    width: 85%;
-    margin: 0 auto;
-}
-input.contactFormInput,
-textarea.contactFormInput {
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-    color: var(--black);
-}
-input.contactFormInput::placeholder,
-textarea.contactFormInput::placeholder {
-    padding: 0 0.5vw;
-    color: var(--black);
-}
-button.testiContactBtn.btn {
-    background-color: #1e1e1e !important;
-    color: #77DEF4;
-    text-transform: capitalize;
-    font-family: "Montserrat", sans-serif;
-    margin-top: 2vh;
-}
-input[type=text]:not(.browser-default), textarea.contactFormInput {
-    border-bottom: 2px solid rgb(58, 56, 56);
-}
-.pt-5 {
-    padding-top: 5rem !important;
-}
-.sectionHeader {
-    text-align: center;
+    
 }
