@@ -24,11 +24,11 @@
                 :contact="contact"
             />
 
-            <ServicesComponent
+            <!-- <ServicesComponent
                 :services="services"
                 :isLoggedIn="loggedIn"
                 :preview="preview"
-            />
+            /> -->
             <div
                 id="experienceContainer"
                 v-if="
@@ -43,14 +43,14 @@
                     :isLoggedIn="loggedIn"
                 />
             </div>
-            <SocialMediaComponent
+            <!-- <SocialMediaComponent
                 :social="social"
                 v-if="
                     (social !== null && social !== '' && preview === '0') ||
                     preview === '1'
                 "
                 :isLoggedIn="loggedIn"
-            />
+            /> -->
             <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>
             <div id="contactContainer">
                 <ContactComponent
