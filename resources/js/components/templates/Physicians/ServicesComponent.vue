@@ -1,5 +1,5 @@
 <template>
-    <div id="templateService" class="row">
+    <div id="templateService" class="row noMarginBottom">
         <div class="section scrollspy physiContainerDiv" id="services" v-if="(services == null || services.length === 0 && preview === '1') || (services !== null && services.length !== 0 && preview === '0')">
             <div class="container">
                 <div v-if="services == null || services.length === 0 && preview === '1'">
@@ -9,8 +9,11 @@
                             <h2 class="sectionHeading">Experienced in <br/>multiple interests</h2>
                         </div>
                         <div class="col l4 s12 cardNavContainer">
-                            <button class="roundBtn marginRight-5" @click="prev"><i class="material-icons">chevron_left</i></button>
-                            <button class="roundBtn" @click="next"><i class="material-icons">chevron_right</i></button>
+                            <a class="btn-floating btn-large waves-effect waves-light marginRight-5"  @click="prev"><i class="material-icons">chevron_left</i></a>
+                            <a class="btn-floating btn-large waves-effect waves-light" @click="next"><i class="material-icons">chevron_right</i></a>
+
+                            <!--button class="roundBtn marginRight-5"><i class="material-icons"></i></button>
+                            <button class="roundBtn" @click="next"><i class="material-icons"></i></button-->
                         </div>
                     </div>
                     <div class="row">
@@ -336,25 +339,28 @@
                 }                
             },
             prev () {
-                if (this.transitioning) return
-                this.transitioning = true
-                this.moveRight()
-                this.afterTransition(() => {
-                    const card = this.cards.pop()
-                    this.cards.unshift(card)
-                    this.resetTranslate()
-                    this.transitioning = false
-                })
+                if (this.transitioning){
+                    return;
+                } else {
+                    this.transitioning = true
+                    this.moveRight()
+                    this.afterTransition(() => {
+                        const card = this.cards.pop()
+                        this.cards.unshift(card)
+                        this.resetTranslate()
+                        this.transitioning = false
+                    })
+                }                
             },
             moveLeft () {
                 this.innerStyles = {
-                    transform: `translateX(-${this.step}) translateX(-${this.step})`
+                    transform: `translateX(-${this.step})`
                 }
             },
             moveRight () {
                 // console.log(`translateX(-${this.step}) translateX(-${this.step})`)
                 this.innerStyles = {
-                    transform: `translateX(${this.step}) translateX(-${this.step})`
+                    transform: `translateX(${this.step})`
                 }
             },
             afterTransition (callback) {

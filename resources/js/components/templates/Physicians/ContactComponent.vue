@@ -1,15 +1,14 @@
 <template>
     <div class="section scrollspy contactContainDiv" id="contact">
-        <div class="row" id="templateContact">
+        <div class="container" id="templateContact">
+            <div class="row">
+                <div class="col l12">
+                    <span class="sectionSubHeading">CONTACTS</span>
+                    <h2 class="sectionHeading">Easily <br/>contact me.</h2>
+                </div>
+            </div>
             <div class="col s12" id="testiContactFormTitleDiv">
-                <!-- <p class="feedsMainTitle expMainTitle">Contact Me</p>
-                <p class="contactHeaderTxt">SCHEDULE AN APPOINTMENT</p> -->
-                <h2 class="sectionHeader">
-                    Contact me
-                    <span class="primaryColorBoxDesign5"></span>
-                </h2>
-
-                <div v-if="isLoggedIn" class="" >
+                 <div v-if="isLoggedIn" class="" >
                     <!-- Contact Modal Trigger -->
                     <a class="modal-trigger contactEditBtn" href="#contactEditModal">
                         <i class="material-icons editIcon">edit</i>
@@ -66,7 +65,7 @@
                         </div>
                         <div class="col s10">
                             <p class="contactMeTitle">Chat with me</p>
-                            <p class="contactMeTxt">drakerele@gmail.com</p>
+                            <p class="contactMeTxt">me@droliviafelix.com</p>
                         </div>
                     </div>
                     <div class="row">
@@ -77,7 +76,7 @@
                         </div>
                         <div class="col s10">
                             <p class="contactMeTitle">Visit me</p>
-                            <p class="contactMeTxt">Lekki phase 1, Lagos Nigeria</p>
+                            <p class="contactMeTxt">No 112 street address, State/Country</p>
                         </div>
                     </div>
                     <div class="row">
@@ -88,7 +87,7 @@
                         </div>
                         <div class="col s10">
                             <p class="contactMeTitle">Call me</p>
-                            <p class="contactMeTxt">08000000333</p>
+                            <p class="contactMeTxt">+1 234 567 8910</p>
                         </div>
                     </div>
                 </div>

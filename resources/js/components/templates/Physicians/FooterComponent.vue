@@ -1,6 +1,6 @@
 <template>
     <footer class="footer grey-text text-darken-3">
-        Powered by <span class="domain">whitecoatdomain</span>
+        &copy; {{  new Date().getFullYear() }}, Dr. Olivia Felix
     </footer>
 </template>
 <script>

@@ -2,26 +2,24 @@
     <ReviewsComponent :reviews="reviews" @goBack="goBack" :tenant="tenant"/>
     <!-- Load More Modal Structure -->
     <div class="section scrollspy testiContainDiv" id="testimonials" >
-        <div class="background">
+        <div class="">
             <div class="container">
                 <div class="row">
                     <div class="col s12 mb-6">
-                        <div class="col l8">
                             <span class="sectionSubHeading">TESTIMONIALS</span>
-                            <h2 class="sectionHeading">What my client <br/>says about me</h2>
-                        </div>
+                            <h2 class="sectionHeading">What my clients <br/>say about me</h2>
                     </div>
                     <div class="testimonialsContainer">
                         <div class="row" v-if="preview == '1'">
                             <div class="row">
-                                <div class="col s12 m5 l5">
+                                <div class="col s12 m5 l5 testifiers">
                                     <div class="clients">
                                         <div @click="showReview(i, index)" class="testimonialsProImgdiv" :class="{ selected: selectedIndex === index }" v-for="(i, index) in revPreviews" :key="index">
                                             <div class="d-flex align-center justify-between">
                                                 <div class="">
                                                     <img :src="'/media/img/'+i.image" :alt="i.name" class="testiProImg">
                                                 </div>
-                                                <div class="titleName">
+                                                <div class="titleName right-align">
                                                     <div class="testimonialsProDiv">
                                                         <p class="testimonialsProName">{{i.name}}</p>
                                                         <p class="testimonialsProTitle">{{i.title}}</p>
@@ -32,7 +30,7 @@
                                     </div>
                                 </div>
                             
-                                <div class="col s12 m7 l7">
+                                <div class="col s12 m7 l7 testament">
                                     <p class="testimonialsWriteupTitle">It was a great experience</p>
                                     <div class="testimonialsWriteupReviewDiv">
                                         <i class="material-icons reviewIcon">star</i>
@@ -119,35 +117,35 @@
                 revPreviews: [
                     {
                         id: 1,
-                        name: 'Akerele Adebayo',
+                        name: 'John Doe',
                         title: 'Software Engineer',
                         image: 'user.png',
                         review: `Desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover`
                     },
                     {
                         id: 2,
-                        name: 'Akerele Adebayo',
+                        name: 'John Doe',
                         title: 'Software Engineer',
                         image: 'user.png',
                         review: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.`
                     },
                     {
                         id: 3,
-                        name: 'Akerele Adebayo',
+                        name: 'John Doe',
                         title: 'Software Engineer',
                         image: 'user.png',
                         review: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters. Desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover`
                     },
                     {
                         id: 4,
-                        name: 'Akerele Adebayo',
+                        name: 'John Doe',
                         title: 'Software Engineer',
                         image: 'user.png',
                         review: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover`
                     },
                     {
                         id: 5,
-                        name: 'Akerele Adebayo',
+                        name: 'John Doe',
                         title: 'Software Engineer',
                         image: 'user.png',
                         review: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover`
@@ -255,5 +253,10 @@ a:hover {
 .clients {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+@media screen and (max-width: 640px) {  
+    .titleName {
+        width: 50vw;
+    }
 }
 </style>
