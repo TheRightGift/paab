@@ -24,11 +24,11 @@
                 :contact="contact"
             />
 
-            <ServicesComponent
+            <!-- <ServicesComponent
                 :services="services"
                 :isLoggedIn="loggedIn"
                 :preview="preview"
-            />
+            /> -->
             <div
                 id="experienceContainer"
                 v-if="
@@ -59,9 +59,9 @@
                     :contactMail="contact"
                 />
             </div>
-             <!--FooterComponent />
+            <FooterComponent />
      
-            <div class="fixedBtmBtn" v-if="can === '1'">
+            <!--<div class="fixedBtmBtn" v-if="can === '1'">
                 <a
                     target="_self"
                     :href="

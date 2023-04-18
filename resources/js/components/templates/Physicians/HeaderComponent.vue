@@ -209,13 +209,13 @@
                         </div>
                     </div>
                     <div class="col l4">
-                        <div class="generalSettings settingOptions hoverable">
+                        <div class="generalSettings settingOptions hoverable" @click="showSettingOption(2, 'Mini Blog')">
                             <h6>Mini Blog</h6>
                             <img :src="'/media/img/templates/1/miniBlog.png'" alt="" class=""/>
                         </div>
                     </div>
                     <div class="col l4">
-                        <div class="generalSettings settingOptions hoverable">
+                        <div class="generalSettings settingOptions hoverable" @click="showSettingOption(3, 'Interests')">
                             <h6>Interests</h6>
                             <img :src="'/media/img/templates/1/interests.png'" alt="" class=""/>
                         </div>
@@ -223,13 +223,13 @@
                 </div>
                 <div class="row">
                     <div class="col l4">
-                        <div class="generalSettings settingOptions hoverable">
+                        <div class="generalSettings settingOptions hoverable" @click="showSettingOption(4, 'Feeds')">
                             <h6>Feeds</h6>
                             <img :src="'/media/img/templates/1/feeds.png'" alt="" class=""/>
                         </div>
                     </div>
                     <div class="col l4">
-                        <div class="generalSettings settingOptions hoverable">
+                        <div class="generalSettings settingOptions hoverable" @click="showSettingOption(5, 'Public Features')">
                             <h6>Features</h6>
                             <img :src="'/media/img/templates/1/publicFeatures.png'" alt="" class=""/>
                         </div>
@@ -243,9 +243,9 @@
                 </div>
             </div>
 
-            <div v-if="modalView == 1">
+            <div v-show="modalView == 1">
                 <div class="row noMarginBottom">
-                    <div class="col l6 optionSettingBackground">
+                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
                         <p>
                             <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
                         </p>
@@ -514,6 +514,384 @@
                     </div>
                 </div>
             </div>
+            <div v-show="modalView == 2">
+                <div class="row noMarginBottom" id="miniBlog">
+                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
+                        <p>
+                            <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
+                        </p>
+                        <h5>
+                            {{modalTitle}}
+                        </h5>
+                    </div>
+                    <div class="col l6 optionSettingContainer">
+                        <div class="row hPadding-1">
+                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Blog</h4>
+                            <div class="formInnerDiv">
+                                <div class="input-field col l12">
+                                    <input
+                                        type="text"
+                                        class="validate formInput"
+                                        required
+                                        placeholder="Title"
+                                    />
+                                    <label>Title</label>
+                                </div>
+                                <div class="input-field col l12 m12 s12">
+                                    <textarea id="miniBlogDecription" placeholder="Content" class="materialize-textarea" data-length="300"></textarea>
+                                    <label for="description">Content</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--TODO: Image cropper doesnt work-->
+                        <div class="row hPadding-1">
+                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Image</h4>
+                            <div v-show="showCropper" class="cFlex flexRight">
+                                <a class="right" href="#" @click="showCropper = false">
+                                    <i class="material-icons priText">clear</i>
+                                </a>
+                            </div>
+
+                            <div class="settingImgContainer" v-if="!showCropper">
+                                <img
+                                    class="settingImg"
+                                    src="/media/img/templates/1/placeholder.png"
+                                />
+                            </div>
+                            <form enctype="multipart/form-data">
+                                <div class="settingImgBtnMainDiv">
+                                    <div class="settingImgBtnContainDiv justify-center">
+                                        <div class="" id="genUploadFavIconDiv">
+                                            <div class="" v-if="!uploadPhotoProcessing">
+                                                <div class="col l12 center-align marginTop-5">
+                                                    <!-- <span>Upload</span> -->
+                                                    <button
+                                                        href="#"
+                                                        role="button"
+                                                        @click.prevent="
+                                                            showFileChooser
+                                                        "
+                                                        v-if="!showCropper"
+                                                        class="btn btn-flat"
+                                                    >
+                                                        <!--span
+                                                            v-if="
+                                                                bioData.photo !==
+                                                                    null ||
+                                                                uploaded !== null
+                                                            "
+                                                            >
+                                                                <i class="material-icons white-text">edit</i>
+                                                            </span-->
+                                                            <i class="material-icons">file_upload</i>
+                                                    </button>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col s12">
+                                                        <image-cropper
+                                                            v-if="showCropper"
+                                                            :height="50"
+                                                            :width="50"
+                                                            :img="'/media/img/templates/1/favPlaceholder.png'"
+                                                            @uploadPhoto="
+                                                                photoUpload(
+                                                                    $event
+                                                                )
+                                                            "
+                                                        />
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <p v-else>
+                                                Uploading Image<i
+                                                    class="fas fa-circle-notch"
+                                                ></i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!--div
+                                        class="proImgInstructDiv"
+                                        v-show="!showCropper"
+                                    >
+                                        <p class="proImgInstruct">
+                                            The image should be greater than
+                                            451px width and 512px height
+                                        </p>
+                                    </div-->
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row hPadding-1 center-align">
+                            <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Add New</button>
+                            <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-show="modalView == 3">
+                <div class="row noMarginBottom" id="interests">
+                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
+                        <p>
+                            <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
+                        </p>
+                        <h5>
+                            {{modalTitle}}
+                        </h5>
+                    </div>
+                    <div class="col l6 optionSettingContainer">
+                        <div class="row hPadding-1">
+                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Interests</h4>
+                            <p class="subHeading">You can only select a max. of 3</p>
+                            <div class="formInnerDiv">
+                                <div class="row">
+                                    <h6 class="settingOptionSectionTitle col l12 noMarginBottom">Medical</h6>
+                                </div>
+                                <p v-for="(interest, index) in interests" :key="interest">
+                                    <label>
+                                        <input type="checkbox" v-model="myinterests" :disabled="myinterests.length >= 3 && myinterests.indexOf(index) == -1"/>
+                                        <span>{{interest}}</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <h6 class="settingOptionSectionTitle col l12 noMarginBottom">Non-Medical</h6>
+
+                            <div class="row hPadding-1 center-align">
+                                <p class="underConstruct">Under Construction</p>
+                                <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Exit</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div v-show="modalView == 4">
+                <div class="row noMarginBottom" id="feeds">
+                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
+                        <p>
+                            <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
+                        </p>
+                        <h5>
+                            {{modalTitle}}
+                        </h5>
+                    </div>
+                    <div class="col l6 optionSettingContainer">
+                        <div id="facebook">
+                            <div class="row hPadding-1">
+                                <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Facebook</h4>
+                                <div class="formInnerDiv">
+                                    <div class="input-field col l12">
+                                        <input
+                                            type="text"
+                                            class="validate formInput"
+                                            required
+                                            placeholder="Facebook ID"
+                                        />
+                                        <label>Facebook ID</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row hPadding-2">
+                                <ul class="collapsible">
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">smartphone</i>
+                                            <span class="contentTitle1">How to get my facebook id via mobile</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_facebook_pro_page_name.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">laptop_windows</i>
+                                            <span class="contentTitle1">How to get my facebook id via desktop</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_facebook_pro_page_name.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="twitter">
+                            <div class="row hPadding-1">
+                                <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Twitter</h4>
+                                <div class="formInnerDiv">
+                                    <div class="input-field col l12">
+                                        <input
+                                            type="text"
+                                            class="validate formInput"
+                                            required
+                                            placeholder="Twitter ID"
+                                        />
+                                        <label>Twitter ID</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row hPadding-2">
+                                <ul class="collapsible">
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">smartphone</i>
+                                            <span class="contentTitle1">How to get my Twitter id via mobile</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">laptop_windows</i>
+                                            <span class="contentTitle1">How to get my Twitter id via desktop</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_twitter_handle.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="instagram">
+                            <div class="row hPadding-1">
+                                <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Instagram</h4>
+                                <div class="formInnerDiv">
+                                    <div class="input-field col l12">
+                                        <input
+                                            type="text"
+                                            class="validate formInput"
+                                            placeholder="Instagram ID"
+                                        />
+                                        <label>Instagram ID</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row hPadding-2">
+                                <ul class="collapsible">
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">smartphone</i>
+                                            <span class="contentTitle1">How to get my Instagram id via mobile</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_instagram_handle.webm" type="video/webm">
+                                            </video>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">laptop_windows</i>
+                                            <span class="contentTitle1">How to get my Instagram id via desktop</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_instagram_handle.webm" type="video/webm">
+                                            </video>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="titktok">
+                            <div class="row hPadding-1">
+                                <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Tiktok</h4>
+                                <div class="formInnerDiv">
+                                    <div class="input-field col l12">
+                                        <input
+                                            type="text"
+                                            class="validate formInput"
+                                            placeholder="Tiktok ID"
+                                        />
+                                        <label>Tiktok ID</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row hPadding-2">
+                                <ul class="collapsible">
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">smartphone</i>
+                                            <span class="contentTitle1">How to get my Tiktok id via mobile</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_tiktok_handle.webm" type="video/webm">
+                                            </video>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-header">
+                                            <i class="material-icons">laptop_windows</i>
+                                            <span class="contentTitle1">How to get my Tiktok id via desktop</span>
+                                        </div>
+                                        <div class="collapsible-body">
+                                            <video class="socialMediaHandVidTag" controls>
+                                                <source src="/media/videos/get_tiktok_handle.webm" type="video/webm">
+                                            </video>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="row hPadding-1 center-align">
+                            <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-show="modalView == 5">
+                <div class="row noMarginBottom" id="publicFeatures">
+                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
+                        <p>
+                            <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
+                        </p>
+                        <h5>
+                            {{modalTitle}}
+                        </h5>
+                    </div>
+                    <div class="col l6 optionSettingContainer">
+                        <div>
+                            <div class="row hPadding-1">
+                                <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Your public profile</h4>
+                                <div class="formInnerDiv">
+                                    <div class="input-field col l12">
+                                        <input
+                                            type="text"
+                                            class="validate formInput"
+                                            required
+                                            placeholder="CNN Health"
+                                        />
+                                        <label>Program Title</label>
+                                    </div>
+                                    <div class="input-field col l12">
+                                        <input
+                                            type="text"
+                                            class="validate formInput"
+                                            required
+                                            placeholder="CNN, BBC"
+                                        />
+                                        <label>Program URL <span class="optionalColor">(Optional)</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row hPadding-1 center-align">
+                            <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Add New</button>
+                            <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -527,6 +905,17 @@ export default {
             modalTitle: "General",
             showCropper: false,
             uploadPhotoProcessing: false,
+            interests: [
+                'Ophthalmologists',
+                'Gynecologists',
+                'Dermatologists',
+                'Allergists',
+                'Endocrinologists',
+                'Gastroenterologists',
+                'Neurologists',
+                'Psychiatrists',
+            ],
+            myinterests: [],
         };
     },
     props: {
@@ -537,11 +926,19 @@ export default {
         feeds: String,
         services: Array
     },
-    mounted() {},
+    mounted() {
+    },
     methods: {
         showSettingOption(num, title){
             this.modalView = num;
-            this.modalTitle = title
+            this.modalTitle = title;
+            if (this.modalView === 4) {
+                var elems = document.querySelectorAll('.collapsible');
+                M.Collapsible.init(elems);
+                console.log(elems)
+            }
+            var textNeedCount = document.querySelectorAll('#input_text, #miniBlogDescription');
+            M.CharacterCounter.init(textNeedCount);
         },
         showFileChooser() {
             // this.$refs.photo.click();
