@@ -42,7 +42,7 @@
                             <div class="col l6 profileDesc">
                                 <div class="profileDescInner">
                                     <span class="sectionSubHeading">Hi, I'm</span>
-                                    <h1 class="sectionHeading">{{ bio.firstname }} {{ bio.lastname }} <span v-if="title !== ''">{{ title }}.</span></h1>
+                                    <h1 class="sectionHeading">{{ bio.firstname }} {{ bio.lastname }} <span v-if="title !== ''" class="title">{{ title }}.</span></h1>
                                     <p v-if="bio.about !== null">{{ bio.about }}</p>
                                     <p v-else>
                                         an expert in Aestheistiologist with an M.D. from Pittsburgh School of Medicine and an undergraduate degree in Sociology from the University of Michigan- Ann Arbor.

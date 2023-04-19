@@ -516,6 +516,13 @@ h2.sectionHeader
     background-color: #f1f1f6;
     padding-top: 7vh;
 }
+#miniBlogSettings .btn.saveSettingBtn:first-of-type {
+    margin-right: 1.5rem;
+}
+#miniBlogSettings .col.l6.optionSettingContainer .row.hPadding-1 .settingImgContainer {
+    border: none;
+    width: 40%;
+}
 .physiExpContainerDiv,
 .feedsContainDiv {
     width: 84.5%;
@@ -1530,11 +1537,14 @@ footer {
     }
 }
 .brand-logo {
-    width: 17vw;
-    max-width: 16vw;
+    width: 20vw;
+    max-width: 21vw;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+h1.sectionHeading .title {
+    font-size: 1.75rem;
 }
 @media screen and (max-width: 640px) {
     .brand-logo {

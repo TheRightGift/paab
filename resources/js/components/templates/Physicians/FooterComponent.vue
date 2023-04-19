@@ -1,6 +1,6 @@
 <template>
     <footer class="footer grey-text text-darken-3">
-        &copy; {{  new Date().getFullYear() }}, Dr. Olivia Felix
+        &copy; {{  new Date().getFullYear() }}, {{ user != '' ? user : 'Dr. Olivia Felix' }}
     </footer>
 </template>
 <script>
@@ -9,13 +9,13 @@
             return {
                 location: location.host
             }
+        },
+        props: {
+            user: String,
         }
     }
 </script>
 <style scoped>
-    .domain {
-        color: #77DEF4;
-    }
     .footer {
         font-family: 'Montserrat', sans-serif;
         font-weight: 500;
