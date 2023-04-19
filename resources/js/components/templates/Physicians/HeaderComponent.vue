@@ -1,74 +1,8 @@
 <template>
-    <!--Large device-->
-    <!--div class="custom-navbar-fixed">
-        <nav  v-bind:class="scrollPosition >= 5 ? 'altNav' : 'navbar'" class='hide-on-med-and-down'>
-            <div class="nav-wrapper navbarWrap">
-                <a href="/" class="brand-logo" id="physiPortPageLogo"
-                >{{user == '' ? 'Dr John Doe' : user}}</a
-                >
-                <ul
-                    id="nav-mobile"
-                    class="section table-of-contents right hide-on-med-and-down"
-                >
-                    <li>
-                        <a href="#about" class="physiTempNavLinks">About Me</a>
-                    </li>
-                    <li v-if="(services !== null && services.length !== 0 && preview === '0') || preview === '1'">
-                        <a href="#services" class="physiTempNavLinks">Services</a>
-                    </li>
-                    <li v-if="(achievement !== null && preview === '0') || preview === '1'">
-                        <a href="#experience" class="physiTempNavLinks"
-                        >Experience</a>
-                    </li>
-                    <li v-if="(feeds !== null && feeds !== '' && preview === '0') || preview === '1'"><a href="#feeds" class="physiTempNavLinks">Feeds</a></li>
-                    
-                    <li>
-                        <a href="#contact" class="physiTempContactBtn"
-                        >Contact Me</a
-                        >
-                    </li>
-                    <li v-if="isLoggedIn">
-                        <a class='sidenav-trigger physiTempSettingsNavLink' href='#!' data-target="slide-out">
-                            <i class="material-icons physiTempSettingsIcon">settings</i>
-                        </a>
-                    </li>
-                </ul>
-                <ul id="slide-out" class="sidenav">
-                    <li>
-                        <a href="/general" class="dropSetLink">General</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/biography" class="dropSetLink">Bio</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/milestones" class="dropSetLink">Milestones</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/public_feature" class="dropSetLink">Public Features</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/services_rendered" class="dropSetLink">Services</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/socialmedia_presence" class="dropSetLink">Social Media</a>
-                    </li>
-                    <li class="divider" tabindex="-1"></li>
-                    <li>
-                        <a href="/cv_generator" class="dropSetLink">CV Generator</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div-->
     <div class="">
         <nav>
             <div class="nav-wrapper">
-                <div class="container">
+                <div class="headerContainer">
                     <a href="#!" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : user}}</a>
                     <a href="#" data-target="mobileNav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="centerNav hide-on-med-and-down">
