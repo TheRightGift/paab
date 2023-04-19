@@ -131,7 +131,20 @@ class TenantController extends Controller
         $pageTitle = !empty($pageTitles) ? $pageTitles->title : null;
         $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'SuperAdmin' ? null : $tenant->user->title->name;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
-        $user = !empty($bioTB) ? $title.' '.$bioTB->firstname.' '.$bioTB->lastname : null;
+        $websiteTitleLen = 16;
+        
+        if(strlen($bioTB->firstname.' '.$bioTB->lastname) > $websiteTitleLen){
+            $abridgedName = mb_substr($bioTB->firstname, 0, 1).$bioTB->lastname.$title;
+            if(strlen($abridgedName) > $websiteTitleLen){
+                $user = !empty($bioTB) ? 'Dr. '.mb_substr($bioTB->firstname, 0, 1).$bioTB->lastname : null;
+            } else {
+                $user = !empty($bioTB) ? 'Dr. '.mb_substr($bioTB->firstname, 0, 1).$bioTB->lastname.$title : null;
+            }
+            
+        } else {
+            $user = !empty($bioTB) ? 'Dr. '.$bioTB->firstname.' '.$bioTB->lastname : null;
+        }
+        
         $socials = Social::latest()->first();
         $canDo = $this->checkTokenForEdit($request);
         if ($canDo !== null) {

@@ -2,139 +2,42 @@
     <div id="templateService" class="row noMarginBottom">
         <div class="section scrollspy physiContainerDiv" id="services" v-if="(services == null || services.length === 0 && preview === '1') || (services !== null && services.length !== 0 && preview === '0')">
             <div class="container">
-                <div v-if="services == null || services.length === 0 && preview === '1'">
-                    <div class="row">
-                        <div class="col l8 s12">
-                            <span class="sectionSubHeading">MY INTERESTS</span>
-                            <h2 class="sectionHeading">Experienced in <br/>multiple interests</h2>
-                        </div>
-                        <div class="col l4 s12 cardNavContainer">
-                            <a class="btn-floating btn-large waves-effect waves-light marginRight-5"  @click="prev"><i class="material-icons">chevron_left</i></a>
-                            <a class="btn-floating btn-large waves-effect waves-light" @click="next"><i class="material-icons">chevron_right</i></a>
-
-                            <!--button class="roundBtn marginRight-5"><i class="material-icons"></i></button>
-                            <button class="roundBtn" @click="next"><i class="material-icons"></i></button-->
-                        </div>
+                <div class="row">
+                    <div class="col l8 s12">
+                        <span class="sectionSubHeading">MY INTERESTS</span>
+                        <h2 class="sectionHeading">Experienced in <br/>multiple interests</h2>
                     </div>
-                    <div class="row">
-                        <div class="col l12 customCarousel">
-                            <div class="inner" ref="inner" :style="innerStyles">
-                                <div class="customCard" v-for="card in cards" :key="card">
-                                    <div>
-                                        <img :src="card.img" />
-                                        <h3>{{card.title}}</h3>
+                    <div class="col l4 s12 cardNavContainer">
+                        <a class="btn-floating btn-large waves-effect waves-light marginRight-5"  @click="prev"><i class="material-icons">chevron_left</i></a>
+                        <a class="btn-floating btn-large waves-effect waves-light" @click="next"><i class="material-icons">chevron_right</i></a>
 
-                                        <p>{{card.description}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!--button class="roundBtn marginRight-5"><i class="material-icons"></i></button>
+                        <button class="roundBtn" @click="next"><i class="material-icons"></i></button-->
                     </div>
-                    <!--div class="row whatIdoTxtRowDiv">
-                        <div class="col s12">
-                            <p class="servicesMainTitle">Services</p>
-                            <p class="servicesWhatIdo">WHAT I DO</p>
-                            <h3 class="title">
-                                WHAT I DO
-                                <span class="primaryColorBoxDesign1"></span>
-                            </h3>
-
-
-                        </div>
-                        <div class="servicesRw">
-                            <div class="col s12 m4 l4">
-                                <h5 class="servcesHeading forSurgeon">
-                                    <span class="whatIdoServiceTitleNum">01.</span>
-                                    Service
-                                </h5>
-                                <div class="servicesIconsDiv">
-                                    <i
-                                        class="
-                                            fa-solid fa-briefcase-medical
-                                            servicesIcons1
-                                        "
-                                    ></i>
-                                </div>
-
-                                <p class="servcesHeading forDoc">Service One</p>
-
-                                <p class="servicesTxt">
-                                    Contrary to popular belief, Lorem Ipsum is not
-                                    simply random text. It has roots in a piece of
-                                    classical Latin literature from 45 BC, making it
-                                    over 2000 years old. Richard McClintock, a Latin
-                                    professor at Hampden-Sydney College in Virginia
-                                </p>
-                            </div>
-
-                            <div class="col s12 m4 l4">
-                                <h5 class="servcesHeading forSurgeon">
-                                    <span class="whatIdoServiceTitleNum">02.</span>
-                                    Service
-                                </h5>
-                                <div class="servicesIconsDiv">
-                                    <i class="fa-solid fa-briefcase-medical servicesIcons1"></i>
-                                </div>
-
-                                <p class="servcesHeading forDoc">Service Two</p>
-
-                                <p class="servicesTxt">
-                                    Contrary to popular belief, Lorem Ipsum is not
-                                    simply random text. It has roots in a piece of
-                                    classical Latin literature from 45 BC, making it
-                                    over 2000 years old. Richard McClintock, a Latin
-                                    professor at Hampden-Sydney College in Virginia
-                                </p>
-                            </div>
-
-                            <div class="col s12 m4 l4">
-                                <h5 class="servcesHeading forSurgeon">
-                                    <span class="whatIdoServiceTitleNum">03.</span>
-                                    Service
-                                </h5>
-                                <div class="servicesIconsDiv">
-                                    <i
-                                        class="
-                                            fa-sharp fa-solid fa-briefcase-medical
-                                            servicesIcons2
-                                        "
-                                    ></i>
-                                </div>
-
-                                <p class="servcesHeading forDoc">Service Three</p>
-
-                                <p class="servicesTxt">
-                                    Contrary to popular belief, Lorem Ipsum is not
-                                    simply random text. It has roots in a piece of
-                                    classical Latin literature from 45 BC, making it
-                                    over 2000 years old. Richard McClintock, a Latin
-                                    professor at Hampden-Sydney College in Virginia
-                                </p>
-                            </div>
-                        </div>
-                    </div-->
                 </div>
-                <div v-else-if="services !== null && services.length !== 0 && preview === '0'">
-                    <div class="row">
-                        <div class="col l8 s12">
-                            <span class="sectionSubHeading">MY INTERESTS</span>
-                            <h2 class="sectionHeading">Experienced in <br/>multiple interests</h2>
-                        </div>
-                        <div class="col l4 s12 cardNavContainer">
-                            <button class="roundBtn marginRight-5" @click="prev"><i class="material-icons">chevron_left</i></button>
-                            <button class="roundBtn" @click="next"><i class="material-icons">chevron_right</i></button>
+                <div class="row" v-if="services == null || services.length === 0 && preview === '1'">
+                    <div class="col l12 customCarousel">
+                        <div class="inner" ref="inner" :style="innerStyles">
+                            <div class="customCard" v-for="card in cards" :key="card">
+                                <div>
+                                    <img :src="card.img" />
+                                    <h3>{{card.title}}</h3>
+
+                                    <p>{{card.description}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col l12 customCarousel">
-                            <div class="inner" ref="inner" :style="innerStyles">
-                                <div class="customCard" v-for="card in cards" :key="card">
-                                    <div>
-                                        <img :src="card.img" />
-                                        <h3>{{card.title}}</h3>
+                </div>
+                <div class="row" v-else-if="services !== null && services.length !== 0 && preview === '0'">
+                    <div class="col l12 customCarousel">
+                        <div class="inner" ref="inner" :style="innerStyles">
+                            <div class="customCard" v-for="card in cards" :key="card">
+                                <div>
+                                    <img :src="card.img" />
+                                    <h3>{{card.title}}</h3>
 
-                                        <p>{{card.description}}</p>
-                                    </div>
+                                    <p>{{card.description}}</p>
                                 </div>
                             </div>
                         </div>
