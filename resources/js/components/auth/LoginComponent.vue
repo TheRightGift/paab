@@ -1,8 +1,36 @@
 <template>
     <div class="row authContainDiv">
         <div v-if="!otpPrompt && !logginIn">
-            <div class="col s12 m12 l6 loginContainer hide-on-med-and-down">
-                <div class="wlcNoteDiv">
+            <div class="col l6 loginContainer white-text intro hide-on-med-and-down">
+                <div class="marginTop-15">
+                    <div class="row">
+                        <div class="col l4 noMarginLeft">
+                            <a href="/">
+                                <img
+                                    src="/media/img/wcdlogoWhite.png"
+                                    alt="WhiteCoatDomain Logo"
+                                    class="responsive-img"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l12">
+                            <h1 class="wlcNoteTitle">WELCOME BACK <br/>Doc.</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l12">
+                            <p class="wlcNoteTxt">
+                                The World is listening, it is time to tell your brand story with our professional, powerful and easy to use portfolio builder.    
+                            </p>
+                        </div>                    
+                    </div>
+                </div>
+                <p class="wlcNoteFooterTxt center-align">
+                        <small>© {{ getYear() }} whitecoatdomain.com.</small>
+                </p>
+                <!--div class="wlcNoteDiv">
                     <a href="/" class="wlcNoteLogo">
                         <img
                             src="/media/img/whiteCoatDomain1.png"
@@ -20,20 +48,16 @@
                         © White Coat Domain, Inc. {{ getYear() }}. We love our
                         users!
                     </p>
-                </div>
+                </div-->
             </div>
     
-            <div class="col s12 m12 l6 loginContainer">
+            <div class="col s12 m12 l6 loginContainer formContainer">
                 <div class="authRightDiv">
                     <div class="authHeadingContainer center-align hide-on-large-only">
                         <a href="/" class="authHeading">WhiteCoatDomain</a>
                     </div>
                     <p class="authTitle">
-                        LOGIN
-                        <!-- Login Help Modal Trigger -->
-                        <!--a class="modal-trigger" href="#helpModal">
-                            <i class="material-icons helpIcon right">help</i>
-                        </a-->
+                        Sing in
                     </p>
                     <p class="authTxt">
                         Build a brand online and let your potential patients find you.
@@ -74,12 +98,13 @@
                     <form id="loginForm">
                         <div class="row rm_mg">
                             <div class="input-field col s12">
+                                <label>Email</label>
                                 <input
                                     placeholder="Email"
                                     v-model="loginUser.email"
                                     id="user"
                                     type="email"
-                                    class="validate"
+                                    class="validate loginInput browser-default"
                                     required
                                 />
                                 <div v-if="errors.email">
@@ -88,18 +113,19 @@
                             </div>
     
                             <div class="input-field col s12">
+                                <label>Password</label>
                                 <input
                                     placeholder="Password"
                                     v-model="loginUser.password"
                                     id="password"
                                     type="password"
-                                    class="validate"
+                                    class="validate loginInput browser-default"
                                 />
     
                                 <small class="right resetPass">
                                     <a
                                         href="/auth/resetpassword"
-                                        class="grey-text"
+                                        class=""
                                         >Reset Password?</a
                                     >
                                 </small>
