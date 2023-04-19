@@ -90,9 +90,9 @@
                                 </div>
                             </div>
                             <div v-else class="centre col s12 m12 l12">
-                                <p >
+                                <p class="emptyTestify">
                                     Client Has no Review at the moment. You can view
-                                    other customer success or reviews from here
+                                    other customer success or reviews from here.
                                 </p>
                             </div>
                         </div>

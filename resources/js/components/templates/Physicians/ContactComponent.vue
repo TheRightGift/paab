@@ -65,7 +65,7 @@
                         </div>
                         <div class="col s10">
                             <p class="contactMeTitle">Chat with me</p>
-                            <p class="contactMeTxt">me@droliviafelix.com</p>
+                            <p class="contactMeTxt">{{ contact.email != '' ? contact.email : 'me@droliviafelix.com' }}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -76,7 +76,7 @@
                         </div>
                         <div class="col s10">
                             <p class="contactMeTitle">Visit me</p>
-                            <p class="contactMeTxt">No 112 street address, State/Country</p>
+                            <p class="contactMeTxt">{{ contact.address != '' ? contact.address : 'No 112 street address, State/Country'}}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -87,7 +87,7 @@
                         </div>
                         <div class="col s10">
                             <p class="contactMeTitle">Call me</p>
-                            <p class="contactMeTxt">+1 234 567 8910</p>
+                            <p class="contactMeTxt">{{ contact.phone != '' ? contact.phone : '+1 234 567 8910' }}</p>
                         </div>
                     </div>
                 </div>

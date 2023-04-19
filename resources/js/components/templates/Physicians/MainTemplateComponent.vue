@@ -33,6 +33,7 @@
                 :tenant="tenant"
                 :preview="preview"
                 :isLoggedIn="loggedIn"
+                v-if="miniBlog.length > 0 || preview === '1'"
             />
             <SocialMediaComponent
                 :social="social"
@@ -43,7 +44,7 @@
                 :isLoggedIn="loggedIn"
                 :preview="preview"
             />
-            <TestimonialsComponent :reviews="reviews" :preview="preview" :tenant="tenant"/>
+            <TestimonialsComponent v-if="reviewLen != 0 || preview == '1'" :reviews="reviews" :preview="preview" :tenant="tenant"/>
             <div id="contactContainer">
                 <ContactComponent
                     :preview="preview"
@@ -51,7 +52,7 @@
                     :contactMail="contact"
                 />
             </div>
-             <FooterComponent />
+             <FooterComponent :user="user"/>
      
             <div class="fixedBtmBtn" v-if="can === '1'">
                 <a
@@ -62,7 +63,7 @@
                         '&mail=' +
                         email
                     "
-                    class="btn waves waves-effect"
+                    class="btn waves waves-effect button"
                     >Edit your website</a
                 >
             </div>
@@ -83,6 +84,7 @@ let service = '/api/service';
 let achievement = '/api/achievement';
 let review = '/api/review';
 let contact = '/api/contact';
+let miniBlog = '/api/miniblog'
 // CVs
 let cvXpo = '/api/cvexperience';
 let summy = '/api/cv';
@@ -116,6 +118,8 @@ export default {
             loggedIn: false,
             initialCheck: false,
             CV: {},
+            reviewLen: 0,
+            miniBlog: [],
         };
     },
     props: {
@@ -188,6 +192,7 @@ export default {
             const requestAchievement = axios.get(achievement);
             const requestReviews = axios.get(review);
             const requestContact = axios.get(contact);
+            const requestMiniBlog = axios.get(miniBlog);
             // CVs
             const requestSummary = axios.get(summy);
             const requestCvXpo = axios.get(cvXpo);
@@ -199,7 +204,7 @@ export default {
             const requestLicense = axios.get(license);
 
             axios
-                .all([requestBio, requestService, requestAchievement, requestReviews, requestContact, requestSummary, requestCvXpo, requesTraining, requestReferral, requestMedSchool, requestOtherSchool, requestUnderGrad, requestLicense,
+                .all([requestBio, requestService, requestAchievement, requestReviews, requestContact, requestMiniBlog, requestSummary, requestCvXpo, requesTraining, requestReferral, requestMedSchool, requestOtherSchool, requestUnderGrad, requestLicense,
                 ])
                 .then(
                     axios.spread((...responses) => {
@@ -208,21 +213,24 @@ export default {
                         const achievementRes = responses[2];
                         const reviewRes = responses[3];
                         const contactRes = responses[4];
+                        const miniBlogRes = responses[5]
                         // CV
-                        const summaryRes = responses[5];
-                        const cvExpRes = responses[6];
-                        const trainingRes = responses[7];
-                        const referralRes = responses[8];
-                        const medSchoolRes = responses[9];
-                        const otherSchoolRes = responses[10];
-                        const underGradRes = responses[11];
-                        const licenseRes = responses[12];
+                        const summaryRes = responses[6];
+                        const cvExpRes = responses[7];
+                        const trainingRes = responses[8];
+                        const referralRes = responses[9];
+                        const medSchoolRes = responses[10];
+                        const otherSchoolRes = responses[11];
+                        const underGradRes = responses[12];
+                        const licenseRes = responses[13];
 
                         this.services = servicesRes.data.services;
                         this.bio = bioRes.data.bio;
                         this.achievement = achievementRes.data.achievement;
                         this.reviews = reviewRes.data.reviews;
+                        this.reveiwLen = this.reviews.data.length;
                         this.contact = contactRes.data.contact;
+                        this.miniBlog = miniBlogRes.data.miniBlog;
                         this.CV = {
                             summary: summaryRes.data.cvSummary,
                             experience: cvExpRes.data.experience,
@@ -245,3 +253,14 @@ export default {
     computed: {},
 };
 </script>
+<style scoped>
+    .button {
+        background-color: var(--white);
+        color: var(--sec);
+        border-radius: 100px;
+    }
+    .button:hover {
+        background-color: var(--pri);
+        color: var(--white);
+    }
+</style>

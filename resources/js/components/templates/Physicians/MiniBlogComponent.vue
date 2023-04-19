@@ -9,7 +9,7 @@
             </div>
             <div  class="row">
                 <div class="row">
-                    <div class="col s12 m6 l4" v-for="blog in blogs">
+                    <div class="col s12 m6 l4" v-for="blog in blogs" :key="blog">
                         <div class="card">
                             <div class="card-image">
                                 <img :src="blog.img">

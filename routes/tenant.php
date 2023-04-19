@@ -46,6 +46,8 @@ Route::middleware([
 
     Route::get('/services_rendered', [App\Http\Controllers\TenantController::class, 'services_rendered']);
 
+
+
     Route::get('/cv_generator', [App\Http\Controllers\TenantController::class, 'cv_generator']);
 });
 Route::middleware(['auth:api',InitializeTenancyByDomainOrSubdomain::class,
@@ -126,6 +128,12 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::get('/license', [App\Http\Controllers\Tenants\LicenseController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::delete('/license/{expo}', [App\Http\Controllers\Tenants\LicenseController::class, 'destroy']);
     
+    Route::post('/miniblog', [App\Http\Controllers\Tenants\MiniBlogController::class, 'store']);
+    Route::put('/miniblog/{ref}', [App\Http\Controllers\Tenants\MiniBlogController::class, 'update']);
+    Route::get('/miniblog', [App\Http\Controllers\Tenants\MiniBlogController::class, 'index'])->withoutMiddleware(['auth:api']);
+    Route::delete('/miniblog/{expo}', [App\Http\Controllers\Tenants\MiniBlogController::class, 'destroy']);
+    
+
     Route::delete('/service', [App\Http\Controllers\Tenants\ServiceController::class, 'destroy']);
 
     Route::post('/verifyToken', [App\Http\Controllers\TenantController::class, 'verifyToken'])->withoutMiddleware(['auth:api']);
