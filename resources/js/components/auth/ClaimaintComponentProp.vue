@@ -26,7 +26,7 @@
                                             <img
                                                 src="/media/img/wcd-logo-noBckg.png"
                                                 alt="WhiteCoatDomain Logo"
-                                                class="hide-on-med-and-down"
+                                                class=""
                                             />
                                         </a>
                                         <p class="contentTitle marginTop-5">

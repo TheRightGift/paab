@@ -201,7 +201,6 @@
                                     html: res.data.error,
                                     classes: "errorNotifier",
                                 });
-                                this.loading = false;
                             }
                         }
                         if (res.data.status === 422) {
@@ -209,9 +208,9 @@
                                 this.otpPrompt = true;
                                 this.otp = res.data.otp;
                             }
-                            this.loading = false;
                         }
 
+                        this.loading = false;
                         // if(res.data.status === 404){
                         //     M.toast({
                         //         html: "Invalid Credentials",
@@ -243,7 +242,7 @@
                         if (res.data.status == 201) {
                             localStorage.setItem('візіт', visits + 1);
                             this.loading = false;
-                            role === 'Admin' ? location.reload() : window.location.href = `http://${location.host}`;
+                            role === 'Admin' ? location.reload() : window.location.href = `https://${location.host}`;
                         }
                     })
                     .catch((err) => {

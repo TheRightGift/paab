@@ -31,6 +31,11 @@
             <li><a href="#!">Feeds</a></li>
             <li><a href="#!">Testimonials</a></li>  
             <li><a href="#!">Contact</a></li>
+            <li v-if="isLoggedIn">
+                <a class='modal-trigger physiTempSettingsNavLink' href='#showSettingsModal'>
+                    Settings
+                </a>
+            </li>
             <li><a href="#!" class="waves-effect waves-light btn subscribeBtn">Subscribe</a></li>
         </ul>
     </div>
@@ -39,53 +44,52 @@
         <div class="modal-content">
             <div v-if="modalView == 0" class="settingModalViewInitial">
                 <div class="row">
-                    <div class="col l12">
+                    <div class="col l12 m12 s12">
                         <h3>Settings</h3>
                         <p class="marginTop-1">Update your website by selecting any of the links below</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col l12">
+                <div class="row hide-on-med-and-down">
+                    <div class="col l12 m12 s12">
                         <button class="btn closeSettingModal right modal-close">Close settings</button>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col l4">
+                   <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable"  @click="showSettingOption(1, 'General')">
                             <h6>General</h6>
-                            <img :src="'/media/img/templates/1/general.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/general.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
-                    <div class="col l4">
+                    <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable" @click="showSettingOption(2, 'Mini Blog')">
                             <h6>Mini Blog</h6>
-                            <img :src="'/media/img/templates/1/miniBlog.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/miniBlog.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
-                    <div class="col l4">
+                    <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable" @click="showSettingOption(3, 'Interests')">
                             <h6>Interests</h6>
-                            <img :src="'/media/img/templates/1/interests.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/interests.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col l4">
-                        <div class="generalSettings settingOptions hoverable" @click="showSettingOption(4, 'Feeds')">
+                    
+                    <div class="col l4 m6 s6 marginBottom-2">
+                        <div class="generalSettings settingOptions hoverable" @click="showSettingOption(4, 'Social Feeds')">
                             <h6>Feeds</h6>
-                            <img :src="'/media/img/templates/1/feeds.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/feeds.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
-                    <div class="col l4">
+                    <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable" @click="showSettingOption(5, 'Public Features')">
                             <h6>Features</h6>
-                            <img :src="'/media/img/templates/1/publicFeatures.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/publicFeatures.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
-                    <div class="col l4">
+                    <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable">
                             <h6>CV</h6>
-                            <img :src="'/media/img/templates/1/cv.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/cv.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
                 </div>
@@ -93,7 +97,7 @@
 
             <div v-show="modalView == 1">
                 <div class="row noMarginBottom">
-                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
+                    <div class="col l6 m12 s12 optionSettingBackground" @click="modalView = 0">
                         <p>
                             <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
                         </p>
@@ -103,7 +107,7 @@
                     </div>
                     <div class="col l6 optionSettingContainer">
                         <div class="row hPadding-1">
-                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Basic</h4>
+                            <h4 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Basic</h4>
                             <div class="formInnerDiv">
                                 <div class="input-field selectInputField col l12 m12 s12 paddingLeftSM">
                                     <select
@@ -130,7 +134,7 @@
                                     <label>Title</label>
                                 </div>
 
-                                <div class="input-field col l12">
+                                <div class="input-field col l12 m12 s12">
                                     <input
                                         type="text"
                                         class="validate formInput"
@@ -159,8 +163,8 @@
                             </div>
                         </div>
                         <div class="row hPadding-1">
-                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Website Title</h4>
-                            <div class="input-field col l12">
+                            <h4 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Website Title</h4>
+                            <div class="input-field col l12 m12 s12">
                                 <input placeholder="Dr. Olivia Felix" id="websiteTitle" type="text" class="validate formInput">
                                 <label for="websiteTitle">Website title</label>
                             </div>
@@ -168,7 +172,7 @@
 
                         <!--TODO: Image cropper doesnt work-->
                         <div class="row hPadding-1">
-                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Site logo (favicon)</h4>
+                            <h4 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Site logo (favicon)</h4>
                             <div v-show="showCropper" class="cFlex flexRight">
                                 <a class="right" href="#" @click="showCropper = false">
                                     <i class="material-icons priText">clear</i>
@@ -202,7 +206,7 @@
                                     <div class="settingImgBtnContainDiv justify-center">
                                         <div class="" id="genUploadFavIconDiv">
                                             <div class="" v-if="!uploadPhotoProcessing">
-                                                <div class="col l12 center-align marginTop-5">
+                                                <div class="col l12 m12 s12 center-align marginTop-5">
                                                     <button
                                                         href="#"
                                                         role="button"
@@ -225,7 +229,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col s12">
+                                                    <div class="col l12 m12 s12">
                                                         <image-cropper
                                                             v-if="showCropper"
                                                             :height="50"
@@ -263,7 +267,7 @@
 
                         <!--TODO: Image cropper doesnt work-->
                         <div class="row hPadding-1">
-                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Profile Picture</h4>
+                            <h4 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Profile Picture</h4>
                             <div v-show="showCropper" class="cFlex flexRight">
                                 <a class="right" href="#" @click="showCropper = false">
                                     <i class="material-icons priText">clear</i>
@@ -297,7 +301,7 @@
                                     <div class="settingImgBtnContainDiv justify-center">
                                         <div class="" id="genUploadFavIconDiv">
                                             <div class="" v-if="!uploadPhotoProcessing">
-                                                <div class="col l12 center-align marginTop-5">
+                                                <div class="col l12 m12 s12 center-align marginTop-5">
                                                     <button
                                                         href="#"
                                                         role="button"
@@ -320,7 +324,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col s12">
+                                                    <div class="col l12 m12 s12">
                                                         <image-cropper
                                                             v-if="showCropper"
                                                             :height="50"
@@ -377,24 +381,28 @@
                     </div>
                     <div class="col l6 optionSettingContainer">
                         <div class="row hPadding-1">
-                            <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Interests</h4>
-                            <p class="subHeading">You can only select a max. of 3</p>
-                            <div class="formInnerDiv">
-                                <div class="row">
-                                    <h6 class="settingOptionSectionTitle col l12 noMarginBottom">Medical</h6>
+                            <div class="col l12 m12 s12">
+                                <h4 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Interests</h4>
+                                
+                                <div class="formInnerDiv">
+                                    <h6 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Medical</h6>
+                                    <div class="col l12 m12 s12">
+                                        <p v-for="(interest, index) in interests" :key="interest">
+                                            <label>
+                                                <input type="checkbox" v-model="myinterests" :disabled="myinterests.length >= 3 && myinterests.indexOf(index) == -1"/>
+                                                <span>{{interest}}</span>
+                                            </label>
+                                        </p>
+                                    </div>
                                 </div>
-                                <p v-for="(interest, index) in interests" :key="interest">
-                                    <label>
-                                        <input type="checkbox" v-model="myinterests" :disabled="myinterests.length >= 3 && myinterests.indexOf(index) == -1"/>
-                                        <span>{{interest}}</span>
-                                    </label>
-                                </p>
-                            </div>
-                            <h6 class="settingOptionSectionTitle col l12 noMarginBottom">Non-Medical</h6>
+                                <h6 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Non-Medical</h6>
 
-                            <div class="row hPadding-1 center-align">
-                                <p class="underConstruct">Under Construction</p>
-                                <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Exit</button>
+                                <div class="hPadding-1 center-align">
+                                    <div class="col l12 m12 s12">
+                                        <p class="underConstruct">Under Construction</p>
+                                        <button class="btn saveSettingBtn" @click="saveAndBack(1)">Save &amp; Exit</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
@@ -403,7 +411,7 @@
             </div>
             <div v-show="modalView == 4">
                 <div class="row noMarginBottom" id="feeds">
-                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
+                    <div class="col l6 m12 s12 optionSettingBackground" @click="modalView = 0">
                         <p>
                             <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
                         </p>
@@ -411,12 +419,12 @@
                             {{modalTitle}}
                         </h5>
                     </div>
-                    <div class="col l6 optionSettingContainer">
+                    <div class="col l6 m12 s12 optionSettingContainer">
                         <div id="facebook">
                             <div class="row hPadding-1">
-                                <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Facebook</h4>
+                                <h4 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Facebook</h4>
                                 <div class="formInnerDiv">
-                                    <div class="input-field col l12">
+                                    <div class="input-field col l12 m12 s12">
                                         <input
                                             type="text"
                                             class="validate formInput"
@@ -456,9 +464,9 @@
                         </div>
                         <div id="twitter">
                             <div class="row hPadding-1">
-                                <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Twitter</h4>
+                                <h4 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Twitter</h4>
                                 <div class="formInnerDiv">
-                                    <div class="input-field col l12">
+                                    <div class="input-field col l12 m12 s12">
                                         <input
                                             type="text"
                                             class="validate formInput"
@@ -498,9 +506,9 @@
                         </div>
                         <div id="instagram">
                             <div class="row hPadding-1">
-                                <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Instagram</h4>
+                                <h4 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Instagram</h4>
                                 <div class="formInnerDiv">
-                                    <div class="input-field col l12">
+                                    <div class="input-field col l12 m12 s12">
                                         <input
                                             type="text"
                                             class="validate formInput"
@@ -539,9 +547,9 @@
                         </div>
                         <div id="titktok">
                             <div class="row hPadding-1">
-                                <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Tiktok</h4>
+                                <h4 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Tiktok</h4>
                                 <div class="formInnerDiv">
-                                    <div class="input-field col l12">
+                                    <div class="input-field col l12 m12 s12">
                                         <input
                                             type="text"
                                             class="validate formInput"
@@ -587,7 +595,7 @@
             </div>
             <div v-show="modalView == 5">
                 <div class="row noMarginBottom" id="publicFeatures">
-                    <div class="col l6 optionSettingBackground" @click="modalView = 0">
+                    <div class="col l6 m12 s12 optionSettingBackground" @click="modalView = 0">
                         <p>
                             <a class="btn-flat"><i class="material-icons left">chevron_left</i>Back</a>
                         </p>
@@ -595,12 +603,12 @@
                             {{modalTitle}}
                         </h5>
                     </div>
-                    <div class="col l6 optionSettingContainer">
+                    <div class="col l6 m12 s12 optionSettingContainer">
                         <div>
                             <div class="row hPadding-1">
-                                <h4 class="settingOptionSectionTitle col l12 noMarginBottom">Your public profile</h4>
+                                <h4 class="settingOptionSectionTitle col l12 m12 s12 noMarginBottom">Your public profile</h4>
                                 <div class="formInnerDiv">
-                                    <div class="input-field col l12">
+                                    <div class="input-field col l12 m12 s12">
                                         <input
                                             type="text"
                                             class="validate formInput"
@@ -609,7 +617,7 @@
                                         />
                                         <label>Program Title</label>
                                     </div>
-                                    <div class="input-field col l12">
+                                    <div class="input-field col l12 m12 s12">
                                         <input
                                             type="text"
                                             class="validate formInput"

@@ -1170,21 +1170,19 @@ h4.settingOptionSectionTitle {
     border: 9px solid #d9d9d9;
     margin: auto;
     position: relative;
-    top: 5vh;
+    top: 8vh;
 }
 .settingImg {
     width: 100%;
     height: 100%;
 }
 .settingImgBtnContainDiv {
-    /* display: flex;
-    justify-content: space-between;
-    width: 35.5%; */
     margin: 2vh auto;
 }
 .settingImgBtnMainDiv {
+    margin-top: 5vh;
     position: relative;
-    margin-bottom: 7vh;
+    /* margin-bottom: 7vh; */
 }
 /* .formInnerDiv {
     display: flex;
@@ -1208,10 +1206,15 @@ select.browser-default, input[type=text]:not(.browser-default) {
     border-radius: 5vh;
     padding: 0 2vw;
     text-transform: capitalize;
+    font-size: 0.8rem;
 }
-.btn.saveSettingBtn:hover {
+.btn.saveSettingBtn:hover, .btn.saveSettingBtn.dark {
     color: var(--white);
     background-color: var(--sec);
+}
+.btn.saveSettingBtn.dark:hover {
+    background-color: var(--white);
+    color: var(--sec);
 }
 
 .modalTriggerHolder {
@@ -1388,6 +1391,23 @@ footer {
     padding: 3vh 0 1vh;
 }
 
+.brand-logo {
+    width: 20vw;
+    max-width: 21vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+h1.sectionHeading .title {
+    font-size: 1.75rem;
+}
+.emptyTestify {
+    color: darkgrey;
+    font-size: 1.2rem;
+    font-family: 'Raleway', sans-serif;
+    text-shadow: 1px 1px 2px ghostwhite;
+}
+
 @media screen and (max-width: 992px) and (min-width: 640px) {
     .sidenav {
         background-color: var(--white)
@@ -1536,16 +1556,7 @@ footer {
         font-size: 2.2vh;
     }
 }
-.brand-logo {
-    width: 20vw;
-    max-width: 21vw;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-h1.sectionHeading .title {
-    font-size: 1.75rem;
-}
+
 @media screen and (max-width: 640px) {
     .brand-logo {
         width: fit-content;
@@ -1710,11 +1721,21 @@ h1.sectionHeading .title {
     .contactFormTitle {
         font-size: 2.2vh;
     }
-    
-}
-.emptyTestify {
-    color: darkgrey;
-    font-size: 1.2rem;
-    font-family: 'Raleway', sans-serif;
-    text-shadow: 1px 1px 2px ghostwhite;
+
+    /* Settings */
+    .settingOptions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .optionSettingBackground {
+        height: 25vh;
+    }
+
+    .row .col.optionSettingContainer {
+        height: unset;
+    }
+    .btn.saveSettingBtn {
+        padding: 0 6vw;
+    }
 }
