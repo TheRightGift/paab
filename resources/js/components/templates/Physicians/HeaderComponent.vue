@@ -69,7 +69,7 @@
         <nav>
             <div class="nav-wrapper">
                 <div class="container">
-                    <a href="#!" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : user}}</a>
+                    <a href="#!" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : this.userReplaced.replace('DO', 'Dr.').replace('MD', 'Dr.').replace('DD', 'Dr.')}}</a>
                     <a href="#" data-target="mobileNav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="centerNav hide-on-med-and-down">
                         <li><a href="#!">Interests</a></li>
@@ -91,7 +91,7 @@
             </div>
         </nav>
         <ul class="sidenav" id="mobileNav">
-            <li><a href="#!" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : user}}</a></li>
+            <li><a href="#!" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : this.userReplaced.replace('DO', 'Dr.').replace('MD', 'Dr.').replace('DD', 'Dr.')}}</a></li>
             <li><a href="#!">Interests</a></li>
             <li><a href="#miniBlog">Mini Blog</a></li>
             <li><a href="#!">Feeds</a></li>
@@ -916,6 +916,7 @@ export default {
                 'Psychiatrists',
             ],
             myinterests: [],
+            userReplaced: this.user,
         };
     },
     props: {
@@ -1004,5 +1005,17 @@ export default {
         }
     },
     computed: {},
+    watch: {
+        userReplaced (newVal) {
+            console.log(newVal, 'here')
+            if (newVal != '') {
+                this.userReplaced = newVal;
+                this.userReplaced.replace('DO', 'Dr.').replace('MD', 'Dr.').replace('DD', 'Dr.')
+            }
+        }
+    },
 };
 </script>
+<style scoped>
+    
+</style>
