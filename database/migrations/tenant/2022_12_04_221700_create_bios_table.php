@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('bios', function (Blueprint $table) {
             $table->id();
             $table->text('about')->nullable();
-            $table->string('CV')->nullable();
             $table->string('photo')->nullable();
             $table->string('firstname')->nullable();
             $table->unsignedBigInteger('title_id')->nullable();

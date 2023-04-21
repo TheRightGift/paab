@@ -1,9 +1,38 @@
 <template>
     <div>
         <div v-if="!claimant && claimaint === null">
-            <div class="row authContainDiv" v-if="verifiedEmail == 1">
-                <div class="col s12 m12 l6 welcomeContainer hide-on-med-and-down">
-                    <div class="wlcNoteDiv">
+            <div class="row">
+                <div class="col l6 loginContainer white-text intro hide-on-med-and-down">
+                    <div class="marginTop-15">
+                        <div class="row">
+                            <div class="col l4 noMarginLeft">
+                                <a href="/">
+                                    <img
+                                        src="/media/img/wcdlogoWhite.png"
+                                        alt="WhiteCoatDomain Logo"
+                                        class="responsive-img"
+                                    />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l12">
+                                <h1 class="wlcNoteTitle">Start your journey <br />with us...</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l12">
+                                <p class="wlcNoteTxt">
+                                    “Good things come to those who wait”.
+                                    <span class="getStartedOtpSpan right">Nathan Sykes</span>
+                                </p>
+                            </div>                    
+                        </div>
+                    </div>
+                    <p class="wlcNoteFooterTxt center-align">
+                            <small>© {{ getYear() }} whitecoatdomain.com.</small>
+                    </p>
+                    <!--div class="wlcNoteDiv">
                         <a href="/" class="wlcNoteLogo">
                             <img
                                 src="/media/img/whiteCoatDomain1.png"
@@ -11,69 +40,43 @@
                                 class="authLogo"
                             />
                         </a>
-                        <p class="wlcNoteTitle">
-                            Start your journey <br />with us...
-                        </p>
+                        <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
                         <p class="wlcNoteTxt">
-                            Let us ensure that your email address is active and accurate , that is the only way we can reach you effectively. <br/><br/>P.S Also check your spam, we might meet you there.
+                            The World is listening, it is time to tell your brand story with our professional, powerful and easy to use portfolio builder.
+        
+        
                         </p>
                         <p class="wlcNoteFooterTxt">
-                            &copy; White Coat Domain. {{ getYear() }}. We support
-                            your brand!
+                            © White Coat Domain, Inc. {{ getYear() }}. We love our
+                            users!
                         </p>
-                    </div>
+                    </div-->
                 </div>
-    
-                <div class="col s12 m12 l6 welcomeContainer">
-                    <div class="authHeadingContainer center-align hide-on-large-only">
-                        <a href="/" class="authHeading">WhiteCoatDomain</a>
-                    </div>
-                    <VerifyEmailComponent @resData="setOTP" :type="'register'" />
-                </div>
-            </div>
-    
-            <div class="row authContainDiv" v-if="verifiedEmail == 2">
-                <div class="col s12 m12 l6 otpContainer hide-on-med-and-down">
-                    <div class="wlcNoteDiv">
-                        <a href="/" class="wlcNoteLogo">
-                            <img
-                                src="/media/img/whiteCoatDomain1.png"
-                                alt="whiteCoatDomain.png"
-                                class="authLogo"
-                            />
-                        </a>
-                        <p class="wlcNoteTitle">
-                            Start your journey <br />with us...
-                        </p>
-                        <p class="wlcNoteTxt">
-                            “Good things come to those who wait”.
-                            <span class="getStartedOtpSpan right">Nathan Sykes</span>
-                        </p>
-                        <p class="wlcNoteFooterTxt">
-                            &copy; White Coat Domain. {{ getYear() }}. We support
-                            your brand!
-                        </p>
-                    </div>
-                </div>
-    
-                <div class="col s12 m12 l6 otpContainer">
-                    <div class="authHeadingContainer center-align hide-on-large-only">
-                        <a href="/" class="authHeading">WhiteCoatDomain</a>
-                    </div>
-                    <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'"/>
-                </div>
-            </div>
-            
-            <div v-if="verifiedEmail === 3">
-                <div id="cover-spin">
-                    <div class="valign-wrapper">
-                        <h6 class="">Saving data, please hang on. You will be redirected to complete your registration</h6>
+        
+                <div class="col s12 m12 l6 loginContainer formContainer">
+                    <div class="authRightDiv">
+                        <div for="signup" v-if="verifiedEmail == 1">
+                            <VerifyEmailComponent @resData="setOTP" :type="'register'" />
+                        </div>
+                       
+                        <div for="otpComponent" v-if="verifiedEmail === 2">
+                            <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'"/>
+                        </div>
+
+                        <div v-if="verifiedEmail === 3" for="afterVerifyingEmail">
+                            <div id="cover-spin">
+                                <div class="valign-wrapper">
+                                    <h6 class="">Saving data, please hang on. You will be redirected to complete your registration</h6>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
         <div v-if="claimant || claimaint != null">
-            <claimaint-component-prop :claimaint="claimaint" :claimant="claimant" :titles="titles" :countries="countries" :userMail="userMail"/>
+            <claimaint-component-prop :tenantOnDemand="tenantOnDemand" :claimaint="claimaint" :claimant="claimant" :titles="titles" :countries="countries" :userMail="userMail"/>
         </div>
     </div>
 </template>
@@ -102,8 +105,8 @@
                 otp: "",
                 professions: [],
                 registrationLoading: false,
-                
                 titles: [],
+                password: "",
                 userReg: {
                     email: "",
                     title: "",
@@ -119,6 +122,7 @@
                     profession: "",
                     zipcode: "",
                 },
+                tenantOnDemand: parseInt(this.usernotordered), 
                 verifying: false,
                 verifiedEmail: 1,
                 userMail: null,
@@ -149,6 +153,8 @@
                     name: faker.datatype.uuid(),
                     description: faker.lorem.paragraph(),
                     user_id: datum.id,
+                    confirmHash: 'hashkeill',
+                    password: this.password,
                 };
                 axios.post('/api/tenant_without_auth', data).then(res => {
                     if (res.data.status === 200) {
@@ -169,6 +175,7 @@
                     var randomNumber = Math.floor(Math.random() * chars.length);
                     password += chars.substring(randomNumber, randomNumber + 1);
                 }
+                console.log(password)
                 return password;
             },
             getLocations() {
@@ -205,7 +212,8 @@
             },
             saveMailAndCreateUser() {
                 this.verifying = true;
-                axios.post('/claim/saveuser', {confirmHash: 'hashkeill', firstname: faker.name.firstName(), lastname: faker.name.lastName(), email: this.userReg.email, password: this.passwordGenerator(),}).then(res => {
+                this.password = this.passwordGenerator();
+                axios.post('/claim/saveuser', {confirmHash: 'hashkeill', firstname: faker.name.firstName(), lastname: faker.name.lastName(), email: this.userReg.email, password: this.password,}).then(res => {
                     if (res.data.status === 201) {
                         this.createTenant(res.data.user);
                     }
@@ -218,59 +226,6 @@
                 this.userReg.email = value.email;
                 this.updateVerifiedEmail(2);
             },
-            
-            
-            // submitRegistrationForm() {
-            //     if (
-            //         !this.userReg.email ||
-            //         !this.userReg.firstname ||
-            //         !this.userReg.lastname ||
-            //         !this.userReg.phone ||
-            //         !this.userReg.country ||
-            //         !this.userReg.gender ||
-            //         !this.userReg.state ||
-            //         !this.userReg.city ||
-            //         !this.userReg.zipcode ||
-            //         !this.userReg.password ||
-            //         this.userReg.password !== this.userReg.cPassword
-            //     ) {
-            //         M.toast({
-            //             html: "Please fill every field in the registration form.",
-            //             classes: "errorNotifier",
-            //         });
-            //     } else {
-            //         this.registrationLoading = true;
-            //         let data = {
-            //             email: this.userReg.email,
-            //             firstname: this.userReg.firstname,
-            //             lastname: this.userReg.lastname,
-            //             phone: this.userReg.phone,
-            //             gender: this.userReg.gender,
-            //             city_id: this.userReg.city,
-            //             title_id: this.userReg.title,
-            //             zipcode: this.userReg.zipcode,
-            //             password: this.userReg.password,
-            //         };
-            //         axios
-            //             .post("/auth/register", data)
-            //             .then((res) => {
-            //                 if (res.status === 200) {
-            //                     if (res.data.status == 200) {
-            //                         window.location.href = "/auth/login";
-            //                     } else if (res.data.status == 501) {
-            //                         M.toast({
-            //                             html: res.data.error,
-            //                             classes: "errorNotifier",
-            //                         });
-            //                     }
-            //                     this.registrationLoading = false;
-            //                 }
-            //             })
-            //             .catch((err) => {
-            //                 console.log(`Error: ${err.response}`);
-            //             });
-            //     }
-            // },
             updateVerifiedEmail(num) {
                 this.verifiedEmail = num;
             },
@@ -278,6 +233,7 @@
         props: {
             claimant: String,
             useremail: String,
+            usernotordered: String,
         },
         
         computed: {},

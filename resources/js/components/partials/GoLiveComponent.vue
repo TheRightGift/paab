@@ -101,7 +101,7 @@
         </div>
 
         <button
-            class="goLiveBtn waves-effect waves-light btn modal-trigger col s12"
+            class="goLiveBtn waves-effect waves-light btn modal-trigger col s12" :class="{'tenantOnDemand': tenantOnDemand == 1}"
             href="#modal1"
             @click="sendEmail('premium')"
         >
@@ -116,6 +116,7 @@ export default {
     props: {
         showGoLiveBtns: Boolean,
         bio: Object,
+        tenantOnDemand: Number
     },
     methods: {
         sendEmail(){

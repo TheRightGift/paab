@@ -1,36 +1,40 @@
 <template>
     <div>
+        <div class="authHeadingContainer center-align hide-on-large-only">
+            <a href="/" class="authHeading">WhiteCoatDomain</a>
+        </div>
         <p class="authTitle" v-if="type === 'register'">GET STARTED</p>
         <p class="authTitle" v-if="type === 'reset'">RESET PASSWORD</p>
         <p class="authTxt">            
             <span v-if="type === 'register'">Get a booster shot in your journey with a simple click. </span>
             <span v-if="type === 'reset'">No worries, reseting your password is easy. Just enter your email address.</span>
         </p>
-
-        <form id="regEmailVerifier">
+        <form id="loginForm">
             <div class="row rm_mg">
                 <div class="input-field col s12">
+                    <label>Email</label>
                     <input
                         placeholder="Email"
                         id="user"
-                        class="center-align"
                         type="email"
+                        class="validate loginInput browser-default"
                         v-model="email"
                         required
                     />
+                    
                 </div>
 
                 <div class="input-field col s12">
                     <a
-                        class="btn getStartBtn"
+                        type="button"
                         v-if="!verificationLoading"
-                        @click.prevent="
-                            submitEmailForVerificationOTP()
-                        "
+                        class="btn"
+                        id="loginBtn"
+                        @click.prevent="submitEmailForVerificationOTP()"
                     >
-                        VERIFY
+                        sign up
                     </a>
-                    <a class="btn getStartBtn" v-else>
+                    <a class="btn" id="loginBtn" v-else>
                         <div class="preloader-wrapper small active">
                             <div
                                 class="
@@ -51,30 +55,22 @@
                     </a>
                 </div>
 
-                <!-- Login Social Media Handle -->
-                <!-- <social-login-component v-if="register"/> -->
-
                 <!-- Login Signup Link -->
                 <div class="row">
-                    <div
-                        class="
-                            col
-                            s12
-                            m12
-                            l12
-                            loginSignUpDiv
-                            center-align
-                        "
-                    >
-                        <span class="loginSignUpTxt">
-                            Have an account?
-                        </span>
-                        <a
-                            href="/auth/login"
-                            class="loginSignUpLink"
-                        >
-                            Sign in
-                        </a>
+                    <div class="col l12 m12 s12 loginSignUpDiv">
+                        <div class="loginSignUpInnerDiv">
+                            <p class="loginSignUpTxt">
+                                Have an account?
+                            </p>
+                            <p>
+                                <a
+                                    href="/auth/login"
+                                    class="loginSignUpLink"
+                                >
+                                    Sign in
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -150,3 +146,8 @@ import SocialLoginComponent from './SocialLoginComponent.vue';
         computed: {},
     };
 </script>
+<style scoped>
+.input-field.col.s12{
+    padding : 0;
+}
+</style>

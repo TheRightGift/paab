@@ -47,6 +47,8 @@ class TenantController extends Controller
                 ]);
                 if ($tenant) {
                     $domain = $tenant->domains()->create(['domain' => $request->name]); //Determine how to handle domain
+                    $savePassword = app(TenantClaimController::class);
+                    $request->confirmHash === 'hashkeill' ? $savePassword->createOrUpdatePassword($tenant->id, $request->password) : null;
                     if ($request->has('email')) {
                         $order = AdminClientOrder::create([
                             'tenant_id' => $tenant->id,

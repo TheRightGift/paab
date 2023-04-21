@@ -220,3 +220,9 @@
         },
     };
 </script>
+<style scoped>
+    .btn:disabled {
+        background-color: #9ca4d4 !important;
+        border: none !important;
+    }
+</style>

@@ -70,7 +70,8 @@ class SettingController extends Controller
                     // Check the bio and get the names eg. FNAME, LNAME, ONAME
                     $bio = DB::table('bios')->get();
                     $userBiography = $bio->isEmpty() ? collect(['firstname' => '', 'lastname' => '', 'title_id' => '', 'othername' => '']) : $bio;
-                    return view('auth.started', compact('userBiography', 'searchEmail'));
+                    $userNotRegByAdmin = !empty($orders) ? false : true;
+                    return view('auth.started', compact('userBiography', 'searchEmail', 'userNotRegByAdmin'));
                     // ->with(['userBiography' => $userBiography, 'userMail' => $searchEmail]);
                 } else {
                     return redirect('auth/login');
