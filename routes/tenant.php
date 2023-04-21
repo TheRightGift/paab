@@ -71,6 +71,7 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::get('/contact', [App\Http\Controllers\Tenants\ContactController::class, 'index'])->withoutMiddleware(['auth.api']);
 
     Route::post('/public_feature', [App\Http\Controllers\Tenants\PublicFeaturingController::class, 'store']);
+    Route::get('/public_feature', [App\Http\Controllers\Tenants\PublicFeaturingController::class, 'index'])->withoutMiddleware(['auth.api']);
     Route::put('/public_feature/{id}', [App\Http\Controllers\Tenants\PublicFeaturingController::class, 'update']);
     Route::delete('/public_feature/{id}', [App\Http\Controllers\Tenants\PublicFeaturingController::class, 'destroy']);
 

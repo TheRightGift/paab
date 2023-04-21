@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class StateController extends Controller
 {
@@ -27,6 +27,23 @@ class StateController extends Controller
             $input['role'] = 'Admin';
             $admin = User::create($input);
             return response(['admin' => $admin, 'message' => 'Created Success'], 201);
+        }
+    }
+    public function updateUser(Request $request, $id) {
+        $inputs = Validator::make($request->all(), [
+            'firstname' => ['nullable'],
+            'lastname' => ['nullable'],
+            'title_id' => ['nullable'],
+            'gender' => ['nullable'],
+        ]); 
+        
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            $user = User::find($id);
+            $user->update($input);
+            return response(['user' => $user, 'message' => 'Created Success'], 201);
         }
     }
 

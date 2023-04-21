@@ -182,6 +182,7 @@ class TemplateController extends Controller
         $preview = true;
         $can = false;
         $email = '';
-        return view('websites.physician', compact('preview', 'template', 'templateCSS', 'tenantID', 'can', 'email'));
+        $user_id = 0;
+        return view('websites.physician', compact('preview', 'template', 'templateCSS', 'tenantID', 'can', 'email', 'user_id'));
     }
 }

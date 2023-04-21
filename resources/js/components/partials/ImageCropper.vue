@@ -25,8 +25,8 @@
             :cropBoxMovable= "false"
             :cropBoxResizable= "false"
             :toggleDragModeOnDblclick= "false"
-            :minContainerWidth="500"
-            :minContainerHeight="500"
+            :minContainerWidth="minContainerWidth || 500"
+            :minContainerHeight="minContainerHeight || 500"
             :minCropBoxWidth="width"
             :minCropBoxHeight="height"
             :data="{ 
@@ -96,7 +96,9 @@ export default {
     width: Number,
     xAxis: Number,
     yAxis: Number,
-    img: String
+    img: String,
+    minContainerHeight: Number,
+    minContainerWidth: Number,
   },
   methods: {
     cropImage() {

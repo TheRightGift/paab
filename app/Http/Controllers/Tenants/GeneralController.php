@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Tenants;
 
 
-use App\Http\Controllers\Controller;
-use App\Models\Tenants\General;
 use Illuminate\Http\Request;
-use Validator;
 use App\Trait\ServiceNotifier;
+use App\Models\Tenants\General;
+use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Validator;
 
 class GeneralController extends Controller
 {
@@ -71,25 +72,26 @@ class GeneralController extends Controller
     public function update(Request $request, $general)
     {
         $inputs = Validator::make($request->all(), [
-            'favicon' => 'nullable|image|mimes:png|max:100',
+            // 'favicon' => 'nullable|image|mimes:png|max:100',
             'title' => 'nullable',
             'oldFav' => 'nullable'
         ]);
-
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
-            if($request->hasFile('favicon')){
-                $file = $request->file('favicon');
-                $ext = $request->file('favicon')->getClientOriginalExtension();
-                // $stored = \Storage::disk('public')->putFileAs('img', $file, 'favicon'.'.'.$ext);
-                
-                $name = 'favicon'.'.'.$ext;
-                $path = $file->move(public_path('/media/tenants/'.strtolower(tenant('id')).'/img'), $name);
-
-                $input['favicon'] = $name;
-            } 
+            if($request->has('favicon')){
+                $safeName = 'favicon'.'.'.'png';
+                $file_path = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/';
+                if (!file_exists($file_path)) {
+                    mkdir($file_path, 0755, true);
+                }
+                $file = $file_path.$safeName;
+                Image::make(file_get_contents($request['favicon']))->resize(451, 512, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($file);
+                $input['favicon'] = $safeName;
+            }
             $generals = new General();
             $general2Update = $generals->find($general);
             $general2Update->update($input);

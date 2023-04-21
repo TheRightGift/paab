@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Validator;
-
 use App\Models\User;
+
 use App\Models\Tenant;
 use Illuminate\Http\Request;
-
 use App\Models\AdminClientOrder;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
 {

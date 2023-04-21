@@ -67,6 +67,7 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::patch('/changePassword', [App\Http\Controllers\AuthController::class, 'changePassword']);
     Route::get('/check_password', [App\Http\Controllers\AuthController::class, 'check_password']);
     Route::post('/sendClaimMail', [TenantController::class, 'sendEmail']);
+
 });
 // Route::group(['middleware'=>'auth:api'], function(){
 // });

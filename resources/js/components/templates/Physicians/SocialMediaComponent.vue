@@ -220,23 +220,19 @@ export default {
                         {
                             id: 'Facebook',
                             src: `<div class="fb-page" data-href="https://www.facebook.com/${this.facebook}" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/${this.facebook}" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/${this.facebook}">${this.facebook}</a></blockquote></div></div>`,
-                            shown: this.updateSocialHandles(),
                         },
                         {
                             id: 'Twitter',
                             src: `<a class="twitter-timeline" data-width="100%" data-height="500" data-theme="light" width="100%" href="https://twitter.com/${this.twitter}?ref_src=twsrc%5Etfw">Tweets by ${this.twitter}</a>`,
-                            shown: this.updateSocialHandles(),
                         },
                         {
                             id: 'Instagram',
                             src: `<iframe src="https://www.instagram.com/reel/${this.instagram}/embed/captioned/?cr=1&v=14&wp=326&rd=http%3A%2F%2F127.0.0.1%3A8000&rp=%2Fpreview%2F1#%7B%22ci%22%3A0%2C%22os%22%3A3489.7999999998137%2C%22ls%22%3A3373.899999999441%2C%22le%22%3A3393.5%7D" />`,
-                            shown: this.updateSocialHandles(),
                             color: 'red'
                         },
                         {
                             id: 'Tiktok',
                             src: `<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@${this.tiktok}" data-unique-id="${this.tiktok}" data-embed-from="oembed" data-embed-type="creator" style="max-width: 780px; min-width: 288px; width: 32rem;" > <section> <a target="_blank" href="https://www.tiktok.com/@${this.tiktok}?refer=creator_embed">@${this.tiktok}</a> </section> </blockquote>`,
-                            shown: this.updateSocialHandles(),
                             color: 'red'
                         }
                     ]
