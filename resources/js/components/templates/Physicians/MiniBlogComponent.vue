@@ -12,14 +12,14 @@
                     <div class="col s12 m6 l4" v-for="blog in miniBlog" :key="blog">
                         <div class="card">
                             <div class="card-image">
-                                <img :src="blog.img" v-if="preview == '1'">
+                                <img :src="blog.imageUrl" v-if="preview == '1'">
                                 <img :src="'/media/tenants/'+tenant+'/img/miniblog/'+blog.imageUrl" v-if="preview == '0'">
                                 <span class="card-title">{{blog.title}}</span>
                             </div>
                             <div class="card-content">
                                 {{truncate(blog.body)}}
                             </div>
-                            <div class="card-action">
+                            <div class="card-action activator">
                                 <a href="#">Read more</a>
                             </div>
                         </div>

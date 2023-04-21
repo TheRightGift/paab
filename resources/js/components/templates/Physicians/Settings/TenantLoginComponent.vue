@@ -1,131 +1,160 @@
 <template>
     <div>
         <div class="row authContainDiv">
-            <div v-if="!otpPrompt && !logginIn">
-                <div class="col s12 m12 l6 loginContainer hide-on-med-and-down">
-                    <div class="wlcNoteDiv">
-                        <p class="wlcNoteLogo">WhiteCoatDomain</p>
-                        <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
-                        <p class="wlcNoteTxt">
-                            It is a long established fact that a reader will be
-                            distracted by the readable content.
-                        </p>
-                        <p class="wlcNoteFooterTxt">
-                            © Photo, Inc. 2019. We love our users!
-                        </p>
+            <div> 
+                <!-- v-if="!otpPrompt && !logginIn" -->
+                <div class="col l6 loginContainer white-text intro hide-on-med-and-down">
+                    <div class="marginTop-15">
+                        <div class="row">
+                            <div class="col l4 noMarginLeft">
+                                <a href="/">
+                                    <img
+                                        src="/media/img/wcdlogoWhite.png"
+                                        alt="WhiteCoatDomain Logo"
+                                        class="responsive-img"
+                                    />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l12">
+                                <h1 class="wlcNoteTitle">
+                                    WELCOME BACK <br />Doc.
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l12">
+                                <p class="wlcNoteTxt">
+                                    The World is listening, it is time to tell your
+                                    brand story with our professional, powerful and
+                                    easy to use portfolio builder.
+                                </p>
+                            </div>
+                        </div>
                     </div>
+                    <p class="wlcNoteFooterTxt center-align">
+                        <small>© {{ getYear() }} whitecoatdomain.com.</small>
+                    </p>
                 </div>
-    
-                <div class="col s12 m12 l6 loginContainer">
+
+                <div class="col s12 m12 l6 loginContainer formContainer">
                     <div class="authRightDiv">
-                        <p class="authTitle">LOGIN</p>
-                        <p class="authTxt">
-                            It is a long established fact that a reader will be diIt
-                            is a long
-                        </p>
-    
-                        <form id="loginForm">
-                            <div class="row rm_mg">
-                                <div class="input-field col s12">
-                                    <input
-                                        placeholder="Email"
-                                        v-model="loginUser.email"
-                                        id="user"
-                                        type="email"
-                                        class="validate"
-                                        required
-                                    />
-                                    <div v-if="errors.email">
-                                        <p class="red-text" v-for="err in errors.email" :key="err">{{ err }}</p>
-                                    </div>
-                                </div>
-    
-                                <div class="input-field col s12">
-                                    <input
-                                        placeholder="Password"
-                                        v-model="loginUser.password"
-                                        id="password"
-                                        type="password"
-                                        class="validate"
-                                    />
-                                </div>
-    
-                                <!-- Login Social Media Handle -->
-                                <!-- <social-login-component /> -->
-                                <div class="input-field col s12">
-                                    <a
-                                        type="button"
-                                        v-if="!loading"
-                                        class="btn"
-                                        id="loginBtn"
-                                        @click.prevent="userLogin()"
-                                    >
-                                        sign in
-                                    </a>
-                                    <a class="btn" id="loginBtn" v-else>
-                                        <div class="preloader-wrapper small active">
-                                            <div
-                                                class="
-                                                    spinner-layer spinner-white-only
-                                                "
+                        <div
+                            class="authHeadingContainer center-align hide-on-large-only"
+                        >
+                            <a href="/" class="authHeading">WhiteCoatDomain</a>
+                        </div>
+                        <div for="loginIn" v-if="!otpPrompt && !logginIn">
+                            <p class="authTitle">Sign In to Your space</p>
+                            <p class="authTxt">
+                                Build a brand online and let your potential patients
+                                find you.
+                            </p>
+                            <form id="loginForm">
+                                <div class="row rm_mg">
+                                    <div class="input-field col s12">
+                                        <label>Email</label>
+                                        <input
+                                            placeholder="Email"
+                                            v-model="loginUser.email"
+                                            id="user"
+                                            type="email"
+                                            class="validate loginInput browser-default"
+                                            required
+                                        />
+                                        <div v-if="errors.email">
+                                            <p
+                                                class="red-text"
+                                                v-for="err in errors.email"
+                                                :key="err"
                                             >
-                                                <div class="circle-clipper left">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="gap-patch">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="circle-clipper right">
-                                                    <div class="circle"></div>
+                                                {{ err }}
+                                            </p>
+                                        </div>
+                                    </div>
+    
+                                    <div class="input-field col s12">
+                                        <label>Password</label>
+                                        <input
+                                            placeholder="Password"
+                                            v-model="loginUser.password"
+                                            id="password"
+                                            type="password"
+                                            class="validate loginInput browser-default"
+                                        />
+    
+                                        <small class="right resetPass">
+                                            <a href="/auth/resetpassword" class=""
+                                                >Reset Password?</a
+                                            >
+                                        </small>
+                                    </div>
+    
+                                    <!-- Login Social Media Handle -->
+                                    <!-- <social-login-component /> -->
+    
+                                    <div class="input-field col s12">
+                                        <a
+                                            type="button"
+                                            v-if="!loading"
+                                            class="btn"
+                                            id="loginBtn"
+                                            @click.prevent="userLogin()"
+                                        >
+                                            sign in
+                                        </a>
+                                        <a class="btn" id="loginBtn" v-else>
+                                            <div class="preloader-wrapper small active">
+                                                <div
+                                                    class="spinner-layer spinner-white-only"
+                                                >
+                                                    <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="gap-patch">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="circle-clipper right">
+                                                        <div class="circle"></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div v-else-if="otpPrompt && !logginIn">
-            
-                <div class="col s12 m12 l6 otpContainer hide-on-med-and-down">
-                    <div class="wlcNoteDiv">
-                        <a href="/" class="wlcNoteLogo">
-                            <img
-                                src="/media/img/whiteCoatDomain1.png"
-                                alt="whiteCoatDomain.png"
-                                class="authLogo"
-                            />
-                        </a>
-                        <p class="wlcNoteTitle">
-                            We appreciate your journey <br />with us...
-                        </p>
-                        <p class="wlcNoteTxt">
-                            “Good things come to those who wait”.
-                            <span class="getStartedOtpSpan right">Nathan Sykes</span>
-                        </p>
-                        <p class="wlcNoteFooterTxt">
-                            &copy; White Coat Domain. {{ getYear() }}. We support
-                            your brand!
-                        </p>
-                    </div>
-                </div>
+                                        </a>
+                                    </div>
     
-                <div class="col s12 m12 l6 otpContainer">
-                    <div class="authHeadingContainer center-align hide-on-large-only">
-                        <a href="/" class="authHeading">WhiteCoatDomain</a>
+                                    <!-- Login Signup Link -->
+                                    <div class="row">
+                                        <div class="col l12 m12 s12 loginSignUpDiv">
+                                            <div class="loginSignUpInnerDiv">
+                                                <p class="loginSignUpTxt">
+                                                    Don't have an account yet?
+                                                </p>
+                                                <p>
+                                                    <a
+                                                        href="https://whitecoatdomain.com/auth/getstarted"
+                                                        class="loginSignUpLink"
+                                                    >
+                                                        Sign Up
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div for="otpprompt" v-else-if="otpPrompt && !logginIn">
+                            <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'" :text="'You are logging in from a new device, we sent you an OTP to your registered email. Please enter OTP to verify your account'"/>
+                        </div>
+                        <div for="loggingIn" v-else-if="logginIn" class="centeredLoader">
+                            <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                            <p>Loggin You In</p>
+                        </div>
                     </div>
-                    <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'" :text="'You are logging in from a new device, we sent you an OTP to your registered email. Please enter OTP to verify your account'"/>
                 </div>
             </div>
-            <div v-else-if="logginIn" class="centeredLoader">
-                <div class="authHeadingContainer center-align hide-on-large-only">
-                    <a href="/" class="authHeading">WhiteCoatDomain</a>
-                </div>
-                <i class="fas fa-circle-notch fa-spin fa-2x"></i>
-                <p>Loggin You In</p>
-            </div>
+            
         </div>
     </div>
 </template>

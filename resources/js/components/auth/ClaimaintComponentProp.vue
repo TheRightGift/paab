@@ -51,7 +51,7 @@
                                         </h4>
                                         
                                         <div class="row formInnerDiv">
-                                            <div class="input-field selectInputField noMarginLeft col l2 m2 s6 noPaddingLeft paddingLeftSM">
+                                            <div class="input-field selectInputField noMarginLeft col l2 m2 s12 noPaddingLeft paddingLeftSM">
                                                 <select
                                                     v-model="bio.title_id"
                                                     required
@@ -78,7 +78,7 @@
                                                 <label>Title</label>
                                             </div>
 
-                                            <div class="input-field col l3 m3 s6">
+                                            <div class="input-field col l3 m3 s12">
                                                 <input
                                                     type="text"
                                                     v-model="bio.firstname"
@@ -89,7 +89,7 @@
                                                 />
                                                 <label>Firstname</label>
                                             </div>
-                                            <div class="input-field col l3 m3 s6">
+                                            <div class="input-field col l3 m3 s12">
                                                 <input
                                                     type="text"
                                                     v-model="bio.lastname"
@@ -99,7 +99,7 @@
                                                 />
                                                 <label>Lastname</label>
                                             </div>
-                                            <div class="input-field col l3 m3 s6">
+                                            <div class="input-field col l3 m3 s12">
                                                 <input
                                                     type="text"
                                                     v-model="bio.othername"

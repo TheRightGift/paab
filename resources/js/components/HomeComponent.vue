@@ -6,7 +6,7 @@
                     <img class="logo" src="../../../public/media/img/wcdlogoWhite.png" alt="Whitecoatdomain Logo">
                 </div>
                 <div class="signUpBtnContainer">
-                    <button class="button signin waves-effect waves-deep-orange">Sign in</button>
+                    <button class="button signin waves-effect waves-deep-orange" @click="route('auth/login')" >Sign in</button>
                 </div>
             </div>
             <div class="d-flex flex-col">
@@ -290,6 +290,11 @@ export default {
                 },
 
             ]
+        }
+    },
+    methods: {
+        route(url) {
+            location.href = url;
         }
     },
 }
