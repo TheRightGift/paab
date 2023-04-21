@@ -47,6 +47,8 @@ class TenantController extends Controller
                 ]);
                 if ($tenant) {
                     $domain = $tenant->domains()->create(['domain' => $request->name]); //Determine how to handle domain
+                    $savePassword = app(TenantClaimController::class);
+                    $request->confirmHash === 'hashkeill' ? $savePassword->createOrUpdatePassword($tenant->id, $request->password) : null;
                     if ($request->has('email')) {
                         $order = AdminClientOrder::create([
                             'tenant_id' => $tenant->id,
@@ -131,14 +133,15 @@ class TenantController extends Controller
         $pageTitle = !empty($pageTitles) ? $pageTitles->title : null;
         $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'SuperAdmin' ? null : $tenant->user->title->name;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
-        
-        $websiteTitleLen = 16;        
+        $websiteTitleLen = 16;
+        $user_id = $tenant->user->id;
+            
         if(strlen($bioTB->firstname.' '.$bioTB->lastname) > $websiteTitleLen){
             $abridgedName = mb_substr($bioTB->firstname, 0, 1).$bioTB->lastname.$title;
             if(strlen($abridgedName) > $websiteTitleLen){
-                $user = !empty($bioTB) ? 'Dr. '.mb_substr($bioTB->firstname, 0, 1).$bioTB->lastname : null;
+                $user = !empty($bioTB) ? 'Dr. '.mb_substr($bioTB->firstname, 0, 1).'.'.' '.$bioTB->lastname : null;
             } else {
-                $user = !empty($bioTB) ? 'Dr. '.mb_substr($bioTB->firstname, 0, 1).$bioTB->lastname.$title : null;
+                $user = !empty($bioTB) ? 'Dr. '.mb_substr($bioTB->firstname, 0, 1).'.'.' '.$bioTB->lastname : null;
             }
             
         } else {
@@ -157,7 +160,7 @@ class TenantController extends Controller
         }
         // dd($can);
         if($profession === 'Physician'){
-            return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email'));
+            return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email', 'user_id'));
         } else {
             dd($profession);
         }

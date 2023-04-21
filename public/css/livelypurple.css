@@ -516,12 +516,20 @@ h2.sectionHeader
     background-color: #f1f1f6;
     padding-top: 7vh;
 }
-#miniBlogSettings .btn.saveSettingBtn:first-of-type {
+#miniBlogSettings .btn.saveSettingBtn:first-of-type, #publicFeatures .btn.saveSettingBtn:first-of-type {
     margin-right: 1.5rem;
 }
 #miniBlogSettings .col.l6.optionSettingContainer .row.hPadding-1 .settingImgContainer {
     border: none;
     width: 40%;
+}
+#miniBlogSettings .saveSettingBtn:first-of-type, #publicFeatures .btn.saveSettingBtn:first-of-type {
+    background-color: var(--sec);
+    color: var(--white);
+}
+#miniBlogSettings .saveSettingBtn:first-of-type:hover {
+    background-color: var(--white);
+    color: var(--sec);
 }
 .physiExpContainerDiv,
 .feedsContainDiv {
@@ -1196,7 +1204,7 @@ select.browser-default {
     outline: none;
     background: transparent;
 }
-select.browser-default, input[type=text]:not(.browser-default) {
+select.browser-default, input[type=text]:not(.browser-default), textarea.materialize-textarea {
     border-bottom: 0.3vh solid var(--sec);
     font-family: 'Montserrat', sans-serif;
 }
@@ -1738,4 +1746,13 @@ h1.sectionHeading .title {
     .btn.saveSettingBtn {
         padding: 0 6vw;
     }
+}
+.emptyTestify {
+    color: darkgrey;
+    font-size: 1.2rem;
+    font-family: 'Raleway', sans-serif;
+    text-shadow: 1px 1px 2px ghostwhite;
+}
+.primaryColor {
+    color: var(--pri);
 }

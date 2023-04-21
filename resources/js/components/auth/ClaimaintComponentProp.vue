@@ -35,7 +35,7 @@
 
                                         <div class="getStartedBtnDiv">
                                             <a
-                                                class="waves-effect waves-black btn getStartedBtn"
+                                                class="waves-effect waves-black btn getStartedBtn" :class="{'tenantOnDemand': tenantOnDemand == 1}"
                                                 @click="getStarted()"
                                                 >GET STARTED</a
                                             >
@@ -237,6 +237,11 @@
 
                                         <div class="proImgContainer" v-show="!showCropper">
                                             <img
+                                                class="proImg"
+                                                src="/media/img/doctor.png"
+                                                v-if="bioData.photo === null || bio.photo === undefined"
+                                            />
+                                            <img
                                                 :src="
                                                     typeof bio.photo === 'string'
                                                         ? '/media/tenants/' +
@@ -247,16 +252,12 @@
                                                 "
                                                 :alt="bioData.firstname + ' avatar'"
                                                 class="proImg"
-                                                v-if="
-                                                    bioData.photo !== null ||
+                                                v-else-if="
+                                                    bioData.photo !== null || bio.photo !== undefined ||
                                                     uploaded !== null
                                                 "
                                             />
-                                            <img
-                                                class="proImg"
-                                                src="/media/img/doctor.png"
-                                                v-else-if="bioData.photo === null"
-                                            />
+                                            
                                         </div>
                                         <form enctype="multipart/form-data">
                                             <div class="proImgBtnMainDiv">
@@ -304,7 +305,7 @@
                                                                         v-show="showCropper"
                                                                         :height="512"
                                                                         :width="451"
-                                                                        :img="'/media/tenants/'+tenantId +'/img/'+bioData.photo"
+                                                                        :img="bio.photo == undefined ? '/media/img/doctor.png' : '/media/tenants/'+tenantId +'/img/'+bioData.photo"
                                                                         @uploadPhoto="
                                                                             photoUpload(
                                                                                 $event
@@ -1125,7 +1126,7 @@
                                         </p>
                                     </div>
 
-                                    <go-live-component :showGoLiveBtns="showGoLiveBtns" :bio="bio" @sendEmail="sendEmail($event)"/>
+                                    <go-live-component :tenantOnDemand="tenantOnDemand" :showGoLiveBtns="showGoLiveBtns" :bio="bio" @sendEmail="sendEmail($event)"/>
                                 </div>
 
                                 <!-- Prev/Next Button Section -->
@@ -1155,7 +1156,7 @@
                         </div>
                         <div class="bottomOfPage white halfWidth hPadding-5 fullWidthMd">                            
                             <small>
-                                <a href="/">Home</a>
+                                <a href="/" :class="{'tenantOnDemand': tenantOnDemand == 1}">Home</a>
                                 <span class="right">&copy; Copyright 2023. WhiteCoatDomain</span>
                             </small>
                         </div>
@@ -1321,6 +1322,7 @@
             saveAll (){
                 this.underGrad.minor === ''|| this.underGrad.minor === null ? delete this.underGrad.minor : null;
                 this.bio.othername === '' || this.bio.othername === null ? delete this.bio.othername : null;
+                this.bioData.othername === '' || this.bioData.othername === null ? delete this.bioData.othername : null;
                 
                 if (this.validator(this.additionalSchool) && this.validator(this.fellowship) && this.validator(this.residency) && this.validator(this.internship) && this.validator(this.medSchool) && this.validator(this.underGrad) && this.validator(this.bio) && this.domainSelected !== ''){ // && this.validator(this.domainSelected))
                    try {                    
@@ -1902,7 +1904,7 @@
                 let formData = new FormData();
                 formData.append("photo", e);
                 formData.append("_method", "PUT");
-                formData.append("id", this.bioData.id);
+                this.bio.id === undefined ? null : formData.append("id", this.bioData.id);
                 axios
                     .post("/claim/updateAvatar/bio", formData)
                     .then((res) => {
@@ -1916,7 +1918,7 @@
                                 "claimproc",
                                 JSON.stringify([res.data.bio])
                             );
-                            this.bio = res.data.bio;
+                            this.bio.id = res.data.bio.id;
                             this.uploadPhotoProcessing = false;
                             this.showCropper = false;
                             this.uploaded = e;
@@ -2062,6 +2064,7 @@
                     this.getOffset('underGrad');
                 }
                 if (!this.validator(this.bio)) {
+                    console.log('eeete')
                     this.loopInputsNCheckEmptyValues('bio');
                     this.getOffset('bio');
                 }
@@ -2156,6 +2159,7 @@
             titles: Array,
             claimant: String,
             countries: Array,
+            tenantOnDemand: Number
         },
         watch: {
             claimant: {
@@ -2220,9 +2224,11 @@
     }*/
 
     .darken {
-        background: rgba(0, 0, 0, 0.7);
+        /* background: rgba(0, 0, 0, 0.7); */
     }
-
+    iframe {
+        width: 100% !important;
+    }
     #iframe {
         border: 0;
         height: 100%;

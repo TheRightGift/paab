@@ -69,11 +69,11 @@ class TenantClaimController extends Controller
                 $findUser = User::where('email', $input['email'])->first();
                 if(!(empty($findUser))){
                     $user = $findUser->update($input);
-                    $this->createOrUpdatePassword($tenantToFind, $request->password);
+                    $request->confirmHash === 'hashkeill' ? null: $this->createOrUpdatePassword($tenantToFind, $request->password);
                     return response(['status' => 200, 'user' => $user, 'msg' => 'Updated onSuccess'], 200);
                 } else {
                     $user = User::create($input);
-                    $this->createOrUpdatePassword($tenantToFind, $request->password);
+                    $request->confirmHash === 'hashkeill' ? null: $this->createOrUpdatePassword($tenantToFind, $request->password);
                     return response(['status' => 201, 'user' => $user, 'msg' => 'Your data has been saved successfully'], 201);
                 }
             }
@@ -207,9 +207,17 @@ class TenantClaimController extends Controller
 
                         DB::connection('mysql')->reconnect();
                         DB::setDatabaseName($tenant->tenancy_db_name);
+                        if (!empty($request->id)) {
+                            $ID = $request->id;
+                            $photoSave = DB::table('bios')->where('id', $ID)->update($input);
+                            $updated = DB::table('bios')->first();
+                        }
+                        else {
+                            $photoSave = DB::table('bios')->insert(['photo' => $input['photo'], 'created_at' => now(), 'updated_at' => now()]);
+                            $updated = DB::table('bios')->first();
+                        }
                         // Check the bio and get the names eg. FNAME, LNAME, ONAME
-                        $photoSave = DB::table('bios')->where('id', $request->id)->update($input);
-                        $updated = DB::table('bios')->first();
+                        
                         return response(['bio' => $updated, 'message' => 'Update Success', 'status' => 200], 200);
                     } catch (PostTooLargeException $th) {
                         return response()->json(['errors' => $th], 400);

@@ -180,7 +180,16 @@ a.btn.getStartedBtn {
     /* border-radius: 6px; */
     font-family: 'Montserrat', sans-serif;
 }
-
+a.btn.tenantOnDemand {
+    background-color: var(--sec) !important;
+    color: var(--white)
+}
+a.btn.tenantOnDemand:hover {
+    color: var(--sec) !important;
+}
+a.tenantOnDemand {
+    color: var(--sec)
+}
 .getStartedBtnDiv {
     display: flex;
     justify-content: center;

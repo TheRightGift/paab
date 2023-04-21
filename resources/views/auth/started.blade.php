@@ -38,7 +38,7 @@
 </head>
 <body>
     <div id="app">
-        <started-component claimant="{{$userBiography}}" useremail="{{$searchEmail}}"></started-component>
+        <started-component claimant="{{$userBiography ?? ''}}" usernotordered="{{$userNotRegByAdmin ?? ''}}" useremail="{{$searchEmail ?? ''}}"></started-component>
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>

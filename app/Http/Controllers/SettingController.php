@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Validator;
-
 use App\Models\User;
+
 use App\Models\Tenant;
 use Illuminate\Http\Request;
-
 use App\Models\AdminClientOrder;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
 {
@@ -70,7 +70,8 @@ class SettingController extends Controller
                     // Check the bio and get the names eg. FNAME, LNAME, ONAME
                     $bio = DB::table('bios')->get();
                     $userBiography = $bio->isEmpty() ? collect(['firstname' => '', 'lastname' => '', 'title_id' => '', 'othername' => '']) : $bio;
-                    return view('auth.started', compact('userBiography', 'searchEmail'));
+                    $userNotRegByAdmin = !empty($orders) ? false : true;
+                    return view('auth.started', compact('userBiography', 'searchEmail', 'userNotRegByAdmin'));
                     // ->with(['userBiography' => $userBiography, 'userMail' => $searchEmail]);
                 } else {
                     return redirect('auth/login');

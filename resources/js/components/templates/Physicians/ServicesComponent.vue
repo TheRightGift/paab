@@ -32,9 +32,9 @@
                 <div class="row" v-else-if="services !== null && services.length !== 0 && preview === '0'">
                     <div class="col l12 customCarousel">
                         <div class="inner" ref="inner" :style="innerStyles">
-                            <div class="customCard" v-for="card in cards" :key="card">
+                            <div class="customCard" v-for="card in services" :key="card">
                                 <div>
-                                    <img :src="card.img" />
+                                    <img :src="card.icon" />
                                     <h3>{{card.title}}</h3>
 
                                     <p>{{card.description}}</p>

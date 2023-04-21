@@ -8,13 +8,11 @@
                 </div>
             </div>
             <div class="col s12" id="testiContactFormTitleDiv">
-                 <div v-if="isLoggedIn" class="" >
-                    <!-- Contact Modal Trigger -->
+                <!-- <div v-if="isLoggedIn" class="" >
                     <a class="modal-trigger contactEditBtn" href="#contactEditModal">
                         <i class="material-icons editIcon">edit</i>
                     </a>
 
-                    <!-- Contact Modal Structure -->
                     <div id="contactEditModal" class="modal">
                         <div class="modal-content">
                             <div class="aboutWriteUpsEditModalInnerDiv">
@@ -52,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
             <div class="contactMainDiv row">
