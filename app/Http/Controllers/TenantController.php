@@ -133,7 +133,7 @@ class TenantController extends Controller
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         $websiteTitleLen = 16;
         $user_id = $tenant->user->id;
-        
+            
         if(strlen($bioTB->firstname.' '.$bioTB->lastname) > $websiteTitleLen){
             $abridgedName = mb_substr($bioTB->firstname, 0, 1).$bioTB->lastname.$title;
             if(strlen($abridgedName) > $websiteTitleLen){

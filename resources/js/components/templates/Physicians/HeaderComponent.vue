@@ -31,6 +31,11 @@
             <li><a href="#!">Feeds</a></li>
             <li><a href="#!">Testimonials</a></li>  
             <li><a href="#!">Contact</a></li>
+            <li v-if="isLoggedIn">
+                <a class='modal-trigger physiTempSettingsNavLink' href='#showSettingsModal'>
+                    Settings
+                </a>
+            </li>
             <li><a href="#!" class="waves-effect waves-light btn subscribeBtn">Subscribe</a></li>
         </ul>
     </div>
@@ -39,53 +44,52 @@
         <div class="modal-content">
             <div v-if="modalView == 0" class="settingModalViewInitial">
                 <div class="row">
-                    <div class="col l12">
+                    <div class="col l12 m12 s12">
                         <h3>Settings</h3>
                         <p class="marginTop-1">Update your website by selecting any of the links below</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col l12">
+                <div class="row hide-on-med-and-down">
+                    <div class="col l12 m12 s12">
                         <button class="btn closeSettingModal right modal-close">Close settings</button>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col l4">
+                   <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable"  @click="showSettingOption(1, 'General')">
                             <h6>General</h6>
-                            <img :src="'/media/img/templates/1/general.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/general.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
-                    <div class="col l4">
+                    <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable" @click="showSettingOption(2, 'Mini Blog')">
                             <h6>Mini Blog</h6>
-                            <img :src="'/media/img/templates/1/miniBlog.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/miniBlog.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
-                    <div class="col l4">
+                    <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable" @click="showSettingOption(3, 'Interests')">
                             <h6>Interests</h6>
-                            <img :src="'/media/img/templates/1/interests.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/interests.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col l4">
-                        <div class="generalSettings settingOptions hoverable" @click="showSettingOption(4, 'Feeds')">
+                    
+                    <div class="col l4 m6 s6 marginBottom-2">
+                        <div class="generalSettings settingOptions hoverable" @click="showSettingOption(4, 'Social Feeds')">
                             <h6>Feeds</h6>
-                            <img :src="'/media/img/templates/1/feeds.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/feeds.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
-                    <div class="col l4">
+                    <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable" @click="showSettingOption(5, 'Public Features')">
                             <h6>Features</h6>
-                            <img :src="'/media/img/templates/1/publicFeatures.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/publicFeatures.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
-                    <div class="col l4">
+                    <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable">
                             <h6>CV</h6>
-                            <img :src="'/media/img/templates/1/cv.png'" alt="" class=""/>
+                            <img :src="'/media/img/templates/1/cv.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
                 </div>
