@@ -16,19 +16,23 @@
                     </div>
                     <div class="row">
                         <div class="col l12">
-                            <h1 class="wlcNoteTitle">WELCOME BACK <br/>Doc.</h1>
+                            <h1 class="wlcNoteTitle">
+                                WELCOME BACK <br />Doc.
+                            </h1>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col l12">
                             <p class="wlcNoteTxt">
-                                The World is listening, it is time to tell your brand story with our professional, powerful and easy to use portfolio builder.    
+                                The World is listening, it is time to tell your
+                                brand story with our professional, powerful and
+                                easy to use portfolio builder.
                             </p>
-                        </div>                    
+                        </div>
                     </div>
                 </div>
                 <p class="wlcNoteFooterTxt center-align">
-                        <small>© {{ getYear() }} whitecoatdomain.com.</small>
+                    <small>© {{ getYear() }} whitecoatdomain.com.</small>
                 </p>
                 <!--div class="wlcNoteDiv">
                     <a href="/" class="wlcNoteLogo">
@@ -50,31 +54,27 @@
                     </p>
                 </div-->
             </div>
-    
+
             <div class="col s12 m12 l6 loginContainer formContainer">
                 <div class="authRightDiv">
-                    <div class="authHeadingContainer center-align hide-on-large-only">
+                    <div
+                        class="authHeadingContainer center-align hide-on-large-only"
+                    >
                         <a href="/" class="authHeading">WhiteCoatDomain</a>
                     </div>
-                    <p class="authTitle">
-                        Sing in
-                    </p>
+                    <p class="authTitle">Sing in</p>
                     <p class="authTxt">
-                        Build a brand online and let your potential patients find you.
+                        Build a brand online and let your potential patients
+                        find you.
                     </p>
-    
+
                     <!-- Login Help Modal Structure -->
                     <div id="helpModal" class="modal">
                         <div class="modal-content">
                             <p>
                                 <a
                                     href="#!"
-                                    class="
-                                        modal-close
-                                        waves-effect waves-green
-                                        btn-flat
-                                        helpModalCloseBtn
-                                    "
+                                    class="modal-close waves-effect waves-green btn-flat helpModalCloseBtn"
                                     >Go Back</a
                                 >
                             </p>
@@ -85,7 +85,7 @@
                                 social media accounts like Facebook, Instagram
                                 and Twitter.
                             </p>
-    
+
                             <p class="helpModalTxts">
                                 Presenting your best work is the final step in
                                 your workflow. Join the world of leading
@@ -94,7 +94,7 @@
                             </p>
                         </div>
                     </div>
-    
+
                     <form id="loginForm">
                         <div class="row rm_mg">
                             <div class="input-field col s12">
@@ -108,10 +108,16 @@
                                     required
                                 />
                                 <div v-if="errors.email">
-                                    <p class="red-text" v-for="err in errors.email" :key="err">{{ err }}</p>
+                                    <p
+                                        class="red-text"
+                                        v-for="err in errors.email"
+                                        :key="err"
+                                    >
+                                        {{ err }}
+                                    </p>
                                 </div>
                             </div>
-    
+
                             <div class="input-field col s12">
                                 <label>Password</label>
                                 <input
@@ -121,19 +127,17 @@
                                     type="password"
                                     class="validate loginInput browser-default"
                                 />
-    
+
                                 <small class="right resetPass">
-                                    <a
-                                        href="/auth/resetpassword"
-                                        class=""
+                                    <a href="/auth/resetpassword" class=""
                                         >Reset Password?</a
                                     >
                                 </small>
                             </div>
-    
+
                             <!-- Login Social Media Handle -->
                             <!-- <social-login-component /> -->
-    
+
                             <div class="input-field col s12">
                                 <a
                                     type="button"
@@ -147,9 +151,7 @@
                                 <a class="btn" id="loginBtn" v-else>
                                     <div class="preloader-wrapper small active">
                                         <div
-                                            class="
-                                                spinner-layer spinner-white-only
-                                            "
+                                            class="spinner-layer spinner-white-only"
                                         >
                                             <div class="circle-clipper left">
                                                 <div class="circle"></div>
@@ -164,7 +166,7 @@
                                     </div>
                                 </a>
                             </div>
-    
+
                             <!-- Login Signup Link -->
                             <div class="row">
                                 <div class="col l12 m12 s12 loginSignUpDiv">
@@ -189,36 +191,48 @@
             </div>
         </div>
         <div v-else-if="otpPrompt && !logginIn">
-            <i class="fas fa-circle-notch fa-spin right fa-2x" v-if="logginIn"></i>
+            <i
+                class="fas fa-circle-notch fa-spin right fa-2x"
+                v-if="logginIn"
+            ></i>
             <div class="col s12 m12 l6 otpContainer hide-on-med-and-down">
-                    <div class="wlcNoteDiv">
-                        <a href="/" class="wlcNoteLogo">
-                            <img
-                                src="/media/img/whiteCoatDomain1.png"
-                                alt="whiteCoatDomain.png"
-                                class="authLogo"
-                            />
-                        </a>
-                        <p class="wlcNoteTitle">
-                            We appreciate your journey <br />with us...
-                        </p>
-                        <p class="wlcNoteTxt">
-                            “Good things come to those who wait”.
-                            <span class="getStartedOtpSpan right">Nathan Sykes</span>
-                        </p>
-                        <p class="wlcNoteFooterTxt">
-                            &copy; White Coat Domain. {{ getYear() }}. We support
-                            your brand!
-                        </p>
-                    </div>
+                <div class="wlcNoteDiv">
+                    <a href="/" class="wlcNoteLogo">
+                        <img
+                            src="/media/img/whiteCoatDomain1.png"
+                            alt="whiteCoatDomain.png"
+                            class="authLogo"
+                        />
+                    </a>
+                    <p class="wlcNoteTitle">
+                        We appreciate your journey <br />with us...
+                    </p>
+                    <p class="wlcNoteTxt">
+                        “Good things come to those who wait”.
+                        <span class="getStartedOtpSpan right"
+                            >Nathan Sykes</span
+                        >
+                    </p>
+                    <p class="wlcNoteFooterTxt">
+                        &copy; White Coat Domain. {{ getYear() }}. We support
+                        your brand!
+                    </p>
                 </div>
-    
-                <div class="col s12 m12 l6 otpContainer">
-                    <div class="authHeadingContainer center-align hide-on-large-only">
-                        <a href="/" class="authHeading">WhiteCoatDomain</a>
-                    </div>
-                    <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'" :text="'You are logging in from a new device, we sent you an OTP to your registered email. Please enter OTP to verify your account'"/>
+            </div>
+
+            <div class="col s12 m12 l6 otpContainer">
+                <div
+                    class="authHeadingContainer center-align hide-on-large-only"
+                >
+                    <a href="/" class="authHeading">WhiteCoatDomain</a>
                 </div>
+                <OtpComponent
+                    @res="otpVerifier"
+                    :otp="otp"
+                    :type="'register'"
+                    :text="'You are logging in from a new device, we sent you an OTP to your registered email. Please enter OTP to verify your account'"
+                />
+            </div>
         </div>
         <div v-else-if="logginIn" class="centeredLoader">
             <div class="authHeadingContainer center-align hide-on-large-only">
@@ -231,7 +245,7 @@
 </template>
 
 <script>
-    import OtpComponent from '../partials/OtpComponent.vue';
+    import OtpComponent from "../partials/OtpComponent.vue";
     import SocialLoginComponent from "../partials/SocialLoginComponent.vue";
     export default {
         components: { SocialLoginComponent, OtpComponent },
@@ -264,22 +278,21 @@
                     email: this.loginUser.email,
                     password: this.loginUser.password,
                 };
-                await axios.post("/auth/ante_login", data).then(res => {
-                    if (res.status === 200) {
-                        if (res.data.status == 200) {
-                            //redirect to dashboard route
-                            this.setCookie(
-                                "_token",
-                                res.data.access_token,
-                                2
-                            );
-                            window.location.href = "/dashboard";
+                await axios
+                    .post("/auth/ante_login", data)
+                    .then((res) => {
+                        if (res.status === 200) {
+                            if (res.data.status == 200) {
+                                //redirect to dashboard route
+                                this.setCookie("_token", res.data.access_token, 2);
+                                window.location.href = "/dashboard";
+                            }
+                            this.loginLoading = false;
                         }
-                        this.loginLoading = false;
-                    }
-                }).catch(error => {
-                    console.error();
-                })
+                    })
+                    .catch((error) => {
+                        console.error();
+                    });
             },
             userLogin() {
                 if (this.loginUser.email === "" || this.loginUser.password === "") {
@@ -314,7 +327,7 @@
                                 this.loginLoading = false;
                             }
                             if (res.data.status === 422) {
-                                if (res.data.message == 'Device changed') {
+                                if (res.data.message == "Device changed") {
                                     this.otpPrompt = true;
                                     this.otp = res.data.otp;
                                 }

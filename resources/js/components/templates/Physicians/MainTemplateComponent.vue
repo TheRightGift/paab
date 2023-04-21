@@ -139,7 +139,7 @@ export default {
         user_id: String,
     },
     created() {
-        this.checkAuth();
+        this.preview == '0' ? this.checkAuth() : null;
     },
     mounted() {
         if (this.preview == '0') {
@@ -176,7 +176,7 @@ export default {
                     imageUrl: `/media/img/templates/1/blogImage.jpg`,
                     body: `<p>Many businesses get calls from prospects or existing customers asking simple questions about location and hours of operation. If you miss a call, the customer is left unhappy. Calls can also distract your staff from focusing on the most important parts of your business. A website can reduce these calls and increase internal productivity. At the same time, it helps customers find useful information without needing to call, which ultimately provides an all-around better user experience.</p>`
                 }
-            ]
+            ];
         }
         this.location = window.location.href // For absolute pathing
         var dropdowns = document.querySelectorAll('.dropdown-trigger')

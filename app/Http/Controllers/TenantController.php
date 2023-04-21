@@ -414,8 +414,8 @@ class TenantController extends Controller
                 }
             }
             else {
-                return response()->json(['message' => "Invalid Email/Your website has been claimed!"]);
                 return view('client.dashboard');
+                return response()->json(['message' => "Invalid Email/Your website has been claimed!"]);
             }
         }
         else {

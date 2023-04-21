@@ -40,7 +40,7 @@
         </ul>
     </div>
     <!-- Modal Structure -->
-    <div id="showSettingsModal" class="modal">
+    <div id="showSettingsModal" class="modal" v-if="preview == '0'">
         <div class="modal-content">
             <div v-if="modalView == 0" class="settingModalViewInitial">
                 <div class="row">

@@ -63,7 +63,7 @@ export default {
     },
     data() {
         return {
-            checked: [false, false, false, false, false, false, false],
+            checked: [],
             interests: [
                 {
                     title: 'Ophthalmologists',
@@ -116,12 +116,13 @@ export default {
                 {
                     title: 'Orthopaedics',
                     id: 9,
-                    description: '',
+                    description: 'Orthopedists treat a wide variety of musculoskeletal conditions. These conditions may be present from birth, or they may result from an injury or age-related wear and tear.',
                     icon: '/media/img/templates/1/otho.svg'
                 }
             ],
             loading: false,
             maxChecked: 3,
+            myinterests: {},
             updateActive: 0,
         }
     },
@@ -180,11 +181,31 @@ export default {
         },
     },
     mounted() {
-        
+        this.checked = new Array(this.interests.length).fill(false)
     },
     props: {
         services: Array,
         modalTitle: String,
-    }
+    },
+    watch: {
+        services: {
+            handler(newVal, oldVal) {
+                // Do something when the prop changes
+                if (newVal != null || newVal != undefined) {
+                    this.myinterests = newVal;
+                        this.interests.forEach((el, index) => {
+                            console.log(`E ${el.title}: ${el.title}`)
+                            newVal.forEach(ele => {
+                                if (el.title == ele.title) {
+                                    this.checked[index] = true;
+                                }
+                            })
+                        })
+                }
+                console.log(newVal);
+            },
+            deep: true
+        }
+    },
 }
 </script>

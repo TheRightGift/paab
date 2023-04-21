@@ -50,7 +50,7 @@
                                     <i class="fas fa-circle-notch fa-spin" v-if="loading"></i>
                                     <span v-else>Save &amp; Add New</span>
                                 </button> -->
-                                <button v-if="update = 0" class="btn saveSettingBtn" @click.prevent="addEventFeatured(1)" type="submit">
+                                <button v-if="update == 0" class="btn saveSettingBtn" @click.prevent="addEventFeatured(1)" type="submit">
                                     <i class="fas fa-circle-notch fa-spin" v-if="loading"></i>
                                     <span v-else>Save &amp; Back</span>
                                     <!-- <span v-else-if="update = 1 || !loading">Update &amp; Back</span> -->
