@@ -365,7 +365,7 @@ export default {
                         });
                         this.uploadGeneralProcessing = !this.uploadGeneralProcessing;
                         this.generalUpdate = 1;
-                        this.general = res.data.general;
+                        this.general.id = res.data.general.id;
                         this.showCropperForGeneral = false;
                         this.faviconUploaded = e;
                     }
