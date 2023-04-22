@@ -95,7 +95,7 @@
                                                     v-model="bio.lastname"
                                                     class="validate"
                                                     placeholder="Lastname"
-                                                    @keyup="removeLabel($event)"
+                                                    @keyup="(removeLabel($event), checkTenantOnDemand())"
                                                 />
                                                 <label>Lastname</label>
                                             </div>
@@ -225,7 +225,7 @@
                                         </div>
                                     </section>
 
-                                    <div class="row">
+                                    <section class="row" id="brandImage">
                                         <h4 class="sectionTitle">
                                             Brand image
                                         </h4>
@@ -283,6 +283,7 @@
                                                                     "
                                                                     v-show="!showCropper"
                                                                     class="btn btn-flat"
+                                                                    :class="{'tenantOnDemand': tenantOnDemand == 1}"
                                                                 >
                                                                     <span
                                                                         v-if="
@@ -334,7 +335,7 @@
                                                 </div-->
                                             </div>
                                         </form>
-                                    </div>
+                                    </section>
 
                                     <section class="row" id="underGrad">
                                         <h4 class="sectionTitle">
@@ -1107,6 +1108,7 @@
                                     <div class="skipDiv">
                                         <button
                                             class="saveAllBtn btn btn-small waves-effect waves-black"
+                                            :class="{'tenantOnDemand': tenantOnDemand == 1}"
                                             @click="saveAll()"
                                         >
                                             Save & Publish
@@ -1319,6 +1321,14 @@
             };
         },
         methods: {
+            checkTenantOnDemand() {
+                if (this.tenantOnDemand == 1 && this.bio.photo == undefined) {
+                    let title = this.bio.title_id != '' ? this.titles.find(el => el.id == this.bio.title_id).name : '';
+                    let firstname = this.bio.firstname != '' ? this.bio.firstname : null;
+                    let lastname = this.bio.lastname != '' ? this.bio.lastname : null;
+                    this.domainSelected = ('Dr'+firstname.substring(0, 1)+lastname+title+'.com').toLocaleLowerCase();
+                }
+            },
             saveAll (){
                 this.underGrad.minor === ''|| this.underGrad.minor === null ? delete this.underGrad.minor : null;
                 this.bio.othername === '' || this.bio.othername === null ? delete this.bio.othername : null;
@@ -1495,7 +1505,7 @@
                     .get("/claim/getTenantDomain")
                     .then((res) => {
                         if (res.data.status == 200) {
-                            this.domainSelected = `${res.data.domain}.com`;
+                            this.domainSelected = this.bio.firstname == '' && this.tenantOnDemand == 1 ? '' : `${res.data.domain}.com`;
                             this.initialDomain = res.data.domain;
                             this.tenantId = res.data.tenantID;
                         }
@@ -2064,7 +2074,6 @@
                     this.getOffset('underGrad');
                 }
                 if (!this.validator(this.bio)) {
-                    console.log('eeete')
                     this.loopInputsNCheckEmptyValues('bio');
                     this.getOffset('bio');
                 }
@@ -2140,6 +2149,9 @@
                             else {
                                 this.createLabel(input);
                             }
+                        }
+                        else if (this.bio.photo === undefined) {
+                            document.getElementById('brandImage').getElementsByClassName('sectionTitle')[0].style.color = 'red';
                         }
                         else {
                             console.log(input.value);
@@ -2318,15 +2330,16 @@
             height: 88vh;
         }
     }
+    .saveAllBtn {
+        background-color: var(--pri) !important;
+    }
     .justify-center {
         justify-content: center !important;
     }
     .holds-the-iframe {
         background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100% 100%"><text fill="%23FF0000" x="50%" y="50%" font-family="\'Lucida Grande\', sans-serif" font-size="24" text-anchor="middle">PLACEHOLDER</text></svg>') 0px 0px no-repeat;
     }
-    .saveAllBtn {
-        background-color: var(--pri) !important;
-    }
+    
     .bb-danger {
         border-bottom-color: rgb(238, 118, 118) !important; 
     }

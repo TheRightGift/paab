@@ -365,7 +365,7 @@ export default {
                         });
                         this.uploadGeneralProcessing = !this.uploadGeneralProcessing;
                         this.generalUpdate = 1;
-                        this.general = res.data.general;
+                        this.general.id = res.data.general.id;
                         this.showCropperForGeneral = false;
                         this.faviconUploaded = e;
                     }
@@ -422,7 +422,6 @@ export default {
             })
         },
         saveAndBack() {
-            // this.switchForInputs();
             if (this.switchForInputs()) {
                 try {
                     // For BIO
@@ -434,7 +433,7 @@ export default {
                     bioFormData.append('title_id', this.bio.title_id);
                     let bioRequest = this.bioUpdate === 1 ? `/api/bio/${this.bio.id}` : '/api/bio';
                     this.bioUpdate === 1 ? bioFormData.append('_method', 'PUT') : null;
-
+    
                     // For WebsiteTitle
                     let formData = new FormData();
                     formData.append("title", this.general.title);
@@ -477,7 +476,7 @@ export default {
             this.uploadPhotoProcessing = false;
         },
         switchForInputs() {
-            if (this.validatePhotoImage(), this.validateFavicon(), this.validateGeneralTitle(), this.validateTitle(), this.validateLastname(), this.validateFirstname()) {
+            if (this.validatePhotoImage() && this.validateFavicon() && this.validateGeneralTitle() && this.validateTitle() && this.validateLastname() && this.validateFirstname()) {
                 return true;
             }
             return false;
@@ -540,6 +539,7 @@ export default {
             if (this.bio.photo == null) {
                 tag.style.color = 'red'
                 document.querySelector('#bioSettings .optionSettingContainer').scrollTop = 125;
+                return false;
             } else {
                 tag.style.color = 'unset'
                 return true;
@@ -547,9 +547,10 @@ export default {
         },
         validateFavicon () {
             let tag = document.querySelectorAll('#bioSettings #forFavicon .settingOptionSectionTitle')[0];
-            if (this.bio.photo == null) {
+            if (this.general.favicon == null) {
                 tag.style.color = 'red'
                 document.querySelector('#bioSettings .optionSettingContainer').scrollTop = 110;
+                return false;
             } else {
                 tag.style.color = 'unset'
                 return true;
@@ -561,6 +562,7 @@ export default {
                 input.nextElementSibling.style.color = 'red';
                 input.style.borderBottomColor = 'red'
                 document.querySelector('#bioSettings .optionSettingContainer').scrollTop = 0;
+                return false;
             }
             else {
                 input.nextElementSibling.style.color = 'unset';
@@ -574,6 +576,7 @@ export default {
                 input.nextElementSibling.style.color = 'red';
                 input.style.borderBottomColor = 'red'
                 document.querySelector('#bioSettings .optionSettingContainer').scrollTop = 105;
+                return false;
             }
             else {
                 input.nextElementSibling.style.color = 'unset';
@@ -587,6 +590,7 @@ export default {
                 input.nextElementSibling.style.color = 'red';
                 input.style.borderBottomColor = 'red'
                 document.querySelector('#bioSettings .optionSettingContainer').scrollTop = 0;
+                return false;
             }
             else {
                 input.nextElementSibling.style.color = 'unset';
@@ -600,6 +604,7 @@ export default {
                 input.nextElementSibling.style.color = 'red';
                 input.style.borderBottomColor = 'red'
                 document.querySelector('#bioSettings .optionSettingContainer').scrollTop = 50;
+                return false;
             }
             else {
                 input.nextElementSibling.style.color = 'unset';

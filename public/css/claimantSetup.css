@@ -175,16 +175,17 @@ a.btn.getStartedBtn:hover, button.btn.saveAllBtn:hover, button.btn.goLiveBtn:hov
     color: var(--pri) !important;
     /* border: thin solid var(--pri) !important; */
 }
+
 a.btn.getStartedBtn {
     background-color: var(--pri) !important;
     /* border-radius: 6px; */
     font-family: 'Montserrat', sans-serif;
 }
-a.btn.tenantOnDemand {
+a.btn.tenantOnDemand, .saveAllBtn.btn.tenantOnDemand, .btn.goLiveBtn.tenantOnDemand {
     background-color: var(--sec) !important;
     color: var(--white)
 }
-a.btn.tenantOnDemand:hover {
+a.btn.tenantOnDemand:hover, .saveAllBtn.btn.tenantOnDemand:hover, .btn.goLiveBtn.tenantOnDemand:hover {
     color: var(--sec) !important;
 }
 a.tenantOnDemand {
