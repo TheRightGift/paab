@@ -66,6 +66,9 @@
     import OtpComponent from "../partials/OtpComponent";
     import ClaimaintComponentProp from './ClaimaintComponentProp.vue';
     import { faker } from '@faker-js/faker';
+    // import cryptoJs from "crypto-js";
+    // import { Base64 } from "js-base64";
+    // const key = process.env.MIX_APP_KEY;
     let country = "/api/countries";
     let title = "/api/title";
     let profession = "/api/profession";
@@ -86,7 +89,7 @@
                 titles: [],
                 password: "",
                 userReg: {
-                    email: "example@eg.com",
+                    email: "",
                     title: "",
                     lastname: "",
                     firstname: "",
@@ -102,7 +105,7 @@
                 },
                 tenantOnDemand: parseInt(this.usernotordered), 
                 verifying: false,
-                verifiedEmail: 3,
+                verifiedEmail: 1,
                 userMail: null,
                 claimaint: null// if user refreshes page check if the process of claiming has started previously
             };
@@ -110,10 +113,6 @@
         mounted() {
             this.getLocations();
             this.checkIfComingFromClaim();
-
-            // TODO: remove
-            this.password = this.passwordGenerator();
-            this.saveMailAndCreateUser();
         },
         methods: {
             checkIfComingFromClaim() {
@@ -139,9 +138,7 @@
                     password: this.password,
                 };
                 axios.post('/api/tenant_without_auth', data).then(res => {
-                    
                     if (res.data.status === 200) {
-                        
                         document.location.href = `claim?claimable=${res.data.domain.tenant.id}&mail=${this.userReg.email}`;
                         this.verifying = false;
                         console.log(location.host);
@@ -159,7 +156,7 @@
                     var randomNumber = Math.floor(Math.random() * chars.length);
                     password += chars.substring(randomNumber, randomNumber + 1);
                 }
-                
+                console.log(password)
                 return password;
             },
             getLocations() {
