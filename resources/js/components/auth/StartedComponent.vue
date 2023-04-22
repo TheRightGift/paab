@@ -32,28 +32,9 @@
                     <p class="wlcNoteFooterTxt center-align">
                             <small>© {{ getYear() }} whitecoatdomain.com.</small>
                     </p>
-                    <!--div class="wlcNoteDiv">
-                        <a href="/" class="wlcNoteLogo">
-                            <img
-                                src="/media/img/whiteCoatDomain1.png"
-                                alt="whiteCoatDomain.png"
-                                class="authLogo"
-                            />
-                        </a>
-                        <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
-                        <p class="wlcNoteTxt">
-                            The World is listening, it is time to tell your brand story with our professional, powerful and easy to use portfolio builder.
-        
-        
-                        </p>
-                        <p class="wlcNoteFooterTxt">
-                            © White Coat Domain, Inc. {{ getYear() }}. We love our
-                            users!
-                        </p>
-                    </div-->
                 </div>
         
-                <div class="col s12 m12 l6 loginContainer formContainer">
+                <div class="col s12 m10 offset-m1 l6 loginContainer formContainer">
                     <div class="authRightDiv">
                         <div for="signup" v-if="verifiedEmail == 1">
                             <VerifyEmailComponent @resData="setOTP" :type="'register'" />

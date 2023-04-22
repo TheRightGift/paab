@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{env('APP_NAME')}}: Whit - Login</title>
+    <title>{{env('APP_NAME')}}: - Login</title>
     <link rel="shortcut icon" href="{{ global_asset('/media/img/logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ global_asset('css/materialize.min.css') }}">
     <link rel="stylesheet" href="{{ global_asset('css/paab.css') }}">
     <link rel="stylesheet" href="{{ global_asset('css/auth.css') }}">
-    <link rel="stylesheet" href="{{ global_asset('fonts/material-icons.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>

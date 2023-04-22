@@ -34,33 +34,21 @@
                 <p class="wlcNoteFooterTxt center-align">
                     <small>© {{ getYear() }} whitecoatdomain.com.</small>
                 </p>
-                <!--div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">
-                        <img
-                            src="/media/img/whiteCoatDomain1.png"
-                            alt="whiteCoatDomain.png"
-                            class="authLogo"
-                        />
-                    </a>
-                    <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
-                    <p class="wlcNoteTxt">
-                        The World is listening, it is time to tell your brand story with our professional, powerful and easy to use portfolio builder.
-    
-    
-                    </p>
-                    <p class="wlcNoteFooterTxt">
-                        © White Coat Domain, Inc. {{ getYear() }}. We love our
-                        users!
-                    </p>
-                </div-->
             </div>
 
-            <div class="col s12 m12 l6 loginContainer formContainer">
+            <div class="col s12 m8 offset-m2 l6 loginContainer formContainer">
                 <div class="authRightDiv">
-                    <div
-                        class="authHeadingContainer center-align hide-on-large-only"
-                    >
-                        <a href="/" class="authHeading">WhiteCoatDomain</a>
+                    <div class="authHeadingContainer center-align hide-on-large-only">
+                        <!--a href="/" class="authHeading">WhiteCoatDomain</a-->
+                        <div class="col m12 s6 offset-s3 marginBottom-5">
+                            <a href="/">
+                                <img
+                                    src="/media/img/wcd-logo-noBckg.png"
+                                    alt="WhiteCoatDomain Logo"
+                                    class="responsive-img"
+                                />
+                            </a>
+                        </div>
                     </div>
                     <p class="authTitle">Sing in</p>
                     <p class="authTxt">
@@ -100,7 +88,7 @@
                             <div class="input-field col s12">
                                 <label>Email</label>
                                 <input
-                                    placeholder="Email"
+                                    placeholder="Enter your email"
                                     v-model="loginUser.email"
                                     id="user"
                                     type="email"
@@ -121,7 +109,7 @@
                             <div class="input-field col s12">
                                 <label>Password</label>
                                 <input
-                                    placeholder="Password"
+                                    placeholder="**********"
                                     v-model="loginUser.password"
                                     id="password"
                                     type="password"
@@ -142,13 +130,12 @@
                                 <a
                                     type="button"
                                     v-if="!loginLoading"
-                                    class="btn"
-                                    id="loginBtn"
+                                    class="btn loginBtn"
                                     @click.prevent="userLogin()"
                                 >
                                     sign in
                                 </a>
-                                <a class="btn" id="loginBtn" v-else>
+                                <a class="btn loginBtn" v-else>
                                     <div class="preloader-wrapper small active">
                                         <div
                                             class="spinner-layer spinner-white-only"
@@ -191,55 +178,74 @@
             </div>
         </div>
         <div v-else-if="otpPrompt && !logginIn">
-            <i
-                class="fas fa-circle-notch fa-spin right fa-2x"
-                v-if="logginIn"
-            ></i>
-            <div class="col s12 m12 l6 otpContainer hide-on-med-and-down">
-                <div class="wlcNoteDiv">
-                    <a href="/" class="wlcNoteLogo">
-                        <img
-                            src="/media/img/whiteCoatDomain1.png"
-                            alt="whiteCoatDomain.png"
-                            class="authLogo"
-                        />
-                    </a>
-                    <p class="wlcNoteTitle">
-                        We appreciate your journey <br />with us...
-                    </p>
-                    <p class="wlcNoteTxt">
-                        “Good things come to those who wait”.
-                        <span class="getStartedOtpSpan right"
-                            >Nathan Sykes</span
-                        >
-                    </p>
-                    <p class="wlcNoteFooterTxt">
-                        &copy; White Coat Domain. {{ getYear() }}. We support
-                        your brand!
-                    </p>
+            <i class="fas fa-circle-notch fa-spin right fa-2x" v-if="logginIn"></i>
+            <div class="col l6 otpContainer white-text intro hide-on-med-and-down">
+                <div class="marginTop-15">
+                    <div class="row">
+                        <div class="col l4 noMarginLeft">
+                            <a href="/">
+                                <img
+                                    src="/media/img/wcdlogoWhite.png"
+                                    alt="WhiteCoatDomain Logo"
+                                    class="responsive-img"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l12">
+                            <h1 class="wlcNoteTitle">We Appreciate <br/>Your Journey</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l12">
+                            <p class="wlcNoteTxt">
+                                “Good things come to those who wait”.
+                                <span class="getStartedOtpSpan right">Nathan Sykes</span>
+                            </p>
+                        </div>                    
+                    </div>
                 </div>
+                <p class="wlcNoteFooterTxt center-align">
+                        <small>© {{ getYear() }} whitecoatdomain.com.</small>
+                </p>
             </div>
 
-            <div class="col s12 m12 l6 otpContainer">
-                <div
-                    class="authHeadingContainer center-align hide-on-large-only"
-                >
-                    <a href="/" class="authHeading">WhiteCoatDomain</a>
+            <div class="col s12 m10 offset-m1 l6 otpContainer formContainer">
+                <div class="authRightDiv">
+                    <div class="authHeadingContainer center-align hide-on-large-only">
+                        <!--a href="/" class="authHeading">WhiteCoatDomain</a-->
+                        <div class="col m12 s6 offset-s3 marginBottom-5">
+                            <a href="/">
+                                <img
+                                    src="/media/img/wcd-logo-noBckg.png"
+                                    alt="WhiteCoatDomain Logo"
+                                    class="responsive-img"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                    <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'" :text="'You are logging in from a new device, we sent you an OTP to your registered email. Please enter OTP to verify your account'"/>
                 </div>
-                <OtpComponent
-                    @res="otpVerifier"
-                    :otp="otp"
-                    :type="'register'"
-                    :text="'You are logging in from a new device, we sent you an OTP to your registered email. Please enter OTP to verify your account'"
-                />
             </div>
         </div>
         <div v-else-if="logginIn" class="centeredLoader">
-            <div class="authHeadingContainer center-align hide-on-large-only">
-                <a href="#" class="authHeading">WhiteCoatDomain</a>
+            <div class="authRightDiv">
+                <div class="authHeadingContainer center-align hide-on-large-only">
+                    <!--a href="/" class="authHeading">WhiteCoatDomain</a-->
+                    <div class="col m12 s6 offset-s3 marginBottom-5">
+                        <a href="/">
+                            <img
+                                src="/media/img/wcd-logo-noBckg.png"
+                                alt="WhiteCoatDomain Logo"
+                                class="responsive-img"
+                            />
+                        </a>
+                    </div>
+                </div>
+                <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                <p>Loggin You In</p>
             </div>
-            <i class="fas fa-circle-notch fa-spin fa-2x"></i>
-            <p>Loggin You In</p>
         </div>
     </div>
 </template>

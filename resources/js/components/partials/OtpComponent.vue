@@ -1,6 +1,6 @@
 <template>
     <div class="authRightDiv">
-        <p class="authTitle">INSERT OTP</p>
+        <p class="authTitle">ENTER OTP</p>
         <p class="otpEmailAuthTxt">
             <span v-if="text !== undefined">{{ text }} </span>
             <span v-else>You are almost there, get ready to conquer the world.</span>
@@ -105,8 +105,9 @@
                         :disabled="disabled == 1"
                     />
                 </form>
+                <p v-if="shown"><b>Still can't find the mail? Check your spam/junk box. Messages could end up there.</b></p>
             </div>
-            <p v-if="shown"><b>Still can't find the mail? Check your spam/junk box. Most messages ends up there.</b></p>
+            
             <button
                 class="btn col s12"
                 id="otpEmailBtn"
@@ -222,7 +223,7 @@
 </script>
 <style scoped>
     .btn:disabled {
-        background-color: #9ca4d4 !important;
+        background-color: #b9bac1 !important;
         border: none !important;
     }
 </style>

@@ -1,10 +1,20 @@
 <template>
-    <div>
+    <div class="authRightDiv">
         <div class="authHeadingContainer center-align hide-on-large-only">
-            <a href="/" class="authHeading">WhiteCoatDomain</a>
+            <div class="row">
+                <div class="col l12 m8 offset-m2 s6 offset-s3 marginBottom-5">
+                    <a href="/">
+                        <img
+                            src="/media/img/wcd-logo-noBckg.png"
+                            alt="WhiteCoatDomain Logo"
+                            class="responsive-img"
+                        />
+                    </a>
+                </div>
+            </div>
         </div>
         <p class="authTitle" v-if="type === 'register'">GET STARTED</p>
-        <p class="authTitle" v-if="type === 'reset'">RESET PASSWORD</p>
+        <p class="authTitle" v-if="type === 'reset'">Reset Password</p>
         <p class="authTxt">            
             <span v-if="type === 'register'">Get a booster shot in your journey with a simple click. </span>
             <span v-if="type === 'reset'">No worries, reseting your password is easy. Just enter your email address.</span>
@@ -17,7 +27,7 @@
                         placeholder="Email"
                         id="user"
                         type="email"
-                        class="validate loginInput browser-default"
+                        class="center-align loginInput browser-default"
                         v-model="email"
                         required
                     />
@@ -28,13 +38,12 @@
                     <a
                         type="button"
                         v-if="!verificationLoading"
-                        class="btn"
-                        id="loginBtn"
+                        class="btn loginBtn"
                         @click.prevent="submitEmailForVerificationOTP()"
                     >
                         sign up
                     </a>
-                    <a class="btn" id="loginBtn" v-else>
+                    <a class="btn loginBtn" v-else>
                         <div class="preloader-wrapper small active">
                             <div
                                 class="
