@@ -16,7 +16,7 @@ body {
     justify-content: center;
 }
 
-.loginContainer {
+.loginContainer, .welcomeContainer, .otpContainer {
     justify-content: space-between;
 }
 
@@ -37,54 +37,6 @@ body {
 .row .col.intro h1 {
     font-size: 3.5rem;
 }
-/* .wlcNoteDiv {
-    width: 434px;
-    background: var(--primary);
-    border-radius: 50px;
-    padding: 5vh 2vw;
-}
-.wlcNoteLogo {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    color: #ffffff;
-}
-p.wlcNoteLogo {
-    margin-top: 0;
-}
-.wlcNoteTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2.5rem;
-    letter-spacing: -0.015em;
-    color: #ffffff;
-}
-.wlcNoteTxt {
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 24px;
-    color: rgba(255, 255, 255, 0.82);
-}
-.wlcNoteFooterTxt {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.9375rem;
-    line-height: 24px;
-    text-align: center;
-    letter-spacing: -0.015em;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 38vh;
-}
-p.wlcNoteFooterTxt {
-    margin-bottom: 0;
-} */
 .authTitle {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
@@ -105,7 +57,7 @@ p.wlcNoteFooterTxt {
     line-height: 24px;
     color: #1e1e1e;
 }
-#loginForm label {
+#loginForm label, #regEmailVerifier label {
     margin-bottom: 2vh;
     color: var(--sec);
     position: relative;
@@ -122,33 +74,19 @@ p.wlcNoteFooterTxt {
     border-radius: 1vh;
     padding: 0 1vw;
 }
-/* #user {
-    border: 1px solid var(--primary);
-    border-radius: 100px;
-}
-#regEmailVerifier input#user::placeholder {
-    text-align: center;
-}
-#loginForm input#user {
-    padding-left: 1vw;
-}
-#password {
-    border: 1px solid var(--primary);
-    border-radius: 100px;
-    padding-left: 1vw;
-} */
-#loginBtn {
+.btn.loginBtn {
     font-family: "Montserrat", sans-serif;
     text-transform: capitalize;
     background: var(--sec);
     border-radius: 6px;
-    /* margin-left: 1vw; */
     width: 100%;
-    /* height: 6vh; */
-    /* margin-left: 1vw; */
     margin-top: 2vh;
     height: 3rem;
     line-height: 3rem;
+}
+.btn.loginBtn:hover, .loginBtn:hover {
+    background: var(--white);
+    color: var(--sec);
 }
 .resetPass {
     font-size: 12px;
@@ -177,7 +115,6 @@ p.wlcNoteFooterTxt {
 
 .loginSignUpTxt {
     margin-right: 0.5vw;
-    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
@@ -355,6 +292,9 @@ p.wlcNoteFooterTxt {
     .authContainDiv {
         width: 90%;
     }
+    .row .col.formContainer {
+        padding: 0 1.5vw;
+    }
     .digit-group {
         display: flex;
     }
@@ -364,10 +304,6 @@ p.wlcNoteFooterTxt {
     }
     .row .col.regContainer .authHeadingContainer {
         margin-bottom: 5vh;
-    }
-
-    #reistrationForm .row .col.input-field {
-        padding: 0;
     }
 
     #signupTitle,
@@ -392,7 +328,9 @@ p.wlcNoteFooterTxt {
     input[type=tel]:not(.browser-default) {
         margin-bottom: 0;
     }
-    #reistrationForm .input-field {
-        margin-bottom: 1.2rem;
+    
+    .authTitle {
+        font-size: 2rem;
+        text-align: center;
     }
 }

@@ -1629,9 +1629,11 @@ div .col .s9 input.clientCreatePortInput1 {
         margin-left: 3vw;
         margin-top: 6vh;
     }
-
-    #otpEmailDiv {
-        margin-left: 4.5vw;
+    #otpEmailDiv p {
+        text-align: center;
+    }
+    .digit-group {
+        display: flex;
     }
     /* Client Settings Section */
     .settingsFormDiv {
@@ -2283,11 +2285,6 @@ div .col .s9 input.clientCreatePortInput1 {
         margin-bottom: 20vh;
     }
     .input-field input{
-        text-align: center;
-    }
-    .authTitle {
-        margin-bottom: 3vh;
-        font-family: "Montserrat", sans-serif;
         text-align: center;
     }
 

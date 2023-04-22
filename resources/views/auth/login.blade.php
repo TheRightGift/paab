@@ -15,7 +15,7 @@
     <meta content="https://whitecoatdomain.com/" property="og:url">
     <meta content="White Coat DOmain - is a fast-growing Peopl-as-a-Brand solution that helps physician own and easy to setup, easy to manage and very financial comfortable web presence for showcasing ther thriving careers." property="og:title">
     <meta content="White Coat Domain - A dose of your medical story - building a brand around your medical career. We provide medical practitioners with a web presence to promote and showcase their thriving career." property="og:description">
-    <meta content="https://whitecoatdomain.com/img/whiteCoatDomain.png" property="og:image">
+    <meta content="https://whitecoatdomain.com/media/img/whiteCoatDomainSlogan.png" property="og:image">
     <meta content="400" property="og:image:width">
     <meta content="400" property="og:image:height">
     <meta content="An image of the White Coat Domain logo" property="og:image:alt">

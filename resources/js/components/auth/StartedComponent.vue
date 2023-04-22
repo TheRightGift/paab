@@ -32,28 +32,9 @@
                     <p class="wlcNoteFooterTxt center-align">
                             <small>© {{ getYear() }} whitecoatdomain.com.</small>
                     </p>
-                    <!--div class="wlcNoteDiv">
-                        <a href="/" class="wlcNoteLogo">
-                            <img
-                                src="/media/img/whiteCoatDomain1.png"
-                                alt="whiteCoatDomain.png"
-                                class="authLogo"
-                            />
-                        </a>
-                        <p class="wlcNoteTitle">WELCOME BACK CHIEF!</p>
-                        <p class="wlcNoteTxt">
-                            The World is listening, it is time to tell your brand story with our professional, powerful and easy to use portfolio builder.
-        
-        
-                        </p>
-                        <p class="wlcNoteFooterTxt">
-                            © White Coat Domain, Inc. {{ getYear() }}. We love our
-                            users!
-                        </p>
-                    </div-->
                 </div>
         
-                <div class="col s12 m12 l6 loginContainer formContainer">
+                <div class="col s12 m10 offset-m1 l6 loginContainer formContainer">
                     <div class="authRightDiv">
                         <div for="signup" v-if="verifiedEmail == 1">
                             <VerifyEmailComponent @resData="setOTP" :type="'register'" />
@@ -85,9 +66,6 @@
     import OtpComponent from "../partials/OtpComponent";
     import ClaimaintComponentProp from './ClaimaintComponentProp.vue';
     import { faker } from '@faker-js/faker';
-    // import cryptoJs from "crypto-js";
-    // import { Base64 } from "js-base64";
-    // const key = process.env.MIX_APP_KEY;
     let country = "/api/countries";
     let title = "/api/title";
     let profession = "/api/profession";
@@ -108,7 +86,7 @@
                 titles: [],
                 password: "",
                 userReg: {
-                    email: "",
+                    email: "example@eg.com",
                     title: "",
                     lastname: "",
                     firstname: "",
@@ -124,7 +102,7 @@
                 },
                 tenantOnDemand: parseInt(this.usernotordered), 
                 verifying: false,
-                verifiedEmail: 1,
+                verifiedEmail: 3,
                 userMail: null,
                 claimaint: null// if user refreshes page check if the process of claiming has started previously
             };
@@ -132,6 +110,10 @@
         mounted() {
             this.getLocations();
             this.checkIfComingFromClaim();
+
+            // TODO: remove
+            this.password = this.passwordGenerator();
+            this.saveMailAndCreateUser();
         },
         methods: {
             checkIfComingFromClaim() {
@@ -157,7 +139,9 @@
                     password: this.password,
                 };
                 axios.post('/api/tenant_without_auth', data).then(res => {
+                    
                     if (res.data.status === 200) {
+                        
                         document.location.href = `claim?claimable=${res.data.domain.tenant.id}&mail=${this.userReg.email}`;
                         this.verifying = false;
                         console.log(location.host);
@@ -175,7 +159,7 @@
                     var randomNumber = Math.floor(Math.random() * chars.length);
                     password += chars.substring(randomNumber, randomNumber + 1);
                 }
-                console.log(password)
+                
                 return password;
             },
             getLocations() {

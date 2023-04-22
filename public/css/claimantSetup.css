@@ -201,6 +201,10 @@ a.tenantOnDemand {
     margin-right: 0;
 }
 
+.digit-group {
+    display: flex;
+}
+
 form.mainForm {
     display: flex;
     justify-content: center;
