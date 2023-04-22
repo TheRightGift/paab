@@ -194,7 +194,7 @@ export default {
                 if (newVal != null || newVal != undefined) {
                     this.myinterests = newVal;
                         this.interests.forEach((el, index) => {
-                            console.log(`E ${el.title}: ${el.title}`)
+                            // console.log(`E ${el.title}: ${el.title}`)
                             newVal.forEach(ele => {
                                 if (el.title == ele.title) {
                                     this.checked[index] = true;
