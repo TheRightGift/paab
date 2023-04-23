@@ -54,9 +54,7 @@ class ServiceController extends Controller
             // dump($input, $data);
             foreach ($data as $row) {
                 $service = new Service();
-                $service->title = $row->title;
-                $service->description = $row->description;
-                $service->icon = $row->icon;
+                $service->interest_id = $row->id;
                 $service->save();
             }
             return response(['service' => $service, 'message' => 'Created Success'], 201);
@@ -92,27 +90,21 @@ class ServiceController extends Controller
             //     $input['icon_filename'] = '/media/img/'.$name;
             // } 
             #TODO: Run a check to make sure if this is an array
+            $service2Update = false;
             if ($request->has('removed')) {
                 foreach ($removed as $row) {
+                    dd($row->id);
                     $services = new Service();
                     $service2Update = $services->find($row->id);
-                    
                     $service2Update->delete();
                 }
             }
+            $services = new Service();
             foreach ($data as $row) {
                 $services = new Service();
-                if (!empty($row->id)) {
-                    $service2Update = $services->find($row->id);
-                    $service2Update->title = $row->title;
-                    $service2Update->description = $row->description;
-                    $service2Update->icon = $row->icon;
-                    $service2Update->save();
-                }
-                else {
-                    $services->title = $row->title;
-                    $services->description = $row->description;
-                    $services->icon = $row->icon;
+                $checkIfAlreadyInserted = $services->where('interest_id', $row->id)->first();
+                if ($checkIfAlreadyInserted == null) {
+                    $services->interest_id = $row->id;
                     $services->save();
                 }
                 
@@ -122,7 +114,7 @@ class ServiceController extends Controller
                 return response()->json(['message' => 'Updated', 'services' => $service2Update, 'status' => 200], 200);
             }
             else {
-                    return response()->json(['message' => 'Error Updating', 'services' => $service2Update, 'status' => 501], 501);
+                return response()->json(['message' => 'Error Updating', 'services' => $service2Update, 'status' => 501], 501);
             }
         }
     }

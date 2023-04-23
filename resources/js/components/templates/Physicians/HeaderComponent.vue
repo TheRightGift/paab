@@ -102,7 +102,7 @@
                 <MiniBlogComponent :modalTitle="modalTitle" :modalView="modalView" @backToSettings="backToSettings" :tenant="tenant" />
             </div>
             <div v-show="modalView == 3">
-                <ServicesRendered :services="services" :modalTitle="modalTitle" @backToSettings="backToSettings" />
+                <ServicesRendered :services="services" :modalTitle="modalTitle" @backToSettings="backToSettings" :interests="interests" />
             </div>
             <div v-show="modalView == 4">
                 <SocialMedia :modalTitle="modalTitle" :modalView="modalView" @backToSettings="backToSettings" />
@@ -139,7 +139,8 @@ export default {
         services: Array,
         tenant: String,
         bio: Object,
-        user_id: String
+        user_id: String,
+        interests: Array,
     },
     mounted() {
     },

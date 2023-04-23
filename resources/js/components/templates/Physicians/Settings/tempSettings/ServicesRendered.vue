@@ -20,7 +20,7 @@
                             </div>
                             <p v-for="(interest, index) in interests" :key="interest">
                                 <label>
-                                    <input :checked="checked[index]" @change="handleChange(index)" :disabled="!isCheckable(index)" type="checkbox" v-model="myinterests[interest.title]"/>
+                                    <input :checked="checked[index]" @change="handleChange(interest, index)" :disabled="!isCheckable(index)" type="checkbox" v-model="myinterests[interest.title]"/>
                                     <span>{{interest.title}}</span>
                                 </label>
                             </p>
@@ -29,7 +29,11 @@
     
                         <div class="row hPadding-1 center-align">
                             <p class="underConstruct">Under Construction</p>
-                            <button class="btn saveSettingBtn" @click="serviceSaveOrUpdate">Save &amp; Back</button>
+                            <button class="btn saveSettingBtn" @click="serviceSaveOrUpdate">
+                                <i class="fas fa-circle-notch fa-spin" v-if="loading"></i>
+                                <span v-else>Save &amp; Back</span>
+                                
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -64,70 +68,17 @@ export default {
     data() {
         return {
             checked: [],
-            interests: [
-                {
-                    title: 'Ophthalmologists',
-                    id: 1,
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                    icon: '/media/img/templates/1/otho.svg',
-                },
-                {
-                    title: 'Gynecologists',
-                    id: 2,
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                    icon: '/media/img/templates/1/cadio.svg',
-                },
-                {
-                    title: 'Dermatologists',
-                    id: 3,
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                    icon: '/media/img/templates/1/pedia.svg',
-                },
-                {
-                    title: 'Allergists',
-                    id: 4,
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                    icon: '/media/img/templates/1/gastro.svg'
-                },
-                {
-                    title: 'Pediatric',
-                    id: 5,
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                    icon: '/media/img/templates/1/pedia.svg'
-                },
-                {
-                    title: 'Neurologists',
-                    id: 6,
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                    icon: '/media/img/templates/1/cadio.svg'
-                },
-                {
-                    title: 'Psychiatrists',
-                    id: 7,
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                    icon: '/media/img/templates/1/otho.svg'
-                },
-                {
-                    title: 'Cadiology',
-                    id: 8,
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                    icon: '/media/img/templates/1/cadio.svg'
-                },
-                {
-                    title: 'Orthopaedics',
-                    id: 9,
-                    description: 'Orthopedists treat a wide variety of musculoskeletal conditions. These conditions may be present from birth, or they may result from an injury or age-related wear and tear.',
-                    icon: '/media/img/templates/1/otho.svg'
-                }
-            ],
             loading: false,
             maxChecked: 3,
-            myinterests: {},
+            removed: [],
             updateActive: 0,
         }
     },
     methods: {
-        handleChange(index) {
+        handleChange(interest, index) {
+            let e = this.services.find(el => el.interest_id == interest.id);
+            console.log(interest, e);
+            e != undefined ? this.removed.push(e) : null;
             if (this.isCheckable(index)) {
                 this.checked[index] = !this.checked[index];
             } else {
@@ -144,8 +95,9 @@ export default {
             let request = `/api/service`;
             let formData = new FormData()
             if (this.updateActive === 1) {
-                request = `/api/service/${this.service.id}`;
+                request = `/api/service/1`;
                 formData.append('_method', 'PUT');
+                this.removed.length > 0 ? formData.append('removed', JSON.stringify(this.removed)) : null;
             }
             formData.append('data', JSON.stringify(this.myinterests));
             axios
@@ -156,14 +108,22 @@ export default {
                             html: res.data.message,
                             classes: "successNotifier",
                         });
-                        res.status === 201 ? this.services.unshift(res.data.service) : null;
+                        if (res.status == 201) {
+                            for (const key in this.myinterests) {
+                                if (this.myinterests.hasOwnProperty(key)) {
+                                    console.log(`${key}: ${this.myinterests[key]}`);
+                                    // this.services.unshift(this.myinterests[key])
+                                }
+                            }
+                        }
+
                         this.loading = !this.loading;
                         this.service = {
                             title: "",
                             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
                             icon: "fa-tooth"
                         };
-                        this.updateActive = 0;
+                        this.updateActive = 1;
                         this.$emit('backToSettings');
                     }
                 })
@@ -181,31 +141,40 @@ export default {
         },
     },
     mounted() {
-        this.checked = new Array(this.interests.length).fill(false)
+        
     },
     props: {
         services: Array,
         modalTitle: String,
+        interests: Array,
     },
     watch: {
         services: {
             handler(newVal, oldVal) {
                 // Do something when the prop changes
                 if (newVal != null || newVal != undefined) {
-                    this.myinterests = newVal;
                         this.interests.forEach((el, index) => {
                             // console.log(`E ${el.title}: ${el.title}`)
                             newVal.forEach(ele => {
-                                if (el.title == ele.title) {
+                                if (el.id == ele.interest_id) {
                                     this.checked[index] = true;
                                 }
                             })
+                            if (newVal.length !== 0) {
+                                this.updateActive = 1;
+                            } 
                         })
                 }
-                console.log(newVal);
             },
             deep: true
-        }
+        },
+        interests(newVal, oldVal) {
+            if (newVal !== null) {
+                if (newVal.length > 0) {
+                    this.checked = new Array(this.interests.length).fill(false)
+                }
+            }
+        },
     },
 }
 </script>

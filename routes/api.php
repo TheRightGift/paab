@@ -10,6 +10,7 @@ use App\Http\Controllers\TitleController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DomainCheckerController;
+use App\Http\Controllers\InterestController;
 use App\Http\Controllers\TenantClaimController;
 
 
@@ -79,7 +80,7 @@ Route::get('states/{country_id}', [CountryController::class, 'states']);
 Route::get('cities/{state_id}', [CountryController::class, 'cities']);
 Route::post('verifyOTP', [AuthController::class, 'verifyOTP']);
 Route::post('domain/check', [DomainCheckerController::class, 'check']);
-
+Route::get('interests', [InterestController::class, 'index']);
 // No auth required
 Route::post('tenant_without_auth', [App\Http\Controllers\TenantController::class, 'create']);
 // Route::get('getCities/{startRow}', [CountryController::class, 'getCities']);

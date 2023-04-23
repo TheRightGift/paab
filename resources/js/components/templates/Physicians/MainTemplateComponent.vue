@@ -14,6 +14,7 @@
                 :tenant="tenant"
                 :bio="bio"
                 :user_id="user_id"
+                :interests="interests"
             />
             <AboutMeComponent
                 :tenant="tenant"
@@ -31,6 +32,7 @@
                 :services="services"
                 :isLoggedIn="loggedIn"
                 :preview="preview"
+                :interests="interests"
             />
             <MiniBlogComponent
                 :tenant="tenant"
@@ -113,6 +115,7 @@ export default {
     data() {
         return {
             contact: {},
+            interests: [],
             services: [],
             bio: {},
             achievement: {},
@@ -178,6 +181,7 @@ export default {
                 }
             ];
         }
+        this.getInterests(); 
         this.location = window.location.href // For absolute pathing
         var dropdowns = document.querySelectorAll('.dropdown-trigger')
         for (var i = 0; i < dropdowns.length; i++){
@@ -215,6 +219,13 @@ export default {
         getCookie(name) {
             return document.cookie.split(";").some((c) => {
                 return c.trim().startsWith(name + "=");
+            });
+        },
+        getInterests() {
+            axios.get('http://localhost:8000/api/interests').then(res => {
+                this.interests = res.data.interests;
+            }).catch(err => {
+                console.log(err);
             });
         },
         getLocations() {

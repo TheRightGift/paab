@@ -1324,8 +1324,8 @@
             checkTenantOnDemand() {
                 if (this.tenantOnDemand == 1 && this.bio.photo == undefined) {
                     let title = this.bio.title_id != '' ? this.titles.find(el => el.id == this.bio.title_id).name : '';
-                    let firstname = this.bio.firstname != '' ? this.bio.firstname : null;
-                    let lastname = this.bio.lastname != '' ? this.bio.lastname : null;
+                    let firstname = this.bio.firstname != '' ? this.bio.firstname : '';
+                    let lastname = this.bio.lastname != '' ? this.bio.lastname : '';
                     this.domainSelected = ('Dr'+firstname.substring(0, 1)+lastname+title+'.com').toLocaleLowerCase();
                 }
             },

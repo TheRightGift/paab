@@ -20,7 +20,7 @@
                         <div class="inner" ref="inner" :style="innerStyles">
                             <div class="customCard" v-for="card in cards" :key="card">
                                 <div>
-                                    <img :src="card.img" />
+                                    <img :src="card.icon" />
                                     <h3>{{card.title}}</h3>
 
                                     <p>{{card.description}}</p>
@@ -32,7 +32,7 @@
                 <div class="row" v-else-if="services !== null && services.length !== 0 && preview === '0'">
                     <div class="col l12 customCarousel">
                         <div class="inner" ref="inner" :style="innerStyles">
-                            <div class="customCard" v-for="card in services" :key="card">
+                            <div class="customCard" v-for="card in myInterests" :key="card">
                                 <div>
                                     <img :src="card.icon" />
                                     <h3>{{card.title}}</h3>
@@ -130,41 +130,15 @@
                 update: 0,
                 removed: [],
                 loading: false,
-
-                cards: [
-                    {
-                        title: 'Cadiology',
-                        img: '/media/img/templates/1/cadio.svg',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.'
-                    }, 
-                    {
-                        title: 'Orthopedics',
-                        img: '/media/img/templates/1/otho.svg',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.'
-                    }, 
-                    {
-                        title: 'Gastroenterology',
-                        img: '/media/img/templates/1/gastro.svg',
-                        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.`
-                    }, 
-                    {
-                        title: 'Pediatric',
-                        img: '/media/img/templates/1/pedia.svg',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.'
-                    },
-                    {
-                        title: 'Cadiology',
-                        img: '/media/img/templates/1/cadio.svg',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.'
-                }],
+                myInterests: [],
+                cards: [],
                 innerStyles: {},
                 step: '',
                 transitioning: false
             }
         },
         mounted () {
-            this.setStep()
-            this.resetTranslate()
+            
         },
         methods: {
             addMore() {
@@ -284,7 +258,8 @@
         props: {
             services: Array,
             isLoggedIn: Boolean,
-            preview: String
+            preview: String,
+            interests: Array
         },
         watch: {
             services(newVal, oldVal) {
@@ -292,6 +267,18 @@
                     if (newVal.length > 0) {
                         this.servicesRend = newVal;
                         this.service = newVal[0].id;
+                        newVal.forEach(el => {
+                            this.myInterests.push(this.interests.find(interest => interest.id == el.interest_id)); 
+                        });
+                    }
+                }
+            },
+            interests(newVal, oldVal) {
+                if (newVal !== null) {
+                    if (newVal.length > 0) {
+                        this.cards = newVal;
+                        this.setStep();
+                        this.resetTranslate();
                     }
                 }
             },
