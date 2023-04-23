@@ -55,5 +55,8 @@ class GeneralSeeder extends Seeder
             'password' => bcrypt('two%WhiteCoatDomain'),
             'role' => 'SuperAdmin',
         ]);
+        $this->call([
+            InterestSeeder::class
+        ]);
     }
 }
