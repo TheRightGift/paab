@@ -59,7 +59,7 @@ class StripeEventListener
             $client = new Client();
             $url = route('api.domain.register', ['stripe_id' => $data['customer']]);
             $response = $client->request('GET', $url);
-            echo $response->getBody();
+            // echo $response->getBody();
         }
     }
 

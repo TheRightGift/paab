@@ -26,7 +26,7 @@ class APIController extends Controller
         if (!empty($tenant)) {
             $domain = $tenant['domains'][0]['domain'];
             $detail = [
-                'email' => $adminClientOrder->email,
+                'email' => $user->email,
                 'password' => $tenantPassTB->password,
                 'domain' => $domain,
                 'name' => $user->firstname.' '.$user->lastname,
@@ -43,7 +43,6 @@ class APIController extends Controller
                 $body = $response->getBody(); 
                 $xml = simplexml_load_string($body);
                 if (htmlentities((string)$xml->reply->code) == 300) { // && htmlentities((string)$xml->reply->detail) == 'success'
-                    // return $this->runAWSUtility($data, $detail);
                     return $this->runAWSUtility($domainDotCom, $detail);
                 }
                 else {
@@ -93,15 +92,42 @@ class APIController extends Controller
             $client = new \GuzzleHttp\Client();
             $tapMiddleware = Middleware::tap(function ($request) {});
             $data = ["DomainName" => $domain];
+            $response = $client->request('POST', env('AWS_UTILITY_URL'), [
+                'json' => $data,
+                'handler' => $tapMiddleware($handler)
+            ]);
+            
+            $body = $response->getBody();
+            $data = json_decode($body, true);
+            if ($data['status'] === 200) {
+                // Send mail and run the aws sendcommand api
+                $this->sendMail($detail);
+                return $this->runAWSUtilityCommand($domain);
+            }
+            else {
+                echo 'Not available:'. $response->getStatusCode();
+            }
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
 
-            $response = $client->request('POST', 'https://wcdawsutility.playmock.com.ng/createzone', [
+    public function runAWSUtilityCommand($domain){
+        try {
+            $handler = new CurlHandler();
+            $client = new \GuzzleHttp\Client();
+            $tapMiddleware = Middleware::tap(function ($request) {});
+            $data = ["DomainName" => $domain];
+
+            $response = $client->request('POST', env('AWS_UTILITY_URL_SENDCOMMAND'), [
                 'json' => $data,
                 'handler' => $tapMiddleware($handler)
             ]);
 
-            $responseCode = $response->getStatusCode();
-            if ($responseCode == 200) {
-               return $this->sendMail($detail);
+            $body = $response->getBody();
+            $data = json_decode($body, true);
+            if ($data['status'] === 200) {
+                return response()->json(['message' => 'Success', 'status' => $data['status']]);
             }
             else {
                 echo 'Not available:'. $response->getStatusCode();

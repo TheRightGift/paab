@@ -93,7 +93,7 @@ class ServiceController extends Controller
             $service2Update = false;
             if ($request->has('removed')) {
                 foreach ($removed as $row) {
-                    dd($row->id);
+                    // dd($row->id);
                     $services = new Service();
                     $service2Update = $services->find($row->id);
                     $service2Update->delete();
