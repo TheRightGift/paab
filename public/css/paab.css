@@ -2852,7 +2852,7 @@ div .col .s9 input.clientCreatePortInput1 {
 }
 
 .btn {
-    background-color: #46166B;
+    background-color: var(--sec);
 }
 .addReviewProDiv {
     background: #d9d9d9;

@@ -229,7 +229,7 @@
                                         <h4 class="sectionTitle">
                                             Brand image
                                         </h4>
-                                        <div v-show="showCropper" class="cFlex flexRight">
+                                        <div v-if="showCropper" class="cFlex flexRight">
                                             <a class="right" href="#" @click="showCropper = false">
                                                 <i class="material-icons priText">clear</i>
                                             </a>
@@ -281,7 +281,7 @@
                                                                     @click.prevent="
                                                                         showFileChooser
                                                                     "
-                                                                    v-show="!showCropper"
+                                                                    v-if="!showCropper"
                                                                     class="btn btn-flat"
                                                                     :class="{'tenantOnDemand': tenantOnDemand == 1}"
                                                                 >
@@ -302,10 +302,9 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col s12">
-                                                                    <image-cropper v-if="tenantId"
-                                                                        v-show="showCropper"
-                                                                        :height="512"
-                                                                        :width="451"
+                                                                    <image-cropper v-if="tenantId && showCropper"
+                                                                        :height="799"
+                                                                        :width="650"
                                                                         :img="bio.photo == undefined ? '/media/img/doctor.png' : '/media/tenants/'+tenantId +'/img/'+bioData.photo"
                                                                         @uploadPhoto="
                                                                             photoUpload(
@@ -324,15 +323,6 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <!--div
-                                                    class="proImgInstructDiv"
-                                                    v-show="!showCropper"
-                                                >
-                                                    <p class="proImgInstruct">
-                                                        The image should be greater than
-                                                        451px width and 512px height
-                                                    </p>
-                                                </div-->
                                             </div>
                                         </form>
                                     </section>
