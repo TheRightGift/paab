@@ -481,12 +481,7 @@ class TenantController extends Controller
             
             $handler = new CurlHandler();
             $client = new \GuzzleHttp\Client();
-            $tapMiddleware = Middleware::tap(function ($request) {
-                // echo $request->getHeaderLine('Content-Type');
-                // application/json
-                // echo $request->getBody();
-                // {"foo":"bar"}
-            });
+            $tapMiddleware = Middleware::tap(function ($request) {});
             $response = $client->request('POST', $url, [
                 'json' => $data,
                 'handler' => $tapMiddleware($handler)

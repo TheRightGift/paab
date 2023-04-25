@@ -38,3 +38,6 @@ invoice.payment_succeeded</code></p>
 - [x] AWS: Update Hosted zone's A-record records
 - [x] AWS: get value of NS record (4nameserver IPs)
 - [x] Namesilo:change domain nameservers to point to AWS 
+- [ ] integrate interest to admin client creation
+- [ ] remove "additional academic ..." from physician account registration
+- [ ] Replace "additional academic ..." with interests
