@@ -242,7 +242,7 @@
                     return axios
                     .post("https://whitecoatdomain.com/api/insertCity", city)
                     .then((res) => {
-                        console.log(city.id);
+                        // console.log(city.id);
                         // this.cities.shift();
                         return true;
                     })
