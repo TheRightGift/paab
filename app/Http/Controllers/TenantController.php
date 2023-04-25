@@ -130,7 +130,7 @@ class TenantController extends Controller
         $templateCSS = $tenant->template->styleFile;
         $bioTB = Bio::first();
         $pageTitles = General::first();
-        $pageTitle = !empty($pageTitles) ? $pageTitles->title : null;
+        $pageTitle = (!empty($pageTitles) ? $pageTitles->title : $bioTB !== null) ? 'Dr '.$bioTB->firstname.' '.$bioTB->lastname : null;
         $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'SuperAdmin' ? null : $tenant->user->title->name;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         $websiteTitleLen = 16;
