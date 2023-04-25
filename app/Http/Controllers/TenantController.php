@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Validator;
 use Stevebauman\Location\Facades\Location;
 use App\Notifications\Tenants\LoginNotifier;
 use App\Models\Tenants\TenantUser as TenantUser;
-use Stancl\Tenancy\Exceptions\DomainsOccupiedByOtherTenantException;
+use Stancl\Tenancy\Exceptions\DomainOccupiedByOtherTenantException;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Handler\CurlHandler;
 class TenantController extends Controller
@@ -65,7 +65,7 @@ class TenantController extends Controller
             else {
                 return response()->json(['status' => 500, 'message' => 'The name has already been taken!'], 500);
             }
-        } catch (DomainsOccupiedByOtherTenantException $th) {
+        } catch (DomainOccupiedByOtherTenantException $th) {
             return response()->json(["Domain already in use."]);
         }
     }
@@ -93,7 +93,7 @@ class TenantController extends Controller
                     $domain = !empty($sessionTenant) ? $tenant->domains->first() : $tenant->domains->find($inputs->validated()['domain_id']);
                     $domain->domain = str_replace('.com', '', $inputs->validated()['domain']);
                     $domain->save();
-                } catch (DomainsOccupiedByOtherTenantException $e) {
+                } catch (DomainOccupiedByOtherTenantException $e) {
                     return response()->json(["Domain already in use."]);
                 }
             }
@@ -360,7 +360,7 @@ class TenantController extends Controller
                 // Inefficient when the APP grows larger
                 $tenants = Tenant::all();
                 foreach($tenants as $tenant) {
-                    \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+                    Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 
                     DB::connection('mysql')->reconnect();
                     DB::setDatabaseName($tenant->tenancy_db_name);
@@ -401,7 +401,7 @@ class TenantController extends Controller
                 $orders->claimed = 1;
                 $tenantSave = $tenant->save();
                 $orderSave = $orders->save();
-                \Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
+                Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);

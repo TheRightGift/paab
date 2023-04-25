@@ -100,7 +100,7 @@ let cvMed = '/api/cvmed_school';
 let cvOther = '/api/cv_otherschool';
 let underGrad = '/api/cv_gradschool';
 let license = '/api/license';
-
+let centralURL = process.env.MIX_APP_URL;
 export default {
     components: {
         HeaderComponent,
@@ -127,6 +127,7 @@ export default {
             CV: {},
             reviewLen: 0,
             miniBlog: [],
+            centralURL: centralURL,
         };
     },
     props: {
@@ -222,7 +223,7 @@ export default {
             });
         },
         getInterests() {
-            axios.get('http://localhost:8000/api/interests').then(res => {
+            axios.get(`${this.centralURL}/api/interests`).then(res => {
                 this.interests = res.data.interests;
             }).catch(err => {
                 console.log(err);
