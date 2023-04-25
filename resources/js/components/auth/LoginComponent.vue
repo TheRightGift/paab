@@ -38,16 +38,17 @@
 
             <div class="col s12 m8 offset-m2 l6 loginContainer formContainer">
                 <div class="authRightDiv">
-                    <div class="authHeadingContainer center-align hide-on-large-only">
-                        <!--a href="/" class="authHeading">WhiteCoatDomain</a-->
-                        <div class="col m12 s6 offset-s3 marginBottom-5">
-                            <a href="/">
-                                <img
-                                    src="/media/img/wcd-logo-noBckg.png"
-                                    alt="WhiteCoatDomain Logo"
-                                    class="responsive-img"
-                                />
-                            </a>
+                    <div class="authHeadingContainer center-align hide-on-large-only mb-0">
+                        <div class="row ">
+                            <div class="col m12 s6 offset-s3">
+                                <a href="/">
+                                    <img
+                                        src="/media/img/wcd-logo-noBckg.png"
+                                        alt="WhiteCoatDomain Logo"
+                                        class="responsive-img"
+                                    />
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <p class="authTitle">Sing in</p>
@@ -361,5 +362,11 @@
     .red-text {
         color: rgb(245, 126, 126);
         font-style: italic;
+    }
+    .authHeadingContainer .row {
+        margin-bottom: 0;
+    }
+    .mb-0 {
+        margin-bottom: 0;
     }
 </style>

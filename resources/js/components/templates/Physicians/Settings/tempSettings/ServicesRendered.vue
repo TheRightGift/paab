@@ -28,6 +28,7 @@
                         <h6 class="settingOptionSectionTitle col l12 noMarginBottom">Non-Medical</h6>
     
                         <div class="row hPadding-1 center-align">
+                            <img class="responsive-img" src="/media/img/underConstruction.png" alt="Under construction" />
                             <p class="underConstruct">Under Construction</p>
                             <button class="btn saveSettingBtn" @click="serviceSaveOrUpdate">
                                 <i class="fas fa-circle-notch fa-spin" v-if="loading"></i>
