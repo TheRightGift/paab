@@ -87,8 +87,8 @@
                         </div>
                     </div>
                     <div class="col l4 m6 s6 marginBottom-2">
-                        <div class="generalSettings settingOptions hoverable">
-                            <h6>CV</h6>
+                        <div class="generalSettings settingOptions hoverable" @click="showSettingOption(6, 'Qualifications')">
+                            <h6>Qualifications</h6>
                             <img :src="'/media/img/templates/1/cv.png'" alt="" class="responsive-img"/>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
             </div>
 
             <div v-show="modalView == 1">
-                <Bio :modalTitle="modalTitle" :modalView="modalView" @backToSettings="backToSettings" :tenant="tenant" :bio="bio" :userID=userID />
+                <Bio :modalTitle="modalTitle" :modalView="modalView" @backToSettings="backToSettings" :tenant="tenant" :bio="bio" :userID="userID" />
             </div>
             <div v-show="modalView == 2">
                 <MiniBlogComponent :modalTitle="modalTitle" :modalView="modalView" @backToSettings="backToSettings" :tenant="tenant" />
@@ -110,6 +110,9 @@
             <div v-show="modalView == 5">
                 <PublicFeature :modalTitle="modalTitle" :modalView="modalView" @backToSettings="backToSettings"/>
             </div>
+            <div v-show="modalView == 6">
+                <CVGenerator/>
+            </div>
         </div>
     </div>
 </template>
@@ -120,8 +123,9 @@ import MiniBlogComponent from './Settings/tempSettings/MiniBlogComponent.vue';
 import PublicFeature from './Settings/tempSettings/PublicFeature.vue';
 import ServicesRendered from './Settings/tempSettings/ServicesRendered.vue';
 import SocialMedia from './Settings/tempSettings/SocialMedia.vue';
+import CVGenerator from './Settings/tempSettings/CVGenerator.vue';
 export default {    
-    components: {ImageCropper, MiniBlogComponent, Bio, SocialMedia, PublicFeature, ServicesRendered},
+    components: {ImageCropper, MiniBlogComponent, Bio, SocialMedia, PublicFeature, ServicesRendered, CVGenerator},
     data() {
         return {
             modalView: 0,
@@ -151,7 +155,6 @@ export default {
             if (this.modalView === 4) {
                 var elems = document.querySelectorAll('.collapsible');
                 M.Collapsible.init(elems);
-                console.log(elems)
             }
             var textNeedCount = document.querySelectorAll('#input_text, #miniBlogDescription');
             M.CharacterCounter.init(textNeedCount);
@@ -166,52 +169,7 @@ export default {
         backToSettings() {
             this.modalView = 0;
         },
-        updatePhoto(e) {
-            this.uploadPhotoProcessing = true;
-            let formData = new FormData();
-            formData.append("photo", e);
-            formData.append("_method", "PUT");
-            formData.append("id", this.bioData.id);
-            console.log(formData)
-            // axios
-            // .post("/claim/updateAvatar/bio", formData)
-            // .then((res) => {
-            //     // console.log(res);
-            //     if (res.data.status == 200) {
-            //         M.toast({
-            //             html: res.data.message,
-            //             classes: "successNotifier",
-            //         });
-            //         localStorage.setItem(
-            //             "claimproc",
-            //             JSON.stringify([res.data.bio])
-            //         );
-            //         this.bio = res.data.bio;
-            //         this.uploadPhotoProcessing = false;
-            //         this.showCropper = false;
-            //         this.uploaded = e;
-            //         this.bio.photo = {};
-            //     }
-            // })
-            // .catch((err) => {
-            //     if (err.response.status == 400) {
-            //         err.response.data.forEach((el) => {
-            //             M.toast({
-            //                 html: el,
-            //                 classes: "errorNotifier",
-            //             });
-            //         });
-            //     }
-            //     if (err.response.status == 413) {
-            //         M.toast({
-            //             html: err.response.statusText,
-            //             classes: "errorNotifier",
-            //         });
-            //     }
-            //     this.uploadPhotoProcessing = false;
-            //     console.log(err);
-            // });
-        },
+        
         saveAndBack(num){
             if(num == 1){//save general data
 
