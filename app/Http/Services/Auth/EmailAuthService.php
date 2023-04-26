@@ -81,36 +81,25 @@ class EmailAuthService {
                 'email' => $request->email,
                 'password' => $request->password,
             ];
-        }
-        // // $this->checkUserDevice('err');
 
-        // if (Auth::attemptWhen(['email' => $credentials['email'], 'password' => $credentials['password'], 'device_id' => $this->checkUserDevice('err')], function (User $user) {
-        //     return $user->visits === 1;
-        // })) {
-        //     // Authentication was successful...
-        //     $accessToken = auth()->user()->createToken('accessToken')->accessToken;
-        //     $user = User::find(auth()->user()->id);
-        //     $user->visits = $user->visits + 1;
-        //     $user->accessToken = $accessToken;
-    
-        //     $user->save();
-        //     return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];
-        // }
- 
-        if (Auth::attempt($credentials)) {
-            $accessToken = auth()->user()->createToken('accessToken')->accessToken;
-            $user = User::find(auth()->user()->id);
-            $user->visits = $user->visits + 1;
-            $user->accessToken = $accessToken;
-            $user->device_id = $this->getUserAgent();
-    
-            $user->save();
-            return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];
-        }
-        else {
+            if (Auth::attempt($credentials)) {
+                $accessToken = auth()->user()->createToken('accessToken')->accessToken;
+                $user = User::find(auth()->user()->id);
+                $user->visits = $user->visits + 1;
+                $user->accessToken = $accessToken;
+                $user->device_id = $this->getUserAgent();
+        
+                $user->save();
+                return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];
+            }
+            else {
+                return ["status" => 404, "error" => "Invalid Credentials"];
+            }
+        } else {
             return ["status" => 404, "error" => "Invalid Credentials"];
-
         }
+ 
+        
        
     }
 
