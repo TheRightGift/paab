@@ -2187,11 +2187,10 @@
     .paymentOverlay {
         position: absolute;
         height: 100vh;
-        width: 80%;
-        margin: 0 10%;
+        width: 90%;
+        margin: 0 4%;
         justify-content: center;
         align-items: center;
-        /* background-color: rgba(0, 0, 0, 0.75); */
     }
     .btn {
         background-color: var(--pri) !important;
@@ -2293,7 +2292,7 @@
         }
         .paymentOverlay {
             height: 90vh;
-            margin: 2% 10%;
+            margin: 2% 4%;
         }
     }
     @media only screen and (max-width: 992px) {
@@ -2303,7 +2302,7 @@
         }
         .paymentOverlay {
             height: 90vh;
-            margin: 2% 10%;
+            margin: 2% 4%;
         }
     }
     @media screen and (max-width: 640px) {

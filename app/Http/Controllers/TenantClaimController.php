@@ -571,7 +571,7 @@ class TenantClaimController extends Controller
         $value = $request->session()->pull('tenant', 'default'); //
         $valueOfMail = $request->session()->get('email');
         $this->validate($request, [
-            'password' => 'required',
+            // 'password' => 'required',
             'plan' => 'required',
             'domain' => 'required',
         ]);
