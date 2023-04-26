@@ -32,13 +32,15 @@
                         <div id="card-element-errors" role="alert"></div>
                         <div class="row">
                             <div class="col s12 l8 m8">
-                                <button  id="add-card-button" class="waves waves-effect btn-large deep-purple lighten-2" @click.prevent="subscribe">
+                                <button  id="add-card-button" class="col s12 l4 m6 waves waves-effect btn-large deep-purple lighten-2" @click.prevent="subscribe">
                                     <span v-if="!requesting"><i class="fas fa-lock"></i> Subscribe</span>
                                     <span class="fas fa-circle-notch fa-spin" v-else></span>
                                 </button>
-    
+                                
                             </div>
+                            
                         </div>
+                        <p class="center-align powered">Powered by Stripe</p>
                     </form>
                 </div>
                 <div v-else class="flex-d">
@@ -276,6 +278,11 @@
     }
 </script>
 <style scoped >
+.powered {
+    font-family: "Poppins", sans-serif;
+    color: darkgrey;
+    margin-bottom: 0;
+}
 .mb-2 {
     margin-bottom: 2rem;
 }
@@ -354,7 +361,7 @@
     grid-template-rows: 90px 90px 90px;
     grid-template-areas: "name name""number number""expiration security";
     /* max-width: 400px; */
-    padding: 20px;
+    padding: 0 15px;
     color: #707070;
 }
 

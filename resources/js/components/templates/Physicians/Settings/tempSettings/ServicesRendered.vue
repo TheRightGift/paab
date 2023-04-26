@@ -154,17 +154,17 @@ export default {
             handler(newVal, oldVal) {
                 // Do something when the prop changes
                 if (newVal != null || newVal != undefined) {
-                        this.interests.forEach((el, index) => {
-                            // console.log(`E ${el.title}: ${el.title}`)
-                            newVal.forEach(ele => {
-                                if (el.id == ele.interest_id) {
-                                    this.checked[index] = true;
-                                }
-                            })
-                            if (newVal.length !== 0) {
-                                this.updateActive = 1;
-                            } 
+                    this.interests.forEach((el, index) => {
+                        // console.log(`E ${el.title}: ${el.title}`)
+                        newVal.forEach(ele => {
+                            if (el.id == ele.interest_id) {
+                                this.checked[index] = true;
+                            }
                         })
+                        if (newVal.length !== 0) {
+                            this.updateActive = 1;
+                        } 
+                    })
                 }
             },
             deep: true
