@@ -530,13 +530,17 @@ class TenantClaimController extends Controller
     }
 
     public function saveServiceOffered(Request $request) {
+        $data = json_decode($request->input('data'));
+        $removed = json_decode($request->input('removed'));
         $inputs = Validator::make($request->all(), [
-            'title' => 'required',
-        ]);
+            // 'data' => 'nullable',
+            'data.*.title' => 'nullable',
+            'data.*.description' => 'nullable',
+            'data.*.icon' => 'nullable|image|mimes:jpg,png|max:10',
+        ]); 
         if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 400);
-        }
-        else {
+            return response($inputs->errors()->all(), 501);
+        } else {
             $input = $inputs->validated();
             $searchTenant = $request->session()->get('tenant');
             $tenant = Tenant::find($searchTenant);
@@ -546,23 +550,24 @@ class TenantClaimController extends Controller
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 // Check the bio and get the names eg. FNAME, LNAME, ONAME
-                if ($request->has('id')) {
-                    $input['updated_at'] = now();
-                    $service = DB::table('services')->where('id', $request->id)->update($input);
-                    $lastID = $request->id;
+                $services = DB::table('services');
+                foreach ($data as $row) {
+                    $checkIfAlreadyInserted = $services->where('interest_id', $row->id)->first();
+                    if ($checkIfAlreadyInserted == null) {
+                        $data = [
+                            'interest_id' => $row->id,
+                            'created_at' => now(),
+                            'updated_at' => now(),
+                        ];
+                        $services->insert($data);
+                    }
                 }
-                else {
-                    $input['created_at'] = now();
-                    $input['updated_at'] = now();
-                    $service = DB::table('services')->insert($input);
-                    $lastID = DB::getPdo()->lastInsertId();
-                }
-                if ($service == true) {
-                    return response()->json(['message' => 'Success', 'service' => $service, 'id' => $lastID, 'status' => 201], 201);
-                }
-                else {
-                    return response()->json(['message' => 'No data updated', 'service' => $service], 200);
-                }
+            }
+            if ($services == true) {
+                return response()->json(['message' => 'Success', 'service' => $services, 'status' => 201], 201);
+            }
+            else {
+                return response()->json(['message' => 'No data updated', 'service' => $services], 200);
             }
         }
     }
@@ -718,7 +723,7 @@ class TenantClaimController extends Controller
             $seedCurrExpB = $pronoun.' is currently working at '.$cvExperience->institution.'. ';
         }
         if ($servicesDb !== null) {
-            $seedServiceA = 'My dedication as a physician is equal to none, I render services as a '.$servicesDb->title.' expert. ';
+            $seedServiceA = 'My dedication as a physician is equal to none, I render services as a physician. '; //'.$servicesDb->title.'
         }
         if ($publicFeaturingDb->count() !== 0){
             $seedPublicFeaturesA = $pronounCaps.' keeps lending '.$address.' voice to the audience by making local and international media rounds by featuring on '.$publicFeaturingDb[0]->title.'. ';

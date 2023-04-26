@@ -18,12 +18,14 @@
                                 <div v-show="view == 0" class="intro">
                                     <div class="center-align">
                                         <a href="/">
-                                            <!--img
-                                                src="/media/img/wcd-logo-noBckg.png"
-                                                alt="wcdMobileLogo.png"
-                                                class="hide-on-large-only wcdMobileLogo"
-                                            /-->
                                             <img
+                                                v-if="tenantOnDemand == 1"
+                                                src="/media/img/wcdlogodeepblue.png"
+                                                alt="WhiteCoatDomain Logo"
+                                                class="responsive-img"
+                                            />
+                                            <img
+                                                v-else
                                                 src="/media/img/wcd-logo-noBckg.png"
                                                 alt="WhiteCoatDomain Logo"
                                                 class=""
@@ -326,6 +328,7 @@
                                             </div>
                                         </form>
                                     </section>
+                                
 
                                     <section class="row" id="underGrad">
                                         <h4 class="sectionTitle">
@@ -479,7 +482,7 @@
                                             </div>
                                         </div>
                                     </section>
-
+                                    
                                     <section class="row" id="medSchool">
                                         <h4 class="sectionTitle">
                                             {{medText}} School
@@ -963,133 +966,16 @@
 
                                     <section class="row" id="additionalSchool">
                                         <h4 class="sectionTitle">
-                                            Additional academic qualification
+                                            Interests
                                         </h4>
-                                        <div class="row">
-                                            <div class="input-field col s12 noPaddingLeft paddingLeftSM">
-                                                <input
-                                                    placeholder="Name of institution"
-                                                    type="text"
-                                                    class="validate formInput"
-                                                    v-model="
-                                                        additionalSchool.institution
-                                                    "
-                                                    @keyup="removeLabel($event)"
-                                                />
-                                                <label for="Name of institution">Name of institution</label>
+                                        <p v-if="maxSelected != ''">{{  maxSelected  }}</p>
+                                        <div class="grid">
+                                            <div class="pills" :class="{selected: selectedIndex.includes(index)}"   v-for="(interest, index) in interests" :key="interest.id">
+                                                <p @click="getSelectedInterests(interest, index)">{{  interest.title  }}</p>
+                                                <i @click="removeFromSelected(interest, index)" v-show="selectedIndex.includes(index)" class="material-icons removeInterest">close</i>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="input-field col s12 noPaddingLeft paddingLeftSM">
-                                                <input
-                                                    placeholder="What was your degree"
-                                                    type="text"
-                                                    class="validate formInput"
-                                                    v-model="
-                                                        additionalSchool.degree
-                                                    "
-                                                    @keyup="removeLabel($event)"
-                                                />
-                                                <label for="What was your degree">What was your degree</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col l6 s6 noPaddingLeft paddingLeftSM">
-                                                <p class="schQuesP">
-                                                    When did you start?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                additionalSchool.monthStart
-                                                            "
-                                                            @change="removeLabel($event)"
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="index + 1"
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                additionalSchool.yearStart
-                                                            "
-                                                            @change="removeLabel($event, 10)"
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col s6 noPaddingLeft paddingLeftSM">
-                                                <p class="schQuesP">
-                                                    When did you end?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                additionalSchool.monthEnd
-                                                            "
-                                                            @change="removeLabel($event)"
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="index + 1"
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingRight formInput1ColDiv"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                additionalSchool.yearEnd
-                                                            "
-                                                            @change="removeLabel($event, 11)"
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <!-- <InterestInputComponent :interests="interests" :services="services" @selectedInterests="getMyInterests($event)" /> -->
                                     </section>
                                 </div>
 
@@ -1138,12 +1024,14 @@
                     <div class="col l6 s12  noPaddingLeft noPaddingRight fullpage" v-if='view < 2'>
                         <div class="col l6 offset-l6 hide-on-med-and-down" v-if='view > 0'>
                             <a href="/" target="_blank">
-                                <img src="/media/img/wcd-logo-noBckg.png" alt="whitecoatdomain logo" class="responsive-img"/>
+                                <img v-if="tenantOnDemand == 1" src="/media/img/wcdlogodeepblue.png" alt="whitecoatdomain logo" class="responsive-img"/>
+                                <img v-else src="/media/img/wcd-logo-noBckg.png" alt="whitecoatdomain logo" class="responsive-img"/>
                             </a>
                         </div>
                         <div class="col m6 s6 hide-on-large-only" v-if='view > 0'>
                             <a href="/" target="_blank">
-                                <img src="/media/img/wcd-logo-noBckg.png" alt="whitecoatdomain logo" class="responsive-img"/>
+                                <img v-if="tenantOnDemand == 1" src="/media/img/wcdlogodeepblue.png" alt="whitecoatdomain logo" class="responsive-img"/>
+                                <img v-else src="/media/img/wcd-logo-noBckg.png" alt="whitecoatdomain logo" class="responsive-img"/>
                             </a>
                         </div>
                         <div class="bottomOfPage white halfWidth hPadding-5 fullWidthMd">                            
@@ -1177,6 +1065,7 @@
     import ImageCropper from "../partials/ImageCropper.vue";
     import ProgressComponent from "../partials/ProgressComponent.vue";
     import GoLiveComponent from '../partials/GoLiveComponent.vue';
+    import InterestInputComponent from '../partials/InterestInputComponent.vue';
     export default {
         components: {
             PaymentModalComponent,
@@ -1185,6 +1074,7 @@
             ImageCropper,
             ProgressComponent,
             GoLiveComponent,
+                InterestInputComponent,
         },
 
         data() {
@@ -1289,11 +1179,17 @@
                 setModal: false,
                 user: 0,
                 acadRoute: 0,
+                interests: [],
+                selectedInterests: [],
+                services: [],
+                selectedIndex: [],
+                maxSelected: ''
             };
         },
         mounted() {
             this.getTenantNDomain();
             this.getData();
+            this.getInterests();
             document.addEventListener("DOMContentLoaded", function () {
                 let elems = document.querySelector("#modal1");
                 let options = {
@@ -1311,6 +1207,70 @@
             };
         },
         methods: {
+            serviceSaveOrUpdate() {
+                this.loading = !this.loading;
+                let request = `/claim/save/service`;
+                let formData = new FormData()
+                // if (this.updateActive === 1) {
+                //     request = `/claim/service/1`;
+                //     formData.append('_method', 'PUT');
+                //     this.removed.length > 0 ? formData.append('removed', JSON.stringify(this.removed)) : null;
+                // }
+                formData.append('data', JSON.stringify(this.selectedInterests));
+                axios
+                    .post(request, formData)
+                    .then((res) => {
+                        if (res.status == 201 || res.data.status == 200) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            if (res.status == 201) {
+                                for (const key in this.selectedInterests) {
+                                    if (this.selectedInterests.hasOwnProperty(key)) {
+                                        console.log(`${key}: ${this.selectedInterests[key]}`);
+                                        // this.services.unshift(this.selectedInterests[key])
+                                    }
+                                }
+                            }
+                        }
+                    })
+                    .catch((err) => {
+                        this.loading = !this.loading;
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            getSelectedInterests(evt, index) {
+                if (this.selectedInterests.length < 3) {
+                    if (!this.selectedInterests.includes(evt)) {
+                        this.selectedIndex.push(index);
+                        this.selectedInterests.push(evt);
+                    }
+                }
+                else {
+                    // Get a class to make those pills grey
+                    this.maxSelected = 'You can select max. of 3'
+                }
+            },
+            removeFromSelected(interest, index) {
+                this.selectedInterests.splice(this.selectedInterests.indexOf(interest), 1);
+                this.selectedIndex.splice(this.selectedIndex.indexOf(index), 1);
+                console.log(this.selectedInterests, this.selectedIndex);
+            },
+            getInterests() {
+                axios.get(`https://whitecoatdomain.com/api/interests`).then(res => {
+                    this.interests = res.data.interests;
+                }).catch(err => {
+                    console.log(err);
+                });
+            },
             checkTenantOnDemand() {
                 if (this.tenantOnDemand == 1 && this.bio.photo == undefined) {
                     let title = this.bio.title_id != '' ? this.titles.find(el => el.id == this.bio.title_id).name : '';
@@ -1335,6 +1295,7 @@
                         this.saveAdditionalSchoolTime();
                         this.updateBio();
                         this.updateDomain();
+                        this.serviceSaveOrUpdate();
                     } catch (error) {
                         M.toast({
                             html: error,
@@ -1431,6 +1392,7 @@
                               (this.residencyUpdate = 1), (this.residency.yearStart = new Date(`${residency.yearStart}`)), (this.residency.yearEnd = new Date(`${residency.yearEnd}`)))
                             : null;
                             this.switchText();
+                        res.data.services.length > 0 ? this.services = res.data.services : [];
                     })
                     .catch((error) => {
                         console.log(error);
@@ -2184,6 +2146,35 @@
     };
 </script>
 <style scoped>
+.pills:visited, .pills:focus {
+    background: red;
+}
+.removeInterest:hover {
+    cursor: pointer;
+    background-color: rgb(16, 15, 58);
+}
+    .pills {
+        background-color: red;
+        border-radius: 4vh;
+        padding: 1vh 0vw;
+        text-align: center;
+        margin: 0.8vh 0.75vw;
+        color: var(--white);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pills > p {
+        margin: 0;
+    }
+    .pills:hover, .selected {
+        background: var(--sec);
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
     .paymentOverlay {
         position: absolute;
         height: 100vh;
@@ -2191,6 +2182,10 @@
         margin: 0 4%;
         justify-content: center;
         align-items: center;
+<<<<<<< HEAD
+=======
+        background-color: rgba(0, 0, 0, 0.75);
+>>>>>>> 5e8d1351befd902c6ab25d600a492d5184a3cc70
     }
     .btn {
         background-color: var(--pri) !important;
@@ -2292,7 +2287,11 @@
         }
         .paymentOverlay {
             height: 90vh;
+<<<<<<< HEAD
             margin: 2% 4%;
+=======
+            margin: 2.5% 2.5% auto;
+>>>>>>> 5e8d1351befd902c6ab25d600a492d5184a3cc70
         }
     }
     @media only screen and (max-width: 992px) {

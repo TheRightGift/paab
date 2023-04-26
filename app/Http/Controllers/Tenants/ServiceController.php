@@ -52,12 +52,12 @@ class ServiceController extends Controller
             //     $input['icon'] = $stored;
             // } 
             // dump($input, $data);
+            $service = new Service();
             foreach ($data as $row) {
-                $service = new Service();
                 $service->interest_id = $row->id;
                 $service->save();
             }
-            return response(['service' => $service, 'message' => 'Created Success'], 201);
+            return response(['services' => $service->latest()->take(3)->get(), 'message' => 'Created Success'], 201);
         }
     }
 
@@ -90,7 +90,7 @@ class ServiceController extends Controller
             //     $input['icon_filename'] = '/media/img/'.$name;
             // } 
             #TODO: Run a check to make sure if this is an array
-            $service2Update = false;
+            $service2Update = true;
             if ($request->has('removed')) {
                 foreach ($removed as $row) {
                     // dd($row->id);
@@ -111,10 +111,10 @@ class ServiceController extends Controller
             }
             if ($service2Update == true) {
                 $this->settingschangeNotify();
-                return response()->json(['message' => 'Updated', 'services' => $service2Update, 'status' => 200], 200);
+                return response()->json(['message' => 'Updated', 'services' => $services->latest()->take(3)->get(), 'status' => 200], 200);
             }
             else {
-                return response()->json(['message' => 'Error Updating', 'services' => $service2Update, 'status' => 501], 501);
+                return response()->json(['message' => 'Error Updating', 'services' => $services->latest()->take(3)->get(), 'status' => 501], 501);
             }
         }
     }

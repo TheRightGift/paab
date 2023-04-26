@@ -28,6 +28,7 @@
                         <h6 class="settingOptionSectionTitle col l12 noMarginBottom">Non-Medical</h6>
     
                         <div class="row hPadding-1 center-align">
+                            <img class="responsive-img" src="/media/img/underConstruction.png" alt="Under construction" />
                             <p class="underConstruct">Under Construction</p>
                             <button class="btn saveSettingBtn" @click="serviceSaveOrUpdate">
                                 <i class="fas fa-circle-notch fa-spin" v-if="loading"></i>
@@ -153,17 +154,17 @@ export default {
             handler(newVal, oldVal) {
                 // Do something when the prop changes
                 if (newVal != null || newVal != undefined) {
-                        this.interests.forEach((el, index) => {
-                            // console.log(`E ${el.title}: ${el.title}`)
-                            newVal.forEach(ele => {
-                                if (el.id == ele.interest_id) {
-                                    this.checked[index] = true;
-                                }
-                            })
-                            if (newVal.length !== 0) {
-                                this.updateActive = 1;
-                            } 
+                    this.interests.forEach((el, index) => {
+                        // console.log(`E ${el.title}: ${el.title}`)
+                        newVal.forEach(ele => {
+                            if (el.id == ele.interest_id) {
+                                this.checked[index] = true;
+                            }
                         })
+                        if (newVal.length !== 0) {
+                            this.updateActive = 1;
+                        } 
+                    })
                 }
             },
             deep: true

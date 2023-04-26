@@ -31,6 +31,7 @@ class APIController extends Controller
                 'domain' => $domain,
                 'name' => $user->firstname.' '.$user->lastname,
             ];
+            echo $domain;
             $domainDotCom = $domain.'.com';
             $years = 1;
             $key = env('NAMESILO_API_KEY');
