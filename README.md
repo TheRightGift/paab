@@ -39,8 +39,8 @@ invoice.payment_succeeded</code></p>
 - [x] AWS: get value of NS record (4nameserver IPs)
 - [x] Namesilo:change domain nameservers to point to AWS 
 - [x] integrate interest to admin client creation
-- [ ] remove "additional academic ..." from physician account registration
-- [ ] Replace "additional academic ..." with interests
+- [x] remove "additional academic ..." from physician account registration
+- [x] Replace "additional academic ..." with interests
 - [ ] Add payment to physiciandomain.com/settings. If not paid, disable setting paths and inform to pay.
 - [ ] physiciandomain.com/settings: indicate payment status and provide button for payment initiaition of failure
 - [ ] Integrate WCD stripe account
