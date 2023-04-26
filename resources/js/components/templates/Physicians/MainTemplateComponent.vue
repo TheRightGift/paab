@@ -299,9 +299,10 @@ export default {
 </script>
 <style scoped>
     .button {
-        background-color: var(--white);
-        color: var(--sec);
+        background-color: var(--sec);
+        color: var(--white);
         border-radius: 100px;
+        padding: 0 5rem;
     }
     .button:hover {
         background-color: var(--pri);

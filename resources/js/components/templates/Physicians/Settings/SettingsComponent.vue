@@ -14,6 +14,8 @@
                 :loading="loading"
                 v-show="!promoView" class="fullPage"
                 :tenant="tenant"
+                :interests="interests"
+                @updateServices="updateServices($event)"
             />
             <PromotionalsComponent
                 @close="promoView = false"
@@ -38,6 +40,7 @@
     let centralURL = process.env.MIX_APP_URL;
     let bio = "/api/bio";
     let service = "/api/service";
+    let interests = "https://whitecoatdomain.com/api/interests"
     let achievement = "/api/achievement";
     let contact = "/api/contact";
     let social = "/api/social";
@@ -64,6 +67,7 @@
                 general: {},
                 social: {},
                 contact: {},
+                interests: [],
                 loading: false,
                 loggedIn: false,
                 initialCheck: false,
@@ -117,6 +121,7 @@
                 const requestContact = axios.get(contact);
                 const requestSocial = axios.get(social);
                 const requestGeneral = axios.get(general);
+                const requestInterests = axios.get(interests);
                 axios
                     .all([
                         requestBio,
@@ -125,6 +130,7 @@
                         requestContact,
                         requestSocial,
                         requestGeneral,
+                        requestInterests
                     ])
                     .then(
                         axios.spread((...responses) => {
@@ -134,12 +140,14 @@
                             const contactRes = responses[3];
                             const socialRes = responses[4];
                             const generalRes = responses[5];
+                            const interestRes = responses[6];
                             this.services = servicesRes.data.services;
                             this.bio = bioRes.data.bio;
                             this.achievement = achievementRes.data.achievement;
                             this.contact = contactRes.data.contact;
                             this.social = socialRes.data.social;
                             this.general = generalRes.data.general;
+                            this.interests = interestRes.data.interests;
                             this.loading = false;
                         })
                     )
@@ -268,6 +276,9 @@
             openPromotionals() {
                 this.promoView = true;
             },
+            updateServices(e) {
+                this.services = e;
+            }
         },
         setup() {},
     };

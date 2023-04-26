@@ -6,7 +6,7 @@
                     <div class="col s12 m12 l6">
                         <div class="row">
                             <p class="genTitle1 col s10 m10 l6">Add your services</p>
-                            <i
+                            <!-- <i
                                 v-if="services.length < 3"
                                 class="
                                     col s1 m1 l1
@@ -21,80 +21,10 @@
                                 id="bioAddBtn"
                                 @click="addMore()"
                                 >add_circle</i
-                            >
+                            > -->
                         </div>
-
-                        <p class="genTxt">
-                            CLick on the '+' icon above to view input field for adding extra services you render. You must enter at least one service.
-                        </p>
-                        <form
-                            enctype="multipart/form-data"
-                            @submit.prevent="serviceSave"
-                        >
-                            <div
-                                v-for="(service, index) in services"
-                                :key="index"
-                            >
-                                <div class="row">
-                                    <div class="flex">
-                                        <div>
-                                            <div class="input-field">
-                                                <input
-                                                    type="text"
-                                                    placeholder="JohnDoe"
-                                                    id="genInput"
-                                                    v-model="service.title"
-                                                    maxlength="15"
-                                                    required
-                                                />
-                                            </div>
-                                            <div class="input-field">
-                                                <!-- <input type="text" placeholder="First Name" id="bioInput1"> -->
-                                                <textarea
-                                                    id="bioDescribeInput"
-                                                    required
-                                                    maxlength="239"
-                                                    v-model="
-                                                        service.description
-                                                    "
-                                                    class="materialize-textarea"
-                                                    placeholder="Description"
-                                                ></textarea>
-                                                <p
-                                                    class="right m-0"
-                                                    :class="{
-                                                        redColor:
-                                                            service.description != null ? service.description
-                                                                .length <= 239 : null,
-                                                        successColor:
-                                                             service.description != null ? service.description
-                                                                .length >= 239 : null,
-                                                    }"
-                                                >
-                                                    {{
-                                                        service.description != null ? service.description
-                                                            .length : null
-                                                    }}/239
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label>&nbsp;</label>
-                                            <i
-                                                @click="
-                                                    remove(index),
-                                                        pushToTrash(service)
-                                                "
-                                                v-show="index != 0"
-                                                class="material-icons cursor"
-                                                id="bioAddBtn"
-                                            >
-                                                cancel
-                                            </i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <form @submit.prevent="serviceSave">
+                            <interest-input-component :interests="interests" :services="services" @myinterests="getMyInterests($event)" />
 
                             <div>
                                 <button  v-if="loading" class="btn">
@@ -168,40 +98,32 @@
     }
 </style>
 <script>
+import InterestInputComponent from "../../../../partials/InterestInputComponent.vue"
+
     export default {
+        components: { InterestInputComponent },
         props: {
             servicesModal: Boolean,
             saved: Array,
             loading: Boolean,
+            interests: Array
         },
         computed: {},
         data() {
             return {
-                services: [
-                    {
-                        title: "",
-                        description: "",
-                        icon: "fa-tooth",
-                    },
-                ],
+                services: [],
                 update: 0,
                 removed: [],
                 servicesError: false,
+                selectedInterests: [],
             };
         },
         methods: {
-            addMore() {
-                this.services.push({
-                    title: "",
-                    description: "",
-                    icon: "fa-tooth",
-                });
+            getMyInterests(evt) {
+                this.selectedInterests = evt;
             },
             remove(index) {
                 this.services.splice(index, 1);
-            },
-            pushToTrash(e) {
-                this.removed.push(e);
             },
             servicesGoBackBtn() {
                 this.$emit("servicesGoBackBtn");
@@ -220,7 +142,7 @@
             },
             serviceSave() {
                 this.$emit("serviceSave", {
-                    services: this.services,
+                    services: this.selectedInterests,
                     update: this.update,
                     id: this.id,
                     removed: this.removed,

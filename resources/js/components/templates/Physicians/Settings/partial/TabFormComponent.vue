@@ -151,6 +151,7 @@
                 @serviceSave="serviceSave($event)"
                 @achieveLink="achieveLink"
                 @servicesGoBackBtn="servicesGoBackBtn"
+                :interests="interests"
             />
             <Achievement
                 :achieveModal="achieveModal"
@@ -234,6 +235,7 @@
             general: Object,
             achievement: Object,
             tenant: String,
+            interests: Array,
         },
         mounted() {
             this.genModal = true;
@@ -428,6 +430,7 @@
                     });
             },
             serviceSave(e) {
+                console.log(e);
                 this.loading = !this.loading;
                 let request = `/api/service`;
                 let formData = new FormData();
@@ -449,6 +452,7 @@
                             });
                             this.serviceErrors = false;
                             this.loading = !this.loading;
+                            this.$emit('updateServices', res.data.services);
                             e.update == 0 ? this.achieveLink() : null;
                         }
                     })
