@@ -980,7 +980,7 @@
                                 </div>
 
 
-                                <div class="marginTop-2 marginBottom-5" v-if="view == 1">
+                                <div class="marginTop-5 marginBottom-5" v-if="view == 1">
                                     <div class="skipDiv">
                                         <button
                                             class="saveAllBtn btn btn-small waves-effect waves-black"
@@ -2154,12 +2154,13 @@
     background-color: rgb(16, 15, 58);
 }
     .pills {
-        background-color: red;
+        background-color: var(--white);
+        box-shadow: 2px 2px 4px #b7b7b7;
         border-radius: 4vh;
         padding: 1vh 0vw;
         text-align: center;
         margin: 0.8vh 0.75vw;
-        color: var(--white);
+        color: var(--sec);
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -2170,16 +2171,18 @@
     }
     .pills:hover, .selected {
         background: var(--sec);
+        color: var(--white);
+
     }
     .grid {
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: auto auto auto;
     }
     .paymentOverlay {
         position: absolute;
         height: 100vh;
-        width: 80%;
-        margin: 0 10%;
+        width: 90%;
+        margin: 0 4%;
         justify-content: center;
         align-items: center;
         background-color: rgba(0, 0, 0, 0.75);
@@ -2294,7 +2297,7 @@
         }
         .paymentOverlay {
             height: 90vh;
-            margin: 2% 10%;
+            margin: 2% 4%;
         }
     }
     @media screen and (max-width: 640px) {

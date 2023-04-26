@@ -17,37 +17,37 @@ class InterestSeeder extends Seeder
     {
         $interests = [
             [
-                'title' => 'Ophthalmologists',
+                'title' => 'Ophthalmology',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
                 'icon' => '/media/img/templates/1/otho.svg',
             ],
             [
-                'title' => 'Gynecologists',
+                'title' => 'Gynecology',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
                 'icon' => '/media/img/templates/1/cadio.svg',
             ],
             [
-                'title' => 'Dermatologists',
+                'title' => 'Dermatology',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
                 'icon' => '/media/img/templates/1/pedia.svg',
             ],
             [
-                'title' => 'Allergists',
+                'title' => 'Allergy',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
                 'icon' => '/media/img/templates/1/gastro.svg'
             ],
             [
-                'title' => 'Pediatric',
+                'title' => 'Pediatry',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
                 'icon' => '/media/img/templates/1/pedia.svg'
             ],
             [
-                'title' => 'Neurologists',
+                'title' => 'Neurology',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
                 'icon' => '/media/img/templates/1/cadio.svg'
             ],
             [
-                'title' => 'Psychiatrists',
+                'title' => 'Psychiatry',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
                 'icon' => '/media/img/templates/1/otho.svg'
             ],
