@@ -3,7 +3,7 @@
         <div class="mainBackground">
             <div class="customNav d-flex justify-between align-center">
                 <div class="logoContainer">
-                    <img class="logo" src="../../../public/media/img/wcdlogoWhite.png" alt="Whitecoatdomain Logo">
+                    <img class="logo" src="/media/img/wcdlogoWhite.png" alt="Whitecoatdomain Logo">
                 </div>
                 <div class="signUpBtnContainer">
                     <button class="button signin waves-effect waves-deep-orange" @click="route('auth/login')" >Sign in</button>
@@ -23,7 +23,7 @@
                                 <button class="button getstartedbtn waves-effect waves-deep-orange">Get Started</button>
                             </div>
                             <div class="introductoryImageContainer"> 
-                                <img class="introductoryImg responsive-img" src="../../../public/media/img/introductoryImage.png" alt="Introductory Image of our template">
+                                <img class="introductoryImg responsive-img" src="/media/img/introductoryImage.png" alt="Introductory Image of our template">
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                     <p class="advHeader">
                         MAKE YOUR PORTFOLIO WORK FOR YOU
                     </p>
-                    <img class="introductoryImg responsive-img" src="../../../public/media/img/wcdHomeAdvSection.png" alt="Introductory Image of our template">
+                    <img class="introductoryImg responsive-img" src="/media/img/wcdHomeAdvSection.png" alt="Introductory Image of our template">
                     <div class="custom-container">
                         <div class="row">
                             <div class="col l4 m4 s12 article">
@@ -79,33 +79,33 @@
                             <div class="col l4 m4 s12 left-align">
                                 <div class="content mb-7 mt-9">
                                     <div class="icon-container">
-                                        <img src="../../../public/media/img/message.svg" alt="message icon">
+                                        <img src="/media/img/message.svg" alt="message icon">
                                     </div>
                                     <p class="content-header">LIVE CHAT</p>
                                     <p class="contentSummary">Creating that outstanding online portfolio may require a support system. For that reason we have our help desk on standby to guide you through as you make those important steps.</p>
                                 </div>
                                 <div class="content marginTop-4">
                                     <div class="icon-container">
-                                        <img src="../../../public/media/img/like.svg" alt="like icon">
+                                        <img src="/media/img/like.svg" alt="like icon">
                                     </div>
                                     <p class="content-header">SOCIAL MEDIA POST</p>
                                     <p class="contentSummary">Let your patients connect with you on social level and see you outside the white coat by linking all your social media platforms.</p>
                                 </div>
                             </div>
                             <div class="col l4 m4 s12">
-                                <img class="responsive-img" src="../../../public/media/img/templateFeatureSectionImg.png" alt="Template Feature Image Rep">
+                                <img class="responsive-img" src="/media/img/templateFeatureSectionImg.png" alt="Template Feature Image Rep">
                             </div>
                             <div class="col l4 m4 s12">
                                 <div class="content mb-7 mt-9">
                                     <div class="icon-container">
-                                        <img src="../../../public/media/img/cv.png" width="50" height="50" alt="cv icon">
+                                        <img src="/media/img/cv.png" width="50" height="50" alt="cv icon">
                                     </div>
                                     <p class="content-header">CURRICULUM VITAE</p>
                                     <p class="contentSummary">Fill in your details and have access to your auto generated curriculum vitae (cv)</p>
                                 </div>
                                 <div class="content marginTop-6">
                                     <div class="icon-container">
-                                        <img src="../../../public/media/img/reviewflag.svg" alt="flag-review icon">
+                                        <img src="/media/img/reviewflag.svg" alt="flag-review icon">
                                     </div>
                                     <p class="content-header">CLIENT REVIEW</p>
                                     <p class="contentSummary">Whether it is a “Thank you note” or Constructive criticism on display to encourage word of mouth marketing for potential patients.</p>
