@@ -21,23 +21,25 @@ class APIController extends Controller
         $DB = DB::table('payments');
         $data = $DB->where('web_creation', 'pending')->get();
         $client = new \GuzzleHttp\Client();
-        foreach ($data as $key => $value) {
-            $url = route('api.domain.register', ['stripe_id' => $value->customer_id]);
-            $response = $client->request('GET', $url);
-            $body = $response->getBody();
-            $data = json_decode($body, true);
-            if ($data['status'] === 200) {
-                // Update DB web_creation to success
-                $column = $DB->find($value->id);
-                $column->web_creation = 'success';
-                $column->save();
-            }
-            else {
-                // Send email to admin
-                Mail::to('goziechukwu@gmail.com')->send(new ErrorCreatingSite($value));
-            }
-        }
-        return response()->json(['status' => 'Success'], 200);
+        if(count($data) > 0){
+            // foreach ($data as $key => $value) {
+            //     $this->registerDomain($value->customer_id);
+            //     $response = $client->request('GET', $url);
+            //     $body = $response->getBody();
+            //     $data = json_decode($body, true);
+            //     if ($data['status'] === 200) {
+            //         // Update DB web_creation to success
+            //         $column = $DB->find($value->id);
+            //         $column->web_creation = 'success';
+            //         $column->save();
+            //     } else {
+            //         // Send email to admin
+            //         Mail::to('goziechukwu@gmail.com')->send(new ErrorCreatingSite($value));
+            //     }
+            // }
+        } else {
+            return response()->json(['status' => 404, 'message' => 'No outstanding website to create!']);
+        }        
     }
     // Makes request to other APIs
     
