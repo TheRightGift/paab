@@ -3,13 +3,13 @@
         <nav>
             <div class="nav-wrapper">
                 <div class="headerContainer">
-                    <a href="#!" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : this.userReplaced.replace('DO', 'Dr.').replace('MD', 'Dr.').replace('DD', 'Dr.')}}</a>
+                    <a href="#templateAbout" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : this.userReplaced.replace('DO', 'Dr.').replace('MD', 'Dr.').replace('DD', 'Dr.')}}</a>
                     <a href="#" data-target="mobileNav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="centerNav hide-on-med-and-down">
-                        <li><a href="#!">Interests</a></li>
-                        <li><a href="#miniBlog">Mini Blog</a></li>
-                        <li><a href="#!">Feeds</a></li>
-                        <li><a href="#!">Testimonials</a></li>                        
+                        <li v-if="(services !== null && services.length !== 0 && preview === '0') || preview === '1'"><a href="#templateService">Interests</a></li>
+                        <li v-if="(miniBlog !== null && miniBlog.length !== 0 && preview === '0') || preview === '1'"><a href="#miniBlog">Mini Blog</a></li>
+                        <li v-if="(feeds !== null && feeds !== '' && preview === '0') || preview === '1'"><a href="#feeds">Feeds</a></li>
+                        <li v-if="(reviews !== null && reviewLen !== 0 && preview === '0') || preview === '1'"><a href="#testimonials">Testimonials</a></li>                        
                     </ul>
 
                     <ul class="right hide-on-med-and-down">
@@ -25,11 +25,11 @@
             </div>
         </nav>
         <ul class="sidenav" id="mobileNav">
-            <li><a href="#!" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : this.userReplaced.replace('DO', 'Dr.').replace('MD', 'Dr.').replace('DD', 'Dr.')}}</a></li>
-            <li><a href="#!">Interests</a></li>
-            <li><a href="#miniBlog">Mini Blog</a></li>
-            <li><a href="#!">Feeds</a></li>
-            <li><a href="#!">Testimonials</a></li>  
+            <li><a href="#templateAbout" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : this.userReplaced.replace('DO', 'Dr.').replace('MD', 'Dr.').replace('DD', 'Dr.')}}</a></li>
+            <li v-if="(services !== null && services.length !== 0 && preview === '0') || preview === '1'"><a href="#templateService">Interests</a></li>
+            <li v-if="(miniBlog !== null && miniBlog.length !== 0 && preview === '0') || preview === '1'"><a href="#miniBlog">Mini Blog</a></li>
+            <li v-if="(feeds !== null && feeds !== '' && preview === '0') || preview === '1'"><a href="#feeds">Feeds</a></li>
+            <li v-if="(reviews !== null && reviewLen !== 0 && preview === '0') || preview === '1'"><a href="#testimonials" >Testimonials</a></li>  
             <li><a href="#!">Contact</a></li>
             <li v-if="isLoggedIn">
                 <a class='modal-trigger physiTempSettingsNavLink' href='#showSettingsModal'>
@@ -52,9 +52,13 @@
                 <div class="row hide-on-med-and-down">
                     <div class="col l12 m12 s12">
                         <button class="btn closeSettingModal right modal-close">Close settings</button>
+                        <button v-if="!userSubscribed" @click="setModalPayment" href="#paymentModal" id="paymentModalColor" class="modal-trigger btn closeSettingModal right modal-close">Subscribe</button>
+                    </div>
+                    <div class="col l12 m12 s12">
+                        <p v-if="!userSubscribed">Subscribe now to access/make changes to your site now</p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" :class="{disabledNotPaid: !userSubscribed}">
                    <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable"  @click="showSettingOption(1, 'General')">
                             <h6>General</h6>
@@ -115,6 +119,13 @@
             </div>
         </div>
     </div>
+    <payment-modal-component 
+        :setModal="setModal"
+        :tenantID="tenant"
+        :email="email"
+        :user="parseInt(user_id)"
+        @countDown="refreshForChanges($event)"
+    />
 </template>
 <script>
 import ImageCropper from "../../partials/ImageCropper.vue";
@@ -124,14 +135,18 @@ import PublicFeature from './Settings/tempSettings/PublicFeature.vue';
 import ServicesRendered from './Settings/tempSettings/ServicesRendered.vue';
 import SocialMedia from './Settings/tempSettings/SocialMedia.vue';
 import CVGenerator from './Settings/tempSettings/CVGenerator.vue';
+import PaymentModalComponent from '../../partials/PaymentModalComponent.vue';
 export default {    
-    components: {ImageCropper, MiniBlogComponent, Bio, SocialMedia, PublicFeature, ServicesRendered, CVGenerator},
+    components: {ImageCropper, MiniBlogComponent, Bio, SocialMedia, PublicFeature, ServicesRendered, CVGenerator, PaymentModalComponent},
     data() {
         return {
             modalView: 0,
             modalTitle: "General",
             userReplaced: this.user,
             userID: parseInt(this.user_id),
+            reviewLen: 0,
+            setModal: false,
+            user: 0,
         };
     },
     props: {
@@ -143,20 +158,34 @@ export default {
         services: Array,
         tenant: String,
         bio: Object,
+        reviews: Object,
         user_id: String,
         interests: Array,
+        miniBlog: Array,
+        userSubscribed: Boolean,
+        email: String,
     },
     mounted() {
     },
     methods: {
+        refreshForChanges(evt) {
+            location.reload();
+        },
+        setModalPayment() {
+            this.setModal = true;
+        },
         showSettingOption(num, title){
-            this.modalView = num;
-            this.modalTitle = title;
-            if (this.modalView === 4) {
-                var elems = document.querySelectorAll('.collapsible');
-                M.Collapsible.init(elems);
+            if (this.userSubscribed) {
+                this.modalView = num;
+                this.modalTitle = title;
+                if (this.modalView === 4) {
+                    var elems = document.querySelectorAll('.collapsible');
+                    M.Collapsible.init(elems);
+                }
+                var textNeedCount = document.querySelectorAll('#input_text, #miniBlogDescription');
+            } else {
+                document.getElementByID('paymentModalColor').focus();
             }
-            var textNeedCount = document.querySelectorAll('#input_text, #miniBlogDescription');
             M.CharacterCounter.init(textNeedCount);
         },
         showFileChooser() {
@@ -188,10 +217,21 @@ export default {
                 this.userReplaced = newVal;
                 this.userReplaced.replace('DO', 'Dr.').replace('MD', 'Dr.').replace('DD', 'Dr.')
             }
+        },
+        reviews(newVal) {
+            this.reviewLen = newVal.data.length;
         }
     },
 };
 </script>
 <style scoped>
-    
+    #paymentModalColor {
+        background-color: rgb(221, 125, 125) !important;
+    }
+    .disabledNotPaid {
+        opacity: 0.4
+    }
+    .disabledNotPaid {
+
+    }
 </style>

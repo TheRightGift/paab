@@ -52,7 +52,7 @@
                                     <div class="heroBtnRow">
                                         <button data-target="cvDetails" class="modal-trigger waves-effect waves-light btn viewCvBtn" v-if="CVComponentShow">View Curriculum Vitae</button>
                                         <span v-if="contact !== null">
-                                            <button class="waves-effect waves-light btn callBtn" v-show="contact.phone != null || contact.phone != ''">Call me</button>
+                                            <button class="waves-effect waves-light btn callBtn" v-show="contact.phone != null || contact.phone != ''"><a :href="'tel:'+contact.phone" class="no-deco">Call me</a></button>
                                         </span>
                                     </div>
                                 </div>

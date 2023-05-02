@@ -1081,7 +1081,10 @@ div .col .s9 input.clientCreatePortInput1 {
 .getStartedOtpSpan {
     margin-right: 4.5vw;
 }
-
+.no-deco {
+    text-decoration: none;
+    color: var(--white);
+}
 /* Admin Dashboard page Img styling */
 #adminDashRightImgDiv {
     background-image: url("../media/img/adminDashboardImg.png");

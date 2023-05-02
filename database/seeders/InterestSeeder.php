@@ -19,47 +19,47 @@ class InterestSeeder extends Seeder
             [
                 'title' => 'Ophthalmology',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                'icon' => '/media/img/templates/1/otho.svg',
+                'icon' => '/media/img/doc-icon.svg',
             ],
             [
                 'title' => 'Gynecology',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                'icon' => '/media/img/templates/1/cadio.svg',
+                'icon' => '/media/img/doc-icon.svg',
             ],
             [
                 'title' => 'Dermatology',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                'icon' => '/media/img/templates/1/pedia.svg',
+                'icon' => '/media/img/doc-icon.svg',
             ],
             [
                 'title' => 'Allergy',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                'icon' => '/media/img/templates/1/gastro.svg'
+                'icon' => '/media/img/doc-icon.svg',
             ],
             [
                 'title' => 'Pediatry',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                'icon' => '/media/img/templates/1/pedia.svg'
+                'icon' => '/media/img/doc-icon.svg',
             ],
             [
                 'title' => 'Neurology',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                'icon' => '/media/img/templates/1/cadio.svg'
+                'icon' => '/media/img/doc-icon.svg',
             ],
             [
                 'title' => 'Psychiatry',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                'icon' => '/media/img/templates/1/otho.svg'
+                'icon' => '/media/img/doc-icon.svg',
             ],
             [
                 'title' => 'Cadiology',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod urna faucibus nunc etiam nulla aliquam.',
-                'icon' => '/media/img/templates/1/cadio.svg'
+                'icon' => '/media/img/doc-icon.svg',
             ],
             [
                 'title' => 'Orthopaedics',
                 'description' => 'Orthopedists treat a wide variety of musculoskeletal conditions. These conditions may be present from birth, or they may result from an injury or age-related wear and tear.',
-                'icon' => '/media/img/templates/1/otho.svg'
+                'icon' => '/media/img/doc-icon.svg',
             ]
         ];
         collect($interests)->each(function ($interest) {\App\Models\Interest::create($interest);});

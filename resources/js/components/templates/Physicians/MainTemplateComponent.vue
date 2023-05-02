@@ -15,6 +15,10 @@
                 :bio="bio"
                 :user_id="user_id"
                 :interests="interests"
+                :reviews="reviews"
+                :miniBlog="miniBlog"
+                :userSubscribed="Boolean(usersubscribed)"
+                :email="email"
             />
             <AboutMeComponent
                 :tenant="tenant"
@@ -141,6 +145,7 @@ export default {
         can: String,
         email: String,
         user_id: String,
+        usersubscribed: String
     },
     created() {
         this.preview == '0' ? this.checkAuth() : null;

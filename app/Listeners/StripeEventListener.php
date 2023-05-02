@@ -52,14 +52,10 @@ class StripeEventListener
                 'amount_remaining' => $data['amount_remaining'],
                 'account_country' => $data['account_country'],
                 'discount' => $discount,
+                'web_creation' => 'pending',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-            
-            $client = new Client();
-            $url = route('api.domain.register', ['stripe_id' => $data['customer']]);
-            $response = $client->request('GET', $url);
-            // echo $response->getBody();
         }
     }
 

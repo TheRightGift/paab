@@ -964,7 +964,7 @@
                                         </div>
                                     </section>
 
-                                    <section class="row" id="additionalSchool">
+                                    <section class="row" id="additionalSchool" v-if="tenantOnDemand == 1">
                                         <h4 class="sectionTitle">
                                             Interests
                                         </h4>
@@ -1051,7 +1051,6 @@
             @countDown="timerStart($event)"
             @popupClose="popupClose($event)"
             :domainName="domainSelected"
-            :bio="bio"
         />
     </div>
 </template>
@@ -1065,7 +1064,6 @@
     import ImageCropper from "../partials/ImageCropper.vue";
     import ProgressComponent from "../partials/ProgressComponent.vue";
     import GoLiveComponent from '../partials/GoLiveComponent.vue';
-    import InterestInputComponent from '../partials/InterestInputComponent.vue';
     export default {
         components: {
             PaymentModalComponent,
@@ -1074,7 +1072,6 @@
             ImageCropper,
             ProgressComponent,
             GoLiveComponent,
-                InterestInputComponent,
         },
 
         data() {
@@ -1265,7 +1262,7 @@
                 console.log(this.selectedInterests, this.selectedIndex);
             },
             getInterests() {
-                axios.get(`https://whitecoatdomain.com/api/interests`).then(res => {
+                axios.get(`http://whitecoatdomain.com/api/interests`).then(res => {
                     this.interests = res.data.interests;
                 }).catch(err => {
                     console.log(err);
@@ -2214,13 +2211,6 @@
         z-index: 9;
         padding: 2em;
         position: absolute;
-    }
-    /*.pl-1 {
-        padding: 0 1em;
-    }*/
-
-    .darken {
-        /* background: rgba(0, 0, 0, 0.7); */
     }
     iframe {
         width: 100% !important;
