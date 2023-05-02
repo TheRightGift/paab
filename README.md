@@ -22,6 +22,8 @@ customer.updated
 invoice.payment_action_required
 invoice.payment_succeeded</code></p>
 
+<p>Replace "vendor/stancl/tenancy/src/Resolvers/DomainTenantResolver.php" with content of "DomainTenantResolver.php" in root folder</p>
+
 <strong>NOTE</strong><p>Remember to change <code> APP_ENV </code> to <code> 'production' </code> and <code> APP_DEBUG </code> to <code> false </code></p>
 
 ## Tasks 

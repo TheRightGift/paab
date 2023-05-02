@@ -20,7 +20,7 @@
             <span v-if="type === 'reset'">No worries, reseting your password is easy. Just enter your email address.</span>
         </p>
         <form id="loginForm">
-            <div class="row rm_mg">
+            <div class="row horizontal-2">
                 <div class="input-field col s12">
                     <label>Email</label>
                     <input

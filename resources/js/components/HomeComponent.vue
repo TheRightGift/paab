@@ -14,13 +14,13 @@
                     <div class="container">
                         <div class="introductoryBody">
                             <p class="introductoryHeader">
-                                Showcase your public image with whitecoat domain
+                                Enhance your public image with white coat domain.
                             </p>
                             <p class="introductorySummary">
-                                As physicians, maintaining and managing your public profile is critical. We believe you should consciously manage your online identity by securing a personal domain name and maintaining an active website outside of the social media noise.
+                                As a physicians, it is crucial to maintain and manage your public profile. We strongly recommend actively managing your online identity by securing a personal domain name and maintaining a website separate from social media.
                             </p>
                             <div class="getStartedLayout">
-                                <button class="button getstartedbtn waves-effect waves-deep-orange">Get Started</button>
+                                <button class="button getstartedbtn waves-effect waves-deep-orange" @click="route('auth/getstarted')" >Get Started</button>
                             </div>
                             <div class="introductoryImageContainer"> 
                                 <img class="introductoryImg responsive-img" src="/media/img/introductoryImage.png" alt="Introductory Image of our template">
@@ -42,23 +42,23 @@
                         <div class="row">
                             <div class="col l4 m4 s12 article">
                                 <p>
-                                    Select from our variety of ground breaking templates , designer fonts and eye catching colors that speaks to your style and professional taste.
+                                    Choose from our wide range of groundbreaking templates, designer fonts, and eye-catching colors that reflect your style and professional taste.
                                 </p>
                             </div>
                             <div class="col l4 m4 s12 article">
                                 <p>
-                                    Explore with our add ons- whether it is linking your social media platforms , scheduling an appointment and displaying client reviews.
+                                    Explore our add-ons, whether you want to link your social media platforms, schedule an appointment, or display client reviews.
                                 </p>
                             </div>
                             <div class="col l4 m4 s12 article">
                                 <p>
-                                    Let your words travel faster by linking all your social media accounts to retain and grow your audience.
+                                    Boost the reach of your words by linking all of your social media accounts to expand and retain your audience.
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="getStartedLayout">
-                        <button class="button getstartedbtnFor waves-effect waves-deep-orange">Get Started</button>
+                        <button class="button getstartedbtnFor waves-effect waves-deep-orange" @click="route('auth/getstarted')" >Get Started</button>
                     </div>
                 </div>
             </section>
@@ -66,13 +66,13 @@
                 <div class="custom-container">
                     <div class="templateFeatureBody">
                         <p class="templateFeatureHeader">
-                            MORE THAN JUST A LANDING PAGE
+                            MORE THAN JUST A LANDING PAGE.
                         </p>
                         <p class="templateFeatureSummary">
-                            White Coat Domain is offering you the opportunity to show your targeted audience who you are and what you can offer. Discover thousands of customized , mobile responsive templates to convert visitors to potential clients. 
+                            White Coat Domain is providing you with an opportunity to showcase who you are and what you can offer to your target audience. Discover thousands of customized, mobile-responsive templates that will help convert visitors into potential clients.
                         </p>
                         <div class="mb-6 mt-1">
-                            <button class="button getStartedBtn waves-effect waves-deep-orange">Get Started</button>
+                            <button class="button getStartedBtn waves-effect waves-deep-orange" @click="route('auth/getstarted')" >Get Started</button>
                         </div>
     
                         <div class="row templateFeatureDetMed">
@@ -82,7 +82,7 @@
                                         <img src="/media/img/message.svg" alt="message icon">
                                     </div>
                                     <p class="content-header">LIVE CHAT</p>
-                                    <p class="contentSummary">Creating that outstanding online portfolio may require a support system. For that reason we have our help desk on standby to guide you through as you make those important steps.</p>
+                                    <p class="contentSummary">Need help creating an amazing online portfolio? We've got you covered! Our help desk is standing by, ready to assist you as you take those critical steps. Let us guide you and provide the support you need to make your portfolio shine!.</p>
                                 </div>
                                 <div class="content marginTop-4">
                                     <div class="icon-container">
@@ -101,14 +101,14 @@
                                         <img src="/media/img/cv.png" width="50" height="50" alt="cv icon">
                                     </div>
                                     <p class="content-header">CURRICULUM VITAE</p>
-                                    <p class="contentSummary">Fill in your details and have access to your auto generated curriculum vitae (cv)</p>
+                                    <p class="contentSummary">Enter your information and get instant access to your auto-generated curriculum vitae (CV).</p>
                                 </div>
                                 <div class="content marginTop-6">
                                     <div class="icon-container">
                                         <img src="/media/img/reviewflag.svg" alt="flag-review icon">
                                     </div>
                                     <p class="content-header">CLIENT REVIEW</p>
-                                    <p class="contentSummary">Whether it is a “Thank you note” or Constructive criticism on display to encourage word of mouth marketing for potential patients.</p>
+                                    <p class="contentSummary">Connect with your patients on a personal level and show them the person behind the white coat. Link all your social media platforms and let them get to know you outside of the office.</p>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                 <div class="container">
                     <div class="howToGetStartedBody">
                         <p class="howToGetStartedHeader">
-                            HOW TO GET STARTED
+                            HOW TO GET STARTED.
                         </p>
                         <p class="howToStep mb-6">Follow these 6 simple steps to create a website today</p>
                         <div class="row hide-on-small-only">
@@ -224,7 +224,7 @@
                             </div>
                         </div>
                         <div class="getStartedLayout mt-2 mb-6">
-                            <button class="button getstartedbtnFor waves-effect waves-deep-orange">Get Started</button>
+                            <button class="button getstartedbtnFor waves-effect waves-deep-orange" @click="route('auth/getstarted')" >Get Started</button>
                         </div>
                     </div>
                 </div>
@@ -233,7 +233,7 @@
                 <div class="container">
                     <div class="templateBody">
                         <p class="templateHeader">
-                            TEMPLATES FIT JUST FOR YOU
+                            TEMPLATES FIT JUST FOR YOU.
                         </p>
                         <p class="templateSummary mb-4">We are giving you the freedom to select from our multiple customized templates designed to meet your personal and professional taste. Our templates are seamless with drag and drop settings.</p>
                         <div class="row">

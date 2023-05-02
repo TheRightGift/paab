@@ -51,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="authTitle">Sing in</p>
+                    <p class="authTitle">Sign in</p>
                     <p class="authTxt">
                         Build a brand online and let your potential patients
                         find you.

@@ -90,7 +90,6 @@ export default {
             const innerWidth = this.$refs.innerSocial.scrollWidth;
             const totalSocials = this.socials.length;
             this.step = `${innerWidth / totalSocials}px`;
-            // console.log(innerWidth, totalSocials)
         },
         nextSocial () {
             if (this.transitioning){
@@ -99,8 +98,8 @@ export default {
                 this.transitioning = true
                 this.moveLeft();
                 this.afterTransition(() => {
-                    const card = this.socials.shift()
-                    this.socials.push(card)
+                    const socialCard = this.socials.shift()
+                    this.socials.push(socialCard)
                     this.resetTranslate()
                     this.transitioning = false
                 })
@@ -113,21 +112,21 @@ export default {
                 this.transitioning = true
                 this.moveLeft()
                 this.afterTransition(() => {
-                    const card = this.socials.shift()
-                    this.socials.push(card)
+                    const socialCard = this.socials.shift()
+                    this.socials.push(socialCard)
                     this.resetTranslate()
                     this.transitioning = false
                 })
             }            
         },
         moveLeft () {
-            console.log(`translateX(-${this.step})`)
+            // console.log(`translateX(-${this.step})`)
             this.innerStyles = {
                 transform: `translateX(-${this.step})`
             }
         },
         moveRight () {
-            console.log(`translateX(${this.step})`)
+            // console.log(`translateX(${this.step})`)
             this.innerStyles = {
                 transform: `translateX(${this.step})`
             }

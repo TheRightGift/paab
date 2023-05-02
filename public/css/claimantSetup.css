@@ -962,6 +962,9 @@ a.proImgSelectFile {
         margin-left: 0;
         margin-right: 0;
     }
+    .horizontal-2 {
+        padding: 0 2vw !important;
+    }
     form.mainForm {
         display: flex;
         justify-content: center;
