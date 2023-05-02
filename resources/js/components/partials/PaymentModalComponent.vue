@@ -57,7 +57,7 @@
 
 </template>
 <script>
-
+    // let URL = process.env.MIX_APP_URL;
     export default {
         computed: {
             
@@ -83,13 +83,15 @@
                 plan: 'price_1Ma5RZIrcfsuhLLFylMzHuP4',
                 paymentMethodSelected: {},
                 paymentSuccessful: 0,
+                URL: process.env.MIX_APP_URL,
             }
         },
         props: {
             setModal: Boolean,
             user: Number,
             domainName: String,
-            bio: Object,
+            email: String,
+            tenantID: String,
         },
         methods: {
             addOneYear(date) {
@@ -142,7 +144,7 @@
                 Loads the payment intent key for the user to pay.
             */
             loadIntent(){
-                axios.get(`/api/v1/user/setup-intent?GUID=${this.user}`)
+                axios.get(`${this.URL}/api/v1/user/setup-intent?GUID=${this.user}`)
                     .then( function( response ){
                         this.intentToken = response.data;
                     }.bind(this));
@@ -152,14 +154,14 @@
     user.
 */
             loadPaymentMethods(){
-                axios.get(`/api/v1/user/payment-methods?GUID=${this.user}`)
+                axios.get(`${this.URL}/api/v1/user/payment-methods?GUID=${this.user}`)
                     .then( function( response ){
                         this.paymentMethods = response.data;
                         this.paymentMethodSelected = response.data[0].id;
                     }.bind(this));
             },
             removePaymentMethod( paymentID ){
-                axios.post('/api/v1/user/remove-payment', {
+                axios.post(`${this.URL}/api/v1/user/remove-payment`, {
                     id: paymentID
                 }).then( function( response ){
                     this.loadPaymentMethods();
@@ -170,7 +172,7 @@
     re-loads the payment methods.
 */
             savePaymentMethod( method ){
-                axios.post(`/api/v1/user/payments?GUID=${this.user}`, {
+                axios.post(`${this.URL}/api/v1/user/payments?GUID=${this.user}`, {
                     payment_method: method,
                 }).then( function(){
                     this.loadPaymentMethods();
@@ -192,15 +194,11 @@
                 let data = {
                     plan: this.plan, // Only premium plan
                     payment: this.paymentMethodSelected,
-                    tenant_id: claimable,
-                    email: localStorage.getItem('email'),
-                    // domain: this.domainName,
-                    // firstname: this.bio.firstname,
-                    // lastname: this.bio.lastname,
-                    // password: localStorage.getItem("passwordGen"),
+                    tenant_id: claimable == null ? this.tenant_id : claimable,
+                    email: this.email != '' ? this.email : localStorage.getItem('email'),
                 }
                 if (this.coupon !== '') data.coupon = this.coupon;
-                axios.put(`/api/v1/user/subscription?GUID=${this.user}`, data).then( function( response ){
+                axios.put(`${this.URL}/api/v1/user/subscription?GUID=${this.user}`, data).then( function( response ){
                     this.requesting = !this.requesting;
                     this.paymentSuccessful = 1;
                     this.$emit('popupClose');
@@ -241,8 +239,8 @@
                     } else {
                         this.savePaymentMethod( result.setupIntent.payment_method );
                         this.addPaymentStatus = 2;
-                        this.card.clear();
-                        this.name = '';
+                        // this.card.clear();
+                        // this.name = '';
                     }
                 }.bind(this));
             },
@@ -270,7 +268,7 @@
             setModal(newval, oldval) {
                 if (newval === true) {
                     this.loadIntent();
-                    this.loadPaymentMethods();
+                    // this.loadPaymentMethods();
                 }
             }
         },

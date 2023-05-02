@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('billing_reason');
             $table->integer('amount_paid');
             $table->integer('amount_remaining');
+            $table->enum('web_creation', ['pending', 'success'])->default('pending');
             $table->json('discount')->nullable();
             $table->string('account_country')->nullable();
             $table->timestamps();

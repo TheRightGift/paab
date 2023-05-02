@@ -135,6 +135,8 @@ class TenantController extends Controller
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         $websiteTitleLen = 16;
         $user_id = $tenant->user->id;
+        // Checks if  a user is subscribed
+        $userSubscribed = $tenant->user->subscribed('premium');
             
         if(strlen($bioTB->firstname.' '.$bioTB->lastname) > $websiteTitleLen){
             $abridgedName = mb_substr($bioTB->firstname, 0, 1).$bioTB->lastname.$title;
@@ -156,11 +158,11 @@ class TenantController extends Controller
         }
         else {
             $can = false;
-            $email = '';
+            $email = $tenant->user->email;
         }
         // dd($can);
         if($profession === 'Physician'){
-            return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email', 'user_id'));
+            return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email', 'user_id', 'userSubscribed'));
         } else {
             dd($profession);
         }

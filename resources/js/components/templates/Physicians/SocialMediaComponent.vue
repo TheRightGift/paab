@@ -173,7 +173,6 @@ export default {
                     color: 'red'
                 };
                 if (newVal !== null && newVal !== '' && this.preview === '0') {
-                    console.log(newVal)
                     newVal = JSON.parse(newVal);
                     this.facebook = newVal.facebook;
                     this.twitter = newVal.twitter;

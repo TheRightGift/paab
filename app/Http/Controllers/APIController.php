@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ErrorCreatingSite;
 use App\Models\User;
 use App\Models\Tenant;
 use App\Mail\WebsiteLive;
@@ -16,12 +17,33 @@ use App\Mail\MailInvoiceOnSuccesfulPayment;
 
 class APIController extends Controller
 {
+    public function getPendingSites() {
+        $DB = DB::table('payments');
+        $data = $DB->where('web_creation', 'pending')->get();
+        $client = new \GuzzleHttp\Client();
+        foreach ($data as $key => $value) {
+            $url = route('api.domain.register', ['stripe_id' => $value->customer_id]);
+            $response = $client->request('GET', $url);
+            $body = $response->getBody();
+            $data = json_decode($body, true);
+            if ($data['status'] === 200) {
+                // Update DB web_creation to success
+                $column = $DB->find($value->id);
+                $column->web_creation = 'success';
+                $column->save();
+            }
+            else {
+                // Send email to admin
+                Mail::to('goziechukwu@gmail.com')->send(new ErrorCreatingSite($value));
+            }
+        }
+        return response()->json(['status' => 'Success'], 200);
+    }
     // Makes request to other APIs
     
     public function registerDomain($stripeId) {
         $user = User::where('stripe_id', $stripeId)->first();
         $tenant = Tenant::where('user_id', $user->id)->first();
-        $adminClientOrder = AdminClientOrder::where('tenant_id', $tenant->id)->first();
         $tenantPassTB = DB::table('tenant_password_tables')->where('tenant_id', $tenant->id)->first();
         if (!empty($tenant)) {
             $domain = $tenant['domains'][0]['domain'];
@@ -31,7 +53,6 @@ class APIController extends Controller
                 'domain' => $domain,
                 'name' => $user->firstname.' '.$user->lastname,
             ];
-            echo $domain;
             $domainDotCom = $domain.'.com';
             $years = 1;
             $key = env('NAMESILO_API_KEY');

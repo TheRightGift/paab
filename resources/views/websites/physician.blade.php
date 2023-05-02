@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <physician-website-component user_id="{{$user_id}}" email="{{$email}}" can="{{$can}}" social="{{$socials ?? null}}" tenant='{{$tenantID ?? null}}' preview='{{$preview ?? 0}}' title='{{$title ?? null}}' template="{{$template}}" user="{{$user ?? ''}}"></physician-website-component>
+        <physician-website-component userSubscribed="{{$userSubscribed ?? ''}}" user_id="{{$user_id}}" email="{{$email}}" can="{{$can}}" social="{{$socials ?? null}}" tenant='{{$tenantID ?? null}}' preview='{{$preview ?? 0}}' title='{{$title ?? null}}' template="{{$template}}" user="{{$user ?? ''}}"></physician-website-component>
     </div>
 
     <script src="/js/app.js"></script>
