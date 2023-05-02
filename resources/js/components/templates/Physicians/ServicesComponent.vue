@@ -195,10 +195,9 @@
                     });
             },
             setStep () {
-                // const innerWidth = this.$refs.inner.scrollWidth;
+                const innerWidth = this.$refs.inner.scrollWidth;
                 const totalCards = this.cards.length;
-                this.step = `${innerWidth / totalCards}px`;
-                
+                this.step = `${innerWidth / totalCards}px`;                
             },
             next () {
                 
