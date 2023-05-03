@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\MailInvoiceOnSuccesfulPayment;
+use App\Models\Webcreation;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Laravel\Cashier\Events\WebhookReceived;
 
@@ -52,9 +53,23 @@ class StripeEventListener
                 'amount_remaining' => $data['amount_remaining'],
                 'account_country' => $data['account_country'],
                 'discount' => $discount,
-                'web_creation' => 'pending',
                 'created_at' => now(),
                 'updated_at' => now(),
+            ]);
+        } else if ($event->payload['type'] === 'customer.subscription.created') {
+            $data = $event->payload['data']['object'];
+            $metadata = $data['metadata'];
+            // Creates workerTable for checking website creation
+            // customer_id, domainName, firstname, lastname, email
+            $customersDet = new Webcreation();
+            $customersDet->create([
+                'customer_id' => $data['customer'],
+                'domainName' => $metadata['domainName'],
+                'firstname' => $metadata['firstname'],
+                'lastname' => $metadata['lastname'],
+                'tenant_id' => $metadata['tenant_id'],
+                'email' => $metadata['email'],
+                'web_creation' => 'pending',
             ]);
         }
     }

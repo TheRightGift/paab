@@ -1050,6 +1050,9 @@
             @countDown="timerStart($event)"
             @popupClose="popupClose($event)"
             :domainName="domainSelected"
+            :bio="bio"
+            :tenantID="tenantId"
+            :email="email"
         />
     </div>
 </template>
@@ -2119,7 +2122,8 @@
             titles: Array,
             claimant: String,
             countries: Array,
-            tenantOnDemand: Number
+            tenantOnDemand: Number,
+            email: String,
         },
         watch: {
             claimant: {

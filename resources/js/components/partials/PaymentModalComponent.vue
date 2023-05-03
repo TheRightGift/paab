@@ -92,6 +92,7 @@
             domainName: String,
             email: String,
             tenantID: String,
+            bio: Object
         },
         methods: {
             addOneYear(date) {
@@ -194,8 +195,11 @@
                 let data = {
                     plan: this.plan, // Only premium plan
                     payment: this.paymentMethodSelected,
-                    tenant_id: claimable == null ? this.tenant_id : claimable,
+                    tenant_id: claimable == null ? this.tenantID : claimable,
                     email: this.email != '' ? this.email : localStorage.getItem('email'),
+                    domain: this.domainName,
+                    firstname: this.bio.firstname,
+                    lastname: this.bio.lastname,
                 }
                 if (this.coupon !== '') data.coupon = this.coupon;
                 axios.put(`${this.URL}/api/v1/user/subscription?GUID=${this.user}`, data).then( function( response ){

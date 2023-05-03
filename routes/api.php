@@ -11,6 +11,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DomainCheckerController;
 use App\Http\Controllers\InterestController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\TenantClaimController;
 
 
@@ -90,3 +91,4 @@ Route::get('/getStateNCity/{city}', [CountryController::class, 'getCountryStateF
 Route::get('/test_awsutil/{stripe_id}', [APIController::class, 'registerDomain'])->name('api.domain.register');
 Route::get('/sendcommand/{domainName}', [APIController::class, 'runAWSUtilityCommand'])->name('api.aws.sendcommand');
 Route::get('/getpendingwebsite', [APIController::class, 'getPendingSites']);
+Route::post('/admin_send_mail', [MailController::class, 'adminSendToClients']);

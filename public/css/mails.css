@@ -41,7 +41,7 @@
     font-style: normal;
     font-weight: 600;
     font-size: 1.875rem;
-    color: #fcfafa;
+    color: var(--primary);
     margin: 6vh 0 0 0;
 }
 #mailRightDiv {
@@ -60,5 +60,23 @@
     cursor: pointer;
 }
 .webBlackTxt {
-    color: var(--white);
+    color: var(--black);
+}
+
+input[type="text"], input[type=text]:not(.browser-default), textarea.materialize-textarea, input[type="email"]:not(.browser-default)  {
+    border: 1px solid rgba(128, 128, 128, 0.308);
+    padding-left: 2%;
+    width: 98%;
+    border-radius: 5px;
+}
+textarea.materialize-textarea {
+    width: 100%;
+}
+input[type="text"]::placeholder, textarea.materialize-textarea::placeholder, input[type="email"]::placeholder {
+    color: rgba(22, 22, 22, 0.767);
+}
+@media screen and (max-width: 640px) {
+    input[type="text"]::placeholder, textarea.materialize-textarea::placeholder, .input-field input, input[type="email"]::placeholder {
+        text-align: justify;
+    }
 }
