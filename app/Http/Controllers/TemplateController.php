@@ -177,12 +177,14 @@ class TemplateController extends Controller
         $template = Template::find($templateID);
         $profession = $template->profession->name;
         $templateCSS = $template->styleFile;
+        $template_id = $template->id;
         $template = $template->title;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
-        $preview = true;
+        $preview = true;        
         $can = false;
         $email = '';
         $user_id = 0;
-        return view('websites.physician', compact('preview', 'template', 'templateCSS', 'tenantID', 'can', 'email', 'user_id'));
+        
+        return view('websites.physician', compact('preview', 'template', 'templateCSS', 'tenantID', 'can', 'email', 'user_id', 'template_id'));
     }
 }

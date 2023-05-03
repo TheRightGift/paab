@@ -1,6 +1,6 @@
 <template>
     <footer class="footer grey-text text-darken-3">
-        &copy; {{  new Date().getFullYear() }}, {{ user != '' ? user : 'Dr. Olivia Felix' }}
+        &copy; {{  new Date().getFullYear() }}, {{ user != '' ? user : 'Dr. '+physicianName }}
     </footer>
 </template>
 <script>
@@ -12,6 +12,7 @@
         },
         props: {
             user: String,
+            physicianName: String
         }
     }
 </script>

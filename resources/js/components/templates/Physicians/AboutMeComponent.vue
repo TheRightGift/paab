@@ -8,7 +8,7 @@
                             <div class="col l6 profileDesc">
                                 <div class="profileDescInner">
                                     <span class="sectionSubHeading">Hi, I'm</span>
-                                    <h1 class="sectionHeading"> Dr. Olivia Felix</h1>
+                                    <h1 class="sectionHeading"> Dr. {{physicianName}}</h1>
                                     <p>
                                         It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content 
                                     </p>
@@ -19,17 +19,17 @@
                                 </div>
                             </div>
                             <div class="col l6 profileImgContainer noPaddingRight">
-                                <div class="profileImg" v-if="preview === '0'">
+                                <!--div class="profileImg" v-if="preview === '0'">
                                     <img
                                         src="'media/img/templates/1/physicianHero.png'"
-                                        alt="doc.png"
+                                        alt="Main image for physician."
                                         class="responsive-img"
                                     />
-                                </div>
-                                <div class="profileImg" v-else>
+                                </div-->
+                                <div class="profileImg">
                                     <img
-                                        src="/media/img/templates/1/physicianHero.png"
-                                        alt="doc.png"
+                                        :src='"/media/img/templates/"+template_id+"/"+physicianHero'
+                                        alt="Main image for physician."
                                         class="responsive-img"
                                     />
                                 </div>
@@ -176,6 +176,7 @@ export default {
             loading: false,
             uploaded: null,
             showCropper: false,
+            
             txt: 'Sed porttitor lectus nibh. Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit. Vestibulum ante ipsum primis Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Curabitur arcu erat'
         };
     },
@@ -257,9 +258,13 @@ export default {
         preview: String,
         title: String,
         tenant: String,
+        templateID: String,
         isLoggedIn: Boolean,
         CV: Object,
         contact: Object,
+        template_id: String,
+        physicianHero: String,
+        physicianName: String
     },
     watch: {
         bio(newval, oldval) {
@@ -275,7 +280,7 @@ export default {
             }
         }
     },
-    };
+};
 </script>
 <!--style lang="scss" scoped>
 label {

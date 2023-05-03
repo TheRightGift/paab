@@ -3,7 +3,7 @@
         <nav>
             <div class="nav-wrapper">
                 <div class="headerContainer">
-                    <a href="#templateAbout" class="brand-logo">{{user == '' ? 'Dr Olivia Felix' : this.userReplaced.replace('DO', 'Dr.').replace('MD', 'Dr.').replace('DD', 'Dr.')}}</a>
+                    <a href="#templateAbout" class="brand-logo">{{user == '' ? 'Dr '+physicianName : this.userReplaced.replace('DO', 'Dr.').replace('MD', 'Dr.').replace('DD', 'Dr.')}}</a>
                     <a href="#" data-target="mobileNav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="centerNav hide-on-med-and-down">
                         <li v-if="(services !== null && services.length !== 0 && preview === '0') || preview === '1'"><a href="#templateService">Interests</a></li>
@@ -164,6 +164,7 @@ export default {
         miniBlog: Array,
         userSubscribed: Boolean,
         email: String,
+        physicianName: String
     },
     mounted() {
     },

@@ -19,6 +19,7 @@
                 :miniBlog="miniBlog"
                 :userSubscribed="Boolean(usersubscribed)"
                 :email="email"
+                :physicianName="physicianName"
             />
             <AboutMeComponent
                 :tenant="tenant"
@@ -30,8 +31,10 @@
                 :isLoggedIn="loggedIn"
                 :CV="CV"
                 :contact="contact"
+                :template_id="template_id"
+                :physicianHero="physicianHero"
+                :physicianName="physicianName"
             />
-
             <ServicesComponent
                 :services="services"
                 :isLoggedIn="loggedIn"
@@ -62,7 +65,7 @@
                     :contactMail="contact"
                 />
             </div>
-             <FooterComponent :user="user"/>
+             <FooterComponent :user="user" :physicianName="physicianName"/>
      
             <div class="fixedBtmBtn" v-if="can === '1'">
                 <a
@@ -132,10 +135,18 @@ export default {
             reviewLen: 0,
             miniBlog: [],
             centralURL: centralURL,
+            physicianHero: 'physicianHeroWhiteMale.jpg',
+            physicianName: 'John Doe',
+            previewImages: [
+                    {img: 'physicianHero.png', physicianName: 'Olivia Felix'}, 
+                    {img: 'physicianHeroWhiteMale.jpg', physicianName: 'John Doe'},
+                    {img: 'physicianHeroAsianFemale.jpg', physicianName: 'Jane Chang'}
+                ]
         };
     },
     props: {
         template: String,
+        template_id: String,
         id: "",
         user: String,
         preview: String,
@@ -151,10 +162,24 @@ export default {
         this.preview == '0' ? this.checkAuth() : null;
     },
     mounted() {
+        let index = 0
+        setInterval(
+            () => {
+                this.swapPreviewProfile(index);
+
+                let imgArrayLen = this.previewImages.length;
+                index++;
+                console.log(imgArrayLen)
+                if(index >= imgArrayLen){  
+                    index = 0;
+                }                
+            }, 
+            6000
+        );
+        
         if (this.preview == '0') {
             this.getLocations();
-        }
-        else if (this.preview == '1') {
+        } else if (this.preview == '1') {
             this.services = null;
             this.bio = null;
             this.achievement = null;
@@ -193,8 +218,13 @@ export default {
         for (var i = 0; i < dropdowns.length; i++){
             M.Dropdown.init(dropdowns[i]);
         }
+        
     },
     methods: {
+        swapPreviewProfile(index){  
+            this.physicianHero = this.previewImages[index].img;
+            this.physicianName = this.previewImages[index].physicianName;
+        },
         checkAuth() {
             this.initialCheck = true;
             const _token = ("; " + document.cookie)
