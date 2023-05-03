@@ -16,7 +16,7 @@ use App\Http\Controllers\TenantClaimController;
 
 
 use App\Http\Controllers\Tenants\BioController;
-
+use App\Http\Middleware\AuthBasicChecker;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +45,7 @@ Route::group(['prefix' => 'v1'], function(){
     Route::post('/user/remove-payment', [App\Http\Controllers\SubscriptionController::class, 'removePaymentMethod'])->middleware('auth.api');
 });
 Route::group(['middleware' => 'auth.api'], function() {
+    Route::post('/admin_send_mail', [MailController::class, 'adminSendToClients']);
     Route::get('/user', function(Request $request) {
         return $request->user();
     });
@@ -88,7 +89,6 @@ Route::post('tenant_without_auth', [App\Http\Controllers\TenantController::class
 // Route::post('insertCity', [CountryController::class, 'insertCity']);
 Route::get('/getStateNCity/{city}', [CountryController::class, 'getCountryStateFromCity']);
 
-Route::get('/test_awsutil/{stripe_id}', [APIController::class, 'registerDomain'])->name('api.domain.register');
-Route::get('/sendcommand/{domainName}', [APIController::class, 'runAWSUtilityCommand'])->name('api.aws.sendcommand');
-Route::get('/getpendingwebsite', [APIController::class, 'getPendingSites']);
-Route::post('/admin_send_mail', [MailController::class, 'adminSendToClients']);
+Route::get('/test_awsutil/{stripe_id}', [APIController::class, 'registerDomain'])->name('api.domain.register')->middleware(AuthBasicChecker::class);
+Route::get('/sendcommand/{domainName}', [APIController::class, 'runAWSUtilityCommand'])->name('api.aws.sendcommand')->middleware(AuthBasicChecker::class);
+Route::get('/getpendingwebsite', [APIController::class, 'getPendingSites'])->middleware(AuthBasicChecker::class);
