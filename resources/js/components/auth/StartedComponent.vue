@@ -57,7 +57,7 @@
             </div>
         </div>
         <div v-if="claimant || claimaint != null">
-            <claimaint-component-prop :tenantOnDemand="tenantOnDemand" :claimaint="claimaint" :claimant="claimant" :titles="titles" :countries="countries" :userMail="userMail"/>
+            <claimaint-component-prop :tenantOnDemand="tenantOnDemand" :claimaint="claimaint" :claimant="claimant" :titles="titles" :countries="countries" :email="useremail"/>
         </div>
     </div>
 </template>

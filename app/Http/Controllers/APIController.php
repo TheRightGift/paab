@@ -14,29 +14,25 @@ use GuzzleHttp\Handler\CurlHandler;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\MailInvoiceOnSuccesfulPayment;
+use App\Models\Webcreation;
 
 class APIController extends Controller
 {
     public function getPendingSites() {
-        $DB = DB::table('payments');
+        $DB = new Webcreation();
         $data = $DB->where('web_creation', 'pending')->get();
-        $client = new \GuzzleHttp\Client();
         if(count($data) > 0){
-            // foreach ($data as $key => $value) {
-            //     $this->registerDomain($value->customer_id);
-            //     $response = $client->request('GET', $url);
-            //     $body = $response->getBody();
-            //     $data = json_decode($body, true);
-            //     if ($data['status'] === 200) {
-            //         // Update DB web_creation to success
-            //         $column = $DB->find($value->id);
-            //         $column->web_creation = 'success';
-            //         $column->save();
-            //     } else {
-            //         // Send email to admin
-            //         Mail::to('goziechukwu@gmail.com')->send(new ErrorCreatingSite($value));
-            //     }
-            // }
+            foreach ($data as $key => $value) {
+                $data = $this->registerDomain($value->customer_id);
+                $decoded = json_decode($data->content());
+                if ($decoded->status === 200) {
+                    // Update DB web_creation to success
+                    $DB->find($value->id)->update(['web_creation' => 'success']);
+                } else {
+                    // Send email to admin
+                    Mail::to('goziechukwu@gmail.com')->send(new ErrorCreatingSite($value));
+                }
+            }
         } else {
             return response()->json(['status' => 404, 'message' => 'No outstanding website to create!']);
         }        
@@ -59,23 +55,23 @@ class APIController extends Controller
             $years = 1;
             $key = env('NAMESILO_API_KEY');
             $api = env('NAMESILO_API_URL');
-            // try {
-            //     $URL = "{$api}/registerDomain?version=1&type=xml&key={$key}&domain={$domainDotCom}&years={$years}&private=1&auto_renew=1";
-            //     $client = new \GuzzleHttp\Client();
+            try {
+                $URL = "{$api}/registerDomain?version=1&type=xml&key={$key}&domain={$domainDotCom}&years={$years}&private=1&auto_renew=1";
+                $client = new \GuzzleHttp\Client();
             
-            //     $response = $client->request('GET', $URL);
-            //     $body = $response->getBody(); 
-            //     $xml = simplexml_load_string($body);
-            //     if (htmlentities((string)$xml->reply->code) == 300) { // && htmlentities((string)$xml->reply->detail) == 'success'
+                $response = $client->request('GET', $URL);
+                $body = $response->getBody(); 
+                $xml = simplexml_load_string($body);
+                if (htmlentities((string)$xml->reply->code) == 300) { // && htmlentities((string)$xml->reply->detail) == 'success'
                     return $this->runAWSUtility($domainDotCom, $detail);
-            //     }
-            //     else {
-            //         return response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
-            //     }
-            // } catch (\Throwable $th) {
-            //     echo $th->getMessage();
-            //     exit;
-            // }
+                }
+                else {
+                    return response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
+                }
+            } catch (\Throwable $th) {
+                echo $th->getMessage();
+                exit;
+            }
         }
         else{
             return response()->json(['status' => 404, 'message' => 'Payment made against a physician that does not exist']);
@@ -132,7 +128,7 @@ class APIController extends Controller
                 echo 'Not available:'. $response->getStatusCode();
             }
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            echo $th->getMessage();
         }
     }
 
@@ -158,12 +154,11 @@ class APIController extends Controller
                 echo 'Not available:'. $response->getStatusCode();
             }
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            echo $th->getMessage();
         }
     }
 
     private function sendMail($detail) {
         Mail::to($detail['email'])->send(new WebsiteLive($detail));
-        echo 200;
     }
 }
