@@ -33,7 +33,7 @@ class AdminSendMail extends Mailable
     {
         return new Envelope(
             subject: $this->data['subject'],
-            from: new Address('admin@whitecoatdomain.com', 'White Coat Domain'),
+            from: new Address('george@whitecoatdomain.com', 'George from WhiteCoatDomain'),
         );
     }
 
