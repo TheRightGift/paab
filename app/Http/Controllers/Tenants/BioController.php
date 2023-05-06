@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Tenants;
 
+use App\Models\Tenant;
 use App\Models\Tenants\Bio;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Tenants\Achievement;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -38,13 +40,12 @@ class BioController extends Controller
     public function store(Request $request)
     {
         $inputs = Validator::make($request->all(), [
-            // 'about' => 'nullable|max:614|min:600',
+            'about' => 'nullable',
             'lastname' => 'nullable',
             'firstname' => 'nullable',
             'gender' => 'required',
-            'title_id' => 'nullable'
-            // 'CV' => 'nullable|file|mimes:doc,pdf,docx,zip|max:2000',
-            // 'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:width=451,height=512',
+            'title_id' => 'nullable',
+            'othername' => 'nullable'
         ]);
 
         if ($inputs->fails()) {
@@ -54,7 +55,9 @@ class BioController extends Controller
             if($request->has('photo')){
                 try {
                     $safeName = strtolower(tenant('id')).'biophoto'.'.'.'png';
-                    $save_path = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/';
+                    if ($request->has('tenancy_db_name')) {
+                        $save_path = public_path().'/media/tenants/'.$request->get('firstname').'/img/';
+                    } else $save_path = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/';
                     if (!file_exists($save_path)) {
                         mkdir($save_path, 0755, true);
                     }
@@ -67,18 +70,34 @@ class BioController extends Controller
                     return response($inputs->errors()->all(), 400);
                 }
             }
-            $bio = Bio::create($input);
-            $tokenDB = DB::table('tokens');
-            if ($tokenDB->get()->isEmpty()) {
-                $tokenDB->insert([
-                    'token' => Str::UUID(),
-                    'can' => 'edit',
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-            }
+            if ($request->has('tenancy_db_name')) { // When request is coming from services app or others
+                $tenancy_db_name = $request->get('tenancy_db_name');
+                Config::set('database.connections.mysql.database', $tenancy_db_name);
 
-            return response(['bio' => $bio, 'message' => 'Created Success'], 201);
+                DB::connection('mysql')->reconnect();
+                DB::setDatabaseName($tenancy_db_name);
+                $input['updated_at'] = now();
+                $input['created_at'] = now();
+                DB::table('bios')->insert($input);
+                $tokenDB = $this->getTokenDBAndInsertToken();
+                return response(['token' => $tokenDB, 'message' => 'Created Success'], 201);
+            } else {
+                $bio = Bio::create($input);
+                $this->getTokenDBAndInsertToken();
+                return response(['bio' => $bio, 'message' => 'Created Success'], 201);
+            }
+        }
+    }
+
+    private function getTokenDBAndInsertToken() {
+        $tokenDB = DB::table('tokens');
+        if ($tokenDB->get()->isEmpty()) {
+            return $tokenDB->insert([
+                'token' => Str::UUID(),
+                'can' => 'edit',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
         }
     }
 

@@ -24,6 +24,12 @@ invoice.payment_succeeded</code></p>
 
 <p>Replace "vendor/stancl/tenancy/src/Resolvers/DomainTenantResolver.php" with content of "DomainTenantResolver.php" in root folder</p>
 
+<strong>For Services making calls to our api</strong>
+<p>Please prefix <b>services</b> to denote incoming requests.
+<p>Create a client using <code>php artisan passport:client --client</code> to generate a client ID for each service.</p>
+<p>Save the client_id and client_secret to your app</p>
+<p>Make a request to https://whitecoatdomain.com/oauth/token and add the access token generated to your subsequent requests via Authorization Bearer</p>
+
 <strong>NOTE</strong><p>Remember to change <code> APP_ENV </code> to <code> 'production' </code> and <code> APP_DEBUG </code> to <code> false </code></p>
 
 ## Tasks 

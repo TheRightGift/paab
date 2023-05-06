@@ -44,7 +44,14 @@ Route::group(['prefix' => 'v1'], function(){
     Route::put('/user/subscription', [App\Http\Controllers\SubscriptionController::class, 'updateSubscription']);
     Route::post('/user/remove-payment', [App\Http\Controllers\SubscriptionController::class, 'removePaymentMethod'])->middleware('auth.api');
 });
-Route::group(['middleware' => 'auth.api'], function() {
+
+Route::group(['prefix' => 'services', 'middleware' => 'client'], function() {
+    Route::post('/tenant', [App\Http\Controllers\TenantController::class, 'create']);
+    Route::post('/create_bio',  [App\Http\Controllers\Tenants\BioController::class, 'store']);
+    Route::post('/send_claim_mail', [TenantController::class, 'sendEmail']);
+});
+
+Route::group(['middleware' => ['auth.api']], function() {
     Route::post('/admin_send_mail', [MailController::class, 'adminSendToClients']);
     Route::get('/user', function(Request $request) {
         return $request->user();
@@ -62,7 +69,7 @@ Route::group(['middleware' => 'auth.api'], function() {
     Route::put('/access/{id}', [App\Http\Controllers\AdminClientOrderController::class, 'update']);
     Route::get('/access', [App\Http\Controllers\AdminClientOrderController::class, 'index']);
     Route::post('checkMailExist', [App\Http\Controllers\TenantController::class, 'checkEmail']);
-    Route::post('tenant', [App\Http\Controllers\TenantController::class, 'create']);
+    Route::post('tenant', [App\Http\Controllers\TenantController::class, 'create'])->middleware('client');
     Route::put('template-update/{id}', [App\Http\Controllers\TenantController::class, 'update']);
     Route::get('/admins', [App\Http\Controllers\DashboardController::class, 'getAdmins']);
     Route::delete('/deleteAdmin/{id}', [App\Http\Controllers\DashboardController::class, 'deleteAdmin']);
