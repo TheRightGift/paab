@@ -248,6 +248,7 @@ export default {
 }
 .w-50 {
     width: 45%;
+    aspect-ratio: unset;
 }
 .redtoseclast:nth-child(3) {
     color: red;

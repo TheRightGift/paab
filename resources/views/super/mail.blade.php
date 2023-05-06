@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
-
+        <link rel="shortcut icon" href="{{ asset('/media/img/wcdFavicon.jpg') }}" type="image/x-icon">
         <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/paab.css') }}">
         <link rel="stylesheet" href="{{ asset('css/mails.css') }}">
@@ -21,7 +21,7 @@
     </head>
     <body>
         <div id="app">
-            <sadmin-mail-component />
+            <sadmin-mail-component/>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>

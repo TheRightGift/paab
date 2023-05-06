@@ -63,7 +63,7 @@
                         </div>
                         <div class="col s10">
                             <p class="contactMeTitle">Chat with me</p>
-                            <p class="contactMeTxt">{{ contact.email != '' ? contact.email : 'me@droliviafelix.com' }}</p>
+                            <p class="contactMeTxt">{{ contact.email != '' ? contact.email : 'consultation@dromainname.com' }}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -201,7 +201,7 @@ export default {
             update: 0,
         }
     },
-    props: {preview: String, isLoggedIn: Boolean, contactMail: Object},
+    props: {preview: String, isLoggedIn: Boolean, contactMail: Object, physicianName: String},
     methods: {
         saveUpdateContact() {
             this.loading = !this.loading;

@@ -148,9 +148,8 @@
                                                     </small>
                                                 </div>
                                                 <p class="unAvailTxt noMarginBottom">
-                                                    Not satisfied with the suggestions
-                                                    below, type in your preferred domain
-                                                    name or <a href="#!" @click="generateMultiple">Display Suggestions</a>.
+                                                    Not satisfied with the suggested domain name above, type in your preferred domain
+                                                    name or <a href="#!" @click="generateMultiple">view our suggestions</a>.
                                                 </p>
                                             </div>
                                             
@@ -229,7 +228,7 @@
 
                                 <section class="row" id="brandImage">
                                     <h4 class="sectionTitle">
-                                        Brand image
+                                        Main Website Image
                                     </h4>
                                     <div v-if="showCropper" class="cFlex flexRight">
                                         <a class="right" href="#" @click="showCropper = false">
@@ -294,7 +293,8 @@
                                                                         uploaded !== null
                                                                     "
                                                                     >
-                                                                        <i class="material-icons white-text">edit</i>
+                                                                        <span>Change Image</span>
+                                                                        <i class="material-icons white-text right">edit</i>
                                                                     </span
                                                                 >
                                                                 <span v-else>
@@ -2147,13 +2147,13 @@
 </script>
 <style scoped>
 
-.pills:visited, .pills:focus {
-    background: red;
-}
-.removeInterest:hover {
-    cursor: pointer;
-    background-color: rgb(16, 15, 58);
-}
+    .pills:visited, .pills:focus {
+        background: red;
+    }
+    .removeInterest:hover {
+        cursor: pointer;
+        background-color: rgb(16, 15, 58);
+    }
     .pills {
         background-color: var(--white);
         box-shadow: 2px 2px 4px #b7b7b7;
