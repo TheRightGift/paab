@@ -126,18 +126,22 @@ class TenantController extends Controller
         $tenant = $tenancies->find(tenant('id'));
         $profession = $tenant->template->profession->name;
         $professionId =$tenant->template->profession_id;
+        $template_id = $tenant->template->id;
         $template = $tenant->template->title;
         $templateCSS = $tenant->template->styleFile;
+
         $bioTB = Bio::first();
         $pageTitles = General::first();
         $pageTitle = (!empty($pageTitles) ? $pageTitles->title : $bioTB !== null) ? 'Dr '.$bioTB->firstname.' '.$bioTB->lastname : null;
+        
         $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'SuperAdmin' ? null : $tenant->user->title->name;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         $websiteTitleLen = 16;
         $user_id = $tenant->user->id;
+        
         // Checks if  a user is subscribed
         $userSubscribed = $tenant->user->subscribed('premium');
-            
+        
         if(strlen($bioTB->firstname.' '.$bioTB->lastname) > $websiteTitleLen){
             $abridgedName = mb_substr($bioTB->firstname, 0, 1).$bioTB->lastname.$title;
             if(strlen($abridgedName) > $websiteTitleLen){
@@ -151,18 +155,19 @@ class TenantController extends Controller
         }
         
         $socials = Social::latest()->first();
+        
         $canDo = $this->checkTokenForEdit($request);
         if ($canDo !== null) {
             $can = $canDo['can'];
             $email = $canDo['email'];
-        }
-        else {
+        } else {
             $can = false;
             $email = $tenant->user->email;
         }
-        // dd($can);
+        
         if($profession === 'Physician'){
-            return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email', 'user_id', 'userSubscribed'));
+            // echo $template, $socials, $user, $templateCSS, $title, $pageTitle, $tenantID, $can, $email, $user_id, $userSubscribed, $template_id;
+            return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email', 'user_id', 'userSubscribed', 'template_id'));
         } else {
             dd($profession);
         }
