@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ErrorCreatingSite;
 use App\Models\User;
 use App\Models\Tenant;
 use App\Mail\WebsiteLive;
 use GuzzleHttp\Middleware;
+use App\Models\Webcreation;
 use Illuminate\Http\Request;
+use App\Mail\ErrorCreatingSite;
 use App\Models\AdminClientOrder;
+use App\Mail\WebsiteCreationDone;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Handler\CurlHandler;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\MailInvoiceOnSuccesfulPayment;
-use App\Models\Webcreation;
 
 class APIController extends Controller
 {
@@ -45,11 +46,12 @@ class APIController extends Controller
         $tenantPassTB = DB::table('tenant_password_tables')->where('tenant_id', $tenant->id)->first();
         if (!empty($tenant)) {
             $domain = $tenant['domains'][0]['domain'];
+            // TODO: At the completion of website creation send message to user that site is now live
             $detail = [
                 'email' => $user->email,
                 'password' => $tenantPassTB->password,
                 'domain' => $domain,
-                'name' => $user->firstname.' '.$user->lastname,
+                'names' => $user->firstname.' '.$user->lastname,
             ];
             $domainDotCom = $domain.'.com';
             $years = 1;
@@ -159,6 +161,6 @@ class APIController extends Controller
     }
 
     private function sendMail($detail) {
-        Mail::to($detail['email'])->send(new WebsiteLive($detail));
+        Mail::to($detail['email'])->send(new WebsiteCreationDone($detail));
     }
 }

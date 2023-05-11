@@ -11,7 +11,7 @@ use App\Models\Title;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Config;
@@ -148,14 +148,23 @@ class TenantClaimController extends Controller
      * @return void
      */
     public function checkIfTenantIDNGetDomain(Request $request){
-        
         $tenantIDCheck = $request->has('physician');
         $tokenCheck = $request->has('token');
         if($tenantIDCheck && $tokenCheck) {
             $tenant = Tenant::findOrFail($request->get('physician'));
+            $email = AdminClientOrder::where('tenant_id', $request->get('physician'))->firstOrFail()->email;
             $domain = $tenant->domains[0]['domain'];
             if (!empty($request->get('token'))) {
                 $token = $request->get('token');
+                $response = Http::get("https://purivendor.com/api/v1/track/$email?action=INITIALMAIL&clickedPrev=1"); // Make a GET request
+
+                if ($response->successful()) {
+                    $data = $response->json(); // Retrieve the response data
+                    // Process the data as needed
+                } else {
+                    $statusCode = $response->status();
+                    // Handle the error based on the status code
+                }
                 return redirect("https://$domain.whitecoatdomain.com?token=$token");
             }
             else {

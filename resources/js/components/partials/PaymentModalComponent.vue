@@ -66,7 +66,7 @@
         data() {
             return {
                 coupon: "",
-                email: "",
+                // email: "",
                 cardNumber: "",
                 code: "",
                 expiry: "",
