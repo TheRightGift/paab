@@ -23,7 +23,7 @@
                                 <button class="button getstartedbtn waves-effect waves-deep-orange" @click="route('auth/getstarted')" >Get Started</button>
                             </div>
                             <div class="introductoryImageContainer"> 
-                                <img class="introductoryImg responsive-img" src="/media/img/introductoryImage.png" alt="Introductory Image of our template">
+                                <img class="introductoryImg responsive-img" :src="'/media/img/'+bannerImg" alt="Introductory Image of our template">
                             </div>
                         </div>
                     </div>
@@ -289,12 +289,37 @@ export default {
                     imgUrl: "templateOne.png",
                 },
 
-            ]
+            ],
+            bannerImg: 'wcdHomeBanner1.png',
+            bannerImages: [
+                    {img: 'wcdHomeBanner2.png'}, 
+                    {img: 'wcdHomeBanner3.png'},
+                    {img: 'wcdHomeBanner1.png'}
+                ]
         }
+    },
+    mounted() {
+        let index = 0
+        setInterval(
+            () => {
+                this.swapBannerImgs(index);
+
+                let imgArrayLen = this.bannerImages.length;
+                index++;
+                
+                if(index >= imgArrayLen){  
+                    index = 0;
+                }                
+            }, 
+            6000
+        );
     },
     methods: {
         route(url) {
             location.href = url;
+        },
+        swapBannerImgs(index){  
+            this.bannerImg = this.bannerImages[index].img;
         }
     },
 }
