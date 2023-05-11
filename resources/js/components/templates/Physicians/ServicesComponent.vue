@@ -273,7 +273,7 @@
                 }
             },
             interests(newVal, oldVal) {
-                if (newVal !== null) {
+                if (newVal !== null && this.preview === '1') {
                     if (newVal.length > 0) {
                         this.cards = newVal;
                         this.setStep();

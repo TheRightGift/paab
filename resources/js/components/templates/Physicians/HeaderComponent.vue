@@ -146,7 +146,7 @@ export default {
             userID: parseInt(this.user_id),
             reviewLen: 0,
             setModal: false,
-            user: 0,
+            // user: 0,
         };
     },
     props: {

@@ -56,11 +56,26 @@ class StripeEventListener
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
+            $metadata = $data['metadata'];
+            // Send a message to user about payment succeeded
+            $dataForMail = [
+                'names' => $metadata['firstname'].' '.$metadata['lastname'],
+                'hosted_invoice_url' => $data['hosted_invoice_url'],
+            ];
+            Mail::to($metadata['email'])->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
         } else if ($event->payload['type'] === 'customer.subscription.created') {
             $data = $event->payload['data']['object'];
             $metadata = $data['metadata'];
+            $tenantPassTB = DB::table('tenant_password_tables')->where('tenant_id', $metadata['tenant_id'])->first();
+            $detail = [
+                'email' => $metadata['email'],
+                'password' => $tenantPassTB->password,
+                'domain' => $metadata['domainName'],
+                'name' => $metadata['firstname'].' '.$metadata['lastname'],
+            ];
             // Creates workerTable for checking website creation
             // customer_id, domainName, firstname, lastname, email
+            Mail::to($metadata['email'])->send(new WebsiteLive($detail));
             $customersDet = new Webcreation();
             $customersDet->create([
                 'customer_id' => $data['customer'],

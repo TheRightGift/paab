@@ -56,7 +56,7 @@ class BioController extends Controller
                 try {
                     $safeName = strtolower(tenant('id')).'biophoto'.'.'.'png';
                     if ($request->has('tenancy_db_name')) {
-                        $save_path = public_path().'/media/tenants/'.$request->get('firstname').'/img/';
+                        $save_path = public_path().'/media/tenants/'.strtolower($request->get('firstname')).'/img/';
                     } else $save_path = public_path().'/media/tenants/'.strtolower(tenant('id')).'/img/';
                     if (!file_exists($save_path)) {
                         mkdir($save_path, 0755, true);
