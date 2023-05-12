@@ -204,7 +204,7 @@ class TenantClaimController extends Controller
                         }
                         try {
                             $file = $save_path.$safeName;
-                            $success = Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
+                            $success = Image::make(file_get_contents($request['photo']))->resize(650, 799, function ($constraint) {
                                 $constraint->aspectRatio();
                             })->save($file);
                         } catch (PostTooLargeException $th) {
