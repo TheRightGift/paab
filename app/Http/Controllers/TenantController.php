@@ -466,7 +466,7 @@ class TenantController extends Controller
 
             DB::connection('mysql')->reconnect();
             DB::setDatabaseName($input['tenancy_db_name']);
-            $url = 'http://ec2-3-84-168-226.compute-1.amazonaws.com/notifications/email';
+            $url = env('WCDSERVICE_URL').'notifications/email';
             $token = DB::table('tokens')->first()->token;
             $bio = DB::table('bios')->first();
             $firstname = $bio->firstname;
