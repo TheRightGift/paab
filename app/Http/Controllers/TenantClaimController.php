@@ -156,7 +156,7 @@ class TenantClaimController extends Controller
             $domain = $tenant->domains[0]['domain'];
             if (!empty($request->get('token'))) {
                 $token = $request->get('token');
-                $response = Http::get("https://purivendor.com/api/v1/track/$email?action=INITIALMAIL&clickedPrev=1"); // Make a GET request
+                $response = Http::get(env('WCDSERVICE_URL')."api/v1/track/$email?action=INITIALMAIL&clickedPrev=1"); // Make a GET request
 
                 if ($response->successful()) {
                     $data = $response->json(); // Retrieve the response data

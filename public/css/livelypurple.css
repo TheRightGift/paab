@@ -252,10 +252,12 @@ h2.sectionHeading {
     margin-bottom: 0;
     padding-bottom: 3vh;
     color: var(--sec);
+    margin: .2rem 0 1.168rem 0;
 }
 .customCard p{
     white-space: pre-wrap; 
     font-size: 2.5vh;
+    line-height: 1.3rem;
 }
 .customCard img {
     width: 6vw;
