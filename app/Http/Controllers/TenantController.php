@@ -459,8 +459,7 @@ class TenantController extends Controller
         ]);
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
-        }
-        else {
+        } else {
             $input = $inputs->validated();
             Config::set('database.connections.mysql.database', $input['tenancy_db_name']);
 
