@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-    <h3>Dr {{ $detail['name'] }}</h3>
+    <h3>Dr {{ $detail['names'] }}</h3>
    
     <h5>Your website is now live!</h5>
 
