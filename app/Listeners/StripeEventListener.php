@@ -56,7 +56,7 @@ class StripeEventListener
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-            $metadata = $data['metadata'];
+            $metadata = $data['lines']['data'][0]['metadata'];
             // Send a message to user about payment succeeded
             $dataForMail = [
                 'names' => $metadata['firstname'].' '.$metadata['lastname'],
