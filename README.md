@@ -41,16 +41,6 @@ invoice.payment_succeeded</code></p>
 - [x] Setup 2 instances of app
 - [ ] Change session from file to db
 - [ ] Setup NGINX Load Balancer for 2 app instances
-- [x] Namesilo: purchase domain from namesilo
-- [x] AWS: create Route53 Hosted zone
-- [x] AWS: Update Hosted zone's A-record records
-- [x] AWS: get value of NS record (4nameserver IPs)
-- [x] Namesilo:change domain nameservers to point to AWS 
-- [x] integrate interest to admin client creation
-- [x] remove "additional academic ..." from physician account registration
-- [x] Replace "additional academic ..." with interests
-- [ ] Add payment to physiciandomain.com/settings. If not paid, disable setting paths and inform to pay.
-- [ ] physiciandomain.com/settings: indicate payment status and provide button for payment initiaition of failure
+- [x] Adjust About Me generation for User Creation by Self, Ask for institution and Names for this generation
 - [ ] Integrate WCD stripe account
-- [ ] Redesign "Edit your website" button. make wider, background color (darkbkue)
 
