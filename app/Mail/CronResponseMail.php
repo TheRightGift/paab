@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ErrorCreatingSite extends Mailable
+class CronResponseMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,7 +32,7 @@ class ErrorCreatingSite extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Error Creating Site',
+            subject: 'CRON Operations',
             from: new Address('cronAuto@whitecoatdomain.com', 'White Coat Domain'),
         );
     }
@@ -45,7 +45,7 @@ class ErrorCreatingSite extends Mailable
     public function content()
     {
         return new Content(
-            view: 'mail.error_site_create',
+            view: 'mail.cronResponse',
         );
     }
 

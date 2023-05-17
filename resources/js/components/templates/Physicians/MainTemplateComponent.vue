@@ -136,11 +136,11 @@ export default {
             miniBlog: [],
             centralURL: centralURL,
             physicianHero: 'physicianHeroWhiteMale.jpg',
-            physicianName: 'John Doe',
+            physicianName: 'John Summers',
             previewImages: [
                     {img: 'physicianHero.png', physicianName: 'Olivia Felix'}, 
-                    {img: 'physicianHeroWhiteMale.jpg', physicianName: 'John Doe'},
-                    {img: 'physicianHeroAsianFemale.jpg', physicianName: 'Jane Chang'}
+                    {img: 'physicianHeroAsianFemale.jpg', physicianName: 'Jane Chang'},
+                    {img: 'physicianHeroWhiteMale.jpg', physicianName: 'John Summers'},                    
                 ]
         };
     },

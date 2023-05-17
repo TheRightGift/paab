@@ -9,6 +9,7 @@ use GuzzleHttp\Middleware;
 use App\Models\Webcreation;
 use Illuminate\Http\Request;
 use App\Mail\ErrorCreatingSite;
+use App\Mail\CronResponseMail;
 use App\Models\AdminClientOrder;
 use App\Mail\WebsiteCreationDone;
 use Illuminate\Support\Facades\DB;
@@ -43,8 +44,15 @@ class APIController extends Controller
             $lastUpdatedIndex = $DB->latest('updated_at')->value('id');
 
             !empty($lastRecord) ? DB::table('last_updated_record_for_webcreations')->where('id', 1)->update(['lastID' => $lastUpdatedIndex]) : DB::table('last_updated_record_for_webcreations')->insert(['lastID' => $lastUpdatedIndex]);
+            
+            // Send email to admin
+            $msg = 'Website creation operations done.';
+            Mail::to('goziechukwu@gmail.com')->send(new CronResponseMail($msg));
         } else {
-            return response()->json(['status' => 404, 'message' => 'No outstanding website to create!']);
+            // Send email to admin
+            $msg = 'No outstanding website to create!';
+            Mail::to('goziechukwu@gmail.com')->send(new CronResponseMail($msg));
+            return response()->json(['status' => 404, 'message' => $msg]);
         }
     }
     // Makes request to other APIs
