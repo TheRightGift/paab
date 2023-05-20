@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="editWebNav ">
+            <div class="editWebNav">
                 <!-- hide-on-med-and-down -->
                 <div class="editInnerWebNav">
                     <ul id="editWebUl">
@@ -240,24 +240,26 @@
         mounted() {
             this.genModal = true;
             if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-                if (localStorage.getItem('refreshed') == null) {
-                    localStorage.setItem('refreshed', 1);
+                if (localStorage.getItem("refreshed") == null) {
+                    localStorage.setItem("refreshed", 1);
+                } else {
+                    let refreshed = parseInt(localStorage.getItem("refreshed")) + 1;
+                    localStorage.setItem("refreshed", refreshed);
                 }
-                else {
-                    let refreshed = parseInt(localStorage.getItem('refreshed')) + 1;
-                    localStorage.setItem('refreshed', refreshed);
-                }
+            } else {
+                let refreshed =
+                    localStorage.getItem("refreshed") === null
+                        ? 0
+                        : parseInt(localStorage.getItem("refreshed")) + 1;
+                localStorage.setItem("refreshed", refreshed);
             }
-            else {
-                let refreshed = localStorage.getItem('refreshed') === null ? 0 : parseInt(localStorage.getItem('refreshed')) + 1;
-                localStorage.setItem('refreshed', refreshed);
-            }
-
-
         },
         methods: {
             checkIfFieldIsEmpty() {
-                if (localStorage.getItem("візіт") > 1 || localStorage.getItem("refreshed") > 2) {
+                if (
+                    localStorage.getItem("візіт") > 1 ||
+                    localStorage.getItem("refreshed") > 2
+                ) {
                     if (this.social == null) {
                         this.socialErrors = true;
                     }
@@ -348,44 +350,55 @@
                 //     });
                 //     this.loading = !this.loading;
                 // } else {
-                    let formData = new FormData();
-                    // formData.append("CV", e.CV);
-                    formData.append("photo", e.photo);
-                    formData.append("about", e.about);
-                    formData.append("firstname", e.firstname);
-                    formData.append("lastname", e.lastname);
-                    formData.append('gender', e.gender);
-                    axios
-                        .post(`/api/bio`, formData)
-                        .then((res) => {
-                            if (res.status == 201) {
-                                this.loading = !this.loading;
-                                M.toast({
-                                    html: res.data.message,
-                                    classes: "successNotifier",
-                                });
-                                this.bioeErrors = false;
-                                this.servicesLink();
-                            }
-                        })
-                        .catch((err) => {
+                let formData = new FormData();
+                // formData.append("CV", e.CV);
+                // axios.post('http://localhost:3000/physicians/getPhysicianDescriptionFromChatGPT', {
+                //     lastname: e.lastname,
+                //     firstname: e.firstname,
+                //     institution: e.institution,
+                // }).then(res => {
+                //     console.log(res);
+                //     if (res.status === 201) {
+                // formData.append("photo", e.photo);
+                formData.append("about", e.about);
+                formData.append("firstname", e.firstname);
+                formData.append("lastname", e.lastname);
+                formData.append("gender", e.gender);
+                formData.append("about", e.institution);
+                axios
+                    .post(`/api/bio`, formData)
+                    .then((res) => {
+                        if (res.status == 201) {
                             this.loading = !this.loading;
-                            if (err.response.status == 400) {
-                                err.response.data.forEach((el) => {
-                                    M.toast({
-                                        html: el,
-                                        classes: "errorNotifier",
-                                    });
-                                });
-                            }
-                            if (err.response.status == 413) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            this.bioeErrors = false;
+                            this.servicesLink();
+                        }
+                    })
+                    .catch((err) => {
+                        this.loading = !this.loading;
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
                                 M.toast({
-                                    html: 'Picture '+err.response.statusText,
+                                    html: el,
                                     classes: "errorNotifier",
                                 });
-                            }
-                        });
+                            });
+                        }
+                        if (err.response.status == 413) {
+                            M.toast({
+                                html: "Picture " + err.response.statusText,
+                                classes: "errorNotifier",
+                            });
+                        }
+                    });
                 // }
+                // }).catch(err => {
+                //     console.log(err);
+                // })
             },
             bioUpdate(e) {
                 this.loading = !this.loading;
@@ -394,6 +407,7 @@
                 e.photo ? formData.append("oldPhoto", e.oldPhoto) : null;
                 e.CV ? formData.append("CV", e.CV) : null;
                 e.CV ? formData.append("oldCV", e.oldCV) : null;
+
                 formData.append("firstname", e.firstname);
                 formData.append("lastname", e.lastname);
                 formData.append("about", e.about);
@@ -452,7 +466,7 @@
                             });
                             this.serviceErrors = false;
                             this.loading = !this.loading;
-                            this.$emit('updateServices', res.data.services);
+                            this.$emit("updateServices", res.data.services);
                             e.update == 0 ? this.achieveLink() : null;
                         }
                     })
@@ -480,29 +494,29 @@
                     e = { ...e, ...data };
                 }
                 axios
-                .post(request, e)
-                .then((res) => {
-                    if (res.status == 201 || res.data.status == 200) {
-                        this.loading = !this.loading;
-                        M.toast({
-                            html: res.data.message,
-                            classes: "successNotifier",
-                        });
-                        this.socialErrors = false;
-                        this.contactLink();
-                    }
-                })
-                .catch((err) => {
-                    this.loading = !this.loading;
-                    if (err.response.status == 400) {
-                        err.response.data.forEach((el) => {
+                    .post(request, e)
+                    .then((res) => {
+                        if (res.status == 201 || res.data.status == 200) {
+                            this.loading = !this.loading;
                             M.toast({
-                                html: el,
-                                classes: "errorNotifier",
+                                html: res.data.message,
+                                classes: "successNotifier",
                             });
-                        });
-                    }
-                });
+                            this.socialErrors = false;
+                            this.contactLink();
+                        }
+                    })
+                    .catch((err) => {
+                        this.loading = !this.loading;
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
             },
             saveContact(e) {
                 this.loading = !this.loading;
@@ -830,7 +844,7 @@
         watch: {
             general(newVal, oldVal) {
                 this.checkIfFieldIsEmpty();
-            }
+            },
         },
     };
 </script>
