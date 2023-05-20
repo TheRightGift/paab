@@ -128,42 +128,42 @@
                                     <div>1</div>
                                 </div>
                                 <p class="howToCounterHeader bold">​Sign up for a free website builder.</p>
-                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
                             </div>
                             <div class="col l4 m4 marginBottom-3">
                                 <div class="numberIcon">
                                     <div>2</div>
                                 </div>
                                 <p class="howToCounterHeader bold">Log into your dashboard.</p>
-                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
                             </div>
                             <div class="col l4 m4 marginBottom-3">
                                 <div class="numberIcon">
                                     <div>3</div>
                                 </div>
                                 <p class="howToCounterHeader bold">Provide your favorite domain name.</p>
-                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
                             </div>
                             <div class="col l4 m4 marginBottom-3">
                                 <div class="numberIcon">
                                     <div>4</div>
                                 </div>
                                 <p class="howToCounterHeader bold">Pick a template that suits your brand.</p>
-                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
                             </div>
                             <div class="col l4 m4 marginBottom-3">
                                 <div class="numberIcon">
                                     <div>5</div>
                                 </div>
                                 <p class="howToCounterHeader bold">Make payment &amp; publish your website.</p>
-                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
                             </div>
                             <div class="col l4 m4 marginBottom-3">
                                 <div class="numberIcon">
                                     <div>6</div>
                                 </div>
                                 <p class="howToCounterHeader bold">Your website is live in few minutes.</p>
-                                <p class="howToInstruction">​Choose what kind of website you want to create.</p>
+                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
                             </div>
                         </div>
 
@@ -174,7 +174,7 @@
                                 </div>
                                 <div class="col s11">
                                     <p class="howToCounterHeader noMarginTop marginBottom-1 bold">​Sign up for a free website builder.</p>
-                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
                                 </div>
                             </div>
                             <div class="row">
@@ -183,7 +183,7 @@
                                 </div>
                                 <div class="col s11">
                                     <p class="howToCounterHeader noMarginTop marginBottom-1 bold">Log into your dashboard.</p>
-                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
                                 </div>
                             </div>
                             <div class="row">
@@ -192,7 +192,7 @@
                                 </div>
                                 <div class="col s11">
                                     <p class="howToCounterHeader noMarginTop marginBottom-1 bold">Provide your favorite domain name.</p>
-                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
                                 </div>
                             </div>
                             <div class="row">
@@ -201,7 +201,7 @@
                                 </div>
                                 <div class="col s11">
                                     <p class="howToCounterHeader noMarginTop marginBottom-1 bold">Pick a template that suits your brand.</p>
-                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
                                 </div>
                             </div>
                             <div class="row">
@@ -210,7 +210,7 @@
                                 </div>
                                 <div class="col s11">
                                     <p class="howToCounterHeader noMarginTop marginBottom-1 bold">Make payment &amp; publish your website.</p>
-                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
                                 </div>
                             </div>
                             <div class="row">
@@ -219,7 +219,7 @@
                                 </div>
                                 <div class="col s11">
                                     <p class="howToCounterHeader noMarginTop marginBottom-1 bold">Your website is live in few minutes.</p>
-                                    <p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p>
+                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
                                 </div>
                             </div>
                         </div>
