@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col l8 m8 s12">
                     <span class="sectionSubHeading">SOCIAL FEEDS</span>
-                    <h2 class="sectionHeading">Experienced in <br/>multiple interests</h2>
+                    <h2 class="sectionHeading">My Social<br/> handles</h2>
                 </div>
                 <div class="col l4 m4 s12 cardNavContainer">
                     <!--button class="roundBtn marginRight-5" @click="prev"><i class="material-icons">chevron_left</i></button>
