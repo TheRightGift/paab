@@ -20,15 +20,19 @@
                                         <a href="/">
                                             <img
                                                 v-if="tenantOnDemand == 1"
-                                                src="/media/img/wcdlogodeepblue.png"
+                                                src="/media/img/wcdlogodeepblue.webp"
                                                 alt="WhiteCoatDomain Logo"
                                                 class="responsive-img"
+                                                width="287"
+                                                height="173"
                                             />
                                             <img
                                                 v-else
-                                                src="/media/img/wcd-logo-noBckg.png"
+                                                src="/media/img/wcd-logo-noBckg.webp"
                                                 alt="WhiteCoatDomain Logo"
                                                 class=""
+                                                width="287"
+                                                height="173"
                                             />
                                         </a>
                                         <p class="contentTitle marginTop-5">
@@ -1023,14 +1027,14 @@
                     <div class="col l6 s12  noPaddingLeft noPaddingRight fullpage" v-if='view < 2'>
                         <div class="col l6 offset-l6 hide-on-med-and-down" v-if='view > 0'>
                             <a href="/" target="_blank">
-                                <img v-if="tenantOnDemand == 1" src="/media/img/wcdlogodeepblue.png" alt="whitecoatdomain logo" class="responsive-img"/>
-                                <img v-else src="/media/img/wcd-logo-noBckg.png" alt="whitecoatdomain logo" class="responsive-img"/>
+                                <img v-if="tenantOnDemand == 1" src="/media/img/wcdlogodeepblue.webp" width="287" height="173" alt="whitecoatdomain logo" class="responsive-img"/>
+                                <img v-else src="/media/img/wcd-logo-noBckg.webp" width="287" height="173" alt="whitecoatdomain logo" class="responsive-img"/>
                             </a>
                         </div>
                         <div class="col m6 s6 hide-on-large-only" v-if='view > 0'>
                             <a href="/" target="_blank">
                                 <img v-if="tenantOnDemand == 1" src="/media/img/wcdlogodeepblue.png" alt="whitecoatdomain logo" class="responsive-img"/>
-                                <img v-else src="/media/img/wcd-logo-noBckg.png" alt="whitecoatdomain logo" class="responsive-img"/>
+                                <img v-else src="/media/img/wcd-logo-noBckg.webp" width="287" height="173" alt="whitecoatdomain logo" class="responsive-img"/>
                             </a>
                         </div>
                         <div class="bottomOfPage white halfWidth hPadding-5 fullWidthMd">                            
@@ -1942,7 +1946,7 @@
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
-                            localStorage.removeItem("claimproc");
+                            
                             this.user = res.data.user;
                             let elem = document.getElementById("modal1");
                             let instance = M.Modal.getInstance(elem);

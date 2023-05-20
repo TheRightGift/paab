@@ -1,11 +1,15 @@
 <?php
+
 namespace App\Listeners;
 
+use App\Models\User;
+use GuzzleHttp\Client;
 use App\Mail\WebsiteLive;
 use GuzzleHttp\Middleware;
-use GuzzleHttp\Client;
 use App\Events\StripeEvent;
+use App\Models\Webcreation;
 use Illuminate\Http\Request;
+use App\Models\AdminClientOrder;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Handler\CurlHandler;
 use Illuminate\Support\Facades\Log;
@@ -14,7 +18,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\MailInvoiceOnSuccesfulPayment;
-use App\Models\Webcreation;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Laravel\Cashier\Events\WebhookReceived;
 
@@ -57,13 +60,19 @@ class StripeEventListener
                 'updated_at' => now(),
             ]);
             $metadata = $data['lines']['data'][0]['metadata'];
+            $orders = AdminClientOrder::where([['tenant_id', $metadata['tenant_id']], ['email', $metadata['email']]])->first();
+            $orders->claimed = 1;
+            $orders->save();
+            $userToUpdate = User::where('stripe_id', $data['customer'])->first();
+            $userToUpdate->registration_completed = 'Active';
+            $userToUpdate->save();
             // Send a message to user about payment succeeded
             $dataForMail = [
                 'names' => $metadata['firstname'].' '.$metadata['lastname'],
                 'hosted_invoice_url' => $data['hosted_invoice_url'],
             ];
             Mail::to($metadata['email'])->send(new MailInvoiceOnSuccesfulPayment($dataForMail));
-        } else if ($event->payload['type'] === 'customer.subscription.created') {
+        } elseif ($event->payload['type'] === 'customer.subscription.created') {
             $data = $event->payload['data']['object'];
             $metadata = $data['metadata'];
             $tenantPassTB = DB::table('tenant_password_tables')->where('tenant_id', $metadata['tenant_id'])->first();
@@ -89,5 +98,5 @@ class StripeEventListener
         }
     }
 
-    
+
 }
