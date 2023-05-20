@@ -352,53 +352,52 @@
                 // } else {
                 let formData = new FormData();
                 // formData.append("CV", e.CV);
-                // axios.post('http://localhost:3000/physicians/getPhysicianDescriptionFromChatGPT', {
-                //     lastname: e.lastname,
-                //     firstname: e.firstname,
-                //     institution: e.institution,
-                // }).then(res => {
-                //     console.log(res);
-                //     if (res.status === 201) {
-                // formData.append("photo", e.photo);
-                formData.append("about", e.about);
-                formData.append("firstname", e.firstname);
-                formData.append("lastname", e.lastname);
-                formData.append("gender", e.gender);
-                formData.append("about", e.institution);
-                axios
-                    .post(`/api/bio`, formData)
-                    .then((res) => {
-                        if (res.status == 201) {
-                            this.loading = !this.loading;
-                            M.toast({
-                                html: res.data.message,
-                                classes: "successNotifier",
+                axios.post(`${process.env.MIX_WCDSERVICE_URL}physicians/getPhysicianDescriptionFromChatGPT`, {
+                    lastname: e.lastname,
+                    firstname: e.firstname,
+                    institution: e.institution,
+                }).then(res => {
+                    if (res.status === 201) {
+                        // formData.append("photo", e.photo);
+                        formData.append("about", e.about);
+                        formData.append("firstname", e.firstname);
+                        formData.append("lastname", e.lastname);
+                        formData.append("gender", e.gender);
+                        formData.append("about", e.institution);
+                        axios
+                            .post(`/api/bio`, formData)
+                            .then((res) => {
+                                if (res.status == 201) {
+                                    this.loading = !this.loading;
+                                    M.toast({
+                                        html: res.data.message,
+                                        classes: "successNotifier",
+                                    });
+                                    this.bioeErrors = false;
+                                    this.servicesLink();
+                                }
+                            })
+                            .catch((err) => {
+                                this.loading = !this.loading;
+                                if (err.response.status == 400) {
+                                    err.response.data.forEach((el) => {
+                                        M.toast({
+                                            html: el,
+                                            classes: "errorNotifier",
+                                        });
+                                    });
+                                }
+                                if (err.response.status == 413) {
+                                    M.toast({
+                                        html: "Picture " + err.response.statusText,
+                                        classes: "errorNotifier",
+                                    });
+                                }
                             });
-                            this.bioeErrors = false;
-                            this.servicesLink();
                         }
-                    })
-                    .catch((err) => {
-                        this.loading = !this.loading;
-                        if (err.response.status == 400) {
-                            err.response.data.forEach((el) => {
-                                M.toast({
-                                    html: el,
-                                    classes: "errorNotifier",
-                                });
-                            });
-                        }
-                        if (err.response.status == 413) {
-                            M.toast({
-                                html: "Picture " + err.response.statusText,
-                                classes: "errorNotifier",
-                            });
-                        }
-                    });
-                // }
-                // }).catch(err => {
-                //     console.log(err);
-                // })
+                }).catch(err => {
+                    console.log(err);
+                })
             },
             bioUpdate(e) {
                 this.loading = !this.loading;
