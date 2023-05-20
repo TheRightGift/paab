@@ -206,6 +206,7 @@
                     this.requesting = !this.requesting;
                     this.paymentSuccessful = 1;
                     this.$emit('popupClose');
+                    localStorage.removeItem("claimproc");
                     M.toast({
                         html: 'You have successfuly subscribed to domain premium plan!',
                         classes: 'successNotifier'

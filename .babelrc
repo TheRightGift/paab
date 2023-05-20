@@ -1,0 +1,12 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": ">0.25%",
+                "bugfixes": true
+            }
+        ]
+    ],
+    "plugins": ["@babel/plugin-syntax-dynamic-import"]
+}

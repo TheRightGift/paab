@@ -43,58 +43,58 @@
                 </div>
             </div>
             <div>
-                <div class="col l6 s6 feature featureBackground">
+                <div class="col l6 s8 feature featureBackground">
                     <b>Pro website templates</b>
                 </div>
-                <div class="col l6 s6 feature featurePremium center-align">
+                <div class="col l6 s4 feature featurePremium center-align">
                     <i class="material-icons">check</i>
                 </div>
             </div>
             <div>
-                <div class="col l6 s6 feature featureBackground">
+                <div class="col l6 s8 feature featureBackground">
                     <b>Secured website</b>
                 </div>
-                <div class="col l6 s6 feature featurePremium center-align">
+                <div class="col l6 s4 feature featurePremium center-align">
                     <i class="material-icons">check</i>
                 </div>
             </div>
             <div>
-                <div class="col l6 s6 feature featureBackground">
+                <div class="col l6 s8 feature featureBackground">
                     <b>Custom domain name</b>
                 </div>
-                <div class="col l6 s6 feature featurePremium center-align">
+                <div class="col l6 s4 feature featurePremium center-align">
                     <i class="material-icons">check</i>
                 </div>
             </div>
             <div>
-                <div class="col l6 s6 feature featureBackground">
+                <div class="col l6 s8 feature featureBackground">
                     <b>Domain hosting</b>
                 </div>
-                <div class="col l6 s6 feature featurePremium center-align">
+                <div class="col l6 s4 feature featurePremium center-align">
                     <i class="material-icons">check</i>
                 </div>
             </div>
             <div>   
-                <div class="col l6 s6 feature featureBackground">
+                <div class="col l6 s8 feature featureBackground">
                     <b>Branded email</b>
                 </div>
-                <div class="col l6 s6 feature featurePremium center-align">
+                <div class="col l6 s4 feature featurePremium center-align">
                     <i class="material-icons">check</i>
                 </div>
             </div>
             <div>
-                <div class="col l6 s6 feature featureBackground">
+                <div class="col l6 s8 feature featureBackground">
                     <b>Social media stream</b>
                 </div>
-                <div class="col l6 s6 feature featurePremium center-align">
+                <div class="col l6 s4 feature featurePremium center-align">
                     <i class="material-icons">check</i>
                 </div>
             </div>
             <div>
-                <div class="col l6 s6 feature">
+                <div class="col l6 s8 feature">
                     <b>Price (Annual)</b>
                 </div>
-                <div class="col l6 s6 feature featurePremium center-align borderBottom greyText">
+                <div class="col l6 s4 feature featurePremium center-align borderBottom greyText">
                     <b>$144.00 </b>
                 </div>
             </div>
@@ -131,6 +131,7 @@ export default {
     }
     .featureBackground {
         background-color: #c8cbce;
+        padding-left: 5vw !important;
     }
     .featurePremium {
         background-color: var(--ter);

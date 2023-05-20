@@ -598,10 +598,10 @@ class TenantClaimController extends Controller
                 $tenant->user_id = $authUser;
                 !empty($orders) ? $orders->claimed = 1 : null;
                 $tenantSave = $tenant->save();
-                !empty($orders)  ? $orderSave = $orders->save() : null;
+                // !empty($orders)  ? $orderSave = $orders->save() : null;
+                $orderSave = null;
                 if ($tenantSave === true || $orderSave) {
                     $userToUpdate->plan = $request->plan == 'freemium' ? 'F' : 'P';
-                    $userToUpdate->registration_completed = 'Active';
                     $userToUpdate->save();
                     $this->generateIntro($tenant, $valueOfMail);
                     Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);

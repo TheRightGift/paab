@@ -66,9 +66,6 @@
     import OtpComponent from "../partials/OtpComponent";
     import ClaimaintComponentProp from './ClaimaintComponentProp.vue';
     import { faker } from '@faker-js/faker';
-    // import cryptoJs from "crypto-js";
-    // import { Base64 } from "js-base64";
-    // const key = process.env.MIX_APP_KEY;
     let country = "/api/countries";
     let title = "/api/title";
     let profession = "/api/profession";
