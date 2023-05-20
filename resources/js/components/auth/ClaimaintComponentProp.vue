@@ -1403,7 +1403,7 @@
             },
             makePayment() {
                 let paymentModal = document.getElementById("paymentModal");
-                let paymentModalInstance = M.Modal.getInstance(paymentModal);
+                let paymentModalInstance = M.Modal.init(paymentModal);
                 this.setModal = true;
                 paymentModalInstance.open();
             },
@@ -1949,14 +1949,14 @@
                             
                             this.user = res.data.user;
                             let elem = document.getElementById("modal1");
-                            let instance = M.Modal.getInstance(elem);
+                            let instance = M.Modal.init(elem);
                             instance.close();
                             this.popup();
                         }
                     })
                     .catch((err) => {
                         let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()
-                        let instance = M.Modal.getInstance(elem);
+                        let instance = M.Modal.init(elem);
                         instance.close();
                         console.log(err);
                     });

@@ -303,7 +303,7 @@
                             this.achievement.id = res.data.achievement.id;
                             this.initialAchieve = res.data.achievement;
                             let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()
-                            var instance = M.Modal.getInstance(elem);
+                            var instance = M.Modal.init(elem);
                             image === null ? instance.close() : null;
                             this.showCropper = false;
                         }
@@ -319,7 +319,7 @@
                                 });
                             });
                             let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()
-                            var instance = M.Modal.getInstance(elem);
+                            var instance = M.Modal.init(elem);
                             instance.close();
                         }
                         if (err.response.status === 413) {
