@@ -10,7 +10,7 @@
             <div  class="row">
                 <div class="row">
                     <div class="col s12 m6 l4" v-for="blog in miniBlog" :key="blog">
-                        <div class="card">
+                        <!-- <div class="card">
                             <div class="card-image">
                                 <img :src="blog.imageUrl" v-if="preview == '1'">
                                 <img :src="'/media/tenants/'+tenant+'/img/miniblog/'+blog.imageUrl" v-if="preview == '0'">
@@ -21,6 +21,21 @@
                             </div>
                             <div class="card-action activator">
                                 <a href="#">Read more</a>
+                            </div>
+                        </div> -->
+
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img :src="blog.imageUrl" v-if="preview == '1'" class="activator">
+                                <img :src="'/media/tenants/'+tenant+'/img/miniblog/'+blog.imageUrl" v-if="preview == '0'" class="activator">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">{{blog.title}}<i class="material-icons right">more_vert</i></span>
+                                <!-- <p><a href="#">This is a link</a></p> -->
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">{{blog.title}}<i class="material-icons right">close</i></span>
+                                <p>{{blog.body}}</p>
                             </div>
                         </div>
                     </div>
@@ -77,4 +92,7 @@ import ImageCropper from '../../partials/ImageCropper.vue';
     };
 </script>
 <style scoped>
+.card-title {
+    text-shadow: #000 1px 0 5px;
+}
 </style>

@@ -39,7 +39,6 @@ class ServiceController extends Controller
             'data.*.description' => 'nullable',
             'data.*.icon' => 'nullable|image|mimes:jpg,png|max:10',
         ]); 
-
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
         } else {
@@ -52,8 +51,8 @@ class ServiceController extends Controller
             //     $input['icon'] = $stored;
             // } 
             // dump($input, $data);
-            $service = new Service();
             foreach ($data as $row) {
+                $service = new Service();
                 $service->interest_id = $row->id;
                 $service->save();
             }
