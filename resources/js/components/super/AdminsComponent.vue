@@ -250,7 +250,7 @@
                             this.admin.password = "";
                             this.update === 0;
                             let elem = document.getElementById("addStaffModal"); //.getElementsByClassName('modal-close').click()
-                            var instance = M.Modal.getInstance(elem);
+                            var instance = M.Modal.init(elem);
                             instance.close();
                             location.reload();
                         }
@@ -280,7 +280,7 @@
                             this.loading = !this.loading;
                         }
                         let elem = document.getElementById("deleteStaffModal"); //.getElementsByClassName('modal-close').click()
-                        var instance = M.Modal.getInstance(elem);
+                        var instance = M.Modal.init(elem);
                         instance.close();
                         this.admins.splice(
                             this.admins.findIndex(

@@ -710,7 +710,7 @@ export default {
                     }
                     // this.template.id = "";
                     let elem = document.getElementById("tempDelModal"); //.getElementsByClassName('modal-close').click()
-                    var instance = M.Modal.getInstance(elem);
+                    var instance = M.Modal.init(elem);
                     instance.close();
                     this.templates.splice(
                         this.templates.findIndex(

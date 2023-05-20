@@ -191,7 +191,7 @@
             goToReviews() {
                 this.showReviews = true;
                 let elem = document.getElementById("modal2");
-                var instance = M.Modal.getInstance(elem);
+                var instance = M.Modal.init(elem);
                 instance.close();
             },
         },

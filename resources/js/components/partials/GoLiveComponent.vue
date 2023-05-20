@@ -131,7 +131,11 @@ export default {
     }
     .featureBackground {
         background-color: #c8cbce;
-        padding-left: 5vw !important;
+    }
+    @media screen and (max-width: 640px) {
+        .featureBackground {
+            padding-left: 5vw !important;
+        }
     }
     .featurePremium {
         background-color: var(--ter);
