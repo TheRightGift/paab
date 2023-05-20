@@ -94,6 +94,9 @@
                             <div class="input-field">
                                 <input type="text" v-model="bio.firstname" placeholder="First Name" class="bioInput" />
                             </div>
+                            <div class="input-field">
+                                <input type="text" v-model="bio.institution" placeholder="Institution" class="bioInput" required/>
+                            </div>
 
                             <!-- <div>
                                 <button type="button" class="btn" id="genModalBtn">
@@ -655,6 +658,7 @@ import ImageCropper from "../../../../partials/ImageCropper.vue";
                     gender: "",
                     firstname: this.user.firstname,
                     lastname: this.user.lastname,
+                    institution: "",
                     CV: null,
                 },
                 uploaded: null,
