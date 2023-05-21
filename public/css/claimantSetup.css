@@ -324,6 +324,16 @@ table tr td {
     margin-bottom: 1vh;
 }
 
+.pubSupportTxt {
+    font-size: .8rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: end;
+}
+
+.domianMainDiv .row{
+    margin-bottom: 0vh;
+}
+
 .proImgContainer {
     width: 80%;
     /* height: 50vh; */
