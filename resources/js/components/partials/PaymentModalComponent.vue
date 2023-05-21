@@ -5,7 +5,7 @@
                 <div v-if="!paymentSuccessful">
                     <div class="payment-title flexed">
                         <h1>Payment Information</h1>
-                        <a href="#!" class="modal-close waves-effect waves-green btn right"><i class="fa-solid fa-xmark"></i></a>
+                        <a href="#!" class="modal-close waves-effect waves-green btn-small circularBtn right grey darken-4"><i class="fa-solid fa-xmark"></i></a>
                     </div>
                     <form id="payment-form">
                         <div class="form-container">
@@ -15,14 +15,14 @@
                                     <input id="name" maxlength="20" type="text" class="browser-default" v-model="name">
                                 </div>
                                 <div class="mb-2">
-                                    <label for="name" class="browser-default">Coupon<i>(If any)</i></label>
-                                    <input id="coupon" maxlength="20" type="text" class="browser-default" v-model="coupon">
-                                </div>
-                                <div>
                                     <label>Card</label>
                                     <div id="card-element">
                                         
                                     </div>
+                                </div>
+                                <div >
+                                    <label for="name" class="browser-default">Coupon<i>(If any)</i></label>
+                                    <input id="coupon" maxlength="20" type="text" class="browser-default" v-model="coupon">
                                 </div>
                             </div>
                             <!-- <div class="field-container">
@@ -31,6 +31,14 @@
                         </div>
                         <div id="card-element-errors" role="alert"></div>
                         <div class="row">
+                            <div class="col s12 l12 m12">
+                                <p class="grey-text text-lighten-1">
+                                    <label>
+                                        <input type="checkbox" required v-model="terms" style="position: inherit;">
+                                        <span>Agree to our terms and conditions.*</span>
+                                    </label>
+                                </p>
+                            </div>
                             <div class="col s12 l8 m8">
                                 <button  id="add-card-button" class="col s12 l4 m6 waves waves-effect btn-large deep-purple lighten-2" @click.prevent="subscribe">
                                     <span v-if="!requesting"><i class="fas fa-lock"></i> Subscribe</span>
@@ -68,6 +76,7 @@
                 coupon: "",
                 // email: "",
                 cardNumber: "",
+                terms: false,
                 code: "",
                 expiry: "",
                 stripe: '',
@@ -225,29 +234,33 @@
                 });
             },
             subscribe() {
-                this.addPaymentStatus = 1;
-                this.requesting = !this.requesting;
-                this.stripe.confirmCardSetup(
-                    this.intentToken.client_secret, {
-                        payment_method: {
-                            card: this.card,
-                            billing_details: {
-                                name: this.name
+                if (this.terms == false) {
+                    M.toast({html: 'Please agree to our terms to continue', classes: 'errorNotifier'});
+                } else {
+                    this.addPaymentStatus = 1;
+                    this.requesting = !this.requesting;
+                    this.stripe.confirmCardSetup(
+                        this.intentToken.client_secret, {
+                            payment_method: {
+                                card: this.card,
+                                billing_details: {
+                                    name: this.name
+                                }
                             }
                         }
-                    }
-                ).then(function(result) {
-                    if (result.error) {
-                        this.addPaymentStatus = 3;
-                        this.addPaymentStatusError = result.error.message;
-                        this.requesting = !this.requesting;
-                    } else {
-                        this.savePaymentMethod( result.setupIntent.payment_method );
-                        this.addPaymentStatus = 2;
-                        // this.card.clear();
-                        // this.name = '';
-                    }
-                }.bind(this));
+                    ).then(function(result) {
+                        if (result.error) {
+                            this.addPaymentStatus = 3;
+                            this.addPaymentStatusError = result.error.message;
+                            this.requesting = !this.requesting;
+                        } else {
+                            this.savePaymentMethod( result.setupIntent.payment_method );
+                            this.addPaymentStatus = 2;
+                            // this.card.clear();
+                            // this.name = '';
+                        }
+                    }.bind(this));
+                }
             },
             displayError(event){
                 this.requesting = false;
@@ -281,6 +294,16 @@
     }
 </script>
 <style scoped >
+.circularBtn {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
 .powered {
     font-family: "Poppins", sans-serif;
     color: darkgrey;
@@ -321,8 +344,13 @@
     border-radius: 50%;
     color: white;
 }
+@media screen and (max-width: 640px) {
+    .payment-title h1{
+        font-size: 1.3rem !important;
+    }
+}
 .payment-title h1{
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 .flexed {
     display: flex;

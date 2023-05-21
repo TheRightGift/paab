@@ -25,8 +25,8 @@
             :cropBoxMovable= "false"
             :cropBoxResizable= "false"
             :toggleDragModeOnDblclick= "false"
-            :minContainerWidth="minContainerWidth || 500"
-            :minContainerHeight="minContainerHeight || 500"
+            :minContainerWidth="minContainerWidth || 150"
+            :minContainerHeight="minContainerHeight || 150"
             :minCropBoxWidth="width"
             :minCropBoxHeight="height"
             :data="{ 

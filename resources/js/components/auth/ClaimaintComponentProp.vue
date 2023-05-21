@@ -3,7 +3,8 @@
         <div class="row">
             <div id="popup">
                 <div class="paymentOverlay cFlex">
-                    <a class="btn btn-small waves waves-effect" @click="makePayment">Continue to payment</a>
+                    <!-- <a class="btn btn-small waves waves-effect" @click="makePayment">Continue to payment</a> -->
+                    <go-live-component :tenantOnDemand="tenantOnDemand" :showGoLiveBtns="showGoLiveBtns" :bio="bio" @sendEmail="sendEmail($event)"/>
                 </div>
                 <h5 class="center-align">Preview website </h5>
                 <iframe title="Your website preview" srcdoc="Loading..."  id="iframe" onload="this.removeAttribute('srcdoc')"></iframe>
@@ -170,45 +171,47 @@
                                                     ) in domainSuggestions"
                                                     :key="index"
                                                 >
-                                                    <div class="col s1">
-                                                        <p class="domainSelectP">
-                                                            <label>
-                                                                <input
-                                                                    class="with-gap"
-                                                                    name="group1"
-                                                                    type="radio"
-                                                                    :value="
-                                                                        suggestion.name
-                                                                    "
-                                                                    v-model="
-                                                                        domainSelected
-                                                                    "
-                                                                />
-                                                                <span></span>
-                                                            </label>
-                                                        </p>
-                                                    </div>
-                                                    <div class="col s11">
-                                                        <table>
-                                                            <!-- Table Head Section if ever needed
-                                                            <thead><tr><th></th></tr></thead> -->
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td
-                                                                        class="domainTdName"
-                                                                    >
-                                                                        {{
+                                                    <div class="row">
+                                                        <div class="col s1">
+                                                            <p class="domainSelectP">
+                                                                <label>
+                                                                    <input
+                                                                        class="with-gap"
+                                                                        name="group1"
+                                                                        type="radio"
+                                                                        :value="
                                                                             suggestion.name
-                                                                        }}
-                                                                    </td>
-                                                                    <td
-                                                                        class="domainTdState"
-                                                                    >
-                                                                        Available
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                                        "
+                                                                        v-model="
+                                                                            domainSelected
+                                                                        "
+                                                                    />
+                                                                    <span></span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col s11">
+                                                            <table>
+                                                                <!-- Table Head Section if ever needed
+                                                                <thead><tr><th></th></tr></thead> -->
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td
+                                                                            class="domainTdName"
+                                                                        >
+                                                                            {{
+                                                                                suggestion.name
+                                                                            }}
+                                                                        </td>
+                                                                        <td
+                                                                            class="domainTdState"
+                                                                        >
+                                                                            Available
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </template>
                                             </div>
@@ -983,32 +986,33 @@
                             </div>
 
 
-                                <div class="marginTop-5 marginBottom-5" v-if="view == 1">
-                                    <div class="skipDiv">
-                                        <button
-                                            class="saveAllBtn btn btn-small waves-effect waves-black"
-                                            :class="{'tenantOnDemand': tenantOnDemand == 1}"
-                                            @click="saveAll()"
-                                        >
-                                            Save &amp; Publish
-                                        </button>
-                                    </div>
+                            <div class="marginTop-5 marginBottom-5" v-if="view == 1">
+                                <div class="skipDiv">
+                                    <button
+                                        class="saveAllBtn btn btn-small waves-effect waves-black"
+                                        :class="{'tenantOnDemand': tenantOnDemand == 1}"
+                                        @click="saveAll()"
+                                    >
+                                        Save &amp; Publish
+                                    </button>
                                 </div>
-                               
-                                <!-- Publish Section -->
-                                <div v-show="view == 2" class="container">
-                                    <div class="contentTitle" v-if="!showGoLiveBtns" >
-                                        <span class="serviceSuccessTxt">Congrats!</span>
-                                        Your site has been setup successfully!
-                                        <span class="serviceSuccessTxt">Hooray!</span>
-                                        <p class="timer">
-                                            Redirecting you to your site in
-                                            {{ countdown }}s
-                                        </p>
-                                    </div>
+                                <p class="pubSupportTxt">After publishing your website,  you can still do more editing and customization</p>
+                            </div>
+                            
+                            <!-- Publish Section -->
+                            <div v-show="view == 2" class="container">
+                                <div class="contentTitle" v-if="!showGoLiveBtns" >
+                                    <span class="serviceSuccessTxt">Congrats!</span>
+                                    Your site has been setup successfully!
+                                    <span class="serviceSuccessTxt">Hooray!</span>
+                                    <p class="timer">
+                                        Redirecting you to your site in
+                                        {{ countdown }}s
+                                    </p>
+                                </div>
 
-                                    <go-live-component :tenantOnDemand="tenantOnDemand" :showGoLiveBtns="showGoLiveBtns" :bio="bio" @sendEmail="sendEmail($event)"/>
-                                </div>
+                                <!-- <go-live-component :tenantOnDemand="tenantOnDemand" :showGoLiveBtns="showGoLiveBtns" :bio="bio" @sendEmail="sendEmail($event)"/> -->
+                            </div>
 
                                 <!-- Prev/Next Button Section -->
                                 
@@ -1310,6 +1314,7 @@
                             classes: 'successNotifier'
                         });
                         this.view = 2;
+                        this.popup();
                     }
                 }
                 else {
@@ -1488,6 +1493,7 @@
                         classes: 'errorNotifier'
                     })
                 }else  {
+                    this.domainSuggestions = [];
                     let title = this.titles.filter((el) => el.id == this.bio.title_id);
                     this.suggestionLoaded = true;
                     this.domainSuggestions.push({
@@ -1951,7 +1957,7 @@
                             let elem = document.getElementById("modal1");
                             let instance = M.Modal.init(elem);
                             instance.close();
-                            this.popup();
+                            this.makePayment();
                         }
                     })
                     .catch((err) => {
