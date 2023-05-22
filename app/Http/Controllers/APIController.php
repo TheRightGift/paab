@@ -51,8 +51,8 @@ class APIController extends Controller
             Mail::to('goziechukwu@gmail.com')->send(new CronResponseMail($msg));
         } else {
             // Send email to admin
-            $msg = 'No outstanding website to create!';
-            Mail::to('goziechukwu@gmail.com')->send(new CronResponseMail($msg));
+            // $msg = 'No outstanding website to create!';
+            // Mail::to('goziechukwu@gmail.com')->send(new CronResponseMail($msg));
             return response()->json(['status' => 404, 'message' => $msg]);
         }
     }
