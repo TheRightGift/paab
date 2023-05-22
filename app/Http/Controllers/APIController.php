@@ -25,8 +25,9 @@ class APIController extends Controller
         $DB = new Webcreation();
         $lastRecord = DB::table('last_updated_record_for_webcreations')->first();
         $lastRecordId = !empty($lastRecord) ? $lastRecord->lastID : 0;
-
-        $data = $DB->where('web_creation', 'pending')->skip($lastRecordId)->take(100)->get();
+        
+        $data = $DB->where([['web_creation', '=', 'pending'], ['id', '>', $lastRecordId]])->take(100)->get();
+        
         if(count($data) > 0) {
             foreach ($data as $key => $value) {
                 $data = $this->registerDomain($value->customer_id);
