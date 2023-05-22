@@ -20,35 +20,38 @@
                     </div>
                     <div class="col l8 s12">
                         <div class="row mb-0">
-                            <form class="col s12">
+                            <form class="col s12" @submit.prevent="sendToSupport">
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input required placeholder="Jane" type="text" class="validate">
+                                        <input required placeholder="Jane" type="text" class="validate" v-model="support.fname">
                                         <label for="first_name">First Name</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input required placeholder="Doe" type="text" class="validate">
+                                        <input required placeholder="Doe" type="text" class="validate" v-model="support.lname">
                                         <label for="last_name">Last Name</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input required placeholder="janedoe@mail.com" type="email" class="validate">
+                                        <input required placeholder="janedoe@mail.com" type="email" class="validate" v-model="support.email">
                                         <label for="first_name">Email</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input required type="tel" class="validate" placeholder="xxx-xxx-xxx">
+                                        <input required type="tel" class="validate" placeholder="xxx-xxx-xxx" v-model="support.phone">
                                         <label for="last_name">Phone</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <label for="textarea1">Message</label>
                                     <div class="input-field col s12">
-                                        <textarea id="textarea1" class="materialize-textarea" required></textarea>
+                                        <textarea id="textarea1" class="materialize-textarea" required v-model="support.message"></textarea>
                                     </div>
                                 </div>
                                 <div class="getStartedLayout mb-4">
-                                    <button type="submit" class="button submitForSupport waves-effect waves-deep-orange">Get Started</button>
+                                    <button type="submit" class="button submitForSupport waves-effect waves-deep-orange" :disabled="loading">
+                                        <span v-if="!loading">Get Started</span>
+                                        <i v-else class="fas fa-circle-notch fa-spin"></i>
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -66,7 +69,40 @@ export default {
                 'facebook.png',
                 'twitter.png',
                 'insta.png'
-            ]
+            ],
+            loading: false,
+            support: {
+                lname: "",
+                fname: "",
+                email: "",
+                message: "",
+                phone: "",
+            },
+        }
+    },
+    methods: {
+        sendToSupport() {
+            this.loading = true;
+            let data = {
+                names: this.support.fname+' '+this.support.lname,
+                message: this.support.message,
+                email: this.support.email,
+                phone: this.support.phone,
+            };
+            axios.post('/api/support', data).then(res => {
+                if (res.status == 201) {
+                    M.toast({html: res.data, classes: 'successNotifier'});
+                    this.support.fname = '';
+                    this.support.lname = '';
+                    this.support.email = '';
+                    this.support.phone = '';
+                    this.support.message = '';
+                    this.loading = false;
+                }
+            }).catch(err => {
+                console.log(err);
+                this.loading = false;
+            })
         }
     },
 }
