@@ -8,7 +8,7 @@
                         <div class="centerOnSmall">
                             <div class="md-mb-2">
                                 <p class="header">Technical support</p>
-                                <p class="supportMail">techsupport@wcd.com</p>
+                                <p class="supportMail">techsupport@whitecoatdomain.com</p>
                             </div>
                             <div>
                                 <p class="header">Social media</p>
