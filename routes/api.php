@@ -12,6 +12,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DomainCheckerController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TenantClaimController;
 
 
@@ -99,3 +100,4 @@ Route::get('/getStateNCity/{city}', [CountryController::class, 'getCountryStateF
 Route::get('/test_awsutil/{stripe_id}', [APIController::class, 'registerDomain'])->name('api.domain.register')->middleware(AuthBasicChecker::class);
 Route::get('/sendcommand/{domainName}', [APIController::class, 'runAWSUtilityCommand'])->name('api.aws.sendcommand')->middleware(AuthBasicChecker::class);
 Route::get('/getpendingwebsite', [APIController::class, 'getPendingSites'])->middleware(AuthBasicChecker::class);
+Route::post('/support', [SupportController::class,'supportSaveData']);
