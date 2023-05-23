@@ -64,11 +64,11 @@ class BioController extends Controller
                         mkdir($save_path, 0755, true);
                     }
                     $file = $save_path.$safeName;
-                    Image::make(file_get_contents($request['photo']))->resize(650, 799, function ($constraint) {
-                        $constraint->aspectRatio();
-                        // $constraint->upsize();
-                        // $constraint->interlace();
-                    })->save($file);
+                    $img = Image::make($request->file('photo'));
+                    $width = $img->width();
+                    $x = ($width - 650) / 2;
+                    $img->crop(650, 799, $x, 0)->save($file);
+                    
                     $input['photo'] = $safeName;
                 } catch (\Throwable $th) {
                     return response($inputs->errors()->all(), 400);
