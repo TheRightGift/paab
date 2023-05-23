@@ -16,6 +16,8 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\Handler\CurlHandler;
 
 class BioController extends Controller
 {
@@ -41,11 +43,11 @@ class BioController extends Controller
     {
         $inputs = Validator::make($request->all(), [
             'about' => 'nullable',
-            'lastname' => 'nullable',
+            'lastname' => 'required',
             'firstname' => 'nullable',
             'gender' => 'required',
             'title_id' => 'nullable',
-            'othername' => 'nullable'
+            'othername' => 'nullable',
         ]);
 
         if ($inputs->fails()) {
@@ -82,7 +84,14 @@ class BioController extends Controller
                 $input['created_at'] = now();
                 DB::table('bios')->insert($input);
                 $tokenDB = $this->getTokenDBAndInsertToken();
-                return response(['token' => $tokenDB, 'message' => 'Created Success'], 201);
+
+                if($request->has('reqPath')){
+                    $token = DB::table('tokens')->first()->token;
+                    return response(['token' => $token, 'message' => 'Created Success'], 201);
+                } else {
+                    return response(['token' => $tokenDB, 'message' => 'Created Success'], 201);
+                }
+                
             } else {
                 $bio = Bio::create($input);
                 $this->getTokenDBAndInsertToken();
