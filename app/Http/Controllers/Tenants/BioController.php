@@ -16,6 +16,8 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\Handler\CurlHandler;
 
 class BioController extends Controller
 {
@@ -41,11 +43,11 @@ class BioController extends Controller
     {
         $inputs = Validator::make($request->all(), [
             'about' => 'nullable',
-            'lastname' => 'nullable',
+            'lastname' => 'required',
             'firstname' => 'nullable',
             'gender' => 'required',
             'title_id' => 'nullable',
-            'othername' => 'nullable'
+            'othername' => 'nullable',
         ]);
 
         if ($inputs->fails()) {
@@ -62,11 +64,11 @@ class BioController extends Controller
                         mkdir($save_path, 0755, true);
                     }
                     $file = $save_path.$safeName;
-                    Image::make(file_get_contents($request['photo']))->resize(650, 799, function ($constraint) {
-                        $constraint->aspectRatio();
-                        // $constraint->upsize();
-                        // $constraint->interlace();
-                    })->save($file);
+                    $img = Image::make($request->file('photo'));
+                    $width = $img->width();
+                    $x = ($width - 650) / 2;
+                    $img->crop(650, 799, $x, 0)->save($file);
+                    
                     $input['photo'] = $safeName;
                 } catch (\Throwable $th) {
                     return response($inputs->errors()->all(), 400);
@@ -82,7 +84,14 @@ class BioController extends Controller
                 $input['created_at'] = now();
                 DB::table('bios')->insert($input);
                 $tokenDB = $this->getTokenDBAndInsertToken();
-                return response(['token' => $tokenDB, 'message' => 'Created Success'], 201);
+
+                if($request->has('reqPath')){
+                    $token = DB::table('tokens')->first()->token;
+                    return response(['token' => $token, 'message' => 'Created Success'], 201);
+                } else {
+                    return response(['token' => $tokenDB, 'message' => 'Created Success'], 201);
+                }
+                
             } else {
                 $bio = Bio::create($input);
                 $this->getTokenDBAndInsertToken();
