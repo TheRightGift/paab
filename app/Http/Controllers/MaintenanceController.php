@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 use App\Models\AdminClientOrder;
-use App\Models\Tenant;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
 
@@ -97,5 +98,11 @@ class MaintenanceController extends Controller
         }
         return response()->json(['msg' => 'Removed On succes'], 204);
         
+    }
+
+    public function checkUsersThatMadeChanges() {
+        $users = new User();
+        $userMadeChanges = $users->where([['role', 'Client'], ['title_id', null]])->get();
+        return response()->json(['msg' => 'Users Fetched', 'user' => $userMadeChanges], 200);
     }
 }

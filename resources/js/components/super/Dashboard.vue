@@ -3,7 +3,7 @@
         <mobile-nav-component />
         <!-- Sidebar for large and medium devices -->
         <div class="row" id="dashRowDiv">
-            <sidenav-component @user="getUser"/>
+            <sidenav-component @user="getUser" />
 
             <div class="col s12 m10 l10">
                 <div class="dashRightDiv">
@@ -14,9 +14,10 @@
                                     Lead your team and manage your clients
                                 </p>
                                 <p class="dashRightImgTxt">
-                                    Say hello to the next level platform that gives you infinite
-                                    freedom to create, design and manage your personal brand
-                                    exactly the way you want.
+                                    Say hello to the next level platform that
+                                    gives you infinite freedom to create, design
+                                    and manage your personal brand exactly the
+                                    way you want.
                                 </p>
                             </div>
                         </div>
@@ -83,8 +84,13 @@
                             </div>
                             <div class="cardContent">
                                 <div class="cardContentProfile">
-                                    <div  v-if="(clientsWeb.length > 0)">
-                                        <div class="row" id="myWebRmMgRow"  v-for="clientWeb in clientsWeb" :key="clientWeb.id">
+                                    <div v-if="clientsWeb.length > 0">
+                                        <div
+                                            class="row"
+                                            id="myWebRmMgRow"
+                                            v-for="clientWeb in clientsWeb"
+                                            :key="clientWeb.id"
+                                        >
                                             <div class="col s10 m10 l10">
                                                 <div class="cardImgMainDiv">
                                                     <div class="cardImgDiv">
@@ -95,35 +101,54 @@
                                                         >
                                                     </div>
                                                     <p class="cardProName">
-                                                        {{clientWeb.name}}
+                                                        {{ clientWeb.name }}
                                                     </p>
                                                     <div class="col s2 m2 l2">
-                                                        <a href="#" id="cardViewLink" @click="goToDomain(clientWeb)"
+                                                        <a
+                                                            href="#"
+                                                            id="cardViewLink"
+                                                            @click="
+                                                                goToDomain(
+                                                                    clientWeb
+                                                                )
+                                                            "
                                                             >View</a
                                                         >
                                                     </div>
-            
                                                 </div>
                                             </div>
-    
+
                                             <div class="col s12">
                                                 <hr class="cardLine" />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row" v-else>
-                                        <p class="white-text center-align noVertMargin p10">You have not created any website yet for a client! Work Hard bro!</p>
+                                        <p
+                                            class="white-text center-align noVertMargin p10"
+                                        >
+                                            You have not created any website yet
+                                            for a client! Work Hard bro!
+                                        </p>
                                     </div>
                                     <div class="row" id="myWebRmMgRow">
-                                        <div class="col s12 center-align ">
-                                            <a @click="navigateToClientsWebPages" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create website</a>
+                                        <div class="col s12 center-align">
+                                            <a
+                                                @click="
+                                                    navigateToClientsWebPages
+                                                "
+                                                class="waves-effect primary waves-light btn-small"
+                                                ><i class="material-icons right"
+                                                    >add</i
+                                                >Create website</a
+                                            >
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col s12 m6 l6">
+                        <!-- <div class="col s12 m6 l6">
                             <div class="cardDiv">
                                 <div class="cardHeader">
                                     <p class="cardTitle">MY MAIL</p>
@@ -164,6 +189,36 @@
                                             </p>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col s12 m6 l6">
+                            <div class="cardDiv">
+                                <div class="cardHeader">
+                                    <p class="cardTitle">Tracker (No. Of Tenants)</p>
+                                </div>
+                                <div class="cardContent white-text">
+                                    <table class="highlight">
+                                        <thead>
+                                            <tr>
+                                                <th>Subscribed</th>
+                                                <th>Made first Change</th>
+                                                <th>Emails Sent</th>
+                                                <th>Emails Opened</th>
+                                                <th>Rebouned</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>{{userSubscribedTrackerCount}}</td>
+                                                <td>{{ userMadeChangesTrackerCount }}</td>
+                                                <td>{{ emailSent }}</td>
+                                                <td>{{ openedMails }}</td>
+                                                <td>-</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -225,7 +280,11 @@
                 user: {},
                 view: 0,
                 mail: [],
-                cities: null
+                cities: null,
+                userSubscribedTrackerCount: 0,
+                userMadeChangesTrackerCount: 0,
+                emailSent: 0,
+                openedMails: 0,
             };
         },
         mounted() {
@@ -235,23 +294,50 @@
             this.getClientsWebsites();
             setInterval(this.getCurrentTimeInterval, 1000);
             this.getCities();
+            this.fetchSubscribers();
+            this.fetchUserMadeChanges();
+            this.fetchUsersSentMailNOpened();
         },
         methods: {
-            pushCities(){
+            fetchSubscribers () {
+                axios.get('/api/getSubscribers').then(res => {
+                    this.userSubscribedTrackerCount = res.data.user.length;
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
+            },
+            fetchUserMadeChanges () {
+                axios.get('/api/getusers_that_made_change').then(res => {
+                    this.userMadeChangesTrackerCount = res.data.user.length;
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
+            },
+            fetchUsersSentMailNOpened () {
+                axios.post(`${process.env.MIX_WCDSERVICE_URL}api/v1/track/tracker_records`).then(res => {
+                    this.emailSent = res.data.emails.length;
+                    this.openedMails = res.data.openedEmails.length;
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
+            },
+            pushCities() {
                 let postCity = async (city) => {
                     return axios
-                    .post("https://whitecoatdomain.com/api/insertCity", city)
-                    .then((res) => {
-                        // console.log(city.id);
-                        // this.cities.shift();
-                        return true;
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        return false
-                    });
-                }
-
+                        .post("https://whitecoatdomain.com/api/insertCity", city)
+                        .then((res) => {
+                            // console.log(city.id);
+                            // this.cities.shift();
+                            return true;
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            return false;
+                        });
+                };
 
                 // this.cities.forEach(async function(city){
                 //     await postCity(city);
@@ -260,34 +346,35 @@
                 let i = 0;
                 let citiesLen = this.cities.length;
 
-                function myLoop(cities) {   
-                    setTimeout(async function() {   //  call a 3s setTimeout when the loop is called
-                        console.log(cities[i]['id']);
+                function myLoop(cities) {
+                    setTimeout(async function () {
+                        //  call a 3s setTimeout when the loop is called
+                        console.log(cities[i]["id"]);
 
                         await postCity(cities[i]);
-                        i++;                    //  increment the counter
-                        if (i < citiesLen) {           //  if the counter < 10, call the loop function
-                            myLoop(cities);             //  ..  again which will trigger another 
-                        }                       //  ..  setTimeout()
+                        i++; //  increment the counter
+                        if (i < citiesLen) {
+                            //  if the counter < 10, call the loop function
+                            myLoop(cities); //  ..  again which will trigger another
+                        } //  ..  setTimeout()
                     }, 2500);
                     // console.log(cities[i]['id']);
                 }
 
-                myLoop(this.cities); 
-
+                myLoop(this.cities);
             },
-            getCities(){
+            getCities() {
                 axios
-                .get("/api/getCities/0")
-                .then((res) => {
-                    // console.log(res.data.cities);
-                    this.cities = res.data.cities;
-                    alert('done');
-                    alert('done')
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+                    .get("/api/getCities/0")
+                    .then((res) => {
+                        // console.log(res.data.cities);
+                        this.cities = res.data.cities;
+                        alert("done");
+                        alert("done");
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             },
             createTemplate() {
                 this.loading = !this.loading;
@@ -348,8 +435,11 @@
                 this.getCurrentTimeInterval();
             },
             gotoDomain(website) {
-                let domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
-                window.open(`https://${domain}.whitecoatdomain.com`,'_blank');
+                let domain =
+                    typeof website.domains === "object"
+                        ? website.domains[0].domain
+                        : website.domains;
+                window.open(`https://${domain}.whitecoatdomain.com`, "_blank");
             },
             dayFormatter(d) {
                 {
@@ -411,14 +501,17 @@
             },
             getClientsWebsites() {
                 this.loading = true;
-                axios.get("/api/tenancies").then(res => {
-                    if (res.data.status == 200) {
-                        this.clientsWeb = res.data.tenants.slice(0, 2);
-                    }
-                    this.loading = false;
-                }).catch(err => {
-                    console.log(err);
-                });
+                axios
+                    .get("/api/tenancies")
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            this.clientsWeb = res.data.tenants.slice(0, 2);
+                        }
+                        this.loading = false;
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             },
             navigateToClientsWebPages() {
                 window.location.replace("/supre/client");
@@ -431,7 +524,7 @@
                     );
                 }
             },
-            
+
             setView(num) {
                 this.view = num;
             },
