@@ -13,6 +13,7 @@ use App\Http\Controllers\DomainCheckerController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TenantClaimController;
 
@@ -84,6 +85,9 @@ Route::group(['middleware' => ['auth.api']], function() {
     Route::get('/remove_tenants_with_faultycr8', [MaintenanceController::class, 'checkTenantNRemoveIfBioIsEmpty'])->middleware('can:run_superAdmin_ops');
     Route::get('/get_tenants_with_faultycr8', [MaintenanceController::class, 'loopThruTenantsWithFaultyCr8'])->middleware('can:run_superAdmin_ops');
     Route::get('/remove_tenant_with_faultycr8/{id}', [MaintenanceController::class, 'removeUser'])->middleware('can:run_superAdmin_ops');
+    Route::get('/getSubscribers', [SubscriptionController::class, 'getSubscribers'])->middleware('can:run_superAdmin_ops');
+    Route::get('/getusers_that_made_change', [MaintenanceController::class, 'checkUsersThatMadeChanges'])->middleware('can:run_superAdmin_ops');
+    
 });
 // Route::group(['middleware'=>'auth:api'], function(){
 // });

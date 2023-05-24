@@ -164,4 +164,10 @@ class SubscriptionController extends Controller
 
         return response()->json( null, 204 );
     }
+
+    public function getSubscribers() {
+        $users = User::whereHas('subscriptions')->get();
+        
+        return response()->json(['users' => $users], 200);
+    }
 }
