@@ -54,6 +54,7 @@ class BioController extends Controller
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
+            
             if($request->has('photo')){
                 try {
                     $safeName = strtolower(tenant('id')).'biophoto'.'.'.'png';
@@ -66,14 +67,18 @@ class BioController extends Controller
                     $file = $save_path.$safeName;
                     $img = Image::make($request->file('photo'));
                     $width = $img->width();
-                    $x = ($width - 650) / 2;
-                    $img->crop(650, 799, $x, 0)->save($file);
+                    $height = $img->height();
+                    $x = round(($width - 650) / 2);
+                    $y = round(($height - 799) / 2); 
+                    $img->crop(650, 799, $x, $y)->save($file);
                     
                     $input['photo'] = $safeName;
                 } catch (\Throwable $th) {
-                    return response($inputs->errors()->all(), 400);
+                    return response($th, 400);
                 }
             }
+
+            
             if ($request->has('tenancy_db_name')) { // When request is coming from services app or others
                 $tenancy_db_name = $request->get('tenancy_db_name');
                 Config::set('database.connections.mysql.database', $tenancy_db_name);
