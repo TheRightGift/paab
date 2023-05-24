@@ -12,6 +12,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DomainCheckerController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TenantClaimController;
 
@@ -79,6 +80,7 @@ Route::group(['middleware' => ['auth.api']], function() {
     Route::get('/check_password', [App\Http\Controllers\AuthController::class, 'check_password']);
     Route::post('/sendClaimMail', [TenantController::class, 'sendEmail']);
 
+    Route::get('/remove_tenants_with_faultycr8', [MaintenanceController::class, 'checkTenantNRemoveIfBioIsEmpty'])->middleware('can:run_admin_ops');
 });
 // Route::group(['middleware'=>'auth:api'], function(){
 // });
