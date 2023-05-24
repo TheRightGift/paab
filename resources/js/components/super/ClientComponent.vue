@@ -45,6 +45,10 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="ml-2">
+                            <a class="waves-effect waves-light btn-small grey darken-4" @click="(faultyClients = true, clients = false)" v-if="!faultyClients">Others</a>
+                            <a class="waves-effect waves-light btn-small grey darken-4" @click="(faultyClients = false, clients = true)" v-else>Return Back</a>
+                        </div>
 
                         <div class="adminClientSearchInputControlDiv">
                             <div>
@@ -67,7 +71,7 @@
                     <div class="row center-align" v-if="loading">
                         <ButtonLoaderComponent />
                     </div>
-                    <table class="responsive-table adminAddClientTable" v-else>
+                    <table class="responsive-table adminAddClientTable" v-else-if="!loading && clients">
                         <tbody>
                             <tr class="adminAddClientTr" v-for="clientWebo in filteredClientWebsites()"
                                 :key="clientWebo.id">
@@ -122,6 +126,51 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div v-else-if="!loading && faultyClients">
+                        <p class="right">
+                            <a class="waves-effect waves-light btn-small  red darken-4" @click="removeAllFaultyUser" v-if="clientsFaultyWebsites.length > 0">Remove All</a>
+                        </p>
+                        <table class="responsive-table adminAddClientTable">
+                            <tbody>
+                                <tr class="adminAddClientTr" v-for="clientWebo in filteredClientsFaultyWebsites()"
+                                    :key="clientWebo.id">
+                                    <td>
+                                        <div class="adminAddClientImgDiv"></div>
+                                    </td>
+                                    <td class="addminAddClientTxts">
+                                        {{
+                                            clientWebo.tenant_id
+                                        }}
+                                    </td>
+                                    <td class="addminAddClientTxts">
+                                        {{ clientWebo.email }}
+                                    </td>
+                                    <!-- <td class="right">
+                                        <a href="#!" @click="removeNReinitiate(clientWebo)" title="Edit your website"
+                                            class="marginRight1">
+                                            <i class="material-icons" id="webWhiteIcon">edit</i>
+                                        </a>
+                                    </td> -->
+                                    <td class="right">
+                                        <a href="#!" @click="remove(clientWebo)" title="Remove user accounts" v-if="!sending"
+                                            class="marginRight1 waves waves-effect nt-small">Remove
+                                        </a>
+                                        <a class="marginRight1"  v-else>
+                                            <i class="fas fa-circle-notch fa-spin"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <div class="centered" v-if="
+                                    search && !filteredClientsFaultyWebsites().length
+                                ">
+                                    <p class="error">No results found!</p>
+                                </div>
+                                <tr v-if="clientsFaultyWebsites.length == 0" class="centered">
+                                    All Tenants Collected was created successful. No Issuses detected!
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div class="adminClientPaginationControlDiv" v-if="clientsWebsites.length != 0">
                         <div class="adminClientPaginationInnerControlDiv right">
@@ -184,6 +233,10 @@ export default {
             addClientDiv: false,
             clientsWebsites: [],
             masterDataSource: [],
+            clients: false,
+            faultyClients: false,
+            masterDataForFaultySource: [],
+            clientsFaultyWebsites: [],
             clientsView: false,
             configureWebDiv: false,
             configureWeb: false,
@@ -214,7 +267,9 @@ export default {
         this.isHidden = !this.isHidden;
         this.heading = !this.heading;
         this.clientsView = !this.clientsView;
+        this.clients = !this.clients;
         this.getClientsWebsites();
+        this.getFaultyClientWebsitesCr8n();
         this.getAccess();
     },
     methods: {
@@ -298,6 +353,16 @@ export default {
                     console.log(err);
                 });
         },
+        getFaultyClientWebsitesCr8n() {
+            axios
+                .get(`/api/get_tenants_with_faultycr8`)
+                .then((res) => {
+                    this.clientsFaultyWebsites = res.data.data;
+                    this.masterDataForFaultySource = res.data.data;
+                }).catch(err => {
+                    console.log(err);
+                })
+        },
         deleteWebsite(e) {
             console.log(e);
         },
@@ -317,6 +382,43 @@ export default {
                     .toUpperCase()
                     .includes(this.search.toUpperCase())
             );
+        },
+        filteredClientsFaultyWebsites () {
+            return this.masterDataForFaultySource.filter((item) => item.tenant_id.toUpperCase().includes(this.search.toUpperCase()));
+        },
+        removeAllFaultyUser () {
+            this.sending = true;
+            axios.get(`/api/remove_tenants_with_faultycr8`).then(res => {
+                if (res.status === 204) {
+                    M.toast({
+                        html: `Tenants With issue on automation creation deleted`,
+                        classes: 'successNotifier'
+                    });
+                    this.sending = false;
+                    location.reload();
+                }
+            }).catch(err => {
+                this.sending = false;
+                console.log(err);
+            })
+        },
+        remove(evt) {
+            this.sending = true;
+            axios.get(`/api/remove_tenant_with_faultycr8/${evt.tenant_id}`).then(res => {
+                console.log(res);
+                if (res.status === 204) {
+                    M.toast({
+                        html: `Tenant with id ${evt.tenant_id} deleted`,
+                        classes: 'successNotifier'
+                    });
+                    this.sending = false;
+                    // Do splice to remove from array
+                    location.reload();
+                }
+            }).catch(err => {
+                this.sending = false;
+                console.log(err);
+            })
         },
         setDefaults() {
             this.heading = !this.heading;

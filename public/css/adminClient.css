@@ -62,5 +62,12 @@ table.adminAddClientTable tbody tr.adminAddClientTr {
 
 .adminClientSearchInputMainDiv {
     display: flex;
+    align-items: center;
+}
+.ml-2 {
+    margin-left: 1rem;
+}
+.btn-small {
+    border-radius: 10px;
 }
 
