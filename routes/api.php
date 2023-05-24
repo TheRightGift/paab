@@ -51,6 +51,7 @@ Route::group(['prefix' => 'services', 'middleware' => 'client'], function() {
     Route::post('/tenant', [App\Http\Controllers\TenantController::class, 'create']);
     Route::post('/create_bio',  [App\Http\Controllers\Tenants\BioController::class, 'store']);
     Route::post('/send_claim_mail', [TenantController::class, 'sendEmail']);
+    Route::get('/remove_tenant_with_faultycr8/{id}', [MaintenanceController::class, 'removeUser']);
 });
 
 Route::group(['middleware' => ['auth.api']], function() {
@@ -81,6 +82,8 @@ Route::group(['middleware' => ['auth.api']], function() {
     Route::post('/sendClaimMail', [TenantController::class, 'sendEmail']);
 
     Route::get('/remove_tenants_with_faultycr8', [MaintenanceController::class, 'checkTenantNRemoveIfBioIsEmpty'])->middleware('can:run_superAdmin_ops');
+    Route::get('/get_tenants_with_faultycr8', [MaintenanceController::class, 'loopThruTenantsWithFaultyCr8'])->middleware('can:run_superAdmin_ops');
+    Route::get('/remove_tenant_with_faultycr8/{id}', [MaintenanceController::class, 'removeUser'])->middleware('can:run_superAdmin_ops');
 });
 // Route::group(['middleware'=>'auth:api'], function(){
 // });
