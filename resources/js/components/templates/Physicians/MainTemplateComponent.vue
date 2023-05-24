@@ -169,7 +169,7 @@ export default {
 
                 let imgArrayLen = this.previewImages.length;
                 index++;
-                console.log(imgArrayLen)
+                
                 if(index >= imgArrayLen){  
                     index = 0;
                 }                

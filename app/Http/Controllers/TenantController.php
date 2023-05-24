@@ -34,6 +34,7 @@ class TenantController extends Controller
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
+        
         try {
             $tenants = Tenant::find($request->name);
             $domains = DB::table('domains')->where('domain', $request->name)->first();
@@ -57,12 +58,10 @@ class TenantController extends Controller
                         ]);
                     }
                     return response()->json(['message' => 'Your Website is created successfuly', 'tenant' => $tenant, 'domain' => $domain, 'status' => 200], 200);
-                }
-                else {
+                } else {
                     return response()->json(['message' => 'Problem creating your website, Please Try again', 'status' => 502], 502);
                 }
-            }
-            else {
+            } else {
                 return response()->json(['status' => 500, 'message' => 'The name has already been taken!'], 500);
             }
         } catch (DomainOccupiedByOtherTenantException $th) {
