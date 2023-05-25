@@ -39,6 +39,7 @@
                     <a
                         href="#logoutModal"
                         class="dashLeftBarListDiv modal-trigger"
+                        @click="logoutModalShow"
                     >
                         <div>
                             <i
@@ -56,7 +57,7 @@
             </ul>
 
             <!-- Sidenav Trigger -->
-            <a href="#" data-target="slide-out" class="sidenav-trigger">
+            <a href="#" @click="openSideNav">
                 <i class="material-icons sideNavIcon">menu</i>
             </a>
         </nav>
@@ -150,6 +151,7 @@
                 prefix: "/client",
                 shown: false,
                 user: {},
+                sideNavInst: null
             };
         },
         methods: {
@@ -193,22 +195,34 @@
             },
             logout() {
                 axios
-                    .post("/auth/logout")
-                    .then((res) => {
-                        if (res.data.status == 401) {
-                            this.delete_cookie("_token", "/");
-                            location.replace("/");
-                        }
-                        console.log(res);
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
+                .post("/auth/logout")
+                .then((res) => {
+                    if (res.data.status == 401) {
+                        this.delete_cookie("_token", "/");
+                        location.replace("/");
+                    }
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
             },
+            openSideNav(){
+                this.sideNavInst.open();
+            },
+            logoutModalShow(){
+                let elem = document.getElementById("logoutModal"); //.getElementsByClassName('modal-close').click()
+                var instance = M.Modal.init(elem);
+                instance.close();
+            }
         },
         mounted() {
             this.getUser();
             this.getLocation();
+
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, options);
+            this.sideNavInst = instances;
         },
     };
 </script>
