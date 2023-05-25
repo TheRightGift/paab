@@ -51,7 +51,7 @@ class APIController extends Controller
             Mail::to('goziechukwu@gmail.com')->send(new CronResponseMail($msg));
         } else {
             // Send email to admin
-            // $msg = 'No outstanding website to create!';
+            $msg = 'No outstanding website to create!';
             // Mail::to('goziechukwu@gmail.com')->send(new CronResponseMail($msg));
             return response()->json(['status' => 404, 'message' => $msg]);
         }
@@ -60,9 +60,11 @@ class APIController extends Controller
 
     public function registerDomain($stripeId)
     {
-        $user = User::where('stripe_id', $stripeId)->first();
+        $users = new User();
+        $tenants = new Tenant();
+        $user = $users->where('stripe_id', $stripeId)->first();
         if ($user) {
-            $tenant = Tenant::where('user_id', $user->id)->first();
+            $tenant = $tenants->where('user_id', $user->id)->first();
             $tenantPassTB = DB::table('tenant_password_tables')->where('tenant_id', $tenant->id)->first();
             if (!empty($tenant)) {
                 $domain = $tenant['domains'][0]['domain'];
@@ -102,33 +104,6 @@ class APIController extends Controller
 
     }
 
-    public function configureEmail($domainName, $key, $email, $forward1)
-    {
-        $api = env('NAMESILO_API_URL');
-        try {
-            $URL = "{$api}/configureEmailForward?version=1&type=xml&key={$key}&domain={$domainName}&email={$email}&forward1={$forward1}";
-            $handler = new CurlHandler();
-            $client = new \GuzzleHttp\Client();
-            $tapMiddleware = Middleware::tap(function ($request) {});
-            $response = $client->request('GET', $URL, [
-                'handler' => $tapMiddleware($handler)
-            ]);
-            $body = $response->getBody();
-            $xml = simplexml_load_string($body);
-            if (htmlentities((string)$xml->reply->detail) === 'success' && htmlentities((string)$xml->reply->code) === 300) {
-                // Request AWS Facility
-                // return
-                echo response()->json(["message" => htmlentities((string)$xml->reply->detail), "status" =>  htmlentities((string)$xml->reply->code)]);
-            } else {
-                echo response()->json(['message' => htmlentities((string)$xml->reply->detail), 'status' => htmlentities((string) $xml->reply->code)]);
-                exit;
-            }
-        } catch (\Throwable $th) {
-            echo $th->getMessage();
-            exit;
-        }
-    }
-
     public function runAWSUtility($domain, $detail)
     {
         try {
@@ -146,6 +121,7 @@ class APIController extends Controller
             if ($data['status'] === 200) {
                 // Send mail and run the aws sendcommand api
                 $this->sendMail($detail);
+                $this->runEmailForwarding($domain, $detail['email']);
                 return $this->runAWSUtilityCommand($domain);
             } else {
                 echo 'Not available:'. $response->getStatusCode();
@@ -173,6 +149,31 @@ class APIController extends Controller
             if ($data['status'] === 200) {
                 // return response()->json(['message' => 'Success', 'status' => $data['status']]);
                 return response()->json(['message' => 'Success', 'status' => $data['status'], 'commandID' => $data['commandID'] ]);
+            } else {
+                echo 'Not available:'. $response->getStatusCode();
+            }
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+        }
+    }
+
+    public function runEmailForwarding($domain, $email)
+    {
+        try {
+            $handler = new CurlHandler();
+            $client = new \GuzzleHttp\Client();
+            $tapMiddleware = Middleware::tap(function ($request) {});
+            $data = ["DomainName" => $domain, "email" => $email];
+
+            $response = $client->request('POST', env('AWS_UTILITY_URL_MAIL_FORWARDER'), [
+                'json' => $data,
+                'handler' => $tapMiddleware($handler)
+            ]);
+
+            $body = $response->getBody();
+            $data = json_decode($body, true);
+            if ($response->getStatusCode() == 200) {
+                return response()->json(['message' => 'Success', 'status' => $data]);
             } else {
                 echo 'Not available:'. $response->getStatusCode();
             }
