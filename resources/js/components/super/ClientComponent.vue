@@ -209,7 +209,9 @@
         </div>
     </div>
 </template>
-
+<!-- get from services all tracker -->
+<!-- for payment get from paab count -->
+<!-- for setting up account, check if title has been updated -->
 <script>
 import SidenavComponent from "../partials/SideNavComponent.vue";
 import MobileNavComponent from '../partials/MobileNavComponent.vue';
@@ -507,7 +509,8 @@ export default {
                 this.sending = true;
                 let data = {
                     "email": mail.order.email,
-                    "url": `https://whitecoatdomain.com/getstarted`,
+                    // Changed from https://whitecoatdomain.com/getstared to tenant subdomain
+                    "url": `https://${mail.domains[0].domain}.whitecoatdomain.com`,
                     "profilePix": "string",
                     "title": mail.domains[0].domain,
                     'tenancy_db_name': mail.tenancy_db_name,

@@ -318,7 +318,7 @@
             fetchUsersSentMailNOpened () {
                 axios.post(`${process.env.MIX_WCDSERVICE_URL}api/v1/track/tracker_records`).then(res => {
                     this.emailSent = res.data.emails.length;
-                    this.openedMails = res.data.openedEmails.length;
+                    this.openedMails = res.data.openedMails.length;
                     console.log(res);
                 }).catch(err => {
                     console.log(err);
