@@ -46,8 +46,8 @@
                             </form>
                         </div>
                         <div class="ml-2">
-                            <a class="waves-effect waves-light btn-small grey darken-4" @click="(faultyClients = true, clients = false)" v-if="!faultyClients">Others</a>
-                            <a class="waves-effect waves-light btn-small grey darken-4" @click="(faultyClients = false, clients = true)" v-else>Return Back</a>
+                            <a class="waves-effect waves-light red-text darken-4" @click="(faultyClients = true, clients = false)" v-if="!faultyClients"><i class="material-icons left">error</i> Failed Website Creations</a>
+                            <a class="waves-effect waves-light black-text darken-4" @click="(faultyClients = false, clients = true)" v-else><i class="material-icons left">arrow_back</i> Return Back</a>
                         </div>
 
                         <div class="adminClientSearchInputControlDiv">

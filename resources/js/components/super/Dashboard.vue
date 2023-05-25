@@ -195,7 +195,7 @@
                         <div class="col s12 m6 l6">
                             <div class="cardDiv">
                                 <div class="cardHeader">
-                                    <p class="cardTitle">Tracker (No. Of Tenants)</p>
+                                    <p class="cardTitle">Sales Emails</p>
                                 </div>
                                 <div class="cardContent white-text">
                                     <table class="highlight">

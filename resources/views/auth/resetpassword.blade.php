@@ -22,7 +22,7 @@
 
     
     <title>{{env('APP_NAME')}}: White Coat Domain - Reset Password</title>
-    <link rel="shortcut icon" href="{{ asset('/media/img/logo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('/media/img/wcdFavicon.jpg') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
