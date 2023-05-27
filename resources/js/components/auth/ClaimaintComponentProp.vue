@@ -314,6 +314,8 @@
                                                                 <image-cropper v-if="tenantId && showCropper"
                                                                     :height="799"
                                                                     :width="650"
+                                                                    :xAxis="650"
+                                                                    :yAxis="799"
                                                                     :img="bio.photo == undefined ? '/media/img/doctor.png' : '/media/tenants/'+tenantId +'/img/'+bioData.photo"
                                                                     @uploadPhoto="
                                                                         photoUpload(
@@ -327,7 +329,7 @@
                                                     </div>
                                                     <p v-else>
                                                         Uploading Image<i
-                                                            class="fas fa-circle-notch"
+                                                            class="fas fa-circle-notch fs-spin"
                                                         ></i>
                                                     </p>
                                                 </div>

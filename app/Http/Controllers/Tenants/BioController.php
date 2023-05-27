@@ -65,7 +65,7 @@ class BioController extends Controller
                         mkdir($save_path, 0755, true);
                     }
                     $file = $save_path.$safeName;
-                    $img = Image::make($request->file('photo'));
+                    $img = Image::make(file_get_contents($request['photo']));
                     $width = $img->width();
                     $height = $img->height();
                     $x = round(($width - 650) / 2);
@@ -148,9 +148,12 @@ class BioController extends Controller
                         mkdir($file_path, 0755, true);
                     }
                     $file = $file_path.$safeName;
-                    Image::make(file_get_contents($request['photo']))->resize(451, 512, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })->save($file);
+                    $img = Image::make(file_get_contents($request['photo']));
+                    $width = $img->width();
+                    $height = $img->height();
+                    $x = round(($width - 650) / 2);
+                    $y = round(($height - 799) / 2); 
+                    $img->crop(650, 799, $x, $y)->save($file);
                     $input['photo'] = $safeName;
                 }
                 $bio2Update->update($input);

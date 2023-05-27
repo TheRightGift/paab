@@ -165,6 +165,10 @@ nav ul li a.btn.subscribeBtn:hover {
 .profileImg {
     margin-bottom: -0.9vh;
 }
+.imageNotChanged {
+    filter: drop-shadow(16px 16px 20px black) invert(48%) blur(1px);
+    background: rgba(0, 0, 0, 0.979);
+}
 .profileImgContainer img.responsive-img {
     width: 100%;
 }

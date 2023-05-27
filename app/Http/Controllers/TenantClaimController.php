@@ -219,10 +219,11 @@ class TenantClaimController extends Controller
                         if (!empty($request->id)) {
                             $ID = $request->id;
                             $photoSave = DB::table('bios')->where('id', $ID)->update($input);
+                            DB::table('bios')->where('id', $ID)->update(['image_changed' => 1]);
                             $updated = DB::table('bios')->first();
                         }
                         else {
-                            $photoSave = DB::table('bios')->insert(['photo' => $input['photo'], 'created_at' => now(), 'updated_at' => now()]);
+                            $photoSave = DB::table('bios')->insert(['photo' => $input['photo'], 'image_changed' => 1, 'created_at' => now(), 'updated_at' => now()]);
                             $updated = DB::table('bios')->first();
                         }
                         // Check the bio and get the names eg. FNAME, LNAME, ONAME
