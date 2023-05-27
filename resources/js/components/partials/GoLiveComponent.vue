@@ -178,7 +178,7 @@ export default {
         padding-bottom: 4vh !important;
     }
     .feature {
-        padding: 2.3vh 1vw;
+        padding: 2.3vh 0.5vw;
     }
     .feature i {
         font-size: 1rem;
