@@ -208,7 +208,9 @@
                 });
             },
             openSideNav(){
-                this.sideNavInst.open();
+                var elems = document.getElementById('slide-out');
+                var instances = M.Sidenav.init(elems);
+                instances.open();
             },
             logoutModalShow(){
                 let elem = document.getElementById("logoutModal"); //.getElementsByClassName('modal-close').click()
@@ -219,10 +221,6 @@
         mounted() {
             this.getUser();
             this.getLocation();
-
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems, options);
-            this.sideNavInst = instances;
         },
     };
 </script>
