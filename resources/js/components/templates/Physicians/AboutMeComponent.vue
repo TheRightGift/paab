@@ -156,16 +156,19 @@
                                         class="responsive-img"
                                     />
                                 </div>
-                                <div class="profileImg"  :class="{imageNotChanged: about.image_changed == null}">
-                                    <img
-                                        :src="
-                                             '/media/img/templates/' +
-                                            template_id +
-                                            '/'+'physicianHeroWhiteMale.jpg'
-                                        "
-                                        alt="doc.png"
-                                        class="responsive-img"
-                                    />
+                                <div class="profileImg relative">
+                                    <div class=""  :class="{imageNotChanged: about.image_changed == null}">
+                                        <img
+                                            :src="
+                                                 '/media/img/templates/' +
+                                                template_id +
+                                                '/'+'physicianHeroWhiteMale.jpg'
+                                            "
+                                            alt="doc.png"
+                                            class="responsive-img"
+                                        />
+                                    </div>
+                                    <div class="text-white titleOnImageChangeNull">Dr. {{ bio.firstname }} {{ bio.lastname }} picture appears here</div>
                                 </div>
                             </div>
                         </div>

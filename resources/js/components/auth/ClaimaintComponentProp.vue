@@ -247,7 +247,7 @@
                                         <img
                                             class="proImg"
                                             src="/media/img/doctor.png"
-                                            v-if="bioData.photo === null || bio.photo === undefined"
+                                            v-if="bioData.photo === null || bio.photo === undefined || bio.image_changed == null"
                                         />
                                         <img
                                             :src="
