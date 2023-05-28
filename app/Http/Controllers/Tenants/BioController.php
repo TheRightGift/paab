@@ -65,12 +65,15 @@ class BioController extends Controller
                         mkdir($save_path, 0755, true);
                     }
                     $file = $save_path.$safeName;
-                    $img = Image::make(file_get_contents($request['photo']));
-                    $width = $img->width();
-                    $height = $img->height();
-                    $x = round(($width - 650) / 2);
-                    $y = round(($height - 799) / 2); 
-                    $img->crop(650, 799, $x, $y)->save($file);
+                    // $img = Image::make(file_get_contents($request['photo']));
+                    // $width = $img->width();
+                    // $height = $img->height();
+                    // $x = round(($width - 650) / 2);
+                    // $y = round(($height - 799) / 2); 
+                    // $img->crop(650, 799, $x, $y)->save($file);
+                    Image::make(file_get_contents($request['photo']))->resize(650, 799, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($file);
                     
                     $input['photo'] = $safeName;
                 } catch (\Throwable $th) {
