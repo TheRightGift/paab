@@ -102,7 +102,7 @@ class MaintenanceController extends Controller
 
     public function checkUsersThatMadeChanges() {
         $users = new User();
-        $userMadeChanges = $users->where([['role', 'Client'], ['title_id', null]])->get();
+        $userMadeChanges = $users->where([['role', 'Client'], ['title_id', '!=', null]])->get();
         return response()->json(['msg' => 'Users Fetched', 'user' => $userMadeChanges], 200);
     }
 }
