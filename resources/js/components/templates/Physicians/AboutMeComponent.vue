@@ -126,7 +126,7 @@
                             <div
                                 class="col l6 profileImgContainer noPaddingRight"
                             >
-                                <div class="profileImg" v-if="about.image_changed != null">
+                                <div class="profileImg" v-if="bio.image_changed != null">
                                     <img
                                         v-if="typeof about.photo == 'string'"
                                         :src="
@@ -156,7 +156,7 @@
                                         class="responsive-img"
                                     />
                                 </div>
-                                <div class="profileImg relative">
+                                <div class="profileImg relative" v-else>
                                     <div class=""  :class="{imageNotChanged: about.image_changed == null}">
                                         <img
                                             :src="

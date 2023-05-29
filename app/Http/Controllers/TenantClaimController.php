@@ -604,7 +604,7 @@ class TenantClaimController extends Controller
                 if ($tenantSave === true || $orderSave) {
                     $userToUpdate->plan = $request->plan == 'freemium' ? 'F' : 'P';
                     $userToUpdate->save();
-                    $this->generateIntro($tenant, $valueOfMail);
+                    $request->get('tenantOnDemand') == 1 ? $this->generateIntro($tenant, $valueOfMail) : null;
                     Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 
                     DB::connection('mysql')->reconnect();
@@ -615,6 +615,7 @@ class TenantClaimController extends Controller
                         $request->session()->pull('email', 'default');
                         return response()->json(['message' => 'You have successfully setup your website', 'user' => $authUser], 201);
                     }
+                    // Send Email to user
                 }
             }
             else {
