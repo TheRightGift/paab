@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Interest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 
 class InterestController extends Controller
@@ -63,9 +65,23 @@ class InterestController extends Controller
      * @param  \App\Models\Interest  $interest
      * @return \Illuminate\Http\Response
      */
-    public function show(Interest $interest)
+    public function saveInterestForUser(Request $request)
     {
-        //
+        $data = $request->get('specialty');
+        $tenantDB = $request->get('tenant_db');
+        if (!empty($data)) {
+            $interest = Interest::where('title', $data)->first();
+            if (!empty($interest)) {
+                Config::set('database.connections.mysql.database', $tenantDB);
+
+                DB::connection('mysql')->reconnect();
+                DB::setDatabaseName($tenantDB);
+                DB::table('services')->insert(['interest_id' => $interest->id]);
+                return response()->json(['msg' => 'success'], 201);
+            } else {
+                return response()->json(['msg' => 'No interest matches'], 200);
+            }
+        }
     }
 
     /**
