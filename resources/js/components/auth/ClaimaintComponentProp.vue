@@ -1458,7 +1458,7 @@
                 </div>
             </div>
         </div>
-        <PaymentModalComponent
+        <!-- <PaymentModalComponent
             :setModal="setModal"
             :user="user"
             @countDown="timerStart($event)"
@@ -1467,7 +1467,7 @@
             :bio="bio"
             :tenantID="tenantId"
             :email="email"
-        />
+        /> -->
     </div>
 </template>
 <script>
@@ -2450,7 +2450,7 @@
                  */
 
                 let data = {
-                    plan: val,
+                    plan: 'F',
                     password: localStorage.getItem("passwordGen"),
                     domain: this.domainSelected.replace(".com", ""),
                     tenantOnDemand: this.tenantOnDemand,

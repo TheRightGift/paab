@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
+use App\Mail\ServiceCreated;
 use App\Models\User;
+use App\Models\Title;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use App\Models\AdminClientOrder;
-use App\Models\Title;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
@@ -593,6 +594,12 @@ class TenantClaimController extends Controller
         if (!empty($value) && $value !== 'default') {
             $orders = AdminClientOrder::where([['tenant_id', $value], ['claimed', null], ['email', $valueOfMail]])->first();
             $userToUpdate = User::where('email', $valueOfMail)->first();
+            $detail = [
+                "password" => $request->get('password'),
+                "names" => $userToUpdate->firstname.' '.$userToUpdate->lastname,
+                "domain" => $request->get('domain'),
+                "email" => $valueOfMail,
+            ];
             if (!empty($orders) || $userToUpdate->registration_completed === 'Pending') {
                 $authUser = $userToUpdate->id;
                 $tenant = Tenant::find($value);
@@ -601,6 +608,7 @@ class TenantClaimController extends Controller
                 $tenantSave = $tenant->save();
                 // !empty($orders)  ? $orderSave = $orders->save() : null;
                 $orderSave = null;
+                Mail::to($valueOfMail)->send(new ServiceCreated($detail));
                 if ($tenantSave === true || $orderSave) {
                     $userToUpdate->plan = $request->plan == 'freemium' ? 'F' : 'P';
                     $userToUpdate->save();
