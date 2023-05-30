@@ -37,6 +37,10 @@
     width: 5px;
     /* Select the down or left scroll button when it's being hovered by the mouse */
 }
+.nav-wrapper .headerContainer ul.right.hide-on-med-and-down {
+    z-index: 9999;
+    position: relative;
+}
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
