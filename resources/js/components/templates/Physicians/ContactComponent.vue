@@ -63,7 +63,7 @@
                         </div>
                         <div class="col s10">
                             <p class="contactMeTitle">Chat with me</p>
-                            <p class="contactMeTxt">{{ contact.email != '' ? contact.email : 'consultation@dromainname.com' }}</p>
+                            <p class="contactMeTxt">{{ contact.email != '' ? contact.email : 'consultancy@drdomainname.com' }}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -149,8 +149,8 @@
                                         required
                                     ></textarea>
                                 </div>
-                                <div class="right">
-                                    <button type="submit" class="btn testiContactBtn float-right" :disabled="saving">
+                                <div class="input-field col s12">
+                                    <button type="submit" class="btn testiContactBtn right" :disabled="saving">
                                         <span v-if="!saving">SUBMIT</span>
                                         <!-- <i class="material-icons" id="testiContactBtnIcon">send</i> -->
     
