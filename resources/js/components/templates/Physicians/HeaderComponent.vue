@@ -115,7 +115,7 @@
                 <PublicFeature :modalTitle="modalTitle" :modalView="modalView" @backToSettings="backToSettings"/>
             </div>
             <div v-show="modalView == 6">
-                <CVGenerator/>
+                <!--CVGenerator/-->
             </div>
         </div>
     </div>
@@ -134,10 +134,10 @@ import MiniBlogComponent from './Settings/tempSettings/MiniBlogComponent.vue';
 import PublicFeature from './Settings/tempSettings/PublicFeature.vue';
 import ServicesRendered from './Settings/tempSettings/ServicesRendered.vue';
 import SocialMedia from './Settings/tempSettings/SocialMedia.vue';
-import CVGenerator from './Settings/tempSettings/CVGenerator.vue';
+// import CVGenerator from './Settings/tempSettings/CVGenerator.vue';
 import PaymentModalComponent from '../../partials/PaymentModalComponent.vue';
 export default {    
-    components: {ImageCropper, MiniBlogComponent, Bio, SocialMedia, PublicFeature, ServicesRendered, CVGenerator, PaymentModalComponent},
+    components: {ImageCropper, MiniBlogComponent, Bio, SocialMedia, PublicFeature, ServicesRendered, PaymentModalComponent},
     data() {
         return {
             modalView: 0,
