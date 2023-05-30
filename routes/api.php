@@ -56,6 +56,7 @@ Route::group(['prefix' => 'services', 'middleware' => 'client'], function() {
     Route::post('/saveIntrest', [InterestController::class, 'saveInterestForUser']);
     Route::get('/remove_tenant_with_faultycr8/{id}', [MaintenanceController::class, 'removeUser']);
     Route::get('/remove_tenants_with_faultycr8', [MaintenanceController::class, 'checkTenantNRemoveIfBioIsEmpty']);
+    Route::get('/remove_tenant/{id}', [MaintenanceController::class, 'removeTenant']);
 });
 
 Route::group(['middleware' => ['auth.api']], function() {

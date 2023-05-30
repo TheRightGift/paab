@@ -621,7 +621,7 @@ class TenantClaimController extends Controller
                     if ($tenantUser != null) {
                         DB::table('tenant_users')->where('user_id', '!=' , null )->update(['user_id' => $authUser]);
                         $request->session()->pull('email', 'default');
-                        return response()->json(['message' => 'You have successfully setup your website', 'user' => $authUser], 201);
+                        return response()->json(['message' => 'Email Sent, Check inbox.', 'user' => $authUser], 201);
                     }
                     // Send Email to user
                 }
