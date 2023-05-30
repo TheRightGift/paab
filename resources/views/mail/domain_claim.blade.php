@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html>
     <body>
-    <h3>Dr {{ $detail['name'] }}</h3>
-   
-    <h5>Your website created!</h5>
+    <h3>Dear Dr {{ $detail['name'] }},</h3>
+    <p>
+        Congratulations on the successful creation of your new website. It is truly a remarkable towards manging your brand as a physician and in line with our conviction that most of your patients are going to Google you so you should have some control over what they read about you.
+    </p>
+    <p>
+        Firstly, I would like to provide you with the login credentials for your website's backend:<br/>
 
-    <!-- <p class="lead">
-        To login into the backend of your website to make FURTHER changes or updates please use the link and password below. 
-        When you login for the first time, you will be prompted to change your temporary password.
-    </p> -->
-    <p>Your website @http://{{$detail['domain']}} is pending creation, and will be ready in 10mins, we'll notify you in when it is ready. In the meantime, you can make changes, by following the instructions below</p>
-    <p class="lead">
-        To login into the backend of your website to make FURTHER changes or updates please use the link and password below. 
-        When you login for the first time, you will be prompted to change your temporary password.
+        - Website URL: https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com (<a href="https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com" target="_blank">link</a>)<br/>
+        - Website backend URL: https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com/setting (<a href="https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com/setting" target="_blank">link</a>)<br/>
+        - Username: your email address<br/>
+        - Password: {{ $detail['password'] }}
+    </p>
+    <p>
+        Please ensure that you keep this information secure and accessible only to authorized individuals who require access to maintain your website.
+    </p>
+    <p>
+        I would also like to offer some suggestions for further upgrades and enhancements to your site, which can help enhance your users' experience and ensure its continued success:
+        <ul>
+            <li>
+            <b>Mini Blog:</b> You can offer your patients bite-sized content that delivers quick information or insights. You can use it to capture attention, provide value, and encourage further exploration of the topic through concise and visually appealing posts.
+            </li>
+            <li>
+            <b>Search Engine Optimization (SEO):</b> Optimize your website's content and structure to improve its visibility in search engine results. This will help potential visitors find your site more easily and increase organic traffic.
+            </li>
+            <li>
+            <b>Social Media Stream:</b> With this your website visitors can view and engage with your social media posts, updates, or feeds without leaving your website.
+            </li>
+            <li>
+            <b>Contact Information:</b> Provide contact information like email, address and phone number.
+            </li>
+        </ul>
     </p>
 
-    <p>Happy surfing!</p>
-
-    <p class="center">Temporary Password: {{ $detail['password'] }}</p>
-
-    <a href="https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com/setting" target="_blank">https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com/setting</a>
-
-    <p>Thank You</p>
+    <p>Best regards,</p>
 
     <p>White Coat Domain</p>
 </body>
