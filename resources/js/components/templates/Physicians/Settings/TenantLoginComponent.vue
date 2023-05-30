@@ -186,7 +186,6 @@
             },
             otpVerifier(val) {
                 if (val === 200) {
-                    console.log('here')
                     this.$emit("anteLogin", this.loginUser);
                 }
             },

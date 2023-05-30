@@ -12,7 +12,8 @@
                 :social="social"
                 :general="general"
                 :loading="loading"
-                v-show="!promoView" class="fullPage"
+                v-show="!promoView"
+                class="fullPage"
                 :tenant="tenant"
                 :interests="interests"
                 @updateServices="updateServices($event)"
@@ -26,7 +27,15 @@
     </div>
     <div v-if="!loggedIn">
         <div v-if="!initialCheck">
-            <TenantLoginComponent :errors="errors" :logginIn="logginIn" :otp="otp" :otpPrompt="otpPrompt" @anteLogin="anteLogin($event)" @loginUser="login($event)" :loading="loading"/>
+            <TenantLoginComponent
+                :errors="errors"
+                :logginIn="logginIn"
+                :otp="otp"
+                :otpPrompt="otpPrompt"
+                @anteLogin="anteLogin($event)"
+                @loginUser="login($event)"
+                :loading="loading"
+            />
         </div>
         <div class="loader" v-else></div>
     </div>
@@ -40,7 +49,7 @@
     let centralURL = process.env.MIX_APP_URL;
     let bio = "/api/bio";
     let service = "/api/service";
-    let interests = "https://whitecoatdomain.com/api/interests"
+    let interests = "https://whitecoatdomain.com/api/interests";
     let achievement = "/api/achievement";
     let contact = "/api/contact";
     let social = "/api/social";
@@ -90,28 +99,27 @@
                     email: e.email,
                     password: e.password,
                 };
-                await axios.post(`${this.centralURL}/api/tenant/auth/ante_login`, data).then(res => {
-                    if (res.status === 200) {
-                        if (res.data.status == 200) {
-                            this.setCookie(
-                                "_token",
-                                res.data.access_token,
-                                2
-                            );
-                            
-                            this.setCookie("_token", res.data.access_token, 1);
-                            this.saveAccessToken(
-                                res.data.access_token,
-                                res.data.user.id,
-                                e.email,
-                                res.data.user.role,
-                                res.data.user.visits
-                            );
+                await axios
+                    .post(`${this.centralURL}/api/tenant/auth/ante_login`, data)
+                    .then((res) => {
+                        if (res.status === 200) {
+                            if (res.data.status == 200) {
+                                this.setCookie("_token", res.data.access_token, 2);
+
+                                this.setCookie("_token", res.data.access_token, 1);
+                                this.saveAccessToken(
+                                    res.data.access_token,
+                                    res.data.user.id,
+                                    e.email,
+                                    res.data.user.role,
+                                    res.data.user.visits
+                                );
+                            }
                         }
-                    }
-                }).catch(error => {
-                    console.error();
-                })
+                    })
+                    .catch((error) => {
+                        console.error();
+                    });
             },
             getLocations() {
                 this.loading = true;
@@ -130,7 +138,7 @@
                         requestContact,
                         requestSocial,
                         requestGeneral,
-                        requestInterests
+                        requestInterests,
                     ])
                     .then(
                         axios.spread((...responses) => {
@@ -192,52 +200,55 @@
                     });
                 } else {
                     axios
-                    .post(`${this.centralURL}/api/tenant/auth/login`, e)
-                    .then((res) => {
-                        if (res.status === 200) {
-                            if (res.data.status == 200) {
-                                this.saveAccessToken(
-                                    res.data.access_token,
-                                    res.data.user.id,
-                                    e.email,
-                                    res.data.user.role,
-                                    res.data.user.visits
-                                );
-                                this.setCookie("_token", res.data.access_token, 1);
-                            } else if (res.data.status == 404) {
-                                M.toast({
-                                    html: res.data.error,
-                                    classes: "errorNotifier",
-                                });
+                        .post(`${this.centralURL}/api/tenant/auth/login`, e)
+                        .then((res) => {
+                            if (res.status === 200) {
+                                if (res.data.status == 200) {
+                                    this.saveAccessToken(
+                                        res.data.access_token,
+                                        res.data.user.id,
+                                        e.email,
+                                        res.data.user.role,
+                                        res.data.user.visits
+                                    );
+                                    this.setCookie(
+                                        "_token",
+                                        res.data.access_token,
+                                        1
+                                    );
+                                } else if (res.data.status == 404) {
+                                    M.toast({
+                                        html: res.data.error,
+                                        classes: "errorNotifier",
+                                    });
+                                    this.loading = false;
+                                }
+                            }
+                            if (res.data.status === 422) {
+                                if (res.data.message == "Device changed") {
+                                    this.otpPrompt = true;
+                                    this.otp = res.data.otp;
+                                }
                                 this.loading = false;
                             }
-                        }
-                        if (res.data.status === 422) {
-                            if (res.data.message == 'Device changed') {
-                                this.otpPrompt = true;
-                                this.otp = res.data.otp;
-                            }
-                            this.loading = false;
-                        }
 
-                        
-                        // if(res.data.status === 404){
-                        //     M.toast({
-                        //         html: "Invalid Credentials",
-                        //         classes: "errorNotifier",
-                        //     });
-                        //     this.loading = !this.loading;
-                        // } else {
-                            
-                        // }
-                    })
-                    .catch((err) => {
-                        console.log(`Error: ${err}`);
-                        this.loading = false;
-                        if (err.response.status === 422) {
-                            this.errors = err.response.data.errors;
-                        }
-                    });
+                            // if(res.data.status === 404){
+                            //     M.toast({
+                            //         html: "Invalid Credentials",
+                            //         classes: "errorNotifier",
+                            //     });
+                            //     this.loading = !this.loading;
+                            // } else {
+
+                            // }
+                        })
+                        .catch((err) => {
+                            console.log(`Error: ${err}`);
+                            this.loading = false;
+                            if (err.response.status === 422) {
+                                this.errors = err.response.data.errors;
+                            }
+                        });
                 }
             },
             saveAccessToken(accessToken, user_id, email, role, visits) {
@@ -250,9 +261,17 @@
                     .post("/api/savelogin", data)
                     .then((res) => {
                         if (res.data.status == 201) {
-                            localStorage.setItem('візіт', visits + 1);
+                            localStorage.setItem("візіт", visits + 1);
                             this.loading = false;
-                            role === 'Admin' ? location.reload() : window.location.href = `https://${location.host}`;
+                            if (role === "Client") {
+                                window.location.href = `https://${location.host}`;
+                            } else if (role === "Admin" || role === "SuperAdmin") {
+                                location.reload();
+                            } else {
+                                this.clearCookies("_token", "/");
+                                window.location.href =
+                                    "https://whitecoatdomain.com";
+                            }
                         }
                     })
                     .catch((err) => {
@@ -260,9 +279,9 @@
                         if (err.response.status === 401) {
                             M.toast({
                                 html: err.response.data.message,
-                                classes: 'errorNotifier'
-                            })
-                        } 
+                                classes: "errorNotifier",
+                            });
+                        }
                         this.logginIn = !this.logginIn;
                         this.loading = false;
                     });
@@ -273,12 +292,27 @@
                 let expires = "expires=" + d.toUTCString();
                 document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
             },
+            deleteCookie: function deleteCookie(name, path, domain) {
+                if (this.getCookie(name)) {
+                    document.cookie =
+                        name +
+                        "=" +
+                        (path ? ";path=" + path : "") +
+                        // (domain ? ";domain=" + domain : "") +
+                        ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+                }
+            },
+            getCookie: function getCookie(name) {
+                return document.cookie.split(";").some(function (c) {
+                    return c.trim().startsWith(name + "=");
+                });
+            },
             openPromotionals() {
                 this.promoView = true;
             },
             updateServices(e) {
                 this.services = e;
-            }
+            },
         },
         setup() {},
     };

@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="row" :class="{disabledNotPaid: !userSubscribed}">
-                   <div class="col l4 m6 s6 marginBottom-2">
+                    <div class="col l4 m6 s6 marginBottom-2">
                         <div class="generalSettings settingOptions hoverable"  @click="showSettingOption(1, 'General')">
                             <h6>General</h6>
                             <img :src="'/media/img/templates/1/general.png'" alt="" class="responsive-img"/>
@@ -234,5 +234,10 @@ export default {
     }
     .disabledNotPaid {
 
+    }
+    @media only screen and (max-width: 992px) {
+        .modal {
+            width: 90%;
+        }
     }
 </style>

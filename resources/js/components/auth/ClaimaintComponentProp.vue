@@ -1,9 +1,8 @@
 <template>
     <div>
         <div class="row">
-            <div id="popup">
+            <!-- <div id="popup">
                 <div class="paymentOverlay cFlex">
-                    <!-- <a class="btn btn-small waves waves-effect" @click="makePayment">Continue to payment</a> -->
                     <go-live-component
                         :tenantOnDemand="tenantOnDemand"
                         :showGoLiveBtns="showGoLiveBtns"
@@ -18,7 +17,7 @@
                     id="iframe"
                     onload="this.removeAttribute('srcdoc')"
                 ></iframe>
-            </div>
+            </div> -->
             <div class="col s12 noPaddingLeft noPaddingRight">
                 <div class="websiteClaimContainer">
                     <div class="col l6 s12 noPaddingLeft noPaddingRight">
@@ -1450,10 +1449,14 @@
                     <div class="modal-body text-center">
                         <h4>Great!</h4>
                         <p>Your account has been created successfully, you will receive an email shortly with instructions to setup your personal website.</p>
-                        <button class="btn btn-success" data-dismiss="modal" @click="startExploring">
+                        <button class="btn btn-success" :disabled="clicked" data-dismiss="modal" @click="startExploring">
                             <span>Start Exploring</span>
                             <i class="material-icons">&#xE5C8;</i>
                         </button>
+                        <p class="timer" v-if="clicked">
+                            Redirecting you to your site in
+                            {{ countdown }}s
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1492,6 +1495,7 @@
 
         data() {
             return {
+                clicked: false,
                 suggestionLoaded: false,
                 medText: "Medical",
                 cvMedSchoolUpdate: 0,
@@ -1763,13 +1767,9 @@
                 }
             },
             startExploring () {
-                this.view = 2;
+                // this.view = 2;
+                this.clicked = true;
                 this.timerStart();
-                let successWebCr8Modal =
-                            document.getElementById("successWebCr8Modal");
-                        let modal = M.Modal.init(successWebCr8Modal);
-                        modal.close();
-                        localStorage.removeItem("claimproc");
             },
             switchText(val) {
                 let valText;
@@ -2865,7 +2865,7 @@
     .modal-confirm .btn:active {
         color: #fff;
         border-radius: 4px;
-        background: #eeb711 !important;
+        background: #D7B9AE !important;
         text-decoration: none;
         transition: all 0.4s;
         line-height: normal;
@@ -2956,5 +2956,9 @@
     }
     input.mx-input {
         margin: 0px !important;
+    }
+    .timer {
+        font-weight: 600;
+        font-family: Poppins, sans-serif;
     }
 </style>

@@ -1,9 +1,6 @@
 <template>
     <div id="templateService" class="row noMarginBottom">
-        <div class="section scrollspy physiContainerDiv" id="services" v-if="(services == null || services.length < 1) && preview === '0'">
-
-        </div><!--Not Previewing and no service selected-->
-        <div v-if="services != null || services.length > 0">
+        <div v-if="services.length > 0">
             <div class="container">
                 <div class="row">
                     <div class="col l8 s12">
@@ -47,9 +44,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div v-else>
-            <p>{{services}}</p>
         </div>
         <!-- Services Modal Structure -->
         <div id="servicesEditModal" class="modal">
