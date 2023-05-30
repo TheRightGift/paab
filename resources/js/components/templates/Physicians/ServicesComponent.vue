@@ -1,6 +1,9 @@
 <template>
     <div id="templateService" class="row noMarginBottom">
-        <div class="section scrollspy physiContainerDiv" id="services" v-if="(services == null || services.length === 0 && preview === '1') || (services !== null && services.length !== 0 && preview === '0')">
+        <div class="section scrollspy physiContainerDiv" id="services" v-if="(services == null || services.length < 1) && preview === '0'">
+
+        </div><!--Not Previewing and no service selected-->
+        <div v-if="services != null || services.length > 0">
             <div class="container">
                 <div class="row">
                     <div class="col l8 s12">
@@ -15,7 +18,7 @@
                         <button class="roundBtn" @click="next"><i class="material-icons"></i></button-->
                     </div>
                 </div>
-                <div class="row" v-if="services == null || services.length === 0 && preview === '1'">
+                <div class="row" v-if="preview === '1'">
                     <div class="col l12 customCarousel">
                         <div class="inner" ref="inner" :style="innerStyles">
                             <div class="customCard" v-for="card in cards" :key="card">
@@ -29,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" v-else-if="services !== null && services.length !== 0 && preview === '0'">
+                <div class="row" v-else-if="preview === '0'">
                     <div class="col l12 customCarousel">
                         <div class="inner" ref="inner" :style="innerStyles">
                             <div class="customCard" v-for="card in myInterests" :key="card">
@@ -44,6 +47,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div v-else>
+            <p>{{services}}</p>
         </div>
         <!-- Services Modal Structure -->
         <div id="servicesEditModal" class="modal">
@@ -293,6 +299,9 @@
         .ml-0,
         .row .col.m4 {
             margin-left: 0 !important;
+        }
+        #templateService {
+            margin-top: 10vh
         }
     }
     @media only screen and (min-width: 993px) {
