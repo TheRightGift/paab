@@ -40,12 +40,13 @@ class TenantController extends Controller
             $domains = DB::table('domains')->where('domain', $request->name)->first();
             if (empty($tenants) && empty($domains)) {
                 $tenant = Tenant::create([
-                    'name' => $inputs->validated()['name'],
+                    'name' => htmlspecialchars($inputs->validated()["name"]),
                     'description' => $inputs->validated()['description'],
                     'template_id' => $inputs->validated()['template_id'] ?? Template::first()->id,
-                    'id' => strtolower($inputs->validated()['name']),
+                    'id' => htmlspecialchars(strtolower($inputs->validated()["name"])),
                     'user_id' => $inputs->validated()['user_id'],
                 ]);
+                // return $tenant;
                 if ($tenant) {
                     $domain = $tenant->domains()->create(['domain' => $request->name]); //Determine how to handle domain
                     $savePassword = app(TenantClaimController::class);
@@ -64,6 +65,7 @@ class TenantController extends Controller
             } else {
                 return response()->json(['status' => 500, 'message' => 'The name has already been taken!'], 500);
             }
+            
         } catch (DomainOccupiedByOtherTenantException $th) {
             return response()->json(["Domain already in use."]);
         }
