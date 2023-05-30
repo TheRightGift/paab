@@ -97,7 +97,21 @@ class MaintenanceController extends Controller
             $tenants->where('id', $tenantID)->delete();
         }
         return response()->json(['msg' => 'Removed On succes'], 204);
+    }
+
+    public function removeTenant ($tenantID) {
+        $adminOrders = new AdminClientOrder();
+        $tenants = new Tenant();
+        $tenantDBName = "tenant$tenantID"; // Tenant ID is also used as the database name, prefixed with tenant
         
+        DB::connection()->statement("DROP DATABASE IF EXISTS $tenantDBName");
+        Config::set('database.connections.mysql.database', env('DB_DATABASE'));
+        DB::connection('mysql')->reconnect();
+        DB::setDatabaseName(env('DB_DATABASE'));
+        $adminOrders->where('tenant_id', $tenantID)->delete();
+        $tenants->where('id', $tenantID)->delete();
+    
+        return response()->json(['msg' => 'Removed On succes'], 204);
     }
 
     public function checkUsersThatMadeChanges() {
