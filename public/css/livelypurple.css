@@ -945,8 +945,8 @@ a.modal-trigger.aboutImgEditBtn {
     position: relative;
 }
 a.modal-trigger.contactEditBtn {
-    width: 2.5vw;
-    height: 5vh;
+    width: 35px;
+    height: 35px;
     background-color: #edebeb;
     border-radius: 50px;
     position: absolute;
