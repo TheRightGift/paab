@@ -301,8 +301,7 @@
         methods: {
             fetchSubscribers () {
                 axios.get('/api/getSubscribers').then(res => {
-                    this.userSubscribedTrackerCount = res.data.user.length;
-                    console.log(res);
+                    this.userSubscribedTrackerCount = res.data.users.length;
                 }).catch(err => {
                     console.log(err);
                 })
@@ -310,7 +309,6 @@
             fetchUserMadeChanges () {
                 axios.get('/api/getusers_that_made_change').then(res => {
                     this.userMadeChangesTrackerCount = res.data.user.length;
-                    console.log(res);
                 }).catch(err => {
                     console.log(err);
                 })
@@ -319,7 +317,6 @@
                 axios.post(`${process.env.MIX_WCDSERVICE_URL}api/v1/track/tracker_records`).then(res => {
                     this.emailSent = res.data.emails.length;
                     this.openedMails = res.data.openedMails.length;
-                    console.log(res);
                 }).catch(err => {
                     console.log(err);
                 })
