@@ -13,8 +13,8 @@
                     </ul>
 
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="#!">Contact</a></li>
-                        <li><a href="#!" class="waves-effect waves-light btn subscribeBtn">Subscribe</a></li>
+                        <!-- <li><a href="#!">Contact</a></li> -->
+                        <li><a href="#contact" class="waves-effect waves-light btn subscribeBtn">Contact</a></li>
                         <li v-if="isLoggedIn">
                             <a class='modal-trigger physiTempSettingsNavLink' href='#showSettingsModal'>
                                 <i class="material-icons physiTempSettingsIcon">settings</i>
@@ -30,7 +30,7 @@
             <li v-if="(miniBlog !== null && miniBlog.length !== 0 && preview === '0') || preview === '1'"><a href="#miniBlog">Mini Blog</a></li>
             <li v-if="(feeds !== null && feeds !== '' && preview === '0') || preview === '1'"><a href="#feeds">Feeds</a></li>
             <li v-if="(reviews !== null && reviewLen !== 0 && preview === '0') || preview === '1'"><a href="#testimonials" >Testimonials</a></li>  
-            <li><a href="#!">Contact</a></li>
+            <li><a href="#contact">Contact</a></li>
             <li v-if="isLoggedIn">
                 <a class='modal-trigger physiTempSettingsNavLink' href='#showSettingsModal'>
                     Settings
@@ -49,7 +49,7 @@
                         <p class="marginTop-1">Update your website by selecting any of the links below</p>
                     </div>
                 </div>
-                <div class="row hide-on-med-and-down">
+                <div class="row">
                     <div class="col l12 m12 s12">
                         <button class="btn closeSettingModal right modal-close">Close settings</button>
                         <button v-if="!userSubscribed" @click="setModalPayment" href="#paymentModal" id="paymentModalColor" class="modal-trigger btn closeSettingModal right modal-close">Subscribe</button>
@@ -119,12 +119,15 @@
             </div>
         </div>
     </div>
-    <payment-modal-component 
+    <PaymentModalComponent
         :setModal="setModal"
-        :tenantID="tenant"
-        :email="email"
         :user="parseInt(user_id)"
         @countDown="refreshForChanges($event)"
+        @popupClose="refreshForChanges($event)"
+        :domainName="extractDomain"
+        :bio="bio"
+        :tenantID="tenant"
+        :email="email"
     />
 </template>
 <script>
@@ -170,7 +173,13 @@ export default {
     },
     methods: {
         refreshForChanges(evt) {
-            location.reload();
+            if (evt == true) {
+                location.reload();
+            } else {
+                setTimeout(() => {
+                    location.reload();
+                }, 10000);
+            }
         },
         setModalPayment() {
             this.setModal = true;
@@ -210,7 +219,15 @@ export default {
             this.modalView = 0;
         }
     },
-    computed: {},
+    computed: {
+        extractDomain () {
+            var hostname = window.location.hostname;
+            var parts = hostname.split('.');
+            var subdomain = parts[0];
+            var isSubdomain = parts.length > 2; // Check if there are more than two parts in the hostname
+            return subdomain+'.com';
+        },
+    },
     watch: {
         userReplaced (newVal) {
             console.log(newVal, 'here')

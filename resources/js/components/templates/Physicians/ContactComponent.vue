@@ -63,7 +63,7 @@
                         </div>
                         <div class="col s10">
                             <p class="contactMeTitle">Chat with me</p>
-                            <p class="contactMeTxt">{{ contact.email != '' ? contact.email : 'consultancy@drdomainname.com' }}</p>
+                            <p class="contactMeTxt">{{ contact.email != '' ? 'consultancy@'+extractDomain : 'consultancy@drdomainname.com' }}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -266,6 +266,7 @@ export default {
                 })
             }
         }
+        // extractDomain
     },
     watch: {
         contactMail(newVal, oldVal){
@@ -277,6 +278,18 @@ export default {
                 this.update = 1;
             }
         }
+    },
+    computed: {
+        extractDomain () {
+            var hostname = window.location.hostname;
+            var parts = hostname.split('.');
+            var subdomain = parts[0];
+            var isSubdomain = parts.length > 2; // Check if there are more than two parts in the hostname
+            if (isSubdomain) {
+                return subdomain.com;
+            }
+            return hostname;
+        },
     },
 }
 </script>

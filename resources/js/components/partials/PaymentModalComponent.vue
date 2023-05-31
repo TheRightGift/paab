@@ -56,7 +56,8 @@
                         <i class="fa-solid fa-check"></i>
                     </p>
                     <h5 class="centered p-0">Scuccessful</h5>
-                    <p class="centered text">Congratulations on the successful creation of your website! You have opted for a yearly plan that includes both hosting and domain registration at a cost of $144. Please note that your service will renew automatically one year from today. You should have received an email containing your login credentials, which will grant you access to the backend of your website. From there, you can add additional services and make any necessary updates. Thank you for choosing WhiteCoatDomain.</p>
+                    <p class="centered text grey-text text-darken-4">Congratulations on the successful creation of your website! You have opted for a yearly plan that includes both hosting and domain registration at a cost of $144. Please note that your service will renew automatically one year from today. You can now add additional services and make any necessary updates. Thank you for choosing WhiteCoatDomain.</p>
+                    <!-- You should have received an email containing your login credentials, which will grant you access to the backend of your website.  -->
                     <button class="modal-close waves-effect waves-green btn btn-rounded" @click="countDown">Close</button>
                 </div>
             </div>
@@ -82,14 +83,15 @@
                 stripe: '',
                 elements: '',
                 card: '',
-                stripeAPIToken:  process.env.MIX_STRIPE_WEBHOOK_SECRET,
+                stripeAPIToken: process.env.MIX_STRIPE_WEBHOOK_SECRET,
                 intentToken: '',
                 name: '',
                 addPaymentStatus: 0,
                 addPaymentStatusError: '',
                 paymentMethods: [],
                 requesting: false,
-                plan: 'price_1N9xKmGol1wahrlSl4XkMDTn',
+                // plan: 'price_1N9xKmGol1wahrlSl4XkMDTn',
+                plan: 'price_1NDmVnGol1wahrlS4LGzwUT8',
                 paymentMethodSelected: {},
                 paymentSuccessful: 0,
                 URL: process.env.MIX_APP_URL,
@@ -323,6 +325,9 @@
 .text {
     font-size: 1.1rem;
     padding: 0;
+    text-align: center;
+    font-family: 'Poppins', Roboto, sans-serif;
+    text-align: center;
 }
 .cheer {
     padding: 0 !important;
