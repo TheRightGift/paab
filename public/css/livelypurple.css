@@ -269,6 +269,7 @@ h2.sectionHeading {
     border: thin solid #f3f3f7;
     border-radius: 26px;
     box-shadow: 0 35px 40px 0 rgba(36, 49, 160, 0.06);
+    /* height:60vh; */
 }
 .customCard h3 {
     font-size: 4vh;
@@ -1676,6 +1677,7 @@ h1.sectionHeading .title {
         margin-bottom: 3vh;
     }
     .viewCvBtn, .callBtn {
+        width: 85%;
         border-radius: 5vh;
         padding-left: 2.5vw;
         padding-right: 2.5vw;

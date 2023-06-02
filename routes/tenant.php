@@ -102,6 +102,7 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::post('/cv', [App\Http\Controllers\Tenants\CvController::class, 'store']);
     Route::put('/cv/{cv}', [App\Http\Controllers\Tenants\CvController::class, 'update']);
     Route::get('/cv', [App\Http\Controllers\Tenants\CvController::class, 'index'])->withoutMiddleware(['auth:api']);
+    Route::post('/upload-cv', [App\Http\Controllers\Tenants\CvController::class, 'upload'])->name('upload');
 
     Route::post('/cvmed_school', [App\Http\Controllers\Tenants\CVMedicalSchoolController::class, 'store']);
     Route::put('/cvmed_school/{cvmed}', [App\Http\Controllers\Tenants\CVMedicalSchoolController::class, 'update']);

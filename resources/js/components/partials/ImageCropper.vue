@@ -12,24 +12,30 @@
             <section class="cropper-area">
                 <div class="img-cropper">
                     <vue-cropper
-                        dragMode="crop"
+                        preview=".preview"
+                        dragMode="move"
                         :aspectRatio="xAxis / yAxis"
                         ref="cropper"
                         :src="imgSrc"
                         :autoCrop="true"
-                        :guides="true"
+                        :autoCropArea="1"
+                        :guides="false"
                         :view-mode="2"
                         :zoomable="true"
                         :rotatable="true"
                         :scalable="true"
+                        :cropBoxMovable= "true"
+                        :cropBoxResizable= "false"
                         :data="{
                             width: width,
                             height: height,
                         }"
                         :minContainerWidth="minContainerWidth || 250"
+                        :minCanvasWidth="200"
+                        :minCanvasHeight="300"
                         :minContainerHeight="minContainerHeight || 180"
-                        :background="true"
-                        :img-style="{ width: '400px', height: '300px' }"
+                        :background="false"
+                        :img-style="{ width: '80%', height: '300px' }"
                     >
                         ></vue-cropper
                     >
@@ -39,6 +45,7 @@
                         @click.prevent="cropImage"
                         class="btn waves waves-green"
                         :disabled="imgNotSelected"
+                        title="Crop image"
                     >
                         <i class="material-icons">crop</i>
                     </button>
@@ -48,6 +55,7 @@
                         role="button"
                         class="btn waves waves-green"
                         @click.prevent="showFileChooser"
+                        title="Upload Image"
                     >
                         <i class="material-icons">cloud_upload</i>
                     </a>
@@ -104,6 +112,7 @@
                     4
                 );
             },
+            
             getData() {
                 this.data = JSON.stringify(this.$refs.cropper.getData(), null, 4);
             },
@@ -244,7 +253,7 @@
         justify-content: center;
         width: 400px;
         height: 300px;
-        border: 1px solid gray;
+        /* border: 1px solid gray; */
         margin: auto;
     }
 </style>

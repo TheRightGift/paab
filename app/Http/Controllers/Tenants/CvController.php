@@ -88,4 +88,29 @@ class CvController extends Controller
     {
         //
     }
+
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('cvfile')) {
+            $file = $request->file('cvfile');
+            $tenantID = strtolower(tenant('id'));
+            $fileName = $file->getClientOriginalName();
+            $path = public_path();
+            $url = "/media/tenants/$tenantID/cv/";
+            $name = $path.$url;
+            $file->move($name, $fileName); // Store the file in the "uploads" directory
+        }
+        $cv = new Cv();
+        $first = $cv->where('id', 1)->first();
+        if (!empty($first)) {
+            $first->cvfile = $url.$fileName;
+            $cv->save();
+        } else {
+            $cv->cvfile = $url.$fileName;
+            $cv->summary = 'Summary in file';
+            $cv->title = 'User Title';
+            $cv->save();
+        }
+        return response()->json(['msg' => 'File Uploaded'], 201); // Redirect back to the previous page
+    }
 }

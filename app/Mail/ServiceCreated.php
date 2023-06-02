@@ -31,7 +31,7 @@ class ServiceCreated extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Service Created',
+            subject: 'Website Creation Done',
         );
     }
 

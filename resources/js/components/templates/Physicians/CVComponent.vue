@@ -2,7 +2,7 @@
     <div>
         <div id="cvDetails" class="modal">
             <div class="modal-content">
-                <div v-if="preview === '1'">
+                <div v-show="preview === '1'">
                     <section class="intro">
                         <div>
                             <h4 class="header">Akerele Adebayo</h4>
@@ -232,19 +232,20 @@
                                     <p class="m-03">Medic care institute</p>
                                     <div class="flexit">
                                         <p class="flexedNoSpace">
-                                            <i class="material-icons primaryColor"
+                                            <i
+                                                class="material-icons primaryColor"
                                                 >phone_locked</i
                                             >Ocean View lekki, Lagos, Nigeria
                                         </p>
                                         <p class="flexedNoSpace">
-                                            <i class="material-icons primaryColor"
+                                            <i
+                                                class="material-icons primaryColor"
                                                 >contact_mail</i
                                             ><span class="date-range">
                                                 drakerele</span
                                             >
                                         </p>
                                     </div>
-                                    
                                 </div>
                                 <div class="mb-2">
                                     <p class="title">Reference 2</p>
@@ -288,8 +289,13 @@
                         </div>
                     </section>
                 </div>
-                <div v-else-if="preview === '0'">
-                    <section class="intro">
+                <div v-show="preview === '0'">
+                    <div>
+                        <button class="mb-2 btn waves waves-effect darken-4 text-white right circle modal-close">Close</button>
+                        <button class="mb-2 btn waves waves-effect text-white right ter mr-2" @click="download">Download</button>
+                    </div>
+                    <pdf-vuer-component :pdfUrl="pdfUrl"/>
+                    <!-- <section class="intro">
                         <div>
                             <h4 class="header">{{ stripTitle }}</h4>
                             <p class="subHeader" v-if="summary !== null">{{ summary.title }}</p>
@@ -399,14 +405,16 @@
                                 <div v-else><p>-</p></div>
                             </div>
                         </div>
-                    </section>
+                    </section> -->
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+import PdfVuerComponent from '../../partials/PdfVuerComponent.vue';
     export default {
+    components: { PdfVuerComponent },
         data() {
             return {
                 experiences: [],
@@ -417,6 +425,7 @@
                 referrals: [],
                 trainings: [],
                 license: {},
+                pdfUrl: "" // Replace with the actual URL or path of your PDF file
             };
         },
         props: {
@@ -426,8 +435,26 @@
             user: String,
         },
         computed: {
-            stripTitle(){
-                return this.user.substring(this.user.indexOf('.')+1);
+            stripTitle() {
+                return this.user.substring(this.user.indexOf(".") + 1);
+            },
+        },
+        methods: {
+            download(){
+                let url = `${this.pdfUrl}`;
+                window.open(url, '_blank');
+                // // console.log(filename)
+                // let pdfUrl = this.pdfUrl;
+                // filename = hostname.split('.').slice(-2).join('.')+'.pdf';
+                // console.log(pdfUrl, hostname)
+                // var link = document.createElement('a');
+                // link.href = url;
+                // link.download = filename;
+                // link.target = '_blank';
+                // link.style.display = 'none';
+                // document.body.appendChild(link);
+                // link.click();
+                // document.body.removeChild(link);
             }
         },
         watch: {
@@ -435,14 +462,24 @@
                 this.experiences = newval.experience;
                 if (this.experiences.length !== 0) {
                     this.experiences.forEach((el, index) => {
-                        axios.get(`https://whitecoatdomain.com/api/getStateNCity/${el.city_id}`).then(res1 => {
-                            this.experiences[index] =  {...this.experiences[index], state: res1.data.state, city: res1.data.city};
-                        }).catch(err => {
-                            console.log(err)
-                        })
-                    })
+                        axios
+                            .get(
+                                `https://whitecoatdomain.com/api/getStateNCity/${el.city_id}`
+                            )
+                            .then((res1) => {
+                                this.experiences[index] = {
+                                    ...this.experiences[index],
+                                    state: res1.data.state,
+                                    city: res1.data.city,
+                                };
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            });
+                    });
                 }
                 this.summary = newval.summary;
+                this.pdfUrl = this.summary != null ? newval.summary.cvfile : '';
                 this.medschool = newval.medschool;
                 this.otherschool = newval.otherschool;
                 this.undergradschool = newval.undergradschool;
@@ -454,11 +491,21 @@
     };
 </script>
 <style scoped>
+.ter {
+    background-color: var(--ter);
+}
+button {
+    border-radius: 20px;
+    padding: 0 2vw;
+}
     .pr-3 {
         padding-right: 1rem;
     }
     .mb-2 {
         margin-bottom: 2rem;
+    }
+    .mr-2 {
+        margin-right: 2vw;
     }
     .m-03 {
         margin: 0.3rem 0;
@@ -472,6 +519,9 @@
     }
     .material-icons.pr-3 {
         font-size: 20px;
+    }
+    .modal {
+        width: 67%;
     }
     .modal-content {
         font-family: "Montserrat", sans-serif;
