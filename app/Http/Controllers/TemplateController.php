@@ -19,7 +19,7 @@ class TemplateController extends Controller
         $templates = Template::where([['approved', 'T'], ['toDelete', null]])->orderBy('title')->with('profession')->get();
         return response(['templates' => $templates, 'message' => 'Retrieved Success'], 200);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -33,28 +33,28 @@ class TemplateController extends Controller
             'profession_id' => 'required',
             'imageUrl' => 'required',
             'styleFile' => 'required|file|max:200'
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
             $profession = Profession::find($input['profession_id']);
-            if($request->hasFile('imageUrl')){
+            if($request->hasFile('imageUrl')) {
                 $image = $request->file('imageUrl');
                 $ext = $request->file('imageUrl')->getClientOriginalExtension();
                 $name = strtolower($input['title']).'.'.$ext;
                 $image->move(public_path('/media/img/templateThumbnail/'.$profession->name), $name);
                 $input['imageUrl'] = $name;
-            } 
-            if($request->hasFile('styleFile')){
+            }
+            if($request->hasFile('styleFile')) {
                 $file = $request->file('styleFile');
                 $ext = $request->file('styleFile')->getClientOriginalExtension();
                 $stored = $file->move(public_path('css'), strtolower($input['title']).'.'.$ext);
                 $input['styleFile'] = strtolower($input['title']).'.'.$ext;
-            } 
+            }
             $template = Template::create($input);
             return response(['template' => $template, 'message' => 'Created Success'], 201);
-        }    
+        }
     }
 
     /**
@@ -83,41 +83,41 @@ class TemplateController extends Controller
             'profession_id' => 'required',
             'imageUrl' => 'nullable',
             'styleFile' => 'nullable|file|max:200'
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
             $profession = Profession::find($input['profession_id']);
-            if($request->hasFile('imageUrl')){
+            if($request->hasFile('imageUrl')) {
                 $image = $request->file('imageUrl');
                 $ext = $request->file('imageUrl')->getClientOriginalExtension();
                 $name = strtolower($input['title']).'.'.$ext;
                 $image->move(public_path('/media/img/templateThumbnail/'.$profession->name), $name);
                 $input['imageUrl'] = $name;
-            } 
-            if($request->hasFile('styleFile')){
+            }
+            if($request->hasFile('styleFile')) {
                 $file = $request->file('styleFile');
                 $ext = $request->file('styleFile')->getClientOriginalExtension();
                 $stored = $file->move(public_path('css'), strtolower($input['title']).'.'.$ext);
                 $input['styleFile'] = strtolower($input['title']).'.'.$ext;
-            } 
+            }
             $templates = new Template();
             $template2Update = $templates->find($templateId);
             $template2Update->update($input);
             if ($template2Update == true) {
                 return response()->json(['message' => 'Updated Successfully', 'template' => $template2Update, 'status' => 200], 200);
-            }
-            else {
+            } else {
                 return response()->json(['message' => 'Failed', 'template' => $template2Update], 501);
             }
-        }   
+        }
     }
 
      /**
      * Lets an admin to partial delete a template
      */
-    public function delete($templateID) {
+    public function delete($templateID)
+    {
         $template = Template::find($templateID);
         $template->toDelete = 1;
         $template->save();
@@ -139,13 +139,14 @@ class TemplateController extends Controller
         return response(['message' => 'Archived successfuly'], 204);
     }
 
-    public function deletedTemplates() {
+    public function deletedTemplates()
+    {
         // $profession = Profession::onlyTrashed()->paginate(10);
         $templates = Template::onlyTrashed();
         return response(['templates' => $templates, 'message' => 'Retrieved Success'], 200);
     }
 
-    public function restoreDeletedTemplate($templateId) 
+    public function restoreDeletedTemplate($templateId)
     {
         $template = Template::where('id', $templateId)->withTrashed()->first();
         $template->restore();
@@ -156,7 +157,8 @@ class TemplateController extends Controller
     /**
      * Gets the whole templates for super admin to or view approve
      */
-    public function getIndex() {
+    public function getIndex()
+    {
         $templates = Template::orderBy('updated_at')->with('profession')->get();
         return response(['templates' => $templates, 'message' => 'Retrieved Success'], 200);
     }
@@ -164,7 +166,8 @@ class TemplateController extends Controller
     /**
      * Gets the template to approve
      */
-    public function approve(Request $request, $templateID) {
+    public function approve(Request $request, $templateID)
+    {
         $template = Template::find($templateID);
         $template->approved = $request->approved;
         $template->save();
@@ -173,18 +176,23 @@ class TemplateController extends Controller
         }
     }
 
-    public function renderTemplate($templateID) {
+    public function renderTemplate($templateID)
+    {
         $template = Template::find($templateID);
         $profession = $template->profession->name;
         $templateCSS = $template->styleFile;
         $template_id = $template->id;
         $template = $template->title;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
-        $preview = true;        
+        $preview = true;
         $can = false;
         $email = '';
         $user_id = 0;
-        
-        return view('websites.physician', compact('preview', 'template', 'templateCSS', 'tenantID', 'can', 'email', 'user_id', 'template_id'));
+        $meta = [
+            'description' => "Experience the future of healthcare at WhiteCoatDomain.com/preview/1. Our cutting-edge platform revolutionizes healthcare delivery, connecting patients and providers seamlessly. Discover intuitive features, personalized care options, and streamlined workflows for enhanced efficiency. Join us on the forefront of healthcare innovation and elevate your practice to new heights. Sign up for a preview today!",
+            'image' => "/media/img/templates/$template_id/physicianHeroWhiteMale.jpg",
+        ];
+
+        return view('websites.physician', compact('meta', 'preview', 'template', 'templateCSS', 'tenantID', 'can', 'email', 'user_id', 'template_id'));
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col s12">
                 <div class="primaryColorDiv">
                     <div class="headerDiv">
@@ -39,7 +39,7 @@
             <div class="">
                 <div class="contentDiv">
                     <div class="container">
-                        <!-- Tab for Large device -->
+                        Tab for Large device
                         <ul class="cvModalLinkHolder hide-on-med-and-down">
                             <li class="cvModalLinkList">
                                 <a
@@ -136,7 +136,7 @@
                         </ul>
                     </div>
                     <div class="container">
-                        <!-- Summary -->
+                        Summary
                         <div v-show="view == 0">
                             <h4 class="cvSetupTitle">
                                 Let us know more about you
@@ -203,7 +203,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Education -->
+                        Education
                         <div v-show="view == 1">
                             <div v-if="!showEduForm">
                                 <h4 class="cvSetupTitle">
@@ -241,7 +241,7 @@
 
                             <div v-show="showEduForm">
                                 <div v-if="edu === 0">
-                                    <!-- UndergradSchool -->
+                                    UndergradSchool
                                     <div v-show="undergradSchoolInput == 0 && !medSchoolOnly">
                                         <div class="cvSetupEduIndicatorDiv">
                                             <p class="cvSetupEduIndicatorP">
@@ -382,7 +382,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Medical School -->
+                                    Medical School
                                     <div
                                         class="row"
                                         v-show="undergradSchoolInput == 1"
@@ -571,7 +571,7 @@
                                                 <i class="fas fa-circle-notch fa-2x fa-spin"></i>                                            </button>
                                         </div>
                                     </div>
-                                    <!-- Other School Attended -->
+                                    Other School Attended
                                     <div
                                         class="row"
                                         v-show="undergradSchoolInput == 2"
@@ -843,7 +843,7 @@
                                             </div>
                                         </button>
                                     </div>
-                                    <!-- Chevron BTNs -->
+                                    Chevron BTNs
                                     <div class="row">
                                         <div class="right">
                                             <a
@@ -908,7 +908,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Trainings -->
+                        Trainings
                         <div v-show="view == 2">
                             <div v-if="trainingSetup == 0">
                                 <div class="cvSetupEduIndicatorDiv">
@@ -926,17 +926,7 @@
                                     <h6 class="col s12 l8 cvSetupTitle">
                                         Tell us about your internship
                                     </h6>
-                                    <!-- <p class="col s12 l4 cvMoreInternP">
-                                        Have more internship?
-                                        <i
-                                            @click="addMoreTrainingsIntern"
-                                            class="
-                                                material-icons
-                                                cvMoreInternIcon
-                                            "
-                                            >add_circle</i
-                                        >
-                                    </p> -->
+                                   
                                 </div>
 
                                 <div class="row">
@@ -1436,7 +1426,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Experience -->
+                        Experience
                         <div v-show="view == 3">
                             <div class="rule">
                                 <div class="row lt_mb">
@@ -1683,7 +1673,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Reference -->
+                        Reference
                         <div v-show="view == 4">
                             <div>
                                 <div class="row lt_mb">
@@ -1835,7 +1825,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- License -->
+                        License
                         <div v-show="view == 5">
                             <h6 class="cvSetupTitle">
                                 Tell us about your License
@@ -1923,42 +1913,173 @@
                     <FooterComponent />
                 </div>
             </div>
+        </div> -->
+        <div class="container">
+            <div class="card">
+                <h3>Upload CV</h3>
+                <div class="drop_box">
+                    <div v-if="fileName == null">
+                        <header>
+                            <h4>Select File here</h4>
+                        </header>
+                        <p>Files Supported: PDF</p>
+                        <input
+                            type="file"
+                            hidden
+                            accept=".pdf"
+                            id="fileID"
+                            @change="handleFileChange"
+                            style="display: none"
+                        />
+                        <button class="btn">Choose File</button>
+                    </div>
+                    <div v-else>
+                        <form
+                            action=""
+                            method="post"
+                            enctype="multipart/form-data"
+                        >
+                            <div class="form">
+                                <h4 class="h4">{{ namedFile }}</h4>
+                                <button class="btn" @click.prevent="uploadCV" :disabled="loading">
+                                    <span v-if="!loading">Upload</span>
+                                    <i class="fas fa-circle-notch fa-spin" v-else></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
-<style>
-    .custom-badge {
-        width: 15px;
-        height: 15px;
-        background-color: rgb(175, 173, 173);
-        border-radius: 15px;
+<style scoped>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
     }
-    .custom-badge.active {
-        background-color: var(--primary);
+    .fas {
+        font-family: "Font Awesome 6 Free" !important;
     }
-    .custom-badge.input-filled {
-        background-color: rgb(98, 235, 98);
-    }
-    .text-center {
+
+    .container {
+        height: 70vh;
+        width: 100%;
+        align-items: center;
         display: flex;
         justify-content: center;
+        background-color: #fcfcfc;
     }
-    
+
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+        /* width: 600px; */
+        width: 90%;
+        height: 260px;
+        background-color: #ffffff;
+        padding: 10px 30px 40px;
+    }
+
+    .card h3 {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .drop_box {
+        margin: 10px 0;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border: 3px dotted #a3a3a3;
+        border-radius: 5px;
+    }
+
+    .drop_box h4 {
+        font-size: 16px;
+        font-weight: 400;
+        color: #2e2e2e;
+    }
+
+    .drop_box p {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        color: #a3a3a3;
+    }
+
+    .btn {
+        text-decoration: none;
+        background-color: var(--primary);
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+    }
+
+    .btn:hover {
+        text-decoration: none;
+        background-color: #ffffff;
+        color: #005af0;
+        padding: 10px 20px;
+        border: none;
+        outline: 1px solid #010101;
+    }
+    .form input {
+        margin: 10px 0;
+        width: 100%;
+        background-color: #e2e2e2;
+        border: none;
+        outline: none;
+        padding: 12px 20px;
+        border-radius: 4px;
+    }
+
+    .h4 {
+        font-size: 1rem !important;
+    }
+
+    /* .custom-badge {
+                width: 15px;
+                height: 15px;
+                background-color: rgb(175, 173, 173);
+                border-radius: 15px;
+            }
+            .custom-badge.active {
+                background-color: var(--primary);
+            }
+            .custom-badge.input-filled {
+                background-color: rgb(98, 235, 98);
+            }
+            .text-center {
+                display: flex;
+                justify-content: center;
+            } */
 </style>
 <script>
     import DatePicker from "vue-datepicker-next";
-    import FooterComponent from '../../FooterComponent.vue';
+    import FooterComponent from "../../FooterComponent.vue";
     import "vue-datepicker-next/index.css";
-    let cvXpo = '/api/cvexperience';
-    let summy = '/api/cv';
-    let training = '/api/cvtraining';
-    let referal = '/api/cvreferral';
-    let cvMed = '/api/cvmed_school';
-    let cvOther = '/api/cv_otherschool';
-    let underGrad = '/api/cv_gradschool';
-    let license = '/api/license';
-    let bio = '/api/bio';
-    let countries = 'https://whitecoatdomain.com/api/countries';
+    let cvXpo = "/api/cvexperience";
+    let summy = "/api/cv";
+    let training = "/api/cvtraining";
+    let referal = "/api/cvreferral";
+    let cvMed = "/api/cvmed_school";
+    let cvOther = "/api/cv_otherschool";
+    let underGrad = "/api/cv_gradschool";
+    let license = "/api/license";
+    let bio = "/api/bio";
+    let countries = "https://whitecoatdomain.com/api/countries";
 
     export default {
         name: "CvModal",
@@ -1967,22 +2088,26 @@
             DatePicker,
         },
         mounted() {
-            // var data = $('#skills').material_chip('data')
-            // setTimeout(() => {
-            //     let elem = document
-            //         .getElementById("skills")
-            //         .getElementsByClassName("chips");
-            //
-            //     var instance = M.Chips.getInstance(elem);
-            //     //     instance.onChipAdd: (event, chip) => {
-            //     // console.log(event[0].M_Chips.chipsData);
-            //     // console.log( instance)
-            // }, 5000);
+            if (document.querySelector(".drop_box") != null) {
+                const dropArea = document.querySelector(".drop_box"),
+                    button = dropArea.querySelector("button"),
+                    input = dropArea.querySelector("input");
+    
+                button.onclick = () => {
+                    input.click();
+                };
+    
+                input.addEventListener("change", function (e) {
+                    this.namedFile = e.target.files[0].name;
+                });
+            }
+
             this.getData();
-            
         },
         data() {
             return {
+                namedFile: "",
+                fileName: null,
                 activities: [],
                 activity: "",
                 cities: [],
@@ -2020,68 +2145,62 @@
                     title: "",
                     degree: "",
                 },
-                cvExperience:
-                    {
-                        institution: "",
-                        yearStart: "",
-                        yearEnd: "",
-                        monthStart: "",
-                        monthEnd: "",
-                        city_id: "",
-                        activities: [{ activity: "" }],
-                    },
+                cvExperience: {
+                    institution: "",
+                    yearStart: "",
+                    yearEnd: "",
+                    monthStart: "",
+                    monthEnd: "",
+                    city_id: "",
+                    activities: [{ activity: "" }],
+                },
                 cvExperiences: [],
-                cvTrainingsResidency:
-                    {
-                        institution: "",
-                        yearStart: "",
-                        yearEnd: "",
-                        monthStart: "",
-                        monthEnd: "",
-                        title: "",
-                        location: "",
-                        specialty: "",
-                        sub_specialty: "",
-                        type: "residency",
-                    },
+                cvTrainingsResidency: {
+                    institution: "",
+                    yearStart: "",
+                    yearEnd: "",
+                    monthStart: "",
+                    monthEnd: "",
+                    title: "",
+                    location: "",
+                    specialty: "",
+                    sub_specialty: "",
+                    type: "residency",
+                },
 
-                cvTrainingsFellowship:
-                    {
-                        institution: "",
-                        yearStart: "",
-                        yearEnd: "",
-                        monthStart: "",
-                        monthEnd: "",
-                        title: "",
-                        location: "",
-                        specialty: "",
-                        sub_specialty: "",
-                        type: "fellowship",
-                    },
+                cvTrainingsFellowship: {
+                    institution: "",
+                    yearStart: "",
+                    yearEnd: "",
+                    monthStart: "",
+                    monthEnd: "",
+                    title: "",
+                    location: "",
+                    specialty: "",
+                    sub_specialty: "",
+                    type: "fellowship",
+                },
 
-                cvTrainingsIntern:
-                    {
-                        institution: "",
-                        yearStart: "",
-                        yearEnd: "",
-                        monthStart: "",
-                        monthEnd: "",
-                        title: "",
-                        location: "",
-                        type: "internship",
-                    },
+                cvTrainingsIntern: {
+                    institution: "",
+                    yearStart: "",
+                    yearEnd: "",
+                    monthStart: "",
+                    monthEnd: "",
+                    title: "",
+                    location: "",
+                    type: "internship",
+                },
 
-
-                cvReference:
-                    {
-                        name: "",
-                        location: "",
-                        phone: "",
-                        position: "",
-                        title: "",
-                        institution: "",
-                        email: "",
-                    },
+                cvReference: {
+                    name: "",
+                    location: "",
+                    phone: "",
+                    position: "",
+                    title: "",
+                    institution: "",
+                    email: "",
+                },
                 cvReferences: [],
                 cvExperienceUpdate: 0,
                 cvExperienceActivityRemoved: [],
@@ -2141,6 +2260,32 @@
             };
         },
         methods: {
+            uploadCV() {
+                this.loading = true;
+                const formData = new FormData();
+                formData.append("cvfile", this.fileName);
+
+                axios
+                    .post("/api/upload-cv", formData)
+                    .then((response) => {
+                        if(response.status === 201) {
+                            this.loading = false;
+                            M.toast({html:'Upload Is Successfull!', classes: 'successNotifier'})
+                            this.$emit('backToSettings');
+                        }
+                        console.log(response)
+                        // Handle the response after successful upload
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        // Handle any errors that occur during the upload
+                    });
+            },
+            handleFileChange(e) {
+                const file = e.target.files[0];
+                this.fileName = file;
+                this.namedFile = file.name;
+            },
             /********************************************************** For Incoming Requests ******************************************/
             getData() {
                 this.fetching = true;
@@ -2181,40 +2326,62 @@
                             const countryRes = responses[9];
 
                             this.countries = countryRes.data.countries;
-                            this.countries.sort(function(x, y){ return x.name == 'United States' || x.name == 'Canada' ? -1 : y.name == 'United States' || y.name == 'Canada' ? 1 : 0; });
+                            this.countries.sort(function (x, y) {
+                                return x.name == "United States" ||
+                                    x.name == "Canada"
+                                    ? -1
+                                    : y.name == "United States" ||
+                                      y.name == "Canada"
+                                    ? 1
+                                    : 0;
+                            });
 
                             if (summaryRes.data.cvSummary !== null) {
                                 this.cv = summaryRes.data.cvSummary;
                                 this.cvUpdate = 1;
                             }
                             this.cvExperiences = cvExpRes.data.experience;
-                            this.cvExperiences.length !== 0  ? this.getStateNCity() : 0;                           //     // let res = ;
+                            this.cvExperiences.length !== 0
+                                ? this.getStateNCity()
+                                : 0; //     // let res = ;
                             //     console.log();
                             //     // this.cvExperiences[index].state = res.data.state;
-                            //     // el.state = 
+                            //     // el.state =
                             // }) : 0;
                             this.trainings = trainingRes.data.trainings;
-                            this.trainings.length !== 0 ? this.populateTraining() : null;
+                            this.trainings.length !== 0
+                                ? this.populateTraining()
+                                : null;
                             this.cvReferences = referralRes.data.referral;
                             if (medSchoolRes.data.medSchool !== null) {
                                 let e = medSchoolRes.data.medSchool;
                                 this.cvMedSchool = e;
-                                this.cvMedSchool.yearStart = new Date(`${e.yearStart}`);
+                                this.cvMedSchool.yearStart = new Date(
+                                    `${e.yearStart}`
+                                );
                                 this.cvMedSchool.yearEnd = new Date(`${e.yearEnd}`);
                                 this.cvMedSchoolUpdate = 1;
                             }
                             if (otherSchoolRes.data.additionalSchool !== null) {
                                 let e = otherSchoolRes.data.additionalSchool;
                                 this.cvAdditionalSchool = e;
-                                this.cvAdditionalSchool.yearStart = new Date(`${e.yearStart}`);
-                                this.cvAdditionalSchool.yearEnd = new Date(`${e.yearEnd}`);
+                                this.cvAdditionalSchool.yearStart = new Date(
+                                    `${e.yearStart}`
+                                );
+                                this.cvAdditionalSchool.yearEnd = new Date(
+                                    `${e.yearEnd}`
+                                );
                                 this.cvAdditionalSchoolUpdate = 1;
                             }
                             if (underGradRes.data.underGradSchool !== null) {
                                 let e = underGradRes.data.underGradSchool;
                                 this.cvGradSchool = e;
-                                this.cvGradSchool.yearStart = new Date(`${e.yearStart}`);
-                                this.cvGradSchool.yearEnd = new Date(`${e.yearEnd}`);
+                                this.cvGradSchool.yearStart = new Date(
+                                    `${e.yearStart}`
+                                );
+                                this.cvGradSchool.yearEnd = new Date(
+                                    `${e.yearEnd}`
+                                );
                                 this.cvGradSchoolUpdate = 1;
                             }
                             if (licenseRes.data.license !== null) {
@@ -2231,20 +2398,30 @@
                     .catch((errors) => {
                         console.log(errors);
                     });
-
             },
             getStateNCity() {
                 this.cvExperiences.forEach((el, index) => {
-                    axios.get(`https://whitecoatdomain.com/api/getStateNCity/${el.city_id}`).then(res => {
-                        this.cvExperiences[index] =  {...this.cvExperiences[index], state: res.data.state, city: res.data.city};
-                    }).catch(err => {
-                        console.log(err)
-                    })
-                })
+                    axios
+                        .get(
+                            `https://whitecoatdomain.com/api/getStateNCity/${el.city_id}`
+                        )
+                        .then((res) => {
+                            this.cvExperiences[index] = {
+                                ...this.cvExperiences[index],
+                                state: res.data.state,
+                                city: res.data.city,
+                            };
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
+                });
             },
             sortCities() {
                 axios
-                    .get(`https://whitecoatdomain.com/api/cities/${this.stateSelected}`)
+                    .get(
+                        `https://whitecoatdomain.com/api/cities/${this.stateSelected}`
+                    )
                     .then((res) => {
                         if (res.data.status == 200) {
                             this.cities = res.data.cities;
@@ -2261,7 +2438,9 @@
             },
             sortStates() {
                 axios
-                    .get(`https://whitecoatdomain.com/api/states/${this.countrySelected}`)
+                    .get(
+                        `https://whitecoatdomain.com/api/states/${this.countrySelected}`
+                    )
                     .then((res) => {
                         if (res.data.status == 200) {
                             this.states = res.data.states;
@@ -2277,42 +2456,48 @@
                     });
             },
             deleteMe(e) {
-                axios.delete(`/api/cvexperience/${e.id}`).then(res => {
-                    if (res.status === 204) {
-                        M.toast({
-                            html: 'Deleted onSuccess!',
-                            classess: 'successNotifier'
-                        });
-                        this.cvExperiences.splice(
-                            this.cvExperiences.findIndex(
-                                (expo) => expo.id === e.id
-                            ),
-                            1
-                        );
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
+                axios
+                    .delete(`/api/cvexperience/${e.id}`)
+                    .then((res) => {
+                        if (res.status === 204) {
+                            M.toast({
+                                html: "Deleted onSuccess!",
+                                classess: "successNotifier",
+                            });
+                            this.cvExperiences.splice(
+                                this.cvExperiences.findIndex(
+                                    (expo) => expo.id === e.id
+                                ),
+                                1
+                            );
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             },
             deleteReferree(e) {
-                axios.delete(`/api/cvreferral/${e.id}`).then(res => {
-                    if (res.status === 204) {
-                        M.toast({
-                            html: 'Deleted onSuccess!',
-                            classess: 'successNotifier'
-                        });
-                        this.cvReferences.splice(
-                            this.cvReferences.findIndex(
-                                (expo) => expo.id === e.id
-                            ),
-                            1
-                        );
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
+                axios
+                    .delete(`/api/cvreferral/${e.id}`)
+                    .then((res) => {
+                        if (res.status === 204) {
+                            M.toast({
+                                html: "Deleted onSuccess!",
+                                classess: "successNotifier",
+                            });
+                            this.cvReferences.splice(
+                                this.cvReferences.findIndex(
+                                    (expo) => expo.id === e.id
+                                ),
+                                1
+                            );
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             },
-            populateReferree(e){
+            populateReferree(e) {
                 this.cvReference = e;
                 this.cvReferenceUpdate = 1;
                 window.scrollTo(100, 0);
@@ -2328,25 +2513,43 @@
                 this.sortCities();
             },
             populateTraining() {
-                let internship = this.trainings.find(el => el.type === 'internship');
+                let internship = this.trainings.find(
+                    (el) => el.type === "internship"
+                );
                 if (internship !== undefined) {
                     this.cvTrainingsIntern = internship;
-                    this.cvTrainingsIntern.yearStart = new Date(`${internship.yearStart}`);
-                    this.cvTrainingsIntern.yearEnd = new Date(`${internship.yearEnd}`);
+                    this.cvTrainingsIntern.yearStart = new Date(
+                        `${internship.yearStart}`
+                    );
+                    this.cvTrainingsIntern.yearEnd = new Date(
+                        `${internship.yearEnd}`
+                    );
                 }
 
-                let fellowship = this.trainings.find(el => el.type === 'fellowship');
+                let fellowship = this.trainings.find(
+                    (el) => el.type === "fellowship"
+                );
                 if (fellowship !== undefined) {
                     this.cvTrainingsFellowship = fellowship;
-                    this.cvTrainingsFellowship.yearStart = new Date(`${fellowship.yearStart}`);
-                    this.cvTrainingsFellowship.yearEnd = new Date(`${fellowship.yearEnd}`);
+                    this.cvTrainingsFellowship.yearStart = new Date(
+                        `${fellowship.yearStart}`
+                    );
+                    this.cvTrainingsFellowship.yearEnd = new Date(
+                        `${fellowship.yearEnd}`
+                    );
                 }
 
-                let residency = this.trainings.find(el => el.type === 'residency');
+                let residency = this.trainings.find(
+                    (el) => el.type === "residency"
+                );
                 if (residency !== undefined) {
                     this.cvTrainingsResidency = residency;
-                    this.cvTrainingsResidency.yearStart = new Date(`${residency.yearStart}`);
-                    this.cvTrainingsResidency.yearEnd = new Date(`${residency.yearEnd}`);
+                    this.cvTrainingsResidency.yearStart = new Date(
+                        `${residency.yearStart}`
+                    );
+                    this.cvTrainingsResidency.yearEnd = new Date(
+                        `${residency.yearEnd}`
+                    );
                 }
                 this.cvTrainingUpdate = 1;
             },
@@ -2355,9 +2558,12 @@
                 this.loading = !this.loading;
                 let request;
                 if (this.licenseUpdate == 1) {
-                    request = axios.put(`/api/license/${this.license.id}`, this.license);
-                }else request = axios.post(`/api/license`, this.license);
-               request
+                    request = axios.put(
+                        `/api/license/${this.license.id}`,
+                        this.license
+                    );
+                } else request = axios.post(`/api/license`, this.license);
+                request
                     .then((res) => {
                         if (res.status === 201 || res.data.status === 200) {
                             this.loading = !this.loading;
@@ -2383,8 +2589,7 @@
                 if (this.undergradSchoolInput !== 0) {
                     if (!this.medSchoolOnly) {
                         this.undergradSchoolInput--;
-                    }
-                    else if(this.medSchoolOnly) {
+                    } else if (this.medSchoolOnly) {
                         this.undergradSchoolInput = 1;
                     }
                 }
@@ -2451,15 +2656,22 @@
             },
             saveExperience() {
                 this.loading = !this.loading;
-                this.cvExperience.yearStart = new Date(`${this.cvExperience.yearStart}`).getFullYear();
-                this.cvExperience.yearEnd = new Date(`${this.cvExperience.yearEnd}`).getFullYear();
+                this.cvExperience.yearStart = new Date(
+                    `${this.cvExperience.yearStart}`
+                ).getFullYear();
+                this.cvExperience.yearEnd = new Date(
+                    `${this.cvExperience.yearEnd}`
+                ).getFullYear();
                 // this.cvExperiences.forEach((el) => JSON.stringify(el.activities));
 
                 // let formData = new FormData();
                 let request;
                 if (this.cvExperienceUpdate == 1) {
                     // formData.append("_method", "PUT");
-                    request = axios.put(`/api/cvexperience/${this.cvExperience.id}`, this.cvExperience);
+                    request = axios.put(
+                        `/api/cvexperience/${this.cvExperience.id}`,
+                        this.cvExperience
+                    );
                 } else request = axios.post(`/api/cvexperience`, this.cvExperience);
                 // formData.append("data", this.cvExperience);
                 request
@@ -2470,25 +2682,37 @@
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
-                            
-                            axios.get(`https://whitecoatdomain.com/api/getStateNCity/${this.cvExperience.city_id}`).then(res1 => {
-                                this.cvExperience =  {...this.cvExperience, state: res1.data.state, city: res1.data.city};
-                                res.status === 201 ? this.cvExperiences.unshift(this.cvExperience) : null;
-                                this.cvExperience = {
-                                    institution: "",
-                                    yearStart: "",
-                                    yearEnd: "",
-                                    monthStart: "",
-                                    monthEnd: "",
-                                    city_id: "",
-                                    activities: [{ activity: "" }],
-                                };
-                                this.countrySelected = "";
-                                this.stateSelected = "";
-                            }).catch(err => {
-                                console.log(err)
-                            })
-                            
+
+                            axios
+                                .get(
+                                    `https://whitecoatdomain.com/api/getStateNCity/${this.cvExperience.city_id}`
+                                )
+                                .then((res1) => {
+                                    this.cvExperience = {
+                                        ...this.cvExperience,
+                                        state: res1.data.state,
+                                        city: res1.data.city,
+                                    };
+                                    res.status === 201
+                                        ? this.cvExperiences.unshift(
+                                              this.cvExperience
+                                          )
+                                        : null;
+                                    this.cvExperience = {
+                                        institution: "",
+                                        yearStart: "",
+                                        yearEnd: "",
+                                        monthStart: "",
+                                        monthEnd: "",
+                                        city_id: "",
+                                        activities: [{ activity: "" }],
+                                    };
+                                    this.countrySelected = "";
+                                    this.stateSelected = "";
+                                })
+                                .catch((err) => {
+                                    console.log(err);
+                                });
                         }
                     })
                     .catch((err) => {
@@ -2506,8 +2730,12 @@
             },
             saveMedSchool() {
                 this.loading = !this.loading;
-                this.cvMedSchool.yearStart = new Date(`${this.cvMedSchool.yearStart}`).getFullYear();
-                this.cvMedSchool.yearEnd = new Date(`${this.cvMedSchool.yearEnd}`).getFullYear();
+                this.cvMedSchool.yearStart = new Date(
+                    `${this.cvMedSchool.yearStart}`
+                ).getFullYear();
+                this.cvMedSchool.yearEnd = new Date(
+                    `${this.cvMedSchool.yearEnd}`
+                ).getFullYear();
                 let request = `/api/cvmed_school`;
                 let data = {
                     _method: "PUT",
@@ -2542,8 +2770,12 @@
             saveOtherSchool() {
                 this.loading = !this.loading;
                 let request = `/api/cv_otherschool`;
-                this.cvAdditionalSchool.yearStart = new Date(`${this.cvAdditionalSchool.yearStart}`).getFullYear();
-                this.cvAdditionalSchool.yearEnd = new Date(`${this.cvAdditionalSchool.yearEnd}`).getFullYear();
+                this.cvAdditionalSchool.yearStart = new Date(
+                    `${this.cvAdditionalSchool.yearStart}`
+                ).getFullYear();
+                this.cvAdditionalSchool.yearEnd = new Date(
+                    `${this.cvAdditionalSchool.yearEnd}`
+                ).getFullYear();
                 let data = {
                     _method: "PUT",
                 };
@@ -2581,9 +2813,12 @@
                 this.loading = !this.loading;
                 let request;
                 if (this.cvReferenceUpdate == 1) {
-                    request = axios.put(`/api/cvreferral/${this.cvReference.id}`, this.cvReference);
-                }else request = axios.post(`/api/cvreferral`, this.cvReference);
-               request
+                    request = axios.put(
+                        `/api/cvreferral/${this.cvReference.id}`,
+                        this.cvReference
+                    );
+                } else request = axios.post(`/api/cvreferral`, this.cvReference);
+                request
                     .then((res) => {
                         if (res.status === 201 || res.data.status === 200) {
                             this.loading = !this.loading;
@@ -2591,7 +2826,9 @@
                                 html: res.data.message,
                                 classes: "successNotifier",
                             });
-                            res.status === 201 ? this.cvReferences.push(this.cvReference) : null;
+                            res.status === 201
+                                ? this.cvReferences.push(this.cvReference)
+                                : null;
                             this.cvReference = {
                                 name: "",
                                 location: "",
@@ -2601,7 +2838,9 @@
                                 institution: "",
                                 email: "",
                             };
-                            res.data.status === 200 ? this.cvReferenceUpdate = 0 : null;
+                            res.data.status === 200
+                                ? (this.cvReferenceUpdate = 0)
+                                : null;
                         }
                     })
                     .catch((err) => {
@@ -2620,19 +2859,31 @@
                 this.loading = !this.loading;
                 let cvTrainings = [];
                 if (this.cvTrainingsFellowship.institution !== "") {
-                    this.cvTrainingsFellowship.yearStart = new Date(`${this.cvTrainingsFellowship.yearStart}`).getFullYear();
-                    this.cvTrainingsFellowship.yearEnd = new Date(`${this.cvTrainingsFellowship.yearEnd}`).getFullYear();
-                    cvTrainings.push(this.cvTrainingsFellowship)
+                    this.cvTrainingsFellowship.yearStart = new Date(
+                        `${this.cvTrainingsFellowship.yearStart}`
+                    ).getFullYear();
+                    this.cvTrainingsFellowship.yearEnd = new Date(
+                        `${this.cvTrainingsFellowship.yearEnd}`
+                    ).getFullYear();
+                    cvTrainings.push(this.cvTrainingsFellowship);
                 }
                 if (this.cvTrainingsIntern.institution !== "") {
-                    this.cvTrainingsIntern.yearStart = new Date(`${this.cvTrainingsIntern.yearStart}`).getFullYear();
-                    this.cvTrainingsIntern.yearEnd = new Date(`${this.cvTrainingsIntern.yearEnd}`).getFullYear();
-                    cvTrainings.push(this.cvTrainingsIntern)
+                    this.cvTrainingsIntern.yearStart = new Date(
+                        `${this.cvTrainingsIntern.yearStart}`
+                    ).getFullYear();
+                    this.cvTrainingsIntern.yearEnd = new Date(
+                        `${this.cvTrainingsIntern.yearEnd}`
+                    ).getFullYear();
+                    cvTrainings.push(this.cvTrainingsIntern);
                 }
                 if (this.cvTrainingsResidency.institution !== "") {
-                    this.cvTrainingsResidency.yearStart = new Date(`${this.cvTrainingsResidency.yearStart}`).getFullYear();
-                    this.cvTrainingsResidency.yearEnd = new Date(`${this.cvTrainingsResidency.yearEnd}`).getFullYear();
-                    cvTrainings.push(this.cvTrainingsResidency)
+                    this.cvTrainingsResidency.yearStart = new Date(
+                        `${this.cvTrainingsResidency.yearStart}`
+                    ).getFullYear();
+                    this.cvTrainingsResidency.yearEnd = new Date(
+                        `${this.cvTrainingsResidency.yearEnd}`
+                    ).getFullYear();
+                    cvTrainings.push(this.cvTrainingsResidency);
                 }
                 let formData = new FormData();
                 let request = `/api/cvtraining`;
@@ -2665,9 +2916,19 @@
             },
             saveUnderGradSchool() {
                 this.loading = !this.loading;
-                if (this.cvGradSchool.institution !== "" || this.cvGradSchool.monthEnd !== "" || this.cvGradSchool.yearEnd !== "" || this.cvGradSchool.yearStart !== "" || this.cvGradSchool.monthEnd !== "")
-                this.cvGradSchool.yearStart = new Date(`${this.cvGradSchool.yearStart}`).getFullYear();
-                this.cvGradSchool.yearEnd = new Date(`${this.cvGradSchool.yearEnd}`).getFullYear();
+                if (
+                    this.cvGradSchool.institution !== "" ||
+                    this.cvGradSchool.monthEnd !== "" ||
+                    this.cvGradSchool.yearEnd !== "" ||
+                    this.cvGradSchool.yearStart !== "" ||
+                    this.cvGradSchool.monthEnd !== ""
+                )
+                    this.cvGradSchool.yearStart = new Date(
+                        `${this.cvGradSchool.yearStart}`
+                    ).getFullYear();
+                this.cvGradSchool.yearEnd = new Date(
+                    `${this.cvGradSchool.yearEnd}`
+                ).getFullYear();
                 let request = `/api/cv_gradschool`;
                 let data = {
                     _method: "PUT",
@@ -2727,6 +2988,5 @@
                 this.view = 5;
             },
         },
-
     };
 </script>

@@ -472,9 +472,9 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p v-else>
+                                                        <p v-else class="center-align">
                                                             Uploading Image<i
-                                                                class="fas fa-circle-notch fa-spin"
+                                                                class="fas fa-circle-notch fa-spin fa-2x"
                                                             ></i>
                                                         </p>
                                                     </div>
@@ -2468,6 +2468,9 @@
                             let elem = document.getElementById("modal1");
                             let instance = M.Modal.init(elem);
                             instance.close();
+                            localStorage.clear('claimproc');
+                            localStorage.clear('passwordGen');
+                            localStorage.clear('email');
                             // this.makePayment();
                         }
                     })
@@ -2924,7 +2927,10 @@
             width: 95%;
             padding: 1em 0 0 0;
         }
-
+        .modal-confirm, #successWebCr8Modal {
+            color: #434e65;
+            width: 350px;
+        }
         .paymentOverlay {
             height: 88vh;
         }

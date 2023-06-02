@@ -130,6 +130,7 @@ class TenantController extends Controller
         $template_id = $tenant->template->id;
         $template = $tenant->template->title;
         $templateCSS = $tenant->template->styleFile;
+        $description = '';
 
         $bioTB = Bio::first();
         $pageTitles = General::first();
@@ -153,6 +154,7 @@ class TenantController extends Controller
             
         } else {
             $user = !empty($bioTB) ? 'Dr. '.$bioTB->firstname.' '.$bioTB->lastname : null;
+            $description = !empty($bioTB) ? $bioTB->about : '';
         }
         
         $socials = Social::latest()->first();
@@ -165,10 +167,13 @@ class TenantController extends Controller
             $can = false;
             $email = $tenant->user->email;
         }
-        
+        $meta = [
+            'description' => $description,
+            'image' => "/media/tenants/$tenantID/$bioTB->photo",
+        ];
         if($profession === 'Physician'){
             // echo $template, $socials, $user, $templateCSS, $title, $pageTitle, $tenantID, $can, $email, $user_id, $userSubscribed, $template_id;
-            return view('websites.physician', compact('template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email', 'user_id', 'userSubscribed', 'template_id'));
+            return view('websites.physician', compact('meta', 'template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email', 'user_id', 'userSubscribed', 'template_id'));
         } else {
             dd($profession);
         }

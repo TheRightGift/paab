@@ -5,14 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="robots" content="all">
     <title>{{$pageTitle ?? $template}}</title>
+    <!-- SEO -->
+    <meta name="keywords" content="{{('Brand Website of '.$pageTitle )}}">
+    <meta name="description" content="{{ $meta['description'] }}">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->full() }}">
+    <meta property="og:title" content="{{ $pageTitle ?? $template }}">
+    <meta property="og:description" content="{{ $meta['description'] }}">
+    <meta property="og:image" content="{{ url()->full().$meta['image'] }}">
+    <meta content="400" property="og:image:width">
+    <meta content="400" property="og:image:height">
+    <meta content="{{ ('An image of '. $pageTitle ) }}" property="og:image:alt">
+
     <link rel="shortcut icon" href="{{ ('/media/tenants/'.$tenantID.'/img/favicon.png') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&family=Open+Sans:wght@300;400;500&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
     

@@ -96,13 +96,13 @@
                                         surgical experience.
                                     </p>
                                     <div class="heroBtnRow">
-                                        <button
-                                            data-target="cvDetails"
+                                        <a
+                                            href="#cvDetails"
                                             class="modal-trigger waves-effect waves-light btn viewCvBtn"
-                                            v-if="CVComponentShow"
+                                            v-show="CVComponentShow"
                                         >
                                             View Curriculum Vitae
-                                        </button>
+                                        </a>
                                         <span v-if="contact !== null">
                                             <button
                                                 class="waves-effect waves-light btn callBtn"
@@ -444,7 +444,8 @@
                 }
             },
             CV(newval, oldval) {
-                if (newval.medschool !== null) {
+                console.log(newval)
+                if (newval.summary !== null) {
                     // newval.license !== null &&
                     this.CVComponentShow = true;
                 }

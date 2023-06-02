@@ -11,5 +11,5 @@ use Illuminate\Database\Eloquent\Model;
 class Bio extends Model
 {
     use HasFactory;
-    protected $fillable = ['about', 'CV', 'lastname', 'photo', 'firstname', 'lastname', 'gender'];
+    protected $fillable = ['about', 'CV', 'lastname', 'photo', 'firstname', 'lastname', 'gender', 'image_changed'];
 }
