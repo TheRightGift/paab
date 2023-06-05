@@ -40,10 +40,10 @@ class TenantController extends Controller
             $domains = DB::table('domains')->where('domain', $request->name)->first();
             if (empty($tenants) && empty($domains)) {
                 $tenant = Tenant::create([
-                    'name' => htmlspecialchars($inputs->validated()["name"]),
+                    'name' => $inputs->validated()["name"],
                     'description' => $inputs->validated()['description'],
                     'template_id' => $inputs->validated()['template_id'] ?? Template::first()->id,
-                    'id' => htmlspecialchars(strtolower($inputs->validated()["name"])),
+                    'id' => strtolower($inputs->validated()["name"]),
                     'user_id' => $inputs->validated()['user_id'],
                 ]);
                 // return $tenant;

@@ -19,7 +19,9 @@ class MaintenanceController extends Controller
             $orders = $adminOrders->get();
             $status = 'Success';
             $lastRemoved = null;
-            if (!empty($orders)) {
+            
+            if(!empty($orders)) {
+                
                 foreach ($orders as $key => $tenant) {
                     $tenantID = $tenant->tenant_id;
                     $tenantDBName = "tenant$tenantID"; // Tenant ID is also used as the database name, prefixed with tenant
@@ -27,20 +29,16 @@ class MaintenanceController extends Controller
                     DB::connection('mysql')->reconnect();
                     DB::setDatabaseName($tenantDBName);
                     $tenantBio = DB::table('bios')->get();
-                    if (count($tenantBio) === 0) {
+                    
+                    if (count($tenantBio) < 1) {
+                        // return response()->json(['msg' => $tenantDBName], 200);
                         DB::connection()->statement("DROP DATABASE IF EXISTS $tenantDBName");
                         Config::set('database.connections.mysql.database', env('DB_DATABASE'));
                         DB::connection('mysql')->reconnect();
                         DB::setDatabaseName(env('DB_DATABASE'));
                         $adminOrders->where('tenant_id', $tenantID)->delete();
                         $tenants->where('id', $tenantID)->delete();
-
-                        // Delete the user file
-                        // $imageToDelete = public_path()."/media/tenants/$tenantID/img";
-                        // if ( file_exists($imageToDelete))
-                        // {
-                        //     unlink($imageToDelete);
-                        // }
+                        
                         $status = 'Tenant Removed';
                         $lastRemoved = $tenant;
                     } else {
