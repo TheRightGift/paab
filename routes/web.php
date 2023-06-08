@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\TenantClaimController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\WebhookController;
+use App\Http\Controllers\TenantClaimController;
 
 /*
 |--------------------------------------------------------------------------
@@ -153,7 +154,15 @@ Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(functio
 });
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-
+Route::get('/user/invoice/{invoice}/{user}', function (Request $request, $invoiceId) {
+    $user = User::find($request->user);
+    return $user->downloadInvoice($invoiceId, [
+        'vendor' => 'White Coat Domain',
+        'product' => 'Premium plan',
+        'email' => 'manager@whitecoatdomain.com',
+        'url' => 'https://whitecoatdomain.com',
+    ]);
+});
 Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(function () {
     Route::get('/client', function () {
         return view('admin.client');

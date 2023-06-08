@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row noMarginBottom" id="miniBlogSettings">
-            <div class="col l6 optionSettingBackground">
+            <div class="col l6 s12 optionSettingBackground">
                 <p @click="$emit('backToSettings')">
                     <a class="btn-flat"
                         ><i class="material-icons left">chevron_left</i>Back</a
