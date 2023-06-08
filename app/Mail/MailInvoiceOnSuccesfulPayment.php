@@ -33,7 +33,6 @@ class MailInvoiceOnSuccesfulPayment extends Mailable
     {
         return new Envelope(
             subject: 'Payment Succesful',
-            from: new Address('admin@whitecoatdomain.com', 'White Coat Domain'),
         );
     }
 
