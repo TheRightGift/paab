@@ -2,12 +2,15 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\AuthController;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SubscriptionController;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
-Use Stancl\Tenancy\Middleware\InitializeTenancyBySubdomain;
-Use Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain;
+use Stancl\Tenancy\Middleware\InitializeTenancyBySubdomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
+use Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +34,7 @@ Route::middleware([
     Route::post('/auth/verifyEmailForRegistration', [AuthController::class, 'verifyEmailForWebsiteEdit']);
 
     Route::get('/setting', [App\Http\Controllers\TenantController::class, 'setting']);
-    
+
     Route::get('/milestones', [App\Http\Controllers\TenantController::class, 'milestone']);
 
     Route::get('/socialmedia_presence', [App\Http\Controllers\TenantController::class, 'social']);
@@ -47,8 +50,8 @@ Route::middleware([
     Route::get('/services_rendered', [App\Http\Controllers\TenantController::class, 'services_rendered']);
 
 
-
     Route::get('/cv_generator', [App\Http\Controllers\TenantController::class, 'cv_generator']);
+    
 });
 Route::middleware(['auth:api',InitializeTenancyByDomainOrSubdomain::class,
 PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
@@ -92,7 +95,8 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::delete('/review/{id}', [App\Http\Controllers\Tenants\ReviewsController::class, 'destroy']);
 
     Route::post('/imagedel', [App\Http\Controllers\Tenants\GeneralController::class, 'deleteImage']);
-
+    Route::get('/get_expiry', [SubscriptionController::class, 'returnDayEnd']);
+    Route::get('/get_invoices', [SubscriptionController::class, 'getInvoices']);
     // CVs
     Route::post('/cvexperience', [App\Http\Controllers\Tenants\CVExperienceController::class, 'store']);
     Route::put('/cvexperience/{expo}', [App\Http\Controllers\Tenants\CVExperienceController::class, 'update']);
@@ -129,12 +133,12 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::put('/license/{ref}', [App\Http\Controllers\Tenants\LicenseController::class, 'update']);
     Route::get('/license', [App\Http\Controllers\Tenants\LicenseController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::delete('/license/{expo}', [App\Http\Controllers\Tenants\LicenseController::class, 'destroy']);
-    
+
     Route::post('/miniblog', [App\Http\Controllers\Tenants\MiniBlogController::class, 'store']);
     Route::put('/miniblog/{ref}', [App\Http\Controllers\Tenants\MiniBlogController::class, 'update']);
     Route::get('/miniblog', [App\Http\Controllers\Tenants\MiniBlogController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::delete('/miniblog/{expo}', [App\Http\Controllers\Tenants\MiniBlogController::class, 'destroy']);
-    
+
 
     Route::delete('/service', [App\Http\Controllers\Tenants\ServiceController::class, 'destroy']);
 

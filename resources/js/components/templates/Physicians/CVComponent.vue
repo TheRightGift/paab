@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="cvDetails" class="modal">
+        <div id="cvDetails" class="modal modal-fixed-footer">
             <div class="modal-content">
                 <div v-show="preview === '1'">
                     <section class="intro">
@@ -290,10 +290,6 @@
                     </section>
                 </div>
                 <div v-show="preview === '0'">
-                    <div>
-                        <button class="mb-2 btn waves waves-effect darken-4 text-white right circle modal-close">Close</button>
-                        <button class="mb-2 btn waves waves-effect text-white right ter mr-2" @click="download">Download</button>
-                    </div>
                     <pdf-vuer-component :pdfUrl="pdfUrl"/>
                     <!-- <section class="intro">
                         <div>
@@ -407,6 +403,10 @@
                         </div>
                     </section> -->
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button class="mb-2 btn waves waves-effect darken-4 text-white circle modal-close">Close</button>
+                <button class="mb-2 btn waves waves-effect text-white ter mr-2" @click="download">Download</button>
             </div>
         </div>
     </div>
