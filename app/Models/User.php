@@ -92,4 +92,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Title::class);
     }
+
+    public function developer()
+    {
+        return $this->hasOne(Developer::class);
+    }
 }

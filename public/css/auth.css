@@ -146,9 +146,10 @@ body {
 #signupProfession,
 #signupZipcode {
     border: 1px solid var(--primary);
-    border-radius: 100px;
+    text-align: center;
+    /* border-radius: 100px;
     padding-left: 9px;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.015em; */
 }
 #signupBtn {
     background: var(--primary);

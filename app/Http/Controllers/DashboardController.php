@@ -27,6 +27,9 @@ class DashboardController extends Controller
             } else if(auth()->user()->can('run_superAdmin_ops')) {
                 // redirect to super admin
                 return redirect('/supre/dashboard');
+            } else if(auth()->user()->can('run_dev_ops')) {
+                // redirect to super admin
+                return redirect('/developers/dashboard');
             } else {
                 return new Response('Unauthorized access', 401);
             }
