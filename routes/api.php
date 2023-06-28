@@ -92,7 +92,7 @@ Route::group(['middleware' => ['auth.api']], function() {
     Route::get('/check_password', [App\Http\Controllers\AuthController::class, 'check_password']);
     Route::post('/sendClaimMail', [TenantController::class, 'sendEmail']);
 
-    Route::get('/remove_tenants_with_faultycr8', [MaintenanceController::class, 'checkTenantNRemoveIfBioIsEmpty'])->middleware('can:run_superAdmin_ops');
+    // Route::get('/remove_tenants_with_faultycr8', [MaintenanceController::class, 'checkTenantNRemoveIfBioIsEmpty'])->middleware('can:run_superAdmin_ops');
     Route::get('/get_tenants_with_faultycr8', [MaintenanceController::class, 'loopThruTenantsWithFaultyCr8'])->middleware('can:run_superAdmin_ops');
     Route::get('/remove_tenant_with_faultycr8/{id}', [MaintenanceController::class, 'removeUser'])->middleware('can:run_superAdmin_ops');
     Route::get('/getSubscribers', [SubscriptionController::class, 'getSubscribers'])->middleware('can:run_superAdmin_ops');

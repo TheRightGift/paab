@@ -32,7 +32,7 @@ class WebsiteLive extends Mailable
     {
         return new Envelope(
             subject: 'Succesful Subscription ',
-            from: new Address('admin@whitecoatdomain.com', 'White Coat Domain'),
+            // from: new Address('admin@whitecoatdomain.com', 'White Coat Domain'),
         );
     }
 
