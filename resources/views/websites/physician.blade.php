@@ -9,7 +9,7 @@
     <meta name="robots" content="all">
     <title>{{$pageTitle ?? $template}}</title>
     <!-- SEO -->
-    <meta name="keywords" content="{{('Brand Website of '.$pageTitle )}}">
+    <meta name="keywords" content="{{('Brand Website of '.($pageTitle ?? $template) )}}">
     <meta name="description" content="{{ $meta['description'] }}">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
     <meta property="og:image" content="{{ url()->full().$meta['image'] }}">
     <meta content="400" property="og:image:width">
     <meta content="400" property="og:image:height">
-    <meta content="{{ ('An image of '. $pageTitle ) }}" property="og:image:alt">
+    <meta content="{{ ('An image of '. ($pageTitle ?? $template) ) }}" property="og:image:alt">
 
     <link rel="shortcut icon" href="{{ ('/media/tenants/'.$tenantID.'/img/favicon.png') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
