@@ -191,7 +191,9 @@ body {
 /* #feeds {
     background-color: var(--primary);
 } */
-
+.relative {
+    position: relative;
+}
 .navbar {
     position: fixed;
     z-index: 100;
@@ -284,7 +286,7 @@ a.loginLink:hover {
     border-left: var(--primary);
 }
 
-/* Customer Support Div */
+/* Customer Support Div on /templates page*/
 .cusSupportDiv {
     background: var(--primary);
     box-shadow: 0px 9px 5px rgba(0, 0, 0, 0.25);
@@ -342,208 +344,6 @@ a.loginLink:hover {
     margin-bottom: 0.8rem;
 }
 
-/* Home FOOTER */
-
-.footerInnerDiv {
-    width: 80%;
-    margin: 15vh auto 0 auto;
-}
-.contactTitle,
-.locTitle,
-.socialTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1.25rem;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    color: #000000;
-}
-.contactTxt {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: lighter;
-    font-size: 1.25rem;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    text-decoration-line: underline;
-    color: var(--primary);
-}
-.locTxt {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.25rem;
-    line-height: 24px;
-    letter-spacing: -0.015em;
-    text-decoration-line: underline;
-    color: var(--primary);
-    text-decoration: none;
-}
-.socialMedIcons {
-    color: var(--primary);
-    font-size: 25px;
-    margin-right: 15px;
-}
-.footerContainDiv {
-    margin-left: 10vw;
-}
-.copyWrite {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 24px;
-    text-align: center;
-    letter-spacing: -0.015em;
-    color: rgba(0, 0, 0, 0.8);
-    margin: 12vh 0 2vh 0;
-    padding: 0 4rem;
-}
-
-/* Template Navigation */
-.userTempMainDiv {
-    display: flex;
-    overflow: auto;
-    justify-content: space-around;
-}
-
-
-/* Proname Page Section */
-#proBtn {
-    font-family: "Montserrat", sans-serif;
-    text-transform: capitalize;
-    background: var(--primary);
-    border-radius: 10px;
-    /* margin-left: 1vw; */
-    width: 98%;
-    height: 6vh;
-    margin-left: 1vw;
-}
-
-/* Proname Taken Page Section */
-.pronameTakenTxt {
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: -0.015em;
-    margin-top: 3vh;
-    margin-left: 0.5vw;
-    margin-bottom: 2vh;
-}
-.domainSugDiv {
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 100px;
-    padding-left: 9px;
-    letter-spacing: -0.015em;
-    height: 6vh;
-    display: flex;
-}
-.domainNameSug {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: -0.015em;
-    color: #000000;
-}
-.domainNameSugBtn {
-    background: var(--primary);
-    border-radius: 6px;
-    color: white;
-    font-family: "Montserrat", sans-serif;
-    height: 4.8vh;
-    width: 7vw;
-    text-align: center;
-    line-height: 38px;
-    margin-left: auto;
-    margin-right: 1vw;
-    margin-top: 0.4vh;
-}
-.errorInnerDiv {
-    position: absolute;
-    top: 57vh;
-    right: 25vw;
-}
-#errorAlertImg {
-    position: absolute;
-    top: 24vh;
-    right: 25vw;
-}
-.errorTitle {
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2.5rem;
-    line-height: 24px;
-    text-align: center;
-    letter-spacing: -0.015em;
-    color: var(--primary);
-    margin: 5vh 0 2vh 0;
-}
-.errorTxt {
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1rem;
-    line-height: 24px;
-    text-align: center;
-    letter-spacing: -0.015em;
-    color: rgba(0, 0, 0, 0.91);
-    margin: 0;
-}
-.modalImgDiv {
-    width: 15%;
-    margin: auto;
-}
-
-#errArlCancelIcon,
-#errArlCancelIcon1,
-#errArlCancelIcon2,
-#errArlCancelIcon3 {
-    margin-top: 2vh;
-    margin-left: 2vw;
-    cursor: pointer;
-}
-#errAltBtn {
-    background: #1e1e1e;
-    border-radius: 6px;
-    font-family: "Montserrat", sans-serif;
-    height: 6vh;
-}
-
-.brandUsedAltBoxTxt {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 21px;
-    color: #ffffff;
-    text-align: center;
-    margin-top: 4vh;
-}
-
-.insertOtpTxt {
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 21px;
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 3vh;
-    margin-top: 5vh;
-}
 
 /* Insert OTP Section */
 .row .col.s1.otpDigits {
@@ -556,6 +356,7 @@ a.loginLink:hover {
 }
 
 
+/* TemplateComponent */
 
 /* Page Arrow Up Icon */
 .fixedArrowUpIconBtn {
@@ -623,13 +424,10 @@ a.loginLink:hover {
 
 #proImg {
     font-size: 4rem;
-    /* margin-left: 0.5vw;
-    margin-top: 0.2vh; */
     color: rgba(0, 0, 0, 0.5);
 }
 
 .dashLeftBarInnerDiv {
-    /* width: 12%; */
     margin: 5vh auto 0 auto;
 }
 
@@ -706,13 +504,6 @@ a.loginLink:hover {
     font-size: 3rem;
     color: rgba(0, 0, 0, 0.5);
 }
-
-/* Client Templates Section */
-/* .clientTempPageImgSmDv {
-    margin-bottom: 0.2vh;
-    padding-bottom: 5vh;
-} */
-
 
 
 
@@ -1186,7 +977,60 @@ div .col .s9 input.clientCreatePortInput1 {
 .adminClientSearchInputIconsDiv {
     margin-left: 1vw;
 }
+.btn {
+    background-color: var(--sec);
+}
+.addReviewProDiv {
+    background: #d9d9d9;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: auto;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addReviewProMainDiv {
+    width: 20%;
+    margin: 0 auto 6vh auto;
+}
+.material-icons.addReviewProImg {
+    font-size: 3.5rem;
+    /* margin-left: 0.8vw;
+    margin-top: 0.9vh; */
+    color: rgba(0, 0, 0, 0.5);
+}
+.spinner-layer {
+    border-color: var(--white);
+}
 
+/* ********************************************************************************************** */
+/* HeaderComponent Logo Styling for HomepageComponent*/
+
+img.primaryLogo {
+    width: 4.2%;
+    padding: .5rem 0;
+}
+
+img.whiteLogo {
+    width: 10%;
+}
+
+/* HeaderComponent Logo Styling for TemplateComponent*/
+img.tempNavLogo {
+    width: 26%;
+    padding: 0.5rem 0;
+}
+
+img.tempMainLogo {
+    width: 50%;
+}
+
+/* Auth Logo Styling */
+img.authLogo {
+    width: 20%;
+}
 /* Media Query on Medium Device */
 @media screen and (max-width: 992px) and (min-width: 640px) {
     h1.center {
@@ -1210,42 +1054,11 @@ div .col .s9 input.clientCreatePortInput1 {
     .sideNav {
         z-index: 100;
     }
-    /* #sideNavImgDiv {
-        height: 25vh;
-    } */
-    /* #sideNavLinkMgTp {
-        margin-top: 27vh;
-        margin-top: 2vh;
-    }
-    #navLinks {
-        font-weight: 600;
-        font-size: 1.3125rem;
-        color: #ffffff;
-        letter-spacing: 0.5px;
-        margin-left: 3vw;
-    }
-    #loginLink {
-        border: 1px solid var(--primary);
-        border-radius: 6px;
-        width: 130px;
-        height: 40px;
-        margin-top: 12px;
-        text-align: center;
-        line-height: 33px;
-        font-weight: 600;
-        font-size: 1.25rem;
-        color: var(--primary);
-        background-color: var(--white);
-        margin-left: 20px;
-    } */
     .circlDiv1 {
         width: 0vw;
         height: 0vh;
         border: none;
         border-radius: 0;
-        /* border-top-left-radius: 0;
-        border-bottom-left-radius: 0; */
-        /* border-left: none; */
         position: absolute;
         top: 0;
         left: 0;
@@ -1876,6 +1689,18 @@ div .col .s9 input.clientCreatePortInput1 {
     img.sidenavTempLogo {
         width: 7.5%;
     }
+
+    /* Changed mobile sidenav list icon from id -> class and it's styling */
+    .material-icons.sideNavIcon {
+        font-size: 3.5rem;
+        color: var(--primary);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        width: 6vw;
+        height: 6.5vh;
+        line-height: 52px;
+    }
+
 }
 
 /* Media Query on small device */
@@ -2771,42 +2596,7 @@ div .col .s9 input.clientCreatePortInput1 {
     img.sidenavTempLogo {
         width: 12.5%;
     }
-}
 
-
-/* Navs */
-
-/* Media Query for Medium Devices */
-@media screen and (max-width: 992px) and (min-width: 640px) {
-
-
-    /* Changed mobile sidenav list icon from id -> class and it's styling */
-    .material-icons.sideNavIcon {
-        font-size: 3.5rem;
-        color: var(--primary);
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 50%;
-        width: 6vw;
-        height: 6.5vh;
-        line-height: 52px;
-    }
-
-    /* Id for mobile sidenav list icon not needed again, it's been changed to class */
-    /* #sideNavIcon {
-        font-size: 3.5rem;
-        color: #7746ff;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 50%;
-        width: 6vw;
-        height: 6.5vh;
-        line-height: 52px;
-    } */
-}
-
-
-
-/* Media Query for Small Devices */
-@media screen and (max-width: 640px) {
     /* Centered Client sidenav profile image */
     .mobileNavProImg {
         margin: 0 auto 4vh auto;
@@ -2854,33 +2644,6 @@ div .col .s9 input.clientCreatePortInput1 {
     } */
 }
 
-.btn {
-    background-color: var(--sec);
-}
-.addReviewProDiv {
-    background: #d9d9d9;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: auto;
-    display: inline-block;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.addReviewProMainDiv {
-    width: 20%;
-    margin: 0 auto 6vh auto;
-}
-.material-icons.addReviewProImg {
-    font-size: 3.5rem;
-    /* margin-left: 0.8vw;
-    margin-top: 0.9vh; */
-    color: rgba(0, 0, 0, 0.5);
-}
-.spinner-layer {
-    border-color: var(--white);
-}
 @media only screen and (min-width: 601px) {
     nav {
         height: 64px;
@@ -2888,30 +2651,4 @@ div .col .s9 input.clientCreatePortInput1 {
         position: fixed;
         z-index: 1;
     }
-}
-/* ********************************************************************************************** */
-/* HeaderComponent Logo Styling for HomepageComponent*/
-
-img.primaryLogo {
-    width: 4.2%;
-    padding: .5rem 0;
-}
-
-img.whiteLogo {
-    width: 10%;
-}
-
-/* HeaderComponent Logo Styling for TemplateComponent*/
-img.tempNavLogo {
-    width: 26%;
-    padding: 0.5rem 0;
-}
-
-img.tempMainLogo {
-    width: 50%;
-}
-
-/* Auth Logo Styling */
-img.authLogo {
-    width: 20%;
 }
