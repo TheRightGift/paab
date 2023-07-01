@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\WebhookController;
+use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\TenantClaimController;
 
 /*
@@ -152,7 +154,20 @@ Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(functio
         }
     });
 });
-
+/**
+ * Newly Added for developer
+ */
+Route::prefix('developers')->group(function () {
+    Route::get('auth/signup', [DeveloperController::class, 'showSignupForm']);
+    Route::middleware(['auth', 'can:run_dev_ops'])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('developers.dashboard');
+        });
+        Route::get('/projects', function () {
+            return view('developers.project');
+        });
+    });
+});
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/user/invoice/{invoice}/{user}', function (Request $request, $invoiceId) {
     $user = User::find($request->user);
@@ -173,6 +188,9 @@ Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(functio
     Route::get('/messages', function () {
         return view('admin.messages');
     });
+    Route::get('/developers', function () {
+        return view('admin.developers');
+    });
     Route::get('/settings', function () {
         return view('admin.settings');
     });
@@ -190,6 +208,9 @@ Route::prefix('supre')->middleware(['auth', 'can:run_superAdmin_ops'])->group(fu
     });
     Route::get('/admins', function() {
         return view('super.admins');
+    });
+    Route::get('/developers', function () {
+        return view('admin.developers');
     });
     Route::get('/template', function() {
         return view('super.template');

@@ -160,6 +160,27 @@
                         url: "/support",
                         role: "Client",
                     },
+                    {
+                        id: 12,
+                        title: "Developers",
+                        icon: "laptop_windows",
+                        url: "/developers",
+                        role: "Admin",
+                    },
+                    {
+                        id: 13,
+                        title: "Developers",
+                        icon: "laptop_windows",
+                        url: "/developers",
+                        role: "SuperAdmin",
+                    },
+                    {
+                        id: 14,
+                        title: "Projects",
+                        icon: "work",
+                        url: "/projects",
+                        role: "Developer",
+                    },
                 ],
                 prefix: "/client",
                 shown: false,
@@ -210,6 +231,8 @@
                             this.prefix = "/client";
                         } else if (res.data.role == "SuperAdmin") {
                             this.prefix = "/supre";
+                        } else if (res.data.role == "Developer") {
+                            this.prefix = "/developers";
                         }
                     })
                     .catch((err) => {

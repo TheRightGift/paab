@@ -20928,6 +20928,19 @@ app.component('mail-component', (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncC
 app.component("password-change-component", (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_templates_Physicians_Settings_tempSettings_PasswordChange_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/templates/Physicians/Settings/tempSettings/PasswordChange.vue */ "./resources/js/components/templates/Physicians/Settings/tempSettings/PasswordChange.vue"));
 }));
+// Developer
+app.component("dev-signup-component", (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_developers_Signup_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/developers/Signup.vue */ "./resources/js/components/developers/Signup.vue"));
+}));
+app.component("developer-client-component", (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_shared_Developer_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/shared/Developer.vue */ "./resources/js/components/shared/Developer.vue"));
+}));
+app.component('dev-dashboard-component', (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_developers_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/developers/Dashboard */ "./resources/js/components/developers/Dashboard.vue"));
+}));
+app.component('dev-project-component', (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_developers_Project_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/developers/Project */ "./resources/js/components/developers/Project.vue"));
+}));
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -49780,7 +49793,7 @@ const toJSONObject = (obj) => {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_HomeComponent_vue":1,"resources_js_components_auth_LoginComponent_vue":1,"resources_js_components_auth_ResetPasswordComponent_vue":1,"resources_js_components_auth_StartedComponent_vue":1,"resources_js_components_TemplateComponent_vue":1,"resources_js_components_client_Dashboard_vue":1,"resources_js_components_client_WebsitesComponent_vue":1,"resources_js_components_client_Settings_vue":1,"resources_js_components_client_SupportComponent_vue":1,"resources_js_components_client_SinglemailComponent_vue":1,"resources_js_components_super_Dashboard_vue":1,"resources_js_components_super_AdminsComponent_vue":1,"resources_js_components_super_Template_vue":1,"resources_js_components_super_MailComponent_vue":1,"resources_js_components_super_SinglemailComponent_vue":1,"resources_js_components_super_SettingsComponent_vue":1,"resources_js_components_super_ClientComponent_vue":1,"resources_js_components_admin_Dashboard_vue":1,"resources_js_components_admin_Client_vue":1,"resources_js_components_shared_TempPasswordChange_vue":1,"resources_js_components_admin_Template_vue":1,"resources_js_components_admin_Settings_vue":1,"resources_js_components_templates_Physicians_MainTemplateComponent_vue":1,"resources_js_components_templates_Physicians_Settings_SettingsComponent_vue":1,"resources_js_components_shared_Messages_vue":1,"resources_js_components_templates_Physicians_Settings_tempSettings_PasswordChange_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_HomeComponent_vue":1,"resources_js_components_auth_LoginComponent_vue":1,"resources_js_components_auth_ResetPasswordComponent_vue":1,"resources_js_components_auth_StartedComponent_vue":1,"resources_js_components_TemplateComponent_vue":1,"resources_js_components_client_Dashboard_vue":1,"resources_js_components_client_WebsitesComponent_vue":1,"resources_js_components_client_Settings_vue":1,"resources_js_components_client_SupportComponent_vue":1,"resources_js_components_client_SinglemailComponent_vue":1,"resources_js_components_super_Dashboard_vue":1,"resources_js_components_super_AdminsComponent_vue":1,"resources_js_components_super_Template_vue":1,"resources_js_components_super_MailComponent_vue":1,"resources_js_components_super_SinglemailComponent_vue":1,"resources_js_components_super_SettingsComponent_vue":1,"resources_js_components_super_ClientComponent_vue":1,"resources_js_components_admin_Dashboard_vue":1,"resources_js_components_admin_Client_vue":1,"resources_js_components_shared_TempPasswordChange_vue":1,"resources_js_components_admin_Template_vue":1,"resources_js_components_admin_Settings_vue":1,"resources_js_components_templates_Physicians_MainTemplateComponent_vue":1,"resources_js_components_templates_Physicians_Settings_SettingsComponent_vue":1,"resources_js_components_shared_Messages_vue":1,"resources_js_components_templates_Physicians_Settings_tempSettings_PasswordChange_vue":1,"resources_js_components_developers_Signup_vue":1,"resources_js_components_shared_Developer_vue":1,"resources_js_components_developers_Dashboard_vue":1,"resources_js_components_developers_Project_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

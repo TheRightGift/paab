@@ -1,0 +1,58 @@
+<template>
+    <div>
+        <div class="content relative">
+            <img class="doctorTypes" :src="'/media/img/'+src" />
+
+            <div class="arrowBg d-flex justify-center align-center"><img src="/media/img/arrow-right.png" /></div>
+            <div class="title">{{ title }}</div>
+        </div>
+    </div>
+</template>
+<style scoped>
+    .doctorTypes {
+        width: 256px;
+        height: 319px;
+        border-radius: 10px;
+    }
+    .arrowBg {
+        width: 56px;
+        height: 45px;
+        left: 23px;
+        top: 255px;
+        position: absolute;
+        background: var(--pri);
+        border-radius: 5px;
+    }
+    .title {
+        left: 5px;
+        top: 334px;
+        position: absolute;
+        color: rgba(0, 0, 0, 0.726);
+        font-size: 1.2rem;
+        font-family: Montserrat;
+        font-weight: 500;
+        word-wrap: break-word;
+    }
+    .arrowBg:hover {
+        width: 116px; 
+        height: 45px;
+        background: var(--sec);
+        transition: transform 0.5s ease;
+    }
+    .arrowBg:hover img {
+        transform: scale(1.2);
+        transition: transform 0.3s ease;
+        width: 51.79px;
+    }
+    .arrowBg img {
+        width: 30px;
+    }
+</style>
+<script>
+    export default {
+        props: {
+            src: String,
+            title: String,
+        }
+    };
+</script>

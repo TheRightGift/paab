@@ -195,65 +195,10 @@ class TenantController extends Controller
         return view('websites.tempSettings.public-feature', compact('user', 'tenantID', 'templateCSS'));
     }
 
-    public function services_rendered(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
-    {
-        $user = tenant()->user;
-        $tenancies = new Tenant();
-        $tenant = $tenancies->find(tenant('id'));
-        $templateCSS = $tenant->template->styleFile;
-        $tenantID = strtolower(tenant('id')); // For getting the file location;
-        return view('websites.tempSettings.services', compact('user', 'tenantID', 'templateCSS'));
-    }
-
     public function passchange(Request $request) {
         $user = tenant()->user;
         $tenantID = strtolower(tenant('id')); // For getting the file location;
         return view('websites.tempSettings.changepassview', compact('user', 'tenantID'));
-    }
-
-    public function milestone(Request $request) {
-        $user = tenant()->user;
-        $tenancies = new Tenant();
-        $tenant = $tenancies->find(tenant('id'));
-        $templateCSS = $tenant->template->styleFile;
-        $tenantID = strtolower(tenant('id')); // For getting the file location;
-        return view('websites.tempSettings.milestones', compact('user', 'tenantID', 'templateCSS'));
-    }
-
-    public function social(Request $request) {
-        $user = tenant()->user;
-        $tenancies = new Tenant();
-        $tenant = $tenancies->find(tenant('id'));
-        $templateCSS = $tenant->template->styleFile;
-        $tenantID = strtolower(tenant('id')); // For getting the file location;
-        return view('websites.tempSettings.socialmedia', compact('user', 'tenantID', 'templateCSS'));
-    }
-
-    public function general(Request $request) {
-        $user = tenant()->user;
-        $tenancies = new Tenant();
-        $tenant = $tenancies->find(tenant('id'));
-        $templateCSS = $tenant->template->styleFile;
-        $tenantID = strtolower(tenant('id')); // For getting the file location;
-        return view('websites.tempSettings.general', compact('user', 'tenantID', 'templateCSS'));
-    }
-
-    public function biography(Request $request) {
-        $user = tenant()->user;
-        $tenancies = new Tenant();
-        $tenant = $tenancies->find(tenant('id'));
-        $templateCSS = $tenant->template->styleFile;
-        $tenantID = strtolower(tenant('id')); // For getting the file location;
-        return view('websites.tempSettings.biography', compact('user', 'tenantID', 'templateCSS'));
-    }
-
-    public function cv_generator(Request $request) {
-        $user = tenant()->user;
-        $tenancies = new Tenant();
-        $tenant = $tenancies->find(tenant('id'));
-        $templateCSS = $tenant->template->styleFile;
-        $tenantID = strtolower(tenant('id')); // For getting the file location;
-        return view('websites.tempSettings.cv_generator', compact('user', 'tenantID', 'templateCSS'));
     }
 
 
@@ -261,7 +206,7 @@ class TenantController extends Controller
         // Get the authenticaed user
         // When coming from mobile request for user->id
         $user = auth()->user()->id;
-        $tenancies = Tenant::where('user_id', $user)->with('domains', 'template', 'template.profession', 'order')->latest()->paginate(10);
+        $tenancies = Tenant::where('user_id', $user)->with('domains', 'template', 'template.profession', 'order')->latest()->paginate(50);
         // Sort by alphabetical order for domain only and email
 
         // Filter by assigned order

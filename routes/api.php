@@ -9,16 +9,14 @@ use App\Http\Controllers\TenantController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\DeveloperProjectController;
 use App\Http\Controllers\DomainCheckerController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\SupportController;
-use App\Http\Controllers\TenantClaimController;
-
-
-use App\Http\Controllers\Tenants\BioController;
 use App\Http\Middleware\AuthBasicChecker;
 
 /*
@@ -57,6 +55,7 @@ Route::group(['prefix' => 'services', 'middleware' => 'client'], function() {
     Route::get('/remove_tenant_with_faultycr8/{id}', [MaintenanceController::class, 'removeUser']);
     Route::get('/remove_tenants_with_faultycr8', [MaintenanceController::class, 'checkTenantNRemoveIfBioIsEmpty']);
     Route::get('/remove_tenant/{id}', [MaintenanceController::class, 'removeTenant']);
+    Route::get('/tenants', [MaintenanceController::class, 'getTenants']);
 });
 
 Route::group(['middleware' => ['auth.api']], function() {
@@ -64,6 +63,13 @@ Route::group(['middleware' => ['auth.api']], function() {
     Route::get('/user', function(Request $request) {
         return $request->user();
     });
+    // Developer
+    Route::get('/developers', [DeveloperController::class, 'index']);
+    Route::get('/show/{id}', [DeveloperController::class, 'show']);
+    Route::put('/verify_dev/{id}', [DeveloperController::class, 'verifyDev']);
+    Route::post('/store', [DeveloperController::class, 'store']);
+    Route::post('/store_project', [DeveloperProjectController::class, 'store']);
+
     Route::get('/userTitle/{id}', [TitleController::class, 'getUserProfession']);
     Route::get('tenancies', [App\Http\Controllers\TenantController::class, 'tenancies']);
     Route::get('/userLocationDets/{id}', [App\Http\Controllers\CountryController::class, 'getRelation']);

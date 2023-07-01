@@ -60,12 +60,12 @@ class StripeEventListener
                 'updated_at' => now(),
             ]);
             $metadata = $data['lines']['data'][0]['metadata'];
-            $orders = AdminClientOrder::where([['tenant_id', $metadata['tenant_id']], ['email', $metadata['email']]])->first();
-            $orders->claimed = 1;
-            $orders->save();
-            $userToUpdate = User::where('stripe_id', $data['customer'])->first();
-            $userToUpdate->registration_completed = 'Active';
-            $userToUpdate->save();
+            // $orders = AdminClientOrder::where([['tenant_id', $metadata['tenant_id']], ['email', $metadata['email']]])->first();
+            // $orders->claimed = 1;
+            // $orders->save();
+            // $userToUpdate = User::where('stripe_id', $data['customer'])->first();
+            // $userToUpdate->registration_completed = 'Active';
+            // $userToUpdate->save();
             // Send a message to user about payment succeeded
             $dataForMail = [
                 'names' => $metadata['firstname'].' '.$metadata['lastname'],

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Services\Auth;
 
 use App\Mail\DeviceChanged;
@@ -18,92 +19,108 @@ use App\Models\Verifier;
 
 use Carbon\Carbon;
 use Cookie;
+
 $mail = '';
 
-class EmailAuthService {
-
+class EmailAuthService
+{
     protected function dataToValidate(Request $request)
-	{
-		$validator = Validator::make($request->all(), [
-			'firstname' => 'nullable',
+    {
+        $validator = Validator::make($request->all(), [
+            'firstname' => 'nullable',
             'lastname' => 'nullable',
             'othername' => 'nullable',
             'username' => 'nullable',
-            'password' => 'nullable|confirmed', 
+            'password' => 'nullable|confirmed',
             'phone' => 'nullable',
             'email' => 'nullable',
             'avatar' => 'nullable',
             'gender' => 'nullable',
             'plan' => 'nullable',
-            'DOB' => 'nullable|date'  
-		]);
+            'DOB' => 'nullable|date'
+        ]);
         return $validator;
     }
 
     protected function emailDataValidation(Request $request)
-	{
-		$validator = Validator::make($request->all(), [
+    {
+        $validator = Validator::make($request->all(), [
             'email' => 'email|required',
-		]);
+        ]);
         return $validator;
     }
 
     protected function passwordResetDataValidation(Request $request)
-	{
-		$validator = Validator::make($request->all(), [
+    {
+        $validator = Validator::make($request->all(), [
             'email' => 'email|required',
             'password' => 'required',
-		]);
+        ]);
         return $validator;
     }
 
     protected function regDataToValidate(Request $request)
-	{
-		$validator = Validator::make($request->all(), [
-			'firstname' => 'required',
+    {
+        $validator = Validator::make($request->all(), [
+            'firstname' => 'required',
             'lastname' => 'required',
             // 'othername' => 'nullable',
-            'zipcode' => 'required',
+            'zipcode' => 'nullable',
             'phone' => 'required|unique:users',
             'email' => 'email|required|unique:users',
             'password' => 'required',
-            'title_id' => 'required',
-            'city_id' => 'required',
+            // 'city_id' => 'required',
+            'role' => 'nullable',
             'gender' => 'required'
-		]);
+        ]);
         return $validator;
     }
 
-    public function login(Request $request) : array | Request
+    public function login(Request $request): array | Request
     {
-        if ($request->has('email')){
+        if ($request->has('email')) {
             $credentials = [
                 'email' => $request->email,
                 'password' => $request->password,
             ];
 
             if (Auth::attempt($credentials)) {
-                $accessToken = auth()->user()->createToken('accessToken')->accessToken;
-                $user = User::find(auth()->user()->id);
-                $user->visits = $user->visits + 1;
-                $user->accessToken = $accessToken;
-                $user->device_id = $this->getUserAgent();
-        
-                $user->save();
-                return ['status' => 200, 'user' => auth()->user(), 'access_token' => $accessToken];
-            }
-            else {
+                $user = Auth::user();
+                if ($user->role === 'Developer' && $user->registration_completed === 'Active') {
+                    return ['status' => 200, 'user' => auth()->user(), 'access_token' => $this->saveUserAgent()];
+                    $this->saveUserAgent();
+                } elseif ($user->role !== 'Developer') {
+                    $this->saveUserAgent();
+                    return ['status' => 200, 'user' => auth()->user(), 'access_token' => $this->saveUserAgent()];
+                } else {
+                    Auth::logout();
+                    return ["status" => 404, "error" => "Invalid Credentials Or Account Not yet active"];
+                }
+
+            } else {
                 return ["status" => 404, "error" => "Invalid Credentials"];
             }
         } else {
             return ["status" => 404, "error" => "Invalid Credentials"];
         }
- 
-        
-       
+
+
+
+    }
+    private function saveUserAgent()
+    {
+        $accessToken = auth()->user()->createToken('accessToken')->accessToken;
+        $user = User::find(auth()->user()->id);
+        $user->visits = $user->visits + 1;
+        $user->accessToken = $accessToken;
+        $user->device_id = $this->getUserAgent();
+
+        $user->save();
+        return $accessToken;
     }
 
-    public function pre_login(Request $request) {
+    public function pre_login(Request $request)
+    {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -119,12 +136,10 @@ class EmailAuthService {
                         $serverAgent = $_SERVER['HTTP_USER_AGENT'];
                         Mail::to($user->email)->send(new DeviceChanged($otp, $serverAgent));
                         return ['status' => 422, 'message' => 'Device changed', 'otp' => $crypted];
-                    }
-                    else {
+                    } else {
                         return $this->login($request);
                     }
-                }
-                else {
+                } else {
                     return $this->login($request);
                 }
             } else {
@@ -135,18 +150,19 @@ class EmailAuthService {
             $response = ['status' => 404, "error" => 'Invalid Credentials'];
             return $response;
         }
-        
+
 
         // if($user->device_id === $serverDeviceID) {
         //     // Login
-        // } 
+        // }
         // else {
         //     // Send an otp to user email
-        //     // If 
+        //     // If
         // }
     }
 
-    private function getUserAgent() {
+    private function getUserAgent()
+    {
         $serverAgent = $_SERVER['HTTP_USER_AGENT'];
         $firstParenthesis = strpos($serverAgent, '(');
         $secondParenthesis = strpos($serverAgent, ')');
@@ -154,18 +170,23 @@ class EmailAuthService {
         return $string;
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $regData = $this->regDataToValidate($request);
 
-        if ($regData->fails()){
+        if ($regData->fails()) {
             return ['status' => 501, 'error' => $regData->errors()->all()];
         } else {
             $findUser = User::where('email', $request->email)->get();
-            
-            if(count($findUser) < 1){
+
+            if(count($findUser) < 1) {
                 $input = $regData->validated();
                 $input['password'] = Hash::make($request->password);
                 $user = User::create($input);
+                // if ($input['role'] == 'Developer') {
+                //     dd('Developer');
+                //     // Send a mail later
+                // }
 
                 $accessToken = $user->createToken('accessToken')->accessToken;
 
@@ -176,14 +197,15 @@ class EmailAuthService {
         }
     }
 
-    public function updateEmailValidation($id){
+    public function updateEmailValidation($id)
+    {
         $user = new User();
         $userDetails = $user->where('id', $id)->first();
 
         if (!empty($userDetails)) {
             $now = Carbon::now()->timestamp;
             $updateUser = $userDetails->update(['email_verified_at' => $now]);
-            if ($updateUser == true){
+            if ($updateUser == true) {
                 return ['status' => 200, 'user' => $updateUser];
             }
         } else {
@@ -191,93 +213,98 @@ class EmailAuthService {
         }
     }
 
-    public function verifyUserEmail($request){
+    public function verifyUserEmail($request)
+    {
         $data = $this->emailDataValidation($request);
-        if ($data->fails()){
+        if ($data->fails()) {
             return response()->json(['errors' => $data->errors()->all()]);
         } else {
             $input = $data->validated();
             $userVerified = $this->confirmEmail($input['email']);
 
-            if($userVerified == 200){//verified
+            if($userVerified == 200) {//verified
                 $otp = $this->genOTP();
                 return ['status' => 200, 'otp' => $otp];
                 // TODO: mail OTP to $input['email']
-                
+
                 // Create verifier Mode, Migration and save otp against email
             } else {//!verified
                 return ['status' => 404, 'error' => 'User with this email not found.'];
             }
-        }        
+        }
     }
 
-    public function verifyEmailForRegistration($request){
+    public function verifyEmailForRegistration($request)
+    {
         $data = $this->emailDataValidation($request);
-        if ($data->fails()){
+        if ($data->fails()) {
             return response()->json(['errors' => $data->errors()->all()]);
         } else {
             $input = $data->validated();
             $userVerified = $this->confirmEmail($input['email']);
 
-            if($userVerified == 404){//verified that email doesnt exist
+            if($userVerified == 404) {//verified that email doesnt exist
                 $otp = $this->genOTP();
                 $crypted = Crypt::encryptString($otp);
                 $this->maileOTP($input['email'], $otp);
-                
+
                 return ['status' => 200, 'otp' => $crypted];
             } else {//!verified
                 return ['status' => 404, 'error' => 'Account with this email exists.'];
             }
-        }        
+        }
     }
 
-    public function verifyEmailForWebsiteEdit($request){
+    public function verifyEmailForWebsiteEdit($request)
+    {
         $data = $this->emailDataValidation($request);
-        if ($data->fails()){
+        if ($data->fails()) {
             return response()->json(['errors' => $data->errors()->all()]);
         } else {
             $input = $data->validated();
             $userVerified = $this->confirmEmailOnAdminClientTable($input['email']);
-            if($userVerified == 200){//verified that email does exist
+            if($userVerified == 200) {//verified that email does exist
                 $otp = $this->genOTP();
                 $crypted = Crypt::encryptString($otp);
                 $this->maileOTP($input['email'], $otp);
-                
+
                 return ['status' => 200, 'otp' => $crypted];
             } else {//!verified
                 return ['status' => 404, 'error' => 'Account with this email exists.'];
             }
-        }        
+        }
     }
 
-    public function resetPassword($request){
+    public function resetPassword($request)
+    {
         $data = $this->passwordResetDataValidation($request);
-        if ($data->fails()){
+        if ($data->fails()) {
             return ['status' => 501, 'error' => $data->errors()->all()];
         } else {
             $input = $data->validated();
             $verifyUserEmail = $this->confirmEmail($input['email']);
 
-            if($verifyUserEmail['status'] == 200){//verified
+            if($verifyUserEmail['status'] == 200) {//verified
                 $encryptedPass = bcrypt($request->password);
                 $updateUser = $verifyUserEmail['user']->update(['password' => $encryptedPass]);
-                if ($updateUser == true){
+                if ($updateUser == true) {
                     return ['status' => 200, 'msg' => 'Password successfully reset.'];
                 }
             } else {//!verified
                 return ['status' => 404, 'error' => 'User with this email not found.'];
             }
-        }  
+        }
     }
 
-    public function sendOtpForUserResetPassword($request){
+    public function sendOtpForUserResetPassword($request)
+    {
         $data = $this->emailDataValidation($request);
-        if ($data->fails()){
+        if ($data->fails()) {
             return ['status' => 501, 'error' => $data->errors()->all()];
         } else {
             $input = $data->validated();
             $verifyUserEmail = $this->confirmEmail($input['email']);
-            if($verifyUserEmail['status'] == 200){//verified
+            if($verifyUserEmail['status'] == 200) {//verified
                 $otp = $this->genOTP();
                 // TODO: Store  the OTP in a verifier TB
                 $verifier = new Verifier();
@@ -285,8 +312,7 @@ class EmailAuthService {
                 $this->maileOTP($input['email'], $otp);
                 if ($existingUserVerifier == null) {
                     return $this->createVerifier($verifier, $verifyUserEmail['user']->id, $otp);
-                }
-                else {
+                } else {
                     return $this->createVerifier($existingUserVerifier, $existingUserVerifier->id, $otp);
                 }
 
@@ -294,19 +320,21 @@ class EmailAuthService {
             } else {//!verified
                 return ['status' => 404, 'error' => 'This email does not exist.'];
             }
-        }  
+        }
     }
 
-    private function createVerifier ($verifier, $user_id, $otp) {
+    private function createVerifier($verifier, $user_id, $otp)
+    {
         $verifier->user_id = $user_id;
         $verifier->otp = $otp;
         $verifier->expiry = Carbon::now()->addMinutes(60);
         $verifier->save();
-        
+
         return ['status' => 200, 'message' => 'OTP Verified'];
     }
 
-    private function confirmEmail($email){
+    private function confirmEmail($email)
+    {
         $user = new User();
         $userEmail = $user->where('email', $email)->first();
 
@@ -317,7 +345,8 @@ class EmailAuthService {
         }
     }
 
-    private function confirmEmailOnAdminClientTable($email) {
+    private function confirmEmailOnAdminClientTable($email)
+    {
         $GLOBALS['mail'] = $email;
         return tenancy()->central(function ($tenant) {
             $adminClientOrders = new AdminClientOrder();
@@ -330,7 +359,8 @@ class EmailAuthService {
         });
     }
 
-    public function verifyOtPs (Request $request) {
+    public function verifyOtPs(Request $request)
+    {
         $veriferData = $request->validate([
             'email' => 'email|required',
             'otp' => 'required'
@@ -340,15 +370,15 @@ class EmailAuthService {
         $checker = $verifier->where([['otp', $request->otp], ['user_id', $userIdToVerify->id]])->first();
         if (!empty($checker)) {
             return ['message' => 'OTP Verified', 'status' => 200];
-        }
-        else {
+        } else {
             return ['message' => 'OTP mismatch', 'status' => 404];
         }
     }
 
-    private function update($request, $id){
+    private function update($request, $id)
+    {
         $data = $this->dataToValidate($request);
-        if ($data->fails()){
+        if ($data->fails()) {
             return response()->json(['errors' => $data->errors()->all()]);
         } else {
             $input = $data->validated();
@@ -357,21 +387,24 @@ class EmailAuthService {
 
             if (!empty($userDetails)) {
                 $updateUser = $userDetails->update($input);
-                if ($updateUser == true){
+                if ($updateUser == true) {
                     return ['status' => 200, 'user' => $updateUser];
                 }
+            } else {
+                return ['status' => 404, 'error'=>'Not Found'];
             }
-            else return ['status' => 404, 'error'=>'Not Found'];
         }
     }
 
-    private function genOTP(){
+    private function genOTP()
+    {
         return sprintf("%06d", mt_rand(1, 999999));
     }
 
-    private function maileOTP($email, $otp) {
+    private function maileOTP($email, $otp)
+    {
         //  Get the $email and $otp generated
-        (new User)->forceFill([
+        (new User())->forceFill([
             'otp' => $otp,
             'email' => $email,
         ])->notify(new MailOTP($otp));
@@ -392,7 +425,7 @@ class EmailAuthService {
             if (Hash::check($old_pass, $password)) {
                 // The passwords match...
                 $data = $request->password;
-                
+
                 $newPass = $request->user()->fill([
                     'password' => Hash::make($data)
                 ])->save();
@@ -400,23 +433,21 @@ class EmailAuthService {
                     'user' => $newPass,
                     'message' => 'Password Changed Successfully'
                 ];
-            }
-            else {
+            } else {
                 return ['error' => $status];
             }
-        }
-        else {
+        } else {
             return response()->json($response);
         }
     }
 
-    public function check_password () {
+    public function check_password()
+    {
         $user = Auth::user();
         if ($user) {
             if (Hash::check($user->email, $user->password)) {
                 return ['status' => 401, 'message' => 'Update password'];
-            }
-            else {
+            } else {
                 return ['status' => 200, 'message' => 'Ok'];
             }
         }

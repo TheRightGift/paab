@@ -15,6 +15,7 @@ class StateController extends Controller
             'email' => 'required|unique:users',
             'lastname' => ['nullable'],
             'password' => ['required'],
+            'role' => ['required'],
         ]); 
         
         if ($inputs->fails()) {
@@ -24,9 +25,10 @@ class StateController extends Controller
 
             $input = $inputs->validated();
             $input['password'] = Hash::make($input['password']);
-            $input['role'] = 'Admin';
-            $admin = User::create($input);
-            return response(['admin' => $admin, 'message' => 'Created Success'], 201);
+            // $input['role'] = $in;
+            $users = new User();
+            $user = $users->create($input);
+            return response(['user' => $user, 'message' => 'Created Success'], 201);
         }
     }
     public function updateUser(Request $request, $id) {

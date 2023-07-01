@@ -1,278 +1,373 @@
 <template>
     <div>
-        <div class="mainBackground">
-            <div class="customNav d-flex justify-between align-center">
-                <div class="logoContainer">
-                    <img class="logo" src="/media/img/wcdlogoWhite.png" alt="Whitecoatdomain Logo">
-                </div>
-                <div class="signUpBtnContainer">
-                    <button class="button signin waves-effect waves-deep-orange" @click="route('auth/login')" >Sign in</button>
-                </div>
-            </div>
-            <div class="d-flex flex-col">
-                <section class="introductory">
-                    <div class="container">
-                        <div class="introductoryBody">
-                            <p class="introductoryHeader">
-                                Enhance your public image with white coat domain.
-                            </p>
-                            <p class="introductorySummary">
-                                As a physicians, it is crucial to maintain and manage your public profile. We strongly recommend actively managing your online identity by securing a personal domain name and maintaining a website separate from social media.
-                            </p>
-                            <div class="getStartedLayout">
-                                <button class="button getstartedbtn waves-effect waves-deep-orange" @click="route('auth/getstarted')" >Get Started</button>
-                            </div>
-                            <div class="introductoryImageContainer"> 
-                                <img class="introductoryImg responsive-img" :src="'/media/img/'+bannerImg" alt="Introductory Image of our template">
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
+        <!-- <get-started-button-component />
+
         
-        <div class="d-flex flex-col">
-            <section class="advert">
-                <div class="advBody">
-                    <p class="advHeader">
-                        MAKE YOUR PORTFOLIO WORK FOR YOU
-                    </p>
-                    <img class="introductoryImg responsive-img" src="/media/img/wcdHomeAdvSection.png" alt="Introductory Image of our template">
-                    <div class="custom-container">
-                        <div class="row">
-                            <div class="col l4 m4 s12 article">
-                                <p>
-                                    Choose from our wide range of groundbreaking templates, designer fonts, and eye-catching colors that reflect your style and professional taste.
-                                </p>
-                            </div>
-                            <div class="col l4 m4 s12 article">
-                                <p>
-                                    Explore our add-ons, whether you want to link your social media platforms, schedule an appointment, or display client reviews.
-                                </p>
-                            </div>
-                            <div class="col l4 m4 s12 article">
-                                <p>
-                                    Boost the reach of your words by linking all of your social media accounts to expand and retain your audience.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="getStartedLayout">
-                        <button class="button getstartedbtnFor waves-effect waves-deep-orange" @click="route('auth/getstarted')" >Get Started</button>
-                    </div>
-                </div>
-            </section>
-            <section class="templateFeature">
-                <div class="custom-container">
-                    <div class="templateFeatureBody">
-                        <p class="templateFeatureHeader">
-                            MORE THAN JUST A LANDING PAGE.
-                        </p>
-                        <p class="templateFeatureSummary">
-                            White Coat Domain is providing you with an opportunity to showcase who you are and what you can offer to your target audience. Discover thousands of customized, mobile-responsive templates that will help convert visitors into potential clients.
-                        </p>
-                        <div class="mb-6 mt-1">
-                            <button class="button getStartedBtn waves-effect waves-deep-orange" @click="route('auth/getstarted')" >Get Started</button>
-                        </div>
-    
-                        <div class="row templateFeatureDetMed">
-                            <div class="col l4 m4 s12 left-align">
-                                <div class="content mb-7 mt-9">
-                                    <div class="icon-container">
-                                        <img src="/media/img/message.svg" alt="message icon">
-                                    </div>
-                                    <p class="content-header">LIVE CHAT</p>
-                                    <p class="contentSummary">Need help creating an amazing online portfolio? We've got you covered! Our help desk is standing by, ready to assist you as you take those critical steps. Let us guide you and provide the support you need to make your portfolio shine!.</p>
-                                </div>
-                                <div class="content marginTop-4">
-                                    <div class="icon-container">
-                                        <img src="/media/img/like.svg" alt="like icon">
-                                    </div>
-                                    <p class="content-header">SOCIAL MEDIA POST</p>
-                                    <p class="contentSummary">Let your patients connect with you on social level and see you outside the white coat by linking all your social media platforms.</p>
-                                </div>
-                            </div>
-                            <div class="col l4 m4 s12">
-                                <img class="responsive-img" src="/media/img/templateFeatureSectionImg.png" alt="Template Feature Image Rep">
-                            </div>
-                            <div class="col l4 m4 s12">
-                                <div class="content mb-7 mt-9">
-                                    <div class="icon-container">
-                                        <img src="/media/img/cv.png" width="50" height="50" alt="cv icon">
-                                    </div>
-                                    <p class="content-header">CURRICULUM VITAE</p>
-                                    <p class="contentSummary">Enter your information and get instant access to your auto-generated curriculum vitae (CV).</p>
-                                </div>
-                                <div class="content marginTop-6">
-                                    <div class="icon-container">
-                                        <img src="/media/img/reviewflag.svg" alt="flag-review icon">
-                                    </div>
-                                    <p class="content-header">CLIENT REVIEW</p>
-                                    <p class="contentSummary">Connect with your patients on a personal level and show them the person behind the white coat. Link all your social media platforms and let them get to know you outside of the office.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="howToGetStarted">
+        
+        <review-popup-component />
+        
+        <services-offered-component />
+
+        <templates-for-component /> -->
+        <div class="body d-flex flex-col">
+            <section class="relative">
                 <div class="container">
-                    <div class="howToGetStartedBody">
-                        <p class="howToGetStartedHeader">
-                            HOW TO GET STARTED.
+                    <div class="customNav d-flex justify-between align-center">
+                        <div class="logoContainer">
+                            <img class="logo" src="/media/img/wcd-logo-noBckg.png" alt="Whitecoatdomain Logo">
+                        </div>
+                        <div class="signUpBtnContainer">
+                            <sign-up-button-component />
+                        </div>
+                    </div>
+                    <div class="d-flex pt-10">
+                        <div class="">
+                            <div class="d-flex align-center">
+                                <img src="/media/img/verify.png" />
+                                <p class="verifyTitle">Best Portfolio Platform - World Record</p>
+                            </div>
+                            <div >
+                                
+                                
+                            </div>
+                            <div class="heading d-flex flex-col relative">
+                                <div>
+                                    <span class="headingText">
+                                        Enhance your public image with 
+                                    </span>
+                                    <span class="headingText">
+                                        White Coat Domain
+                                    </span>
+                                </div>
+                                <img src="/media/img/decor.png" class="decor"/>
+                            </div>
+                            <div class="description mt-4">
+                                As a physician, it is crucial to maintain and manage your public profile. We strongly recommend actively managing your online identity by securing a personal domain name and maintaining a website separate from social media.
+                            </div>
+                            <get-started-button-component class="pt-5"/>
+                        </div>
+                        <div class="relative">
+                            <div class="relative top-112" >
+                                <div class="image1Container">
+                                    <img  src="/media/img/physicianBnW.png" class="responsive-img image1" />
+                                </div>
+                                <div class="joiner">
+                                    <img src="/media/img/physicianBnWD.png" class="responsive-img image2" />
+                                </div>
+                            </div>
+                            <div class="spiralGrey">
+                                <img src="/media/img/spiralGrey.png" />
+                            </div>
+                            <div class="spiralRed">
+                                <img src="/media/img/spiralRed.png" />
+                            </div>
+                            <div class="maskPri">
+                                <img src="/media/img/maskPri.png" />
+                            </div>
+                            <div class="maskSec">
+                                <img src="/media/img/maskSec.png" />
+                            </div>
+                            <div class="reviewBoxPrev">
+                                <div class="reviewBoxPrevHolder">
+                                    <div class="reviewBoxPrevContent">
+                                        <div class="reviewStarAvg">4.9</div>
+                                        <div class="stars d-flex justify-between align-center">
+                                            <i class="fa-solid fa-star star"></i>
+                                            <i class="fa-solid fa-star star"></i>
+                                            <i class="fa-solid fa-star star"></i>
+                                            <i class="fa-solid fa-star star"></i>
+                                            <i class="fa-solid fa-star star"></i>
+                                        </div>
+                                        <div class="reviewBoxPrevUserImg">
+                                            <!-- https://via.placeholder.com/38x38 -->
+                                            <div class="d-flex justify-between">
+                                                <div class="reviewBoxPrevImgHolder">
+                                                    <img src="/media/img/doctor.png" class="responsive-img" />
+                                                </div>
+                                                <div class="reviewBoxPrevImgHolder">
+                                                    <img src="/media/img/doctor.png" class="responsive-img" />
+                                                </div>
+                                                <div class="reviewBoxPrevImgHolder">
+                                                    <img src="/media/img/doctor.png" class="responsive-img" />
+                                                </div>
+                                                <div class="reviewBoxPrevImgHolder">
+                                                    <img src="/media/img/doctor.png" class="responsive-img" />
+                                                </div>
+                                                <div class="reviewBoxPrevImgHolder">
+                                                    <p class="center countReview">5K</p>
+                                                </div>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pizzariedLeft"></div>
+                <div class="pizzariedRight"></div>
+            </section>
+            <section class="mb-2 relative">
+                <div class="sectionTwoContent d-flex flex-col">
+                    <div class="d-flex align-center flex-col">
+                        <p class="heading">
+                            <span class="headingText1">White Coat Domain to simplify </span><span class="headingText2">building and maintaining layouts</span>
                         </p>
-                        <p class="howToStep mb-6">Follow these 6 simple steps to create a website today</p>
-                        <div class="row hide-on-small-only">
-                            <div class="col l4 m4 marginBottom-3">
-                                <div class="numberIcon">
-                                    <div>1</div>
+                        <p class="desc">
+                            <span>You can decide how you are working as a team first and then let the software work around you. The pace of delivery from idea to reality has exploded.</span>
+                        </p>
+                        <div class="stepContainer relative mt-4">
+                            <div class="steps d-flex justify-between">
+                                <div class="" style="width: 320px;">
+                                    <h5 class="mb-2">Build your own website in a few steps</h5>
+                                    <p class="mb-2" style="opacity: 0.7;">Start yours today. Less than 30mins, your site will be live</p>
+                                    <a class="btn waves waves-effect customBtn">Get Started</a>
                                 </div>
-                                <p class="howToCounterHeader bold">​Sign up for a free website builder.</p>
-                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
-                            </div>
-                            <div class="col l4 m4 marginBottom-3">
-                                <div class="numberIcon">
-                                    <div>2</div>
+                                <div class="contents" style="width: 370px;">
+                                    <p class="d-flex align-center"><i class="material-icons pr-1">expand_more</i> 1. Plan your website</p>
+                                    <p class="d-flex align-center"><i class="material-icons pr-1">expand_more</i> 2. Plan your template</p>
+                                    <p class="d-flex align-center"><i class="material-icons pr-1">expand_more</i> 3. Customize your website</p>
+                                    <p class="d-flex align-center"><i class="material-icons pr-1">expand_more</i> 4. Launch your website</p>
                                 </div>
-                                <p class="howToCounterHeader bold">Log into your dashboard.</p>
-                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
                             </div>
-                            <div class="col l4 m4 marginBottom-3">
-                                <div class="numberIcon">
-                                    <div>3</div>
-                                </div>
-                                <p class="howToCounterHeader bold">Provide your favorite domain name.</p>
-                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
+                            <div>
+                                <p class="center">A website Builder with perks</p>
                             </div>
-                            <div class="col l4 m4 marginBottom-3">
-                                <div class="numberIcon">
-                                    <div>4</div>
-                                </div>
-                                <p class="howToCounterHeader bold">Pick a template that suits your brand.</p>
-                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
+                            <div class="absolute tag">
+                                @whitecoatdomain.com
                             </div>
-                            <div class="col l4 m4 marginBottom-3">
-                                <div class="numberIcon">
-                                    <div>5</div>
-                                </div>
-                                <p class="howToCounterHeader bold">Make payment &amp; publish your website.</p>
-                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
+                            <div class="absolute spiralCRed">
+                                <img src="/media/img/spiralCRed.svg" />
                             </div>
-                            <div class="col l4 m4 marginBottom-3">
-                                <div class="numberIcon">
-                                    <div>6</div>
-                                </div>
-                                <p class="howToCounterHeader bold">Your website is live in few minutes.</p>
-                                <!--p class="howToInstruction">​Choose what kind of website you want to create.</p-->
+                            <div class="absolute spiralingGrey">
+                                <img src="/media/img/spiralingGrey.svg" />
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pizzariedUpLeft"></div>
+                <div class="pizzariedDownRight"></div>
+            </section>
+            <section class="bgSec relative">
+                <div class="d-flex justify-between">
+                    <div class="templateImgHolder">
+                        <img src="/media/img/screenshotTemp.png" alt="" class="responsive-img">
+                    </div>
+                    <div style="width: 540px;">
+                        <h4 class="mt-0 mb-2">Make your portfolio work for you</h4>
+                        <div class="d-flex justify-between">
+                            <div class="blueBox yellow lighten-1">
+                                <i class="material-icons">select_all</i>
+                            </div>
+                            <div class="-mr-6">
+                                <h6 class="m-0">Amazing Templates</h6>
+                                <p class="mt-1" style="width: 490px; opacity: 0.9">Choose from our wide range of groundbreaking templates, designer fonts, and eye-catching colors that reflect your style and professional taste.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-between">
+                            <div class="blueBox">
+                                <i class="material-icons">transform</i>
+                            </div>
+                            <div class="-mr-6">
+                                <h6 class="m-0">Best Features</h6>
+                                <p class="mt-1" style="width: 490px; opacity: 0.9">Choose from our wide range of groundbreaking templates, designer fonts, and eye-catching colors that reflect your style and professional taste.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-between">
+                            <div class="blueBox red">
+                                <i class="material-icons">subject</i>
+                            </div>
+                            <div class="-mr-6">
+                                <h6 class="m-0">Link social media accounts</h6>
+                                <p class="mt-1" style="width: 490px; opacity: 0.9">Choose from our wide range of groundbreaking templates, designer fonts, and eye-catching colors that reflect your style and professional taste.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pizzariedLeft"></div>
+                <div class="pizzariedRight"></div>
+            </section>
+            <section class="relative sectionFour">
+                <div class="d-flex justify-between">
+                    <div class="w-502">
+                        <h4>Design & Build your own landing pages</h4>
+                        <p class="text mb-2">Follow this 6 simple steps to create a website today</p>
+                        <get-started-button-component />
+                    </div>
+                    <div class="stepsToStart">
+                        <div class="d-flex">
+                            <i class="material-icons">chevron_right</i>
+                            <span>​Sign up for a free website builder.</span>
+                        </div>
+                        <div class="d-flex">
+                            <i class="material-icons">chevron_right</i>
+                            <span>Log into your dashboard.</span>
+                        </div>
+                        <div class="d-flex">
+                            <i class="material-icons">chevron_right</i>
+                            <span>Provide your favorite domain name.</span>
+                        </div>
+                        <div class="d-flex">
+                            <i class="material-icons">chevron_right</i>
+                            <span>Pick a template that suits you</span>
+                        </div>
+                        <div class="d-flex">
+                            <i class="material-icons">chevron_right</i>
+                            <span>Make payment & publish your website.</span>
+                        </div>
+                        <div class="d-flex">
+                            <i class="material-icons">chevron_right</i>
+                            <span>Your website is live in few minutes.</span>
                         </div>
 
-                        <div class="row hide-on-med-and-up noMarginBottom">
-                            <div class="row">
-                                <div class="col s1">
-                                    1.
-                                </div>
-                                <div class="col s11">
-                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">​Sign up for a free website builder.</p>
-                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s1">
-                                    2.
-                                </div>
-                                <div class="col s11">
-                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">Log into your dashboard.</p>
-                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s1">
-                                    3.
-                                </div>
-                                <div class="col s11">
-                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">Provide your favorite domain name.</p>
-                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s1">
-                                    4.
-                                </div>
-                                <div class="col s11">
-                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">Pick a template that suits your brand.</p>
-                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s1">
-                                    5.
-                                </div>
-                                <div class="col s11">
-                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">Make payment &amp; publish your website.</p>
-                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s1">
-                                    6.
-                                </div>
-                                <div class="col s11">
-                                    <p class="howToCounterHeader noMarginTop marginBottom-1 bold">Your website is live in few minutes.</p>
-                                    <!--p class="howToInstruction noMarginTop">​Choose what kind of website you want to create.</p-->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="getStartedLayout mt-2 mb-6">
-                            <button class="button getstartedbtnFor waves-effect waves-deep-orange" @click="route('auth/getstarted')" >Get Started</button>
-                        </div>
+                        
                     </div>
                 </div>
+                <div class="pizzariedUpLeft"></div>
+                <div class="pizzariedDownRight"></div>
             </section>
-            <section class="templates">
-                <div class="container">
-                    <div class="templateBody">
-                        <p class="templateHeader">
-                            TEMPLATES FIT JUST FOR YOU.
-                        </p>
-                        <p class="templateSummary mb-4">We are giving you the freedom to select from our multiple customized templates designed to meet your personal and professional taste. Our templates are seamless with drag and drop settings.</p>
+            <section class="relative services">
+                <div class=container>
+                    <div class="d-flex align-center flex-col">
+                        <h6 class="center">Services</h6>
+                        <h4>More than just a landing page</h4>
+                        <p class="center servTitle mb-4">White Coat Domain is providing you with an opportunity to showcase who you are and what you can offer to your target audience. </p>
                         <div class="row">
-                            <div class="col l4 m6 s12" v-for="(template, index) in templates.slice(0, 3)" :key="index">
-                                <img :src="'./media/img/'+template.imgUrl" alt="Template 1" class="responsive-img">
-                                <div class="d-flex justify-between mb-2">
-                                    <!-- <a href="#!" class="links">Select</a> -->
-                                    <a href="#!" class="links">Preview</a>
-                                </div>
+                            <div class="col s3 mb-1">
+                                <services-offered-component />
+                            </div>
+                            <div class="col s3 mb-1">
+                                <services-offered-component />
+                            </div>
+                            <div class="col s6 mb-1 d-flex">
+                                <services-offered-component />
+                                <img src="/media/img/serv1Img.png" class="responsive-img w-290"/>
+                            </div>
+                            <div class="col s6 mb-2 d-flex">
+                                <services-offered-component />
+                                <img src="/media/img/serv2Img.png" class="responsive-img w-290" />
+                            </div>
+                            <div class="col s3 mb-2">
+                                <services-offered-component />
+                            </div>
+                            <div class="col s3 mb-2">
+                                <services-offered-component />
                             </div>
                         </div>
-                        <div class="navigation d-flex align-center">
-                            <i class="fa fa-angle-double-left"></i>
-                            <i class="material-icons">navigate_before</i>
-                            <p class="nav-links">1</p>
-                            <p class="nav-links">2</p>
-                            <p class="nav-links">3</p>
-                            <i class="material-icons">navigate_next</i>
-                            <i class="fa fa-angle-double-right"></i>
+                    </div>
+                </div>
+                <div class="pizzariedLeft"></div>
+                <div class="pizzariedRight"></div>
+            </section>
+            <section class="relative templateFit">
+                <div class="container">
+                    <div class="d-flex flex-start">
+                        <div class="">
+                            <h6><span class="pri">Templates</span> fit just for you</h6>
+                            <p class="desc">White Coat Domain is providing you with an opportunity to showcase who you are and what you can offer to your target audience. </p>
+                            <div class="absolute spiralGrey">
+                                <img src="/media/img/spiralGrey.png" />
+                            </div>
+                            <div class="absolute spiralRed">
+                                <img src="/media/img/spiralRed.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-between">
+                    <div class="d-flex flex-col flex-end justify-between">
+                        <div class="tempFitRow1 absolute">
+                            <templates-for-component :src="'allergists.png'" :title="'Allergists/Immunology'" class="mb-4"/>
+                            <templates-for-component :src="'dentist.png'" :title="'Dentists'" class="mb-4"/>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-col">
+                        <div class="tempFitRow2 absolute">
+                            <templates-for-component :src="'endocrinology.png'" :title="'Endocrinology'" class="mb-4" />
+                            <templates-for-component :src="'gyna.png'" :title="'Gynaecology'" class="mb-4"/>
+                            <templates-for-component :src="'allergists.png'" :title="'Allergists/Immunology'" class="mb-4"/>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-col">
+                        <div class="absolute tempFitRow3">
+                            <templates-for-component :src="'opticians.png'" :title="'Opticians'" class="mb-4"/>
+                            <templates-for-component :src="'pediatrics.png'" :title="'Pediatrics'" class="mb-4"/>
+                            <templates-for-component :src="'surgeons.png'" :title="'Surgeons'" class="mb-4"/>
+                            <templates-for-component :src="'therapist.png'" :title="'Therapist'" class="mb-4"/>
                         </div>
                     </div>
                 </div>
             </section>
-            <SupportComponent />
-            <FooterComponent />
+            <section class="relative reviews">
+                <div class="container">
+                    <div class="d-flex align-center flex-col">
+                        <h6 class="center">Review</h6>
+                        <h5 class="center">OVER  <span>29,345,698</span>  CLIENTS AROUND THE WORLD</h5>
+                        <div class="mapBg"></div>
+                    </div>
+                </div>
+                <div class="pizzariedUpLeft"></div>
+                <div class="pizzariedDownRight"></div>
+            </section>
+            <section class="getStarted relative d-flex flex-col justify-center align-center">
+                <h5 class="mb-2">Create a free account to get started</h5>
+                <get-started-button-component class="mb-2"/>
+                <p>Join our 29,345,698 clients around the world</p>
+            </section>
+            <section class="support relative">
+                <div class="d-flex justify-center align-center">
+                    <div class="secondary d-flex justify-between">
+                        <div class="h-794">
+                            <img src="/media/img/support.png" class="responsive-img" />
+                        </div>
+                        <div class="h-794">
+                            <div class="card">
+                                <div class="card-content">
+                                    <p>Contact us</p>
+                                    <div class="mb-2 card-title">We are always happy to help</div>
+                                    <div class="d-flex flex-col gap-10">
+                                        <div class="custom-input">
+                                            <input type="text" required class="browser-default" placeholder="Name"/>                                            
+                                        </div>
+                                        <div class="custom-input">
+                                            <input type="text" required class="browser-default" placeholder="Email"/>
+                                        </div>
+                                        <div class="custom-input">
+                                            <input type="text" required class="browser-default" placeholder="Phone"/>
+                                        </div>
+                                        <div class="custom-input">
+                                            <input type="text" required class="browser-default" placeholder="Subject"/>
+                                        </div>
+                                        <div class="custom-textarea">
+                                            <textarea class="textarea browser-default" placeholder="Message" ></textarea>
+                                        </div>
+                                        <get-started-button-component />
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer-component class="top relative"/>
         </div>
     </div>
 </template>
-<style>
-    
-</style>
 <script>
 import SupportComponent from './partials/SupportPageComponent.vue'
-import FooterComponent from './partials/FooterComponent.vue'
+import FooterComponent from './partials/FooterComponent1.vue'
+import GetStartedButtonComponent from './partials/GetStartedButtonComponent.vue'
+import SignUpButtonComponent from './partials/SignUpButtonComponent.vue'
+import ReviewPopupComponent from './partials/ReviewPopupComponent.vue'
+import ServicesOfferedComponent from './partials/ServicesOfferedComponent.vue'
+import TemplatesForComponent from './partials/TemplatesForComponent.vue'
 export default {
-    components: { SupportComponent, FooterComponent },
+    components: { SupportComponent, FooterComponent, GetStartedButtonComponent, SignUpButtonComponent, ReviewPopupComponent, ServicesOfferedComponent, TemplatesForComponent },
     data() {
         return {
-            templates: [
+             templates: [
                 {
                     imgUrl: "templateOne.png",
                 },
@@ -315,9 +410,7 @@ export default {
         );
     },
     methods: {
-        route(url) {
-            location.href = url;
-        },
+        
         swapBannerImgs(index){  
             this.bannerImg = this.bannerImages[index].img;
         }

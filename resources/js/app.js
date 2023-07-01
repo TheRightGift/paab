@@ -51,6 +51,11 @@ app.component('physician-website-settings', defineAsyncComponent(() => import('.
 app.component('mail-component', defineAsyncComponent(() => import('./components/shared/Messages')));
 
 app.component("password-change-component", defineAsyncComponent(() => import('./components/templates/Physicians/Settings/tempSettings/PasswordChange.vue')));
+// Developer
+app.component("dev-signup-component", defineAsyncComponent(() => import('./components/developers/Signup.vue')));
+app.component("developer-client-component", defineAsyncComponent(() => import('./components/shared/Developer.vue')));
+app.component('dev-dashboard-component', defineAsyncComponent(() => import('./components/developers/Dashboard')));
+app.component('dev-project-component', defineAsyncComponent(() => import('./components/developers/Project')));
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
