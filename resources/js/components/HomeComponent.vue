@@ -234,13 +234,13 @@
                         <h4>More than just a landing page</h4>
                         <p class="center servTitle mb-4">White Coat Domain is providing you with an opportunity to showcase who you are and what you can offer to your target audience. </p>
                         <div class="row">
-                            <div class="col s3 mb-2">
+                            <div class="col s3 mb-1">
                                 <services-offered-component />
                             </div>
-                            <div class="col s3 mb-2">
+                            <div class="col s3 mb-1">
                                 <services-offered-component />
                             </div>
-                            <div class="col s6 mb-2 d-flex">
+                            <div class="col s6 mb-1 d-flex">
                                 <services-offered-component />
                                 <img src="/media/img/serv1Img.png" class="responsive-img w-290"/>
                             </div>
@@ -266,16 +266,98 @@
                         <div class="">
                             <h6><span class="pri">Templates</span> fit just for you</h6>
                             <p class="desc">White Coat Domain is providing you with an opportunity to showcase who you are and what you can offer to your target audience. </p>
+                            <div class="absolute spiralGrey">
+                                <img src="/media/img/spiralGrey.png" />
+                            </div>
+                            <div class="absolute spiralRed">
+                                <img src="/media/img/spiralRed.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-between">
+                    <div class="d-flex flex-col flex-end justify-between">
+                        <div class="tempFitRow1 absolute">
+                            <templates-for-component :src="'allergists.png'" :title="'Allergists/Immunology'" class="mb-4"/>
+                            <templates-for-component :src="'dentist.png'" :title="'Dentists'" class="mb-4"/>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-col">
+                        <div class="tempFitRow2 absolute">
+                            <templates-for-component :src="'endocrinology.png'" :title="'Endocrinology'" class="mb-4" />
+                            <templates-for-component :src="'gyna.png'" :title="'Gynaecology'" class="mb-4"/>
+                            <templates-for-component :src="'allergists.png'" :title="'Allergists/Immunology'" class="mb-4"/>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-col">
+                        <div class="absolute tempFitRow3">
+                            <templates-for-component :src="'opticians.png'" :title="'Opticians'" class="mb-4"/>
+                            <templates-for-component :src="'pediatrics.png'" :title="'Pediatrics'" class="mb-4"/>
+                            <templates-for-component :src="'surgeons.png'" :title="'Surgeons'" class="mb-4"/>
+                            <templates-for-component :src="'therapist.png'" :title="'Therapist'" class="mb-4"/>
                         </div>
                     </div>
                 </div>
             </section>
+            <section class="relative reviews">
+                <div class="container">
+                    <div class="d-flex align-center flex-col">
+                        <h6 class="center">Review</h6>
+                        <h5 class="center">OVER  <span>29,345,698</span>  CLIENTS AROUND THE WORLD</h5>
+                        <div class="mapBg"></div>
+                    </div>
+                </div>
+                <div class="pizzariedUpLeft"></div>
+                <div class="pizzariedDownRight"></div>
+            </section>
+            <section class="getStarted relative d-flex flex-col justify-center align-center">
+                <h5 class="mb-2">Create a free account to get started</h5>
+                <get-started-button-component class="mb-2"/>
+                <p>Join our 29,345,698 clients around the world</p>
+            </section>
+            <section class="support relative">
+                <div class="d-flex justify-center align-center">
+                    <div class="secondary d-flex justify-between">
+                        <div class="h-794">
+                            <img src="/media/img/support.png" class="responsive-img" />
+                        </div>
+                        <div class="h-794">
+                            <div class="card">
+                                <div class="card-content">
+                                    <p>Contact us</p>
+                                    <div class="mb-2 card-title">We are always happy to help</div>
+                                    <div class="d-flex flex-col gap-10">
+                                        <div class="custom-input">
+                                            <input type="text" required class="browser-default" placeholder="Name"/>                                            
+                                        </div>
+                                        <div class="custom-input">
+                                            <input type="text" required class="browser-default" placeholder="Email"/>
+                                        </div>
+                                        <div class="custom-input">
+                                            <input type="text" required class="browser-default" placeholder="Phone"/>
+                                        </div>
+                                        <div class="custom-input">
+                                            <input type="text" required class="browser-default" placeholder="Subject"/>
+                                        </div>
+                                        <div class="custom-textarea">
+                                            <textarea class="textarea browser-default" placeholder="Message" ></textarea>
+                                        </div>
+                                        <get-started-button-component />
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer-component class="top relative"/>
         </div>
     </div>
 </template>
 <script>
 import SupportComponent from './partials/SupportPageComponent.vue'
-import FooterComponent from './partials/FooterComponent.vue'
+import FooterComponent from './partials/FooterComponent1.vue'
 import GetStartedButtonComponent from './partials/GetStartedButtonComponent.vue'
 import SignUpButtonComponent from './partials/SignUpButtonComponent.vue'
 import ReviewPopupComponent from './partials/ReviewPopupComponent.vue'

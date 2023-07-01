@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="content relative">
-            <img class="doctorTypes" src="/media/img/psychologist.png" />
+            <img class="doctorTypes" :src="'/media/img/'+src" />
 
             <div class="arrowBg d-flex justify-center align-center"><img src="/media/img/arrow-right.png" /></div>
-            <div class="title">Therapist</div>
+            <div class="title">{{ title }}</div>
         </div>
     </div>
 </template>
@@ -27,8 +27,8 @@
         left: 5px;
         top: 334px;
         position: absolute;
-        color: var(--black);
-        font-size: 1.25rem;
+        color: rgba(0, 0, 0, 0.726);
+        font-size: 1.2rem;
         font-family: Montserrat;
         font-weight: 500;
         word-wrap: break-word;
@@ -37,6 +37,7 @@
         width: 116px; 
         height: 45px;
         background: var(--sec);
+        transition: transform 0.5s ease;
     }
     .arrowBg:hover img {
         transform: scale(1.2);
@@ -48,5 +49,10 @@
     }
 </style>
 <script>
-    export default {};
+    export default {
+        props: {
+            src: String,
+            title: String,
+        }
+    };
 </script>

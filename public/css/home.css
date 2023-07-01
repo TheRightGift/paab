@@ -14,6 +14,9 @@
 .flex-col {
     flex-direction: column;
 }
+.flex-end {
+    align-items: flex-end;
+}
 .mb-6 {
     margin-bottom: 6rem;
 }
@@ -33,7 +36,10 @@
     padding-top: 5rem;
 }
 .mt-1 {
-    margin-top: .75rem;
+    margin-top: 0.75rem;
+}
+.mb-1 {
+    margin-bottom: 1rem;
 }
 .mt-9 {
     margin-top: 9rem;
@@ -81,10 +87,8 @@
         width: 100%;
         height: 100%;
     }
-    section:first-of-type .pizzariedLeft, section:nth-of-type(3) .pizzariedLeft {
-        background-image: url("/media/img/rectangleLeft.png");
-    }
     .pizzariedLeft {
+        background-image: url("/media/img/rectangleLeft.png");
         width: 100%;
         height: 428px;
         position: absolute;
@@ -92,10 +96,8 @@
     section:first-of-type .pizzariedLeft {
         top: 57%;
     }
-    section:first-of-type .pizzariedRight, section:nth-of-type(3) .pizzariedRight {
-        background-image: url("/media/img/rectangleRight.png");
-    }
     .pizzariedRight {
+        background-image: url("/media/img/rectangleRight.png");
         position: absolute;
         height: 661px;
         width: 899px;
@@ -138,16 +140,16 @@
     }
     .decor {
         position: absolute;
-        left: -70px;
+        left: -10%;
         top: 65%;
     }
     .description {
         width: 561px;
         color: #747582;
-        font-size: 20px;
+        font-size: 1.25rem;
         font-family: Ubuntu;
         font-weight: 400;
-        line-height: 36px;
+        line-height: 2.25rem;
         word-wrap: break-word;
         margin-top: 4vh;
     }
@@ -226,7 +228,7 @@
     .reviewBoxPrevUserImg img {
         width: 38.25px;
         height: 38.02px;
-        box-shadow: -9px 4px 20px rgba(0, 0, 0, 0.05);
+        box-shadow: -9px 4px 1.25rem rgba(0, 0, 0, 0.05);
     }
     .reviewBoxPrevImgHolder {
         width: 46.57px;
@@ -235,7 +237,7 @@
         border-radius: 9999px;
         background: white;
         border: 1px solid white;
-        box-shadow: -9px 4px 20px rgba(0, 0, 0, 0.05);
+        box-shadow: -9px 4px 1.25rem rgba(0, 0, 0, 0.05);
         margin-right: -0.5vw;
         display: flex;
         justify-content: center;
@@ -279,13 +281,13 @@
     }
     .headingText1 {
         color: black;
-        font-size: 36px;
+        font-size: 2.25rem;
         font-weight: 600;
         word-wrap: break-word;
     }
     .headingText2 {
         color: var(--pri);
-        font-size: 36px;
+        font-size: 2.25rem;
         font-weight: 600;
         word-wrap: break-word;
     }
@@ -299,26 +301,28 @@
         word-wrap: break-word;
         opacity: 0.56;
     }
-    
+
     .stepContainer {
-        border-radius: 20px;
-        border: 1px solid rgba(16, 157, 173, 0.50);
+        border-radius: 1.25rem;
+        border: 1px solid rgba(16, 157, 173, 0.5);
         height: 422px;
-        background: linear-gradient(to right, white, white, white, rgb(248, 248, 192));;
+        background: linear-gradient(
+            to right,
+            white,
+            white,
+            white,
+            rgb(248, 248, 192)
+        );
     }
-    
+
     .steps {
         background-color: var(--black);
         width: 804px;
         height: 350px;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
+        border-top-left-radius: 1.25rem;
+        border-top-right-radius: 1.25rem;
         padding: 5vh 3vw;
         color: var(--white);
-    }
-    .steps h5 {
-        /* font-size: 1.5rem; */
-        /* font-weight: 600; */
     }
     .steps .contents p {
         border-bottom: 1px solid white;
@@ -334,7 +338,8 @@
         font-size: 1.375rem;
         border: 1px solid rgba(255, 217, 0, 0.616);
     }
-    .spiralCRed, .spiralingGrey {
+    .spiralCRed,
+    .spiralingGrey {
         top: 79%;
     }
     .spiralCRed {
@@ -354,7 +359,6 @@
         padding: 20vh 4vw;
         color: var(--white);
     }
-    
 }
 .absolute {
     position: absolute;
@@ -365,7 +369,8 @@
     text-transform: capitalize;
     color: var(--black);
 }
-.customBtn:visited, .customBtn:hover {
+.customBtn:visited,
+.customBtn:hover {
     background-color: var(--sec);
     color: var(--white);
 }
@@ -419,12 +424,12 @@
     width: 502px;
 }
 .w-502 .text {
-font-size: .8rem;
-font-weight: 400;
-line-height: 26px;
-letter-spacing: 0px;
-opacity: 0.7;
-font-family: "Montserrat", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0px;
+    opacity: 0.7;
+    font-family: "Montserrat", sans-serif;
 }
 .services .pizzariedRight {
     bottom: 0;
@@ -442,20 +447,20 @@ font-family: "Montserrat", sans-serif;
     letter-spacing: 0em;
     text-align: center;
 }
-.services h6 {
+.services h6,
+.reviews h6 {
     font-family: Montserrat;
     font-size: 1rem;
     font-weight: 400;
-    line-height: 20px;
+    line-height: 1.25rem;
     letter-spacing: 0em;
     text-align: center;
     color: var(--pri);
-
 }
 .servTitle {
     width: 703px;
     font-family: Ubuntu;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 400;
     line-height: 32px;
     letter-spacing: 0em;
@@ -465,8 +470,11 @@ font-family: "Montserrat", sans-serif;
 .w-290 {
     width: 290px;
 }
+.templateFit {
+    padding: 8vh 0;
+}
 .templateFit h6 {
-    font-size: 36px;
+    font-size: 2.25rem;
     font-weight: 500;
     line-height: 50px;
     letter-spacing: 1px;
@@ -474,7 +482,7 @@ font-family: "Montserrat", sans-serif;
     color: var(--black);
 }
 .templateFit h6 span {
-    font-size: 36px;
+    font-size: 2.25rem;
     font-weight: 600;
     line-height: 44px;
     letter-spacing: 0em;
@@ -482,11 +490,150 @@ font-family: "Montserrat", sans-serif;
     color: var(--pri);
 }
 .templateFit .desc {
-font-size: 1.25rem;
-font-weight: 400;
-line-height: 32px;
-letter-spacing: 0em;
-text-align: left;
-color: rgba(116, 117, 130, 1);
-width: 501px;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(116, 117, 130, 1);
+    width: 501px;
 }
+.tempFitRow1 {
+    left: 25%;
+    top: 130%;
+}
+.tempFitRow2 {
+    top: 50%;
+    left: 50%;
+}
+.tempFitRow3 {
+    right: 7%;
+    top: 10%;
+}
+.templateFit .spiralGrey {
+    top: 150%;
+    left: 10%;
+}
+.templateFit .spiralRed {
+    top: 170vh;
+    left: 10%;
+    right: 100%;
+}
+.reviews {
+    top: 210vh;
+    padding: 10vh;
+}
+.mapBg {
+    background-image: url("/media/img/map.png");
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 579.87px;
+}
+.reviews h5 span {
+    font-weight: 400;
+    color: var(--pri);
+}
+.reviews h5 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 53px;
+    letter-spacing: 0.02em;
+}
+.getStarted {
+    height: 352px;
+    background-color: #119dadb0;
+}
+.support,
+.getStarted, .top {
+    top: 210vh;
+}
+.getStarted h5 {
+    font-family: Montserrat;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 53px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+}
+.getStarted p {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 53px;
+    letter-spacing: 0.02em;
+    color: rgba(238, 238, 238, 1);
+}
+.support {
+    padding: 5vh 10vw;
+    z-index: 1;
+}
+.secondary {
+    background-color: rgba(229, 242, 239, 1);
+    padding: 10px;
+}
+.card {
+    margin: 0;
+}
+.card-content {
+    padding: 30px;
+}
+.support p {
+    color: #109dad;
+    font-size: 16px;
+    font-family: Montserrat;
+    font-weight: 400;
+    word-wrap: break-word;
+    margin-bottom: 2rem !important;
+}
+.support .card-title {
+    color: #282c4b;
+    font-size: 32px;
+    font-family: Montserrat;
+    font-weight: 700;
+    line-height: 53px;
+    letter-spacing: 0.64px;
+    word-wrap: break-word;
+    margin-bottom: 2.5rem !important;
+}
+.gap-10 {
+    gap: 29px;
+}
+.custom-input {
+    width: 528px;
+    height: 60px;
+}
+.custom-input input, .custom-textarea textarea {
+    width: 528px;
+    height: 60px;
+    background: white;
+    border-left: 0.5px #dcdcdc solid;
+    border-top: 0.5px #dcdcdc solid;
+    border-right: 0.5px #dcdcdc solid;
+    border-bottom: 0.5px #dcdcdc solid;
+    padding: 0 0 0 1vw;
+}
+.custom-input input::placeholder, .custom-textarea textarea::placeholder {
+    color: #b9b9b9;
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 25.6px;
+    word-wrap: break-word;
+}
+.custom-textarea {
+    width: 528px;
+    height: 180px;
+}
+.custom-textarea textarea {
+    height: 180px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+.h-794 {
+    height: 794px;
+}
+.h-794 img {
+    height: 100%;
+}
+
+
