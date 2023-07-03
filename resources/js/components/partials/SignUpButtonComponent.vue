@@ -20,7 +20,7 @@
         letter-spacing: 0.36px;
         word-wrap: break-word;
         text-transform: capitalize;
-        padding: 4vh 5.3vw;
+        padding: 3vh 4.5vw;
         color: var(--white);
     }
     .btn:hover,

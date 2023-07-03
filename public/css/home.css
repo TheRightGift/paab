@@ -508,7 +508,7 @@
 }
 .tempFitRow3 {
     right: 7%;
-    top: 10%;
+    top: 13%;
 }
 .templateFit .spiralGrey {
     top: 150%;
@@ -520,7 +520,7 @@
     right: 100%;
 }
 .reviews {
-    top: 210vh;
+    top: 180vh;
     padding: 10vh;
 }
 .mapBg {
@@ -546,7 +546,7 @@
 }
 .support,
 .getStarted, .top {
-    top: 210vh;
+    top: 180vh;
 }
 .getStarted h5 {
     font-family: Montserrat;
