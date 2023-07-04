@@ -2,77 +2,103 @@
     <div>
         <footer class="relative">
             <div class="container">
-                <div class="d-flex justify-between align-center">
+                <div class="d-flex justify-between align-center sm-flex-col">
                     <img
                         src="/media/img/wcd-logo-noBckg.png"
-                        class="responsive-img logoFooter"
+                        class="responsive-img logoFooter mb-2"
                     />
-                    <div class="d-flex justify-between align-center">
-                        <div class="d-flex justify-between align-center">
+                    <div class="d-flex justify-between align-center sm-justify-center sm-flex-col">
+                        <div class="hide-on-small-only">
+                            <div class="d-flex justify-between sm-justify-center align-center">
+                                <span class="links"
+                                    ><i class="fa-solid fa-phone"></i>
+                                </span>
+                                <span class="pl-2">+234817646</span>
+                            </div>
+                        </div>
+                        <div class="hide-on-small-only">
+                            <div class="d-flex justify-between align-center sm-justify-center pl-2">
+                                <span class="links"
+                                    ><i class="fa-solid fa-envelope"></i
+                                    >
+                                </span>
+                                <span class="pl-2">support@whitecoatdomain</span>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="#" class="links"
+                                ><i class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="#" class="links"
+                                ><i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="#" class="links"
+                                ><i class="fa-brands fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-between mt-4 sm-flex-col sm-align-center">
+                    <div class="cite">
+                        “Enhance your public image with White Coat Domain”
+                    </div>
+                    <div class="d-flex justify-between">
+                        <div class="explore mb-4">
+                            <h5>Explore</h5>
+                            <a href="/">Home</a>
+                        </div>
+                        <div class="explore ml-4">
+                            <h5>Utility Pages</h5>
+                            <ul>
+                                <li>
+                                    <a href="/">Licenses</a>
+                                </li>
+                                <li>
+                                    <a href="/">Change log</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-between align-center sm-align-center sm-flex-col hide-on-med-and-up">
+                        <div class="d-flex justify-between sm-justify-center align-center mb-2">
                             <span class="links"
                                 ><i class="fa-solid fa-phone"></i>
                             </span>
                             <span class="pl-2">+234817646</span>
                         </div>
-                        <div class="d-flex justify-between align-center pl-2">
+                        <div class="d-flex justify-between align-center sm-justify-center pl-2">
                             <span class="links"
                                 ><i class="fa-solid fa-envelope"></i
                                 >
                             </span>
                             <span class="pl-2">support@whitecoatdomain</span>
                         </div>
-                        <a href="#" class="links"
-                            ><i class="fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="#" class="links"
-                            ><i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="#" class="links"
-                            ><i class="fa-brands fa-twitter"></i>
-                        </a>
                     </div>
-                </div>
-                <div class="d-flex justify-between mt-4">
-                    <div class="cite">
-                        “Enhance your public image with White Coat Domain”
-                    </div>
-                    <div class="explore">
-                        <h5>Explore</h5>
-                        <a href="/">Home</a>
-                    </div>
-                    <div class="explore">
-                        <h5>Utility Pages</h5>
-                        <ul>
-                            <li>
-                                <a href="/">Licenses</a>
-                            </li>
-                            <li>
-                                <a href="/">Change log</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="contactus d-flex flex-col">
-                        <h6>Contact Us</h6>
-                        <p>We are always available to help</p>
-                        <form>
-                            <div class="custom-input">
-                                <input
-                                    type="email"
-                                    placeholder="your email address"
-                                    class="browser-default"
-                                />
-                            </div>
-                            <button
-                                class="waves waves-effect custom-btn"
-                                type="submit"
-                            >Send</button>
-                        </form>
+                    <div class=" hide-on-small-only">
+                        <div class="contactus d-flex flex-col">
+                            <h6>Contact Us</h6>
+                            <p>We are always available to help</p>
+                            <form>
+                                <div class="custom-input">
+                                    <input
+                                        type="email"
+                                        placeholder="your email address"
+                                        class="browser-default"
+                                        required
+                                    />
+                                </div>
+                                <button
+                                    class="waves waves-effect custom-btn"
+                                    type="submit"
+                                >Send</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
             <div
                 class="
-                    curve
+                    curve hide-on-small-only
                 "
             ></div>
         </footer>
@@ -91,7 +117,7 @@
     }
     .copyright {
         color: #545454;
-        font-size: 16px;
+        font-size: 1rem;
         font-family: 'Lato', sans-serif;
         font-weight: 400;
         line-height: 32px;
@@ -189,6 +215,21 @@
                     position: absolute;
                     border-radius: 9999px;
                     border: 1.5px #edfffa solid;
+    }
+    @media only screen and (max-width: 776px) {
+        .cite {
+            font-size: 1.5rem;
+            width: 52vw;
+            text-align: center;
+        }
+        i.fa-brands {
+            color: var(--pri) !important;
+            font-size: 1.8rem;
+            padding-left: 10vw;
+        }
+        .explore:nth-of-type(2) {
+            margin-left: 15vw;
+        }
     }
 </style>
 <script>

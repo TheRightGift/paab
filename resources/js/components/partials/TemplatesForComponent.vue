@@ -3,7 +3,7 @@
         <div class="content relative">
             <img class="doctorTypes" :src="'/media/img/'+src" />
 
-            <div class="arrowBg d-flex justify-center align-center"><img src="/media/img/arrow-right.png" /></div>
+            <div class="arrowBg d-flex justify-center align-center hoverable"><img src="/media/img/arrow-right.png" /></div>
             <div class="title">{{ title }}</div>
         </div>
     </div>
@@ -22,6 +22,8 @@
         position: absolute;
         background: var(--pri);
         border-radius: 5px;
+        transition: width 0.3s ease;
+        cursor: pointer;
     }
     .title {
         left: 5px;
@@ -37,11 +39,11 @@
         width: 116px; 
         height: 45px;
         background: var(--sec);
-        transition: transform 0.5s ease;
+        transition: width 0.5s ease;
     }
     .arrowBg:hover img {
         transform: scale(1.2);
-        transition: transform 0.3s ease;
+        transition: width 0.3s ease;
         width: 51.79px;
     }
     .arrowBg img {

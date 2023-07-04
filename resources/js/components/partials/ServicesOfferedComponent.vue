@@ -46,18 +46,23 @@
         height: 72.58px;
         color: #545454;
         font-size: 1rem;
-        font-family: Montserrat;
+        font-family: 'Montserrat', sans-serif;
         font-weight: 400;
         line-height: 22.72px;
         word-wrap: break-word;
+        text-align: initial;
     }
     .readmore {
         color: #363636;
         font-size: 1rem;
-        font-family: Inter;
+        font-family: 'Inter', sans-serif;
         font-weight: 500;
         line-height: 25.6px;
         word-wrap: break-word;
+        cursor: pointer;
+    }
+    .readmore:hover {
+        text-decoration: underline;
     }
     .holder {
         width: 16.79px;
