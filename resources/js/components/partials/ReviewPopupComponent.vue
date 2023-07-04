@@ -25,16 +25,14 @@
 <style scoped>
     .chat-box {
         position: relative;
-        opacity: 0.7;
-        width: 433.49px;
-        height: 171px;
-        background: rgba(231, 230, 230, 0.815);
+        width: 27vw;
+        height: 30vh;
+        background: rgba(231, 230, 230, 0.938);
         font-size: 0.813rem;
         font-family: Montserrat;
         border-radius: 15px;
         border: 0.5px solid #c5c5c53b ;
         padding: 10px 24px;
-        margin-left: 30px;
     }
     .chat-triangle {
         position: absolute;
@@ -54,11 +52,14 @@
         color: #dbba0d;
     }
     .review {
-        width: 366px;
+        width: 100%;
         height: 36px;
-        color: #727272;
+        color: #414040;
         font-weight: 400;
         word-wrap: break-word;
+    }
+    @media only screen and (max-width: 767px) {
+        .chat-box {width: 90vw; margin-left: 0;}
     }
 </style>
 <script>

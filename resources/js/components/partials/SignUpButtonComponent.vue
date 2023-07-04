@@ -1,7 +1,8 @@
 <template>
     <div>
         <button
-            class="btn waves waves-effect d-flex align-center"
+            class="btn waves waves-effect d-flex align-center justify-center"
+            :class="{transparent: bg != null || bg != '' }"
             @click="route('auth/login')"
         >
             Sign up
@@ -20,14 +21,36 @@
         letter-spacing: 0.36px;
         word-wrap: break-word;
         text-transform: capitalize;
-        padding: 4vh 5.3vw;
+        /* padding: 4vh 5.3vw; */
         color: var(--white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .transparent {
+        background-color: transparent;
+        color: var(--pri);
+        border: 2px solid var(--pri);
     }
     .btn:hover,
     .btn:visited {
         color: var(--white);
-        background-color: var(--sec);
+        background-color: var(--sec) !important;
         border: 2px solid var(--white);
+    }
+    @media only screen and (max-width:767px) {
+        .btn {
+            padding: 14px, 36px, 14px, 36px !important;
+            width: 38vw;
+            height: 7vh;
+        }
+    }
+    @media only screen and (min-width: 1024px) {
+        .btn {
+            /* padding: 4vh 4vw; */
+            width: 15vw;
+            height: 8vh;
+        }
     }
 </style>
 <script>
@@ -37,5 +60,8 @@
                 location.href = url;
             },
         },
+        props: {
+            bg: String,
+        }
     };
 </script>
