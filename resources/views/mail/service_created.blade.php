@@ -3,13 +3,13 @@
     <body>
     <h3>Dear Dr {{ $detail['names'] }},</h3>
     <p>
-        Congratulations on the successful creation of your new website. It is truly a remarkable towards managing your brand as a physician and in line with our conviction that most of your patients are going to Google you so you should have some control over what they read about you.
+        Congratulations on the successful creation of your new website. It is truly a remarkable achievement towards managing your brand as a physician and in line with our conviction that most of your patients are going to Google you, we feel you should have some control over what they read about you.
     </p>
     <p>
-        Firstly, I would like to provide you with the login credentials for your website's backend:<br/>
+        Firstly, I would like to provide you with the login credentials for your website's control center:<br/>
 
         - Website URL: https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com (<a href="https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com" target="_blank">link</a>)<br/>
-        - Website backend URL: https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com/setting (<a href="https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com/setting" target="_blank">link</a>)<br/>
+        - Control center URL: https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com/setting (<a href="https://{{str_replace('.com', '', $detail['domain'])}}.whitecoatdomain.com/setting" target="_blank">link</a>)<br/>
         - Username: {{ $detail['email'] }}<br/>
         - Password: {{ $detail['password'] }}
     </p>
@@ -29,7 +29,7 @@
             <b>Social Media Stream:</b> With this your website visitors can view and engage with your social media posts, updates, or feeds without leaving your website.
             </li>
             <li>
-            <b>Contact Information:</b> Provide contact information like email, address and phone number.
+            <b>Contact Information:</b> Provide contact information like branded email eg. consultancy@{{$detail['domain']}}.com, address and phone number.
             </li>
         </ul>
     </p>
