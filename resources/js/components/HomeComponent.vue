@@ -23,7 +23,7 @@
                             <sign-up-button-component />
                         </div>
                     </div>
-                    <div class="d-flex pt-5 flex-col">
+                    <div class="d-flex pt-5 flex-col lg-absolute">
                         <div class="d-flex sm-justify-center">
                             <div class="d-flex align-center">
                                 <img src="/media/img/verify.png" />
@@ -44,7 +44,7 @@
                             <img src="/media/img/decor.png" class="decor" />
                         </div>
                     </div>
-                    <div class="relative">
+                    <div class="relative md-right-style">
                         <div class="relative top-112">
                             <div class="image1Container">
                                 <img
@@ -187,7 +187,7 @@
                                     <h5 class="mb-2">
                                         Build your own website in a few steps
                                     </h5>
-                                    <p class="mb-2" style="opacity: 0.7">
+                                    <p class="mb-2">
                                         Start yours today. Less than 30mins,
                                         your site will be live
                                     </p>
@@ -195,7 +195,7 @@
                                         >Get Started</a
                                     >
                                 </div>
-                                <div class="contents" style="width: 370px">
+                                <div class="contents">
                                     <p class="d-flex align-center">
                                         <i class="material-icons pr-1"
                                             >expand_more</i
@@ -227,7 +227,7 @@
                                     A website Builder with perks
                                 </p>
                             </div>
-                            <div class="absolute tag hide-on-small-only">@whitecoatdomain.com</div>
+                            <div class="absolute tag hide-on-med-and-down">@whitecoatdomain.com</div>
                             <div class="absolute spiralCRed hide-on-small-only">
                                 <img src="/media/img/spiralCRed.svg" />
                             </div>
@@ -235,7 +235,7 @@
                                 <img src="/media/img/spiralingGrey.svg" />
                             </div>
                         </div>
-                        <p class="desc show-on-small">
+                        <p class="desc show-on-small second">
                             <span
                                 >You can decide how you are working as a team
                                 first and then let the software work around you.
@@ -249,10 +249,10 @@
                 <div class="pizzariedDownRight"></div>
             </section>
             <section class="bgSec relative">
-                <h4 class="mt-0 mb-2 hide-on-large-only">
+                <h4 class="mt-0 mb-2 hide-on-small-only">
                     Make your portfolio work for you
                 </h4>
-                <div class="d-flex justify-between sm-block">
+                <div class="d-flex justify-between sm-block md-flex-col">
                     <div class="templateImgHolder">
                         <img
                             src="/media/img/screenshotTemp.png"
@@ -322,7 +322,7 @@
                             <p class="text mb-2">
                                 Follow this 6 simple steps to create a website today
                             </p>
-                            <get-started-button-component class="hide-on-med-and-down"/>
+                            <get-started-button-component class="hide-on-small-only"/>
                         </div>
                         <div class="stepsToStart">
                             <div class="d-flex">
@@ -364,7 +364,7 @@
                                 <i class="material-icons hide-on-small-only">chevron_right</i>
                                 <span>Your website is live in few minutes.</span>
                             </div>
-                            <get-started-button-component class="show-on-small-only"/>
+                            <get-started-button-component class="hide-on-med-and-up"/>
                         </div>
                     </div>
                 </div>
@@ -382,31 +382,18 @@
                             offer to your target audience.
                         </p>
                         <div class="row sm-flexed sm-flex-col sm-align-center">
-                            <div class="col s12 l3 m4 mb-1">
-                                <services-offered-component />
-                            </div>
-                            <div class="col s12 l3 m4 mb-1">
-                                <services-offered-component />
-                            </div>
-                            <div class="col s12 l6 m4 mb-1 d-flex">
-                                <services-offered-component />
+                            <div class="col s12 m4 mb-1" :class="{'l6 d-flex': index === 2 || index === 3, 'l3': index <= 1 || index > 3}" v-for="(service, index) in services" :key="service.title">
+                                <services-offered-component :src="service.src" :title="service.title" :description="service.description"/>
                                 <img
                                     src="/media/img/serv1Img.png"
+                                    v-if="index === 2"
                                     class="responsive-img w-290 hide-on-med-and-down"
                                 />
-                            </div>
-                            <div class="col l6 m4 s12 mb-2 d-flex">
-                                <services-offered-component />
                                 <img
                                     src="/media/img/serv2Img.png"
+                                    v-if="index === 3"
                                     class="responsive-img w-290 hide-on-med-and-down"
                                 />
-                            </div>
-                            <div class="col s12 l3 m4 mb-2">
-                                <services-offered-component />
-                            </div>
-                            <div class="col s12 l3 m4 mb-2">
-                                <services-offered-component />
                             </div>
                         </div>
                     </div>
@@ -416,7 +403,7 @@
             </section>
             <section class="relative templateFit">
                 <div class="container">
-                    <div class="d-flex flex-start">
+                    <div class="d-flex flex-start md-justify-center">
                         <div class="">
                             <h6>
                                 <span class="pri">Templates</span> fit just for
@@ -438,7 +425,7 @@
                 </div>
                 <div class="container">
                     <div class="d-flex justify-between sm-justify-center">
-                        <div class="d-flex flex-col flex-end justify-between hide-on-small-only">
+                        <div class="d-flex flex-col flex-end justify-between hide-on-med-and-down">
                             <div class="tempFitRow1 absolute ">
                                 <templates-for-component
                                     :src="'allergists.png'"
@@ -452,7 +439,7 @@
                                 />
                             </div>
                         </div>
-                        <div class="d-flex flex-col sm-align-center">
+                        <div class="d-flex flex-col hide-on-med-and-down" >
                             <div class="tempFitRow2 absolute">
                                 <templates-for-component
                                     :src="'endocrinology.png'"
@@ -471,7 +458,7 @@
                                 />
                             </div>
                         </div>
-                        <div class="d-flex flex-col hide-on-small-only">
+                        <div class="d-flex flex-col hide-on-med-and-down">
                             <div class="absolute tempFitRow3">
                                 <templates-for-component
                                     :src="'opticians.png'"
@@ -495,6 +482,90 @@
                                 />
                             </div>
                         </div>
+                        <div class="sm-align-center  hide-on-med-and-up">
+                            <div class="tempFitRow2 absolute">
+                                <templates-for-component
+                                    :src="'endocrinology.png'"
+                                    :title="'Endocrinology'"
+                                    class="mb-4 sm-mb-6"
+                                />
+                                <templates-for-component
+                                    :src="'gyna.png'"
+                                    :title="'Gynaecology'"
+                                    class="mb-4 sm-mb-6"
+                                />
+                                <templates-for-component
+                                    :src="'allergists.png'"
+                                    :title="'Allergists/Immunology'"
+                                    class="mb-4 m-0"
+                                />
+                            </div>
+                        </div>
+                        <div class="row show-on-medium">
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'allergists.png'"
+                                    :title="'Allergists/Immunology'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'endocrinology.png'"
+                                    :title="'Endocrinology'"
+                                    class="mb-4 sm-mb-6"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'gyna.png'"
+                                    :title="'Gynaecology'"
+                                    class="mb-4 sm-mb-6"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'opticians.png'"
+                                    :title="'Opticians'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'pediatrics.png'"
+                                    :title="'Pediatrics'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'surgeons.png'"
+                                    :title="'Surgeons'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'therapist.png'"
+                                    :title="'Therapist'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'serv2Img.png'"
+                                    :title="'Vetinary'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'dentist.png'"
+                                    :title="'Dentists'"
+                                    class="mb-4"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="pizzariedUpLeft hide-on-med-and-up"></div>
@@ -509,14 +580,14 @@
                             WORLD
                         </h5>
                         <div class="mapBg relative">
-                            <template v-for="(i, index) in 11" :key="i">
+                            <template v-for="(img, index) in reviews" :key="img">
                                 <div
                                     class="image absolute"
                                     @mouseover="showMessage(index)"
                                     @mouseout="hideMessage"
                                 >
                                     <img
-                                        src="/media/img/user.png"
+                                        :src="'/media/img/'+img.img"
                                         class="responsive-img circle"
                                     />
                                     <div
@@ -536,86 +607,7 @@
                 <div class="pizzariedUpLeft"></div>
                 <div class="pizzariedDownRight"></div>
             </section>
-            <section class="relative faqs">
-                <h5>FAQS</h5>
-                <p>FAQS Here</p>
-                <!-- <div style="width: 1226px; height: 456px; ">
-  <div style="width: 640px; height: 456px; left: 0px; top: 0px; position: absolute; box-shadow: 0px 4px 4px rgba(16, 157, 173, 0.03); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-    <div style="padding-left: 16px; padding-right: 16px; padding-top: 24px; padding-bottom: 24px; background: white; box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-      <div style="justify-content: center; align-items: center; gap: 24px; display: inline-flex">
-        <div style="justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-          <div style="width: 24px; height: 24px; background: rgba(16, 157, 173, 0.29); border-radius: 9999px"></div>
-          <div style="width: 520px; color: black; font-size: 16px; font-family: Montserrat; font-weight: 400; line-height: 24px; word-wrap: break-word">What is Whitecoatdomain?</div>
-        </div>
-        <div style="width: 24px; height: 24px; position: relative">
-          <div style="width: 8px; height: 16px; left: 8px; top: 4px; position: absolute; border: 1px rgba(16, 157, 173, 0.29) solid"></div>
-        </div>
-      </div>
-    </div>
-    <div style="padding-left: 16px; padding-right: 16px; padding-top: 24px; padding-bottom: 24px; background: white; box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-      <div style="justify-content: center; align-items: center; gap: 24px; display: inline-flex">
-        <div style="justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-          <div style="width: 24px; height: 24px; background: rgba(16, 157, 173, 0.29); border-radius: 9999px"></div>
-          <div style="width: 520px; color: black; font-size: 16px; font-family: Montserrat; font-weight: 400; line-height: 24px; word-wrap: break-word">How is payment made on the website?</div>
-        </div>
-        <div style="width: 24px; height: 24px; position: relative">
-          <div style="width: 8px; height: 16px; left: 8px; top: 4px; position: absolute; border: 1px rgba(16, 157, 173, 0.29) solid"></div>
-        </div>
-      </div>
-    </div>
-    <div style="padding-left: 16px; padding-right: 16px; padding-top: 24px; padding-bottom: 24px; background: rgba(16, 157, 173, 0.05); box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-      <div style="justify-content: center; align-items: center; gap: 24px; display: inline-flex">
-        <div style="justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-          <div style="width: 24px; height: 24px; background: #109DAD; border-radius: 9999px"></div>
-          <div style="width: 520px; color: black; font-size: 16px; font-family: Montserrat; font-weight: 500; line-height: 24px; word-wrap: break-word">Is whitecoatdomain for only professionals in the medical field?</div>
-        </div>
-        <div style="width: 24px; height: 24px; position: relative">
-          <div style="width: 8px; height: 16px; left: 8px; top: 4px; position: absolute; border: 1px #109DAD solid"></div>
-        </div>
-      </div>
-    </div>
-    <div style="padding-left: 16px; padding-right: 16px; padding-top: 24px; padding-bottom: 24px; background: white; box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-      <div style="justify-content: center; align-items: center; gap: 24px; display: inline-flex">
-        <div style="justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-          <div style="width: 24px; height: 24px; background: rgba(16, 157, 173, 0.29); border-radius: 9999px"></div>
-          <div style="width: 520px; color: black; font-size: 16px; font-family: Montserrat; font-weight: 400; line-height: 24px; word-wrap: break-word">Does whitecoatdomain work worldwide?</div>
-        </div>
-        <div style="width: 24px; height: 24px; position: relative">
-          <div style="width: 8px; height: 16px; left: 8px; top: 4px; position: absolute; border: 1px rgba(16, 157, 173, 0.29) solid"></div>
-        </div>
-      </div>
-    </div>
-    <div style="padding-left: 16px; padding-right: 16px; padding-top: 24px; padding-bottom: 24px; background: white; box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-      <div style="justify-content: center; align-items: center; gap: 24px; display: inline-flex">
-        <div style="justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-          <div style="width: 24px; height: 24px; background: rgba(16, 157, 173, 0.29); border-radius: 9999px"></div>
-          <div style="width: 520px; color: black; font-size: 16px; font-family: Montserrat; font-weight: 400; line-height: 24px; word-wrap: break-word">Is there any setup fee or annual maintainance fee that I need to pay regularly?</div>
-        </div>
-        <div style="width: 24px; height: 24px; position: relative">
-          <div style="width: 8px; height: 16px; left: 8px; top: 4px; position: absolute; border: 1px rgba(16, 157, 173, 0.29) solid"></div>
-        </div>
-      </div>
-    </div>
-    <div style="padding-left: 16px; padding-right: 16px; padding-top: 24px; padding-bottom: 24px; background: white; box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-      <div style="justify-content: center; align-items: center; gap: 24px; display: inline-flex">
-        <div style="justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-          <div style="width: 24px; height: 24px; background: rgba(16, 157, 173, 0.29); border-radius: 9999px"></div>
-          <div style="width: 520px; color: black; font-size: 16px; font-family: Montserrat; font-weight: 400; line-height: 24px; word-wrap: break-word">Other</div>
-        </div>
-        <div style="width: 24px; height: 24px; position: relative">
-          <div style="width: 8px; height: 16px; left: 8px; top: 4px; position: absolute; border: 1px rgba(16, 157, 173, 0.29) solid"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="width: 586px; height: 294px; padding-left: 33px; padding-right: 33px; padding-top: 29px; padding-bottom: 29px; left: 640px; top: 143px; position: absolute; background: #F3FAFB; border-radius: 2px; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
-    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 20px; display: flex">
-      <div style="width: 520px; color: black; font-size: 20px; font-family: Montserrat; font-weight: 500; line-height: 24px; word-wrap: break-word">Is whitecoatdomain for only professionals in the medical field?</div>
-      <div style="width: 520px; color: black; font-size: 20px; font-family: Montserrat; font-weight: 400; line-height: 24px; word-wrap: break-word">Whitecoatdomain is a versatile platform that caters to professionals across various domains, not just limited to the medical field. While the name may suggest a focus on healthcare professionals, the platform aims to bring together individuals from different industries who wear white coats as a symbol of their expertise and professionalism.</div>
-    </div>
-  </div>
-</div> -->
-            </section>
+           
             <section
                 class="getStarted relative"
             >
@@ -779,6 +771,74 @@
                     { img: "wcdHomeBanner3.png" },
                     { img: "wcdHomeBanner1.png" },
                 ],
+                services: [
+                    {
+                        title: 'Live Chat',
+                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        src: 'chats.png',
+                    },
+                    {
+                        title: 'Curriculum Vitae',
+                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        src: 'cv.png',
+                    },
+                    {
+                        title: 'Social Media Post',
+                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        src: 'socialPost.png',
+                    },
+                    {
+                        title: 'Technical Support',
+                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        src: 'livesupport.png',
+                    },
+                    {
+                        title: 'Auto generated',
+                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        src: 'autogen.png',
+                    },
+                    {
+                        title: 'Client Review',
+                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        src: 'star.png',
+                    }
+                ],
+                reviews: [
+                    {
+                        img: 'comp1.png',
+                    },
+                    {
+                        img: 'comp2.png',
+                    },
+                    {
+                        img: 'comp3.png',
+                    },
+                    {
+                        img: 'comp2.png',
+                    },
+                    {
+                        img: 'comp4.png',
+                    },
+                    {
+                        img: 'comp5.png',
+                    },
+                    {
+                        img: 'comp6.png',
+                    },
+                    {
+                        img: 'comp9.png',
+                    },
+                    {
+                        img: 'comp8.png',
+                    },
+                    {
+                        img: 'comp9.png',
+                    },
+                    {
+                        img: 'comp11.png',
+                    },
+
+                ]
             };
         },
         mounted() {
