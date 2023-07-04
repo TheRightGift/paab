@@ -1,13 +1,13 @@
 <template>
     <div>
         <footer class="relative">
-            <div class="container">
+            <div class="container hide-on-med-and">
                 <div class="d-flex justify-between align-center sm-flex-col">
                     <img
                         src="/media/img/wcd-logo-noBckg.png"
                         class="responsive-img logoFooter mb-2"
                     />
-                    <div class="d-flex justify-between align-center sm-justify-center sm-flex-col">
+                    <div class="d-flex justify-between align-center sm-justify-center  md-absolute sm-flex-col">
                         <div class="hide-on-small-only">
                             <div class="d-flex justify-between sm-justify-center align-center">
                                 <span class="links"
@@ -25,7 +25,7 @@
                                 <span class="pl-2">support@whitecoatdomain</span>
                             </div>
                         </div>
-                        <div>
+                        <div class="hide-on-med-only">
                             <a href="#" class="links"
                                 ><i class="fa-brands fa-facebook"></i>
                             </a>
@@ -38,16 +38,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-between mt-4 sm-flex-col sm-align-center">
+                <div class="d-flex justify-between md-mt-0 mt-4 sm-flex-col sm-align-center">
                     <div class="cite">
                         “Enhance your public image with White Coat Domain”
                     </div>
-                    <div class="d-flex justify-between">
+                    <div class="d-flex justify-between md-flex-col md-rel-13">
                         <div class="explore mb-4">
                             <h5>Explore</h5>
                             <a href="/">Home</a>
                         </div>
-                        <div class="explore ml-4">
+                        <div class="explore ml-4 md-m0">
                             <h5>Utility Pages</h5>
                             <ul>
                                 <li>
@@ -74,7 +74,7 @@
                             <span class="pl-2">support@whitecoatdomain</span>
                         </div>
                     </div>
-                    <div class=" hide-on-small-only">
+                    <div class=" hide-on-small-only md-rel-13">
                         <div class="contactus d-flex flex-col">
                             <h6>Contact Us</h6>
                             <p>We are always available to help</p>
@@ -98,7 +98,7 @@
             </div>
             <div
                 class="
-                    curve hide-on-small-only
+                    curve hide-on-med-and-down
                 "
             ></div>
         </footer>
@@ -229,6 +229,11 @@
         }
         .explore:nth-of-type(2) {
             margin-left: 15vw;
+        }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .custom-btn {
+            padding: 2vh 12vw;
         }
     }
 </style>

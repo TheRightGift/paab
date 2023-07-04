@@ -2,11 +2,11 @@
     <div>
         <div class="service">
             <div class="icon-container">
-                <img src="/media/img/cv.png" alt="like icon">
+                <img :src="'/media/img/'+src" alt="like icon">
             </div>
-            <p class="title">Curriculum Vitae</p>
+            <p class="title">{{ title }}</p>
             <p class="description">
-                Our team of highly professionals uses the latest health quickly and easily.
+                {{ description }}
             </p>
             <div class="d-flex align-center">
                 <span class="readmore">Read More</span>
@@ -75,5 +75,11 @@
     }
 </style>
 <script>
-    export default {};
+    export default {
+        props: {
+            src: String,
+            description: String,
+            title: String,
+        }
+    };
 </script>
