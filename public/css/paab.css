@@ -5,7 +5,7 @@
     --white: #ffffff;
     --gray: #a4a2a2;
     --component: rgba(0, 0, 0, 0.5);
-    --pri: #529dad;
+    --pri: #109DAD;
     --sec: #10217d;
     --ter: #2e4450;
 }
@@ -341,17 +341,6 @@ a.loginLink:hover {
 #reistrationForm .input-field {
     margin-top: 0;
     margin-bottom: 0.8rem;
-}
-
-
-/* Insert OTP Section */
-.row .col.s1.otpDigits {
-    background-color: #d9d9d9;
-    height: 7vh;
-    width: 3.5vw;
-    text-align: center;
-    margin-right: 1vw;
-    border-radius: 10px;
 }
 
 
@@ -1413,43 +1402,10 @@ img.authLogo {
         font-family: "Montserrat", sans-serif;
         text-align: center;
     }
-    .otpEmailAuthTxt {
-        font-family: "Poppins", sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 1rem;
-        line-height: 24px;
-        color: #1e1e1e;
-        margin-bottom: 3vh;
-        text-align: center;
-    }
-
-    /* Insert OTP Section */
-    .row .col.s1.otpDigits {
-        background-color: #d9d9d9;
-        height: 7vh;
-        width: 10.5vw;
-        text-align: center;
-        margin-right: 1vw;
-        border-radius: 10px;
-    }
-
-    #otpEmailBtn {
-        font-family: "Montserrat", sans-serif;
-        text-transform: capitalize;
-        background: var(--primary);
-        border-radius: 10px;
-        width: 90%;
-        height: 6vh;
-        margin-left: 3vw;
-        margin-top: 6vh;
-    }
     #otpEmailDiv p {
         text-align: center;
     }
-    .digit-group {
-        display: flex;
-    }
+    
     /* Client Settings Section */
     .settingsFormDiv {
         width: 100%;
@@ -2033,9 +1989,9 @@ img.authLogo {
         /* position: absolute;
         right: 3.3vw; */
     }
-    .authRightDiv {
+    /* .authRightDiv {
         padding-bottom: 7vh;
-    }
+    } */
     .wlcNoteLogo {
         font-family: "Montserrat", sans-serif;
         font-style: normal;
@@ -2097,11 +2053,7 @@ img.authLogo {
     }
 
     /* Signup Small Device */
-    .authRightDiv {
-        /* width: 90%; */
-        margin: 8vh auto 0 auto;
-        padding-bottom: 7vh;
-    }
+    
     .authHeadingContainer {
         margin-bottom: 10vh;
     }
@@ -2297,7 +2249,7 @@ img.authLogo {
         color: #1e1e1e;
         text-align: center;
     }
-    .otpEmailAuthTxt {
+    /* .otpEmailAuthTxt {
         font-family: "Poppins", sans-serif;
         font-style: normal;
         font-weight: 400;
@@ -2306,26 +2258,7 @@ img.authLogo {
         color: #1e1e1e;
         margin-bottom: 3vh;
         text-align: center;
-    }
-    /* Insert OTP Section */
-    .row .col.s1.otpDigits {
-        background-color: #d9d9d9;
-        height: 7vh;
-        width: 12vw;
-        text-align: center;
-        margin-right: 1vw;
-        border-radius: 10px;
-    }
-    #otpEmailBtn {
-        font-family: "Montserrat", sans-serif;
-        text-transform: capitalize;
-        background: var(--primary);
-        border-radius: 10px;
-        width: 100% !important;
-        height: 6vh;
-        margin-left: 0vw !important;
-        margin-top: 6vh;
-    }
+    } */
     
     /* Client Settings Section */
     .settingsFormDiv {
