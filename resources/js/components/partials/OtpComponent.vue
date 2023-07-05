@@ -1,16 +1,16 @@
 <template>
     <div class="authRightDiv">
-        <p class="authTitle">ENTER OTP</p>
-        <p class="otpEmailAuthTxt">
+        <!-- <p class="authTitle">ENTER OTP</p> -->
+        <p class="otpEmailAuthTxt marginBottom-5">
             <span v-if="text !== undefined">{{ text }} </span>
             <span v-else>You are almost there, get ready to conquer the world.</span>
         </p>
 
-        <div class="row rm_mg">
-            <div class="col s12" id="otpEmailDiv">
+        <div class="row">
+            <div class="col l12 m12 s12 marginBottom-5" id="otpEmailDiv">
                 <form
                     method="get"
-                    class="row digit-group"
+                    class="digit-group marginBottom-5"
                     data-group-name="digits"
                     data-autosubmit="false"
                     autocomplete="off"
@@ -108,14 +108,12 @@
                 <p v-if="shown"><b>Still can't find the mail? Check your spam/junk box. Messages could end up there.</b></p>
             </div>
             
-            <button
-                class="btn col s12"
-                id="otpEmailBtn"
-                @click="confirmOTP()"
-                :disabled="isDisabled"
-            >
-                VERIFY
-            </button>
+            <div class="row center">
+                <button href="#!" v-if="!verifyLoading" class="btn" @click="confirmOTP()" :disabled="isDisabled">Verify</button>
+                <a href="#!" v-else class="btn">
+                    <i class="fa fa-spin fa-spinner"></i>
+                </a>
+            </div>
         </div>
     </div>
 </template>
@@ -131,6 +129,7 @@
                 key: key.substring(7),
                 disabled: 0,
                 shown: false,
+                verifyLoading: false
             };
         },
         props: {
@@ -152,17 +151,19 @@
                         classes: "errorNotifier",
                     });
                 } else {
+                    this.verifyLoading = true;
                     this.disabled = 1;
                     if(this.type === 'register'){
                         if (this.decryptOTP(this.otp) === this.userInputedOTP) {
                             // Pass 200 to parent
                             this.$emit('res', 200);
+                            this.verifyLoading = false;
                         } else {
                             M.toast({
                                 html: "Invalid OTP.",
                                 classes: "errorNotifier",
                             });
-
+                            this.verifyLoading = false;
                             // reload page after 4secs
                             setTimeout(() => {
                                 location.reload();
@@ -174,11 +175,18 @@
                                 // console.log(res);
                                 if (res.data.status == 200) {
                                     this.$emit('res', 200);
-                                }
-                                else if (res.data.status == 404) {
+                                    this.verifyLoading = false;
+                                } else if (res.data.status == 404) {
                                     this.$emit('res', 404);
+                                    this.verifyLoading = false;
                                 }
+
                             }).catch(err => {
+                                this.verifyLoading = false;
+                                M.toast({
+                                    html: "Server Error.",
+                                    classes: "Please reload page and try again.",
+                                });
                                 console.log(err);
                             })
                     }
@@ -212,18 +220,46 @@
                         this.userInputedOTP.slice(0, index) +
                         this.userInputedOTP.slice(index + 1);
                 }
+                
             },
         },
         computed: {
             isDisabled: function () {
+                console.log(this.userInputedOTP.length, this.userInputedOTP.length !== 6);
                 return this.userInputedOTP.length !== 6;
             },
         },
     };
 </script>
 <style scoped>
+    .btn {
+        background-color: var(--pri);
+        text-transform: unset;
+        padding: 2vh 5vw;
+        border-radius: 2vh;
+        height: unset;
+        line-height: unset;
+    }
     .btn:disabled {
         background-color: #b9bac1 !important;
         border: none !important;
     }
+
+    /* Large */
+    @media only screen and (min-width: 1024px) {
+        
+    }
+    /* Medium */
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .btn {
+            padding: 2vh 12vw;
+        }
+    }
+    /* small */
+    @media only screen and (max-width: 767px) {
+        .btn {
+            padding: 2vh 15vw;
+        }
+    }
+    
 </style>

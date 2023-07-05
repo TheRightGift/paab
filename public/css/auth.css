@@ -40,6 +40,12 @@ body {
     font-weight: 600;
     margin-bottom: 6vh;
 }
+.loginDetail .loginDetailInner .otp h1 {
+    font-size: 2.6rem;
+    margin-top: 3vh;
+    font-weight: 600;
+    margin-bottom: 1vh;
+}
 .loginDetail .loginDetailInner label {
     display: block;
     color: var(--black);
@@ -67,6 +73,19 @@ body {
     top: 1vh;
 }
 
+/* OTP */
+.digit-group {
+    display: flex;
+}
+
+.row .col.s1.otpDigits {
+    background-color: #d9d9d9;
+    height: 7vh;
+    width: 1vw;
+    text-align: center;
+    margin-right: 1vw;
+    border-radius: 10px;
+}
 
 /* Large */
 @media only screen and (min-width: 1024px) {
@@ -83,12 +102,29 @@ body {
     .loginDetail .loginDetailInner { 
         margin-top: 14vh;
     }
+
+    /* OTP */
+    .row .col.s1.otpDigits {
+        width: 5vw;
+    }
 }
 /* small */
 @media only screen and (max-width: 767px) {
+    .loginDetail .loginDetailInner .otp h1 {
+        font-size: 2rem;
+    }
     .loginDetail .loginDetailInner {
         width: 95%;
         margin-top: 8vh;
+    }
+
+    /* OTP */
+    .otp {
+        padding: 0 3vw;
+    }
+    
+    .row .col.s1.otpDigits {
+        width: 8.5vw;
     }
 }
 
@@ -335,10 +371,7 @@ body {
     color: #1e1e1e;
     margin-bottom: 3vh;
 }
-#otpEmailDiv {
-    padding-left: 0;
-    padding-right: 0;
-}
+
 
 .helpModalCloseBtn {
     font-family: 'Poppins', sans-serif;

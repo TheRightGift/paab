@@ -254,41 +254,64 @@
         </div>
         <div class="col l6 m12 s12 loginDetail">
             <div class="loginDetailInner">
-                <div class="right-align">
-                    <a href="/">
-                        <img class="hide-on-med-and-up" src="/media/img/wcd-logo-noBckg.png" alt="Whitecoatdomain Logo"/>
-                    </a>                    
+                <div v-if="!otpPrompt && !logginIn">
+                    <div class="right-align hide-on-med-and-up">
+                        <a href="/">
+                            <img class="" src="/media/img/wcd-logo-noBckg.png" alt="Whitecoatdomain Logo"/>
+                        </a>                    
+                    </div>
+                    
+                    <p class="welcome">Welcome Back <span class="priTextColor">Doctor</span></p>
+                    <h1>Sign in</h1>
+                    <div class="row">
+                        <div class="col l12 m12 s12">
+                            <label for="email">Enter your email address</label>
+                            <input placeholder="email address" type="email" class="browser-default">                    
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l12 m12 s12">
+                            <label for="password">Enter your password</label>
+                            <input placeholder="password" type="password" class="browser-default">                    
+                        </div>
+                        <p class="forgotPass">
+                            <a href="/auth/resetpassword">Forgot password</a>
+                        </p>
+                    </div>
+
+                    <div class="row center">
+                        <a href="#!" v-if="!loginLoading" class="btn" @click.prevent="userLogin()">Sign in</a>
+                        <a href="#!" v-else class="btn">
+                            <i class="fa fa-spin fa-spinner"></i>
+                        </a>
+                    </div>
+                    <div class="center toSignUp">
+                        <p>
+                            <span class="grey-text">No Account?</span> <a href="/auth/getstarted">Sign up</a>
+                        </p>
+                    </div>
+                </div>
+                <div v-else-if="otpPrompt && !logginIn" class="otp">
+                    <div class="right-align hide-on-med-and-up">
+                        <a href="/">
+                            <img class="" src="/media/img/wcd-logo-noBckg.png" alt="Whitecoatdomain Logo"/>
+                        </a>                    
+                    </div>
+                    <h1>Enter OTP</h1>
+                    <div class="row">
+                        <div class="col l12 m12 s12">
+                            <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'" :text="'You are logging in from a new device, we sent you an OTP to your registered email. Please enter OTP to verify your account'"/>              
+                        </div>
+                        
+                    </div>
+                </div>
+                <div v-else-if="logginIn">
+                    <div class="row loginLoader noMarginBottom">
+                        <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                        <p>Loggin You In</p>
+                    </div>
                 </div>
                 
-                <p class="welcome">Welcome Back <span class="priTextColor">Doctor</span></p>
-                <h1>Sign in</h1>
-                <div class="row">
-                    <div class="col l12 m12 s12">
-                        <label for="email">Enter your email address</label>
-                        <input placeholder="email address" type="email" class="browser-default">                    
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col l12 m12 s12">
-                        <label for="password">Enter your password</label>
-                        <input placeholder="password" type="password" class="browser-default">                    
-                    </div>
-                    <p class="forgotPass">
-                        <a href="/auth/resetpassword">Forgot password</a>
-                    </p>
-                </div>
-
-                <div class="row center">
-                    <a href="#!" v-if="!loginLoading" class="btn" @click.prevent="userLogin()">Sign in</a>
-                    <a href="#!" v-else class="btn">
-                        <i class="fa fa-spin fa-spinner"></i>
-                    </a>
-                </div>
-                <div class="center toSignUp">
-                    <p>
-                        <span class="grey-text">No Account?</span> <a href="/auth/getstarted">Sign up</a>
-                    </p>
-                </div>
             </div>
 
             <p class="white-text center footer">Copyright &copy; {{ getYear() }} whitecoatdomain </p>
@@ -311,7 +334,7 @@
                     password: "",
                 },
                 otp: "",
-                otpPrompt: false,
+                otpPrompt: true,
             };
         },
         mounted() {},
@@ -417,6 +440,14 @@
     }
     .footer {
         margin-top: 4vh;
+    }
+
+    .loginLoader {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
     }
 
     @media only screen and (max-width: 767px) {
