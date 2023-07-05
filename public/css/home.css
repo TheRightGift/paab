@@ -455,7 +455,7 @@ section:nth-of-type(2) {
     text-align: center;
 }
 .services h6,
-.reviews h6 {
+.reviews h6, .faqsHeading {
     font-family: Montserrat;
     font-size: 1rem;
     font-weight: 400;
@@ -714,18 +714,41 @@ div.image:nth-child(11) {
 .h-794 img {
     height: 100%;
 }
-/* section:first-of-type .pizzariedRight {
-    max-width: 100%;
-    top: 23%;
+
+.faqsTitle {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 53px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    padding-bottom: 4vh;
 }
-section:nth-of-type(3) .pizzariedRight {
-    right: 0;
-    bottom: 0;
+.collapsible-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-section:nth-of-type(3) .pizzariedLeft {
-    left: 0;
-    bottom: 0;
-} */
+.collapsible-body {
+    line-height: 24px;
+}
+.collapsible-header i.material-icons {
+    transition: transform 0.2s ease-in-out;
+}
+li.active .collapsible-body,
+li.active .collapsible-header {
+    background: rgba(243, 250, 251, 1);
+}
+.circle {
+    width: 24px;
+    height: 24px;
+    background: rgba(16, 157, 173, 0.29);
+    display: block;
+    margin-right: 2rem;
+}
+li.active .circle {
+    background: rgba(16, 157, 173, 1);
+}
 /* Smartphones */
 @media only screen and (max-width: 767px) {
     /* CSS styles for smartphones */
@@ -797,8 +820,8 @@ section:nth-of-type(3) .pizzariedLeft {
     }
     .reviewBoxPrev {
         right: 10%;
-        top: 100%;
-        transform: translateY(70%);
+        top: 140%;
+        /* transform: translateY(70%); */
         height: 11vh;
     }
     .reviewStarAvg {
@@ -835,7 +858,7 @@ section:nth-of-type(3) .pizzariedLeft {
     }
     .sectionTwoContent {
         position: relative;
-        top: 10vh;
+        top: 15vh;
     }
 
     .sectionTwoContent .desc {
@@ -1105,6 +1128,15 @@ section:nth-of-type(3) .pizzariedLeft {
     .custom-input input::placeholder {
         color: rgba(185, 185, 185, 1);
     }
+    li.active .collapsible-header .material-icons {
+        transform: rotate(90deg);
+    }
+    .faqs {
+        padding-bottom: 20vh;
+    } 
+    .faqsTitle {
+        font-size: 1.5rem;
+    }
 }
 /* Tablets */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -1228,7 +1260,7 @@ section:nth-of-type(3) .pizzariedLeft {
     }
     .reviews {
         top: 0;
-        padding: 5vh 0;
+        padding: 0 0 5vh 0;
     }
     .mapBg {
         background-image: url("/media/img/mapMd.png");
@@ -1266,8 +1298,13 @@ section:nth-of-type(3) .pizzariedLeft {
         height: 32px;
         top: 25%;
     }
-    .getStarted , .support, .top{
+    .getStarted,
+    .support,
+    .top, .faqs {
         top: 0;
+    }
+    .faqs {
+        padding-bottom: 10vh;
     }
     .md-m0 {
         margin: 0;
@@ -1295,6 +1332,19 @@ section:nth-of-type(3) .pizzariedLeft {
     }
     .explore h5 {
         margin: 0;
+    }
+    .getStarted {
+        padding: 5vh 2vw;
+    }
+    li.active .collapsible-header .material-icons {
+        transform: rotate(90deg);
+    }
+    .faqsTitle {
+        font-size: 1.75rem;
+    }
+    .lg-flex {
+        width: 75%;
+        margin: auto;
     }
 }
 /* Desktops and Laptops */
@@ -1365,4 +1415,32 @@ section:nth-of-type(3) .pizzariedLeft {
     .maskSec {
         left: 10%;
     }
+    .collapsible-body {
+        width: 45vw;
+        position: absolute;
+        max-width: 100%;
+        transform: translateX(100%);
+        top: 0;
+        transition: transform 0.3s ease-in-out;
+        z-index: 1;
+    }
+
+    .collapsible-header.active + .collapsible-body {
+        transform: translateX(0);
+    }
+    .collapsible li.active {
+        width: 45vw;
+        position: relative;
+    }
+    .collapsible-header {
+        width: 45vw;
+        padding: 2rem;
+    }
+    .lg-flex {
+        display: flex;
+    }
+    .faqs {
+        padding-bottom: 20vh;
+    } 
 }
+

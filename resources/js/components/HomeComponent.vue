@@ -607,7 +607,62 @@
                 <div class="pizzariedUpLeft"></div>
                 <div class="pizzariedDownRight"></div>
             </section>
-           
+            <section class="faqs relative">
+                <div class="container">
+                    <h5 class="faqsHeading">FAQS</h5>
+                    <h6 class="faqsTitle">Most frequent questions from our clients worldwide</h6>
+                    <div class="lg-flex">
+                        <ul class="collapsible">
+                            <li>
+                            <div class="collapsible-header">
+                                <div class="d-flex align-center m-0"><div class="w-24"><span class="circle"></span></div>What is Whitecoatdomain?</div>
+                                
+                                <i class="material-icons">chevron_right</i>
+                            </div>
+                            <div class="collapsible-body">
+                                <span>Whitecoatdomain is a platform where professionals comes to create a domain of their choice and establish their online presence</span>
+                            </div>
+                            </li>
+                            <li>
+                            <div class="collapsible-header">
+                                <div class="d-flex align-center m-0"><div class="w-24"><span class="circle"></span></div>How is payment made on the website?</div>
+                                <i class="material-icons">chevron_right</i>
+                            </div>
+                            <div class="collapsible-body">
+                                <span>Our payment are secured with SSL and moreover we use a third party which has a secured and well known standard for our payment system.</span>
+                            </div>
+                            </li>
+                            <li class="active">
+                            <div class="collapsible-header">
+                                <div class="d-flex align-center m-0"><div class="w-24"><span class="circle"></span></div>Does whitecoatdomain work worldwide?</div>
+                                <i class="material-icons">chevron_right</i>
+                            </div>
+                            <div class="collapsible-body">
+                                <span>Whitecoatdomain is a versatile platform that caters to professionals across various domains, not just limited to the medical field. While the name may suggest a focus on healthcare professionals, the platform aims to bring together individuals from different industries who wear white coats as a symbol of their expertise and professionalism.</span>
+                            </div>
+                            </li>
+                            <li>
+                            <div class="collapsible-header">
+                                <div class="d-flex align-center m-0"><div class="w-24"><span class="circle"></span></div>Is there any setup fee or annual maintainance fee that I need to pay regularly?</div>
+                                <i class="material-icons">chevron_right</i>
+                            </div>
+                            <div class="collapsible-body">
+                                <span>Yes, domain purchases has to be renewed yearly, but you can also pay up for 3 years and above.</span>
+                            </div>
+                            </li>
+                            <li>
+                            <div class="collapsible-header">
+                                <div class="d-flex align-center m-0"><div class="w-24"><span class="circle"></span></div>Other</div>
+                                <i class="material-icons">chevron_right</i>
+                            </div>
+                            <div class="collapsible-body">
+                                <span>Whitecoatdomain is a versatile platform that caters to professionals across various domains, not just limited to the medical field. While the name may suggest a focus on healthcare professionals, the platform aims to bring together individuals from different industries who wear white coats as a symbol of their expertise and professionalism.</span>
+                            </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
             <section
                 class="getStarted relative"
             >
