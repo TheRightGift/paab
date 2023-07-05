@@ -52,7 +52,7 @@
     @media only screen and (min-width: 768px) and (max-width: 1023px) {
         .doctorTypes {
         width: 27vw !important;
-        height: 24vh !important;
+        height: 273px !important;
     }
     .arrowBg {
         bottom: 10% !important;

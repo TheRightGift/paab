@@ -233,7 +233,7 @@
     }
     @media only screen and (min-width: 768px) and (max-width: 1023px) {
         .custom-btn {
-            padding: 2vh 12vw;
+            padding: 1vh 12vw;
         }
     }
 </style>
