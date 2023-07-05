@@ -157,15 +157,15 @@ class TenantClaimController extends Controller
             $domain = $tenant->domains[0]['domain'];
             if (!empty($request->get('token'))) {
                 $token = $request->get('token');
-                $response = Http::get(env('WCDSERVICE_URL')."api/v1/track/$email?action=INITIALMAIL&clickedPrev=1"); // Make a GET request
+                // $response = Http::get(env('WCDSERVICE_URL')."api/v1/track/$email?action=INITIALMAIL&clickedPrev=1"); // Make a GET request
 
-                if ($response->successful()) {
-                    $data = $response->json(); // Retrieve the response data
-                    // Process the data as needed
-                } else {
-                    $statusCode = $response->status();
-                    // Handle the error based on the status code
-                }
+                // if ($response->successful()) {
+                //     $data = $response->json(); // Retrieve the response data
+                //     // Process the data as needed
+                // } else {
+                //     $statusCode = $response->status();
+                //     // Handle the error based on the status code
+                // }
                 return redirect("https://$domain.whitecoatdomain.com?token=$token");
             }
             else {

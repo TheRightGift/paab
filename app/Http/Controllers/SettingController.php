@@ -52,10 +52,12 @@ class SettingController extends Controller
     {
         $searchTenant = $request->query('claimable');
         $searchEmail = $request->query('mail');
+        $searchCode = $request->query('code');
 
-        if (!empty($searchTenant) && !empty($searchEmail)) {
+        if (!empty($searchTenant) && !empty($searchCode) || !empty($searchEmail)) {
             $request->session()->put('tenant', $searchTenant);
             $request->session()->put('email', $searchEmail);
+            $request->session()->put('code', $searchCode);
             $request->session()->save();
             
             $tenant = Tenant::find($searchTenant);

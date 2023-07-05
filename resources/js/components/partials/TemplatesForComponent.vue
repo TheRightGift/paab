@@ -1,9 +1,11 @@
 <template>
     <div>
         <div class="content relative">
-            <img class="doctorTypes" :src="'/media/img/'+src" />
+            <img class="doctorTypes" :src="'/media/img/' + src" />
 
-            <div class="arrowBg d-flex justify-center align-center hoverable"><img src="/media/img/arrow-right.png" /></div>
+            <div class="arrowBg d-flex justify-center align-center hoverable">
+                Preview <i class="fa-solid fa-arrow-right"></i>
+            </div>
             <div class="title">{{ title }}</div>
         </div>
     </div>
@@ -15,12 +17,13 @@
         border-radius: 10px;
     }
     .arrowBg {
-        width: 56px;
         height: 45px;
         left: 23px;
         top: 255px;
+        font-size: 1.25rem;
         position: absolute;
         background: var(--pri);
+        color: var(--white);
         border-radius: 5px;
         transition: width 0.3s ease;
         cursor: pointer;
@@ -36,38 +39,48 @@
         word-wrap: break-word;
     }
     .arrowBg:hover {
-        width: 116px; 
         height: 45px;
         background: var(--sec);
         transition: width 0.5s ease;
     }
-    .arrowBg:hover img {
-        transform: scale(1.2);
-        transition: width 0.3s ease;
-        width: 51.79px;
-    }
-    .arrowBg img {
-        width: 30px;
+    i.fa-solid {
+        color: var(--white);
+        padding-left: 1vw;
     }
     @media only screen and (min-width: 768px) and (max-width: 1023px) {
         .doctorTypes {
-        width: 27vw !important;
-        height: 273px !important;
+            width: 27vw !important;
+            height: 273px !important;
+        }
+        .arrowBg {
+            bottom: 10% !important;
+            width: 18vw;
+            font-size: 1.1rem;
+            top: unset !important;
+        }
+        .title {
+            top: unset;
+        }
+
     }
-    .arrowBg {
-        bottom: 10% !important;
-        top: unset !important;
+    @media only screen and (max-width: 767px) {
+        .arrowBg {
+            width: 35vw;
+            z-index: 1;
+        }
     }
-    .title {
-        top: unset;
+    @media only screen and (min-width: 1024px) {
+        .arrowBg {
+            width: 10vw;
+            font-size: 1.2rem;
+        }
     }
-}
 </style>
 <script>
     export default {
         props: {
             src: String,
             title: String,
-        }
+        },
     };
 </script>

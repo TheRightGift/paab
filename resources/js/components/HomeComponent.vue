@@ -1,13 +1,5 @@
 <template>
     <div>
-        <!-- <get-started-button-component />
-
-        
-        <review-popup-component />
-        
-        <services-offered-component />
-
-        <templates-for-component /> -->
         <div class="body d-flex flex-col">
             <section class="relative">
                 <div class="container">
@@ -20,7 +12,7 @@
                             />
                         </div>
                         <div class="signUpBtnContainer">
-                            <sign-up-button-component />
+                            <sign-up-button-component :goto="'/auth/login'" />
                         </div>
                     </div>
                     <div class="d-flex pt-5 flex-col lg-absolute">
@@ -103,7 +95,7 @@
                                             class="reviewBoxPrevImgHolder"
                                         >
                                             <img
-                                                src="/media/img/doctor.png"
+                                                src="/media/img/comp1.png"
                                                 class="responsive-img"
                                             />
                                         </div>
@@ -111,7 +103,7 @@
                                             class="reviewBoxPrevImgHolder"
                                         >
                                             <img
-                                                src="/media/img/doctor.png"
+                                                src="/media/img/comp2.png"
                                                 class="responsive-img"
                                             />
                                         </div>
@@ -119,7 +111,7 @@
                                             class="reviewBoxPrevImgHolder"
                                         >
                                             <img
-                                                src="/media/img/doctor.png"
+                                                src="/media/img/comp3.png"
                                                 class="responsive-img"
                                             />
                                         </div>
@@ -127,7 +119,7 @@
                                             class="reviewBoxPrevImgHolder"
                                         >
                                             <img
-                                                src="/media/img/doctor.png"
+                                                src="/media/img/comp4.png"
                                                 class="responsive-img"
                                             />
                                         </div>
@@ -155,8 +147,8 @@
                             media.
                         </div>
                         <div class="d-flex justify-between pt-5">
-                            <get-started-button-component class="" />
-                            <sign-up-button-component :bg="'transparent'" class="hide-on-med-and-up"/>
+                            <get-started-button-component :goto="'/auth/login'" />
+                            <sign-up-button-component :goto="'/auth/login'" :bg="'transparent'" class="hide-on-med-and-up"/>
                         </div>
                     </div>
                 </div>
@@ -249,7 +241,7 @@
                 <div class="pizzariedDownRight"></div>
             </section>
             <section class="bgSec relative">
-                <h4 class="mt-0 mb-2 hide-on-small-only">
+                <h4 class="mt-0 mb-2 hide-on-large-only">
                     Make your portfolio work for you
                 </h4>
                 <div class="d-flex justify-between sm-block md-flex-col">
@@ -262,12 +254,12 @@
                     </div>
                     <div class="sectionCont">
                         <!-- style="width: 540px"  -->
-                        <h4 class="mt-0 mb-2 hide-on-med-and-down">
+                        <h4 class="mt-0 mb-2 show-on-large hide-on-med-and-down">
                             Make your portfolio work for you
                         </h4>
                         <div class="d-flex justify-between">
                             <div class="blueBox yellow lighten-1">
-                                <i class="material-icons">select_all</i>
+                                <img src="/media/img/amazeTemp.png" />
                             </div>
                             <div class="-mr-6">
                                 <h6 class="m-0">Amazing Templates</h6>
@@ -283,7 +275,7 @@
                         </div>
                         <div class="d-flex justify-between self-center">
                             <div class="blueBox">
-                                <i class="material-icons">transform</i>
+                                <img src="/media/img/bestFeat.png" />
                             </div>
                             <div class="-mr-6">
                                 <h6 class="m-0">Best Features</h6>
@@ -297,7 +289,7 @@
                         </div>
                         <div class="d-flex justify-between">
                             <div class="blueBox red">
-                                <i class="material-icons">subject</i>
+                                <img src="/media/img/taxi.png" />
                             </div>
                             <div class="-mr-6">
                                 <h6 class="m-0">Link social media accounts</h6>
@@ -322,7 +314,7 @@
                             <p class="text mb-2">
                                 Follow this 6 simple steps to create a website today
                             </p>
-                            <get-started-button-component class="hide-on-small-only"/>
+                            <get-started-button-component :goto="'/auth/login'" class="hide-on-small-only"/>
                         </div>
                         <div class="stepsToStart">
                             <div class="d-flex">
@@ -364,7 +356,7 @@
                                 <i class="material-icons hide-on-small-only">chevron_right</i>
                                 <span>Your website is live in few minutes.</span>
                             </div>
-                            <get-started-button-component class="hide-on-med-and-up"/>
+                            <get-started-button-component :goto="'/auth/login'" class="hide-on-med-and-up"/>
                         </div>
                     </div>
                 </div>
@@ -428,126 +420,67 @@
                         <div class="d-flex flex-col flex-end justify-between hide-on-med-and-down">
                             <div class="tempFitRow1 absolute ">
                                 <templates-for-component
-                                    :src="'allergists.png'"
-                                    :title="'Allergists/Immunology'"
-                                    class="mb-4"
-                                />
-                                <templates-for-component
                                     :src="'dentist.png'"
                                     :title="'Dentists'"
                                     class="mb-4"
                                 />
+                                <templates-for-component
+                                    :src="'pediatrics.png'"
+                                    :title="'Pediatricians'"
+                                    class="mb-4"
+                                />
+                                
                             </div>
                         </div>
                         <div class="d-flex flex-col hide-on-med-and-down" >
-                            <div class="tempFitRow2 absolute">
+                            <div class="tempFitRow2 sm-align-center absolute">
                                 <templates-for-component
-                                    :src="'endocrinology.png'"
-                                    :title="'Endocrinology'"
+                                    :src="'therapist.png'"
+                                    :title="'Therapist'"
+                                    class="mb-4"
+                                />
+                                <templates-for-component
+                                    :src="'psychologists.png'"
+                                    :title="'Psychologists'"
                                     class="mb-4 sm-mb-6"
                                 />
-                                <templates-for-component
-                                    :src="'gyna.png'"
-                                    :title="'Gynaecology'"
-                                    class="mb-4 sm-mb-6"
-                                />
-                                <templates-for-component
-                                    :src="'allergists.png'"
-                                    :title="'Allergists/Immunology'"
-                                    class="mb-4 m-0"
-                                />
-                            </div>
-                        </div>
-                        <div class="d-flex flex-col hide-on-med-and-down">
-                            <div class="absolute tempFitRow3">
                                 <templates-for-component
                                     :src="'opticians.png'"
                                     :title="'Opticians'"
                                     class="mb-4"
                                 />
-                                <templates-for-component
-                                    :src="'pediatrics.png'"
-                                    :title="'Pediatrics'"
-                                    class="mb-4"
-                                />
+                                
+                            </div>
+                        </div>
+                        <div class="d-flex flex-col hide-on-med-and-down">
+                            <div class="absolute tempFitRow3">
                                 <templates-for-component
                                     :src="'surgeons.png'"
                                     :title="'Surgeons'"
                                     class="mb-4"
                                 />
                                 <templates-for-component
-                                    :src="'therapist.png'"
-                                    :title="'Therapist'"
+                                    :src="'serv2Img.png'"
+                                    :title="'Vetinary'"
                                     class="mb-4"
-                                />
-                            </div>
-                        </div>
-                        <div class="sm-align-center  hide-on-med-and-up">
-                            <div class="tempFitRow2 absolute">
-                                <templates-for-component
-                                    :src="'endocrinology.png'"
-                                    :title="'Endocrinology'"
-                                    class="mb-4 sm-mb-6"
                                 />
                                 <templates-for-component
                                     :src="'gyna.png'"
-                                    :title="'Gynaecology'"
+                                    :title="'Gynaecologists'"
                                     class="mb-4 sm-mb-6"
                                 />
                                 <templates-for-component
                                     :src="'allergists.png'"
-                                    :title="'Allergists/Immunology'"
-                                    class="mb-4 m-0"
+                                    :title="'Opticians'"
+                                    class="mb-4"
                                 />
                             </div>
                         </div>
                         <div class="row show-on-medium">
                             <div class="col m4">
                                 <templates-for-component
-                                    :src="'allergists.png'"
-                                    :title="'Allergists/Immunology'"
-                                    class="mb-4"
-                                />
-                            </div>
-                            <div class="col m4">
-                                <templates-for-component
-                                    :src="'endocrinology.png'"
-                                    :title="'Endocrinology'"
-                                    class="mb-4 sm-mb-6"
-                                />
-                            </div>
-                            <div class="col m4">
-                                <templates-for-component
-                                    :src="'gyna.png'"
-                                    :title="'Gynaecology'"
-                                    class="mb-4 sm-mb-6"
-                                />
-                            </div>
-                            <div class="col m4">
-                                <templates-for-component
-                                    :src="'opticians.png'"
-                                    :title="'Opticians'"
-                                    class="mb-4"
-                                />
-                            </div>
-                            <div class="col m4">
-                                <templates-for-component
-                                    :src="'pediatrics.png'"
-                                    :title="'Pediatrics'"
-                                    class="mb-4"
-                                />
-                            </div>
-                            <div class="col m4">
-                                <templates-for-component
                                     :src="'surgeons.png'"
                                     :title="'Surgeons'"
-                                    class="mb-4"
-                                />
-                            </div>
-                            <div class="col m4">
-                                <templates-for-component
-                                    :src="'therapist.png'"
-                                    :title="'Therapist'"
                                     class="mb-4"
                                 />
                             </div>
@@ -560,8 +493,75 @@
                             </div>
                             <div class="col m4">
                                 <templates-for-component
+                                    :src="'gyna.png'"
+                                    :title="'Gynaecology'"
+                                    class="mb-4 sm-mb-6"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'therapist.png'"
+                                    :title="'Therapist'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'psychologists.png'"
+                                    :title="'Psychologist'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'opticians.png'"
+                                    :title="'Opticians'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
                                     :src="'dentist.png'"
                                     :title="'Dentists'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'pediatrics.png'"
+                                    :title="'Pediatrics'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'allergists.png'"
+                                    :title="'Allergists/Immunology'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="row hide-on-med-and-up sm-align-center d-flex flex-col">
+                            <div class="col m4">
+                                <templates-for-component
+                                    :src="'surgeons.png'"
+                                    :title="'Surgeons'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col s12">
+                                <templates-for-component
+                                    :src="'pediatrics.png'"
+                                    :title="'Pediatrics'"
+                                    class="mb-4"
+                                />
+                            </div>
+                            <div class="col s12">
+                                <templates-for-component
+                                    :src="'opticians.png'"
+                                    :title="'Opticians'"
                                     class="mb-4"
                                 />
                             </div>
@@ -663,14 +663,12 @@
                     </div>
                 </div>
             </section>
-            <section
-                class="getStarted relative"
-            >
-            <div class="d-flex flex-col justify-center align-center container">
-                <h5 class="mb-2">Create a free account to get started</h5>
-                <get-started-button-component class="mb-2" />
-                <p>Join our 29,345,698 clients around the world</p>
-            </div>
+            <section class="getStarted relative">
+                <div class="d-flex flex-col justify-center align-center container">
+                    <h5 class="mb-2">Create a free account to get started</h5>
+                    <get-started-button-component :goto="'/auth/login'" class="mb-2" />
+                    <p>Join our 29,345,698 clients around the world</p>
+                </div>
             </section>
              <section class="support relative">
                 <div class="d-flex justify-center align-center hide-on-small-only">
@@ -692,47 +690,49 @@
                                     <div class="mb-2 card-title">
                                         We are always happy to help
                                     </div>
-                                    <div class="d-flex flex-col gap-10">
-                                        <div class="custom-input">
-                                            <input
-                                                type="text"
-                                                required
-                                                class="browser-default"
-                                                placeholder="Name"
-                                            />
+                                    <form>
+                                        <div class="d-flex flex-col gap-10">
+                                            <div class="custom-input">
+                                                <input
+                                                    type="text"
+                                                    required
+                                                    class="browser-default"
+                                                    placeholder="Name"
+                                                />
+                                            </div>
+                                            <div class="custom-input">
+                                                <input
+                                                    type="text"
+                                                    required
+                                                    class="browser-default"
+                                                    placeholder="Email"
+                                                />
+                                            </div>
+                                            <div class="custom-input">
+                                                <input
+                                                    type="text"
+                                                    required
+                                                    class="browser-default"
+                                                    placeholder="Phone"
+                                                />
+                                            </div>
+                                            <div class="custom-input">
+                                                <input
+                                                    type="text"
+                                                    required
+                                                    class="browser-default"
+                                                    placeholder="Subject"
+                                                />
+                                            </div>
+                                            <div class="custom-textarea">
+                                                <textarea
+                                                    class="textarea browser-default"
+                                                    placeholder="Message"
+                                                ></textarea>
+                                            </div>
+                                            <get-started-button-component type="submit" />
                                         </div>
-                                        <div class="custom-input">
-                                            <input
-                                                type="text"
-                                                required
-                                                class="browser-default"
-                                                placeholder="Email"
-                                            />
-                                        </div>
-                                        <div class="custom-input">
-                                            <input
-                                                type="text"
-                                                required
-                                                class="browser-default"
-                                                placeholder="Phone"
-                                            />
-                                        </div>
-                                        <div class="custom-input">
-                                            <input
-                                                type="text"
-                                                required
-                                                class="browser-default"
-                                                placeholder="Subject"
-                                            />
-                                        </div>
-                                        <div class="custom-textarea">
-                                            <textarea
-                                                class="textarea browser-default"
-                                                placeholder="Message"
-                                            ></textarea>
-                                        </div>
-                                        <get-started-button-component />
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -767,7 +767,7 @@
     </div>
 </template>
 <style scoped>
-.custom-btn {
+    .custom-btn {
         color: var(--white);
         background: var(--pri);
         width: 210px;
@@ -820,12 +820,7 @@
                         imgUrl: "templateOne.png",
                     },
                 ],
-                bannerImg: "wcdHomeBanner1.png",
-                bannerImages: [
-                    { img: "wcdHomeBanner2.png" },
-                    { img: "wcdHomeBanner3.png" },
-                    { img: "wcdHomeBanner1.png" },
-                ],
+                
                 services: [
                     {
                         title: 'Live Chat',
@@ -897,17 +892,6 @@
             };
         },
         mounted() {
-            let index = 0;
-            setInterval(() => {
-                this.swapBannerImgs(index);
-
-                let imgArrayLen = this.bannerImages.length;
-                index++;
-
-                if (index >= imgArrayLen) {
-                    index = 0;
-                }
-            }, 6000);
         },
         methods: {
             showMessage(index) {
@@ -933,9 +917,6 @@
                 const imageRect = imageElement.getBoundingClientRect();
                 console.log(imageRect.left, imageRect.width, window.innerWidth);
                 return imageRect.left + imageRect.width + 200 > window.innerWidth; // Adjust 200 according to your chatbox width
-            },
-            swapBannerImgs(index) {
-                this.bannerImg = this.bannerImages[index].img;
             },
         },
     };

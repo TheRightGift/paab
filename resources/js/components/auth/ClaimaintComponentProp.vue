@@ -26,24 +26,16 @@
                             <div class="contentInnerDiv">
                                 <!-- Get Started Section -->
                                 <div v-show="view == 0" class="intro">
-                                    <div class="center-align">
+                                    <div class="center-align" v-if="tenantOnDemand == 1">
                                         <a href="/">
                                             <img
-                                                v-if="tenantOnDemand == 1"
                                                 src="/media/img/wcdlogodeepblue.png"
                                                 alt="WhiteCoatDomain Logo"
                                                 class="responsive-img"
                                                 width="287"
                                                 height="173"
                                             />
-                                            <img
-                                                v-else
-                                                src="/media/img/wcd-logo-noBckg.png"
-                                                alt="WhiteCoatDomain Logo"
-                                                class=""
-                                                width="287"
-                                                height="173"
-                                            />
+                                            
                                         </a>
                                         <p class="contentTitle marginTop-5">
                                             Lets help you setup your website
@@ -60,6 +52,14 @@
                                                 >GET STARTED</a
                                             >
                                         </div>
+                                    </div>
+                                    <div>
+                                        <p>Confirm you use this email</p>
+                                        <input type="email" v-model="otp" />
+                                        <button type="button" @click="getStarted()">Submit</button>
+                                    </div>
+                                    <div>
+                                        <otp-component type="register" v-show="emailBtn" :email="otpMail"/>
                                     </div>
                                 </div>
 
@@ -1483,6 +1483,7 @@
     import ImageCropper from "../partials/ImageCropper.vue";
     import ProgressComponent from "../partials/ProgressComponent.vue";
     import GoLiveComponent from "../partials/GoLiveComponent.vue";
+    import OtpComponent from '../partials/OtpComponent.vue';
     export default {
         components: {
             PaymentModalComponent,
@@ -1491,10 +1492,12 @@
             ImageCropper,
             ProgressComponent,
             GoLiveComponent,
+                OtpComponent,
         },
 
         data() {
             return {
+                emailBtn: false,
                 clicked: false,
                 suggestionLoaded: false,
                 medText: "Medical",

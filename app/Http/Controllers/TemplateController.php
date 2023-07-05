@@ -188,11 +188,12 @@ class TemplateController extends Controller
         $can = false;
         $email = '';
         $user_id = 0;
+        $code = null;
         $meta = [
             'description' => "Experience the future of healthcare at WhiteCoatDomain.com/preview/1. Our cutting-edge platform revolutionizes healthcare delivery, connecting patients and providers seamlessly. Discover intuitive features, personalized care options, and streamlined workflows for enhanced efficiency. Join us on the forefront of healthcare innovation and elevate your practice to new heights. Sign up for a preview today!",
             'image' => "/media/img/templates/$template_id/physicianHeroWhiteMale.jpg",
         ];
 
-        return view('websites.physician', compact('meta', 'preview', 'template', 'templateCSS', 'tenantID', 'can', 'email', 'user_id', 'template_id'));
+        return view('websites.physician', compact('meta', 'preview', 'template', 'templateCSS', 'tenantID', 'can', 'code', 'email', 'user_id', 'template_id'));
     }
 }
