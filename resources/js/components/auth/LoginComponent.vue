@@ -1,5 +1,5 @@
 <template>
-    <div class="row authContainDiv">
+    <!--div class="row authContainDiv">
         <div v-if="!otpPrompt && !logginIn">
             <div class="col l6 loginContainer white-text intro hide-on-med-and-down">
                 <div class="marginTop-15">
@@ -56,8 +56,7 @@
                         Build a brand online and let your potential patients
                         find you.
                     </p>
-
-                    <!-- Login Help Modal Structure -->
+                    
                     <div id="helpModal" class="modal">
                         <div class="modal-content">
                             <p>
@@ -124,9 +123,6 @@
                                 </small>
                             </div>
 
-                            <!-- Login Social Media Handle -->
-                            <!-- <social-login-component /> -->
-
                             <div class="input-field col s12">
                                 <a
                                     type="button"
@@ -154,8 +150,7 @@
                                     </div>
                                 </a>
                             </div>
-
-                            <!-- Login Signup Link -->
+                            
                             <div class="row">
                                 <div class="col l12 m12 s12 loginSignUpDiv">
                                     <div class="loginSignUpInnerDiv">
@@ -215,7 +210,6 @@
             <div class="col s12 m10 offset-m1 l6 otpContainer formContainer">
                 <div class="authRightDiv">
                     <div class="authHeadingContainer center-align hide-on-large-only">
-                        <!--a href="/" class="authHeading">WhiteCoatDomain</a-->
                         <div class="col m12 s6 offset-s3 marginBottom-5">
                             <a href="/">
                                 <img
@@ -233,7 +227,6 @@
         <div v-else-if="logginIn" class="centeredLoader">
             <div class="authRightDiv">
                 <div class="authHeadingContainer center-align hide-on-large-only">
-                    <!--a href="/" class="authHeading">WhiteCoatDomain</a-->
                     <div class="col m12 s6 offset-s3 marginBottom-5">
                         <a href="/">
                             <img
@@ -247,6 +240,58 @@
                 <i class="fas fa-circle-notch fa-spin fa-2x"></i>
                 <p>Loggin You In</p>
             </div>
+        </div>
+    </div-->
+
+    <div class="row">
+        <div class="col l6 loginBackground hide-on-med-and-down">
+            
+            <img
+                class="logo"
+                src="/media/img/wcdlogoLG-noBG.png"
+                alt="Whitecoatdomain Logo"
+            />
+        </div>
+        <div class="col l6 m12 s12 loginDetail">
+            <div class="loginDetailInner">
+                <div class="right-align">
+                    <a href="/">
+                        <img class="hide-on-med-and-up" src="/media/img/wcd-logo-noBckg.png" alt="Whitecoatdomain Logo"/>
+                    </a>                    
+                </div>
+                
+                <p class="welcome">Welcome Back <span class="priTextColor">Doctor</span></p>
+                <h1>Sign in</h1>
+                <div class="row">
+                    <div class="col l12 m12 s12">
+                        <label for="email">Enter your email address</label>
+                        <input placeholder="email address" type="email" class="browser-default">                    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l12 m12 s12">
+                        <label for="password">Enter your password</label>
+                        <input placeholder="password" type="password" class="browser-default">                    
+                    </div>
+                    <p class="forgotPass">
+                        <a href="/auth/resetpassword">Forgot password</a>
+                    </p>
+                </div>
+
+                <div class="row center">
+                    <a href="#!" v-if="!loginLoading" class="btn" @click.prevent="userLogin()">Sign in</a>
+                    <a href="#!" v-else class="btn">
+                        <i class="fa fa-spin fa-spinner"></i>
+                    </a>
+                </div>
+                <div class="center toSignUp">
+                    <p>
+                        <span class="grey-text">No Account?</span> <a href="/auth/getstarted">Sign up</a>
+                    </p>
+                </div>
+            </div>
+
+            <p class="white-text center footer">Copyright &copy; {{ getYear() }} whitecoatdomain </p>
         </div>
     </div>
 </template>
@@ -359,14 +404,24 @@
     };
 </script>
 <style scoped>
-    .red-text {
-        color: rgb(245, 126, 126);
-        font-style: italic;
+    .btn {
+        background-color: var(--pri);
+        text-transform: unset;
+        padding: 2vh 5vw;
+        border-radius: 2vh;
+        height: unset;
+        line-height: unset;
     }
-    .authHeadingContainer .row {
-        margin-bottom: 0;
+    .row {
+        margin-bottom: 5vh;
     }
-    .mb-0 {
-        margin-bottom: 0;
+    .footer {
+        margin-top: 4vh;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .btn {
+            padding: 1.5vh 20vw;
+        }
     }
 </style>

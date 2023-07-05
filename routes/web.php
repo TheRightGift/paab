@@ -265,9 +265,9 @@ Route::get('/claim/data', [TenantClaimController::class, 'getData']);
 
 
 Route::post('/subscription/create', [App\Http\Controllers\SubscriptionController::class, 'subscribe']);
-Route::get('/testModal', function(){
-    return view('test');
-});
+// Route::get('/testModal', function(){
+//     return view('test');
+// });
 
 Route::get('/getstarted', [TenantClaimController::class, 'checkIfTenantIDNGetDomain']);
 

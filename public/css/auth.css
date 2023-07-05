@@ -1,7 +1,98 @@
 body {
     width: 100% !important;
+    font-family: "Montserrat", sans-serif;
 }
-.authContainDiv {
+.priTextColor {
+    color: var(--pri);
+}
+/* LOGIN */
+.loginBackground {
+    background-image: url('../media/img/backgroundImg/loginBackgroundLg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loginDetail {
+    background-color: var(--pri);
+    height: 100vh;
+}
+.loginDetail .loginDetailInner {
+    background-color: #c3e6ea;
+    border-radius: 2vw;
+    width: 60%;
+    margin: 10vh auto 0 auto;
+    padding: 4vh 3vw;
+}
+.loginDetail .loginDetailInner p.welcome {
+    font-size: 1.7rem;
+    margin-top: 0;
+    margin-bottom: 2vh;
+    font-weight: 400;
+}
+.loginDetail .loginDetailInner h1 {
+    font-size: 2.6rem;
+    margin-top: 0;
+    font-weight: 600;
+    margin-bottom: 6vh;
+}
+.loginDetail .loginDetailInner label {
+    display: block;
+    color: var(--black);
+    font-size: 1rem;
+    padding-bottom: 1vh;
+}
+.loginDetail .loginDetailInner input {
+    width: 100%;
+    height: 6vh;
+    border-radius: 1vh;
+    padding: 0 1vw;
+    outline: unset;
+    border: thin solid var(--pri);
+}
+.loginDetail .loginDetailInner .forgotPass {
+    padding: 0 0.75rem;
+    text-align: right;
+    font-size: 0.8rem;
+}
+.loginDetail .loginDetailInner .forgotPass a, .loginDetail .loginDetailInner .toSignUp a {
+    color: var(--pri);
+}
+.loginDetail .loginDetailInner .forgotPass a{
+    position: relative;
+    top: 1vh;
+}
+
+
+/* Large */
+@media only screen and (min-width: 1024px) {
+    
+}
+/* Medium */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .loginDetail {
+        background-image: url('../media/img/backgroundImg/loginBackgroundMd.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .loginDetail .loginDetailInner { 
+        margin-top: 14vh;
+    }
+}
+/* small */
+@media only screen and (max-width: 767px) {
+    .loginDetail .loginDetailInner {
+        width: 95%;
+        margin-top: 8vh;
+    }
+}
+
+/* .authContainDiv {
     height: 100vh;
     width: 100%;
     margin: auto;
@@ -47,7 +138,6 @@ body {
     color: var(--sec);
     margin-bottom: 0;
     margin-top: 0;
-    /* text-align: center; */
 }
 .authTxt {
     font-family: "Poppins", sans-serif;
@@ -96,7 +186,6 @@ body {
     color: var(--sec);
 }
 
-/* Login Auth Section-2 */
 .loginSocialMedTxt {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
@@ -131,7 +220,7 @@ body {
     color: var(--sec);
 }
 
-/* Sign up page section */
+
 #signupTitle,
 #signupLname,
 #signupFName,
@@ -147,9 +236,6 @@ body {
 #signupZipcode {
     border: 1px solid var(--primary);
     text-align: center;
-    /* border-radius: 100px;
-    padding-left: 9px;
-    letter-spacing: -0.015em; */
 }
 #signupBtn {
     background: var(--primary);
@@ -161,7 +247,6 @@ body {
     margin: 7px 0;
 }
 
-/* OTP Page Section */
 .otpSocialMedHandLink {
     height: 40px;
     border-radius: 6px;
@@ -200,7 +285,7 @@ body {
     margin-left: 9px;
     margin-bottom: 13px;
 }
-/* Get Started Section */
+
 .getStartLoginSignUpInnerDiv {
     display: flex;
 }
@@ -211,8 +296,6 @@ body {
     background: var(--primary);
     border-radius: 10px;
     width: 100%;
-    /* height: 6vh; */
-    /* margin-left: 1vw; */
 }
 .btn.getStartBtn:hover,
 .btn.getStartBtn:active {
@@ -236,8 +319,6 @@ body {
 .website.spinner-layer {
     border-color: var(--primary) !important;
 }
-
-/* OTP Email Section */
 #otpEmailBtn {
     font-family: "Montserrat", sans-serif;
     text-transform: capitalize;
@@ -286,52 +367,4 @@ body {
 .sidenav {
     height: calc(100vh - 10vh);
     top: 10vh;
-}
-
-/* Media Query for Small Devices */
-@media screen and (max-width: 640px) {
-    .authContainDiv {
-        width: 90%;
-    }
-    .row .col.formContainer {
-        padding: 0 1.5vw;
-    }
-    .digit-group {
-        display: flex;
-    }
-    .row .col.regContainer {
-        display: block;
-        padding-top: 7vh;
-    }
-    .row .col.regContainer .authHeadingContainer {
-        margin-bottom: 5vh;
-    }
-
-    #signupTitle,
-    #signupLname,
-    #signupFName,
-    #signupEmail,
-    #signupPhone,
-    #signupCountry,
-    #signupGender,
-    #signupState,
-    #signupCity,
-    #signupPass,
-    #signCpass,
-    #signupProfession,
-    #signupZipcode {
-        padding-left: 0px;
-        text-align: center;
-    }
-    input[type=text]:not(.browser-default),
-    input[type=password]:not(.browser-default),
-    input[type=email]:not(.browser-default),
-    input[type=tel]:not(.browser-default) {
-        margin-bottom: 0;
-    }
-    
-    .authTitle {
-        font-size: 2rem;
-        text-align: center;
-    }
-}
+} */

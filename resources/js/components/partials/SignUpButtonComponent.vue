@@ -40,9 +40,9 @@
     }
     @media only screen and (max-width:767px) {
         .btn {
-            padding: 14px, 36px, 14px, 36px !important;
-            width: 38vw;
-            height: 7vh;
+            padding: 2.6vh 8vw !important;
+            /* width: 38vw;
+            height: 7vh; */
         }
     }
     @media only screen and (min-width: 1024px) {
