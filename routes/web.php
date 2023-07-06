@@ -4,11 +4,18 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TenantController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\WebhookController;
+use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeveloperController;
-use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\TenantClaimController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\Tenants\SocialController;
+use App\Http\Controllers\AdminClientOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +85,18 @@ Route::prefix('auth')->group(function () {
         }
     });
 });
-// 'auth',
+Route::get('/guest-login/{code}', function (Request $request) {
+    // $guestId = uniqid();
+
+    $guestId = $request->code;
+    Session::put('guest_id', $guestId);
+
+    // Log in the guest as a temporary user
+    Auth::loginUsingId($guestId);
+
+    // Redirect or perform any other necessary action
+    // return redirect('/dashboard');
+});
 Route::prefix('client')->middleware(['auth', 'can:run_client_ops'])->group(function () {
     Route::get('/websites', function () {
         return view('client.websites');
@@ -236,39 +254,42 @@ Route::prefix('supre')->middleware(['auth', 'can:run_superAdmin_ops'])->group(fu
 // Save token and DB to session on route visitation
 
 
-Route::put('claim/updateDomain/{tenant}', [TenantController::class, 'update']);
+Route::middleware(['validateIsValidGuest'])->group(function () {
+    Route::put('claim/updateDomain/{tenant}', [TenantController::class, 'update']);
 
-Route::get('claim/getTenantDomain', [TenantController::class, 'checkTenantNGetDets']);
+    Route::get('claim/getTenantDomain', [TenantController::class, 'checkTenantNGetDets']);
 
-Route::put('claim/updateAvatar/{bio}', [TenantClaimController::class, 'updateUserPhoto']);
+    Route::put('claim/updateAvatar/{bio}', [TenantClaimController::class, 'updateUserPhoto']);
 
-Route::post('claim/saveUndergrad', [TenantClaimController::class, 'updateUserUndergradSchoolTime']);
+    Route::post('claim/saveUndergrad', [TenantClaimController::class, 'updateUserUndergradSchoolTime']);
 
-Route::post('claim/savemedicalschooltime', [TenantClaimController::class, 'saveMedicalSchoolTime']);
+    Route::post('claim/savemedicalschooltime', [TenantClaimController::class, 'saveMedicalSchoolTime']);
 
-Route::post('claim/saveinternship', [TenantClaimController::class, 'saveInternshipTime']);
+    Route::post('claim/saveinternship', [TenantClaimController::class, 'saveInternshipTime']);
 
-Route::post('claim/savefellowship', [TenantClaimController::class, 'saveFellowshipTime']);
+    Route::post('claim/savefellowship', [TenantClaimController::class, 'saveFellowshipTime']);
 
-Route::post('claim/saveresidency', [TenantClaimController::class, 'saveResidencyTime']);
+    Route::post('claim/saveresidency', [TenantClaimController::class, 'saveResidencyTime']);
 
-Route::post('claim/saveexperience', [TenantClaimController::class, 'saveExperinceTime']);
+    Route::post('claim/saveexperience', [TenantClaimController::class, 'saveExperinceTime']);
 
-Route::post('claim/save/additonalqualification', [TenantClaimController::class, 'saveAdditionalSchoolTime']);
+    Route::post('claim/save/additonalqualification', [TenantClaimController::class, 'saveAdditionalSchoolTime']);
 
-Route::post('claim/save/service', [TenantClaimController::class, 'saveServiceOffered']);
+    Route::post('claim/save/service', [TenantClaimController::class, 'saveServiceOffered']);
 
-Route::post('claim/successdomainregistra', [TenantClaimController::class, 'sendMailForDomainRegistry']);
+    Route::post('claim/successdomainregistra', [TenantClaimController::class, 'sendMailForDomainRegistry']);
+
+    // After verifying email save to admin client orders
+    Route::put('/admin_order/{tenant_id}', [AdminClientOrderController::class, 'update']);
+
+    Route::get('/claim/data', [TenantClaimController::class, 'getData']);
 
 
-Route::get('/claim/data', [TenantClaimController::class, 'getData']);
-
-
-Route::post('/subscription/create', [App\Http\Controllers\SubscriptionController::class, 'subscribe']);
-// Route::get('/testModal', function(){
-//     return view('test');
-// });
-
+    Route::post('/subscription/create', [App\Http\Controllers\SubscriptionController::class, 'subscribe']);
+    // Route::get('/testModal', function(){
+    //     return view('test');
+    // });
+});
 Route::get('/getstarted', [TenantClaimController::class, 'checkIfTenantIDNGetDomain']);
 
 // Define a route to handle the webhook

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdminClientOrder;
 use Illuminate\Http\Request;
-use Validator;
+use App\Models\AdminClientOrder;
+use Illuminate\Support\Facades\Validator;
 
 class AdminClientOrderController extends Controller
 {
@@ -61,11 +61,12 @@ class AdminClientOrderController extends Controller
      * @param  \App\Models\ClientOrder  $clientOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $clientOrder)
+    public function update(Request $request, $tenant_id)
     {
-        $order = AdminClientOrder::findOrFail($clientOrder);
-        $order->update($request->only('email'));
-        return response(['order' => $order, 'message' => 'Updated Success', 'status' => 200], 200);
+        $order = AdminClientOrder::where('tenant_id', $tenant_id)->first();
+        $order->email = $request->email;
+        $order->save();
+        return response()->json(['order' => $order, 'message' => 'Updated Success'], 200);
     }
 
     /**

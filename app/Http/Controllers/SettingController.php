@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 use App\Models\AdminClientOrder;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
@@ -53,7 +55,6 @@ class SettingController extends Controller
         $searchTenant = $request->query('claimable');
         $searchEmail = $request->query('mail');
         $searchCode = $request->query('code');
-
         if (!empty($searchTenant) && !empty($searchCode) || !empty($searchEmail)) {
             $request->session()->put('tenant', $searchTenant);
             $request->session()->put('email', $searchEmail);
@@ -63,7 +64,7 @@ class SettingController extends Controller
             $tenant = Tenant::find($searchTenant);
             if (!empty($tenant)) {
                 $user = User::where('email', $searchEmail);
-                $orders = AdminClientOrder::where([['tenant_id', $searchTenant], ['claimed', null], ['email', $searchEmail]])->first();
+                $orders = AdminClientOrder::where([['tenant_id', $searchTenant], ['claimed', null], ['email', $searchEmail]])->orWhere([['tenant_id', $searchTenant], ['claimed', null], ['code', $searchCode]])->first();
                 if (!empty($orders) || $user->firstOrFail()->registration_completed === 'Pending') {
                     Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
 
@@ -73,6 +74,7 @@ class SettingController extends Controller
                     $bio = DB::table('bios')->get();
                     $userBiography = $bio->isEmpty() ? collect(['firstname' => '', 'lastname' => '', 'title_id' => '', 'othername' => '']) : $bio;
                     $userNotRegByAdmin = !empty($orders) ? false : true;
+                    $searchEmail = !empty($orders) ? $orders->email : null;
                     return view('auth.started', compact('userBiography', 'searchEmail', 'userNotRegByAdmin'));
                     // ->with(['userBiography' => $userBiography, 'userMail' => $searchEmail]);
                 } else {
@@ -82,7 +84,24 @@ class SettingController extends Controller
                 return redirect('auth/login');
             }
         } else {
+            dd('here');
             return redirect('auth/login');
         }
+    }
+
+    private function temporalLogin($guestId) {
+        // Route::get('/guest-login', function () {
+            // Generate a unique temporary identifier for the guest
+            $guestId = uniqid();
+        
+            // Store the guest identifier in the session
+            Session::put('guest_id', $guestId);
+        
+            // Log in the guest as a temporary user
+            Auth::loginUsingId($guestId);
+        
+            // Redirect or perform any other necessary action
+            // return redirect('/dashboard');
+        // });
     }
 }
