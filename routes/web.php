@@ -255,6 +255,9 @@ Route::prefix('supre')->middleware(['auth', 'can:run_superAdmin_ops'])->group(fu
 
 
 Route::middleware(['validateIsValidGuest'])->group(function () {
+    Route::post('claim/saveuser', [TenantClaimController::class, 'saveUserDets']);
+
+    Route::put('claim/updatebio', [TenantClaimController::class, 'updateUserBio']);
     Route::put('claim/updateDomain/{tenant}', [TenantController::class, 'update']);
 
     Route::get('claim/getTenantDomain', [TenantController::class, 'checkTenantNGetDets']);
