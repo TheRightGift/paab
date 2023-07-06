@@ -1645,7 +1645,7 @@
             checkEmail() {
                 if(this.inputEmail === ''){
                     M.toast({
-                        html: 'Please input your emial.',
+                        html: 'Please input your email.',
                         classes: "errorNotifier",
                     });
                 } else {
@@ -2164,6 +2164,7 @@
                             let data = {
                                 password: this.passwordGenerator(),
                             };
+                            localStorage.setItem('passwordGen', data.password);
                             this.bio = { ...this.bio, ...data };
                         }
                         axios
@@ -2539,9 +2540,9 @@
                             let elem = document.getElementById("modal1");
                             let instance = M.Modal.init(elem);
                             instance.close();
-                            localStorage.clear('claimproc');
-                            localStorage.clear('passwordGen');
-                            localStorage.clear('email');
+                            localStorage.removeItem('claimproc');
+                            localStorage.removeItem('passwordGen');
+                            localStorage.removeItem('email');
                             // this.makePayment();
                         }
                     })

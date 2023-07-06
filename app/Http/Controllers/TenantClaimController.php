@@ -64,9 +64,10 @@ class TenantClaimController extends Controller
         } else {
             $input = $inputs->validated();
             $input['password'] = Hash::make($request->password);
-            if (!empty(Session::get('email')) || $request->confirmHash === 'hashkeill') {
+            if (!empty(Session::get('email')) || !empty(Session::get('code')) || $request->confirmHash === 'hashkeill') {
+                $orders = AdminClientOrder::where([['email', Session::get('email')],['tenant_id', Session::get('tenant')]])->orWhere([['code', Session::get('code')], ['tenant_id', Session::get('tenant')]])->first();
                 $tenantToFind = Session::get('tenant');
-                $input['email'] = $input['email'] ?? Session::get('email');
+                $input['email'] = !empty($orders) ? $orders->email : $input['email'] ?? Session::get('email');
                 $findUser = User::where('email', $input['email'])->first();
                 if(!(empty($findUser))){
                     $user = $findUser->update($input);
@@ -586,20 +587,24 @@ class TenantClaimController extends Controller
     public function sendMailForDomainRegistry(Request $request) {
         $value = $request->session()->pull('tenant', 'default'); //
         $valueOfMail = $request->session()->get('email');
+        $valueOfCode = $request->session()->get('code');
         $this->validate($request, [
-            // 'password' => 'required',
+            'password' => 'required',
             'plan' => 'required',
             'domain' => 'required',
         ]);
         if (!empty($value) && $value !== 'default') {
-            $orders = AdminClientOrder::where([['tenant_id', $value], ['claimed', null], ['email', $valueOfMail]])->first();
+            $orders = AdminClientOrder::where([['tenant_id', $value], ['claimed', null], ['email', $valueOfMail]])->orWhere([['tenant_id', $value], ['claimed', null], ['code', $valueOfCode]])->first();
+            $valueOfMail = !empty($orders) ? $orders->email : $valueOfMail;
             $userToUpdate = User::where('email', $valueOfMail)->first();
+            // dd($userToUpdate, $valueOfCode, $valueOfMail, $orders);
             $detail = [
                 "password" => $request->get('password'),
                 "names" => $userToUpdate->firstname.' '.$userToUpdate->lastname,
                 "domain" => $request->get('domain'),
                 "email" => $valueOfMail,
             ];
+            // dd($valueOfMail, $valueOfCode, $detail);
             if (!empty($orders) || $userToUpdate->registration_completed === 'Pending') {
                 $authUser = $userToUpdate->id;
                 $tenant = Tenant::find($value);
@@ -720,6 +725,7 @@ class TenantClaimController extends Controller
         DB::setDatabaseName(env('DB_DATABASE'));
         $degree = Title::where('id', $bioDb->title_id)->first()->name;
         if ($bioDb !== null) {
+            dd($bioDb);
             $seedBioA = 'Dr. '.$bioDb->firstname.' '.$bioDb->lastname.' ';
         }
         
