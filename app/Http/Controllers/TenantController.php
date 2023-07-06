@@ -3,15 +3,18 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use Ramsey\Uuid\Uuid;
 use App\Models\Tenant;
-use App\Models\Template;
 
+use App\Models\Template;
+use GuzzleHttp\Middleware;
 use App\Models\Tenants\Bio;
 use Illuminate\Http\Request;
 use App\Models\Tenants\Social;
 use App\Models\Tenants\General;
 use App\Models\AdminClientOrder;
 use Illuminate\Support\Facades\DB;
+use GuzzleHttp\Handler\CurlHandler;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -19,10 +22,18 @@ use Stevebauman\Location\Facades\Location;
 use App\Notifications\Tenants\LoginNotifier;
 use App\Models\Tenants\TenantUser as TenantUser;
 use Stancl\Tenancy\Exceptions\DomainOccupiedByOtherTenantException;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\Handler\CurlHandler;
+
 class TenantController extends Controller
 {
+    private function generatedCode() {
+        return Uuid::uuid4()->toString();
+    }
+    // Overwrite email to be nullable
+    // Add code(nullable) to replace email if no email is supplied
+    // Generate 32 digit code
+    // So construction of links will be url/auth/claim?claimable&code=generatedCode
+    // If code from url matches description from backend admin_orders redirect
+     
     public function create(Request $request) {
         $inputs = Validator::make($request->all(), [
             'name' => 'required',
@@ -30,6 +41,7 @@ class TenantController extends Controller
             'user_id' => ['required'],
             'description' => ['required'],
             'email' => 'nullable|unique:admin_client_orders',
+            'code' => 'nullable|unique:admin_client_orders', // Used in place of email as identifier
         ]);
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
@@ -52,10 +64,17 @@ class TenantController extends Controller
                     $savePassword = app(TenantClaimController::class);
                     $request->confirmHash === 'hashkeill' ? $savePassword->createOrUpdatePassword($tenant->id, $request->password) : null;
                     if ($request->has('email')) {
-                        $order = AdminClientOrder::create([
+                        AdminClientOrder::create([
                             'tenant_id' => $tenant->id,
                             'user_id' => $inputs->validated()['user_id'],
                             'email' => $inputs->validated()['email'],
+                        ]);
+                    } 
+                    else {
+                        AdminClientOrder::create([
+                            'tenant_id' => $tenant->id,
+                            'user_id' => $inputs->validated()['user_id'],
+                            'code' => $this->generatedCode(),
                         ]);
                     }
                     return response()->json(['message' => 'Your Website is created successfuly', 'tenant' => $tenant, 'domain' => $domain, 'status' => 200], 200);
@@ -91,9 +110,13 @@ class TenantController extends Controller
             }
             if ($request->has('domain')) {
                 try {
-                    $domain = !empty($sessionTenant) ? $tenant->domains->first() : $tenant->domains->find($inputs->validated()['domain_id']);
-                    $domain->domain = str_replace('.com', '', $inputs->validated()['domain']);
-                    $domain->save();
+                    if (!empty($sessionTenant)) {
+                        $domain = $tenant->domains->first();
+                    } else {
+                        $domain = $tenant->domains->find($inputs->validated()['domain_id']);
+                        $domain->domain = str_replace('.com', '', $inputs->validated()['domain']);
+                        $domain->save();
+                    }
                 } catch (DomainOccupiedByOtherTenantException $e) {
                     return response()->json(["Domain already in use."]);
                 }
@@ -163,9 +186,11 @@ class TenantController extends Controller
         if ($canDo !== null) {
             $can = $canDo['can'];
             $email = $canDo['email'];
+            $code = $tenant->order->code;
         } else {
             $can = false;
             $email = $tenant->user->email;
+            $code = null;
         }
         $meta = [
             'description' => $description,
@@ -173,7 +198,7 @@ class TenantController extends Controller
         ];
         if($profession === 'Physician'){
             // echo $template, $socials, $user, $templateCSS, $title, $pageTitle, $tenantID, $can, $email, $user_id, $userSubscribed, $template_id;
-            return view('websites.physician', compact('meta', 'template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email', 'user_id', 'userSubscribed', 'template_id'));
+            return view('websites.physician', compact('meta', 'template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email', 'code', 'user_id', 'userSubscribed', 'template_id'));
         } else {
             dd($profession);
         }
@@ -302,8 +327,9 @@ class TenantController extends Controller
     }
 
     public function checkEmail(Request $request) {
+        // dd($request->email);
         // Check if user->visits != null
-        $orders = AdminClientOrder::where([['email', $request->email], ['claimed', null]])->first();
+        $orders = AdminClientOrder::where([['email', $request->email], ['claimed', null]])->OrWhere([[['code', $request->code], ['claimed', null]]])->first();
         $authUser = auth()->user();
         if ($authUser->visits != null) {
             if (!empty($orders)) {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="btn waves waves-effect d-flex align-center">get started</button>
+        <button class="btn waves waves-effect d-flex align-center" @click="route(goto)">get started</button>
     </div>
 </template>
 <style scoped>
@@ -40,5 +40,16 @@
     }
 </style>
 <script>
-    export default {};
+    export default {
+        methods: {
+            route(url) {
+                if (url !== undefined) {
+                    location.href = url;
+                }
+            }
+        },
+        props: {
+            goto: String
+        }
+    };
 </script>

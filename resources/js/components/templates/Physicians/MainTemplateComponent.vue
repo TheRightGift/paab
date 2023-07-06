@@ -68,13 +68,24 @@
              <FooterComponent :user="user" :physicianName="physicianName"/>
      
             <div class="fixedBtmBtn" v-if="can === '1'">
-                <a
+                <!-- <a
                     target="_self"
                     :href="
                         'https://whitecoatdomain.com/auth/claim?claimable=' +
                         tenant +
                         '&mail=' +
                         email
+                    "
+                    class="btn waves waves-effect button"
+                    >Edit your website</a
+                > -->
+                <a
+                    target="_self"
+                    :href="
+                        'http://localhost:8000/auth/claim?claimable=' +
+                        tenant +
+                        '&code=' +
+                        code
                     "
                     class="btn waves waves-effect button"
                     >Edit your website</a
@@ -156,7 +167,8 @@ export default {
         can: String,
         email: String,
         user_id: String,
-        usersubscribed: String
+        usersubscribed: String,
+        code: String,
     },
     created() {
         this.preview == '0' ? this.checkAuth() : null;

@@ -3,7 +3,7 @@
         <button
             class="btn waves waves-effect d-flex align-center justify-center"
             :class="{transparent: bg != null || bg != '' }"
-            @click="route('auth/login')"
+            @click="route(goto)"
         >
             Sign up
         </button>
@@ -62,6 +62,7 @@
         },
         props: {
             bg: String,
+            goto: String,
         }
     };
 </script>

@@ -232,9 +232,9 @@ Route::prefix('supre')->middleware(['auth', 'can:run_superAdmin_ops'])->group(fu
     });
 });
 
-Route::post('claim/saveuser', [TenantClaimController::class, 'saveUserDets']);
+// #TODOs: Create a middleware that checks the session of a user and get the token to compare against one in DB
+// Save token and DB to session on route visitation
 
-Route::put('claim/updatebio', [TenantClaimController::class, 'updateUserBio']);
 
 Route::put('claim/updateDomain/{tenant}', [TenantController::class, 'update']);
 

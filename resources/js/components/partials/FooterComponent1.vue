@@ -216,7 +216,7 @@
                     border-radius: 9999px;
                     border: 1.5px #edfffa solid;
     }
-    @media only screen and (max-width: 776px) {
+    @media only screen and (max-width: 767px) {
         .cite {
             font-size: 1.5rem;
             width: 52vw;
@@ -234,6 +234,12 @@
     @media only screen and (min-width: 768px) and (max-width: 1023px) {
         .custom-btn {
             padding: 1vh 12vw;
+        }
+        .cite {
+            font-size: 1.75rem;
+        }
+        .md-absolute {
+            bottom: 15%;
         }
     }
 </style>
