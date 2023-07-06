@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <!-- <div>
         <div class="row authContainDiv" v-if="verifiedEmail == 1">
             <div class="col s12 m12 l6 welcomeContainer white-text intro hide-on-med-and-down">
                 
@@ -75,7 +75,6 @@
             <div class="col s12 m10 offset-m1 l6 otpContainer formContainer">
                 <div class="authRightDiv">
                     <div class="authHeadingContainer center-align hide-on-large-only">
-                        <!--a href="/" class="authHeading">WhiteCoatDomain</a-->
                         <div class="col m12 s6 offset-s3 marginBottom-5">
                             <a href="/">
                                 <img
@@ -132,7 +131,6 @@
             <div class="col s12 m8 offset-m2 l6 welcomeContainer formContainer">
                 <div class="authRightDiv">
                     <div class="authHeadingContainer center-align hide-on-large-only">
-                        <!--a href="/" class="authHeading">WhiteCoatDomain</a-->
                         <div class="col m12 s6 offset-s3 marginBottom-5">
                             <a href="/">
                                 <img
@@ -188,15 +186,6 @@
                             </div>
 
                             <div class="input-field col s12">
-                                <!--button
-                                    class="btn col l12 m12 s12"
-                                    v-if="!resetLoading"
-                                    type="button"
-                                    id="signupBtn"
-                                    @click="submitResetPasswordForm()"
-                                >
-                                    Reset
-                                </button-->
                                 <a
                                         type="button"
                                         v-if="!resetLoading"
@@ -228,6 +217,112 @@
                 </div>
             </div>
         </div>
+    </div> -->
+
+
+    <div class="row">
+        <div class="col l6 loginBackground hide-on-med-and-down">
+            
+            <img
+                class="logo"
+                src="/media/img/wcdlogoLG-noBG.png"
+                alt="Whitecoatdomain Logo"
+            />
+        </div>
+        <div class="col l6 m12 s12 authDetail">
+            <div class="authDetailInner">
+                <div v-if="verifiedEmail == 1" class="recoverPassContainer">
+                    <div class="right-align hide-on-med-and-up">
+                        <a href="/">
+                            <img class="" src="/media/img/wcd-logo-noBckg.png" alt="Whitecoatdomain Logo"/>
+                        </a>                    
+                    </div>
+                    <VerifyEmailComponent @res="setOTP" :type="'reset'" />
+                </div>
+                <div v-if="verifiedEmail == 2" class="recoverPassContainer">
+                    <div class="right-align hide-on-med-and-up">
+                        <a href="/">
+                            <img class="" src="/media/img/wcd-logo-noBckg.png" alt="Whitecoatdomain Logo"/>
+                        </a>                    
+                    </div>
+                    <h1 class="authTitle">Reset Password</h1>
+                    
+                    <OtpComponent
+                        @res="otpVerifier"
+                        :otp="otp"
+                        :type="reset"
+                        :email="user.email"
+                        :text="'No worries, reseting your password is easy. Just enter your email address.'"
+                    />
+                </div>
+                <div v-if="verifiedEmail == 3">
+                    <div class="right-align hide-on-med-and-up">
+                        <a href="/">
+                            <img class="" src="/media/img/wcd-logo-noBckg.png" alt="Whitecoatdomain Logo"/>
+                        </a>                    
+                    </div>
+                    <h1 class="authTitle">Reset Password</h1>
+                    <p class="authTxt">
+                        No worries, reseting your password is easy. Just enter your email address.
+                    </p>
+                    <div class="row">
+                        <div
+                            class="
+                                col
+                                l12
+                                m12
+                                s12
+                            "
+                        >
+                            <label>New Password</label>
+                            <input
+                                placeholder="Password"
+                                type="password"
+                                class="browser-default"
+                                v-model="user.password"
+                            />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div
+                            class="
+                                col
+                                l12
+                                m12
+                                s12
+                            "
+                        >
+                            <label>Confirm New Password</label>
+                            <input
+                                placeholder="Confirm Password"
+                                type="password"
+                                class="browser-default"
+                                v-model="user.cPassword"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="row center marginTop-10">
+                            <a href="#!" v-if="!resetLoading" class="btn" @click.prevent="submitResetPasswordForm()">Reset</a>
+                            <a href="#!" v-else class="btn">
+                                <i class="fa fa-spin fa-spinner"></i>
+                            </a>
+                        </div>
+
+                        <!-- Login Signup Link -->
+                        <div class="center toSignUp marginTop-7">
+                            <p>
+                                <span class="grey-text">Have an account?</span> <a href="/auth/login">Sign in</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <p class="white-text center footer">Copyright &copy; {{ getYear() }} whitecoatdomain </p>
+        </div>
     </div>
 </template>
 <script>
@@ -242,7 +337,7 @@
         data() {
             return {
                 reset: "reset",
-                verifiedEmail: 1,
+                verifiedEmail: 3,
                 resetLoading: false,
                 otp: "",
                 user: {
@@ -317,3 +412,26 @@
         computed: {},
     };
 </script>
+<style scoped>
+    .btn {
+        background-color: var(--pri);
+        text-transform: unset;
+        padding: 2vh 5vw;
+        border-radius: 2vh;
+        height: unset;
+        line-height: unset;
+    }
+    /* .row {
+        margin-bottom: 5vh;
+    } */
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .btn {
+            padding: 1.5vh 15vw;
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .btn {
+            padding: 1.5vh 20vw;
+        }
+    }
+</style>

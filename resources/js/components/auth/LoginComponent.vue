@@ -252,8 +252,8 @@
                 alt="Whitecoatdomain Logo"
             />
         </div>
-        <div class="col l6 m12 s12 loginDetail">
-            <div class="loginDetailInner">
+        <div class="col l6 m12 s12 authDetail">
+            <div class="authDetailInner">
                 <div v-if="!otpPrompt && !logginIn">
                     <div class="right-align hide-on-med-and-up">
                         <a href="/">

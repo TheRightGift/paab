@@ -1,86 +1,38 @@
 <template>
     <div class="authRightDiv">
-        <div class="authHeadingContainer center-align hide-on-large-only">
-            <div class="row">
-                <div class="col l12 m8 offset-m2 s6 offset-s3 marginBottom-5">
-                    <a href="/">
-                        <img
-                            src="/media/img/wcd-logo-noBckg.png"
-                            alt="WhiteCoatDomain Logo"
-                            class="responsive-img"
-                        />
-                    </a>
-                </div>
-            </div>
-        </div>
-        <p class="authTitle" v-if="type === 'register'">GET STARTED</p>
-        <p class="authTitle" v-if="type === 'reset'">Reset Password</p>
+        <h1 class="authTitle" v-if="type === 'register'">GET STARTED</h1>
+        <h1 class="authTitle" v-if="type === 'reset'">Reset Password</h1>
         <p class="authTxt">            
             <span v-if="type === 'register'">Get a booster shot in your journey with a simple click. </span>
             <span v-if="type === 'reset'">No worries, reseting your password is easy. Just enter your email address.</span>
         </p>
-        <form id="loginForm">
-            <div class="row horizontal-2">
-                <div class="input-field col s12">
-                    <label>Email</label>
+        <form id="verifyEmail" class="marginTop-9">
+            <div class="row">
+                <div class="col s12">
+                    <label>Enter your email address</label>
                     <input
-                        placeholder="Email"
+                        placeholder="email address"
                         id="user"
                         type="email"
-                        class="center-align loginInput browser-default"
+                        class=" browser-default"
                         v-model="email"
                         required
-                    />
-                    
+                    />                    
                 </div>
-
-                <div class="input-field col s12">
-                    <a
-                        type="button"
-                        v-if="!verificationLoading"
-                        class="btn loginBtn"
-                        @click.prevent="submitEmailForVerificationOTP()"
-                    >
-                        sign up
-                    </a>
-                    <a class="btn loginBtn" v-else>
-                        <div class="preloader-wrapper small active">
-                            <div
-                                class="
-                                    spinner-layer spinner-white-only
-                                "
-                            >
-                                <div class="circle-clipper left">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="circle-clipper right">
-                                    <div class="circle"></div>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            <div class="row">
+                <div class="row center marginTop-10">
+                    <a href="#!" v-if="!verificationLoading" class="btn" @click.prevent="submitEmailForVerificationOTP()">Verify</a>
+                    <a href="#!" v-else class="btn">
+                        <i class="fa fa-spin fa-spinner"></i>
                     </a>
                 </div>
 
                 <!-- Login Signup Link -->
-                <div class="row">
-                    <div class="col l12 m12 s12 loginSignUpDiv">
-                        <div class="loginSignUpInnerDiv">
-                            <p class="loginSignUpTxt">
-                                Have an account?
-                            </p>
-                            <p>
-                                <a
-                                    href="/auth/login"
-                                    class="loginSignUpLink"
-                                >
-                                    Sign in
-                                </a>
-                            </p>
-                        </div>
-                    </div>
+                <div class="center toSignUp marginTop-7">
+                    <p>
+                        <span class="grey-text">Have an account?</span> <a href="/auth/login">Sign in</a>
+                    </p>
                 </div>
             </div>
         </form>
@@ -147,6 +99,11 @@ import SocialLoginComponent from './SocialLoginComponent.vue';
                         }
                     })
                     .catch((err) => {
+                        M.toast({
+                            html: "Server error. Please refrsh page and try again",
+                            classes: "errorNotifier",
+                        });
+                        this.verificationLoading = false;
                         console.log(err.response);
                     });
                 }
@@ -156,7 +113,25 @@ import SocialLoginComponent from './SocialLoginComponent.vue';
     };
 </script>
 <style scoped>
-.input-field.col.s12{
-    padding : 0;
-}
+    .btn {
+        background-color: var(--pri);
+        text-transform: unset;
+        padding: 2vh 5vw;
+        border-radius: 2vh;
+        height: unset;
+        line-height: unset;
+    }
+    .row {
+        margin-bottom: 5vh;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .btn {
+            padding: 1.5vh 15vw;
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .btn {
+            padding: 1.5vh 20vw;
+        }
+    }
 </style>

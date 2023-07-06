@@ -1,5 +1,4 @@
 body {
-    width: 100% !important;
     font-family: "Montserrat", sans-serif;
 }
 .priTextColor {
@@ -17,42 +16,42 @@ body {
     justify-content: center;
     align-items: center;
 }
-.loginDetail {
+.authDetail {
     background-color: var(--pri);
     height: 100vh;
 }
-.loginDetail .loginDetailInner {
+.authDetail .authDetailInner {
     background-color: #c3e6ea;
     border-radius: 2vw;
     width: 60%;
     margin: 10vh auto 0 auto;
     padding: 4vh 3vw;
 }
-.loginDetail .loginDetailInner p.welcome {
+.authDetail .authDetailInner p.welcome {
     font-size: 1.7rem;
     margin-top: 0;
     margin-bottom: 2vh;
     font-weight: 400;
 }
-.loginDetail .loginDetailInner h1 {
+.authDetail .authDetailInner h1 {
     font-size: 2.6rem;
     margin-top: 0;
     font-weight: 600;
     margin-bottom: 6vh;
 }
-.loginDetail .loginDetailInner .otp h1 {
+.authDetail .authDetailInner .otp h1, .recoverPassContainer h1.authTitle {
     font-size: 2.6rem;
     margin-top: 3vh;
     font-weight: 600;
     margin-bottom: 1vh;
 }
-.loginDetail .loginDetailInner label {
+.authDetail .authDetailInner label, #verifyEmail label {
     display: block;
     color: var(--black);
     font-size: 1rem;
     padding-bottom: 1vh;
 }
-.loginDetail .loginDetailInner input {
+.authDetail .authDetailInner input {
     width: 100%;
     height: 6vh;
     border-radius: 1vh;
@@ -60,15 +59,15 @@ body {
     outline: unset;
     border: thin solid var(--pri);
 }
-.loginDetail .loginDetailInner .forgotPass {
+.authDetail .authDetailInner .forgotPass {
     padding: 0 0.75rem;
     text-align: right;
     font-size: 0.8rem;
 }
-.loginDetail .loginDetailInner .forgotPass a, .loginDetail .loginDetailInner .toSignUp a {
+.authDetail .authDetailInner .forgotPass a, .authDetail .authDetailInner .toSignUp a {
     color: var(--pri);
 }
-.loginDetail .loginDetailInner .forgotPass a{
+.authDetail .authDetailInner .forgotPass a{
     position: relative;
     top: 1vh;
 }
@@ -88,19 +87,24 @@ body {
     border-radius: 10px;
 }
 
+/* Recover Pass */
+.authTitle {
+    
+}
+
 /* Large */
 @media only screen and (min-width: 1024px) {
     
 }
 /* Medium */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    .loginDetail {
+    .authDetail {
         background-image: url('../media/img/backgroundImg/loginBackgroundMd.png');
         background-repeat: no-repeat;
         background-size: contain;
     }
 
-    .loginDetail .loginDetailInner { 
+    .authDetail .authDetailInner { 
         margin-top: 14vh;
     }
 
@@ -111,10 +115,10 @@ body {
 }
 /* small */
 @media only screen and (max-width: 767px) {
-    .loginDetail .loginDetailInner .otp h1 {
+    .authDetail .authDetailInner .otp h1 {
         font-size: 2rem;
     }
-    .loginDetail .loginDetailInner {
+    .authDetail .authDetailInner {
         width: 95%;
         margin-top: 8vh;
     }
