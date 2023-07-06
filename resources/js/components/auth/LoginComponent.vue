@@ -334,7 +334,7 @@
                     password: "",
                 },
                 otp: "",
-                otpPrompt: true,
+                otpPrompt: false,
             };
         },
         mounted() {},

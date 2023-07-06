@@ -26,7 +26,7 @@
                             <div class="contentInnerDiv">
                                 <!-- Get Started Section -->
                                 <div v-show="view == 0" class="intro">
-                                    <div class="center-align" v-if="tenantOnDemand == 1">
+                                    <div class="center-align" v-if="tenantOnDemand == 1 || email != ''">
                                         <a href="/">
                                             <img
                                                 src="/media/img/wcdlogodeepblue.png"
@@ -34,11 +34,20 @@
                                                 class="responsive-img"
                                                 width="287"
                                                 height="173"
+                                                v-if="tenantOnDemand == 1"
+                                            />
+                                            <img
+                                                src="/media/img/wcdlogoLG-noBG.png"
+                                                alt="WhiteCoatDomain Logo"
+                                                class="responsive-img"
+                                                width="287"
+                                                height="173"
+                                                v-else
                                             />
                                             
                                         </a>
                                         <p class="contentTitle marginTop-5">
-                                            Lets help you setup your website
+                                            Continue to setup your website
                                         </p>
 
                                         <div class="getStartedBtnDiv">
@@ -49,17 +58,19 @@
                                                         tenantOnDemand == 1,
                                                 }"
                                                 @click="getStarted()"
-                                                >GET STARTED</a
+                                                >Continue</a
                                             >
                                         </div>
                                     </div>
-                                    <div>
-                                        <p>Confirm you use this email</p>
-                                        <input type="email" v-model="otp" />
-                                        <button type="button" @click="getStarted()">Submit</button>
-                                    </div>
-                                    <div>
-                                        <otp-component type="register" v-show="emailBtn" :email="otpMail"/>
+                                    <div v-else>
+                                        <div v-show="!otpMode">
+                                            <p>Confirm you use this email</p>
+                                            <input type="email" v-model="inputEmail" />
+                                            <button type="button" @click="checkEmail" :disabled="verificationLoading"> <i class="fa fa-spinner fa-spin" v-show="verificationLoading"></i>Submit</button>
+                                        </div>
+                                        <div v-show="otpMode">
+                                            <otp-component @res="changeView($event)" type="register" :otp="otp" />
+                                        </div>
                                     </div>
                                 </div>
 
@@ -1497,7 +1508,7 @@
 
         data() {
             return {
-                emailBtn: false,
+                otpMode: false,
                 clicked: false,
                 suggestionLoaded: false,
                 medText: "Medical",
@@ -1605,6 +1616,9 @@
                 selectedIndex: [],
                 maxSelected: "",
                 failedPic: false,
+                inputEmail: "",
+                verificationLoading: false,
+                otp: "",
             };
         },
         mounted() {
@@ -1628,6 +1642,60 @@
             };
         },
         methods: {
+            checkEmail() {
+                if(this.inputEmail === ''){
+                    M.toast({
+                        html: 'Please input your emial.',
+                        classes: "errorNotifier",
+                    });
+                } else {
+                    this.verificationLoading = true;
+                    let data = {
+                        email: this.inputEmail
+                    }
+                    axios
+                    .post("/auth/verifyEmailForRegistration", data)
+                    .then((res) => {
+                        if(res.status === 200){
+                            if(res.data.status == 200){
+                                this.otp = res.data.otp;
+                                this.otpMode = true;
+                            } else if(res.data.status == 404){
+                                M.toast({
+                                    html: res.data.error,
+                                    classes: "errorNotifier",
+                                });
+                            }
+                            this.verificationLoading = false;
+                        }
+                        
+                    })
+                    .catch((err) => {
+                        console.log(err.response);
+                    });
+                }
+
+            },
+            changeView(e) {
+                if (e == 200) {
+                    // Save the user with email
+                    // Login user temporary to be able to access route
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const code = urlParams.get('code');
+                    const tenantId = urlParams.get('claimable');
+                    axios.get(`/guest-login/${code}`).then(res => {
+                        console.log(res);
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                    axios.put(`/admin_order/${tenantId}`, {email: this.inputEmail}).then(res => {
+                        // console.log(res);
+                        this.view = 1;
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                }
+            },
             serviceSaveOrUpdate() {
                 this.loading = !this.loading;
                 let request = `/claim/save/service`;
@@ -1688,7 +1756,7 @@
             },
             getInterests() {
                 axios
-                    .get(`http://whitecoatdomain.com/api/interests`)
+                    .get(`https://whitecoatdomain.com/api/interests`)
                     .then((res) => {
                         this.interests = res.data.interests;
                     })
