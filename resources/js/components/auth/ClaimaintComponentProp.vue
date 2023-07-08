@@ -1,1451 +1,739 @@
 <template>
     <div>
-        <div class="row">
-            <!-- <div id="popup">
-                <div class="paymentOverlay cFlex">
-                    <go-live-component
-                        :tenantOnDemand="tenantOnDemand"
-                        :showGoLiveBtns="showGoLiveBtns"
-                        :bio="bio"
-                        @sendEmail="sendEmail($event)"
-                    />
+        <div id="page"></div>
+        <div class="flex">
+            <div
+                class="item flex flex-col align-center justify-center hide-on-med-and-down"
+            >
+                <img
+                    class="logo"
+                    src="/media/img/wcdlogoLG-noBG.png"
+                    alt="Whitecoatdomain Logo"
+                />
+            </div>
+            <div
+                class="item flex flex-col align-center justify-center sm-flex-start"
+            >
+                <img
+                    src="/media/img/wcd-logo-noBckg-removebg-previewWHITE.png"
+                    class="responsive logo show-on-medium hide-on-small hide-on-large-only hide-on-small-only"
+                />
+                <div v-if="email == ''" class="flex justify-center align-center">
+                    <div v-show="!otpMode" class="row">
+                        <p class="col s12">Enter your email to proceed</p>
+                        <div class="col s12">
+                            <input type="email" v-model="inputEmail" class="browser-default mt-1"/>
+                        </div>
+                        <div class="col s12 mt-1">
+                            <button type="button" class="btn waves waves-effect col s12 custom-button" @click="checkEmail" :disabled="verificationLoading"> <i class="fa fa-spinner fa-spin" v-show="verificationLoading"></i>Submit</button>
+                        </div>
+                    </div>
+                    <div v-show="otpMode" class="row">
+                        <otp-component @res="changeView($event)" type="register" :otp="otp" />
+                    </div>
+
                 </div>
-                <h5 class="center-align">Preview website</h5>
-                <iframe
-                    title="Your website preview"
-                    srcdoc="Loading..."
-                    id="iframe"
-                    onload="this.removeAttribute('srcdoc')"
-                ></iframe>
-            </div> -->
-            <div class="col s12 noPaddingLeft noPaddingRight">
-                <div class="websiteClaimContainer">
-                    <div class="col l6 s12 noPaddingLeft noPaddingRight">
-                        <div id="page"></div>
-                        <div class="contentDiv">
-                            <div class="contentInnerDiv">
-                                <!-- Get Started Section -->
-                                <div v-show="view == 0" class="intro">
-                                    <div class="center-align" v-if="tenantOnDemand == 1 || email != ''">
-                                        <a href="/">
-                                            <img
-                                                src="/media/img/wcdlogodeepblue.png"
-                                                alt="WhiteCoatDomain Logo"
-                                                class="responsive-img"
-                                                width="287"
-                                                height="173"
-                                                v-if="tenantOnDemand == 1"
-                                            />
-                                            <img
-                                                src="/media/img/wcdlogoLG-noBG.png"
-                                                alt="WhiteCoatDomain Logo"
-                                                class="responsive-img"
-                                                width="287"
-                                                height="173"
-                                                v-else
-                                            />
-                                            
-                                        </a>
-                                        <p class="contentTitle marginTop-5">
-                                            Continue to setup your website
-                                        </p>
+                <div class="formContainer"  v-else>
+                    <div>
+                        <div class="flex flex-end hide-on-med-and-up">
+                            <img
+                                src="/media/img/wcdlogoLG-noBG.png"
+                                class="responsive logo"
+                            />
+                        </div>
+                        <section class="row" id="bio">
+                            <h4 class="sectionTitle col s12">
+                                Basic information
+                            </h4>
 
-                                        <div class="getStartedBtnDiv">
-                                            <a
-                                                class="waves-effect waves-black btn getStartedBtn"
-                                                :class="{
-                                                    tenantOnDemand:
-                                                        tenantOnDemand == 1,
-                                                }"
-                                                @click="getStarted()"
-                                                >Continue</a
-                                            >
-                                        </div>
-                                    </div>
-                                    <div v-else>
-                                        <div v-show="!otpMode">
-                                            <p>Confirm you use this email</p>
-                                            <input type="email" v-model="inputEmail" />
-                                            <button type="button" @click="checkEmail" :disabled="verificationLoading"> <i class="fa fa-spinner fa-spin" v-show="verificationLoading"></i>Submit</button>
-                                        </div>
-                                        <div v-show="otpMode">
-                                            <otp-component @res="changeView($event)" type="register" :otp="otp" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Confirm your name section -->
-                                <div v-show="view == 1">
-                                    <section class="row" id="bio">
-                                        <h4 class="sectionTitle">
-                                            Basic information
-                                        </h4>
-
-                                        <div class="row formInnerDiv">
-                                            <div
-                                                class="input-field selectInputField noMarginLeft col l2 m2 s12 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <select
-                                                    v-model="bio.title_id"
-                                                    required
-                                                    class="browser-default"
-                                                    id="userTitle"
-                                                    data-label="true"
-                                                    @change="switchText($event)"
-                                                >
-                                                    <option
-                                                        :value="''"
-                                                        disabled
-                                                        selected
-                                                    >
-                                                        Pick Title
-                                                    </option>
-                                                    <option
-                                                        v-for="title in titles"
-                                                        :key="title.id"
-                                                        :value="title.id"
-                                                    >
-                                                        {{ title.name }}
-                                                    </option>
-                                                </select>
-                                                <label>Title</label>
-                                            </div>
-
-                                            <div
-                                                class="input-field col l3 m3 s12"
-                                            >
-                                                <input
-                                                    type="text"
-                                                    v-model="bio.firstname"
-                                                    class="validate"
-                                                    required
-                                                    placeholder="Firstname"
-                                                    @keyup="removeLabel($event)"
-                                                />
-                                                <label>Firstname</label>
-                                            </div>
-                                            <div
-                                                class="input-field col l3 m3 s12"
-                                            >
-                                                <input
-                                                    type="text"
-                                                    v-model="bio.lastname"
-                                                    class="validate"
-                                                    placeholder="Lastname"
-                                                    @keyup="
-                                                        removeLabel($event),
-                                                            checkTenantOnDemand()
-                                                    "
-                                                />
-                                                <label>Lastname</label>
-                                            </div>
-                                            <div
-                                                class="input-field col l3 m3 s12"
-                                            >
-                                                <input
-                                                    type="text"
-                                                    v-model="bio.othername"
-                                                    class="validate"
-                                                    placeholder="Othernames"
-                                                    data-optional="true"
-                                                />
-                                                <label>Othername</label>
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <section class="row" id="domain">
-                                        <h4 class="sectionTitle">
-                                            Domain name
-                                        </h4>
-                                        <div>
-                                            <div class="row">
-                                                <div
-                                                    class="input-field col l12 s12 noPaddingLeft paddingLeftSM"
-                                                >
-                                                    <input
-                                                        type="text"
-                                                        v-model="domainSelected"
-                                                        class="validate noMarginBottom"
-                                                        placeholder="Hit enter to search"
-                                                        @keyup="
-                                                            checkDomainAvailability(
-                                                                $event
-                                                            )
-                                                        "
-                                                        data-no-label="true"
-                                                    />
-                                                    <div
-                                                        class="col l12 s12 right-align"
-                                                    >
-                                                        <i
-                                                            class="fas fa-spinner fa-spin fa-1x"
-                                                            v-if="
-                                                                checkingSuggestion
-                                                            "
-                                                        ></i>
-                                                        <small
-                                                            class="unAvailTitle"
-                                                            v-if="
-                                                                domainCheckPassed ==
-                                                                false
-                                                            "
-                                                        >
-                                                            Unavailable
-                                                        </small>
-                                                        <small
-                                                            class="availTitle"
-                                                            v-if="
-                                                                domainCheckPassed ==
-                                                                true
-                                                            "
-                                                        >
-                                                            Available
-                                                        </small>
-                                                    </div>
-                                                    <p
-                                                        class="unAvailTxt noMarginBottom"
-                                                    >
-                                                        Not satisfied with the
-                                                        suggested domain name
-                                                        above, type in your
-                                                        preferred domain name or
-                                                        <a
-                                                            href="#!"
-                                                            @click="
-                                                                generateMultiple
-                                                            "
-                                                            >view our
-                                                            suggestions</a
-                                                        >.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            class="row"
-                                            v-if="suggestionLoaded"
-                                        >
-                                            <div class="col s12 domianMainDiv">
-                                                <!--p class="noMarginTop"><a href="">Display Suggestions</a></p-->
-                                                <div
-                                                    v-show="!loadingSuggestions"
-                                                >
-                                                    <template
-                                                        v-for="(
-                                                            suggestion, index
-                                                        ) in domainSuggestions"
-                                                        :key="index"
-                                                    >
-                                                        <div class="row">
-                                                            <div class="col s1">
-                                                                <p
-                                                                    class="domainSelectP"
-                                                                >
-                                                                    <label>
-                                                                        <input
-                                                                            class="with-gap"
-                                                                            name="group1"
-                                                                            type="radio"
-                                                                            :value="
-                                                                                suggestion.name
-                                                                            "
-                                                                            v-model="
-                                                                                domainSelected
-                                                                            "
-                                                                        />
-                                                                        <span></span>
-                                                                    </label>
-                                                                </p>
-                                                            </div>
-                                                            <div
-                                                                class="col s11"
-                                                            >
-                                                                <table>
-                                                                    <!-- Table Head Section if ever needed
-                                                                <thead><tr><th></th></tr></thead> -->
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td
-                                                                                class="domainTdName"
-                                                                            >
-                                                                                {{
-                                                                                    suggestion.name
-                                                                                }}
-                                                                            </td>
-                                                                            <td
-                                                                                class="domainTdState"
-                                                                            >
-                                                                                Available
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </template>
-                                                </div>
-                                                <div
-                                                    class="flex center-align p-10"
-                                                >
-                                                    <div
-                                                        v-if="
-                                                            loadingSuggestions
-                                                        "
-                                                    >
-                                                        <i
-                                                            class="fas fa-spinner fa-spin fa-2x"
-                                                        ></i>
-                                                        <p>
-                                                            Loading Suggestions
-                                                        </p>
-                                                    </div>
-                                                    <p
-                                                        class="centered"
-                                                        v-if="
-                                                            domainSuggestions.length <
-                                                            1
-                                                        "
-                                                    >
-                                                        No available suggestions
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <section class="row" id="brandImage">
-                                        <h4 class="sectionTitle">
-                                            Main Website Image *
-                                            <small
-                                                class="red-text"
-                                                v-if="failedPic"
-                                                >(You must upload a
-                                                picture)</small
-                                            >
-                                        </h4>
-                                        <div
-                                            v-if="showCropper"
-                                            class="cFlex flexRight"
-                                        >
-                                            <a
-                                                class="right"
-                                                href="#"
-                                                @click="showCropper = false"
-                                            >
-                                                <i
-                                                    class="material-icons priText"
-                                                    >clear</i
-                                                >
-                                            </a>
-                                        </div>
-
-                                        <div
-                                            class="proImgContainer"
-                                            v-show="!showCropper"
-                                        >
-                                            <img
-                                                class="proImg"
-                                                src="/media/img/doctor.png"
-                                                v-if="
-                                                    (bioData.photo === null ||
-                                                        bio.photo ===
-                                                            undefined) &&
-                                                    uploaded == null
-                                                "
-                                            />
-                                            <img
-                                                :src="
-                                                    typeof bio.photo ===
-                                                    'string'
-                                                        ? '/media/tenants/' +
-                                                          tenantId +
-                                                          '/img/' +
-                                                          bioData.photo
-                                                        : uploaded
-                                                "
-                                                :alt="
-                                                    bioData.firstname +
-                                                    ' avatar'
-                                                "
-                                                class="proImg"
-                                                v-else-if="
-                                                    bioData.photo !== null ||
-                                                    bio.photo !== undefined ||
-                                                    uploaded !== null
-                                                "
-                                            />
-                                        </div>
-                                        <form enctype="multipart/form-data">
-                                            <div class="proImgBtnMainDiv">
-                                                <div
-                                                    class="proImgBtnContainDiv"
-                                                    :class="{
-                                                        'justify-center':
-                                                            bioData.photo ===
-                                                                null &&
-                                                            uploaded === null,
-                                                    }"
-                                                >
-                                                    <div
-                                                        class=""
-                                                        id="genUploadFavIconDiv"
-                                                    >
-                                                        <div
-                                                            class=""
-                                                            v-if="
-                                                                !uploadPhotoProcessing
-                                                            "
-                                                        >
-                                                            <div
-                                                                class="col l12 center-align marginTop-5"
-                                                            >
-                                                                <a
-                                                                    href="#"
-                                                                    role="button"
-                                                                    @click.prevent="
-                                                                        showFileChooser
-                                                                    "
-                                                                    v-if="
-                                                                        !showCropper
-                                                                    "
-                                                                    class="btn btn-flat"
-                                                                    :class="{
-                                                                        tenantOnDemand:
-                                                                            tenantOnDemand ==
-                                                                            1,
-                                                                    }"
-                                                                >
-                                                                    <span
-                                                                        v-if="
-                                                                            bioData.photo !==
-                                                                                null ||
-                                                                            uploaded !==
-                                                                                null
-                                                                        "
-                                                                    >
-                                                                        <span
-                                                                            >Change
-                                                                            Image</span
-                                                                        >
-                                                                        <i
-                                                                            class="material-icons white-text right"
-                                                                            >edit</i
-                                                                        >
-                                                                    </span>
-                                                                    <span
-                                                                        v-else
-                                                                    >
-                                                                        <i
-                                                                            class="material-icons white-text"
-                                                                            >file_upload</i
-                                                                        >
-                                                                    </span>
-                                                                </a>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div
-                                                                    class="col s12"
-                                                                >
-                                                                    <image-cropper
-                                                                        v-if="
-                                                                            tenantId &&
-                                                                            showCropper
-                                                                        "
-                                                                        :height="
-                                                                            799
-                                                                        "
-                                                                        :width="
-                                                                            650
-                                                                        "
-                                                                        :xAxis="
-                                                                            650
-                                                                        "
-                                                                        :yAxis="
-                                                                            799
-                                                                        "
-                                                                        :img="
-                                                                            bio.photo ==
-                                                                            undefined
-                                                                                ? '/media/img/doctor.png'
-                                                                                : '/media/tenants/' +
-                                                                                  tenantId +
-                                                                                  '/img/' +
-                                                                                  bioData.photo
-                                                                        "
-                                                                        @uploadPhoto="
-                                                                            photoUpload(
-                                                                                $event
-                                                                            )
-                                                                        "
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <p v-else class="center-align">
-                                                            Uploading Image<i
-                                                                class="fas fa-circle-notch fa-spin fa-2x"
-                                                            ></i>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </section>
-
-                                    <section class="row" id="underGrad">
-                                        <h4 class="sectionTitle">
-                                            Undergraduate School <br />
-                                            <small
-                                                >Only fill if you had an
-                                                undergrad progam before medical
-                                                school</small
-                                            >
-                                        </h4>
-
-                                        <div class="row">
-                                            <div
-                                                class="col l12 s12 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <input
-                                                    placeholder="Name of institution"
-                                                    v-model="
-                                                        underGrad.institution
-                                                    "
-                                                    @keyup="removeLabel($event)"
-                                                    type="text"
-                                                    class="validate formInput"
-                                                />
-                                                <label
-                                                    >Name of institution</label
-                                                >
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div
-                                                class="input-field col l6 m6 s12 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <input
-                                                    placeholder="What was your major?"
-                                                    type="text"
-                                                    v-model="underGrad.major"
-                                                    @keyup="removeLabel($event)"
-                                                    class="validate formInput"
-                                                />
-                                                <label
-                                                    >Undergraduate Major</label
-                                                >
-                                            </div>
-                                            <div
-                                                class="input-field col l6 m6 s12"
-                                            >
-                                                <input
-                                                    placeholder="What was your minor(optional)?"
-                                                    type="text"
-                                                    v-model="underGrad.minor"
-                                                    data-optional="true"
-                                                    class="validate formInput"
-                                                />
-                                                <label
-                                                    >Undergraduate
-                                                    Minor(optional)</label
-                                                >
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div
-                                                class="col l6 m6 s12 noPaddingLeft noPaddingRightMd paddingLeftSM"
-                                            >
-                                                <p class="schQuesP">
-                                                    When did you start?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col s6 formInput1ColDiv noPaddingLeft"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                underGrad.monthStart
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event
-                                                                )
-                                                            "
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="
-                                                                    index + 1
-                                                                "
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col s6 formInput1ColDiv"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                underGrad.yearStart
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event,
-                                                                    0
-                                                                )
-                                                            "
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div
-                                                class="col l6 m6 s12 noPaddingLeftMd paddingLeftSM"
-                                            >
-                                                <p class="schQuesP">
-                                                    When did you finish?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col s6 formInput1ColDiv noPaddingLeft"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                underGrad.monthEnd
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event
-                                                                )
-                                                            "
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="
-                                                                    index + 1
-                                                                "
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col s6 formInput1ColDiv noPaddingRight"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                underGrad.yearEnd
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event,
-                                                                    1
-                                                                )
-                                                            "
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <section class="row" id="medSchool">
-                                        <h4 class="sectionTitle">
-                                            {{ medText }} School
-                                        </h4>
-
-                                        <div class="row">
-                                            <div
-                                                class="input-field col l12 s12 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <input
-                                                    placeholder="Name of institution"
-                                                    type="text"
-                                                    class="validate formInput"
-                                                    v-model="
-                                                        medSchool.institution
-                                                    "
-                                                    @keyup="removeLabel($event)"
-                                                />
-                                                <label
-                                                    >Name of institution</label
-                                                >
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div
-                                                class="col l6 s6 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <p class="schQuesP">
-                                                    When did you start?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                medSchool.monthStart
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event
-                                                                )
-                                                            "
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="
-                                                                    index + 1
-                                                                "
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col l6 s6 formInput1ColDiv"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                medSchool.yearStart
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event,
-                                                                    2
-                                                                )
-                                                            "
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div
-                                                class="col s6 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <p class="schQuesP">
-                                                    When did you finish?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                medSchool.monthEnd
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event
-                                                                )
-                                                            "
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="
-                                                                    index + 1
-                                                                "
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col l6 s6 formInput1ColDiv noPaddingRight"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                medSchool.yearEnd
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event,
-                                                                    3
-                                                                )
-                                                            "
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <section class="row" id="internship">
-                                        <h4 class="sectionTitle">
-                                            Internship program
-                                        </h4>
-                                        <div class="row">
-                                            <div
-                                                class="input-field col s12 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <input
-                                                    placeholder="Name of institution"
-                                                    type="text"
-                                                    class="validate formInput"
-                                                    v-model="
-                                                        internship.institution
-                                                    "
-                                                    @keyup="removeLabel($event)"
-                                                />
-                                                <label for="Name of institution"
-                                                    >Name of institution</label
-                                                >
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div
-                                                class="col l6 s6 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <p class="schQuesP">
-                                                    When did you start?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                internship.monthStart
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event
-                                                                )
-                                                            "
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="
-                                                                    index + 1
-                                                                "
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                internship.yearStart
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event,
-                                                                    4
-                                                                )
-                                                            "
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div
-                                                class="col s6 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <p class="schQuesP">
-                                                    When did you finish?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                internship.monthEnd
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event
-                                                                )
-                                                            "
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="
-                                                                    index + 1
-                                                                "
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingRight formInput1ColDiv"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                internship.yearEnd
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event,
-                                                                    5
-                                                                )
-                                                            "
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Residency Section -->
-                                    <section class="row" id="residency">
-                                        <h4 class="sectionTitle">
-                                            Residency program
-                                        </h4>
-                                        <div class="row">
-                                            <div
-                                                class="input-field col s12 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <input
-                                                    placeholder="Name of institution"
-                                                    type="text"
-                                                    class="validate formInput"
-                                                    v-model="
-                                                        residency.institution
-                                                    "
-                                                    @keyup="removeLabel($event)"
-                                                />
-                                                <label for="Name of institution"
-                                                    >Name of institution</label
-                                                >
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div
-                                                class="col l6 s6 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <p class="schQuesP">
-                                                    When did you start?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                residency.monthStart
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event
-                                                                )
-                                                            "
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="
-                                                                    index + 1
-                                                                "
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                residency.yearStart
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event,
-                                                                    6
-                                                                )
-                                                            "
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div
-                                                class="col s6 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <p class="schQuesP">
-                                                    When did you finish?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                residency.monthEnd
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event
-                                                                )
-                                                            "
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="
-                                                                    index + 1
-                                                                "
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingRight formInput1ColDiv"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                residency.yearEnd
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event,
-                                                                    7
-                                                                )
-                                                            "
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <!-- Fellowship Section -->
-                                    <section class="row" id="fellowship">
-                                        <h4 class="sectionTitle">
-                                            Fellowship program
-                                        </h4>
-                                        <div class="row">
-                                            <div
-                                                class="input-field col s12 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <input
-                                                    placeholder="Name of institution"
-                                                    type="text"
-                                                    class="validate formInput"
-                                                    v-model="
-                                                        fellowship.institution
-                                                    "
-                                                    @keyup="removeLabel($event)"
-                                                />
-                                                <label for="Name of institution"
-                                                    >Name of institution</label
-                                                >
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div
-                                                class="col l6 s6 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <p class="schQuesP">
-                                                    When did you start?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                fellowship.monthStart
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event
-                                                                )
-                                                            "
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="
-                                                                    index + 1
-                                                                "
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                fellowship.yearStart
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event,
-                                                                    8
-                                                                )
-                                                            "
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div
-                                                class="col s6 noPaddingLeft paddingLeftSM"
-                                            >
-                                                <p class="schQuesP">
-                                                    When did you finish?
-                                                </p>
-                                                <div class="row spaceAround">
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingLeft formInput1ColDiv"
-                                                    >
-                                                        <select
-                                                            class="validate formInput1 browser-default"
-                                                            v-model="
-                                                                fellowship.monthEnd
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event
-                                                                )
-                                                            "
-                                                        >
-                                                            <option
-                                                                :value="''"
-                                                                disabled
-                                                                selected
-                                                            >
-                                                                Month
-                                                            </option>
-                                                            <option
-                                                                v-for="(
-                                                                    month, index
-                                                                ) in months"
-                                                                :key="index"
-                                                                :value="
-                                                                    index + 1
-                                                                "
-                                                            >
-                                                                {{ month }}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="input-field col l6 s6 noPaddingRight formInput1ColDiv"
-                                                    >
-                                                        <date-picker
-                                                            v-model:value="
-                                                                fellowship.yearEnd
-                                                            "
-                                                            @change="
-                                                                removeLabel(
-                                                                    $event,
-                                                                    9
-                                                                )
-                                                            "
-                                                            type="year"
-                                                            placeholder="Year"
-                                                        ></date-picker>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <section
-                                        class="row"
-                                        id="additionalSchool"
-                                        v-if="tenantOnDemand == 1"
+                            <div class="row">
+                                <div class="col l3 m3 s6 sm-mt-1">
+                                    <label>Pick Title</label>
+                                    <select
+                                        v-model="bio.title_id"
+                                        required
+                                        class="browser-default custom-select mt-1"
+                                        id="userTitle"
+                                        data-label="true"
+                                        @change="switchText($event)"
                                     >
-                                        <h4 class="sectionTitle">Interests</h4>
-                                        <p v-if="maxSelected != ''">
-                                            {{ maxSelected }}
-                                        </p>
-                                        <div class="grid">
-                                            <div
-                                                class="pills"
-                                                :class="{
-                                                    selected:
-                                                        selectedIndex.includes(
-                                                            index
-                                                        ),
-                                                }"
-                                                v-for="(
-                                                    interest, index
-                                                ) in interests"
-                                                :key="interest.id"
-                                            >
-                                                <p
-                                                    @click="
-                                                        getSelectedInterests(
-                                                            interest,
-                                                            index
-                                                        )
-                                                    "
-                                                >
-                                                    {{ interest.title }}
-                                                </p>
-                                                <i
-                                                    @click="
-                                                        removeFromSelected(
-                                                            interest,
-                                                            index
-                                                        )
-                                                    "
-                                                    v-show="
-                                                        selectedIndex.includes(
-                                                            index
-                                                        )
-                                                    "
-                                                    class="material-icons removeInterest"
-                                                    >close</i
-                                                >
-                                            </div>
-                                        </div>
-                                    </section>
+                                        <option :value="''" disabled selected>
+                                            Title
+                                        </option>
+                                        <option
+                                            v-for="title in titles"
+                                            :key="title.id"
+                                            :value="title.id"
+                                        >
+                                            {{ title.name }}
+                                        </option>
+                                    </select>
                                 </div>
 
+                                <div class="col l3 m3 s6 sm-mt-1">
+                                    <label>Firstname</label>
+                                    <input
+                                        type="text"
+                                        v-model="bio.firstname"
+                                        class="validate browser-default mt-1"
+                                        required
+                                        placeholder="Firstname"
+                                        @keyup="removeLabel($event)"
+                                    />
+                                </div>
+                                <div class="col l3 m3 s6 sm-mt-1">
+                                    <label>Lastname</label>
+                                    <input
+                                        type="text"
+                                        v-model="bio.lastname"
+                                        class="validate browser-default mt-1"
+                                        placeholder="Lastname"
+                                        @keyup="
+                                            removeLabel($event),
+                                                checkTenantOnDemand()
+                                        "
+                                    />
+                                </div>
+                                <div class="col l3 m3 s6 sm-mt-1">
+                                    <label>Othername</label>
+                                    <input
+                                        type="text"
+                                        v-model="bio.othername"
+                                        class="validate browser-default mt-1"
+                                        placeholder="Othernames"
+                                        data-optional="true"
+                                    />
+                                </div>
+                            </div>
+                        </section>
+                        <section class="row" id="domain">
+                            <div class="col l12 s12">
+                                <label>Type domain name</label>
+                                <domain-input-component
+                                    @newDomain="newDomain($event)"
+                                    :titles="titles"
+                                    :domainSelected="domainSelected"
+                                    :firstname="bio.firstname"
+                                    :lastname="bio.lastname"
+                                    :titleId="bio.title_id"
+                                />
+                            </div>
+                        </section>
+                        <section id="profile-picture">
+                            <div class="row">
+                                <label class="col s12 mt-1"
+                                    >Portfolio Image</label
+                                >
+                            </div>
+                            <div
+                                class="flex justify-center flex-col align-center sm-mt-4"
+                            >
+                                <image-uploader-component
+                                    :tenantId="tenantId"
+                                    :uploaded="uploaded"
+                                    :photo="bio.photo"
+                                    :path="'/media/tenants/' +tenantId +'/img/'"
+                                    :height="799"
+                                    :width="650"
+                                    :xAxis="650"
+                                    :yAxis="799"
+                                    @fileChosen="imageChosen($event)"
+                                />
+                                <div class="" v-show="uploadPhotoProcessing">
+                                    <i
+                                        class="fa-solid fa-circle-notch fa-spin"
+                                    ></i>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="row" id="underGrad">
+                            <h4 class="sectionTitle col s12">
+                                Undergraduate School <br />
+                                <small
+                                    >Only fill if you had an undergrad progam
+                                    before medical school</small
+                                >
+                            </h4>
+                            <div class="row">
+                                <div class="col s12">
+                                    <label>Name of institution</label>
+                                    <input
+                                        placeholder="Name of institution"
+                                        v-model="underGrad.institution"
+                                        @keyup="removeLabel($event)"
+                                        type="text"
+                                        class="validate browser-default mt-1"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col l6 m6 s6">
+                                    <label>Undergraduate Major</label>
+                                    <input
+                                        placeholder="What was your major?"
+                                        type="text"
+                                        v-model="underGrad.major"
+                                        @keyup="removeLabel($event)"
+                                        class="validate browser-default mt-1"
+                                    />
+                                </div>
+                                <div class="col l6 m6 s6">
+                                    <label>Undergraduate Minor</label>
+                                    <input
+                                        placeholder="What was your minor(optional)?"
+                                        type="text"
+                                        v-model="underGrad.minor"
+                                        data-optional="true"
+                                        class="validate browser-default mt-1"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col l6 m6 s6">
+                                    <label> When did you start? </label>
+                                    <div class="row">
+                                        <div class="col s6">
+                                            <select
+                                                class="validate browser-default mt-1"
+                                                v-model="underGrad.monthStart"
+                                                @change="removeLabel($event)"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Month
+                                                </option>
+                                                <option
+                                                    v-for="(
+                                                        month, index
+                                                    ) in months"
+                                                    :key="index"
+                                                    :value="index + 1"
+                                                >
+                                                    {{ month }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col s6 mt-1">
+                                            <date-picker
+                                                v-model:value="
+                                                    underGrad.yearStart
+                                                "
+                                                @change="removeLabel($event, 0)"
+                                                type="year"
+                                                placeholder="Year"
+                                            ></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col l6 m6 s6">
+                                    <label> When did you finish? </label>
+                                    <div class="row">
+                                        <div class="col s6">
+                                            <select
+                                                class="validate browser-default mt-1"
+                                                v-model="underGrad.monthEnd"
+                                                @change="removeLabel($event)"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                    class="base"
+                                                >
+                                                    Month
+                                                </option>
+                                                <option
+                                                    v-for="(
+                                                        month, index
+                                                    ) in months"
+                                                    :key="index"
+                                                    :value="index + 1"
+                                                >
+                                                    {{ month }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col s6 mt-1">
+                                            <date-picker
+                                                v-model:value="
+                                                    underGrad.yearEnd
+                                                "
+                                                @change="removeLabel($event, 1)"
+                                                type="year"
+                                                class="browser-default"
+                                                placeholder="Year"
+                                            ></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="row" id="medSchool">
+                            <h4 class="sectionTitle col s12">
+                                {{ medText }} School
+                            </h4>
+
+                            <div class="row">
+                                <div class="col l12 s12">
+                                    <label>Name of institution</label>
+                                    <input
+                                        placeholder="Name of institution"
+                                        type="text"
+                                        class="validate browser-default mt-1"
+                                        v-model="medSchool.institution"
+                                        @keyup="removeLabel($event)"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col l6 s6">
+                                    <label> When did you start? </label>
+                                    <div class="row">
+                                        <div class="col l6 s6">
+                                            <select
+                                                class="validate browser-default mt-1"
+                                                v-model="medSchool.monthStart"
+                                                @change="removeLabel($event)"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Month
+                                                </option>
+                                                <option
+                                                    v-for="(
+                                                        month, index
+                                                    ) in months"
+                                                    :key="index"
+                                                    :value="index + 1"
+                                                >
+                                                    {{ month }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col l6 s6 mt-1">
+                                            <date-picker
+                                                v-model:value="
+                                                    medSchool.yearStart
+                                                "
+                                                @change="removeLabel($event, 2)"
+                                                type="year"
+                                                placeholder="Year"
+                                            ></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col s6">
+                                    <label> When did you finish? </label>
+                                    <div class="row">
+                                        <div class="col l6 s6">
+                                            <select
+                                                class="validate browser-default mt-1"
+                                                v-model="medSchool.monthEnd"
+                                                @change="removeLabel($event)"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Month
+                                                </option>
+                                                <option
+                                                    v-for="(
+                                                        month, index
+                                                    ) in months"
+                                                    :key="index"
+                                                    :value="index + 1"
+                                                >
+                                                    {{ month }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col l6 s6 mt-1">
+                                            <date-picker
+                                                v-model:value="
+                                                    medSchool.yearEnd
+                                                "
+                                                @change="removeLabel($event, 3)"
+                                                type="year"
+                                                placeholder="Year"
+                                            ></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="row" id="internship">
+                            <h4 class="sectionTitle col s12">
+                                Internship program
+                            </h4>
+                            <div class="row">
+                                <div class="col s12">
+                                    <label for="Name of institution"
+                                        >Name of institution</label
+                                    >
+                                    <input
+                                        placeholder="Name of institution"
+                                        type="text"
+                                        class="validate browser-default mt-1"
+                                        v-model="internship.institution"
+                                        @keyup="removeLabel($event)"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col l6 s6">
+                                    <label> When did you start? </label>
+                                    <div class="row">
+                                        <div class="col l6 s6">
+                                            <select
+                                                class="validate browser-default mt-1"
+                                                v-model="internship.monthStart"
+                                                @change="removeLabel($event)"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Month
+                                                </option>
+                                                <option
+                                                    v-for="(
+                                                        month, index
+                                                    ) in months"
+                                                    :key="index"
+                                                    :value="index + 1"
+                                                >
+                                                    {{ month }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col l6 s6 mt-1">
+                                            <date-picker
+                                                v-model:value="
+                                                    internship.yearStart
+                                                "
+                                                @change="removeLabel($event, 4)"
+                                                type="year"
+                                                placeholder="Year"
+                                            ></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col s6">
+                                    <label> When did you finish? </label>
+                                    <div class="row">
+                                        <div class="col l6 s6">
+                                            <select
+                                                class="validate browser-default mt-1"
+                                                v-model="internship.monthEnd"
+                                                @change="removeLabel($event)"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Month
+                                                </option>
+                                                <option
+                                                    v-for="(
+                                                        month, index
+                                                    ) in months"
+                                                    :key="index"
+                                                    :value="index + 1"
+                                                >
+                                                    {{ month }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col l6 s6 mt-1">
+                                            <date-picker
+                                                v-model:value="
+                                                    internship.yearEnd
+                                                "
+                                                @change="removeLabel($event, 5)"
+                                                type="year"
+                                                placeholder="Year"
+                                            ></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="row" id="residency">
+                            <h4 class="sectionTitle col s12">
+                                Residency program
+                            </h4>
+                            <div class="row">
+                                <div class="col s12">
+                                    <label for="Name of institution"
+                                        >Name of institution</label
+                                    >
+                                    <input
+                                        placeholder="Name of institution"
+                                        type="text"
+                                        class="validate browser-default mt-1"
+                                        v-model="residency.institution"
+                                        @keyup="removeLabel($event)"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col l6 s6">
+                                    <label> When did you start? </label>
+                                    <div class="row">
+                                        <div class="col l6 s6">
+                                            <select
+                                                class="validate browser-default mt-1"
+                                                v-model="residency.monthStart"
+                                                @change="removeLabel($event)"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Month
+                                                </option>
+                                                <option
+                                                    v-for="(
+                                                        month, index
+                                                    ) in months"
+                                                    :key="index"
+                                                    :value="index + 1"
+                                                >
+                                                    {{ month }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col l6 s6 mt-1">
+                                            <date-picker
+                                                v-model:value="
+                                                    residency.yearStart
+                                                "
+                                                @change="removeLabel($event, 6)"
+                                                type="year"
+                                                placeholder="Year"
+                                            ></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col s6">
+                                    <label> When did you finish? </label>
+                                    <div class="row">
+                                        <div class="col l6 s6">
+                                            <select
+                                                class="validate browser-default mt-1"
+                                                v-model="residency.monthEnd"
+                                                @change="removeLabel($event)"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Month
+                                                </option>
+                                                <option
+                                                    v-for="(
+                                                        month, index
+                                                    ) in months"
+                                                    :key="index"
+                                                    :value="index + 1"
+                                                >
+                                                    {{ month }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col l6 s6 mt-1">
+                                            <date-picker
+                                                v-model:value="
+                                                    residency.yearEnd
+                                                "
+                                                @change="removeLabel($event, 7)"
+                                                type="year"
+                                                placeholder="Year"
+                                            ></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="row" id="fellowship">
+                            <h4 class="sectionTitle col s12">
+                                Fellowship program
+                            </h4>
+                            <div class="row">
+                                <div class="col s12">
+                                    <label for="Name of institution"
+                                        >Name of institution</label
+                                    >
+                                    <input
+                                        placeholder="Name of institution"
+                                        type="text"
+                                        class="validate browser-default mt-1"
+                                        v-model="fellowship.institution"
+                                        @keyup="removeLabel($event)"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col l6 s6">
+                                    <label> When did you start? </label>
+                                    <div class="row">
+                                        <div class="col l6 s6">
+                                            <select
+                                                class="validate mt-1 browser-default"
+                                                v-model="fellowship.monthStart"
+                                                @change="removeLabel($event)"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Month
+                                                </option>
+                                                <option
+                                                    v-for="(
+                                                        month, index
+                                                    ) in months"
+                                                    :key="index"
+                                                    :value="index + 1"
+                                                >
+                                                    {{ month }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col l6 s6 mt-1">
+                                            <date-picker
+                                                v-model:value="
+                                                    fellowship.yearStart
+                                                "
+                                                @change="removeLabel($event, 8)"
+                                                type="year"
+                                                placeholder="Year"
+                                            ></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col s6">
+                                    <label> When did you finish? </label>
+                                    <div class="row">
+                                        <div class="col l6 s6">
+                                            <select
+                                                class="validate mt-1 browser-default"
+                                                v-model="fellowship.monthEnd"
+                                                @change="removeLabel($event)"
+                                            >
+                                                <option
+                                                    :value="''"
+                                                    disabled
+                                                    selected
+                                                >
+                                                    Month
+                                                </option>
+                                                <option
+                                                    v-for="(
+                                                        month, index
+                                                    ) in months"
+                                                    :key="index"
+                                                    :value="index + 1"
+                                                >
+                                                    {{ month }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col l6 s6 mt-1">
+                                            <date-picker
+                                                v-model:value="
+                                                    fellowship.yearEnd
+                                                "
+                                                @change="removeLabel($event, 9)"
+                                                type="year"
+                                                placeholder="Year"
+                                            ></date-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section
+                            class="row"
+                            id="additionalSchool"
+                            v-if="tenantOnDemand == 1"
+                        >
+                            <h4 class="sectionTitle">Interests</h4>
+                            <p v-if="maxSelected != ''">
+                                {{ maxSelected }}
+                            </p>
+                            <div class="grid">
                                 <div
-                                    class="marginTop-5 marginBottom-5"
-                                    v-if="view == 1"
-                                >
-                                    <div class="skipDiv">
-                                        <button
-                                            class="saveAllBtn btn btn-small waves-effect waves-black"
-                                            :class="{
-                                                tenantOnDemand:
-                                                    tenantOnDemand == 1,
-                                            }"
-                                            @click="saveAll()"
-                                        >
-                                            Save &amp; Publish
-                                        </button>
-                                    </div>
-                                    <p class="pubSupportTxt">
-                                        After publishing your website, you can
-                                        still do more editing and customization
-                                    </p>
-                                </div>
-
-                                <!-- Publish Section -->
-                                <div v-show="view == 2" class="container">
-                                    <div
-                                        class="contentTitle"
-                                        v-if="!showGoLiveBtns"
-                                    >
-                                        <span class="serviceSuccessTxt"
-                                            >Congrats!</span
-                                        >
-                                        Your site has been setup successfully!
-                                        <span class="serviceSuccessTxt"
-                                            >Hooray!</span
-                                        >
-                                        <p class="timer">
-                                            Redirecting you to your site in
-                                            {{ countdown }}s
-                                        </p>
-                                    </div>
-
-                                    <!-- <go-live-component :tenantOnDemand="tenantOnDemand" :showGoLiveBtns="showGoLiveBtns" :bio="bio" @sendEmail="sendEmail($event)"/> -->
-                                </div>
-
-                                <!-- Prev/Next Button Section -->
-                            </div>
-                        </div>
-                        <div id="modal1" class="modal">
-                            <div class="modal-content">
-                                <i
-                                    class="fas fa-spinner fa-spin fa-2xl flex center-align"
-                                ></i>
-                                <p class="centered">Setting up your site</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="col l6 s12 noPaddingLeft noPaddingRight fullpage"
-                        v-if="view < 2"
-                    >
-                        <div
-                            class="col l6 offset-l6 hide-on-med-and-down"
-                            v-if="view > 0"
-                        >
-                            <a href="/" target="_blank">
-                                <img
-                                    v-if="tenantOnDemand == 1"
-                                    src="/media/img/wcdlogodeepblue.png"
-                                    width="287"
-                                    height="173"
-                                    alt="whitecoatdomain logo"
-                                    class="responsive-img"
-                                />
-                                <img
-                                    v-else
-                                    src="/media/img/wcd-logo-noBckg.png"
-                                    width="287"
-                                    height="173"
-                                    alt="whitecoatdomain logo"
-                                    class="responsive-img"
-                                />
-                            </a>
-                        </div>
-                        <div
-                            class="col m6 s6 hide-on-large-only"
-                            v-if="view > 0"
-                        >
-                            <a href="/" target="_blank">
-                                <img
-                                    v-if="tenantOnDemand == 1"
-                                    src="/media/img/wcdlogodeepblue.png"
-                                    alt="whitecoatdomain logo"
-                                    class="responsive-img"
-                                />
-                                <img
-                                    v-else
-                                    src="/media/img/wcd-logo-noBckg.png"
-                                    width="287"
-                                    height="173"
-                                    alt="whitecoatdomain logo"
-                                    class="responsive-img"
-                                />
-                            </a>
-                        </div>
-                        <div
-                            class="bottomOfPage white halfWidth hPadding-5 fullWidthMd"
-                        >
-                            <small>
-                                <a
-                                    href="/"
+                                    class="pills"
                                     :class="{
-                                        tenantOnDemand: tenantOnDemand == 1,
+                                        selected: selectedIndex.includes(index),
                                     }"
-                                    >Home</a
+                                    v-for="(interest, index) in interests"
+                                    :key="interest.id"
                                 >
-                                <span class="right"
-                                    >&copy; Copyright 2023.
-                                    WhiteCoatDomain</span
-                                >
-                            </small>
+                                    <p
+                                        @click="
+                                            getSelectedInterests(
+                                                interest,
+                                                index
+                                            )
+                                        "
+                                    >
+                                        {{ interest.title }}
+                                    </p>
+                                    <i
+                                        @click="
+                                            removeFromSelected(interest, index)
+                                        "
+                                        v-show="selectedIndex.includes(index)"
+                                        class="material-icons removeInterest"
+                                        >close</i
+                                    >
+                                </div>
+                            </div>
+                        </section>
+                        <div
+                            class="flex justify-center align-center flex-col mt-4"
+                        >
+                            <button
+                                type="button"
+                                class="customNextBtn waves waves-effect btn"
+                                @click="saveAll"
+                            >
+                                Save &amp; Publish
+                            </button>
+                            <p class="pubSupportText">
+                                After publishing our websites, you can still do
+                                more editing and customization
+                            </p>
                         </div>
                     </div>
+                </div>
+                <div class="absolute bottom-0">
+                    <p class="m-0 copyright">
+                        Copyright &copy; {{ new Date().getFullYear() }},
+                        Whitecoatdomain.
+                    </p>
                 </div>
             </div>
         </div>
@@ -1472,16 +760,6 @@
                 </div>
             </div>
         </div>
-        <!-- <PaymentModalComponent
-            :setModal="setModal"
-            :user="user"
-            @countDown="timerStart($event)"
-            @popupClose="popupClose($event)"
-            :domainName="domainSelected"
-            :bio="bio"
-            :tenantID="tenantId"
-            :email="email"
-        /> -->
     </div>
 </template>
 <script>
@@ -1491,26 +769,28 @@
     import DatePicker from "vue-datepicker-next";
     import "vue-datepicker-next/index.css";
     import PaymentModalComponent from "../partials/PaymentModalComponent.vue";
-    import ImageCropper from "../partials/ImageCropper.vue";
     import ProgressComponent from "../partials/ProgressComponent.vue";
     import GoLiveComponent from "../partials/GoLiveComponent.vue";
-    import OtpComponent from '../partials/OtpComponent.vue';
+    import OtpComponent from "../partials/OtpComponent.vue";
+    import DomainInputComponent from "../partials/DomainInputComponent.vue";
+    import ImageUploaderComponent from "../partials/ImageUploaderComponent.vue";
     export default {
         components: {
             PaymentModalComponent,
             InnerFooter,
             DatePicker,
-            ImageCropper,
             ProgressComponent,
             GoLiveComponent,
-                OtpComponent,
+            OtpComponent,
+            DomainInputComponent,
+            ImageUploaderComponent,
         },
 
         data() {
             return {
                 otpMode: false,
                 clicked: false,
-                suggestionLoaded: false,
+                failedPic: false,
                 medText: "Medical",
                 cvMedSchoolUpdate: 0,
                 underGradUpdate: 0,
@@ -1518,9 +798,8 @@
                 internUpdate: 0,
                 residencyUpdate: 0,
                 fellowshipUpdate: 0,
-                setDomain: false,
-                showCropper: false,
                 view: 0,
+                step: 0,
                 bio: {
                     firstname: "",
                     lastname: "",
@@ -1529,8 +808,6 @@
                     photo: null,
                 },
                 countdown: 10,
-                domainCheckPassed: null,
-                domainSuggestions: [],
                 domainSelected: "",
                 bioData: {},
                 initialDomain: "",
@@ -1541,8 +818,6 @@
                     monthStart: "",
                     monthEnd: "",
                 },
-                loadingSuggestions: false,
-                checkingSuggestion: false,
                 updateUserData: 0,
                 uploaded: null,
                 uploadPhotoProcessing: false,
@@ -1615,7 +890,7 @@
                 services: [],
                 selectedIndex: [],
                 maxSelected: "",
-                failedPic: false,
+
                 inputEmail: "",
                 verificationLoading: false,
                 otp: "",
@@ -1625,76 +900,80 @@
             this.getTenantNDomain();
             this.getData();
             this.getInterests();
-            document.addEventListener("DOMContentLoaded", function () {
-                let elems = document.querySelector("#modal1");
-                let options = {
-                    dismissible: false,
-                };
-                let instances = M.Modal.init(elems, options);
-            });
-
-            document.getElementById("page").onclick = function () {
-                if (document.getElementById("popup").style.display == "block") {
-                    document.getElementById("popup").style.display = "none";
-                    document.getElementById("page").style.display = "none";
-                    document.getElementById("page").className = "";
-                }
-            };
+            // document.addEventListener("DOMContentLoaded", function () {
+            //     let elems = document.querySelector("#modal1");
+            //     let options = {
+            //         dismissible: false,
+            //     };
+            //     let instances = M.Modal.init(elems, options);
+            // });
         },
         methods: {
             checkEmail() {
-                if(this.inputEmail === ''){
+                if (this.inputEmail === "") {
                     M.toast({
-                        html: 'Please input your email.',
+                        html: "Please input your email.",
                         classes: "errorNotifier",
                     });
                 } else {
                     this.verificationLoading = true;
                     let data = {
-                        email: this.inputEmail
-                    }
+                        email: this.inputEmail,
+                    };
                     axios
-                    .post("/auth/verifyEmailForRegistration", data)
-                    .then((res) => {
-                        if(res.status === 200){
-                            if(res.data.status == 200){
-                                this.otp = res.data.otp;
-                                this.otpMode = true;
-                            } else if(res.data.status == 404){
-                                M.toast({
-                                    html: res.data.error,
-                                    classes: "errorNotifier",
-                                });
+                        .post("/auth/verifyEmailForRegistration", data)
+                        .then((res) => {
+                            if (res.status === 200) {
+                                if (res.data.status == 200) {
+                                    this.otp = res.data.otp;
+                                    this.otpMode = true;
+                                } else if (res.data.status == 404) {
+                                    M.toast({
+                                        html: res.data.error,
+                                        classes: "errorNotifier",
+                                    });
+                                }
+                                this.verificationLoading = false;
                             }
-                            this.verificationLoading = false;
-                        }
-                        
-                    })
-                    .catch((err) => {
-                        console.log(err.response);
-                    });
+                        })
+                        .catch((err) => {
+                            console.log(err.response);
+                        });
                 }
-
             },
             changeView(e) {
                 if (e == 200) {
                     // Save the user with email
                     // Login user temporary to be able to access route
                     const urlParams = new URLSearchParams(window.location.search);
-                    const code = urlParams.get('code');
-                    const tenantId = urlParams.get('claimable');
-                    axios.get(`/guest-login/${code}`).then(res => {
-                        console.log(res);
-                    }).catch(err => {
-                        console.log(err);
-                    })
-                    axios.put(`/admin_order/${tenantId}`, {email: this.inputEmail}).then(res => {
-                        // console.log(res);
-                        this.view = 1;
-                    }).catch(err => {
-                        console.log(err);
-                    })
+                    const code = urlParams.get("code");
+                    const tenantId = urlParams.get("claimable");
+                    axios
+                        .get(`/guest-login/${code}`)
+                        .then((res) => {
+                            console.log(res);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
+                    axios
+                        .put(`/admin_order/${tenantId}`, { email: this.inputEmail })
+                        .then((res) => {
+                            // console.log(res);
+                            this.view = 1;
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
                 }
+            },
+            imageChosen(e) {
+                this.bio.photo = e;
+                document
+                    .getElementById("profile-picture")
+                    .querySelector(".button")
+                    .classList.remove("empty-input");
+                this.updatePhoto(e);
             },
             serviceSaveOrUpdate() {
                 this.loading = !this.loading;
@@ -1837,7 +1116,7 @@
                     this.validationException();
                 }
             },
-            startExploring () {
+            startExploring() {
                 // this.view = 2;
                 this.clicked = true;
                 this.timerStart();
@@ -1972,42 +1251,6 @@
                     document.getElementById("page").className = "";
                 }
             },
-            showFileChooser() {
-                // this.$refs.photo.click();
-                this.showCropper = true;
-            },
-            checkDomainAvailability(el) {
-                this.domainCheckPassed = null;
-                this.removeLabel(el);
-                if (this.domainSelected != "") {
-                    this.checkingSuggestion = true;
-                    let domainToCheck = this.domainSelected.endsWith(".com")
-                        ? this.domainSelected
-                        : this.domainSelected + ".com";
-                    axios
-                        .post("/api/domain/check", { domain: domainToCheck })
-                        .then((res) => {
-                            if (res.data.status == 1) {
-                                this.domainCheckPassed = true;
-                                this.setDomain ? this.updateDomain() : null;
-                            } else if (res.data.status == 0) {
-                                this.domainCheckPassed = false;
-                                if (this.setDomain) {
-                                    M.toast({
-                                        html: "Domain Not Available!",
-                                        classes: "errorNotifier",
-                                    });
-                                    this.view = 1;
-                                }
-                            }
-                            this.checkingSuggestion = false;
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                            this.checkingSuggestion = false;
-                        });
-                }
-            },
             getStarted() {
                 this.view = 1;
             },
@@ -2040,81 +1283,6 @@
                 const sentence = shuffledList.slice(0, sentenceLength).join("");
                 return sentence;
             },
-            generateMultiple() {
-                if (this.bio.title_id === null || this.bio.title_id == "") {
-                    M.toast({
-                        html: "Please select a title",
-                        classes: "errorNotifier",
-                    });
-                } else {
-                    this.domainSuggestions = [];
-                    let title = this.titles.filter(
-                        (el) => el.id == this.bio.title_id
-                    );
-                    this.suggestionLoaded = true;
-                    this.domainSuggestions.push({
-                        name: (
-                            title[0].name.replace(/\./g, "") +
-                            this.bio.firstname +
-                            this.bio.lastname +
-                            ".com"
-                        ).toLowerCase(),
-                    });
-                    this.domainSuggestions.push({
-                        name: (
-                            title[0].name.replace(/\./g, "") +
-                            this.bio.lastname +
-                            this.bio.firstname +
-                            ".com"
-                        ).toLowerCase(),
-                    });
-                    this.domainSuggestions.push({
-                        name: (
-                            this.bio.firstname +
-                            this.bio.lastname +
-                            title[0].name.replace(/\./g, "") +
-                            ".com"
-                        ).toLowerCase(),
-                    });
-                    this.domainSuggestions.push({
-                        name: (
-                            this.bio.lastname +
-                            this.bio.firstname +
-                            title[0].name.replace(/\./g, "") +
-                            ".com"
-                        ).toLowerCase(),
-                    });
-                    this.domainSuggestions.push({
-                        name: (
-                            title[0].name.replace(/\./g, "") +
-                            this.bio.lastname +
-                            ".com"
-                        ).toLowerCase(),
-                    });
-                    this.domainSuggestions.push({
-                        name: (
-                            title[0].name.replace(/\./g, "") +
-                            this.bioData.firstname +
-                            ".com"
-                        ).toLowerCase(),
-                    });
-
-                    let data = JSON.stringify(this.domainSuggestions);
-                    this.loadingSuggestions = true;
-                    axios
-                        .post(`/api/domain/check/`, { domain: data })
-                        .then((res) => {
-                            if (res.data.status == 200) {
-                                this.domainSuggestions = res.data.available;
-                                this.loadingSuggestions = false;
-                                this.suggestionLoaded = true;
-                            }
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                        });
-                }
-            },
             parseClaimaintData(dataToParse) {
                 let data = JSON.parse(dataToParse);
                 this.bioData = data.length === undefined ? data : data[0];
@@ -2136,9 +1304,6 @@
                     password += chars.substring(randomNumber, randomNumber + 1);
                 }
                 return password;
-            },
-            photoUpload(e) {
-                this.updatePhoto(e);
             },
 
             // If user clicks on next for the view 1 register user or update details
@@ -2164,7 +1329,7 @@
                             let data = {
                                 password: this.passwordGenerator(),
                             };
-                            localStorage.setItem('passwordGen', data.password);
+                            localStorage.setItem("passwordGen", data.password);
                             this.bio = { ...this.bio, ...data };
                         }
                         axios
@@ -2425,7 +1590,11 @@
                     }
                 }
             },
+            newDomain(domain) {
+                this.domainSelected = domain;
+            },
             updateDomain() {
+                console.log(this.initialDomain, this.domainSelected)
                 if (this.initialDomain + ".com" !== this.domainSelected) {
                     axios
                         .put(`/claim/updateDomain/tenant`, {
@@ -2434,7 +1603,6 @@
                         .then((res) => {
                             if (res.data.status == 200) {
                                 this.initialDomain = res.data.domain.domain;
-                                this.setDomain = false;
                                 return true;
                             }
                         })
@@ -2454,7 +1622,6 @@
                 axios
                     .post("/claim/updateAvatar/bio", formData)
                     .then((res) => {
-                        // console.log(res);
                         if (res.data.status == 200) {
                             M.toast({
                                 html: res.data.message,
@@ -2469,7 +1636,6 @@
                             this.uploadPhotoProcessing = false;
                             this.showCropper = false;
                             this.uploaded = e;
-                            this.bio.photo = {};
                         }
                     })
                     .catch((err) => {
@@ -2522,7 +1688,7 @@
                  */
 
                 let data = {
-                    plan: 'F',
+                    plan: "F",
                     password: localStorage.getItem("passwordGen"),
                     domain: this.domainSelected.replace(".com", ""),
                     tenantOnDemand: this.tenantOnDemand,
@@ -2537,19 +1703,12 @@
                             });
 
                             this.user = res.data.user;
-                            let elem = document.getElementById("modal1");
-                            let instance = M.Modal.init(elem);
-                            instance.close();
-                            localStorage.removeItem('claimproc');
-                            localStorage.removeItem('passwordGen');
-                            localStorage.removeItem('email');
-                            // this.makePayment();
+                            localStorage.removeItem("claimproc");
+                            localStorage.removeItem("passwordGen");
+                            localStorage.removeItem("email");
                         }
                     })
                     .catch((err) => {
-                        let elem = document.getElementById("modal1"); //.getElementsByClassName('modal-close').click()
-                        let instance = M.Modal.init(elem);
-                        instance.close();
                         console.log(err);
                     });
             },
@@ -2627,98 +1786,33 @@
                     this.getOffset("domain");
                 }
             },
-            createLabel(input) {
-                const newElement = document.createElement("label");
-                newElement.style.color = "indianred";
-                newElement.style.fontSize = "0.75rem";
-                newElement.textContent = "Required";
-                input.style.margin = 0;
-                input.style.borderBottomColor = "indianred";
-                input.insertAdjacentElement("afterend", newElement);
-                input.classList.add("bb-danger", "required", "m-0");
-            },
-            removeLabel(el, num = 0) {
-                const timestamp = Date.parse(el);
-                if (el === null || !isNaN(timestamp)) {
-                    let mxInput = document.querySelectorAll(".mx-input")[num];
-                    if (
-                        mxInput.nextElementSibling !== null &&
-                        mxInput.nextElementSibling.tagName === "LABEL"
-                    ) {
-                        mxInput.nextElementSibling.remove();
-                    }
-                    if (mxInput.style.borderBottomColor !== "") {
-                        mxInput.style.borderBottomColor = "";
-                    }
-                } else {
-                    if (el.target.classList.contains("bb-danger", "required")) {
-                        el.target.classList.remove("bb-danger", "required");
-                    }
-                    if (el.target.nextSibling !== null) {
-                        if (el.target.nextSibling.classList.contains("dangerTxt")) {
-                            el.target.nextSibling.classList.remove("dangerTxt");
-                        }
-                        if (el.target.hasAttribute("data-no-label")) {
-                            if (el.target.nextSibling.tagName === "LABEL") {
-                                el.target.nextSibling.remove();
-                            }
-                        }
-                    }
-                    if (el.target.style.hasOwnProperty("border-bottom-color")) {
-                        el.target.style.removeProperty("border-bottom-color");
-                    }
-                    if (el.type === "change") {
-                        if (
-                            el.target.nextSibling !== null &&
-                            !el.target.hasAttribute("data-label")
-                        ) {
-                            el.target.nextSibling.remove();
-                        }
-                        if (
-                            el.target.nextSibling !== null &&
-                            el.target.hasAttribute("data-label")
-                        ) {
-                            el.target.nextSibling.classList.remove("dangerTxt");
-                        }
-                        if (el.target.style) {
-                            el.target.style.removeProperty("border-bottom-color");
-                        }
-                    }
-                }
+            removeLabel(el) {
+                el.target.classList.remove("empty-input");
             },
             loopInputsNCheckEmptyValues(id) {
                 let mySection = document.querySelector(`#${id}`);
                 let inputSelect = mySection.querySelectorAll("input, select");
                 inputSelect.forEach((input) => {
-                    if (!input.value) {
-                        if (input.nextSibling !== null) {
-                            if (
-                                input.nextSibling.localName == "label" &&
-                                !input.hasAttribute("data-optional")
-                            ) {
-                                input.nextSibling.classList.add("dangerTxt");
-                                input.classList.add("bb-danger", "required");
-                            } else if (input.nextSibling.localName != "label") {
-                                this.createLabel(input);
-                            }
-                        } else {
-                            this.createLabel(input);
-                        }
-                    } else if (this.bio.photo === undefined) {
+                    if (!input.value && !input.hasAttribute("data-optional")) {
+                        input.required = true;
+                        input.classList.add("empty-input");
+                    } else if (this.bio.photo === null) {
                         document
-                            .getElementById("brandImage")
-                            .getElementsByClassName("sectionTitle")[0].style.color =
-                            "red";
+                            .getElementById("profile-picture")
+                            .querySelector(".button")
+                            .classList.add("empty-input");
                     } else {
-                        console.log(input.value);
+                        document
+                            .getElementById("profile-picture")
+                            .querySelector(".button")
+                            .classList.remove("empty-input");
+                        input.classList.remove("empty-input");
                     }
                 });
             },
             getOffset(el) {
                 let DOMEL = document.querySelector(`#${el}`);
-                let container = document.querySelectorAll(".contentDiv");
-                const rect = DOMEL.getBoundingClientRect();
-                container[0].scrollTop += rect.top;
+                DOMEL.scrollIntoView({ behavior: "smooth" });
             },
         },
         props: {
@@ -2750,39 +1844,6 @@
     };
 </script>
 <style scoped>
-    .pills:visited,
-    .pills:focus {
-        background: red;
-    }
-    .removeInterest:hover {
-        cursor: pointer;
-        background-color: rgb(16, 15, 58);
-    }
-    .pills {
-        background-color: var(--white);
-        box-shadow: 2px 2px 4px #b7b7b7;
-        border-radius: 4vh;
-        padding: 1vh 0vw;
-        text-align: center;
-        margin: 0.8vh 0.75vw;
-        color: var(--sec);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .pills > p {
-        margin: 0;
-    }
-    .pills:hover,
-    .selected {
-        background: var(--sec);
-        color: var(--white);
-    }
-    .grid {
-        display: grid;
-        grid-template-columns: auto auto auto;
-    }
     .paymentOverlay {
         position: absolute;
         height: 100vh;
@@ -2841,24 +1902,7 @@
     .mb-0 {
         margin-bottom: 0;
     }
-    .center-align {
-        justify-content: center !important;
-    }
-    .p-10 {
-        padding: 2rem 0;
-    }
-    .proInputFileUpladIcon {
-        float: right;
-        padding-top: 20px;
-    }
-    .file-path-wrapper {
-        display: flex;
-        align-items: center;
-    }
-    .input-field {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
+
     #cs {
         width: 3rem;
         border-bottom: 0;
@@ -2868,9 +1912,6 @@
     #cs::placeholder {
         color: rgb(231, 111, 111);
     }
-    select {
-        padding: 0;
-    }
     .modal-content {
         padding-bottom: 0px;
     }
@@ -2879,7 +1920,8 @@
         top: 50% !important;
     }
 
-    .modal-confirm, #successWebCr8Modal {
+    .modal-confirm,
+    #successWebCr8Modal {
         color: #434e65;
         width: 525px;
     }
@@ -2940,7 +1982,7 @@
     .modal-confirm .btn:active {
         color: #fff;
         border-radius: 4px;
-        background: #D7B9AE !important;
+        background: #d7b9ae !important;
         text-decoration: none;
         transition: all 0.4s;
         line-height: normal;
@@ -2999,7 +2041,8 @@
             width: 95%;
             padding: 1em 0 0 0;
         }
-        .modal-confirm, #successWebCr8Modal {
+        .modal-confirm,
+        #successWebCr8Modal {
             color: #434e65;
             width: 350px;
         }
@@ -3011,7 +2054,7 @@
         background-color: var(--pri) !important;
     }
     .justify-center {
-        justify-content: center !important;
+        justify-content: center;
     }
     .holds-the-iframe {
         background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100% 100%"><text fill="%23FF0000" x="50%" y="50%" font-family="\'Lucida Grande\', sans-serif" font-size="24" text-anchor="middle">PLACEHOLDER</text></svg>')
@@ -3028,10 +2071,6 @@
         color: rgb(238, 118, 128);
     }
 
-    .input-field > label,
-    label {
-        font-size: 0.75rem !important;
-    }
     input.mx-input {
         margin: 0px !important;
     }

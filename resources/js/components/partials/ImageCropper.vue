@@ -50,7 +50,7 @@
                         <i class="material-icons">crop</i>
                     </button>
 
-                    <a
+                    <!-- <a
                         href="#"
                         role="button"
                         class="btn waves waves-green"
@@ -58,7 +58,7 @@
                         title="Upload Image"
                     >
                         <i class="material-icons">cloud_upload</i>
-                    </a>
+                    </a> -->
                 </div>
             </section>
         </div>

@@ -39,7 +39,6 @@
     /* Select the down or left scroll button when it's being hovered by the mouse */
 }
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 html,
 body {
     width: 100% !important;
@@ -47,6 +46,15 @@ body {
 }
 .centre {
     text-align: center;
+}
+.flex-col {
+    flex-direction: column;
+}
+.align-center {
+    align-items: center;
+}
+.justify-center {
+    justify-content: center;
 }
 /* Misc */
 .error {
@@ -56,6 +64,15 @@ body {
 .success {
     background-color: #ffffff;
     color: #81c784;
+}
+.flex-end {
+    justify-content: flex-end;
+}
+.absolute {
+    position: absolute;
+}
+.bottom-0 {
+    bottom: 0;
 }
 .hoverable,
 .cursor {
@@ -160,6 +177,9 @@ body {
 }
 .inlineIcon {
     font-size: 0.8rem !important;
+}
+.mt-4 {
+    margin-top: 4vh;
 }
 .primary:hover,
 .primary:active {

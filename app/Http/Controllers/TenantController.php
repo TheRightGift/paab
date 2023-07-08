@@ -112,11 +112,9 @@ class TenantController extends Controller
                 try {
                     if (!empty($sessionTenant)) {
                         $domain = $tenant->domains->first();
-                    } else {
-                        $domain = $tenant->domains->find($inputs->validated()['domain_id']);
                         $domain->domain = str_replace('.com', '', $inputs->validated()['domain']);
                         $domain->save();
-                    }
+                    } 
                 } catch (DomainOccupiedByOtherTenantException $e) {
                     return response()->json(["Domain already in use."]);
                 }

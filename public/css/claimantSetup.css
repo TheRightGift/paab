@@ -1,4 +1,3 @@
-
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -39,1235 +38,251 @@
     width: 5px;
     /* Select the down or left scroll button when it's being hovered by the mouse */
 }
+
 body {
     overflow: hidden;
 }
-.priText {
-    color: var(--pri);
-}
-.claimWebsiteLogo {
-    position: relative;
-    right: 0;
-    color: #b6b6b9;
-}
-.btn {
-    background-color: var(--pri);
-}
-.customFlex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-ul>li {
-    text-align: center;
-}
-.flexed {
-    display: flex;
-    align-items: center;
-    justify-content: unset !important;
-    padding: 0 1rem;
-}
-.cFlex {
-    display: flex;
-}
-.flexRight {
-    justify-content: flex-end;
-}
-.offsetS2 {
-    margin-left: 2rem;
-    color: var(--white);
-}
-
-select.browser-default {
-    border: none;    
-    height: 3.15rem;
-    outline: none;
-    background: transparent;
-}
-input[type=text]:not(.browser-default) {    
-    font-weight: lighter;
-}
-select.browser-default, input[type=text]:not(.browser-default) {
-    border-bottom: 0.3vh solid var(--sec);
-    font-family: 'Montserrat', sans-serif;
-}
-
-.headerDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-.decorate {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: rgb(126, 53, 53);
-    font-family: inherit;
-}
-.headerTitle {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 2.2rem;
-    text-align: right;
-    text-transform: uppercase;
-    color: var(--white);
-    width: 60%;
+.m-0 {
     margin: 0;
 }
-.websiteClaimContainer {
-    /* background-color: var(--primary); */
+.mt-1 {
+    margin-top: 1vh !important;
+}
+.item {
+    flex: 1;
     height: 100vh;
-    background-image: url('../media/img/backgroundImg/physician1.jpg');
-    background-position: center;
+    background-color: #ccc;
+}
+.item:first-child {
+    background: url("/media/img/backgroundImg/loginBackgroundLg.png");
+    background-size: contain;
     background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
 }
-.contentDiv {
-    background: rgba(255, 255, 255, 0.8);
-    height: 100vh;
-    overflow: auto;
+.item:last-child {
+    background-color: var(--pri);
 }
-.contentInnerDiv {
-    padding: 1.5vh 2vw;
-}
-.contentInnerDiv p.contentTitle.marginTop-10 {
-    margin-top: 10vh;
-}
-.contentTitle {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    line-height: 24px;
-    text-align: center;
+.custom-button {
+    background-color: #fff;
+    border: 1px solid rgb(37, 121, 116);
     text-transform: capitalize;
-    color: var(--black);
-    margin-top: 0;
 }
-.contentInnerDiv .intro {
-    height: 86.5vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.formContainer {
+    width: 75%;
+    max-height: 95%;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 30px;
+    padding: 24px;
+    overflow-y: scroll;
 }
 h4.sectionTitle {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 1.8rem;
-    /* line-height: 24px; */
-    /* text-align: center; */
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
     color: var(--ter);
 }
 h4.sectionTitle small {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
 }
-
-.contentInnerDiv .input-field.col label {
-    position: relative;
-    left: 0;
+section.row {
+    margin-bottom: 0;
 }
-.contentInnerDiv .input-field.col.selectInputField label {
-    top: 1.2vh;
-}
-a.btn.getStartedBtn:hover, button.btn.saveAllBtn:hover, button.btn.goLiveBtn:hover {
-    background-color: var(--white) !important;
-    color: var(--pri) !important;
-    /* border: thin solid var(--pri) !important; */
-}
-
-a.btn.getStartedBtn {
-    background-color: var(--pri) !important;
-    /* border-radius: 6px; */
-    font-family: 'Montserrat', sans-serif;
-}
-a.btn.tenantOnDemand, .saveAllBtn.btn.tenantOnDemand, .btn.goLiveBtn.tenantOnDemand {
-    background-color: var(--sec) !important;
-    color: var(--white)
-}
-a.btn.tenantOnDemand:hover, .saveAllBtn.btn.tenantOnDemand:hover, .btn.goLiveBtn.tenantOnDemand:hover {
-    color: var(--sec) !important;
-}
-a.tenantOnDemand {
-    color: var(--sec)
-}
-.getStartedBtnDiv {
-    display: flex;
-    justify-content: center;
-    margin-top: 5vh;
-}
-
-.col .row {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.digit-group {
-    display: flex;
-}
-
-form.mainForm {
-    display: flex;
-    justify-content: center;
-}
-
-.formInnerDiv {
-    display: flex;
-    /* width: 90%; */
-}
-
-.formContainDiv {
-    width: 90%;
-}
-.fullpage {
-    height: 80vh;
-    /* opacity: 0; */
-}
-.halfWidth {
-    width: 50%;
-}
-.bottomOfPage {
-    position: absolute;
-    bottom: 0;
-    height: 5vh;
-    line-height: 5vh;
-    z-index: 222;
-}
-
-.skipDiv {
-    display: flex;
-    justify-content: end;
-    margin-right: 4vw;
-}
-
-.skipTxt {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+label {
+    color: rgba(0, 0, 0, 1);
+    font-family: "Montserrat", sans-serif;
     font-size: 1rem;
-    text-decoration: underline;
-    text-transform: uppercase;
-    margin: 0 2vw;
-    position: relative;
-    top: 0.5vh;
+    font-weight: 400;
+    line-height: normal;
+}
+input[type="text"], input[type="email"],
+select,
+.mx-input {
+    background-color: var(--white) !important;
+    height: 57px !important;
+    width: 100%;
+    border: none !important;
+    outline: none !important;
+    border-radius: 5px !important;
+    padding: 0 0.5rem !important;
 }
 
-button.skipBtn {
-    /* padding: 0 0.1vw;
-    border-radius: 50px;*/
-    background-color: transparent; 
-    cursor: pointer;
+input::placeholder,
+.custom-select option:disabled {
+    color: #808080;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: normal;
 }
-button.skipBtn:first-child {
-    margin-right: 1rem;
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 1em;
+    /* background: url('path/to/custom-arrow-icon.png') no-repeat center right; Add custom arrow icon */
+    /* background-size: 12px; Set custom arrow icon size */
+}
+.customNextBtn {
+    width: 236px;
+    height: 54px;
+    border-radius: 10px;
+    text-transform: capitalize;
+    background-color: var(--pri);
+    box-shadow: 0px 4px 19px 0px rgba(16, 157, 173, 1);
+}
+.copyright {
+    color: #fff;
+    font-family: "Lato", sans-serif;
+    font-size: .7rem;
+    font-weight: 400;
+}
+.logo {
+    width: 414px;
+    height: 251px;
+}
+#internship h4,
+#residency h4, #fellowship h4 {
+    margin-bottom: 3vh;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.pills:visited,
+.pills:focus {
+    background: rgb(245, 125, 125);
+}
+.removeInterest:hover {
+    cursor: pointer;
+    background-color: rgb(16, 15, 58);
+}
+.pills {
+    background-color: var(--white);
+    box-shadow: 2px 2px 4px #b7b7b7;
+    border-radius: 4vh;
+    padding: 1vh 0vw;
+    text-align: center;
+    margin: 0.8vh 0.75vw;
+    color: var(--sec);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+}
+.pills > p {
+    margin: 0;
+}
+.pills:hover,
+.selected {
+    background: var(--sec);
+    color: var(--white);
 }
 .mx-datepicker {
     width: 100% !important;
 }
-.unAvailTitle {
-    color: #D44141;
-}
-.availTitle {
-    color: forestgreen;
-}
-.unAvailTitle, .availTitle {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-size: 0.7rem;
-    
-    /* margin: 5vh 0 0 4vw; */
-}
-.unAvailTxt {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-size: 0.7rem;
-    margin: 0;
-}
-
-.primaryTxt {
+.pubSupportText {
     text-align: center;
-    color: var(--primary);
     font-family: 'Montserrat', sans-serif;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
-
-table {
-    width: 95%;
+input[type="text"]:not(.browser-default).empty-input, input[type="text"].empty-input, .empty-input {
+    border: 1px solid rgb(245, 126, 126) !important;
 }
-
-table tr {
-    border: 1px solid #D9D9D9;
-}
-
-table tr td {
-    padding: 0.5rem 1rem;
-}
-
-.domainTdName {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: var(--black);
-}
-
-.domainTdState {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: #078523;
-    text-align: right;
-}
-
-.domainSelectP {
-    margin: 0.5vh 0 0 0;
-}
-
-.domianMainDiv {
-    margin-bottom: 1vh;
-}
-
-.pubSupportTxt {
-    font-size: .8rem;
-    font-family: 'Poppins', sans-serif;
-    text-align: end;
-}
-
-.domianMainDiv .row{
-    margin-bottom: 0vh;
-}
-
-.proImgContainer {
-    width: 80%;
-    /* height: 50vh; */
-    border: 9px solid #d9d9d9;
-    margin: auto;
-}
-
-.proImg {
-    width: 100%;
-    height: 100%;
-}
-
-.file-path.validate.proImgInput {
-    width: 20%;
-    border-bottom-color: #D44141;
-    float: right;
-    height: 1.7vh;
-}
-
-.file-path.validate.proImgInput::placeholder {
-    color: #D44141;
-}
-
-.proImgYesBtn {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
-    text-decoration: underline;
-    color: var(--black);
-}
-
-.proImgInputDiv {
-    position: relative;
-    top: -1.7vh;
-}
-
-.proInputFileUpladIcon {
-    position: relative;
-    top: -2vh;
-    color: #9e9c9f;
-}
-
-.proImgInstruct {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 8px;
-    color: var(--black);
-    text-align: center;
-    position: absolute;
-    top: 7vh;
-    margin-top: 0;
-}
-
-.proImgBtnMainDiv {
-    position: relative;
-    margin-bottom: 7vh;
-}
-
-.proImgInstructDiv {
-    display: flex;
-    justify-content: center;
-}
-
-/* Acadamic Section */
-.radioBtnSpan {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 0.75rem;
-    text-transform: capitalize;
-    color: var(--black);
-}
-
-.acaMainDiv {
-    width: 55%;
-    margin: auto;
-}
-
-input.validate.formInput {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 0.9rem;
-}
-
-.spaceAround {
-    display: flex;
-    justify-content: space-around;
-}
-
-.schQuesP {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0.5);
-}
-
-.schQuesP1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    color: #1E1E1E;
-}
-
-input.validate.formInput1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 0.9rem;
-    height: 1rem;
-}
-
-.input-field.col.formInput1ColDiv {
-    margin-top: 0.5vh;
-}
-
-/* Internship Section */
-.radioBtnMainDiv {
-    width: 80%;
-    margin: auto;
-}
-
-/* Service Section */
-.serviceSuccessTxt {
-    color: #078523;
-}
-
-button.goLiveFreeBtn {
-    background-color: var(--primary);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    padding: 3vh 4vw 8vh 4vw;
-    line-height: 2.9vh;
-}
-
-button.goLiveProBtn {
-    background-color: #C2A300 !important;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    padding: 3vh 4vw 8vh 4vw;
-    line-height: 2.9vh;
-}
-
-div.row.serviceBtnRowDiv {
-    margin-top: 8vh;
-}
-
-ul {
-    width: 85%;
-    margin: 2.5vh auto 0 auto;
-}
-
-ul>li {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 0.8rem;
-}
-
-/* ul:not(.browser-default)>li {
-    list-style-type: disc;
-} */
-
-
-
-[type="radio"].with-gap:checked+span:after {
-    background-color: var(--primary);
-}
-
-[type="radio"]:not(:checked)+span:before,
-[type="radio"]:not(:checked)+span:after,
-[type="radio"].with-gap:checked+span:after,
-[type="radio"]:checked+span:after,
-[type="radio"].with-gap:checked+span:before,
-[type="radio"].with-gap:checked+span:after {
-    border: 2px solid var(--primary);
-}
-
-/* Changed the height from 22vh to 22.5vh */
-.primaryColorDocsImgLarge {
-    height: 26vh;
-    position: absolute;
-    top: 9.1vh;
-    left: 4vw;
-}
-
-a.proImgSelectFile {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
-    text-decoration: underline;
-    color: #D44141;
-    position: relative;
-    bottom: 1vh;
-}
-/*.proInputFileUpladIcon {*/
-/*    position: relative;*/
-/*    top: 0.6vh;*/
-/*    color: #9e9c9f;*/
-/*}*/
-.proImgInstructDiv {
-    display: flex;
-    justify-content: center;
-}
-.proImgInstruct {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 0.8rem;
-    color: var(--black);
-    text-align: center;
-    position: absolute;
-    top: 5vh;
-    margin-top: 0;
-}
-
-
-
-/* Media Query for Medium Devices */
-@media screen and (max-width: 992px) and (min-width: 640px) {
-    .noPaddingLeftMd {
-        padding-left: 0 !important;
+@media only screen and (max-width: 767px) {
+    .logo {
+        width: 93px;
+        height: 56px;
     }
-    .noPaddingRightMd {
-        padding-right: 0 !important;
-    }
-    .websiteClaimContainer {
-        background-color: var(--pri);
-        padding: 3vh 4vw 0 0;
-        height: 48vh;
-    }
-    .fullWidthMd {
-        width: 100%;
-    }
-    .contentDiv {
-        background: var(--white);
-        width: 100%;
-        height: 64vh;
-        position: absolute;
-        top: 35.1vh;
-        padding-top: 9vh;
-    }
-    .headerDiv {
-        display: flex;
+    .sm-flex-col {
         flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-end;
     }
-    .headerTitle {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        font-size: 1.8rem;
-        text-align: right;
-        text-transform: uppercase;
-        color: var(--white);
-        width: 60%;
-        margin: 0;
+    .sm-mt-4 {
+        margin-top: 3vh;
     }
-    .contentTitle {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        font-size: 1.1rem;
-        line-height: 24px;
-        text-align: center;
-        text-transform: capitalize;
-        color: var(--black);
-    }
-    a.btn.getStartedBtn {
-        background-color: var(--primary);
-        border-radius: 6px;
-        font-family: 'Montserrat', sans-serif;
-
-    }
-    .getStartedBtnDiv {
-        display: flex;
-        justify-content: center;
-        margin-top: 5vh;
-    }
-    .col .row {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    form.mainForm {
-        display: flex;
-        justify-content: center;
-    }
-    .formInnerDiv {
-        display: flex;
-    }
-    .formContainDiv {
-        width: 90%;
-    }
-    input[type=text]:not(.browser-default) {
-        border-bottom: 2.5px solid var(--primary);
-        font-family: 'Montserrat', sans-serif;
-        font-weight: lighter;
-    }
-    .skipDiv {
-        display: flex;
-        justify-content: end;
-        margin-right: 4vw;
-    }
-    .skipTxt {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        text-decoration: underline;
-        text-transform: uppercase;
-        margin: 0 2vw;
-        position: relative;
-        top: 0.5vh;
-    }
-    /* .skipBtnIcon {
-        border: 2px solid var(--primary);
-        border-radius: 50px;
-        color: var(--primary);
+    /* .sm-flex-start {
+        justify-content: flex-start !important;
     } */
-    button.skipBtn {
-        padding: 0 0.2vw;
-        border-radius: 50px;
-        background-color: transparent;
+    input[type="text"],
+    select,
+    .mx-input {
+        height: 55px !important;
     }
-    .unAvailTitle {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        color: #D44141;
-        margin: 5vh 0 0 4vw;
-    }
-    .unAvailTxt {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.7rem;
-        margin: 0;
-    }
-    .primaryTxt {
-        text-align: center;
-        color: var(--primary);
-        font-family: 'Montserrat', sans-serif;
-    }
-    table {
-        width: 95%;
-    }
-    table tr {
-        border: 1px solid #D9D9D9;
-    }
-    table tr td {
-        padding: 0.5rem 1rem;
-    }
-    .domainTdName {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-        color: var(--black);
-    }
-    .domainTdState {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-        color: #078523;
-        text-align: right;
-    }
-    .domainSelectP {
-        margin: 0.5vh 0 0 0;
-    }
-    .domianMainDiv {
-        margin-bottom: 1vh;
-    }
-    .proImgDiv {
-        width: 38%;
-        height: 35vh;
-        border: 9px solid #d9d9d9;
-        margin: auto;
-    }
-    .proImg {
-        width: 100%;
-        height: 100%;
-    }
-    .proImgBtnContainDiv {
-        display: flex;
-        justify-content: space-between;
-        width: 35.5%;
-        margin: 2vh auto;
-    }
-    .file-path.validate.proImgInput {
-        width: 20%;
-        border-bottom-color: #D44141;
-        float: right;
-        height: 1.7vh;
-    }
-    .file-path.validate.proImgInput::placeholder {
-        color: #D44141;
-    }
-    .proImgYesBtn {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        text-decoration: underline;
-        color: var(--black);
-    }
-    .proImgInputDiv {
-        position: relative;
-        top: -1.7vh;
-    }
-    .proInputFileUpladIcon {
-        position: relative;
-        top: -1.9vh;
-        color: #9e9c9f;
-    }
-    .proImgInstruct {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 8px;
-        color: var(--black);
-        text-align: center;
-        position: absolute;
-        top: 7vh;
-        margin-top: 0;
-    }
-    .proImgBtnMainDiv {
-        position: relative;
-        margin-bottom: 0vh;
-    }
-    .proImgInstructDiv {
-        display: flex;
-        justify-content: center;
-    }
-
-    /* Acadamic Section */
-    .radioBtnSpan {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 500;
-        font-size: 0.75rem;
-        text-transform: capitalize;
-        color: var(--black);
-    }
-    .acaMainDiv {
-        width: 55%;
-        margin: auto;
-    }
-    input.validate.formInput {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-    }
-    .spaceAround {
-        display: flex;
-        justify-content: space-around;
-    }
-    .schQuesP {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 12px;
-        color: rgba(0, 0, 0, 0.5);
-    }
-    .schQuesP1 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 12px;
-        color: #1E1E1E;
-    }
-    input.validate.formInput1 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-        height: 1rem;
-    }
-    .input-field.col.formInput1ColDiv {
-        margin-top: 0.5vh;
-    }
-
-    /* Internship Section */
-    .radioBtnMainDiv {
-        width: 80%;
-        margin: auto;
-    }
-
-    /* Service Section */
-    .serviceSuccessTxt {
-        color: #078523;
-    }
-    button.goLiveFreeBtn {
-        background-color: var(--primary);
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        padding: 3vh 8vw 8vh 8vw;
-        line-height: 2.9vh;
-    }
-    button.goLiveProBtn {
-        background-color: #C2A300;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        padding: 3vh 8vw 8vh 8vw;
-        line-height: 2.9vh;
-    }
-    div.row.serviceBtnRowDiv {
-        margin-top: 8vh;
-    }
-    ul {
+    .formContainer {
+        padding: 24px 6px;
         width: 85%;
-        margin: 2.5vh auto 0 auto;
+        height: 95%;
     }
-    ul>li {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        font-size: 0.8rem;
+    .sm-mt-1 {
+        margin-top: 1vh;
     }
-    ul:not(.browser-default)>li {
-        list-style-type: none;
-    }
-
-
-
-    [type="radio"].with-gap:checked+span:after {
-        background-color: var(--primary);
-    }
-
-    [type="radio"]:not(:checked)+span:before,
-    [type="radio"]:not(:checked)+span:after,
-    [type="radio"].with-gap:checked+span:after,
-    [type="radio"]:checked+span:after,
-    [type="radio"].with-gap:checked+span:before,
-    [type="radio"].with-gap:checked+span:after {
-        border: 2px solid var(--primary);
-    }
-
-    /* Changed the height from 22vh to 22.5vh */
-    .primaryColorDocsImg {
-        height: 22.5vh;
-        position: absolute;
-        top: 13vh;
-    }
-    .contentInnerDiv {
-        width: 80%;
-        margin: auto;
-    }
-    .wcdMobileLogo {
-        width: 10vw;
-    }
-    a.proImgSelectFile {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        text-decoration: underline;
-        color: #D44141;
-        position: relative;
-        bottom: 1vh;
-    }
-    .proInputFileUpladIcon {
-        position: relative;
-        top: -2vh;
-        color: #9e9c9f;
-    }
-    .proImgInstructDiv {
-        display: flex;
-        justify-content: center;
-    }
-    .proImgInstruct {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-        color: var(--black);
-        text-align: center;
-        position: absolute;
-        top: 5vh;
-        margin-top: 0;
-    }
-}
-
-/* Media Query for Small Devices */
-@media screen and (max-width: 640px) {
-    .noPaddingLeftMd {
-        padding-left: 0 !important;
-    }
-    .noPaddingRightMd {
-        padding-right: 0 !important;
-    }
-    .noMarginLeft.marginLeftSm {
-
-    }
-    
-    .noPaddingLeft.paddingLeftSM, h4, .noPaddingLeftMd.paddingLeftSM {
-        padding-left: 0.75rem !important;
-    }
-    .fullWidthMd {
-        width: 100%;
-    }
-    .websiteClaimContainer {
-        background-color: var(--pri);
-        padding: 3vh 4vw 0 0;
-        height: 48vh;
-    }
-    .contentDiv {
-        background: var(--white);
-        width: 100%;
-        height: 64vh;
-        position: absolute;
-        top: 35.1vh;
-        padding-top: 5vh;
-    }
-    .contentInnerDiv .intro {
-        height: 40vh;
-    }
-    .headerDiv {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-end;
-    }
-    .headerTitle {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        font-size: 1.3rem;
-        text-align: right;
-        text-transform: uppercase;
-        color: var(--white);
-        width: 80%;
-        margin: 0;
-    }
-    .contentTitle {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        font-size: 1.1rem;
-        line-height: 24px;
-        text-align: center;
-        text-transform: capitalize;
-        color: var(--black);
-    }
-    a.btn.getStartedBtn {
-        background-color: var(--primary);
-        border-radius: 6px;
-        font-family: 'Montserrat', sans-serif;
-
-    }
-    .getStartedBtnDiv {
-        display: flex;
-        justify-content: center;
-        margin-top: 5vh;
-    }
-    .col .row {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .horizontal-2 {
-        padding: 0 2vw !important;
-    }
-    form.mainForm {
-        display: flex;
-        justify-content: center;
-    }
-    .formInnerDiv {
-        display: block;
-        /* width: 90%; */
-    }
-    .formContainDiv {
-        width: 90%;
-    }
-    input[type=text]:not(.browser-default) {
-        border-bottom: 2.5px solid var(--primary);
-        font-family: 'Montserrat', sans-serif;
-        font-weight: lighter;
-    }
-    .skipDiv {
-        display: flex;
-        justify-content: end;
-        margin-right: 4vw;
-    }
-    .skipTxt {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        text-decoration: underline;
-        text-transform: uppercase;
-        margin: 0 2vw;
-        position: relative;
-        top: 0.5vh;
-    }
-    /* .skipBtnIcon {
-        border: 2px solid var(--primary);
-        border-radius: 50px;
-        color: var(--primary);
-    } */
-    button.skipBtn {
-        /* padding: 0 0.5vw;
-        border-radius: 50px;
-        background-color: transparent; */
-    }
-    .unAvailTitle {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        color: #D44141;
-        margin: 5vh 0 0 4vw;
-    }
-    .unAvailTxt {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.7rem;
-        margin: 0;
-    }
-    .primaryTxt {
-        text-align: center;
-        color: var(--primary);
-        font-family: 'Montserrat', sans-serif;
-    }
-    table {
-        width: 95%;
-    }
-    table tr {
-        border: 1px solid #D9D9D9;
-    }
-    table tr td {
-        padding: 0.5rem 1rem;
-    }
-    .domainTdName {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-        color: var(--black);
-    }
-    .domainTdState {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-        color: #078523;
-        text-align: right;
-    }
-    .domainSelectP {
-        margin: 0.5vh 0 0 0;
-    }
-    .domianMainDiv {
+    .sm-mb-1 {
         margin-bottom: 1vh;
     }
-    .proImgDiv {
-        width: 50%;
-        height: 30vh;
-        border: 9px solid #d9d9d9;
-        margin: auto;
+    .row {
+        margin-bottom: 1vh;
     }
-    .proImg {
-        width: 100%;
-        height: 100%;
+    label {
+        font-size: 0.875rem;
     }
-    .proImgBtnContainDiv {
-        display: flex;
-        justify-content: center;
-        /* width: 50%;
-        margin: 2vh auto 0 auto; */
+    .mx-input-wrapper {
+        width: 12vw;
     }
-    .file-path.validate.proImgInput {
-        width: 20%;
-        border-bottom-color: #D44141;
-        float: right;
-        height: 1.7vh;
-    }
-    .file-path.validate.proImgInput::placeholder {
-        color: #D44141;
-    }
-    .proImgYesBtn {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        text-decoration: underline;
-        color: var(--black);
-    }
-    .proImgInputDiv {
-        position: relative;
-        top: -1.7vh;
-    }
-    .proInputFileUpladIcon {
-        position: relative;
-        top: -1.9vh;
-        color: #9e9c9f;
-    }
-    .proImgInstruct {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 8px;
-        color: var(--black);
-        text-align: center;
+    .mx-datepicker svg {
         position: absolute;
-        top: 7vh;
-        margin-top: 0;
+        top: 0;
+        transform: translate(0, -50%);
     }
-    .proImgBtnMainDiv {
-        position: relative;
-        margin-bottom: 4vh;
+    .grid {
+        display: grid;
+        grid-template-columns: auto auto;
     }
-    .proImgInstructDiv {
-        display: flex;
-        justify-content: center;
-    }
-
-    /* Acadamic Section */
-    .radioBtnSpan {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 500;
-        font-size: 0.75rem;
-        text-transform: capitalize;
-        color: var(--black);
-    }
-    .acaMainDiv {
-        width: 96%;
-        margin: auto;
-    }
-    input.validate.formInput {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-        /* height: 3vh; */
-    }
-    .spaceAround {
-        display: flex;
-        justify-content: space-around;
-    }
-    .schQuesP {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 12px;
-        color: rgba(0, 0, 0, 0.5);
-    }
-    .schQuesP1 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 12px;
-        color: #1E1E1E;
-    }
-    input.validate.formInput1 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-        height: 1rem;
-    }
-    .input-field.col.formInput1ColDiv {
-        margin-top: 0.5vh;
-    }
-
-    /* Internship Section */
-    .radioBtnMainDiv {
-        width: 80%;
-        margin: auto;
-    }
-
-    /* Service Section */
-    .serviceSuccessTxt {
-        color: #078523;
-    }
-    button.goLiveFreeBtn {
-        background-color: var(--primary);
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        padding: 3vh 8vw 8vh 8vw;
-        line-height: 2.9vh;
-    }
-    button.goLiveProBtn {
-        background-color: #C2A300;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        padding: 3vh 8vw 8vh 8vw;
-        line-height: 2.9vh;
-    }
-    div.row.serviceBtnRowDiv {
-        margin-top: 8vh;
-    }
-    ul {
-        width: 90%;
-        margin: 2.5vh auto 0 auto;
-    }
-    ul>li {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        font-size: 0.8rem;
-        text-align: center;
-    }
-    ul:not(.browser-default)>li {
-        list-style-type: disc;
-    }
-
-
-    [type="radio"].with-gap:checked+span:after {
-        background-color: var(--primary);
-    }
-
-    [type="radio"]:not(:checked)+span:before,
-    [type="radio"]:not(:checked)+span:after,
-    [type="radio"].with-gap:checked+span:after,
-    [type="radio"]:checked+span:after,
-    [type="radio"].with-gap:checked+span:before,
-    [type="radio"].with-gap:checked+span:after {
-        border: 2px solid var(--primary);
-    }
-
-    /* Added this here */
-    .primaryColorDocsImg {
-        height: 19.5vh;
-    }
-    .contentInnerDiv {
-        width: 100%;
-        margin: 0;
-        /* margin-top: 7.5vh; */
-    }
-    a.proImgSelectFile {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 1rem;
-        text-decoration: underline;
-        color: #D44141;
-        position: relative;
-        bottom: 1vh;
-    }
-    .proInputFileUpladIcon {
-        position: relative;
-        top: -10px;
-        color: #9e9c9f;
-    }
-    .proImgInstructDiv {
-        display: flex;
-        justify-content: center;
-    }
-    .proImgInstruct {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 0.9rem;
-        color: var(--black);
-        text-align: center;
-        position: absolute;
-        top: 5vh;
-        margin-top: 0;
-    }
-
-    .mx-icon-calendar {
-        display: none;
+    .pills {
+        font-size: .875rem;
     }
 }
-@media screen
-and (min-device-width: 1200px)
-and (max-device-width: 1600px)
-and (-webkit-min-device-pixel-ratio: 1) {
-    #modal1 {
-        width: 10%;
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .item:last-child {
+        background-image: url('/media/img/backgroundImg/loginBackgroundMd.png');
+        background-size: cover;
+        background-repeat: no-repeat;
     }
+    .formContainer {
+        width: 70%;
+    }
+    .mx-datepicker {
+        width: 100% !important;
+    }
+    .mx-input-wrapper {
+        width: 87px;
+    }
+    .logo {
+        width: 300px;
+        height: 182px;
+    }
+    #medSchool h4 {
+        margin-top: 1vh;
+    }
+    .row {
+        margin-bottom: 1vh;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    h4.sectionTitle {
+        margin-top: 0vh;
+    }
+    .mx-input-wrapper {
+        width: 5.5vw;
+    }
+}
+
+
+
+
+.domianMainDiv .row {
+    margin-bottom: 0vh;
 }
