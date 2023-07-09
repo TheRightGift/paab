@@ -44,9 +44,16 @@ app.component('temp-password-change-component', defineAsyncComponent(() => impor
 app.component('admin-template-component', defineAsyncComponent(() => import('./components/admin/Template')));
 app.component('admin-settings-component', defineAsyncComponent(() => import('./components/admin/Settings')));
 // app.component('admin-singlemsg-component', defineAsyncComponent(() => import('./components/admin/SingleMsg')));
+const templateProp = document.getElementById('app').getAttribute('data-template-prop');
+let folderProp = document.getElementById('app').getAttribute('data-folder-prop');
+const trimmed = folderProp.replace(/\s+/g, '');
+app.component(`physician-${templateProp}-website-component`, defineAsyncComponent(() => import(`@/components/templates/Physicians/${trimmed}/MainTemplateComponent`)));
+app.component(`physician-${templateProp}-website-setings`, defineAsyncComponent(() => import(`./components/templates/Physicians/${trimmed}/Settings/SettingsComponent`)));
 
-app.component('physician-website-component', defineAsyncComponent(() => import('./components/templates/Physicians/MainTemplateComponent')));
-app.component('physician-website-settings', defineAsyncComponent(() => import('./components/templates/Physicians/Settings/SettingsComponent')));
+// app.component('physician-2-website-component', defineAsyncComponent(() => import('./components/templates/Physicians/naturegreen/MainTemplateComponent')));
+// app.component('physician-2-website-settings', defineAsyncComponent(() => import('./components/templates/Physicians/naturegreen/Settings/SettingsComponent')));
+
+app.component("password-change-component", defineAsyncComponent(() => import('./components/templates/Physicians/livelypurple/Settings/tempSettings/PasswordChange.vue')));
 
 app.component('mail-component', defineAsyncComponent(() => import('./components/shared/Messages')));
 
