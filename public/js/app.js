@@ -20915,17 +20915,6 @@ app.component('admin-settings-component', (0,vue__WEBPACK_IMPORTED_MODULE_1__.de
   return __webpack_require__.e(/*! import() */ "resources_js_components_admin_Settings_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/admin/Settings */ "./resources/js/components/admin/Settings.vue"));
 }));
 // app.component('admin-singlemsg-component', defineAsyncComponent(() => import('./components/admin/SingleMsg')));
-<<<<<<< Updated upstream
-
-app.component('physician-website-component', (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_templates_Physicians_MainTemplateComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/templates/Physicians/MainTemplateComponent */ "./resources/js/components/templates/Physicians/MainTemplateComponent.vue"));
-}));
-app.component('physician-website-settings', (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_templates_Physicians_Settings_SettingsComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/templates/Physicians/Settings/SettingsComponent */ "./resources/js/components/templates/Physicians/Settings/SettingsComponent.vue"));
-}));
-app.component('mail-component', (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_shared_Messages_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/shared/Messages */ "./resources/js/components/shared/Messages.vue"));
-=======
 var templateProp = document.getElementById('app').getAttribute('data-template-prop');
 var folderProp = document.getElementById('app').getAttribute('data-folder-prop');
 var trimmed = folderProp.replace(/\s+/g, '');
@@ -20934,15 +20923,16 @@ app.component("physician-".concat(templateProp, "-website-component"), (0,vue__W
 }));
 app.component("physician-".concat(templateProp, "-website-setings"), (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
   return __webpack_require__("./resources/js/components/templates/Physicians lazy recursive ^\\.\\/.*\\/Settings\\/SettingsComponent$")("./".concat(trimmed, "/Settings/SettingsComponent"));
->>>>>>> Stashed changes
 }));
 
 // app.component('physician-2-website-component', defineAsyncComponent(() => import('./components/templates/Physicians/naturegreen/MainTemplateComponent')));
 // app.component('physician-2-website-settings', defineAsyncComponent(() => import('./components/templates/Physicians/naturegreen/Settings/SettingsComponent')));
 
-app.component("password-change-component", (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_templates_Physicians_Settings_tempSettings_PasswordChange_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/templates/Physicians/Settings/tempSettings/PasswordChange.vue */ "./resources/js/components/templates/Physicians/Settings/tempSettings/PasswordChange.vue"));
+app.component('mail-component', (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_shared_Messages_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/shared/Messages */ "./resources/js/components/shared/Messages.vue"));
 }));
+
+// app.component("password-change-component", defineAsyncComponent(() => import('./components/templates/Physicians/Settings/tempSettings/PasswordChange.vue')));
 // Developer
 app.component("dev-signup-component", (0,vue__WEBPACK_IMPORTED_MODULE_1__.defineAsyncComponent)(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_developers_Signup_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/developers/Signup.vue */ "./resources/js/components/developers/Signup.vue"));
@@ -45808,17 +45798,13 @@ function compileToFunction(template, options) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
-	"./livelypurple/MainTemplateComponent": [
-		"./resources/js/components/templates/Physicians/livelypurple/MainTemplateComponent.vue",
-		"resources_js_components_templates_Physicians_livelypurple_MainTemplateComponent_vue"
+	"./gyna/MainTemplateComponent": [
+		"./resources/js/components/templates/Physicians/gyna/MainTemplateComponent.vue",
+		"resources_js_components_templates_Physicians_gyna_MainTemplateComponent_vue"
 	],
-	"./naturegreen/MainTemplateComponent": [
-		"./resources/js/components/templates/Physicians/naturegreen/MainTemplateComponent.vue",
-		"resources_js_components_templates_Physicians_naturegreen_MainTemplateComponent_vue"
-	],
-	"./seablued/MainTemplateComponent": [
-		"./resources/js/components/templates/Physicians/seablued/MainTemplateComponent.vue",
-		"resources_js_components_templates_Physicians_seablued_MainTemplateComponent_vue"
+	"./pediatrics/MainTemplateComponent": [
+		"./resources/js/components/templates/Physicians/pediatrics/MainTemplateComponent.vue",
+		"resources_js_components_templates_Physicians_pediatrics_MainTemplateComponent_vue"
 	]
 };
 function webpackAsyncContext(req) {
@@ -45848,17 +45834,13 @@ module.exports = webpackAsyncContext;
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
-	"./livelypurple/Settings/SettingsComponent": [
-		"./resources/js/components/templates/Physicians/livelypurple/Settings/SettingsComponent.vue",
-		"resources_js_components_templates_Physicians_livelypurple_Settings_SettingsComponent_vue"
+	"./gyna/Settings/SettingsComponent": [
+		"./resources/js/components/templates/Physicians/gyna/Settings/SettingsComponent.vue",
+		"resources_js_components_templates_Physicians_gyna_Settings_SettingsComponent_vue"
 	],
-	"./naturegreen/Settings/SettingsComponent": [
-		"./resources/js/components/templates/Physicians/naturegreen/Settings/SettingsComponent.vue",
-		"resources_js_components_templates_Physicians_naturegreen_Settings_SettingsComponent_vue"
-	],
-	"./seablued/Settings/SettingsComponent": [
-		"./resources/js/components/templates/Physicians/seablued/Settings/SettingsComponent.vue",
-		"resources_js_components_templates_Physicians_seablued_Settings_SettingsComponent_vue"
+	"./pediatrics/Settings/SettingsComponent": [
+		"./resources/js/components/templates/Physicians/pediatrics/Settings/SettingsComponent.vue",
+		"resources_js_components_templates_Physicians_pediatrics_Settings_SettingsComponent_vue"
 	]
 };
 function webpackAsyncContext(req) {
@@ -49888,11 +49870,7 @@ const toJSONObject = (obj) => {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-<<<<<<< Updated upstream
-/******/ 			if ({"resources_js_components_HomeComponent_vue":1,"resources_js_components_auth_LoginComponent_vue":1,"resources_js_components_auth_ResetPasswordComponent_vue":1,"resources_js_components_auth_StartedComponent_vue":1,"resources_js_components_TemplateComponent_vue":1,"resources_js_components_client_Dashboard_vue":1,"resources_js_components_client_WebsitesComponent_vue":1,"resources_js_components_client_Settings_vue":1,"resources_js_components_client_SupportComponent_vue":1,"resources_js_components_client_SinglemailComponent_vue":1,"resources_js_components_super_Dashboard_vue":1,"resources_js_components_super_AdminsComponent_vue":1,"resources_js_components_super_Template_vue":1,"resources_js_components_super_MailComponent_vue":1,"resources_js_components_super_SinglemailComponent_vue":1,"resources_js_components_super_SettingsComponent_vue":1,"resources_js_components_super_ClientComponent_vue":1,"resources_js_components_admin_Dashboard_vue":1,"resources_js_components_admin_Client_vue":1,"resources_js_components_shared_TempPasswordChange_vue":1,"resources_js_components_admin_Template_vue":1,"resources_js_components_admin_Settings_vue":1,"resources_js_components_templates_Physicians_MainTemplateComponent_vue":1,"resources_js_components_templates_Physicians_Settings_SettingsComponent_vue":1,"resources_js_components_shared_Messages_vue":1,"resources_js_components_templates_Physicians_Settings_tempSettings_PasswordChange_vue":1,"resources_js_components_developers_Signup_vue":1,"resources_js_components_shared_Developer_vue":1,"resources_js_components_developers_Dashboard_vue":1,"resources_js_components_developers_Project_vue":1}[chunkId]) return "js/" + chunkId + ".js";
-=======
-/******/ 			if ({"resources_js_components_HomeComponent_vue":1,"resources_js_components_auth_LoginComponent_vue":1,"resources_js_components_auth_ResetPasswordComponent_vue":1,"resources_js_components_auth_StartedComponent_vue":1,"resources_js_components_TemplateComponent_vue":1,"resources_js_components_client_Dashboard_vue":1,"resources_js_components_client_WebsitesComponent_vue":1,"resources_js_components_client_Settings_vue":1,"resources_js_components_client_SupportComponent_vue":1,"resources_js_components_client_SinglemailComponent_vue":1,"resources_js_components_super_Dashboard_vue":1,"resources_js_components_super_AdminsComponent_vue":1,"resources_js_components_super_Template_vue":1,"resources_js_components_super_MailComponent_vue":1,"resources_js_components_super_SinglemailComponent_vue":1,"resources_js_components_super_SettingsComponent_vue":1,"resources_js_components_super_ClientComponent_vue":1,"resources_js_components_admin_Dashboard_vue":1,"resources_js_components_admin_Client_vue":1,"resources_js_components_shared_TempPasswordChange_vue":1,"resources_js_components_admin_Template_vue":1,"resources_js_components_admin_Settings_vue":1,"resources_js_components_templates_Physicians_livelypurple_Settings_tempSettings_PasswordChange_vue":1,"resources_js_components_shared_Messages_vue":1,"resources_js_components_templates_Physicians_livelypurple_MainTemplateComponent_vue":1,"resources_js_components_templates_Physicians_naturegreen_MainTemplateComponent_vue":1,"resources_js_components_templates_Physicians_seablued_MainTemplateComponent_vue":1,"resources_js_components_templates_Physicians_livelypurple_Settings_SettingsComponent_vue":1,"resources_js_components_templates_Physicians_naturegreen_Settings_SettingsComponent_vue":1,"resources_js_components_templates_Physicians_seablued_Settings_SettingsComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
->>>>>>> Stashed changes
+/******/ 			if ({"resources_js_components_HomeComponent_vue":1,"resources_js_components_auth_LoginComponent_vue":1,"resources_js_components_auth_ResetPasswordComponent_vue":1,"resources_js_components_auth_StartedComponent_vue":1,"resources_js_components_TemplateComponent_vue":1,"resources_js_components_client_Dashboard_vue":1,"resources_js_components_client_WebsitesComponent_vue":1,"resources_js_components_client_Settings_vue":1,"resources_js_components_client_SupportComponent_vue":1,"resources_js_components_client_SinglemailComponent_vue":1,"resources_js_components_super_Dashboard_vue":1,"resources_js_components_super_AdminsComponent_vue":1,"resources_js_components_super_Template_vue":1,"resources_js_components_super_MailComponent_vue":1,"resources_js_components_super_SinglemailComponent_vue":1,"resources_js_components_super_SettingsComponent_vue":1,"resources_js_components_super_ClientComponent_vue":1,"resources_js_components_admin_Dashboard_vue":1,"resources_js_components_admin_Client_vue":1,"resources_js_components_shared_TempPasswordChange_vue":1,"resources_js_components_admin_Template_vue":1,"resources_js_components_admin_Settings_vue":1,"resources_js_components_shared_Messages_vue":1,"resources_js_components_developers_Signup_vue":1,"resources_js_components_shared_Developer_vue":1,"resources_js_components_developers_Dashboard_vue":1,"resources_js_components_developers_Project_vue":1,"resources_js_components_templates_Physicians_gyna_MainTemplateComponent_vue":1,"resources_js_components_templates_Physicians_pediatrics_MainTemplateComponent_vue":1,"resources_js_components_templates_Physicians_gyna_Settings_SettingsComponent_vue":1,"resources_js_components_templates_Physicians_pediatrics_Settings_SettingsComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

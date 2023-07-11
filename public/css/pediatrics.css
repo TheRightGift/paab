@@ -1,0 +1,422 @@
+:root {
+    --primary: rgba(132, 71, 209, 1);
+    --secondary: rgba(69, 25, 126, 1);
+}
+body,
+html {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+.relative {
+    position: relative;
+}
+.flex {
+    display: flex;
+}
+.flex-col {
+    flex-direction: column;
+}
+.justify-center {
+    justify-content: center;
+}
+.align-center {
+    align-items: center;
+}
+.justify-between {
+    justify-content: space-between;
+}
+.custom-nav {
+    height: 104px;
+    background: white;
+    box-shadow: 0px 5px 80px rgba(0, 0, 0, 0.1);
+}
+.headerTitle {
+    color: var(--secondary);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 36px;
+    word-wrap: break-word;
+}
+nav ul li a {
+    color: var(--secondary);
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 30px;
+    word-wrap: break-word;
+}
+nav ul a:hover {
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.custom-btn {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    width: 200px;
+    height: 54px;
+    background: var(--primary);
+    box-shadow: 0px 4px 19px rgba(34.67, 105.72, 189.13, 0.73);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-btn:hover {
+    text-decoration: none;
+    background: rgba(25, 66, 114, 1);
+}
+
+.about {
+    padding: 24px 0;
+    background: rgba(235, 244, 255, 1);
+}
+.profileImage {
+    background-image: url("/media/img/templates/2/profileImageBg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 162px;
+    height: 187px;
+}
+.profileImage img {
+    width: 100%;
+    height: 90%;
+}
+.p-10 {
+    padding-top: 10%;
+}
+.profile {
+    color: rgba(28, 30, 83, 1);
+}
+.introductory {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+}
+.introductory span {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 60px;
+    letter-spacing: 0em;
+    color: var(--primary);
+    display: block;
+}
+.introduction {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 36px;
+    margin-bottom: 10dvh;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    width: 946px;
+}
+.btnCustom {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 1);
+}
+.downloadCv {
+    width: 222px;
+    height: 54px;
+    border-radius: 10px;
+    background-color: var(--primary);
+    box-shadow: 0px 4px 19px 0px rgba(35, 106, 189, 0.73);
+}
+.downloadCv i {
+    padding-right: 1dvw;
+}
+.downloadCv:hover {
+    background-color: var(--secondary);
+}
+.callMe {
+    width: 149px;
+    background: rgba(25, 66, 114, 1);
+    box-shadow: 0px 4px 19px 0px rgba(35, 106, 189, 0.73);
+    border-radius: 10px;
+    margin-left: 2vw;
+}
+.callMe:hover {
+    background-color: var(--primary);
+}
+#services .container {
+    width: 95%;
+}
+#services {
+    height: 170dvh;
+}
+.serviceContainer {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.rotate180 {
+    transform: rotate(180deg);
+}
+.img1 {
+    position: absolute;
+    top: 2%;
+    right: 5%;
+}
+.img2 {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+}
+.img3 {
+    position: absolute;
+    top: 32%;
+    left: 43%;
+}
+.img4 {
+    position: absolute;
+    top: 45%;
+}
+.img5 {
+    position: absolute;
+    top: 62%;
+    left: 28%;
+}
+.img6 {
+    position: absolute;
+    top: 70%;
+    right: 3%;
+}
+.img7 {
+    position: absolute;
+    top: 85%;
+}
+#services .heading {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 46px;
+    color: var(--primary);
+}
+#services .sectionDescription {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 64px;
+    color: var(--primary);
+}
+.servDescImgContainer {
+    width: 60px;
+    height: 60px;
+    border-radius: 9999px;
+    background: rgba(251, 251, 251, 1);
+    box-shadow: 0px 15px 44px 0px rgba(13, 15, 28, 0.12);
+}
+.servDescription {
+    width: 443px;
+    font-size: 1.375rem;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0.02em;
+    color: rgba(105, 105, 132, 1);
+    margin-left: 3dvw;
+}
+#miniBlog {
+    background: rgba(132, 71, 209, 0.19);
+}
+.heading {
+    font-family: "DM Sans", sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 46px;
+    color: var(--primary);
+}
+.blogImage {
+    width: 560px;
+    height: 420px;
+    position: relative;
+}
+.blogImage img {
+    width: 100%;
+    height: 100%;
+}
+.blogTitleBody {
+    width: 549px;
+    margin-left: 5dvw;
+}
+.blogTitle {
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 40px;
+}
+.blogUploader {
+    width: 40px;
+    height: 40px !important;
+}
+.uploadDate,
+.shareHandle {
+    color: rgba(108, 117, 125, 1);
+}
+.blogBody {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 30px;
+    color: rgba(108, 117, 125, 1);
+}
+.fa-share-nodes {
+    font-size: 1.3rem;
+    color: rgba(108, 117, 125, 1);
+}
+.dash {
+    width: 36px;
+    height: 1px;
+    border: 1px solid rgba(108, 117, 125, 1);
+}
+.titleUploader {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 40px;
+    margin: 0;
+}
+.videoTitleNPlay {
+    width: 90%;
+    height: 40px;
+    position: absolute;
+    left: 5%;
+    top: 5%;
+}
+.videoTitleNPlay .title {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+.playerIcon {
+    width: 42px;
+    height: 42px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 200px;
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+}
+.contact.section {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.bg {
+    background-image: url("/media/img/templates/2/consultBG.png");
+    background-position: center;
+    background-size: cover;
+    background-color: black;
+}
+.consultHead {
+    font-family: "Work Sans", sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 42px;
+}
+.oneCallAway {
+    font-family: "Work Sans", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 28px;
+}
+.oneCallAway a {
+    text-decoration: underline;
+}
+.oneCallAway a:hover {
+    text-decoration: none;
+}
+.consult {
+    width: 232px;
+    height: 53px;
+    border-radius: 2px;
+    border: 1px white solid;
+    color: white;
+    font-size: 18px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+.px-5 {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+.contactBg {
+    background-image: url("/media/img/templates/2/serviBG.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.booking {
+    width: 407px;
+    height: 163px;
+}
+form label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 32px;
+    color: rgba(20, 24, 62, 1);
+}
+input::placeholder,
+textarea::placeholder {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0em;
+    color: rgba(116, 117, 130, 1);
+}
+.custom-input input,
+.custom-input textarea {
+    width: 100%;
+    height: 58px;
+    padding: 16px 20px 16px 30px;
+    background-color: rgba(132, 71, 209, 0.14);
+    outline: none;
+    border: none;
+}
+.custom-input i {
+    position: absolute;
+    transform: translate(100%, 100%);
+}
+.custom-input textarea {
+    height: 128px;
+}
+/* Hide the default date picker */
+::-webkit-calendar-picker-indicator {
+    background-image: url("/media/img/templates/2/calendar.png");
+}
+.date-input {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.ml-5 {
+    margin-left: 5%;
+}
+.mb-5 {
+    margin-bottom: 5dvh;
+}
+.bgFooter {
+    background: rgba(132, 71, 209, 1);
+    height: 117px;
+}
+@media only screen and (min-width: 1024px) {
+    .container {
+        width: 85%;
+    }
+}

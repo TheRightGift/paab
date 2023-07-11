@@ -53,11 +53,9 @@ app.component(`physician-${templateProp}-website-setings`, defineAsyncComponent(
 // app.component('physician-2-website-component', defineAsyncComponent(() => import('./components/templates/Physicians/naturegreen/MainTemplateComponent')));
 // app.component('physician-2-website-settings', defineAsyncComponent(() => import('./components/templates/Physicians/naturegreen/Settings/SettingsComponent')));
 
-app.component("password-change-component", defineAsyncComponent(() => import('./components/templates/Physicians/livelypurple/Settings/tempSettings/PasswordChange.vue')));
-
 app.component('mail-component', defineAsyncComponent(() => import('./components/shared/Messages')));
 
-app.component("password-change-component", defineAsyncComponent(() => import('./components/templates/Physicians/Settings/tempSettings/PasswordChange.vue')));
+// app.component("password-change-component", defineAsyncComponent(() => import('./components/templates/Physicians/Settings/tempSettings/PasswordChange.vue')));
 // Developer
 app.component("dev-signup-component", defineAsyncComponent(() => import('./components/developers/Signup.vue')));
 app.component("developer-client-component", defineAsyncComponent(() => import('./components/shared/Developer.vue')));
