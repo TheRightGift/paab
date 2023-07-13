@@ -20,6 +20,33 @@ class GeneralSeeder extends Seeder
             ]
         ];
         collect($professions)->each(function ($professions) {\App\Models\Profession::create($professions);});
+        // Specialty seed
+        $specialties = [
+            [
+                'title' => 'Gynaecologist',
+            ],
+            [
+                'title' => 'Paediatrician',
+            ]
+        ];
+        collect($specialties)->each(function ($specialties) {\App\Models\Specialty::create($specialties);});
+        $templates = [
+            [
+                'title' => 'Gynaecologist',
+                'imageUrl' => 'media/img/Gynaecologist.png',
+                'styleFile' => 'Gynaecologist.css',
+                'approved' => 'T',
+                'specialty_id' => 1,
+            ],
+            [
+                'title' => 'Paediatrician',
+                'imageUrl' => 'media/img/paediatrician.png',
+                'styleFile' => 'paediatrician.css',
+                'approved' => 'T',
+                'specialty_id' => 2,
+            ]
+        ];
+        collect($templates)->each(function ($templates) {\App\Models\Template::create($templates);});
         $title = [
             [
                 'profession_id' => 1,
