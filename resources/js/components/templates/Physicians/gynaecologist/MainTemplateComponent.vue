@@ -33,6 +33,7 @@
                     :CV="CV"
                     :contact="contact"
                     :template_id="template_id"
+                    :social="social"
                 />
                 <ServicesComponent
                     :services="services"
@@ -57,7 +58,6 @@
             </main>
             
             <!-- <SocialMediaComponent
-                :social="social"
                 v-if="
                     (social !== null && social !== '' && preview === '0') ||
                     preview === '1'
@@ -66,16 +66,9 @@
                 :preview="preview"
             />
             <TestimonialsComponent v-if="reviewLen != 0 || preview == '1'" :reviews="reviews" :preview="preview" :tenant="tenant"/>
-            <div id="contactContainer">
-                <ContactComponent
-                    :preview="preview"
-                    :isLoggedIn="loggedIn"
-                    :contactMail="contact"
-                />
-            </div>
              <FooterComponent :user="user" :physicianName="physicianName"/> -->
      
-            <div class="fixedBtmBtn" v-if="can === '1'">
+            <div class="fixed-bottom" v-if="can === '1'">
                 <!-- <a
                     target="_self"
                     :href="
@@ -90,7 +83,7 @@
                 <a
                     target="_self"
                     :href="
-                        'http://localhost:8000/auth/claim?claimable=' +
+                        'https://whitecoatdomain.com/auth/claim?claimable=' +
                         tenant +
                         '&code=' +
                         code
@@ -353,14 +346,5 @@ export default {
 };
 </script>
 <style scoped>
-    .button {
-        background-color: var(--sec);
-        color: var(--white);
-        border-radius: 100px;
-        padding: 0 5rem;
-    }
-    .button:hover {
-        background-color: var(--pri);
-        color: var(--white);
-    }
+    
 </style>

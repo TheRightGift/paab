@@ -18,18 +18,29 @@
                     src="/media/img/wcd-logo-noBckg-removebg-previewWHITE.png"
                     class="responsive logo show-on-medium hide-on-small hide-on-large-only hide-on-small-only"
                 />
-                <div v-if="email == ''" class="flex justify-center align-center">
-                    <div v-show="!otpMode" class="row">
-                        <p class="col s12">Enter your email to proceed</p>
-                        <div class="col s12">
-                            <input type="email" v-model="inputEmail" class="browser-default mt-1"/>
-                        </div>
-                        <div class="col s12 mt-1">
-                            <button type="button" class="btn waves waves-effect col s12 custom-button" @click="checkEmail" :disabled="verificationLoading"> <i class="fa fa-spinner fa-spin" v-show="verificationLoading"></i>Submit</button>
-                        </div>
+                <div v-if="view == 0 || inputEmail == ''" class="flex flex-col background gap20 md-justify-center">
+                    <div class="flex flex-end hide-on-med-and-up">
+                        <img
+                            src="/media/img/wcdlogoLG-noBG.png"
+                            class="responsive logo"
+                        />
                     </div>
-                    <div v-show="otpMode" class="row">
-                        <otp-component @res="changeView($event)" type="register" :otp="otp" />
+                    <div class="flex justify-center align-center">
+                        <div v-show="!otpMode" class="flex flex-col justify-center">
+                            <h6>Enter your email to proceed</h6>
+                            <form @submit.prevent="checkEmail">
+                                <div class="">
+                                    <label>Enter your email address</label>
+                                    <input type="email" v-model="inputEmail" class="browser-default mt-1" placeholder="Email address" required/>
+                                </div>
+                                <div class="flex justify-center mt-1">
+                                    <button type="submit" class="btn waves waves-effect col s12 custom-button" :disabled="verificationLoading"> <i class="fa fa-spinner fa-spin" v-show="verificationLoading"></i>Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div v-show="otpMode" class="row">
+                            <otp-component @res="changeView($event)" type="register" :otp="otp" />
+                        </div>
                     </div>
 
                 </div>
@@ -712,6 +723,30 @@
                                 </div>
                             </div>
                         </section>
+
+                        <section class="row" id="specialty">
+                            <div class="col s12 sm-mt-1">
+                                <label>Select specialty</label>
+                                <select
+                                    v-model="specialty"
+                                    required
+                                    class="browser-default custom-select mt-1 black-text"
+                                    data-label="true"
+                                    @change="switchText($event)"
+                                >
+                                    <option :value="''" disabled selected>
+                                        Sub Specialty
+                                    </option>
+                                    <option
+                                        v-for="specialty in specialties"
+                                        :key="specialty.id"
+                                        :value="specialty"
+                                    >
+                                        {{ specialty.title }}
+                                    </option>
+                                </select>
+                            </div>
+                        </section>
                         <div
                             class="flex justify-center align-center flex-col mt-4"
                         >
@@ -891,15 +926,21 @@
                 selectedIndex: [],
                 maxSelected: "",
 
-                inputEmail: "",
+                inputEmail: this.email,
                 verificationLoading: false,
                 otp: "",
+                specialty: "",
+                specialties: [],
             };
         },
         mounted() {
             this.getTenantNDomain();
             this.getData();
             this.getInterests();
+            this.getSpecialties();
+            if (this.email != '') {
+                this.view = 1;
+            }
             // document.addEventListener("DOMContentLoaded", function () {
             //     let elems = document.querySelector("#modal1");
             //     let options = {
@@ -942,6 +983,7 @@
                 }
             },
             changeView(e) {
+                console.log(e);
                 if (e == 200) {
                     // Save the user with email
                     // Login user temporary to be able to access route
@@ -959,8 +1001,13 @@
                     axios
                         .put(`/admin_order/${tenantId}`, { email: this.inputEmail })
                         .then((res) => {
-                            // console.log(res);
-                            this.view = 1;
+                            if (res.status == 200) {
+                                M.toast({
+                                    html: 'Email verified !',
+                                    classes: 'successNotifier'
+                                });
+                                this.view = 1;
+                            }
                         })
                         .catch((err) => {
                             console.log(err);
@@ -1043,6 +1090,13 @@
                         console.log(err);
                     });
             },
+            getSpecialties() {
+                axios.get('/api/specialties').then(res => {
+                    this.specialties = res.data.specialties;
+                }).catch(err => {
+                    console.log(err);
+                })
+            },
             checkTenantOnDemand() {
                 if (this.tenantOnDemand == 1 && this.bio.photo == undefined) {
                     let title =
@@ -1081,7 +1135,8 @@
                     this.validator(this.medSchool) &&
                     this.validator(this.underGrad) &&
                     this.validator(this.bio) &&
-                    this.domainSelected !== ""
+                    this.domainSelected !== "" &&
+                    this.specialty !== ""
                 ) {
                     // && this.validator(this.domainSelected))
                     try {
@@ -1095,6 +1150,7 @@
                         this.updateBio();
                         this.updateDomain();
                         this.serviceSaveOrUpdate();
+                        this.saveUpdateTemplate();
                     } catch (error) {
                         M.toast({
                             html: error,
@@ -1305,7 +1361,22 @@
                 }
                 return password;
             },
-
+            saveUpdateTemplate() {
+                axios
+                    .put(`/claim/updateDomain/tenant`, {
+                        // Change to template id based on selection
+                        template: this.specialty.templates[0].id,
+                    })
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            this.initialDomain = res.data.domain.domain;
+                            return true;
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            },
             // If user clicks on next for the view 1 register user or update details
             registerUpdateUser() {
                 if (
@@ -1594,7 +1665,6 @@
                 this.domainSelected = domain;
             },
             updateDomain() {
-                console.log(this.initialDomain, this.domainSelected)
                 if (this.initialDomain + ".com" !== this.domainSelected) {
                     axios
                         .put(`/claim/updateDomain/tenant`, {
@@ -1785,6 +1855,10 @@
                     this.loopInputsNCheckEmptyValues("domain");
                     this.getOffset("domain");
                 }
+                if (this.specialty === "") {
+                    this.loopInputsNCheckEmptyValues("specialty");
+                    this.getOffset("specialty");
+                }
             },
             removeLabel(el) {
                 el.target.classList.remove("empty-input");
@@ -1840,10 +1914,32 @@
                         this.parseClaimaintData(this.claimaint);
                 },
             },
+            email: {
+                handler(val, oldVal) {
+                    this.inputEmail = val;
+                }
+            }
         },
     };
 </script>
 <style scoped>
+    .background {
+        height: 80vh;
+        background: lightblue;
+        width: 80vw;
+        padding: 0 5vw;
+        border-radius: 10px;
+    }
+    .custom-button {
+        height: 40px;
+        width: 160px;
+        font-weight: 600;
+        outline: none;
+        border: none;
+        margin-top: 3vh;
+        box-shadow: 0px 4px 19px #109DAD;
+        border-radius: 10px;
+    }
     .paymentOverlay {
         position: absolute;
         height: 100vh;

@@ -266,13 +266,13 @@
                     <div class="row">
                         <div class="col l12 m12 s12">
                             <label for="email">Enter your email address</label>
-                            <input placeholder="email address" type="email" class="browser-default">                    
+                            <input v-model="loginUser.email" placeholder="email address" type="email" class="browser-default">                    
                         </div>
                     </div>
                     <div class="row">
                         <div class="col l12 m12 s12">
                             <label for="password">Enter your password</label>
-                            <input placeholder="password" type="password" class="browser-default">                    
+                            <input placeholder="password" v-model="loginUser.password" type="password" class="browser-default">                    
                         </div>
                         <p class="forgotPass">
                             <a href="/auth/resetpassword">Forgot password</a>

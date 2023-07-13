@@ -98,10 +98,10 @@
     }
 </style>
 <script>
-// import InterestInputComponent from "../../../../partials/InterestInputComponent.vue"
+import InterestInputComponent from "../../../../../partials/InterestInputComponent.vue"
 
     export default {
-        // components: { InterestInputComponent },
+        components: { InterestInputComponent },
         props: {
             servicesModal: Boolean,
             saved: Array,

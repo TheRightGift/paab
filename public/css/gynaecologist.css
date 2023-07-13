@@ -21,6 +21,9 @@ html {
 .justify-center {
     justify-content: center;
 }
+.justify-end {
+    justify-content: end;
+}
 .align-center {
     align-items: center;
 }
@@ -30,6 +33,7 @@ html {
 .custom-nav {
     height: 104px;
     background: white;
+    position: relative;
     box-shadow: 0px 5px 80px rgba(0, 0, 0, 0.1);
 }
 .headerTitle {
@@ -38,6 +42,7 @@ html {
     font-weight: 500;
     line-height: 36px;
     word-wrap: break-word;
+    margin: 0;
 }
 nav ul li a {
     color: var(--secondary);
@@ -121,6 +126,7 @@ nav ul a:hover {
 }
 .callMe {
     width: 149px;
+    height: 54px;
     background: rgba(25, 66, 114, 1);
     box-shadow: 0px 4px 19px 0px rgba(35, 106, 189, 0.73);
     border-radius: 10px;
@@ -136,6 +142,7 @@ nav ul a:hover {
 .profileImage img {
     width: 100%;
     height: 100%;
+    border-radius: inherit;
 }
 .happyP {
     position: absolute;
@@ -216,6 +223,8 @@ nav ul a:hover {
 .blogUploader {
     width: 40px;
     height: 40px !important;
+    border-radius: 9999px;
+    background: linear-gradient(0deg, #d9d9d9 0%, #d9d9d9 100%);
 }
 .uploadDate,
 .shareHandle {
@@ -234,7 +243,7 @@ nav ul a:hover {
 .dash {
     width: 36px;
     height: 1px;
-    border: 1px solid rgba(108, 117, 125, 1);
+    border: 1px solid rgba(108, 117, 125, 0.4);
 }
 .titleUploader {
     font-size: 1.5rem;
@@ -275,13 +284,18 @@ nav ul a:hover {
     border-radius: 2px;
     border: 1px white solid;
     color: white;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-family: "Work Sans", sans-serif;
     font-weight: 600;
     word-wrap: break-word;
 }
 .contactBg {
-    background-image: linear-gradient(0deg, rgba(250, 246, 248, 0.856), rgba(247, 247, 247, 0.863)), url("/media/img/templates/1/contactBg.png");
+    background-image: linear-gradient(
+            0deg,
+            rgba(250, 246, 248, 0.856),
+            rgba(247, 247, 247, 0.863)
+        ),
+        url("/media/img/templates/1/contactBg.png");
     background-size: cover;
     padding: 24px 0;
 }
@@ -301,11 +315,17 @@ nav ul a:hover {
     font-size: 2rem;
     font-weight: 400;
     line-height: 37px;
-    text-align: left;
+    text-align: justify;
     margin: 0;
 }
 .contactBg .card {
     background-color: rgba(71, 134, 209, 0.34);
+    width: 40vw;
+}
+.card h5 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 3vh;
 }
 .custom-input {
     position: relative;
@@ -321,7 +341,7 @@ textarea::placeholder {
 }
 .custom-input input,
 .custom-input textarea {
-    width: 474px;
+    width: 100%;
     height: 57px;
     padding: 16px 20px 16px 12%;
     border-radius: 5px;
@@ -370,6 +390,267 @@ textarea::placeholder {
 }
 .mr-2 {
     margin-right: 2vw;
+}
+.flex-1 {
+    flex: 1;
+}
+.gap15 {
+    gap: 15px;
+}
+@media only screen and (max-width: 767px) {
+    .custom-nav {
+        box-shadow: none;
+    }
+    nav .sidenav-trigger {
+        margin: 0;
+    }
+    .custom-btn {
+        width: 115px;
+        height: 46px;
+    }
+    .sm-justify-end {
+        justify-content: end;
+    }
+    .sm-flex-col {
+        flex-direction: column;
+    }
+    .sm-justify-center {
+        justify-content: center;
+    }
+    .sm-text-center {
+        text-align: center;
+    }
+    .introductory {
+        font-size: 1.125rem;
+    }
+    .introductory span {
+        font-size: 2rem;
+    }
+    .introduction {
+        font-size: 1.125rem;
+        text-align: center;
+        line-height: 27px;
+    }
+    .callMe, .downloadCv {
+        height: 46px; 
+    }
+    .downloadCv {
+        width: 176px;
+    }
+    .about {
+        background-color: #fff;
+    }
+    .heading {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+    .sectionDescription {
+        margin-top: 0;
+        width: 100%;
+    }
+    .card .card-content .card-title {
+        font-size: 1rem;
+        text-align: center;
+        line-height: 34px;
+    }
+    .card .card-content .card-body {
+        font-size: .75rem;
+    }
+    #services .row:first-child {
+        width: 75%;
+    }
+    .blogImage {
+        width: 353px;
+        height: 254px;
+    }
+    .blogTitleBody {
+        width: 100%;
+        margin-left: 0;
+    }
+    .titleUploader {
+        font-size: 1rem;
+    }
+    .blogBody {
+        line-height: 24px;
+    }
+    .consultHead, .oneCallAway {
+        padding-bottom: 5svh;
+        font-size: 1rem;
+    }
+    .consultHead {
+        font-size: 2rem;
+    }
+    .booking, .contact .card {
+        width: 100%;
+        height: auto;
+    }
+    .contact .heading {
+        font-family: 'Montserrat', sans-serif;
+        width: 269px;
+        text-align: center;
+    }
+    .booking p:nth-child(2) {
+        font-family: 'Montserrat', sans-serif;
+        line-height: 25px;
+        font-size: 1.125rem;
+    }
+    .sm-p-0 {
+        padding: 0;
+    }
+    .contact.section {
+        padding-bottom: 0;
+    }
+    .sm-align-unset {
+        align-items: unset;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        width: 90%;
+    }
+    .headerTitle {
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+    }
+    nav ul li a {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 150%;
+    }
+    .custom-btn {
+        width: 153px;
+        height: 46px;
+    }
+    .about {
+        background-color: #fff;
+    }
+    .introduction {
+        /* width: 501px; */
+        font-size: 1.25rem;
+        line-height: 30px;
+        margin-bottom: 4dvh;
+    }
+    .downloadCv {
+        width: 176px;
+        font-size: 0.875rem;
+    }
+    .callMe {
+        font-size: 0.875rem;
+    }
+    .callMe, .downloadCv {
+       height: 46px; 
+    }
+    .happyP,
+    .service24 {
+        font-size: 0.75rem;
+        width: 114px;
+    }
+    .profileImage {
+        width: 324px;
+        height: 452px;
+    }
+    .socials {
+        margin-top: 2dvh;
+    }
+    .heading {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+    .sectionDescription {
+        width: 529px;
+        font-size: 0.875rem;
+        margin-top: 0;
+    }
+    .card .card-content .card-title {
+        font-size: 1rem;
+    }
+    .card .card-content .card-body {
+        font-size: 0.75rem;
+        line-height: 30px;
+    }
+    .blogImage {
+        width: 306px;
+        height: 280px;
+    }
+    .blogTitleBody {
+        width: 435px;
+        margin-left: 3dvw;
+    }
+    .blogTitle {
+        width: 382px;
+        height: 78px;
+        font-size: 1.5rem;
+    }
+    .titleUploader {
+        font-size: 1rem;
+    }
+    .uploadDate,
+    .shareHandle,
+    .shareHandle i,
+    .blogBody {
+        font-size: 0.875rem;
+        line-height: 21px;
+    }
+    .consultHead {
+        font-size: 2rem;
+    }
+    .oneCallAway {
+        font-size: 1rem;
+        flex-grow: 1;
+    }
+    .consult {
+        width: 194px;
+        height: 49px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        font-size: 0.875rem;
+    }
+    .md-flex-1 {
+        flex: 1;
+    }
+    /* .contact .card {
+        width: 434px;
+    } */
+    .custom-input input {
+        height: 46px;
+    }
+    .custom-input textarea {
+        height: 134px;
+    }
+    input::placeholder,
+    textarea::placeholder {
+        font-size: 1rem;
+    }
+    .submitBtn {
+        width: 153px;
+        height: 46px;
+        font-size: .875rem;
+    }
+    .contact .py-2, .contact .px-5 {
+        padding-right: 0;
+        padding-left: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .booking .heading {
+        font-size: 1.5rem;
+        text-align: justify;
+    }
+    .booking p:nth-child(2) {
+        font-size: .875rem;
+        line-height: 20px;
+    }
+    .footerBg {
+        height: 111px;
+        background-color: var(--primary);
+    }
+    .contact.section {
+        padding-bottom: 0;
+    }
 }
 @media only screen and (min-width: 1024px) {
     .container {

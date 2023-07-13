@@ -15,6 +15,7 @@ use App\Http\Controllers\DomainCheckerController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\SupportController;
 use App\Http\Middleware\AuthBasicChecker;
@@ -102,6 +103,7 @@ Route::group(['middleware' => ['auth.api']], function() {
 // Route::group(['middleware'=>'auth:api'], function(){
 // });
 Route::get('template', [TemplateController::class, 'index']);
+Route::get('specialties', [SpecialtyController::class, 'index']);
 Route::resource('/profession', ProfessionController::class);
 Route::apiResource('title', TitleController::class);
 Route::get('countries', [CountryController::class, 'index']);

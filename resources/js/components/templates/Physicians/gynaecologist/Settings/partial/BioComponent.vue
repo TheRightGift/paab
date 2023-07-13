@@ -599,24 +599,12 @@
                                     >chevron_left</i
                                 >
                             </a>
-                            <!-- <a
-                                href="#!"
-                                class="chevronIconLink"
-
-                                title="skip to next"
-                                @click="bioNextBtn2()"
-                            >
-                                <i class="material-icons chevronIcon"
-                                    >chevron_right</i
-                                >
-                            </a> -->
                         </div>
                     </div>
                     <div class="genBottomBtnDiv">
                         <div class="flexed">
                             <a href="#" class="btn right" id="genNextBtn" @click="bioGoBackBtn()">GENERAL</a>
                             <a href="#!" class="btn right" id="genNextBtn" @click="servicesLink()">SERVICES</a>
-                            <!-- <i class="material-icons">chevron_right</i> -->
                         </div>
                     </div>
                 </div>
@@ -624,8 +612,6 @@
 
 
         </div>
-        <!-- Modal Structure -->
-        <CVModalComponent />
     </div>
 </template>
 <style>
@@ -646,10 +632,9 @@
     }
 </style>
 <script>
-import CVModalComponent from './CVModalComponent.vue';
 // import ImageCropper from "../../../../../partials/ImageCropper.vue";
     export default {
-    // components: {ImageCropper, CVModalComponent },
+    // components: {ImageCropper},
         props: ["user", "bioModal", "bioModal1", "bioModal2", "bioModal3", "saved", 'loading', 'tenant'],
         data() {
             return {

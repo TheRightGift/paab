@@ -300,10 +300,10 @@
     </div>
 </template>
 <script>
-// import ImageCropperVue from '../../../../../../partials/ImageCropper.vue';
+import ImageCropperVue from '../../../../../partials/ImageCropper.vue';
 export default {
     components: {
-        // ImageCropperVue,
+        ImageCropperVue,
     },
     data() {
         return {

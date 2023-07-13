@@ -33,6 +33,7 @@
                     :CV="CV"
                     :contact="contact"
                     :template_id="template_id"
+                    :social="social"
                 />
                 <ServicesComponent
                     :services="services"
@@ -75,7 +76,7 @@
             </div>
              <FooterComponent :user="user" :physicianName="physicianName"/> -->
      
-            <div class="fixedBtmBtn" v-if="can === '1'">
+            <div class="fixed-bottom" v-if="can === '1'">
                 <!-- <a
                     target="_self"
                     :href="
@@ -352,15 +353,3 @@ export default {
     computed: {},
 };
 </script>
-<style scoped>
-    .button {
-        background-color: var(--sec);
-        color: var(--white);
-        border-radius: 100px;
-        padding: 0 5rem;
-    }
-    .button:hover {
-        background-color: var(--pri);
-        color: var(--white);
-    }
-</style>

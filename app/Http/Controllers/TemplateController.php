@@ -179,7 +179,7 @@ class TemplateController extends Controller
     public function renderTemplate($templateID)
     {
         $template = Template::find($templateID);
-        $profession = $template->profession->name;
+        // $profession = $template->profession->name;
         $templateCSS = $template->styleFile;
         $template_id = $template->id;
         $template = $template->title;

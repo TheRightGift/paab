@@ -119,9 +119,9 @@ class TenantController extends Controller
                     return response()->json(["Domain already in use."]);
                 }
             }
-            if ($domain == true || $tenant == true) {
-                return response()->json(['message' => 'Success', 'domain' => $domain, 'status' => 200], 200);
-            }
+            // if ($domain == true || $tenant == true) {
+                return response()->json(['message' => 'Success', 'status' => 200], 200);
+            // }
         }
         else {
             return response()->json(['message' => 'Website not found!', 'status' => 404], 404);
@@ -146,8 +146,8 @@ class TenantController extends Controller
         // Get the template_id and get its details
         $tenancies = new Tenant();
         $tenant = $tenancies->find(tenant('id'));
-        $profession = $tenant->template->profession->name;
-        $professionId =$tenant->template->profession_id;
+        // $specialty = $tenant->template->specialty->title;
+        // $specialtyId =$tenant->template->specialty_id;
         $template_id = $tenant->template->id;
         $template = $tenant->template->title;
         $templateCSS = $tenant->template->styleFile;
@@ -194,12 +194,12 @@ class TenantController extends Controller
             'description' => $description,
             'image' => "/media/tenants/$tenantID/$bioTB->photo",
         ];
-        if($profession === 'Physician'){
+        // if($profession === 'Physician'){
             // echo $template, $socials, $user, $templateCSS, $title, $pageTitle, $tenantID, $can, $email, $user_id, $userSubscribed, $template_id;
             return view('websites.physician', compact('meta', 'template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email', 'code', 'user_id', 'userSubscribed', 'template_id'));
-        } else {
-            dd($profession);
-        }
+        // } else {
+        //     dd($profession);
+        // }
     }
 
     public function setting(Request $request) {

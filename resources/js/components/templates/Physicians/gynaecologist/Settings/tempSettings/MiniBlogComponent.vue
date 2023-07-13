@@ -158,10 +158,10 @@
     </div>
 </template>
 <script>
-// import ImageCropper from '../../../../../partials/ImageCropper.vue';
+import ImageCropper from '../../../../../partials/ImageCropper.vue';
 export default {
     components: {
-        // ImageCropper
+        ImageCropper
     },
     data() {
         return {
