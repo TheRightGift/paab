@@ -14,12 +14,11 @@ class GeneralSeeder extends Seeder
      */
     public function run()
     {
-        $professions = [
+        $profession = [
             [
                 'name' => 'Physician',
             ]
         ];
-        collect($professions)->each(function ($professions) {\App\Models\Profession::create($professions);});
         // Specialty seed
         $specialties = [
             [
@@ -29,7 +28,6 @@ class GeneralSeeder extends Seeder
                 'title' => 'Paediatrician',
             ]
         ];
-        collect($specialties)->each(function ($specialties) {\App\Models\Specialty::create($specialties);});
         $templates = [
             [
                 'title' => 'Gynaecologist',
@@ -44,9 +42,9 @@ class GeneralSeeder extends Seeder
                 'styleFile' => 'paediatrician.css',
                 'approved' => 'T',
                 'specialty_id' => 2,
-            ]
+                ]
         ];
-        collect($templates)->each(function ($templates) {\App\Models\Template::create($templates);});
+        
         $title = [
             [
                 'profession_id' => 1,
@@ -73,7 +71,6 @@ class GeneralSeeder extends Seeder
                 'profession_id' => 1
             ],
         ];
-        collect($title)->each(function ($title) {\App\Models\Title::create($title);});
         $user = new User();
         $user->create([
             'firstname' => 'George',
@@ -82,6 +79,10 @@ class GeneralSeeder extends Seeder
             'password' => bcrypt('two%WhiteCoatDomain'),
             'role' => 'SuperAdmin',
         ]);
+        collect($profession)->each(function ($profession) {\App\Models\Profession::create($profession);});
+        collect($specialties)->each(function ($specialties) {\App\Models\Specialty::create($specialties);});
+        collect($templates)->each(function ($templates) {\App\Models\Template::create($templates);});
+        collect($title)->each(function ($title) {\App\Models\Title::create($title);});
         $this->call([
             InterestSeeder::class
         ]);

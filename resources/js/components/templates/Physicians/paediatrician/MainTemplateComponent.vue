@@ -46,6 +46,7 @@
                     :preview="preview"
                     :isLoggedIn="loggedIn"
                     :miniBlog="miniBlog"
+                    :bio="bio"
                     v-if="miniBlog.length > 0 || preview === '1'"
                 />
                 <ContactComponent
