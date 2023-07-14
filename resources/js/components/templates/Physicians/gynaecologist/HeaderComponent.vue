@@ -31,9 +31,6 @@
                                 user == ""
                                     ? physicianName
                                     : this.userReplaced
-                                          .replace("DO", "DR.")
-                                          .replace("MD", "DR.")
-                                          .replace("DD", "DR.")
                             }}
                         </h5>
                         <ul class="hide-on-small-only">
@@ -444,10 +441,6 @@
                 console.log(newVal, "here");
                 if (newVal != "") {
                     this.userReplaced = newVal;
-                    this.userReplaced
-                        .replace("DO", "DR.")
-                        .replace("MD", "DR.")
-                        .replace("DD", "DR.");
                 }
             },
             reviews(newVal) {
