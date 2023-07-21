@@ -1,114 +1,162 @@
 <template>
     <div>
-        <!-- Navbar & SideNav Section -->
-        <HeaderComponent :type="'template'"></HeaderComponent>      
-        
-        <!-- Templates Section -->
-        <div class="section scrollspy tempContainDiv" id="template">
-            <div class="tempContainInnerDiv">
-                <div class="row">
-                    <div class="col s12 m6 l6">
-                        <div class="tempPageLeftDiv">
-                            <p class="tempPageTitle">
-                                READY TO IMPORT <br> WEBSITE <br> TEMPLATES
+        <div class="container">
+            <header>
+                <div class="d-flex justify-between">
+                    <img
+                        class="logo"
+                        src="/media/img/wcd-logo-noBckg.png"
+                        alt="Whitecoatdomain Logo"
+                    />
+                    <ul>
+                        <li><a href="/" class="link">Home</a></li>
+                    </ul>
+                    <sign-up-button-component />
+                </div>
+            </header>
+            <main>
+                <section>
+                    <div class="primaryBg content d-flex align-center">
+                        <img src="/media/img/tempFitDocs.png" class="fitImg" />
+                        <div class="fitContainer">
+                            <h6 class="fitHeading6">
+                                Templates fit just for you
+                            </h6>
+                            <p class="fitDescription">
+                                White Coat Domain is providing you with an
+                                opportunity to showcase who you are and what you
+                                can offer to your target audience.
                             </p>
-        
-                            <p class="tempPageTxt">
-                                Discover thousands of easy to use and customized templates made by professional designers that are responsive and conversion optimized.
+                        </div>
+                    </div>
+                </section>
+                <section id="specialties">
+                    <h6 class="">Templates</h6>
+                    <div class="scroll allPhysicistSelector d-flex">
+                        <div class="d-flex flex-col align-center">
+                            <div class="specialty">
+                                <img
+                                    src="/media/img/allTemp.png"
+                                    alt="All Templates"
+                                    class="responsive-img"
+                                />
+                            </div>
+                            <p class="specialtyName" :class="{active: selectedIndex == null}" @click="getTemplates()">All</p>
+                        </div>
+                        <div
+                            class="d-flex flex-col align-center mx-2"
+                            v-for="(specialty, index) in specialties"
+                            :key="specialty"
+                        >
+                            <div class="specialty">
+                                <img
+                                    :src="specialty.image"
+                                    alt="All Templates"
+                                    class="responsive-img"
+                                />
+                            </div>
+                            <p
+                                class="specialtyName"
+                                :class="{active: selectedIndex == index}"
+                                @click="getTemplates(specialty.templates)"
+                            >
+                                {{ specialty.title }}
                             </p>
-        
-                            <a href="/auth/getstarted" class="btn tempPageBtn">
-                                Get started
-                            </a>
-                        </div>
-        
-                    </div>
-        
-                    <div class="col s12 m6 l6">
-                        <div class="tempImgDiv1">
-                            <img src="/media/img/template.png" alt="tempImg.png" class="responsive-img tempPageImg">
                         </div>
                     </div>
-                </div>
-        
-                <!-- Page Arrow Up -->
-                <button class="fixedArrowUpIconBtn hide-on-med-and-down" id="fixedArrowUpIconBtn" onclick="topFunction()">
-                    <div class="fixedArrowUpIconInnerDiv">
-                        <div class="fixedArrowUpCircleDiv"></div>
-                        <i class="fa-solid fa-arrow-up" id="fixedArrowUpIcon"></i>
+                </section>
+                <section>
+                    <div class="templates row">
+                        <div
+                            class="template col s12 m4 l3"
+                            v-for="template in templates"
+                            :key="template"
+                            >
+                            <!-- :style="getImageStyle(template.imageUrl)" -->
+                           <img :src="template.imageUrl" class="responsive-img border"/>
+                        </div>
                     </div>
-                </button>
-        
-                <!--TEMPLATE HERE-->
-                <TemplatePreviewComponent :professionId="0" :selectedTemplate="0"  :type="'preview'"/>
-            </div>
+                </section>
+            </main>
         </div>
-        
-        
-        <!-- Customer Support Section -->
-        <div class="section scrollspy cusSupportDiv" id="support">
-            <div class="row cusSupportInnerDiv">
-                <div class="col s12 m12 l7 cusSupportImgDiv hide-on-med-and-down">
-                    <img src="/media/img/CARE.png" alt="CARE.png" id="careImg">
-                </div>
-        
-                <div class="col s12 m12 l5 cusSupportFormDiv">
-                    <p class="cusSupportTitle">WE’RE ALWAYS HAPPY TO HELP</p>
-        
-                    <form class="col s12">
-                        <div class="row rm_mg">
-                            <div class="input-field col s6">
-                                <input placeholder="First name" id="fName" type="text" class="validate">
-                                <!-- <label for="first_name">First Name</label> -->
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="Last name " id="lName" type="text" class="validate">
-                                <!-- <label for="last_name">Last Name</label> -->
-                            </div>
-                        </div>
-        
-                        <div class="row rm_mg">
-                            <div class="input-field col s12">
-                                <input placeholder="Email address" id="email" type="email" class="validate">
-                                <!-- <label for="email">Email</label> -->
-                            </div>
-                        </div>
-        
-                        <div class="row rm_mg">
-                            <div class="input-field col s12">
-                                <textarea placeholder="Share your thoughts..." id="textarea1"
-                                    class="materialize-textarea"></textarea>
-                                <!-- <label for="textarea1">Textarea</label> -->
-                            </div>
-                        </div>
-        
-                        <button type="button" class="btn col s12 m12 l12 rm_mg" id="btnForm">
-                            Send
-                        </button>
-                    </form>
-                </div>
-            </div>
+        <div class="spinner-overlay" v-show="fetching">
+            <div class="spinner"></div>
         </div>
-        
-        <!-- Footer -->
-        <FooterComponent/>
+        <FooterComponent />
     </div>
 </template>
 
 <script>
-    import FooterComponent from "./partials/FooterComponent.vue";
-    import HeaderComponent from "./partials/HeaderComponent.vue";
+    import FooterComponent from "./partials/FooterComponent1.vue";
+    import SignUpButtonComponent from "./partials/SignUpButtonComponent.vue";
     import TemplatePreviewComponent from "./partials/TemplatePreviewComponent.vue";
     export default {
         components: {
             FooterComponent,
-            HeaderComponent,
-            TemplatePreviewComponent
+            TemplatePreviewComponent,
+            SignUpButtonComponent,
         },
         data() {
-            return {};
+            return {
+                fetching: false,
+                specialties: [],
+                selectedIndex: 0,
+                templates: [],
+            };
         },
-        mounted() {},
-        methods: {}
-    }
+        mounted() {
+            this.getInterests();
+            this.getTemplates();
+        },
+        methods: {
+            getImageStyle(imageUrl) {
+                return {
+                    "background-image": `url(${imageUrl})`,
+                };
+            },
+            getTemplatesForSpecialty(index, templates) {
+                this.selectedIndex = index;
+                this.templates = templates;
+            },
+            getTemplates() {
+                this.fetching = true;
+                this.selectedIndex = null;
+                axios
+                    .get("/api/template")
+                    .then((res) => {
+                        if (res.status == 200) {
+                            this.templates = res.data.templates;
+                            this.fetching = false;
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        this.fetching = false;
+                    });
+            },
+            getInterests() {
+                this.fetching = true;
+                axios
+                    .get("/api/specialties")
+                    .then((res) => {
+                        console.log(res);
+                        this.specialties = res.data.specialties;
+                        // let allTemplate = 
+                        // this.specialties.unshift()
+                        this.specialties.forEach((el, index) => {
+                            if (index == 0) {
+                                el.image = "/media/img/gyna.png";
+                            } else if (index == 1) {
+                                el.image = "/media/img/pediatrics.png";
+                            }
+                        });
+                        this.fetching = false;
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        this.fetching = false;
+                    });
+            },
+        },
+    };
 </script>

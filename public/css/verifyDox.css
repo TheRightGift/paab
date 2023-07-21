@@ -1,0 +1,108 @@
+.bg {
+    background-image: url('/media/img/backgroundOtp.png');
+    background-size: cover;
+    background-position: center;
+    background-color: var(--pri);
+    height: 100%;
+}
+.contents {
+    width: 30vw;
+    height: 80%;
+    padding: 8vh 3vw;
+    border-radius: 2.5rem;
+    background-color: #c6e8eb;
+    margin: auto;
+    align-items: center;
+}
+input[type=text]:not(.browser-default) {
+    background-color: #fff;
+    width: 3.5vw !important;
+    height: 10vh;
+    border-radius: 10px;
+    border: none;
+    margin-right: 5px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.btn {
+    font-size: 1.25rem;
+    padding: 2vh 6vw !important;
+    border-radius: 1vh !important;
+}
+.row .col {
+    padding: 0;
+}
+.flex-end {
+    justify-content: end;
+}
+.box {
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    padding: 2vh 3vh;
+    cursor: pointer;
+}
+.box:first-child {
+    background: rgb(68, 167, 68);
+    margin-right: 5vw;
+}
+.box:first-child:hover {
+    background: rgb(135, 173, 135);
+}
+.box:last-child:hover {
+    background-color: rgb(218, 216, 216);
+    color: #000;
+}
+.box:last-child {
+    background: rgb(105, 104, 104);
+    margin-right: 5vw;
+}
+.names {
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: fit-content;
+    background: var(--sec);
+    color: #fff;
+    border-radius: 5px;
+    padding: 1vh 4vw;
+}
+.show-on-medium {
+    display: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .contents {
+        width: 70vw;
+    }
+    input[type=text]:not(.browser-default) {
+        font-size: 1.75rem;
+        font-weight: 500;
+        width: 10vw !important;
+    }
+    .btn {
+        padding: 2vh 15vw !important;
+    }
+    h5 {
+        font-size: 2.5rem;
+    }
+    p {
+        font-size: 1.5rem;
+    }
+    .show-on-medium {
+        display: block;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .contents {
+        width: 80vw;
+    }
+    input[type=text]:not(.browser-default) {
+        width: 11vw !important;
+        height: 8vh;
+    }
+    .btn {
+        padding: 1vh 20vw !important;
+    }
+    .contents {
+        border-radius: 1rem;
+    }
+}

@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/paab.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/templates.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/verifyDox.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/material-icons.css') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -19,7 +19,7 @@
 </head>
 <body>
 <div id="app">
-    <test-component></test-component>
+    <verify-doc-component></verify-doc-component>
 </div>
 
 

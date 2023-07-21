@@ -758,7 +758,7 @@
                                 Save &amp; Publish
                             </button>
                             <p class="pubSupportText">
-                                After publishing our websites, you can still do
+                                After publishing your website, you can still do
                                 more editing and customization
                             </p>
                         </div>

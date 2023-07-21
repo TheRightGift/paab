@@ -57,6 +57,8 @@ Route::group(['prefix' => 'services', 'middleware' => 'client'], function() {
     Route::get('/remove_tenants_with_faultycr8', [MaintenanceController::class, 'checkTenantNRemoveIfBioIsEmpty']);
     Route::get('/remove_tenant/{id}', [MaintenanceController::class, 'removeTenant']);
     Route::get('/tenants', [MaintenanceController::class, 'getTenants']);
+    Route::post('/saveOtp', [TenantController::class, 'saveOtpForSiteClaim']);
+    Route::get('/checkOtp', [TenantController::class, 'checkOtp']);
 });
 
 Route::group(['middleware' => ['auth.api']], function() {
@@ -122,3 +124,4 @@ Route::get('/test_awsutil/{stripe_id}', [APIController::class, 'registerDomain']
 Route::get('/sendcommand/{domainName}', [APIController::class, 'runAWSUtilityCommand'])->name('api.aws.sendcommand')->middleware(AuthBasicChecker::class);
 Route::get('/getpendingwebsite', [APIController::class, 'getPendingSites'])->middleware(AuthBasicChecker::class);
 Route::post('/support', [SupportController::class,'supportSaveData']);
+Route::post('/checkTenantOtp', [TenantController::class, 'checkOtp']);

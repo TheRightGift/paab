@@ -49,7 +49,7 @@
         .btn {
             /* padding: 4vh 4vw; */
             width: 15vw;
-            height: 8vh;
+            height: 6vh;
         }
     }
 </style>

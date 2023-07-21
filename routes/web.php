@@ -289,9 +289,9 @@ Route::middleware(['validateIsValidGuest'])->group(function () {
 
 
     Route::post('/subscription/create', [App\Http\Controllers\SubscriptionController::class, 'subscribe']);
-    // Route::get('/testModal', function(){
-    //     return view('test');
-    // });
+    Route::get('/{name}', function(){
+        return view('test');
+    });
 });
 Route::get('/getstarted', [TenantClaimController::class, 'checkIfTenantIDNGetDomain']);
 

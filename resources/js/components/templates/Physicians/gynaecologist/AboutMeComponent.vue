@@ -152,7 +152,7 @@
                         " " +
                         newval.lastname;
                     this.about.about = newval.about;
-                    this.about.about = this.about.about.replace(/Dr\. [A-Za-z]+|she\/he [A-Za-z]+/g, "I am").slice(0, 329);
+                    // this.about.about = this.about.about.replace(/Dr\. [A-Za-z]+|she\/he [A-Za-z]+/g, "I am").slice(0, 329);
                     this.about.photo = newval.photo;
                 }
             },
