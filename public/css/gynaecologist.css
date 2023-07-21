@@ -397,111 +397,14 @@ textarea::placeholder {
 .gap15 {
     gap: 15px;
 }
-@media only screen and (max-width: 767px) {
-    .custom-nav {
-        box-shadow: none;
+
+
+@media only screen and (min-width: 1024px) {
+    .container {
+        width: 85%;
     }
-    nav .sidenav-trigger {
-        margin: 0;
-    }
-    .custom-btn {
-        width: 115px;
-        height: 46px;
-    }
-    .sm-justify-end {
-        justify-content: end;
-    }
-    .sm-flex-col {
-        flex-direction: column;
-    }
-    .sm-justify-center {
-        justify-content: center;
-    }
-    .sm-text-center {
-        text-align: center;
-    }
-    .introductory {
-        font-size: 1.125rem;
-    }
-    .introductory span {
-        font-size: 2rem;
-    }
-    .introduction {
-        font-size: 1.125rem;
-        text-align: center;
-        line-height: 27px;
-    }
-    .callMe, .downloadCv {
-        height: 46px; 
-    }
-    .downloadCv {
-        width: 176px;
-    }
-    .about {
-        background-color: #fff;
-    }
-    .heading {
-        font-size: 1.5rem;
-        margin-bottom: 0;
-    }
-    .sectionDescription {
-        margin-top: 0;
-        width: 100%;
-    }
-    .card .card-content .card-title {
-        font-size: 1rem;
-        text-align: center;
-        line-height: 34px;
-    }
-    .card .card-content .card-body {
-        font-size: .75rem;
-    }
-    #services .row:first-child {
-        width: 75%;
-    }
-    .blogImage {
-        width: 353px;
-        height: 254px;
-    }
-    .blogTitleBody {
-        width: 100%;
-        margin-left: 0;
-    }
-    .titleUploader {
-        font-size: 1rem;
-    }
-    .blogBody {
-        line-height: 24px;
-    }
-    .consultHead, .oneCallAway {
-        padding-bottom: 5svh;
-        font-size: 1rem;
-    }
-    .consultHead {
-        font-size: 2rem;
-    }
-    .booking, .contact .card {
-        width: 100%;
-        height: auto;
-    }
-    .contact .heading {
-        font-family: 'Montserrat', sans-serif;
-        width: 269px;
-        text-align: center;
-    }
-    .booking p:nth-child(2) {
-        font-family: 'Montserrat', sans-serif;
-        line-height: 25px;
-        font-size: 1.125rem;
-    }
-    .sm-p-0 {
-        padding: 0;
-    }
-    .contact.section {
-        padding-bottom: 0;
-    }
-    .sm-align-unset {
-        align-items: unset;
+    .profile {
+        padding-right: 1vw;
     }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -652,8 +555,111 @@ textarea::placeholder {
         padding-bottom: 0;
     }
 }
-@media only screen and (min-width: 1024px) {
-    .container {
-        width: 85%;
+
+@media only screen and (max-width: 767px) {
+    .custom-nav {
+        box-shadow: none;
+    }
+    nav .sidenav-trigger {
+        margin: 0;
+    }
+    .custom-btn {
+        width: 115px;
+        height: 46px;
+    }
+    .sm-justify-end {
+        justify-content: end;
+    }
+    .sm-flex-col {
+        flex-direction: column;
+    }
+    .sm-justify-center {
+        justify-content: center;
+    }
+    .sm-text-center {
+        text-align: center;
+    }
+    .introductory {
+        font-size: 1.125rem;
+    }
+    .introductory span {
+        font-size: 2rem;
+    }
+    .introduction {
+        font-size: 1.125rem;
+        text-align: center;
+        line-height: 27px;
+    }
+    .callMe, .downloadCv {
+        height: 46px; 
+    }
+    .downloadCv {
+        width: 176px;
+    }
+    .about {
+        background-color: #fff;
+    }
+    .heading {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+    .sectionDescription {
+        margin-top: 0;
+        width: 100%;
+    }
+    .card .card-content .card-title {
+        font-size: 1rem;
+        text-align: center;
+        line-height: 34px;
+    }
+    .card .card-content .card-body {
+        font-size: .75rem;
+    }
+    #services .row:first-child {
+        width: 75%;
+    }
+    .blogImage {
+        width: 353px;
+        height: 254px;
+    }
+    .blogTitleBody {
+        width: 100%;
+        margin-left: 0;
+    }
+    .titleUploader {
+        font-size: 1rem;
+    }
+    .blogBody {
+        line-height: 24px;
+    }
+    .consultHead, .oneCallAway {
+        padding-bottom: 5svh;
+        font-size: 1rem;
+    }
+    .consultHead {
+        font-size: 2rem;
+    }
+    .booking, .contact .card {
+        width: 100%;
+        height: auto;
+    }
+    .contact .heading {
+        font-family: 'Montserrat', sans-serif;
+        width: 269px;
+        text-align: center;
+    }
+    .booking p:nth-child(2) {
+        font-family: 'Montserrat', sans-serif;
+        line-height: 25px;
+        font-size: 1.125rem;
+    }
+    .sm-p-0 {
+        padding: 0;
+    }
+    .contact.section {
+        padding-bottom: 0;
+    }
+    .sm-align-unset {
+        align-items: unset;
     }
 }
