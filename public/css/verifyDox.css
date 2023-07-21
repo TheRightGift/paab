@@ -1,8 +1,8 @@
 .bg {
-    background-image: url('/media/img/backgroundOtp.png');
+    background: url('/media/img/backgroundOtp.png') var(--pri);
     background-size: cover;
     background-position: center;
-    background-color: var(--pri);
+    background-blend-mode: multiply;
     height: 100%;
 }
 .contents {
@@ -89,6 +89,9 @@ input[type=text]:not(.browser-default) {
     }
     .show-on-medium {
         display: block;
+    }
+    small {
+        font-size: 100%;
     }
 }
 @media only screen and (max-width: 767px) {

@@ -290,7 +290,7 @@ Route::middleware(['validateIsValidGuest'])->group(function () {
 
     Route::post('/subscription/create', [App\Http\Controllers\SubscriptionController::class, 'subscribe']);
     Route::get('/{name}', function(){
-        return view('test');
+        return view('verify_dox');
     });
 });
 Route::get('/getstarted', [TenantClaimController::class, 'checkIfTenantIDNGetDomain']);
