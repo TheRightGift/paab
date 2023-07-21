@@ -170,7 +170,7 @@ class TenantController extends Controller
             DB::setDatabaseName($tenantFound->tenancy_db_name);
             $userData = DB::table('bios')->first();
             $token = DB::table('tokens')->first();
-            $names = "$userData->firstname.' '.$userData->lastname";
+            $names = "$userData->firstname $userData->lastname";
             return response()->json(['status' => 'OK', 'names' => $names, 'code' => true, 'token' => $token, 'tenant' => $verify->tenant_id]);
         } else {
             return response()->json(['status' => 'OK', 'code' => false]);
