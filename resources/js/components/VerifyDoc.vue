@@ -19,7 +19,7 @@
                         <h5>Thanks for making this decision of creating your public domain</h5>
                         <p>To continue...</p>
                         <p>Is this your name?</p>
-                        <p class="names">Ajibola Kehinde</p>
+                        <p class="names">{{ names }}</p>
                         <div class="d-flex">
                             <p @click="openWebsite" class="box">Yes</p> <p class="box">No</p>
                         </div>
