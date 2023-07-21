@@ -52,7 +52,7 @@ if (folderProp !== null) {
 }
 app.component(`physician-website-settings`, defineAsyncComponent(() => import(`./components/templates/Physicians/gynaecologist/Settings/SettingsComponent`)));
 
-// app.component('physician-2-website-component', defineAsyncComponent(() => import('./components/templates/Physicians/naturegreen/MainTemplateComponent')));
+app.component('verify-doc-component', defineAsyncComponent(() => import('./components/VerifyDoc')));
 // app.component('physician-2-website-settings', defineAsyncComponent(() => import('./components/templates/Physicians/naturegreen/Settings/SettingsComponent')));
 
 app.component('mail-component', defineAsyncComponent(() => import('./components/shared/Messages')));

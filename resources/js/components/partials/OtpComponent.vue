@@ -105,11 +105,11 @@
                         :disabled="disabled == 1"
                     />
                 </form>
-                <p v-if="shown"><b>Still can't find the mail? Check your spam/junk box. Messages could end up there.</b></p>
+                <p v-if="shown && toggleOn"><b>Still can't find the mail? Check your spam/junk box. Messages could end up there.</b></p>
             </div>
             
             <div class="row center">
-                <button href="#!" v-if="!verifyLoading" class="btn" @click="confirmOTP()" :disabled="isDisabled">Verify</button>
+                <button href="#!" v-if="!verifyLoading && !verifying" class="btn" @click="confirmOTP()" :disabled="isDisabled">Verify</button>
                 <a href="#!" v-else class="btn">
                     <i class="fa fa-spin fa-spinner"></i>
                 </a>
@@ -137,6 +137,8 @@
             type: String,
             email: String,
             text: String,
+            toggleOn: Boolean,
+            verifying: Boolean,
         },
         mounted() {
             setTimeout(() => {
@@ -190,6 +192,9 @@
                                 console.log(err);
                             })
                     }
+                    else if (this.type === 'otpField') {
+                        this.$emit('response', this.userInputedOTP);
+                    }
                     
                 }
             },
@@ -239,6 +244,7 @@
         border-radius: 2vh;
         height: unset;
         line-height: unset;
+        box-shadow: 0px 4px 19px 0px rgba(16, 157, 173, 0.30);
     }
     .btn:disabled {
         background-color: #b9bac1 !important;

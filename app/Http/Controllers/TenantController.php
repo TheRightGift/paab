@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Models\Tenants\Social;
 use App\Models\Tenants\General;
 use App\Models\AdminClientOrder;
+use App\Models\TenantOtp;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Handler\CurlHandler;
 use Illuminate\Support\Facades\Config;
@@ -27,6 +28,9 @@ class TenantController extends Controller
 {
     private function generatedCode() {
         return Uuid::uuid4()->toString();
+    }
+    private function generateCodeOtp() {
+        return rand(100000, 999999);
     }
     // Overwrite email to be nullable
     // Add code(nullable) to replace email if no email is supplied
@@ -141,6 +145,38 @@ class TenantController extends Controller
         }
     }
 
+    public function saveOtpForSiteClaim(Request $request) {
+        $inputs = Validator::make($request->all(), [
+            'tenant_id' => ['required'],
+        ]);
+        if ($inputs->fails()) {
+            return response()->json(['errors' => $inputs->errors()->all()], 501);
+        } else {
+            $code = $this->generateCodeOtp();
+            TenantOtp::create(['tenant_id' => $request->tenant_id, 'otp' => $code]);
+            return response()->json(['status' => 'OK', 'code' => $code]);
+        }
+    }
+
+    public function checkOtp(Request $request) {
+        $code = $request->code;
+        $tenant = $request->tenant;
+        $verify = TenantOtp::where([['otp', $code], ['tenant_id', 'LIKE', "%$tenant%"]])->first();
+        if (!empty($verify)) {
+            $tenantFound = Tenant::find($verify->tenant_id);
+            Config::set('database.connections.mysql.database', $tenantFound->tenancy_db_name);
+
+            DB::connection('mysql')->reconnect();
+            DB::setDatabaseName($tenantFound->tenancy_db_name);
+            $userData = DB::table('bios')->first();
+            $token = DB::table('tokens')->first();
+            $names = "$userData->firstname.' '.$userData->lastname";
+            return response()->json(['status' => 'OK', 'names' => $names, 'code' => true, 'token' => $token, 'tenant' => $verify->tenant_id]);
+        } else {
+            return response()->json(['status' => 'OK', 'code' => false]);
+        }
+    }
+
     // Renders / of template
     public function template(Request $request) {   
         // Get the template_id and get its details
@@ -194,12 +230,9 @@ class TenantController extends Controller
             'description' => $description,
             'image' => "/media/tenants/$tenantID/$bioTB->photo",
         ];
-        // if($profession === 'Physician'){
-            // echo $template, $socials, $user, $templateCSS, $title, $pageTitle, $tenantID, $can, $email, $user_id, $userSubscribed, $template_id;
+        
             return view('websites.physician', compact('meta', 'template', 'socials','user', 'templateCSS', 'title', 'pageTitle', 'tenantID', 'can', 'email', 'code', 'user_id', 'userSubscribed', 'template_id'));
-        // } else {
-        //     dd($profession);
-        // }
+      
     }
 
     public function setting(Request $request) {
