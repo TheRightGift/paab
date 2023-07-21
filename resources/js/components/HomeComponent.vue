@@ -374,7 +374,7 @@
                             offer to your target audience.
                         </p>
                         <div class="row sm-flexed sm-flex-col sm-align-center">
-                            <div class="col s12 m4 mb-1" :class="{'l6 d-flex': index === 2 || index === 3, 'l3': index <= 1 || index > 3}" v-for="(service, index) in services" :key="service.title">
+                            <div class="col s12 m6 mb-1" :class="{'l6 d-flex': index === 2 || index === 3, 'l3': index <= 1 || index > 3}" v-for="(service, index) in services" :key="service.title">
                                 <services-offered-component :src="service.src" :title="service.title" :description="service.description"/>
                                 <img
                                     src="/media/img/serv1Img.png"
@@ -571,7 +571,7 @@
                 <div class="pizzariedUpLeft hide-on-med-and-up"></div>
                 <div class="pizzariedDownRight hide-on-med-and-up"></div>
             </section>
-            <section class="relative reviews">
+            <!-- <section class="relative reviews">
                 <div class="container">
                     <div class="d-flex align-center flex-col pt-5">
                         <h6 class="center">Review</h6>
@@ -606,21 +606,21 @@
                 </div>
                 <div class="pizzariedUpLeft"></div>
                 <div class="pizzariedDownRight"></div>
-            </section>
+            </section> -->
             <section class="faqs relative">
                 <div class="container">
                     <h5 class="faqsHeading">FAQS</h5>
                     <h6 class="faqsTitle">Most frequent questions from our clients worldwide</h6>
                     <div class="lg-flex">
                         <ul class="collapsible">
-                            <li>
+                            <li class="active">
                             <div class="collapsible-header">
                                 <div class="d-flex align-center m-0"><div class="w-24"><span class="circle"></span></div>What is Whitecoatdomain?</div>
                                 
                                 <i class="material-icons">chevron_right</i>
                             </div>
                             <div class="collapsible-body">
-                                <span>Whitecoatdomain is a platform where professionals comes to create a domain of their choice and establish their online presence</span>
+                                <span>Whitecoatdomain is a physician owned platform for physicians to creat online presence and manage their brand.</span>
                             </div>
                             </li>
                             <li>
@@ -629,16 +629,16 @@
                                 <i class="material-icons">chevron_right</i>
                             </div>
                             <div class="collapsible-body">
-                                <span>Our payment are secured with SSL and moreover we use a third party which has a secured and well known standard for our payment system.</span>
+                                <span>We partner <a href="https://stripe.com/" target="_blank">stripe</a> for all our payment services.</span>
                             </div>
                             </li>
-                            <li class="active">
+                            <li>
                             <div class="collapsible-header">
                                 <div class="d-flex align-center m-0"><div class="w-24"><span class="circle"></span></div>Does whitecoatdomain work worldwide?</div>
                                 <i class="material-icons">chevron_right</i>
                             </div>
                             <div class="collapsible-body">
-                                <span>Whitecoatdomain is a versatile platform that caters to professionals across various domains, not just limited to the medical field. While the name may suggest a focus on healthcare professionals, the platform aims to bring together individuals from different industries who wear white coats as a symbol of their expertise and professionalism.</span>
+                                <span>Yes.</span>
                             </div>
                             </li>
                             <li>
@@ -650,7 +650,7 @@
                                 <span>Yes, domain purchases has to be renewed yearly, but you can also pay up for 3 years and above.</span>
                             </div>
                             </li>
-                            <li>
+                            <!-- <li>
                             <div class="collapsible-header">
                                 <div class="d-flex align-center m-0"><div class="w-24"><span class="circle"></span></div>Other</div>
                                 <i class="material-icons">chevron_right</i>
@@ -658,7 +658,7 @@
                             <div class="collapsible-body">
                                 <span>Whitecoatdomain is a versatile platform that caters to professionals across various domains, not just limited to the medical field. While the name may suggest a focus on healthcare professionals, the platform aims to bring together individuals from different industries who wear white coats as a symbol of their expertise and professionalism.</span>
                             </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -667,7 +667,7 @@
                 <div class="d-flex flex-col justify-center align-center container">
                     <h5 class="mb-2">Create a free account to get started</h5>
                     <get-started-button-component :goto="'/auth/login'" class="mb-2" />
-                    <p>Join our 29,345,698 clients around the world</p>
+                    <!-- <p>Join our 29,345,698 clients around the world</p> -->
                 </div>
             </section>
              <section class="support relative">
@@ -824,32 +824,32 @@
                 services: [
                     {
                         title: 'Live Chat',
-                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        description: 'Some of our templates come with Live chat. This allows your patients to consult with you in real-time. Using live chat, patients can interact with you quickly.',
                         src: 'chats.png',
                     },
                     {
                         title: 'Curriculum Vitae',
-                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        description: 'All templates come with a "CV Download" button. This allows your potential patients acquaint themselves with your wealth of training and experience. ',
                         src: 'cv.png',
                     },
                     {
                         title: 'Social Media Post',
-                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        description: 'Each template provides link to your social media handles or stream your social media. This will help your grow your social media followership.',
                         src: 'socialPost.png',
                     },
                     {
                         title: 'Technical Support',
-                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        description: 'We understand physicians are too busy to figure things out so we provide extensive tech support. This is in line with our easy-of-use principle.',
                         src: 'livesupport.png',
                     },
                     {
                         title: 'Auto generated',
-                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        description: 'Some parts of your website template come with an AI powered auto generation to allow for you to come back to it sometime in future; if need be. ',
                         src: 'autogen.png',
                     },
                     {
                         title: 'Client Review',
-                        description: 'Our team of highl professionals uses the latest heal quickly and easily.',
+                        description: 'Patient review provides you with feedback you need to keep your relationship working well. It also helps potential patient make up their minds.',
                         src: 'star.png',
                     }
                 ],

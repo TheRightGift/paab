@@ -8,10 +8,10 @@
             <p class="description">
                 {{ description }}
             </p>
-            <div class="d-flex align-center">
+            <!-- <div class="d-flex align-center">
                 <span class="readmore">Read More</span>
                 <span class="holder d-flex justify-center align-center"><i class="fa fa-plus"></i> </span>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

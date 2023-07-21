@@ -78,7 +78,7 @@
 }
 .body {
     padding-top: 5vh;
-    padding-bottom: 5vh;
+    /* padding-bottom: 5vh; */
     font-family: "Montserrat", sans-serif;
 }
 .customNav {
@@ -616,14 +616,18 @@ div.image:nth-child(11) {
     left: 80%;
 }
 .getStarted {
-    height: 352px;
+    /* height: 352px; */
+    padding-top: 5vh;
+    padding-bottom: 5vh;
     background-color: #119dadb0;
 }
 .support,
 .getStarted,
-.top,
-.faqs {
+.top{
     top: 210vh;
+}
+.faqs {
+    top: 200vh;
 }
 .getStarted h5 {
     font-family: Montserrat;
@@ -749,6 +753,311 @@ li.active .collapsible-header {
 li.active .circle {
     background: rgba(16, 157, 173, 1);
 }
+/* Desktops and Laptops */
+@media only screen and (min-width: 1024px) {
+    /* CSS styles for desktops and laptops */
+    .show-on-medium {
+        display: none;
+    }
+    .container {
+        width: 90%;
+    }
+    .heading {
+        width: 515px;
+        flex-shrink: 0;
+    }
+    .w-290 {
+        width: 290px;
+    }
+
+    .tempFitRow1 {
+        left: 25%;
+        top: 130%;
+    }
+    .tempFitRow2 {
+        top: 50%;
+        left: 50%;
+    }
+    .tempFitRow3 {
+        right: 7%;
+        top: 10%;
+    }
+    .templateFit .spiralGrey {
+        top: 150%;
+        left: 10%;
+    }
+    .templateFit .spiralRed {
+        top: 170vh;
+        left: 10%;
+        right: 100%;
+    }
+    .md-right-style {
+        position: relative;
+        width: 40vw;
+        left: 60%;
+        top: -20vh;
+    }
+    .image1Container {
+        position: relative;
+        left: 5%;
+    }
+    .joiner {
+        left: 6%;
+    }
+    .top-30 {
+        top: -10vh;
+    }
+    .lg-absolute {
+        position: absolute;
+    }
+    .top-112 {
+        width: 25vw;
+        top: 19vh;
+        left: 11%;
+    }
+    .spiralGrey {
+        top: 85%;
+    }
+    .maskSec {
+        left: 10%;
+    }
+    .collapsible-body {
+        width: 45vw;
+        position: absolute;
+        max-width: 100%;
+        transform: translateX(100%);
+        top: 0;
+        transition: transform 0.3s ease-in-out;
+        z-index: 1;
+    }
+
+    .collapsible-header.active + .collapsible-body {
+        transform: translateX(0);
+    }
+    .collapsible li.active {
+        width: 45vw;
+        position: relative;
+    }
+    .collapsible-header {
+        width: 45vw;
+        padding: 2rem;
+    }
+    .lg-flex {
+        display: flex;
+    }
+    .faqs {
+        padding-bottom: 20vh;
+    } 
+}
+/* Tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /* CSS styles for tablets */
+    .md-flex-col {
+        flex-direction: column;
+    }
+    .md-justify-center {
+        justify-content: center;
+    }
+    .md-446 {
+        height: 446px;
+    }
+    .md-446 img {
+        width: 100%;
+    }
+    .container {
+        width: 90%;
+    }
+    .md-right-style {
+        width: 35vw;
+        left: 65%;
+    }
+    .lg-absolute {
+        position: absolute;
+    }
+    .reviewBoxPrev {
+        top: 140%;
+        right: 0%;
+    }
+    .spiralGrey {
+        top: 45%;
+        left: -20%;
+    }
+    .spiralRed {
+        top: 107%;
+        left: 70%;
+    }
+    .heading {
+        width: 55vw;
+    }
+    .sectionTwoContent {
+        padding-top: 2.5vh;
+    }
+    .bgSec {
+        padding: 8vh;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .templateImgHolder {
+        margin-bottom: 5vh;
+    }
+    .sectionCont {
+        width: 68vw;
+        margin: auto;
+    }
+
+    .sectionFour {
+        padding: 5vh 2vw;
+    }
+    .stepsToStart span {
+        margin-bottom: 1vh;
+    }
+    .service,
+    .description {
+        width: 100% !important;
+    }
+    .templateFit .desc,
+    .templateFit h6 {
+        text-align: center;
+        width: 85vw;
+    }
+    section:first-of-type .description {
+        width: 55vw !important;
+    }
+    .description {
+        margin-bottom: 1vh !important;
+    }
+    .steps {
+        width: 100%;
+    }
+    .steps .contents {
+        width: 35vw;
+    }
+    .spiralCRed,
+    .spiralingGrey {
+        top: 75%;
+    }
+    .spiralCRed,
+    .spiralingGrey {
+        z-index: -1;
+    }
+    .sectionTwoContent .desc.second {
+        margin-top: 4rem;
+    }
+    .sectionTwoContent .heading {
+        width: 570px;
+    }
+    .sectionTwoContent {
+        padding-bottom: 5vh;
+    }
+    .pizzariedUpLeft {
+        width: 766px;
+    }
+    section:first-of-type div.pt-5 {
+        padding-top: 2.5vh;
+        padding-bottom: 5vh;
+    }
+    .templateFit .spiralRed {
+        top: 85%;
+        z-index: 1;
+    }
+    .templateFit .spiralGrey {
+        top: 17%;
+        left: 1%;
+    }
+    .templateFit .desc {
+        margin-bottom: 6vh;
+    }
+    .reviews {
+        top: 0;
+        padding: 0 0 5vh 0;
+    }
+    .mapBg {
+        background-image: url("/media/img/mapMd.png");
+        height: 423px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    div.image:nth-child(9) {
+        left: 12%;
+        width: 53px;
+        height: 53px;
+    }
+    div.image:nth-child(2) {
+        width: 76px;
+        height: 76px;
+    }
+    div.image:nth-child(3) {
+        width: 69px;
+        height: 69px;
+    }
+    div.image:nth-child(6) {
+        width: 64px;
+        height: 64px;
+    }
+    div.image:nth-child(7) {
+        width: 23px;
+        height: 23px;
+    }
+    div.image:nth-child(11) {
+        width: 105px;
+        height: 105px;
+    }
+    div.image:nth-child(4) {
+        width: 32px;
+        height: 32px;
+        top: 25%;
+    }
+    .getStarted,
+    .support,
+    .top, .faqs {
+        top: 0;
+    }
+    .faqs {
+        padding-bottom: 10vh;
+    }
+    .md-m0 {
+        margin: 0;
+    }
+    .md-absolute {
+        position: absolute;
+        bottom: 5%;
+    }
+    .explore:nth-of-type(2) {
+        margin-left: 0 !important;
+    }
+    .cite {
+        width: 45vw !important;
+        text-align: left !important;
+    }
+    .md-rel-13 {
+        position: relative;
+        top: -3vh;
+    }
+    .md-mt-0 {
+        margin-top: 0;
+    }
+    .contactus h6 {
+        margin: 0%;
+    }
+    .explore h5, .contactus h5 {
+        margin: 0;
+    }
+    .getStarted {
+        padding: 5vh 2vw;
+    }
+    li.active .collapsible-header .material-icons {
+        transform: rotate(90deg);
+    }
+    .faqsTitle {
+        font-size: 1.75rem;
+    }
+    .lg-flex {
+        width: 75%;
+        margin: auto;
+    }
+}
 /* Smartphones */
 @media only screen and (max-width: 767px) {
     /* CSS styles for smartphones */
@@ -785,6 +1094,9 @@ li.active .circle {
     }
     .headingText {
         font-size: 1.5rem;
+    }
+    .headingText1 {
+        padding: 0 2vw;
     }
     .image1Container {
         width: 51%;
@@ -1050,7 +1362,7 @@ li.active .circle {
         top: 0;
     }
     .getStarted {
-        height: 469px;
+        /* height: 469px; */
         padding: 5vh 2vw;
     }
     .getStarted h5 {
@@ -1138,309 +1450,6 @@ li.active .circle {
         font-size: 1.5rem;
     }
 }
-/* Tablets */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-    /* CSS styles for tablets */
-    .md-flex-col {
-        flex-direction: column;
-    }
-    .md-justify-center {
-        justify-content: center;
-    }
-    .md-446 {
-        height: 446px;
-    }
-    .md-446 img {
-        width: 100%;
-    }
-    .container {
-        width: 90%;
-    }
-    .md-right-style {
-        width: 35vw;
-        left: 65%;
-    }
-    .lg-absolute {
-        position: absolute;
-    }
-    .reviewBoxPrev {
-        top: 140%;
-        right: 0%;
-    }
-    .spiralGrey {
-        top: 45%;
-        left: -20%;
-    }
-    .spiralRed {
-        top: 107%;
-        left: 70%;
-    }
-    .heading {
-        width: 55vw;
-    }
-    .sectionTwoContent {
-        padding-top: 2.5vh;
-    }
-    .bgSec {
-        padding: 8vh;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .templateImgHolder {
-        margin-bottom: 5vh;
-    }
-    .sectionCont {
-        width: 68vw;
-        margin: auto;
-    }
 
-    .sectionFour {
-        padding: 5vh 2vw;
-    }
-    .stepsToStart span {
-        margin-bottom: 1vh;
-    }
-    .service,
-    .description {
-        width: 100% !important;
-    }
-    .templateFit .desc,
-    .templateFit h6 {
-        text-align: center;
-        width: 85vw;
-    }
-    section:first-of-type .description {
-        width: 55vw !important;
-    }
-    .description {
-        margin-bottom: 1vh !important;
-    }
-    .steps {
-        width: 100%;
-    }
-    .steps .contents {
-        width: 35vw;
-    }
-    .spiralCRed,
-    .spiralingGrey {
-        top: 75%;
-    }
-    .spiralCRed,
-    .spiralingGrey {
-        z-index: -1;
-    }
-    .sectionTwoContent .desc.second {
-        margin-top: 4rem;
-    }
-    .sectionTwoContent .heading {
-        width: 570px;
-    }
-    .sectionTwoContent {
-        padding-bottom: 5vh;
-    }
-    .pizzariedUpLeft {
-        width: 766px;
-    }
-    section:first-of-type div.pt-5 {
-        padding-top: 2.5vh;
-        padding-bottom: 5vh;
-    }
-    .templateFit .spiralRed {
-        top: 85%;
-        z-index: 1;
-    }
-    .templateFit .spiralGrey {
-        top: 17%;
-        left: 1%;
-    }
-    .templateFit .desc {
-        margin-bottom: 6vh;
-    }
-    .reviews {
-        top: 0;
-        padding: 0 0 5vh 0;
-    }
-    .mapBg {
-        background-image: url("/media/img/mapMd.png");
-        height: 423px;
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-    div.image:nth-child(9) {
-        left: 12%;
-        width: 53px;
-        height: 53px;
-    }
-    div.image:nth-child(2) {
-        width: 76px;
-        height: 76px;
-    }
-    div.image:nth-child(3) {
-        width: 69px;
-        height: 69px;
-    }
-    div.image:nth-child(6) {
-        width: 64px;
-        height: 64px;
-    }
-    div.image:nth-child(7) {
-        width: 23px;
-        height: 23px;
-    }
-    div.image:nth-child(11) {
-        width: 105px;
-        height: 105px;
-    }
-    div.image:nth-child(4) {
-        width: 32px;
-        height: 32px;
-        top: 25%;
-    }
-    .getStarted,
-    .support,
-    .top, .faqs {
-        top: 0;
-    }
-    .faqs {
-        padding-bottom: 10vh;
-    }
-    .md-m0 {
-        margin: 0;
-    }
-    .md-absolute {
-        position: absolute;
-        bottom: 5%;
-    }
-    .explore:nth-of-type(2) {
-        margin-left: 0 !important;
-    }
-    .cite {
-        width: 45vw !important;
-        text-align: left !important;
-    }
-    .md-rel-13 {
-        position: relative;
-        top: -3vh;
-    }
-    .md-mt-0 {
-        margin-top: 0;
-    }
-    .contactus h6 {
-        margin: 0%;
-    }
-    .explore h5 {
-        margin: 0;
-    }
-    .getStarted {
-        padding: 5vh 2vw;
-    }
-    li.active .collapsible-header .material-icons {
-        transform: rotate(90deg);
-    }
-    .faqsTitle {
-        font-size: 1.75rem;
-    }
-    .lg-flex {
-        width: 75%;
-        margin: auto;
-    }
-}
-/* Desktops and Laptops */
-@media only screen and (min-width: 1024px) {
-    /* CSS styles for desktops and laptops */
-    .show-on-medium {
-        display: none;
-    }
-    .container {
-        width: 90%;
-    }
-    .heading {
-        width: 515px;
-        flex-shrink: 0;
-    }
-    .w-290 {
-        width: 290px;
-    }
 
-    .tempFitRow1 {
-        left: 25%;
-        top: 130%;
-    }
-    .tempFitRow2 {
-        top: 50%;
-        left: 50%;
-    }
-    .tempFitRow3 {
-        right: 7%;
-        top: 10%;
-    }
-    .templateFit .spiralGrey {
-        top: 150%;
-        left: 10%;
-    }
-    .templateFit .spiralRed {
-        top: 170vh;
-        left: 10%;
-        right: 100%;
-    }
-    .md-right-style {
-        position: relative;
-        width: 40vw;
-        left: 60%;
-        top: -20vh;
-    }
-    .image1Container {
-        position: relative;
-        left: 5%;
-    }
-    .joiner {
-        left: 6%;
-    }
-    .top-30 {
-        top: -10vh;
-    }
-    .lg-absolute {
-        position: absolute;
-    }
-    .top-112 {
-        width: 25vw;
-        top: 19vh;
-        left: 11%;
-    }
-    .spiralGrey {
-        top: 85%;
-    }
-    .maskSec {
-        left: 10%;
-    }
-    .collapsible-body {
-        width: 45vw;
-        position: absolute;
-        max-width: 100%;
-        transform: translateX(100%);
-        top: 0;
-        transition: transform 0.3s ease-in-out;
-        z-index: 1;
-    }
-
-    .collapsible-header.active + .collapsible-body {
-        transform: translateX(0);
-    }
-    .collapsible li.active {
-        width: 45vw;
-        position: relative;
-    }
-    .collapsible-header {
-        width: 45vw;
-        padding: 2rem;
-    }
-    .lg-flex {
-        display: flex;
-    }
-    .faqs {
-        padding-bottom: 20vh;
-    } 
-}
 

@@ -8,6 +8,14 @@
                         class="responsive-img logoFooter mb-2"
                     />
                     <div class="d-flex justify-between align-center sm-justify-center  md-absolute sm-flex-col">
+                        <!-- <div class="hide-on-small-only">
+                            <div class="d-flex justify-between sm-justify-center align-center">
+                                <span class="links"
+                                    ><i class="fa-solid fa-phone"></i>
+                                </span>
+                                <span class="pl-2">+234817646</span>
+                            </div>
+                        </div> -->
                         <div class="hide-on-small-only">
                             <div class="d-flex justify-between align-center sm-justify-center pl-2">
                                 <span class="links"
@@ -37,9 +45,16 @@
                     <div class="d-flex justify-between md-flex-col md-rel-13">
                         <div class="explore mb-4">
                             <h5>Explore</h5>
-                            <a href="/">Home</a>
+                            <ul>
+                                <li>
+                                    <a href="/">Home</a>
+                                </li>
+                                <li>
+                                    <a href="/">Templates</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="explore ml-4 md-m0">
+                        <!-- <div class="explore ml-4 md-m0">
                             <h5>Utility Pages</h5>
                             <ul>
                                 <li>
@@ -49,9 +64,15 @@
                                     <a href="/">Change log</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="d-flex justify-between align-center sm-align-center sm-flex-col hide-on-med-and-up">
+                        <!-- <div class="d-flex justify-between sm-justify-center align-center mb-2">
+                            <span class="links"
+                                ><i class="fa-solid fa-phone"></i>
+                            </span>
+                            <span class="pl-2">+234817646</span>
+                        </div> -->
                         <div class="d-flex justify-between align-center sm-justify-center pl-2">
                             <span class="links"
                                 ><i class="fa-solid fa-envelope"></i
@@ -60,9 +81,9 @@
                             <span class="pl-2">support@whitecoatdomain</span>
                         </div>
                     </div>
-                    <div class=" hide-on-small-only md-rel-13">
+                    <div class="hide-on-small-only md-rel-13 width30">
                         <div class="contactus d-flex flex-col">
-                            <h6>Contact Us</h6>
+                            <h5>Contact Us</h5>
                             <p>We are always available to help</p>
                             <form>
                                 <div class="custom-input">
@@ -94,32 +115,6 @@
     </div>
 </template>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-.d-flex {
-    display: flex;
-}
-.justify-center {
-    justify-content: center;
-}
-.justify-between {
-    justify-content: space-between;
-}
-.align-center {
-    align-items: center;
-}
-.flex-col {
-    flex-direction: column;
-}
-.mb-2 {
-    margin-bottom: 2rem;
-}
-.mb-4 {
-    margin-bottom: 4rem;
-}
-.ml-4 {
-    margin-left: 4rem;
-}
     footer {
         padding: 9vh 0 14vh 0;
         background: #e5f2ef;
@@ -144,7 +139,7 @@
         font-weight: 500;
         word-wrap: break-word;
     }
-    .explore h5 {
+    .explore h5, .contactus h5 {
         color: #1c1c1c;
         font-size: 20px;
         font-family: 'Montserrat', sans-serif;
@@ -160,13 +155,11 @@
         line-height: 32px;
         word-wrap: break-word;
     }
-    .custom-input input {
+    .custom-input {
+        width: 325.7px;
         height: 60px;
         background: white;
         margin-bottom: 2rem;
-        border: none;
-        border-radius: 5px;
-        padding: 2vw;
     }
     .custom-input input { 
         width:100%;
@@ -179,9 +172,9 @@
         word-wrap: break-word;
     }
     .custom-btn {
-        color: #fff;
+        color: var(--white);
         background: var(--pri);
-        padding: 1vh 4vw;
+        padding: 3vh 6vw;
         border-radius: 30px;
         border: 2px solid white;
         font-size: 1.25rem;
@@ -189,7 +182,7 @@
     }
     .custom-btn:hover, .custom-btn:visited {
         color: var(--pri);
-        background: #fff;
+        background: var(--white);
     }
     span.links {
         width: 43.115px;
@@ -244,13 +237,10 @@
         .explore:nth-of-type(2) {
             margin-left: 15vw;
         }
-        .sm-flex-col {
-            flex-direction: column;
-        }
     }
     @media only screen and (min-width: 768px) and (max-width: 1023px) {
         .custom-btn {
-            padding: 1vh 12vw;
+            padding: 1vh 10vw;
         }
         .cite {
             font-size: 1.75rem;
@@ -258,13 +248,13 @@
         .md-absolute {
             bottom: 15%;
         }
-        .md-rel-13 {
-            position: relative;
-            top: -3vh;
+        .width30 {
+            width: 30%;
         }
-        .md-m0 {
-        margin: 0;
-    }
+        .custom-input {
+            width: 100%;
+        }
+        
     }
 </style>
 <script>
