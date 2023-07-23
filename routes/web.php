@@ -41,7 +41,7 @@ Route::get('/faqs', function () {
 
 
 
-Route::get('/preview/{templateId}', [App\Http\Controllers\TemplateController::class, 'renderTemplate']);
+Route::get('/template/preview/{templateId}', [App\Http\Controllers\TemplateController::class, 'renderTemplate']);
 
 // Socialite
 Route::get('/login/{provider}/callback', [App\Http\Controllers\SocialController::class, 'callback']);

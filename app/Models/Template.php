@@ -14,8 +14,8 @@ class Template extends Model
         'title', 'profession_id', 'imageUrl', 'approved', 'styleFile'
     ];
 
-    public function profession()
+    public function specialty()
     {
-        return $this->belongsTo('App\Models\Profession', 'profession_id', 'id');
+        return $this->belongsTo('App\Models\Specialty', 'specialty_id', 'id');
     }
 }
