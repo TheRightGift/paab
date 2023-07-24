@@ -95,7 +95,7 @@
                                     />
                                 </div>
                                 <button
-                                    class="waves waves-effect custom-btn"
+                                    class="waves waves-effect custom-btn footerBtn"
                                     type="submit"
                                 >Send</button>
                             </form>
@@ -103,11 +103,11 @@
                     </div>
                 </div>
             </div>
-            <div
+            <!-- <div
                 class="
                     curve hide-on-med-and-down
                 "
-            ></div>
+            ></div> -->
         </footer>
         <div class="copyright d-flex justify-center">
             Copyright © Whitecoatdomain | {{ new Date().getFullYear() }}
@@ -155,12 +155,20 @@
         line-height: 32px;
         word-wrap: break-word;
     }
-    .custom-input {
-        width: 325.7px;
+    .custom-input input, .custom-textarea textarea {
+        width: 100%;
         height: 60px;
         background: white;
-        margin-bottom: 2rem;
+        border-left: 0.5px #dcdcdc solid;
+        border-top: 0.5px #dcdcdc solid;
+        border-right: 0.5px #dcdcdc solid;
+        border-bottom: 0.5px #dcdcdc solid;
+        padding: 0 0 0 1vw;
+        /* margin-bottom: 2vh; */
     }
+    .width30 {
+            width: 30%;
+        }
     .custom-input input { 
         width:100%;
     }
@@ -174,11 +182,12 @@
     .custom-btn {
         color: var(--white);
         background: var(--pri);
-        padding: 3vh 6vw;
+        padding: 1.5vh 4vw;
         border-radius: 30px;
         border: 2px solid white;
         font-size: 1.25rem;
         font-weight: 500;
+        margin-top: 2vh;
     }
     .custom-btn:hover, .custom-btn:visited {
         color: var(--pri);
@@ -214,30 +223,17 @@
         padding-left: 2vw;
         font-size: 1.5rem;
         color: var(--white);
-    }.curve {
+    }
+    .curve {
         width: 833.23px;
-                    height: 630.23px;
-                    left: -37%;
-                    top: -384.58px;
-                    position: absolute;
-                    border-radius: 9999px;
-                    border: 1.5px #edfffa solid;
+        height: 630.23px;
+        left: -37%;
+        top: -384.58px;
+        position: absolute;
+        border-radius: 9999px;
+        border: 1.5px #edfffa solid;
     }
-    @media only screen and (max-width: 767px) {
-        .cite {
-            font-size: 1.5rem;
-            width: 52vw;
-            text-align: center;
-        }
-        i.fa-brands {
-            color: var(--pri) !important;
-            font-size: 1.8rem;
-            padding-left: 10vw;
-        }
-        .explore:nth-of-type(2) {
-            margin-left: 15vw;
-        }
-    }
+    
     @media only screen and (min-width: 768px) and (max-width: 1023px) {
         .custom-btn {
             padding: 1vh 10vw;
@@ -255,6 +251,21 @@
             width: 100%;
         }
         
+    }
+    @media only screen and (max-width: 767px) {
+        .cite {
+            font-size: 1.5rem;
+            width: 52vw;
+            text-align: center;
+        }
+        i.fa-brands {
+            color: var(--pri) !important;
+            font-size: 1.8rem;
+            padding-left: 10vw;
+        }
+        .explore:nth-of-type(2) {
+            margin-left: 15vw;
+        }
     }
 </style>
 <script>

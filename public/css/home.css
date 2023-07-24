@@ -680,7 +680,7 @@ div.image:nth-child(11) {
     gap: 29px;
 }
 .custom-input {
-    width: 528px;
+    width: 100%;
     height: 60px;
 }
 .custom-input input,
