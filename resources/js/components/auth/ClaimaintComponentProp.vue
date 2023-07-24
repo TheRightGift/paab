@@ -39,7 +39,7 @@
                             </form>
                         </div>
                         <div v-show="otpMode" class="row">
-                            <otp-component @res="changeView($event)" type="register" :otp="otp" />
+                            <otp-component @res="changeView($event)" type="register" :otp="otp" :text="'Please check '+inputEmail+' for your OTP.'" />
                         </div>
                     </div>
 
@@ -978,6 +978,11 @@
                             }
                         })
                         .catch((err) => {
+                            M.toast({
+                                html: err.response.data.message,
+                                classes: "errorNotifier",
+                            });
+                            this.verificationLoading = false;
                             console.log(err.response);
                         });
                 }

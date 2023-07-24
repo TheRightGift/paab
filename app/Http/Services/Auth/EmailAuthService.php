@@ -26,7 +26,8 @@ class EmailAuthService
 {
     protected function dataToValidate(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        // $validator = Validator::make($request->all(), [
+        $validator = $request->validate([
             'firstname' => 'nullable',
             'lastname' => 'nullable',
             'othername' => 'nullable',
@@ -44,15 +45,17 @@ class EmailAuthService
 
     protected function emailDataValidation(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'email|required',
+        $validator = $request->validate([
+            'email' => 'email|required|unique:users'
         ]);
+        
         return $validator;
     }
 
     protected function passwordResetDataValidation(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        // $validator = Validator::make($request->all(), [
+        $validator = $request->validate([
             'email' => 'email|required',
             'password' => 'required',
         ]);
@@ -61,7 +64,8 @@ class EmailAuthService
 
     protected function regDataToValidate(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        // $validator = Validator::make($request->all(), [
+        $validator = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
             // 'othername' => 'nullable',
@@ -170,6 +174,32 @@ class EmailAuthService
         return $string;
     }
 
+    private function confirmEmail($email)
+    {
+        $user = new User();
+        $userEmail = $user->where('email', $email)->first();
+
+        if (!empty($userEmail)) {
+            return ['user' => $userEmail, 'status' => 200];
+        } else {
+            return 404;
+        }
+    }
+
+    private function genOTP()
+    {
+        return sprintf("%06d", mt_rand(1, 999999));
+    }
+
+    private function maileOTP($email, $otp)
+    {
+        //  Get the $email and $otp generated
+        (new User())->forceFill([
+            'otp' => $otp,
+            'email' => $email,
+        ])->notify(new MailOTP($otp));
+    }
+
     public function register(Request $request)
     {
         $regData = $this->regDataToValidate($request);
@@ -232,27 +262,21 @@ class EmailAuthService
                 return ['status' => 404, 'error' => 'User with this email not found.'];
             }
         }
+        
     }
 
     public function verifyEmailForRegistration($request)
     {
         $data = $this->emailDataValidation($request);
-        if ($data->fails()) {
-            return response()->json(['errors' => $data->errors()->all()]);
-        } else {
-            $input = $data->validated();
-            $userVerified = $this->confirmEmail($input['email']);
+        
+        if($data['email']){
+            $otp = $this->genOTP();
+            $crypted = Crypt::encryptString($otp);
+            $this->maileOTP($data['email'], $otp);
 
-            if($userVerified == 404) {//verified that email doesnt exist
-                $otp = $this->genOTP();
-                $crypted = Crypt::encryptString($otp);
-                $this->maileOTP($input['email'], $otp);
-
-                return ['status' => 200, 'otp' => $crypted];
-            } else {//!verified
-                return ['status' => 404, 'error' => 'Account with this email exists.'];
-            }
-        }
+            return ['status' => 200, 'otp' => $crypted];
+        }  
+        // return ['status' => 404, 'error' => 'Account with this email exists.'];
     }
 
     public function verifyEmailForWebsiteEdit($request)
@@ -333,18 +357,6 @@ class EmailAuthService
         return ['status' => 200, 'message' => 'OTP Verified'];
     }
 
-    private function confirmEmail($email)
-    {
-        $user = new User();
-        $userEmail = $user->where('email', $email)->first();
-
-        if (!empty($userEmail)) {
-            return ['user' => $userEmail, 'status' => 200];
-        } else {
-            return 404;
-        }
-    }
-
     private function confirmEmailOnAdminClientTable($email)
     {
         $GLOBALS['mail'] = $email;
@@ -396,19 +408,6 @@ class EmailAuthService
         }
     }
 
-    private function genOTP()
-    {
-        return sprintf("%06d", mt_rand(1, 999999));
-    }
-
-    private function maileOTP($email, $otp)
-    {
-        //  Get the $email and $otp generated
-        (new User())->forceFill([
-            'otp' => $otp,
-            'email' => $email,
-        ])->notify(new MailOTP($otp));
-    }
 
     /**
      * This function request for old password in order to change to new one
