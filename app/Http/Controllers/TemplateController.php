@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Template;
-use App\Models\Profession;
+use App\Models\Specialty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,7 +16,7 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        $templates = Template::where([['approved', 'T'], ['toDelete', null]])->orderBy('title')->with('profession')->get();
+        $templates = Template::where([['approved', 'T'], ['toDelete', null]])->orderBy('title')->with('specialty')->get();
         return response(['templates' => $templates, 'message' => 'Retrieved Success'], 200);
     }
 
@@ -30,7 +30,7 @@ class TemplateController extends Controller
     {
         $inputs = Validator::make($request->all(), [
             'title' => ['required'],
-            'profession_id' => 'required',
+            'specialty' => 'required',
             'imageUrl' => 'required',
             'styleFile' => 'required|file|max:200'
         ]);
@@ -38,7 +38,7 @@ class TemplateController extends Controller
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
-            $profession = Profession::find($input['profession_id']);
+            $specialty = Specialty::find($input['specialty']);
             if($request->hasFile('imageUrl')) {
                 $image = $request->file('imageUrl');
                 $ext = $request->file('imageUrl')->getClientOriginalExtension();
@@ -65,7 +65,7 @@ class TemplateController extends Controller
      */
     public function show($id)
     {
-        $template = Template::where([['profession_id', $id], ['approved', 'T']])->with('profession')->get();
+        $template = Template::where([['specialty', $id], ['approved', 'T']])->with('profession')->get();
         return response(['templates' => $template, 'message' => 'Retrieved Success'], 200);
     }
 
@@ -80,7 +80,7 @@ class TemplateController extends Controller
     {
         $inputs = Validator::make($request->all(), [
             'title' => ['required'],
-            'profession_id' => 'required',
+            'specialty' => 'required',
             'imageUrl' => 'nullable',
             'styleFile' => 'nullable|file|max:200'
         ]);
@@ -88,7 +88,7 @@ class TemplateController extends Controller
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
-            $profession = Profession::find($input['profession_id']);
+            $specialty = Specialty::find($input['specialty']);
             if($request->hasFile('imageUrl')) {
                 $image = $request->file('imageUrl');
                 $ext = $request->file('imageUrl')->getClientOriginalExtension();
@@ -159,7 +159,7 @@ class TemplateController extends Controller
      */
     public function getIndex()
     {
-        $templates = Template::orderBy('updated_at')->with('profession')->get();
+        $templates = Template::orderBy('updated_at')->with('specialty')->get();
         return response(['templates' => $templates, 'message' => 'Retrieved Success'], 200);
     }
 
