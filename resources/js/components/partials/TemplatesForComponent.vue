@@ -3,7 +3,7 @@
         <div class="content relative">
             <img class="doctorTypes" :src="'/media/img/' + src" />
 
-            <div class="arrowBg d-flex justify-center align-center hoverable">
+            <div class="arrowBg d-flex justify-center align-center hoverable" @click="route()">
                 Preview <i class="fa-solid fa-arrow-right"></i>
             </div>
             <div class="title">{{ title }}</div>
@@ -82,5 +82,10 @@
             src: String,
             title: String,
         },
+        methods: {
+            route() {
+                location.href = '/templates';
+            }
+        }
     };
 </script>

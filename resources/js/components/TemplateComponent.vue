@@ -2,7 +2,7 @@
     <div>
         <div class="container">
             <header>
-                <div class="d-flex justify-between">
+                <div class="d-flex justify-between align-center">
                     <img
                         class="logo"
                         src="/media/img/wcd-logo-noBckg.png"
@@ -11,13 +11,13 @@
                     <ul>
                         <li><a href="/" class="link">Home</a></li>
                     </ul>
-                    <sign-up-button-component />
+                    <sign-up-button-component class="hide-on-small-only"/>
                 </div>
             </header>
             <main>
                 <section>
-                    <div class="primaryBg content d-flex align-center">
-                        <img src="/media/img/tempFitDocs.png" class="fitImg" />
+                    <div class="primaryBg content d-flex sm-flex-col align-center">
+                        <img src="/media/img/tempFitDocs.png" class="fitImg responsive-img" />
                         <div class="fitContainer">
                             <h6 class="fitHeading6">
                                 Templates fit just for you
@@ -58,7 +58,7 @@
                             <p
                                 class="specialtyName"
                                 :class="{active: selectedIndex == index}"
-                                @click="getTemplates(specialty.templates)"
+                                @click="getTemplatesForSpecialty(index, specialty.templates, specialty.title)"
                             >
                                 {{ specialty.title }}
                             </p>
@@ -67,13 +67,16 @@
                 </section>
                 <section>
                     <div class="templates row">
-                        <div
-                            class="template col s12 m4 l3"
-                            v-for="template in templates"
-                            :key="template"
-                            >
-                            <!-- :style="getImageStyle(template.imageUrl)" -->
-                           <img :src="template.imageUrl" class="responsive-img border"/>
+                        <div v-for="template in templates" :key="template" class="col s12 m4 l3">
+                            <div
+                                class="template"
+                                :style="getImageStyle(template.imageUrl)"
+                                >
+                                <!-- <img :src="template.imageUrl" class="responsive-img border"/> -->
+                            </div>
+                            <a class="templateTitle" :href="'/template/preview/'+template.id">{{ template.title }}</a>
+
+                            <p>{{ title || template.title}} <span class="tier">Premium</span></p>
                         </div>
                     </div>
                 </section>
@@ -102,6 +105,7 @@
                 specialties: [],
                 selectedIndex: 0,
                 templates: [],
+                title: ''
             };
         },
         mounted() {
@@ -114,9 +118,10 @@
                     "background-image": `url(${imageUrl})`,
                 };
             },
-            getTemplatesForSpecialty(index, templates) {
+            getTemplatesForSpecialty(index, templates, title) {
                 this.selectedIndex = index;
                 this.templates = templates;
+                this.title = title;
             },
             getTemplates() {
                 this.fetching = true;
