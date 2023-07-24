@@ -30,7 +30,7 @@
                             <h6>Enter your email to proceed</h6>
                             <form @submit.prevent="checkEmail">
                                 <div class="">
-                                    <label>Enter your email address</label>
+                                    <!-- <label>Enter your email address</label> -->
                                     <input type="email" v-model="inputEmail" class="browser-default mt-1" placeholder="Email address" required/>
                                 </div>
                                 <div class="flex justify-center mt-1">
