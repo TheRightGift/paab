@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class General extends Model
 {
     use HasFactory;
-    protected $fillable = ['favicon', 'title', 'title_id'];
+    protected $fillable = ['favicon', 'title', 'title_id', 'headerTitle'];
 }

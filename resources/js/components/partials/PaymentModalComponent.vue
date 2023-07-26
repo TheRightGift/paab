@@ -132,7 +132,7 @@
                 addPaymentStatusError: "",
                 paymentMethods: [],
                 requesting: false,
-                 plan: 'price_1N9xKmGol1wahrlSl4XkMDTn',
+                plan: process.env.MIX_STRIPE_PLAN,
                 paymentMethodSelected: {},
                 paymentSuccessful: 0,
                 URL: process.env.MIX_APP_URL,

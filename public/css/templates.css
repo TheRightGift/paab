@@ -28,6 +28,16 @@
     /* Select the down or left scroll button when it's being hovered by the mouse */
 }
 /* General in the templates */
+.fs-1 {
+    font-size: 1rem !important;
+    line-height: inherit !important;
+}
+.pl-3 {
+    padding-left: 1.5vw;
+}
+.ml-3 {
+    margin-left: 1.5vw;
+}
 .socials {
     width: 265px;
     margin-top: 5dvh;
@@ -59,7 +69,8 @@
 .fa-phone {
     color: rgba(237, 1, 127, 1);
 }
-nav i, .fa-settings {
+nav i,
+.fa-settings {
     font-size: 2.5rem !important;
 }
 .button {
@@ -78,4 +89,144 @@ nav i, .fa-settings {
     bottom: 8px;
     width: 100%;
     /* Additional styles if needed */
+}
+.primary {
+    color: var(--primary);
+}
+.custom-edit-field,
+.custom-textarea-field {
+    border: 1px dotted var(--primary);
+    padding: 1vh;
+    color: var(--secondary);
+    outline: none;
+}
+.custom-textarea-field {
+    width: 36vw;
+    height: 30vh;
+    font-size: 1.5rem;
+    margin-bottom: 3vh;
+}
+.socials .custom-edit-field {
+    width: 4vw;
+}
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+.input-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+}
+
+.input-container input {
+    padding-left: 25px; /* Adjust the padding to make space for the icon */
+    font-size: 16px; /* Optional: Adjust the font size of the input text */
+}
+.w-100 {
+    width: 100%;
+}
+.h-10 {
+    height: 7vh;
+}
+.icons-call i, .icons-call span{
+    color: rgba(255, 255, 255, 1);
+    font-size: 2rem;
+    margin: 0;
+}
+.icons-call {
+    align-items: baseline;
+}
+.icons-call span {
+    padding: 0 2vh;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(163, 160, 160, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+.upload-label {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+input[type="file"] {
+    display: none;
+}
+.inlBlock {
+    display: block;
+}
+.browse {
+    color: var(--secondary);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.editDesc {
+    color: rgba(71, 84, 103, 1);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 0;
+}
+.gap-3 {
+    gap: 1vw;
+}
+.editSite.modal {
+    width: 25%;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+}
+.editSite.modal h5 {
+    font-weight: 600;
+}
+.imagodit {
+    height: 10vh;
+    border: 1px solid rgba(217, 217, 217, 0.41);
+}
+.modal .custom-btn {
+    box-shadow: unset;
+    outline: none;
+    border: none;
+}
+.modal .custom-btn:first-child {
+    background-color: #fff;
+    color: rgba(52, 64, 84, 1);
+    border: 1px solid rgba(128, 128, 128, 0.209);
+}
+.modal .custom-btn:last-child {
+    background-color: rgba(71, 134, 209, 1);
+}
+.arrowUp {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .editSite.modal {
+        width: 55%;
+    }
+    .gap-3 {
+        gap: 6vw;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .editSite.modal {
+        width: 80%;
+    }
+    .gap-3 {
+        gap: 6vw;
+    }
 }

@@ -64,6 +64,7 @@
                     <img :src="uploaded ? uploaded : path + photo" v-show="uploaded != null || photo != null" class="responsive-img"/>
                 </div>
             </div>
+            <p v-show="photo !== null || uploaded !== null">Click on the image to upload your picture</p>
         </section>
     </div>
 </template>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AdminClientOrder;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class AdminClientOrderController extends Controller
@@ -44,18 +45,8 @@ class AdminClientOrderController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ClientOrder  $clientOrder
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ClientOrder $clientOrder)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
+     * For verifiersof doximity
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\ClientOrder  $clientOrder
@@ -66,17 +57,16 @@ class AdminClientOrderController extends Controller
         $order = AdminClientOrder::where('tenant_id', $tenant_id)->first();
         $order->email = $request->email;
         $order->save();
+        $response = Http::get(env('WCDSERVICE_URL')."api/v1/track/$order->email?action=VERIFIEDMAIL&clickedPrev=1"); // Make a GET request
+
+        if ($response->successful()) {
+            $data = $response->json(); // Retrieve the response data
+            // Process the data as needed
+        } else {
+            $statusCode = $response->status();
+            // Handle the error based on the status code
+        }
         return response()->json(['order' => $order, 'message' => 'Updated Success'], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ClientOrder  $clientOrder
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ClientOrder $clientOrder)
-    {
-        //
-    }
 }

@@ -133,6 +133,7 @@ class BioController extends Controller
             'about' => 'nullable',
             'firstname' => 'nullable',
             'lastname' => 'nullable',
+            'othername' => 'nullable',
             'gender' => 'nullable',
             'title_id' => 'nullable'
             // 'photo' => 'nullable|image|mimes:jpg,png|max:1000|dimensions:min_width=451,min_height=512,max_width=451,max_height=512',
@@ -156,7 +157,17 @@ class BioController extends Controller
                     $height = $img->height();
                     $x = round(($width - 650) / 2);
                     $y = round(($height - 799) / 2); 
-                    $img->crop(650, 799, $x, $y)->save($file);
+                    // $img->crop(650, 799, $x, $y)->save($file);
+                    $img->save($file);
+                    // $mask = $img
+                    //     ->greyscale() // greyscale the signature image
+                    //     ->contrast(100) // increase the contrast to reach pure black and white
+                    //     ->contrast(50) // more contrast to ensure!
+                    //     ->trim('top-left', null, 40) // it's better to set a tolerance for trim()
+                    //     ->invert(); // invert it to use as a mask
+                    // $new_image = Image::canvas($mask->width(), $mask->height(), '#000000')
+                    //     ->mask($mask)
+                    //     ->save($file);
                     $input['photo'] = $safeName;
                 }
                 $bio2Update->update($input);

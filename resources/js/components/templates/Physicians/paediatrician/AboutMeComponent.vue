@@ -17,7 +17,7 @@
                             </div>
                         </div>
                         <p class="introductory">
-                            Hi, i’m Doctor Peter,
+                            Hello, i’m Doctor Peter,
                             <span>A Pediatrician</span>
                         </p>
                         <p class="introduction">
@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <p class="introductory">
-                            Hi, i’m Doctor {{ about.name }},
+                            Hello, i’m Doctor {{ about.name }},
                             <span>A Pediatrician</span>
                         </p>
                         <p class="introduction">
