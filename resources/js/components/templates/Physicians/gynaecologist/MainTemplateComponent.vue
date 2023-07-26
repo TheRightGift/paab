@@ -20,6 +20,7 @@
                 :userSubscribed="Boolean(usersubscribed)"
                 :email="email"
                 :physicianName="physicianName"
+                :general="generalData"
             />
             <main>
                 <AboutMeComponent
@@ -39,7 +40,6 @@
                     :services="services"
                     :isLoggedIn="loggedIn"
                     :preview="preview"
-                    :interests="interests"
                 />
                 <MiniBlogComponent
                     :tenant="tenant"
@@ -110,7 +110,8 @@ let service = '/api/service';
 let achievement = '/api/achievement';
 let review = '/api/review';
 let contact = '/api/contact';
-let miniBlog = '/api/miniblog'
+let miniBlog = '/api/miniblog';
+let general = '/api/general';
 // CVs
 let cvXpo = '/api/cvexperience';
 let summy = '/api/cv';
@@ -141,6 +142,7 @@ export default {
             achievement: {},
             reviews: [],
             loading: false,
+            generalData: {},
             location: "",
             loggedIn: false,
             initialCheck: false,
@@ -295,9 +297,9 @@ export default {
             const requestOtherSchool = axios.get(cvOther);
             const requestUnderGrad = axios.get(underGrad);
             const requestLicense = axios.get(license);
-
+            const requestGeneral = axios.get(general);
             axios
-                .all([requestBio, requestService, requestAchievement, requestReviews, requestContact, requestMiniBlog, requestSummary, requestCvXpo, requesTraining, requestReferral, requestMedSchool, requestOtherSchool, requestUnderGrad, requestLicense,
+                .all([requestBio, requestService, requestAchievement, requestReviews, requestContact, requestMiniBlog, requestSummary, requestCvXpo, requesTraining, requestReferral, requestMedSchool, requestOtherSchool, requestUnderGrad, requestLicense, requestGeneral
                 ])
                 .then(
                     axios.spread((...responses) => {
@@ -316,6 +318,7 @@ export default {
                         const otherSchoolRes = responses[11];
                         const underGradRes = responses[12];
                         const licenseRes = responses[13];
+                        const generalRes = responses[14];
 
                         this.services = servicesRes.data.services;
                         this.bio = bioRes.data.bio;
@@ -324,6 +327,7 @@ export default {
                         this.reveiwLen = this.reviews.data.length;
                         this.contact = contactRes.data.contact;
                         this.miniBlog = miniBlogRes.data.miniBlog;
+                        this.generalData = generalRes.data.general;
                         this.CV = {
                             summary: summaryRes.data.cvSummary,
                             experience: cvExpRes.data.experience,

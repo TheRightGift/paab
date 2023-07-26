@@ -84,7 +84,6 @@ class SettingController extends Controller
                 return redirect('auth/login');
             }
         } else {
-            dd('here');
             return redirect('auth/login');
         }
     }

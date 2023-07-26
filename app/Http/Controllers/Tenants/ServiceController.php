@@ -19,7 +19,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::latest()->take(3)->get();
+        $services = Service::latest()->get();
         return response()->json(['message' => 'Fetched Success', 'services' => $services]);
     }
 
@@ -31,32 +31,24 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->input('data'));
-        $data = json_decode($request->input('data'));
         $inputs = Validator::make($request->all(), [
-            // 'data' => 'nullable',
-            'data.*.title' => 'nullable',
-            'data.*.description' => 'nullable',
-            'data.*.icon' => 'nullable|image|mimes:jpg,png|max:10',
+            'title' => 'required',
+            'description' => 'required',
+            'index' => 'nullable',
+            'icon' => 'nullable', // image|mimes:jpg,png|max:10
         ]); 
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
-            // if($request->hasFile('icon')){
-            //     $photo = $request->file('icon');
-            //     $stored = \Storage::disk('public')->put("img", $photo);
-            //     // $url = tenant_asset($stored);
-            //     // dd($url, $stored);
-            //     $input['icon'] = $stored;
-            // } 
-            // dump($input, $data);
-            foreach ($data as $row) {
-                $service = new Service();
-                $service->interest_id = $row->id;
-                $service->save();
-            }
-            return response(['services' => $service->latest()->take(3)->get(), 'message' => 'Created Success'], 201);
+            $service = new Service();
+            $service->title = $input['title'];
+            $service->description = $input['description'];
+            $service->interest_id = 1;
+            $service->icon = $input['icon'];
+            $service->index = $input['index'];
+            $service->save();
+            return response(['services' => $service->latest()->get(), 'message' => 'Created Success'], 201);
         }
     }
 
@@ -69,52 +61,19 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $service)
     {
-        $data = json_decode($request->input('data'));
-        $removed = json_decode($request->input('removed'));
         $inputs = Validator::make($request->all(), [
-            // 'data' => 'nullable',
-            'data.*.title' => 'nullable',
-            'data.*.description' => 'nullable',
-            'data.*.icon' => 'nullable|image|mimes:jpg,png|max:10',
+            'title' => 'required',
+            'description' => 'required',
         ]); 
         if ($inputs->fails()) {
-            return response($inputs->errors()->all(), 501);
+            return response($inputs->errors()->all(), 400);
         } else {
             $input = $inputs->validated();
-            // if($request->hasFile('icon_filename')){
-            //     $image = $request->file('icon_filename');
-            //     $name = $image->getClientOriginalName();
-            //     $image->file(storage_path('/media/img/' . $name));
-            //     // $image->move(public_path('/media/img/'), $name);
-            //     $input['icon_filename'] = '/media/img/'.$name;
-            // } 
-            #TODO: Run a check to make sure if this is an array
-            $service2Update = true;
-            if ($request->has('removed')) {
-                foreach ($removed as $row) {
-                    // dd($row->id);
-                    $services = new Service();
-                    $service2Update = $services->find($row->id);
-                    $service2Update->delete();
-                }
-            }
-            $services = new Service();
-            foreach ($data as $row) {
-                $services = new Service();
-                $checkIfAlreadyInserted = $services->where('interest_id', $row->id)->first();
-                if ($checkIfAlreadyInserted == null) {
-                    $services->interest_id = $row->id;
-                    $services->save();
-                }
-                
-            }
-            if ($service2Update == true) {
-                $this->settingschangeNotify();
-                return response()->json(['message' => 'Updated', 'services' => $services->latest()->take(3)->get(), 'status' => 200], 200);
-            }
-            else {
-                return response()->json(['message' => 'Error Updating', 'services' => $services->latest()->take(3)->get(), 'status' => 501], 501);
-            }
+            $service = Service::find($service);
+            $service->title = $input['title'];
+            $service->description = $input['description'];
+            $service->save();
+            return response(['services' => $service->latest()->get(), 'message' => 'Created Success'], 201);
         }
     }
 

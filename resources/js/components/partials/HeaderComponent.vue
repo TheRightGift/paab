@@ -28,12 +28,7 @@
                     /></a>
                     <ul
                         id="nav-mobile"
-                        class="
-                            section
-                            table-of-contents
-                            right
-                            hide-on-med-and-down
-                        "
+                        class="section table-of-contents right hide-on-med-and-down"
                     >
                         <li><a href="#product" class="navLinks">Product</a></li>
                         <li>
@@ -129,12 +124,7 @@
 
                     <ul
                         id="nav-mobile"
-                        class="
-                            section
-                            right
-                            table-of-contents
-                            hide-on-med-and-down
-                        "
+                        class="section right table-of-contents hide-on-med-and-down"
                     >
                         <li>
                             <a href="#template" class="navLinks tempScrollLink"
@@ -220,12 +210,7 @@
                     >
                     <ul
                         id="nav-mobile"
-                        class="
-                            section
-                            table-of-contents
-                            right
-                            hide-on-med-and-down
-                        "
+                        class="section table-of-contents right hide-on-med-and-down"
                     >
                         <li>
                             <a href="#services" id="physiTempNavLinks"

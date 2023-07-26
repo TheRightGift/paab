@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use App\Http\Controllers\Controller;
-use App\Models\Tenants\Social;
 use Illuminate\Http\Request;
-use Validator;
+use App\Models\Tenants\Social;
 use App\Trait\ServiceNotifier;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class SocialController extends Controller
 {

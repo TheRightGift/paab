@@ -65,6 +65,30 @@ class GeneralController extends Controller
         }
     }
 
+    public function saveOrUpdateHeaderTitle(Request $request) {
+        $inputs = Validator::make($request->all(), [
+            'headerTitle' => 'required',
+        ]);
+        if ($inputs->fails()) {
+            return response($inputs->errors()->all(), 400);
+        } else {
+            $input = $inputs->validated();
+            // Get all the data from
+            // If not empty, then get the first item
+            // 
+            $generals = new General();
+            $data = $generals->all();
+            if ($data->isNotEmpty()) {
+                $datum = $generals->first();
+                $datum->headerTitle = $input['headerTitle'];
+                $datum->save();
+            } else {
+                $datum = General::create(['headerTitle' => $input['headerTitle']]);
+            }
+            return response()->json(['status' => 'OK', 'data' => $datum]);
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *

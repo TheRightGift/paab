@@ -112,6 +112,7 @@
 }
     .goLiveBtn {
         width: 100%;
+        background-color: var(--primary);
     }
     h4 {
         font-size: 1.2rem;
@@ -169,7 +170,7 @@
         color: #adf802;
     }
     .btn {
-        background-color: var(--pri) !important;
+        background-color: var(--primary) !important;
     }
     .smallTextSupport {
         font-family: "Poppins", sans-serif;

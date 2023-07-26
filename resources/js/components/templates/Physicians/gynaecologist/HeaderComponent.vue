@@ -26,13 +26,29 @@
                     <div
                         class="flex justify-between align-center sm-justify-end"
                     >
-                        <h5 class="headerTitle hide-on-small-only">
-                            {{
-                                user == ""
-                                    ? physicianName
-                                    : this.userReplaced
-                            }}
-                        </h5>
+                        <div class="flex justify-between align-center">
+                            <h5 class="headerTitle hide-on-small-only" v-if="!editing">
+                                {{ user == "" ? physicianName : userReplaced }}
+                            </h5> 
+                            <div class="flex justify-between align-center" v-else>
+                                <input type="text" class="custom-edit-field browser-default" v-model="userReplaced" />
+                                <div class="ml-3">
+                                    <span v-if="editHeaderTitle">
+                                        <i class="fa-solid fa-gear primary fs-1 fa-spin"></i>
+                                    </span>
+                                    <span v-else>
+                                        <a href="#!"><i class="fa-regular fa-circle-xmark primary fs-1" @click="edit(0)"></i></a>
+                                        <a href="#!" class="pl-3" @click="confirmHeaderEdit"><i class="fa-solid fa-check primary fs-1"></i></a>
+                                    </span>
+                                </div>
+                                
+                            </div>
+                            <div v-if="isLoggedIn" class="pl-3">
+                                <a href="#!" @click="edit(0)"  v-show="!editing">
+                                    <i class="fa-solid fa-pen primary fs-1"></i>
+                                </a>
+                            </div>
+                        </div>
                         <ul class="hide-on-small-only">
                             <li>
                                 <a href="#aboutMe">About Me</a>
@@ -58,7 +74,10 @@
                                 >
                             </li>
 
-                            <li v-if="isLoggedIn" class="show-on-medium-and-up hide-on-small-only">
+                            <li
+                                v-if="isLoggedIn"
+                                class="show-on-medium-and-up hide-on-small-only"
+                            >
                                 <a
                                     class="modal-trigger physiTempSettingsNavLink"
                                     href="#showSettingsModal"
@@ -93,9 +112,7 @@
                     >
                 </li>
                 <li>
-                    <a href="#contact"
-                        >Contact</a
-                    >
+                    <a href="#contact">Contact</a>
                 </li>
                 <li v-if="isLoggedIn">
                     <a
@@ -349,6 +366,8 @@
                 clickedSub: false,
                 paymentMethods: [],
                 defaultCard: {},
+                editing: false,
+                editHeaderTitle: false,
                 // user: 0,
             };
         },
@@ -368,9 +387,27 @@
             userSubscribed: Boolean,
             email: String,
             physicianName: String,
+            general: Object,
         },
         mounted() {},
         methods: {
+            confirmHeaderEdit() {
+                this.editHeaderTitle = true;
+                axios.post('/api/saveOrUpdateHeaderTitle', {headerTitle:this.userReplaced}).then(res => {
+                    if (res.data.status === 'OK') {
+                        this.editHeaderTitle = false;
+                        this.editing = !this.editing;
+                    }
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
+            },
+            edit(num) {
+                if (num === 0) {
+                    this.editing = !this.editing;
+                }
+            },
             getCards(evt) {
                 this.paymentMethods = evt.cards;
                 this.defaultCard = evt.default;
@@ -443,24 +480,37 @@
                     this.userReplaced = newVal;
                 }
             },
+            general(newVal) {
+                if (newVal.headerTitle !== null) {
+                    this.userReplaced = newVal.headerTitle;
+                }
+            },
             reviews(newVal) {
                 this.reviewLen = newVal.data.length;
+            },
+            isLoggedIn(newVal, oldVal) {
+                if (newVal === true) {
+                    document.addEventListener("DOMContentLoaded", function () {
+                        var elems = document.querySelectorAll(".modal");
+                        var instances = M.Modal.init(elems);
+                    });
+                }
             },
         },
     };
 </script>
 <style scoped>
-.mt-0 {
-    margin-top: 0;
-}
-.fs-9 {
-    font-size: .9rem;
-}
-.black-text {
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-decoration: underline;
-}
+    .mt-0 {
+        margin-top: 0;
+    }
+    .fs-9 {
+        font-size: 0.9rem;
+    }
+    .black-text {
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-decoration: underline;
+    }
     .circularBtn {
         border-radius: 100%;
         height: 30px;
@@ -477,7 +527,7 @@
     .disabledNotPaid {
         opacity: 0.4;
     }
-    
+
     @media only screen and (max-width: 992px) {
         .modal {
             width: 90%;

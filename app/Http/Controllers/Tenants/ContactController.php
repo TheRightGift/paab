@@ -35,6 +35,7 @@ class ContactController extends Controller
             'phone' => 'nullable',
             'email' => 'nullable',
             'address' => 'nullable',
+            'context' => 'nullable',
         ]);
 
         if ($inputs->fails()) {
@@ -64,6 +65,7 @@ class ContactController extends Controller
             'phone' => 'nullable',
             'email' => 'nullable',
             'address' => 'nullable',
+            'context' => 'nullable'
         ]);
 
         if ($inputs->fails()) {

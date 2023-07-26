@@ -5,7 +5,7 @@
                 <div class="flex sm-flex-col justify-between sm-justify-center align-center" v-if="preview === '1'">
                     <div class="profile">
                         <p class="introductory sm-text-center">
-                            Hi, i’m Doctor Peter,
+                            Hello, i’m Doctor Peter,
                             <span>A Gynecologist</span>
                         </p>
                         <p class="introduction">
@@ -42,18 +42,57 @@
                 </div>
                 <div class="flex sm-flex-col justify-between sm-justify-center align-center" v-else-if="bio !== null">
                     <div class="profile">
-                        <p class="introductory sm-text-center">
-                            Hi, i’m Doctor {{ about.name }},
-                            <span>A Gynecologist</span>
-                        </p>
-                        <p class="introduction">
-                            <span v-if="about.about !== null">
-                                {{ about.about }}
-                            </span>
-                            <span v-else>
-                                As a respected member of the medical community, has contributed to numerous research studies and publications, sharing their knowledge and insights with colleagues. They are also actively involved in professional organisations, attending conferences and workshops to collaborate with peers and promote advancements in healthcare.
-                            </span>
-                        </p>
+                        <div class="flex align-center">
+                            <p class="introductory sm-text-center">
+                                Hello, I’m Doctor <span  v-if="!editing">{{ about.name }}</span> <input v-else type="text" class="custom-edit-field browser-default" v-model="about.name" />,
+                                <span class="specialty">A Gynecologist</span>
+                            </p>
+                            <div class="flex justify-between align-center" v-if="editing">
+                                <div class="ml-3">
+                                    <span v-if="editNames">
+                                        <i class="fa-solid fa-gear primary fs-1 fa-spin"></i>
+                                    </span>
+                                    <span v-else>
+                                        <a href="#!"><i class="fa-regular fa-circle-xmark primary fs-1" @click="edit(0)"></i></a>
+                                        <a href="#!" class="pl-3" @click="confirmUpdateName"><i class="fa-solid fa-check primary fs-1"></i></a>
+                                    </span>
+                                </div>
+                                
+                            </div>
+                            <div v-if="isLoggedIn" class="pl-3">
+                                <a href="#!" @click="edit(0)"  v-show="!editing">
+                                    <i class="fa-solid fa-pen primary fs-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex justify-between align-center">
+                            <p class="introduction" v-if="!editingAbout">
+                                <span v-if="about.about !== null">
+                                    {{ about.about }}
+                                </span>
+                                <span v-else>
+                                    As a respected member of the medical community,I have contributed to numerous research studies and publications, sharing their knowledge and insights with colleagues. They are also actively involved in professional organisations, attending conferences and workshops to collaborate with peers and promote advancements in healthcare.
+                                </span>
+                            </p>
+                            <div class="flex justify-between align-center" v-else>
+                                <textarea class="custom-textarea-field" v-model="about.about"></textarea>
+                                <div class="ml-3">
+                                    <span v-if="editAbout">
+                                        <i class="fa-solid fa-gear primary fs-1 fa-spin"></i>
+                                    </span>
+                                    <span v-else>
+                                        <a href="#!"><i class="fa-regular fa-circle-xmark primary fs-1" @click="edit(1)"></i></a>
+                                        <a href="#!" class="pl-3" @click="confirmUpdateAbout"><i class="fa-solid fa-check primary fs-1"></i></a>
+                                    </span>
+                                </div>
+                                
+                            </div>
+                            <div v-if="isLoggedIn && !editingAbout" class="pl-3">
+                                <a href="#!" @click="edit(1)"  v-show="!editingAbout">
+                                    <i class="fa-solid fa-pen primary fs-1"></i>
+                                </a>
+                            </div>
+                        </div>
                         <div class="flex mt-2 sm-flex-col align-center gap15">
                             <a href="#!" class="downloadCv waves waves-effect flex justify-center align-center btnCustom mr-2">
                                 <i class="fa fa-download"></i>
@@ -68,11 +107,25 @@
                             </a>
                         </div>
                     </div>
+
                     <div>
-                        <div class="profileImage relative hide-on-small-only">
-                            <img :src="'/media/tenants/' + tenant + '/img/' + about.photo" class="responsive-img image" />
-                            <p class="happyP">Happy Patients</p>
-                            <p class="service24">24/7 Service</p>
+                        <div class="imageContainer relative hide-on-small-only">
+                            <div class="profileImage">
+                                <img src="" v-show="uploaded" id="uploadedImage" class="responsive-img image"/>
+                                <img :src="'/media/tenants/' + tenant + '/img/' + about.photo" class="responsive-img image" v-show="!uploaded"/>
+                                
+                                <p class="happyP">Happy Patients</p>
+                                <p class="service24">24/7 Service</p>
+                            </div>
+                            <div class="overlay" v-show="isLoggedIn">
+                                <i class="fa-solid fa-gear white-text fa-2x fa-spin" v-if="loading"></i>
+                                <label for="file-input" class="upload-label" v-else>
+                                    <img src="/media/img/upload.svg" class="responsive-img" />
+                                    <span class="inlBlock black-text">Drag &amp; Drop Image or</span>
+                                    <span class="inBlock browse">Browse</span>
+                                    <input type="file" id="file-input" accept="image/*" />
+                                </label>
+                            </div>
                         </div>
                         <div class="flex justify-center align-center ">
                             <div
@@ -85,9 +138,33 @@
                                     </a>
                                     <span>|</span>
                                 </span>
-                                <a :href="social.src" target="_blank" v-for="social in socials" :key="social">
-                                    <i :class="'fa-brands fa-'+social.id"></i>
-                                </a>
+                                <!-- <span > -->
+                                    <template v-if="!editingSocials">
+                                        <a :href="social.src" target="_blank" v-for="social in socials" :key="social" >
+                                            <i :class="'fa-brands fa-'+social.id"></i>
+                                        </a>
+                                    </template>
+                                <!-- </span> -->
+                                <div class="flex justify-between align-center" v-if="editingSocials">
+                                    <div class="input-container" v-for="social in socials" :key="social">
+                                        <i :class="'fa-brands fa-'+social.id"></i>
+                                        <input type="text" placeholder="" class="custom-edit-field browser-default" v-model="social.handle" @input="updateHandle(social.id, social.handle)">
+                                    </div>
+                                    <div class="ml-3">
+                                        <span v-if="editSocials">
+                                            <i class="fa-solid fa-gear primary fs-1 fa-spin"></i>
+                                        </span>
+                                        <span v-else class="flex">
+                                            <a href="#!"><i class="fa-regular fa-circle-xmark primary fs-1" @click="edit(2)"></i></a>
+                                            <a href="#!" class="pl-3" @click="confirmUpdateSocials"><i class="fa-solid fa-check primary fs-1"></i></a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div v-if="isLoggedIn" >
+                                    <a href="#!" @click="edit(2)"  v-show="!editingSocials" class="pl-3">
+                                        <i class="fa-solid fa-pen primary fs-1"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -97,7 +174,7 @@
     </div>
 </template>
 <script>
-    import CVComponent from "./CVComponent.vue";
+import CVComponent from "./CVComponent.vue";
     export default {
         components: {
             CVComponent,
@@ -108,7 +185,10 @@
                     return this.contact.phone.slice(0, 5);
                 }
                 return false;
-            }
+            },
+            aboutCount() {
+                return this.about.about != null ?  this.about.about.length : "";
+            },
         },
         data() {
             return {
@@ -118,17 +198,194 @@
                     about: "",
                 },
                 CVComponentShow: false,
-                facebook: "whiteCoatDomain",
-                twitter: "WhiteCoatD_HQ",
-                tiktok: "scout2015",
-                instagram: "CoUVYkmj6__",
+                editing: false,
+                editingAbout: false,
+                editingSocials: false,
+                editAbout: false,
+                editNames: false,
+                editSocials: false,
+                errors: [],
+                facebook: "",
+                twitter: "",
+                tiktok: "",
+                instagram: "",
                 loading: false,
                 id: "",
                 socials: [],
+                uploaded: false,
+                update: false,
                 txt: "Sed porttitor lectus nibh. Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit. Vestibulum ante ipsum primis Pellentesque in ipsum id orci porta dapibus. Nulla porttitor accumsan tincidunt. Curabitur arcu erat",
             };
         },
-        methods: {},
+        methods: {
+            confirmUpdateName() {
+                this.editNames = true;
+                let formData = new FormData();
+                formData.append("firstname", this.about.name.split(" ")[0]);
+                formData.append("othername", this.about.name.split(" ")[2]);
+                formData.append("lastname", this.about.name.split(" ")[1]);
+                formData.append("_method", 'PUT');
+                axios.post(`/api/bio/${this.bio.id}`, formData).then(res => {
+                    if (res.data.status === 200) {
+                        this.editNames = false;
+                        this.editing = !this.editing;
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+            },
+            confirmUpdateAbout() {
+                if (this.aboutCount === 614 || this.aboutCount > 600) {
+                    let formData = new FormData();
+                    this.editAbout = !this.editAbout;
+                    
+                    formData.append("about", this.about.about);
+                    formData.append("_method", 'PUT');
+                    axios
+                    .post(`/api/bio/${this.bio.id}`, formData)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            M.toast({
+                                html: res.data.message,
+                                classes: "successNotifier",
+                            });
+                            this.editAbout = !this.editAbout;
+                            this.editingAbout = !this.editingAbout;
+                        }
+                    })
+                    .catch((err) => {
+                        this.editAbout = !this.editAbout;
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: 'An error has occured updating your profile',
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+                }
+                else {
+                    M.toast({
+                        html: 'The about you should be greater than 600 in lenght',
+                        classess: 'errorNotifier',
+                    })
+                }
+            },
+            edit(num) {
+                if (num === 0) {
+                    this.editing = !this.editing;
+                } else if (num === 1) {
+                    this.editingAbout =  !this.editingAbout;
+                } else if (num === 2) {
+                    this.editingSocials = !this.editingSocials;
+                }
+            },
+            handleFileUpload(file) {
+                this.errors = [];
+                this.loading = !this.loading;
+                let formData = new FormData();
+                formData.append("photo", file);
+                formData.append("_method", 'PUT');
+                axios
+                    .post(`/api/bio/${this.bio.id}`, formData)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            console.log(res);
+                            this.loading = !this.loading;
+                            this.uploaded = true;
+                            const image = document.getElementById("uploadedImage");
+                            console.log(image);
+                            image.src = URL.createObjectURL(file);
+                            // this.showCropper = false;
+                        }
+                    })
+                    .catch((err) => {
+                        this.loading = !this.loading;
+                        if (err) {
+                            this.errors = err.response;
+                        }
+                    });
+            // Here, you can process the uploaded file, e.g., display the image on the page.
+            // You can access the file using 'file' variable and handle it accordingly.
+            // For example, to display the uploaded image, you can do:
+            // const image = document.querySelector("img");
+            // image.src = URL.createObjectURL(file);
+            },
+            confirmUpdateSocials() {
+                this.editSocials = !this.editSocials;
+                let data = {
+                    facebook: this.facebook, twitter: this.twitter, tiktok: this.tiktok, instagram: this.instagram,
+                };
+                this.update ? data._method = 'PUT' : null;
+                console.log(data);
+                axios.post(`/api/social/${this.id}`, data)
+                    .then((res) => {
+                        if (res.status == 200 || res.status == 201) {
+                            this.editSocials = !this.editSocials;
+                            this.editingSocials = !this.editingSocials;
+                            this.socials.forEach((el, index) => {
+                                if (index == 0) {
+                                    el.src= `https://www.facebook.com/${res.data.social.facebook}`;
+                                } else if (index == 1 ){
+                                    el.src = `https://twitter.com/${res.data.social.twitter}?ref_src=twsrc%5Etfw`;
+                                } else if (index == 2) {
+                                    el.src = `https://www.instagram.com/reel/${res.data.social.instagram}/embed/captioned/?cr=1&v=14&wp=326&rd=http%3A%2F%2F127.0.0.1%3A8000&rp=%2Fpreview%2F1#%7B%22ci%22%3A0%2C%22os%22%3A3489.7999999998137%2C%22ls%22%3A3373.899999999441%2C%22le%22%3A3393.5%7D`;
+                                } else if(index == 3) {
+                                    el.src = `https://www.tiktok.com/@${res.data.social.tiktok}`;
+                                }
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        this.editSocials = !this.editSocials;
+                        if (err.response.status == 400) {
+                            err.response.data.forEach((el) => {
+                                M.toast({
+                                    html: el,
+                                    classes: "errorNotifier",
+                                });
+                            });
+                        }
+                    });
+            },
+            updateHandle(id, item) {
+                // const ids {facebook: 1, twitter: 2, instagram: 3, tiktok: 4}
+                if (id == 'facebook-f') {
+                    this.facebook = item;
+                } else if (id == 'twitter') {
+                    this.twitter = item;
+                } else if (id == 'instagram') {
+                    this.instagram = item;
+                } else if (id == 'tiktok') {
+                    this.tiktok = item;
+                }
+                console.log(item);
+            }
+        },
+        mounted() {
+                const imageContainer = document.querySelector(".imageContainer");
+    
+                imageContainer.addEventListener("dragover", (e) => {
+                    e.preventDefault();
+                    imageContainer.classList.add("dragging");
+                });
+    
+                imageContainer.addEventListener("dragleave", () => {
+                    imageContainer.classList.remove("dragging");
+                });
+    
+                imageContainer.addEventListener("drop", (e) => {
+                    e.preventDefault();
+                    imageContainer.classList.remove("dragging");
+                    this.handleFileUpload(e.dataTransfer.files[0]);
+                });
+    
+                const fileInput = document.getElementById("file-input");
+                    fileInput.addEventListener("change", (e) => {
+                    this.handleFileUpload(e.target.files[0]);
+                });
+        },
         props: {
             bio: Object,
             user: String,
@@ -150,9 +407,8 @@
                     this.about.name =
                         newval.firstname +
                         " " +
-                        newval.lastname;
+                        newval.lastname + " " +newval.othername;
                     this.about.about = newval.about;
-                    // this.about.about = this.about.about.replace(/Dr\. [A-Za-z]+|she\/he [A-Za-z]+/g, "I am").slice(0, 329);
                     this.about.photo = newval.photo;
                 }
             },
@@ -163,64 +419,65 @@
                     this.CVComponentShow = true;
                 }
             },
-       
             social: {
                 handler(newVal, olVal) {
                     let facebook = {
                         id: 'facebook-f',
                         src: `https://www.facebook.com/${this.facebook}`,
+                        handle: ''
                     };
                     let twitter = {
                         id: 'twitter',
                         src: `https://twitter.com/${this.twitter}?ref_src=twsrc%5Etfw`,
+                        handle: ''
                     };
                     let instagram = {
                         id: 'instagram',
                         src: `https://www.instagram.com/reel/${this.instagram}/embed/captioned/?cr=1&v=14&wp=326&rd=http%3A%2F%2F127.0.0.1%3A8000&rp=%2Fpreview%2F1#%7B%22ci%22%3A0%2C%22os%22%3A3489.7999999998137%2C%22ls%22%3A3373.899999999441%2C%22le%22%3A3393.5%7D"`,
-                        color: 'red'
+                        color: 'red',
+                        handle: ''
                     };
                     let tiktok = {
                         id: 'tiktok',
                         src: `<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@${this.tiktok}" data-unique-id="${this.tiktok}" data-embed-from="oembed" data-embed-type="creator" style="max-width: 780px; min-width: 288px; width: 32rem;" > <section> <a target="_blank" href="https://www.tiktok.com/@${this.tiktok}?refer=creator_embed">@${this.tiktok}</a> </section> </blockquote>`,
-                        color: 'red'
+                        color: 'red',
+                        handle: ''
                     };
                     if (newVal && this.preview === '0') {
                         newVal = JSON.parse(newVal);
+                        this.update = true;
                         this.facebook = newVal.facebook;
                         this.twitter = newVal.twitter;
                         this.instagram = newVal.instagram;
                         this.tiktok = newVal.tiktok;
                         this.id = newVal.id;
-                        if (newVal.facebook !== '' && newVal.facebook !== null) {
                             facebook = {
                                 id: 'facebook-f',
                                 src: `https://www.facebook.com/${newVal.facebook}`,
+                                handle: newVal.facebook
                             }
                             this.socials.push(facebook);
-                        }
-                        if (newVal.twitter !== '' && newVal.twitter !== null) {
                             twitter = {
                                 id: 'twitter',
                                 src: `https://twitter.com/${newVal.twitter}?ref_src=twsrc%5Etfw`,
+                                handle: newVal.twitter
                             }
                             this.socials.push(twitter);
-                        }
-                        if (newVal.instagram !== '' && newVal.instagram !== null) {
                             instagram = {
                                 id: 'instagram',
                                 src: `https://www.instagram.com/reel/${newVal.instagram}/embed/captioned/?cr=1&v=14&wp=326&rd=http%3A%2F%2F127.0.0.1%3A8000&rp=%2Fpreview%2F1#%7B%22ci%22%3A0%2C%22os%22%3A3489.7999999998137%2C%22ls%22%3A3373.899999999441%2C%22le%22%3A3393.5%7D`,
-                                color: 'red'
+                                color: 'red',
+                                handle: newVal.instagram
                             }
                             this.socials.push(instagram);
-                        }
-                        if (newVal.tiktok !== '' && newVal.tiktok !== null) {
                             tiktok = {
                                 id: 'tiktok',
                                 src: `https://www.tiktok.com/@${newVal.tiktok}?refer=creator_embed`,
-                                color: 'red'
+                                color: 'red',
+                                handle: newVal.tiktok
                             }
                             this.socials.push(tiktok);
-                        }
+                        
                     } else if (this.preview == '1') {
                         this.facebook = 'whiteCoatDomain';
                         this.twitter = 'WhiteCoatD_HQ';
@@ -230,20 +487,24 @@
                             {
                                 id: 'facebook-f',
                                 src: `https://www.facebook.com/${this.facebook}`,
+                                handle: ''
                             },
                             {
                                 id: 'twitter',
                                 src: `https://twitter.com/${this.twitter}?ref_src=twsrc%5Etfw`,
+                                handle: ''
                             },
                             {
                                 id: 'instagram',
                                 src: `https://www.instagram.com/reel/${this.instagram}/embed/captioned/?cr=1&v=14&wp=326&rd=http%3A%2F%2F127.0.0.1%3A8000&rp=%2Fpreview%2F1#%7B%22ci%22%3A0%2C%22os%22%3A3489.7999999998137%2C%22ls%22%3A3373.899999999441%2C%22le%22%3A3393.5%7D`,
-                                color: 'red'
+                                color: 'red',
+                                handle: ''
                             },
                             {
                                 id: 'tiktok',
                                 src: `https://www.tiktok.com/@${this.tiktok}`,
-                                color: 'red'
+                                color: 'red',
+                                handle: ''
                             }
                         ]
                     } else if (newVal === '') {
@@ -251,20 +512,24 @@
                             {
                                 id: 'facebook-f',
                                 src: `https://www.facebook.com`,
+                                handle: ''
                             },
                             {
                                 id: 'twitter',
                                 src: `https://www.twitter.com`,
+                                handle: ''
                             },
                             {
                                 id: 'instagram',
                                 src: `https://www.instagram.com`,
-                                color: 'red'
+                                color: 'red',
+                                handle: ''
                             },
                             {
                                 id: 'tiktok',
                                 src: `https://www.tiktok.com`,
-                                color: 'red'
+                                color: 'red',
+                                handle: ''
                             }
                         ]
                     }

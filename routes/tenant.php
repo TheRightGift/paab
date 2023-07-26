@@ -155,5 +155,6 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
     Route::get('/service', [App\Http\Controllers\Tenants\ServiceController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/general', [App\Http\Controllers\Tenants\GeneralController::class, 'index'])->withoutMiddleware(['auth:api']);
     Route::get('/activePromo', [App\Http\Controllers\Tenants\PromotionController::class, 'getLatestInTime'])->withoutMiddleware(['auth:api']);
+    Route::post('/saveOrUpdateHeaderTitle', [App\Http\Controllers\Tenants\GeneralController::class, 'saveOrUpdateHeaderTitle'])->withoutMiddleware(['auth:api']);
 
 });

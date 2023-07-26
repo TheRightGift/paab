@@ -35,6 +35,7 @@
                                           .replace("MD", "DR.")
                                           .replace("DD", "DR.")
                             }}
+                            <i class="fa-solid fa-pen"></i>
                         </h5>
                         <ul class="hide-on-small-only">
                             <li>
