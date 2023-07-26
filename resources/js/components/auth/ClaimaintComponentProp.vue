@@ -27,14 +27,16 @@
                     </div>
                     <div class="flex justify-center align-center">
                         <div v-show="!otpMode" class="flex flex-col justify-center">
-                            <h6>Enter your email to proceed</h6>
                             <form @submit.prevent="checkEmail">
                                 <div class="">
-                                    <label>Enter your email address</label>
+                                    <label>Enter your email address to proceed</label>
                                     <input type="email" v-model="inputEmail" class="browser-default mt-1" placeholder="Email address" required/>
                                 </div>
                                 <div class="flex justify-center mt-1">
-                                    <button type="submit" class="btn waves waves-effect col s12 custom-button" :disabled="verificationLoading"> <i class="fa fa-spinner fa-spin" v-show="verificationLoading"></i>Submit</button>
+                                    <button type="submit" class="btn waves waves-effect col s12 custom-button" :disabled="verificationLoading"> 
+                                        <i class="fa fa-spinner fa-spin" v-if="verificationLoading"></i>
+                                       <span v-else>Submit</span> 
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -983,7 +985,6 @@
                 }
             },
             changeView(e) {
-                console.log(e);
                 if (e == 200) {
                     // Save the user with email
                     // Login user temporary to be able to access route
@@ -999,7 +1000,7 @@
                             console.log(err);
                         });
                     axios
-                        .put(`/admin_order/${tenantId}`, { email: this.inputEmail })
+                        .put(`/api/admin_order/${tenantId}`, { email: this.inputEmail })
                         .then((res) => {
                             if (res.status == 200) {
                                 M.toast({

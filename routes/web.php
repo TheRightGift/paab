@@ -282,9 +282,6 @@ Route::middleware(['validateIsValidGuest'])->group(function () {
 
     Route::post('claim/successdomainregistra', [TenantClaimController::class, 'sendMailForDomainRegistry']);
 
-    // After verifying email save to admin client orders
-    Route::put('/admin_order/{tenant_id}', [AdminClientOrderController::class, 'update']);
-
     Route::get('/claim/data', [TenantClaimController::class, 'getData']);
 
 

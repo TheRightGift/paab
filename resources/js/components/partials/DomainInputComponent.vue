@@ -210,14 +210,6 @@
                             ".com"
                         ).toLowerCase(),
                     });
-                    // this.domainSuggestions.push({
-                    //     name: (
-                    //         title[0].name.replace(/\./g, "") +
-                    //         this.bioData.firstname +
-                    //         ".com"
-                    //     ).toLowerCase(),
-                    // });
-
                     let data = JSON.stringify(this.domainSuggestions);
                     this.loadingSuggestions = true;
                     axios
@@ -245,7 +237,6 @@
         watch: {
             domainSelected: {
                 handler(val) {
-                    console.log(val);
                     if (val) {
                         this.domain = val;
                     }

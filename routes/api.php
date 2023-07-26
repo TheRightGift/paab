@@ -1,24 +1,25 @@
 <?php
 
-use App\Http\Controllers\APIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfessionController;
-use App\Http\Controllers\TemplateController;
-use App\Http\Controllers\TenantController;
-use App\Http\Controllers\TitleController;
-use App\Http\Controllers\CountryController;
+use App\Http\Controllers\APIController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DeveloperController;
-use App\Http\Controllers\DeveloperProjectController;
-use App\Http\Controllers\DomainCheckerController;
-use App\Http\Controllers\InterestController;
 use App\Http\Controllers\MailController;
-use App\Http\Controllers\MaintenanceController;
-use App\Http\Controllers\SpecialtyController;
-use App\Http\Controllers\SubscriptionController;
-use App\Http\Controllers\SupportController;
+use App\Http\Controllers\TitleController;
 use App\Http\Middleware\AuthBasicChecker;
+use App\Http\Controllers\TenantController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\SupportController;
+use App\Http\Controllers\InterestController;
+use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\SpecialtyController;
+use App\Http\Controllers\ProfessionController;
+use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\DomainCheckerController;
+use App\Http\Controllers\AdminClientOrderController;
+use App\Http\Controllers\DeveloperProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,4 +125,7 @@ Route::get('/test_awsutil/{stripe_id}', [APIController::class, 'registerDomain']
 Route::get('/sendcommand/{domainName}', [APIController::class, 'runAWSUtilityCommand'])->name('api.aws.sendcommand')->middleware(AuthBasicChecker::class);
 Route::get('/getpendingwebsite', [APIController::class, 'getPendingSites'])->middleware(AuthBasicChecker::class);
 Route::post('/support', [SupportController::class,'supportSaveData']);
+Route::post('/supportForCallback', [SupportController::class, 'sendEmailForCallBack']);
 Route::post('/checkTenantOtp', [TenantController::class, 'checkOtp']);
+// After verifying email save to admin client orders
+Route::put('/admin_order/{tenant_id}', [AdminClientOrderController::class, 'update']);

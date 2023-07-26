@@ -690,13 +690,14 @@
                                     <div class="mb-2 card-title">
                                         We are always happy to help
                                     </div>
-                                    <form>
+                                    <form @submit.prevent="sendToSupport">
                                         <div class="d-flex flex-col gap-10">
                                             <div class="custom-input">
                                                 <input
                                                     type="text"
                                                     required
                                                     class="browser-default"
+                                                    v-model="support.names"
                                                     placeholder="Name"
                                                 />
                                             </div>
@@ -705,6 +706,7 @@
                                                     type="text"
                                                     required
                                                     class="browser-default"
+                                                    v-model="support.email"
                                                     placeholder="Email"
                                                 />
                                             </div>
@@ -713,6 +715,7 @@
                                                     type="text"
                                                     required
                                                     class="browser-default"
+                                                    v-model="support.phone"
                                                     placeholder="Phone"
                                                 />
                                             </div>
@@ -721,16 +724,19 @@
                                                     type="text"
                                                     required
                                                     class="browser-default"
+                                                    v-model="support.subject"
                                                     placeholder="Subject"
                                                 />
                                             </div>
                                             <div class="custom-textarea">
                                                 <textarea
                                                     class="textarea browser-default"
+                                                    v-model="support.message"
                                                     placeholder="Message"
                                                 ></textarea>
                                             </div>
-                                            <get-started-button-component type="submit" />
+                                            <get-started-button-component type="submit" v-if="!loading"/>
+                                            <button class="btnLoader" v-else><i class="fa-solid fa-circle-notch fa-spin white-text fa-2x"></i></button>
                                         </div>
                                     </form>
                                 </div>
@@ -745,19 +751,20 @@
                             <h5 class="sm-contact">Contact Us</h5>
                             <p class="title">We are always available to help</p>
                         </div>
-                        <form class="d-flex flex-col ustify-between align-center">
+                        <form class="d-flex flex-col ustify-between align-center" @submit.prevent="sendEmailForCallBack">
                             <div class="custom-input mb-2">
                                 <input
                                     type="email"
                                     placeholder="your email address"
                                     class="browser-default"
+                                    v-model="support.email"
                                     required
                                 />
                             </div>
                             <button
                                 class="waves waves-effect custom-btn"
                                 type="submit"
-                            >Send</button>
+                            ><span v-if="!loading">Send</span><i v-else class="fa-solid fa-circle-notch fa-spin"></i></button>
                         </form>
                     </div>
                 </div>
@@ -781,10 +788,18 @@
         color: var(--pri);
         background: var(--white);
     }
+    .btnLoader {
+        background-color: var(--pri);
+        box-shadow: 0px 30px 50px rgba(16, 157, 173, 0.15);
+        border-radius: 192px;
+        border: 2px solid rgb(255, 255, 255);
+        width: 12vw;
+        height: 6vh;
+    }
 </style>
 <script>
     import SupportComponent from "./partials/SupportPageComponent.vue";
-    import FooterComponent from "./partials/FooterComponent1.vue";
+    import FooterComponent from "./partials/FooterComponent.vue";
     import GetStartedButtonComponent from "./partials/GetStartedButtonComponent.vue";
     import SignUpButtonComponent from "./partials/SignUpButtonComponent.vue";
     import ReviewPopupComponent from "./partials/ReviewPopupComponent.vue";
@@ -820,7 +835,14 @@
                         imgUrl: "templateOne.png",
                     },
                 ],
-                
+                loading: false,
+                support: {
+                    names: "",
+                    email: "",
+                    message: "",
+                    phone: "",
+                    subject: "",
+                },
                 services: [
                     {
                         title: 'Live Chat',
@@ -895,14 +917,12 @@
         },
         methods: {
             showMessage(index) {
-                console.log("I entered", this.displayMessage);
                 this.hoveredIndex = index;
                 document.querySelectorAll('.image').forEach(el => {
                     el.style.zIndex = '0';
                 })
             },
             hideMessage() {
-                console.log("I entered", this.displayMessage);
                 this.hoveredIndex = null;
                 document.querySelectorAll('.image').forEach(el => {
                     el.style.zIndex = '1';
@@ -915,9 +935,49 @@
                 if (!imageElement) return false;
 
                 const imageRect = imageElement.getBoundingClientRect();
-                console.log(imageRect.left, imageRect.width, window.innerWidth);
+                // console.log(imageRect.left, imageRect.width, window.innerWidth);
                 return imageRect.left + imageRect.width + 200 > window.innerWidth; // Adjust 200 according to your chatbox width
             },
+            sendToSupport() {
+                this.loading = true;
+                let data = {
+                    names: this.support.names,
+                    message: this.support.message,
+                    email: this.support.email,
+                    phone: this.support.phone,
+                    subject: this.support.subject
+                };
+                axios.post('/api/support', data).then(res => {
+                    if (res.status == 201) {
+                        M.toast({html: res.data, classes: 'successNotifier'});
+                        this.support.subject = '';
+                        this.support.names = '';
+                        this.support.email = '';
+                        this.support.phone = '';
+                        this.support.message = '';
+                        this.loading = false;
+                    }
+                }).catch(err => {
+                    console.log(err);
+                    this.loading = false;
+                })
+            },
+            sendEmailForCallBack () {
+                this.loading = true;
+                let data = {
+                    email: this.support.email,
+                };
+                axios.post('/api/supportForCallback', data).then(res => {
+                    if (res.status == 201) {
+                        M.toast({html: res.data, classes: 'successNotifier'});
+                        this.support.email = '';
+                        this.loading = false;
+                    }
+                }).catch(err => {
+                    console.log(err);
+                    this.loading = false;
+                })
+            }
         },
     };
 </script>

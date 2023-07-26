@@ -174,7 +174,8 @@
     </div>
 </template>
 <script>
-import CVComponent from "./CVComponent.vue";
+    import CVComponent from "./CVComponent.vue";
+    import { dragnDropImg } from "../../dragnDropImg";
     export default {
         components: {
             CVComponent,
@@ -281,37 +282,6 @@ import CVComponent from "./CVComponent.vue";
                     this.editingSocials = !this.editingSocials;
                 }
             },
-            handleFileUpload(file) {
-                this.errors = [];
-                this.loading = !this.loading;
-                let formData = new FormData();
-                formData.append("photo", file);
-                formData.append("_method", 'PUT');
-                axios
-                    .post(`/api/bio/${this.bio.id}`, formData)
-                    .then((res) => {
-                        if (res.data.status == 200) {
-                            console.log(res);
-                            this.loading = !this.loading;
-                            this.uploaded = true;
-                            const image = document.getElementById("uploadedImage");
-                            console.log(image);
-                            image.src = URL.createObjectURL(file);
-                            // this.showCropper = false;
-                        }
-                    })
-                    .catch((err) => {
-                        this.loading = !this.loading;
-                        if (err) {
-                            this.errors = err.response;
-                        }
-                    });
-            // Here, you can process the uploaded file, e.g., display the image on the page.
-            // You can access the file using 'file' variable and handle it accordingly.
-            // For example, to display the uploaded image, you can do:
-            // const image = document.querySelector("img");
-            // image.src = URL.createObjectURL(file);
-            },
             confirmUpdateSocials() {
                 this.editSocials = !this.editSocials;
                 let data = {
@@ -363,6 +333,7 @@ import CVComponent from "./CVComponent.vue";
                 console.log(item);
             }
         },
+        mixins: [dragnDropImg],
         mounted() {
                 
         },
@@ -384,16 +355,16 @@ import CVComponent from "./CVComponent.vue";
         watch: {
             bio(newval, oldval) {
                 if (newval) {
+                    let othername = newval.othername == null ? '' : newval.othername;
                     this.about.name =
                         newval.firstname +
                         " " +
-                        newval.lastname + " " +newval.othername;
+                        newval.lastname + " " + othername;
                     this.about.about = newval.about;
                     this.about.photo = newval.photo;
                 }
             },
             CV(newval, oldval) {
-                console.log(newval);
                 if (newval.summary !== null) {
                     // newval.license !== null &&
                     this.CVComponentShow = true;

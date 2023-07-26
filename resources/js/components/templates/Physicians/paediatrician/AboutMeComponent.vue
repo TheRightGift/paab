@@ -142,6 +142,7 @@
 </template>
 <script>
     import CVComponent from "./CVComponent.vue";
+    import { dragnDropImg } from "../../dragnDropImg";
     export default {
         components: {
             CVComponent,
@@ -173,6 +174,7 @@
             };
         },
         methods: {},
+        mixins: [dragnDropImg],
         props: {
             bio: Object,
             user: String,
