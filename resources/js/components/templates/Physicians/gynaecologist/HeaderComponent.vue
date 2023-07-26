@@ -66,6 +66,9 @@
                             >
                                 <a href="#miniBlog">Mini Blog</a>
                             </li>
+                            <li v-if="can === '1'">
+                                <a target="_self" :href="'https://whitecoatdomain.com/auth/claim?claimable=' +tenant +'&code=' +code" class="primary">Edit Website</a>
+                            </li>
                         </ul>
                         <ul class="flex">
                             <li>
@@ -388,6 +391,7 @@
             email: String,
             physicianName: String,
             general: Object,
+            can: String,
         },
         mounted() {},
         methods: {

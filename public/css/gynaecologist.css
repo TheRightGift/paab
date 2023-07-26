@@ -9,6 +9,9 @@ html {
     margin: 0;
     font-family: "Montserrat", sans-serif;
 }
+.primary {
+    color: var(--primary);
+}
 .relative {
     position: relative;
 }
@@ -29,6 +32,9 @@ html {
 }
 .justify-between {
     justify-content: space-between;
+}
+.flex-end {
+    align-self: flex-end;
 }
 .custom-nav {
     height: 104px;
@@ -53,7 +59,7 @@ nav ul li a {
 }
 nav ul a:hover {
     background-color: transparent;
-    text-decoration: underline;
+    color: var(--primary);
 }
 
 .custom-btn {

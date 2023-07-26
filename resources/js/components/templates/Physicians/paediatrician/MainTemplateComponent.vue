@@ -20,6 +20,8 @@
                 :userSubscribed="Boolean(usersubscribed)"
                 :email="email"
                 :physicianName="physicianName"
+                :can="can"
+                :code="code"
             />
             <main>
                 <AboutMeComponent
@@ -54,52 +56,25 @@
                     :isLoggedIn="loggedIn"
                     :contactMail="contact"
                 />
-                    <!-- :physicianHero="physicianHero"
-                    :physicianName="physicianName" -->
             </main>
-            
-            <!-- <SocialMediaComponent
-                :social="social"
-                v-if="
-                    (social !== null && social !== '' && preview === '0') ||
-                    preview === '1'
-                "
-                :isLoggedIn="loggedIn"
-                :preview="preview"
-            />
-            <TestimonialsComponent v-if="reviewLen != 0 || preview == '1'" :reviews="reviews" :preview="preview" :tenant="tenant"/>
-            <div id="contactContainer">
-                <ContactComponent
-                    :preview="preview"
-                    :isLoggedIn="loggedIn"
-                    :contactMail="contact"
-                />
-            </div>
-             <FooterComponent :user="user" :physicianName="physicianName"/> -->
-     
-            <div class="fixed-bottom" v-if="can === '1'">
-                <!-- <a
-                    target="_self"
-                    :href="
-                        'https://whitecoatdomain.com/auth/claim?claimable=' +
-                        tenant +
-                        '&mail=' +
-                        email
-                    "
-                    class="btn waves waves-effect button"
-                    >Edit your website</a
-                > -->
-                <a
-                    target="_self"
-                    :href="
-                        'http://localhost:8000/auth/claim?claimable=' +
-                        tenant +
-                        '&code=' +
-                        code
-                    "
-                    class="btn waves waves-effect button"
-                    >Edit your website</a
-                >
+        </div>
+        <div id="editWebsite" class="editSite modal" v-if="can === '1'">
+            <div class="modal-content flex justify-center flex-col align-center">
+                <i class="fa fa-times fa-2x flex-end modal-close"></i>
+                <div class="relative">
+                    <img :src="'/media/img/templates/'+template_id+'/editButtonShow.png'" alt="Edit Website Image" class="responsive-img imagodit">
+                    <img src="/media/img/arrowUR.svg" alt="Arrow Up right to show where you can click to make first changes" class="arrowUp"/>
+                </div>
+                <h5>Edit Your Website</h5>
+                <div>
+                    <p class="editDesc">
+                        You can edit your website to feel more personal, click on the edit template button on the nav menu or just click the edit button below.
+                    </p>
+                </div>
+                <div class="flex gap-3">
+                    <a class="waves waves-effect custom-btn modal-close" href="#!">Cancel</a>
+                    <a class="waves waves-effect custom-btn" target="_self" :href="'https://whitecoatdomain.com/auth/claim?claimable=' +tenant +'&code=' +code">Edit</a>
+                </div>
             </div>
         </div>
     </div>
@@ -113,6 +88,7 @@ import SocialMediaComponent from "./SocialMediaComponent.vue";
 import TestimonialsComponent from "./TestimonialsComponent.vue";
 import AboutMeComponent from "./AboutMeComponent.vue";
 import FooterComponent from './FooterComponent.vue';
+import scrollCheck from '../../scrollCheck';
 let bio = '/api/bio';
 let service = '/api/service';
 let achievement = '/api/achievement';
@@ -180,6 +156,7 @@ export default {
         usersubscribed: String,
         code: String,
     },
+    mixins: [scrollCheck],
     created() {
         this.preview == '0' ? this.checkAuth() : null;
     },
@@ -351,6 +328,5 @@ export default {
                 });
         },
     },
-    computed: {},
 };
 </script>

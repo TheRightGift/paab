@@ -89,7 +89,6 @@ class SettingController extends Controller
     }
 
     private function temporalLogin($guestId) {
-        // Route::get('/guest-login', function () {
             // Generate a unique temporary identifier for the guest
             $guestId = uniqid();
         
@@ -98,9 +97,5 @@ class SettingController extends Controller
         
             // Log in the guest as a temporary user
             Auth::loginUsingId($guestId);
-        
-            // Redirect or perform any other necessary action
-            // return redirect('/dashboard');
-        // });
     }
 }

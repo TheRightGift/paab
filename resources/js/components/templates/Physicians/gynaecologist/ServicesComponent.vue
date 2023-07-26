@@ -155,12 +155,14 @@ export default {
         },
     watch: {
         services(newVal, oldVal) {
-           newVal.forEach((index, i) => {
-                const updatedItem = newVal[i];
-                if (index.index >= 0 && index.index < this.myServices.length) {
-                    this.myServices[index.index] = updatedItem;
-                }
-            });
+            if (newVal) {
+                newVal.forEach((index, i) => {
+                     const updatedItem = newVal[i];
+                     if (index.index >= 0 && index.index < this.myServices.length) {
+                         this.myServices[index.index] = updatedItem;
+                     }
+                 });
+            }
         },
     },
 }
