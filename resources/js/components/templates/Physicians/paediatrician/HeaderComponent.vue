@@ -35,7 +35,6 @@
                                           .replace("MD", "DR.")
                                           .replace("DD", "DR.")
                             }}
-                            <i class="fa-solid fa-pen"></i>
                         </h5>
                         <ul class="hide-on-small-only">
                             <li>
@@ -53,6 +52,9 @@
                                 "
                             >
                                 <a href="#miniBlog">Mini Blog</a>
+                            </li>
+                            <li v-if="can === '1'">
+                                <a target="_self" :href="'http://localhost:8000/auth/claim?claimable=' +tenant +'&code=' +code" class="primary">Edit Website</a>
                             </li>
                         </ul>
                         <ul class="flex">
@@ -95,6 +97,9 @@
                         "
                         >Mini Blog</a
                     >
+                </li>
+                <li v-if="can === '1'">
+                    <a target="_self" :href="'https://whitecoatdomain.com/auth/claim?claimable=' +tenant +'&code=' +code" class="primary">Edit Website</a>
                 </li>
                 <li>
                     <a href="#contact"
@@ -372,6 +377,8 @@
             userSubscribed: Boolean,
             email: String,
             physicianName: String,
+            can: String,
+            code: String,
         },
         mounted() {},
         methods: {

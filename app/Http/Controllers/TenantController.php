@@ -372,7 +372,6 @@ class TenantController extends Controller
                 return response()->json(['account' => $tenant, 'status' => 200], 200);
             }
             elseif(empty($orders)) {
-                // Inefficient when the APP grows larger
                 $tenants = Tenant::all();
                 foreach($tenants as $tenant) {
                     Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);

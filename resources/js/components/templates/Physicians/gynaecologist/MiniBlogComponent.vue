@@ -17,7 +17,7 @@
                             <div class="flex justify-between align-center">
                                 <div class="flex align-center">
                                     <img :src="'/media/tenants/'+tenant+'/img/'+bio.photo" class="responsive-img circle blogUploader" v-if="preview == '0'"/>
-                                    <img src="/media/templates/1/profileSample.png" class="responsive-img circle blogUploader" v-else/>
+                                    <img src="/media/img/templates/1/profileSample.png" class="responsive-img circle blogUploader" v-else/>
                                     <p class="titleUploader">
                                         DR. <span v-if="preview == '0'"> {{ bio.firstname }} {{ bio.lastname }}</span>
                                         <span v-else> Jane Chang</span>

@@ -113,7 +113,6 @@ nav i,
     position: relative;
     display: inline-block;
 }
-
 .input-container i {
     position: absolute;
     left: 10px;
@@ -174,4 +173,60 @@ input[type="file"] {
     color: var(--secondary);
     text-decoration: underline;
     cursor: pointer;
+}
+.editDesc {
+    color: rgba(71, 84, 103, 1);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 0;
+}
+.gap-3 {
+    gap: 1vw;
+}
+.editSite.modal {
+    width: 25%;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+}
+.editSite.modal h5 {
+    font-weight: 600;
+}
+.imagodit {
+    height: 10vh;
+    border: 1px solid rgba(217, 217, 217, 0.41);
+}
+.modal .custom-btn {
+    box-shadow: unset;
+    outline: none;
+    border: none;
+}
+.modal .custom-btn:first-child {
+    background-color: #fff;
+    color: rgba(52, 64, 84, 1);
+    border: 1px solid rgba(128, 128, 128, 0.209);
+}
+.modal .custom-btn:last-child {
+    background-color: rgba(71, 134, 209, 1);
+}
+.arrowUp {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .editSite.modal {
+        width: 55%;
+    }
+    .gap-3 {
+        gap: 6vw;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .editSite.modal {
+        width: 80%;
+    }
+    .gap-3 {
+        gap: 6vw;
+    }
 }
