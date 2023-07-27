@@ -9,5 +9,5 @@ class Support extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['email', 'phone', 'names', 'message', 'imageUrl'];
+    protected $fillable = ['email', 'phone', 'names', 'message', 'imageUrl', 'subject'];
 }

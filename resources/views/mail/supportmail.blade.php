@@ -13,12 +13,10 @@
 </head>
 <body style="font-family: 'Poppins', sans-serif;">
     <h2>Hello,</h2>
-    <p class="lead">An email has been recieved from <b>{{ $data['names'] }}</b></p>
+    <p class="lead">An email has been recieved from <b>{{ $email }}</b></p>
     <p class="lead">The support request mail detail of user are:</p>
-    <p>Names: {{ $data['names'] }}</p>
-    <p>Email: <a href="mailto:{{ $data['email'] }}">{{ $data['email'] }}</a></p>
-    <p>Phone: <a href="tel:{{ $data['phone'] }}">{{ $data['phone'] }}</a></p>
-    <blockquote>{{ $data['message'] }}</blockquote></p>
+    <p>Email: <a href="mailto:{{ $email }}">{{ $email }}</a></p>
+    <p>Hello, I am requesting assistance</p></p>
     <p class="center">&copy; whitecoatdomain {{ date('Y') }}</p>
 </body>
 </html>

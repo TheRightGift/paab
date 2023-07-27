@@ -70,7 +70,6 @@ body {
     width: 75%;
     max-height: 95%;
     background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 30px;
     padding: 24px;
     overflow-y: scroll;
 }

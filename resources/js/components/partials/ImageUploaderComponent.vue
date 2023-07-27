@@ -145,7 +145,6 @@
         },
         watch: {
             uploaded(newVal, oldVal){
-                console.log(newVal, 'I came')
                 if(newVal !== null) {
                     this.showCropper = false;
                     this.userIcon = false;
@@ -155,7 +154,6 @@
                 }
             },
             photo(newVal, oldVal){
-                console.log(newVal, 'I came2')
                 if(newVal === null) {
                     this.userIcon = true;
                 } else {

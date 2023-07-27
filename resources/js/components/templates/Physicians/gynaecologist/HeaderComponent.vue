@@ -395,6 +395,7 @@
             physicianName: String,
             general: Object,
             can: String,
+            code: String,
         },
         mounted() {},
         methods: {
@@ -488,8 +489,10 @@
                 }
             },
             general(newVal) {
-                if (newVal.headerTitle !== null) {
-                    this.userReplaced = newVal.headerTitle;
+                if (newVal) {
+                    if (newVal.headerTitle !== null) {
+                        this.userReplaced = newVal.headerTitle;
+                    }
                 }
             },
             reviews(newVal) {

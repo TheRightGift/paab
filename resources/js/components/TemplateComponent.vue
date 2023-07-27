@@ -93,7 +93,7 @@
 </template>
 
 <script>
-    import FooterComponent from "./partials/FooterComponent1.vue";
+    import FooterComponent from "./partials/FooterComponent.vue";
     import SignUpButtonComponent from "./partials/SignUpButtonComponent.vue";
     import TemplatePreviewComponent from "./partials/TemplatePreviewComponent.vue";
     export default {

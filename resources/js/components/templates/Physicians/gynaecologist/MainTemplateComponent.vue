@@ -22,6 +22,7 @@
                 :physicianName="physicianName"
                 :general="generalData"
                 :can="can"
+                :code="code"
             />
             <main>
                 <AboutMeComponent
@@ -88,7 +89,7 @@ import TestimonialsComponent from "./TestimonialsComponent.vue";
 import AboutMeComponent from "./AboutMeComponent.vue";
 import FooterComponent from './FooterComponent.vue';
 import scrollCheck from "../../scrollCheck";
-import dragnDropImg from "../dragnDropImg";
+// import dragnDropImg from "../../dragnDropImg";
 let bio = '/api/bio';
 let service = '/api/service';
 let achievement = '/api/achievement';
@@ -158,7 +159,7 @@ export default {
         usersubscribed: String,
         code: String,
     },
-    mixins: [scrollCheck, dragnDropImg],
+    mixins: [scrollCheck],
     created() {
         this.preview == '0' ? this.checkAuth() : null;
     },
