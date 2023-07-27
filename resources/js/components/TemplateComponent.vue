@@ -74,9 +74,12 @@
                                 >
                                 <!-- <img :src="template.imageUrl" class="responsive-img border"/> -->
                             </div>
-                            <a class="templateTitle" :href="'/template/preview/'+template.id">{{ template.title }}</a>
+                            <div class="templateFooter">
+                                <a class="templateTitle" :href="'/template/preview/'+template.id">{{ template.title }}</a>
 
-                            <p>{{ title || template.title}} <span class="tier">Premium</span></p>
+                                <p class="noMarginTop grey-text d-flex justify-between"><small>{{ title || template.title}}</small> <span class="tier">Free</span></p>
+                            </div>
+                            
                         </div>
                     </div>
                 </section>
