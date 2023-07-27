@@ -189,10 +189,10 @@ section:not(:first-child) {
         font-size: 1rem;
     }
     .templateTitle {
-        text-align: center;
+        /* text-align: center; */
     }
     .templates {
-        text-align: center;
+        /* text-align: center; */
     }
     .templates.row .col {
         margin-bottom: 5vh;

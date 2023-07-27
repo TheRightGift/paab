@@ -92,7 +92,7 @@
             cropImage() {
                 // get image data for post processing, e.g. upload or setting image src
                 this.processing = true;
-                this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
+                this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL('image/jpeg');
                 this.$emit("fileChosen", this.cropImg);
             },
             setImage(e) {
