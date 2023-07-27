@@ -65,6 +65,7 @@
                                         type="radio"
                                         :value="suggestion.name"
                                         v-model="domain"
+                                        @change="$emit('newDomain', domain)"
                                     />
                                     <span></span>
                                 </label>
@@ -177,7 +178,7 @@
                             this.firstname +
                             this.lastname +
                             ".com"
-                        ).toLowerCase(),
+                        ).toLowerCase().trim(),
                     });
                     this.domainSuggestions.push({
                         name: (
@@ -185,7 +186,7 @@
                             this.lastname +
                             this.firstname +
                             ".com"
-                        ).toLowerCase(),
+                        ).toLowerCase().trim(),
                     });
                     this.domainSuggestions.push({
                         name: (
@@ -193,7 +194,7 @@
                             this.lastname +
                             title.name.replace(/\./g, "") +
                             ".com"
-                        ).toLowerCase(),
+                        ).toLowerCase().trim(),
                     });
                     this.domainSuggestions.push({
                         name: (
@@ -201,14 +202,14 @@
                             this.firstname +
                             title.name.replace(/\./g, "") +
                             ".com"
-                        ).toLowerCase(),
+                        ).toLowerCase().trim(),
                     });
                     this.domainSuggestions.push({
                         name: (
                             title.name.replace(/\./g, "") +
                             this.lastname +
                             ".com"
-                        ).toLowerCase(),
+                        ).toLowerCase().trim(),
                     });
                     let data = JSON.stringify(this.domainSuggestions);
                     this.loadingSuggestions = true;

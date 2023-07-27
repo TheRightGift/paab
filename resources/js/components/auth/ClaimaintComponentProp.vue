@@ -943,6 +943,7 @@
             if (this.email != '') {
                 this.view = 1;
             }
+            
             // document.addEventListener("DOMContentLoaded", function () {
             //     let elems = document.querySelector("#modal1");
             //     let options = {
@@ -1322,6 +1323,9 @@
                                     : `${res.data.domain}.com`;
                             this.initialDomain = res.data.domain;
                             this.tenantId = res.data.tenantID;
+                            if (localStorage.getItem('DomainChanged') == null) {
+                                this.domainSelected = (this.bio.firstname+'.com').trim().toLowerCase();
+                            }
                         }
                     })
                     .catch((err) => console.log(err));
@@ -1369,8 +1373,9 @@
                         template: this.specialty.templates[0].id,
                     })
                     .then((res) => {
+                        console.log(res)
                         if (res.data.status == 200) {
-                            this.initialDomain = res.data.domain.domain;
+                            // this.initialDomain = res.data.domain.domain;
                             return true;
                         }
                     })
@@ -1673,7 +1678,10 @@
                         })
                         .then((res) => {
                             if (res.data.status == 200) {
-                                this.initialDomain = res.data.domain.domain;
+                                this.initialDomain = this.domainSelected;
+                                if (localStorage.getItem('DomainChanged') == null) {
+                                    localStorage.setItem('DomainChanged', 1);
+                                }
                                 return true;
                             }
                         })
@@ -1902,7 +1910,6 @@
             claimant: {
                 immediate: true,
                 handler(val, oldval) {
-                    // console.log(val, oldval, 'o');
                     if (oldval == undefined && val != "")
                         this.parseClaimaintData(this.claimant);
                 },
@@ -1910,7 +1917,6 @@
             claimaint: {
                 immediate: true,
                 handler(val, oldval) {
-                    // console.log(val, oldval, 'l');
                     if (oldval == undefined && val != null)
                         this.parseClaimaintData(this.claimaint);
                 },
