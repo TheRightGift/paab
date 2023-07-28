@@ -134,9 +134,24 @@
                     const inputValue = event.target.value.trim();
                     if (inputValue.length >= 2) {
                         this.checkingSuggestion = true;
-                        let inputValue = this.domain.endsWith(".com")
-                            ? this.domain
-                            : this.domain + ".com";
+                        let inputValue;
+                        const validExtensions = [".com", ".doctor"]; // Add other valid extensions if needed
+
+                        // Get the index of the last dot in the domain
+                        const lastDotIndex = this.domain.lastIndexOf(".");
+                        if (lastDotIndex !== -1) {
+                            const extension = this.domain
+                                .slice(lastDotIndex)
+                                .toLowerCase();
+                            if (validExtensions.includes(extension)) {
+                                inputValue = this.domain;
+                            } else {
+                                inputValue =
+                                    this.domain.slice(0, lastDotIndex) + ".com";
+                            }
+                        } else {
+                            inputValue = this.domain + ".com";
+                        }
                         axios
                             .post("/api/domain/check", { domain: inputValue })
                             .then((res) => {
@@ -145,6 +160,7 @@
                                     this.$emit("newDomain", inputValue);
                                 } else if (res.data.status == 0) {
                                     this.domainCheckPassed = false;
+                                    this.$emit("status",  false);
                                 }
                                 this.checkingSuggestion = false;
                             })
@@ -178,7 +194,9 @@
                             this.firstname +
                             this.lastname +
                             ".com"
-                        ).toLowerCase().trim(),
+                        )
+                            .toLowerCase()
+                            .trim(),
                     });
                     this.domainSuggestions.push({
                         name: (
@@ -186,7 +204,9 @@
                             this.lastname +
                             this.firstname +
                             ".com"
-                        ).toLowerCase().trim(),
+                        )
+                            .toLowerCase()
+                            .trim(),
                     });
                     this.domainSuggestions.push({
                         name: (
@@ -194,7 +214,9 @@
                             this.lastname +
                             title.name.replace(/\./g, "") +
                             ".com"
-                        ).toLowerCase().trim(),
+                        )
+                            .toLowerCase()
+                            .trim(),
                     });
                     this.domainSuggestions.push({
                         name: (
@@ -202,14 +224,67 @@
                             this.firstname +
                             title.name.replace(/\./g, "") +
                             ".com"
-                        ).toLowerCase().trim(),
+                        )
+                            .toLowerCase()
+                            .trim(),
                     });
                     this.domainSuggestions.push({
                         name: (
                             title.name.replace(/\./g, "") +
                             this.lastname +
                             ".com"
-                        ).toLowerCase().trim(),
+                        )
+                            .toLowerCase()
+                            .trim(),
+                    });
+                    this.domainSuggestions.push({
+                        name: (
+                            title.name.replace(/\./g, "") +
+                            this.firstname +
+                            this.lastname +
+                            ".doctor"
+                        )
+                            .toLowerCase()
+                            .trim(),
+                    });
+                    this.domainSuggestions.push({
+                        name: (
+                            title.name.replace(/\./g, "") +
+                            this.lastname +
+                            this.firstname +
+                            ".doctor"
+                        )
+                            .toLowerCase()
+                            .trim(),
+                    });
+                    this.domainSuggestions.push({
+                        name: (
+                            this.firstname +
+                            this.lastname +
+                            title.name.replace(/\./g, "") +
+                            ".doctor"
+                        )
+                            .toLowerCase()
+                            .trim(),
+                    });
+                    this.domainSuggestions.push({
+                        name: (
+                            this.lastname +
+                            this.firstname +
+                            title.name.replace(/\./g, "") +
+                            ".doctor"
+                        )
+                            .toLowerCase()
+                            .trim(),
+                    });
+                    this.domainSuggestions.push({
+                        name: (
+                            title.name.replace(/\./g, "") +
+                            this.lastname +
+                            ".doctor"
+                        )
+                            .toLowerCase()
+                            .trim(),
                     });
                     let data = JSON.stringify(this.domainSuggestions);
                     this.loadingSuggestions = true;

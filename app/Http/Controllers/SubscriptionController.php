@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tenant;
 use Exception;
 use Stripe\Stripe;
 use App\Models\User;
@@ -28,7 +29,7 @@ class SubscriptionController extends Controller
         $paymentID = $request->get('payment');
         $mail = $request->get('email');
         $tenantID = $request->get('tenant_id');
-        $domainName = $request->get('domain');
+        $domainName = tenant()->domainName;
         $firstname = $request->get('firstname');
         $lastname = $request->get('lastname');
 
@@ -182,36 +183,50 @@ class SubscriptionController extends Controller
     public function returnDayEnd()
     {
         $currentTimestamp = time();
-        $data = auth()->user()->subscription('premium')->asStripeSubscription()->current_period_end;
-        $date = date('Y-m-d H:i:s', $data);
-        $remainingSeconds = $data - $currentTimestamp;
-        $remainingDays = floor($remainingSeconds / (60 * 60 * 24));
+        $user = auth()->user();
+        if ($user !== null) {
+            if ($user->stripe_id !== null) {
+                $data = auth()->user()->subscription('premium')->asStripeSubscription()->current_period_end;
+                $date = date('Y-m-d H:i:s', $data);
+                $remainingSeconds = $data - $currentTimestamp;
+                $remainingDays = floor($remainingSeconds / (60 * 60 * 24));
 
-        return response()->json($remainingDays);
+                return response()->json($remainingDays);
+            }
+        } else {
+            return 'OK';
+        }
     }
 
     public function getInvoices()
     {
-        $invoices = auth()->user()->invoices();
-        if ($invoices) {
-            $invoiceData = [];
-        
-            foreach ($invoices as $invoice) {
-                $id = $invoice->id;
-                $created = date('Y-m-d H:i:s',  $invoice->created);
-                $invoice_pdf = $invoice->invoice_pdf;
-        
-                // Store the extracted attributes in an array
-                $invoiceData[] = [
-                    'id' => $id,
-                    'created' => $created,
-                    'invoice_pdf' => $invoice_pdf,
-                ];
+        $user = auth()->user();
+        if ($user !== null) {
+            if ($user->stripe_id !== null) {
+                $invoices = auth()->user()->invoices();
+                if ($invoices) {
+                    $invoiceData = [];
+
+                    foreach ($invoices as $invoice) {
+                        $id = $invoice->id;
+                        $created = date('Y-m-d H:i:s', $invoice->created);
+                        $invoice_pdf = $invoice->invoice_pdf;
+
+                        // Store the extracted attributes in an array
+                        $invoiceData[] = [
+                            'id' => $id,
+                            'created' => $created,
+                            'invoice_pdf' => $invoice_pdf,
+                        ];
+                    }
+
+                    return response()->json($invoiceData);
+                } else {
+                    return response()->json('No invoices attached to user');
+                }
             }
-        
-            return response()->json($invoiceData);
         } else {
-            return response()->json('No invoices attached to user');
+            return 'Invoices OK';
         }
     }
 }

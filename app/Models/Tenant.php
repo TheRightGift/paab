@@ -23,6 +23,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
             'user_id',
             'template_id',
             'description',
+            'domainName',
         ];
     }
 
