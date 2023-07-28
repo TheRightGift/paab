@@ -69,14 +69,6 @@
                             <li v-if="can === '1'">
                                 <a target="_self" :href="'https://whitecoatdomain.com/auth/claim?claimable=' +tenant +'&code=' +code" class="primary">Edit Website</a>
                             </li>
-                        </ul>
-                        <ul class="flex">
-                            <li>
-                                <a class="custom-btn" href="#contact"
-                                    >Contact</a
-                                >
-                            </li>
-
                             <li
                                 v-if="isLoggedIn"
                                 class="show-on-medium-and-up hide-on-small-only"
@@ -85,12 +77,18 @@
                                     class="modal-trigger physiTempSettingsNavLink"
                                     href="#showSettingsModal"
                                 >
-                                    <i
-                                        class="material-icons physiTempSettingsIcon"
-                                        >settings</i
-                                    >
+                                    Edit Website
                                 </a>
                             </li>
+                        </ul>
+                        <ul class="flex">
+                            <li>
+                                <a class="custom-btn" href="#contact"
+                                    >Contact</a
+                                >
+                            </li>
+
+                           
                         </ul>
                     </div>
                 </div>
@@ -117,22 +115,23 @@
                 <li v-if="can === '1'">
                     <a target="_self" :href="'https://whitecoatdomain.com/auth/claim?claimable=' +tenant +'&code=' +code" class="primary">Edit Website</a>
                 </li>
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
                 <li v-if="isLoggedIn">
                     <a
                         class="modal-trigger physiTempSettingsNavLink"
                         href="#showSettingsModal"
                     >
-                        Settings
+                        Edit Website
                     </a>
                 </li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+                
             </ul>
         </header>
     </div>
-    <div id="showSettingsModal" class="modal" v-if="preview == '0'">
-        <div class="modal-content">
+    <div id="showSettingsModal" class="modal">
+        <div class="modal-content" v-if="isLoggedIn">
             <div v-if="modalView == 0" class="settingModalViewInitial">
                 <div class="row">
                     <a
@@ -141,7 +140,7 @@
                         ><i class="fa-solid fa-xmark"></i
                     ></a>
                     <div class="col l12 m12 s12">
-                        <h3 class="mt-0">Settings</h3>
+                        <h3 class="mt-0 fs-1">Settings</h3>
                         <p class="marginTop-1">
                             Update your website by selecting any of the links
                             below
@@ -500,10 +499,9 @@
             },
             isLoggedIn(newVal, oldVal) {
                 if (newVal === true) {
-                    document.addEventListener("DOMContentLoaded", function () {
-                        var elems = document.querySelectorAll(".modal");
-                        var instances = M.Modal.init(elems);
-                    });
+                    console.log(newVal)
+                    var elem = document.querySelectorAll(".modal");
+                    var instances = M.Modal.init(elem);
                 }
             },
         },
