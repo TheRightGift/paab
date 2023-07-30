@@ -51,6 +51,7 @@ if (folderProp !== null) {
     app.component(`physician-${templateProp}-website-component`, defineAsyncComponent(() => import(`@/components/templates/Physicians/${trimmed}/MainTemplateComponent`)));
 }
 app.component(`physician-website-settings`, defineAsyncComponent(() => import(`./components/templates/Physicians/gynaecologist/Settings/SettingsComponent`)));
+app.component(`go-live-component`, defineAsyncComponent(() => import(`./components/templates/GoLive.vue`)));
 
 app.component('verify-doc-component', defineAsyncComponent(() => import('./components/VerifyDoc')));
 // app.component('physician-2-website-settings', defineAsyncComponent(() => import('./components/templates/Physicians/naturegreen/Settings/SettingsComponent')));

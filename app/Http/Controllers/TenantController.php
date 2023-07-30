@@ -133,6 +133,29 @@ class TenantController extends Controller
             return response()->json(['message' => 'Website not found!', 'status' => 404], 404);
         }
     }
+    
+    public function returnPayment() {
+        $tenancies = new Tenant();
+        $tenant = $tenancies->find(tenant('id'));
+        // $specialty = $tenant->template->specialty->title;
+        // $specialtyId =$tenant->template->specialty_id;
+        $template_id = $tenant->template->id;
+        $template = $tenant->template->title;
+        $templateCSS = $tenant->template->styleFile;
+        $description = '';
+
+        $bioTB = Bio::first();
+        $pageTitles = General::first();
+        $pageTitle = (!empty($pageTitles) ? $pageTitles->title : $bioTB !== null) ? 'Dr '.$bioTB->firstname.' '.$bioTB->lastname : null;
+        
+        $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'SuperAdmin' ? null : $tenant->user->title->name;
+        $tenantID = strtolower(tenant('id')); 
+        $user_id = $tenant->user->id;
+        $email = $tenant->user->email;
+        // Checks if  a user is subscribed
+        $userSubscribed = $tenant->user->subscribed('premium');
+        return view('websites.golive', compact('template', 'templateCSS', 'pageTitle', 'tenantID', 'email', 'user_id', 'userSubscribed', 'template_id'));
+    }
 
     public function checkTokenForEdit($request) {
         if ($request->has('token')) {
