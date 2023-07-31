@@ -50,7 +50,6 @@ class TenantController extends Controller
         if ($inputs->fails()) {
             return response()->json(['errors' => $inputs->errors()->all()], 501);
         }
-        
         try {
             $tenants = Tenant::find($request->name);
             $domains = DB::table('domains')->where('domain', $request->name)->first();
@@ -107,6 +106,7 @@ class TenantController extends Controller
         $sessionTenant = Session::get('tenant');
         $tenantID = !empty($sessionTenant) ? $sessionTenant : $tenantID;
         $tenant = Tenant::find($tenantID);
+        $users = new User();
         if ($tenant !== null) {
             if ($request->has('template')) {
                 $tenant->template_id = $inputs->validated()['template'];
@@ -116,20 +116,45 @@ class TenantController extends Controller
                 try {
                     if (!empty($sessionTenant)) {
                         $domain = $tenant->domains->first();
-                        $domain->domain = str_replace('.com', '', $inputs->validated()['domain']);
+                        $inputValue = preg_replace('/\.[^.]+$/', '', $inputs->validated()['domain']);
+                        $domain->domain = $inputValue;
+                        // Update domain on userEnd              
+                        $tenant->domainName = $inputs->validated()['domain'];
+                        $tenant->save();
                         $domain->save();
                     } 
                 } catch (DomainOccupiedByOtherTenantException $e) {
                     return response()->json(["Domain already in use."]);
                 }
             }
-            // if ($domain == true || $tenant == true) {
-                return response()->json(['message' => 'Success', 'status' => 200], 200);
-            // }
+            return response()->json(['message' => 'Success', 'status' => 200], 200);
         }
         else {
             return response()->json(['message' => 'Website not found!', 'status' => 404], 404);
         }
+    }
+    
+    public function returnPayment() {
+        $tenancies = new Tenant();
+        $tenant = $tenancies->find(tenant('id'));
+        // $specialty = $tenant->template->specialty->title;
+        // $specialtyId =$tenant->template->specialty_id;
+        $template_id = $tenant->template->id;
+        $template = $tenant->template->title;
+        $templateCSS = $tenant->template->styleFile;
+        $description = '';
+
+        $bioTB = Bio::first();
+        $pageTitles = General::first();
+        $pageTitle = (!empty($pageTitles) ? $pageTitles->title : $bioTB !== null) ? 'Dr '.$bioTB->firstname.' '.$bioTB->lastname : null;
+        
+        $title = $tenant->user->role === 'Admin' || $tenant->user->role === 'SuperAdmin' ? null : $tenant->user->title->name;
+        $tenantID = strtolower(tenant('id')); 
+        $user_id = $tenant->user->id;
+        $email = $tenant->user->email;
+        // Checks if  a user is subscribed
+        $userSubscribed = $tenant->user->subscribed('premium');
+        return view('websites.golive', compact('template', 'templateCSS', 'pageTitle', 'tenantID', 'email', 'user_id', 'userSubscribed', 'template_id'));
     }
 
     public function checkTokenForEdit($request) {
@@ -444,7 +469,15 @@ class TenantController extends Controller
         $tenantToCheck = $request->session()->get('tenant');
         $tenant = Tenant::find($tenantToCheck);
         if (!empty($tenant)) {
-            $domain = $tenant->domains->first()->domain;
+            $user = $tenant->user;
+            if ($user->id !== 1) {
+                $domain = $user->domainName;
+                if ($domain === '') {
+                    $domain = $tenant->domains->first()->domain;
+                }
+            } else {
+                $domain = $tenant->domains->first()->domain;
+            }
             $tenantID = $tenant->id;
 
             return response()->json(['message' => "Tenant Data fetched onSuccess", 'domain' => $domain, 'tenantID' => $tenantID, 'status' => 200]);

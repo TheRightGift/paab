@@ -124,6 +124,7 @@
                                 <label>Type domain name</label>
                                 <domain-input-component
                                     @newDomain="newDomain($event)"
+                                    @status="status($event)"
                                     :titles="titles"
                                     :domainSelected="domainSelected"
                                     :firstname="bio.firstname"
@@ -825,6 +826,7 @@
 
         data() {
             return {
+                domainCheckPassed: null,
                 otpMode: false,
                 clicked: false,
                 failedPic: false,
@@ -1029,6 +1031,10 @@
                     .classList.remove("empty-input");
                 this.updatePhoto(e);
             },
+            // To continue to form or not
+            status(data) {
+                this.domainCheckPassed = data;
+            },
             serviceSaveOrUpdate() {
                 this.loading = !this.loading;
                 let request = `/claim/save/service`;
@@ -1124,59 +1130,66 @@
                 }
             },
             saveAll() {
-                this.underGrad.minor === "" || this.underGrad.minor === null
-                    ? delete this.underGrad.minor
-                    : null;
-                this.bio.othername === "" || this.bio.othername === null
-                    ? delete this.bio.othername
-                    : null;
-                this.bioData.othername === "" || this.bioData.othername === null
-                    ? delete this.bioData.othername
-                    : null;
-                this.failedPic = this.bioData.photo == null ? true : false;
-                if (
-                    this.validator(this.additionalSchool) &&
-                    this.validator(this.fellowship) &&
-                    this.validator(this.residency) &&
-                    this.validator(this.internship) &&
-                    this.validator(this.medSchool) &&
-                    this.validator(this.underGrad) &&
-                    this.validator(this.bio) &&
-                    this.domainSelected !== "" &&
-                    this.specialty !== ""
-                ) {
-                    // && this.validator(this.domainSelected))
-                    try {
-                        this.registerUpdateUser();
-                        this.saveUndergradSchoolTime();
-                        this.saveMedSchoolTime();
-                        this.saveInternshipTime();
-                        this.saveFellowshipTime();
-                        this.saveResidencyTime();
-                        this.saveAdditionalSchoolTime();
-                        this.updateBio();
-                        this.updateDomain();
-                        this.serviceSaveOrUpdate();
-                        this.saveUpdateTemplate();
-                    } catch (error) {
-                        M.toast({
-                            html: error,
-                            classes: "errorNotifier",
-                        });
-                    } finally {
-                        M.toast({
-                            html: "Success",
-                            classes: "successNotifier",
-                        });
-                        this.sendEmail();
-                        let successWebCr8Modal =
-                            document.getElementById("successWebCr8Modal");
-                        let modal = M.Modal.init(successWebCr8Modal);
-                        modal.open();
-                        // this.popup();
-                    }
+                if (this.domainCheckPassed === false) {
+                    M.toast({
+                        html: 'Domain you entered is unavailable!',
+                        classes: 'errorNotifier',
+                    })
                 } else {
-                    this.validationException();
+                    this.underGrad.minor === "" || this.underGrad.minor === null
+                        ? delete this.underGrad.minor
+                        : null;
+                    this.bio.othername === "" || this.bio.othername === null
+                        ? delete this.bio.othername
+                        : null;
+                    this.bioData.othername === "" || this.bioData.othername === null
+                        ? delete this.bioData.othername
+                        : null;
+                    this.failedPic = this.bioData.photo == null ? true : false;
+                    if (
+                        this.validator(this.additionalSchool) &&
+                        this.validator(this.fellowship) &&
+                        this.validator(this.residency) &&
+                        this.validator(this.internship) &&
+                        this.validator(this.medSchool) &&
+                        this.validator(this.underGrad) &&
+                        this.validator(this.bio) &&
+                        this.domainSelected !== "" &&
+                        this.specialty !== ""
+                    ) {
+                        // && this.validator(this.domainSelected))
+                        try {
+                            this.registerUpdateUser();
+                            this.saveUndergradSchoolTime();
+                            this.saveMedSchoolTime();
+                            this.saveInternshipTime();
+                            this.saveFellowshipTime();
+                            this.saveResidencyTime();
+                            this.saveAdditionalSchoolTime();
+                            this.updateBio();
+                            this.updateDomain();
+                            this.serviceSaveOrUpdate();
+                            this.saveUpdateTemplate();
+                        } catch (error) {
+                            M.toast({
+                                html: error,
+                                classes: "errorNotifier",
+                            });
+                        } finally {
+                            M.toast({
+                                html: "Success",
+                                classes: "successNotifier",
+                            });
+                            this.sendEmail();
+                            let successWebCr8Modal =
+                                document.getElementById("successWebCr8Modal");
+                            let modal = M.Modal.init(successWebCr8Modal);
+                            modal.open();
+                            // this.popup();
+                        }
+                    } else {
+                        this.validationException();
+                    }
                 }
             },
             startExploring() {
@@ -1325,11 +1338,11 @@
                             this.domainSelected =
                                 this.bio.firstname == "" && this.tenantOnDemand == 1
                                     ? ""
-                                    : `${res.data.domain}.com`;
+                                    : `${res.data.domain}`;
                             this.initialDomain = res.data.domain;
                             this.tenantId = res.data.tenantID;
                             if (localStorage.getItem('DomainChanged') == null) {
-                                this.domainSelected = (this.bio.firstname+'.com').trim().toLowerCase();
+                                this.domainSelected = (this.bio.firstname+this.bio.lastname+'.com').trim().toLowerCase();
                             }
                         }
                     })
@@ -1674,6 +1687,7 @@
             },
             newDomain(domain) {
                 this.domainSelected = domain;
+                this.domainCheckPassed = null;
             },
             updateDomain() {
                 if (this.initialDomain + ".com" !== this.domainSelected) {

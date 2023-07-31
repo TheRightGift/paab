@@ -67,7 +67,7 @@ class APIController extends Controller
             $tenant = $tenants->where('user_id', $user->id)->first();
             $tenantPassTB = DB::table('tenant_password_tables')->where('tenant_id', $tenant->id)->first();
             if (!empty($tenant)) {
-                $domain = $tenant['domains'][0]['domain'];
+                $domain = $tenant->domainName;
                 // TODO: At the completion of website creation send message to user that site is now live
                 $detail = [
                     'email' => $user->email,
@@ -75,7 +75,7 @@ class APIController extends Controller
                     'domain' => $domain,
                     'names' => $user->firstname.' '.$user->lastname,
                 ];
-                $domainDotCom = $domain.'.com';
+                $domainDotCom = $domain;
                 $years = 1;
                 $key = env('NAMESILO_API_KEY');
                 $api = env('NAMESILO_API_URL');

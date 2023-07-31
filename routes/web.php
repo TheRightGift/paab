@@ -284,7 +284,6 @@ Route::middleware(['validateIsValidGuest'])->group(function () {
 
     Route::get('/claim/data', [TenantClaimController::class, 'getData']);
 
-
     Route::post('/subscription/create', [App\Http\Controllers\SubscriptionController::class, 'subscribe']);
     Route::get('/{name}', function(){
         return view('verify_dox');

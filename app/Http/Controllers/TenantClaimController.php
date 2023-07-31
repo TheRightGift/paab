@@ -82,6 +82,8 @@ class TenantClaimController extends Controller
         }
     }
 
+    
+
     /**
      * Create Or Update password for the tenant
      *

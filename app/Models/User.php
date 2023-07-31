@@ -44,7 +44,8 @@ class User extends Authenticatable
         'visits',
         'gender',
         'avatar',
-        'registration_completed'
+        'registration_completed',
+        'domainName'
     ];
 
     /**
