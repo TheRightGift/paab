@@ -6,8 +6,6 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <title>{{env('APP_NAME')}}: White Coat Domain - Support</title>
         <link rel="shortcut icon" href="{{ asset('/media/img/wcdFavicon.jpg') }}" type="image/x-icon">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
 
@@ -16,7 +14,7 @@
         <link rel="stylesheet" href="{{ asset('css/helpsupport.css') }}">
         <link rel="stylesheet" href="{{ asset('fonts/material-icons.css') }}">
     </head>
-    <body>
+    <body class="dashboard">
 
         <div id="app">
             <client-support-component />

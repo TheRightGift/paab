@@ -1,27 +1,6 @@
 <template>
     <div class="row">
-        <!-- <div class="row clientCreatePortInputRowDiv" v-if="determineRole">
-            <div class="userTempMainDiv">
-                <div
-                    v-for="(profession, index) in professions"
-                    :key="profession.id"
-                >
-                    <div
-                        :class="{ selectedUserTempDiv: index == selectedIndex }"
-                        id="userTempDiv"
-                        @click="getTemplates(profession.id, index)"
-                    >
-                        <div class="tempImgDiv" id="tempImgDiv">
-                            <span id="tempProIcon">{{
-                                profession.name.slice(0, 1)
-                            }}</span>
-                        </div>
-                        <p class="userTempTitle">{{ profession.name }}</p>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <div v-if="templates.length > 0" class="gutterTop-10">
+        <div v-if="templates.length > 0" class="">
             <div
                 class="col s12 m6 l3"
                 :class="
@@ -35,26 +14,26 @@
                         <img
                             :src="
                                 '/media/img/templateThumbnail/' +
-                                template.profession.name +
+                                template.specialty.title +
                                 '/' +
                                 template.imageUrl
                             "
                         />
                         <i
-                            class="material-icons green-text selectedTemplate"
+                            class="material-icons green-text selectedTemplate absolute top-0"
                             v-if="selectedTemplate == template.id"
                             >check_box</i
                         >
                     </div>
                     <div class="card-content">
-                        <a :href="'/preview/' + template.id" target="_blank"
+                        <a :href="'/template/preview/' + template.id" target="_blank"
                             >Preview</a
                         >
                         <span v-show="type !== 'preview'">
                             <span v-if="selectedTemplate == template.id">
                                 <a class="right green-text">Selected</a>
                             </span>
-                            <span v-else>
+                            <span v-else >
                                 <a @click="selectTemplate(template)" class="right"
                                     >Select</a
                                 >
@@ -63,15 +42,12 @@
                     </div>
                 </div>
             </div>
-            <!-- <div>
-                <p class="configWebLoadTxt center">Loading...</p>
-            </div> -->
         </div>
         <div v-else-if="loading" class="centered">
-            <i class="fas fa-spinner fa-spin fa-2x"></i>
+            <i class="fas fa-circle-notch fa-spin fa-2x"></i>
         </div>
         <div v-else>
-            <p class="centered">No template found for profession</p>
+            <p class="centered">No templates</p>
         </div>
     </div>
 </template>
@@ -81,8 +57,6 @@
             return {
                 loading: false,
                 templates: [],
-                // professions: [],
-                // selectedIndex: 0,
             };
         },
         computed: {
@@ -95,7 +69,6 @@
             },
         },
         props: {
-            professionId: Number,
             selectedTemplate: Number,
             type: String,
             role: String,
@@ -109,12 +82,12 @@
                 this.selectedIndex = index;
                 this.loading = true;
                 
-                let url = "";
-                if (professionId == 0 || this.type == 'preview') {
-                    url = `/api/template`;
-                } else {
-                    url = `/api/template/${professionId}`;
-                }
+                let url = `/api/template`;
+                // if (professionId == 0 || this.type == 'preview') {
+                    // url = `/api/template`;
+                // } else {
+                    // url = `/api/template/${professionId}`;
+                // }
 
                 axios
                     .get(url)

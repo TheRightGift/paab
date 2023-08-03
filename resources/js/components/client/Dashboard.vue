@@ -1,246 +1,218 @@
 <template>
     <div>
-        <mobile-nav-component />
-        <!-- Sidebar for large and medium devices -->
-        <div class="row" id="dashRowDiv">
-            <sidenav-component @user="getUser"/>
-
-            <div class="col s12 m10 l10">
-                <div class="dashRightDiv">
-                    <div id="dashRightImgDiv">
-                        <div class="dashRightImgInnerDiv">
-                            <div class="dashRightImgTxtDiv">
-                                <p class="dashRightImgTitle">
-                                    Skyrocket your portfolio
-                                </p>
-                                <p class="dashRightImgTxt">
-                                    We are ready to go on this journey with you as you take your 
-                                    personal brand and reputation in your hands.
-
-                                </p>
+        <SidenavComponent @user="getUser" class="hide-on-small-only" />
+        <HeaderComponent :user="user" class="hide-on-small-only"/>
+        <main>
+            <section class="hide-on-small-only">
+                <div class="d-flex justify-between align-center">
+                    <div class="w-335">
+                        <p class="mb-0 welcomeName">
+                            Welcome Back, Dr. {{ user.firstname }}
+                            {{ user.lastname }}
+                        </p>
+                        <span class="supportWelcomeNote"
+                            >Lets start and automate your process so you
+                            can reclaim time and focus on your goals.</span
+                        >
+                    </div>
+                    <div>
+                        <div class="d-flex justify-between align-center gap-10">
+                            <div class="timer">{{ currentHour }}</div>
+                            <span
+                                :style="{
+                                    visibility: colonVisible
+                                        ? 'visible'
+                                        : 'hidden',
+                                }"
+                                >:</span
+                            >
+                            <div class="timer">{{ currentMinute }}</div>
+                            <div class="timer meridian uppercase">
+                                {{ currentMidNoon }}
                             </div>
+                            <span class="dates"
+                                >{{ currentDay }} / {{ currentMonth }} /
+                                {{ currentYear }}</span
+                            >
                         </div>
                     </div>
-
-                    <div class="row" id="dashWlcNoteRowDiv">
-                        <div class="col s12 m8 l8">
-                            <div class="dashWlcNoteDiv">
-                                <div class="dashWlcNoteInnerDiv">
-                                    <p class="dashWlcNoteTitle">
-                                        Welcome!
-                                        <span class="dashWlcNoteTitle1"
-                                            >Dr. {{user.firstname}} {{user.lastname}}</span
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col s12">
+                            <ul class="tabs">
+                                <li class="tab col s2">
+                                    <a href="#myWebsites" class="active"
+                                        >My Websites</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="myWebsites" class="col s12">
+                            <div v-if="websiteLoading" class="center-align">
+                                <i
+                                    class="fa-solid fa-circle-notch fa-spin fa-2x grey-text"
+                                ></i>
+                            </div>
+                            <div v-else>
+                                <div v-if="websites.length > 0">
+                                    <div
+                                        class="website d-flex justify-between align-center px-2"
+                                        v-for="website in websites"
+                                        :key="website.id"
+                                    >
+                                        <div
+                                            class="d-flex align-center justify-between gap-1"
                                         >
-                                    </p>
-                                    <p class="dashWlcNoteTxt">
-                                        Lets start and automate your process so
-                                        you can reclaim time and focus on your
-                                        goals.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col s12 m4 l4">
-                            <div class="row">
-                                <div class="dashTimeDiv">
-                                    <div class="col s7 m6 l6">
-                                        <div class="dashTimeInnerDiv">
-                                            <p class="dashTimeDate">
-                                                {{ currentMonth }}
-                                                {{ currentDay }},
-                                                {{ currentYear }}
-                                            </p>
-                                            <p class="dashTime">
-                                                {{ currentTime
-                                                }}<span class="dashTimePeriod"
-                                                    >{{currentMidNoon}}</span
-                                                >
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col s5 m6 l6">
-                                        <div class="shapeDegDiv">
-                                            <div class="shapeDeg"></div>
-                                            <div class="shapeDeg1"></div>
-                                            <div class="shapeDeg2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row" id="myWebDiv">
-                        <div class="col s12 m6 l6">
-                            <div class="cardDiv">
-                                <div class="cardHeader">
-                                    <p class="cardTitle">MY WEBSITES</p>
-                                </div>
-                            </div>
-                            <div class="cardContent">
-                                <div class="cardContentProfile">
-                                    <div v-if="websiteLoading" class="center-align">
-                                        <div class="preloader-wrapper small active">
-                                            <div
-                                                class="
-                                                    spinner-layer spinner-white-only
+                                            <img
+                                                :src="
+                                                    '/media/img/templateThumbnail/' +
+                                                    website.template.title +
+                                                    '/' +
+                                                    website.template.imageUrl
                                                 "
+                                                class="responsive-img w-32 h-32 circle"
+                                            />
+                                            <span class="specialty">
+                                                {{ website.template.title }}
+                                            </span>
+                                        </div>
+                                        <span class="tenantID">
+                                            {{ website.name }}
+                                        </span>
+                                        <div>
+                                            <a
+                                                href="#"
+                                                @click="gotoDomain(website)"
+                                                >View</a
                                             >
-                                                <div class="circle-clipper left">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="gap-patch">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="circle-clipper right">
-                                                    <div class="circle"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div v-else>
-                                        <div  v-if="(websites.length > 0)">
-                                            <div class="row noMarginBottom"  v-for="website in websites" :key="website.id">
-                                                <div class="col s3">
-                                                    <div class="webWhiteProDiv">
-                                                        <img :src="'/media/img/templateThumbnail/'+website.template.profession.name+'/'+website.template.imageUrl" class="responsive-img" />
-                                                    </div>
-                                                </div>
-                                                <div class="col s7">
-                                                    <p class="domainname">
-                                                        {{website.name}}
-                                                    </p>
-                                                </div>  
-                                                <div class="col s2">
-                                                    <p>
-                                                        <a href="#" @click="gotoDomain(website)">View</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row" v-else>
-                                            <p class="white-text center-align noVertMargin">No Website created yet</p>
-                                        </div>
-                                        <div class="row noMarginBottom marginTop-5">
-                                            <div class="col s12 center-align">
-                                                <a @click="navigateToWebsitePage" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create website</a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="col s12 m6 l6">
-                            <div class="cardDiv">
-                                <div class="cardHeader">
-                                    <p class="cardTitle">MY MAIL</p>
-                                </div>
-                                <div class="cardContent">
-                                    <div v-if="mail.length < 1">
-                                        <div class="row">
-                                            <p class="white-text center-align noVertMargin">No Mail.</p>
-                                        </div>
-                                        <!--div class="row noMarginBottom">
-                                            <div class="col s12 center-align">
-                                                <a @click="navigateToMail" class="waves-effect primary waves-light btn-small"><i class="material-icons right">add</i>Create mail</a>
-                                            </div>
-                                        </div-->
-                                    </div>
-                                    <div class="row" id="myMailDiv" v-else>
-                                        <div class="col s10 m10 l10">
-                                            <div class="cardImgMainDiv">
-                                                <div class="cardImgDiv">
-                                                    <i
-                                                        class="material-icons"
-                                                        id="cardImg"
-                                                        >person</i
-                                                    >
-                                                </div>
-                                                <a href="#" class="cardProName"
-                                                    >admin@whitecoatdomain.com</a
-                                                >
-                                            </div>
-                                        </div>
-
-                                        <div class="col s2 m2 l2">
-                                            <p class="dashTimeAgo">2m</p>
-                                        </div>
-
-                                        <div class="col s10 offset-s2">
-                                            <p class="mailCardTxt">
-                                                Lorem Ipsum is simply dummy text
-                                                of the printing and typesetting
-                                                industry. Lorem Ipsum has been
-                                                the industry's standard dummy
-                                                text ever since the 1500s, when
-                                                an unknown printer took a galley
-                                                of type and scrambled it to make
-                                                a type specimen book, Lorem
-                                                Ipsum is simply dummy text of
-                                                the printing and typesetting
-                                                Lorem Ipsum has been the
-                                                industry's standard dummy text
-                                                ever since the 1500s,....
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="row noMarginBottom marginTop-5 center-align">
-                                        <a @click="navigateToMail" class="waves-effect primary waves-light btn-small"><i class="material-icons right">email</i>Mail Admin</a>
-                                    </div>
+                                <div class="center" v-else>
+                                    <p>No Website Created Yet!</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <InnerFooterComponent/>
-            </div>
-        </div>
+                <div class="fixed-action-btn">
+                    <a
+                        class="btn-floating btn-large waves-effect waves-light red right customBtn"
+                        @click="navigateToWebsitePage"
+                        ><i class="material-icons">add</i>
+                        <span>Create</span></a
+                    >
+                </div>
+            </section>
+            <section class="hide-on-med-and-up">
+                <div class="h-100 d-flex justify-center align-center">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">
+                                <h5 class="m-0 center"><i class="fa-solid fa-triangle-exclamation alert-accent"></i> Oops Sorry!</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="center">
+                                    Your dashboard is not optimized for mobile screen view. Switch to a desktop view for better experience.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
 </template>
-
+<style scoped>
+    .timer {
+        width: 40px;
+        height: 40px !important;
+        text-align: center;
+        line-height: 40px;
+        height: inherit;
+        border-radius: 4px;
+        border: 1px solid #e6e6e6;
+        background: #fcfcfc;
+    }
+    .meridian {
+        background: #109dad;
+        font-size: 0.75rem;
+    }
+    .gap-10 {
+        gap: 10px;
+    }
+    .dates,
+    .meridian {
+        color: #4c4c4c;
+        font-family: "Montserrat", sans-serif;
+        font-style: normal;
+        font-weight: 600;
+    }
+    .dates {
+        font-size: 1rem;
+    }
+    .tabs .tab a:hover,
+    .tabs .tab a.active {
+        color: #04103b;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 700;
+        text-transform: none;
+    }
+    .tabs .tab a {
+        color: #979797;
+        font-style: normal;
+        font-weight: 700;
+    }
+    .tabs .tab a:focus,
+    .tabs .tab a:focus.active {
+        background: transparent;
+    }
+    .alert-accent {
+        color: #686a8a;
+    }
+    @media only screen and (max-width: 767px) {
+        header,
+        main,
+        footer {
+            padding-left: 0;
+        }
+        body {
+            display: none;
+        }
+    }
+</style>
 <script>
-    import MobileNavComponent from '../partials/MobileNavComponent.vue';
-    import SidenavComponent from '../partials/SideNavComponent.vue';
-    import InnerFooterComponent from '../partials/InnerFooterComponent.vue';
+    import MobileNavComponent from "../partials/MobileNavComponent.vue";
+    import SidenavComponent from "../partials/SideNavComponent.vue";
+    import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
+    import HeaderComponent from "../partials/HeaderComponent.vue";
     let centralURL = process.env.MIX_APP_URL;
     export default {
         components: {
             SidenavComponent,
             MobileNavComponent,
             InnerFooterComponent,
+            HeaderComponent,
         },
         data() {
             return {
                 bg_img: "/media/img/istockphoto-1390124896-170667a.jpg",
                 pro_img: "/media/img/yuna.jpg",
                 centralURL: centralURL,
-                months: [
-                    "January",
-                    "February",
-                    "March",
-                    "April",
-                    "May",
-                    "June",
-                    "July",
-                    "August",
-                    "September",
-                    "October",
-                    "November",
-                    "December",
-                ],
+                colonVisible: true,
                 currentMonth: "",
                 currentDay: "",
                 currentDate: "",
                 currentYear: "",
-                currentTime: "",
-                currentMidNoon:"",
+                currentMinute: "",
+                currentHour: "",
+                currentMidNoon: "",
                 user: {},
                 websites: [],
                 websiteLoading: false,
-                mail: []
             };
         },
         mounted() {
@@ -248,32 +220,16 @@
             this.getDate();
             this.getWebsites();
             setInterval(this.getCurrentTimeInterval, 1000);
-            
         },
         methods: {
             getDate() {
                 const d = new Date();
-                this.currentMonth = this.months[d.getMonth()].substring(0, 3);
-                this.currentDay = d.getDate() + this.dayFormatter(d.getDate());
+                this.currentMonth = String(d.getMonth() + 1).padStart(2, "0");
+                this.currentDay = String(d.getDate()).padStart(2, "0");
                 this.currentDate = d.getDate();
                 this.currentYear = d.getFullYear();
                 this.currentMidNoon = d.getHours() >= 12 ? "pm" : "am";
                 this.getCurrentTimeInterval();
-            },
-            dayFormatter(d) {
-                {
-                    if (d > 3 && d < 21) return "th";
-                    switch (d % 10) {
-                        case 1:
-                            return "st";
-                        case 2:
-                            return "nd";
-                        case 3:
-                            return "rd";
-                        default:
-                            return "th";
-                    }
-                }
             },
             formatAMPM(d) {
                 var hours = d.getHours();
@@ -285,26 +241,28 @@
                 var strTime = hours + ":" + minutes + " " + ampm;
                 return strTime;
             },
-            getCurrentTimeInterval(){
+            getCurrentTimeInterval() {
                 const date = new Date();
-                this.currentTime = `${date.getHours()}:${String(
-                    date.getMinutes()
-                ).padStart(2, "0")}`;
+                this.currentHour = String(date.getHours()).padStart(2, "0");
+                this.currentMinute = String(date.getMinutes()).padStart(2, "0");
+                this.colonVisible = !this.colonVisible;
             },
             getUser(e) {
                 this.user = e;
-                this.checkMailExist();
             },
             getWebsites() {
                 this.websiteLoading = true;
-                axios.get("/api/tenancies").then(res => {
-                    if (res.data.status == 200) {
-                        this.websites = res.data.tenants.data.slice(0, 2);
-                    }
-                    this.websiteLoading = false;
-                }).catch(err => {
-                    console.log(err);
-                });
+                axios
+                    .get("/api/tenancies")
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            this.websites = res.data.tenants.data.slice(0, 2);
+                        }
+                        this.websiteLoading = false;
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             },
             setCookie(cname, cvalue, exdays) {
                 const d = new Date();
@@ -312,41 +270,22 @@
                 let expires = "expires=" + d.toUTCString();
                 document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
             },
-            setToken () {
+            setToken() {
                 if (this._token != "") {
-                        this.setCookie(
-                            "_token",
-                            this._token,
-                            2
-                        );
+                    this.setCookie("_token", this._token, 2);
                 }
             },
-            navigateToWebsitePage(){
-                window.location.replace('/client/websites');
-            },
-            navigateToMail(){
-                window.location.replace('/client/mail');
+            navigateToWebsitePage() {
+                window.location.replace("/client/websites?openForm");
             },
             gotoDomain(website) {
-                let domain = typeof(website.domains) === "object"? website.domains[0].domain : website.domains;
-                window.open(`https://${domain}.whitecoatdomain.com`,'_blank');
+                let domain =
+                    typeof website.domains === "object"
+                        ? website.domains[0].domain
+                        : website.domains;
+                window.open(`https://${domain}.whitecoatdomain.com`, "_blank");
             },
-            checkMailExist() {
-                axios.post('/api/checkMailExist', {email: this.user.email}).then(res => {
-                    console.log(res);
-                }).catch(err => {
-                    console.log(err)
-                })
-            }
         },
-        props: ['_token'],
-
+        props: ["_token"],
     };
 </script>
-<style>
-    .centered {
-        color: #fff;
-        text-align: center;
-        padding-top: 20px;
-    }
-</style>

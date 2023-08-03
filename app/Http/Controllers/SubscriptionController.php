@@ -29,7 +29,7 @@ class SubscriptionController extends Controller
         $paymentID = $request->get('payment');
         $mail = $request->get('email');
         $tenantID = $request->get('tenant_id');
-        $domainName = tenant()->domainName;
+        $domainName = Tenant::find($tenantID)->domainName;
         $firstname = $request->get('firstname');
         $lastname = $request->get('lastname');
 

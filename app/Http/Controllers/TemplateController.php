@@ -43,7 +43,7 @@ class TemplateController extends Controller
                 $image = $request->file('imageUrl');
                 $ext = $request->file('imageUrl')->getClientOriginalExtension();
                 $name = strtolower($input['title']).'.'.$ext;
-                $image->move(public_path('/media/img/templateThumbnail/'.$profession->name), $name);
+                $image->move(public_path('/media/img/templateThumbnail/'.$specialty->name), $name);
                 $input['imageUrl'] = $name;
             }
             if($request->hasFile('styleFile')) {
@@ -65,7 +65,7 @@ class TemplateController extends Controller
      */
     public function show($id)
     {
-        $template = Template::where([['specialty', $id], ['approved', 'T']])->with('profession')->get();
+        $template = Template::where([['specialty_id', $id], ['approved', 'T']])->with('specialty')->get();
         return response(['templates' => $template, 'message' => 'Retrieved Success'], 200);
     }
 
@@ -93,7 +93,7 @@ class TemplateController extends Controller
                 $image = $request->file('imageUrl');
                 $ext = $request->file('imageUrl')->getClientOriginalExtension();
                 $name = strtolower($input['title']).'.'.$ext;
-                $image->move(public_path('/media/img/templateThumbnail/'.$profession->name), $name);
+                $image->move(public_path('/media/img/templateThumbnail/'.$specialty->name), $name);
                 $input['imageUrl'] = $name;
             }
             if($request->hasFile('styleFile')) {

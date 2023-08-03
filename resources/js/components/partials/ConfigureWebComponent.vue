@@ -1,144 +1,98 @@
 <template>
     <div>
-        <div class="col s12 m10 l10">
-            <div class="webBlackDiv">
-                <div class="webBlackDiv1">
-                    <div class="row">
-                        <div class="col s12">
-                            <p class="configWebBlackTitle">
-                                Configure your website
-                            </p>
-                        </div>
-                        <div class="col s11">
-                            <p class="webBlackTxt">
-                                Lets start and automate your process so you can
-                                reclaim time and focus on your goals.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="configWebBackBtnDiv">
-                <a href="#!" @click="goBack" class="configWebBackBtn"
-                    >GO BACK</a
-                >
-            </div>
-
-            <div class="row" id="configWebInputDiv">
-                <p class="configWebInputLabel">Edit your domain name</p>
-
-                <form>
-                    <div class="col s9">
-                        <input
-                            type="text"
-                            placeholder="Domain name"
-                            id="configWebInput"
-                            v-model="domainName"
-                        />
-                    </div>
-
-                    <button
-                        type="button"
-                        class="col s1 offset-s1 btn"
-                        id="configWebBtn"
-                        @click.prevent="updateDomainTemplate"
-                        :disabled="domainName == domain || domainName == ''"
-                    >
-                        save
-                    </button>
-                </form>
-            </div>
-
-            <div class="row" id="configWebInputDiv" v-if="user.role == 'Admin'">
-                <label class="col s12 configWebInputLabel"
-                    >Edit client Mail</label
-                >
-                <div class="col s9">
-                    <input
-                        type="email"
-                        required
-                        placeholder="Client Email"
-                        class="clientCreatePortInput1"
-                        v-model="email"
-                    />
-                </div>
-
-                <div class="col s1 offset-s1 clientCreatePortBtnDiv">
-                    <button
-                        type="button"
-                        class="btn clientCreatePortBtn"
-                        @click.prevent="giveAccess"
-                        :disabled="email == '' || email == claimantMail"
-                        v-if="!granting"
-                    >
-                        Update
-                    </button>
-                    <button
-                        type="button"
-                        class="btn clientCreatePortBtn"
-                        v-if="granting"
-                    >
-                    <div class="preloader-wrapper small active">
-                        <div
-                            class="spinner-layer spinner-white-only"
-                        >
-                            <div class="circle-clipper left">
-                                <div class="circle"></div>
-                            </div>
-                            <div class="gap-patch">
-                                <div class="circle"></div>
-                            </div>
-                            <div class="circle-clipper right">
-                                <div class="circle"></div>
-                            </div>
-                        </div>
-                    </div>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Client's Templates Section -->
-            <div class="row" id="configWebInputDiv">
-                <p class="configWebTitle">Change template</p>
-                <TemplatePreviewComponent
-                    :selectedTemplate="web.template_id || selectedTemplate"
-                    @tempSel="processTemp($event)"
-                    :professionId="userProfessionId"
-                    :type="'create'"
-                    :role="user.role"
-                    :clientProfessionID="professionID"
+        <div>
+            <a href="#!" class="back" @click="goBack"><i class="fa-solid fa-arrow-left-long fa-1x"></i> Back</a>
+        </div>
+        <div>
+            <p></p>
+        </div>
+        <div class="row" id="configWebInputDiv" v-if="user.role == 'Admin'">
+            <label class="col s12 configWebInputLabel"
+                >Edit client Mail</label
+            >
+            <div class="col s9">
+                <input
+                    type="email"
+                    required
+                    placeholder="Client Email"
+                    class="clientCreatePortInput1"
+                    v-model="email"
                 />
-                <div>
-                    <button
-                        type="button"
-                        class="col s3 l2 m4 offset-s1 btn right"
-                        id="configWebBtn"
-                        @click.prevent="updateDomainTemplate"
-                        :disabled="selectedTemplate == web.template_id"
+            </div>
+
+            <div class="col s1 offset-s1 clientCreatePortBtnDiv">
+                <button
+                    type="button"
+                    class="btn clientCreatePortBtn"
+                    @click.prevent="giveAccess"
+                    :disabled="email == '' || email == claimantMail"
+                    v-if="!granting"
+                >
+                    Update
+                </button>
+                <button
+                    type="button"
+                    class="btn clientCreatePortBtn"
+                    v-if="granting"
+                >
+                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                </button>
+            </div>
+
+        </div>
+        <div >
+            <h6 class="fw-500 center">Change template</h6>
+            <p class="fs-1 mb-0 supportWelcomeNote center"><i class="fa-solid fa-circle-info"></i>&nbsp;You can change your initial template to any of your choice without extra charges.</p>
+            <TemplatePreviewComponent
+                :selectedTemplate="web.template_id || selectedTemplate"
+                @tempSel="processTemp($event)"
+                :professionId="userProfessionId"
+                :type="'create'"
+                :role="user.role"
+                :clientProfessionID="professionID"
+            />
+            <div class="col s12 center l12 m12 d-flex justify-center">
+                <button
+                    type="button"
+                    class="btn customBtn"
+                    @click.prevent="updateDomainTemplate"
+                    :disabled="selectedTemplate == web.template_id"
                     >
-                        <span v-if="!loading">change</span>
-                        <ButtonLoaderComponent v-else />
-                    </button>
-                </div>
+                    <span v-if="!loading">change</span>
+                    <ButtonLoaderComponent v-else />
+                </button>
             </div>
-            <div class="row configDelDiv" id="configWebInputDiv">
-                <p class="configDeTxt">Do you want to delete website?</p>
-
-                <div class="configDelBtnDiv">
-                    <button type="button" class="btn" id="configDelBtn">
-                        Delete Website
-                    </button>
-                    <!-- @click="
-                                toggleDeleteModal
-                            " -->
-                </div>
+        </div>
+        <div class="d-flex gap-1 align-center mt-5">
+            <h5 class="">Do you want to delete website?</h5>
+            <div>
+                <button type="button" class="btn customBtn red waves waves-effect">
+                    Delete Website
+                </button>
+                <p class="fs-1 m-0 supportWelcomeNote center"><i class="fa-solid fa-circle-info"></i>&nbsp;Feature not available.</p>
             </div>
-
-            <InnerFooterComponent />
         </div>
     </div>
 </template>
+<style scoped>
+    .customBtn {
+        width: 15vw !important;
+        height: 5vh !important;
+        border-radius: 10px;
+    }
+    .btn:hover{
+        background-color: #7746FF;
+    }
+    .btn:visited {
+        background-color: #9977f7;
+    }
+    .customBtn.red  {
+        background: red !important;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .customBtn {width: 20vw !important;}
+    }
+</style>
 <script>
     import InnerFooterComponent from "../partials/InnerFooterComponent.vue";
     import TemplatePreviewComponent from "../partials/TemplatePreviewComponent.vue";
@@ -189,11 +143,3 @@
         },
     };
 </script>
-<style>
-.btn:hover{
-    background-color: #7746FF;
-}
-.btn:visited {
-    background-color: #9977f7;
-}
-</style>

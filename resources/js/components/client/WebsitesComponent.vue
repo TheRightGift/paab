@@ -1,218 +1,69 @@
 <template>
     <div>
-        <!-- Sidenav for small devices -->
-        <div v-if="!viewingTemplate">
-            <mobile-nav-component />
-
-            <!-- Sidebar for large and medium devices -->
-            <div class="row" id="dashRowDiv">
-                <SideNavComponent @user="getUser" />
-                <!-- Web black div -->
-                <div class="col s12 m10 l10" v-if="view == 0">
-                    <div id="webRightDiv">
-                        <div class="col s9 black websiteBanner">
-                            <p class="webBlackTitle">Create Portfolio</p>
-                            <p class="webBlackTxt">
-                                Lets start and automate your process so you can
-                                reclaim time and focus on your goals.
-                            </p>
-                        </div>
-                        <div
-                            class="col s3 primary"
-                            id="webAddContainer"
-                            @click="webAddCircleIcon()"
-                            v-if="isHidden"
-                        >
-                            <i class="material-icons webAddIcon">add</i>
-                            <p>Create Website</p>
-                        </div>
-                        <div
-                            class="col s3 primaryBorder"
-                            id="webAddContainer"
-                            v-else
-                        >
-                            <i class="material-icons webAddIcon2"
-                                >linear_scale</i
-                            >
-                            <p>Creating Website...</p>
-                        </div>
-
-                        <!-- web empty div -->
-                        <div class="col s12 webWhiteDiv">
-                            <web-create-component
-                                @createWebsite="createWebsite($event)"
-                                @close="close($event)"
-                                v-if="!isHidden && loadingUserProfessionId"
-                                :loading="loading"
-                                :userProfessionId="userProfessionId"
-                                :user="user"
+        <SideNavComponent @user="getUser" />
+        <HeaderComponent :user="user" />
+        <main>
+            <section>
+                <div v-if="view === 0">
+                    <div class="w-485">
+                        <p class="welcomeName mb-0">Create Portfolio</p>
+                        <span class="supportWelcomeNote">
+                            Lets start and automate your process so you can reclaim
+                            time and focus on your goals.
+                        </span>
+                    </div>
+                    <div class="d-flex gap-31 px-50">
+                        <p class="fs-1 fw-500">Profession</p>
+                        <p class="fs-1 fw-500">ID</p>
+                    </div>
+                    <div
+                        class="website d-flex justify-between align-center px-2"
+                        v-for="website in websites"
+                        :key="website.id"
+                    >
+                        <div class="d-flex align-center justify-between gap-1">
+                            <img
+                                :src=" '/media/img/templateThumbnail/' +
+                                website.template.title +
+                                '/' +
+                                website.template.imageUrl"
+                                class="responsive-img w-32 h-32 circle"
                             />
-                            <div v-else>
-                                <div class="webWhiteDiv1" v-if="view == 0">
-                                    <div
-                                        class="row center-align"
-                                        v-if="websiteLoading"
-                                    >
-                                        <ButtonLoader />
-                                    </div>
-                                    <div v-else>
-                                        <div v-if="websites.length > 0">
-                                            <div
-                                                class="row websitesViewRow"
-                                                v-for="website in websites"
-                                                :key="website.id"
-                                            >
-                                                <div class="col l2">
-                                                    <div class="websiteTitle">
-                                                        <div
-                                                            class="
-                                                                webWhiteProDiv
-                                                            "
-                                                        >
-                                                            <img
-                                                                :src="
-                                                                    '/media/img/templateThumbnail/' +
-                                                                    website
-                                                                        .template
-                                                                        .profession
-                                                                        .name +
-                                                                    '/' +
-                                                                    website
-                                                                        .template
-                                                                        .imageUrl
-                                                                "
-                                                                class="
-                                                                    responsive-img
-                                                                "
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                    <p
-                                                        class="
-                                                            websiteTemplateName
-                                                            center-align
-                                                        "
-                                                    >
-                                                        {{ website.name }}
-                                                    </p>
-                                                </div>
-                                                <div
-                                                    class="
-                                                        col
-                                                        l10
-                                                        websiteTemplateDesc
-                                                    "
-                                                >
-                                                    <h5>Description</h5>
-                                                    <div class="col l9">
-                                                        <p class="webWhiteTxt">
-                                                            {{
-                                                                website.description
-                                                            }}
-                                                        </p>
-                                                    </div>
-
-                                                    <div
-                                                        class="
-                                                            col
-                                                            l3
-                                                            right-align
-                                                        "
-                                                    >
-                                                        <a
-                                                            href="#!"
-                                                            @click="
-                                                                gotoDomain(
-                                                                    website
-                                                                )
-                                                            "
-                                                            class="marginRight1"
-                                                            title="Visit my website"
-                                                        >
-                                                            <i
-                                                                class="
-                                                                    material-icons
-                                                                "
-                                                                id="webWhiteIcon"
-                                                                >visibility</i
-                                                            >
-                                                        </a>
-                                                        <a
-                                                            href="#!"
-                                                            @click="
-                                                                configureWebsite(
-                                                                    website
-                                                                )
-                                                            "
-                                                            class="marginRight1"
-                                                            title="Configure my webiste details"
-                                                        >
-                                                            <i
-                                                                class="
-                                                                    material-icons
-                                                                "
-                                                                id="webWhiteIcon"
-                                                                >settings</i
-                                                            >
-                                                        </a>
-                                                        <a
-                                                            href="#!"
-                                                            @click="
-                                                                updateWebsite(
-                                                                    website
-                                                                )
-                                                            "
-                                                            title="Edit your website"
-                                                        >
-                                                            <i
-                                                                class="
-                                                                    material-icons
-                                                                "
-                                                                id="webWhiteIcon"
-                                                                >edit</i
-                                                            >
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-            <InnerFooterComponent />
-
-                                            <div class="centre">
-                                                <button
-                                                    :disabled="loading"
-                                                    v-show="
-                                                        websites.length != total
-                                                    "
-                                                    class="
-                                                        waves-effect waves-light
-                                                        btn
-                                                        loadmore
-                                                    "
-                                                    @click.prevent="getWebsites"
-                                                >
-                                                    <i
-                                                        v-show="loading"
-                                                        class="
-                                                            fas
-                                                            fa-stroopwafel
-                                                            fa-spin
-                                                            right
-                                                        "
-                                                    ></i
-                                                    >load more
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div v-else>
-                                            <p class="centered">
-                                                No website created yet!. All
-                                                websites appears here when you
-                                                create one
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <span class="specialty">
+                                {{ website.template.title }}
+                            </span>
+                        </div>
+                        <span class="tenantID">
+                            {{ website.name }}
+                        </span>
+                        <div class="d-flex gap-1 icons">
+                            <a
+                                href="#!"
+                                @click="gotoDomain(website)"
+                                class=""
+                                title="Visit my website"
+                            >
+                                <i class="material-icons"
+                                    >visibility</i
+                                >
+                            </a>
+                            <a
+                                href="#!"
+                                @click="configureWebsite(website)"
+                                class=""
+                                title="Configure my webiste details"
+                            >
+                                <i class="material-icons"
+                                    >settings</i
+                                >
+                            </a>
+                            <a
+                                href="#!"
+                                @click="updateWebsite(website)"
+                                title="Edit your website"
+                            >
+                                <i class="material-icons">edit</i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -226,10 +77,30 @@
                     :selectedTemplate="selectedTemplate"
                     :user="user"
                 />
-            </div>
-        </div>
+            </section>
+        </main>
     </div>
 </template>
+<style scoped>
+    .w-485 {
+        width: 485px;
+    }
+    .icons a:first-child {
+        color: #699BF7;
+    }
+    .icons a:nth-child(2) {
+        color: #474747;
+    }
+    .icons a:last-child {
+        color: #109DAD;
+    }
+    .gap-31 {
+        gap: 30vw;
+    } 
+    .px-50 {
+        padding: 0 50px;
+    }
+</style>
 <script>
     import MobileNavComponent from "../partials/MobileNavComponent.vue";
     import SideNavComponent from "../partials/SideNavComponent.vue";
@@ -238,6 +109,7 @@
     import WebCreateComponent from "../partials/WebCreateComponent.vue";
     import ConfigureWebComponent from "../partials/ConfigureWebComponent.vue";
     import ButtonLoader from "../partials/ButtonLoaderComponent.vue";
+    import HeaderComponent from "../partials/HeaderComponent.vue";
     export default {
         components: {
             MobileNavComponent,
@@ -247,6 +119,7 @@
             InnerFooterComponent,
             ConfigureWebComponent,
             ButtonLoader,
+            HeaderComponent,
             MobileNavComponent,
         },
         data() {
@@ -294,7 +167,6 @@
                             let created = res.data.tenant;
                             created.domains = res.data.domain.domain;
                             this.websites.unshift(res.data.tenant);
-                            console.log();
                             this.loading = false;
                             // this.isHidden = !this.isHidden;
                             location.reload();
@@ -370,14 +242,20 @@
                     typeof website.domains === "object"
                         ? website.domains[0].domain
                         : website.domains;
-                window.open(`https://${this.tenant.domain}.whitecoatdomain.com`, "_blank");
+                window.open(
+                    `https://${this.tenant.domain}.whitecoatdomain.com`,
+                    "_blank"
+                );
             },
             updateWebsite(website) {
                 this.tenant.domain =
                     typeof website.domains === "object"
                         ? website.domains[0].domain
                         : website.domains;
-                window.open(`https://${this.tenant.domain}.whitecoatdomain.com/setting`, "_blank");
+                window.open(
+                    `https://${this.tenant.domain}.whitecoatdomain.com/setting`,
+                    "_blank"
+                );
             },
             processTemp(evt) {
                 this.selectedTemplate = evt.id;
@@ -436,30 +314,3 @@
         },
     };
 </script>
-<style scoped>
-    .centered {
-        color: black;
-    }
-    .danger {
-        color: white;
-        background-color: rgb(238, 112, 112);
-    }
-    .f-danger {
-        justify-content: space-between;
-        border: 1px solid rgb(224, 124, 124);
-        padding: 20px;
-    }
-    .loadmore {
-        text-align: center;
-        background-color: #7746ff;
-    }
-</style>
-<style>
-    button[disabled="disabled"],
-    .btn:disabled,
-    .btn.disabled {
-        border: 1px solid #d492f3;
-        background-color: #c7bbeb !important;
-        color: #fff;
-    }
-</style>

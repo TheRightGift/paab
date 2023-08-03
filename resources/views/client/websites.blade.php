@@ -6,24 +6,18 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <title>{{env('APP_NAME')}}: White Coat Domain - Websites</title>
         <link rel="shortcut icon" href="{{ asset('/media/img/wcdFavicon.jpg') }}" type="image/x-icon">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
 
         <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/paab.css') }}">
         <link rel="stylesheet" href="{{ asset('css/website.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/template.css') }}">
         <link rel="stylesheet" href="{{ asset('fonts/material-icons.css') }}">
     </head>
-    <body>
-
+    <body class="dashboard">
         <div id="app">
             <client-websites-component />
         </div>
-
-
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/materialize.min.js') }}"></script>

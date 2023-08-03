@@ -98,7 +98,6 @@
                         and make any necessary updates. Thank you for choosing
                         WhiteCoatDomain.
                     </p>
-                    <!-- You should have received an email containing your login credentials, which will grant you access to the backend of your website.  -->
                     <button
                         class="modal-close waves-effect waves-green btn btn-rounded"
                         @click="countDown"
@@ -132,7 +131,6 @@
                 addPaymentStatusError: "",
                 paymentMethods: [],
                 requesting: false,
-                plan: process.env.MIX_STRIPE_PLAN,
                 paymentMethodSelected: {},
                 paymentSuccessful: 0,
                 URL: process.env.MIX_APP_URL,
@@ -146,6 +144,7 @@
             tenantID: String,
             bio: Object,
             userSubscribed: Boolean,
+            plan: String,
         },
         methods: {
             addOneYear(date) {
@@ -176,10 +175,10 @@
                 this.stripe = Stripe(this.stripeAPIToken);
                 this.elements = this.stripe.elements();
                 this.card = this.elements.create("card");
-
+                let ctx = this;
                 this.card.mount("#card-element");
                 this.card.on("change", function (event) {
-                    this.displayError(event);
+                    ctx.displayError(event);
                 });
             },
             /*
@@ -365,7 +364,7 @@
             card.addEventListener("change", function (event) {
                 vue.displayError(event);
             });
-            this.userSubscribed ? this.loadPaymentMethods() : null;
+            vue.userSubscribed ? vue.loadPaymentMethods() : null;
         },
         watch: {
             setModal(newval, oldval) {

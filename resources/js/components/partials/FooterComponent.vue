@@ -66,19 +66,21 @@
                             </ul>
                         </div> -->
                     </div>
-                    <div class="d-flex justify-between align-center sm-align-center sm-flex-col hide-on-med-and-up">
-                        <!-- <div class="d-flex justify-between sm-justify-center align-center mb-2">
-                            <span class="links"
-                                ><i class="fa-solid fa-phone"></i>
-                            </span>
-                            <span class="pl-2">+234817646</span>
-                        </div> -->
-                        <div class="d-flex justify-between align-center sm-justify-center pl-2">
-                            <span class="links"
-                                ><i class="fa-solid fa-envelope"></i
-                                >
-                            </span>
-                            <span class="pl-2">support@whitecoatdomain</span>
+                    <div class="hide-on-med-and-up">
+                        <div class="d-flex justify-between align-center sm-align-center sm-flex-col">
+                            <!-- <div class="d-flex justify-between sm-justify-center align-center mb-2">
+                                <span class="links"
+                                    ><i class="fa-solid fa-phone"></i>
+                                </span>
+                                <span class="pl-2">+234817646</span>
+                            </div> -->
+                            <div class="d-flex justify-between align-center sm-justify-center pl-2">
+                                <span class="links"
+                                    ><i class="fa-solid fa-envelope"></i
+                                    >
+                                </span>
+                                <span class="pl-2">support@whitecoatdomain</span>
+                            </div>
                         </div>
                     </div>
                     <div class="hide-on-small-only md-rel-13 width30">
