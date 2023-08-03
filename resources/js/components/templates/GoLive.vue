@@ -19,6 +19,7 @@
             :email="email"
             :userSubscribed="userSubscribed"
             @paymentMethods="getCards($event)"
+            :plan="plan"
         />
     </div>
 </template>
@@ -34,7 +35,8 @@ export default {
             bio: {},
             setModal: false,
             paymentMethods : "",
-            defaultCard: ''
+            defaultCard: '',
+            plan: '',
         }
     },
     components: { HeaderComponent, GoLiveComponent, PaymentModalComponent },

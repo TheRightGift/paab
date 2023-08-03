@@ -135,7 +135,7 @@
             <div v-if="modalView == 0" class="settingModalViewInitial">
                 <div class="row">
                     <div class="flex mb-2" :class="{'justify-end': !clickedSub, 'justify-between': clickedSub}">
-                        <a href="#!" v-if="userSubscribed || clickedSub" @click="clickedSub = false" class="flex align-center  gap-3 black-text fw-500 fs-125 dec-none">
+                        <a href="#!" v-if="clickedSub" @click="clickedSub = false" class="flex align-center  gap-3 black-text fw-500 fs-125 dec-none">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                                 <path d="M25 13.75H9.7875L16.775 6.7625L15 5L5 15L15 25L16.7625 23.2375L9.7875 16.25H25V13.75Z" fill="#404040"/>
                             </svg> <span>Back</span>
@@ -340,6 +340,7 @@
         :email="email"
         :userSubscribed="userSubscribed"
         @paymentMethods="getCards($event)"
+        :plan="plan"
     />
 </template>
 <script>
@@ -377,7 +378,8 @@
                 defaultCard: {},
                 editing: false,
                 editHeaderTitle: false,
-                // user: 0,
+                // user: 0,,
+                plan: '',
             };
         },
         props: {
@@ -432,9 +434,10 @@
                     }, 10000);
                 }
             },
-            revertToInit() {
+            revertToInit(evt) {
                 this.clickedSub = false;
                 this.setModal = true;
+                this.plan = evt;
             },
             setModalPayment() {
                 this.clickedSub = true;

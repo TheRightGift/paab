@@ -127,11 +127,11 @@ section:not(:first-child) {
 @media only screen and (min-width: 1024px) {
     .container {
         width: 90%;
-        /* max-width: 100%; */
+        max-width: 100%;
     }
     .fitContainer {
         width: 510px;
-        margin: 0 10vw;
+        margin: 0 2vw;
     }
     .fitImg {
         width: 60%;

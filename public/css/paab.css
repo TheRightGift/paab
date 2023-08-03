@@ -1,11 +1,11 @@
 :root {
-    --primary: #46166B;
-    --secondary: #46166B;
+    --primary: #46166b;
+    --secondary: #46166b;
     --black: #000000;
     --white: #ffffff;
     --gray: #a4a2a2;
     --component: rgba(0, 0, 0, 0.5);
-    --pri: #109DAD;
+    --pri: #109dad;
     --sec: #10217d;
     --ter: #2e4450;
 }
@@ -38,11 +38,12 @@
     width: 5px;
     /* Select the down or left scroll button when it's being hovered by the mouse */
 }
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 html,
 body {
     width: 100% !important;
     height: 100vh;
+    font-family: "Montserrat", sans-serif;
 }
 .centre {
     text-align: center;
@@ -59,6 +60,21 @@ body {
 .justify-between {
     justify-content: space-between;
 }
+.justify-start {
+    justify-content: flex-start;
+}
+.align-self-end {
+    align-self: flex-end;
+}
+.gap-1 {
+    gap: 1vw;
+}
+.mb-4 {
+    margin-bottom: 4vh;
+}
+.mb-6 {
+    margin-bottom: 6vh;
+}
 /* Misc */
 .error {
     background-color: #ffffff;
@@ -72,7 +88,7 @@ body {
     justify-content: flex-end;
 }
 .d-flex {
-    display: flex;
+    display: flex !important;
 }
 .flex-col {
     flex-direction: column;
@@ -82,6 +98,12 @@ body {
 }
 .bottom-0 {
     bottom: 0;
+}
+.fw-500 {
+    font-weight: 500;
+}
+.fs-1 {
+    font-size: 1rem;
 }
 .hoverable,
 .cursor {
@@ -129,9 +151,239 @@ body {
 .v-50 {
     height: 50vh;
 }
+.h-100 {
+    height: 100vh;
+}
 /* Spinner Ends */
 
+/* SIDENAV */
+body.dashboard header,
+body.dashboard main,
+body.dashboard footer {
+    padding-left: 300px;
+}
+.brand-logo img {
+    height: 32px;
+}
 
+.card-row {
+    margin: 0px;
+}
+.sidenav.shrink {
+    width: 5vw;
+}
+
+.sidenav.shrink li:not(:first-child) {
+    display: none;
+}
+
+.sidenav.shrink .brand-logo {
+    display: none;
+}
+
+.sidenav.shrink .sidenav-trigger.show-on-large {
+    display: block;
+}
+
+.w-100 {
+    width: 100%;
+}
+svg {
+    width: 30px;
+    height: 30px;
+}
+.custom-search {
+    width: 608px;
+    height: 44px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    border: 0.5px solid rgba(160, 158, 158, 0.5);
+    outline: none;
+    padding: 0 2vw;
+}
+.customNavBar {
+    height: 10vh;
+    background: #fff;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(170, 169, 169, 0.486);
+}
+.nav-wrapper,
+body.dashboard main section {
+    padding: 1.7vh 3vw;
+}
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+input[type="search"] {
+    padding-left: 50px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 18px;
+}
+.custom-search::placeholder {
+    color: #787486;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.newMessage {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+}
+.profileIMG {
+    width: 45px;
+    height: 45px !important;
+    border-radius: 9999px;
+}
+.profileName {
+    color: #000;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.mb-0 {
+    margin-bottom: 0;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.tabs .indicator {
+    background-color: #109dad !important;
+}
+/* Dashboard && Website */
+.welcomeName {
+    color: #000;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 42px */
+}
+.supportWelcomeNote {
+    color: #7c8db5;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+.website {
+    height: 60px;
+    background: white;
+    border-radius: 15px;
+    border: 0.5px #ebe8ff solid;
+    margin-bottom: 2vh;
+}
+.w-32 {
+    width: 32px;
+}
+.h-32 {
+    height: 32px !important;
+}
+.px-2 {
+    padding: 0 3vw;
+}
+.customBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    gap: 5px;
+    height: 50px !important;
+    border-radius: 50px;
+    width: 12vw !important;
+    background: #109dad !important;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    box-shadow: 5px 5px 5px #afebf163;
+}
+.btn-floating i {
+    width: auto;
+}
+.specialty {
+    color: #797d8c;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+}
+.tenantID {
+    font-size: 1rem;
+    font-weight: 400;
+}
+.back {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #000;
+}
+.top-0 {
+    top: 0;
+}
+.mt-5 {
+    margin-top: 5vh;
+}
+.m-0 {
+    margin: 0;
+}
+.loading {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body.shrinkedSideNav {
+    padding-left: 4vw;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    body.dashboard header,
+    body.dashboard main,
+    body.dashboard footer {
+        padding-left: 200px;
+    }
+    .custom-search {
+        width: 300px;
+    }
+    .sidenav {
+        width: 25vw;
+    }
+    .sidenav.sidenav-fixed {
+        transform: translateX(0);
+    }
+    .sidenav.sidenav.shrink {
+        width: 10vw;
+    }
+    .shrink .logo {
+        width: 9vw !important;
+    }
+    .welcomeName {
+        font-size: 1.25rem;
+    }
+    .supportWelcomeNote {
+        font-size: 0.75rem;
+    }
+    .w-335 {
+        width: 335px;
+    }
+    body.shrinkedSideNav header,
+    body.shrinkedSideNav main,
+    body.shrinkedSideNav footer {
+        padding-left: 5vw;
+    }
+    .customBtn {
+        width: 18vw;
+    }
+}
 
 /* TODO:Look into and clear  */
 .hPadding-5 {
@@ -216,7 +468,8 @@ body {
 .verticalMargin-2 {
     margin: 0 2vw;
 }
-.vHMargin-5, .row.vHMargin-5 {
+.vHMargin-5,
+.row.vHMargin-5 {
     margin: 3vh 5vw;
 }
 .primary {
@@ -389,7 +642,6 @@ body {
     margin: 6vh 0 0 0;
 }
 
-
 /* Logout Modal */
 #logoutModal {
     /* background-color: var(--primary); */
@@ -403,7 +655,6 @@ body {
 .logoutModalImage {
     width: 15vw;
 }
-
 
 /* Admin Dashboard page Img styling */
 #adminDashRightImgDiv {
@@ -424,7 +675,7 @@ body {
 
 /* Help Title */
 .helpModalTitle {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 30px;
     line-height: 37px;
@@ -433,7 +684,7 @@ body {
 
 /* Help Texts */
 .helpModalTxts {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 30px;
@@ -442,7 +693,7 @@ body {
 
 /* Help Close Button */
 .helpModalCloseBtn {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
@@ -539,7 +790,7 @@ body {
 
 img.primaryLogo {
     width: 4.2%;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
 }
 
 img.whiteLogo {
@@ -929,12 +1180,11 @@ img.authLogo {
         right: 279px;
         bottom: -183px;
     }
-    
-    
+
     #otpEmailDiv p {
         text-align: center;
     }
-    
+
     /* Client Settings Section */
     .settingsFormDiv {
         width: 100%;
@@ -1116,7 +1366,7 @@ img.authLogo {
         background-color: var(--white);
         margin-left: 20px;
     }
-    
+
     /* Changed "chatImage" from id -> class */
     .chatImage {
         width: 30vw;
@@ -1184,7 +1434,6 @@ img.authLogo {
         height: 6.5vh;
         line-height: 52px;
     }
-
 }
 
 /* Media Query on small device */
@@ -1204,7 +1453,6 @@ img.authLogo {
     .settingsInptuRow {
         width: 95%;
     }
-
 
     .circlDiv2 {
         width: 100vw;
@@ -1257,8 +1505,7 @@ img.authLogo {
         left: 5vw;
         /* text-align: center; */
     }
-    
-    
+
     /* Client Settings Section */
     .settingsFormDiv {
         width: 100%;
@@ -1370,14 +1617,12 @@ img.authLogo {
         margin: 0;
     }
 
-    
-
     /* Client sidenav page title */
     .dashLeftBarTitle {
         margin-top: -3.5vh;
         margin-bottom: 1vh;
-        color: #D9D9D9;
-        font-family: 'Poppins', sans-serif;
+        color: #d9d9d9;
+        font-family: "Poppins", sans-serif;
         text-align: center;
     }
 

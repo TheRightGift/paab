@@ -20,6 +20,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\DomainCheckerController;
 use App\Http\Controllers\AdminClientOrderController;
 use App\Http\Controllers\DeveloperProjectController;
+use App\Http\Controllers\PlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -129,3 +130,5 @@ Route::post('/supportForCallback', [SupportController::class, 'sendEmailForCallB
 Route::post('/checkTenantOtp', [TenantController::class, 'checkOtp']);
 // After verifying email save to admin client orders
 Route::put('/admin_order/{tenant_id}', [AdminClientOrderController::class, 'update']);
+
+Route::get('plans', [PlanController::class, 'index']);

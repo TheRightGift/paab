@@ -7,7 +7,10 @@
             :key="index"
             class="contenta"
         >
-            <p class="packageName m-0">{{ packard.name }}</p>
+            <div class="flex justify-between">
+                <p class="packageName m-0">{{ packard.name }}</p>
+                <span class="saveUp" :style="{color: packard.color}">Save 40%</span>
+            </div>
             <ul>
                 <li
                     v-for="feature in packard.features"
@@ -46,7 +49,7 @@
                 <p class="term m-0">/Annual</p>
             </div>
             <div>
-                <a href="#paymentModal" @click="revertToInit()" class="btn waves waves-effect packageButton flex align-center justify-center modal-trigger" :style="packard.btnBackground">Try 1 Year</a>
+                <a href="#paymentModal" @click="revertToInit(packard.stripe_plan)" class="btn waves waves-effect packageButton flex align-center justify-center modal-trigger" :style="packard.btnBackground">Try 1 Year</a>
             </div>
         </div>
                
@@ -59,7 +62,15 @@
     </div>
 </template>
 <script>
+    let url = process.env.MIX_APP_URL;
     export default {
+        computed: {
+            extractDomain() {
+                let index = window.location.hostname.indexOf('.');
+                let path = index.valueOf(1);
+                return path;
+            }
+        },
         data() {
             return {
                 packages: [
@@ -75,7 +86,10 @@
                         ],
                         background: "background: #1f1366",
                         amount: 213.04,
-                        btnBackground: 'background: #4A39AE;'
+                        btnBackground: 'background: #4A39AE;',
+                        color: '#4A39AE',
+                        stripe_plan: 'price_1NZuDQGol1wahrlSximl9naO',
+                        // stripe_plan: 'price_1NZx3kGol1wahrlSntmwDVf1',
                     },
                     {
                         name: ".com",
@@ -89,16 +103,29 @@
                         ],
                         background: "background: #1b4475",
                         amount: 144,
-                        btnBackground: 'background: #4786D1;'
+                        btnBackground: 'background: #4786D1;',
+                        color: '#4A39AE',
+                        stripe_plan: 'price_1N9xKmGol1wahrlSl4XkMDTn',
+                        // stripe_plan: 'price_1NDmVnGol1wahrlS4LGzwUT8',
                     },
                 ],
             };
         },
         methods: {
-            revertToInit() {
-                this.$emit("revertToInit");
+            revertToInit(value) {
+                this.$emit("revertToInit", value);
             },
+            getPlans() {
+                axios.get(`${url}/api/plans`).then(res => {
+                    // Leave for future
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
         },
+        mounted() {
+            // this.getPlans();
+        }
     };
 </script>
 <style scoped>
@@ -173,5 +200,11 @@
         height: 417px;
         border-radius: 24px;
         padding: 24px;
+    }
+    .saveUp {
+        background-color: #fff;
+        padding: 0.5vh 1vw;
+        font-size: 0.625rem;
+        font-family: 'Inter', sans-serif;
     }
 </style>

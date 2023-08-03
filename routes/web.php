@@ -171,6 +171,13 @@ Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(functio
             return view('auth.login');
         }
     });
+    Route::get('/developers', function () {
+        if (Auth::user()) {
+            return view('admin.developers');
+        } else {
+            return view('auth.login');
+        }
+    });
 });
 /**
  * Newly Added for developer
@@ -195,29 +202,6 @@ Route::get('/user/invoice/{invoice}/{user}', function (Request $request, $invoic
         'email' => 'manager@whitecoatdomain.com',
         'url' => 'https://whitecoatdomain.com',
     ]);
-});
-Route::prefix('admin')->middleware(['auth', 'can:run_admin_ops'])->group(function () {
-    Route::get('/client', function () {
-        return view('admin.client');
-    }); //->middleware('can:run_client_ops')
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
-    Route::get('/messages', function () {
-        return view('admin.messages');
-    });
-    Route::get('/developers', function () {
-        return view('admin.developers');
-    });
-    Route::get('/settings', function () {
-        return view('admin.settings');
-    });
-    Route::get('/template', function () {
-        return view('admin.template');
-    });
-    Route::get('/singlemsg', function () {
-        return view('admin.singlemsg');
-    });
 });
 
 Route::prefix('supre')->middleware(['auth', 'can:run_superAdmin_ops'])->group(function () {

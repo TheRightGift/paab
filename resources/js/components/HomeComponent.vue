@@ -183,7 +183,7 @@
                                         Start yours today. Less than 30mins,
                                         your site will be live
                                     </p>
-                                    <a class="btn waves waves-effect customBtn"
+                                    <a class="btn waves waves-effect customBtnStarted"
                                         >Get Started</a
                                     >
                                 </div>
@@ -417,8 +417,8 @@
                 </div>
                 <div class="container">
                     <div class="d-flex justify-between sm-justify-center">
-                        <div class="d-flex flex-col flex-end justify-between hide-on-med-and-down">
-                            <div class="tempFitRow1 absolute ">
+                        <div class="d-flex flex-col flex-end justify-between">
+                            <div class="tempFitRow1 absolute  hide-on-med-and-down">
                                 <templates-for-component
                                     :src="'dentist.png'"
                                     :title="'Dentists'"
@@ -432,48 +432,52 @@
                                 
                             </div>
                         </div>
-                        <div class="d-flex flex-col hide-on-med-and-down" >
-                            <div class="tempFitRow2 sm-align-center absolute">
-                                <templates-for-component
-                                    :src="'therapist.png'"
-                                    :title="'Therapist'"
-                                    class="mb-4"
-                                />
-                                <templates-for-component
-                                    :src="'psychologists.png'"
-                                    :title="'Psychologists'"
-                                    class="mb-4 sm-mb-6"
-                                />
-                                <templates-for-component
-                                    :src="'opticians.png'"
-                                    :title="'Opticians'"
-                                    class="mb-4"
-                                />
-                                
+                        <div class=" hide-on-med-and-down">
+                            <div class="d-flex flex-col" >
+                                <div class="tempFitRow2 sm-align-center absolute">
+                                    <templates-for-component
+                                        :src="'therapist.png'"
+                                        :title="'Therapist'"
+                                        class="mb-4"
+                                    />
+                                    <templates-for-component
+                                        :src="'psychologists.png'"
+                                        :title="'Psychologists'"
+                                        class="mb-4 sm-mb-6"
+                                    />
+                                    <templates-for-component
+                                        :src="'opticians.png'"
+                                        :title="'Opticians'"
+                                        class="mb-4"
+                                    />
+                                    
+                                </div>
                             </div>
                         </div>
-                        <div class="d-flex flex-col hide-on-med-and-down">
-                            <div class="absolute tempFitRow3">
-                                <templates-for-component
-                                    :src="'surgeons.png'"
-                                    :title="'Surgeons'"
-                                    class="mb-4"
-                                />
-                                <templates-for-component
-                                    :src="'serv2Img.png'"
-                                    :title="'Vetinary'"
-                                    class="mb-4"
-                                />
-                                <templates-for-component
-                                    :src="'gyna.png'"
-                                    :title="'Gynaecologists'"
-                                    class="mb-4 sm-mb-6"
-                                />
-                                <templates-for-component
-                                    :src="'allergists.png'"
-                                    :title="'Opticians'"
-                                    class="mb-4"
-                                />
+                        <div class="hide-on-med-and-down">
+                            <div class="d-flex flex-col">
+                                <div class="absolute tempFitRow3">
+                                    <templates-for-component
+                                        :src="'surgeons.png'"
+                                        :title="'Surgeons'"
+                                        class="mb-4"
+                                    />
+                                    <templates-for-component
+                                        :src="'serv2Img.png'"
+                                        :title="'Vetinary'"
+                                        class="mb-4"
+                                    />
+                                    <templates-for-component
+                                        :src="'gyna.png'"
+                                        :title="'Gynaecologists'"
+                                        class="mb-4 sm-mb-6"
+                                    />
+                                    <templates-for-component
+                                        :src="'allergists.png'"
+                                        :title="'Opticians'"
+                                        class="mb-4"
+                                    />
+                                </div>
                             </div>
                         </div>
                         <div class="row show-on-medium">
@@ -543,27 +547,29 @@
                             
                             
                         </div>
-                        <div class="row hide-on-med-and-up sm-align-center d-flex flex-col">
-                            <div class="col m4">
-                                <templates-for-component
-                                    :src="'surgeons.png'"
-                                    :title="'Surgeons'"
-                                    class="mb-4"
-                                />
-                            </div>
-                            <div class="col s12">
-                                <templates-for-component
-                                    :src="'pediatrics.png'"
-                                    :title="'Pediatrics'"
-                                    class="mb-4"
-                                />
-                            </div>
-                            <div class="col s12">
-                                <templates-for-component
-                                    :src="'opticians.png'"
-                                    :title="'Opticians'"
-                                    class="mb-4"
-                                />
+                        <div class="hide-on-med-and-up">
+                            <div class="row sm-align-center d-flex flex-col">
+                                <div class="col m4">
+                                    <templates-for-component
+                                        :src="'surgeons.png'"
+                                        :title="'Surgeons'"
+                                        class="mb-4"
+                                    />
+                                </div>
+                                <div class="col s12">
+                                    <templates-for-component
+                                        :src="'pediatrics.png'"
+                                        :title="'Pediatrics'"
+                                        class="mb-4"
+                                    />
+                                </div>
+                                <div class="col s12">
+                                    <templates-for-component
+                                        :src="'opticians.png'"
+                                        :title="'Opticians'"
+                                        class="mb-4"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -671,74 +677,76 @@
                 </div>
             </section>
              <section class="support relative">
-                <div class="d-flex justify-center align-center hide-on-small-only">
-                    <div class="secondary d-flex justify-between md-flex-col">
-                        <div class="h-794 md-446">
-                            <img
-                                src="/media/img/support.png"
-                                class="responsive-img hide-on-med-only"
-                            />
-                            <img
-                                src="/media/img/supportFull.png"
-                                class="responsive-img hide-on-large-only"
-                            />
-                        </div>
-                        <div class="h-794">
-                            <div class="card">
-                                <div class="card-content">
-                                    <p>Contact us</p>
-                                    <div class="mb-2 card-title">
-                                        We are always happy to help
-                                    </div>
-                                    <form @submit.prevent="sendToSupport">
-                                        <div class="d-flex flex-col gap-10">
-                                            <div class="custom-input">
-                                                <input
-                                                    type="text"
-                                                    required
-                                                    class="browser-default"
-                                                    v-model="support.names"
-                                                    placeholder="Name"
-                                                />
-                                            </div>
-                                            <div class="custom-input">
-                                                <input
-                                                    type="text"
-                                                    required
-                                                    class="browser-default"
-                                                    v-model="support.email"
-                                                    placeholder="Email"
-                                                />
-                                            </div>
-                                            <div class="custom-input">
-                                                <input
-                                                    type="text"
-                                                    required
-                                                    class="browser-default"
-                                                    v-model="support.phone"
-                                                    placeholder="Phone"
-                                                />
-                                            </div>
-                                            <div class="custom-input">
-                                                <input
-                                                    type="text"
-                                                    required
-                                                    class="browser-default"
-                                                    v-model="support.subject"
-                                                    placeholder="Subject"
-                                                />
-                                            </div>
-                                            <div class="custom-textarea">
-                                                <textarea
-                                                    class="textarea browser-default"
-                                                    v-model="support.message"
-                                                    placeholder="Message"
-                                                ></textarea>
-                                            </div>
-                                            <get-started-button-component type="submit" v-if="!loading"/>
-                                            <button class="btnLoader" v-else><i class="fa-solid fa-circle-notch fa-spin white-text fa-2x"></i></button>
+                <div class="hide-on-small-only">
+                    <div class="d-flex justify-center align-center">
+                        <div class="secondary d-flex justify-between md-flex-col">
+                            <div class="h-794 md-446">
+                                <img
+                                    src="/media/img/support.png"
+                                    class="responsive-img hide-on-med-only"
+                                />
+                                <img
+                                    src="/media/img/supportFull.png"
+                                    class="responsive-img hide-on-large-only"
+                                />
+                            </div>
+                            <div class="h-794">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <p>Contact us</p>
+                                        <div class="mb-2 card-title">
+                                            We are always happy to help
                                         </div>
-                                    </form>
+                                        <form @submit.prevent="sendToSupport">
+                                            <div class="d-flex flex-col gap-10">
+                                                <div class="custom-input">
+                                                    <input
+                                                        type="text"
+                                                        required
+                                                        class="browser-default"
+                                                        v-model="support.names"
+                                                        placeholder="Name"
+                                                    />
+                                                </div>
+                                                <div class="custom-input">
+                                                    <input
+                                                        type="text"
+                                                        required
+                                                        class="browser-default"
+                                                        v-model="support.email"
+                                                        placeholder="Email"
+                                                    />
+                                                </div>
+                                                <div class="custom-input">
+                                                    <input
+                                                        type="text"
+                                                        required
+                                                        class="browser-default"
+                                                        v-model="support.phone"
+                                                        placeholder="Phone"
+                                                    />
+                                                </div>
+                                                <div class="custom-input">
+                                                    <input
+                                                        type="text"
+                                                        required
+                                                        class="browser-default"
+                                                        v-model="support.subject"
+                                                        placeholder="Subject"
+                                                    />
+                                                </div>
+                                                <div class="custom-textarea">
+                                                    <textarea
+                                                        class="textarea browser-default"
+                                                        v-model="support.message"
+                                                        placeholder="Message"
+                                                    ></textarea>
+                                                </div>
+                                                <get-started-button-component type="submit" v-if="!loading"/>
+                                                <button class="btnLoader" v-else><i class="fa-solid fa-circle-notch fa-spin white-text fa-2x"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -751,7 +759,7 @@
                             <h5 class="sm-contact">Contact Us</h5>
                             <p class="title">We are always available to help</p>
                         </div>
-                        <form class="d-flex flex-col ustify-between align-center" @submit.prevent="sendEmailForCallBack">
+                        <form class="d-flex flex-col justify-between align-center" @submit.prevent="sendEmailForCallBack">
                             <div class="custom-input mb-2">
                                 <input
                                     type="email"
