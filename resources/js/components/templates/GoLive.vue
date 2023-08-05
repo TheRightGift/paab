@@ -90,8 +90,3 @@ export default {
     }
 }
 </script>
-<style>
-/* .shadow-none {
-    box-shadow: none;
-} */
-</style>

@@ -88,7 +88,7 @@ class EmailAuthService
                 'password' => $request->password,
             ];
 
-            if (Auth::attempt($credentials)) {
+            if (Auth::attempt($credentials, true)) {
                 $user = Auth::user();
                 if ($user->role === 'Developer' && $user->registration_completed === 'Active') {
                     return ['status' => 200, 'user' => auth()->user(), 'access_token' => $this->saveUserAgent()];

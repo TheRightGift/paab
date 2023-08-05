@@ -103,7 +103,7 @@ class APIController extends Controller
         }
 
     }
-
+    
     public function runAWSUtility($domain, $detail)
     {
         try {
