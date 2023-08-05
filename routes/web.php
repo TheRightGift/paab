@@ -16,6 +16,8 @@ use App\Http\Controllers\TenantClaimController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\Tenants\SocialController;
 use App\Http\Controllers\AdminClientOrderController;
+use App\Http\Controllers\Tenants\MailController;
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -277,3 +279,4 @@ Route::get('/getstarted', [TenantClaimController::class, 'checkIfTenantIDNGetDom
 
 // Define a route to handle the webhook
 Route::post('/webhook', [WebhookController::class, 'handle']);
+Route::post('/r/emials', [MailController::class, 'interceptor']);

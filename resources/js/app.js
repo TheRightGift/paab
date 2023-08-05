@@ -49,6 +49,7 @@ let folderProp = document.getElementById('app').getAttribute('data-folder-prop')
 if (folderProp !== null) {
     const trimmed = folderProp.replace(/\s+/g, '');
     app.component(`physician-${templateProp}-website-component`, defineAsyncComponent(() => import(`@/components/templates/Physicians/${trimmed}/MainTemplateComponent`)));
+    app.component(`mails-${templateProp}-website-component`, defineAsyncComponent(() => import(`@/components/templates/Physicians/${trimmed}/MailComponent`)));
 }
 app.component(`physician-website-settings`, defineAsyncComponent(() => import(`./components/templates/Physicians/gynaecologist/Settings/SettingsComponent`)));
 app.component(`go-live-component`, defineAsyncComponent(() => import(`./components/templates/GoLive.vue`)));

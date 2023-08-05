@@ -53,7 +53,8 @@ Route::middleware([
     Route::get('/cv_generator', [App\Http\Controllers\TenantController::class, 'cv_generator']);
 
     Route::get('/payment', [App\Http\Controllers\TenantController::class, 'returnPayment']);
-    
+
+    Route::get('/mails', [App\Http\Controllers\Tenants\MailController::class, 'getMails']);
 });
 Route::middleware(['auth:api',InitializeTenancyByDomainOrSubdomain::class,
 PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {

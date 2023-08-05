@@ -188,7 +188,7 @@ body.dashboard footer {
 .w-100 {
     width: 100%;
 }
-svg {
+.sidenav svg {
     width: 30px;
     height: 30px;
 }
@@ -235,8 +235,8 @@ input[type="search"] {
 }
 .newMessage {
     position: absolute;
-    left: 10%;
-    top: 10%;
+    left: 0%;
+    top: 16%;
 }
 .profileIMG {
     width: 45px;
@@ -342,7 +342,7 @@ input[type="search"] {
     justify-content: center;
     align-items: center;
 }
-body.shrinkedSideNav {
+body.shrinkedSideNav header, body.shrinkedSideNav main, body.shrinkedSideNav footer {
     padding-left: 4vw;
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {

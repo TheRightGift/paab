@@ -744,9 +744,9 @@ li.active .collapsible-header {
 li.active .circle {
     background: rgba(16, 157, 173, 1);
 }
-.container {
-    max-width: 100%;
-}
+/* .container { */
+    /* max-width: 100%; */
+/* } */
 /* Desktops and Laptops */
 @media only screen and (min-width: 1024px) {
     /* CSS styles for desktops and laptops */
