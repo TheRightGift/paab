@@ -1,0 +1,18 @@
+version: 0.0
+os: ubuntu
+files: 
+  - source: /
+    destination: /home/ubuntu/var/www/wcdTest
+hooks:
+  ApplicationStop:
+    - location: CICDScripts/application_stop.sh
+      timeout: 300
+      runas: ubuntu
+  BeforeInstall:
+    - location: CICDScripts/before_install.sh
+      timeout: 300
+      runas: ubuntu
+  ApplicationStart:
+    - location: CICDScripts/application_start.sh
+      timeout: 300
+      runas: ubuntu
