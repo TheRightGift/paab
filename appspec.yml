@@ -2,7 +2,7 @@ version: 0.0
 os: ubuntu
 files: 
   - source: /
-    destination: /home/ubuntu/var/www/wcdTest
+    destination: /home/ubuntu/var/www/whitecoatdomain
 hooks:
   ApplicationStop:
     - location: CICDScripts/application_stop.sh
