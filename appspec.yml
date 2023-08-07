@@ -1,8 +1,9 @@
 version: 0.0
-os: ubuntu
+os: linux
 files: 
   - source: /
-    destination: /home/ubuntu/var/www/whitecoatdomain
+    destination: /var/www/whitecoatdomain
+file_exists_behavior: RETAIN
 hooks:
   ApplicationStop:
     - location: CICDScripts/application_stop.sh

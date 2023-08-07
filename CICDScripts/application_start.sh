@@ -14,6 +14,9 @@
 # sudo chmod -R 775 public
 # sudo chmod -R 775 public/media/tenants
 
+#Cd in project folder
+cd /var/www/whitecoatdomain
+
 #install all composer packages
 # composer install
 echo 'App starting' 

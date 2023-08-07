@@ -4,7 +4,7 @@
 #TODO
 
 #creat wcdTest folder if not existing
-DIR="/home/ubuntu/var/www/whitecoatdomain"
+DIR="/var/www/whitecoatdomain"
 if [ -d "$DIR" ]; then
   echo "${DIR} exists"
 else
