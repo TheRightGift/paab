@@ -30,7 +30,7 @@
                             </div>
 
                             <div class="d-flex justify-between align-center gap-1">
-                                <img src="/media/img/profileIMG.png" class="responsive-img profileIMG"/>
+                                <img src="/media/img/doc-icon.svg" class="responsive-img profileIMG"/>
                                 <span class="profileName">{{ user.firstname }} {{ user.lastname }}</span>
                                 <a href="#!" class="icon"  ><i class="fa-solid fa-caret-down"></i></a>
                             </div>

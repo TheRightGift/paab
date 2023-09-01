@@ -37,11 +37,13 @@
                     :contact="contact"
                     :template_id="template_id"
                     :social="social"
+                    :professionTitle="profession_title"
                 />
                 <ServicesComponent
                     :services="services"
                     :isLoggedIn="loggedIn"
                     :preview="preview"
+                    :tenant="tenant"
                 />
                 <MiniBlogComponent
                     :tenant="tenant"
@@ -158,6 +160,7 @@ export default {
         user_id: String,
         usersubscribed: String,
         code: String,
+        profession_title: String
     },
     mixins: [scrollCheck],
     created() {

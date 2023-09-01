@@ -4,15 +4,26 @@
             <div class="flex justify-center align-center flex-col">
                 <h2 class="heading">Services</h2>
                 <p class="sectionDescription">
-                    They provide a wide range of services and care for women of all ages, from adolescence through menopause and beyond. Some of the key services offered by gynecologists include:
+                    <!-- They provide a wide range of services and care for women of all ages, from adolescence through menopause and beyond. Some of the key services offered by gynecologists include: -->
+                    I provide the following service
                 </p>
                 <div class="row">
                     <div class="row">
                         <div class="col s12 l4 m4" v-for="(service, index) in myServices" :key="service.id">
                             <div class="card">
                                 <div class="card-content">
-                                    <div class="card-img center">
-                                        <img :src="'/media/img/templates/1/'+service.icon" class="responsive-img"/>
+                                    <div class="card-img center relative servimageContainer" :id="index">
+                                        <img :src="'/media/img/templates/1/'+service.icon" class="responsive-img" v-if="service.image_or_icon === null || service.image_or_icon === undefined"/>
+                                        <img :src="'/media/tenants/' + tenant + '/img/' + service.image_or_icon" class="responsive-img" v-else/>
+                                        <div class="overlay" v-show="isLoggedIn" @click="setIndex(index)">
+                                            <i class="fa-solid fa-gear white-text fa-2x fa-spin" v-if="loading"></i>
+                                            <label for="file-input" class="upload-label d-flex flex-col" v-else @change="handleFileUpload($event)">
+                                                <img src="/media/img/upload.svg" class="responsive-img" />
+                                                <p class="inBlock browse">Browse</p>
+                                                <small class="red-text">Max file size: 500kb, .png,.jpg only</small>
+                                                <input type="file" id="file-input" accept="image/*" @change="handleFileUpload($event)" />
+                                            </label>
+                                        </div>
                                     </div>
                                     <div class="card-title">
                                         <div class="flex justify-between">
@@ -56,6 +67,7 @@ export default {
             editingIndex: null,
             editService: false,
             editingService: false,
+            loading: false,
             servicesRend: {
                 title: "",
                 description: "",
@@ -147,11 +159,74 @@ export default {
         updateDescription(id, item) {
             this.servicesRend.description = item;
         },
+        handleFileUpload(file) {
+            this.errors = [];
+            this.loading = !this.loading;
+            let formData = new FormData();
+            formData.append("image_or_icon", file);
+            formData.append("index", this.editingIndex);
+            formData.append('title', this.servicesRend.title);
+            formData.append('description', this.servicesRend.description);
+            formData.append("_method", 'PUT');
+            axios
+                .post(`/api/saveimage`, formData)
+                .then((res) => {
+                    if (res.data.status == 200) {
+                        this.loading = false;
+                        M.toast({
+                            html: 'Upload success',
+                            classes: 'green white-text'
+                        })
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1000);
+                    }
+                })
+                .catch((err) => {
+                    this.loading = false;
+                    if (err) {
+                        this.errors = err.response;
+                        M.toast({
+                            html: 'Max file size is 500kb and should not be svg',
+                            classes: 'red'
+                        });
+                    }
+                });
+        },
+        setIndex(idx) {
+            this.editingIndex = idx;
+            let toEdit = this.myServices[idx];
+            this.servicesRend.title = toEdit.title;
+            this.servicesRend.description = toEdit.description;
+            this.servicesRend.id = toEdit.id;
+            this.servicesRend.icon = toEdit.icon;
+        }
+    },
+    renderTriggered() {
+        const servimageContainer = document.querySelector(".servimageContainer");
+        console.log(servimageContainer)
+        if (servimageContainer !== null) {
+            const fileInput = document.getElementById("file-input");
+                fileInput.addEventListener("change", (e) => {
+                this.handleFileUpload(e.target.files[0]);
+            });
+        }
+    },
+    mounted() {
+        const servimageContainer = document.querySelector(".servimageContainer");
+        console.log(servimageContainer)
+        if (servimageContainer !== null) {
+            const fileInput = document.getElementById("file-input");
+                fileInput.addEventListener("change", (e) => {
+                this.handleFileUpload(e.target.files[0]);
+            });
+        }
     },
     props: {
             services: Array,
             isLoggedIn: Boolean,
             preview: String,
+            tenant: String
         },
     watch: {
         services(newVal, oldVal) {
@@ -171,5 +246,8 @@ export default {
     .custom-textarea-field, .custom-edit-field {
         font-size: inherit;
         margin-bottom: 0;
+    }
+    .red-text {
+        font-size: .5rem;
     }
 </style>

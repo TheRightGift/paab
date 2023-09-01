@@ -145,6 +145,11 @@ PreventAccessFromCentralDomains::class,])->prefix('api')->group(function () {
 
     Route::delete('/service', [App\Http\Controllers\Tenants\ServiceController::class, 'destroy']);
 
+    Route::put('/saveimage', [App\Http\Controllers\Tenants\ServiceController::class, 'saveImageOrIcon']);
+
+
+    
+
     Route::post('/verifyToken', [App\Http\Controllers\TenantController::class, 'verifyToken'])->withoutMiddleware(['auth:api']);
     Route::post('/savelogin', [App\Http\Controllers\TenantController::class, 'saveAccessToken'])->withoutMiddleware(['auth:api']);
 
