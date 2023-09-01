@@ -288,4 +288,10 @@ input[type="file"] {
         height: unset;
         margin-top: 2vh;
     }
+    .custom-textarea-field {
+        width: 80vw;
+    }
+    .socials .custom-edit-field {
+        width: 15vw;
+    }
 }

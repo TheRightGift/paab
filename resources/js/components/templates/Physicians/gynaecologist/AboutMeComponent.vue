@@ -45,7 +45,7 @@
                         <div class="flex align-center">
                             <p class="introductory sm-text-center">
                                 Hello, I’m Doctor <span  v-if="!editing">{{ about.name }}</span> <input v-else type="text" class="custom-edit-field browser-default" v-model="about.name" />,
-                                <span class="specialty">A Gynecologist</span>
+                                <span class="specialty">A {{ professionTitle !== ''  ? professionTitle  : 'Gynecologist' }}</span>
                             </p>
                             <div class="flex justify-between align-center" v-if="editing">
                                 <div class="ml-3">
@@ -148,7 +148,7 @@
                                 <div class="flex justify-between align-center" v-if="editingSocials">
                                     <div class="input-container" v-for="social in socials" :key="social">
                                         <i :class="'fa-brands fa-'+social.id"></i>
-                                        <input type="text" placeholder="" class="custom-edit-field browser-default" v-model="social.handle" @input="updateHandle(social.id, social.handle)">
+                                        <input type="text" autofocus placeholder="" class="custom-edit-field browser-default" v-model="social.handle" @input="updateHandle(social.id, social.handle)">
                                     </div>
                                     <div class="ml-3">
                                         <span v-if="editSocials">
@@ -351,6 +351,8 @@
             contact: Object,
             template_id: String,
             social: String,
+
+            professionTitle: String, // Recently added
         },
         watch: {
             bio(newval, oldval) {

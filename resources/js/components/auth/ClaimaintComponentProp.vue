@@ -18,7 +18,7 @@
                     src="/media/img/wcd-logo-noBckg-removebg-previewWHITE.png"
                     class="responsive logo show-on-medium hide-on-small hide-on-large-only hide-on-small-only"
                 />
-                <div v-if="view == 0 || inputEmail == ''" class="flex flex-col background gap20 md-justify-center">
+                <div v-if="(view == 0 || inputEmail == '' ) && usernotordered === '0'" class="flex flex-col background gap20 md-justify-center">
                     <div class="flex flex-end hide-on-med-and-up">
                         <img
                             src="/media/img/wcdlogoLG-noBG.png"
@@ -1160,6 +1160,7 @@
                         // && this.validator(this.domainSelected))
                         try {
                             this.registerUpdateUser();
+                            // Find the issue with id of undefined
                             this.saveUndergradSchoolTime();
                             this.saveMedSchoolTime();
                             this.saveInternshipTime();
@@ -1388,7 +1389,8 @@
                 axios
                     .put(`/claim/updateDomain/tenant`, {
                         // Change to template id based on selection
-                        template: this.specialty.templates[0].id,
+                        template: this.specialty.templates > 0 ? this.specialty.templates[0].id : 1,
+                        profession_title: this.specialty.title,
                     })
                     .then((res) => {
                         console.log(res)
@@ -1924,6 +1926,7 @@
             countries: Array,
             tenantOnDemand: Number,
             email: String,
+            usernotordered: String
         },
         watch: {
             claimant: {

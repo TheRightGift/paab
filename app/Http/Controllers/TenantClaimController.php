@@ -543,7 +543,7 @@ class TenantClaimController extends Controller
             'data.*.title' => 'nullable',
             'data.*.description' => 'nullable',
             'data.*.icon' => 'nullable|image|mimes:jpg,png|max:10',
-        ]); 
+        ]);
         if ($inputs->fails()) {
             return response($inputs->errors()->all(), 501);
         } else {
@@ -564,6 +564,9 @@ class TenantClaimController extends Controller
                             'interest_id' => $row->id,
                             'created_at' => now(),
                             'updated_at' => now(),
+                            'description' => $row->description,
+                            'title' => $row->title,
+                            'index' => $row->id + 1,
                         ];
                         $services->insert($data);
                     }
@@ -719,7 +722,7 @@ class TenantClaimController extends Controller
         DB::setDatabaseName(env('DB_DATABASE'));
         $degree = Title::where('id', $bioDb->title_id)->first()->name;
         if ($bioDb !== null) {
-            dd($bioDb);
+            // dd($bioDb);
             $seedBioA = 'Dr. '.$bioDb->firstname.' '.$bioDb->lastname.' ';
         }
         

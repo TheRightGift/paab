@@ -98,6 +98,7 @@ class TenantController extends Controller
             'template' => ['nullable'],
             'domain' => ['nullable'],
             'domain_id' => ['nullable'],
+            'profession_title' => ['nullable'], // Added Recently
         ]);
 
         if ($inputs->fails()) {
@@ -110,6 +111,7 @@ class TenantController extends Controller
         if ($tenant !== null) {
             if ($request->has('template')) {
                 $tenant->template_id = $inputs->validated()['template'];
+                $tenant->profession_title = $inputs->validated()['profession_title'];
                 $tenant->save();
             }
             if ($request->has('domain')) {
