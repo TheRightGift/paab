@@ -25,5 +25,5 @@ echo 'App starting'
 # sudo php artisan migrate
 
 #start all JS packages for VueJS
-# sudo npm run prod
+sudo npm run prod
 
