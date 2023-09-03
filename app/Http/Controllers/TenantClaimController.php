@@ -128,10 +128,11 @@ class TenantClaimController extends Controller
             $tenant = Tenant::find($tenantToFind);
             if (!empty($tenant)) {
                 Config::set('database.connections.mysql.database', $tenant->tenancy_db_name);
-
+                
                 DB::connection('mysql')->reconnect();
                 DB::setDatabaseName($tenant->tenancy_db_name);
                 if (!empty($request->id)) {
+                    // dd($input);
                     $input['updated_at'] = now();
                     $userData = DB::table('bios')->where('id', '!=' , null )->update($input);
                 }
@@ -139,6 +140,7 @@ class TenantClaimController extends Controller
                     $input['updated_at'] = now();
                     $input['created_at'] = now();
                     $userData = DB::table('bios')->insert($input);
+                    // dd($input);
                 }
                 $userBiography = DB::table('bios')->first();
                 return response(['status' => 200, 'user' => $userBiography, 'msg' => 'Updated onSuccess'], 200);
