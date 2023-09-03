@@ -101,6 +101,7 @@
                         </div>
                         <div class="row">
                             <div class="row center ">
+                                <!-- marginTop-10 -->
                                 <a
                                     href="#!"
                                     v-if="!verifying"
