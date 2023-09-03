@@ -22,8 +22,8 @@ cd /var/www/whitecoatdomain
 echo 'App starting' 
 
 #Run migration
-sudo php artisan migrate
+# sudo php artisan migrate
 
 #start all JS packages for VueJS
-sudo npm run prod
+# sudo npm run prod
 
