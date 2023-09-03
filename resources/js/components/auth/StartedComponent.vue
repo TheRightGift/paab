@@ -66,12 +66,42 @@
             </div>
             <div class="col l6 m12 s12 authDetail">
                 <div class="authDetailInner">
-                    <div for="signup" v-if="verifiedEmail == 1">
+                    <!--div for="signup" v-if="verifiedEmail == 1">
                         <VerifyEmailComponent @resData="setOTP" :type="'register'" />
                     </div>
                     <div for="otpComponent" v-if="verifiedEmail === 2">
                         <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'"/>
-                    </div>
+                    </div-->
+ <form id="verifyEmail" class="marginTop-9" v-if="VerifiedEmail == 1">
+            <div class="row">
+                <div class="col s12">
+                    <label>Enter your email address</label>
+                    <input
+                        placeholder="email address"
+                        id="user"
+                        type="email"
+                        class=" browser-default"
+                        v-model="userReg.email"
+                        required
+                    />                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="row center marginTop-10">
+                    <a href="#!" v-if="!verifying" class="btn" @click.prevent="saveMailAndCreateUser()">Submit</a>
+                    <a href="#!" v-else class="btn">
+                        <i class="fa fa-spin fa-spinner"></i>
+                    </a>
+                </div>
+
+                <!-- Login Signup Link -->
+                <div class="center toSignUp marginTop-7">
+                    <p>
+                        <span class="grey-text">Have an account?</span> <a href="/auth/login">Sign in</a>
+                    </p>
+                </div>
+            </div>
+        </form>            
 
                     <div v-if="verifiedEmail === 3" for="afterVerifyingEmail">
                         <div id="cover-spin">
@@ -262,9 +292,18 @@
                     .post("/api/tenant_without_auth", data)
                     .then((res) => {
                         if (res.data.status === 200) {
-                            document.location.href = `claim?claimable=${res.data.domain.tenant.id}&mail=${this.userReg.email}`;
+                            M.toast({
+                                html: 'Saved Successfully, you will be redirected to complete your profile', 
+                                classes: 'green',
+                                timer: 1500,
+                              });
+                            this.updateVerifiedEmail(3);
+                            settimeout( () => {
+                                document.location.href = `claim?claimable=${res.data.domain.tenant.id}&mail=${this.userReg.email}`;
                             this.verifying = false;
                             console.log(location.host);
+                            }, 1000)
+                            
                         }
                     })
                     .catch((err) => {
