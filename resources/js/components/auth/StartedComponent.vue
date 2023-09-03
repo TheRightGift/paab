@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div-->
-        <div class="row" v-if="!claimant && claimaint === null"> 
+        <div class="row" v-if="!claimant && claimaint === null">
             <div class="col l6 loginBackground hide-on-med-and-down">
                 <img
                     class="logo"
@@ -72,41 +72,66 @@
                     <div for="otpComponent" v-if="verifiedEmail === 2">
                         <OtpComponent @res="otpVerifier" :otp="otp" :type="'register'"/>
                     </div-->
- <form id="verifyEmail" class="marginTop-9" v-if="VerifiedEmail == 1">
-            <div class="row">
-                <div class="col s12">
-                    <label>Enter your email address</label>
-                    <input
-                        placeholder="email address"
-                        id="user"
-                        type="email"
-                        class=" browser-default"
-                        v-model="userReg.email"
-                        required
-                    />                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="row center marginTop-10">
-                    <a href="#!" v-if="!verifying" class="btn" @click.prevent="saveMailAndCreateUser()">Submit</a>
-                    <a href="#!" v-else class="btn">
-                        <i class="fa fa-spin fa-spinner"></i>
-                    </a>
-                </div>
+                    <div class="right-align hide-on-med-and-up">
+                        <a href="/">
+                            <img
+                                class=""
+                                src="/media/img/wcd-logo-noBckg.png"
+                                alt="Whitecoatdomain Logo"
+                            />
+                        </a>
+                    </div>
+                    <form
+                        id="verifyEmail"
+                        class="marginTop-9"
+                        v-if="verifiedEmail == 1"
+                    >
+                        <div class="row">
+                            <div class="col s12">
+                                <label>Enter your email address</label>
+                                <input
+                                    placeholder="email address"
+                                    id="user"
+                                    type="email"
+                                    class="browser-default"
+                                    v-model="userReg.email"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row center marginTop-10">
+                                <a
+                                    href="#!"
+                                    v-if="!verifying"
+                                    class="btn"
+                                    @click.prevent="saveMailAndCreateUser()"
+                                    >Submit</a
+                                >
+                                <a href="#!" v-else class="btn">
+                                    <i class="fa fa-spin fa-spinner"></i>
+                                </a>
+                            </div>
 
-                <!-- Login Signup Link -->
-                <div class="center toSignUp marginTop-7">
-                    <p>
-                        <span class="grey-text">Have an account?</span> <a href="/auth/login">Sign in</a>
-                    </p>
-                </div>
-            </div>
-        </form>            
+                            <!-- Login Signup Link -->
+                            <div class="center toSignUp marginTop-7">
+                                <p>
+                                    <span class="grey-text"
+                                        >Have an account?</span
+                                    >
+                                    <a href="/auth/login">Sign in</a>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
 
                     <div v-if="verifiedEmail === 3" for="afterVerifyingEmail">
                         <div id="cover-spin">
                             <div class="valign-wrapper">
-                                <h6 class="">Saving data, please hang on. You will be redirected to complete your registration</h6>
+                                <h6 class="">
+                                    Saving data, please hang on. You will be
+                                    redirected to complete your registration
+                                </h6>
                             </div>
                         </div>
                     </div>
@@ -213,7 +238,15 @@
             </div>
         </div>
         <div v-if="claimant || claimaint != null">
-            <claimaint-component-prop :usernotordered="usernotordered" :tenantOnDemand="tenantOnDemand" :claimaint="claimaint" :claimant="claimant" :titles="titles" :countries="countries" :email="useremail"/>
+            <claimaint-component-prop
+                :usernotordered="usernotordered"
+                :tenantOnDemand="tenantOnDemand"
+                :claimaint="claimaint"
+                :claimant="claimant"
+                :titles="titles"
+                :countries="countries"
+                :email="useremail"
+            />
         </div>
     </div>
 </template>
@@ -293,17 +326,16 @@
                     .then((res) => {
                         if (res.data.status === 200) {
                             M.toast({
-                                html: 'Saved Successfully, you will be redirected to complete your profile', 
-                                classes: 'green',
+                                html: "Saved Successfully, you will be redirected to complete your profile",
+                                classes: "green",
                                 timer: 1500,
-                              });
+                            });
                             this.updateVerifiedEmail(3);
-                            settimeout( () => {
+                            setTimeout(() => {
                                 document.location.href = `claim?claimable=${res.data.domain.tenant.id}&mail=${this.userReg.email}`;
-                            this.verifying = false;
-                            console.log(location.host);
-                            }, 1000)
-                            
+                                this.verifying = false;
+                                console.log(location.host);
+                            }, 1000);
                         }
                     })
                     .catch((err) => {
