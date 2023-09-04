@@ -345,9 +345,10 @@ class TenantController extends Controller
                 if ($tenant !== null) {
                     $tenant->accessToken = $input['accessToken'];
                     $tenant->save();
-                    (new User)->forceFill([
-                        'email' => $input['email'],
-                    ])->notify(new LoginNotifier($this->locator($request), $hostname));
+                    #TODO: Put back when mail manager is available
+                    // (new User)->forceFill([
+                    //     'email' => $input['email'],
+                    // ])->notify(new LoginNotifier($this->locator($request), $hostname));
                     if ($tenant == true) {
                         return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                     }
@@ -356,10 +357,10 @@ class TenantController extends Controller
                     $tenantUser->user_id = $input['user_id'];
                     $tenantUser->accessToken = $input['accessToken'];
                     $tenantUser->save();
-
-                    (new User)->forceFill([
-                        'email' => $input['email'],
-                    ])->notify(new LoginNotifier($this->locator($request), $hostname));
+                    #TODO: Put back when mail manager is available
+                    // (new User)->forceFill([
+                    //     'email' => $input['email'],
+                    // ])->notify(new LoginNotifier($this->locator($request), $hostname));
                     if ($tenantUser == true) {
                         return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                     }
