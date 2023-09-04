@@ -75,7 +75,7 @@
                                 </span>
                             </p>
                             <div class="flex justify-between align-center" v-else>
-                                <textarea class="custom-textarea-field" v-model="about.about"></textarea>
+                                <textarea class="custom-textarea-field" v-model="about.about" maxlength="600"></textarea>
                                 <div class="ml-3">
                                     <span v-if="editAbout">
                                         <i class="fa-solid fa-gear primary fs-1 fa-spin"></i>
@@ -236,7 +236,17 @@
                 })
             },
             confirmUpdateAbout() {
-                if (this.aboutCount === 614 || this.aboutCount > 600) {
+                if (this.aboutCount >= 600) {
+                    M.toast({
+                        html: 'Length should not exceed 600 characters',
+                        classes: 'red',
+                    })
+                } else if (this.aboutCount <= 200) {
+                    M.toast({
+                        html: 'Character length should be minimum of 200 characters',
+                        classes: 'red',
+                    })
+                } else {
                     let formData = new FormData();
                     this.editAbout = !this.editAbout;
                     
@@ -248,7 +258,7 @@
                         if (res.data.status == 200) {
                             M.toast({
                                 html: res.data.message,
-                                classes: "successNotifier",
+                                classes: "green darken-1",
                             });
                             this.editAbout = !this.editAbout;
                             this.editingAbout = !this.editingAbout;
@@ -266,12 +276,6 @@
                         }
                     });
                 }
-                else {
-                    M.toast({
-                        html: 'The about you should be greater than 600 in lenght',
-                        classess: 'errorNotifier',
-                    })
-                }
             },
             edit(num) {
                 if (num === 0) {
@@ -288,7 +292,6 @@
                     facebook: this.facebook, twitter: this.twitter, tiktok: this.tiktok, instagram: this.instagram,
                 };
                 this.update ? data._method = 'PUT' : null;
-                console.log(data);
                 axios.post(`/api/social/${this.id}`, data)
                     .then((res) => {
                         if (res.status == 200 || res.status == 201) {
