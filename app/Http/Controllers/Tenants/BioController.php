@@ -172,7 +172,8 @@ class BioController extends Controller
                 }
                 $bio2Update->update($input);
                 if (true) {
-                    $this->settingschangeNotify();
+                    #TODO: Put back when mail manager is available
+                    // $this->settingschangeNotify();
                     return response(['bio' => $bio2Update, 'message' => 'Update Success', 'status' => 200], 200);
                 }
                 else {

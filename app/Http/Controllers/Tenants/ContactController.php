@@ -76,7 +76,8 @@ class ContactController extends Controller
             $contact2Update = $contacts->find($contact);
             $contact2Update->update($input);
             if ($contact2Update == true) {
-                $this->settingschangeNotify();
+                #TODO: Put back when mail manager is available
+                // $this->settingschangeNotify();
                 return response()->json(['message' => 'Success', 'contact' => $contact2Update, 'status' => 200], 200);
             }
             else {

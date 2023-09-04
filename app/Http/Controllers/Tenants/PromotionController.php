@@ -102,7 +102,8 @@ class PromotionController extends Controller
             $promotion2Update = $promotions->find($promotion);
             $promotion2Update->update($input);
             if ($promotion2Update == true) {
-                $this->settingschangeNotify();
+                #TODO: Put back when mail manager is available
+                // $this->settingschangeNotify();
                 return response()->json(['message' => 'Success', 'promotion' => $promotion2Update, 'status' => 200], 200);
             }
             else {

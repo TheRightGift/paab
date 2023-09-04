@@ -37,7 +37,7 @@
 </head>
 <body>
     <div id="app" data-template-prop="{{$template_id}}" data-folder-prop="{{strtolower($template)}}">
-        <physician-{{$template_id}}-website-component code="{{$code ?? ''}}" profession_title="{{ tenant()->profession_title }}"  userSubscribed="{{$userSubscribed ?? ''}}" user_id="{{$user_id}}" email="{{$email}}" can="{{$can}}" social="{{$socials ?? null}}" tenant='{{$tenantID ?? null}}' preview='{{$preview ?? 0}}' title='{{$title ?? null}}' template_id="{{$template_id}}" template="{{$template}}" user="{{$user ?? ''}}"></physician-website-component>
+        <physician-{{$template_id}}-website-component code="{{$code ?? ''}}" profession_title="{{ tenant()->profession_title ?? '' }}"  userSubscribed="{{$userSubscribed ?? ''}}" user_id="{{$user_id}}" email="{{$email}}" can="{{$can}}" social="{{$socials ?? null}}" tenant='{{$tenantID ?? null}}' preview='{{$preview ?? 0}}' title='{{$title ?? null}}' template_id="{{$template_id}}" template="{{$template}}" user="{{$user ?? ''}}"></physician-website-component>
     </div>
     <script src="/js/app.js"></script>
     <script src="/js/jquery-3.6.0.min.js"></script>
