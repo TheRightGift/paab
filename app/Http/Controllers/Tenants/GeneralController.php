@@ -123,8 +123,7 @@ class GeneralController extends Controller
             $general2Update = $generals->find($general);
             $general2Update->update($input);
             if ($general2Update == true) {
-                #TODO: Put back when mail manager is available
-                // $this->settingschangeNotify();
+                $this->settingschangeNotify();
                 return response()->json(['message' => 'Success', 'general' => $general2Update, 'status' => 200], 200);
             }
             else {

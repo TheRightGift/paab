@@ -75,6 +75,22 @@
                         </div>
                     </div>
                 </div>
+                <div v-show="views === 1">
+                    <div style="width: 711px; height: 397px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 30px; display: inline-flex">
+                        <div style="width: 711px; height: 55px; position: relative">
+                            <div style="width: 88px; left: 23px; top: 16px; position: absolute; color: #7C8DB5; font-size: 16px; font-family: Montserrat; font-weight: 400; line-height: 24px; word-wrap: break-word">Recipents</div>
+                            <div style="width: 711px; height: 55px; left: 0px; top: 0px; position: absolute; border-radius: 15px; border: 0.50px #D9D9D9 solid"></div>
+                        </div>
+                        <div style="width: 711px; height: 55px; position: relative">
+                            <div style="width: 88px; left: 23px; top: 15px; position: absolute; color: #7C8DB5; font-size: 16px; font-family: Montserrat; font-weight: 400; line-height: 24px; word-wrap: break-word">Subject</div>
+                            <div style="width: 711px; height: 55px; left: 0px; top: 0px; position: absolute; border-radius: 15px; border: 0.50px #D9D9D9 solid"></div>
+                        </div>
+                        <div style="width: 711px; height: 227px; position: relative">
+                            <div style="width: 88px; left: 23px; top: 14px; position: absolute; color: #7C8DB5; font-size: 16px; font-family: Montserrat; font-weight: 400; line-height: 24px; word-wrap: break-word">Message</div>
+                            <div style="width: 711px; height: 227px; left: 0px; top: 0px; position: absolute; border-radius: 15px; border: 0.50px #D9D9D9 solid"></div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
     </div>

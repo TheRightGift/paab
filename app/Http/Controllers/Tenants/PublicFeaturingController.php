@@ -86,8 +86,7 @@ class PublicFeaturingController extends Controller
             $public_feature2Update = $public_features->find($public_feature);
             $public_feature2Update->update($input);
             if (true) {
-                #TODO: Put back when mail manager is available
-                // $this->settingschangeNotify();
+                $this->settingschangeNotify();
                 return response()->json(['message' => 'Success', 'public_feature' => $public_feature2Update, 'status' => 200]);
             }
         }

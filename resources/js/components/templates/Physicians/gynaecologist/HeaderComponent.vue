@@ -501,7 +501,6 @@
                             this.editHeaderTitle = false;
                             this.editing = !this.editing;
                         }
-                        console.log(res);
                     })
                     .catch((err) => {
                         console.log(err);
@@ -580,7 +579,6 @@
         },
         watch: {
             userReplaced(newVal) {
-                console.log(newVal, "here");
                 if (newVal != "") {
                     this.userReplaced = newVal;
                 }
@@ -597,7 +595,6 @@
             },
             isLoggedIn(newVal, oldVal) {
                 if (newVal === true) {
-                    console.log(newVal);
                     
                     document.addEventListener("DOMContentLoaded", function () {
                         var elem = document.querySelectorAll(".modal");

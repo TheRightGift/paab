@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tenants;
 
 use Illuminate\Http\Request;
+use Intervention\Image\Image;
 use App\Trait\ServiceNotifier;
 use App\Models\Tenants\Service;
 use App\Http\Controllers\Controller;
@@ -42,7 +43,7 @@ class ServiceController extends Controller
                     mkdir($save_path, 0755, true);
                 }
                 $file = $save_path.$safeName;
-                \Image::make(file_get_contents($request['image_or_icon']))->resize(194, 130, function ($constraint) {
+                Image::make(file_get_contents($request['image_or_icon']))->resize(194, 130, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($file);
                 

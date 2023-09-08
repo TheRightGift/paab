@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use Image;
 use Illuminate\Http\Request;
+use Intervention\Image\Image;
 use App\Trait\ServiceNotifier;
 use App\Models\Tenants\Achievement;
 use App\Http\Controllers\Controller;
@@ -100,8 +100,7 @@ class AchievementController extends Controller
             $achievement2Update = $achievements->find($achievement);
             $achievement2Update->update($input);
             if ($achievement2Update == true) {
-                #TODO: Put back when mail manager is available
-                // $this->settingschangeNotify();
+                $this->settingschangeNotify();
                 return response()->json(['message' => 'Success', 'achievement' => $achievement2Update, 'status' => 200], 200);
             }
             else {
