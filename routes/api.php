@@ -106,6 +106,7 @@ Route::group(['middleware' => ['auth.api']], function() {
 });
 // Route::group(['middleware'=>'auth:api'], function(){
 // });
+Route::get('/checklocaldomain', [DomainCheckerController::class, 'checkLocalDomain']);
 Route::get('template', [TemplateController::class, 'index']);
 Route::get('specialties', [SpecialtyController::class, 'index']);
 Route::resource('/profession', ProfessionController::class);

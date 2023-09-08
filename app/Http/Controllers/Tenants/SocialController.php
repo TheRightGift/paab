@@ -76,8 +76,7 @@ class SocialController extends Controller
             $social2Update = $socials->find($social);
             $social2Update->update($input);
             if ($social2Update == true) {
-                #TODO: Put back when mail manager is available
-                // $this->settingschangeNotify();
+                $this->settingschangeNotify();
                 return response()->json(['message' => 'Success', 'social' => $social2Update, 'status' => 200], 200);
             }
             else {

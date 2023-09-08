@@ -126,7 +126,7 @@ class TenantController extends Controller
                         $domain->save();
                     } 
                 } catch (DomainOccupiedByOtherTenantException $e) {
-                    return response()->json(["Domain already in use."]);
+                    return response()->json(["Domain already in use."], 500);
                 }
             }
             return response()->json(['message' => 'Success', 'status' => 200], 200);
@@ -345,10 +345,9 @@ class TenantController extends Controller
                 if ($tenant !== null) {
                     $tenant->accessToken = $input['accessToken'];
                     $tenant->save();
-                    #TODO: Put back when mail manager is available
-                    // (new User)->forceFill([
-                    //     'email' => $input['email'],
-                    // ])->notify(new LoginNotifier($this->locator($request), $hostname));
+                    (new User)->forceFill([
+                        'email' => $input['email'],
+                    ])->notify(new LoginNotifier($this->locator($request), $hostname));
                     if ($tenant == true) {
                         return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                     }
@@ -357,10 +356,9 @@ class TenantController extends Controller
                     $tenantUser->user_id = $input['user_id'];
                     $tenantUser->accessToken = $input['accessToken'];
                     $tenantUser->save();
-                    #TODO: Put back when mail manager is available
-                    // (new User)->forceFill([
-                    //     'email' => $input['email'],
-                    // ])->notify(new LoginNotifier($this->locator($request), $hostname));
+                    (new User)->forceFill([
+                        'email' => $input['email'],
+                    ])->notify(new LoginNotifier($this->locator($request), $hostname));
                     if ($tenantUser == true) {
                         return response()->json(['message' => 'Saved Success', 'status' => 201], 200);
                     }

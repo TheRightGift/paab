@@ -152,22 +152,33 @@
                         } else {
                             inputValue = this.domain + ".com";
                         }
-                        axios
-                            .post("/api/domain/check", { domain: inputValue })
-                            .then((res) => {
-                                if (res.data.status == 1) {
-                                    this.domainCheckPassed = true;
-                                    this.$emit("newDomain", inputValue);
-                                } else if (res.data.status == 0) {
-                                    this.domainCheckPassed = false;
-                                    this.$emit("status",  false);
-                                }
+                        axios.get(`/api/checklocaldomain?domain=${inputValue}`).then((res) => {
+                            if (res.data.passed === 1) {
+                                axios
+                                    .post("/api/domain/check", { domain: inputValue })
+                                    .then((res) => {
+                                        if (res.data.status == 1) {
+                                            this.domainCheckPassed = true;
+                                            this.$emit("newDomain", inputValue);
+                                        } else if (res.data.status == 0) {
+                                            this.domainCheckPassed = false;
+                                            this.$emit("status",  false);
+                                        }
+                                        this.checkingSuggestion = false;
+                                    })
+                                    .catch((err) => {
+                                        console.log(err);
+                                        this.checkingSuggestion = false;
+                                    });
+                            } else if (res.data.passed === 0) {
                                 this.checkingSuggestion = false;
-                            })
-                            .catch((err) => {
-                                console.log(err);
-                                this.checkingSuggestion = false;
-                            });
+                                this.domainCheckPassed = false;
+                                this.$emit("status",  false);
+                            }
+                        }).catch((err) => {
+                            console.log(err);
+                            this.checkingSuggestion = false;
+                        });
                     } else {
                         this.domainCheckPassed = null;
                     }

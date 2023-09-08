@@ -230,7 +230,6 @@
         },
         computed: {
             isDisabled: function () {
-                console.log(this.userInputedOTP.length, this.userInputedOTP.length !== 6);
                 return this.userInputedOTP.length !== 6;
             },
         },

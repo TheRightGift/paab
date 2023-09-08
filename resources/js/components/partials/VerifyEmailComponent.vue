@@ -99,12 +99,14 @@ import SocialLoginComponent from './SocialLoginComponent.vue';
                         }
                     })
                     .catch((err) => {
-                        M.toast({
-                            html: "Server error. Please refrsh page and try again",
-                            classes: "errorNotifier",
-                        });
+                        if (err.response.status === 422) {
+                            M.toast({
+                                html: err.response.data.errors.email,
+                                classes: "errorNotifier",
+                            });
+                        }
                         this.verificationLoading = false;
-                        console.log(err.response);
+                        console.log(err);
                     });
                 }
             }

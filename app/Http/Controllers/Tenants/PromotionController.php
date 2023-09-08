@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use App\Http\Controllers\Controller;
-use App\Models\Tenants\Promotion;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Validator;
-use App\Trait\ServiceNotifier;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Intervention\Image\Image;
+use App\Trait\ServiceNotifier;
+use App\Models\Tenants\Promotion;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class PromotionController extends Controller
 {
@@ -102,8 +103,7 @@ class PromotionController extends Controller
             $promotion2Update = $promotions->find($promotion);
             $promotion2Update->update($input);
             if ($promotion2Update == true) {
-                #TODO: Put back when mail manager is available
-                // $this->settingschangeNotify();
+                $this->settingschangeNotify();
                 return response()->json(['message' => 'Success', 'promotion' => $promotion2Update, 'status' => 200], 200);
             }
             else {

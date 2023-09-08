@@ -204,7 +204,6 @@ export default {
     },
     renderTriggered() {
         const servimageContainer = document.querySelector(".servimageContainer");
-        console.log(servimageContainer)
         if (servimageContainer !== null) {
             const fileInput = document.getElementById("file-input");
                 fileInput.addEventListener("change", (e) => {
@@ -214,7 +213,6 @@ export default {
     },
     mounted() {
         const servimageContainer = document.querySelector(".servimageContainer");
-        console.log(servimageContainer)
         if (servimageContainer !== null) {
             const fileInput = document.getElementById("file-input");
                 fileInput.addEventListener("change", (e) => {

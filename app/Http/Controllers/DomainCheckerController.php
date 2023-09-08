@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Iodev\Whois\Factory;
 use Iodev\Whois\Modules\Tld\TldServer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DomainCheckerController extends Controller
 {
@@ -32,6 +33,26 @@ class DomainCheckerController extends Controller
             }
         } catch (\Throwable $th) {
             throw $th;
+        }
+    }
+
+    /**
+     * Domain Name Checker on the local
+     *
+     * Tenant App\Models\Tenant
+     * @param Request $request
+     * @return json
+     */
+    public function checkLocalDomain (Request $request) {
+        $domain = $request->domain;
+        if(!empty($domain)) {
+            $cleanedDomain = str_replace(".com", "", $domain);
+            $checker = DB::table('domains')->where('domain', $cleanedDomain)->first();
+            if (empty($checker)) {
+                return response()->json(['passed' => 1]);
+            } else {
+                return response()->json(['passed' => 0]);
+            }
         }
     }
 }
