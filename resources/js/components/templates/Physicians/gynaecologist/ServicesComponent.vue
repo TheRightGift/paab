@@ -12,17 +12,19 @@
                         <div class="col s12 l4 m4" v-for="(service, index) in myServices" :key="service.id">
                             <div class="card">
                                 <div class="card-content">
-                                    <div class="card-img center relative servimageContainer" :id="index">
+                                    <div class="card-img center relative " :id="index"> 
+                                        <!-- servimageContainer -->
                                         <img :src="'/media/img/templates/1/'+service.icon" class="responsive-img" v-if="service.image_or_icon === null || service.image_or_icon === undefined"/>
-                                        <img :src="'/media/tenants/' + tenant + '/img/' + service.image_or_icon" class="responsive-img" v-else/>
-                                        <div class="overlay" v-show="isLoggedIn" @click="setIndex(index)">
+                                        <img :src="'/media/tenants/' + tenant + '/img/' + service.image_or_icon" class="responsive-img user-image-icon" v-else/>
+                                        <div class="overlay" v-show="isLoggedIn">
                                             <i class="fa-solid fa-gear white-text fa-2x fa-spin" v-if="loading"></i>
-                                            <label for="file-input" class="upload-label d-flex flex-col" v-else @change="handleFileUpload($event)">
-                                                <img src="/media/img/upload.svg" class="responsive-img" />
-                                                <p class="inBlock browse">Browse</p>
+                                            <div class="image-upload" v-else >
+                                                <label for="service-file-input" @click="setIndex(index)">
+                                                    <img src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/128/Downloads-icon.png" class="responsive-img resize"/>
+                                                </label>
                                                 <small class="red-text">Max file size: 500kb, .png,.jpg only</small>
-                                                <input type="file" id="file-input" accept="image/*" @change="handleFileUpload($event)" />
-                                            </label>
+                                                <input id="service-file-input" type="file"  @change="handleServiceFileUpload($event)" accept="image/*"/>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="card-title">
@@ -159,39 +161,42 @@ export default {
         updateDescription(id, item) {
             this.servicesRend.description = item;
         },
-        handleFileUpload(file) {
-            this.errors = [];
-            this.loading = !this.loading;
-            let formData = new FormData();
-            formData.append("image_or_icon", file);
-            formData.append("index", this.editingIndex);
-            formData.append('title', this.servicesRend.title);
-            formData.append('description', this.servicesRend.description);
-            formData.append("_method", 'PUT');
-            axios
-                .post(`/api/saveimage`, formData)
-                .then((res) => {
-                    if (res.data.status == 200) {
+        handleServiceFileUpload(e) {
+            if (e.target.files.length !== 0) {
+                let file = e.target.files[0];
+                this.errors = [];
+                this.loading = !this.loading;
+                let formData = new FormData();
+                formData.append("image_or_icon", file);
+                formData.append("index", this.editingIndex);
+                formData.append('title', this.servicesRend.title);
+                formData.append('description', this.servicesRend.description);
+                formData.append("_method", 'PUT');
+                axios
+                    .post(`/api/saveimage`, formData)
+                    .then((res) => {
+                        if (res.data.status == 200) {
+                            this.loading = false;
+                            M.toast({
+                                html: 'Upload success',
+                                classes: 'green white-text'
+                            })
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 1000);
+                        }
+                    })
+                    .catch((err) => {
                         this.loading = false;
-                        M.toast({
-                            html: 'Upload success',
-                            classes: 'green white-text'
-                        })
-                        setTimeout(() => {
-                            window.location.reload();
-                        }, 1000);
-                    }
-                })
-                .catch((err) => {
-                    this.loading = false;
-                    if (err) {
-                        this.errors = err.response;
-                        M.toast({
-                            html: 'Max file size is 500kb and should not be svg',
-                            classes: 'red'
-                        });
-                    }
-                });
+                        if (err) {
+                            this.errors = err.response;
+                            M.toast({
+                                html: 'Max file size is 500kb and should not be svg',
+                                classes: 'red'
+                            });
+                        }
+                    });
+            }
         },
         setIndex(idx) {
             this.editingIndex = idx;
@@ -200,24 +205,6 @@ export default {
             this.servicesRend.description = toEdit.description;
             this.servicesRend.id = toEdit.id;
             this.servicesRend.icon = toEdit.icon;
-        }
-    },
-    renderTriggered() {
-        const servimageContainer = document.querySelector(".servimageContainer");
-        if (servimageContainer !== null) {
-            const fileInput = document.getElementById("file-input");
-                fileInput.addEventListener("change", (e) => {
-                this.handleFileUpload(e.target.files[0]);
-            });
-        }
-    },
-    mounted() {
-        const servimageContainer = document.querySelector(".servimageContainer");
-        if (servimageContainer !== null) {
-            const fileInput = document.getElementById("file-input");
-                fileInput.addEventListener("change", (e) => {
-                this.handleFileUpload(e.target.files[0]);
-            });
         }
     },
     props: {
@@ -241,11 +228,36 @@ export default {
 }
 </script>
 <style scoped>
+    .image-upload {
+        display: flex;
+        flex-direction: column;
+    }
     .custom-textarea-field, .custom-edit-field {
         font-size: inherit;
         margin-bottom: 0;
     }
     .red-text {
         font-size: .5rem;
+    }
+    .resize {
+        width: 3vw;
+    }
+
+    .user-image-icon {
+        width: 344px;
+        height: 220px;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .resize {
+            width: 10vw;
+        }
+        .user-image-icon {
+            width: 194px;
+            height: 124px;
+        }
+        small.red-text {
+            font-size: 1rem;
+        }
     }
 </style>
